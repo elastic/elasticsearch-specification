@@ -1,0 +1,22 @@
+{
+  "name": "elastic-client-generator",
+  "version": "0.0.1",
+  "description": "A tool to generate (parts) of an elasticsearch http client",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run compile && node src/main.js",
+    "compile": "ntsc -p ./src",
+    "typings": "typings",
+    "build": "gulp --gulpfile build/gulpfile.js"
+  },
+  "author": "Elastic",
+  "license": "MIT",
+  "devDependencies": {
+    "eclint": "^1.1.5",
+    "gulp": "^3.9.0",
+    "gulp-add-src": "^0.2.0",
+    "lodash": "^3.10.1",
+    "ntypescript": "1.201602212305.1",
+    "typings": "0.6.8"
+  }
+}
