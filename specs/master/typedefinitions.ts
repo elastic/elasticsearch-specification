@@ -5,6 +5,21 @@ interface long {}
 interface float {}
 interface double {}
 
+/**namespace:DefaultLanguageConstruct */
+interface Map<TKey, TValue> {
+}
+/**namespace:Aggregations.Bucket.DateHistogram */
+enum DateInterval {
+	second = 0,
+	minute = 1,
+	hour = 2,
+	day = 3,
+	week = 4,
+	month = 5,
+	quarter = 6,
+	year = 7
+}
+/**namespace:CommonOptions.TimeUnit */
 enum TimeUnit {
 	ms = 0,
 	s = 1,
@@ -15,30 +30,36 @@ enum TimeUnit {
 	M = 6,
 	y = 7
 }
+/**namespace:Mapping */
 enum SimilarityOption {
 	default = 0,
 	BM25 = 1
 }
+/**namespace:Mapping */
 enum DynamicMapping {
 	allow = 0,
 	ignore = 1,
 	strict = 2
 }
+/**namespace:Search.Search.Sort */
 enum SortOrder {
 	asc = 0,
 	desc = 1
 }
+/**namespace:Search.Search.Sort */
 enum SortMode {
 	min = 0,
 	max = 1,
 	sum = 2,
 	avg = 3
 }
+/**namespace:Search.Search.Highlighting */
 enum HighlighterType {
 	plain = 0,
 	postings = 1,
 	fvh = 2
 }
+/**namespace:Search.Search.Rescoring */
 enum ScoreMode {
 	avg = 0,
 	first = 1,
@@ -48,6 +69,7 @@ enum ScoreMode {
 	total = 5,
 	sum = 6
 }
+/**namespace:QueryDsl.MultiTermQueryRewrite */
 enum RewriteMultiTerm {
 	constant_score = 0,
 	scoring_boolean = 1,
@@ -56,6 +78,7 @@ enum RewriteMultiTerm {
 	top_terms_boost_N = 4,
 	top_terms_blended_freqs_N = 5
 }
+/**namespace:QueryDsl.FullText.MultiMatch */
 enum TextQueryType {
 	best_fields = 0,
 	most_fields = 1,
@@ -63,14 +86,17 @@ enum TextQueryType {
 	phrase = 3,
 	phrase_prefix = 4
 }
+/**namespace:QueryDsl */
 enum Operator {
 	and = 0,
 	or = 1
 }
+/**namespace:QueryDsl.FullText.MultiMatch */
 enum ZeroTermsQuery {
 	all = 0,
 	none = 1
 }
+/**namespace:QueryDsl.Joining.HasChild */
 enum ChildScoreMode {
 	none = 0,
 	avg = 1,
@@ -78,10 +104,12 @@ enum ChildScoreMode {
 	max = 3,
 	min = 4
 }
+/**namespace:QueryDsl.Joining.HasParent */
 enum ParentScoreMode {
 	none = 0,
 	score = 1
 }
+/**namespace:QueryDsl.FullText.SimpleQueryString */
 enum SimpleQueryStringFlags {
 	NONE = 1,
 	AND = 2,
@@ -97,12 +125,14 @@ enum SimpleQueryStringFlags {
 	SLOP = 2048,
 	ALL = 4096
 }
+/**namespace:QueryDsl.Joining.Nested */
 enum NestedScoreMode {
 	avg = 0,
 	total = 1,
 	max = 2,
 	none = 3
 }
+/**namespace:QueryDsl.Compound.FunctionScore.Functions */
 enum FunctionScoreMode {
 	multiply = 0,
 	sum = 1,
@@ -111,6 +141,7 @@ enum FunctionScoreMode {
 	max = 4,
 	min = 5
 }
+/**namespace:QueryDsl.Compound.FunctionScore.Functions */
 enum FunctionBoostMode {
 	multiply = 0,
 	replace = 1,
@@ -119,15 +150,18 @@ enum FunctionBoostMode {
 	max = 4,
 	min = 5
 }
+/**namespace:QueryDsl.Geo.BoundingBox */
 enum GeoExecution {
 	memory = 0,
 	indexed = 1
 }
+/**namespace:QueryDsl.Geo */
 enum GeoValidationMethod {
 	coerce = 0,
 	ignore_malformed = 1,
 	strict = 2
 }
+/**namespace:CommonOptions.Geo */
 enum DistanceUnit {
 	in = 0,
 	ft = 1,
@@ -139,16 +173,19 @@ enum DistanceUnit {
 	cm = 7,
 	mm = 8
 }
+/**namespace:QueryDsl.Geo */
 enum GeoOptimizeBBox {
 	memory = 0,
 	indexed = 1,
 	none = 2
 }
+/**namespace:CommonOptions.Geo */
 enum GeoDistanceType {
 	sloppy_arc = 0,
 	arc = 1,
 	plane = 2
 }
+/**namespace:Aggregations.Bucket.GeoHashGrid */
 enum GeoHashPrecision {
 	Precision1 = 1,
 	Precision2 = 2,
@@ -163,178 +200,314 @@ enum GeoHashPrecision {
 	Precision11 = 11,
 	Precision12 = 12
 }
+/**namespace:Aggregations.Bucket.Terms */
 enum TermsAggregationExecutionHint {
 	map = 0,
 	global_ordinals = 1,
 	global_ordinals_hash = 2,
 	global_ordinals_low_cardinality = 3
 }
+/**namespace:Aggregations.Bucket.Terms */
 enum TermsAggregationCollectMode {
 	depth_first = 0,
 	breadth_first = 1
 }
+/**namespace:Aggregations.Bucket.Sampler */
 enum SamplerAggregationExecutionHint {
 	map = 0,
 	global_ordinals = 1,
 	bytes_hash = 2
 }
+/**namespace:Cluster */
 enum ClusterStatus {
 	green = 0,
 	yellow = 1,
 	red = 2
 }
+/**namespace:Cat */
 interface CatResponse<TCatRecord> extends Response {
 	Records: TCatRecord[];
 }
+/**namespace:Cat.CatAliases */
 interface CatAliasesRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:DefaultLanguageConstruct */
 interface Request {
 }
+/**namespace:CommonOptions.TimeUnit */
+/**custom_serialization*/
 interface Time {
 	Factor: double;
 	Interval: TimeUnit;
 	Milliseconds: double;
 }
+/**namespace:Cat.CatAllocation */
 interface CatAllocationRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Bytes: Bytes;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Bytes: Bytes;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatCount */
 interface CatCountRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatFielddata */
 interface CatFielddataRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Bytes: Bytes;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Bytes: Bytes;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatHealth */
 interface CatHealthRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ Ts: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	Ts: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatIndices */
 interface CatIndicesRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Bytes: Bytes;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ Pri: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Bytes: Bytes;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	Pri: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatMaster */
 interface CatMasterRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatNodes */
 interface CatNodesRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatPendingTasks */
 interface CatPendingTasksRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatPlugins */
 interface CatPluginsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatRecovery */
 interface CatRecoveryRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Bytes: Bytes;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Bytes: Bytes;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatSegments */
 interface CatSegmentsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatShards */
 interface CatShardsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cat.CatThreadPool */
 interface CatThreadPoolRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ FullId: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	FullId: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterHealth */
 interface ClusterHealthRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Level: Level;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ WaitForActiveShards: long;
-	/** mapped on body but might only proxy to request querystring */ WaitForNodes: string;
-	/** mapped on body but might only proxy to request querystring */ WaitForRelocatingShards: long;
-	/** mapped on body but might only proxy to request querystring */ WaitForStatus: WaitForStatus;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Level: Level;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	WaitForActiveShards: long;
+	/**ambiguous_origin*/
+	WaitForNodes: string;
+	/**ambiguous_origin*/
+	WaitForRelocatingShards: long;
+	/**ambiguous_origin*/
+	WaitForStatus: WaitForStatus;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterHealth */
 interface ClusterHealthResponse extends Response {
 	cluster_name: string;
 	status: string;
@@ -347,10 +520,13 @@ interface ClusterHealthResponse extends Response {
 	initializing_shards: integer;
 	unassigned_shards: integer;
 	number_of_pending_tasks: integer;
-	/** type has a custom json converter defined */ indices: Map<string, IndexHealthStats>[];
+	/**custom_serialization */
+	indices: Map<string, IndexHealthStats>;
 }
+/**namespace:DefaultLanguageConstruct */
 interface Response {
 }
+/**namespace:Cluster.ClusterHealth */
 interface IndexHealthStats {
 	status: string;
 	number_of_shards: integer;
@@ -360,8 +536,10 @@ interface IndexHealthStats {
 	relocating_shards: integer;
 	initializing_shards: integer;
 	unassigned_shards: integer;
-	/** type has a custom json converter defined */ shards: Map<string, ShardHealthStats>[];
+	/**custom_serialization */
+	shards: Map<string, ShardHealthStats>;
 }
+/**namespace:Cluster.ClusterHealth */
 interface ShardHealthStats {
 	status: string;
 	primary_active: boolean;
@@ -370,15 +548,22 @@ interface ShardHealthStats {
 	initializing_shards: integer;
 	unassigned_shards: integer;
 }
+/**namespace:Cluster.ClusterPendingTasks */
 interface ClusterPendingTasksRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterPendingTasks */
 interface ClusterPendingTasksResponse extends Response {
 	tasks: PendingTask[];
 }
+/**namespace:Cluster.ClusterPendingTasks */
 interface PendingTask {
 	insert_order: integer;
 	priority: string;
@@ -386,46 +571,67 @@ interface PendingTask {
 	time_in_queue_millis: integer;
 	time_in_queue: string;
 }
-interface /** type has a custom json converter defined */ ClusterRerouteRequest extends Request {
-	commands: IClusterRerouteCommand[];
-	/** mapped on body but might only proxy to request querystring */ DryRun: boolean;
-	/** mapped on body but might only proxy to request querystring */ Explain: boolean;
-	/** mapped on body but might only proxy to request querystring */ Metric: string[];
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Cluster.ClusterReroute */
+/**custom_serialization*/
+interface ClusterRerouteRequest extends Request {
+	commands: ClusterRerouteCommand[];
+	/**ambiguous_origin*/
+	DryRun: boolean;
+	/**ambiguous_origin*/
+	Explain: boolean;
+	/**ambiguous_origin*/
+	Metric: string[];
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IClusterRerouteCommand {
+/**namespace:Cluster.ClusterReroute.Commands */
+interface ClusterRerouteCommand {
 	Name: string;
 }
+/**namespace:Cluster.ClusterReroute */
 interface ClusterRerouteResponse extends Response {
 	Version: integer;
 	state: ClusterRerouteState;
 	explanations: ClusterRerouteExplanation[];
 }
+/**namespace:Cluster.ClusterReroute */
 interface ClusterRerouteState {
 	version: integer;
 	master_node: string;
 	blocks: BlockState;
-	/** type has a custom json converter defined */ nodes: Map<string, NodeState>[];
+	/**custom_serialization */
+	nodes: Map<string, NodeState>;
 	routing_table: RoutingTableState;
 	routing_nodes: RoutingNodesState;
 }
+/**namespace:Cluster.ClusterState */
 interface BlockState {
 	read_only: boolean;
 }
+/**namespace:Cluster.ClusterState */
 interface NodeState {
 	name: string;
 	transport_address: string;
-	/** type has a custom json converter defined */ attributes: Map<string, string>[];
+	/**custom_serialization */
+	attributes: Map<string, string>;
 }
+/**namespace:Cluster.ClusterState */
 interface RoutingTableState {
-	/** type has a custom json converter defined */ indices: Map<string, IndexRoutingTable>[];
+	/**custom_serialization */
+	indices: Map<string, IndexRoutingTable>;
 }
+/**namespace:Cluster.ClusterState */
 interface IndexRoutingTable {
-	/** type has a custom json converter defined */ shards: Map<string, RoutingShard[]>[];
+	/**custom_serialization */
+	shards: Map<string, RoutingShard[]>;
 }
+/**namespace:Cluster.ClusterState */
 interface RoutingShard {
 	allocation_id: AllocationId;
 	state: string;
@@ -436,18 +642,22 @@ interface RoutingShard {
 	version: long;
 	index: string;
 }
+/**namespace:Cluster.ClusterState */
 interface AllocationId {
 	id: string;
 }
+/**namespace:Cluster.ClusterState */
 interface RoutingNodesState {
 	unassigned: RoutingShard[];
-	nodes: Map<string, RoutingShard[]>[];
+	nodes: Map<string, RoutingShard[]>;
 }
+/**namespace:Cluster.ClusterReroute */
 interface ClusterRerouteExplanation {
 	command: string;
 	parameters: ClusterRerouteParameters;
 	decisions: ClusterRerouteDecision[];
 }
+/**namespace:Cluster.ClusterReroute */
 interface ClusterRerouteParameters {
 	index: string;
 	shard: integer;
@@ -456,109 +666,124 @@ interface ClusterRerouteParameters {
 	node: string;
 	allow_primary: boolean;
 }
+/**namespace:Cluster.ClusterReroute */
 interface ClusterRerouteDecision {
 	decider: string;
 	decision: string;
 	explanation: string;
 }
+/**namespace:Cluster.ClusterSettings.ClusterGetSettings */
 interface ClusterGetSettingsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterSettings.ClusterGetSettings */
 interface ClusterGetSettingsResponse extends Response {
-	persistent: Map<string, any>[];
-	transient: Map<string, any>[];
+	persistent: Map<string, any>;
+	transient: Map<string, any>;
 }
+/**namespace:Cluster.ClusterSettings.ClusterPutSettings */
 interface ClusterPutSettingsRequest extends Request {
-	persistent: Map<string, any>[];
-	transient: Map<string, any>[];
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	persistent: Map<string, any>;
+	transient: Map<string, any>;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterSettings.ClusterPutSettings */
 interface ClusterPutSettingsResponse extends Response {
 	acknowledged: boolean;
-	persistent: Map<string, any>[];
-	transient: Map<string, any>[];
+	persistent: Map<string, any>;
+	transient: Map<string, any>;
 }
+/**namespace:Cluster.ClusterState */
 interface ClusterStateRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterState */
 interface ClusterStateResponse extends Response {
 	cluster_name: string;
 	master_node: string;
 	state_uuid: string;
 	version: long;
-	/** type has a custom json converter defined */ nodes: Map<string, NodeState>[];
+	/**custom_serialization */
+	nodes: Map<string, NodeState>;
 	metadata: MetadataState;
 	routing_table: RoutingTableState;
 	routing_nodes: RoutingNodesState;
 	blocks: BlockState;
 }
+/**namespace:Cluster.ClusterState */
 interface MetadataState {
-	/** type has a custom json converter defined */ templates: Map<string, TemplateMapping>[];
+	/**custom_serialization */
+	templates: Map<string, TemplateMapping>;
 	cluster_uuid: string;
-	/** type has a custom json converter defined */ indices: Map<string, MetadataIndexState>[];
+	/**custom_serialization */
+	indices: Map<string, MetadataIndexState>;
 }
+/**namespace:Indices.IndexSettings.IndexTemplates.GetIndexTemplate */
 interface TemplateMapping {
 	template: string;
 	order: integer;
-	settings: Map<string, any>[];
-	mappings: Map<TypeName, ITypeMapping>[];
-	warmers: Map<TypeName, IWarmer>[];
-	aliases: Map<IndexName, IAlias>[];
+	settings: Map<string, any>;
+	mappings: Map<TypeName, TypeMapping>;
+	warmers: Map<TypeName, Warmer>;
+	aliases: Map<IndexName, Alias>;
 }
+/**namespace:CommonAbstractions.Infer.TypeName */
 interface TypeName {
 	Name: string;
-	Type: Type;
 }
-interface ITypeMapping {
-	dynamic_date_formats: string[];
-	date_detection: boolean;
-	numeric_detection: boolean;
-	/** type has a custom json converter defined */ transform: IMappingTransform[];
-	analyzer: string;
-	search_analyzer: string;
-	_source: ISourceField;
-	_all: IAllField;
-	_parent: IParentField;
-	_routing: IRoutingField;
-	_index: IIndexField;
-	_size: ISizeField;
-	_timestamp: ITimestampField;
-	_field_names: IFieldNamesField;
-	_ttl: ITtlField;
-	/** type has a custom json converter defined */ _meta: Map<string, any>[];
-	dynamic_templates: Map<string, IDynamicTemplate>[];
-	dynamic: DynamicMapping;
-	properties: Map<PropertyName, IProperty>[];
-}
-interface IMappingTransform {
+/**namespace:Mapping.Transform */
+/**custom_serialization*/
+interface MappingTransform {
 	script: string;
 	script_file: string;
-	params: Map<string, string>[];
+	params: Map<string, string>;
 	lang: string;
 }
-interface ISourceField {
+/**namespace:Mapping.MetaFields.Source */
+/**custom_serialization*/
+interface SourceField {
 	enabled: boolean;
 	compress: boolean;
 	compress_threshold: string;
 	includes: string[];
 	excludes: string[];
 }
-interface IAllField {
+/**namespace:Mapping.MetaFields.All */
+/**custom_serialization*/
+interface AllField {
 	enabled: boolean;
 	store: boolean;
 	store_term_vectors: boolean;
@@ -570,138 +795,138 @@ interface IAllField {
 	search_analyzer: string;
 	similarity: string;
 }
-interface IParentField {
+/**namespace:Mapping.MetaFields.Parent */
+/**custom_serialization*/
+interface ParentField {
 	type: TypeName;
 }
-interface IRoutingField {
+/**namespace:Mapping.MetaFields.Routing */
+/**custom_serialization*/
+interface RoutingField {
 	required: boolean;
 }
-interface IIndexField {
+/**namespace:Mapping.MetaFields.Index */
+/**custom_serialization*/
+interface IndexField {
 	enabled: boolean;
 }
-interface ISizeField {
+/**namespace:Mapping.MetaFields.Size */
+/**custom_serialization*/
+interface SizeField {
 	enabled: boolean;
 }
-interface ITimestampField {
+/**namespace:Mapping.MetaFields.Timestamp */
+/**custom_serialization*/
+interface TimestampField {
 	enabled: boolean;
 	path: Field;
 	format: string;
 	default: string;
 	ignore_missing: boolean;
 }
+/**namespace:CommonAbstractions.Infer.Field */
 interface Field {
 	Name: string;
-	Expression: Expression;
-	Property: PropertyInfo;
 	Boost: double;
 }
-interface IFieldNamesField {
+/**namespace:Mapping.MetaFields.FieldNames */
+/**custom_serialization*/
+interface FieldNamesField {
 	enabled: boolean;
 }
-interface ITtlField {
+/**namespace:Mapping.MetaFields.Ttl */
+/**custom_serialization*/
+interface TtlField {
 	enabled: boolean;
 	default: Time;
 }
-interface IDynamicTemplate {
+/**namespace:Mapping.DynamicTemplate */
+/**custom_serialization*/
+interface DynamicTemplate {
 	match: string;
 	unmatch: string;
 	match_mapping_type: string;
 	path_match: string;
 	path_unmatch: string;
-	mapping: IProperty;
+	mapping: Property;
 }
-interface IProperty {
+/**namespace:Mapping.Types */
+interface Property {
 	Name: PropertyName;
 	type: TypeName;
 	index_name: string;
 	store: boolean;
 	doc_values: boolean;
-	fields: Map<PropertyName, IProperty>[];
+	fields: Map<PropertyName, Property>;
 	similarity: SimilarityOption;
 	copy_to: Field[];
 }
+/**namespace:CommonAbstractions.Infer.PropertyName */
 interface PropertyName {
 	Name: string;
-	Expression: Expression;
-	Property: PropertyInfo;
 }
-interface IWarmer {
+/**namespace:Indices.Warmers */
+interface Warmer {
 	types: TypeName[];
-	source: ISearchRequest;
+	source: SearchRequest;
 }
-interface ISearchRequest {
-	timeout: string;
-	from: integer;
-	size: integer;
-	explain: boolean;
-	version: boolean;
-	track_scores: boolean;
-	min_score: double;
-	terminate_after: long;
-	/** type has a custom json converter defined */ indices_boost: Map<IndexName, double>[];
-	sort: ISort[];
-	suggest: Map<string, ISuggestBucket>[];
-	highlight: IHighlight;
-	rescore: IRescore;
-	fields: Field[];
-	fielddata_fields: Field[];
-	script_fields: Map<string, IScriptField>[];
-	/** type has a custom json converter defined */ _source: ISourceFilter;
-	aggs: Map<string, IAggregationContainer>[];
-	query: /** type has a custom json converter defined */ QueryContainer;
-	post_filter: /** type has a custom json converter defined */ QueryContainer;
-	inner_hits: Map<string, IInnerHitsContainer>[];
-	Preference: string;
-	Routing: string;
-	SearchType: SearchType;
-	IgnoreUnavalable: boolean;
-	Index: Indices;
-	Type: Types;
-}
+/**namespace:CommonAbstractions.Infer.IndexName */
 interface IndexName {
 	Name: string;
-	Type: Type;
 }
-interface ISort {
+/**namespace:Search.Search.Sort */
+interface Sort {
 	SortKey: Field;
 	missing: string;
 	order: SortOrder;
 	mode: SortMode;
-	nested_filter: /** type has a custom json converter defined */ QueryContainer;
+	nested_filter: QueryContainer;
 	nested_path: Field;
 }
-interface /** type has a custom json converter defined */ QueryContainer {
+/**namespace:QueryDsl.Abstractions.Container */
+/**custom_serialization*/
+interface QueryContainer {
 }
-interface ISuggestBucket {
+/**namespace:Search.Suggesters */
+/**custom_serialization*/
+interface SuggestBucket {
 	text: string;
-	term: ITermSuggester;
-	phrase: IPhraseSuggester;
-	completion: ICompletionSuggester;
+	term: TermSuggester;
+	phrase: PhraseSuggester;
+	completion: CompletionSuggester;
 }
-interface ITermSuggester {
+/**namespace:Search.Suggesters.TermSuggester */
+/**custom_serialization*/
+interface TermSuggester {
 	prefix_len: integer;
-	/** type has a custom json converter defined */ suggest_mode: SuggestMode;
+	/**custom_serialization */
+	suggest_mode: SuggestMode;
 	min_word_len: integer;
 	max_edits: integer;
 	max_inspections: integer;
 	min_doc_freq: double;
 	max_term_freq: double;
 }
-interface IPhraseSuggester {
+/**namespace:Search.Suggesters.PhraseSuggester */
+/**custom_serialization*/
+interface PhraseSuggester {
 	gram_size: integer;
 	real_word_error_likelihood: double;
 	confidence: double;
 	max_errors: double;
 	separator: string;
-	direct_generator: IDirectGenerator[];
-	highlight: IPhraseSuggestHighlight;
-	collate: IPhraseSuggestCollate;
+	direct_generator: DirectGenerator[];
+	highlight: PhraseSuggestHighlight;
+	collate: PhraseSuggestCollate;
 }
-interface IDirectGenerator {
+/**namespace:Search.Suggesters.PhraseSuggester */
+/**custom_serialization*/
+interface DirectGenerator {
 	field: Field;
 	size: integer;
 	prefix_len: integer;
-	/** type has a custom json converter defined */ suggest_mode: SuggestMode;
+	/**custom_serialization */
+	suggest_mode: SuggestMode;
 	min_word_len: integer;
 	max_edits: integer;
 	max_inspections: double;
@@ -710,35 +935,42 @@ interface IDirectGenerator {
 	pre_filter: string;
 	post_filter: string;
 }
-interface IPhraseSuggestHighlight {
+/**namespace:Search.Suggesters.PhraseSuggester */
+interface PhraseSuggestHighlight {
 	pre_tag: string;
 	post_tag: string;
 }
-interface IPhraseSuggestCollate {
-	query: IScript;
+/**namespace:Search.Suggesters.PhraseSuggester */
+/**custom_serialization*/
+interface PhraseSuggestCollate {
+	query: Script;
 	prune: boolean;
 }
-interface IScript {
-	/** type has a custom json converter defined */ params: Map<string, any>[];
+/**namespace:CommonOptions.Scripting */
+/**custom_serialization*/
+interface Script {
+	/**custom_serialization */
+	params: Map<string, any>;
 	lang: string;
 }
-interface ICompletionSuggester {
-	fuzzy: IFuzzySuggester;
-	context: Map<string, any>[];
+/**namespace:Search.Suggesters.CompletionSuggester */
+/**custom_serialization*/
+interface CompletionSuggester {
+	fuzzy: FuzzySuggester;
+	context: Map<string, any>;
 }
-interface IFuzzySuggester {
+/**namespace:Search.Suggesters.CompletionSuggester */
+/**custom_serialization*/
+interface FuzzySuggester {
 	transpositions: boolean;
 	min_length: integer;
 	prefix_length: integer;
-	fuzziness: IFuzziness;
+	fuzziness: Fuzziness;
 	unicode_aware: boolean;
 }
-interface IFuzziness {
-	Auto: boolean;
-	EditDistance: integer;
-	Ratio: double;
-}
-interface IHighlight {
+/**namespace:Search.Search.Highlighting */
+/**custom_serialization*/
+interface Highlight {
 	pre_tags: string[];
 	post_tags: string[];
 	fragment_size: integer;
@@ -748,11 +980,14 @@ interface IHighlight {
 	boundary_max_size: integer;
 	encoder: string;
 	order: string;
-	/** type has a custom json converter defined */ fields: Map<Field, IHighlightField>[];
+	/**custom_serialization */
+	fields: Map<Field, HighlightField>;
 	require_field_match: boolean;
 	boundary_chars: string;
 }
-interface IHighlightField {
+/**namespace:Search.Search.Highlighting */
+/**custom_serialization*/
+interface HighlightField {
 	Field: Field;
 	pre_tags: string[];
 	post_tags: string[];
@@ -769,75 +1004,88 @@ interface IHighlightField {
 	type: HighlighterType;
 	force_source: boolean;
 	matched_fields: Field[];
-	highlight_query: /** type has a custom json converter defined */ QueryContainer;
+	highlight_query: QueryContainer;
 }
-interface IRescore {
+/**namespace:Search.Search.Rescoring */
+/**custom_serialization*/
+interface Rescore {
 	window_size: integer;
-	query: IRescoreQuery;
+	query: RescoreQuery;
 }
-interface IRescoreQuery {
-	rescore_query: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:Search.Search.Rescoring */
+/**custom_serialization*/
+interface RescoreQuery {
+	rescore_query: QueryContainer;
 	query_weight: double;
 	rescore_query_weight: double;
 	score_mode: ScoreMode;
 }
-interface IScriptField {
-	script: IScript;
+/**namespace:CommonOptions.Scripting */
+/**custom_serialization*/
+interface ScriptField {
+	script: Script;
 }
-interface ISourceFilter {
+/**namespace:Search.Search.SourceFiltering */
+/**custom_serialization*/
+interface SourceFilter {
 	include: Field[];
 	exclude: Field[];
 }
-interface IAggregationContainer {
-	/** type has a custom json converter defined */ meta: Map<string, any>[];
-	avg: IAverageAggregation;
-	date_histogram: IDateHistogramAggregation;
-	percentiles: IPercentilesAggregation;
-	date_range: IDateRangeAggregation;
-	extended_stats: IExtendedStatsAggregation;
-	filter: IFilterAggregation;
-	filters: IFiltersAggregation;
-	geo_distance: IGeoDistanceAggregation;
-	geohash_grid: IGeoHashGridAggregation;
-	geo_bounds: IGeoBoundsAggregation;
-	histogram: IHistogramAggregation;
-	global: IGlobalAggregation;
-	ip_range: IIpRangeAggregation;
-	max: IMaxAggregation;
-	min: IMinAggregation;
-	cardinality: ICardinalityAggregation;
-	missing: IMissingAggregation;
-	nested: INestedAggregation;
-	reverse_nested: IReverseNestedAggregation;
-	range: IRangeAggregation;
-	stats: IStatsAggregator;
-	sum: ISumAggregation;
-	terms: ITermsAggregation;
-	significant_terms: ISignificantTermsAggregation;
-	value_count: IValueCountAggregation;
-	percentile_ranks: IPercentileRanksAggregation;
-	top_hits: ITopHitsAggregation;
-	children: IChildrenAggregation;
-	scripted_metric: IScriptedMetricAggregation;
-	avg_bucket: IAverageBucketAggregation;
-	derivative: IDerivativeAggregation;
-	max_bucket: IMaxBucketAggregation;
-	min_bucket: IMinBucketAggregation;
-	sum_bucket: ISumBucketAggregation;
-	moving_avg: IMovingAverageAggregation;
-	cumulative_sum: ICumulativeSumAggregation;
-	serial_diff: ISerialDifferencingAggregation;
-	bucket_script: IBucketScriptAggregation;
-	bucket_selector: IBucketSelectorAggregation;
-	sampler: ISamplerAggregation;
-	aggs: Map<string, IAggregationContainer>[];
+/**namespace:Aggregations */
+/**custom_serialization*/
+interface AggregationContainer {
+	/**custom_serialization */
+	meta: Map<string, any>;
+	avg: AverageAggregation;
+	date_histogram: DateHistogramAggregation;
+	percentiles: PercentilesAggregation;
+	date_range: DateRangeAggregation;
+	extended_stats: ExtendedStatsAggregation;
+	filter: FilterAggregation;
+	filters: FiltersAggregation;
+	geo_distance: GeoDistanceAggregation;
+	geohash_grid: GeoHashGridAggregation;
+	geo_bounds: GeoBoundsAggregation;
+	histogram: HistogramAggregation;
+	global: GlobalAggregation;
+	ip_range: IpRangeAggregation;
+	max: MaxAggregation;
+	min: MinAggregation;
+	cardinality: CardinalityAggregation;
+	missing: MissingAggregation;
+	nested: NestedAggregation;
+	reverse_nested: ReverseNestedAggregation;
+	range: RangeAggregation;
+	stats: StatsAggregator;
+	sum: SumAggregation;
+	terms: TermsAggregation;
+	significant_terms: SignificantTermsAggregation;
+	value_count: ValueCountAggregation;
+	percentile_ranks: PercentileRanksAggregation;
+	top_hits: TopHitsAggregation;
+	children: ChildrenAggregation;
+	scripted_metric: ScriptedMetricAggregation;
+	avg_bucket: AverageBucketAggregation;
+	derivative: DerivativeAggregation;
+	max_bucket: MaxBucketAggregation;
+	min_bucket: MinBucketAggregation;
+	sum_bucket: SumBucketAggregation;
+	moving_avg: MovingAverageAggregation;
+	cumulative_sum: CumulativeSumAggregation;
+	serial_diff: SerialDifferencingAggregation;
+	bucket_script: BucketScriptAggregation;
+	bucket_selector: BucketSelectorAggregation;
+	sampler: SamplerAggregation;
+	aggs: Map<string, AggregationContainer>;
 }
-interface IAverageAggregation {
+/**namespace:Aggregations.Metric.Average */
+interface AverageAggregation {
 }
-interface IDateHistogramAggregation {
+/**namespace:Aggregations.Bucket.DateHistogram */
+interface DateHistogramAggregation {
 	field: Field;
-	script: IScript;
-	params: Map<string, any>[];
+	script: Script;
+	params: Map<string, any>;
 	interval: Union<DateInterval, Time>;
 	format: string;
 	min_doc_count: integer;
@@ -848,8 +1096,12 @@ interface IDateHistogramAggregation {
 	extended_bounds: ExtendedBounds<Date>;
 	missing: Date;
 }
+/**namespace:CommonAbstractions.Union */
+/**custom_serialization*/
 interface Union<TFirst, TSecond> {
 }
+/**namespace:Aggregations.Bucket.Histogram */
+/**custom_serialization*/
 interface HistogramOrder {
 	Key: string;
 	Order: SortOrder;
@@ -858,152 +1110,200 @@ interface HistogramOrder {
 	KeyAscending: HistogramOrder;
 	KeyDescending: HistogramOrder;
 }
+/**namespace:Aggregations.Bucket.Histogram */
 interface ExtendedBounds<T> {
 	min: T;
 	max: T;
 }
-interface IPercentilesAggregation {
+/**namespace:Aggregations.Metric.Percentiles */
+interface PercentilesAggregation {
 	Percents: double[];
-	Method: IPercentilesMethod;
+	Method: PercentilesMethod;
 }
-interface IPercentilesMethod {
+/**namespace:Aggregations.Metric.Percentiles.Methods */
+interface PercentilesMethod {
 }
-interface IDateRangeAggregation {
+/**namespace:Aggregations.Bucket.DateRange */
+interface DateRangeAggregation {
 	field: Field;
 	format: string;
-	ranges: IDateRangeExpression[];
+	ranges: DateRangeExpression[];
 }
-interface IDateRangeExpression {
-	from: /** type has a custom json converter defined */ DateMath;
-	to: /** type has a custom json converter defined */ DateMath;
+/**namespace:Aggregations.Bucket.DateRange */
+/**custom_serialization*/
+interface DateRangeExpression {
+	from: DateMath;
+	to: DateMath;
 	key: string;
 }
-interface /** type has a custom json converter defined */ DateMath {
+/**namespace:CommonOptions.DateMath */
+/**custom_serialization*/
+interface DateMath {
 	Now: DateMathExpression;
 }
-interface DateMathExpression extends /** type has a custom json converter defined */ DateMath {
+/**namespace:CommonOptions.DateMath */
+/**custom_serialization*/
+interface DateMathExpression extends DateMath {
 }
-interface IExtendedStatsAggregation {
+/**namespace:Aggregations.Metric.ExtendedStats */
+interface ExtendedStatsAggregation {
 }
-interface IFilterAggregation {
-	filter: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:Aggregations.Bucket.Filter */
+interface FilterAggregation {
+	filter: QueryContainer;
 }
-interface IFiltersAggregation {
-	filters: Union<Map<string, IQueryContainer>[], /** type has a custom json converter defined */ QueryContainer[]>;
+/**namespace:Aggregations.Bucket.Filters */
+interface FiltersAggregation {
+	filters: Union<Map<string, QueryContainer>, QueryContainer[]>;
 	other_bucket: boolean;
 	other_bucket_key: string;
 }
-interface IQueryContainer {
+/**namespace:QueryDsl.Abstractions.Container */
+/**custom_serialization*/
+interface QueryContainer {
 	IsConditionless: boolean;
 	IsStrict: boolean;
 	IsVerbatim: boolean;
-	RawQuery: IRawQuery;
-	bool: IBoolQuery;
-	match_all: IMatchAllQuery;
-	term: ITermQuery;
-	wildcard: IWildcardQuery;
-	prefix: IPrefixQuery;
-	boosting: IBoostingQuery;
-	ids: IIdsQuery;
-	limit: ILimitQuery;
-	constant_score: IConstantScoreQuery;
-	dis_max: IDisMaxQuery;
-	multi_match: IMultiMatchQuery;
-	match: IMatchQuery;
-	fuzzy: IFuzzyQuery;
-	geo_shape: IGeoShapeQuery;
-	common: ICommonTermsQuery;
-	terms: ITermsQuery;
-	range: IRangeQuery;
-	regexp: IRegexpQuery;
-	has_child: IHasChildQuery;
-	has_parent: IHasParentQuery;
-	span_term: ISpanTermQuery;
-	simple_query_string: ISimpleQueryStringQuery;
-	query_string: IQueryStringQuery;
-	mlt: IMoreLikeThisQuery;
-	span_first: ISpanFirstQuery;
-	span_or: ISpanOrQuery;
-	span_near: ISpanNearQuery;
-	span_not: ISpanNotQuery;
-	span_containing: ISpanContainingQuery;
-	span_within: ISpanWithinQuery;
-	span_multi: ISpanMultiTermQuery;
-	nested: INestedQuery;
-	indices: IIndicesQuery;
-	function_score: IFunctionScoreQuery;
-	template: ITemplateQuery;
-	geo_bounding_box: IGeoBoundingBoxQuery;
-	geo_distance: IGeoDistanceQuery;
-	geo_polygon: IGeoPolygonQuery;
-	geo_distance_range: IGeoDistanceRangeQuery;
-	geohash_cell: IGeoHashCellQuery;
-	script: IScriptQuery;
-	exists: IExistsQuery;
-	missing: IMissingQuery;
-	type: ITypeQuery;
-	filtered: IFilteredQuery;
-	and: IAndQuery;
-	or: IOrQuery;
-	not: INotQuery;
+	RawQuery: RawQuery;
+	bool: BoolQuery;
+	match_all: MatchAllQuery;
+	term: TermQuery;
+	wildcard: WildcardQuery;
+	prefix: PrefixQuery;
+	boosting: BoostingQuery;
+	ids: IdsQuery;
+	limit: LimitQuery;
+	constant_score: ConstantScoreQuery;
+	dis_max: DisMaxQuery;
+	multi_match: MultiMatchQuery;
+	match: MatchQuery;
+	fuzzy: FuzzyQuery;
+	geo_shape: GeoShapeQuery;
+	common: CommonTermsQuery;
+	terms: TermsQuery;
+	range: RangeQuery;
+	regexp: RegexpQuery;
+	has_child: HasChildQuery;
+	has_parent: HasParentQuery;
+	span_term: SpanTermQuery;
+	simple_query_string: SimpleQueryStringQuery;
+	query_string: QueryStringQuery;
+	mlt: MoreLikeThisQuery;
+	span_first: SpanFirstQuery;
+	span_or: SpanOrQuery;
+	span_near: SpanNearQuery;
+	span_not: SpanNotQuery;
+	span_containing: SpanContainingQuery;
+	span_within: SpanWithinQuery;
+	span_multi: SpanMultiTermQuery;
+	nested: NestedQuery;
+	indices: IndicesQuery;
+	function_score: FunctionScoreQuery;
+	template: TemplateQuery;
+	geo_bounding_box: GeoBoundingBoxQuery;
+	geo_distance: GeoDistanceQuery;
+	geo_polygon: GeoPolygonQuery;
+	geo_distance_range: GeoDistanceRangeQuery;
+	geohash_cell: GeoHashCellQuery;
+	script: ScriptQuery;
+	exists: ExistsQuery;
+	missing: MissingQuery;
+	type: TypeQuery;
+	filtered: FilteredQuery;
+	and: AndQuery;
+	or: OrQuery;
+	not: NotQuery;
 }
-interface IRawQuery {
+/**namespace:QueryDsl.NestSpecific */
+interface RawQuery {
 	Raw: string;
 }
-interface IBoolQuery {
-	must: /** type has a custom json converter defined */ QueryContainer[];
-	must_not: /** type has a custom json converter defined */ QueryContainer[];
-	should: /** type has a custom json converter defined */ QueryContainer[];
-	filter: /** type has a custom json converter defined */ QueryContainer[];
+/**namespace:QueryDsl.Compound.Bool */
+/**custom_serialization*/
+interface BoolQuery {
+	must: QueryContainer[];
+	must_not: QueryContainer[];
+	should: QueryContainer[];
+	filter: QueryContainer[];
 	minimum_should_match: MinimumShouldMatch;
 	disable_coord: boolean;
 	Locked: boolean;
 }
+/**namespace:CommonOptions.MinimumShouldMatch */
+/**custom_serialization*/
 interface MinimumShouldMatch extends Union<integer, string> {
 }
-interface IMatchAllQuery {
+/**namespace:QueryDsl */
+/**custom_serialization*/
+interface MatchAllQuery {
 	norm_field: string;
 }
-interface ITermQuery {
+/**namespace:QueryDsl.TermLevel.Term */
+/**custom_serialization*/
+interface TermQuery {
 	value: any;
 }
-interface IWildcardQuery {
-	/** type has a custom json converter defined */ rewrite: RewriteMultiTerm;
+/**namespace:QueryDsl.TermLevel.Wildcard */
+/**custom_serialization*/
+interface WildcardQuery {
+	/**custom_serialization */
+	rewrite: RewriteMultiTerm;
 }
-interface IPrefixQuery {
-	/** type has a custom json converter defined */ rewrite: RewriteMultiTerm;
+/**namespace:QueryDsl.TermLevel.Prefix */
+/**custom_serialization*/
+interface PrefixQuery {
+	/**custom_serialization */
+	rewrite: RewriteMultiTerm;
 }
-interface IBoostingQuery {
-	positive: /** type has a custom json converter defined */ QueryContainer;
-	negative: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:QueryDsl.Compound.Boosting */
+/**custom_serialization*/
+interface BoostingQuery {
+	positive: QueryContainer;
+	negative: QueryContainer;
 	negative_boost: double;
 }
-interface IIdsQuery {
+/**namespace:QueryDsl.TermLevel.Ids */
+/**custom_serialization*/
+interface IdsQuery {
 	types: Types;
 	values: Id[];
 }
+/**namespace:CommonAbstractions.Infer.Types */
+/**custom_serialization*/
 interface Types extends Union<AllTypesMarker, ManyTypes> {
 	All: AllTypesMarker;
 	AllTypes: AllTypesMarker;
 }
+/**namespace:CommonAbstractions.Infer.Id */
+/**custom_serialization*/
 interface Id {
 }
-interface ILimitQuery {
+/**namespace:QueryDsl.Compound.Limit */
+/**custom_serialization*/
+interface LimitQuery {
 	limit: integer;
 }
-interface IConstantScoreQuery {
-	filter: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:QueryDsl.Compound.ConstantScore */
+/**custom_serialization*/
+interface ConstantScoreQuery {
+	filter: QueryContainer;
 }
-interface IDisMaxQuery {
+/**namespace:QueryDsl.Compound.Dismax */
+/**custom_serialization*/
+interface DisMaxQuery {
 	tie_breaker: double;
-	queries: /** type has a custom json converter defined */ QueryContainer[];
+	queries: QueryContainer[];
 }
-interface IMultiMatchQuery {
-	/** type has a custom json converter defined */ type: TextQueryType;
+/**namespace:QueryDsl.FullText.MultiMatch */
+/**custom_serialization*/
+interface MultiMatchQuery {
+	/**custom_serialization */
+	type: TextQueryType;
 	query: string;
 	analyzer: string;
-	/** type has a custom json converter defined */ fuzzy_rewrite: RewriteMultiTerm;
-	fuzziness: /** type has a custom json converter defined */ Fuzziness;
+	/**custom_serialization */
+	fuzzy_rewrite: RewriteMultiTerm;
+	fuzziness: Fuzziness;
 	cutoff_frequency: double;
 	prefix_length: integer;
 	max_expansions: integer;
@@ -1016,15 +1316,22 @@ interface IMultiMatchQuery {
 	fields: Field[];
 	zero_terms_query: ZeroTermsQuery;
 }
-interface /** type has a custom json converter defined */ Fuzziness {
-	Auto: /** type has a custom json converter defined */ Fuzziness;
+/**namespace:CommonOptions.Fuzziness */
+/**custom_serialization*/
+interface Fuzziness {
+	Auto: boolean;
+	EditDistance: integer;
+	Ratio: double;
 }
-interface IMatchQuery {
+/**namespace:QueryDsl.FullText.Match */
+/**custom_serialization*/
+interface MatchQuery {
 	type: string;
 	query: string;
 	analyzer: string;
-	/** type has a custom json converter defined */ fuzzy_rewrite: RewriteMultiTerm;
-	fuzziness: IFuzziness;
+	/**custom_serialization */
+	fuzzy_rewrite: RewriteMultiTerm;
+	fuzziness: Fuzziness;
 	fuzzy_transpositions: boolean;
 	cutoff_frequency: double;
 	prefix_length: integer;
@@ -1035,71 +1342,97 @@ interface IMatchQuery {
 	operator: Operator;
 	zero_terms_query: ZeroTermsQuery;
 }
-interface IFuzzyQuery {
+/**namespace:QueryDsl.TermLevel.Fuzzy */
+/**custom_serialization*/
+interface FuzzyQuery {
 	prefix_length: integer;
 	rewrite: RewriteMultiTerm;
 	max_expansions: integer;
 	transpositions: boolean;
 }
-interface IGeoShapeQuery {
+/**namespace:QueryDsl.Geo.Shape */
+/**custom_serialization*/
+interface GeoShapeQuery {
 }
-interface ICommonTermsQuery {
+/**namespace:QueryDsl.FullText.CommonTerms */
+/**custom_serialization*/
+interface CommonTermsQuery {
 	query: string;
 	cutoff_frequency: double;
-	/** type has a custom json converter defined */ low_freq_operator: Operator;
-	/** type has a custom json converter defined */ high_freq_operator: Operator;
+	/**custom_serialization */
+	low_freq_operator: Operator;
+	/**custom_serialization */
+	high_freq_operator: Operator;
 	minimum_should_match: MinimumShouldMatch;
 	analyzer: string;
 	disable_coord: boolean;
 }
-interface ITermsQuery {
+/**namespace:QueryDsl.TermLevel.Terms */
+/**custom_serialization*/
+interface TermsQuery {
 	MinimumShouldMatch: MinimumShouldMatch;
 	DisableCoord: boolean;
 	Terms: any[];
-	TermsLookup: IFieldLookup;
+	TermsLookup: FieldLookup;
 }
-interface IFieldLookup {
+/**namespace:QueryDsl.Abstractions.FieldLookup */
+/**custom_serialization*/
+interface FieldLookup {
 	index: IndexName;
 	type: TypeName;
 	id: Id;
 	path: Field;
 }
-interface IRangeQuery {
+/**namespace:QueryDsl.TermLevel.Range */
+/**custom_serialization*/
+interface RangeQuery {
 }
-interface IRegexpQuery {
+/**namespace:QueryDsl.TermLevel.Regexp */
+/**custom_serialization*/
+interface RegexpQuery {
 	value: string;
 	flags: string;
 	max_determinized_states: integer;
 }
-interface IHasChildQuery {
+/**namespace:QueryDsl.Joining.HasChild */
+/**custom_serialization*/
+interface HasChildQuery {
 	type: TypeName;
 	score_mode: ChildScoreMode;
 	min_children: integer;
 	max_children: integer;
-	query: /** type has a custom json converter defined */ QueryContainer;
-	inner_hits: IInnerHits;
+	query: QueryContainer;
+	inner_hits: InnerHits;
 }
-interface IInnerHits {
+/**namespace:Search.Search.InnerHits */
+/**custom_serialization*/
+interface InnerHits {
 	name: string;
 	from: integer;
 	size: integer;
-	sort: ISort[];
-	highlight: IHighlight;
+	sort: Sort[];
+	highlight: Highlight;
 	explain: boolean;
-	_source: ISourceFilter;
+	_source: SourceFilter;
 	version: boolean;
 	fielddata_fields: Field[];
-	script_fields: Map<string, IScriptField>[];
+	script_fields: Map<string, ScriptField>;
 }
-interface IHasParentQuery {
+/**namespace:QueryDsl.Joining.HasParent */
+/**custom_serialization*/
+interface HasParentQuery {
 	type: TypeName;
 	score_mode: ParentScoreMode;
-	query: /** type has a custom json converter defined */ QueryContainer;
-	inner_hits: IInnerHits;
+	query: QueryContainer;
+	inner_hits: InnerHits;
 }
-interface ISpanTermQuery {
+/**namespace:QueryDsl.Span.Term */
+/**custom_serialization*/
+interface SpanTermQuery {
 }
-interface ISimpleQueryStringQuery {
+/**namespace:QueryDsl.FullText.SimpleQueryString */
+/**custom_serialization*/
+interface SimpleQueryStringQuery {
 	fields: Field[];
 	query: string;
 	analyzer: string;
@@ -1111,7 +1444,9 @@ interface ISimpleQueryStringQuery {
 	analyze_wildcard: boolean;
 	minimum_should_match: MinimumShouldMatch;
 }
-interface IQueryStringQuery {
+/**namespace:QueryDsl.FullText.QueryString */
+/**custom_serialization*/
+interface QueryStringQuery {
 	query: string;
 	default_field: Field;
 	default_operator: Operator;
@@ -1121,7 +1456,7 @@ interface IQueryStringQuery {
 	lowercase_expanded_terms: boolean;
 	enable_position_increments: boolean;
 	fuzzy_max_expansions: integer;
-	fuziness: /** type has a custom json converter defined */ Fuzziness;
+	fuziness: Fuzziness;
 	fuzzy_prefix_length: integer;
 	phrase_slop: double;
 	analyze_wildcard: boolean;
@@ -1139,7 +1474,9 @@ interface IQueryStringQuery {
 	quote_field_suffix: string;
 	escape: boolean;
 }
-interface IMoreLikeThisQuery {
+/**namespace:QueryDsl.Specialized.MoreLikeThis */
+/**custom_serialization*/
+interface MoreLikeThisQuery {
 	fields: Field[];
 	like: Like[];
 	unlike: Like[];
@@ -1155,111 +1492,152 @@ interface IMoreLikeThisQuery {
 	boost_terms: double;
 	include: boolean;
 }
-interface Like extends Union<string, ILikeDocument> {
+/**namespace:QueryDsl.Specialized.MoreLikeThis.Like */
+/**custom_serialization*/
+interface Like extends Union<string, LikeDocument> {
 }
-interface ILikeDocument {
+/**namespace:QueryDsl.Specialized.MoreLikeThis.Like */
+/**custom_serialization*/
+interface LikeDocument {
 	_index: IndexName;
 	_type: TypeName;
 	_id: Id;
 	fields: Field[];
 	_routing: string;
 	doc: any;
-	per_field_analyzer: Map<Field, string>[];
-	ClrType: Type;
+	per_field_analyzer: Map<Field, string>;
 	CanBeFlattened: boolean;
 }
+/**namespace:Analysis */
+/**custom_serialization*/
 interface StopWords extends Union<string, string[]> {
 }
-interface ISpanFirstQuery {
-	match: ISpanQuery;
+/**namespace:QueryDsl.Span.First */
+/**custom_serialization*/
+interface SpanFirstQuery {
+	match: SpanQuery;
 	end: integer;
 }
-interface ISpanQuery {
-	span_term: ISpanTermQuery;
-	span_first: ISpanFirstQuery;
-	span_near: ISpanNearQuery;
-	span_or: ISpanOrQuery;
-	span_not: ISpanNotQuery;
-	span_containing: ISpanContainingQuery;
-	span_within: ISpanWithinQuery;
-	span_multi: ISpanMultiTermQuery;
+/**namespace:QueryDsl.Span */
+/**custom_serialization*/
+interface SpanQuery {
+	span_term: SpanTermQuery;
+	span_first: SpanFirstQuery;
+	span_near: SpanNearQuery;
+	span_or: SpanOrQuery;
+	span_not: SpanNotQuery;
+	span_containing: SpanContainingQuery;
+	span_within: SpanWithinQuery;
+	span_multi: SpanMultiTermQuery;
 }
-interface ISpanNearQuery {
-	clauses: ISpanQuery[];
+/**namespace:QueryDsl.Span.Near */
+/**custom_serialization*/
+interface SpanNearQuery {
+	clauses: SpanQuery[];
 	slop: integer;
 	in_order: boolean;
 	collect_payloads: boolean;
 }
-interface ISpanOrQuery {
-	clauses: ISpanQuery[];
+/**namespace:QueryDsl.Span.Or */
+/**custom_serialization*/
+interface SpanOrQuery {
+	clauses: SpanQuery[];
 }
-interface ISpanNotQuery {
-	include: ISpanQuery;
-	exclude: ISpanQuery;
+/**namespace:QueryDsl.Span.Not */
+/**custom_serialization*/
+interface SpanNotQuery {
+	include: SpanQuery;
+	exclude: SpanQuery;
 	pre: integer;
 	post: integer;
 	dist: integer;
 }
-interface ISpanContainingQuery {
-	little: ISpanQuery;
-	big: ISpanQuery;
+/**namespace:QueryDsl.Span.Containing */
+/**custom_serialization*/
+interface SpanContainingQuery {
+	little: SpanQuery;
+	big: SpanQuery;
 }
-interface ISpanWithinQuery {
-	little: ISpanQuery;
-	big: ISpanQuery;
+/**namespace:QueryDsl.Span.Within */
+/**custom_serialization*/
+interface SpanWithinQuery {
+	little: SpanQuery;
+	big: SpanQuery;
 }
-interface ISpanMultiTermQuery {
-	match: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:QueryDsl.Span.MultiTerm */
+/**custom_serialization*/
+interface SpanMultiTermQuery {
+	match: QueryContainer;
 }
-interface INestedQuery {
+/**namespace:QueryDsl.Joining.Nested */
+/**custom_serialization*/
+interface NestedQuery {
 	score_mode: NestedScoreMode;
-	query: /** type has a custom json converter defined */ QueryContainer;
+	query: QueryContainer;
 	path: Field;
-	inner_hits: IInnerHits;
+	inner_hits: InnerHits;
 }
-interface IIndicesQuery {
-	/** type has a custom json converter defined */ indices: Indices;
-	query: /** type has a custom json converter defined */ QueryContainer;
-	/** type has a custom json converter defined */ no_match_query: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:QueryDsl.Compound.Indices */
+/**custom_serialization*/
+interface IndicesQuery {
+	/**custom_serialization */
+	indices: Indices;
+	query: QueryContainer;
+	/**custom_serialization */
+	no_match_query: QueryContainer;
 }
+/**namespace:CommonAbstractions.Infer.Indices */
+/**custom_serialization*/
 interface Indices extends Union<AllIndicesMarker, ManyIndices> {
 	All: Indices;
 	AllIndices: Indices;
 }
-interface IFunctionScoreQuery {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	functions: IScoreFunction[];
+/**namespace:QueryDsl.Compound.FunctionScore */
+/**custom_serialization*/
+interface FunctionScoreQuery {
+	query: QueryContainer;
+	functions: ScoreFunction[];
 	max_boost: double;
 	score_mode: FunctionScoreMode;
 	boost_mode: FunctionBoostMode;
 	min_score: double;
 }
-interface IScoreFunction {
-	filter: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:QueryDsl.Compound.FunctionScore.Functions */
+interface ScoreFunction {
+	filter: QueryContainer;
 	weight: double;
 }
-interface ITemplateQuery {
+/**namespace:QueryDsl.Specialized.Template */
+/**custom_serialization*/
+interface TemplateQuery {
 	file: string;
 	inline: string;
 	id: Id;
-	params: Map<string, any>[];
+	params: Map<string, any>;
 }
-interface IGeoBoundingBoxQuery {
-	BoundingBox: IBoundingBox;
+/**namespace:QueryDsl.Geo.BoundingBox */
+/**custom_serialization*/
+interface GeoBoundingBoxQuery {
+	BoundingBox: BoundingBox;
 	type: GeoExecution;
 	coerce: boolean;
 	ignore_malformed: boolean;
 	validation_method: GeoValidationMethod;
 }
-interface IBoundingBox {
+/**namespace:QueryDsl.Geo.BoundingBox */
+/**custom_serialization*/
+interface BoundingBox {
 	top_left: GeoLocation;
 	bottom_right: GeoLocation;
 }
+/**namespace:QueryDsl.Geo */
 interface GeoLocation {
 	lat: double;
 	lon: double;
 }
-interface IGeoDistanceQuery {
+/**namespace:QueryDsl.Geo.Distance */
+/**custom_serialization*/
+interface GeoDistanceQuery {
 	Location: GeoLocation;
 	distance: Distance;
 	optimize_bbox: GeoOptimizeBBox;
@@ -1268,17 +1646,23 @@ interface IGeoDistanceQuery {
 	ignore_malformed: boolean;
 	validation_method: GeoValidationMethod;
 }
+/**namespace:CommonOptions.Geo */
+/**custom_serialization*/
 interface Distance {
 	Precision: double;
 	Unit: DistanceUnit;
 }
-interface IGeoPolygonQuery {
+/**namespace:QueryDsl.Geo.Polygon */
+/**custom_serialization*/
+interface GeoPolygonQuery {
 	Points: GeoLocation[];
 	coerce: boolean;
 	ignore_malformed: boolean;
 	validation_method: GeoValidationMethod;
 }
-interface IGeoDistanceRangeQuery {
+/**namespace:QueryDsl.Geo.DistanceRange */
+/**custom_serialization*/
+interface GeoDistanceRangeQuery {
 	Location: GeoLocation;
 	gte: Distance;
 	lte: Distance;
@@ -1290,66 +1674,91 @@ interface IGeoDistanceRangeQuery {
 	ignore_malformed: boolean;
 	validation_method: GeoValidationMethod;
 }
-interface IGeoHashCellQuery {
+/**namespace:QueryDsl.Geo.HashCell */
+/**custom_serialization*/
+interface GeoHashCellQuery {
 	Location: GeoLocation;
 	precision: Union<integer, Distance>;
 	neighbors: boolean;
 }
-interface IScriptQuery {
+/**namespace:QueryDsl.Specialized.Script */
+/**custom_serialization*/
+interface ScriptQuery {
 	inline: string;
 	id: Id;
 	file: string;
-	/** type has a custom json converter defined */ params: Map<string, any>[];
+	/**custom_serialization */
+	params: Map<string, any>;
 	lang: string;
 }
-interface IExistsQuery {
+/**namespace:QueryDsl.TermLevel.Exists */
+/**custom_serialization*/
+interface ExistsQuery {
 	field: Field;
 }
-interface IMissingQuery {
+/**namespace:QueryDsl.TermLevel.Missing */
+/**custom_serialization*/
+interface MissingQuery {
 	field: Field;
 	existence: boolean;
 	null_value: boolean;
 }
-interface ITypeQuery {
+/**namespace:QueryDsl.TermLevel.Type */
+/**custom_serialization*/
+interface TypeQuery {
 	value: TypeName;
 }
-interface IFilteredQuery {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	filter: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:QueryDsl.Compound.Filtered */
+/**custom_serialization*/
+interface FilteredQuery {
+	query: QueryContainer;
+	filter: QueryContainer;
 }
-interface IAndQuery {
-	filters: /** type has a custom json converter defined */ QueryContainer[];
+/**namespace:QueryDsl.Compound.And */
+/**custom_serialization*/
+interface AndQuery {
+	filters: QueryContainer[];
 }
-interface IOrQuery {
-	filters: /** type has a custom json converter defined */ QueryContainer[];
+/**namespace:QueryDsl.Compound.Or */
+/**custom_serialization*/
+interface OrQuery {
+	filters: QueryContainer[];
 }
-interface INotQuery {
-	filters: /** type has a custom json converter defined */ QueryContainer[];
+/**namespace:QueryDsl.Compound.Not */
+/**custom_serialization*/
+interface NotQuery {
+	filters: QueryContainer[];
 }
-interface IGeoDistanceAggregation {
+/**namespace:Aggregations.Bucket.GeoDistance */
+interface GeoDistanceAggregation {
 	field: Field;
 	origin: GeoLocation;
 	unit: DistanceUnit;
 	distance_type: GeoDistanceType;
-	ranges: IRange[];
+	ranges: Range[];
 }
-interface IRange {
+/**namespace:CommonOptions.Range */
+/**custom_serialization*/
+interface Range {
 	from: double;
 	to: double;
 	key: string;
 }
-interface IGeoHashGridAggregation {
+/**namespace:Aggregations.Bucket.GeoHashGrid */
+interface GeoHashGridAggregation {
 	field: Field;
 	size: integer;
 	shard_size: integer;
 	precision: GeoHashPrecision;
 }
-interface IGeoBoundsAggregation {
+/**namespace:Aggregations.Metric.GeoBounds */
+interface GeoBoundsAggregation {
 	wrap_longitude: boolean;
 }
-interface IHistogramAggregation {
+/**namespace:Aggregations.Bucket.Histogram */
+interface HistogramAggregation {
 	field: Field;
-	script: IScript;
+	script: Script;
 	interval: double;
 	min_doc_count: integer;
 	order: HistogramOrder;
@@ -1358,46 +1767,60 @@ interface IHistogramAggregation {
 	post_offset: long;
 	missing: double;
 }
-interface IGlobalAggregation {
+/**namespace:Aggregations.Bucket.Global */
+interface GlobalAggregation {
 }
-interface IIpRangeAggregation {
+/**namespace:Aggregations.Bucket.IpRange */
+interface IpRangeAggregation {
 	field: Field;
-	ranges: IIpRange[];
+	ranges: IpRange[];
 }
-interface IIpRange {
+/**namespace:Aggregations.Bucket.IpRange */
+/**custom_serialization*/
+interface IpRange {
 	from: string;
 	to: string;
 	mask: string;
 }
-interface IMaxAggregation {
+/**namespace:Aggregations.Metric.Max */
+interface MaxAggregation {
 }
-interface IMinAggregation {
+/**namespace:Aggregations.Metric.Min */
+interface MinAggregation {
 }
-interface ICardinalityAggregation {
+/**namespace:Aggregations.Metric.Cardinality */
+interface CardinalityAggregation {
 	precision_threshold: integer;
 	rehash: boolean;
 }
-interface IMissingAggregation {
+/**namespace:Aggregations.Bucket.Missing */
+interface MissingAggregation {
 	field: Field;
 }
-interface INestedAggregation {
+/**namespace:Aggregations.Bucket.Nested */
+interface NestedAggregation {
 	path: Field;
 }
-interface IReverseNestedAggregation {
+/**namespace:Aggregations.Bucket.ReverseNested */
+interface ReverseNestedAggregation {
 	path: Field;
 }
-interface IRangeAggregation {
+/**namespace:Aggregations.Bucket.Range */
+interface RangeAggregation {
 	field: Field;
-	script: IScript;
-	ranges: IRange[];
+	script: Script;
+	ranges: Range[];
 }
-interface IStatsAggregator {
+/**namespace:Aggregations.Metric.Stats */
+interface StatsAggregator {
 }
-interface ISumAggregation {
+/**namespace:Aggregations.Metric.Sum */
+interface SumAggregation {
 }
-interface ITermsAggregation {
+/**namespace:Aggregations.Bucket.Terms */
+interface TermsAggregation {
 	field: Field;
-	script: IScript;
+	script: Script;
 	size: integer;
 	shard_size: integer;
 	min_doc_count: integer;
@@ -1409,6 +1832,8 @@ interface ITermsAggregation {
 	show_term_doc_error_count: boolean;
 	missing: string;
 }
+/**namespace:Aggregations.Bucket.Terms */
+/**custom_serialization*/
 interface TermsOrder {
 	Key: string;
 	Order: SortOrder;
@@ -1417,133 +1842,179 @@ interface TermsOrder {
 	TermAscending: TermsOrder;
 	TermDescending: TermsOrder;
 }
+/**namespace:Aggregations.Bucket.Terms */
+/**custom_serialization*/
 interface TermsIncludeExclude {
 	pattern: string;
 	flags: string;
 	Values: string[];
 }
-interface ISignificantTermsAggregation {
+/**namespace:Aggregations.Bucket.SignificantTerms */
+interface SignificantTermsAggregation {
 	field: Field;
 	size: integer;
 	shard_size: integer;
 	min_doc_count: integer;
 	execution_hint: TermsAggregationExecutionHint;
-	include: Map<string, string>[];
-	exclude: Map<string, string>[];
-	mutual_information: IMutualInformationHeuristic;
-	chi_square: IChiSquareHeuristic;
-	gnd: IGoogleNormalizedDistanceHeuristic;
-	percentage: IPercentageScoreHeuristic;
-	script_heuristic: IScriptedHeuristic;
-	background_filter: /** type has a custom json converter defined */ QueryContainer;
+	include: Map<string, string>;
+	exclude: Map<string, string>;
+	mutual_information: MutualInformationHeuristic;
+	chi_square: ChiSquareHeuristic;
+	gnd: GoogleNormalizedDistanceHeuristic;
+	percentage: PercentageScoreHeuristic;
+	script_heuristic: ScriptedHeuristic;
+	background_filter: QueryContainer;
 }
-interface IMutualInformationHeuristic {
+/**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
+/**custom_serialization*/
+interface MutualInformationHeuristic {
 	include_negatives: boolean;
 	background_is_superset: boolean;
 }
-interface IChiSquareHeuristic {
+/**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
+/**custom_serialization*/
+interface ChiSquareHeuristic {
 	include_negatives: boolean;
 	background_is_superset: boolean;
 }
-interface IGoogleNormalizedDistanceHeuristic {
+/**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
+/**custom_serialization*/
+interface GoogleNormalizedDistanceHeuristic {
 	background_is_superset: boolean;
 }
-interface IPercentageScoreHeuristic {
+/**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
+/**custom_serialization*/
+interface PercentageScoreHeuristic {
 }
-interface IScriptedHeuristic {
-	script: IScript;
+/**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
+/**custom_serialization*/
+interface ScriptedHeuristic {
+	script: Script;
 }
-interface IValueCountAggregation {
+/**namespace:Aggregations.Metric.ValueCount */
+interface ValueCountAggregation {
 }
-interface IPercentileRanksAggregation {
+/**namespace:Aggregations.Metric.PercentileRanks */
+interface PercentileRanksAggregation {
 	Values: double[];
-	Method: IPercentilesMethod;
+	Method: PercentilesMethod;
 }
-interface ITopHitsAggregation {
+/**namespace:Aggregations.Metric.TopHits */
+interface TopHitsAggregation {
 	from: integer;
 	size: integer;
-	sort: ISort[];
-	_source: ISourceFilter;
-	highlight: IHighlight;
+	sort: Sort[];
+	_source: SourceFilter;
+	highlight: Highlight;
 	explain: boolean;
-	/** type has a custom json converter defined */ script_fields: Map<string, IScriptField>[];
+	/**custom_serialization */
+	script_fields: Map<string, ScriptField>;
 	fielddata_fields: Field[];
 	version: boolean;
 }
-interface IChildrenAggregation {
+/**namespace:Aggregations.Bucket.Children */
+interface ChildrenAggregation {
 	type: TypeName;
 }
-interface IScriptedMetricAggregation {
-	init_script: IScript;
-	map_script: IScript;
-	combine_script: IScript;
-	reduce_script: IScript;
-	params: Map<string, any>[];
+/**namespace:Aggregations.Metric.ScriptedMetric */
+interface ScriptedMetricAggregation {
+	init_script: Script;
+	map_script: Script;
+	combine_script: Script;
+	reduce_script: Script;
+	params: Map<string, any>;
 }
-interface IAverageBucketAggregation {
+/**namespace:Aggregations.Pipeline.AverageBucket */
+interface AverageBucketAggregation {
 }
-interface IDerivativeAggregation {
+/**namespace:Aggregations.Pipeline.Derivative */
+interface DerivativeAggregation {
 }
-interface IMaxBucketAggregation {
+/**namespace:Aggregations.Pipeline.MaxBucket */
+interface MaxBucketAggregation {
 }
-interface IMinBucketAggregation {
+/**namespace:Aggregations.Pipeline.MinBucket */
+interface MinBucketAggregation {
 }
-interface ISumBucketAggregation {
+/**namespace:Aggregations.Pipeline.SumBucket */
+interface SumBucketAggregation {
 }
-interface IMovingAverageAggregation {
-	Model: IMovingAverageModel;
+/**namespace:Aggregations.Pipeline.MovingAverage */
+interface MovingAverageAggregation {
+	Model: MovingAverageModel;
 	window: integer;
 	minimize: boolean;
 	predict: integer;
 }
-interface IMovingAverageModel {
+/**namespace:Aggregations.Pipeline.MovingAverage.Models */
+interface MovingAverageModel {
 	Name: string;
 }
-interface ICumulativeSumAggregation {
+/**namespace:Aggregations.Pipeline.CumulativeSum */
+interface CumulativeSumAggregation {
 }
-interface ISerialDifferencingAggregation {
+/**namespace:Aggregations.Pipeline.SerialDifferencing */
+interface SerialDifferencingAggregation {
 	lag: integer;
 }
-interface IBucketScriptAggregation {
-	script: IScript;
+/**namespace:Aggregations.Pipeline.BucketScript */
+interface BucketScriptAggregation {
+	script: Script;
 }
-interface IBucketSelectorAggregation {
-	script: IScript;
+/**namespace:Aggregations.Pipeline.BucketSelector */
+interface BucketSelectorAggregation {
+	script: Script;
 }
-interface ISamplerAggregation {
+/**namespace:Aggregations.Bucket.Sampler */
+interface SamplerAggregation {
 	shard_size: integer;
 	field: Field;
 	max_docs_per_value: integer;
-	script: IScript;
+	script: Script;
 	execution_hint: SamplerAggregationExecutionHint;
 }
-interface IInnerHitsContainer {
-	type: Map<TypeName, IGlobalInnerHit>[];
-	path: Map<Field, IGlobalInnerHit>[];
+/**namespace:Search.Search.InnerHits */
+/**custom_serialization*/
+interface InnerHitsContainer {
+	type: Map<TypeName, GlobalInnerHit>;
+	path: Map<Field, GlobalInnerHit>;
 }
-interface IGlobalInnerHit {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	inner_hits: Map<string, IInnerHitsContainer>[];
+/**namespace:Search.Search.InnerHits */
+/**custom_serialization*/
+interface GlobalInnerHit {
+	query: QueryContainer;
+	inner_hits: Map<string, InnerHitsContainer>;
 }
-interface IAlias {
-	filter: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:Indices.AliasManagement */
+/**custom_serialization*/
+interface Alias {
+	filter: QueryContainer;
 	routing: string;
 	index_routing: string;
 	search_routing: string;
 }
+/**namespace:Cluster.ClusterState */
 interface MetadataIndexState {
 	state: string;
-	/** type has a custom json converter defined */ settings: string[];
-	mappings: Map<TypeName, ITypeMapping>[];
+	/**custom_serialization */
+	settings: string[];
+	mappings: Map<TypeName, TypeMapping>;
 	aliases: string[];
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterStatsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterStatsResponse extends Response {
 	cluster_name: string;
 	timestamp: long;
@@ -1551,6 +2022,7 @@ interface ClusterStatsResponse extends Response {
 	indices: ClusterIndicesStats;
 	nodes: ClusterNodesStats;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterIndicesStats {
 	completion: CompletionStats;
 	count: long;
@@ -1562,19 +2034,23 @@ interface ClusterIndicesStats {
 	shards: ClusterIndicesShardsStats;
 	store: StoreStats;
 }
+/**namespace:CommonOptions.Stats */
 interface CompletionStats {
 	size: string;
 	size_in_bytes: long;
 }
+/**namespace:CommonOptions.Stats */
 interface DocStats {
 	count: long;
 	deleted: long;
 }
+/**namespace:CommonOptions.Stats */
 interface FielddataStats {
 	evictions: long;
 	memory_size: string;
 	memory_size_in_bytes: long;
 }
+/**namespace:CommonOptions.Stats */
 interface PercolateStats {
 	total: long;
 	time: string;
@@ -1584,6 +2060,7 @@ interface PercolateStats {
 	memory_size_in_bytes: long;
 	queries: long;
 }
+/**namespace:CommonOptions.Stats */
 interface QueryCacheStats {
 	memory_size: string;
 	memory_size_in_bytes: long;
@@ -1594,6 +2071,7 @@ interface QueryCacheStats {
 	cache_count: long;
 	evictions: long;
 }
+/**namespace:CommonOptions.Stats */
 interface SegmentsStats {
 	count: long;
 	doc_values_memory: string;
@@ -1617,28 +2095,33 @@ interface SegmentsStats {
 	version_map_memory: string;
 	version_map_memory_in_bytes: long;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterIndicesShardsStats {
 	total: double;
 	primaries: double;
 	replication: double;
 	index: ClusterIndicesShardsIndexStats;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterIndicesShardsIndexStats {
 	shards: ClusterShardMetrics;
 	primaries: ClusterShardMetrics;
 	replication: ClusterShardMetrics;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterShardMetrics {
 	min: double;
 	max: double;
 	avg: double;
 }
+/**namespace:CommonOptions.Stats */
 interface StoreStats {
 	size: string;
 	size_in_bytes: double;
 	throttle_time: string;
 	throttle_time_in_millis: long;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterNodesStats {
 	count: ClusterNodeCount;
 	versions: string[];
@@ -1648,6 +2131,7 @@ interface ClusterNodesStats {
 	fs: ClusterFileSystem;
 	plugins: PluginStats[];
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterNodeCount {
 	total: integer;
 	master_only: integer;
@@ -1655,31 +2139,38 @@ interface ClusterNodeCount {
 	master_data: integer;
 	client: integer;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterOperatingSystemStats {
 	available_processors: integer;
 	mem: ClusterOperatingSystemMemory;
 	names: ClusterOperatingSystemName[];
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterOperatingSystemMemory {
 	total: string;
 	total_in_bytes: long;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterOperatingSystemName {
 	count: integer;
 	name: string;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterProcess {
 	cpu: ClusterProcessCpu;
 	open_file_descriptors: ClusterProcessOpenFileDescriptors;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterProcessCpu {
 	percent: integer;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterProcessOpenFileDescriptors {
 	min: long;
 	max: long;
 	avg: long;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterJvm {
 	max_uptime: string;
 	max_uptime_in_millis: long;
@@ -1687,6 +2178,7 @@ interface ClusterJvm {
 	mem: ClusterJvmMemory;
 	threads: long;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterJvmVersion {
 	version: string;
 	vm_name: string;
@@ -1694,12 +2186,14 @@ interface ClusterJvmVersion {
 	vm_vendor: string;
 	count: integer;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterJvmMemory {
 	heap_used: string;
 	heap_used_in_bytes: long;
 	heap_max: string;
 	heap_max_in_bytes: long;
 }
+/**namespace:Cluster.ClusterStats */
 interface ClusterFileSystem {
 	total: string;
 	total_in_bytes: long;
@@ -1708,6 +2202,7 @@ interface ClusterFileSystem {
 	available: string;
 	available_in_bytes: long;
 }
+/**namespace:CommonOptions.Stats */
 interface PluginStats {
 	name: string;
 	version: string;
@@ -1717,36 +2212,56 @@ interface PluginStats {
 	isolated: boolean;
 	site: boolean;
 }
+/**namespace:Cluster.NodesHotThreads */
 interface NodesHotThreadsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Interval: Time;
-	/** mapped on body but might only proxy to request querystring */ Snapshots: long;
-	/** mapped on body but might only proxy to request querystring */ Threads: long;
-	/** mapped on body but might only proxy to request querystring */ IgnoreIdleThreads: boolean;
-	/** mapped on body but might only proxy to request querystring */ ThreadType: ThreadType;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Interval: Time;
+	/**ambiguous_origin*/
+	Snapshots: long;
+	/**ambiguous_origin*/
+	Threads: long;
+	/**ambiguous_origin*/
+	IgnoreIdleThreads: boolean;
+	/**ambiguous_origin*/
+	ThreadType: ThreadType;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.NodesHotThreads */
 interface NodesHotThreadsResponse extends Response {
 	HotThreads: HotThreadInformation[];
 }
+/**namespace:Cluster.NodesHotThreads */
 interface HotThreadInformation {
 	NodeName: string;
 	NodeId: string;
 	Threads: string[];
 	Hosts: string[];
 }
+/**namespace:Cluster.NodesInfo */
 interface NodesInfoRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodesInfoResponse extends Response {
 	cluster_name: string;
-	/** type has a custom json converter defined */ nodes: Map<string, NodeInfo>[];
+	/**custom_serialization */
+	nodes: Map<string, NodeInfo>;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfo {
 	name: string;
 	transport_address: string;
@@ -1755,16 +2270,19 @@ interface NodeInfo {
 	version: string;
 	build: string;
 	http_address: string;
-	/** type has a custom json converter defined */ settings: string[];
+	/**custom_serialization */
+	settings: string[];
 	os: NodeOperatingSystemInfo;
 	process: NodeProcessInfo;
 	jvm: NodeJvmInfo;
-	/** type has a custom json converter defined */ thread_pool: Map<string, NodeThreadPoolInfo>[];
+	/**custom_serialization */
+	thread_pool: Map<string, NodeThreadPoolInfo>;
 	network: NodeInfoNetwork;
 	transport: NodeInfoTransport;
 	http: NodeInfoHttp;
 	plugins: PluginStats[];
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeOperatingSystemInfo {
 	name: string;
 	arch: string;
@@ -1775,6 +2293,7 @@ interface NodeOperatingSystemInfo {
 	mem: NodeInfoMemory;
 	swap: NodeInfoMemory;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoOSCPU {
 	vendor: string;
 	model: string;
@@ -1785,15 +2304,18 @@ interface NodeInfoOSCPU {
 	cache_size: string;
 	cache_size_in_bytes: integer;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoMemory {
 	total: string;
 	total_in_bytes: long;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeProcessInfo {
 	refresh_interval: string;
 	refresh_interval_in_millis: long;
 	id: long;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeJvmInfo {
 	pid: integer;
 	version: string;
@@ -1805,6 +2327,7 @@ interface NodeJvmInfo {
 	start_time_in_millis: long;
 	mem: NodeInfoJVMMemory;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoJVMMemory {
 	heap_init: string;
 	heap_init_in_bytes: long;
@@ -1817,6 +2340,7 @@ interface NodeInfoJVMMemory {
 	direct_max: string;
 	direct_max_in_bytes: long;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeThreadPoolInfo {
 	type: string;
 	min: integer;
@@ -1824,41 +2348,59 @@ interface NodeThreadPoolInfo {
 	queue_size: integer;
 	keep_alive: string;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoNetwork {
 	refresh_interval: integer;
 	primary_interface: NodeInfoNetworkInterface;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoNetworkInterface {
 	address: string;
 	name: string;
 	mac_address: string;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoTransport {
 	bound_address: string[];
 	publish_address: string;
 }
+/**namespace:Cluster.NodesInfo */
 interface NodeInfoHttp {
 	bound_address: string[];
 	publish_address: string;
 	max_content_length: string;
 	max_content_length_in_bytes: long;
 }
+/**namespace:Cluster.NodesStats */
 interface NodesStatsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ CompletionFields: Field[];
-	/** mapped on body but might only proxy to request querystring */ FielddataFields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Groups: boolean;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Level: Level;
-	/** mapped on body but might only proxy to request querystring */ Types: string[];
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	CompletionFields: Field[];
+	/**ambiguous_origin*/
+	FielddataFields: Field[];
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Groups: boolean;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Level: Level;
+	/**ambiguous_origin*/
+	Types: string[];
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.NodesStats */
 interface NodesStatsResponse extends Response {
 	cluster_name: string;
-	/** type has a custom json converter defined */ nodes: Map<string, NodeStats>[];
+	/**custom_serialization */
+	nodes: Map<string, NodeStats>;
 }
+/**namespace:Cluster.NodesStats */
 interface NodeStats {
 	timestamp: long;
 	name: string;
@@ -1870,12 +2412,15 @@ interface NodeStats {
 	process: ProcessStats;
 	script: ScriptStats;
 	jvm: NodeJvmStats;
-	/** type has a custom json converter defined */ thread_pool: Map<string, ThreadCountStats>[];
-	/** type has a custom json converter defined */ breakers: Map<string, BreakerStats>[];
+	/**custom_serialization */
+	thread_pool: Map<string, ThreadCountStats>;
+	/**custom_serialization */
+	breakers: Map<string, BreakerStats>;
 	fs: FileSystemStats;
 	transport: TransportStats;
 	http: HttpStats;
 }
+/**namespace:Indices.Monitoring.IndicesStats */
 interface IndexStats {
 	docs: DocStats;
 	store: StoreStats;
@@ -1896,6 +2441,7 @@ interface IndexStats {
 	request_cache: RequestCacheStats;
 	recovery: RecoveryStats;
 }
+/**namespace:CommonOptions.Stats */
 interface IndexingStats {
 	delete_current: long;
 	delete_time: string;
@@ -1909,8 +2455,10 @@ interface IndexingStats {
 	noop_update_total: long;
 	throttle_time: string;
 	throttle_time_in_millis: long;
-	/** type has a custom json converter defined */ types: Map<string, IndexingStats>[];
+	/**custom_serialization */
+	types: Map<string, IndexingStats>;
 }
+/**namespace:CommonOptions.Stats */
 interface GetStats {
 	current: long;
 	exists_time: string;
@@ -1923,6 +2471,7 @@ interface GetStats {
 	time_in_millis: long;
 	total: long;
 }
+/**namespace:CommonOptions.Stats */
 interface SearchStats {
 	fetch_current: long;
 	fetch_time: string;
@@ -1937,6 +2486,7 @@ interface SearchStats {
 	scroll_time_in_millis: long;
 	scroll_total: long;
 }
+/**namespace:CommonOptions.Stats */
 interface MergesStats {
 	current: long;
 	current_docs: long;
@@ -1955,33 +2505,39 @@ interface MergesStats {
 	total_time: string;
 	total_time_in_millis: long;
 }
+/**namespace:CommonOptions.Stats */
 interface RefreshStats {
 	total: long;
 	total_time: string;
 	total_time_in_millis: long;
 }
+/**namespace:CommonOptions.Stats */
 interface FlushStats {
 	total: long;
 	total_time: string;
 	total_time_in_millis: long;
 }
+/**namespace:CommonOptions.Stats */
 interface WarmerStats {
 	current: long;
 	total: long;
 	total_time: string;
 	total_time_in_millis: long;
 }
+/**namespace:CommonOptions.Stats */
 interface TranslogStats {
 	operations: long;
 	size: string;
 	size_in_bytes: long;
 }
+/**namespace:CommonOptions.Stats */
 interface SuggestStats {
 	current: long;
 	total: long;
 	total_time: string;
 	total_time_in_millis: long;
 }
+/**namespace:CommonOptions.Stats */
 interface RequestCacheStats {
 	evictions: long;
 	hit_count: long;
@@ -1989,28 +2545,33 @@ interface RequestCacheStats {
 	memory_size_in_bytes: long;
 	miss_count: long;
 }
+/**namespace:CommonOptions.Stats */
 interface RecoveryStats {
 	current_as_source: long;
 	current_as_target: long;
 	throttle_time: string;
 	throttle_time_in_millis: long;
 }
+/**namespace:Cluster.NodesStats */
 interface OperatingSystemStats {
 	timestamp: long;
 	load_average: float;
 	mem: ExtendedMemoryStats;
-	swap: MemoryStats;
+	swap: OsMemoryStats;
 }
+/**namespace:Cluster.NodesStats */
 interface ProcessStats {
 	timestamp: long;
 	open_file_descriptors: integer;
 	cpu: CPUStats;
-	mem: MemoryStats;
+	mem: ProcessMemoryStats;
 }
+/**namespace:Cluster.NodesStats */
 interface ScriptStats {
 	cache_evictions: long;
 	compilations: long;
 }
+/**namespace:Cluster.NodesStats */
 interface NodeJvmStats {
 	timestamp: long;
 	uptime: string;
@@ -2018,9 +2579,11 @@ interface NodeJvmStats {
 	mem: MemoryStats;
 	threads: ThreadStats;
 	gc: GarbageCollectionStats;
-	/** type has a custom json converter defined */ buffer_pools: Map<string, NodeBufferPool>[];
+	/**custom_serialization */
+	buffer_pools: Map<string, NodeBufferPool>;
 	classes: JvmClassesStats;
 }
+/**namespace:Cluster.NodesStats */
 interface ThreadCountStats {
 	threads: long;
 	queue: long;
@@ -2029,6 +2592,7 @@ interface ThreadCountStats {
 	largest: long;
 	completed: long;
 }
+/**namespace:Cluster.NodesStats */
 interface BreakerStats {
 	estimated_size: string;
 	estimated_size_in_bytes: long;
@@ -2037,11 +2601,13 @@ interface BreakerStats {
 	overhead: float;
 	tripped: float;
 }
+/**namespace:Cluster.NodesStats */
 interface FileSystemStats {
 	timestamp: long;
 	total: TotalFileSystemStats;
 	data: DataPathStats[];
 }
+/**namespace:Cluster.NodesStats */
 interface TransportStats {
 	server_open: integer;
 	rx_count: long;
@@ -2051,89 +2617,119 @@ interface TransportStats {
 	tx_size: string;
 	tx_size_in_bytes: long;
 }
+/**namespace:Cluster.NodesStats */
 interface HttpStats {
 	current_open: integer;
 	total_opened: long;
 }
+/**namespace:Cluster.Ping */
 interface PingRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.Ping */
 interface PingResponse extends Response {
 }
+/**namespace:Cluster.RootNodeInfo */
 interface RootNodeInfoRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Cluster.RootNodeInfo */
 interface RootNodeInfoResponse extends Response {
 	name: string;
 	tagline: string;
 	version: ElasticsearchVersionInfo;
 }
+/**namespace:CommonAbstractions.Response */
 interface ElasticsearchVersionInfo {
 	Number: string;
 	snapshot_build: boolean;
 	lucene_version: string;
 }
+/**namespace:CommonAbstractions.Request */
 interface RequestDescriptorBase<TDescriptor, TParameters, TInterface> extends Request {
 }
+/**namespace:CommonAbstractions.Response */
 interface AcknowledgedResponseBase extends Response {
 	acknowledged: boolean;
 }
+/**namespace:CommonAbstractions.Response */
 interface DictionaryResponseBase<TKey, TValue> extends Response {
 }
+/**namespace:CommonAbstractions.Response */
 interface IndicesResponseBase extends Response {
 	acknowledged: boolean;
 	_shards: ShardsMetaData;
 }
+/**namespace:CommonOptions.Hit */
 interface ShardsMetaData {
 	Total: integer;
 	Successful: integer;
 	Failed: integer;
 	failures: ShardFailure[];
 }
+/**namespace:CommonOptions.Failures */
 interface ShardFailure {
 	index: string;
 	shard: integer;
 	node: string;
 	reason: ShardFailureReason;
 }
+/**namespace:CommonOptions.Failures */
 interface ShardFailureReason {
 	Type: string;
 	Reason: string;
 	caused_by: CausedBy;
 }
+/**namespace:CommonOptions.Failures */
 interface CausedBy {
 	Type: string;
 	Reason: string;
 }
+/**namespace:CommonAbstractions.Response */
 interface ShardsOperationResponseBase extends Response {
 	_shards: ShardsMetaData;
 }
-interface /** type has a custom json converter defined */ BulkRequest extends Request {
-	Operations: IBulkOperation[];
-	/** mapped on body but might only proxy to request querystring */ Consistency: Consistency;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Document.Multiple.Bulk */
+/**custom_serialization*/
+interface BulkRequest extends Request {
+	Operations: BulkOperation[];
+	/**ambiguous_origin*/
+	Consistency: Consistency;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IBulkOperation {
+/**namespace:Document.Multiple.Bulk.BulkOperation */
+interface BulkOperation {
 	Operation: string;
-	ClrType: Type;
 	_index: IndexName;
 	_type: TypeName;
 	_id: Id;
 	_version: long;
-	/** type has a custom json converter defined */ _version_type: VersionType;
+	/**custom_serialization */
+	_version_type: VersionType;
 	_routing: string;
 	_parent: Id;
 	_timestamp: long;
 	_ttl: Time;
 	_retry_on_conflict: integer;
 }
+/**namespace:Document.Multiple.Bulk */
 interface BulkResponse extends Response {
 	IsValid: boolean;
 	took: integer;
@@ -2141,6 +2737,8 @@ interface BulkResponse extends Response {
 	items: BulkResponseItemBase[];
 	ItemsWithErrors: BulkResponseItemBase[];
 }
+/**namespace:Document.Multiple.Bulk.BulkResponseItem */
+/**custom_serialization*/
 interface BulkResponseItemBase {
 	Operation: string;
 	_index: string;
@@ -2152,63 +2750,93 @@ interface BulkResponseItemBase {
 	_shards: ShardsMetaData;
 	IsValid: boolean;
 }
+/**namespace:CommonOptions.Failures */
 interface BulkError {
 	index: string;
 	shard: integer;
 	type: string;
 	reason: string;
 }
+/**namespace:Document.Multiple.DeleteByQuery */
 interface DeleteByQueryRequest extends Request {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ DefaultOperator: DefaultOperator;
-	/** mapped on body but might only proxy to request querystring */ Df: string;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ QueryOnQueryString: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	query: QueryContainer;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	DefaultOperator: DefaultOperator;
+	/**ambiguous_origin*/
+	Df: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	QueryOnQueryString: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Multiple.DeleteByQuery */
 interface DeleteByQueryResponse extends Response {
-	/** type has a custom json converter defined */ _indices: Map<string, DeleteByQueryIndicesResult>[];
+	/**custom_serialization */
+	_indices: Map<string, DeleteByQueryIndicesResult>;
 	took: long;
 	timed_out: boolean;
 }
+/**namespace:Document.Multiple.DeleteByQuery */
 interface DeleteByQueryIndicesResult {
 	found: long;
 	deleted: long;
 	missing: long;
 	failed: long;
 }
-interface /** type has a custom json converter defined */ MultiGetRequest extends Request {
-	docs: IMultiGetOperation[];
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Realtime: boolean;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ SourceEnabled: string[];
-	/** mapped on body but might only proxy to request querystring */ SourceExclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ SourceInclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Document.Multiple.MultiGet.Request */
+/**custom_serialization*/
+interface MultiGetRequest extends Request {
+	docs: MultiGetOperation[];
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Realtime: boolean;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	SourceEnabled: string[];
+	/**ambiguous_origin*/
+	SourceExclude: Field[];
+	/**ambiguous_origin*/
+	SourceInclude: Field[];
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IMultiGetOperation {
+/**namespace:Document.Multiple.MultiGet.Request */
+/**custom_serialization*/
+interface MultiGetOperation {
 	_index: IndexName;
 	_type: TypeName;
 	_id: Id;
 	fields: Field[];
 	_routing: string;
-	_source: Union<boolean, ISourceFilter>;
-	ClrType: Type;
+	_source: Union<boolean, SourceFilter>;
 	CanBeFlattened: boolean;
 }
+/**namespace:Document.Multiple.MultiGet.Response */
 interface MultiGetResponse extends Response {
-	Documents: IMultiGetHit<any>[];
+	Documents: MultiGetHit<any>[];
 }
-interface IMultiGetHit<T> {
+/**namespace:Document.Multiple.MultiGet.Response */
+interface MultiGetHit<T> {
 	Source: T;
 	Index: string;
 	Found: boolean;
@@ -2216,24 +2844,40 @@ interface IMultiGetHit<T> {
 	Version: long;
 	Id: string;
 }
+/**namespace:Document.Multiple.MultiTermVectors */
 interface MultiTermVectorsRequest extends Request {
-	docs: IMultiTermVectorOperation[];
-	/** mapped on body but might only proxy to request querystring */ TermStatistics: boolean;
-	/** mapped on body but might only proxy to request querystring */ FieldStatistics: boolean;
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Offsets: boolean;
-	/** mapped on body but might only proxy to request querystring */ Positions: boolean;
-	/** mapped on body but might only proxy to request querystring */ Payloads: boolean;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Realtime: boolean;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	docs: MultiTermVectorOperation[];
+	/**ambiguous_origin*/
+	TermStatistics: boolean;
+	/**ambiguous_origin*/
+	FieldStatistics: boolean;
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Offsets: boolean;
+	/**ambiguous_origin*/
+	Positions: boolean;
+	/**ambiguous_origin*/
+	Payloads: boolean;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Realtime: boolean;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IMultiTermVectorOperation {
+/**namespace:Document.Multiple.MultiTermVectors */
+interface MultiTermVectorOperation {
 	_index: IndexName;
 	_type: TypeName;
 	_id: Id;
@@ -2245,45 +2889,62 @@ interface IMultiTermVectorOperation {
 	term_statistics: boolean;
 	field_statistics: boolean;
 }
+/**namespace:Document.Multiple.MultiTermVectors */
 interface MultiTermVectorsResponse extends Response {
 	docs: TermVectorsResponse[];
 }
+/**namespace:Document.Single.TermVectors */
 interface TermVectorsResponse extends Response {
 	found: boolean;
-	term_vectors: Map<string, TermVector>[];
+	term_vectors: Map<string, TermVector>;
 }
+/**namespace:Document.Single.TermVectors */
 interface TermVector {
 	field_statistics: FieldStatistics;
-	terms: Map<string, TermVectorTerm>[];
+	terms: Map<string, TermVectorTerm>;
 }
+/**namespace:Document.Single.TermVectors */
 interface FieldStatistics {
 	doc_count: integer;
 	sum_doc_freq: integer;
 	sum_ttf: integer;
 }
+/**namespace:Document.Single.TermVectors */
 interface TermVectorTerm {
 	doc_freq: integer;
 	term_freq: integer;
 	tokens: Token[];
 	ttf: integer;
 }
+/**namespace:Document.Single.TermVectors */
 interface Token {
 	end_offset: integer;
 	payload: string;
 	position: integer;
 	start_offset: integer;
 }
+/**namespace:Document.Single.Delete */
 interface DeleteRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Consistency: Consistency;
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Consistency: Consistency;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.Delete */
 interface DeleteResponse extends Response {
 	_index: string;
 	_type: string;
@@ -2291,30 +2952,53 @@ interface DeleteResponse extends Response {
 	_version: string;
 	found: boolean;
 }
+/**namespace:Document.Single.Exists */
 interface DocumentExistsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Realtime: boolean;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Realtime: boolean;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.Get */
 interface GetRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Realtime: boolean;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ SourceEnabled: string[];
-	/** mapped on body but might only proxy to request querystring */ SourceExclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ SourceInclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Realtime: boolean;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	SourceEnabled: string[];
+	/**ambiguous_origin*/
+	SourceExclude: Field[];
+	/**ambiguous_origin*/
+	SourceInclude: Field[];
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.Get */
 interface GetResponse<T> extends Response {
 	_index: string;
 	_type: string;
@@ -2322,23 +3006,37 @@ interface GetResponse<T> extends Response {
 	_version: long;
 	found: boolean;
 	_source: T;
-	fields: Map<string, any>[];
+	fields: Map<string, any>;
 }
+/**namespace:Document.Single.Index */
 interface IndexRequest<TDocument> extends Request {
 	Document: TDocument;
-	/** mapped on body but might only proxy to request querystring */ Consistency: Consistency;
-	/** mapped on body but might only proxy to request querystring */ OpType: OpType;
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timestamp: Time;
-	/** mapped on body but might only proxy to request querystring */ Ttl: Time;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Consistency: Consistency;
+	/**ambiguous_origin*/
+	OpType: OpType;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Timestamp: Time;
+	/**ambiguous_origin*/
+	Ttl: Time;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.Index */
 interface IndexResponse extends Response {
 	_index: string;
 	_type: string;
@@ -2346,66 +3044,114 @@ interface IndexResponse extends Response {
 	_version: long;
 	created: boolean;
 }
+/**namespace:Document.Single.Source */
 interface SourceRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Realtime: boolean;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ SourceEnabled: string[];
-	/** mapped on body but might only proxy to request querystring */ SourceExclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ SourceInclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Realtime: boolean;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	SourceEnabled: string[];
+	/**ambiguous_origin*/
+	SourceExclude: Field[];
+	/**ambiguous_origin*/
+	SourceInclude: Field[];
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.TermVectors */
 interface TermVectorsRequest<TDocument> extends Request {
 	doc: TDocument;
-	per_field_analyzer: Map<Field, string>[];
-	/** mapped on body but might only proxy to request querystring */ TermStatistics: boolean;
-	/** mapped on body but might only proxy to request querystring */ FieldStatistics: boolean;
-	/** mapped on body but might only proxy to request querystring */ Dfs: boolean;
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Offsets: boolean;
-	/** mapped on body but might only proxy to request querystring */ Positions: boolean;
-	/** mapped on body but might only proxy to request querystring */ Payloads: boolean;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Realtime: boolean;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	per_field_analyzer: Map<Field, string>;
+	/**ambiguous_origin*/
+	TermStatistics: boolean;
+	/**ambiguous_origin*/
+	FieldStatistics: boolean;
+	/**ambiguous_origin*/
+	Dfs: boolean;
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Offsets: boolean;
+	/**ambiguous_origin*/
+	Positions: boolean;
+	/**ambiguous_origin*/
+	Payloads: boolean;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Realtime: boolean;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.Update */
 interface UpdateRequest<TDocument, TPartialDocument> extends Request {
-	/** mapped on body but might only proxy to request querystring */ Script: string;
+	/**ambiguous_origin*/
+	script: string;
 	script_file: string;
 	lang: string;
-	/** type has a custom json converter defined */ params: Map<string, any>[];
+	/**custom_serialization */
+	params: Map<string, any>;
 	upsert: TDocument;
 	doc_as_upsert: boolean;
 	doc: TPartialDocument;
 	detect_noop: boolean;
 	Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Consistency: Consistency;
-	/** mapped on body but might only proxy to request querystring */ Lang: string;
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Refresh: boolean;
-	/** mapped on body but might only proxy to request querystring */ RetryOnConflict: long;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
+	/**ambiguous_origin*/
+	Consistency: Consistency;
+	/**ambiguous_origin*/
+	Lang: string;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Refresh: boolean;
+	/**ambiguous_origin*/
+	RetryOnConflict: long;
+	/**ambiguous_origin*/
+	Routing: string;
 	ScriptQueryString: string;
-	/** mapped on body but might only proxy to request querystring */ ScriptId: string;
-	/** mapped on body but might only proxy to request querystring */ ScriptedUpsert: boolean;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timestamp: Time;
-	/** mapped on body but might only proxy to request querystring */ Ttl: Time;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	script_id: string;
+	/**ambiguous_origin*/
+	ScriptedUpsert: boolean;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Timestamp: Time;
+	/**ambiguous_origin*/
+	Ttl: Time;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Document.Single.Update */
 interface UpdateResponse<T> extends Response {
 	_shards: ShardsMetaData;
 	_index: string;
@@ -2414,89 +3160,143 @@ interface UpdateResponse<T> extends Response {
 	_version: long;
 	get: InstantGet<T>;
 }
+/**namespace:Search.Explain */
 interface InstantGet<T> {
 	found: boolean;
 	_source: T;
-	fields: Map<string, any>[];
+	fields: Map<string, any>;
 }
+/**namespace:Indices.AliasManagement.Alias */
 interface BulkAliasRequest extends Request {
-	actions: IAliasAction[];
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	actions: AliasAction[];
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IAliasAction {
+/**namespace:Indices.AliasManagement.Alias.Actions */
+interface AliasAction {
 }
-interface BulkAliasResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.AliasManagement.Alias */
+interface BulkAliasResponse extends Response {
 }
+/**namespace:Indices.AliasManagement.AliasExists */
 interface AliasExistsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.AliasManagement.DeleteAlias */
 interface DeleteAliasRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.AliasManagement.DeleteAlias */
 interface DeleteAliasResponse extends Response {
 }
+/**namespace:Indices.AliasManagement.GetAlias */
 interface GetAliasRequest extends Request {
 	Alias: string;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.AliasManagement.GetAliases */
 interface GetAliasesRequest extends Request {
 	Alias: string;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.AliasManagement.GetAliases */
 interface GetAliasesResponse extends Response {
-	Indices: Map<string, AliasDefinition[]>[];
+	Indices: Map<string, AliasDefinition[]>;
 }
+/**namespace:Indices.AliasManagement */
 interface AliasDefinition {
 	Name: string;
-	filter: IQueryContainer;
+	filter: QueryContainer;
 	routing: string;
 	index_routing: string;
 	search_routing: string;
 }
+/**namespace:Indices.AliasManagement.PutAlias */
 interface PutAliasRequest extends Request {
 	routing: string;
-	filter: /** type has a custom json converter defined */ QueryContainer;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	filter: QueryContainer;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.AliasManagement.PutAlias */
 interface PutAliasResponse extends Response {
 }
+/**namespace:Indices.Analyze */
 interface AnalyzeRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ CharFilters: string[];
-	/** mapped on body but might only proxy to request querystring */ Field: Field;
-	/** mapped on body but might only proxy to request querystring */ Filters: string[];
-	/** mapped on body but might only proxy to request querystring */ PreferLocal: boolean;
-	/** mapped on body but might only proxy to request querystring */ Text: string[];
-	/** mapped on body but might only proxy to request querystring */ Tokenizer: string;
-	/** mapped on body but might only proxy to request querystring */ Format: Format;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	CharFilters: string[];
+	/**ambiguous_origin*/
+	Field: Field;
+	/**ambiguous_origin*/
+	Filters: string[];
+	/**ambiguous_origin*/
+	PreferLocal: boolean;
+	/**ambiguous_origin*/
+	Text: string[];
+	/**ambiguous_origin*/
+	Tokenizer: string;
+	/**ambiguous_origin*/
+	Format: Format;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.Analyze */
 interface AnalyzeResponse extends Response {
 	tokens: AnalyzeToken[];
 }
+/**namespace:Indices.Analyze */
 interface AnalyzeToken {
 	token: string;
 	type: string;
@@ -2504,263 +3304,391 @@ interface AnalyzeToken {
 	end_offset: integer;
 	position: integer;
 }
-interface /** type has a custom json converter defined */ CreateIndexRequest extends Request {
-	Settings: Map<string, any>[];
-	Mappings: Map<TypeName, ITypeMapping>[];
-	Warmers: Map<TypeName, IWarmer>[];
-	Aliases: Map<IndexName, IAlias>[];
-	Similarity: Map<string, ISimilarity>[];
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ UpdateAllTypes: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Indices.IndexManagement.CreateIndex */
+/**custom_serialization*/
+interface CreateIndexRequest extends Request {
+	Settings: Map<string, any>;
+	Mappings: Map<TypeName, TypeMapping>;
+	Warmers: Map<TypeName, Warmer>;
+	Aliases: Map<IndexName, Alias>;
+	Similarity: Map<string, Similarity>;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	UpdateAllTypes: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface ISimilarity {
+/**namespace:IndexModules.Similarity */
+interface Similarity {
 	type: string;
 }
-interface CreateIndexResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.IndexManagement.CreateIndex */
+interface CreateIndexResponse extends Response {
 }
+/**namespace:Indices.IndexManagement.DeleteIndex */
 interface DeleteIndexRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteIndexResponse extends IndicesResponseBase {
+/**namespace:Indices.IndexManagement.DeleteIndex */
+interface DeleteIndexResponse extends Response {
 }
+/**namespace:Indices.IndexManagement.GetIndex */
 interface GetIndexRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.IndexManagement.GetIndex */
 interface GetIndexResponse extends Response {
-	Indices: Map<string, /** type has a custom json converter defined */ IndexState>[];
+	Indices: Map<string, IndexState>;
 }
-interface /** type has a custom json converter defined */ IndexState {
-	settings: Map<string, any>[];
-	mappings: Map<TypeName, ITypeMapping>[];
-	aliases: Map<IndexName, IAlias>[];
-	warmers: Map<TypeName, IWarmer>[];
-	similarity: Map<string, ISimilarity>[];
-}
+/**namespace:Indices.IndexManagement.IndicesExists */
 interface IndexExistsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.IndexManagement.IndicesExists */
 interface ExistsResponse extends Response {
 	Exists: boolean;
 }
+/**namespace:Indices.IndexManagement.OpenCloseIndex.CloseIndex */
 interface CloseIndexRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface CloseIndexResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.IndexManagement.OpenCloseIndex.CloseIndex */
+interface CloseIndexResponse extends Response {
 }
+/**namespace:Indices.IndexManagement.OpenCloseIndex.OpenIndex */
 interface OpenIndexRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface OpenIndexResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.IndexManagement.OpenCloseIndex.OpenIndex */
+interface OpenIndexResponse extends Response {
 }
+/**namespace:Indices.IndexManagement.TypesExists */
 interface TypeExistsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.IndexSettings.GetIndexSettings */
 interface GetIndexSettingsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ GetIndexSettingsResponse extends DictionaryResponseBase<string, IIndexState> {
-	Indices: Map<string, IIndexState>[];
+/**namespace:Indices.IndexSettings.GetIndexSettings */
+/**custom_serialization*/
+interface GetIndexSettingsResponse extends Response {
+	Indices: Map<string, IndexState>;
 }
-interface IIndexState {
-	settings: Map<string, any>[];
-	aliases: Map<IndexName, IAlias>[];
-	warmers: Map<TypeName, IWarmer>[];
-	mappings: Map<TypeName, ITypeMapping>[];
-	similarity: Map<string, ISimilarity>[];
+/**namespace:IndexModules.IndexSettings */
+/**custom_serialization*/
+interface IndexState {
+	settings: Map<string, any>;
+	aliases: Map<IndexName, Alias>;
+	warmers: Map<TypeName, Warmer>;
+	mappings: Map<TypeName, TypeMapping>;
+	similarity: Map<string, Similarity>;
 }
+/**namespace:Indices.IndexSettings.IndexTemplates.DeleteIndexTemplate */
 interface DeleteIndexTemplateRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteIndexTemplateResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.IndexSettings.IndexTemplates.DeleteIndexTemplate */
+interface DeleteIndexTemplateResponse extends Response {
 }
+/**namespace:Indices.IndexSettings.IndexTemplates.GetIndexTemplate */
 interface GetIndexTemplateRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ GetIndexTemplateResponse extends DictionaryResponseBase<string, TemplateMapping> {
-	TemplateMappings: Map<string, TemplateMapping>[];
+/**namespace:Indices.IndexSettings.IndexTemplates.GetIndexTemplate */
+/**custom_serialization*/
+interface GetIndexTemplateResponse extends Response {
+	TemplateMappings: Map<string, TemplateMapping>;
 }
+/**namespace:Indices.IndexSettings.IndexTemplates.IndexTemplateExists */
 interface IndexTemplateExistsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.IndexSettings.IndexTemplates.PutIndexTemplate */
 interface PutIndexTemplateRequest extends Request {
 	Template: string;
 	Order: integer;
-	Settings: Map<string, any>[];
-	Mappings: Map<TypeName, ITypeMapping>[];
-	Warmers: Map<TypeName, IWarmer>[];
-	Aliases: Map<IndexName, IAlias>[];
-	/** mapped on body but might only proxy to request querystring */ Create: boolean;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	Settings: Map<string, any>;
+	Mappings: Map<TypeName, TypeMapping>;
+	Warmers: Map<TypeName, Warmer>;
+	Aliases: Map<IndexName, Alias>;
+	/**ambiguous_origin*/
+	Create: boolean;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface PutIndexTemplateResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.IndexSettings.IndexTemplates.PutIndexTemplate */
+interface PutIndexTemplateResponse extends Response {
 }
-interface /** type has a custom json converter defined */ UpdateIndexSettingsRequest extends Request {
-	IndexSettings: Map<string, any>[];
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ FlatSettings: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Indices.IndexSettings.UpdateIndexSettings */
+interface UpdateIndexSettingsResponse extends Response {
 }
-interface UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
-}
+/**namespace:Indices.MappingManagement.GetFieldMapping */
 interface GetFieldMappingRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IncludeDefaults: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IncludeDefaults: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.MappingManagement.GetFieldMapping */
 interface GetFieldMappingResponse extends Response {
-	Indices: Map<string, TypeFieldMappings>[];
+	Indices: Map<string, TypeFieldMappings>;
 }
+/**namespace:Indices.MappingManagement.GetFieldMapping */
 interface TypeFieldMappings {
-	mappings: Map<string, Map<string, FieldMapping>[]>[];
+	mappings: Map<string, Map<string, FieldMapping>>;
 }
+/**namespace:Indices.MappingManagement.GetFieldMapping */
 interface FieldMapping {
 	full_name: string;
-	/** type has a custom json converter defined */ mapping: Map<string, IFieldMapping>[];
+	/**custom_serialization */
+	mapping: Map<string, FieldMapping>;
 }
-interface IFieldMapping {
+/**namespace:Mapping.MetaFields */
+interface FieldMapping {
 }
+/**namespace:Indices.MappingManagement.GetMapping */
 interface GetMappingRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.MappingManagement.GetMapping */
 interface GetMappingResponse extends Response {
 	IsValid: boolean;
-	Mappings: Map<string, /** type has a custom json converter defined */ TypeMapping[]>[];
-	Mapping: /** type has a custom json converter defined */ TypeMapping;
+	Mappings: Map<string, TypeMapping[]>;
+	Mapping: TypeMapping;
 }
-interface /** type has a custom json converter defined */ TypeMapping {
-	_all: IAllField;
+/**namespace:Mapping */
+/**custom_serialization*/
+interface TypeMapping {
+	_all: AllField;
 	analyzer: string;
 	date_detection: boolean;
 	dynamic: DynamicMapping;
 	dynamic_date_formats: string[];
-	dynamic_templates: Map<string, IDynamicTemplate>[];
-	_field_names: IFieldNamesField;
-	_index: IIndexField;
-	/** type has a custom json converter defined */ _meta: Map<string, any>[];
+	dynamic_templates: Map<string, DynamicTemplate>;
+	_field_names: FieldNamesField;
+	_index: IndexField;
+	/**custom_serialization */
+	_meta: Map<string, any>;
 	numeric_detection: boolean;
-	_parent: IParentField;
-	properties: Map<PropertyName, IProperty>[];
-	_routing: IRoutingField;
+	_parent: ParentField;
+	properties: Map<PropertyName, Property>;
+	_routing: RoutingField;
 	search_analyzer: string;
-	_size: ISizeField;
-	_source: ISourceField;
-	_timestamp: ITimestampField;
-	/** type has a custom json converter defined */ transform: IMappingTransform[];
-	_ttl: ITtlField;
+	_size: SizeField;
+	_source: SourceField;
+	_timestamp: TimestampField;
+	/**custom_serialization */
+	transform: MappingTransform[];
+	_ttl: TtlField;
 }
-interface /** type has a custom json converter defined */ PutMappingRequest extends Request {
-	AllField: IAllField;
+/**namespace:Indices.MappingManagement.PutMapping */
+/**custom_serialization*/
+interface PutMappingRequest extends Request {
+	AllField: AllField;
 	DateDetection: boolean;
 	DynamicDateFormats: string[];
-	DynamicTemplates: Map<string, IDynamicTemplate>[];
+	DynamicTemplates: Map<string, DynamicTemplate>;
 	Dynamic: DynamicMapping;
 	Analyzer: string;
 	SearchAnalyzer: string;
-	FieldNamesField: IFieldNamesField;
-	IndexField: IIndexField;
-	Meta: Map<string, any>[];
+	FieldNamesField: FieldNamesField;
+	IndexField: IndexField;
+	Meta: Map<string, any>;
 	NumericDetection: boolean;
-	ParentField: IParentField;
-	Properties: Map<PropertyName, IProperty>[];
-	RoutingField: IRoutingField;
-	SizeField: ISizeField;
-	SourceField: ISourceField;
-	TimestampField: ITimestampField;
-	Transform: IMappingTransform[];
-	TtlField: ITtlField;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ UpdateAllTypes: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	ParentField: ParentField;
+	Properties: Map<PropertyName, Property>;
+	RoutingField: RoutingField;
+	SizeField: SizeField;
+	SourceField: SourceField;
+	TimestampField: TimestampField;
+	Transform: MappingTransform[];
+	TtlField: TtlField;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	UpdateAllTypes: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface PutMappingResponse extends IndicesResponseBase {
+/**namespace:Indices.MappingManagement.PutMapping */
+interface PutMappingResponse extends Response {
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryStatusRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Detailed: boolean;
-	/** mapped on body but might only proxy to request querystring */ ActiveOnly: boolean;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Detailed: boolean;
+	/**ambiguous_origin*/
+	ActiveOnly: boolean;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryStatusResponse extends Response {
-	/** type has a custom json converter defined */ Indices: Map<string, RecoveryStatus>[];
+	/**custom_serialization */
+	Indices: Map<string, RecoveryStatus>;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryStatus {
 	shards: ShardRecovery[];
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface ShardRecovery {
 	id: long;
 	type: string;
@@ -2775,23 +3703,27 @@ interface ShardRecovery {
 	translog: RecoveryTranslogStatus;
 	start: RecoveryStartStatus;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryOrigin {
 	id: string;
 	hostname: string;
 	ip: string;
 	name: string;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryIndexStatus {
 	total_time_in_millis: long;
 	bytes: RecoveryBytes;
 	files: RecoveryFiles;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryBytes {
 	total: long;
 	reused: long;
 	recovered: long;
 	percent: string;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryFiles {
 	total: long;
 	reused: long;
@@ -2799,11 +3731,13 @@ interface RecoveryFiles {
 	percent: string;
 	details: RecoveryFileDetails[];
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryFileDetails {
 	name: string;
 	length: long;
 	recovered: long;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryTranslogStatus {
 	recovered: long;
 	total: long;
@@ -2812,38 +3746,57 @@ interface RecoveryTranslogStatus {
 	total_time: string;
 	total_time_in_millis: long;
 }
+/**namespace:Indices.Monitoring.IndicesRecovery */
 interface RecoveryStartStatus {
 	check_index_time: long;
 	total_time_in_millis: string;
 }
+/**namespace:Indices.Monitoring.IndicesSegments */
 interface SegmentsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ OperationThreading: string;
-	/** mapped on body but might only proxy to request querystring */ Verbose: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	OperationThreading: string;
+	/**ambiguous_origin*/
+	Verbose: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.Monitoring.IndicesSegments */
 interface SegmentsResponse extends Response {
 	_shards: ShardsMetaData;
-	/** type has a custom json converter defined */ indices: Map<string, IndexSegment>[];
+	/**custom_serialization */
+	indices: Map<string, IndexSegment>;
 }
+/**namespace:Indices.Monitoring.IndicesSegments */
 interface IndexSegment {
-	/** type has a custom json converter defined */ shards: Map<string, ShardsSegment>[];
+	/**custom_serialization */
+	shards: Map<string, ShardsSegment>;
 }
+/**namespace:Indices.Monitoring.IndicesSegments */
+/**custom_serialization*/
 interface ShardsSegment {
 	num_committed_segments: integer;
 	num_search_segments: integer;
 	routing: ShardSegmentRouting;
-	/** type has a custom json converter defined */ Segments: Map<string, Segment>[];
+	/**custom_serialization */
+	Segments: Map<string, Segment>;
 }
+/**namespace:Indices.Monitoring.IndicesSegments */
 interface ShardSegmentRouting {
 	state: string;
 	primary: boolean;
 	node: string;
 }
+/**namespace:Indices.Monitoring.IndicesSegments */
 interface Segment {
 	generation: integer;
 	num_docs: long;
@@ -2853,111 +3806,192 @@ interface Segment {
 	committed: boolean;
 	Search: boolean;
 }
+/**namespace:Indices.Monitoring.IndicesStats */
 interface IndicesStatsRequest extends Request {
 	Types: TypeName[];
-	/** mapped on body but might only proxy to request querystring */ CompletionFields: Field[];
-	/** mapped on body but might only proxy to request querystring */ FielddataFields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Groups: string[];
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Level: Level;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	CompletionFields: Field[];
+	/**ambiguous_origin*/
+	FielddataFields: Field[];
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Groups: string[];
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Level: Level;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.Monitoring.IndicesStats */
 interface IndicesStatsResponse extends Response {
 	_shards: ShardsMetaData;
 	_all: IndicesStats;
-	/** type has a custom json converter defined */ indices: Map<string, IndicesStats>[];
+	/**custom_serialization */
+	indices: Map<string, IndicesStats>;
 }
+/**namespace:Indices.Monitoring.IndicesStats */
 interface IndicesStats {
 	primaries: IndexStats;
 	total: IndexStats;
 }
+/**namespace:Indices.StatusManagement.ClearCache */
 interface ClearCacheRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ FieldData: boolean;
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Query: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Recycler: boolean;
-	/** mapped on body but might only proxy to request querystring */ Request: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	FieldData: boolean;
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Query: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Recycler: boolean;
+	/**ambiguous_origin*/
+	Request: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface ClearCacheResponse extends ShardsOperationResponseBase {
+/**namespace:Indices.StatusManagement.ClearCache */
+interface ClearCacheResponse extends Response {
 }
+/**namespace:Indices.StatusManagement.Flush */
 interface FlushRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Force: boolean;
-	/** mapped on body but might only proxy to request querystring */ WaitIfOngoing: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Force: boolean;
+	/**ambiguous_origin*/
+	WaitIfOngoing: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface FlushResponse extends ShardsOperationResponseBase {
+/**namespace:Indices.StatusManagement.Flush */
+interface FlushResponse extends Response {
 }
+/**namespace:Indices.StatusManagement.Optimize */
 interface OptimizeRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Flush: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ MaxNumSegments: long;
-	/** mapped on body but might only proxy to request querystring */ OnlyExpungeDeletes: boolean;
-	/** mapped on body but might only proxy to request querystring */ OperationThreading: string;
-	/** mapped on body but might only proxy to request querystring */ WaitForMerge: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Flush: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	MaxNumSegments: long;
+	/**ambiguous_origin*/
+	OnlyExpungeDeletes: boolean;
+	/**ambiguous_origin*/
+	OperationThreading: string;
+	/**ambiguous_origin*/
+	WaitForMerge: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface OptimizeResponse extends ShardsOperationResponseBase {
+/**namespace:Indices.StatusManagement.Optimize */
+interface OptimizeResponse extends Response {
 }
+/**namespace:Indices.StatusManagement.Refresh */
 interface RefreshRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Force: boolean;
-	/** mapped on body but might only proxy to request querystring */ OperationThreading: string;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Force: boolean;
+	/**ambiguous_origin*/
+	OperationThreading: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface RefreshResponse extends ShardsOperationResponseBase {
+/**namespace:Indices.StatusManagement.Refresh */
+interface RefreshResponse extends Response {
 }
+/**namespace:Indices.StatusManagement.SyncedFlush */
 interface SyncedFlushRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface SyncedFlushResponse extends ShardsOperationResponseBase {
+/**namespace:Indices.StatusManagement.SyncedFlush */
+interface SyncedFlushResponse extends Response {
 }
+/**namespace:Indices.StatusManagement.Upgrade */
 interface UpgradeRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ WaitForCompletion: boolean;
-	/** mapped on body but might only proxy to request querystring */ OnlyAncientSegments: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	WaitForCompletion: boolean;
+	/**ambiguous_origin*/
+	OnlyAncientSegments: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Indices.StatusManagement.Upgrade */
 interface UpgradeResponse extends Response {
 	_shards: ShardsMetaData;
 }
+/**namespace:Indices.StatusManagement.Upgrade.UpgradeStatus */
 interface UpgradeStatusRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Human: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Human: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ UpgradeStatusResponse extends Response {
-	/** type has a custom json converter defined */ Upgrades: Map<string, UpgradeStatus>[];
+/**namespace:Indices.StatusManagement.Upgrade.UpgradeStatus */
+/**custom_serialization*/
+interface UpgradeStatusResponse extends Response {
+	/**custom_serialization */
+	Upgrades: Map<string, UpgradeStatus>;
 	SizeInBytes: long;
 	SizeToUpgradeInBytes: string;
 	SizeToUpgradeAncientInBytes: string;
 }
+/**namespace:Indices.StatusManagement.Upgrade.UpgradeStatus */
 interface UpgradeStatus {
 	size: string;
 	size_in_bytes: long;
@@ -2965,145 +3999,252 @@ interface UpgradeStatus {
 	size_to_upgrade_in_bytes: string;
 	size_to_upgrade_ancient_in_bytes: string;
 }
+/**namespace:Indices.Warmers.DeleteWarmer */
 interface DeleteWarmerRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteWarmerResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.Warmers.DeleteWarmer */
+interface DeleteWarmerResponse extends Response {
 }
+/**namespace:Indices.Warmers.GetWarmer */
 interface GetWarmerRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ GetWarmerResponse extends Response {
-	/** type has a custom json converter defined */ Indices: Map<string, Map<TypeName, IWarmer>[]>[];
+/**namespace:Indices.Warmers.GetWarmer */
+/**custom_serialization*/
+interface GetWarmerResponse extends Response {
+	/**custom_serialization */
+	Indices: Map<string, Map<TypeName, Warmer>>;
 }
-interface /** type has a custom json converter defined */ PutWarmerRequest extends Request {
-	Search: ISearchRequest;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ RequestCache: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Indices.Warmers.PutWarmer */
+/**custom_serialization*/
+interface PutWarmerRequest extends Request {
+	Search: SearchRequest;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	RequestCache: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface PutWarmerResponse extends AcknowledgedResponseBase {
+/**namespace:Indices.Warmers.PutWarmer */
+interface PutWarmerResponse extends Response {
 }
+/**namespace:Modules.Scripting.DeleteScript */
 interface DeleteScriptRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteScriptResponse extends AcknowledgedResponseBase {
+/**namespace:Modules.Scripting.DeleteScript */
+interface DeleteScriptResponse extends Response {
 }
+/**namespace:Modules.Scripting.GetScript */
 interface GetScriptRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Modules.Scripting.GetScript */
 interface GetScriptResponse extends Response {
 	script: string;
 }
+/**namespace:Modules.Scripting.PutScript */
 interface PutScriptRequest extends Request {
 	script: string;
-	/** mapped on body but might only proxy to request querystring */ OpType: OpType;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	OpType: OpType;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface PutScriptResponse extends AcknowledgedResponseBase {
+/**namespace:Modules.Scripting.PutScript */
+interface PutScriptResponse extends Response {
 }
-interface /** type has a custom json converter defined */ CreateRepositoryRequest extends Request {
-	Repository: ISnapshotRepository;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Verify: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Modules.SnapshotAndRestore.Repositories.CreateRepository */
+/**custom_serialization*/
+interface CreateRepositoryRequest extends Request {
+	Repository: SnapshotRepository;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Verify: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface ISnapshotRepository {
+/**namespace:Modules.SnapshotAndRestore.Repositories */
+interface SnapshotRepository {
 	type: string;
 }
-interface CreateRepositoryResponse extends AcknowledgedResponseBase {
+/**namespace:Modules.SnapshotAndRestore.Repositories.CreateRepository */
+interface CreateRepositoryResponse extends Response {
 }
+/**namespace:Modules.SnapshotAndRestore.Repositories.DeleteRepository */
 interface DeleteRepositoryRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteRepositoryResponse extends AcknowledgedResponseBase {
+/**namespace:Modules.SnapshotAndRestore.Repositories.DeleteRepository */
+interface DeleteRepositoryResponse extends Response {
 }
+/**namespace:Modules.SnapshotAndRestore.Repositories.GetRepository */
 interface GetRepositoryRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ GetRepositoryResponse extends Response {
-	Repositories: Map<string, ISnapshotRepository>[];
+/**namespace:Modules.SnapshotAndRestore.Repositories.GetRepository */
+/**custom_serialization*/
+interface GetRepositoryResponse extends Response {
+	Repositories: Map<string, SnapshotRepository>;
 }
+/**namespace:Modules.SnapshotAndRestore.Repositories.VerifyRepository */
 interface VerifyRepositoryRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Timeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Timeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Repositories.VerifyRepository */
 interface VerifyRepositoryResponse extends Response {
-	/** type has a custom json converter defined */ nodes: Map<string, CompactNodeInfo>[];
+	/**custom_serialization */
+	nodes: Map<string, CompactNodeInfo>;
 }
+/**namespace:Modules.SnapshotAndRestore.Repositories.VerifyRepository */
 interface CompactNodeInfo {
 	name: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Restore */
 interface RestoreRequest extends Request {
 	indices: Indices;
 	ignore_unavailable: boolean;
 	include_global_state: boolean;
 	rename_pattern: string;
 	rename_replacement: string;
-	index_settings: IUpdateIndexSettingsRequest;
+	index_settings: UpdateIndexSettingsRequest;
 	ignore_index_settings: string[];
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ WaitForCompletion: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	WaitForCompletion: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IUpdateIndexSettingsRequest {
-	IndexSettings: Map<string, any>[];
-	Index: Indices;
+/**namespace:Indices.IndexSettings.UpdateIndexSettings */
+/**custom_serialization*/
+interface UpdateIndexSettingsRequest extends Request {
+	IndexSettings: Map<string, any>;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	FlatSettings: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Restore */
 interface RestoreResponse extends Response {
 	snapshot: SnapshotRestore;
 }
+/**namespace:Modules.SnapshotAndRestore.Restore */
 interface SnapshotRestore {
 	snapshot: string;
 	indices: IndexName[];
 	shards: ShardsMetaData;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.DeleteSnapshot */
 interface DeleteSnapshotRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteSnapshotResponse extends AcknowledgedResponseBase {
+/**namespace:Modules.SnapshotAndRestore.Snapshot.DeleteSnapshot */
+interface DeleteSnapshotResponse extends Response {
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.GetSapshot */
 interface GetSnapshotRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.GetSapshot */
 interface GetSnapshotResponse extends Response {
 	snapshots: Snapshot[];
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot */
 interface Snapshot {
 	snapshot: string;
 	indices: IndexName[];
@@ -3117,6 +4258,7 @@ interface Snapshot {
 	failures: SnapshotShardFailure[];
 	Failures: string[];
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot */
 interface SnapshotShardFailure {
 	node_id: string;
 	index: string;
@@ -3124,36 +4266,50 @@ interface SnapshotShardFailure {
 	reason: string;
 	status: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.Snapshot */
 interface SnapshotRequest extends Request {
-	/** type has a custom json converter defined */ indices: Indices;
+	/**custom_serialization */
+	indices: Indices;
 	ignore_unavailable: boolean;
 	include_global_state: boolean;
 	partial: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ WaitForCompletion: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	WaitForCompletion: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.Snapshot */
 interface SnapshotResponse extends Response {
 	accepted: boolean;
 	snapshot: Snapshot;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
 interface SnapshotStatusRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
 interface SnapshotStatusResponse extends Response {
 	snapshots: SnapshotStatus[];
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
 interface SnapshotStatus {
 	snapshot: string;
 	repository: string;
 	state: string;
 	shards_stats: SnapshotShardsStats;
 	stats: SnapshotStats;
-	indices: Map<string, SnapshotIndexStats>[];
+	indices: Map<string, SnapshotIndexStats>;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
 interface SnapshotShardsStats {
 	initializing: long;
 	started: long;
@@ -3162,6 +4318,7 @@ interface SnapshotShardsStats {
 	failed: long;
 	total: long;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
 interface SnapshotStats {
 	number_of_files: long;
 	processed_files: long;
@@ -3170,90 +4327,140 @@ interface SnapshotStats {
 	start_time_in_millis: long;
 	time_in_millis: long;
 }
+/**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
 interface SnapshotIndexStats {
 	shards_stats: SnapshotShardsStats;
 	stats: SnapshotStats;
-	shards: Map<string, SnapshotShardsStats>[];
+	shards: Map<string, SnapshotShardsStats>;
 }
-interface /** type has a custom json converter defined */ CountRequest extends Request {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ MinScore: double;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ QueryOnQueryString: string;
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ AnalyzeWildcard: boolean;
-	/** mapped on body but might only proxy to request querystring */ DefaultOperator: DefaultOperator;
-	/** mapped on body but might only proxy to request querystring */ Df: string;
-	/** mapped on body but might only proxy to request querystring */ Lenient: boolean;
-	/** mapped on body but might only proxy to request querystring */ LowercaseExpandedTerms: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Search.Count */
+/**custom_serialization*/
+interface CountRequest extends Request {
+	query: QueryContainer;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	MinScore: double;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	QueryOnQueryString: string;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	AnalyzeWildcard: boolean;
+	/**ambiguous_origin*/
+	DefaultOperator: DefaultOperator;
+	/**ambiguous_origin*/
+	Df: string;
+	/**ambiguous_origin*/
+	Lenient: boolean;
+	/**ambiguous_origin*/
+	LowercaseExpandedTerms: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Count */
 interface CountResponse extends Response {
 	count: long;
 	_shards: ShardsMetaData;
 }
+/**namespace:Search.Explain */
 interface ExplainRequest<TDocument> extends Request {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	/** mapped on body but might only proxy to request querystring */ AnalyzeWildcard: boolean;
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ DefaultOperator: DefaultOperator;
-	/** mapped on body but might only proxy to request querystring */ Df: string;
-	/** mapped on body but might only proxy to request querystring */ Fields: Field[];
-	/** mapped on body but might only proxy to request querystring */ Lenient: boolean;
-	/** mapped on body but might only proxy to request querystring */ LowercaseExpandedTerms: boolean;
-	/** mapped on body but might only proxy to request querystring */ Parent: string;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ QueryOnQueryString: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ SourceEnabled: string[];
-	/** mapped on body but might only proxy to request querystring */ SourceExclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ SourceInclude: Field[];
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	query: QueryContainer;
+	/**ambiguous_origin*/
+	AnalyzeWildcard: boolean;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	DefaultOperator: DefaultOperator;
+	/**ambiguous_origin*/
+	Df: string;
+	/**ambiguous_origin*/
+	Fields: Field[];
+	/**ambiguous_origin*/
+	Lenient: boolean;
+	/**ambiguous_origin*/
+	LowercaseExpandedTerms: boolean;
+	/**ambiguous_origin*/
+	Parent: string;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	QueryOnQueryString: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	SourceEnabled: string[];
+	/**ambiguous_origin*/
+	SourceExclude: Field[];
+	/**ambiguous_origin*/
+	SourceInclude: Field[];
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Explain */
 interface ExplainResponse<T> extends Response {
 	matched: boolean;
 	explanation: ExplanationDetail;
 	get: InstantGet<T>;
 }
+/**namespace:Search.Explain */
 interface ExplanationDetail {
 	value: float;
 	description: string;
 	details: ExplanationDetail[];
 }
+/**namespace:Search.FieldStats */
 interface FieldStatsRequest extends Request {
 	fields: Field[];
-	index_constraints: Map<Field, IIndexConstraint>[];
-	/** mapped on body but might only proxy to request querystring */ Level: Level;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	index_constraints: Map<Field, IndexConstraint>;
+	/**ambiguous_origin*/
+	Level: Level;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IIndexConstraint {
-	min_value: IIndexConstraintComparison;
-	max_value: IIndexConstraintComparison;
+/**namespace:Search.FieldStats */
+interface IndexConstraint {
+	min_value: IndexConstraintComparison;
+	max_value: IndexConstraintComparison;
 }
-interface IIndexConstraintComparison {
+/**namespace:Search.FieldStats */
+interface IndexConstraintComparison {
 	gte: string;
 	gt: string;
 	lte: string;
 	lt: string;
 	format: string;
 }
+/**namespace:Search.FieldStats */
 interface FieldStatsResponse extends Response {
 	_shards: ShardsMetaData;
-	indices: Map<string, FieldStats>[];
+	indices: Map<string, FieldStats>;
 }
+/**namespace:Search.FieldStats */
 interface FieldStats {
-	fields: Map<string, FieldStatsField>[];
+	fields: Map<string, FieldStatsField>;
 }
+/**namespace:Search.FieldStats */
 interface FieldStatsField {
 	max_doc: long;
 	doc_count: long;
@@ -3263,112 +4470,157 @@ interface FieldStatsField {
 	min_value: string;
 	max_value: string;
 }
-interface /** type has a custom json converter defined */ MultiSearchRequest extends Request {
-	Operations: Map<string, ISearchRequest>[];
-	/** mapped on body but might only proxy to request querystring */ SearchType: SearchType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Search.MultiSearch */
+/**custom_serialization*/
+interface MultiSearchRequest extends Request {
+	Operations: Map<string, SearchRequest>;
+	/**ambiguous_origin*/
+	SearchType: SearchType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.MultiSearch */
 interface MultiSearchResponse extends Response {
 	IsValid: boolean;
 	TotalResponses: integer;
-	AllResponses: IResponse[];
+	AllResponses: Response[];
 }
-interface IResponse {
-	IsValid: boolean;
-	ApiCall: IApiCallDetails;
+/**namespace:CommonAbstractions.Response */
+interface Response {
 	ServerError: ServerError;
-	OriginalException: Exception;
-	DebugInformation: string;
 }
-interface /** type has a custom json converter defined */ MultiPercolateRequest extends Request {
-	Percolations: IPercolateOperation[];
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+/**namespace:Search.Percolator.MultiPercolate */
+/**custom_serialization*/
+interface MultiPercolateRequest extends Request {
+	Percolations: PercolateOperation[];
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface IPercolateOperation {
+/**namespace:Search.Percolator.MultiPercolate */
+interface PercolateOperation {
 	MultiPercolateName: string;
 	size: integer;
 	track_scores: boolean;
-	sort: ISort[];
-	highlight: IHighlight;
-	query: /** type has a custom json converter defined */ QueryContainer;
-	filter: /** type has a custom json converter defined */ QueryContainer;
-	aggs: Map<string, IAggregationContainer>[];
+	sort: Sort[];
+	highlight: Highlight;
+	query: QueryContainer;
+	filter: QueryContainer;
+	aggs: Map<string, AggregationContainer>;
 }
+/**namespace:Search.Percolator.MultiPercolate */
 interface MultiPercolateResponse extends Response {
 	IsValid: boolean;
 	Responses: PercolateResponse[];
 }
-interface PercolateResponse extends PercolateCountResponse {
+/**namespace:Search.Percolator.Percolate */
+interface PercolateResponse extends Response {
 	matches: PercolatorMatch[];
 }
+/**namespace:Search.Percolator.Percolate */
 interface PercolateCountResponse extends Response {
 	took: integer;
 	total: long;
 	_shards: ShardsMetaData;
 	ServerError: ServerError;
 }
+/**namespace:Search.Percolator.Percolate */
 interface PercolatorMatch {
-	highlight: Map<string, string[]>[];
+	highlight: Map<string, string[]>;
 	_id: string;
 	_index: string;
 	_score: double;
 }
+/**namespace:Search.Percolator.Percolate */
 interface PercolateRequest<TDocument> extends Request {
 	MultiPercolateName: string;
-	Highlight: IHighlight;
-	Query: /** type has a custom json converter defined */ QueryContainer;
-	Filter: /** type has a custom json converter defined */ QueryContainer;
-	Aggregations: Map<string, IAggregationContainer>[];
+	Highlight: Highlight;
+	Query: QueryContainer;
+	Filter: QueryContainer;
+	Aggregations: Map<string, AggregationContainer>;
 	Size: integer;
 	TrackScores: boolean;
 	doc: TDocument;
-	Sort: ISort[];
-	/** mapped on body but might only proxy to request querystring */ Routing: string[];
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ PercolateIndex: string;
-	/** mapped on body but might only proxy to request querystring */ PercolateType: string;
-	/** mapped on body but might only proxy to request querystring */ PercolateRouting: string;
-	/** mapped on body but might only proxy to request querystring */ PercolatePreference: string;
-	/** mapped on body but might only proxy to request querystring */ PercolateFormat: PercolateFormat;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	Sort: Sort[];
+	/**ambiguous_origin*/
+	Routing: string[];
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	PercolateIndex: string;
+	/**ambiguous_origin*/
+	PercolateType: string;
+	/**ambiguous_origin*/
+	PercolateRouting: string;
+	/**ambiguous_origin*/
+	PercolatePreference: string;
+	/**ambiguous_origin*/
+	PercolateFormat: PercolateFormat;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Percolator.PercolateCount */
 interface PercolateCountRequest<TDocument> extends Request {
 	MultiPercolateName: string;
 	Size: integer;
 	TrackScores: boolean;
-	Sort: ISort[];
-	Highlight: IHighlight;
-	Query: /** type has a custom json converter defined */ QueryContainer;
-	Filter: /** type has a custom json converter defined */ QueryContainer;
-	Aggregations: Map<string, IAggregationContainer>[];
+	Sort: Sort[];
+	Highlight: Highlight;
+	Query: QueryContainer;
+	Filter: QueryContainer;
+	Aggregations: Map<string, AggregationContainer>;
 	doc: TDocument;
-	/** mapped on body but might only proxy to request querystring */ Routing: string[];
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ PercolateIndex: string;
-	/** mapped on body but might only proxy to request querystring */ PercolateType: string;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Routing: string[];
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	PercolateIndex: string;
+	/**ambiguous_origin*/
+	PercolateType: string;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ RegisterPercolatorRequest extends Request {
-	Metadata: Map<string, any>[];
-	Query: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:Search.Percolator.RegisterPercolator */
+/**custom_serialization*/
+interface RegisterPercolatorRequest extends Request {
+	Metadata: Map<string, any>;
+	Query: QueryContainer;
 }
+/**namespace:Search.Percolator.RegisterPercolator */
 interface RegisterPercolatorResponse extends Response {
 	created: boolean;
 	_index: string;
@@ -3376,8 +4628,10 @@ interface RegisterPercolatorResponse extends Response {
 	_id: string;
 	_version: integer;
 }
+/**namespace:Search.Percolator.UnregisterPercolator */
 interface UnregisterPercolatorRequest extends Request {
 }
+/**namespace:Search.Percolator.UnregisterPercolator */
 interface UnregisterPercolatorResponse extends Response {
 	found: boolean;
 	_index: string;
@@ -3385,26 +4639,34 @@ interface UnregisterPercolatorResponse extends Response {
 	_id: string;
 	_version: integer;
 }
+/**namespace:Search.Scroll.ClearScroll */
 interface ClearScrollRequest extends Request {
 	scroll_id: string[];
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Scroll.ClearScroll */
 interface ClearScrollResponse extends Response {
 }
+/**namespace:Search.Scroll.Scroll */
 interface ScrollRequest extends Request {
 	CovariantTypes: Types;
-	TypeSelector: Func<any, Hit<any>, Type>;
 	scroll: Time;
 	scroll_id: string;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Search.Hits */
 interface Hit<T> {
-	fields: Map<string, any>[];
+	fields: Map<string, any>;
 	_source: T;
 	_index: string;
-	/** type has a custom json converter defined */ inner_hits: Map<string, InnerHitsResult>[];
+	/**custom_serialization */
+	inner_hits: Map<string, InnerHitsResult>;
 	_score: double;
 	_type: string;
 	_version: long;
@@ -3414,31 +4676,39 @@ interface Hit<T> {
 	_timestamp: long;
 	_ttl: long;
 	sort: any[];
-	Highlights: Map<string, HighlightHit>[];
+	Highlights: Map<string, HighlightHit>;
 	_explanation: Explanation;
 	matched_queries: string[];
 }
+/**namespace:Search.Search.Hits */
 interface InnerHitsResult {
 	hits: InnerHitsMetaData;
 }
+/**namespace:Search.Search.Hits */
 interface InnerHitsMetaData {
 	total: long;
 	max_score: double;
-	hits: Hit<ILazyDocument>[];
+	hits: Hit<LazyDocument>[];
 }
+/**namespace:Search.Search.Highlighting */
 interface HighlightHit {
 	DocumentId: string;
 	Field: string;
 	Highlights: string[];
 }
+/**namespace:Search.Explain */
 interface Explanation {
 	value: float;
 	description: string;
 	details: ExplanationDetail[];
 }
-interface ILazyDocument {
+/**namespace:CommonAbstractions.LazyDocument */
+/**custom_serialization*/
+interface LazyDocument {
 }
-interface /** type has a custom json converter defined */ SearchRequest extends Request {
+/**namespace:Search.Search */
+/**custom_serialization*/
+interface SearchRequest extends Request {
 	timeout: string;
 	from: integer;
 	size: integer;
@@ -3449,46 +4719,68 @@ interface /** type has a custom json converter defined */ SearchRequest extends 
 	terminate_after: long;
 	fields: Field[];
 	fielddata_fields: Field[];
-	script_fields: Map<string, IScriptField>[];
-	/** type has a custom json converter defined */ _source: ISourceFilter;
-	sort: ISort[];
-	/** type has a custom json converter defined */ indices_boost: Map<IndexName, double>[];
-	post_filter: /** type has a custom json converter defined */ QueryContainer;
-	inner_hits: Map<string, IInnerHitsContainer>[];
-	query: /** type has a custom json converter defined */ QueryContainer;
-	rescore: IRescore;
-	suggest: Map<string, ISuggestBucket>[];
-	highlight: IHighlight;
-	aggs: Map<string, IAggregationContainer>[];
-	TypeSelector: Func<any, Hit<any>, Type>;
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ AnalyzeWildcard: boolean;
-	/** mapped on body but might only proxy to request querystring */ DefaultOperator: DefaultOperator;
-	/** mapped on body but might only proxy to request querystring */ Df: string;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Lenient: boolean;
-	/** mapped on body but might only proxy to request querystring */ LowercaseExpandedTerms: boolean;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string[];
-	/** mapped on body but might only proxy to request querystring */ Scroll: Time;
-	/** mapped on body but might only proxy to request querystring */ SearchType: SearchType;
-	/** mapped on body but might only proxy to request querystring */ Stats: string[];
-	/** mapped on body but might only proxy to request querystring */ SuggestField: Field;
-	/** mapped on body but might only proxy to request querystring */ SuggestMode: SuggestMode;
-	/** mapped on body but might only proxy to request querystring */ SuggestSize: long;
-	/** mapped on body but might only proxy to request querystring */ SuggestText: string;
-	/** mapped on body but might only proxy to request querystring */ RequestCache: boolean;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	script_fields: Map<string, ScriptField>;
+	/**custom_serialization */
+	_source: SourceFilter;
+	sort: Sort[];
+	/**custom_serialization */
+	indices_boost: Map<IndexName, double>;
+	post_filter: QueryContainer;
+	inner_hits: Map<string, InnerHitsContainer>;
+	query: QueryContainer;
+	rescore: Rescore;
+	suggest: Map<string, SuggestBucket>;
+	highlight: Highlight;
+	aggs: Map<string, AggregationContainer>;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	AnalyzeWildcard: boolean;
+	/**ambiguous_origin*/
+	DefaultOperator: DefaultOperator;
+	/**ambiguous_origin*/
+	Df: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Lenient: boolean;
+	/**ambiguous_origin*/
+	LowercaseExpandedTerms: boolean;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string[];
+	/**ambiguous_origin*/
+	Scroll: Time;
+	/**ambiguous_origin*/
+	SearchType: SearchType;
+	/**ambiguous_origin*/
+	Stats: string[];
+	/**ambiguous_origin*/
+	SuggestField: Field;
+	/**ambiguous_origin*/
+	SuggestMode: SuggestMode;
+	/**ambiguous_origin*/
+	SuggestSize: long;
+	/**ambiguous_origin*/
+	SuggestText: string;
+	/**ambiguous_origin*/
+	RequestCache: boolean;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Search */
 interface SearchResponse<T> extends Response {
-	ApiCall: IApiCallDetails;
 	_shards: ShardsMetaData;
 	hits: HitsMetaData<T>;
-	/** type has a custom json converter defined */ aggregations: Map<string, IAggregate>[];
+	/**custom_serialization */
+	aggregations: Map<string, Aggregate>;
 	Aggs: AggregationsHelper;
-	suggest: Map<string, Suggest[]>[];
+	suggest: Map<string, Suggest[]>;
 	took: integer;
 	timed_out: boolean;
 	terminated_early: boolean;
@@ -3496,84 +4788,100 @@ interface SearchResponse<T> extends Response {
 	Total: long;
 	MaxScore: double;
 	Documents: T[];
-	Hits: IHit<T>[];
-	Fields: Map<string, any>[][];
-	Highlights: Map<string, Map<string, HighlightHit>[]>[];
+	Hits: Hit<T>[];
+	Fields: Map<string, any>;
+	Highlights: Map<string, Map<string, HighlightHit>>;
 }
+/**namespace:Search.Search.Hits */
 interface HitsMetaData<T> {
 	total: long;
 	max_score: double;
-	hits: IHit<T>[];
+	hits: Hit<T>[];
 }
-interface IHit<T> {
-	Fields: Map<string, any>[];
-	Source: T;
-	Index: string;
-	Type: string;
-	Version: long;
-	Score: double;
-	Id: string;
-	Parent: string;
-	Routing: string;
-	Timestamp: long;
-	Ttl: long;
-	Sorts: any[];
-	Highlights: Map<string, HighlightHit>[];
-	Explanation: Explanation;
-	MatchedQueries: string[];
-	InnerHits: Map<string, InnerHitsResult>[];
+/**namespace:Aggregations */
+interface Aggregate {
+	Meta: Map<string, any>;
 }
-interface IAggregate {
-	Meta: Map<string, any>[];
-}
+/**namespace:Aggregations */
 interface AggregationsHelper {
-	Aggregations: Map<string, IAggregate>[];
+	Aggregations: Map<string, Aggregate>;
 }
+/**namespace:Search.Suggesters */
 interface Suggest {
 	length: integer;
 	offset: integer;
 	text: string;
 	options: SuggestOption[];
 }
+/**namespace:Search.Suggesters */
+/**custom_serialization*/
 interface SuggestOption {
 	freq: integer;
 	score: double;
 	text: string;
 	highlighted: string;
 }
-interface /** type has a custom json converter defined */ SearchExistsRequest extends Request {
-	query: /** type has a custom json converter defined */ QueryContainer;
+/**namespace:Search.SearchExists */
+/**custom_serialization*/
+interface SearchExistsRequest extends Request {
+	query: QueryContainer;
 	QueryString: string;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ MinScore: double;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ QueryOnQueryString: string;
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ AnalyzeWildcard: boolean;
-	/** mapped on body but might only proxy to request querystring */ DefaultOperator: DefaultOperator;
-	/** mapped on body but might only proxy to request querystring */ Df: string;
-	/** mapped on body but might only proxy to request querystring */ Lenient: boolean;
-	/** mapped on body but might only proxy to request querystring */ LowercaseExpandedTerms: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	MinScore: double;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	QueryOnQueryString: string;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	AnalyzeWildcard: boolean;
+	/**ambiguous_origin*/
+	DefaultOperator: DefaultOperator;
+	/**ambiguous_origin*/
+	Df: string;
+	/**ambiguous_origin*/
+	Lenient: boolean;
+	/**ambiguous_origin*/
+	LowercaseExpandedTerms: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.SearchShards */
 interface SearchShardsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.SearchShards */
 interface SearchShardsResponse extends Response {
 	shards: SearchShard[][];
-	nodes: Map<string, SearchNode>[];
+	nodes: Map<string, SearchNode>;
 }
+/**namespace:Search.SearchShards */
 interface SearchShard {
 	state: string;
 	primary: boolean;
@@ -3582,124 +4890,207 @@ interface SearchShard {
 	shard: integer;
 	index: string;
 }
+/**namespace:Search.SearchShards */
 interface SearchNode {
 	name: string;
 	transport_address: string;
 }
+/**namespace:Search.SearchTemplate */
 interface SearchTemplateRequest extends Request {
 	template: string;
 	file: string;
 	id: string;
-	params: Map<string, any>[];
-	TypeSelector: Func<any, Hit<any>, Type>;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string[];
-	/** mapped on body but might only proxy to request querystring */ Scroll: Time;
-	/** mapped on body but might only proxy to request querystring */ SearchType: SearchType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	params: Map<string, any>;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string[];
+	/**ambiguous_origin*/
+	Scroll: Time;
+	/**ambiguous_origin*/
+	SearchType: SearchType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.SearchTemplate.DeleteSearchTemplate */
 interface DeleteSearchTemplateRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface DeleteSearchTemplateResponse extends AcknowledgedResponseBase {
+/**namespace:Search.SearchTemplate.DeleteSearchTemplate */
+interface DeleteSearchTemplateResponse extends Response {
 }
+/**namespace:Search.SearchTemplate.GetSearchTemplate */
 interface GetSearchTemplateRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.SearchTemplate.GetSearchTemplate */
 interface GetSearchTemplateResponse extends Response {
 	template: string;
 }
-interface /** type has a custom json converter defined */ PutSearchTemplateRequest extends Request {
+/**namespace:Search.SearchTemplate.PutSearchTemplate */
+/**custom_serialization*/
+interface PutSearchTemplateRequest extends Request {
 	template: string;
-	/** mapped on body but might only proxy to request querystring */ OpType: OpType;
-	/** mapped on body but might only proxy to request querystring */ Version: long;
-	/** mapped on body but might only proxy to request querystring */ VersionType: VersionType;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	OpType: OpType;
+	/**ambiguous_origin*/
+	Version: long;
+	/**ambiguous_origin*/
+	VersionType: VersionType;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface PutSearchTemplateResponse extends AcknowledgedResponseBase {
+/**namespace:Search.SearchTemplate.PutSearchTemplate */
+interface PutSearchTemplateResponse extends Response {
 }
-interface /** type has a custom json converter defined */ SuggestRequest extends Request {
+/**namespace:Search.Suggesters.Suggest */
+/**custom_serialization*/
+interface SuggestRequest extends Request {
 	GlobalText: string;
-	Suggest: Map<string, ISuggestBucket>[];
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ Preference: string;
-	/** mapped on body but might only proxy to request querystring */ Routing: string;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	Suggest: Map<string, SuggestBucket>;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	Preference: string;
+	/**ambiguous_origin*/
+	Routing: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
-interface /** type has a custom json converter defined */ SuggestResponse extends Response {
+/**namespace:Search.Suggesters.Suggest */
+/**custom_serialization*/
+interface SuggestResponse extends Response {
 	Shards: ShardsMetaData;
-	Suggestions: Map<string, Suggest[]>[];
+	Suggestions: Map<string, Suggest[]>;
 }
+/**namespace:Search.Validate */
 interface ValidateQueryRequest extends Request {
-	query: /** type has a custom json converter defined */ QueryContainer;
-	/** mapped on body but might only proxy to request querystring */ Explain: boolean;
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ OperationThreading: string;
-	/** mapped on body but might only proxy to request querystring */ QueryOnQueryString: string;
-	/** mapped on body but might only proxy to request querystring */ Analyzer: string;
-	/** mapped on body but might only proxy to request querystring */ AnalyzeWildcard: boolean;
-	/** mapped on body but might only proxy to request querystring */ DefaultOperator: DefaultOperator;
-	/** mapped on body but might only proxy to request querystring */ Df: string;
-	/** mapped on body but might only proxy to request querystring */ Lenient: boolean;
-	/** mapped on body but might only proxy to request querystring */ LowercaseExpandedTerms: boolean;
-	/** mapped on body but might only proxy to request querystring */ Rewrite: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	query: QueryContainer;
+	/**ambiguous_origin*/
+	Explain: boolean;
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	OperationThreading: string;
+	/**ambiguous_origin*/
+	QueryOnQueryString: string;
+	/**ambiguous_origin*/
+	Analyzer: string;
+	/**ambiguous_origin*/
+	AnalyzeWildcard: boolean;
+	/**ambiguous_origin*/
+	DefaultOperator: DefaultOperator;
+	/**ambiguous_origin*/
+	Df: string;
+	/**ambiguous_origin*/
+	Lenient: boolean;
+	/**ambiguous_origin*/
+	LowercaseExpandedTerms: boolean;
+	/**ambiguous_origin*/
+	Rewrite: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:Search.Validate */
 interface ValidateQueryResponse extends Response {
 	valid: boolean;
 	_shards: ShardsMetaData;
 	explanations: ValidationExplanation[];
 }
+/**namespace:Search.Validate */
 interface ValidationExplanation {
 	index: string;
 	valid: boolean;
 	error: string;
 	explanation: string;
 }
+/**namespace:DefaultLanguageConstruct */
 interface CatHelpRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:DefaultLanguageConstruct */
 interface CatNodeattrsRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Local: boolean;
-	/** mapped on body but might only proxy to request querystring */ MasterTimeout: Time;
-	/** mapped on body but might only proxy to request querystring */ H: string[];
-	/** mapped on body but might only proxy to request querystring */ Help: boolean;
-	/** mapped on body but might only proxy to request querystring */ V: boolean;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Local: boolean;
+	/**ambiguous_origin*/
+	MasterTimeout: Time;
+	/**ambiguous_origin*/
+	H: string[];
+	/**ambiguous_origin*/
+	Help: boolean;
+	/**ambiguous_origin*/
+	V: boolean;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:DefaultLanguageConstruct */
 interface IndicesShardStoresRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Status: string[];
-	/** mapped on body but might only proxy to request querystring */ IgnoreUnavailable: boolean;
-	/** mapped on body but might only proxy to request querystring */ AllowNoIndices: boolean;
-	/** mapped on body but might only proxy to request querystring */ ExpandWildcards: ExpandWildcards;
-	/** mapped on body but might only proxy to request querystring */ OperationThreading: string;
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Status: string[];
+	/**ambiguous_origin*/
+	IgnoreUnavailable: boolean;
+	/**ambiguous_origin*/
+	AllowNoIndices: boolean;
+	/**ambiguous_origin*/
+	ExpandWildcards: ExpandWildcards;
+	/**ambiguous_origin*/
+	OperationThreading: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:DefaultLanguageConstruct */
 interface RenderSearchTemplateRequest extends Request {
-	/** mapped on body but might only proxy to request querystring */ Source: string;
-	/** mapped on body but might only proxy to request querystring */ FilterPath: string;
+	/**ambiguous_origin*/
+	Source: string;
+	/**ambiguous_origin*/
+	FilterPath: string;
 }
+/**namespace:DefaultLanguageConstruct */
 enum HttpMethod {
 	GET = 0,
 	POST = 1,
@@ -3707,48 +5098,40 @@ enum HttpMethod {
 	DELETE = 3,
 	HEAD = 4
 }
+/**namespace:DefaultLanguageConstruct */
 enum Bytes {
 	b = 0,
 	k = 1,
 	m = 2,
 	g = 3
 }
+/**namespace:DefaultLanguageConstruct */
 enum Level {
 	cluster = 0,
 	indices = 1,
 	shards = 2
 }
+/**namespace:DefaultLanguageConstruct */
 enum WaitForStatus {
 	green = 0,
 	yellow = 1,
 	red = 2
 }
-enum AuditEvent {
-	SniffOnStartup = 0,
-	SniffOnFail = 1,
-	SniffOnStaleCluster = 2,
-	SniffSuccess = 3,
-	SniffFailure = 4,
-	PingSuccess = 5,
-	PingFailure = 6,
-	Resurrection = 7,
-	AllNodesDead = 8,
-	BadResponse = 9,
-	HealthyResponse = 10,
-	MaxTimeoutReached = 11,
-	MaxRetriesReached = 12
-}
+/**namespace:DefaultLanguageConstruct */
+/**namespace:DefaultLanguageConstruct */
 enum ExpandWildcards {
 	open = 0,
 	closed = 1,
 	none = 2,
 	all = 3
 }
+/**namespace:DefaultLanguageConstruct */
 enum SuggestMode {
 	missing = 0,
 	popular = 1,
 	always = 2
 }
+/**namespace:DefaultLanguageConstruct */
 enum SearchType {
 	query_then_fetch = 0,
 	query_and_fetch = 1,
@@ -3757,53 +5140,50 @@ enum SearchType {
 	count = 4,
 	scan = 5
 }
+/**namespace:DefaultLanguageConstruct */
 enum ThreadType {
 	cpu = 0,
 	wait = 1,
 	block = 2
 }
+/**namespace:DefaultLanguageConstruct */
 enum VersionType {
 	internal = 0,
 	external = 1,
 	external_gte = 2,
 	force = 3
 }
+/**namespace:DefaultLanguageConstruct */
 enum Consistency {
 	one = 0,
 	quorum = 1,
 	all = 2
 }
+/**namespace:DefaultLanguageConstruct */
 enum DefaultOperator {
 	AND = 0,
 	OR = 1
 }
+/**namespace:DefaultLanguageConstruct */
 enum OpType {
 	index = 0,
 	create = 1
 }
+/**namespace:DefaultLanguageConstruct */
 enum Format {
 	detailed = 0,
 	text = 1
 }
+/**namespace:DefaultLanguageConstruct */
 enum PercolateFormat {
 	ids = 0
 }
-interface IApiCallDetails {
-	Success: boolean;
-	OriginalException: Exception;
-	ServerError: ServerError;
-	HttpMethod: HttpMethod;
-	Uri: Uri;
-	HttpStatusCode: integer;
-	ResponseBodyInBytes: short[];
-	RequestBodyInBytes: short[];
-	AuditTrail: Audit[];
-	DebugInformation: string;
-}
+/**namespace:DefaultLanguageConstruct */
 interface ServerError {
 	Error: Error;
 	Status: integer;
 }
+/**namespace:DefaultLanguageConstruct */
 interface Error {
 	Index: string;
 	Reason: string;
@@ -3812,6 +5192,7 @@ interface Error {
 	Type: string;
 	RootCause: RootCause[];
 }
+/**namespace:DefaultLanguageConstruct */
 interface RootCause {
 	Index: string;
 	Reason: string;
@@ -3819,44 +5200,32 @@ interface RootCause {
 	ResourceType: string;
 	Type: string;
 }
-interface Audit {
-	Event: AuditEvent;
-	Started: Date;
-	Ended: Date;
-	Node: Node;
-	Path: string;
-	Exception: Exception;
-}
-interface Node {
-	Uri: Uri;
-	IsResurrected: boolean;
-	HoldsData: boolean;
-	MasterEligible: boolean;
-	Id: string;
-	Name: string;
-	FailedAttempts: integer;
-	DeadUntil: Date;
-	IsAlive: boolean;
-}
+/**namespace:DefaultLanguageConstruct */
 interface Map<TKey, TValue> {
 	Key: TKey;
 	Value: TValue;
 }
+/**namespace:CommonAbstractions.Infer.Types */
 interface AllTypesMarker {
 }
+/**namespace:CommonAbstractions.Infer.Types */
 interface ManyTypes {
 	Types: TypeName[];
 }
+/**namespace:CommonAbstractions.Infer.Indices */
 interface AllIndicesMarker {
 }
+/**namespace:CommonAbstractions.Infer.Indices */
 interface ManyIndices {
 	Indices: IndexName[];
 }
-interface ExtendedMemoryStats extends MemoryStats {
+/**namespace:Cluster.NodesStats */
+interface ExtendedMemoryStats extends OsMemoryStats {
 	free_percent: integer;
 	used_percent: integer;
 }
-interface MemoryStats {
+/**namespace:Cluster.NodesStats */
+interface OsMemoryStats {
 	total: string;
 	total_in_bytes: long;
 	free: string;
@@ -3864,6 +5233,7 @@ interface MemoryStats {
 	used: string;
 	used_in_bytes: long;
 }
+/**namespace:Cluster.NodesStats */
 interface CPUStats {
 	percent: integer;
 	sys: string;
@@ -3873,18 +5243,48 @@ interface CPUStats {
 	total: string;
 	total_in_millis: long;
 }
+/**namespace:Cluster.NodesStats */
+interface ProcessMemoryStats {
+	resident: string;
+	resident_in_bytes: long;
+	share: string;
+	share_in_bytes: long;
+	total_virtual: string;
+	total_virtual_in_bytes: long;
+}
+/**namespace:Cluster.NodesStats */
+interface MemoryStats {
+	heap_used: string;
+	heap_used_in_bytes: long;
+	heap_used_percent: long;
+	heap_committed: string;
+	heap_committed_in_bytes: long;
+	heap_max: string;
+	heap_max_in_bytes: long;
+	non_heap_used: string;
+	non_heap_used_in_bytes: long;
+	non_heap_committed: string;
+	non_heap_committed_in_bytes: long;
+	/**custom_serialization */
+	pools: Map<string, JVMPool>;
+}
+/**namespace:Cluster.NodesStats */
 interface ThreadStats {
 	count: long;
 	peak_count: long;
 }
+/**namespace:Cluster.NodesStats */
 interface GarbageCollectionStats {
-	/** type has a custom json converter defined */ collectors: Map<string, GarbageCollectionGenerationStats>[];
+	/**custom_serialization */
+	collectors: Map<string, GarbageCollectionGenerationStats>;
 }
+/**namespace:Cluster.NodesStats */
 interface GarbageCollectionGenerationStats {
 	collection_count: long;
 	collection_time: string;
 	collection_time_in_millis: long;
 }
+/**namespace:Cluster.NodesStats */
 interface NodeBufferPool {
 	count: long;
 	used: string;
@@ -3892,11 +5292,13 @@ interface NodeBufferPool {
 	total_capacity: string;
 	total_capacity_in_bytes: long;
 }
+/**namespace:Cluster.NodesStats */
 interface JvmClassesStats {
 	current_loaded_count: long;
 	total_loaded_count: long;
 	total_unloaded_count: long;
 }
+/**namespace:Cluster.NodesStats */
 interface JVMPool {
 	used: string;
 	used_in_bytes: long;
@@ -3907,6 +5309,7 @@ interface JVMPool {
 	peak_max: string;
 	peak_max_in_bytes: long;
 }
+/**namespace:Cluster.NodesStats */
 interface TotalFileSystemStats {
 	available: string;
 	available_in_bytes: long;
@@ -3915,6 +5318,7 @@ interface TotalFileSystemStats {
 	total: string;
 	total_in_bytes: long;
 }
+/**namespace:Cluster.NodesStats */
 interface DataPathStats {
 	path: string;
 	mount: string;

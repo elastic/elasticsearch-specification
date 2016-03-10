@@ -1,32 +1,35 @@
-class Type
-{
-  name: string;
-  nullable: boolean;
-}
+module Domain {
+  export class Type
+  {
+    name: string;
+    nullable: boolean;
+  }
 
-class TypeDeclaration
-{
-  name: string;
-}
+  export class TypeDeclaration
+  {
+    name: string;
+  }
 
-class Interface extends TypeDeclaration
-{
-  properties: InterfaceProperty[];
-}
+  export class Interface extends TypeDeclaration
+  {
+    properties: InterfaceProperty[];
+  }
 
-class InterfaceProperty
-{
-  name: string;
-  type: Type;
-}
+  export class InterfaceProperty
+  {
+    name: string;
+    type: Type;
+  }
 
-class Enum extends TypeDeclaration
-{
-  members: EnumMember[];
-  flags: boolean;
-}
+  export class Enum extends TypeDeclaration
+  {
+    members: EnumMember[];
+    flags: boolean;
+  }
 
-class EnumMember
-{
-  name: string;
+  export class EnumMember
+  {
+    name: string;
+  }
 }
+export = Domain;

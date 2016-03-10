@@ -1,0 +1,9 @@
+
+/**namespace:Cluster.ClusterPendingTasks */
+interface PendingTask {
+	insert_order: integer;
+	priority: string;
+	source: string;
+	time_in_queue_millis: integer;
+	time_in_queue: string;
+}

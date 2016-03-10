@@ -1,0 +1,4 @@
+
+/**namespace:DefaultLanguageConstruct */
+interface Request {
+}
