@@ -1,4 +1,4 @@
 
 /**namespace:Indices.StatusManagement.SyncedFlush */
-interface SyncedFlushResponse extends Response {
+interface synced_flush_response extends response {
 }

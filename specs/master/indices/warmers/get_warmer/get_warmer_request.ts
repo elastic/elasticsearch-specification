@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Warmers.GetWarmer */
-interface GetWarmerRequest extends Request {
+interface get_warmer_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

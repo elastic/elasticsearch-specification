@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface RecoveryBytes {
+interface recovery_bytes {
 	total: long;
 	reused: long;
 	recovered: long;

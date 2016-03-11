@@ -1,6 +1,6 @@
 
 /**namespace:Document.Single.TermVectors */
-interface TermVectorsResponse extends Response {
+interface term_vectors_response extends response {
 	found: boolean;
-	term_vectors: Map<string, TermVector>;
+	term_vectors: map<string, term_vector>[];
 }

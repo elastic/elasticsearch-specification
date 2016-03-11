@@ -1,4 +1,4 @@
 
 /**namespace:Indices.IndexSettings.IndexTemplates.PutIndexTemplate */
-interface PutIndexTemplateResponse extends Response {
+interface put_index_template_response extends response {
 }

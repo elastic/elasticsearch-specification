@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterState */
-interface RoutingTableState {
+interface routing_table_state {
 	/**custom_serialization */
-	indices: Map<string, IndexRoutingTable>;
+	indices: map<string, index_routing_table>[];
 }

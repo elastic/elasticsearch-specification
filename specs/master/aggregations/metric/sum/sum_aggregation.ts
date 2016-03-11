@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.Sum */
-interface SumAggregation {
+interface sum_aggregation {
 }

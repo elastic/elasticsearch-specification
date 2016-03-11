@@ -1,10 +1,10 @@
 
 /**namespace:Search.SearchTemplate */
-interface SearchTemplateRequest extends Request {
+interface search_template_request extends request {
 	template: string;
 	file: string;
 	id: string;
-	params: Map<string, any>;
+	params: map<string, any>[];
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/
@@ -16,7 +16,7 @@ interface SearchTemplateRequest extends Request {
 	/**ambiguous_origin*/
 	Routing: string[];
 	/**ambiguous_origin*/
-	Scroll: Time;
+	Scroll: time;
 	/**ambiguous_origin*/
 	SearchType: SearchType;
 	/**ambiguous_origin*/

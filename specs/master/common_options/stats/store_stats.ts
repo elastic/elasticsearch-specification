@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface StoreStats {
+interface store_stats {
 	size: string;
 	size_in_bytes: double;
 	throttle_time: string;

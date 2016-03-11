@@ -1,8 +1,8 @@
 
 /**namespace:Search.Search.Highlighting */
 /**custom_serialization*/
-interface HighlightField {
-	Field: Field;
+interface highlight_field {
+	Field: field;
 	pre_tags: string[];
 	post_tags: string[];
 	fragment_size: integer;
@@ -17,6 +17,6 @@ interface HighlightField {
 	boundary_chars: string;
 	type: HighlighterType;
 	force_source: boolean;
-	matched_fields: Field[];
-	highlight_query: QueryContainer;
+	matched_fields: field[];
+	highlight_query: query_container;
 }

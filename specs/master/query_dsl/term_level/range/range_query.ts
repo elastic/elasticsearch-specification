@@ -1,5 +1,5 @@
 
 /**namespace:QueryDsl.TermLevel.Range */
 /**custom_serialization*/
-interface RangeQuery {
+interface range_query {
 }

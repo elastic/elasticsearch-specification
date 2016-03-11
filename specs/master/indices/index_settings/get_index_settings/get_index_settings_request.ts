@@ -1,6 +1,6 @@
 
 /**namespace:Indices.IndexSettings.GetIndexSettings */
-interface GetIndexSettingsRequest extends Request {
+interface get_index_settings_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

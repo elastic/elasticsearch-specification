@@ -1,11 +1,11 @@
 
 /**namespace:Aggregations.Bucket.Histogram */
 /**custom_serialization*/
-interface HistogramOrder {
+interface histogram_order {
 	Key: string;
 	Order: SortOrder;
-	CountAscending: HistogramOrder;
-	CountDescending: HistogramOrder;
-	KeyAscending: HistogramOrder;
-	KeyDescending: HistogramOrder;
+	CountAscending: histogram_order;
+	CountDescending: histogram_order;
+	KeyAscending: histogram_order;
+	KeyDescending: histogram_order;
 }

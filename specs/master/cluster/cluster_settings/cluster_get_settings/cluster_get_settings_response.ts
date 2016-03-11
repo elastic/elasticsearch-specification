@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterSettings.ClusterGetSettings */
-interface ClusterGetSettingsResponse extends Response {
-	persistent: Map<string, any>;
-	transient: Map<string, any>;
+interface cluster_get_settings_response extends response {
+	persistent: map<string, any>[];
+	transient: map<string, any>[];
 }

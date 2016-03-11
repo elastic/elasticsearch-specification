@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Bucket.Filter */
-interface FilterAggregation {
-	filter: QueryContainer;
+interface filter_aggregation {
+	filter: query_container;
 }

@@ -1,20 +1,20 @@
 
 /**namespace:Search.Search */
-interface SearchResponse<T> extends Response {
-	_shards: ShardsMetaData;
-	hits: HitsMetaData<T>;
+interface search_response<t> extends response {
+	_shards: shards_meta_data;
+	hits: hits_meta_data<t>;
 	/**custom_serialization */
-	aggregations: Map<string, Aggregate>;
-	Aggs: AggregationsHelper;
-	suggest: Map<string, Suggest[]>;
+	aggregations: map<string, aggregate>[];
+	Aggs: aggregations_helper;
+	suggest: map<string, suggest[]>[];
 	took: integer;
 	timed_out: boolean;
 	terminated_early: boolean;
 	_scroll_id: string;
 	Total: long;
 	MaxScore: double;
-	Documents: T[];
-	Hits: Hit<T>[];
-	Fields: Map<string, any>;
-	Highlights: Map<string, Map<string, HighlightHit>>;
+	Documents: t[];
+	Hits: hit<t>[];
+	Fields: map<string, any>[][];
+	Highlights: map<string, map<string, highlight_hit>[]>[];
 }

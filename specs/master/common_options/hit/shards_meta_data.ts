@@ -1,8 +1,8 @@
 
 /**namespace:CommonOptions.Hit */
-interface ShardsMetaData {
+interface shards_meta_data {
 	Total: integer;
 	Successful: integer;
 	Failed: integer;
-	failures: ShardFailure[];
+	failures: shard_failure[];
 }

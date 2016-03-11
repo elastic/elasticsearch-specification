@@ -1,8 +1,8 @@
 
 /**namespace:QueryDsl.Geo.HashCell */
 /**custom_serialization*/
-interface GeoHashCellQuery {
-	Location: GeoLocation;
-	precision: Union<integer, Distance>;
+interface geo_hash_cell_query {
+	Location: geo_location;
+	precision: union<integer, distance>;
 	neighbors: boolean;
 }

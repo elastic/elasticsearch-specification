@@ -1,7 +1,7 @@
 
 /**namespace:Indices.Monitoring.IndicesSegments */
-interface SegmentsResponse extends Response {
-	_shards: ShardsMetaData;
+interface segments_response extends response {
+	_shards: shards_meta_data;
 	/**custom_serialization */
-	indices: Map<string, IndexSegment>;
+	indices: map<string, index_segment>[];
 }

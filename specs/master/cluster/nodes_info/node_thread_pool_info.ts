@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodeThreadPoolInfo {
+interface node_thread_pool_info {
 	type: string;
 	min: integer;
 	max: integer;

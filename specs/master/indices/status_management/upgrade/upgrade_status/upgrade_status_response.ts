@@ -1,9 +1,9 @@
 
 /**namespace:Indices.StatusManagement.Upgrade.UpgradeStatus */
 /**custom_serialization*/
-interface UpgradeStatusResponse extends Response {
+interface upgrade_status_response extends response {
 	/**custom_serialization */
-	Upgrades: Map<string, UpgradeStatus>;
+	Upgrades: map<string, upgrade_status>[];
 	SizeInBytes: long;
 	SizeToUpgradeInBytes: string;
 	SizeToUpgradeAncientInBytes: string;

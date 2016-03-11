@@ -1,10 +1,10 @@
 
 /**namespace:Indices.AliasManagement.DeleteAlias */
-interface DeleteAliasRequest extends Request {
+interface delete_alias_request extends request {
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

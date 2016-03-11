@@ -1,7 +1,7 @@
 
 /**namespace:Document.Single.Index */
-interface IndexRequest<TDocument> extends Request {
-	Document: TDocument;
+interface index_request<t_document> extends request {
+	Document: t_document;
 	/**ambiguous_origin*/
 	Consistency: Consistency;
 	/**ambiguous_origin*/
@@ -13,11 +13,11 @@ interface IndexRequest<TDocument> extends Request {
 	/**ambiguous_origin*/
 	Routing: string;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	Timestamp: Time;
+	Timestamp: time;
 	/**ambiguous_origin*/
-	Ttl: Time;
+	Ttl: time;
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

@@ -1,6 +1,6 @@
 
 /**namespace:Search.Percolator.MultiPercolate */
-interface MultiPercolateResponse extends Response {
+interface multi_percolate_response extends response {
 	IsValid: boolean;
-	Responses: PercolateResponse[];
+	Responses: percolate_response[];
 }

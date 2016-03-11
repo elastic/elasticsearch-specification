@@ -1,5 +1,5 @@
 
 /**namespace:Modules.Scripting.GetScript */
-interface GetScriptResponse extends Response {
+interface get_script_response extends response {
 	script: string;
 }

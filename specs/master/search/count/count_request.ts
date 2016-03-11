@@ -1,8 +1,8 @@
 
 /**namespace:Search.Count */
 /**custom_serialization*/
-interface CountRequest extends Request {
-	query: QueryContainer;
+interface count_request extends request {
+	query: query_container;
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

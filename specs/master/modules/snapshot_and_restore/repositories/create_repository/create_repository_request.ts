@@ -1,12 +1,12 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.CreateRepository */
 /**custom_serialization*/
-interface CreateRepositoryRequest extends Request {
-	Repository: SnapshotRepository;
+interface create_repository_request extends request {
+	Repository: snapshot_repository;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Verify: boolean;
 	/**ambiguous_origin*/

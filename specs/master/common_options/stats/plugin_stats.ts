@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface PluginStats {
+interface plugin_stats {
 	name: string;
 	version: string;
 	description: string;

@@ -1,8 +1,8 @@
 
 /**namespace:Search.SearchExists */
 /**custom_serialization*/
-interface SearchExistsRequest extends Request {
-	query: QueryContainer;
+interface search_exists_request extends request {
+	query: query_container;
 	QueryString: string;
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;

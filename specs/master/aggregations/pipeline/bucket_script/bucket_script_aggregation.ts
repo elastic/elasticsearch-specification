@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Pipeline.BucketScript */
-interface BucketScriptAggregation {
-	script: Script;
+interface bucket_script_aggregation {
+	script: script;
 }

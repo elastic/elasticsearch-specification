@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface IndexingStats {
+interface indexing_stats {
 	delete_current: long;
 	delete_time: string;
 	delete_time_in_millis: long;
@@ -14,5 +14,5 @@ interface IndexingStats {
 	throttle_time: string;
 	throttle_time_in_millis: long;
 	/**custom_serialization */
-	types: Map<string, IndexingStats>;
+	types: map<string, indexing_stats>[];
 }

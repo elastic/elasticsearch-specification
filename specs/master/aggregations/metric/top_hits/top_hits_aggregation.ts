@@ -1,14 +1,14 @@
 
 /**namespace:Aggregations.Metric.TopHits */
-interface TopHitsAggregation {
+interface top_hits_aggregation {
 	from: integer;
 	size: integer;
-	sort: Sort[];
-	_source: SourceFilter;
-	highlight: Highlight;
+	sort: sort[];
+	_source: source_filter;
+	highlight: highlight;
 	explain: boolean;
 	/**custom_serialization */
-	script_fields: Map<string, ScriptField>;
-	fielddata_fields: Field[];
+	script_fields: map<string, script_field>[];
+	fielddata_fields: field[];
 	version: boolean;
 }

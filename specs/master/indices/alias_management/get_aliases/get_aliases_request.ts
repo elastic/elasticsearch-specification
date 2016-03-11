@@ -1,9 +1,9 @@
 
 /**namespace:Indices.AliasManagement.GetAliases */
-interface GetAliasesRequest extends Request {
+interface get_aliases_request extends request {
 	Alias: string;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/

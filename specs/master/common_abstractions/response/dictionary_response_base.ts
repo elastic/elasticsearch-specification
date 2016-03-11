@@ -1,4 +1,4 @@
 
 /**namespace:CommonAbstractions.Response */
-interface DictionaryResponseBase<TKey, TValue> extends Response {
+interface dictionary_response_base<t_key, t_value> extends response {
 }

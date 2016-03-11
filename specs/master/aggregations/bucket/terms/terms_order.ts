@@ -1,11 +1,11 @@
 
 /**namespace:Aggregations.Bucket.Terms */
 /**custom_serialization*/
-interface TermsOrder {
+interface terms_order {
 	Key: string;
 	Order: SortOrder;
-	CountAscending: TermsOrder;
-	CountDescending: TermsOrder;
-	TermAscending: TermsOrder;
-	TermDescending: TermsOrder;
+	CountAscending: terms_order;
+	CountDescending: terms_order;
+	TermAscending: terms_order;
+	TermDescending: terms_order;
 }

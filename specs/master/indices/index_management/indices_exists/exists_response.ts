@@ -1,5 +1,5 @@
 
 /**namespace:Indices.IndexManagement.IndicesExists */
-interface ExistsResponse extends Response {
+interface exists_response extends response {
 	Exists: boolean;
 }

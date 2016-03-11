@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface QueryCacheStats {
+interface query_cache_stats {
 	memory_size: string;
 	memory_size_in_bytes: long;
 	total_count: long;

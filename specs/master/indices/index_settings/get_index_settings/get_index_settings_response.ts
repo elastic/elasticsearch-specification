@@ -1,6 +1,6 @@
 
 /**namespace:Indices.IndexSettings.GetIndexSettings */
 /**custom_serialization*/
-interface GetIndexSettingsResponse extends Response {
-	Indices: Map<string, IndexState>;
+interface get_index_settings_response extends response {
+	Indices: map<string, index_state>[];
 }

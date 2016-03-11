@@ -1,6 +1,6 @@
 
 /**namespace:Document.Single.Exists */
-interface DocumentExistsRequest extends Request {
+interface document_exists_request extends request {
 	/**ambiguous_origin*/
 	Parent: string;
 	/**ambiguous_origin*/

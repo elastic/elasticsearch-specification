@@ -1,6 +1,6 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface CatHelpRequest extends Request {
+interface cat_help_request extends request {
 	/**ambiguous_origin*/
 	Help: boolean;
 	/**ambiguous_origin*/

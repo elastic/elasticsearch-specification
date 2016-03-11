@@ -1,6 +1,6 @@
 
 /**namespace:Search.Count */
-interface CountResponse extends Response {
+interface count_response extends response {
 	count: long;
-	_shards: ShardsMetaData;
+	_shards: shards_meta_data;
 }

@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Pipeline.SerialDifferencing */
-interface SerialDifferencingAggregation {
+interface serial_differencing_aggregation {
 	lag: integer;
 }

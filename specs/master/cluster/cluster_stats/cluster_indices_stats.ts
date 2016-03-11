@@ -1,13 +1,13 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterIndicesStats {
-	completion: CompletionStats;
+interface cluster_indices_stats {
+	completion: completion_stats;
 	count: long;
-	docs: DocStats;
-	fielddata: FielddataStats;
-	percolate: PercolateStats;
-	query_cache: QueryCacheStats;
-	segments: SegmentsStats;
-	shards: ClusterIndicesShardsStats;
-	store: StoreStats;
+	docs: doc_stats;
+	fielddata: fielddata_stats;
+	percolate: percolate_stats;
+	query_cache: query_cache_stats;
+	segments: segments_stats;
+	shards: cluster_indices_shards_stats;
+	store: store_stats;
 }

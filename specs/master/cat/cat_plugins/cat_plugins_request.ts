@@ -1,10 +1,10 @@
 
 /**namespace:Cat.CatPlugins */
-interface CatPluginsRequest extends Request {
+interface cat_plugins_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	H: string[];
 	/**ambiguous_origin*/

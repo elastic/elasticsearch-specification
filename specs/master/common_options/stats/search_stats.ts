@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface SearchStats {
+interface search_stats {
 	fetch_current: long;
 	fetch_time: string;
 	fetch_time_in_millis: long;

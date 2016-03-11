@@ -1,5 +1,5 @@
 
 /**namespace:Indices.AliasManagement.GetAliases */
-interface GetAliasesResponse extends Response {
-	Indices: Map<string, AliasDefinition[]>;
+interface get_aliases_response extends response {
+	Indices: map<string, alias_definition[]>[];
 }

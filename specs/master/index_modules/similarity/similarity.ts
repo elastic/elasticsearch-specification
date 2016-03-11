@@ -1,5 +1,5 @@
 
 /**namespace:IndexModules.Similarity */
-interface Similarity {
+interface similarity {
 	type: string;
 }

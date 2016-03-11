@@ -1,6 +1,6 @@
 
 /**namespace:Mapping.MetaFields.Parent */
 /**custom_serialization*/
-interface ParentField {
-	type: TypeName;
+interface parent_field {
+	type: type_name;
 }

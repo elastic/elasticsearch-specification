@@ -1,7 +1,7 @@
 
 /**namespace:CommonAbstractions.Infer.Indices */
 /**custom_serialization*/
-interface Indices extends Union<AllIndicesMarker, ManyIndices> {
-	All: Indices;
-	AllIndices: Indices;
+interface indices extends union<all_indices_marker, many_indices> {
+	All: indices;
+	AllIndices: indices;
 }

@@ -1,4 +1,4 @@
 
 /**namespace:Indices.IndexSettings.UpdateIndexSettings */
-interface UpdateIndexSettingsResponse extends Response {
+interface update_index_settings_response extends response {
 }

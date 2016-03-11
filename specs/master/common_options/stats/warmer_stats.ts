@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface WarmerStats {
+interface warmer_stats {
 	current: long;
 	total: long;
 	total_time: string;

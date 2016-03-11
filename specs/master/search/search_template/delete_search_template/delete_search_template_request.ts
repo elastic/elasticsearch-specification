@@ -1,6 +1,6 @@
 
 /**namespace:Search.SearchTemplate.DeleteSearchTemplate */
-interface DeleteSearchTemplateRequest extends Request {
+interface delete_search_template_request extends request {
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

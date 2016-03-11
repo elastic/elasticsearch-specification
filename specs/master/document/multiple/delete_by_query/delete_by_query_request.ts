@@ -1,7 +1,7 @@
 
 /**namespace:Document.Multiple.DeleteByQuery */
-interface DeleteByQueryRequest extends Request {
-	query: QueryContainer;
+interface delete_by_query_request extends request {
+	query: query_container;
 	/**ambiguous_origin*/
 	Analyzer: string;
 	/**ambiguous_origin*/
@@ -21,7 +21,7 @@ interface DeleteByQueryRequest extends Request {
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	FilterPath: string;
 }

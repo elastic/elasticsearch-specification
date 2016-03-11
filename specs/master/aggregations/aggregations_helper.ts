@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations */
-interface AggregationsHelper {
-	Aggregations: Map<string, Aggregate>;
+interface aggregations_helper {
+	Aggregations: map<string, aggregate>[];
 }

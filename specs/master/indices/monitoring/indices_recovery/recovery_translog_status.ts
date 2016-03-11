@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface RecoveryTranslogStatus {
+interface recovery_translog_status {
 	recovered: long;
 	total: long;
 	percent: string;

@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterOperatingSystemMemory {
+interface cluster_operating_system_memory {
 	total: string;
 	total_in_bytes: long;
 }

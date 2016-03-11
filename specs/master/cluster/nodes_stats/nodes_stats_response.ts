@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.NodesStats */
-interface NodesStatsResponse extends Response {
+interface nodes_stats_response extends response {
 	cluster_name: string;
 	/**custom_serialization */
-	nodes: Map<string, NodeStats>;
+	nodes: map<string, node_stats>[];
 }

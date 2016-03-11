@@ -1,13 +1,13 @@
 
 /**namespace:QueryDsl.Specialized.MoreLikeThis.Like */
 /**custom_serialization*/
-interface LikeDocument {
-	_index: IndexName;
-	_type: TypeName;
-	_id: Id;
-	fields: Field[];
+interface like_document {
+	_index: index_name;
+	_type: type_name;
+	_id: id;
+	fields: field[];
 	_routing: string;
 	doc: any;
-	per_field_analyzer: Map<Field, string>;
+	per_field_analyzer: map<field, string>[];
 	CanBeFlattened: boolean;
 }

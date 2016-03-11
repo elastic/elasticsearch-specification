@@ -1,12 +1,12 @@
 
 /**namespace:Search.Percolator.MultiPercolate */
-interface PercolateOperation {
+interface percolate_operation {
 	MultiPercolateName: string;
 	size: integer;
 	track_scores: boolean;
-	sort: Sort[];
-	highlight: Highlight;
-	query: QueryContainer;
-	filter: QueryContainer;
-	aggs: Map<string, AggregationContainer>;
+	sort: sort[];
+	highlight: highlight;
+	query: query_container;
+	filter: query_container;
+	aggs: map<string, aggregation_container>[];
 }

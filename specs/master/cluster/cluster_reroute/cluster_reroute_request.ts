@@ -1,8 +1,8 @@
 
 /**namespace:Cluster.ClusterReroute */
 /**custom_serialization*/
-interface ClusterRerouteRequest extends Request {
-	commands: ClusterRerouteCommand[];
+interface cluster_reroute_request extends request {
+	commands: cluster_reroute_command[];
 	/**ambiguous_origin*/
 	DryRun: boolean;
 	/**ambiguous_origin*/
@@ -10,9 +10,9 @@ interface ClusterRerouteRequest extends Request {
 	/**ambiguous_origin*/
 	Metric: string[];
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

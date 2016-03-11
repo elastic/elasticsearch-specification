@@ -1,9 +1,9 @@
 
 /**namespace:QueryDsl.Joining.HasParent */
 /**custom_serialization*/
-interface HasParentQuery {
-	type: TypeName;
+interface has_parent_query {
+	type: type_name;
 	score_mode: ParentScoreMode;
-	query: QueryContainer;
-	inner_hits: InnerHits;
+	query: query_container;
+	inner_hits: inner_hits;
 }

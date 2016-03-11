@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.ClusterReroute */
-interface ClusterRerouteExplanation {
+interface cluster_reroute_explanation {
 	command: string;
-	parameters: ClusterRerouteParameters;
-	decisions: ClusterRerouteDecision[];
+	parameters: cluster_reroute_parameters;
+	decisions: cluster_reroute_decision[];
 }

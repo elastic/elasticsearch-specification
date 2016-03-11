@@ -1,4 +1,4 @@
 
 /**namespace:Indices.StatusManagement.Flush */
-interface FlushResponse extends Response {
+interface flush_response extends response {
 }

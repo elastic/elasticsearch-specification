@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterHealth */
-interface IndexHealthStats {
+interface index_health_stats {
 	status: string;
 	number_of_shards: integer;
 	number_of_replicas: integer;
@@ -10,5 +10,5 @@ interface IndexHealthStats {
 	initializing_shards: integer;
 	unassigned_shards: integer;
 	/**custom_serialization */
-	shards: Map<string, ShardHealthStats>;
+	shards: map<string, shard_health_stats>[];
 }

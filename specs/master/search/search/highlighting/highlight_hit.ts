@@ -1,6 +1,6 @@
 
 /**namespace:Search.Search.Highlighting */
-interface HighlightHit {
+interface highlight_hit {
 	DocumentId: string;
 	Field: string;
 	Highlights: string[];

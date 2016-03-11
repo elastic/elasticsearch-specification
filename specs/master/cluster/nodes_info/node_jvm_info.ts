@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodeJvmInfo {
+interface node_jvm_info {
 	pid: integer;
 	version: string;
 	vm_name: string;
@@ -9,5 +9,5 @@ interface NodeJvmInfo {
 	memory_pools: string[];
 	gc_collectors: string[];
 	start_time_in_millis: long;
-	mem: NodeInfoJVMMemory;
+	mem: node_info_j_v_m_memory;
 }

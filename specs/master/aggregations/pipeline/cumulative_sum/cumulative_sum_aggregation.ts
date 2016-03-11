@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Pipeline.CumulativeSum */
-interface CumulativeSumAggregation {
+interface cumulative_sum_aggregation {
 }

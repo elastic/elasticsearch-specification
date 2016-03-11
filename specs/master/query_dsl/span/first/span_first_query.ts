@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.Span.First */
 /**custom_serialization*/
-interface SpanFirstQuery {
-	match: SpanQuery;
+interface span_first_query {
+	match: span_query;
 	end: integer;
 }

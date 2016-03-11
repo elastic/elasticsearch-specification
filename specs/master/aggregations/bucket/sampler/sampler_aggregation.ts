@@ -1,9 +1,9 @@
 
 /**namespace:Aggregations.Bucket.Sampler */
-interface SamplerAggregation {
+interface sampler_aggregation {
 	shard_size: integer;
-	field: Field;
+	field: field;
 	max_docs_per_value: integer;
-	script: Script;
+	script: script;
 	execution_hint: SamplerAggregationExecutionHint;
 }

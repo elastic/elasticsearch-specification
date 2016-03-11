@@ -1,11 +1,11 @@
 
 /**namespace:Cluster.ClusterReroute */
-interface ClusterRerouteState {
+interface cluster_reroute_state {
 	version: integer;
 	master_node: string;
-	blocks: BlockState;
+	blocks: block_state;
 	/**custom_serialization */
-	nodes: Map<string, NodeState>;
-	routing_table: RoutingTableState;
-	routing_nodes: RoutingNodesState;
+	nodes: map<string, node_state>[];
+	routing_table: routing_table_state;
+	routing_nodes: routing_nodes_state;
 }

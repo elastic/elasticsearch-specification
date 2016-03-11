@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.TermLevel.Wildcard */
 /**custom_serialization*/
-interface WildcardQuery {
+interface wildcard_query {
 	/**custom_serialization */
 	rewrite: RewriteMultiTerm;
 }

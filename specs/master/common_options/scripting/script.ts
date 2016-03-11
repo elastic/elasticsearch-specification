@@ -1,8 +1,8 @@
 
 /**namespace:CommonOptions.Scripting */
 /**custom_serialization*/
-interface Script {
+interface script {
 	/**custom_serialization */
-	params: Map<string, any>;
+	params: map<string, any>[];
 	lang: string;
 }

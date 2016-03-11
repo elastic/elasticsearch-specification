@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.ExtendedStats */
-interface ExtendedStatsAggregation {
+interface extended_stats_aggregation {
 }

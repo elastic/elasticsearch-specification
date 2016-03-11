@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface CompletionStats {
+interface completion_stats {
 	size: string;
 	size_in_bytes: long;
 }

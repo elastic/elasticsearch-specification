@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Pipeline.MaxBucket */
-interface MaxBucketAggregation {
+interface max_bucket_aggregation {
 }

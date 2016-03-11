@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodeInfoOSCPU {
+interface node_info_o_s_c_p_u {
 	vendor: string;
 	model: string;
 	mhz: integer;

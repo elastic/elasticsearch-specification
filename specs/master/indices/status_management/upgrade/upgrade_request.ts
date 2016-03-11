@@ -1,6 +1,6 @@
 
 /**namespace:Indices.StatusManagement.Upgrade */
-interface UpgradeRequest extends Request {
+interface upgrade_request extends request {
 	/**ambiguous_origin*/
 	AllowNoIndices: boolean;
 	/**ambiguous_origin*/

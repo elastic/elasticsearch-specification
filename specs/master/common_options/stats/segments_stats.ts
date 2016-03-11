@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface SegmentsStats {
+interface segments_stats {
 	count: long;
 	doc_values_memory: string;
 	doc_values_memory_in_bytes: long;

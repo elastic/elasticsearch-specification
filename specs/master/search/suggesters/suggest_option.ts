@@ -1,7 +1,7 @@
 
 /**namespace:Search.Suggesters */
 /**custom_serialization*/
-interface SuggestOption {
+interface suggest_option {
 	freq: integer;
 	score: double;
 	text: string;

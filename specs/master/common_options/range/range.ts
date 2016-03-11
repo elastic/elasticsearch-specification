@@ -1,7 +1,7 @@
 
 /**namespace:CommonOptions.Range */
 /**custom_serialization*/
-interface Range {
+interface range {
 	from: double;
 	to: double;
 	key: string;

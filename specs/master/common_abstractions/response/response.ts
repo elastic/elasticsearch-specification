@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Response */
-interface Response {
-	ServerError: ServerError;
+interface response {
+	ServerError: server_error;
 }

@@ -1,12 +1,12 @@
 
 /**namespace:Mapping.Types */
-interface Property {
-	Name: PropertyName;
-	type: TypeName;
+interface property {
+	Name: property_name;
+	type: type_name;
 	index_name: string;
 	store: boolean;
 	doc_values: boolean;
-	fields: Map<PropertyName, Property>;
+	fields: map<property_name, property>[];
 	similarity: SimilarityOption;
-	copy_to: Field[];
+	copy_to: field[];
 }

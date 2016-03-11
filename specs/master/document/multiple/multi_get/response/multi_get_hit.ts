@@ -1,7 +1,7 @@
 
 /**namespace:Document.Multiple.MultiGet.Response */
-interface MultiGetHit<T> {
-	Source: T;
+interface multi_get_hit<t> {
+	Source: t;
 	Index: string;
 	Found: boolean;
 	Type: string;

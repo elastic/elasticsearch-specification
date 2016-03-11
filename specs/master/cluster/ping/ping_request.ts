@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.Ping */
-interface PingRequest extends Request {
+interface ping_request extends request {
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

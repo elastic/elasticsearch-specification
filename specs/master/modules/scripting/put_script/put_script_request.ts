@@ -1,6 +1,6 @@
 
 /**namespace:Modules.Scripting.PutScript */
-interface PutScriptRequest extends Request {
+interface put_script_request extends request {
 	script: string;
 	/**ambiguous_origin*/
 	OpType: OpType;

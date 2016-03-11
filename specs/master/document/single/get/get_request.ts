@@ -1,8 +1,8 @@
 
 /**namespace:Document.Single.Get */
-interface GetRequest extends Request {
+interface get_request extends request {
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Parent: string;
 	/**ambiguous_origin*/
@@ -16,9 +16,9 @@ interface GetRequest extends Request {
 	/**ambiguous_origin*/
 	SourceEnabled: string[];
 	/**ambiguous_origin*/
-	SourceExclude: Field[];
+	SourceExclude: field[];
 	/**ambiguous_origin*/
-	SourceInclude: Field[];
+	SourceInclude: field[];
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

@@ -1,8 +1,8 @@
 
 /**namespace:Search.FieldStats */
-interface FieldStatsRequest extends Request {
-	fields: Field[];
-	index_constraints: Map<Field, IndexConstraint>;
+interface field_stats_request extends request {
+	fields: field[];
+	index_constraints: map<field, index_constraint>[];
 	/**ambiguous_origin*/
 	Level: Level;
 	/**ambiguous_origin*/

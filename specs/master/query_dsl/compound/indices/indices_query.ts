@@ -1,10 +1,10 @@
 
 /**namespace:QueryDsl.Compound.Indices */
 /**custom_serialization*/
-interface IndicesQuery {
+interface indices_query {
 	/**custom_serialization */
-	indices: Indices;
-	query: QueryContainer;
+	indices: indices;
+	query: query_container;
 	/**custom_serialization */
-	no_match_query: QueryContainer;
+	no_match_query: query_container;
 }

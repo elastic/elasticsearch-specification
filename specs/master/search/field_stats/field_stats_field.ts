@@ -1,6 +1,6 @@
 
 /**namespace:Search.FieldStats */
-interface FieldStatsField {
+interface field_stats_field {
 	max_doc: long;
 	doc_count: long;
 	density: long;

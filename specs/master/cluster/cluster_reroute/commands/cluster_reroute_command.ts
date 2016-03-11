@@ -1,5 +1,5 @@
 
 /**namespace:Cluster.ClusterReroute.Commands */
-interface ClusterRerouteCommand {
+interface cluster_reroute_command {
 	Name: string;
 }

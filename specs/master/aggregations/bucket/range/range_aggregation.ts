@@ -1,7 +1,7 @@
 
 /**namespace:Aggregations.Bucket.Range */
-interface RangeAggregation {
-	field: Field;
-	script: Script;
-	ranges: Range[];
+interface range_aggregation {
+	field: field;
+	script: script;
+	ranges: range[];
 }

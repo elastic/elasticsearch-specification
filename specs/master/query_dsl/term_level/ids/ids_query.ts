@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.TermLevel.Ids */
 /**custom_serialization*/
-interface IdsQuery {
-	types: Types;
-	values: Id[];
+interface ids_query {
+	types: types;
+	values: id[];
 }

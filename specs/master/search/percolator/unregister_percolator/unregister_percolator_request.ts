@@ -1,4 +1,4 @@
 
 /**namespace:Search.Percolator.UnregisterPercolator */
-interface UnregisterPercolatorRequest extends Request {
+interface unregister_percolator_request extends request {
 }

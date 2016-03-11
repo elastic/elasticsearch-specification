@@ -1,12 +1,12 @@
 
 /**namespace:Cluster.NodesStats */
-interface NodesStatsRequest extends Request {
+interface nodes_stats_request extends request {
 	/**ambiguous_origin*/
-	CompletionFields: Field[];
+	CompletionFields: field[];
 	/**ambiguous_origin*/
-	FielddataFields: Field[];
+	FielddataFields: field[];
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Groups: boolean;
 	/**ambiguous_origin*/
@@ -16,7 +16,7 @@ interface NodesStatsRequest extends Request {
 	/**ambiguous_origin*/
 	Types: string[];
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

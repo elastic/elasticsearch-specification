@@ -1,5 +1,5 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot.GetSapshot */
-interface GetSnapshotResponse extends Response {
-	snapshots: Snapshot[];
+interface get_snapshot_response extends response {
+	snapshots: snapshot[];
 }

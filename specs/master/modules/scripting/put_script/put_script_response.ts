@@ -1,4 +1,4 @@
 
 /**namespace:Modules.Scripting.PutScript */
-interface PutScriptResponse extends Response {
+interface put_script_response extends response {
 }

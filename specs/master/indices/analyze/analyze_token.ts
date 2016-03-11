@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Analyze */
-interface AnalyzeToken {
+interface analyze_token {
 	token: string;
 	type: string;
 	start_offset: integer;

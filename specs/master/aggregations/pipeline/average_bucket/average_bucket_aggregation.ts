@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Pipeline.AverageBucket */
-interface AverageBucketAggregation {
+interface average_bucket_aggregation {
 }

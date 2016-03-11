@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Pipeline.MovingAverage.Models */
-interface MovingAverageModel {
+interface moving_average_model {
 	Name: string;
 }

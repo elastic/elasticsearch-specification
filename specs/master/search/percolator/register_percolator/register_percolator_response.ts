@@ -1,6 +1,6 @@
 
 /**namespace:Search.Percolator.RegisterPercolator */
-interface RegisterPercolatorResponse extends Response {
+interface register_percolator_response extends response {
 	created: boolean;
 	_index: string;
 	_type: string;

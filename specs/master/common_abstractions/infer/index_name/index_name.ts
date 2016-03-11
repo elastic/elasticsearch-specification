@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Infer.IndexName */
-interface IndexName {
+interface index_name {
 	Name: string;
 }

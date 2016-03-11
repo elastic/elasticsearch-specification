@@ -1,6 +1,6 @@
 
 /**namespace:Indices.StatusManagement.Upgrade.UpgradeStatus */
-interface UpgradeStatusRequest extends Request {
+interface upgrade_status_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

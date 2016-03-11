@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Span.Or */
 /**custom_serialization*/
-interface SpanOrQuery {
-	clauses: SpanQuery[];
+interface span_or_query {
+	clauses: span_query[];
 }

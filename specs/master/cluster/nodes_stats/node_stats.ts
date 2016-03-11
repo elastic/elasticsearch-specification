@@ -1,21 +1,21 @@
 
 /**namespace:Cluster.NodesStats */
-interface NodeStats {
+interface node_stats {
 	timestamp: long;
 	name: string;
 	transport_address: string;
 	host: string;
 	ip: string[];
-	indices: IndexStats;
-	os: OperatingSystemStats;
-	process: ProcessStats;
-	script: ScriptStats;
-	jvm: NodeJvmStats;
+	indices: index_stats;
+	os: operating_system_stats;
+	process: process_stats;
+	script: script_stats;
+	jvm: node_jvm_stats;
 	/**custom_serialization */
-	thread_pool: Map<string, ThreadCountStats>;
+	thread_pool: map<string, thread_count_stats>[];
 	/**custom_serialization */
-	breakers: Map<string, BreakerStats>;
-	fs: FileSystemStats;
-	transport: TransportStats;
-	http: HttpStats;
+	breakers: map<string, breaker_stats>[];
+	fs: file_system_stats;
+	transport: transport_stats;
+	http: http_stats;
 }

@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.NodesStats */
-interface FileSystemStats {
+interface file_system_stats {
 	timestamp: long;
-	total: TotalFileSystemStats;
-	data: DataPathStats[];
+	total: total_file_system_stats;
+	data: data_path_stats[];
 }

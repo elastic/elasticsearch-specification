@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Pipeline.Derivative */
-interface DerivativeAggregation {
+interface derivative_aggregation {
 }

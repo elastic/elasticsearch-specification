@@ -1,5 +1,5 @@
 
 /**namespace:Indices.MappingManagement.GetFieldMapping */
-interface TypeFieldMappings {
-	mappings: Map<string, Map<string, FieldMapping>>;
+interface type_field_mappings {
+	mappings: map<string, map<string, field_mapping>[]>[];
 }

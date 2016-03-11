@@ -1,5 +1,5 @@
 
 /**namespace:Search.Percolator.Percolate */
-interface PercolateResponse extends Response {
-	matches: PercolatorMatch[];
+interface percolate_response extends response {
+	matches: percolator_match[];
 }

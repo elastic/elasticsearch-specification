@@ -1,4 +1,4 @@
 
 /**namespace:Indices.MappingManagement.PutMapping */
-interface PutMappingResponse extends Response {
+interface put_mapping_response extends response {
 }

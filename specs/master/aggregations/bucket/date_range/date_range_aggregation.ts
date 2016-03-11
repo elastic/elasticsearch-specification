@@ -1,7 +1,7 @@
 
 /**namespace:Aggregations.Bucket.DateRange */
-interface DateRangeAggregation {
-	field: Field;
+interface date_range_aggregation {
+	field: field;
 	format: string;
-	ranges: DateRangeExpression[];
+	ranges: date_range_expression[];
 }

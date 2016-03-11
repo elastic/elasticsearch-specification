@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.Percentiles.Methods */
-interface PercentilesMethod {
+interface percentiles_method {
 }

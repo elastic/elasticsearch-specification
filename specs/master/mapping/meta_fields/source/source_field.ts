@@ -1,7 +1,7 @@
 
 /**namespace:Mapping.MetaFields.Source */
 /**custom_serialization*/
-interface SourceField {
+interface source_field {
 	enabled: boolean;
 	compress: boolean;
 	compress_threshold: string;

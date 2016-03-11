@@ -1,5 +1,5 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface RecoveryStatus {
-	shards: ShardRecovery[];
+interface recovery_status {
+	shards: shard_recovery[];
 }

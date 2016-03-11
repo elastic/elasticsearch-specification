@@ -1,11 +1,11 @@
 
 /**namespace:QueryDsl.Specialized.Script */
 /**custom_serialization*/
-interface ScriptQuery {
+interface script_query {
 	inline: string;
-	id: Id;
+	id: id;
 	file: string;
 	/**custom_serialization */
-	params: Map<string, any>;
+	params: map<string, any>[];
 	lang: string;
 }

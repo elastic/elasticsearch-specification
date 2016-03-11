@@ -1,12 +1,12 @@
 
 /**namespace:QueryDsl.Compound.Bool */
 /**custom_serialization*/
-interface BoolQuery {
-	must: QueryContainer[];
-	must_not: QueryContainer[];
-	should: QueryContainer[];
-	filter: QueryContainer[];
-	minimum_should_match: MinimumShouldMatch;
+interface bool_query {
+	must: query_container[];
+	must_not: query_container[];
+	should: query_container[];
+	filter: query_container[];
+	minimum_should_match: minimum_should_match;
 	disable_coord: boolean;
 	Locked: boolean;
 }

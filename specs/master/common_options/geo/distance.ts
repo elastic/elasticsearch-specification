@@ -1,7 +1,7 @@
 
 /**namespace:CommonOptions.Geo */
 /**custom_serialization*/
-interface Distance {
+interface distance {
 	Precision: double;
 	Unit: DistanceUnit;
 }

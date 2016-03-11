@@ -1,7 +1,7 @@
 
 /**namespace:Search.SearchTemplate.PutSearchTemplate */
 /**custom_serialization*/
-interface PutSearchTemplateRequest extends Request {
+interface put_search_template_request extends request {
 	template: string;
 	/**ambiguous_origin*/
 	OpType: OpType;

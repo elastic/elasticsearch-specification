@@ -1,6 +1,6 @@
 
 /**namespace:Search.SearchShards */
-interface SearchShardsRequest extends Request {
+interface search_shards_request extends request {
 	/**ambiguous_origin*/
 	Preference: string;
 	/**ambiguous_origin*/

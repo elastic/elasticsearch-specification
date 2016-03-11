@@ -1,10 +1,10 @@
 
 /**namespace:IndexModules.IndexSettings */
 /**custom_serialization*/
-interface IndexState {
-	settings: Map<string, any>;
-	aliases: Map<IndexName, Alias>;
-	warmers: Map<TypeName, Warmer>;
-	mappings: Map<TypeName, TypeMapping>;
-	similarity: Map<string, Similarity>;
+interface index_state {
+	settings: map<string, any>[];
+	aliases: map<index_name, alias>[];
+	warmers: map<type_name, warmer>[];
+	mappings: map<type_name, type_mapping>[];
+	similarity: map<string, similarity>[];
 }

@@ -1,6 +1,6 @@
 
 /**namespace:Indices.StatusManagement.Flush */
-interface FlushRequest extends Request {
+interface flush_request extends request {
 	/**ambiguous_origin*/
 	Force: boolean;
 	/**ambiguous_origin*/

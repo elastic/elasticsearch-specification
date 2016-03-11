@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface SuggestStats {
+interface suggest_stats {
 	current: long;
 	total: long;
 	total_time: string;

@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Pipeline.BucketSelector */
-interface BucketSelectorAggregation {
-	script: Script;
+interface bucket_selector_aggregation {
+	script: script;
 }

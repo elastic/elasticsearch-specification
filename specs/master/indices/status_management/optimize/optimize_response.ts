@@ -1,4 +1,4 @@
 
 /**namespace:Indices.StatusManagement.Optimize */
-interface OptimizeResponse extends Response {
+interface optimize_response extends response {
 }

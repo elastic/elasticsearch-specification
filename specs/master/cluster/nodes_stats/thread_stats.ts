@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface ThreadStats {
+interface thread_stats {
 	count: long;
 	peak_count: long;
 }

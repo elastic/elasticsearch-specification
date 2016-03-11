@@ -1,5 +1,5 @@
 
 /**namespace:Document.Multiple.MultiTermVectors */
-interface MultiTermVectorsResponse extends Response {
-	docs: TermVectorsResponse[];
+interface multi_term_vectors_response extends response {
+	docs: term_vectors_response[];
 }

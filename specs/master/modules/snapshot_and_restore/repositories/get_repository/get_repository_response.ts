@@ -1,6 +1,6 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.GetRepository */
 /**custom_serialization*/
-interface GetRepositoryResponse extends Response {
-	Repositories: Map<string, SnapshotRepository>;
+interface get_repository_response extends response {
+	Repositories: map<string, snapshot_repository>[];
 }

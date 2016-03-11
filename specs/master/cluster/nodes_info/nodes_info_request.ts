@@ -1,12 +1,12 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodesInfoRequest extends Request {
+interface nodes_info_request extends request {
 	/**ambiguous_origin*/
 	FlatSettings: boolean;
 	/**ambiguous_origin*/
 	Human: boolean;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

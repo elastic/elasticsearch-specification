@@ -1,6 +1,6 @@
 
 /**namespace:Aggregations.Metric.PercentileRanks */
-interface PercentileRanksAggregation {
+interface percentile_ranks_aggregation {
 	Values: double[];
-	Method: PercentilesMethod;
+	Method: percentiles_method;
 }

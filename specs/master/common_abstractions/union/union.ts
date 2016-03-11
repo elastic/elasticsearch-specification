@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Union */
 /**custom_serialization*/
-interface Union<TFirst, TSecond> {
+interface union<t_first, t_second> {
 }

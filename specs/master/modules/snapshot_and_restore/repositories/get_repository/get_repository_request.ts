@@ -1,8 +1,8 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.GetRepository */
-interface GetRepositoryRequest extends Request {
+interface get_repository_request extends request {
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/

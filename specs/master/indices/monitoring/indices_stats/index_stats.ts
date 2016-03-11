@@ -1,22 +1,22 @@
 
 /**namespace:Indices.Monitoring.IndicesStats */
-interface IndexStats {
-	docs: DocStats;
-	store: StoreStats;
-	indexing: IndexingStats;
-	get: GetStats;
-	search: SearchStats;
-	merges: MergesStats;
-	refresh: RefreshStats;
-	flush: FlushStats;
-	warmer: WarmerStats;
-	query_cache: QueryCacheStats;
-	fielddata: FielddataStats;
-	percolate: PercolateStats;
-	completion: CompletionStats;
-	segments: SegmentsStats;
-	translog: TranslogStats;
-	suggest: SuggestStats;
-	request_cache: RequestCacheStats;
-	recovery: RecoveryStats;
+interface index_stats {
+	docs: doc_stats;
+	store: store_stats;
+	indexing: indexing_stats;
+	get: get_stats;
+	search: search_stats;
+	merges: merges_stats;
+	refresh: refresh_stats;
+	flush: flush_stats;
+	warmer: warmer_stats;
+	query_cache: query_cache_stats;
+	fielddata: fielddata_stats;
+	percolate: percolate_stats;
+	completion: completion_stats;
+	segments: segments_stats;
+	translog: translog_stats;
+	suggest: suggest_stats;
+	request_cache: request_cache_stats;
+	recovery: recovery_stats;
 }

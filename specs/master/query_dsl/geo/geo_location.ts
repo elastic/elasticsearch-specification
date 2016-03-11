@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Geo */
-interface GeoLocation {
+interface geo_location {
 	lat: double;
 	lon: double;
 }

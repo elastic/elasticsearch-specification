@@ -1,9 +1,9 @@
 
 /**namespace:Cluster.ClusterState */
-interface MetadataState {
+interface metadata_state {
 	/**custom_serialization */
-	templates: Map<string, TemplateMapping>;
+	templates: map<string, template_mapping>[];
 	cluster_uuid: string;
 	/**custom_serialization */
-	indices: Map<string, MetadataIndexState>;
+	indices: map<string, metadata_index_state>[];
 }

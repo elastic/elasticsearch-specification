@@ -1,5 +1,5 @@
 
 /**namespace:Cluster.ClusterState */
-interface AllocationId {
+interface allocation_id {
 	id: string;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterPendingTasks */
-interface PendingTask {
+interface pending_task {
 	insert_order: integer;
 	priority: string;
 	source: string;

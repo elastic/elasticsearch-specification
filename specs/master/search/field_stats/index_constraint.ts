@@ -1,6 +1,6 @@
 
 /**namespace:Search.FieldStats */
-interface IndexConstraint {
-	min_value: IndexConstraintComparison;
-	max_value: IndexConstraintComparison;
+interface index_constraint {
+	min_value: index_constraint_comparison;
+	max_value: index_constraint_comparison;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodeInfoHttp {
+interface node_info_http {
 	bound_address: string[];
 	publish_address: string;
 	max_content_length: string;

@@ -1,6 +1,6 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot.Snapshot */
-interface SnapshotResponse extends Response {
+interface snapshot_response extends response {
 	accepted: boolean;
-	snapshot: Snapshot;
+	snapshot: snapshot;
 }

@@ -1,30 +1,30 @@
 
 /**namespace:Indices.MappingManagement.PutMapping */
 /**custom_serialization*/
-interface PutMappingRequest extends Request {
-	AllField: AllField;
+interface put_mapping_request extends request {
+	AllField: all_field;
 	DateDetection: boolean;
 	DynamicDateFormats: string[];
-	DynamicTemplates: Map<string, DynamicTemplate>;
+	DynamicTemplates: map<string, dynamic_template>[];
 	Dynamic: DynamicMapping;
 	Analyzer: string;
 	SearchAnalyzer: string;
-	FieldNamesField: FieldNamesField;
-	IndexField: IndexField;
-	Meta: Map<string, any>;
+	FieldNamesField: field_names_field;
+	IndexField: index_field;
+	Meta: map<string, any>[];
 	NumericDetection: boolean;
-	ParentField: ParentField;
-	Properties: Map<PropertyName, Property>;
-	RoutingField: RoutingField;
-	SizeField: SizeField;
-	SourceField: SourceField;
-	TimestampField: TimestampField;
-	Transform: MappingTransform[];
-	TtlField: TtlField;
+	ParentField: parent_field;
+	Properties: map<property_name, property>[];
+	RoutingField: routing_field;
+	SizeField: size_field;
+	SourceField: source_field;
+	TimestampField: timestamp_field;
+	Transform: mapping_transform[];
+	TtlField: ttl_field;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

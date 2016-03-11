@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterState */
-interface IndexRoutingTable {
+interface index_routing_table {
 	/**custom_serialization */
-	shards: Map<string, RoutingShard[]>;
+	shards: map<string, routing_shard[]>[];
 }

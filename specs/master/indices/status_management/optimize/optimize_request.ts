@@ -1,6 +1,6 @@
 
 /**namespace:Indices.StatusManagement.Optimize */
-interface OptimizeRequest extends Request {
+interface optimize_request extends request {
 	/**ambiguous_origin*/
 	Flush: boolean;
 	/**ambiguous_origin*/

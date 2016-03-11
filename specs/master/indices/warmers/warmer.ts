@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Warmers */
-interface Warmer {
-	types: TypeName[];
-	source: SearchRequest;
+interface warmer {
+	types: type_name[];
+	source: search_request;
 }

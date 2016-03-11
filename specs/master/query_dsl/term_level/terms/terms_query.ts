@@ -1,9 +1,9 @@
 
 /**namespace:QueryDsl.TermLevel.Terms */
 /**custom_serialization*/
-interface TermsQuery {
-	MinimumShouldMatch: MinimumShouldMatch;
+interface terms_query {
+	MinimumShouldMatch: minimum_should_match;
 	DisableCoord: boolean;
 	Terms: any[];
-	TermsLookup: FieldLookup;
+	TermsLookup: field_lookup;
 }

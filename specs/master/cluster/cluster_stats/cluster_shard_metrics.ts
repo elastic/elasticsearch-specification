@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterShardMetrics {
+interface cluster_shard_metrics {
 	min: double;
 	max: double;
 	avg: double;

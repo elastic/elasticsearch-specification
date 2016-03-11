@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Bucket.Children */
-interface ChildrenAggregation {
-	type: TypeName;
+interface children_aggregation {
+	type: type_name;
 }

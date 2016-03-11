@@ -1,7 +1,7 @@
 
 /**namespace:Indices.MappingManagement.GetMapping */
-interface GetMappingResponse extends Response {
+interface get_mapping_response extends response {
 	IsValid: boolean;
-	Mappings: Map<string, TypeMapping[]>;
-	Mapping: TypeMapping;
+	Mappings: map<string, type_mapping[]>[];
+	Mapping: type_mapping;
 }

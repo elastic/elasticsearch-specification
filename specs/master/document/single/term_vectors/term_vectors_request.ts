@@ -1,8 +1,8 @@
 
 /**namespace:Document.Single.TermVectors */
-interface TermVectorsRequest<TDocument> extends Request {
-	doc: TDocument;
-	per_field_analyzer: Map<Field, string>;
+interface term_vectors_request<t_document> extends request {
+	doc: t_document;
+	per_field_analyzer: map<field, string>[];
 	/**ambiguous_origin*/
 	TermStatistics: boolean;
 	/**ambiguous_origin*/
@@ -10,7 +10,7 @@ interface TermVectorsRequest<TDocument> extends Request {
 	/**ambiguous_origin*/
 	Dfs: boolean;
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Offsets: boolean;
 	/**ambiguous_origin*/

@@ -1,7 +1,7 @@
 
 /**namespace:Search.Explain */
-interface ExplanationDetail {
+interface explanation_detail {
 	value: float;
 	description: string;
-	details: ExplanationDetail[];
+	details: explanation_detail[];
 }

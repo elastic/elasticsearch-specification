@@ -1,4 +1,4 @@
 
 /**namespace:Indices.AliasManagement.Alias */
-interface BulkAliasResponse extends Response {
+interface bulk_alias_response extends response {
 }

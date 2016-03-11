@@ -1,4 +1,4 @@
 
 /**namespace:CommonAbstractions.Infer.Types */
-interface AllTypesMarker {
+interface all_types_marker {
 }

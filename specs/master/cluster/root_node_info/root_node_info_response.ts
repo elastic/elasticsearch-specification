@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.RootNodeInfo */
-interface RootNodeInfoResponse extends Response {
+interface root_node_info_response extends response {
 	name: string;
 	tagline: string;
-	version: ElasticsearchVersionInfo;
+	version: elasticsearch_version_info;
 }

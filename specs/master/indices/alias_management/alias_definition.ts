@@ -1,8 +1,8 @@
 
 /**namespace:Indices.AliasManagement */
-interface AliasDefinition {
+interface alias_definition {
 	Name: string;
-	filter: QueryContainer;
+	filter: query_container;
 	routing: string;
 	index_routing: string;
 	search_routing: string;

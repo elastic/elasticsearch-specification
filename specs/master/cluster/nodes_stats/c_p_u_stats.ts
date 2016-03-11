@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface CPUStats {
+interface c_p_u_stats {
 	percent: integer;
 	sys: string;
 	sys_in_millis: long;

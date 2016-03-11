@@ -1,6 +1,6 @@
 
 /**namespace:Indices.IndexManagement.TypesExists */
-interface TypeExistsRequest extends Request {
+interface type_exists_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

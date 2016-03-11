@@ -1,17 +1,17 @@
 
 /**namespace:Document.Single.Update */
-interface UpdateRequest<TDocument, TPartialDocument> extends Request {
+interface update_request<t_document, t_partial_document> extends request {
 	/**ambiguous_origin*/
 	script: string;
 	script_file: string;
 	lang: string;
 	/**custom_serialization */
-	params: Map<string, any>;
-	upsert: TDocument;
+	params: map<string, any>[];
+	upsert: t_document;
 	doc_as_upsert: boolean;
-	doc: TPartialDocument;
+	doc: t_partial_document;
 	detect_noop: boolean;
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Consistency: Consistency;
 	/**ambiguous_origin*/
@@ -30,11 +30,11 @@ interface UpdateRequest<TDocument, TPartialDocument> extends Request {
 	/**ambiguous_origin*/
 	ScriptedUpsert: boolean;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	Timestamp: Time;
+	Timestamp: time;
 	/**ambiguous_origin*/
-	Ttl: Time;
+	Ttl: time;
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

@@ -1,7 +1,7 @@
 
 /**namespace:Indices.Warmers.GetWarmer */
 /**custom_serialization*/
-interface GetWarmerResponse extends Response {
+interface get_warmer_response extends response {
 	/**custom_serialization */
-	Indices: Map<string, Map<TypeName, Warmer>>;
+	Indices: map<string, map<type_name, warmer>[]>[];
 }

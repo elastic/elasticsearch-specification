@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface NodeBufferPool {
+interface node_buffer_pool {
 	count: long;
 	used: string;
 	used_in_bytes: long;

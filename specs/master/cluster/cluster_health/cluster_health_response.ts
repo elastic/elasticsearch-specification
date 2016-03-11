@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterHealth */
-interface ClusterHealthResponse extends Response {
+interface cluster_health_response extends response {
 	cluster_name: string;
 	status: string;
 	timed_out: boolean;
@@ -13,5 +13,5 @@ interface ClusterHealthResponse extends Response {
 	unassigned_shards: integer;
 	number_of_pending_tasks: integer;
 	/**custom_serialization */
-	indices: Map<string, IndexHealthStats>;
+	indices: map<string, index_health_stats>[];
 }

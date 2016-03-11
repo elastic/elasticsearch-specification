@@ -1,4 +1,4 @@
 
 /**namespace:Search.Scroll.ClearScroll */
-interface ClearScrollResponse extends Response {
+interface clear_scroll_response extends response {
 }

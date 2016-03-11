@@ -1,9 +1,9 @@
 
 /**namespace:Cluster.ClusterState */
-interface MetadataIndexState {
+interface metadata_index_state {
 	state: string;
 	/**custom_serialization */
 	settings: string[];
-	mappings: Map<TypeName, TypeMapping>;
+	mappings: map<type_name, type_mapping>[];
 	aliases: string[];
 }

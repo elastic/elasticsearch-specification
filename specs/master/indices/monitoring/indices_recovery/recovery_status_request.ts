@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface RecoveryStatusRequest extends Request {
+interface recovery_status_request extends request {
 	/**ambiguous_origin*/
 	Detailed: boolean;
 	/**ambiguous_origin*/

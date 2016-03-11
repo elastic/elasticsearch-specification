@@ -1,11 +1,11 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterNodesStats {
-	count: ClusterNodeCount;
+interface cluster_nodes_stats {
+	count: cluster_node_count;
 	versions: string[];
-	os: ClusterOperatingSystemStats;
-	process: ClusterProcess;
-	jvm: ClusterJvm;
-	fs: ClusterFileSystem;
-	plugins: PluginStats[];
+	os: cluster_operating_system_stats;
+	process: cluster_process;
+	jvm: cluster_jvm;
+	fs: cluster_file_system;
+	plugins: plugin_stats[];
 }

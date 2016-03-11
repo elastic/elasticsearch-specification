@@ -1,13 +1,13 @@
 
 /**namespace:Cluster.NodesStats */
-interface NodeJvmStats {
+interface node_jvm_stats {
 	timestamp: long;
 	uptime: string;
 	uptime_in_millis: long;
-	mem: MemoryStats;
-	threads: ThreadStats;
-	gc: GarbageCollectionStats;
+	mem: memory_stats;
+	threads: thread_stats;
+	gc: garbage_collection_stats;
 	/**custom_serialization */
-	buffer_pools: Map<string, NodeBufferPool>;
-	classes: JvmClassesStats;
+	buffer_pools: map<string, node_buffer_pool>[];
+	classes: jvm_classes_stats;
 }

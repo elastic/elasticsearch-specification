@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface HttpStats {
+interface http_stats {
 	current_open: integer;
 	total_opened: long;
 }

@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
 /**custom_serialization*/
-interface PercentageScoreHeuristic {
+interface percentage_score_heuristic {
 }

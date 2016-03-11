@@ -1,9 +1,9 @@
 
 /**namespace:Search.Suggesters.Suggest */
 /**custom_serialization*/
-interface SuggestRequest extends Request {
+interface suggest_request extends request {
 	GlobalText: string;
-	Suggest: Map<string, SuggestBucket>;
+	Suggest: map<string, suggest_bucket>[];
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

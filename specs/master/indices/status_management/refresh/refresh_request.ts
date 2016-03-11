@@ -1,6 +1,6 @@
 
 /**namespace:Indices.StatusManagement.Refresh */
-interface RefreshRequest extends Request {
+interface refresh_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

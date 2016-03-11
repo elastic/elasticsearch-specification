@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.Compound.Dismax */
 /**custom_serialization*/
-interface DisMaxQuery {
+interface dis_max_query {
 	tie_breaker: double;
-	queries: QueryContainer[];
+	queries: query_container[];
 }

@@ -1,9 +1,9 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface RecoveryFiles {
+interface recovery_files {
 	total: long;
 	reused: long;
 	recovered: long;
 	percent: string;
-	details: RecoveryFileDetails[];
+	details: recovery_file_details[];
 }

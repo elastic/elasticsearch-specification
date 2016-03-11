@@ -1,10 +1,10 @@
 
 /**namespace:Indices.StatusManagement.ClearCache */
-interface ClearCacheRequest extends Request {
+interface clear_cache_request extends request {
 	/**ambiguous_origin*/
 	FieldData: boolean;
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Query: boolean;
 	/**ambiguous_origin*/

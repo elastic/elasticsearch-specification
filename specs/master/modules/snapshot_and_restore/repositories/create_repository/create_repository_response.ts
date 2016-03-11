@@ -1,4 +1,4 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.CreateRepository */
-interface CreateRepositoryResponse extends Response {
+interface create_repository_response extends response {
 }

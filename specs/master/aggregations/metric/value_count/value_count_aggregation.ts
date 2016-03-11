@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.ValueCount */
-interface ValueCountAggregation {
+interface value_count_aggregation {
 }

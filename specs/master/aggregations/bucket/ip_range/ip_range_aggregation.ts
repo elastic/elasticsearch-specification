@@ -1,6 +1,6 @@
 
 /**namespace:Aggregations.Bucket.IpRange */
-interface IpRangeAggregation {
-	field: Field;
-	ranges: IpRange[];
+interface ip_range_aggregation {
+	field: field;
+	ranges: ip_range[];
 }

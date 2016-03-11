@@ -1,5 +1,5 @@
 
 /**namespace:Indices.Analyze */
-interface AnalyzeResponse extends Response {
-	tokens: AnalyzeToken[];
+interface analyze_response extends response {
+	tokens: analyze_token[];
 }

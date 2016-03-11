@@ -1,14 +1,14 @@
 
 /**namespace:Cluster.ClusterHealth */
-interface ClusterHealthRequest extends Request {
+interface cluster_health_request extends request {
 	/**ambiguous_origin*/
 	Level: Level;
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	WaitForActiveShards: long;
 	/**ambiguous_origin*/

@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface GarbageCollectionStats {
+interface garbage_collection_stats {
 	/**custom_serialization */
-	collectors: Map<string, GarbageCollectionGenerationStats>;
+	collectors: map<string, garbage_collection_generation_stats>[];
 }

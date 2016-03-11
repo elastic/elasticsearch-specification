@@ -1,6 +1,6 @@
 
 /**namespace:Aggregations.Bucket.Histogram */
-interface ExtendedBounds<T> {
-	min: T;
-	max: T;
+interface extended_bounds<t> {
+	min: t;
+	max: t;
 }

@@ -1,8 +1,8 @@
 
 /**namespace:Search.Scroll.Scroll */
-interface ScrollRequest extends Request {
-	CovariantTypes: Types;
-	scroll: Time;
+interface scroll_request extends request {
+	CovariantTypes: types;
+	scroll: time;
 	scroll_id: string;
 	/**ambiguous_origin*/
 	Source: string;

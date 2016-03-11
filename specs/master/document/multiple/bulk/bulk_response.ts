@@ -1,9 +1,9 @@
 
 /**namespace:Document.Multiple.Bulk */
-interface BulkResponse extends Response {
+interface bulk_response extends response {
 	IsValid: boolean;
 	took: integer;
 	errors: boolean;
-	items: BulkResponseItemBase[];
-	ItemsWithErrors: BulkResponseItemBase[];
+	items: bulk_response_item_base[];
+	ItemsWithErrors: bulk_response_item_base[];
 }

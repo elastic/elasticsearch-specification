@@ -1,6 +1,6 @@
 
 /**namespace:Modules.Scripting.GetScript */
-interface GetScriptRequest extends Request {
+interface get_script_request extends request {
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

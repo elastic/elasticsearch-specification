@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.Span.Within */
 /**custom_serialization*/
-interface SpanWithinQuery {
-	little: SpanQuery;
-	big: SpanQuery;
+interface span_within_query {
+	little: span_query;
+	big: span_query;
 }

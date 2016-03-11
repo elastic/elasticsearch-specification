@@ -1,6 +1,6 @@
 
 /**namespace:Indices.IndexManagement.GetIndex */
-interface GetIndexRequest extends Request {
+interface get_index_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/

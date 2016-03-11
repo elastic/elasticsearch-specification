@@ -1,6 +1,6 @@
 
 /**namespace:Document.Single.Source */
-interface SourceRequest extends Request {
+interface source_request extends request {
 	/**ambiguous_origin*/
 	Parent: string;
 	/**ambiguous_origin*/
@@ -14,9 +14,9 @@ interface SourceRequest extends Request {
 	/**ambiguous_origin*/
 	SourceEnabled: string[];
 	/**ambiguous_origin*/
-	SourceExclude: Field[];
+	SourceExclude: field[];
 	/**ambiguous_origin*/
-	SourceInclude: Field[];
+	SourceInclude: field[];
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

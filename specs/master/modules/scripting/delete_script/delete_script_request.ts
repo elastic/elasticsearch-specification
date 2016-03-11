@@ -1,6 +1,6 @@
 
 /**namespace:Modules.Scripting.DeleteScript */
-interface DeleteScriptRequest extends Request {
+interface delete_script_request extends request {
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

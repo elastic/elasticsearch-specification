@@ -1,16 +1,16 @@
 
 /**namespace:Aggregations.Bucket.DateHistogram */
-interface DateHistogramAggregation {
-	field: Field;
-	script: Script;
-	params: Map<string, any>;
-	interval: Union<DateInterval, Time>;
+interface date_histogram_aggregation {
+	field: field;
+	script: script;
+	params: map<string, any>[];
+	interval: union<DateInterval, time>;
 	format: string;
 	min_doc_count: integer;
 	time_zone: string;
 	factor: integer;
 	offset: string;
-	order: HistogramOrder;
-	extended_bounds: ExtendedBounds<Date>;
+	order: histogram_order;
+	extended_bounds: extended_bounds<Date>;
 	missing: Date;
 }

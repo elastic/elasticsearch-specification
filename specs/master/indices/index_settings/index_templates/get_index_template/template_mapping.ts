@@ -1,10 +1,10 @@
 
 /**namespace:Indices.IndexSettings.IndexTemplates.GetIndexTemplate */
-interface TemplateMapping {
+interface template_mapping {
 	template: string;
 	order: integer;
-	settings: Map<string, any>;
-	mappings: Map<TypeName, TypeMapping>;
-	warmers: Map<TypeName, Warmer>;
-	aliases: Map<IndexName, Alias>;
+	settings: map<string, any>[];
+	mappings: map<type_name, type_mapping>[];
+	warmers: map<type_name, warmer>[];
+	aliases: map<index_name, alias>[];
 }

@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations */
-interface Aggregate {
-	Meta: Map<string, any>;
+interface aggregate {
+	Meta: map<string, any>[];
 }

@@ -1,10 +1,10 @@
 
 /**namespace:Cluster.ClusterPendingTasks */
-interface ClusterPendingTasksRequest extends Request {
+interface cluster_pending_tasks_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

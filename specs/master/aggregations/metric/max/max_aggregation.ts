@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.Max */
-interface MaxAggregation {
+interface max_aggregation {
 }

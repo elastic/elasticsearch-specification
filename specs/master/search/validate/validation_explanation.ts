@@ -1,6 +1,6 @@
 
 /**namespace:Search.Validate */
-interface ValidationExplanation {
+interface validation_explanation {
 	index: string;
 	valid: boolean;
 	error: string;

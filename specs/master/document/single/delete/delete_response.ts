@@ -1,6 +1,6 @@
 
 /**namespace:Document.Single.Delete */
-interface DeleteResponse extends Response {
+interface delete_response extends response {
 	_index: string;
 	_type: string;
 	_id: string;

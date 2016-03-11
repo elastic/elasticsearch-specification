@@ -1,7 +1,7 @@
 
 /**namespace:Search.Search.InnerHits */
 /**custom_serialization*/
-interface GlobalInnerHit {
-	query: QueryContainer;
-	inner_hits: Map<string, InnerHitsContainer>;
+interface global_inner_hit {
+	query: query_container;
+	inner_hits: map<string, inner_hits_container>[];
 }

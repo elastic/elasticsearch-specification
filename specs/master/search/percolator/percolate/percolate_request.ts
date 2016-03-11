@@ -1,15 +1,15 @@
 
 /**namespace:Search.Percolator.Percolate */
-interface PercolateRequest<TDocument> extends Request {
+interface percolate_request<t_document> extends request {
 	MultiPercolateName: string;
-	Highlight: Highlight;
-	Query: QueryContainer;
-	Filter: QueryContainer;
-	Aggregations: Map<string, AggregationContainer>;
+	Highlight: highlight;
+	Query: query_container;
+	Filter: query_container;
+	Aggregations: map<string, aggregation_container>[];
 	Size: integer;
 	TrackScores: boolean;
-	doc: TDocument;
-	Sort: Sort[];
+	doc: t_document;
+	Sort: sort[];
 	/**ambiguous_origin*/
 	Routing: string[];
 	/**ambiguous_origin*/

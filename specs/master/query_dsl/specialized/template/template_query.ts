@@ -1,9 +1,9 @@
 
 /**namespace:QueryDsl.Specialized.Template */
 /**custom_serialization*/
-interface TemplateQuery {
+interface template_query {
 	file: string;
 	inline: string;
-	id: Id;
-	params: Map<string, any>;
+	id: id;
+	params: map<string, any>[];
 }

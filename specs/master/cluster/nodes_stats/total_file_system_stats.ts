@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface TotalFileSystemStats {
+interface total_file_system_stats {
 	available: string;
 	available_in_bytes: long;
 	free: string;

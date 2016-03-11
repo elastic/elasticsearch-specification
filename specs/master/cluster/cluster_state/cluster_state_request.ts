@@ -1,10 +1,10 @@
 
 /**namespace:Cluster.ClusterState */
-interface ClusterStateRequest extends Request {
+interface cluster_state_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	FlatSettings: boolean;
 	/**ambiguous_origin*/

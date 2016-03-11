@@ -1,6 +1,6 @@
 
 /**namespace:Search.Percolator.UnregisterPercolator */
-interface UnregisterPercolatorResponse extends Response {
+interface unregister_percolator_response extends response {
 	found: boolean;
 	_index: string;
 	_type: string;

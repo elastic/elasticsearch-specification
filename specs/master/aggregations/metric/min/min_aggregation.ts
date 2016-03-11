@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.Min */
-interface MinAggregation {
+interface min_aggregation {
 }

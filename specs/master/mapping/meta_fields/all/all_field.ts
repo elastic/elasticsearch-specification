@@ -1,7 +1,7 @@
 
 /**namespace:Mapping.MetaFields.All */
 /**custom_serialization*/
-interface AllField {
+interface all_field {
 	enabled: boolean;
 	store: boolean;
 	store_term_vectors: boolean;

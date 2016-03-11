@@ -1,6 +1,6 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
-interface SnapshotStats {
+interface snapshot_stats {
 	number_of_files: long;
 	processed_files: long;
 	total_size_in_bytes: long;

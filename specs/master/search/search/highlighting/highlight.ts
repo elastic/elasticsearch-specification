@@ -1,7 +1,7 @@
 
 /**namespace:Search.Search.Highlighting */
 /**custom_serialization*/
-interface Highlight {
+interface highlight {
 	pre_tags: string[];
 	post_tags: string[];
 	fragment_size: integer;
@@ -12,7 +12,7 @@ interface Highlight {
 	encoder: string;
 	order: string;
 	/**custom_serialization */
-	fields: Map<Field, HighlightField>;
+	fields: map<field, highlight_field>[];
 	require_field_match: boolean;
 	boundary_chars: string;
 }

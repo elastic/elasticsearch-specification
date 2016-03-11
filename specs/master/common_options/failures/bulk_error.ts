@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Failures */
-interface BulkError {
+interface bulk_error {
 	index: string;
 	shard: integer;
 	type: string;

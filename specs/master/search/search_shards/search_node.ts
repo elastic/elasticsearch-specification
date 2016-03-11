@@ -1,6 +1,6 @@
 
 /**namespace:Search.SearchShards */
-interface SearchNode {
+interface search_node {
 	name: string;
 	transport_address: string;
 }

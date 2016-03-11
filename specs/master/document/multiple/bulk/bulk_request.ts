@@ -1,8 +1,8 @@
 
 /**namespace:Document.Multiple.Bulk */
 /**custom_serialization*/
-interface BulkRequest extends Request {
-	Operations: BulkOperation[];
+interface bulk_request extends request {
+	Operations: bulk_operation[];
 	/**ambiguous_origin*/
 	Consistency: Consistency;
 	/**ambiguous_origin*/
@@ -10,9 +10,9 @@ interface BulkRequest extends Request {
 	/**ambiguous_origin*/
 	Routing: string;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

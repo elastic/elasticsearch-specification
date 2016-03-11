@@ -1,9 +1,9 @@
 
 /**namespace:QueryDsl.Geo.Distance */
 /**custom_serialization*/
-interface GeoDistanceQuery {
-	Location: GeoLocation;
-	distance: Distance;
+interface geo_distance_query {
+	Location: geo_location;
+	distance: distance;
 	optimize_bbox: GeoOptimizeBBox;
 	distance_type: GeoDistanceType;
 	coerce: boolean;

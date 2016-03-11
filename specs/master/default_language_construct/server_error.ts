@@ -1,6 +1,6 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface ServerError {
-	Error: Error;
+interface server_error {
+	Error: error;
 	Status: integer;
 }

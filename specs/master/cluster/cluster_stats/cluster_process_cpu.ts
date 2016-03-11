@@ -1,5 +1,5 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterProcessCpu {
+interface cluster_process_cpu {
 	percent: integer;
 }

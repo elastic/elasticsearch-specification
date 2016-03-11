@@ -1,5 +1,5 @@
 
 /**namespace:QueryDsl.Span.Term */
 /**custom_serialization*/
-interface SpanTermQuery {
+interface span_term_query {
 }

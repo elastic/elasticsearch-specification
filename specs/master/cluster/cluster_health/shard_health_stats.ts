@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterHealth */
-interface ShardHealthStats {
+interface shard_health_stats {
 	status: string;
 	primary_active: boolean;
 	active_shards: integer;

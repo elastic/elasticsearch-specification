@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.DateMath */
 /**custom_serialization*/
-interface DateMath {
-	Now: DateMathExpression;
+interface date_math {
+	Now: date_math_expression;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:Document.Single.Delete */
-interface DeleteRequest extends Request {
+interface delete_request extends request {
 	/**ambiguous_origin*/
 	Consistency: Consistency;
 	/**ambiguous_origin*/
@@ -10,7 +10,7 @@ interface DeleteRequest extends Request {
 	/**ambiguous_origin*/
 	Routing: string;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

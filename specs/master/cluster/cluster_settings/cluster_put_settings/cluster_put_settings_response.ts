@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.ClusterSettings.ClusterPutSettings */
-interface ClusterPutSettingsResponse extends Response {
+interface cluster_put_settings_response extends response {
 	acknowledged: boolean;
-	persistent: Map<string, any>;
-	transient: Map<string, any>;
+	persistent: map<string, any>[];
+	transient: map<string, any>[];
 }

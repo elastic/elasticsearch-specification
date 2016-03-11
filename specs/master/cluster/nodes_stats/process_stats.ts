@@ -1,8 +1,8 @@
 
 /**namespace:Cluster.NodesStats */
-interface ProcessStats {
+interface process_stats {
 	timestamp: long;
 	open_file_descriptors: integer;
-	cpu: CPUStats;
-	mem: ProcessMemoryStats;
+	cpu: c_p_u_stats;
+	mem: process_memory_stats;
 }

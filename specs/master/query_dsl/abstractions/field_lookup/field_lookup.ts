@@ -1,9 +1,9 @@
 
 /**namespace:QueryDsl.Abstractions.FieldLookup */
 /**custom_serialization*/
-interface FieldLookup {
-	index: IndexName;
-	type: TypeName;
-	id: Id;
-	path: Field;
+interface field_lookup {
+	index: index_name;
+	type: type_name;
+	id: id;
+	path: field;
 }

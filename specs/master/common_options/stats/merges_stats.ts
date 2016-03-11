@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface MergesStats {
+interface merges_stats {
 	current: long;
 	current_docs: long;
 	current_size: string;

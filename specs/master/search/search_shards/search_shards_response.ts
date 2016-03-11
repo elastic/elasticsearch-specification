@@ -1,6 +1,6 @@
 
 /**namespace:Search.SearchShards */
-interface SearchShardsResponse extends Response {
-	shards: SearchShard[][];
-	nodes: Map<string, SearchNode>;
+interface search_shards_response extends response {
+	shards: search_shard[][];
+	nodes: map<string, search_node>[];
 }

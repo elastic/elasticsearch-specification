@@ -1,4 +1,4 @@
 
 /**namespace:Indices.AliasManagement.DeleteAlias */
-interface DeleteAliasResponse extends Response {
+interface delete_alias_response extends response {
 }

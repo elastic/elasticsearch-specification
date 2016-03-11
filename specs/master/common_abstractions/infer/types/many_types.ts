@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Infer.Types */
-interface ManyTypes {
-	Types: TypeName[];
+interface many_types {
+	Types: type_name[];
 }

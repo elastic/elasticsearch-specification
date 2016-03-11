@@ -1,6 +1,6 @@
 
 /**namespace:Cat.CatSegments */
-interface CatSegmentsRequest extends Request {
+interface cat_segments_request extends request {
 	/**ambiguous_origin*/
 	H: string[];
 	/**ambiguous_origin*/

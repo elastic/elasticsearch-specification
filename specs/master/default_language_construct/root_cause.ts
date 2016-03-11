@@ -1,6 +1,6 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface RootCause {
+interface root_cause {
 	Index: string;
 	Reason: string;
 	ResourceId: string;

@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl */
 /**custom_serialization*/
-interface MatchAllQuery {
+interface match_all_query {
 	norm_field: string;
 }

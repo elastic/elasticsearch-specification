@@ -1,5 +1,5 @@
 
 /**namespace:Indices.IndexManagement.GetIndex */
-interface GetIndexResponse extends Response {
-	Indices: Map<string, IndexState>;
+interface get_index_response extends response {
+	Indices: map<string, index_state>[];
 }

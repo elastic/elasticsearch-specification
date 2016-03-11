@@ -1,14 +1,14 @@
 
 /**namespace:QueryDsl.FullText.MultiMatch */
 /**custom_serialization*/
-interface MultiMatchQuery {
+interface multi_match_query {
 	/**custom_serialization */
 	type: TextQueryType;
 	query: string;
 	analyzer: string;
 	/**custom_serialization */
 	fuzzy_rewrite: RewriteMultiTerm;
-	fuzziness: Fuzziness;
+	fuzziness: fuzziness;
 	cutoff_frequency: double;
 	prefix_length: integer;
 	max_expansions: integer;
@@ -16,8 +16,8 @@ interface MultiMatchQuery {
 	lenient: boolean;
 	use_dis_max: boolean;
 	tie_breaker: double;
-	minimum_should_match: MinimumShouldMatch;
+	minimum_should_match: minimum_should_match;
 	operator: Operator;
-	fields: Field[];
+	fields: field[];
 	zero_terms_query: ZeroTermsQuery;
 }

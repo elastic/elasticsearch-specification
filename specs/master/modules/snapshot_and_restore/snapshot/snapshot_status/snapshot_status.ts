@@ -1,10 +1,10 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
-interface SnapshotStatus {
+interface snapshot_status {
 	snapshot: string;
 	repository: string;
 	state: string;
-	shards_stats: SnapshotShardsStats;
-	stats: SnapshotStats;
-	indices: Map<string, SnapshotIndexStats>;
+	shards_stats: snapshot_shards_stats;
+	stats: snapshot_stats;
+	indices: map<string, snapshot_index_stats>[];
 }

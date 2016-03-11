@@ -1,6 +1,6 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot.SnapshotStatus */
-interface SnapshotShardsStats {
+interface snapshot_shards_stats {
 	initializing: long;
 	started: long;
 	finalizing: long;

@@ -1,4 +1,4 @@
 
 /**namespace:Indices.IndexManagement.OpenCloseIndex.CloseIndex */
-interface CloseIndexResponse extends Response {
+interface close_index_response extends response {
 }

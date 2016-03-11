@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Failures */
-interface CausedBy {
+interface caused_by {
 	Type: string;
 	Reason: string;
 }

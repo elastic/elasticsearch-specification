@@ -1,10 +1,10 @@
 
 /**namespace:Search.Suggesters.CompletionSuggester */
 /**custom_serialization*/
-interface FuzzySuggester {
+interface fuzzy_suggester {
 	transpositions: boolean;
 	min_length: integer;
 	prefix_length: integer;
-	fuzziness: Fuzziness;
+	fuzziness: fuzziness;
 	unicode_aware: boolean;
 }

@@ -1,8 +1,8 @@
 
 /**namespace:Search.Suggesters */
-interface Suggest {
+interface suggest {
 	length: integer;
 	offset: integer;
 	text: string;
-	options: SuggestOption[];
+	options: suggest_option[];
 }

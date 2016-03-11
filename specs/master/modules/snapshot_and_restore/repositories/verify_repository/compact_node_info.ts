@@ -1,5 +1,5 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.VerifyRepository */
-interface CompactNodeInfo {
+interface compact_node_info {
 	name: string;
 }

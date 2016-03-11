@@ -1,11 +1,11 @@
 
 /**namespace:Indices.AliasManagement.Alias */
-interface BulkAliasRequest extends Request {
-	actions: AliasAction[];
+interface bulk_alias_request extends request {
+	actions: alias_action[];
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

@@ -1,11 +1,11 @@
 
 /**namespace:Document.Single.Get */
-interface GetResponse<T> extends Response {
+interface get_response<t> extends response {
 	_index: string;
 	_type: string;
 	_id: string;
 	_version: long;
 	found: boolean;
-	_source: T;
-	fields: Map<string, any>;
+	_source: t;
+	fields: map<string, any>[];
 }

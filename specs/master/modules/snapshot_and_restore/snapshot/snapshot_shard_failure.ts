@@ -1,6 +1,6 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot */
-interface SnapshotShardFailure {
+interface snapshot_shard_failure {
 	node_id: string;
 	index: string;
 	shard_id: string;

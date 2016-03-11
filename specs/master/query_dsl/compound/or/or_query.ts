@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Compound.Or */
 /**custom_serialization*/
-interface OrQuery {
-	filters: QueryContainer[];
+interface or_query {
+	filters: query_container[];
 }

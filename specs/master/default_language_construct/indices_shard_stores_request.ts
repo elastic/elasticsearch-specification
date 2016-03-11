@@ -1,6 +1,6 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface IndicesShardStoresRequest extends Request {
+interface indices_shard_stores_request extends request {
 	/**ambiguous_origin*/
 	Status: string[];
 	/**ambiguous_origin*/

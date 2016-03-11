@@ -1,6 +1,6 @@
 
 /**namespace:Indices.MappingManagement.GetMapping */
-interface GetMappingRequest extends Request {
+interface get_mapping_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

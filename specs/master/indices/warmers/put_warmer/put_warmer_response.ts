@@ -1,4 +1,4 @@
 
 /**namespace:Indices.Warmers.PutWarmer */
-interface PutWarmerResponse extends Response {
+interface put_warmer_response extends response {
 }

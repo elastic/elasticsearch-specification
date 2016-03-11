@@ -1,7 +1,7 @@
 
 /**namespace:Search.Explain */
-interface ExplainResponse<T> extends Response {
+interface explain_response<t> extends response {
 	matched: boolean;
-	explanation: ExplanationDetail;
-	get: InstantGet<T>;
+	explanation: explanation_detail;
+	get: instant_get<t>;
 }

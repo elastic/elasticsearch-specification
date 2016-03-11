@@ -1,7 +1,7 @@
 
 /**namespace:Search.Search.Hits */
-interface InnerHitsMetaData {
+interface inner_hits_meta_data {
 	total: long;
 	max_score: double;
-	hits: Hit<LazyDocument>[];
+	hits: hit<lazy_document>[];
 }

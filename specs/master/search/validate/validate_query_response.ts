@@ -1,7 +1,7 @@
 
 /**namespace:Search.Validate */
-interface ValidateQueryResponse extends Response {
+interface validate_query_response extends response {
 	valid: boolean;
-	_shards: ShardsMetaData;
-	explanations: ValidationExplanation[];
+	_shards: shards_meta_data;
+	explanations: validation_explanation[];
 }

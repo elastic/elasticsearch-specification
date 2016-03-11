@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Compound.Limit */
 /**custom_serialization*/
-interface LimitQuery {
+interface limit_query {
 	limit: integer;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface TransportStats {
+interface transport_stats {
 	server_open: integer;
 	rx_count: long;
 	rx_size: string;

@@ -1,7 +1,7 @@
 
 /**namespace:Search.Suggesters.TermSuggester */
 /**custom_serialization*/
-interface TermSuggester {
+interface term_suggester {
 	prefix_len: integer;
 	/**custom_serialization */
 	suggest_mode: SuggestMode;

@@ -1,26 +1,26 @@
 
 /**namespace:Mapping */
 /**custom_serialization*/
-interface TypeMapping {
-	_all: AllField;
-	analyzer: string;
-	date_detection: boolean;
-	dynamic: DynamicMapping;
+interface type_mapping {
 	dynamic_date_formats: string[];
-	dynamic_templates: Map<string, DynamicTemplate>;
-	_field_names: FieldNamesField;
-	_index: IndexField;
-	/**custom_serialization */
-	_meta: Map<string, any>;
+	date_detection: boolean;
 	numeric_detection: boolean;
-	_parent: ParentField;
-	properties: Map<PropertyName, Property>;
-	_routing: RoutingField;
-	search_analyzer: string;
-	_size: SizeField;
-	_source: SourceField;
-	_timestamp: TimestampField;
 	/**custom_serialization */
-	transform: MappingTransform[];
-	_ttl: TtlField;
+	transform: mapping_transform[];
+	analyzer: string;
+	search_analyzer: string;
+	_source: source_field;
+	_all: all_field;
+	_parent: parent_field;
+	_routing: routing_field;
+	_index: index_field;
+	_size: size_field;
+	_timestamp: timestamp_field;
+	_field_names: field_names_field;
+	_ttl: ttl_field;
+	/**custom_serialization */
+	_meta: map<string, any>[];
+	dynamic_templates: map<string, dynamic_template>[];
+	dynamic: DynamicMapping;
+	properties: map<property_name, property>[];
 }

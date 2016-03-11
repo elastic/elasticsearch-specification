@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesSegments */
-interface SegmentsRequest extends Request {
+interface segments_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

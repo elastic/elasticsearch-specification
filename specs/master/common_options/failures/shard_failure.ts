@@ -1,8 +1,8 @@
 
 /**namespace:CommonOptions.Failures */
-interface ShardFailure {
+interface shard_failure {
 	index: string;
 	shard: integer;
 	node: string;
-	reason: ShardFailureReason;
+	reason: shard_failure_reason;
 }

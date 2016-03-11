@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterNodeCount {
+interface cluster_node_count {
 	total: integer;
 	master_only: integer;
 	data_only: integer;

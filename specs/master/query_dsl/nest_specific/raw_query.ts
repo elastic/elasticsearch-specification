@@ -1,5 +1,5 @@
 
 /**namespace:QueryDsl.NestSpecific */
-interface RawQuery {
+interface raw_query {
 	Raw: string;
 }

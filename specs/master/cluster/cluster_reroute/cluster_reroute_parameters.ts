@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterReroute */
-interface ClusterRerouteParameters {
+interface cluster_reroute_parameters {
 	index: string;
 	shard: integer;
 	from_node: string;

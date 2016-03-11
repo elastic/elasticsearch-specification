@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Bucket.ReverseNested */
-interface ReverseNestedAggregation {
-	path: Field;
+interface reverse_nested_aggregation {
+	path: field;
 }

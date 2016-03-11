@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface ScriptStats {
+interface script_stats {
 	cache_evictions: long;
 	compilations: long;
 }

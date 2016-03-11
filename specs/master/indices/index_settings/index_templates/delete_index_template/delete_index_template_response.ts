@@ -1,4 +1,4 @@
 
 /**namespace:Indices.IndexSettings.IndexTemplates.DeleteIndexTemplate */
-interface DeleteIndexTemplateResponse extends Response {
+interface delete_index_template_response extends response {
 }

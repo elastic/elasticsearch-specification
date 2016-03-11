@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Metric.Average */
-interface AverageAggregation {
+interface average_aggregation {
 }

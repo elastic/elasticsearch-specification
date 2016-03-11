@@ -1,10 +1,10 @@
 
 /**namespace:Indices.Monitoring.IndicesSegments */
 /**custom_serialization*/
-interface ShardsSegment {
+interface shards_segment {
 	num_committed_segments: integer;
 	num_search_segments: integer;
-	routing: ShardSegmentRouting;
+	routing: shard_segment_routing;
 	/**custom_serialization */
-	Segments: Map<string, Segment>;
+	Segments: map<string, segment>[];
 }

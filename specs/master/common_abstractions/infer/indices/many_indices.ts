@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Infer.Indices */
-interface ManyIndices {
-	Indices: IndexName[];
+interface many_indices {
+	Indices: index_name[];
 }

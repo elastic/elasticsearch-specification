@@ -1,6 +1,6 @@
 
 /**namespace:Search.FieldStats */
-interface IndexConstraintComparison {
+interface index_constraint_comparison {
 	gte: string;
 	gt: string;
 	lte: string;

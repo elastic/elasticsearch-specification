@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface DocStats {
+interface doc_stats {
 	count: long;
 	deleted: long;
 }

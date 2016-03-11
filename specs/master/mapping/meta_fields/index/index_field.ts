@@ -1,6 +1,6 @@
 
 /**namespace:Mapping.MetaFields.Index */
 /**custom_serialization*/
-interface IndexField {
+interface index_field {
 	enabled: boolean;
 }

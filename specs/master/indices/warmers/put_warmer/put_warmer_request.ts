@@ -1,10 +1,10 @@
 
 /**namespace:Indices.Warmers.PutWarmer */
 /**custom_serialization*/
-interface PutWarmerRequest extends Request {
-	Search: SearchRequest;
+interface put_warmer_request extends request {
+	Search: search_request;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

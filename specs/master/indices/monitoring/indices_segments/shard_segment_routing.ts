@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesSegments */
-interface ShardSegmentRouting {
+interface shard_segment_routing {
 	state: string;
 	primary: boolean;
 	node: string;

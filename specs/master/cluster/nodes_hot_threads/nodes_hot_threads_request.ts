@@ -1,8 +1,8 @@
 
 /**namespace:Cluster.NodesHotThreads */
-interface NodesHotThreadsRequest extends Request {
+interface nodes_hot_threads_request extends request {
 	/**ambiguous_origin*/
-	Interval: Time;
+	Interval: time;
 	/**ambiguous_origin*/
 	Snapshots: long;
 	/**ambiguous_origin*/
@@ -12,7 +12,7 @@ interface NodesHotThreadsRequest extends Request {
 	/**ambiguous_origin*/
 	ThreadType: ThreadType;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

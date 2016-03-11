@@ -1,6 +1,6 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface RenderSearchTemplateRequest extends Request {
+interface render_search_template_request extends request {
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

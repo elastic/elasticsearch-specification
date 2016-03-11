@@ -1,10 +1,10 @@
 
 /**namespace:Cat.CatThreadPool */
-interface CatThreadPoolRequest extends Request {
+interface cat_thread_pool_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	H: string[];
 	/**ambiguous_origin*/

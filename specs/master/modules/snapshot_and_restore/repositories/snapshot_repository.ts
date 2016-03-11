@@ -1,5 +1,5 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories */
-interface SnapshotRepository {
+interface snapshot_repository {
 	type: string;
 }

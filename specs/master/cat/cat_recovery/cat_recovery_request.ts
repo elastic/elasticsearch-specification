@@ -1,10 +1,10 @@
 
 /**namespace:Cat.CatRecovery */
-interface CatRecoveryRequest extends Request {
+interface cat_recovery_request extends request {
 	/**ambiguous_origin*/
 	Bytes: Bytes;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	H: string[];
 	/**ambiguous_origin*/

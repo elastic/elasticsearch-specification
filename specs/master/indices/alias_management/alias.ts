@@ -1,8 +1,8 @@
 
 /**namespace:Indices.AliasManagement */
 /**custom_serialization*/
-interface Alias {
-	filter: QueryContainer;
+interface alias {
+	filter: query_container;
 	routing: string;
 	index_routing: string;
 	search_routing: string;

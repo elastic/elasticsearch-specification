@@ -1,7 +1,7 @@
 
 /**namespace:Search.Suggesters.CompletionSuggester */
 /**custom_serialization*/
-interface CompletionSuggester {
-	fuzzy: FuzzySuggester;
-	context: Map<string, any>;
+interface completion_suggester {
+	fuzzy: fuzzy_suggester;
+	context: map<string, any>[];
 }

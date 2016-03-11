@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodeInfoJVMMemory {
+interface node_info_j_v_m_memory {
 	heap_init: string;
 	heap_init_in_bytes: long;
 	heap_max: string;

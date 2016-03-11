@@ -1,10 +1,10 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.DeleteRepository */
-interface DeleteRepositoryRequest extends Request {
+interface delete_repository_request extends request {
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

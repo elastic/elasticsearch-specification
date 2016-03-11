@@ -1,7 +1,7 @@
 
 /**namespace:Aggregations.Bucket.SignificantTerms.Heuristics */
 /**custom_serialization*/
-interface MutualInformationHeuristic {
+interface mutual_information_heuristic {
 	include_negatives: boolean;
 	background_is_superset: boolean;
 }

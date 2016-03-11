@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface MemoryStats {
+interface memory_stats {
 	heap_used: string;
 	heap_used_in_bytes: long;
 	heap_used_percent: long;
@@ -13,5 +13,5 @@ interface MemoryStats {
 	non_heap_committed: string;
 	non_heap_committed_in_bytes: long;
 	/**custom_serialization */
-	pools: Map<string, JVMPool>;
+	pools: map<string, j_v_m_pool>[];
 }

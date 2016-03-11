@@ -1,10 +1,10 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface CatNodeattrsRequest extends Request {
+interface cat_nodeattrs_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	H: string[];
 	/**ambiguous_origin*/

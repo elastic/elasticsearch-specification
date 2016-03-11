@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface RecoveryOrigin {
+interface recovery_origin {
 	id: string;
 	hostname: string;
 	ip: string;

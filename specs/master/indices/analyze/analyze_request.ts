@@ -1,12 +1,12 @@
 
 /**namespace:Indices.Analyze */
-interface AnalyzeRequest extends Request {
+interface analyze_request extends request {
 	/**ambiguous_origin*/
 	Analyzer: string;
 	/**ambiguous_origin*/
 	CharFilters: string[];
 	/**ambiguous_origin*/
-	Field: Field;
+	Field: field;
 	/**ambiguous_origin*/
 	Filters: string[];
 	/**ambiguous_origin*/

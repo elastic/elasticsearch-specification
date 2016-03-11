@@ -1,10 +1,10 @@
 
 /**namespace:Indices.IndexSettings.IndexTemplates.GetIndexTemplate */
-interface GetIndexTemplateRequest extends Request {
+interface get_index_template_request extends request {
 	/**ambiguous_origin*/
 	FlatSettings: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/

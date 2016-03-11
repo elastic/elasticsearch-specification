@@ -1,7 +1,7 @@
 
 /**namespace:Mapping.MetaFields.Ttl */
 /**custom_serialization*/
-interface TtlField {
+interface ttl_field {
 	enabled: boolean;
-	default: Time;
+	default: time;
 }

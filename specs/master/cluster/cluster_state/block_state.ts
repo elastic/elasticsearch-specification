@@ -1,5 +1,5 @@
 
 /**namespace:Cluster.ClusterState */
-interface BlockState {
+interface block_state {
 	read_only: boolean;
 }

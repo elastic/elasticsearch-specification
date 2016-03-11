@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.LazyDocument */
 /**custom_serialization*/
-interface LazyDocument {
+interface lazy_document {
 }

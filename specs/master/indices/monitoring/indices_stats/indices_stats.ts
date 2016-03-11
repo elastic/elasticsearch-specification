@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesStats */
-interface IndicesStats {
-	primaries: IndexStats;
-	total: IndexStats;
+interface indices_stats {
+	primaries: index_stats;
+	total: index_stats;
 }

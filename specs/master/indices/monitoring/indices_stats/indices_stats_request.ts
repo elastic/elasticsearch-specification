@@ -1,13 +1,13 @@
 
 /**namespace:Indices.Monitoring.IndicesStats */
-interface IndicesStatsRequest extends Request {
-	Types: TypeName[];
+interface indices_stats_request extends request {
+	Types: type_name[];
 	/**ambiguous_origin*/
-	CompletionFields: Field[];
+	CompletionFields: field[];
 	/**ambiguous_origin*/
-	FielddataFields: Field[];
+	FielddataFields: field[];
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Groups: string[];
 	/**ambiguous_origin*/

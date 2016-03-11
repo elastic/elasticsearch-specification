@@ -1,7 +1,7 @@
 
 /**namespace:CommonAbstractions.Infer.Types */
 /**custom_serialization*/
-interface Types extends Union<AllTypesMarker, ManyTypes> {
-	All: AllTypesMarker;
-	AllTypes: AllTypesMarker;
+interface types extends union<all_types_marker, many_types> {
+	All: all_types_marker;
+	AllTypes: all_types_marker;
 }

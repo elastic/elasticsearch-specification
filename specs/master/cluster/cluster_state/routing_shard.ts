@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.ClusterState */
-interface RoutingShard {
-	allocation_id: AllocationId;
+interface routing_shard {
+	allocation_id: allocation_id;
 	state: string;
 	primary: boolean;
 	node: string;

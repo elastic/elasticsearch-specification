@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterOperatingSystemStats {
+interface cluster_operating_system_stats {
 	available_processors: integer;
-	mem: ClusterOperatingSystemMemory;
-	names: ClusterOperatingSystemName[];
+	mem: cluster_operating_system_memory;
+	names: cluster_operating_system_name[];
 }

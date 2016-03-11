@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesHotThreads */
-interface HotThreadInformation {
+interface hot_thread_information {
 	NodeName: string;
 	NodeId: string;
 	Threads: string[];

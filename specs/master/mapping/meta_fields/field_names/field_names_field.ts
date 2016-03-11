@@ -1,6 +1,6 @@
 
 /**namespace:Mapping.MetaFields.FieldNames */
 /**custom_serialization*/
-interface FieldNamesField {
+interface field_names_field {
 	enabled: boolean;
 }

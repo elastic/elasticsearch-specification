@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Infer.TypeName */
-interface TypeName {
+interface type_name {
 	Name: string;
 }

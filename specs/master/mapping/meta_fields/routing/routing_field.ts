@@ -1,6 +1,6 @@
 
 /**namespace:Mapping.MetaFields.Routing */
 /**custom_serialization*/
-interface RoutingField {
+interface routing_field {
 	required: boolean;
 }

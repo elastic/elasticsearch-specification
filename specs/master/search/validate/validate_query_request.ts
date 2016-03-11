@@ -1,7 +1,7 @@
 
 /**namespace:Search.Validate */
-interface ValidateQueryRequest extends Request {
-	query: QueryContainer;
+interface validate_query_request extends request {
+	query: query_container;
 	/**ambiguous_origin*/
 	Explain: boolean;
 	/**ambiguous_origin*/

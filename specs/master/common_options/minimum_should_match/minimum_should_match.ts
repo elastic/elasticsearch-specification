@@ -1,5 +1,5 @@
 
 /**namespace:CommonOptions.MinimumShouldMatch */
 /**custom_serialization*/
-interface MinimumShouldMatch extends Union<integer, string> {
+interface minimum_should_match extends union<integer, string> {
 }

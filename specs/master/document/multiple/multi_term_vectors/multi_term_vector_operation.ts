@@ -1,11 +1,11 @@
 
 /**namespace:Document.Multiple.MultiTermVectors */
-interface MultiTermVectorOperation {
-	_index: IndexName;
-	_type: TypeName;
-	_id: Id;
+interface multi_term_vector_operation {
+	_index: index_name;
+	_type: type_name;
+	_id: id;
 	doc: any;
-	fields: Field[];
+	fields: field[];
 	offsets: boolean;
 	payloads: boolean;
 	positions: boolean;

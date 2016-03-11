@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface JVMPool {
+interface j_v_m_pool {
 	used: string;
 	used_in_bytes: long;
 	max: string;

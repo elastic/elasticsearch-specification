@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface DataPathStats {
+interface data_path_stats {
 	path: string;
 	mount: string;
 	type: string;

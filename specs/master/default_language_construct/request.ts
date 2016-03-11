@@ -1,4 +1,4 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface Request {
+interface request {
 }

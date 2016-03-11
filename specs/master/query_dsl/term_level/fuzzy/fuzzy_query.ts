@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.TermLevel.Fuzzy */
 /**custom_serialization*/
-interface FuzzyQuery {
+interface fuzzy_query {
 	prefix_length: integer;
 	rewrite: RewriteMultiTerm;
 	max_expansions: integer;

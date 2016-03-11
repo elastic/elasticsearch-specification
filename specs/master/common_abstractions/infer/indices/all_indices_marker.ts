@@ -1,4 +1,4 @@
 
 /**namespace:CommonAbstractions.Infer.Indices */
-interface AllIndicesMarker {
+interface all_indices_marker {
 }

@@ -1,4 +1,4 @@
 
 /**namespace:Indices.StatusManagement.Refresh */
-interface RefreshResponse extends Response {
+interface refresh_response extends response {
 }

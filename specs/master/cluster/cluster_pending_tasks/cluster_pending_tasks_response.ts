@@ -1,5 +1,5 @@
 
 /**namespace:Cluster.ClusterPendingTasks */
-interface ClusterPendingTasksResponse extends Response {
-	tasks: PendingTask[];
+interface cluster_pending_tasks_response extends response {
+	tasks: pending_task[];
 }

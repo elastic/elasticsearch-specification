@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Pipeline.MinBucket */
-interface MinBucketAggregation {
+interface min_bucket_aggregation {
 }

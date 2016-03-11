@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Compound.ConstantScore */
 /**custom_serialization*/
-interface ConstantScoreQuery {
-	filter: QueryContainer;
+interface constant_score_query {
+	filter: query_container;
 }

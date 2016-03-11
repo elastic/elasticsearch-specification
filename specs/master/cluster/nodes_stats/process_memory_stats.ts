@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface ProcessMemoryStats {
+interface process_memory_stats {
 	resident: string;
 	resident_in_bytes: long;
 	share: string;

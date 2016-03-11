@@ -1,12 +1,12 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterStatsRequest extends Request {
+interface cluster_stats_request extends request {
 	/**ambiguous_origin*/
 	FlatSettings: boolean;
 	/**ambiguous_origin*/
 	Human: boolean;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

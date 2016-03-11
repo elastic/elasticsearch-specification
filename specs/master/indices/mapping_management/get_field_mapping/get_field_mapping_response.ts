@@ -1,5 +1,5 @@
 
 /**namespace:Indices.MappingManagement.GetFieldMapping */
-interface GetFieldMappingResponse extends Response {
-	Indices: Map<string, TypeFieldMappings>;
+interface get_field_mapping_response extends response {
+	Indices: map<string, type_field_mappings>[];
 }

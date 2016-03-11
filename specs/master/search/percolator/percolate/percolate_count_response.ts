@@ -1,8 +1,8 @@
 
 /**namespace:Search.Percolator.Percolate */
-interface PercolateCountResponse extends Response {
+interface percolate_count_response extends response {
 	took: integer;
 	total: long;
-	_shards: ShardsMetaData;
-	ServerError: ServerError;
+	_shards: shards_meta_data;
+	ServerError: server_error;
 }

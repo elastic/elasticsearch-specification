@@ -1,8 +1,8 @@
 
 /**namespace:QueryDsl.FullText.SimpleQueryString */
 /**custom_serialization*/
-interface SimpleQueryStringQuery {
-	fields: Field[];
+interface simple_query_string_query {
+	fields: field[];
 	query: string;
 	analyzer: string;
 	default_operator: Operator;
@@ -11,5 +11,5 @@ interface SimpleQueryStringQuery {
 	lowercase_expanded_terms: boolean;
 	lenient: boolean;
 	analyze_wildcard: boolean;
-	minimum_should_match: MinimumShouldMatch;
+	minimum_should_match: minimum_should_match;
 }

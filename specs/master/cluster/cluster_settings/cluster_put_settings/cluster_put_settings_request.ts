@@ -1,14 +1,14 @@
 
 /**namespace:Cluster.ClusterSettings.ClusterPutSettings */
-interface ClusterPutSettingsRequest extends Request {
-	persistent: Map<string, any>;
-	transient: Map<string, any>;
+interface cluster_put_settings_request extends request {
+	persistent: map<string, any>[];
+	transient: map<string, any>[];
 	/**ambiguous_origin*/
 	FlatSettings: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

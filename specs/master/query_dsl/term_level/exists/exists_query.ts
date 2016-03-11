@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.TermLevel.Exists */
 /**custom_serialization*/
-interface ExistsQuery {
-	field: Field;
+interface exists_query {
+	field: field;
 }

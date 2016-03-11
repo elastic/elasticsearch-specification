@@ -1,9 +1,9 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterJvm {
+interface cluster_jvm {
 	max_uptime: string;
 	max_uptime_in_millis: long;
-	versions: ClusterJvmVersion[];
-	mem: ClusterJvmMemory;
+	versions: cluster_jvm_version[];
+	mem: cluster_jvm_memory;
 	threads: long;
 }

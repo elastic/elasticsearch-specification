@@ -1,7 +1,7 @@
 
 /**namespace:Cluster.ClusterReroute */
-interface ClusterRerouteResponse extends Response {
+interface cluster_reroute_response extends response {
 	Version: integer;
-	state: ClusterRerouteState;
-	explanations: ClusterRerouteExplanation[];
+	state: cluster_reroute_state;
+	explanations: cluster_reroute_explanation[];
 }

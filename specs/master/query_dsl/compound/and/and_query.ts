@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Compound.And */
 /**custom_serialization*/
-interface AndQuery {
-	filters: QueryContainer[];
+interface and_query {
+	filters: query_container[];
 }

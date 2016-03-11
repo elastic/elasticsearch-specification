@@ -1,12 +1,12 @@
 
 /**namespace:Aggregations.Bucket.Histogram */
-interface HistogramAggregation {
-	field: Field;
-	script: Script;
+interface histogram_aggregation {
+	field: field;
+	script: script;
 	interval: double;
 	min_doc_count: integer;
-	order: HistogramOrder;
-	extended_bounds: ExtendedBounds<double>;
+	order: histogram_order;
+	extended_bounds: extended_bounds<double>;
 	pre_offset: long;
 	post_offset: long;
 	missing: double;

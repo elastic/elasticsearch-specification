@@ -1,4 +1,4 @@
 
 /**namespace:Modules.Scripting.DeleteScript */
-interface DeleteScriptResponse extends Response {
+interface delete_script_response extends response {
 }

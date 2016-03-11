@@ -1,5 +1,5 @@
 
 /**namespace:Aggregations.Bucket.Missing */
-interface MissingAggregation {
-	field: Field;
+interface missing_aggregation {
+	field: field;
 }

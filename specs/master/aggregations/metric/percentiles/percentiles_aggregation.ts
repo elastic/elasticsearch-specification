@@ -1,6 +1,6 @@
 
 /**namespace:Aggregations.Metric.Percentiles */
-interface PercentilesAggregation {
+interface percentiles_aggregation {
 	Percents: double[];
-	Method: PercentilesMethod;
+	Method: percentiles_method;
 }

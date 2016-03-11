@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesSegments */
-interface IndexSegment {
+interface index_segment {
 	/**custom_serialization */
-	shards: Map<string, ShardsSegment>;
+	shards: map<string, shards_segment>[];
 }

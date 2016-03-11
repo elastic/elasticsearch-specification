@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Pipeline.SumBucket */
-interface SumBucketAggregation {
+interface sum_bucket_aggregation {
 }

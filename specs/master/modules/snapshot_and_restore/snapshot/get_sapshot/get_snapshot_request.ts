@@ -1,8 +1,8 @@
 
 /**namespace:Modules.SnapshotAndRestore.Snapshot.GetSapshot */
-interface GetSnapshotRequest extends Request {
+interface get_snapshot_request extends request {
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

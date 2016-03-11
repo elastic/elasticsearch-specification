@@ -1,6 +1,6 @@
 
 /**namespace:Indices.AliasManagement.GetAlias */
-interface GetAliasRequest extends Request {
+interface get_alias_request extends request {
 	Alias: string;
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;

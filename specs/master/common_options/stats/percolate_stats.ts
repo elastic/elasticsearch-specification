@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface PercolateStats {
+interface percolate_stats {
 	total: long;
 	time: string;
 	time_in_millis: long;

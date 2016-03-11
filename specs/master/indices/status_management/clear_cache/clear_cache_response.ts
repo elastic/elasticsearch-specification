@@ -1,4 +1,4 @@
 
 /**namespace:Indices.StatusManagement.ClearCache */
-interface ClearCacheResponse extends Response {
+interface clear_cache_response extends response {
 }

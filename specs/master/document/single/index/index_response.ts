@@ -1,6 +1,6 @@
 
 /**namespace:Document.Single.Index */
-interface IndexResponse extends Response {
+interface index_response extends response {
 	_index: string;
 	_type: string;
 	_id: string;

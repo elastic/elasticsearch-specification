@@ -1,8 +1,8 @@
 
 /**namespace:Document.Single.TermVectors */
-interface TermVectorTerm {
+interface term_vector_term {
 	doc_freq: integer;
 	term_freq: integer;
-	tokens: Token[];
+	tokens: token[];
 	ttf: integer;
 }

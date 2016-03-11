@@ -1,5 +1,5 @@
 
 /**namespace:Search.FieldStats */
-interface FieldStats {
-	fields: Map<string, FieldStatsField>;
+interface field_stats {
+	fields: map<string, field_stats_field>[];
 }

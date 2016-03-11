@@ -1,6 +1,6 @@
 
 /**namespace:Indices.MappingManagement.GetFieldMapping */
-interface GetFieldMappingRequest extends Request {
+interface get_field_mapping_request extends request {
 	/**ambiguous_origin*/
 	IncludeDefaults: boolean;
 	/**ambiguous_origin*/

@@ -1,7 +1,7 @@
 
 /**namespace:Search.Explain */
-interface InstantGet<T> {
+interface instant_get<t> {
 	found: boolean;
-	_source: T;
-	fields: Map<string, any>;
+	_source: t;
+	fields: map<string, any>[];
 }

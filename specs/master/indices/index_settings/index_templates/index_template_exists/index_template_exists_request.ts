@@ -1,8 +1,8 @@
 
 /**namespace:Indices.IndexSettings.IndexTemplates.IndexTemplateExists */
-interface IndexTemplateExistsRequest extends Request {
+interface index_template_exists_request extends request {
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/

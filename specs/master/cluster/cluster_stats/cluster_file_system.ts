@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.ClusterStats */
-interface ClusterFileSystem {
+interface cluster_file_system {
 	total: string;
 	total_in_bytes: long;
 	free: string;

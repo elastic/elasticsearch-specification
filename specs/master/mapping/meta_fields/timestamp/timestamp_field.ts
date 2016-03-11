@@ -1,9 +1,9 @@
 
 /**namespace:Mapping.MetaFields.Timestamp */
 /**custom_serialization*/
-interface TimestampField {
+interface timestamp_field {
 	enabled: boolean;
-	path: Field;
+	path: field;
 	format: string;
 	default: string;
 	ignore_missing: boolean;

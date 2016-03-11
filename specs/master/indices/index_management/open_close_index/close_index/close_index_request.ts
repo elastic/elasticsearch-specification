@@ -1,10 +1,10 @@
 
 /**namespace:Indices.IndexManagement.OpenCloseIndex.CloseIndex */
-interface CloseIndexRequest extends Request {
+interface close_index_request extends request {
 	/**ambiguous_origin*/
-	Timeout: Time;
+	Timeout: time;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

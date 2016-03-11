@@ -1,7 +1,7 @@
 
 /**namespace:Search.Search.Hits */
-interface HitsMetaData<T> {
+interface hits_meta_data<t> {
 	total: long;
 	max_score: double;
-	hits: Hit<T>[];
+	hits: hit<t>[];
 }

@@ -1,4 +1,4 @@
 
 /**namespace:Indices.IndexManagement.DeleteIndex */
-interface DeleteIndexResponse extends Response {
+interface delete_index_response extends response {
 }

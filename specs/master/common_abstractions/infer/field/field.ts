@@ -1,6 +1,6 @@
 
 /**namespace:CommonAbstractions.Infer.Field */
-interface Field {
+interface field {
 	Name: string;
 	Boost: double;
 }

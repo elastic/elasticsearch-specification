@@ -1,5 +1,5 @@
 
 /**namespace:Indices.StatusManagement.Upgrade */
-interface UpgradeResponse extends Response {
-	_shards: ShardsMetaData;
+interface upgrade_response extends response {
+	_shards: shards_meta_data;
 }

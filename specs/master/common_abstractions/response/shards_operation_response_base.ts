@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Response */
-interface ShardsOperationResponseBase extends Response {
-	_shards: ShardsMetaData;
+interface shards_operation_response_base extends response {
+	_shards: shards_meta_data;
 }

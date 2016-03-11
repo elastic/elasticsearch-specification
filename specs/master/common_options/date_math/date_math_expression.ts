@@ -1,5 +1,5 @@
 
 /**namespace:CommonOptions.DateMath */
 /**custom_serialization*/
-interface DateMathExpression extends DateMath {
+interface date_math_expression extends date_math {
 }

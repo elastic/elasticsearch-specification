@@ -1,7 +1,7 @@
 
 /**namespace:CommonOptions.TimeUnit */
 /**custom_serialization*/
-interface Time {
+interface time {
 	Factor: double;
 	Interval: TimeUnit;
 	Milliseconds: double;

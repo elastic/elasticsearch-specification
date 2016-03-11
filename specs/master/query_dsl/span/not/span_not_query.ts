@@ -1,9 +1,9 @@
 
 /**namespace:QueryDsl.Span.Not */
 /**custom_serialization*/
-interface SpanNotQuery {
-	include: SpanQuery;
-	exclude: SpanQuery;
+interface span_not_query {
+	include: span_query;
+	exclude: span_query;
 	pre: integer;
 	post: integer;
 	dist: integer;

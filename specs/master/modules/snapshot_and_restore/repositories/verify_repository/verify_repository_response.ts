@@ -1,6 +1,6 @@
 
 /**namespace:Modules.SnapshotAndRestore.Repositories.VerifyRepository */
-interface VerifyRepositoryResponse extends Response {
+interface verify_repository_response extends response {
 	/**custom_serialization */
-	nodes: Map<string, CompactNodeInfo>;
+	nodes: map<string, compact_node_info>[];
 }

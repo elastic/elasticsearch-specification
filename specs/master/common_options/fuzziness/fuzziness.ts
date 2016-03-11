@@ -1,7 +1,7 @@
 
 /**namespace:CommonOptions.Fuzziness */
 /**custom_serialization*/
-interface Fuzziness {
+interface fuzziness {
 	Auto: boolean;
 	EditDistance: integer;
 	Ratio: double;

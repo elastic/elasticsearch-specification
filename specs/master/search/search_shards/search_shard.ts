@@ -1,6 +1,6 @@
 
 /**namespace:Search.SearchShards */
-interface SearchShard {
+interface search_shard {
 	state: string;
 	primary: boolean;
 	node: string;

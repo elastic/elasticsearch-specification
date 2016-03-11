@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface RecoveryStats {
+interface recovery_stats {
 	current_as_source: long;
 	current_as_target: long;
 	throttle_time: string;

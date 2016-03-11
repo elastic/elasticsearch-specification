@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.NodesStats */
-interface OsMemoryStats {
+interface os_memory_stats {
 	total: string;
 	total_in_bytes: long;
 	free: string;

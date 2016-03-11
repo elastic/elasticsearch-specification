@@ -1,9 +1,9 @@
 
 /**namespace:Search.Suggesters */
 /**custom_serialization*/
-interface SuggestBucket {
+interface suggest_bucket {
 	text: string;
-	term: TermSuggester;
-	phrase: PhraseSuggester;
-	completion: CompletionSuggester;
+	term: term_suggester;
+	phrase: phrase_suggester;
+	completion: completion_suggester;
 }

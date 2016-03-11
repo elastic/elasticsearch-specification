@@ -1,7 +1,7 @@
 
 /**namespace:Search.MultiSearch */
-interface MultiSearchResponse extends Response {
+interface multi_search_response extends response {
 	IsValid: boolean;
 	TotalResponses: integer;
-	AllResponses: Response[];
+	AllResponses: response[];
 }

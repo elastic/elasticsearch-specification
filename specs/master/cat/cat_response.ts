@@ -1,5 +1,5 @@
 
 /**namespace:Cat */
-interface CatResponse<TCatRecord> extends Response {
-	Records: TCatRecord[];
+interface cat_response<t_cat_record> extends response {
+	Records: t_cat_record[];
 }

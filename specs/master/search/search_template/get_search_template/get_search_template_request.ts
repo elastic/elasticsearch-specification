@@ -1,6 +1,6 @@
 
 /**namespace:Search.SearchTemplate.GetSearchTemplate */
-interface GetSearchTemplateRequest extends Request {
+interface get_search_template_request extends request {
 	/**ambiguous_origin*/
 	Version: long;
 	/**ambiguous_origin*/

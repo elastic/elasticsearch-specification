@@ -1,8 +1,8 @@
 
 /**namespace:Search.Suggesters.PhraseSuggester */
 /**custom_serialization*/
-interface DirectGenerator {
-	field: Field;
+interface direct_generator {
+	field: field;
 	size: integer;
 	prefix_len: integer;
 	/**custom_serialization */

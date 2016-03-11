@@ -1,6 +1,6 @@
 
 /**namespace:CommonAbstractions.Response */
-interface IndicesResponseBase extends Response {
+interface indices_response_base extends response {
 	acknowledged: boolean;
-	_shards: ShardsMetaData;
+	_shards: shards_meta_data;
 }

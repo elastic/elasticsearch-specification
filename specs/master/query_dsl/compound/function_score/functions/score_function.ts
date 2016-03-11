@@ -1,6 +1,6 @@
 
 /**namespace:QueryDsl.Compound.FunctionScore.Functions */
-interface ScoreFunction {
-	filter: QueryContainer;
+interface score_function {
+	filter: query_container;
 	weight: double;
 }

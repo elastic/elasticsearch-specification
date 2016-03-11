@@ -1,4 +1,4 @@
 
 /**namespace:Indices.IndexManagement.CreateIndex */
-interface CreateIndexResponse extends Response {
+interface create_index_response extends response {
 }

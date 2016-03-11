@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface TranslogStats {
+interface translog_stats {
 	operations: long;
 	size: string;
 	size_in_bytes: long;

@@ -1,8 +1,8 @@
 
 /**namespace:Cluster.ClusterState */
-interface NodeState {
+interface node_state {
 	name: string;
 	transport_address: string;
 	/**custom_serialization */
-	attributes: Map<string, string>;
+	attributes: map<string, string>[];
 }

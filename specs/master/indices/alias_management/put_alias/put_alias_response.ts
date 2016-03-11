@@ -1,4 +1,4 @@
 
 /**namespace:Indices.AliasManagement.PutAlias */
-interface PutAliasResponse extends Response {
+interface put_alias_response extends response {
 }

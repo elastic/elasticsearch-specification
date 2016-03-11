@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.Compound.Filtered */
 /**custom_serialization*/
-interface FilteredQuery {
-	query: QueryContainer;
-	filter: QueryContainer;
+interface filtered_query {
+	query: query_container;
+	filter: query_container;
 }

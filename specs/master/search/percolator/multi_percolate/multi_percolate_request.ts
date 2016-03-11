@@ -1,8 +1,8 @@
 
 /**namespace:Search.Percolator.MultiPercolate */
 /**custom_serialization*/
-interface MultiPercolateRequest extends Request {
-	Percolations: PercolateOperation[];
+interface multi_percolate_request extends request {
+	Percolations: percolate_operation[];
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

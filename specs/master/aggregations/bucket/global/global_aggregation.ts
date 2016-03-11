@@ -1,4 +1,4 @@
 
 /**namespace:Aggregations.Bucket.Global */
-interface GlobalAggregation {
+interface global_aggregation {
 }

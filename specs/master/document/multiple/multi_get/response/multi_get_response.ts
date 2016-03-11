@@ -1,5 +1,5 @@
 
 /**namespace:Document.Multiple.MultiGet.Response */
-interface MultiGetResponse extends Response {
-	Documents: MultiGetHit<any>[];
+interface multi_get_response extends response {
+	Documents: multi_get_hit<any>[];
 }

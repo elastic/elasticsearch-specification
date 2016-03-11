@@ -1,5 +1,5 @@
 
 /**namespace:Analysis */
 /**custom_serialization*/
-interface StopWords extends Union<string, string[]> {
+interface stop_words extends union<string, string[]> {
 }

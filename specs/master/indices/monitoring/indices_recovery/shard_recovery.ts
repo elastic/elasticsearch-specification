@@ -1,6 +1,6 @@
 
 /**namespace:Indices.Monitoring.IndicesRecovery */
-interface ShardRecovery {
+interface shard_recovery {
 	id: long;
 	type: string;
 	stage: string;
@@ -8,9 +8,9 @@ interface ShardRecovery {
 	start_time: Date;
 	stop_time: Date;
 	total_time_in_millis: long;
-	source: RecoveryOrigin;
-	target: RecoveryOrigin;
-	index: RecoveryIndexStatus;
-	translog: RecoveryTranslogStatus;
-	start: RecoveryStartStatus;
+	source: recovery_origin;
+	target: recovery_origin;
+	index: recovery_index_status;
+	translog: recovery_translog_status;
+	start: recovery_start_status;
 }

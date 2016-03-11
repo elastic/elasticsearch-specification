@@ -1,6 +1,6 @@
 
 /**namespace:Aggregations.Metric.Cardinality */
-interface CardinalityAggregation {
+interface cardinality_aggregation {
 	precision_threshold: integer;
 	rehash: boolean;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface GetStats {
+interface get_stats {
 	current: long;
 	exists_time: string;
 	exists_time_in_millis: long;

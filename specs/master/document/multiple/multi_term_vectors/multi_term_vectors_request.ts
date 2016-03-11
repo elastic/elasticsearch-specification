@@ -1,13 +1,13 @@
 
 /**namespace:Document.Multiple.MultiTermVectors */
-interface MultiTermVectorsRequest extends Request {
-	docs: MultiTermVectorOperation[];
+interface multi_term_vectors_request extends request {
+	docs: multi_term_vector_operation[];
 	/**ambiguous_origin*/
 	TermStatistics: boolean;
 	/**ambiguous_origin*/
 	FieldStatistics: boolean;
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Offsets: boolean;
 	/**ambiguous_origin*/

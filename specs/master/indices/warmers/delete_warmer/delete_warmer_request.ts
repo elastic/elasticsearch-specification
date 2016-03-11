@@ -1,8 +1,8 @@
 
 /**namespace:Indices.Warmers.DeleteWarmer */
-interface DeleteWarmerRequest extends Request {
+interface delete_warmer_request extends request {
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

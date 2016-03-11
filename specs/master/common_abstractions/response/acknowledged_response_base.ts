@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Response */
-interface AcknowledgedResponseBase extends Response {
+interface acknowledged_response_base extends response {
 	acknowledged: boolean;
 }

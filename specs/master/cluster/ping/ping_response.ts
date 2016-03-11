@@ -1,4 +1,4 @@
 
 /**namespace:Cluster.Ping */
-interface PingResponse extends Response {
+interface ping_response extends response {
 }

@@ -1,7 +1,7 @@
 
 /**namespace:Modules.SnapshotAndRestore.Restore */
-interface SnapshotRestore {
+interface snapshot_restore {
 	snapshot: string;
-	indices: IndexName[];
-	shards: ShardsMetaData;
+	indices: index_name[];
+	shards: shards_meta_data;
 }

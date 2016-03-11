@@ -1,12 +1,12 @@
 
 /**namespace:Cluster.NodesInfo */
-interface NodeOperatingSystemInfo {
+interface node_operating_system_info {
 	name: string;
 	arch: string;
 	version: string;
 	refresh_interval_in_millis: integer;
 	available_processors: integer;
-	cpu: NodeInfoOSCPU;
-	mem: NodeInfoMemory;
-	swap: NodeInfoMemory;
+	cpu: node_info_o_s_c_p_u;
+	mem: node_info_memory;
+	swap: node_info_memory;
 }

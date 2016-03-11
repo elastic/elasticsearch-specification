@@ -1,6 +1,6 @@
 
 /**namespace:Search.Scroll.ClearScroll */
-interface ClearScrollRequest extends Request {
+interface clear_scroll_request extends request {
 	scroll_id: string[];
 	/**ambiguous_origin*/
 	Source: string;

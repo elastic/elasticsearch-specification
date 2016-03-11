@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Stats */
-interface RequestCacheStats {
+interface request_cache_stats {
 	evictions: long;
 	hit_count: long;
 	memory_size: string;

@@ -1,15 +1,15 @@
 
 /**namespace:Modules.SnapshotAndRestore.Restore */
-interface RestoreRequest extends Request {
-	indices: Indices;
+interface restore_request extends request {
+	indices: indices;
 	ignore_unavailable: boolean;
 	include_global_state: boolean;
 	rename_pattern: string;
 	rename_replacement: string;
-	index_settings: UpdateIndexSettingsRequest;
+	index_settings: update_index_settings_request;
 	ignore_index_settings: string[];
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	WaitForCompletion: boolean;
 	/**ambiguous_origin*/

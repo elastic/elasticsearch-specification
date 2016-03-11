@@ -1,4 +1,4 @@
 
 /**namespace:Mapping.MetaFields */
-interface FieldMapping {
+interface field_mapping {
 }

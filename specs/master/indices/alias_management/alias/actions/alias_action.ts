@@ -1,4 +1,4 @@
 
 /**namespace:Indices.AliasManagement.Alias.Actions */
-interface AliasAction {
+interface alias_action {
 }

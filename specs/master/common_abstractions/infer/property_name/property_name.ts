@@ -1,5 +1,5 @@
 
 /**namespace:CommonAbstractions.Infer.PropertyName */
-interface PropertyName {
+interface property_name {
 	Name: string;
 }

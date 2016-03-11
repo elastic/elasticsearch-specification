@@ -1,6 +1,6 @@
 
 /**namespace:Cluster.RootNodeInfo */
-interface RootNodeInfoRequest extends Request {
+interface root_node_info_request extends request {
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/

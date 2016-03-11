@@ -1,6 +1,6 @@
 
 /**namespace:CommonOptions.Scripting */
 /**custom_serialization*/
-interface ScriptField {
-	script: Script;
+interface script_field {
+	script: script;
 }

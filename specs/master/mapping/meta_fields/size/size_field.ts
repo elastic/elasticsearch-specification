@@ -1,6 +1,6 @@
 
 /**namespace:Mapping.MetaFields.Size */
 /**custom_serialization*/
-interface SizeField {
+interface size_field {
 	enabled: boolean;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:Indices.StatusManagement.SyncedFlush */
-interface SyncedFlushRequest extends Request {
+interface synced_flush_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

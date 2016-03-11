@@ -1,6 +1,6 @@
 
 /**namespace:Indices.AliasManagement.AliasExists */
-interface AliasExistsRequest extends Request {
+interface alias_exists_request extends request {
 	/**ambiguous_origin*/
 	IgnoreUnavailable: boolean;
 	/**ambiguous_origin*/

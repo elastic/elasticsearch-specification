@@ -1,10 +1,10 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface Error {
+interface error {
 	Index: string;
 	Reason: string;
 	ResourceId: string;
 	ResourceType: string;
 	Type: string;
-	RootCause: RootCause[];
+	RootCause: root_cause[];
 }

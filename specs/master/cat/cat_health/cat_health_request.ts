@@ -1,10 +1,10 @@
 
 /**namespace:Cat.CatHealth */
-interface CatHealthRequest extends Request {
+interface cat_health_request extends request {
 	/**ambiguous_origin*/
 	Local: boolean;
 	/**ambiguous_origin*/
-	MasterTimeout: Time;
+	MasterTimeout: time;
 	/**ambiguous_origin*/
 	H: string[];
 	/**ambiguous_origin*/

@@ -1,7 +1,7 @@
 
 /**namespace:QueryDsl.Geo.BoundingBox */
 /**custom_serialization*/
-interface BoundingBox {
-	top_left: GeoLocation;
-	bottom_right: GeoLocation;
+interface bounding_box {
+	top_left: geo_location;
+	bottom_right: geo_location;
 }

@@ -1,6 +1,6 @@
 
 /**namespace:CommonAbstractions.Response */
-interface ElasticsearchVersionInfo {
+interface elasticsearch_version_info {
 	Number: string;
 	snapshot_build: boolean;
 	lucene_version: string;

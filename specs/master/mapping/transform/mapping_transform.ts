@@ -1,9 +1,9 @@
 
 /**namespace:Mapping.Transform */
 /**custom_serialization*/
-interface MappingTransform {
+interface mapping_transform {
 	script: string;
 	script_file: string;
-	params: Map<string, string>;
+	params: map<string, string>[];
 	lang: string;
 }

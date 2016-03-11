@@ -1,6 +1,6 @@
 
 /**namespace:DefaultLanguageConstruct */
-interface Map<TKey, TValue> {
-	Key: TKey;
-	Value: TValue;
+interface map<t_key, t_value> {
+	Key: t_key;
+	Value: t_value;
 }

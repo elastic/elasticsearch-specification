@@ -1,4 +1,4 @@
 
 /**namespace:Indices.Warmers.DeleteWarmer */
-interface DeleteWarmerResponse extends Response {
+interface delete_warmer_response extends response {
 }

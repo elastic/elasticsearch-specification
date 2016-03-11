@@ -1,12 +1,12 @@
 
 /**namespace:Document.Multiple.MultiGet.Request */
 /**custom_serialization*/
-interface MultiGetOperation {
-	_index: IndexName;
-	_type: TypeName;
-	_id: Id;
-	fields: Field[];
+interface multi_get_operation {
+	_index: index_name;
+	_type: type_name;
+	_id: id;
+	fields: field[];
 	_routing: string;
-	_source: Union<boolean, SourceFilter>;
+	_source: union<boolean, source_filter>;
 	CanBeFlattened: boolean;
 }

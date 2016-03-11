@@ -1,7 +1,7 @@
 
 /**namespace:Search.Explain */
-interface ExplainRequest<TDocument> extends Request {
-	query: QueryContainer;
+interface explain_request<t_document> extends request {
+	query: query_container;
 	/**ambiguous_origin*/
 	AnalyzeWildcard: boolean;
 	/**ambiguous_origin*/
@@ -11,7 +11,7 @@ interface ExplainRequest<TDocument> extends Request {
 	/**ambiguous_origin*/
 	Df: string;
 	/**ambiguous_origin*/
-	Fields: Field[];
+	Fields: field[];
 	/**ambiguous_origin*/
 	Lenient: boolean;
 	/**ambiguous_origin*/
@@ -27,9 +27,9 @@ interface ExplainRequest<TDocument> extends Request {
 	/**ambiguous_origin*/
 	SourceEnabled: string[];
 	/**ambiguous_origin*/
-	SourceExclude: Field[];
+	SourceExclude: field[];
 	/**ambiguous_origin*/
-	SourceInclude: Field[];
+	SourceInclude: field[];
 	/**ambiguous_origin*/
 	Source: string;
 	/**ambiguous_origin*/
