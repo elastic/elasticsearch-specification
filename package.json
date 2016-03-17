@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run compile && node src/main.js",
-    "compile": "ntsc -p ./src",
+    "compile": "ntsc -p .",
     "typings": "typings",
     "build": "gulp --gulpfile build/gulpfile.js"
   },
