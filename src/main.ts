@@ -10,17 +10,15 @@ var _: _.LoDashStatic = require('lodash');
 //importer();
 
 var specification = new spec.Specification();
-if (specification.errors.length > 0)
-{
-  for (let e of specification.errors)
-  {
-    console.error(e);
-  }
-}
-else
-{
-  console.log("specification loaded with no errors");
-}
+
+if (specification.domain_errors.length > 0) console.error("The specification contains the following type mapping errors:")
+for (let e of specification.domain_errors) console.error("  - " + e);
+
+if (specification.endpoint_errors.length > 0) console.error("The specification contains the following endpoint mapping errors:")
+for (let e of specification.endpoint_errors) console.error("  - " + e);
+
+if (specification.domain_errors.length +  specification.endpoint_errors.length == 0)
+  console.log("The specification contains no errors in any of the " + specification.endpoints.length + " endpoints");
 
 //InterfaceDeclaration = 219
 //EnumDeclaration = 221

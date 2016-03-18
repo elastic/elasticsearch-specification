@@ -21,6 +21,8 @@
         "src/main.ts",
         "src/nest-importer.ts",
         "src/spec.ts",
+        "src/specification/validator.ts",
+        "src/specification/type-reader.ts",
         "typings/main.d.ts",
         "typings/main/ambient/lodash/lodash.d.ts",
         "typings/main/ambient/node/node.d.ts",

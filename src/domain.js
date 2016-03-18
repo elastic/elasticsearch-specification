@@ -7,13 +7,29 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Domain;
 (function (Domain) {
     var Type = (function () {
-        function Type() {
+        function Type(name) {
+            this.name = name;
         }
         return Type;
     }());
     Domain.Type = Type;
+    var Array = (function () {
+        function Array() {
+            this.type = new Type("array");
+        }
+        return Array;
+    }());
+    Domain.Array = Array;
+    var Map = (function () {
+        function Map() {
+            this.type = new Type("map");
+        }
+        return Map;
+    }());
+    Domain.Map = Map;
     var TypeDeclaration = (function () {
-        function TypeDeclaration() {
+        function TypeDeclaration(name) {
+            this.name = name;
         }
         return TypeDeclaration;
     }());
@@ -22,29 +38,42 @@ var Domain;
         __extends(Interface, _super);
         function Interface() {
             _super.apply(this, arguments);
+            this.properties = [];
         }
         return Interface;
     }(TypeDeclaration));
     Domain.Interface = Interface;
     var InterfaceProperty = (function () {
-        function InterfaceProperty() {
+        function InterfaceProperty(name) {
+            this.name = name;
         }
         return InterfaceProperty;
     }());
     Domain.InterfaceProperty = InterfaceProperty;
     var Enum = (function (_super) {
         __extends(Enum, _super);
-        function Enum() {
-            _super.apply(this, arguments);
+        function Enum(name, flags) {
+            if (flags === void 0) { flags = false; }
+            _super.call(this, name);
+            this.name = name;
+            this.flags = flags;
+            this.members = [];
         }
         return Enum;
     }(TypeDeclaration));
     Domain.Enum = Enum;
     var EnumMember = (function () {
-        function EnumMember() {
+        function EnumMember(name) {
+            this.name = name;
         }
         return EnumMember;
     }());
     Domain.EnumMember = EnumMember;
+    var Endpoint = (function () {
+        function Endpoint() {
+        }
+        return Endpoint;
+    }());
+    Domain.Endpoint = Endpoint;
 })(Domain || (Domain = {}));
 module.exports = Domain;

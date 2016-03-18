@@ -1,35 +1,52 @@
 module Domain {
   export class Type
   {
-    name: string;
+    constructor(public name: string) {}
     nullable: boolean;
+  }
+  export class Array
+  {
+    type = new Type("array");
+    of: Type|Array|Map;
+  }
+  export class Map
+  {
+    type = new Type("map");
+    key: Type|Array|Map;
+    value: Type|Array|Map;
   }
 
   export class TypeDeclaration
   {
-    name: string;
+    constructor(public name: string) {}
   }
 
   export class Interface extends TypeDeclaration
   {
-    properties: InterfaceProperty[];
+    public properties: InterfaceProperty[] = [];
   }
 
   export class InterfaceProperty
   {
-    name: string;
-    type: Type;
+    constructor(public name: string) {}
+    typeString: string;
+    type: Type|Array|Map;
   }
 
   export class Enum extends TypeDeclaration
   {
-    members: EnumMember[];
-    flags: boolean;
+    constructor(public name: string, public flags : boolean = false) { super(name) }
+    members: EnumMember[] = [];
   }
 
   export class EnumMember
   {
-    name: string;
+    constructor(public name: string) {}
+  }
+
+  export class Endpoint
+  {
+
   }
 
 }
