@@ -1,0 +1,12 @@
+{
+  "name": "barebones-example",
+  "version": "0.0.1",
+  "private" : true,
+  "description": "Sample project that shows how to reference and load the specification module",
+  "main": "index.js",
+  "author": "Elastic",
+  "license": "MIT",
+  "dependencies": {
+    "elasticsearch-client-specification": "file:../specification"
+  }
+}

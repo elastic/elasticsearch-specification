@@ -1,20 +1,18 @@
-# elastic-client-generator
-A node command line tool that operates on client and dsl spec and can generate code
+# barebones example
 
-# Here be dragons
+This references `specification` locally so you need to cd in to that directory and install its modules once
 
-This is still very rough, the spec for the dsl is a straight up export from NEST and hasn't gone through all the touchups yet.
-
-The goal is to be able to do:
-
-```shell
-$ elastic-client-gen <version|sha> <lang-repos> <out-directory>
+```bash
+$ npm install
+```
+then build
+```bash
+$ npm start
 ```
 
-Different lang-repos can write their own logic but will be passed the same object model of the rest and dsl specification.
+then from the `barebones-example` you can try the `specification` module locally using
 
-# interesting projects that could be utilized at a later stage
-
-https://github.com/angelozerr/typescript.java
-
-https://github.com/BestSolution-at/java2typescript
+```bash
+$ npm install
+$ nodejs index
+```
