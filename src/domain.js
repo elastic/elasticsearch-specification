@@ -4,6 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var _ = require('lodash');
 var Domain;
 (function (Domain) {
     var Type = (function () {
@@ -70,10 +71,38 @@ var Domain;
     }());
     Domain.EnumMember = EnumMember;
     var Endpoint = (function () {
-        function Endpoint() {
+        function Endpoint(file) {
+            var json = require(file.replace(/\.\//, "./../"));
+            this.name = _(json).keys().first();
+            var data = json[this.name];
+            this.documentation = data.documentation;
+            this.methods = data.methods;
+            this.bodyDocumentation = data.body;
+            if (!data.url)
+                console.log(this.name);
+            this.url = new Route(data.url);
         }
         return Endpoint;
     }());
     Domain.Endpoint = Endpoint;
+    var Route = (function () {
+        function Route(data) {
+            this.path = data.path;
+            this.paths = data.paths;
+            this.parts = _(data.parts).map(function (v, k) { return new RoutePart(v, k); }).value();
+        }
+        return Route;
+    }());
+    Domain.Route = Route;
+    var RoutePart = (function () {
+        function RoutePart(name, data) {
+            this.name = name;
+            this.type = data.type;
+            this.description = data.description;
+            this.required = !!data.required;
+        }
+        return RoutePart;
+    }());
+    Domain.RoutePart = RoutePart;
 })(Domain || (Domain = {}));
 module.exports = Domain;

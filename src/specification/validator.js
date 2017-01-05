@@ -1,15 +1,11 @@
 "use strict";
 var SpecValidator = (function () {
     function SpecValidator() {
-        this.configPath = "./specs/tsconfig.json";
-        var config = ts.readConfigFile(this.configPath, function (file) { return ts.sys.readFile(file); });
-        var commandLine = ts.parseJsonConfigFileContent(config.config, ts.sys, "./specs");
-        this.program = ts.createProgram(commandLine.fileNames, commandLine.options);
     }
-    SpecValidator.prototype.validate = function () {
+    SpecValidator.prototype.validate = function (program) {
         var errors = [];
-        var emitResult = this.program.emit();
-        var allDiagnostics = ts.getPreEmitDiagnostics(this.program).concat(emitResult.diagnostics);
+        var emitResult = program.emit();
+        var allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
         for (var _i = 0, allDiagnostics_1 = allDiagnostics; _i < allDiagnostics_1.length; _i++) {
             var d = allDiagnostics_1[_i];
             var _a = d.file.getLineAndCharacterOfPosition(d.start), line = _a.line, character = _a.character;

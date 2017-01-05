@@ -77,10 +77,8 @@ var InterfaceVisitor = (function (_super) {
         if (!this.isPropertySignature(p, parent))
             return;
         var name = this.symbolName(p.name);
-        var returnTypeString = "TODO";
         var returnType = this.visitTypeNode(p.type);
         var prop = new Domain.InterfaceProperty(name);
-        prop.typeString = returnTypeString;
         prop.type = returnType;
         parent.properties.push(prop);
     };
@@ -116,11 +114,13 @@ var InterfaceVisitor = (function (_super) {
             ts.forEachChild(c, function (cc) { return childrenX.push(cc); });
         });
         var children = _(childrenX).filter(function (c) { return _(_this.typeKinds).some(function (k) { return k == c.kind; }); });
-        if (children.size() != 2)
-            throw "Expected map to have 2 useable children but saw " + children.size();
+        if (children.size() > 3 || children.size() < 2) {
+            throw "Expected map to have 2 or 3 useable children but saw " + children.size();
+        }
         var map = new Domain.Map();
         map.key = this.visitTypeNode(children.first());
-        map.value = this.visitTypeNode(children.last());
+        map.value = this.visitTypeNode(children.at(1).first());
+        map.array = children.size() == 3;
         return map;
     };
     InterfaceVisitor.prototype.annotate = function (declaration, symbol) {
@@ -137,8 +137,6 @@ var TypeReader = (function () {
         for (var _i = 0, _a = this.program.getSourceFiles(); _i < _a.length; _i++) {
             var f = _a[_i];
             if (f.path.match(/ntypescript/))
-                continue;
-            if (!f.path.match(/suggest_request|http_method/))
                 continue;
             this.visit(f);
         }

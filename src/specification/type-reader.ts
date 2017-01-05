@@ -64,11 +64,9 @@ class InterfaceVisitor extends Visitor
     if (!this.isPropertySignature(p, parent)) return;
 
     let name = this.symbolName(p.name);
-    let returnTypeString = "TODO";
     let returnType = this.visitTypeNode(p.type);
 
     let prop = new Domain.InterfaceProperty(name)
-    prop.typeString = returnTypeString;
     prop.type = returnType;
     parent.properties.push(prop);
   }
@@ -107,11 +105,14 @@ class InterfaceVisitor extends Visitor
       ts.forEachChild(c, cc => childrenX.push(cc));
     });
     var children = _(childrenX).filter(c=> _(this.typeKinds).some(k=> k == c.kind));
-    if (children.size() != 2) throw "Expected map to have 2 useable children but saw " + children.size();
+    if (children.size() > 3 || children.size() < 2) {
+      throw "Expected map to have 2 or 3 useable children but saw " + children.size();
+    }
 
-    var map = new Domain.Map()
+    var map = new Domain.Map();
     map.key = this.visitTypeNode(children.first());
-    map.value = this.visitTypeNode(children.last());
+    map.value = this.visitTypeNode(children.at(1).first());
+    map.array = children.size() == 3;
     return map;
 
   }
@@ -143,7 +144,7 @@ class TypeReader
     for (var f of this.program.getSourceFiles())
     {
       if (f.path.match(/ntypescript/)) continue;
-      if (!f.path.match(/suggest_request|http_method/)) continue;
+      //if (!f.path.match(/suggest_request|http_method/)) continue;
       this.visit(f)
     }
   }

@@ -1,8 +1,8 @@
 {
-  "name": "elastic-client-generator",
+  "name": "elasticsearch-client-specification",
   "version": "0.0.1",
-  "description": "A tool to generate (parts) of an elasticsearch http client",
-  "main": "index.js",
+  "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
+  "main": "src/api-specification.js",
   "scripts": {
     "start": "npm run compile && node src/main.js",
     "compile": "ntsc -p .",
@@ -12,13 +12,14 @@
   "author": "Elastic",
   "license": "MIT",
   "devDependencies": {
-    "change-case": "^2.3.1",
     "eclint": "^1.1.5",
     "gulp": "^3.9.0",
     "gulp-add-src": "^0.2.0",
-    "lodash": "^3.10.1",
-    "mkdirp": "^0.5.1",
-    "ntypescript": "1.201602212305.1",
     "typings": "0.6.8"
+  },
+  "dependencies": {
+    "glob": "^7.1.1",
+    "lodash": "^3.10.1",
+    "ntypescript": "1.201602212305.1"
   }
 }

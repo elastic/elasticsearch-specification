@@ -1,4 +1,3 @@
-
 /**namespace:Cluster.ClusterState */
 interface index_routing_table {
 	/**custom_serialization */

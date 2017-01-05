@@ -1,0 +1,3 @@
+#These are gitignored (because typescript gens them) but we do want them pushed to npm
+!src/*.js
+!src/**/*.js

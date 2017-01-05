@@ -1,3 +1,5 @@
+var _: _.LoDashStatic = require('lodash');
+
 module Domain {
   export class Type
   {
@@ -14,6 +16,7 @@ module Domain {
     type = new Type("map");
     key: Type|Array|Map;
     value: Type|Array|Map;
+    array: boolean;
   }
 
   export class TypeDeclaration
@@ -46,7 +49,53 @@ module Domain {
 
   export class Endpoint
   {
+    name: string;
+    documentation: string;
+    bodyDocumentation: string;
+    methods: string[];
+    url: Route;
 
+    constructor(file: string)
+    {
+      var json = require(file.replace(/\.\//, "./../"));
+      this.name = _(json).keys().first();
+      var data = json[this.name];
+      this.documentation = data.documentation;
+      this.methods = data.methods;
+      this.bodyDocumentation  = data.body;
+      if(!data.url) console.log(this.name);
+      this.url = new Route(data.url);
+    }
+  }
+
+  export class Route
+  {
+    path: string;
+    paths: string[];
+    parts: RoutePart[];
+
+    constructor (data: any)
+    {
+      this.path = data.path;
+      this.paths = data.paths;
+      this.parts = _(data.parts).map((v, k)=>new RoutePart(v, k)).value();
+    }
+  }
+
+  export class RoutePart
+  {
+    name: string;
+    type: string;
+    description: string;
+    required: boolean;
+
+    constructor (name: string, data: any)
+    {
+      this.name = name;
+      this.type = data.type;
+      this.description = data.description;
+      this.required = !!data.required;
+    }
   }
 
 }
