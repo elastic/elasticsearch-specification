@@ -1,0 +1,13 @@
+{
+  "name": "swagger-generator",
+  "version": "0.0.1",
+  "private" : true,
+  "description": "Takes the type script specs and generates swagger output for it (to be used in the asciidoc documentation on elastic.co (maybe))",
+  "main": "index.js",
+  "author": "Elastic",
+  "license": "MIT",
+  "dependencies": {
+    "elasticsearch-client-specification": "file:../specification",
+    "js-yaml": "3.8.2"
+  }
+}
