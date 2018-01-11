@@ -1,3 +1,7 @@
+# NOTE :exclamation:
+
+Research only, nothing concrete exists here currently. Not likely to take PR's until this get's to be `10%` useful.
+
 # barebones example
 
 This references `specification` locally so you need to cd in to that directory and install its modules once
