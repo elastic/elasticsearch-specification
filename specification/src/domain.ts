@@ -57,7 +57,8 @@ module Domain {
 
     constructor(file: string)
     {
-      var json = require(file.replace(/\.\//, "./../"));
+      //var json = require(file.replace(/\.\//, "./../"));
+	  var json = require(file);
       this.name = _(json).keys().first();
       var data = json[this.name];
       this.documentation = data.documentation;
