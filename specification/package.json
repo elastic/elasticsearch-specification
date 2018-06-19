@@ -15,11 +15,11 @@
     "eclint": "^1.1.5",
     "gulp": "^3.9.0",
     "gulp-add-src": "^0.2.0",
-    "typings": "0.6.8"
+    "typings": "0.6.8",
+    "ntypescript": "1.201706190042.1"
   },
   "dependencies": {
     "glob": "^7.1.1",
-    "lodash": "^3.10.1",
-    "ntypescript": "1.201602212305.1"
+    "lodash": "^3.10.1"
   }
 }
