@@ -1,0 +1,2 @@
+class GrokProcessorPatternsRequest extends RequestBase {
+}

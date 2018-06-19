@@ -1,0 +1,2 @@
+class ValidateDetectorResponse extends AcknowledgedResponseBase {
+}

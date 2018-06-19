@@ -1,0 +1,2 @@
+class DeleteAliasResponse extends ResponseBase {
+}

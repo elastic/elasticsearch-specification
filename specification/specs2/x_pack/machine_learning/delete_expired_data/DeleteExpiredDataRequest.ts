@@ -1,0 +1,2 @@
+class DeleteExpiredDataRequest extends RequestBase {
+}

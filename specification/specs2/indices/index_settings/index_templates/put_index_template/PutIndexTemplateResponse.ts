@@ -1,0 +1,2 @@
+class PutIndexTemplateResponse extends AcknowledgedResponseBase {
+}

@@ -1,0 +1,3 @@
+class MovingAverageModel {
+	name: string;
+}

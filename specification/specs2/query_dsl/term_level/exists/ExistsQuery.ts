@@ -1,0 +1,3 @@
+class ExistsQuery {
+	field: Field;
+}

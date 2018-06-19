@@ -1,0 +1,3 @@
+class SecurityNode {
+	name: string;
+}

@@ -1,0 +1,3 @@
+class FilterAggregation {
+	filter: QueryContainer;
+}

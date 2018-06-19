@@ -1,0 +1,2 @@
+class DeprecationInfoRequest extends RequestBase {
+}

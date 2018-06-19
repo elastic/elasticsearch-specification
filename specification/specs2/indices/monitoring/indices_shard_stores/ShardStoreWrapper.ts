@@ -1,0 +1,3 @@
+class ShardStoreWrapper {
+	stores: ShardStore[];
+}

@@ -1,0 +1,2 @@
+class DeleteModelSnapshotResponse extends AcknowledgedResponseBase {
+}

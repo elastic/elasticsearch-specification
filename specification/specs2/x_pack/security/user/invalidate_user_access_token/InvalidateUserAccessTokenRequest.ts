@@ -1,0 +1,2 @@
+class InvalidateUserAccessTokenRequest extends RequestBase {
+}

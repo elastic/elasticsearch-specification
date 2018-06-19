@@ -11,7 +11,7 @@ module ApiSpecification
 {
   export class Specification
   {
-    private specsFolder = __dirname + "/../specs";
+    private specsFolder = __dirname + "/../specs2";
     private configPath = this.specsFolder + "/tsconfig.json";
     private program: ts.Program;
 

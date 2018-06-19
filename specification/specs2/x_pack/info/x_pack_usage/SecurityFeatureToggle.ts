@@ -1,0 +1,3 @@
+class SecurityFeatureToggle {
+	enabled: boolean;
+}

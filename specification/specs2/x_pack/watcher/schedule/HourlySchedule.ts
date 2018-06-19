@@ -1,0 +1,3 @@
+class HourlySchedule {
+	minute: integer[];
+}

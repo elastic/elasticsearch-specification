@@ -1,0 +1,2 @@
+class GetDatafeedStatsRequest extends RequestBase {
+}

@@ -1,0 +1,2 @@
+class DeleteSnapshotResponse extends AcknowledgedResponseBase {
+}

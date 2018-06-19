@@ -1,0 +1,2 @@
+class DeleteScriptResponse extends AcknowledgedResponseBase {
+}

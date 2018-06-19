@@ -1,0 +1,2 @@
+class RemoteInfoRequest extends RequestBase {
+}

@@ -1,0 +1,2 @@
+class PreviewDatafeedRequest extends RequestBase {
+}

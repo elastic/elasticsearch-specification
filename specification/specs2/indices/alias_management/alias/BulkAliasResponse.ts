@@ -1,0 +1,2 @@
+class BulkAliasResponse extends AcknowledgedResponseBase {
+}

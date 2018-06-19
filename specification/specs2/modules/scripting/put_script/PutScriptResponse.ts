@@ -1,0 +1,2 @@
+class PutScriptResponse extends AcknowledgedResponseBase {
+}

@@ -1,0 +1,2 @@
+class AuthenticateRequest extends RequestBase {
+}

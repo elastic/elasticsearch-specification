@@ -1,0 +1,2 @@
+class PutAliasResponse extends ResponseBase {
+}

@@ -1,0 +1,3 @@
+class ModelPlotConfig {
+	terms: Field[];
+}

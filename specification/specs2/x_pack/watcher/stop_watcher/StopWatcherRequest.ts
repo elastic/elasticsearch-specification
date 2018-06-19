@@ -1,0 +1,2 @@
+class StopWatcherRequest extends RequestBase {
+}

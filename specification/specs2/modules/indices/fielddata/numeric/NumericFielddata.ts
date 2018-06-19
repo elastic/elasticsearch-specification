@@ -1,0 +1,3 @@
+class NumericFielddata {
+	format: NumericFielddataFormat;
+}

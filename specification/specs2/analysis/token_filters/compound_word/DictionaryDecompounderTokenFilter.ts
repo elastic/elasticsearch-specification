@@ -1,0 +1,2 @@
+class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {
+}

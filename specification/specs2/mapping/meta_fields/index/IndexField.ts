@@ -1,0 +1,3 @@
+class IndexField {
+	enabled: boolean;
+}

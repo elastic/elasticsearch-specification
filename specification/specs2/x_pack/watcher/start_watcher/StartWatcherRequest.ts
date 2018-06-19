@@ -1,0 +1,2 @@
+class StartWatcherRequest extends RequestBase {
+}

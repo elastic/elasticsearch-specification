@@ -1,0 +1,2 @@
+class StandardTokenFilter extends TokenFilterBase {
+}

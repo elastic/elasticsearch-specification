@@ -1,0 +1,2 @@
+class KeywordAnalyzer extends AnalyzerBase {
+}

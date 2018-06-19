@@ -1,0 +1,2 @@
+class CloseIndexResponse extends AcknowledgedResponseBase {
+}

@@ -1,0 +1,2 @@
+class GetWatchRequest extends RequestBase {
+}

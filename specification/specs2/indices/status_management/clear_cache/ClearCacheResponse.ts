@@ -1,0 +1,2 @@
+class ClearCacheResponse extends ShardsOperationResponseBase {
+}

@@ -1,0 +1,2 @@
+class TrimTokenFilter extends TokenFilterBase {
+}

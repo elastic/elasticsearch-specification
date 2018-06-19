@@ -1,0 +1,2 @@
+class ClearCachedRolesRequest extends RequestBase {
+}

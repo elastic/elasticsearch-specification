@@ -1,0 +1,3 @@
+class InnerHitsResult {
+	hits: InnerHitsMetadata;
+}

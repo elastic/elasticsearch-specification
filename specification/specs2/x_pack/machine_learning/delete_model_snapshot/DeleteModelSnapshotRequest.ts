@@ -1,0 +1,2 @@
+class DeleteModelSnapshotRequest extends RequestBase {
+}

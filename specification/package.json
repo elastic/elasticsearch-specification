@@ -4,7 +4,7 @@
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
   "main": "src/api-specification.js",
   "scripts": {
-    "start": "npm run compile && node src/main.js",
+    "start": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
     "compile": "ntsc -p .",
     "typings": "typings",
     "build": "gulp --gulpfile build/gulpfile.js"

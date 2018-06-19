@@ -1,0 +1,3 @@
+class RawQuery {
+	raw: string;
+}

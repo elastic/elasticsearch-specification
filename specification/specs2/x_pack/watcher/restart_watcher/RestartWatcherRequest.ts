@@ -1,0 +1,2 @@
+class RestartWatcherRequest extends RequestBase {
+}

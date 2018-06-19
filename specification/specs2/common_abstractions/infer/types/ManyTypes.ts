@@ -1,0 +1,3 @@
+class ManyTypes {
+	types: TypeName[];
+}

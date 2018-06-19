@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8b11d783-694d-4aaf-94f2-62b8833267c5" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/specification/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/specification/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specification/src/api-specification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/src/api-specification.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specification/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specification/src/specification/type-reader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/src/specification/type-reader.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specification/src/specification/validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/src/specification/validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specification/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/specification/tsconfig.json" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="api-specification.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/specification/src/api-specification.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/specification/src/main.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/specification/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="type-reader.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/specification/src/specification/type-reader.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="742">
+              <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScrollRequest.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/specification/specs2/search/scroll/scroll/ScrollRequest.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clear_cache_request.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/specification/specs/indices/status_management/clear_cache/clear_cache_request.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="validator.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/specification/src/specification/validator.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/specification/specs2/search/count/CountRequest.ts" />
+        <option value="$PROJECT_DIR$/specification/src/api-specification.ts" />
+        <option value="$PROJECT_DIR$/specification/tsconfig.json" />
+        <option value="$PROJECT_DIR$/specification/src/main.ts" />
+        <option value="$PROJECT_DIR$/specification/package.json" />
+        <option value="$PROJECT_DIR$/specification/src/specification/type-reader.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/barebones-example/node_modules" />
+    <handled-path value="$PROJECT_DIR$/specification/node_modules" />
+    <handled-path value="$PROJECT_DIR$/swagger-generator/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/balanced-match/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/brace-expansion/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/concat-map/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/elasticsearch-client-specification/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/fs.realpath/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/inflight/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/ntypescript/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/path-is-absolute/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/node_modules/wrappy/package.json" />
+      <path value="$PROJECT_DIR$/barebones-example/package.json" />
+      <path value="$PROJECT_DIR$/specification/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/abbrev/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/agent-base/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/agent-base/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ajv/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ansi-escapes/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ansi-styles/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/any-promise/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/archy/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/argparse/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/arr-diff/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/arr-flatten/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/array-differ/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/array-uniq/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/array-unique/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/arrify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/asn1/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/assert-plus/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/async/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/asynckit/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/aws-sign2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/aws4/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/balanced-match/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/bcrypt-pbkdf/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/beeper/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/bluebird/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/boom/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/boxen/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/boxen/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/brace-expansion/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/braces/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/buffer-equals/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/buffer-shims/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/capture-stack-trace/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/caseless/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/chalk/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/cli-color/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/cli-cursor/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/cli-width/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/clone-stats/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/clone/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/co/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/code-point-at/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/columnify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/combined-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/commander/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/concat-map/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/concat-stream/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/concat-stream/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/concat-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/configstore/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/configstore/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/configstore/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/core-util-is/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/create-error-class/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/cryptiles/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/d/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/dashdash/node_modules/assert-plus/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/dashdash/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/dateformat/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/deep-extend/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/defaults/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/delayed-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/deprecated/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/detect-file/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/detect-indent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/dot-prop/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/duplexer/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/duplexer2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/duplexify/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/duplexify/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/duplexify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ecc-jsbn/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/eclint/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/editorconfig/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/elasticsearch-client-specification/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/elegant-spinner/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/end-of-stream/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/end-of-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/error-ex/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/es5-ext/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/es6-iterator/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/es6-symbol/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/es6-weak-map/node_modules/es6-iterator/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/es6-weak-map/node_modules/es6-symbol/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/es6-weak-map/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/escape-string-regexp/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/esprima/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/event-emitter/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/event-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/exit-hook/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/expand-brackets/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/expand-range/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/expand-tilde/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/extend/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/extglob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/extsprintf/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/fancy-log/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/figures/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/figures/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/filename-regex/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/fill-range/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/filled-array/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/find-index/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/findup-sync/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/fined/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/first-chunk-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/flagged-respawn/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/for-in/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/for-own/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/forever-agent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/form-data/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/from/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/fs-exists-sync/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/fs.realpath/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/function-bind/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gaze/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/getpass/node_modules/assert-plus/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/getpass/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gitlike-cli/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob-base/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob-parent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob-stream/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob-stream/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob-watcher/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glob2base/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/global-modules/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/global-prefix/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/globule/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/globule/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/globule/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/globule/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/globule/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/globule/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/glogg/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/got/node_modules/duplexer2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/got/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/got/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/got/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/got/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/glob-stream/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/glob-stream/node_modules/xtend/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/glob-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/glob-watcher/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/unique-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/vinyl-fs/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/vinyl-fs/node_modules/xtend/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/vinyl-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/node_modules/xtend/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-add-src/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-tap/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-util/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-util/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-util/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-util/node_modules/vinyl/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp-util/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/node_modules/glob-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/node_modules/glob-watcher/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/node_modules/unique-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/node_modules/vinyl-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulp/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/gulplog/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/har-schema/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/har-validator/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/has-ansi/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/has-gulplog/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/has/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/hawk/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/hoek/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/homedir-polyfill/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/http-proxy-agent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/http-signature/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/https-proxy-agent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/imurmurhash/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/infinity-agent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/inflight/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ini/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/inquirer/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/insight/node_modules/inquirer/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/insight/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/insight/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/interpret/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/invariant/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-absolute/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-arrayish/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-buffer/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-dotfile/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-equal-shallow/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-extendable/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-extglob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-finite/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-fullwidth-code-point/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-npm/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-number/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-obj/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-plain-obj/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-posix-bracket/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-primitive/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-redirect/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-relative/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-retry-allowed/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-typedarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-unc-path/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-utf8/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/is-windows/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/isexe/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/isobject/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/isobject/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/isstream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/jodid25519/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/js-tokens/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/js-yaml/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/jsbn/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/json-schema/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/json-stable-stringify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/json-stringify-safe/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/jsonify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/jsprim/node_modules/assert-plus/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/jsprim/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/keypress/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/kind-of/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/latest-version/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/liftoff/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/linez/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/linez/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/listify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lockfile/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._basecopy/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._basetostring/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._basevalues/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._getnative/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._isiterateecall/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._reescape/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._reevaluate/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._reinterpolate/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash._root/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.assignwith/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.debounce/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.escape/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.isarguments/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.isempty/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.isplainobject/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.isstring/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.keys/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.mapvalues/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.pick/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.restparam/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.template/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash.templatesettings/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/log-update/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/loose-envify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lowercase-keys/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lru-cache/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/lru-queue/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/make-error-cause/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/make-error/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/map-cache/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/map-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/memoizee/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/merge-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/methods/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/micromatch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/mime-db/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/mkdirp/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/mkdirp/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/multipipe/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/mute-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/natives/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/next-tick/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/node-status-codes/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/nopt/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/normalize-path/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ntypescript/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/number-is-nan/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/oauth-sign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/object.omit/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/object.pick/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/onetime/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/orchestrator/node_modules/end-of-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/orchestrator/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/orchestrator/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/ordered-read-streams/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/os-homedir/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/os-name/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/os-tmpdir/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/osenv/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/osx-release/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/package-json/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/package-json/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/parse-filepath/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/parse-glob/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/parse-json/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/parse-passwd/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/path-is-absolute/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/path-parse/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/path-root-regex/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/path-root/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/pause-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/performance-now/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/pinkie-promise/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/pinkie/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle-proxy-agent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle-retry/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle-status/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/node_modules/async/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/node_modules/combined-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/node_modules/delayed-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/node_modules/form-data/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/node_modules/mime-db/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/node_modules/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/popsicle/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/prepend-http/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/preserve/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/pretty-hrtime/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/process-nextick-args/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/promise-finally/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/punycode/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/randomatic/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/rc/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/read-all-stream/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/read-all-stream/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/read-all-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/readline2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/rechoir/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/regex-cache/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/registry-auth-token/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/registry-url/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/repeat-element/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/repeat-string/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/repeating/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/replace-ext/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/request/node_modules/uuid/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/request/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/resolve-dir/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/resolve/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/resolve/test/module_dir/zmodules/bbb/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/resolve/test/resolver/baz/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/resolve/test/resolver/incorrect_main/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/restore-cursor/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/rimraf/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/run-async/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/rx-lite/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/semver-diff/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/semver-diff/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sequencify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sigmund/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/slide/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sntp/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sort-keys/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sparkles/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/split/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sprintf-js/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sshpk/node_modules/assert-plus/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/sshpk/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/stream-combiner/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/stream-consume/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/stream-shift/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/streamqueue/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/streamqueue/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/string-template/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/string-width/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/stringstream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/strip-bom/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/strip-json-comments/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/supports-color/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/thenify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through2-filter/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through2-filter/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through2-filter/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through2-filter/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through2/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/tildify/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/time-stamp/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/timed-out/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/timers-ext/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/touch/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/tough-cookie/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/tunnel-agent/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/tweetnacl/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/typedarray/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/typescript/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/typings/node_modules/bluebird/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/typings/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/typings/node_modules/strip-bom/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/typings/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/unc-path-regex/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/unique-stream/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/unzip-response/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/update-notifier/node_modules/configstore/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/update-notifier/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/update-notifier/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/update-notifier/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/url-parse-lax/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/user-home/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/util-deprecate/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/uuid/benchmark/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/uuid/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/v8flags/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/verror/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/vinyl-fs/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/vinyl-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/vinyl/node_modules/clone/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/vinyl/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/wcwidth/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/which/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/widest-line/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/win-release/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/win-release/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/wordwrap/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/wrappy/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/write-file-atomic/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/write-file-atomic/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/xdg-basedir/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/xtend/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/node_modules/zip-object/package.json" />
+      <path value="$PROJECT_DIR$/swagger-generator/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="y" value="40" />
+    <option name="width" value="2317" />
+    <option name="height" value="2126" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="barebones-example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="specs2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="specs2" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="specs2" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
+              <item name="scroll" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="specs2" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
+              <item name="scroll" type="462c0819:PsiDirectoryNode" />
+              <item name="scroll" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="typings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="typings" type="462c0819:PsiDirectoryNode" />
+              <item name="browser" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/specification/src/main.js" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.TypeScript" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.1.5\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.specification">
+    <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="src/main.js" working-dir="$PROJECT_DIR$/specification" />
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/specification/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration name="specification" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/specification/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.Unnamed" />
+      <item itemvalue="npm.specification" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b11d783-694d-4aaf-94f2-62b8833267c5" name="Default" comment="" />
+      <created>1529411561311</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529411561311</updated>
+      <workItem from="1529411574360" duration="4266000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4266000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="40" width="2317" height="2126" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14776184" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32982457" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32972974" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40802005" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/specification/src/main.js" />
+        <option value="$PROJECT_DIR$/specification/src/domain.js" />
+        <option value="$PROJECT_DIR$/specification/src/api-specification.js" />
+        <option value="$PROJECT_DIR$/specification/src/specification/validator.js" />
+        <option value="$PROJECT_DIR$/specification/src/specification/type-reader.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/ntypescript/register.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/ntypescript/tasks/ntypescript.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/ntypescript/extensions/addExtensions.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/ntypescript/extensions/preBuild.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/elasticsearch-client-specification/src/main.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/elasticsearch-client-specification/src/domain.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/elasticsearch-client-specification/src/api-specification.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/elasticsearch-client-specification/src/specification/validator.js" />
+        <option value="$PROJECT_DIR$/barebones-example/node_modules/elasticsearch-client-specification/src/specification/type-reader.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/ntypescript/register.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/ntypescript/tasks/ntypescript.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/ntypescript/extensions/addExtensions.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/ntypescript/extensions/preBuild.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/elasticsearch-client-specification/src/main.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/elasticsearch-client-specification/src/domain.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/elasticsearch-client-specification/src/api-specification.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/elasticsearch-client-specification/src/specification/validator.js" />
+        <option value="$PROJECT_DIR$/swagger-generator/node_modules/elasticsearch-client-specification/src/specification/type-reader.js" />
+        <option value="$PROJECT_DIR$/specification/src/specification/validator.js.map" />
+        <option value="$PROJECT_DIR$/specification/src/specification/type-reader.js.map" />
+        <option value="$PROJECT_DIR$/specification/src/main.js.map" />
+        <option value="$PROJECT_DIR$/specification/src/domain.js.map" />
+        <option value="$PROJECT_DIR$/specification/src/api-specification.js.map" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/specification/src/main.ts</url>
+          <line>10</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/specification/src/domain.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs2/search/count/CountRequest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs2/common.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs2/search/explain/ExplainRequest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs/indices/status_management/clear_cache/clear_cache_request.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/api-specification.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs2/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/specification/validator.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs/indices/alias_management/alias.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs2/search/scroll/scroll/ScrollRequest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/api-specification.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/specification/type-reader.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,3 @@
+class AllocationId {
+	id: string;
+}

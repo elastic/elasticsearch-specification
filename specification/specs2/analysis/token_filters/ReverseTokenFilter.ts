@@ -1,0 +1,2 @@
+class ReverseTokenFilter extends TokenFilterBase {
+}

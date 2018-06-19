@@ -1,0 +1,3 @@
+class RelationName {
+	name: string;
+}

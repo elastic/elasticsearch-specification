@@ -1,0 +1,3 @@
+class Profile {
+	shards: ShardProfile[];
+}

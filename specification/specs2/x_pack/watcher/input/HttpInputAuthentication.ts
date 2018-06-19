@@ -1,0 +1,3 @@
+class HttpInputAuthentication {
+	basic: HttpInputBasicAuthentication;
+}

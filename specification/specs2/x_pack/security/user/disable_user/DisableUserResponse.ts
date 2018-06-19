@@ -1,0 +1,2 @@
+class DisableUserResponse extends ResponseBase {
+}

@@ -1,0 +1,2 @@
+class DeleteRepositoryResponse extends AcknowledgedResponseBase {
+}

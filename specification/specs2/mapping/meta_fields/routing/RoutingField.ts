@@ -1,0 +1,3 @@
+class RoutingField {
+	required: boolean;
+}

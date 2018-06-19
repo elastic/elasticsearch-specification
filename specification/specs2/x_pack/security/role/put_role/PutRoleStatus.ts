@@ -1,0 +1,3 @@
+class PutRoleStatus {
+	created: boolean;
+}

@@ -1,0 +1,3 @@
+class ConstantScoreQuery {
+	filter: QueryContainer;
+}

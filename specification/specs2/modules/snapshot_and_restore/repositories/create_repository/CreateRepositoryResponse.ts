@@ -1,0 +1,2 @@
+class CreateRepositoryResponse extends AcknowledgedResponseBase {
+}

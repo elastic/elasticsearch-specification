@@ -1,0 +1,2 @@
+class PutPipelineResponse extends AcknowledgedResponseBase {
+}

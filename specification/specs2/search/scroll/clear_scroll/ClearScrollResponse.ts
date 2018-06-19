@@ -1,0 +1,2 @@
+class ClearScrollResponse extends ResponseBase {
+}

@@ -1,0 +1,2 @@
+class RefreshResponse extends ShardsOperationResponseBase {
+}

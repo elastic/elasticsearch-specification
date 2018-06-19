@@ -1,0 +1,2 @@
+class RestartWatcherResponse extends AcknowledgedResponseBase {
+}

@@ -1,0 +1,2 @@
+class RootNodeInfoRequest extends RequestBase {
+}

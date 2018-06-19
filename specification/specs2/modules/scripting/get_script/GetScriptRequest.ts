@@ -1,0 +1,2 @@
+class GetScriptRequest extends RequestBase {
+}

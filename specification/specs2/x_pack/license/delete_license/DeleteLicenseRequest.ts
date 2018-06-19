@@ -1,0 +1,2 @@
+class DeleteLicenseRequest extends RequestBase {
+}

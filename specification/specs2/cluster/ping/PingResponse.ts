@@ -1,0 +1,2 @@
+class PingResponse extends ResponseBase {
+}

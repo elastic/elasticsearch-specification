@@ -1,0 +1,2 @@
+class WhitespaceAnalyzer extends AnalyzerBase {
+}

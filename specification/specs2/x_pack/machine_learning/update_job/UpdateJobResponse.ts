@@ -1,0 +1,2 @@
+class UpdateJobResponse extends ResponseBase {
+}

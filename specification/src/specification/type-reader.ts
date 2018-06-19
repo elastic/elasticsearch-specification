@@ -39,12 +39,14 @@ class EnumVisitor extends Visitor
 
 class InterfaceVisitor extends Visitor
 {
-  constructor(private interfaceNode : ts.InterfaceDeclaration, checker: ts.TypeChecker) {super(checker)}
+  constructor(private interfaceNode : ts.InterfaceDeclaration | ts.ClassDeclaration, checker: ts.TypeChecker) {super(checker)}
 
   public visit() : Domain.Interface
   {
     let name = this.symbolName(this.interfaceNode.name);
     let domainInterface = new Domain.Interface(name);
+
+    var children = this.interfaceNode.getChildren();
 
     ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(<ts.PropertySignature>c, domainInterface));
 
@@ -52,9 +54,10 @@ class InterfaceVisitor extends Visitor
     return domainInterface;
   }
 
-  private isPropertySignature(p: ts.PropertySignature, parent: Domain.Interface) : boolean
+  private isPropertySignature(p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface) : boolean
   {
     if (p.kind == ts.SyntaxKind.PropertySignature) return true;
+    if (p.kind == ts.SyntaxKind.PropertyDeclaration) return true;
     ts.forEachChild(p, c=>this.visitInterfaceProperty(<ts.PropertySignature>c, parent));
     return false;
   }
@@ -66,7 +69,7 @@ class InterfaceVisitor extends Visitor
     let name = this.symbolName(p.name);
     let returnType = this.visitTypeNode(p.type);
 
-    let prop = new Domain.InterfaceProperty(name)
+    let prop = new Domain.InterfaceProperty(name);
     prop.type = returnType;
     parent.properties.push(prop);
   }
@@ -153,9 +156,13 @@ class TypeReader
   {
       switch (node.kind)
       {
+        case ts.SyntaxKind.ClassDeclaration:
+          let cv = new InterfaceVisitor(<ts.ClassDeclaration>node, this.checker);
+          this.interfaces.push(cv.visit());
+          break;
         case ts.SyntaxKind.InterfaceDeclaration:
           let iv = new InterfaceVisitor(<ts.InterfaceDeclaration>node, this.checker);
-          this.interfaces.push(iv.visit())
+          this.interfaces.push(iv.visit());
           break;
 
         case ts.SyntaxKind.EnumDeclaration:

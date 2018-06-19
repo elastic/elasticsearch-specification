@@ -1,0 +1,2 @@
+class ChangePasswordResponse extends ResponseBase {
+}

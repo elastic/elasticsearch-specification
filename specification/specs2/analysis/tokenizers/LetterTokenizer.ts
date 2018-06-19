@@ -1,0 +1,2 @@
+class LetterTokenizer extends TokenizerBase {
+}

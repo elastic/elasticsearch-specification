@@ -1,0 +1,2 @@
+class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
+}

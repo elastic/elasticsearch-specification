@@ -1,0 +1,2 @@
+class UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
+}

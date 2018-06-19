@@ -1,0 +1,2 @@
+class DeleteIndexResponse extends IndicesResponseBase {
+}

@@ -1,0 +1,2 @@
+class DeleteIndexTemplateResponse extends AcknowledgedResponseBase {
+}

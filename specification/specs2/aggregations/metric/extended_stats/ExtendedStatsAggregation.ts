@@ -1,0 +1,3 @@
+class ExtendedStatsAggregation {
+	sigma: double;
+}

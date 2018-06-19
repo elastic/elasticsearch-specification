@@ -1,0 +1,3 @@
+class ScriptField {
+	script: Script;
+}

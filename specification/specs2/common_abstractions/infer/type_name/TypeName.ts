@@ -1,0 +1,3 @@
+class TypeName {
+	name: string;
+}

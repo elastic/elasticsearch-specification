@@ -1,0 +1,2 @@
+class StopWatcherResponse extends AcknowledgedResponseBase {
+}

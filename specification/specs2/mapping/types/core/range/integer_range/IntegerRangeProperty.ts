@@ -1,0 +1,2 @@
+class IntegerRangeProperty extends RangePropertyBase {
+}

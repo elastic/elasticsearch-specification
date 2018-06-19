@@ -1,0 +1,3 @@
+class SnapshotRepository {
+	type: string;
+}

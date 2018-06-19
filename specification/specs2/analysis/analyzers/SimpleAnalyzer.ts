@@ -1,0 +1,2 @@
+class SimpleAnalyzer extends AnalyzerBase {
+}

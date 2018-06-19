@@ -1,0 +1,2 @@
+class DeletePipelineResponse extends AcknowledgedResponseBase {
+}

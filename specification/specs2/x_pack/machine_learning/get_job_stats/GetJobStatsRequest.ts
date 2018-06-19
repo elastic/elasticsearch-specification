@@ -1,0 +1,2 @@
+class GetJobStatsRequest extends RequestBase {
+}

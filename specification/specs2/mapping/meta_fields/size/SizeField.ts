@@ -1,0 +1,3 @@
+class SizeField {
+	enabled: boolean;
+}

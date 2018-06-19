@@ -1,0 +1,2 @@
+class GetUserRequest extends RequestBase {
+}

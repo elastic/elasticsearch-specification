@@ -1,0 +1,3 @@
+class TriggerContainer {
+	schedule: ScheduleContainer;
+}

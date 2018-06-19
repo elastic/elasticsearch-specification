@@ -1,0 +1,2 @@
+class DeleteDatafeedResponse extends AcknowledgedResponseBase {
+}

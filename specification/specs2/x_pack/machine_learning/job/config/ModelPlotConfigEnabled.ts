@@ -1,0 +1,3 @@
+class ModelPlotConfigEnabled {
+	enabled: boolean;
+}

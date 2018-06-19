@@ -1,0 +1,3 @@
+class TriggerEventContainer {
+	schedule: ScheduleTriggerEvent;
+}

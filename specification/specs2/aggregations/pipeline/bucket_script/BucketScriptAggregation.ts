@@ -1,0 +1,3 @@
+class BucketScriptAggregation {
+	script: Script;
+}

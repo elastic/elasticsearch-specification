@@ -1,0 +1,2 @@
+class DeleteLicenseResponse extends ResponseBase {
+}

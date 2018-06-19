@@ -1,0 +1,3 @@
+class ClusterRerouteCommand {
+	name: string;
+}

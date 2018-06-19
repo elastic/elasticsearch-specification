@@ -1,0 +1,3 @@
+class ClusterProcessCpu {
+	percent: integer;
+}

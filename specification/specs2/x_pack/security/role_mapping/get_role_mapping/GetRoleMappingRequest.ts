@@ -1,0 +1,2 @@
+class GetRoleMappingRequest extends RequestBase {
+}
