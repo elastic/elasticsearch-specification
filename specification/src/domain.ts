@@ -58,13 +58,16 @@ module Domain {
     constructor(file: string)
     {
       //var json = require(file.replace(/\.\//, "./../"));
-	  var json = require(file);
+      const json = require(file);
+
       this.name = _(json).keys().first();
-      var data = json[this.name];
+      const data = json[this.name];
+      if(!data.url) console.log(this.name);
+
       this.documentation = data.documentation;
       this.methods = data.methods;
       this.bodyDocumentation  = data.body;
-      if(!data.url) console.log(this.name);
+
       this.url = new Route(data.url);
     }
   }

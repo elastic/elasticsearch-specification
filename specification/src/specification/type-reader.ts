@@ -23,7 +23,7 @@ class EnumVisitor extends Visitor
   private isMember(member : ts.EnumMember, e: Domain.Enum) : boolean
   {
     if (member.kind == ts.SyntaxKind.EnumMember) return true;
-    for (var child of member.getChildren())
+    for (const child of member.getChildren())
       this.visitMember(<ts.EnumMember>child, e);
     return false;
   }
@@ -32,7 +32,7 @@ class EnumVisitor extends Visitor
   {
     if (!this.isMember(member, e)) return;
 
-    var name = this.symbolName(member.name);
+    const name = this.symbolName(member.name);
     e.members.push(new Domain.EnumMember(name))
   }
 }
@@ -88,10 +88,10 @@ class InterfaceVisitor extends Visitor
 
   private visitArrayType(t : ts.ArrayTypeNode) : Domain.Array
   {
-    var array= new Domain.Array();
-    var childrenX : ts.Node[] = [];
+    const array = new Domain.Array();
+    const childrenX: ts.Node[] = [];
     ts.forEachChild(t, c => childrenX.push(c));
-    var children = _(childrenX).filter(c=> _(this.typeKinds).some(k=> k == c.kind));
+    const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k == c.kind));
     if (children.size() != 1) throw "Expected array to have 1 useable child but saw " + children.size();
 
     array.of = this.visitTypeNode(children.first());
@@ -99,15 +99,15 @@ class InterfaceVisitor extends Visitor
   }
   private visitTypeReference(t : ts.TypeReferenceNode) : Domain.Type|Domain.Map|Domain.Array
   {
-    var typeName = t.typeName.getText();
+    const typeName = t.typeName.getText();
     if (typeName != "map") return new Domain.Type(t.getText());
 
-    var childrenX : ts.Node[] = [];
+    const childrenX: ts.Node[] = [];
     ts.forEachChild(t, c => {
       childrenX.push(c)
       ts.forEachChild(c, cc => childrenX.push(cc));
     });
-    var children = _(childrenX).filter(c=> _(this.typeKinds).some(k=> k == c.kind));
+    const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k == c.kind));
     if (children.size() > 3 || children.size() < 2) {
       throw "Expected map to have 2 or 3 useable children but saw " + children.size();
     }
@@ -130,7 +130,7 @@ class InterfaceVisitor extends Visitor
 
   private annotate(declaration: Domain.TypeDeclaration, symbol: ts.Symbol)
   {
-    var documentation = ts.displayPartsToString(symbol.getDocumentationComment());
+    const documentation = ts.displayPartsToString(symbol.getDocumentationComment());
   }
 }
 
