@@ -1,3 +1,4 @@
+@rest_spec_name("indices.exists_alias")
 class AliasExistsRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

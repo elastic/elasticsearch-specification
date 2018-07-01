@@ -1,3 +1,4 @@
+@rest_spec_name("update")
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 	script: Script;
 	@prop_serializer("SourceConverter")

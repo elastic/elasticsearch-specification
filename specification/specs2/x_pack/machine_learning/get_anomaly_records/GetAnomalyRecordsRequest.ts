@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.get_records")
 class GetAnomalyRecordsRequest extends RequestBase {
 	desc: boolean;
 	exclude_interim: boolean;

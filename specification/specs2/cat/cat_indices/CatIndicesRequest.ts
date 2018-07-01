@@ -1,3 +1,4 @@
+@rest_spec_name("cat.indices")
 class CatIndicesRequest extends RequestBase {
 	@request_parameter()
 	format: string;

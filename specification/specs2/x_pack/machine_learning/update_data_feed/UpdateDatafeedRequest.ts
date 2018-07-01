@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.update_datafeed")
 class UpdateDatafeedRequest extends RequestBase {
 	aggregations: Map<string, AggregationContainer>;
 	chunking_config: ChunkingConfig;

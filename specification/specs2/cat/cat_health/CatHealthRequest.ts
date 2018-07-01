@@ -1,3 +1,4 @@
+@rest_spec_name("cat.health")
 class CatHealthRequest extends RequestBase {
 	@request_parameter()
 	format: string;

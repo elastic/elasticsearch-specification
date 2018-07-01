@@ -1,3 +1,4 @@
+@rest_spec_name("indices.upgrade")
 class UpgradeRequest extends RequestBase {
 	@request_parameter()
 	allow_no_indices: boolean;

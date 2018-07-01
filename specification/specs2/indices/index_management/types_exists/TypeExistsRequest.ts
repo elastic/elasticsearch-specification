@@ -1,3 +1,4 @@
+@rest_spec_name("indices.exists_type")
 class TypeExistsRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

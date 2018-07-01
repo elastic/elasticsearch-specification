@@ -1,3 +1,4 @@
+@rest_spec_name("search")
 class SearchRequest {
 	timeout: string;
 	from: integer;

@@ -1,3 +1,4 @@
+@rest_spec_name("explain")
 class ExplainRequest<TDocument> extends RequestBase {
 	@request_parameter()
 	stored_fields: Field[];

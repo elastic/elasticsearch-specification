@@ -1,3 +1,4 @@
+@rest_spec_name("cat.fielddata")
 class CatFielddataRequest extends RequestBase {
 	@request_parameter()
 	format: string;

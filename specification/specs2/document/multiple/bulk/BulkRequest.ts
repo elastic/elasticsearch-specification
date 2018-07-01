@@ -1,3 +1,4 @@
+@rest_spec_name("bulk")
 @class_serializer("BulkRequestJsonConverter")
 class BulkRequest extends RequestBase {
 	operations: BulkOperation[];

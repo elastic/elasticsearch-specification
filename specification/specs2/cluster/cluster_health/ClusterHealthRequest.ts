@@ -1,3 +1,4 @@
+@rest_spec_name("cluster.health")
 class ClusterHealthRequest extends RequestBase {
 	@request_parameter()
 	level: Level;

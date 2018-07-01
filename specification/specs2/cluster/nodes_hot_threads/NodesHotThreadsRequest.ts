@@ -1,3 +1,4 @@
+@rest_spec_name("nodes.hot_threads")
 class NodesHotThreadsRequest extends RequestBase {
 	@request_parameter()
 	interval: Time;

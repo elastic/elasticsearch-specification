@@ -1,3 +1,4 @@
+@rest_spec_name("indices.analyze")
 class AnalyzeRequest extends RequestBase {
 	tokenizer: Union<string, Tokenizer>;
 	analyzer: string;

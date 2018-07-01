@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.watcher.execute_watch")
 class ExecuteWatchRequest extends RequestBase {
 	trigger_data: ScheduleTriggerEvent;
 	ignore_condition: boolean;

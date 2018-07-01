@@ -1,3 +1,4 @@
+@rest_spec_name("reindex")
 class ReindexOnServerRequest extends RequestBase {
 	source: ReindexSource;
 	dest: ReindexDestination;

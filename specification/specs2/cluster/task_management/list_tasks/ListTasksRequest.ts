@@ -1,3 +1,4 @@
+@rest_spec_name("tasks.list")
 class ListTasksRequest extends RequestBase {
 	@request_parameter()
 	nodes: string[];

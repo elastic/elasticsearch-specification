@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.validate")
 class ValidateJobRequest extends RequestBase {
 	analysis_config: AnalysisConfig;
 	analysis_limits: AnalysisLimits;

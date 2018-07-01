@@ -1,3 +1,4 @@
+@rest_spec_name("nodes.stats")
 class NodesStatsRequest extends RequestBase {
 	@request_parameter()
 	completion_fields: Field[];

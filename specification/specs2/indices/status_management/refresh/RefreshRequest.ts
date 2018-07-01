@@ -1,3 +1,4 @@
+@rest_spec_name("indices.refresh")
 class RefreshRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

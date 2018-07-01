@@ -1,3 +1,4 @@
+@rest_spec_name("cat.count")
 class CatCountRequest extends RequestBase {
 	@request_parameter()
 	format: string;

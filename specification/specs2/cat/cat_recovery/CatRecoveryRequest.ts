@@ -1,3 +1,4 @@
+@rest_spec_name("cat.recovery")
 class CatRecoveryRequest extends RequestBase {
 	@request_parameter()
 	format: string;

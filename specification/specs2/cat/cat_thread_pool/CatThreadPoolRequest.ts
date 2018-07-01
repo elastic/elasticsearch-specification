@@ -1,3 +1,4 @@
+@rest_spec_name("cat.thread_pool")
 class CatThreadPoolRequest extends RequestBase {
 	@request_parameter()
 	format: string;

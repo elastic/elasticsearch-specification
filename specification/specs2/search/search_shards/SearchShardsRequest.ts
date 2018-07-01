@@ -1,3 +1,4 @@
+@rest_spec_name("search_shards")
 class SearchShardsRequest extends RequestBase {
 	@request_parameter()
 	preference: string;

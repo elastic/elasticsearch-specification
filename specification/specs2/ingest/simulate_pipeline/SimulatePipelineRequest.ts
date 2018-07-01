@@ -1,3 +1,4 @@
+@rest_spec_name("ingest.simulate")
 class SimulatePipelineRequest extends RequestBase {
 	pipeline: Pipeline;
 	docs: SimulatePipelineDocument[];

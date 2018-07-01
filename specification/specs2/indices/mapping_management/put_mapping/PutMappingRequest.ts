@@ -1,3 +1,4 @@
+@rest_spec_name("indices.put_mapping")
 class PutMappingRequest extends RequestBase {
 	all_field: AllField;
 	date_detection: boolean;

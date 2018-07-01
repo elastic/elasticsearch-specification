@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.flush_job")
 class FlushJobRequest extends RequestBase {
 	@prop_serializer("IsoDateTimeConverter")
 	advance_time: Date;

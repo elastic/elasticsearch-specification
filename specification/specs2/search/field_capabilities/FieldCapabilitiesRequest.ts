@@ -1,3 +1,4 @@
+@rest_spec_name("field_caps")
 class FieldCapabilitiesRequest extends RequestBase {
 	@request_parameter()
 	fields: Field[];

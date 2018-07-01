@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.graph.explore")
 class GraphExploreRequest extends RequestBase {
 	query: QueryContainer;
 	vertices: GraphVertexDefinition[];

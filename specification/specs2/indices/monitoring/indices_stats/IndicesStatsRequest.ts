@@ -1,3 +1,4 @@
+@rest_spec_name("indices.stats")
 class IndicesStatsRequest extends RequestBase {
 	types: TypeName[];
 	@request_parameter()

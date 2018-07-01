@@ -1,3 +1,4 @@
+@rest_spec_name("cat.segments")
 class CatSegmentsRequest extends RequestBase {
 	@request_parameter()
 	format: string;

@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.watcher.put_watch")
 class PutWatchRequest {
 	trigger: TriggerContainer;
 	input: InputContainer;

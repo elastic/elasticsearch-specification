@@ -1,3 +1,4 @@
+@rest_spec_name("cat.master")
 class CatMasterRequest extends RequestBase {
 	@request_parameter()
 	format: string;

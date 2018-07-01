@@ -1,3 +1,4 @@
+@rest_spec_name("exists_source")
 class SourceExistsRequest extends RequestBase {
 	@request_parameter()
 	parent: string;

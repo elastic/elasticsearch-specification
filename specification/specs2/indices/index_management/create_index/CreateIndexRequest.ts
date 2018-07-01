@@ -1,3 +1,4 @@
+@rest_spec_name("indices.create")
 class CreateIndexRequest extends RequestBase {
 	settings: Map<string, any>;
 	mappings: Map<TypeName, TypeMapping>;

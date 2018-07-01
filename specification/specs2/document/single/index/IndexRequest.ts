@@ -1,3 +1,4 @@
+@rest_spec_name("index")
 class IndexRequest<TDocument> extends RequestBase {
 	document: TDocument;
 	@request_parameter()

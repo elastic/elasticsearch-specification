@@ -15,10 +15,5 @@
     "suppressImplicitAnyIndexErrors": true,
     "noEmit" : true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "src",
-    "typings"
-  ]
+  "exclude": [ "node_modules", "build", "src", "typings" ]
 }

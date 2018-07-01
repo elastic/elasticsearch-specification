@@ -1,3 +1,4 @@
+@rest_spec_name("snapshot.restore")
 class RestoreRequest extends RequestBase {
 	indices: Indices;
 	ignore_unavailable: boolean;

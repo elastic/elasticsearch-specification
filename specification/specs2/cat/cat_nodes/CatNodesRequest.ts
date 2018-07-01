@@ -1,3 +1,4 @@
+@rest_spec_name("cat.nodes")
 class CatNodesRequest extends RequestBase {
 	@request_parameter()
 	format: string;

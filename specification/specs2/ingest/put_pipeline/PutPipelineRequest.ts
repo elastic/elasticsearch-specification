@@ -1,3 +1,4 @@
+@rest_spec_name("ingest.put_pipeline")
 class PutPipelineRequest extends RequestBase {
 	description: string;
 	processors: Processor[];

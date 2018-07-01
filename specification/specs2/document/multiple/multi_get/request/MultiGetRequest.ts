@@ -1,3 +1,4 @@
+@rest_spec_name("mget")
 @class_serializer("MultiGetRequestJsonConverter")
 class MultiGetRequest extends RequestBase {
 	@request_parameter()

@@ -1,3 +1,4 @@
+@rest_spec_name("snapshot.status")
 class SnapshotStatusRequest extends RequestBase {
 	@request_parameter()
 	master_timeout: Time;

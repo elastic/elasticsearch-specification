@@ -1,3 +1,4 @@
+@rest_spec_name("indices.forcemerge")
 class ForceMergeRequest extends RequestBase {
 	@request_parameter()
 	flush: boolean;

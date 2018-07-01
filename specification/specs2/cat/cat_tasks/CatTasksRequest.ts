@@ -1,3 +1,4 @@
+@rest_spec_name("cat.tasks")
 class CatTasksRequest extends RequestBase {
 	@request_parameter()
 	format: string;

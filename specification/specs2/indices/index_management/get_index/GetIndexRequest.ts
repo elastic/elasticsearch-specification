@@ -1,3 +1,4 @@
+@rest_spec_name("indices.get")
 class GetIndexRequest extends RequestBase {
 	@request_parameter()
 	local: boolean;

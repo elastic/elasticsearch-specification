@@ -1,3 +1,4 @@
+@rest_spec_name("exists")
 class DocumentExistsRequest extends RequestBase {
 	@request_parameter()
 	stored_fields: Field[];

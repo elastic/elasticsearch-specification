@@ -1,3 +1,4 @@
+@rest_spec_name("update_by_query")
 class UpdateByQueryRequest extends RequestBase {
 	query: QueryContainer;
 	script: Script;

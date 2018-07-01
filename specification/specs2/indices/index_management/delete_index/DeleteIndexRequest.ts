@@ -1,3 +1,4 @@
+@rest_spec_name("indices.delete")
 class DeleteIndexRequest extends RequestBase {
 	@request_parameter()
 	timeout: Time;

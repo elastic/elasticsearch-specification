@@ -1,3 +1,4 @@
+@rest_spec_name("cluster.state")
 class ClusterStateRequest extends RequestBase {
 	@request_parameter()
 	local: boolean;

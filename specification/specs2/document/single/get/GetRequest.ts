@@ -1,3 +1,4 @@
+@rest_spec_name("get")
 class GetRequest extends RequestBase {
 	@request_parameter()
 	stored_fields: Field[];

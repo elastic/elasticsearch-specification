@@ -2,6 +2,8 @@ import Domain = require("./domain");
 import SpecValidator = require("./specification/validator");
 import TypeReader = require("./specification/type-reader");
 
+var typescript = require('ntypescript');
+
 const _: _.LoDashStatic = require('lodash');
 const glob = require("glob");
 
@@ -55,7 +57,7 @@ module ApiSpecification
 
     constructor(types: Domain.Interface[])
     {
-      this.endpoints = _(glob.sync(__dirname + "/../specs/**/*.json"))
+      this.endpoints = _(glob.sync(__dirname + "/../specs2/**/*.json"))
         .filter(f=>!f.match(/tsconfig/))
         .map(f=>new Domain.Endpoint(f))
         .value();

@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.get_buckets")
 class GetBucketsRequest extends RequestBase {
 	anomaly_score: double;
 	desc: boolean;

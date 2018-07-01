@@ -1,3 +1,4 @@
+@rest_spec_name("cat.templates")
 class CatTemplatesRequest extends RequestBase {
 	@request_parameter()
 	format: string;

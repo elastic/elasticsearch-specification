@@ -1,3 +1,4 @@
+@rest_spec_name("indices.exists")
 class IndexExistsRequest extends RequestBase {
 	@request_parameter()
 	local: boolean;

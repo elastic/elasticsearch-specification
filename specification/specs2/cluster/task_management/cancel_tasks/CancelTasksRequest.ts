@@ -1,3 +1,4 @@
+@rest_spec_name("tasks.cancel")
 class CancelTasksRequest extends RequestBase {
 	@request_parameter()
 	nodes: string[];

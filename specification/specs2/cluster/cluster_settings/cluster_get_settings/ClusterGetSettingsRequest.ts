@@ -1,3 +1,4 @@
+@rest_spec_name("cluster.get_settings")
 class ClusterGetSettingsRequest extends RequestBase {
 	@request_parameter()
 	flat_settings: boolean;

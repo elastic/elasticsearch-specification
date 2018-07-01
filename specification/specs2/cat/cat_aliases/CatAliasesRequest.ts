@@ -1,3 +1,4 @@
+@rest_spec_name("cat.aliases")
 class CatAliasesRequest extends RequestBase {
 	@request_parameter()
 	format: string;

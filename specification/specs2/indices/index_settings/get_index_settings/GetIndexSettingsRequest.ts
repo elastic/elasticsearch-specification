@@ -1,3 +1,4 @@
+@rest_spec_name("indices.get_settings")
 class GetIndexSettingsRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

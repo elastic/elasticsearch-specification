@@ -1,3 +1,4 @@
+@rest_spec_name("cat.shards")
 class CatShardsRequest extends RequestBase {
 	@request_parameter()
 	format: string;

@@ -1,3 +1,4 @@
+@rest_spec_name("indices.put_template")
 class PutIndexTemplateRequest extends RequestBase {
 	index_patterns: string[];
 	order: integer;

@@ -1,3 +1,4 @@
+@rest_spec_name("msearch")
 @class_serializer("MultiSearchJsonConverter")
 class MultiSearchRequest extends RequestBase {
 	operations: Map<string, SearchRequest>;

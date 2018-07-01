@@ -1,3 +1,4 @@
+@rest_spec_name("indices.flush")
 class FlushRequest extends RequestBase {
 	@request_parameter()
 	force: boolean;

@@ -1,3 +1,4 @@
+@rest_spec_name("cat.snapshots")
 class CatSnapshotsRequest extends RequestBase {
 	@request_parameter()
 	format: string;

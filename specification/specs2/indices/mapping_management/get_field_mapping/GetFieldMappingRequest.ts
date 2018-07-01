@@ -1,3 +1,4 @@
+@rest_spec_name("indices.get_field_mapping")
 class GetFieldMappingRequest extends RequestBase {
 	@request_parameter()
 	include_defaults: boolean;

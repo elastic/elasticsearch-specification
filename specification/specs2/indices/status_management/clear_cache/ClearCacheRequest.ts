@@ -1,3 +1,4 @@
+@rest_spec_name("indices.clear_cache")
 class ClearCacheRequest extends RequestBase {
 	@request_parameter()
 	fielddata: boolean;

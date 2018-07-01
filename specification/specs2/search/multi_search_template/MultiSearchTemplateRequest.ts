@@ -1,3 +1,4 @@
+@rest_spec_name("msearch_template")
 @class_serializer("MultiSearchTemplateJsonConverter")
 class MultiSearchTemplateRequest extends RequestBase {
 	operations: Map<string, SearchTemplateRequest>;

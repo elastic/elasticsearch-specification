@@ -1,3 +1,4 @@
+@rest_spec_name("mtermvectors")
 class MultiTermVectorsRequest extends RequestBase {
 	docs: MultiTermVectorOperation[];
 	@request_parameter()

@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.put_job")
 class PutJobRequest extends RequestBase {
 	analysis_config: AnalysisConfig;
 	analysis_limits: AnalysisLimits;

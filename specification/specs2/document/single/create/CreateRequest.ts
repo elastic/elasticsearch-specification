@@ -1,3 +1,4 @@
+@rest_spec_name("create")
 class CreateRequest<TDocument> extends RequestBase {
 	document: TDocument;
 	@request_parameter()

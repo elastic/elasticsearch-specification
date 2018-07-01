@@ -1,3 +1,4 @@
+@rest_spec_name("termvectors")
 class TermVectorsRequest<TDocument> extends RequestBase {
 	@prop_serializer("SourceConverter")
 	doc: TDocument;

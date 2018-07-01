@@ -1,3 +1,4 @@
+@rest_spec_name("indices.put_alias")
 class PutAliasRequest extends RequestBase {
 	routing: Routing;
 	filter: QueryContainer;

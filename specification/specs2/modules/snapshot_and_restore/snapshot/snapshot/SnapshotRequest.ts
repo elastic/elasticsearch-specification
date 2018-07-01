@@ -1,3 +1,4 @@
+@rest_spec_name("snapshot.create")
 class SnapshotRequest extends RequestBase {
 	@prop_serializer("IndicesMultiSyntaxJsonConverter")
 	indices: Indices;

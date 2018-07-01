@@ -1,3 +1,4 @@
+@rest_spec_name("cluster.reroute")
 class ClusterRerouteRequest extends RequestBase {
 	commands: ClusterRerouteCommand[];
 	@request_parameter()

@@ -1,3 +1,4 @@
+@rest_spec_name("get_source")
 class SourceRequest extends RequestBase {
 	@request_parameter()
 	parent: string;

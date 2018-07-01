@@ -1,3 +1,4 @@
+@rest_spec_name("delete_by_query")
 class DeleteByQueryRequest extends RequestBase {
 	query: QueryContainer;
 	slice: SlicedScroll;

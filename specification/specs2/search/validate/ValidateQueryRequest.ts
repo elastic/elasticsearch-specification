@@ -1,3 +1,4 @@
+@rest_spec_name("indices.validate_query")
 class ValidateQueryRequest extends RequestBase {
 	query: QueryContainer;
 	@request_parameter()

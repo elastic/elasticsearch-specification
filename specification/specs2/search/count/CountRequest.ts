@@ -1,3 +1,4 @@
+@rest_spec_name("count")
 class CountRequest extends RequestBase {
 	query: QueryContainer;
 	@request_parameter()

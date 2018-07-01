@@ -1,3 +1,4 @@
+@rest_spec_name("cluster.allocation_explain")
 class ClusterAllocationExplainRequest extends RequestBase {
 	index: IndexName;
 	shard: integer;

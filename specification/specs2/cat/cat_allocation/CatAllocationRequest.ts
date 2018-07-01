@@ -1,3 +1,4 @@
+@rest_spec_name("cat.allocation")
 class CatAllocationRequest extends RequestBase {
 	@request_parameter()
 	format: string;

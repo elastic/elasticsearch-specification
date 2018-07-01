@@ -1,3 +1,4 @@
+@rest_spec_name("indices.close")
 class CloseIndexRequest extends RequestBase {
 	@request_parameter()
 	timeout: Time;

@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.get_influencers")
 class GetInfluencersRequest extends RequestBase {
 	descending: boolean;
 	@prop_serializer("EpochMillisecondsDateTimeJsonConverter")

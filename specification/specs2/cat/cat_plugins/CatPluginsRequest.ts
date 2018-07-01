@@ -1,3 +1,4 @@
+@rest_spec_name("cat.plugins")
 class CatPluginsRequest extends RequestBase {
 	@request_parameter()
 	format: string;

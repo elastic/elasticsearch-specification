@@ -1,3 +1,4 @@
+@rest_spec_name("indices.segments")
 class SegmentsRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

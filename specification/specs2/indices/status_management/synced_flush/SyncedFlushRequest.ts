@@ -1,3 +1,4 @@
+@rest_spec_name("indices.flush_synced")
 class SyncedFlushRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

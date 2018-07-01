@@ -1,3 +1,4 @@
+@rest_spec_name("indices.open")
 class OpenIndexRequest extends RequestBase {
 	@request_parameter()
 	timeout: Time;

@@ -1,3 +1,4 @@
+@rest_spec_name("indices.get_alias")
 class GetAliasRequest extends RequestBase {
 	@request_parameter()
 	ignore_unavailable: boolean;

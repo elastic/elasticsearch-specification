@@ -1,3 +1,4 @@
+@rest_spec_name("indices.rollover")
 class RolloverIndexRequest extends RequestBase {
 	conditions: RolloverConditions;
 	settings: Map<string, any>;

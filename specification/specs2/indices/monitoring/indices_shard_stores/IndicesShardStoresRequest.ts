@@ -1,3 +1,4 @@
+@rest_spec_name("indices.shard_stores")
 class IndicesShardStoresRequest extends RequestBase {
 	types: TypeName[];
 	@request_parameter()

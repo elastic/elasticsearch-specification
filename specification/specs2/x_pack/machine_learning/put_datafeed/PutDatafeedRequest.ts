@@ -1,3 +1,4 @@
+@rest_spec_name("xpack.ml.put_datafeed")
 class PutDatafeedRequest extends RequestBase {
 	aggregations: Map<string, AggregationContainer>;
 	chunking_config: ChunkingConfig;

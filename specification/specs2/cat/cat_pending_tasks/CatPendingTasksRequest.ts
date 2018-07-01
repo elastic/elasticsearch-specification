@@ -1,3 +1,4 @@
+@rest_spec_name("cat.pending_tasks")
 class CatPendingTasksRequest extends RequestBase {
 	@request_parameter()
 	format: string;

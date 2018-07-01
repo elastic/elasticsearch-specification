@@ -1,3 +1,4 @@
+@rest_spec_name("indices.shrink")
 class ShrinkIndexRequest extends RequestBase {
 	settings: Map<string, any>;
 	aliases: Map<IndexName, Alias>;
