@@ -1,7 +1,5 @@
-
-/**namespace:CommonAbstractions.Infer.Indices */
-/**custom_serialization*/
-interface indices extends union<all_indices_marker, many_indices> {
-	All: indices;
-	AllIndices: indices;
+@class_serializer("UnionJsonConverter")
+class Indices extends Union<AllIndicesMarker, ManyIndices> {
+	all: Indices;
+	all_indices: Indices;
 }

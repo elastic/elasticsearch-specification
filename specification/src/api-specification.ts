@@ -11,7 +11,7 @@ module ApiSpecification
 {
   export class Specification
   {
-    private specsFolder = __dirname + "/../specs2";
+    private specsFolder = __dirname + "/../specs";
     private configPath = this.specsFolder + "/tsconfig.json";
     private readonly program: ts.Program;
 
@@ -57,7 +57,7 @@ module ApiSpecification
 
     constructor(types: Domain.Interface[])
     {
-      this.endpoints = _(glob.sync(__dirname + "/../specs2/**/*.json"))
+      this.endpoints = _(glob.sync(__dirname + "/../specs/**/*.json"))
         .filter(f=>!f.match(/tsconfig/))
         .map(f=>new Domain.Endpoint(f))
         .value();

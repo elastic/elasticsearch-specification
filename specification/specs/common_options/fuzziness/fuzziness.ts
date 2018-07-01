@@ -1,8 +1,6 @@
-
-/**namespace:CommonOptions.Fuzziness */
-/**custom_serialization*/
-interface fuzziness {
-	Auto: boolean;
-	EditDistance: integer;
-	Ratio: double;
+@class_serializer("FuzzinessJsonConverter")
+class Fuzziness {
+	auto: boolean;
+	edit_distance: integer;
+	ratio: double;
 }

@@ -1,5 +1,3 @@
-
-/**namespace:CommonAbstractions.Infer.Id */
-/**custom_serialization*/
-interface id {
+@class_serializer("IdJsonConverter")
+class Id {
 }

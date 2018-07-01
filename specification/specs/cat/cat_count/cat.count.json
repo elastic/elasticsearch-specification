@@ -1,6 +1,6 @@
 {
   "cat.count": {
-    "documentation": "http://www.elastic.co/guide/en/elasticsearch/reference/2.0/cat-count.html",
+    "documentation": "http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-count.html",
     "methods": ["GET"],
     "url": {
       "path": "/_cat/count",
@@ -12,6 +12,10 @@
         }
       },
       "params": {
+        "format": {
+          "type" : "string",
+          "description" : "a short version of the Accept header, e.g. json, yaml"
+        },
         "local": {
           "type" : "boolean",
           "description" : "Return local information, do not retrieve the state from master node (default: false)"
@@ -28,6 +32,10 @@
           "type": "boolean",
           "description": "Return help information",
           "default": false
+        },
+        "s": {
+          "type": "list",
+          "description" : "Comma-separated list of column names or column aliases to sort by"
         },
         "v": {
           "type": "boolean",

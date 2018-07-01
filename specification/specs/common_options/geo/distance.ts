@@ -1,7 +1,5 @@
-
-/**namespace:CommonOptions.Geo */
-/**custom_serialization*/
-interface distance {
-	Precision: double;
-	Unit: DistanceUnit;
+@class_serializer("DistanceJsonConverter")
+class Distance {
+	precision: double;
+	unit: DistanceUnit;
 }

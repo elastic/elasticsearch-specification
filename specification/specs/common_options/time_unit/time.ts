@@ -1,8 +1,8 @@
-
-/**namespace:CommonOptions.TimeUnit */
-/**custom_serialization*/
-interface time {
-	Factor: double;
-	Interval: TimeUnit;
-	Milliseconds: double;
+@class_serializer("TimeJsonConverter")
+class Time {
+	factor: double;
+	interval: TimeUnit;
+	milliseconds: double;
+	minus_one: Time;
+	zero: Time;
 }

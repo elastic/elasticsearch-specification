@@ -1,6 +1,5 @@
 {
   "compileOnSave" : false,
-  "version": "1.5.0-beta",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -16,10 +15,5 @@
     "suppressImplicitAnyIndexErrors": true,
     "noEmit" : true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "src",
-    "typings"
-  ]
+  "exclude": [ "node_modules", "build", "src", "typings" ]
 }

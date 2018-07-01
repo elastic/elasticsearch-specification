@@ -1,6 +1,6 @@
 {
   "indices.refresh": {
-    "documentation": "http://www.elastic.co/guide/en/elasticsearch/reference/2.0/indices-refresh.html",
+    "documentation": "http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
     "methods": ["POST", "GET"],
     "url": {
       "path": "/_refresh",
@@ -25,14 +25,6 @@
             "options" : ["open","closed","none","all"],
             "default" : "open",
             "description" : "Whether to expand wildcard expression to concrete indices that are open, closed or both."
-        },
-        "force": {
-            "type" : "boolean",
-            "description" : "Force a refresh even if not required",
-            "default": false
-        },
-        "operation_threading": {
-          "description" : "TODO: ?"
         }
       }
     },

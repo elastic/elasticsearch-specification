@@ -1,10 +1,8 @@
-
-/**namespace:Search.Search.Sort */
-interface sort {
-	SortKey: field;
-	missing: string;
+class Sort {
+	sort_key: Field;
+	missing: any;
 	order: SortOrder;
 	mode: SortMode;
-	nested_filter: query_container;
-	nested_path: field;
+	nested_filter: QueryContainer;
+	nested_path: Field;
 }

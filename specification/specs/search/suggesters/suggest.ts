@@ -1,8 +1,6 @@
-
-/**namespace:Search.Suggesters */
-interface suggest {
+class Suggest<T> {
 	length: integer;
 	offset: integer;
 	text: string;
-	options: suggest_option[];
+	options: SuggestOption<T>[];
 }

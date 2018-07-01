@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b11d783-694d-4aaf-94f2-62b8833267c5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specification/specs2/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/specs2/common.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specification/specs2/indices/index_settings/update_index_settings/UpdateIndexSettingsRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/specs2/indices/index_settings/update_index_settings/UpdateIndexSettingsRequest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specification/specs2/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/specification/specs2/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specification/src/api-specification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/specification/src/api-specification.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,55 +25,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api-specification.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="api-specification.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/specification/src/api-specification.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
+            <state relative-caret-position="100">
+              <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/specification/specs2/common.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BasicAuthenticationCredentials.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/specification/specs2/common/BasicAuthenticationCredentials.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/specification/specs2/search/search/search.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="SearchRequest.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/specification/specs2/search/search/SearchRequest.ts">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="CatAliasesRequest.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/specification/specs2/cat/cat_aliases/CatAliasesRequest.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tsconfig.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/specification/specs2/tsconfig.json">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="domain.ts" pinned="false" current-in-tab="false">
@@ -211,19 +165,6 @@
             <path>
               <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
               <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
-              <item name="specification" type="462c0819:PsiDirectoryNode" />
-              <item name="specs2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
-              <item name="specification" type="462c0819:PsiDirectoryNode" />
-              <item name="specs2" type="462c0819:PsiDirectoryNode" />
-              <item name="search" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="elastic-client-generator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="elastic-client-generator" type="462c0819:PsiDirectoryNode" />
               <item name="swagger-generator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -290,12 +231,12 @@
       <workItem from="1529411574360" duration="6372000" />
       <workItem from="1529430133825" duration="3469000" />
       <workItem from="1529572852164" duration="11581000" />
-      <workItem from="1530451762419" duration="2810000" />
+      <workItem from="1530451762419" duration="4048000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24232000" />
+    <option name="totallyTimeSpent" value="25470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="40" width="2573" height="1406" extended-state="0" />
@@ -496,7 +437,7 @@
     <entry file="file://$PROJECT_DIR$/specification/src/specification/validator.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/specification/specs/indices/alias_management/alias.ts">
+    <entry file="file://$PROJECT_DIR$/specification/specs/indices/alias_management/Alias.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/specification/src/specification/type-reader.js">
@@ -565,13 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/specification/src/api-specification.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/specification/specs2/common.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -582,25 +516,32 @@
     <entry file="file://$PROJECT_DIR$/specification/specs2/common/BasicAuthenticationCredentials.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/specification/specs2/search/search/search.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/specification/specs2/search/search/SearchRequest.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/specification/specs2/cat/cat_aliases/CatAliasesRequest.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        <state relative-caret-position="20">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/specification/specs2/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/specs2/search/search/SearchRequest.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/specification/src/api-specification.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

@@ -1,7 +1,0 @@
-
-/**namespace:Aggregations.Bucket.Sampler */
-enum SamplerAggregationExecutionHint {
-	map = 0,
-	global_ordinals = 1,
-	bytes_hash = 2
-}

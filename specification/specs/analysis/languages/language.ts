@@ -1,5 +1,3 @@
-
-/**namespace:Analysis.Languages */
 enum Language {
 	Arabic = 0,
 	Armenian = 1,

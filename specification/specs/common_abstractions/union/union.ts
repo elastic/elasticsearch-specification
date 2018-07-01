@@ -1,5 +1,3 @@
-
-/**namespace:CommonAbstractions.Union */
-/**custom_serialization*/
-interface union<t_first, t_second> {
+@class_serializer("UnionJsonConverter")
+class Union<TFirst, TSecond> {
 }

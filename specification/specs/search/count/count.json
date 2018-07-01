@@ -1,6 +1,6 @@
 {
   "count": {
-    "documentation": "http://www.elastic.co/guide/en/elasticsearch/reference/2.0/search-count.html",
+    "documentation": "http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html",
     "methods": ["POST", "GET"],
     "url": {
       "path": "/_count",
@@ -39,8 +39,8 @@
           "description" : "Specify the node or shard the operation should be performed on (default: random)"
         },
         "routing": {
-          "type" : "string",
-          "description" : "Specific routing value"
+          "type" : "list",
+          "description" : "A comma-separated list of specific routing values"
         },
         "q": {
           "type" : "string",
@@ -68,9 +68,9 @@
           "type" : "boolean",
           "description" : "Specify whether format-based query failures (such as providing text to a numeric field) should be ignored"
         },
-        "lowercase_expanded_terms": {
-          "type" : "boolean",
-          "description" : "Specify whether query terms should be lowercased"
+        "terminate_after" : {
+          "type" : "number",
+          "description" : "The maximum count for each shard, upon reaching which the query execution will terminate early"
         }
       }
     },

@@ -1,7 +1,4 @@
-
-/**namespace:Search.Search.Rescoring */
-/**custom_serialization*/
-interface rescore {
+class Rescore {
 	window_size: integer;
-	query: rescore_query;
+	query: RescoreQuery;
 }

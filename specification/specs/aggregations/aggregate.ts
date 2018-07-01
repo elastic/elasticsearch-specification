@@ -1,5 +1,3 @@
-
-/**namespace:Aggregations */
-interface aggregate {
-	Meta: map<string, any>[];
+class Aggregate {
+	meta: Map<string, any>;
 }

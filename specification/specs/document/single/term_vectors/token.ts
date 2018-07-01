@@ -1,6 +1,4 @@
-
-/**namespace:Document.Single.TermVectors */
-interface token {
+class Token {
 	end_offset: integer;
 	payload: string;
 	position: integer;

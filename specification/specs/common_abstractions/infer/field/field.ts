@@ -1,6 +1,5 @@
-
-/**namespace:CommonAbstractions.Infer.Field */
-interface field {
-	Name: string;
-	Boost: double;
+class Field {
+	name: string;
+	boost: double;
+	cachable_expression: boolean;
 }

@@ -1,15 +1,12 @@
-
-/**namespace:Modules.SnapshotAndRestore.Snapshot */
-interface snapshot {
+class Snapshot {
 	snapshot: string;
-	indices: index_name[];
+	indices: IndexName[];
 	state: string;
 	start_time: Date;
 	start_time_in_millis: long;
 	end_time: Date;
 	end_time_in_millis: long;
 	duration_in_millis: long;
-	shards: shards_meta_data;
-	failures: snapshot_shard_failure[];
-	Failures: string[];
+	shards: ShardStatistics;
+	failures: SnapshotShardFailure[];
 }

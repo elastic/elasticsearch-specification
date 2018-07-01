@@ -1,6 +1,4 @@
-
-/**namespace:Indices.Monitoring.IndicesSegments */
-interface segment {
+class Segment {
 	generation: integer;
 	num_docs: long;
 	deleted_docs: long;

@@ -1,8 +1,5 @@
-
-/**namespace:CommonOptions.Scripting */
-/**custom_serialization*/
-interface script {
-	/**custom_serialization */
-	params: map<string, any>[];
+@class_serializer("ScriptJsonConverter")
+class Script {
+	params: Map<string, any>;
 	lang: string;
 }
