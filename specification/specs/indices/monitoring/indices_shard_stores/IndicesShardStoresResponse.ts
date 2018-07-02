@@ -1,3 +1,3 @@
 class IndicesShardStoresResponse extends ResponseBase {
-	indices: Map<string, IndicesShardStores>;
+	indices: Dictionary<string, IndicesShardStores>[];
 }

@@ -1,3 +1,3 @@
 class GarbageCollectionStats {
-	collectors: Map<string, GarbageCollectionGenerationStats>;
+	collectors: Dictionary<string, GarbageCollectionGenerationStats>[];
 }

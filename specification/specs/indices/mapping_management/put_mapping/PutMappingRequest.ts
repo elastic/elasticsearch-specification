@@ -3,13 +3,13 @@ class PutMappingRequest extends RequestBase {
 	all_field: AllField;
 	date_detection: boolean;
 	dynamic_date_formats: string[];
-	dynamic_templates: Map<string, DynamicTemplate>;
+	dynamic_templates: Dictionary<string, DynamicTemplate>[];
 	dynamic: Union<boolean, DynamicMapping>;
 	field_names_field: FieldNamesField;
 	index_field: IndexField;
-	meta: Map<string, any>;
+	meta: Dictionary<string, any>[];
 	numeric_detection: boolean;
-	properties: Map<PropertyName, Property>;
+	properties: Dictionary<PropertyName, Property>[];
 	routing_field: RoutingField;
 	size_field: SizeField;
 	source_field: SourceField;

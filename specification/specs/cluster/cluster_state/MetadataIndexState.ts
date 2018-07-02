@@ -1,6 +1,6 @@
 class MetadataIndexState {
 	state: string;
 	settings: string[];
-	mappings: Map<TypeName, TypeMapping>;
+	mappings: Dictionary<TypeName, TypeMapping>[];
 	aliases: string[];
 }

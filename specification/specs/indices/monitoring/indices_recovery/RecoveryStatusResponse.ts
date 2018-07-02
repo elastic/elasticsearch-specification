@@ -1,3 +1,3 @@
 class RecoveryStatusResponse extends DictionaryResponseBase<IndexName, RecoveryStatus> {
-	indices: Map<IndexName, RecoveryStatus>;
+	indices: Dictionary<IndexName, RecoveryStatus>[];
 }

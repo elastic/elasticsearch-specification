@@ -1,5 +1,5 @@
 @class_serializer("ScriptTransformJsonConverter")
 class ScriptTransform {
-	params: Map<string, any>;
+	params: Dictionary<string, any>[];
 	lang: string;
 }

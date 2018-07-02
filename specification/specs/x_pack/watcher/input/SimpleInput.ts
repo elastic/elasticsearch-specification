@@ -1,4 +1,4 @@
 @class_serializer("SimpleInputJsonConverter")
 class SimpleInput {
-	payload: Map<string, any>;
+	payload: Dictionary<string, any>[];
 }

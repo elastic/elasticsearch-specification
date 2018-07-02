@@ -1,3 +1,3 @@
 class JoinProperty extends PropertyBase {
-	relations: Map<RelationName, RelationName[]>;
+	relations: Dictionary<RelationName, RelationName[]>[];
 }

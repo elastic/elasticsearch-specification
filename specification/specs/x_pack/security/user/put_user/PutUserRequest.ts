@@ -4,7 +4,7 @@ class PutUserRequest extends RequestBase {
 	roles: string[];
 	full_name: string;
 	email: string;
-	metadata: Map<string, any>;
+	metadata: Dictionary<string, any>[];
 	@request_parameter()
 	refresh: Refresh;
 }

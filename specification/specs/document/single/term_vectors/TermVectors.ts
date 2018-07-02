@@ -5,5 +5,5 @@ class TermVectors {
 	version: long;
 	found: boolean;
 	took: long;
-	term_vectors: Map<Field, TermVector>;
+	term_vectors: Dictionary<Field, TermVector>[];
 }

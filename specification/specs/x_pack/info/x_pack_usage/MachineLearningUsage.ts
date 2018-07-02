@@ -1,4 +1,4 @@
 class MachineLearningUsage extends XPackUsage {
-	jobs: Map<string, Job>;
-	datafeeds: Map<string, DataFeed>;
+	jobs: Dictionary<string, Job>[];
+	datafeeds: Dictionary<string, DataFeed>[];
 }

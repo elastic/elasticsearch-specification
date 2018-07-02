@@ -9,13 +9,13 @@ module Domain {
   export class Array
   {
     type = new Type("array");
-    of: Type|Array|Map;
+    of: Type|Array|Dictionary;
   }
-  export class Map
+  export class Dictionary
   {
-    type = new Type("map");
-    key: Type|Array|Map;
-    value: Type|Array|Map;
+    type = new Type("dictionary");
+    key: Type|Array|Dictionary;
+    value: Type|Array|Dictionary;
     array: boolean;
   }
 
@@ -33,7 +33,7 @@ module Domain {
   {
     constructor(public name: string) {}
     typeString: string;
-    type: Type|Array|Map;
+    type: Type|Array|Dictionary;
   }
 
   export class Enum extends TypeDeclaration

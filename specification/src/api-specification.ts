@@ -2,7 +2,8 @@ import Domain = require("./domain");
 import SpecValidator = require("./specification/validator");
 import TypeReader = require("./specification/type-reader");
 
-var typescript = require('ntypescript');
+//will be marked as unused but the require is what brings in the global `ts` variable
+const typescript = require('ntypescript');
 
 const _: _.LoDashStatic = require('lodash');
 const glob = require("glob");

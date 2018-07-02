@@ -1,4 +1,4 @@
 class IndexMappings {
-	mappings: Map<TypeName, TypeMapping>;
+	mappings: Dictionary<TypeName, TypeMapping>[];
 	item: TypeMapping;
 }

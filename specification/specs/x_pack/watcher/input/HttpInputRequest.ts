@@ -4,8 +4,8 @@ class HttpInputRequest {
 	host: string;
 	path: string;
 	method: HttpInputMethod;
-	headers: Map<string, string>;
-	params: Map<string, string>;
+	headers: Dictionary<string, string>[];
+	params: Dictionary<string, string>[];
 	url: string;
 	auth: HttpInputAuthentication;
 	proxy: HttpInputProxy;

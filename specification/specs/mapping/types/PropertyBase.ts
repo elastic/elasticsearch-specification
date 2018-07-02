@@ -1,4 +1,4 @@
 class PropertyBase {
 	name: PropertyName;
-	local_metadata: Map<string, any>;
+	local_metadata: Dictionary<string, any>[];
 }

@@ -1,4 +1,4 @@
 class SegmentsResponse extends ResponseBase {
 	_shards: ShardStatistics;
-	indices: Map<string, IndexSegment>;
+	indices: Dictionary<string, IndexSegment>[];
 }

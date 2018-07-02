@@ -1,5 +1,5 @@
 class AggregationContainer {
-	meta: Map<string, any>;
+	meta: Dictionary<string, any>[];
 	avg: AverageAggregation;
 	date_histogram: DateHistogramAggregation;
 	percentiles: PercentilesAggregation;
@@ -46,5 +46,5 @@ class AggregationContainer {
 	geo_centroid: GeoCentroidAggregation;
 	matrix_stats: MatrixStatsAggregation;
 	adjacency_matrix: AdjacencyMatrixAggregation;
-	aggs: Map<string, AggregationContainer>;
+	aggs: Dictionary<string, AggregationContainer>[];
 }

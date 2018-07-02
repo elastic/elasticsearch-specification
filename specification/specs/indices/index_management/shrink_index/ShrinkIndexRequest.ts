@@ -1,7 +1,7 @@
 @rest_spec_name("indices.shrink")
 class ShrinkIndexRequest extends RequestBase {
-	settings: Map<string, any>;
-	aliases: Map<IndexName, Alias>;
+	settings: Dictionary<string, any>[];
+	aliases: Dictionary<IndexName, Alias>[];
 	@request_parameter()
 	timeout: Time;
 	@request_parameter()

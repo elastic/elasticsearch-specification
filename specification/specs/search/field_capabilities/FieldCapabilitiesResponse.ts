@@ -1,4 +1,4 @@
 class FieldCapabilitiesResponse extends ResponseBase {
 	shards: ShardStatistics;
-	fields: Map<Field, Map<string, FieldCapabilities>>;
+	fields: Dictionary<Field, Dictionary<string, FieldCapabilities>[]>[];
 }

@@ -6,7 +6,7 @@ class GetResponse<TDocument> extends ResponseBase {
 	found: boolean;
 	@prop_serializer("SourceConverter")
 	_source: TDocument;
-	fields: Map<string, LazyDocument>;
+	fields: Dictionary<string, LazyDocument>[];
 	_parent: string;
 	_routing: string;
 }

@@ -1,3 +1,3 @@
 class IndexAliases {
-	aliases: Map<string, AliasDefinition>;
+	aliases: Dictionary<string, AliasDefinition>[];
 }

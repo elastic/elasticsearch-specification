@@ -9,7 +9,7 @@ class Highlight {
 	encoder: HighlighterEncoder;
 	order: HighlighterOrder;
 	tags_schema: HighlighterTagsSchema;
-	fields: Map<Field, HighlightField>;
+	fields: Dictionary<Field, HighlightField>[];
 	require_field_match: boolean;
 	boundary_chars: string;
 	max_fragment_length: integer;

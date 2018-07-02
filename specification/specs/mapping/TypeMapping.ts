@@ -8,8 +8,8 @@ class TypeMapping {
 	_index: IndexField;
 	_size: SizeField;
 	_field_names: FieldNamesField;
-	_meta: Map<string, any>;
-	dynamic_templates: Map<string, DynamicTemplate>;
+	_meta: Dictionary<string, any>[];
+	dynamic_templates: Dictionary<string, DynamicTemplate>[];
 	dynamic: Union<boolean, DynamicMapping>;
-	properties: Map<PropertyName, Property>;
+	properties: Dictionary<PropertyName, Property>[];
 }

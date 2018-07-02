@@ -1,7 +1,7 @@
 var gulp = require("gulp");
 var _ = require('lodash');
 var addsrc = require('gulp-add-src');
-var ts = require('ntypescript')
+var ts = require('ntypescript');
 
 var folders = {
     src: ['src/**/*.ts', '!src/**/*.d.ts']

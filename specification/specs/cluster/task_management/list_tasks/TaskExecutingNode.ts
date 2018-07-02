@@ -3,5 +3,5 @@ class TaskExecutingNode {
 	transport_address: string;
 	host: string;
 	ip: string;
-	tasks: Map<TaskId, TaskState>;
+	tasks: Dictionary<TaskId, TaskState>[];
 }

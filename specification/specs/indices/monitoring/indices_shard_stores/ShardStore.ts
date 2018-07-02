@@ -7,5 +7,5 @@ class ShardStore {
 	allocation_id: string;
 	store_exception: ShardStoreException;
 	allocation: ShardStoreAllocation;
-	attributes: Map<string, any>;
+	attributes: Dictionary<string, any>[];
 }

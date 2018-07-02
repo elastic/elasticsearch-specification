@@ -1,5 +1,5 @@
 class CancelTasksResponse extends ResponseBase {
 	is_valid: boolean;
-	nodes: Map<string, TaskExecutingNode>;
+	nodes: Dictionary<string, TaskExecutingNode>[];
 	node_failures: ErrorCause[];
 }

@@ -5,6 +5,6 @@ class NodeJvmStats {
 	mem: MemoryStats;
 	threads: ThreadStats;
 	gc: GarbageCollectionStats;
-	buffer_pools: Map<string, NodeBufferPool>;
+	buffer_pools: Dictionary<string, NodeBufferPool>[];
 	classes: JvmClassesStats;
 }

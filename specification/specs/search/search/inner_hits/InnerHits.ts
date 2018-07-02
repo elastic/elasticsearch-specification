@@ -7,6 +7,6 @@ class InnerHits {
 	explain: boolean;
 	_source: Union<boolean, SourceFilter>;
 	version: boolean;
-	script_fields: Map<string, ScriptField>;
+	script_fields: Dictionary<string, ScriptField>[];
 	docvalue_fields: Field[];
 }

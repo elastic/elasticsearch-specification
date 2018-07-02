@@ -1,4 +1,4 @@
 class ClusterGetSettingsResponse extends ResponseBase {
-	persistent: Map<string, any>;
-	transient: Map<string, any>;
+	persistent: Dictionary<string, any>[];
+	transient: Dictionary<string, any>[];
 }

@@ -1,3 +1,3 @@
 class Aggregate {
-	meta: Map<string, any>;
+	meta: Dictionary<string, any>[];
 }

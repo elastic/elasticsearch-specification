@@ -1,5 +1,5 @@
 class ClusterPutSettingsResponse extends ResponseBase {
 	acknowledged: boolean;
-	persistent: Map<string, any>;
-	transient: Map<string, any>;
+	persistent: Dictionary<string, any>[];
+	transient: Dictionary<string, any>[];
 }

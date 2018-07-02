@@ -13,7 +13,7 @@ class MoreLikeThisQuery {
 	minimum_should_match: MinimumShouldMatch;
 	boost_terms: double;
 	include: boolean;
-	per_field_analyzer: Map<Field, string>;
+	per_field_analyzer: Dictionary<Field, string>[];
 	version: long;
 	version_type: VersionType;
 	routing: Routing;

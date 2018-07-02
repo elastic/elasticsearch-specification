@@ -3,6 +3,6 @@ class RolloverIndexResponse extends AcknowledgedResponseBase {
 	new_index: string;
 	old_index: string;
 	rolled_over: boolean;
-	conditions: Map<string, boolean>;
+	conditions: Dictionary<string, boolean>[];
 	shards_acknowledged: boolean;
 }

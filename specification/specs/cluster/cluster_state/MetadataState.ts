@@ -1,5 +1,5 @@
 class MetadataState {
-	templates: Map<string, TemplateMapping>;
+	templates: Dictionary<string, TemplateMapping>[];
 	cluster_uuid: string;
-	indices: Map<string, MetadataIndexState>;
+	indices: Dictionary<string, MetadataIndexState>[];
 }

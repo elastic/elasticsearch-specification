@@ -1,9 +1,9 @@
 class Hit<TDocument> {
 	score: double;
-	fields: Map<string, LazyDocument>;
+	fields: Dictionary<string, LazyDocument>[];
 	sorts: any[];
-	highlights: Map<string, HighlightHit>;
+	highlights: Dictionary<string, HighlightHit>[];
 	explanation: Explanation;
 	matched_queries: string[];
-	inner_hits: Map<string, InnerHitsResult>;
+	inner_hits: Dictionary<string, InnerHitsResult>[];
 }

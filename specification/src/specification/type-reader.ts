@@ -74,7 +74,7 @@ class InterfaceVisitor extends Visitor
     parent.properties.push(prop);
   }
 
-  private visitTypeNode(t: ts.Node, indent: number = 0) : Domain.Type|Domain.Map|Domain.Array
+  private visitTypeNode(t: ts.Node, indent: number = 0) : Domain.Type|Domain.Dictionary|Domain.Array
   {
     switch(t.kind)
     {
@@ -92,15 +92,15 @@ class InterfaceVisitor extends Visitor
     const childrenX: ts.Node[] = [];
     ts.forEachChild(t, c => childrenX.push(c));
     const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k == c.kind));
-    if (children.size() != 1) throw "Expected array to have 1 useable child but saw " + children.size();
+    if (children.size() != 1) throw "Expected array to have 1 usable child but saw " + children.size();
 
     array.of = this.visitTypeNode(children.first());
     return array;
   }
-  private visitTypeReference(t : ts.TypeReferenceNode) : Domain.Type|Domain.Map|Domain.Array
+  private visitTypeReference(t : ts.TypeReferenceNode) : Domain.Type|Domain.Dictionary|Domain.Array
   {
     const typeName = t.typeName.getText();
-    if (typeName != "map") return new Domain.Type(t.getText());
+    if (typeName != "dictionary") return new Domain.Type(t.getText());
 
     const childrenX: ts.Node[] = [];
     ts.forEachChild(t, c => {
@@ -109,10 +109,10 @@ class InterfaceVisitor extends Visitor
     });
     const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k == c.kind));
     if (children.size() > 3 || children.size() < 2) {
-      throw "Expected map to have 2 or 3 useable children but saw " + children.size();
+      throw "Expected dictionary to have 2 or 3 usable children but saw " + children.size();
     }
 
-    var map = new Domain.Map();
+    var map = new Domain.Dictionary();
     map.key = this.visitTypeNode(children.first());
     map.value = this.visitTypeNode(children.at(1).first());
     map.array = children.size() == 3;
@@ -146,8 +146,7 @@ class TypeReader
     this.checker = program.getTypeChecker();
     for (var f of this.program.getSourceFiles())
     {
-      if (f.path.match(/ntypescript/)) continue;
-      //if (!f.path.match(/suggest_request|http_method/)) continue;
+      if (!f.path.match(/specification\/specs/)) continue;
       this.visit(f)
     }
   }

@@ -1,3 +1,3 @@
 class MonitoringUsage extends XPackUsage {
-	enabled_exporters: Map<string, long>;
+	enabled_exporters: Dictionary<string, long>[];
 }

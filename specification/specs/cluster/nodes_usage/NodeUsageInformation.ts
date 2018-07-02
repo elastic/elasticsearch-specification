@@ -3,5 +3,5 @@ class NodeUsageInformation {
 	timestamp: Date;
 	@prop_serializer("EpochMillisecondsDateTimeJsonConverter")
 	since: Date;
-	rest_actions: Map<string, integer>;
+	rest_actions: Dictionary<string, integer>[];
 }

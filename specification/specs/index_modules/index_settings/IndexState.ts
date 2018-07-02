@@ -1,5 +1,5 @@
 class IndexState {
-	settings: Map<string, any>;
-	mappings: Map<TypeName, TypeMapping>;
-	aliases: Map<IndexName, Alias>;
+	settings: Dictionary<string, any>[];
+	mappings: Dictionary<TypeName, TypeMapping>[];
+	aliases: Dictionary<IndexName, Alias>[];
 }

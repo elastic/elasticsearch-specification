@@ -10,8 +10,8 @@ class NodeStats {
 	process: ProcessStats;
 	script: ScriptStats;
 	jvm: NodeJvmStats;
-	thread_pool: Map<string, ThreadCountStats>;
-	breakers: Map<string, BreakerStats>;
+	thread_pool: Dictionary<string, ThreadCountStats>[];
+	breakers: Dictionary<string, BreakerStats>[];
 	fs: FileSystemStats;
 	transport: TransportStats;
 	http: HttpStats;

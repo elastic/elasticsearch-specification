@@ -1,3 +1,3 @@
 class IndexRoutingTable {
-	shards: Map<string, RoutingShard[]>;
+	shards: Dictionary<string, RoutingShard[]>[];
 }

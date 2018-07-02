@@ -7,5 +7,5 @@ class IndexHealthStats {
 	relocating_shards: integer;
 	initializing_shards: integer;
 	unassigned_shards: integer;
-	shards: Map<string, ShardHealthStats>;
+	shards: Dictionary<string, ShardHealthStats>[];
 }

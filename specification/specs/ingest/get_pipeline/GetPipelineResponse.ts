@@ -1,3 +1,3 @@
 class GetPipelineResponse extends DictionaryResponseBase<string, Pipeline> {
-	pipelines: Map<string, Pipeline>;
+	pipelines: Dictionary<string, Pipeline>[];
 }

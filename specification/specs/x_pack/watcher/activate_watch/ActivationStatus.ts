@@ -1,4 +1,4 @@
 class ActivationStatus {
 	state: ActivationState;
-	actions: Map<string, ActionStatus>;
+	actions: Dictionary<string, ActionStatus>[];
 }

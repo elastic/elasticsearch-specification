@@ -3,6 +3,6 @@ class ScriptQuery {
 	source: string;
 	inline: string;
 	id: Id;
-	params: Map<string, any>;
+	params: Dictionary<string, any>[];
 	lang: string;
 }

@@ -1,8 +1,8 @@
 @rest_spec_name("indices.create")
 class CreateIndexRequest extends RequestBase {
-	settings: Map<string, any>;
-	mappings: Map<TypeName, TypeMapping>;
-	aliases: Map<IndexName, Alias>;
+	settings: Dictionary<string, any>[];
+	mappings: Dictionary<TypeName, TypeMapping>[];
+	aliases: Dictionary<IndexName, Alias>[];
 	@request_parameter()
 	wait_for_active_shards: string;
 	@request_parameter()

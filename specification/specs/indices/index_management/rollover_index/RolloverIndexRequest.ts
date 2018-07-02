@@ -1,9 +1,9 @@
 @rest_spec_name("indices.rollover")
 class RolloverIndexRequest extends RequestBase {
 	conditions: RolloverConditions;
-	settings: Map<string, any>;
-	aliases: Map<IndexName, Alias>;
-	mappings: Map<TypeName, TypeMapping>;
+	settings: Dictionary<string, any>[];
+	aliases: Dictionary<IndexName, Alias>[];
+	mappings: Dictionary<TypeName, TypeMapping>[];
 	@request_parameter()
 	timeout: Time;
 	@request_parameter()

@@ -1,4 +1,4 @@
 class RoutingNodesState {
 	unassigned: RoutingShard[];
-	nodes: Map<string, RoutingShard[]>;
+	nodes: Dictionary<string, RoutingShard[]>[];
 }

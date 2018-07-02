@@ -1,3 +1,3 @@
 class ReindexRethrottleResponse extends ResponseBase {
-	nodes: Map<string, ReindexNode>;
+	nodes: Dictionary<string, ReindexNode>[];
 }

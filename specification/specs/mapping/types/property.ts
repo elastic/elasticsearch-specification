@@ -1,5 +1,5 @@
 class Property {
 	name: PropertyName;
 	type: string;
-	local_metadata: Map<string, any>;
+	local_metadata: Dictionary<string, any>[];
 }

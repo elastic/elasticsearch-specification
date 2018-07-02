@@ -1,4 +1,4 @@
 class MainError extends ErrorCause {
 	root_cause: ErrorCause[];
-	headers: Map<string, string>;
+	headers: Dictionary<string, string>[];
 }
