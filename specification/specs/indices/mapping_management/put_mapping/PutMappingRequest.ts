@@ -9,7 +9,7 @@ class PutMappingRequest extends RequestBase {
 	index_field: IndexField;
 	meta: Dictionary<string, any>[];
 	numeric_detection: boolean;
-	properties: Dictionary<PropertyName, Property>[];
+	properties: Dictionary<PropertyName, IProperty>[];
 	routing_field: RoutingField;
 	size_field: SizeField;
 	source_field: SourceField;

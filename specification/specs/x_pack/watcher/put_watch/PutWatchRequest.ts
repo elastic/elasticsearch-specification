@@ -1,11 +1,14 @@
 @rest_spec_name("xpack.watcher.put_watch")
-class PutWatchRequest {
+class PutWatchRequest extends RequestBase {
+	metadata: Dictionary<string, any>[];
 	trigger: TriggerContainer;
 	input: InputContainer;
-	condition: ConditionContainer;
-	actions: Dictionary<string, Action>[];
-	metadata: Dictionary<string, any>[];
 	throttle_period: string;
+	condition: ConditionContainer;
 	transform: TransformContainer;
-	id: Id;
+	actions: Dictionary<string, Action>[];
+	@request_parameter()
+	master_timeout: Time;
+	@request_parameter()
+	active: boolean;
 }

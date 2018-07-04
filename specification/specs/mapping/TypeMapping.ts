@@ -11,5 +11,5 @@ class TypeMapping {
 	_meta: Dictionary<string, any>[];
 	dynamic_templates: Dictionary<string, DynamicTemplate>[];
 	dynamic: Union<boolean, DynamicMapping>;
-	properties: Dictionary<PropertyName, Property>[];
+	properties: Dictionary<PropertyName, IProperty>[];
 }

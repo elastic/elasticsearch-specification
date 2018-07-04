@@ -1,4 +1,4 @@
-class ClusterStatsResponse extends ResponseBase {
+class ClusterStatsResponse extends NodesResponseBase {
 	cluster_name: string;
 	timestamp: long;
 	status: ClusterStatus;

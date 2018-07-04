@@ -1,0 +1,3 @@
+class FieldNameQuery {
+	field: Field;
+}

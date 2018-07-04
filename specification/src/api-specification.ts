@@ -1,6 +1,7 @@
 import Domain = require("./domain");
 import SpecValidator = require("./specification/validator");
 import TypeReader = require("./specification/type-reader");
+import {RestSpecMapping} from "./specification/rest-spec-mapping";
 
 //will be marked as unused but the require is what brings in the global `ts` variable
 const typescript = require('ntypescript');
@@ -43,7 +44,7 @@ module ApiSpecification
       const specVisitor = new TypeReader(this.program);
       this.types =  new Array<Domain.TypeDeclaration>().concat(specVisitor.interfaces).concat(specVisitor.enums);
 
-      const endpointReader = new EndpointReader(specVisitor.interfaces);
+      const endpointReader = new EndpointReader(specVisitor.interfaces, specVisitor.restSpecMapping);
       this.endpoints = endpointReader.endpoints;
     }
     static load = () => new Specification(false);
@@ -56,11 +57,11 @@ module ApiSpecification
   {
     endpoints: Domain.Endpoint[];
 
-    constructor(types: Domain.Interface[])
+    constructor(types: Domain.Interface[], restSpecMapping: { [p: string]: RestSpecMapping })
     {
       this.endpoints = _(glob.sync(__dirname + "/../specs/**/*.json"))
         .filter(f=>!f.match(/tsconfig/))
-        .map(f=>new Domain.Endpoint(f))
+        .map(f=>new Domain.Endpoint(f, restSpecMapping))
         .value();
     }
   }

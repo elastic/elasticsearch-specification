@@ -1,3 +1,4 @@
+import { TypeName, RestSpecName, RestSpecMapping } from "./rest-spec-mapping";
 import Domain = require("../domain");
 var _: _.LoDashStatic = require('lodash');
 
@@ -37,20 +38,37 @@ class EnumVisitor extends Visitor
   }
 }
 
+
 class InterfaceVisitor extends Visitor
 {
-  constructor(private interfaceNode : ts.InterfaceDeclaration | ts.ClassDeclaration, checker: ts.TypeChecker) {super(checker)}
+  name: TypeName;
+  specMapping: RestSpecMapping;
+  constructor(private interfaceNode : ts.InterfaceDeclaration | ts.ClassDeclaration, checker: ts.TypeChecker)
+  {
+    super(checker);
+  }
 
   public visit() : Domain.Interface
   {
-    let name = this.symbolName(this.interfaceNode.name);
-    let domainInterface = new Domain.Interface(name);
+    let n = this.symbolName(this.interfaceNode.name);
+    this.name = n;
+    let domainInterface = new Domain.Interface(n);
+
+    let decorator = _(this.interfaceNode.decorators || [])
+      .map(d => d.expression.getText())
+      .find(t => t.startsWith("rest_spec_name"));
+
+    var restSpec = decorator ? decorator.split("\"")[1] : null;
+    if (restSpec)
+    {
+      let responseName = n.replace("Request", "Response");
+      if (responseName.endsWith("ExistsResponse")) responseName = "ExistsResponse";
+      this.specMapping = new RestSpecMapping(restSpec, n, responseName);
+    }
 
     var children = this.interfaceNode.getChildren();
 
     ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(<ts.PropertySignature>c, domainInterface));
-
-    //this.annotate(domainInterface, symbol);
     return domainInterface;
   }
 
@@ -140,9 +158,13 @@ class TypeReader
 
   interfaces: Domain.Interface[] = [];
   enums: Domain.Enum[] = [];
+  //TS1337 :( https://github.com/Microsoft/TypeScript/issues/1778
+  /** @type {Object.<RestSpecName, TypeName>} */
+  restSpecMapping: { [id: string] : RestSpecMapping };
 
   constructor(private program: ts.Program)
   {
+    this.restSpecMapping = {};
     this.checker = program.getTypeChecker();
     for (var f of this.program.getSourceFiles())
     {
@@ -157,16 +179,19 @@ class TypeReader
       {
         case ts.SyntaxKind.ClassDeclaration:
           let cv = new InterfaceVisitor(<ts.ClassDeclaration>node, this.checker);
-          this.interfaces.push(cv.visit());
+          let c = cv.visit();
+          if (cv.specMapping) this.restSpecMapping[cv.specMapping.spec] = cv.specMapping;
+          this.interfaces.push(c);
           break;
         case ts.SyntaxKind.InterfaceDeclaration:
           let iv = new InterfaceVisitor(<ts.InterfaceDeclaration>node, this.checker);
-          this.interfaces.push(iv.visit());
+          let i = iv.visit();
+          this.interfaces.push(i);
           break;
 
         case ts.SyntaxKind.EnumDeclaration:
           let ev = new EnumVisitor(<ts.EnumDeclaration>node, this.checker);
-          this.enums.push(ev.visit())
+          this.enums.push(ev.visit());
           break;
       }
       ts.forEachChild(node, c=>this.visit(c));

@@ -1,4 +1,5 @@
 import Domain = require("./domain");
+import { RestSpecMapping } from "./specification/rest-spec-mapping";
 declare module ApiSpecification {
     class Specification {
         private specsFolder;
@@ -16,7 +17,9 @@ declare module ApiSpecification {
     let load: () => Specification;
     class EndpointReader {
         endpoints: Domain.Endpoint[];
-        constructor(types: Domain.Interface[]);
+        constructor(types: Domain.Interface[], restSpecMapping: {
+            [p: string]: RestSpecMapping;
+        });
     }
 }
 export = ApiSpecification;

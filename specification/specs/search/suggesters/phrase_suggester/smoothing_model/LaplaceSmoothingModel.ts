@@ -1,0 +1,3 @@
+class LaplaceSmoothingModel {
+	alpha: double;
+}

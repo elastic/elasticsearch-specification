@@ -1,0 +1,3 @@
+class StupidBackoffSmoothingModel {
+	discount: double;
+}

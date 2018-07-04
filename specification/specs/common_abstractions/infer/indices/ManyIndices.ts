@@ -1,3 +1,0 @@
-class ManyIndices {
-	indices: IndexName[];
-}

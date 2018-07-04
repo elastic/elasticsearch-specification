@@ -1,3 +1,0 @@
-class TypeName {
-	name: string;
-}

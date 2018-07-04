@@ -1,3 +1,4 @@
+import { RestSpecMapping } from "./specification/rest-spec-mapping";
 declare module Domain {
     class Type {
         name: string;
@@ -37,13 +38,21 @@ declare module Domain {
         name: string;
         constructor(name: string);
     }
+    class BodyDocumentation {
+        description: string;
+        required: boolean;
+        constructor(data: any);
+    }
     class Endpoint {
         name: string;
         documentation: string;
-        bodyDocumentation: string;
+        bodyDocumentation: BodyDocumentation;
         methods: string[];
         url: Route;
-        constructor(file: string);
+        typeMapping: RestSpecMapping;
+        constructor(file: string, restSpecMapping: {
+            [p: string]: RestSpecMapping;
+        });
     }
     class Route {
         path: string;

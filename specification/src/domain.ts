@@ -1,3 +1,4 @@
+import {RestSpecMapping} from "./specification/rest-spec-mapping";
 var _: _.LoDashStatic = require('lodash');
 
 module Domain {
@@ -47,26 +48,39 @@ module Domain {
     constructor(public name: string) {}
   }
 
+  export class BodyDocumentation
+  {
+    description: string;
+    required: boolean;
+    constructor(data: any)
+    {
+      this.description = data.description;
+      this.required = !!data.required;
+    }
+  }
+
   export class Endpoint
   {
     name: string;
     documentation: string;
-    bodyDocumentation: string;
+    bodyDocumentation: BodyDocumentation;
     methods: string[];
     url: Route;
+    typeMapping: RestSpecMapping;
 
-    constructor(file: string)
+    constructor(file: string, restSpecMapping: { [p: string]: RestSpecMapping })
     {
-      //var json = require(file.replace(/\.\//, "./../"));
       const json = require(file);
 
       this.name = _(json).keys().first();
+      this.typeMapping = restSpecMapping[this.name];
       const data = json[this.name];
       if(!data.url) console.log(this.name);
 
       this.documentation = data.documentation;
       this.methods = data.methods;
-      this.bodyDocumentation  = data.body;
+      if (data.body)
+        this.bodyDocumentation  = new BodyDocumentation(data.body);
 
       this.url = new Route(data.url);
     }
