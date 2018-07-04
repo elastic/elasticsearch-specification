@@ -3,5 +3,5 @@ class ScriptedMetricAggregation {
 	map_script: Script;
 	combine_script: Script;
 	reduce_script: Script;
-	params: Dictionary<string, any>[];
+	params: Dictionary<string, any>;
 }

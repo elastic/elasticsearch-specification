@@ -2,7 +2,6 @@ import Domain = require("./domain");
 import SpecValidator = require("./specification/validator");
 import TypeReader = require("./specification/type-reader");
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
-
 //will be marked as unused but the require is what brings in the global `ts` variable
 const typescript = require('ntypescript');
 
@@ -11,6 +10,7 @@ const glob = require("glob");
 
 module ApiSpecification
 {
+  export type TypeDictionary = { [p:string]:  Domain.TypeDeclaration };
   export class Specification
   {
     private specsFolder = __dirname + "/../specs";
@@ -42,7 +42,15 @@ module ApiSpecification
       }
 
       const specVisitor = new TypeReader(this.program);
-      this.types =  new Array<Domain.TypeDeclaration>().concat(specVisitor.interfaces).concat(specVisitor.enums);
+      let types = [].concat(specVisitor.interfaces).concat(specVisitor.enums);
+      //resolve inherits by creating the proper pointers to instances, pretty hairy but it works
+      let dictTypes = types.reduce((o, p) => ({...o, [p.name]: p}), {} ) as TypeDictionary;
+      types.forEach(t=> {
+        if (!(t instanceof Domain.Interface)) return;
+        t.inherits = t.inheritsFromUnresolved
+          .map(i=>i == "String" ? new Domain.Interface("String") : (dictTypes[i] as Domain.Interface));
+      });
+      this.types = types;
 
       const endpointReader = new EndpointReader(specVisitor.interfaces, specVisitor.restSpecMapping);
       this.endpoints = endpointReader.endpoints;

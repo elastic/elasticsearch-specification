@@ -11,5 +11,5 @@ class ClusterHealthResponse extends ResponseBase {
 	unassigned_shards: integer;
 	number_of_pending_tasks: integer;
 	@prop_serializer("ResolvableDictionaryJsonConverter`2")
-	indices: Dictionary<IndexName, IndexHealthStats>[];
+	indices: Dictionary<IndexName, IndexHealthStats>;
 }

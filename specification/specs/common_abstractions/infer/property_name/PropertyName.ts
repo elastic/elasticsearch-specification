@@ -1,0 +1,1 @@
+class PropertyName extends String {}

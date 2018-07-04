@@ -1,3 +1,3 @@
 class RoutingTableState {
-	indices: Dictionary<string, IndexRoutingTable>[];
+	indices: Dictionary<string, IndexRoutingTable>;
 }

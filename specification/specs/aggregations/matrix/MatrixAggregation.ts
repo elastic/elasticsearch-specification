@@ -1,4 +1,4 @@
 class MatrixAggregation {
 	fields: Field[];
-	missing: Dictionary<Field, double>[];
+	missing: Dictionary<Field, double>;
 }

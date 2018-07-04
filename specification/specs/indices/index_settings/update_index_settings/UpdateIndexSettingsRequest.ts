@@ -1,7 +1,7 @@
 @rest_spec_name("indices.put_settings")
 @class_serializer("IndexSettingsConverter")
 class UpdateIndexSettingsRequest extends RequestBase {
-	index_settings: Dictionary<string, any>[];
+	index_settings: Dictionary<string, any>;
 	@request_parameter()
 	master_timeout: Time;
 	@request_parameter()

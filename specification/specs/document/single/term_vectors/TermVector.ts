@@ -1,4 +1,4 @@
 class TermVector {
 	field_statistics: FieldStatistics;
-	terms: Dictionary<string, TermVectorTerm>[];
+	terms: Dictionary<string, TermVectorTerm>;
 }

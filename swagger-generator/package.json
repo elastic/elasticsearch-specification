@@ -5,19 +5,19 @@
   "description": "Takes the type script specs and generates swagger output for it (to be used in the asciidoc documentation on elastic.co (maybe))",
   "main": "index.js",
   "scripts": {
-    "start": "npm run compile && node index.js",
-    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% index.js",
+    "start": "node src/swagger-ui.js",
+    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/index.js",
     "compile": "ntsc -p .",
     "typings": "typings",
-    "build": "gulp --gulpfile build/gulpfile.js",
-    "swagger": "node swagger-ui.js",
-    "both": "npm run start && node swagger-ui.js"
+    "swagger": "node src/swagger-ui.js",
+    "both": "npm run compile && node src/index.js && node src/swagger-ui.js"
   },
   "author": "Elastic",
   "license": "MIT",
   "devDependencies": {
     "@types/lodash": "^4.14.110",
     "@types/node": "^10.5.1",
+    "@types/swagger-schema-official": "^2.0.10",
     "eclint": "^1.1.5",
     "gulp": "^3.9.0",
     "gulp-add-src": "^0.2.0",
@@ -29,6 +29,7 @@
   "dependencies": {
     "elasticsearch-client-specification": "file:../specification",
     "express": "^4.16.3",
+    "lodash": "^3.10.1",
     "js-yaml": "3.8.2",
     "swagger-ui-dist": "^3.17.2"
   }

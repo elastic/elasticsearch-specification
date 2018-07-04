@@ -1,3 +1,3 @@
 class VerifyRepositoryResponse extends ResponseBase {
-	nodes: Dictionary<string, CompactNodeInfo>[];
+	nodes: Dictionary<string, CompactNodeInfo>;
 }

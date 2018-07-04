@@ -1,3 +1,3 @@
 class IndicesShardStores {
-	shards: Dictionary<string, ShardStoreWrapper>[];
+	shards: Dictionary<string, ShardStoreWrapper>;
 }

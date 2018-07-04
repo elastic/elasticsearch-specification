@@ -1,4 +1,3 @@
-class Name extends String {}
 class CatThreadPoolRecord implements ICatRecord {
 	node_name: string;
 	node_id: string;

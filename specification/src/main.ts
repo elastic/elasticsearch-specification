@@ -1,6 +1,8 @@
 import ApiSpecification = require("./api-specification");
 const _: _.LoDashStatic = require('lodash');
 
+console.log("start");
+
 const specification = ApiSpecification.loadWithValidation();
 
 if (specification.endpoint_errors.length > 0)

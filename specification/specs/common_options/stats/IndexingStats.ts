@@ -11,5 +11,5 @@ class IndexingStats {
 	noop_update_total: long;
 	throttle_time: string;
 	throttle_time_in_millis: long;
-	types: Dictionary<string, IndexingStats>[];
+	types: Dictionary<string, IndexingStats>;
 }

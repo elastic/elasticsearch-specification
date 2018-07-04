@@ -1,3 +1,3 @@
 class AlertingExecution {
-	actions: Dictionary<string, ExecutionAction>[];
+	actions: Dictionary<string, ExecutionAction>;
 }

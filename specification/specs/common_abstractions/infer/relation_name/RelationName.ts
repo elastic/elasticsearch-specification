@@ -1,0 +1,1 @@
+class RelationName extends String {}

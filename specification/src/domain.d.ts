@@ -7,26 +7,28 @@ declare module Domain {
     }
     class Array {
         type: Type;
-        of: Type | Array | Dictionary;
+        of: InstanceOf;
     }
     class Dictionary {
         type: Type;
-        key: Type | Array | Dictionary;
-        value: Type | Array | Dictionary;
+        key: InstanceOf;
+        value: InstanceOf;
         array: boolean;
     }
+    type InstanceOf = Type | Array | Dictionary;
     class TypeDeclaration {
         name: string;
         constructor(name: string);
     }
     class Interface extends TypeDeclaration {
         properties: InterfaceProperty[];
+        inheritsFromUnresolved: string[];
+        inherits: Domain.Interface[];
     }
     class InterfaceProperty {
         name: string;
         constructor(name: string);
-        typeString: string;
-        type: Type | Array | Dictionary;
+        type: InstanceOf;
     }
     class Enum extends TypeDeclaration {
         name: string;

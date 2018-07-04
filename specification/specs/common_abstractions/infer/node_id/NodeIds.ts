@@ -1,0 +1,1 @@
+class NodeIds extends String {}

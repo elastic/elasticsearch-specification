@@ -66,9 +66,19 @@ class InterfaceVisitor extends Visitor
       this.specMapping = new RestSpecMapping(restSpec, n, responseName);
     }
 
-    var children = this.interfaceNode.getChildren();
-
     ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(<ts.PropertySignature>c, domainInterface));
+
+    let s = this.interfaceNode.symbol;
+    let x : any = s.valueDeclaration;
+    let heritageClauses : ts.Node[] = (x ? x.heritageClauses : []) || [];
+    domainInterface.inheritsFromUnresolved = heritageClauses
+      .map(n => <ts.Node[]>((n as any).types || []))
+      .reduce((p, c) => {
+        c.forEach(n=>p.push(n));
+        return c;
+      }, [])
+      .map(n => (<ts.Identifier>(n as any).expression).text);
+
     return domainInterface;
   }
 
@@ -118,16 +128,16 @@ class InterfaceVisitor extends Visitor
   private visitTypeReference(t : ts.TypeReferenceNode) : Domain.Type|Domain.Dictionary|Domain.Array
   {
     const typeName = t.typeName.getText();
-    if (typeName != "dictionary") return new Domain.Type(t.getText());
+    if (!typeName.startsWith("Dictionary")) return new Domain.Type(t.getText());
 
     const childrenX: ts.Node[] = [];
     ts.forEachChild(t, c => {
-      childrenX.push(c)
+      childrenX.push(c);
       ts.forEachChild(c, cc => childrenX.push(cc));
     });
     const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k == c.kind));
     if (children.size() > 3 || children.size() < 2) {
-      throw "Expected dictionary to have 2 or 3 usable children but saw " + children.size();
+      throw "Expected dictionary to have 2 or 3 usable children but saw " + children.size() + " on " + typeName;
     }
 
     var map = new Domain.Dictionary();

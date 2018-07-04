@@ -1,5 +1,5 @@
 class PhraseSuggestCollate {
 	query: PhraseSuggestCollateQuery;
 	prune: boolean;
-	params: Dictionary<string, any>[];
+	params: Dictionary<string, any>;
 }

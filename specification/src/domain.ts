@@ -10,15 +10,16 @@ module Domain {
   export class Array
   {
     type = new Type("array");
-    of: Type|Array|Dictionary;
+    of: InstanceOf;
   }
   export class Dictionary
   {
     type = new Type("dictionary");
-    key: Type|Array|Dictionary;
-    value: Type|Array|Dictionary;
+    key: InstanceOf;
+    value: InstanceOf;
     array: boolean;
   }
+  export type InstanceOf = Type|Array|Dictionary;
 
   export class TypeDeclaration
   {
@@ -28,13 +29,14 @@ module Domain {
   export class Interface extends TypeDeclaration
   {
     public properties: InterfaceProperty[] = [];
+    public inheritsFromUnresolved: string[] = [];
+    public inherits: Domain.Interface[] = [];
   }
 
   export class InterfaceProperty
   {
     constructor(public name: string) {}
-    typeString: string;
-    type: Type|Array|Dictionary;
+    type: InstanceOf;
   }
 
   export class Enum extends TypeDeclaration

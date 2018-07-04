@@ -5,6 +5,6 @@ class WatchRecord {
 	trigger_event: TriggerEventResult;
 	condition: ConditionContainer;
 	input: InputContainer;
-	metadata: Dictionary<string, any>[];
+	metadata: Dictionary<string, any>;
 	result: ExecutionResult;
 }

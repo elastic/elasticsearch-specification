@@ -10,7 +10,7 @@ class NodeInfo {
 	os: NodeOperatingSystemInfo;
 	process: NodeProcessInfo;
 	jvm: NodeJvmInfo;
-	thread_pool: Dictionary<string, NodeThreadPoolInfo>[];
+	thread_pool: Dictionary<string, NodeThreadPoolInfo>;
 	network: NodeInfoNetwork;
 	transport: NodeInfoTransport;
 	http: NodeInfoHttp;

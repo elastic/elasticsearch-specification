@@ -1,4 +1,3 @@
-class Names extends String {}
 class CatAllocationRecord implements ICatRecord {
 	shards: string;
 	diskUsed: string;

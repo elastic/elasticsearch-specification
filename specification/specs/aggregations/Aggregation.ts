@@ -1,4 +1,4 @@
 class Aggregation {
 	name: string;
-	meta: Dictionary<string, any>[];
+	meta: Dictionary<string, any>;
 }

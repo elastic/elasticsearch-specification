@@ -4,6 +4,6 @@ class SecurityUsage extends XPackUsage {
 	ssl: SslUsage;
 	ipfilter: IpFilterUsage;
 	audit: AuditUsage;
-	roles: Dictionary<string, RoleUsage>[];
-	realms: Dictionary<string, RealmUsage>[];
+	roles: Dictionary<string, RoleUsage>;
+	realms: Dictionary<string, RealmUsage>;
 }

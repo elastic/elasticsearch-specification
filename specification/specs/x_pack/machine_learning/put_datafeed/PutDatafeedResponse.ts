@@ -1,6 +1,6 @@
 class PutDatafeedResponse extends ResponseBase {
 	datafeed_id: string;
-	aggregations: Dictionary<string, AggregationContainer>[];
+	aggregations: Dictionary<string, AggregationContainer>;
 	chunking_config: ChunkingConfig;
 	frequency: Time;
 	@prop_serializer("IndicesJsonConverter")
@@ -8,7 +8,7 @@ class PutDatafeedResponse extends ResponseBase {
 	job_id: string;
 	query: QueryContainer;
 	query_delay: Time;
-	script_fields: Dictionary<string, ScriptField>[];
+	script_fields: Dictionary<string, ScriptField>;
 	scroll_size: integer;
 	@prop_serializer("TypesJsonConverter")
 	types: Types;

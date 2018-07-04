@@ -1,0 +1,1 @@
+class DateMath extends String {}

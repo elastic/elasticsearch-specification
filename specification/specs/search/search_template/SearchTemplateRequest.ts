@@ -3,7 +3,7 @@ class SearchTemplateRequest extends RequestBase {
 	source: string;
 	inline: string;
 	id: string;
-	params: Dictionary<string, any>[];
+	params: Dictionary<string, any>;
 	@request_parameter()
 	ignore_unavailable: boolean;
 	@request_parameter()

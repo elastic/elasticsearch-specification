@@ -1,6 +1,9 @@
 import Domain = require("./domain");
 import { RestSpecMapping } from "./specification/rest-spec-mapping";
 declare module ApiSpecification {
+    type TypeDictionary = {
+        [p: string]: Domain.TypeDeclaration;
+    };
     class Specification {
         private specsFolder;
         private configPath;

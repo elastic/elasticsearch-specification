@@ -4,6 +4,6 @@ class ReindexNode {
 	host: string;
 	ip: string;
 	roles: string[];
-	attributes: Dictionary<string, string>[];
-	tasks: Dictionary<TaskId, ReindexTask>[];
+	attributes: Dictionary<string, string>;
+	tasks: Dictionary<TaskId, ReindexTask>;
 }

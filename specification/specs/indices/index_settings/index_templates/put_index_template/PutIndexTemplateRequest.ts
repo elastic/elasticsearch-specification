@@ -3,9 +3,9 @@ class PutIndexTemplateRequest extends RequestBase {
 	index_patterns: string[];
 	order: integer;
 	version: integer;
-	settings: Dictionary<string, any>[];
-	mappings: Dictionary<TypeName, TypeMapping>[];
-	aliases: Dictionary<IndexName, Alias>[];
+	settings: Dictionary<string, any>;
+	mappings: Dictionary<TypeName, TypeMapping>;
+	aliases: Dictionary<IndexName, Alias>;
 	@request_parameter()
 	create: boolean;
 	@request_parameter()

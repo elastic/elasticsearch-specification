@@ -4,5 +4,5 @@ class SnapshotStatus {
 	state: string;
 	shards_stats: SnapshotShardsStats;
 	stats: SnapshotStats;
-	indices: Dictionary<string, SnapshotIndexStats>[];
+	indices: Dictionary<string, SnapshotIndexStats>;
 }

@@ -3,5 +3,5 @@ class CurrentNode {
 	name: string;
 	transport_address: string;
 	weight_ranking: string;
-	attributes: Dictionary<string, string>[];
+	attributes: Dictionary<string, string>;
 }

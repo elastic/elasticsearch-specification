@@ -1,0 +1,1 @@
+class Metrics extends String {}

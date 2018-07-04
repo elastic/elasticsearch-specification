@@ -1,7 +1,7 @@
 @rest_spec_name("msearch")
 @class_serializer("MultiSearchJsonConverter")
 class MultiSearchRequest extends RequestBase {
-	operations: Dictionary<string, SearchRequest>[];
+	operations: Dictionary<string, SearchRequest>;
 	@request_parameter()
 	search_type: SearchType;
 	@request_parameter()

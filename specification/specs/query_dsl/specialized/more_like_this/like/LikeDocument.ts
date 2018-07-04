@@ -6,5 +6,5 @@ class LikeDocument {
 	_routing: Routing;
 	@prop_serializer("SourceConverter")
 	doc: any;
-	per_field_analyzer: Dictionary<Field, string>[];
+	per_field_analyzer: Dictionary<Field, string>;
 }

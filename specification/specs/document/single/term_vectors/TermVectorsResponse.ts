@@ -6,5 +6,5 @@ class TermVectorsResponse extends ResponseBase {
 	found: boolean;
 	took: long;
 	@prop_serializer("ResolvableDictionaryJsonConverter`2")
-	term_vectors: Dictionary<Field, TermVector>[];
+	term_vectors: Dictionary<Field, TermVector>;
 }

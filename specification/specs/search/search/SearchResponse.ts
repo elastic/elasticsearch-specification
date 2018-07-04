@@ -1,9 +1,9 @@
 class SearchResponse<T> extends ResponseBase {
 	_shards: ShardStatistics;
-	aggregations: Dictionary<string, Aggregate>[];
-	aggs: Dictionary<string, Aggregate>[];
+	aggregations: Dictionary<string, Aggregate>;
+	aggs: Dictionary<string, Aggregate>;
 	profile: Profile;
-	suggest: Dictionary<string, Suggest<T>[]>[];
+	suggest: Dictionary<string, Suggest<T>[]>;
 	took: long;
 	timed_out: boolean;
 	terminated_early: boolean;
@@ -14,5 +14,5 @@ class SearchResponse<T> extends ResponseBase {
 	max_score: double;
 	documents: T[];
 	//hits: Hit<T>[];
-	fields: Dictionary<string, LazyDocument>[][];
+	fields: Dictionary<string, LazyDocument>;
 }

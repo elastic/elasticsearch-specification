@@ -1,4 +1,4 @@
 class NodesUsageResponse extends NodesResponseBase {
 	cluster_name: string;
-	nodes: Dictionary<string, NodeUsageInformation>[];
+	nodes: Dictionary<string, NodeUsageInformation>;
 }

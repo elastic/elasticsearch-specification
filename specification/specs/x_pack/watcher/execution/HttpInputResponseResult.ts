@@ -1,5 +1,5 @@
 class HttpInputResponseResult {
 	status: integer;
-	headers: Dictionary<string, string[]>[];
+	headers: Dictionary<string, string[]>;
 	body: string;
 }

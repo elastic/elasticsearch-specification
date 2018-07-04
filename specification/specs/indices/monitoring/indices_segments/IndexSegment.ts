@@ -1,3 +1,3 @@
 class IndexSegment {
-	shards: Dictionary<string, ShardsSegment>[];
+	shards: Dictionary<string, ShardsSegment>;
 }

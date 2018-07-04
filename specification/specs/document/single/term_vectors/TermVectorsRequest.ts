@@ -2,7 +2,7 @@
 class TermVectorsRequest<TDocument> extends RequestBase {
 	@prop_serializer("SourceConverter")
 	doc: TDocument;
-	per_field_analyzer: Dictionary<Field, string>[];
+	per_field_analyzer: Dictionary<Field, string>;
 	filter: TermVectorFilter;
 	@request_parameter()
 	term_statistics: boolean;

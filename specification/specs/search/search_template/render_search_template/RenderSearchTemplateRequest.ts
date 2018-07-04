@@ -3,5 +3,5 @@ class RenderSearchTemplateRequest extends RequestBase {
 	source: string;
 	inline: string;
 	file: string;
-	params: Dictionary<string, any>[];
+	params: Dictionary<string, any>;
 }

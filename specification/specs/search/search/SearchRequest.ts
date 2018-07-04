@@ -13,19 +13,19 @@ class SearchRequest extends RequestBase {
 	docvalue_fields: Field[];
 	@request_parameter()
 	stored_fields: Field[];
-	script_fields: Dictionary<string, ScriptField>[];
+	script_fields: Dictionary<string, ScriptField>;
 	_source: Union<boolean, SourceFilter>;
 	sort: Sort[];
 	search_after: any[];
-	indices_boost: Dictionary<IndexName, double>[];
+	indices_boost: Dictionary<IndexName, double>;
 	post_filter: QueryContainer;
 	slice: SlicedScroll;
 	query: QueryContainer;
 	rescore: Rescore[];
-	suggest: Dictionary<string, SuggestBucket>[];
+	suggest: Dictionary<string, SuggestBucket>;
 	highlight: Highlight;
 	collapse: FieldCollapse;
-	aggs: Dictionary<string, AggregationContainer>[];
+	aggs: Dictionary<string, AggregationContainer>;
 	@request_parameter()
 	analyzer: string;
 	@request_parameter()

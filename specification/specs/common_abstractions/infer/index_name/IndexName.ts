@@ -1,0 +1,1 @@
+class IndexName extends String {}

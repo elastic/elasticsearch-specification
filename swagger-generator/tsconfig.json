@@ -17,8 +17,8 @@
     },
     "compileOnSave": true,
     "buildOnSave": true,
+    "include": ["src/**.ts"],
     "files": [
-        "index.ts",
         "node_modules/ntypescript/bin/ntypescript.d.ts"
     ],
   "typeAcquisition": {
