@@ -60,7 +60,20 @@ declare module Domain {
         path: string;
         paths: string[];
         parts: RoutePart[];
+        queryStringParameters: QueryStringParameter[];
         constructor(data: any);
+    }
+    class RestSpecTypeConverter {
+        static toQueryStringType(name: string, specType: string): string;
+        static toRouteParamType(name: string, specType: string): string;
+    }
+    class QueryStringParameter {
+        name: string;
+        type: string;
+        description: string;
+        required: boolean;
+        default: boolean;
+        constructor(name: string, data: any);
     }
     class RoutePart {
         name: string;
