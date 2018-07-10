@@ -11,7 +11,7 @@ class SwaggerEndpointBuilder {
             .reduce((o, e) => (Object.assign({}, o, { [e.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path) })), {});
     }
     static createPath(e, url) {
-        let path = {
+        const path = {
             parameters: e.url.queryStringParameters
                 .map(q => ({
                 in: "query",
@@ -27,7 +27,7 @@ class SwaggerEndpointBuilder {
                 name: "request",
                 description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
                 required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
-                schema: { '$ref': "#/definitions/" + e.typeMapping.request }
+                schema: { $ref: "#/definitions/" + e.typeMapping.request }
             });
         }
         return e.methods
@@ -56,18 +56,18 @@ class SwaggerEndpointBuilder {
     static getValidResponse(e) {
         return {
             description: "Request accepted and processed response",
-            schema: { '$ref': "#/definitions/" + e.typeMapping.response }
+            schema: { $ref: "#/definitions/" + e.typeMapping.response }
         };
     }
     static getResponses(e) {
         return {
-            '200': SwaggerEndpointBuilder.getValidResponse(e)
+            200: SwaggerEndpointBuilder.getValidResponse(e)
         };
     }
     static toSchema(type) {
-        if (type == "boolean")
+        if (type === "boolean")
             return { type: "boolean" };
-        if (type == "string")
+        if (type === "string")
             return { type: "string" };
         switch (type) {
             case "Uri": return { type: "string", format: "uri" };
@@ -84,7 +84,7 @@ class SwaggerEndpointBuilder {
             case "double":
                 return { type: "number", format: type };
         }
-        return { '$ref': "#/definitions/" + type };
+        return { $ref: "#/definitions/" + type };
     }
 }
 exports.SwaggerEndpointBuilder = SwaggerEndpointBuilder;

@@ -1,17 +1,15 @@
 import {Specification} from "../../specification/src/api-specification";
-import * as Yaml from 'js-yaml';
-import * as fs from 'fs';
+import * as Yaml from "js-yaml";
+import * as fs from "fs";
 import {Schema, Spec} from "swagger-schema-official";
 import {SwaggerEndpointBuilder} from "./swagger-enpoint-builder";
 import {JsonSchemaBuilder} from "./json-schema/json-schema-builder";
 
-export class SwaggerGenerator
-{
+export class SwaggerGenerator {
   constructor(private specification: Specification) { }
 
-  public export(folder: string)
-  {
-    const swag : Spec = {
+  public export(folder: string) {
+    const swag: Spec = {
       swagger : "2.0",
       info: {
         version: "0.0.0",
@@ -28,5 +26,3 @@ export class SwaggerGenerator
     fs.writeFileSync(f + "/index.json", JSON.stringify(swag));
   }
 }
-
-

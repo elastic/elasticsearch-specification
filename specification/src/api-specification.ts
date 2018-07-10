@@ -34,8 +34,8 @@ module ApiSpecification
         this.domain_errors = new SpecValidator().validate(this.program);
         if (this.domain_errors.length > 0)
         {
-          const errorString = _(["The specification contains the following type mapping errors:"])
-            .concat(_(this.domain_errors).map(e =>  "  - " + e))
+          const errorString = ["The specification contains the following type mapping errors:"]
+            .concat(this.domain_errors).map(e =>  "  - " + e)
             .join("\n");
           throw Error(errorString);
         }

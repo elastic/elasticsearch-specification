@@ -13,11 +13,11 @@ class JsonSchemaBuilder {
         };
     }
     createTypeSchema(type) {
-        if (type.name == "boolean")
+        if (type.name === "boolean")
             return { type: "boolean" };
-        if (type.name == "string")
+        if (type.name === "string")
             return { type: "string" };
-        return { '$ref': "#/definitions/" + type.name };
+        return { $ref: "#/definitions/" + type.name };
     }
     createArraySchema(arr) {
         return { type: "array", items: this.dispatchInstanceOf(arr.of) };
@@ -41,7 +41,7 @@ class JsonSchemaBuilder {
         return { type: "object", description: "Unknown InstanceOf" };
     }
     dispatchInterface(i) {
-        if (i.inheritsFromUnresolved.some(t => t == "String"))
+        if (i.inheritsFromUnresolved.some(t => t === "String"))
             return { type: "string", format: i.name };
         switch (i.name) {
             case "Uri": return { type: "string", format: "uri" };

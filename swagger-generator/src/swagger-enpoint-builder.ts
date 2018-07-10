@@ -1,21 +1,22 @@
 import {Specification} from "../../specification/src/api-specification";
 import {Path, Schema, Operation, Response} from "swagger-schema-official";
 import {Endpoint} from "../../specification/src/domain";
-export type Paths = { [p:string]: Path};
+
+export type Paths = { [p: string]: Path};
 
 export class SwaggerEndpointBuilder {
 
   constructor(private specification: Specification) { }
 
-  public build() : Paths {
+  public build(): Paths {
     return this.specification.endpoints
-      .map(e=> e.url.paths.map(p =>({ endpoint: e, path: p})))
+      .map(e => e.url.paths.map(p =>({ endpoint: e, path: p})))
       .reduce((a, paths) => a.concat(paths), [])
       .reduce((o, e) => ({...o, [e.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path)}), {});
   }
 
   private static createPath(e: Endpoint, url: string) : Path {
-    let path : Path = {
+    const path: Path = {
       parameters: e.url.queryStringParameters
         .map(q => ({
           in: "query",
@@ -31,11 +32,11 @@ export class SwaggerEndpointBuilder {
         name: "request",
         description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
         required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
-        schema: {'$ref': "#/definitions/" + e.typeMapping.request}
+        schema: {$ref: "#/definitions/" + e.typeMapping.request}
       });
     }
     return e.methods
-      .map(m=>m.toLowerCase())
+      .map(m => m.toLowerCase())
       .reduce((o, m) => ({...o, [m]: SwaggerEndpointBuilder.createOperation(e, url)}), path);
   }
 
@@ -59,25 +60,23 @@ export class SwaggerEndpointBuilder {
     };
   }
 
-  private static getValidResponse(e) : Response {
+  private static getValidResponse(e): Response {
     return {
       description: "Request accepted and processed response",
-      schema: {'$ref': "#/definitions/" + e.typeMapping.response}
-    }
-  }
-
-  private static getResponses(e) : { [responseName: string]: Response } {
-    return {
-      '200': SwaggerEndpointBuilder.getValidResponse(e)
+      schema: {$ref: "#/definitions/" + e.typeMapping.response}
     };
   }
 
-  private static toSchema(type: string) : Schema
-  {
-    if (type == "boolean") return { type: "boolean" };
-    if (type == "string") return { type: "string" };
-    switch(type)
-    {
+  private static getResponses(e): { [responseName: string]: Response } {
+    return {
+      200: SwaggerEndpointBuilder.getValidResponse(e)
+    };
+  }
+
+  private static toSchema(type: string): Schema {
+    if (type === "boolean") return { type: "boolean" };
+    if (type === "string") return { type: "string" };
+    switch (type) {
       case "Uri" : return { type: "string", format: "uri" };
       case "Date" : return { type: "string", format: "date-time" };
       case "Time" : return { type: "string", format: "time" };
@@ -92,6 +91,6 @@ export class SwaggerEndpointBuilder {
       case "double" :
         return { type: "number", format: type};
     }
-    return {'$ref': "#/definitions/" + type};
+    return {$ref: "#/definitions/" + type};
   }
 }
