@@ -5,7 +5,7 @@ declare module Domain {
         constructor(name: string);
         nullable: boolean;
     }
-    class Array {
+    class ArrayOf {
         type: Type;
         of: InstanceOf;
     }
@@ -15,7 +15,7 @@ declare module Domain {
         value: InstanceOf;
         array: boolean;
     }
-    type InstanceOf = Type | Array | Dictionary;
+    type InstanceOf = Type | ArrayOf | Dictionary;
     class TypeDeclaration {
         name: string;
         constructor(name: string);

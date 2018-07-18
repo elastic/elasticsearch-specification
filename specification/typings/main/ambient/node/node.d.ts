@@ -1618,9 +1618,9 @@ declare module "tls" {
         key?: any;   //string | Buffer
         passphrase?: string;
         cert?: any;  //string | Buffer
-        ca?: any;    //Array of string | Buffer
+        ca?: any;    //ArrayOf of string | Buffer
         rejectUnauthorized?: boolean;
-        NPNProtocols?: any;  //Array of string | Buffer
+        NPNProtocols?: any;  //ArrayOf of string | Buffer
         servername?: string;
     }
 

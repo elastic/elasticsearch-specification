@@ -1,4 +1,3 @@
-declare class SpecValidator {
-    validate(program: ts.Program): string[];
+export declare class SpecValidator {
+    static validate(program: ts.Program): string[];
 }
-export = SpecValidator;

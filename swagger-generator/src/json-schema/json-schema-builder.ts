@@ -22,7 +22,7 @@ export class JsonSchemaBuilder {
     return {$ref: "#/definitions/" + type.name};
   }
 
-  private createArraySchema(arr: Domain.Array): Schema {
+  private createArraySchema(arr: Domain.ArrayOf): Schema {
     return { type: "array", items: this.dispatchInstanceOf(arr.of) };
   }
 
@@ -41,7 +41,7 @@ export class JsonSchemaBuilder {
   private dispatchInstanceOf(type: Domain.InstanceOf): Schema {
     if (type instanceof Domain.Dictionary) return this.createDictionarySchema(type);
     if (type instanceof Domain.Type) return this.createTypeSchema(type);
-    if (type instanceof Domain.Array) return this.createArraySchema(type);
+    if (type instanceof Domain.ArrayOf) return this.createArraySchema(type);
     return { type: "object", description: "Unknown InstanceOf" };
   }
   private dispatchInterface(i: Domain.Interface): Schema {

@@ -393,7 +393,7 @@ declare module _ {
     interface LoDashExplicitNumberArrayWrapper extends LoDashExplicitArrayWrapper<number> { }
 
     /*********
-     * Array *
+     * ArrayOf *
      *********/
 
     //_.chunk
@@ -488,7 +488,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to concatenate.
          * @param {...*} [values] The values to concatenate.
          * @returns {Array} Returns the new concatenated array.
@@ -1123,7 +1123,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to inspect.
          * @param {...Array} [values] The values to exclude.
          * @returns {Array} Returns the new array of filtered values.
@@ -1905,7 +1905,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to iterate over.
          * @param {Function|Object|string} [iteratee=_.identity] The function invoked per iteration.
          * @returns {Array} Returns the new array.
@@ -2050,7 +2050,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} pairs The key-value pairs.
          * @returns {Object} Returns the new object.
          * @example
@@ -2101,7 +2101,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to search.
          * @param {*} value The value to search for.
          * @param {number} [fromIndex=0] The index to search from.
@@ -2171,7 +2171,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {...Array} [arrays] The arrays to inspect.
          * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
          * @returns {Array} Returns the new array of shared values.
@@ -2199,7 +2199,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {...Array} [arrays] The arrays to inspect.
          * @param {Function} [comparator] The comparator invoked per element.
          * @returns {Array} Returns the new array of shared values.
@@ -2283,7 +2283,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to modify.
          * @param {Array} values The values to remove.
          * @returns {Array} Returns `array`.
@@ -2312,7 +2312,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to modify.
          * @param {Array} values The values to remove.
          * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
@@ -2338,10 +2338,10 @@ declare module _ {
          * element becomes the second to last, and so on.
          *
          * **Note:** This method mutates `array` and is based on
-         * [`Array#reverse`](https://mdn.io/Array/reverse).
+         * [`ArrayOf#reverse`](https://mdn.io/Array/reverse).
          *
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @returns {Array} Returns `array`.
          * @example
          *
@@ -2367,7 +2367,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to search.
          * @param {*} value The value to search for.
          * @returns {number} Returns the index of the matched value, else `-1`.
@@ -2924,7 +2924,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The sorted array to inspect.
          * @param {*} value The value to evaluate.
          * @returns {number} Returns the index at which `value` should be inserted into `array`.
@@ -3088,7 +3088,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The sorted array to inspect.
          * @param {*} value The value to evaluate.
          * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
@@ -3312,7 +3312,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The sorted array to inspect.
          * @param {*} value The value to evaluate.
          * @returns {number} Returns the index at which `value` should be inserted into `array`.
@@ -3471,7 +3471,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The sorted array to inspect.
          * @param {*} value The value to evaluate.
          * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
@@ -3689,7 +3689,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to search.
          * @param {*} value The value to search for.
          * @returns {number} Returns the index of the matched value, else `-1`.
@@ -4687,7 +4687,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to inspect.
          * @returns {Array} Returns the new duplicate free array.
          * @example
@@ -4775,7 +4775,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to inspect.
          * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
          * @returns {Array} Returns the new duplicate free array.
@@ -4972,7 +4972,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to inspect.
          * @returns {Array} Returns the new duplicate free array.
          * @example
@@ -5059,7 +5059,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to inspect.
          * @param {Function} [iteratee] The iteratee invoked per element.
          * @returns {Array} Returns the new duplicate free array.
@@ -5253,7 +5253,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {...Array} [arrays] The arrays to inspect.
          * @param {Function} [comparator] The comparator invoked per element.
          * @returns {Array} Returns the new array of combined values.
@@ -5280,7 +5280,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {Array} array The array to inspect.
          * @param {Function} [comparator] The comparator invoked per element.
          * @returns {Array} Returns the new duplicate free array.
@@ -5467,7 +5467,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {...Array} [arrays] The arrays to inspect.
          * @param {Function|Object|string} [iteratee=_.identity] The iteratee invoked per element.
          * @returns {Array} Returns the new array of values.
@@ -5495,7 +5495,7 @@ declare module _ {
          *
          * @static
          * @memberOf _
-         * @category Array
+         * @category ArrayOf
          * @param {...Array} [arrays] The arrays to inspect.
          * @param {Function} [comparator] The comparator invoked per element.
          * @returns {Array} Returns the new array of values.
@@ -11002,7 +11002,7 @@ declare module _ {
     //_.isArray
     interface LoDashStatic {
         /**
-         * Checks if value is classified as an Array object.
+         * Checks if value is classified as an ArrayOf object.
          * @param value The value to check.
          *
          * @return Returns true if value is correctly classified, else false.
@@ -15213,7 +15213,7 @@ declare module _ {
         /**
          * Recursively merges own and inherited enumerable properties of source
          * objects into the destination object, skipping source properties that resolve
-         * to `undefined`. Array and plain object properties are merged recursively.
+         * to `undefined`. ArrayOf and plain object properties are merged recursively.
          * Other objects and value types are overridden by assignment. Source objects
          * are applied from left to right. Subsequent sources overwrite property
          * assignments of previous sources.

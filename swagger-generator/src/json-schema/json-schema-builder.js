@@ -36,7 +36,7 @@ class JsonSchemaBuilder {
             return this.createDictionarySchema(type);
         if (type instanceof Domain.Type)
             return this.createTypeSchema(type);
-        if (type instanceof Domain.Array)
+        if (type instanceof Domain.ArrayOf)
             return this.createArraySchema(type);
         return { type: "object", description: "Unknown InstanceOf" };
     }

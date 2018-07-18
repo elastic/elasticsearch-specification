@@ -16634,7 +16634,11 @@ definitions:
         type: string
   IAnalyzer:
     type: object
-    properties: {}
+    properties:
+      version:
+        type: string
+      type:
+        type: string
   KeywordAnalyzer:
     type: object
     properties: {}
@@ -16703,7 +16707,11 @@ definitions:
     properties: {}
   ICharFilter:
     type: object
-    properties: {}
+    properties:
+      version:
+        type: string
+      type:
+        type: string
   MappingCharFilter:
     type: object
     properties:
@@ -16869,7 +16877,11 @@ definitions:
         type: boolean
   ITokenFilter:
     type: object
-    properties: {}
+    properties:
+      version:
+        type: string
+      type:
+        type: string
   KStemTokenFilter:
     type: object
     properties: {}
@@ -17164,7 +17176,11 @@ definitions:
         type: string
   ITokenizer:
     type: object
-    properties: {}
+    properties:
+      version:
+        type: string
+      type:
+        type: string
   KeywordTokenizer:
     type: object
     properties:
@@ -20221,7 +20237,11 @@ definitions:
     properties: {}
   IRequest:
     type: object
-    properties: {}
+    properties:
+      http_method:
+        $ref: '#/definitions/HttpMethod'
+      route_values:
+        $ref: '#/definitions/RouteValues'
   PlainRequestBase:
     type: object
     properties:
@@ -20324,7 +20344,9 @@ definitions:
         type: string
   IResponse:
     type: object
-    properties: {}
+    properties:
+      server_error:
+        $ref: '#/definitions/ServerError'
   IndicesResponseBase:
     type: object
     properties:
@@ -23301,7 +23323,15 @@ definitions:
         type: boolean
   IProperty:
     type: object
-    properties: {}
+    properties:
+      name:
+        $ref: '#/definitions/PropertyName'
+      type:
+        type: string
+      local_metadata:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/object'
   PropertyBase:
     type: object
     properties:
