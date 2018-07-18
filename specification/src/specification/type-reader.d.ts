@@ -1,6 +1,6 @@
 import { RestSpecMapping } from "./rest-spec-mapping";
 import Domain = require("../domain");
-declare class TypeReader {
+export declare class TypeReader {
     private program;
     private checker;
     interfaces: Domain.Interface[];
@@ -9,6 +9,5 @@ declare class TypeReader {
         [id: string]: RestSpecMapping;
     };
     constructor(program: ts.Program);
-    private visit(node);
+    private visit;
 }
-export = TypeReader;

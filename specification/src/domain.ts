@@ -6,7 +6,7 @@ module Domain {
 
   export class Type {
     constructor(public name: string) {}
-    public nullable: boolean;
+    nullable: boolean;
   }
   export class ArrayOf {
     type = new Type("array");

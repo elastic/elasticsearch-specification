@@ -1,9 +1,7 @@
 // tslint:disable:no-console
-import ApiSpecification = require("./api-specification");
+import {Specification} from "./api-specification";
 
-console.log("start");
-
-const specification = ApiSpecification.loadWithValidation();
+const specification = Specification.loadWithValidation();
 
 if (specification.domain_errors.length +  specification.endpoint_errors.length === 0)
   console.log(

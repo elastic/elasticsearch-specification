@@ -144,7 +144,7 @@ class InterfaceVisitor extends Visitor {
   }
 }
 
-class TypeReader {
+export class TypeReader {
   private checker: ts.TypeChecker;
 
   interfaces: Domain.Interface[] = [];
@@ -184,4 +184,3 @@ class TypeReader {
       ts.forEachChild(node, c => this.visit(c));
   }
 }
-export = TypeReader;

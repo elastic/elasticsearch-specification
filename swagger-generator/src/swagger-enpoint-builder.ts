@@ -8,14 +8,14 @@ export class SwaggerEndpointBuilder {
 
   constructor(private specification: Specification) { }
 
-  public build(): Paths {
+  build(): Paths {
     return this.specification.endpoints
-      .map(e => e.url.paths.map(p =>({ endpoint: e, path: p})))
+      .map(e => e.url.paths.map(p => ({ endpoint: e, path: p})))
       .reduce((a, paths) => a.concat(paths), [])
       .reduce((o, e) => ({...o, [e.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path)}), {});
   }
 
-  private static createPath(e: Endpoint, url: string) : Path {
+  private static createPath(e: Endpoint, url: string): Path {
     const path: Path = {
       parameters: e.url.queryStringParameters
         .map(q => ({
@@ -26,7 +26,7 @@ export class SwaggerEndpointBuilder {
           description: q.description
         }))
     };
-    if (e.bodyDocumentation) {
+    if (e.bodyDocumentation)
       path.parameters.push({
         in: "body",
         name: "request",
@@ -34,14 +34,14 @@ export class SwaggerEndpointBuilder {
         required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
         schema: {$ref: "#/definitions/" + e.typeMapping.request}
       });
-    }
+
     return e.methods
       .map(m => m.toLowerCase())
       .reduce((o, m) => ({...o, [m]: SwaggerEndpointBuilder.createOperation(e, url)}), path);
   }
 
-  private static createOperation(endpoint: Endpoint, url: string) : Operation {
-    const defaultContentTypes =["application/json"];
+  private static createOperation(endpoint: Endpoint, url: string): Operation {
+    const defaultContentTypes = ["application/json"];
     return {
       responses: SwaggerEndpointBuilder.getResponses(endpoint),
       tags: [endpoint.name],

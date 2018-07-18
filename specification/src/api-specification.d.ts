@@ -1,28 +1,23 @@
 import Domain = require("./domain");
 import { RestSpecMapping } from "./specification/rest-spec-mapping";
-declare module ApiSpecification {
-    type TypeDictionary = {
-        [p: string]: Domain.TypeDeclaration;
-    };
-    class Specification {
-        private specsFolder;
-        private configPath;
-        private readonly program;
-        types: Domain.TypeDeclaration[];
-        domain_errors: string[];
-        endpoints: Domain.Endpoint[];
-        endpoint_errors: string[];
-        private constructor();
-        static load: () => Specification;
-        static loadWithValidation: () => Specification;
-    }
-    let loadWithValidation: () => Specification;
-    let load: () => Specification;
-    class EndpointReader {
-        endpoints: Domain.Endpoint[];
-        constructor(types: Domain.Interface[], restSpecMapping: {
-            [p: string]: RestSpecMapping;
-        });
-    }
+export declare type TypeDictionary = {
+    [p: string]: Domain.TypeDeclaration;
+};
+export declare class Specification {
+    private specsFolder;
+    private configPath;
+    private readonly program;
+    types: Domain.TypeDeclaration[];
+    domain_errors: string[];
+    endpoints: Domain.Endpoint[];
+    endpoint_errors: string[];
+    private constructor();
+    static load: () => Specification;
+    static loadWithValidation: () => Specification;
 }
-export = ApiSpecification;
+export declare class EndpointReader {
+    endpoints: Domain.Endpoint[];
+    constructor(types: Domain.Interface[], restSpecMapping: {
+        [p: string]: RestSpecMapping;
+    });
+}

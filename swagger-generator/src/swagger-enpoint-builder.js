@@ -21,7 +21,7 @@ class SwaggerEndpointBuilder {
                 description: q.description
             }))
         };
-        if (e.bodyDocumentation) {
+        if (e.bodyDocumentation)
             path.parameters.push({
                 in: "body",
                 name: "request",
@@ -29,7 +29,6 @@ class SwaggerEndpointBuilder {
                 required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
                 schema: { $ref: "#/definitions/" + e.typeMapping.request }
             });
-        }
         return e.methods
             .map(m => m.toLowerCase())
             .reduce((o, m) => (Object.assign({}, o, { [m]: SwaggerEndpointBuilder.createOperation(e, url) })), path);

@@ -8,7 +8,7 @@ import {JsonSchemaBuilder} from "./json-schema/json-schema-builder";
 export class SwaggerGenerator {
   constructor(private specification: Specification) { }
 
-  public export(folder: string) {
+  export(folder: string) {
     const swag: Spec = {
       swagger : "2.0",
       info: {

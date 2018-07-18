@@ -73,7 +73,7 @@ export class JsonSchemaBuilder {
     return { type: "object", description: "Unknown TypeDeclaration" };
   }
 
-  public build(): Definitions {
+  build(): Definitions {
     return this.specification.types.reduce((o, t) => ({...o, [t.name]: this.toSchema(t)}), {});
   }
 }
