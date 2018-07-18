@@ -9,5 +9,5 @@ export declare class TypeReader {
         [id: string]: RestSpecMapping;
     };
     constructor(program: ts.Program);
-    private visit;
+    private visit(node);
 }
