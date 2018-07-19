@@ -1,6 +1,6 @@
 import {Specification} from "../../specification/src/api-specification";
-import {Path, Schema, Operation, Response} from "swagger-schema-official";
-import {Endpoint} from "../../specification/src/domain";
+import {Path, Schema, Operation, Response, Parameter} from "swagger-schema-official";
+import {Endpoint, QueryStringParameter, RoutePart} from "../../specification/src/domain";
 
 export type Paths = { [p: string]: Path};
 
@@ -18,22 +18,11 @@ export class SwaggerEndpointBuilder {
   private static createPath(e: Endpoint, url: string): Path {
     const path: Path = {
       parameters: e.url.queryStringParameters
-        .map(q => ({
-          in: "query",
-          name: q.name,
-          required: true,
-          type: SwaggerEndpointBuilder.toSchema(q.type),
-          description: q.description
-        }))
+        .map(SwaggerEndpointBuilder.urlQueryStringToParameter)
     };
+
     if (e.bodyDocumentation)
-      path.parameters.push({
-        in: "body",
-        name: "request",
-        description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
-        required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
-        schema: {$ref: "#/definitions/" + e.typeMapping.request}
-      });
+      path.parameters.push(SwaggerEndpointBuilder.urlBodyToParameter(e));
 
     return e.methods
       .map(m => m.toLowerCase())
@@ -48,22 +37,52 @@ export class SwaggerEndpointBuilder {
       consumes: defaultContentTypes,
       produces: defaultContentTypes,
       parameters: endpoint.url.parts
-        .filter(p => !url.match(new RegExp("\{" + p.name + "\}")))
-        .map(p => ({
-          in: "path",
-          name: p.name,
-          required: true,
-          type: SwaggerEndpointBuilder.toSchema(p.type),
-          description: p.description
-        })),
+        .filter(p => url.match(new RegExp("\{" + p.name + "\}")))
+        .map(SwaggerEndpointBuilder.urlPartToParameter),
       externalDocs: endpoint.documentation ? {url: endpoint.documentation} : null
     };
   }
 
+  private static urlBodyToParameter(e: Endpoint) {
+    return {
+      in: "body",
+      name: "request",
+      description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
+      required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
+      schema: {$ref: "#/definitions/" + e.typeMapping.request }
+    };
+  }
+
+  private static urlQueryStringToParameter(query: QueryStringParameter) {
+    const q = {
+      in: "query",
+      name: query.name,
+      description: query.description
+    };
+    return SwaggerEndpointBuilder.amendSchema(q, query.type);
+  }
+  private static urlPartToParameter(part: RoutePart) {
+    const p = {
+          in: "path",
+          name: part.name,
+          required: true,
+          description: part.description
+    };
+    return SwaggerEndpointBuilder.amendSchema(p, part.type);
+  }
+  private static amendSchema(p: Parameter, type: string): Parameter {
+    const schema = SwaggerEndpointBuilder.toSchema(type);
+    return { ...p, ... schema } as Parameter;
+  }
+
   private static getValidResponse(e): Response {
+    let schema = e.typeMapping.response;
+    if (schema.startsWith("Cat"))
+      schema += "/properties/records";
+
     return {
       description: "Request accepted and processed response",
-      schema: {$ref: "#/definitions/" + e.typeMapping.response}
+      schema: {$ref: "#/definitions/" + schema}
     };
   }
 
@@ -91,6 +110,8 @@ export class SwaggerEndpointBuilder {
       case "double" :
         return { type: "number", format: type};
     }
-    return {$ref: "#/definitions/" + type};
+    return { type: "string", format: type };
+    // $ref is valid here but swagger UI barfs.
+    // return {$ref: "#/definitions/" + type};
   }
 }

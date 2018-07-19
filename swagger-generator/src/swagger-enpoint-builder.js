@@ -13,22 +13,10 @@ class SwaggerEndpointBuilder {
     static createPath(e, url) {
         const path = {
             parameters: e.url.queryStringParameters
-                .map(q => ({
-                in: "query",
-                name: q.name,
-                required: true,
-                type: SwaggerEndpointBuilder.toSchema(q.type),
-                description: q.description
-            }))
+                .map(SwaggerEndpointBuilder.urlQueryStringToParameter)
         };
         if (e.bodyDocumentation)
-            path.parameters.push({
-                in: "body",
-                name: "request",
-                description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
-                required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
-                schema: { $ref: "#/definitions/" + e.typeMapping.request }
-            });
+            path.parameters.push(SwaggerEndpointBuilder.urlBodyToParameter(e));
         return e.methods
             .map(m => m.toLowerCase())
             .reduce((o, m) => (Object.assign({}, o, { [m]: SwaggerEndpointBuilder.createOperation(e, url) })), path);
@@ -41,21 +29,48 @@ class SwaggerEndpointBuilder {
             consumes: defaultContentTypes,
             produces: defaultContentTypes,
             parameters: endpoint.url.parts
-                .filter(p => !url.match(new RegExp("\{" + p.name + "\}")))
-                .map(p => ({
-                in: "path",
-                name: p.name,
-                required: true,
-                type: SwaggerEndpointBuilder.toSchema(p.type),
-                description: p.description
-            })),
+                .filter(p => url.match(new RegExp("\{" + p.name + "\}")))
+                .map(SwaggerEndpointBuilder.urlPartToParameter),
             externalDocs: endpoint.documentation ? { url: endpoint.documentation } : null
         };
     }
+    static urlBodyToParameter(e) {
+        return {
+            in: "body",
+            name: "request",
+            description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
+            required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
+            schema: { $ref: "#/definitions/" + e.typeMapping.request }
+        };
+    }
+    static urlQueryStringToParameter(query) {
+        const q = {
+            in: "query",
+            name: query.name,
+            description: query.description
+        };
+        return SwaggerEndpointBuilder.amendSchema(q, query.type);
+    }
+    static urlPartToParameter(part) {
+        const p = {
+            in: "path",
+            name: part.name,
+            required: true,
+            description: part.description
+        };
+        return SwaggerEndpointBuilder.amendSchema(p, part.type);
+    }
+    static amendSchema(p, type) {
+        const schema = SwaggerEndpointBuilder.toSchema(type);
+        return Object.assign({}, p, schema);
+    }
     static getValidResponse(e) {
+        let schema = e.typeMapping.response;
+        if (schema.startsWith("Cat"))
+            schema += "/properties/records";
         return {
             description: "Request accepted and processed response",
-            schema: { $ref: "#/definitions/" + e.typeMapping.response }
+            schema: { $ref: "#/definitions/" + schema }
         };
     }
     static getResponses(e) {
@@ -83,7 +98,7 @@ class SwaggerEndpointBuilder {
             case "double":
                 return { type: "number", format: type };
         }
-        return { $ref: "#/definitions/" + type };
+        return { type: "string", format: type };
     }
 }
 exports.SwaggerEndpointBuilder = SwaggerEndpointBuilder;

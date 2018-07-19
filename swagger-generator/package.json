@@ -29,8 +29,9 @@
   "dependencies": {
     "elasticsearch-client-specification": "file:../specification",
     "express": "^4.16.3",
-    "lodash": "^3.10.1",
     "js-yaml": "3.8.2",
+    "lodash": "^3.10.1",
+    "swagger-editor-dist": "^3.6.3",
     "swagger-ui-dist": "^3.17.2"
   }
 }
