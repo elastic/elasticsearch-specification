@@ -91,7 +91,7 @@ class InterfaceVisitor extends Visitor {
     parent.properties.push(prop);
   }
 
-  private visitTypeNode(t: ts.Node, indent: number = 0): Domain.Type|Domain.Dictionary|Domain.ArrayOf {
+  private visitTypeNode(t: ts.Node, indent: number = 0): Domain.InstanceOf {
     switch (t.kind) {
       case ts.SyntaxKind.ArrayType : return this.visitArrayType(t as ts.ArrayTypeNode);
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode);
@@ -111,23 +111,32 @@ class InterfaceVisitor extends Visitor {
     array.of = this.visitTypeNode(children.first());
     return array;
   }
-  private visitTypeReference(t: ts.TypeReferenceNode): Domain.Type|Domain.Dictionary|Domain.ArrayOf {
+  private visitTypeReference(t: ts.TypeReferenceNode): Domain.InstanceOf {
     const typeName = t.typeName.getText();
-    if (!typeName.startsWith("Dictionary")) return new Domain.Type(t.getText());
+    if (typeName.startsWith("Dictionary")) return this.createDictionary(t, typeName);
+    if (typeName.startsWith("Union")) return this.createUnion(t, typeName);
+    return new Domain.Type(t.getText());
+  }
 
-    const childrenX: ts.Node[] = [];
-    ts.forEachChild(t, c => {
-      childrenX.push(c);
-      ts.forEachChild(c, cc => childrenX.push(cc));
-    });
-    const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k === c.kind));
-    if (children.size() > 3 || children.size() < 2)
-      throw Error("Expected dictionary to have 2 or 3 usable children but saw " + children.size() + " on " + typeName);
+  private createUnion(t: ts.TypeReferenceNode, typeName) {
+    const args: ts.Node[] = t.typeArguments;
+    const types = args.map(ct => this.visitTypeNode(ct));
+    if (types.length < 2)
+      throw Error("A union should have at least two types but saw " + types.length + " on " + typeName);
+    const union = new Domain.UnionOf();
+    union.items = types;
+    return union;
+  }
+
+  private createDictionary(t: ts.TypeReferenceNode, typeName) {
+    const args: ts.Node[] = t.typeArguments;
+    const types = args.map(ct => this.visitTypeNode(ct));
+    if (types.length !== 2)
+      throw Error("A dictionary should contain 2 type args but found " + types.length + " on " + typeName);
 
     const map = new Domain.Dictionary();
-    map.key = this.visitTypeNode(children.first());
-    map.value = this.visitTypeNode(children.at(1).first());
-    map.array = children.size() === 3;
+    map.key = types[0];
+    map.value = types[1];
     return map;
   }
 

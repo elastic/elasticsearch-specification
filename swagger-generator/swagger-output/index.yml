@@ -14480,7 +14480,11 @@ definitions:
         additionalProperties:
           $ref: '#/definitions/object'
       interval:
-        $ref: '#/definitions/Union<DateInterval, Time>'
+        description: 'Not an array but: union<DateInterval, Time>'
+        type: array
+        items:
+          - $ref: '#/definitions/DateInterval'
+          - $ref: '#/definitions/Time'
       format:
         type: string
       min_doc_count:
@@ -14526,7 +14530,15 @@ definitions:
     type: object
     properties:
       filters:
-        $ref: '#/definitions/Union<Dictionary<string, QueryContainer>, QueryContainer[]>'
+        description: 'Not an array but: union<dict<key: string, value: QueryContainer >, QueryContainer[]>'
+        type: array
+        items:
+          - type: object
+            additionalProperties:
+              $ref: '#/definitions/QueryContainer'
+          - type: array
+            items:
+              $ref: '#/definitions/QueryContainer'
       other_bucket:
         type: boolean
       other_bucket_key:
@@ -14883,7 +14895,11 @@ definitions:
         items:
           $ref: '#/definitions/Sort'
       _source:
-        $ref: '#/definitions/Union<boolean, SourceFilter>'
+        description: 'Not an array but: union<boolean, SourceFilter>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/SourceFilter'
       highlight:
         $ref: '#/definitions/Highlight'
       explain:
@@ -19392,7 +19408,11 @@ definitions:
       routing:
         type: string
       _source:
-        $ref: '#/definitions/Union<boolean, SourceFilter>'
+        description: 'Not an array but: union<boolean, SourceFilter>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/SourceFilter'
       version:
         $ref: '#/definitions/long'
       version_type:
@@ -20232,7 +20252,11 @@ definitions:
       scripted_upsert:
         type: boolean
       _source:
-        $ref: '#/definitions/Union<boolean, SourceFilter>'
+        description: 'Not an array but: union<boolean, SourceFilter>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/SourceFilter'
       fields:
         type: array
         items:
@@ -20409,7 +20433,11 @@ definitions:
     type: object
     properties:
       tokenizer:
-        $ref: '#/definitions/Union<string, ITokenizer>'
+        description: 'Not an array but: union<string, ITokenizer>'
+        type: array
+        items:
+          - type: string
+          - $ref: '#/definitions/ITokenizer'
       analyzer:
         type: string
       explain:
@@ -20421,11 +20449,19 @@ definitions:
       char_filter:
         type: array
         items:
-          $ref: '#/definitions/Union<string, ICharFilter>'
+          description: 'Not an array but: union<string, ICharFilter>'
+          type: array
+          items:
+            - type: string
+            - $ref: '#/definitions/ICharFilter'
       filter:
         type: array
         items:
-          $ref: '#/definitions/Union<string, ITokenFilter>'
+          description: 'Not an array but: union<string, ITokenFilter>'
+          type: array
+          items:
+            - type: string
+            - $ref: '#/definitions/ITokenFilter'
       normalizer:
         type: string
       field:
@@ -20917,7 +20953,11 @@ definitions:
         additionalProperties:
           $ref: '#/definitions/DynamicTemplate'
       dynamic:
-        $ref: '#/definitions/Union<boolean, DynamicMapping>'
+        description: 'Not an array but: union<boolean, DynamicMapping>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/DynamicMapping'
       field_names_field:
         $ref: '#/definitions/FieldNamesField'
       index_field:
@@ -21603,7 +21643,11 @@ definitions:
         additionalProperties:
           $ref: '#/definitions/DynamicTemplate'
       dynamic:
-        $ref: '#/definitions/Union<boolean, DynamicMapping>'
+        description: 'Not an array but: union<boolean, DynamicMapping>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/DynamicMapping'
       properties:
         type: object
         additionalProperties:
@@ -21698,7 +21742,11 @@ definitions:
         additionalProperties:
           $ref: '#/definitions/IProperty'
       similarity:
-        $ref: '#/definitions/Union<SimilarityOption, string>'
+        description: 'Not an array but: union<SimilarityOption, string>'
+        type: array
+        items:
+          - $ref: '#/definitions/SimilarityOption'
+          - type: string
       store:
         type: boolean
   DocValuesPropertyBase:
@@ -21742,7 +21790,11 @@ definitions:
     type: object
     properties:
       dynamic:
-        $ref: '#/definitions/Union<boolean, DynamicMapping>'
+        description: 'Not an array but: union<boolean, DynamicMapping>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/DynamicMapping'
       enabled:
         type: boolean
       properties:
@@ -23371,7 +23423,11 @@ definitions:
         additionalProperties:
           $ref: '#/definitions/ScriptField'
       _source:
-        $ref: '#/definitions/Union<boolean, SourceFilter>'
+        description: 'Not an array but: union<boolean, SourceFilter>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/SourceFilter'
       sort:
         type: array
         items:
@@ -23591,7 +23647,11 @@ definitions:
       fragmenter:
         $ref: '#/definitions/HighlighterFragmenter'
       type:
-        $ref: '#/definitions/Union<HighlighterType, string>'
+        description: 'Not an array but: union<HighlighterType, string>'
+        type: array
+        items:
+          - $ref: '#/definitions/HighlighterType'
+          - type: string
       force_source:
         type: boolean
       matched_fields:
@@ -23707,7 +23767,11 @@ definitions:
       explain:
         type: boolean
       _source:
-        $ref: '#/definitions/Union<boolean, SourceFilter>'
+        description: 'Not an array but: union<boolean, SourceFilter>'
+        type: array
+        items:
+          - type: boolean
+          - $ref: '#/definitions/SourceFilter'
       version:
         type: boolean
       script_fields:
@@ -24087,9 +24151,21 @@ definitions:
       prefix:
         type: boolean
       precision:
-        $ref: '#/definitions/Union<Distance, integer>'
+        description: 'Not an array but: union<Distance, integer>'
+        type: array
+        items:
+          - $ref: '#/definitions/Distance'
+          - $ref: '#/definitions/integer'
       neighbours:
-        $ref: '#/definitions/Union<Distance[], integer[]>'
+        description: 'Not an array but: union<Distance[], integer[]>'
+        type: array
+        items:
+          - type: array
+            items:
+              $ref: '#/definitions/Distance'
+          - type: array
+            items:
+              $ref: '#/definitions/integer'
   DirectGenerator:
     type: object
     properties:
@@ -26870,7 +26946,13 @@ definitions:
     type: object
     properties:
       at:
-        $ref: '#/definitions/Union<string[], TimeOfDay>'
+        description: 'Not an array but: union<string[], TimeOfDay>'
+        type: array
+        items:
+          - type: array
+            items:
+              type: string
+          - $ref: '#/definitions/TimeOfDay'
   HourlySchedule:
     type: object
     properties:
@@ -26918,9 +27000,17 @@ definitions:
     type: object
     properties:
       triggered_time:
-        $ref: '#/definitions/Union<Date, string>'
+        description: 'Not an array but: union<Date, string>'
+        type: array
+        items:
+          - $ref: '#/definitions/Date'
+          - type: string
       scheduled_time:
-        $ref: '#/definitions/Union<Date, string>'
+        description: 'Not an array but: union<Date, string>'
+        type: array
+        items:
+          - $ref: '#/definitions/Date'
+          - type: string
   TimeOfDay:
     type: object
     properties:

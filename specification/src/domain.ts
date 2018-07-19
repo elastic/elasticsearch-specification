@@ -16,9 +16,12 @@ module Domain {
     type = new Type("dictionary");
     key: InstanceOf;
     value: InstanceOf;
-    array: boolean;
   }
-  export type InstanceOf = Type|ArrayOf|Dictionary;
+  export class UnionOf {
+    type = new Type("dictionary");
+    items: InstanceOf[] = [];
+  }
+  export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf;
 
   export class TypeDeclaration {
     constructor(public name: string) {}

@@ -10,6 +10,8 @@ export declare class JsonSchemaBuilder {
     private createTypeSchema(type);
     private createArraySchema(arr);
     private createDictionarySchema(dict);
+    private createName(i);
+    private createUnionOfSchema(union);
     private createInterfaceProperty(property);
     private dispatchInstanceOf(type);
     private dispatchInterface(i);

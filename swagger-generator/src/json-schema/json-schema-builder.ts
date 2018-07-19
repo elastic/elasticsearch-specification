@@ -1,6 +1,7 @@
 import {Specification} from "../../../specification/src/api-specification";
 import * as Domain from "../../../specification/src/domain";
 import {Schema} from "swagger-schema-official";
+import {Dictionary} from "../../../specification/src/domain";
 
 export type Definitions = { [p: string]: Schema};
 
@@ -33,6 +34,23 @@ export class JsonSchemaBuilder {
       additionalProperties: this.dispatchInstanceOf(dict.value)
     };
   }
+  private createName(i: Domain.InstanceOf): string {
+    if (i instanceof Domain.Dictionary)
+      return `dict<key: ${this.createName(i.key)}, value: ${this.createName(i.value)} >`;
+    if (i instanceof Domain.UnionOf)
+      return `union<${i.items.map(it => this.createName(it)).join(", ")}>`;
+    if (i instanceof Domain.Type) return i.name;
+    if (i instanceof Domain.ArrayOf) return `${this.createName(i.of)}[]`;
+  }
+
+  private createUnionOfSchema(union: Domain.UnionOf): Schema {
+    // union should be oneOf but open api does not support the full json-schema draft 4
+    return {
+      description: `Not an array but: ${this.createName(union)}`,
+      type:  "array",
+      items: union.items.map(i => this.dispatchInstanceOf(i))
+    };
+  }
 
   private createInterfaceProperty(property: Domain.InterfaceProperty): Schema {
     return this.dispatchInstanceOf(property.type);
@@ -40,6 +58,7 @@ export class JsonSchemaBuilder {
 
   private dispatchInstanceOf(type: Domain.InstanceOf): Schema {
     if (type instanceof Domain.Dictionary) return this.createDictionarySchema(type);
+    if (type instanceof Domain.UnionOf) return this.createUnionOfSchema(type);
     if (type instanceof Domain.Type) return this.createTypeSchema(type);
     if (type instanceof Domain.ArrayOf) return this.createArraySchema(type);
     return { type: "object", description: "Unknown InstanceOf" };

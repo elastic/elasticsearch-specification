@@ -28,12 +28,31 @@ class JsonSchemaBuilder {
             additionalProperties: this.dispatchInstanceOf(dict.value)
         };
     }
+    createName(i) {
+        if (i instanceof Domain.Dictionary)
+            return `dict<key: ${this.createName(i.key)}, value: ${this.createName(i.value)} >`;
+        if (i instanceof Domain.UnionOf)
+            return `union<${i.items.map(it => this.createName(it)).join(", ")}>`;
+        if (i instanceof Domain.Type)
+            return i.name;
+        if (i instanceof Domain.ArrayOf)
+            return `${this.createName(i.of)}[]`;
+    }
+    createUnionOfSchema(union) {
+        return {
+            description: `Not an array but: ${this.createName(union)}`,
+            type: "array",
+            items: union.items.map(i => this.dispatchInstanceOf(i))
+        };
+    }
     createInterfaceProperty(property) {
         return this.dispatchInstanceOf(property.type);
     }
     dispatchInstanceOf(type) {
         if (type instanceof Domain.Dictionary)
             return this.createDictionarySchema(type);
+        if (type instanceof Domain.UnionOf)
+            return this.createUnionOfSchema(type);
         if (type instanceof Domain.Type)
             return this.createTypeSchema(type);
         if (type instanceof Domain.ArrayOf)

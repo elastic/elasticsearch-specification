@@ -13,9 +13,12 @@ declare module Domain {
         type: Type;
         key: InstanceOf;
         value: InstanceOf;
-        array: boolean;
     }
-    type InstanceOf = Type | ArrayOf | Dictionary;
+    class UnionOf {
+        type: Type;
+        items: InstanceOf[];
+    }
+    type InstanceOf = Type | ArrayOf | Dictionary | UnionOf;
     class TypeDeclaration {
         name: string;
         constructor(name: string);
