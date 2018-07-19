@@ -23724,6 +23724,10 @@ definitions:
         $ref: '#/definitions/long'
       max_score:
         $ref: '#/definitions/double'
+      hits:
+        type: array
+        items:
+          $ref: '#/definitions/Hit<T>'
   InnerHitsMetadata:
     type: object
     properties:

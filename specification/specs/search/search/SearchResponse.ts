@@ -13,6 +13,5 @@ class SearchResponse<T> extends ResponseBase {
 	total: long;
 	max_score: double;
 	documents: T[];
-	//hits: Hit<T>[];
 	fields: Dictionary<string, LazyDocument>;
 }
