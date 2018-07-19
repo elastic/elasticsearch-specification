@@ -16,6 +16,7 @@ export class Specification {
   private readonly program: ts.Program;
 
   types: Domain.TypeDeclaration[] = [];
+  typeLookup: TypeDictionary = {};
   domain_errors: string[] = [];
 
   endpoints: Domain.Endpoint[] = [];
@@ -50,6 +51,7 @@ export class Specification {
         );
     });
     this.types = types;
+    this.typeLookup = dictTypes;
 
     const endpointReader = new EndpointReader(specVisitor.interfaces, specVisitor.restSpecMapping);
     this.endpoints = endpointReader.endpoints;

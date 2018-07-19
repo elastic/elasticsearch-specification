@@ -8,6 +8,7 @@ export declare class Specification {
     private configPath;
     private readonly program;
     types: Domain.TypeDeclaration[];
+    typeLookup: TypeDictionary;
     domain_errors: string[];
     endpoints: Domain.Endpoint[];
     endpoint_errors: string[];

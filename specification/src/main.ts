@@ -3,15 +3,17 @@ import {Specification} from "./api-specification";
 
 const specification = Specification.loadWithValidation();
 
-if (specification.domain_errors.length +  specification.endpoint_errors.length === 0)
-  console.log(
-    "The specification contains no errors in any of the "
-    + specification.endpoints.length
-    + " endpoints yielding "
-    + specification.types.length + " types");
+const errorsLength = specification.domain_errors.length + specification.endpoint_errors.length;
 
-else if (specification.endpoint_errors.length > 0)
-  console.error("The specification contains the following endpoint mapping errors:");
+const searchAPI = specification.endpoints.find(e => e.name === "search");
+const searchRequest = specification.typeLookup[searchAPI.typeMapping.request];
+const searchResponse = specification.typeLookup[searchAPI.typeMapping.response];
 
-for (const e of specification.endpoint_errors)
- console.error("  - " + e);
+console.log(`
+The specification contains
+  - ${errorsLength} Errors
+  - ${specification.endpoints.length} API Endpoints
+  - ${specification.types.length} Types.
+`);
+
+console.log("Done!");
