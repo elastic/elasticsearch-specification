@@ -24,7 +24,7 @@ $ nodejs index
 # Assets
 
 1) NEST library
-2) TypeLite fork by russcam - https://github.com/russcam/typelite
+2) TypeLite fork by russcam - https://github.com/russcam/typelite/tree/feature/hacks
 3) REST API Specs - https://github.com/elastic/elasticsearch/tree/master/rest-api-spec
 4) This repo
 
