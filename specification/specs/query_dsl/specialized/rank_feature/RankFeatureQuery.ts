@@ -1,0 +1,3 @@
+class RankFeatureQuery {
+	function: RankFeatureFunction;
+}

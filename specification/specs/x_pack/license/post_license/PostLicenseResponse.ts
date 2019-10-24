@@ -1,5 +1,5 @@
-class PostLicenseResponse extends ResponseBase {
+class PostLicenseResponse extends ResponseBase implements IResponse {
+	acknowledge: LicenseAcknowledgement;
 	acknowledged: boolean;
 	license_status: LicenseStatus;
-	acknowledge: LicenseAcknowledgement;
 }

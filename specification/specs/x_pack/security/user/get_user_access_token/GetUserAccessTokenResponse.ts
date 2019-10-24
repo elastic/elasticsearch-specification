@@ -1,6 +1,6 @@
-class GetUserAccessTokenResponse extends ResponseBase {
+class GetUserAccessTokenResponse extends ResponseBase implements IResponse {
 	access_token: string;
-	type: string;
 	expires_in: long;
 	scope: string;
+	type: string;
 }

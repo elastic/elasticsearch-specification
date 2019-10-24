@@ -1,23 +1,18 @@
 @rest_spec_name("update")
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
-	script: Script;
-	@prop_serializer("SourceConverter")
-	upsert: TDocument;
-	doc_as_upsert: boolean;
-	@prop_serializer("SourceConverter")
-	doc: TPartialDocument;
 	detect_noop: boolean;
+	doc: TPartialDocument;
+	doc_as_upsert: boolean;
+	script: Script;
 	scripted_upsert: boolean;
-	_source: Union<boolean, SourceFilter>;
-	fields: Field[];
+	source: Union<boolean, SourceFilter>;
+	upsert: TDocument;
 	@request_parameter()
-	wait_for_active_shards: string;
+	if_primary_term: long;
 	@request_parameter()
-	source_enabled: boolean;
+	if_sequence_number: long;
 	@request_parameter()
 	lang: string;
-	@request_parameter()
-	parent: string;
 	@request_parameter()
 	refresh: Refresh;
 	@request_parameter()
@@ -25,9 +20,9 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 	@request_parameter()
 	routing: Routing;
 	@request_parameter()
+	source_enabled: boolean;
+	@request_parameter()
 	timeout: Time;
 	@request_parameter()
-	version: long;
-	@request_parameter()
-	version_type: VersionType;
+	wait_for_active_shards: string;
 }

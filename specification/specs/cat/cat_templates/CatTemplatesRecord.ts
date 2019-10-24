@@ -1,6 +1,6 @@
 class CatTemplatesRecord implements ICatRecord {
-	name: string;
 	index_patterns: string;
+	name: string;
 	order: long;
 	version: long;
 }

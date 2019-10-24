@@ -1,5 +1,5 @@
 class FielddataFrequencyFilter {
-	min: double;
 	max: double;
+	min: double;
 	min_segment_size: integer;
 }

@@ -1,4 +1,4 @@
-class GetBucketsResponse extends ResponseBase {
-	count: long;
+class GetBucketsResponse extends ResponseBase implements IResponse {
 	buckets: Bucket[];
+	count: long;
 }

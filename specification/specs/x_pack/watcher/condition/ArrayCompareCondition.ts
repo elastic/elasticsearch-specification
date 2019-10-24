@@ -1,8 +1,7 @@
-@class_serializer("ArrayCompareConditionConverter")
 class ArrayCompareCondition {
 	array_path: string;
-	path: string;
 	comparison: string;
-	value: any;
+	path: string;
 	quantifier: Quantifier;
+	value: any;
 }

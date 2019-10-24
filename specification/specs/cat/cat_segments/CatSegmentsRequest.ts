@@ -1,9 +1,9 @@
 @rest_spec_name("cat.segments")
 class CatSegmentsRequest extends RequestBase {
 	@request_parameter()
-	format: string;
-	@request_parameter()
 	bytes: Bytes;
+	@request_parameter()
+	format: string;
 	@request_parameter()
 	headers: string[];
 	@request_parameter()

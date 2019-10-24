@@ -1,6 +1,6 @@
 class GraphExploreControls {
-	use_significance: boolean;
+	sample_diversity: SampleDiversity;
 	sample_size: integer;
 	timeout: Time;
-	sample_diversity: SampleDiversity;
+	use_significance: boolean;
 }

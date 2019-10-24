@@ -1,3 +1,3 @@
-class VerifyRepositoryResponse extends ResponseBase {
+class VerifyRepositoryResponse extends ResponseBase implements IResponse {
 	nodes: Dictionary<string, CompactNodeInfo>;
 }

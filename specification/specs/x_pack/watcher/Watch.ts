@@ -1,11 +1,10 @@
 class Watch {
-	metadata: Dictionary<string, any>;
-	input: InputContainer;
-	condition: ConditionContainer;
-	trigger: TriggerContainer;
-	transform: TransformContainer;
-	@prop_serializer("ActionsJsonConverter")
 	actions: Dictionary<string, Action>;
+	condition: ConditionContainer;
+	input: InputContainer;
+	metadata: Dictionary<string, any>;
 	status: WatchStatus;
 	throttle_period: string;
+	transform: TransformContainer;
+	trigger: TriggerContainer;
 }

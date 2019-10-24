@@ -1,9 +1,9 @@
 @rest_spec_name("delete")
 class DeleteRequest extends RequestBase {
 	@request_parameter()
-	wait_for_active_shards: string;
+	if_primary_term: long;
 	@request_parameter()
-	parent: string;
+	if_sequence_number: long;
 	@request_parameter()
 	refresh: Refresh;
 	@request_parameter()
@@ -14,4 +14,6 @@ class DeleteRequest extends RequestBase {
 	version: long;
 	@request_parameter()
 	version_type: VersionType;
+	@request_parameter()
+	wait_for_active_shards: string;
 }

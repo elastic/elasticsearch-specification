@@ -1,4 +1,4 @@
 enum GeoOrientation {
-	cw = 0,
-	ccw = 1
+	ClockWise = 0,
+	CounterClockWise = 1
 }

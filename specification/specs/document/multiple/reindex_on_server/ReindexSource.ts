@@ -1,8 +1,9 @@
 class ReindexSource {
-	query: QueryContainer;
-	sort: Sort[];
 	index: Indices;
-	type: Types;
-	size: integer;
+	query: QueryContainer;
 	remote: RemoteSource;
+	size: integer;
+	slice: SlicedScroll;
+	sort: Sort[];
+	source: Field[];
 }

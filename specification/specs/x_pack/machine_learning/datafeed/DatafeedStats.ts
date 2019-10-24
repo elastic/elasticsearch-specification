@@ -1,6 +1,7 @@
 class DatafeedStats {
-	datafeed_id: string;
-	state: DatafeedState;
-	node: DiscoveryNode;
 	assignment_explanation: string;
+	datafeed_id: string;
+	node: DiscoveryNode;
+	state: DatafeedState;
+	timing_stats: DatafeedTimingStats;
 }

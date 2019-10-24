@@ -1,3 +1,3 @@
-@rest_spec_name("xpack.watcher.stop")
+@rest_spec_name("watcher.stop")
 class StopWatcherRequest extends RequestBase {
 }

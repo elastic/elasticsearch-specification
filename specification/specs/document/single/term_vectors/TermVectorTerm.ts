@@ -1,6 +1,7 @@
 class TermVectorTerm {
-	doc_freq: integer;
-	term_freq: integer;
+	document_frequency: integer;
+	term_frequency: integer;
+	score: double;
 	tokens: Token[];
-	ttf: integer;
+	total_term_frequency: integer;
 }

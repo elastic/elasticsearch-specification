@@ -1,2 +1,2 @@
-class PutPipelineResponse extends AcknowledgedResponseBase {
+class PutPipelineResponse extends AcknowledgedResponseBase implements IResponse {
 }

@@ -1,23 +1,23 @@
 class HighlightField {
-	field: Field;
-	pre_tags: string[];
-	post_tags: string[];
-	fragment_size: integer;
-	no_match_size: integer;
-	number_of_fragments: integer;
-	fragment_offset: integer;
-	boundary_max_scan: integer;
-	order: HighlighterOrder;
-	tags_schema: HighlighterTagsSchema;
-	require_field_match: boolean;
 	boundary_chars: string;
-	max_fragment_length: integer;
+	boundary_max_scan: integer;
 	boundary_scanner: BoundaryScanner;
 	boundary_scanner_locale: string;
-	fragmenter: HighlighterFragmenter;
-	type: Union<HighlighterType, string>;
+	field: Field;
 	force_source: boolean;
-	matched_fields: Field[];
+	fragmenter: HighlighterFragmenter;
+	fragment_offset: integer;
+	fragment_size: integer;
 	highlight_query: QueryContainer;
+	matched_fields: Field[];
+	max_fragment_length: integer;
+	no_match_size: integer;
+	number_of_fragments: integer;
+	order: HighlighterOrder;
 	phrase_limit: integer;
+	post_tags: string[];
+	pre_tags: string[];
+	require_field_match: boolean;
+	tags_schema: HighlighterTagsSchema;
+	type: Union<HighlighterType, string>;
 }

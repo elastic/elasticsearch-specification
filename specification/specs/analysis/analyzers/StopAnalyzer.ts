@@ -1,5 +1,4 @@
 class StopAnalyzer extends AnalyzerBase {
-	@prop_serializer("StopWordsJsonConverter")
-	stopwords: StopWords;
+	stop_words: StopWords;
 	stopwords_path: string;
 }

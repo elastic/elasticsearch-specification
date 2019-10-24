@@ -1,11 +1,13 @@
 class TaskState {
-	node: string;
-	id: long;
-	type: string;
 	action: string;
-	status: TaskStatus;
+	cancellable: boolean;
 	description: string;
-	start_time_in_millis: long;
-	running_time_in_nanos: long;
+	headers: Dictionary<string, string>;
+	id: long;
+	node: string;
 	parent_task_id: TaskId;
+	running_time_in_nano_seconds: long;
+	start_time_in_milliseconds: long;
+	status: TaskStatus;
+	type: string;
 }

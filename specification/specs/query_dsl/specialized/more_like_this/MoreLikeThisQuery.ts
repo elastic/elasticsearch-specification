@@ -1,20 +1,20 @@
 class MoreLikeThisQuery {
-	fields: Field[];
-	like: Like[];
-	unlike: Like[];
-	max_query_terms: integer;
-	min_term_freq: integer;
-	min_doc_freq: integer;
-	max_doc_freq: integer;
-	min_word_length: integer;
-	max_word_length: integer;
-	stop_words: StopWords;
 	analyzer: string;
-	minimum_should_match: MinimumShouldMatch;
 	boost_terms: double;
+	fields: Field[];
 	include: boolean;
+	like: Like[];
+	max_document_frequency: integer;
+	max_query_terms: integer;
+	max_word_length: integer;
+	min_document_frequency: integer;
+	minimum_should_match: MinimumShouldMatch;
+	min_term_frequency: integer;
+	min_word_length: integer;
 	per_field_analyzer: Dictionary<Field, string>;
+	routing: Routing;
+	stop_words: StopWords;
+	unlike: Like[];
 	version: long;
 	version_type: VersionType;
-	routing: Routing;
 }

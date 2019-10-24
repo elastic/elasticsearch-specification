@@ -1,0 +1,3 @@
+class TermUserPrivileges {
+	apps: boolean;
+}

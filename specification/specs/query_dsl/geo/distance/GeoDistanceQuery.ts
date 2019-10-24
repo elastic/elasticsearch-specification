@@ -1,7 +1,6 @@
-@class_serializer("VariableFieldNameQueryJsonConverter`2")
 class GeoDistanceQuery {
-	location: GeoLocation;
 	distance: Distance;
 	distance_type: GeoDistanceType;
+	location: GeoLocation;
 	validation_method: GeoValidationMethod;
 }

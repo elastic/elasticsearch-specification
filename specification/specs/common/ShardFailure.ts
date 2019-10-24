@@ -1,7 +1,7 @@
 class ShardFailure {
-	reason: ErrorCause;
-	shard: integer;
 	index: string;
 	node: string;
+	reason: ErrorCause;
+	shard: integer;
 	status: string;
 }

@@ -1,5 +1,5 @@
 class FieldStatistics {
-	doc_count: integer;
-	sum_doc_freq: integer;
-	sum_ttf: integer;
+	document_count: integer;
+	sum_of_document_frequencies: integer;
+	sum_of_total_term_frequencies: integer;
 }

@@ -1,3 +1,3 @@
-class ShardsOperationResponseBase extends ResponseBase {
-	_shards: ShardStatistics;
+class ShardsOperationResponseBase extends ResponseBase implements IResponse {
+	shards: ShardStatistics;
 }

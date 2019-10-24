@@ -1,9 +1,9 @@
 class DocumentSimulation {
-	_index: string;
-	_type: string;
-	_id: string;
-	_parent: string;
-	_routing: string;
-	_source: LazyDocument;
-	_ingest: Ingest;
+	id: string;
+	index: string;
+	ingest: Ingest;
+	parent: string;
+	routing: string;
+	source: LazyDocument;
+	type: string;
 }

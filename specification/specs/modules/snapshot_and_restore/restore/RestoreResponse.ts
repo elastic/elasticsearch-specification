@@ -1,3 +1,3 @@
-class RestoreResponse extends ResponseBase {
+class RestoreResponse extends ResponseBase implements IResponse {
 	snapshot: SnapshotRestore;
 }

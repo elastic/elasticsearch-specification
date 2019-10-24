@@ -1,13 +1,15 @@
 class DateHistogramAggregation {
+	extended_bounds: ExtendedBounds<DateMath>;
 	field: Field;
-	script: Script;
-	params: Dictionary<string, any>;
-	interval: Union<DateInterval, Time>;
 	format: string;
-	min_doc_count: integer;
-	time_zone: string;
+	interval: Union<DateInterval, Time>;
+	calendar_interval: Union<DateInterval, Time>;
+	fixed_interval: Union<DateInterval, Time>;
+	minimum_document_count: integer;
+	missing: Date;
 	offset: string;
 	order: HistogramOrder;
-	extended_bounds: ExtendedBounds<DateMath>;
-	missing: Date;
+	params: Dictionary<string, any>;
+	script: Script;
+	time_zone: string;
 }

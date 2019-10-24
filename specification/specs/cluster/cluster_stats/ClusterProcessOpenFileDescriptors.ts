@@ -1,5 +1,5 @@
 class ClusterProcessOpenFileDescriptors {
-	min: long;
-	max: long;
 	avg: long;
+	max: long;
+	min: long;
 }

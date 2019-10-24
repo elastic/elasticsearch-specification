@@ -1,3 +1,3 @@
-class DeleteRoleMappingResponse extends ResponseBase {
+class DeleteRoleMappingResponse extends ResponseBase implements IResponse {
 	found: boolean;
 }

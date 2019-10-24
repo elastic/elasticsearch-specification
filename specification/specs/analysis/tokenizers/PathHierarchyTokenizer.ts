@@ -1,7 +1,7 @@
 class PathHierarchyTokenizer extends TokenizerBase {
+	buffer_size: integer;
 	delimiter: string;
 	replacement: string;
-	buffer_size: integer;
 	reverse: boolean;
 	skip: integer;
 }

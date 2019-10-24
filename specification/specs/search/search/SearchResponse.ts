@@ -1,17 +1,17 @@
-class SearchResponse<T> extends ResponseBase {
-	_shards: ShardStatistics;
+class SearchResponse<TDocument> extends ResponseBase {
 	aggregations: Dictionary<string, Aggregate>;
-	aggs: Dictionary<string, Aggregate>;
-	profile: Profile;
-	suggest: Dictionary<string, Suggest<T>[]>;
-	took: long;
-	timed_out: boolean;
-	terminated_early: boolean;
-	_scroll_id: string;
-	hits: HitsMetadata<T>;
-	num_reduce_phases: long;
-	total: long;
-	max_score: double;
-	documents: T[];
+	clusters: ClusterStatistics;
+	documents: TDocument[];
 	fields: Dictionary<string, LazyDocument>;
+	hits_metadata: HitsMetadata<TDocument>;
+	max_score: double;
+	number_of_reduce_phases: long;
+	profile: Profile;
+	scroll_id: string;
+	shards: ShardStatistics;
+	suggest: SuggestDictionary<TDocument>;
+	terminated_early: boolean;
+	timed_out: boolean;
+	took: long;
+	total: long;
 }

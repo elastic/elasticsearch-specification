@@ -1,25 +1,24 @@
 class AnomalyRecord {
-	job_id: string;
-	result_type: string;
-	probability: double;
-	record_score: double;
-	initial_record_score: double;
-	bucket_span: Time;
-	detector_index: integer;
-	is_interim: boolean;
-	@prop_serializer("EpochMillisecondsDateTimeJsonConverter")
-	timestamp: Date;
-	function: string;
-	function_description: string;
-	typical: double[];
 	actual: double[];
-	field_name: string;
+	bucket_span: Time;
 	by_field_name: string;
 	by_field_value: string;
 	causes: AnomalyCause[];
+	detector_index: integer;
+	field_name: string;
+	function: string;
+	function_description: string;
 	influencers: Influence[];
+	initial_record_score: double;
+	is_interim: boolean;
+	job_id: string;
 	over_field_name: string;
 	over_field_value: string;
 	partition_field_name: string;
 	partition_field_value: string;
+	probability: double;
+	record_score: double;
+	result_type: string;
+	timestamp: Date;
+	typical: double[];
 }

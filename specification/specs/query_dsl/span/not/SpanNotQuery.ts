@@ -1,7 +1,7 @@
 class SpanNotQuery {
-	include: SpanQuery;
-	exclude: SpanQuery;
-	pre: integer;
-	post: integer;
 	dist: integer;
+	exclude: SpanQuery;
+	include: SpanQuery;
+	post: integer;
+	pre: integer;
 }

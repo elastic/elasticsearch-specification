@@ -1,12 +1,10 @@
 class PercolateQuery {
-	field: Field;
-	document_type: TypeName;
-	@prop_serializer("SourceConverter")
 	document: any;
+	documents: any[];
+	field: Field;
 	id: Id;
 	index: IndexName;
-	type: TypeName;
-	routing: Routing;
 	preference: string;
+	routing: Routing;
 	version: long;
 }

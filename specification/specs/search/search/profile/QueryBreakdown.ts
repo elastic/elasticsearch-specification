@@ -1,8 +1,8 @@
 class QueryBreakdown {
-	score: long;
-	next_doc: long;
-	create_weight: long;
-	build_scorer: long;
 	advance: long;
+	build_scorer: long;
+	create_weight: long;
 	match: long;
+	next_doc: long;
+	score: long;
 }

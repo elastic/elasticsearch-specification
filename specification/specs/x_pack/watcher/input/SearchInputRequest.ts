@@ -1,8 +1,7 @@
 class SearchInputRequest {
-	indices: IndexName[];
-	types: TypeName[];
-	search_type: SearchType;
-	indices_options: IndicesOptions;
 	body: SearchRequest;
+	indices: IndexName[];
+	indices_options: IndicesOptions;
+	search_type: SearchType;
 	template: SearchTemplateRequest;
 }

@@ -1,6 +1,6 @@
 class SamplerAggregation {
-	shard_size: integer;
+	execution_hint: SamplerAggregationExecutionHint;
 	max_docs_per_value: integer;
 	script: Script;
-	execution_hint: SamplerAggregationExecutionHint;
+	shard_size: integer;
 }

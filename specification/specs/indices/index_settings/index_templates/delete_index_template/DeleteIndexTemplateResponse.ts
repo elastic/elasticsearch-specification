@@ -1,2 +1,2 @@
-class DeleteIndexTemplateResponse extends AcknowledgedResponseBase {
+class DeleteIndexTemplateResponse extends AcknowledgedResponseBase implements IResponse {
 }

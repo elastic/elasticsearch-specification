@@ -1,5 +1,6 @@
 class NodeStatistics {
-	total: integer;
-	successful: integer;
 	failed: integer;
+	successful: integer;
+	total: integer;
+	failures: ErrorCause[];
 }

@@ -1,9 +1,8 @@
 @rest_spec_name("mget")
-@class_serializer("MultiGetRequestJsonConverter")
 class MultiGetRequest extends RequestBase {
 	@request_parameter()
 	stored_fields: Field[];
-	docs: MultiGetOperation[];
+	documents: MultiGetOperation[];
 	@request_parameter()
 	preference: string;
 	@request_parameter()
@@ -15,7 +14,7 @@ class MultiGetRequest extends RequestBase {
 	@request_parameter()
 	source_enabled: boolean;
 	@request_parameter()
-	source_exclude: Field[];
+	source_excludes: Field[];
 	@request_parameter()
-	source_include: Field[];
+	source_includes: Field[];
 }

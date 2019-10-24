@@ -1,4 +1,4 @@
 class PhraseSuggestCollateQuery {
-	source: string;
 	id: Id;
+	source: string;
 }

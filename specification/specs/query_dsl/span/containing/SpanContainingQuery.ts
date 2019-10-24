@@ -1,4 +1,4 @@
 class SpanContainingQuery {
-	little: SpanQuery;
 	big: SpanQuery;
+	little: SpanQuery;
 }

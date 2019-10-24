@@ -1,7 +1,7 @@
 class NestedQuery {
-	score_mode: NestedScoreMode;
-	query: QueryContainer;
-	path: Field;
-	inner_hits: InnerHits;
 	ignore_unmapped: boolean;
+	inner_hits: InnerHits;
+	path: Field;
+	query: QueryContainer;
+	score_mode: NestedScoreMode;
 }

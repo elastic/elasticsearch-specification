@@ -1,5 +1,4 @@
-@rest_spec_name("xpack.ml.validate_detector")
-@class_serializer("ValidateDetectorRequestConverter")
+@rest_spec_name("ml.validate_detector")
 class ValidateDetectorRequest extends RequestBase {
 	detector: Detector;
 }

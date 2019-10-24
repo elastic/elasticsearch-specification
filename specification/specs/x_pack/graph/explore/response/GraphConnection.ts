@@ -1,5 +1,5 @@
 class GraphConnection {
-	doc_count: long;
+	document_count: long;
 	source: long;
 	target: long;
 	weight: double;

@@ -1,8 +1,8 @@
 class SnapshotShardsStats {
-	initializing: long;
-	started: long;
-	finalizing: long;
 	done: long;
 	failed: long;
+	finalizing: long;
+	initializing: long;
+	started: long;
 	total: long;
 }

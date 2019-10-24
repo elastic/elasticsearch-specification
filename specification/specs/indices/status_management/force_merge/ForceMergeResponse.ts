@@ -1,2 +1,2 @@
-class ForceMergeResponse extends ShardsOperationResponseBase {
+class ForceMergeResponse extends ShardsOperationResponseBase implements IResponse {
 }

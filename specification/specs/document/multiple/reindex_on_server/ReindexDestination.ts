@@ -1,7 +1,6 @@
 class ReindexDestination {
 	index: IndexName;
-	type: TypeName;
-	routing: ReindexRouting;
 	op_type: OpType;
+	routing: ReindexRouting;
 	version_type: VersionType;
 }

@@ -1,3 +1,3 @@
-@rest_spec_name("xpack.security.invalidate_token")
+@rest_spec_name("security.invalidate_token")
 class InvalidateUserAccessTokenRequest extends RequestBase {
 }

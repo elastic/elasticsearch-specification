@@ -4,7 +4,8 @@ class KeywordProperty extends DocValuesPropertyBase {
 	ignore_above: integer;
 	index: boolean;
 	index_options: IndexOptions;
+	normalizer: string;
 	norms: boolean;
 	null_value: string;
-	normalizer: string;
+	split_queries_on_whitespace: boolean;
 }

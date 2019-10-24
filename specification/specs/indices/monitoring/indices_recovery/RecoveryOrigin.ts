@@ -1,6 +1,6 @@
 class RecoveryOrigin {
+	host_name: string;
 	id: string;
-	hostname: string;
 	ip: string;
 	name: string;
 }

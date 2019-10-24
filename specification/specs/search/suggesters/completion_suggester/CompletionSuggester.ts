@@ -1,6 +1,7 @@
 class CompletionSuggester {
+	contexts: Dictionary<string, SuggestContextQuery[]>;
+	fuzzy: SuggestFuzziness;
 	prefix: string;
 	regex: string;
-	fuzzy: FuzzySuggester;
-	contexts: Dictionary<string, SuggestContextQuery[]>;
+	skip_duplicates: boolean;
 }

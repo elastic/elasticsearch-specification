@@ -1,3 +1,3 @@
-class DeleteExpiredDataResponse extends ResponseBase {
+class DeleteExpiredDataResponse extends ResponseBase implements IResponse {
 	deleted: boolean;
 }

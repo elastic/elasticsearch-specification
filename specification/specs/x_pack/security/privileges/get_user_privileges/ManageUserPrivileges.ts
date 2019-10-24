@@ -1,0 +1,3 @@
+class ManageUserPrivileges {
+	applications: string[];
+}

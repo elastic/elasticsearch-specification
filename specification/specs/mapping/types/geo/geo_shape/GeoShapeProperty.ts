@@ -1,9 +1,7 @@
 class GeoShapeProperty extends DocValuesPropertyBase {
-	tree: GeoTree;
-	precision: Distance;
+	ignore_malformed: boolean;
+	ignore_z_value: boolean;
 	orientation: GeoOrientation;
-	tree_levels: integer;
 	strategy: GeoStrategy;
-	distance_error_pct: double;
-	points_only: boolean;
+	coerce: boolean;
 }

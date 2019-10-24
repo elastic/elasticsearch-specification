@@ -1,4 +1,4 @@
 class GraphVertexInclude {
-	term: string;
 	boost: double;
+	term: string;
 }

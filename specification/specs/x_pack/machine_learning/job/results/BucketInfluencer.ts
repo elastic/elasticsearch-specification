@@ -1,13 +1,12 @@
 class BucketInfluencer {
-	job_id: string;
-	result_type: string;
+	bucket_span: long;
 	influencer_field_name: string;
 	influencer_field_value: string;
-	initial_influencer_score: double;
 	influencer_score: double;
-	probability: double;
-	bucket_span: long;
+	initial_influencer_score: double;
 	is_interim: boolean;
-	@prop_serializer("EpochMillisecondsDateTimeJsonConverter")
+	job_id: string;
+	probability: double;
+	result_type: string;
 	timestamp: Date;
 }

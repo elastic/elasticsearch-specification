@@ -1,10 +1,10 @@
 @rest_spec_name("snapshot.create")
 class SnapshotRequest extends RequestBase {
-	@prop_serializer("IndicesMultiSyntaxJsonConverter")
-	indices: Indices;
 	ignore_unavailable: boolean;
 	include_global_state: boolean;
+	indices: Indices;
 	partial: boolean;
+	metadata: Dictionary<string, any>;
 	@request_parameter()
 	master_timeout: Time;
 	@request_parameter()

@@ -1,0 +1,3 @@
+class CcrFollowStats {
+	indices: FollowIndexStats[];
+}

@@ -1,8 +1,8 @@
 class TemplateMapping {
+	aliases: Dictionary<IndexName, Alias>;
 	index_patterns: string[];
+	mappings: TypeMapping;
 	order: integer;
 	settings: Dictionary<string, any>;
-	mappings: Dictionary<TypeName, TypeMapping>;
-	aliases: Dictionary<IndexName, Alias>;
 	version: integer;
 }

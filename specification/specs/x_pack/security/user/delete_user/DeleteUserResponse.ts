@@ -1,3 +1,3 @@
-class DeleteUserResponse extends ResponseBase {
+class DeleteUserResponse extends ResponseBase implements IResponse {
 	found: boolean;
 }

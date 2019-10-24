@@ -1,10 +1,10 @@
 class CatNodeAttributesRecord implements ICatRecord {
-	id: string;
-	node: string;
-	pid: long;
+	attribute: string;
 	host: string;
+	id: string;
 	ip: string;
+	node: string;
 	port: long;
-	attr: string;
+	process_id: long;
 	value: string;
 }

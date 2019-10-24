@@ -1,7 +1,6 @@
 class PatternAnalyzer extends AnalyzerBase {
+	flags: string;
 	lowercase: boolean;
 	pattern: string;
-	flags: string;
-	@prop_serializer("StopWordsJsonConverter")
-	stopwords: StopWords;
+	stop_words: StopWords;
 }

@@ -1,8 +1,8 @@
 class MemoryStats {
-	total: string;
-	total_in_bytes: long;
-	free: string;
-	free_in_bytes: long;
-	used: string;
-	used_in_bytes: long;
+	resident: string;
+	resident_in_bytes: long;
+	share: string;
+	share_in_bytes: long;
+	total_virtual: string;
+	total_virtual_in_bytes: long;
 }

@@ -1,4 +1,4 @@
 class TimeOfMonth {
-	on: integer | integer[];
-	at: string | string[];
+	at: string[];
+	on: integer[];
 }

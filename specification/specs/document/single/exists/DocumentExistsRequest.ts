@@ -1,10 +1,6 @@
 @rest_spec_name("exists")
 class DocumentExistsRequest extends RequestBase {
 	@request_parameter()
-	stored_fields: Field[];
-	@request_parameter()
-	parent: string;
-	@request_parameter()
 	preference: string;
 	@request_parameter()
 	realtime: boolean;
@@ -15,9 +11,11 @@ class DocumentExistsRequest extends RequestBase {
 	@request_parameter()
 	source_enabled: boolean;
 	@request_parameter()
-	source_exclude: Field[];
+	source_excludes: Field[];
 	@request_parameter()
-	source_include: Field[];
+	source_includes: Field[];
+	@request_parameter()
+	stored_fields: Field[];
 	@request_parameter()
 	version: long;
 	@request_parameter()

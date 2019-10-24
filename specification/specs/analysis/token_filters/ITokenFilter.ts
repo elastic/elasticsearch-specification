@@ -1,4 +1,4 @@
 interface ITokenFilter {
-	version: string;
 	type: string;
+	version: string;
 }

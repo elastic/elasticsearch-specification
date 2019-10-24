@@ -1,0 +1,3 @@
+class Policy {
+	phases: Phases;
+}

@@ -1,14 +1,18 @@
-@rest_spec_name("xpack.watcher.put_watch")
+@rest_spec_name("watcher.put_watch")
 class PutWatchRequest extends RequestBase {
-	metadata: Dictionary<string, any>;
-	trigger: TriggerContainer;
-	input: InputContainer;
-	throttle_period: string;
-	condition: ConditionContainer;
-	transform: TransformContainer;
-	actions: Dictionary<string, Action>;
-	@request_parameter()
-	master_timeout: Time;
 	@request_parameter()
 	active: boolean;
+	@request_parameter()
+	if_primary_term: long;
+	@request_parameter()
+	if_sequence_number: long;
+	@request_parameter()
+	version: long;
+	actions: Dictionary<string, Action>;
+	condition: ConditionContainer;
+	input: InputContainer;
+	metadata: Dictionary<string, any>;
+	throttle_period: string;
+	transform: TransformContainer;
+	trigger: TriggerContainer;
 }

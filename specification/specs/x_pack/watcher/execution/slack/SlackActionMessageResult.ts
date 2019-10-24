@@ -1,8 +1,8 @@
 class SlackActionMessageResult {
-	status: Status;
+	message: SlackMessage;
 	reason: string;
 	request: HttpInputRequestResult;
 	response: HttpInputResponseResult;
+	status: Status;
 	to: string;
-	message: SlackMessage;
 }

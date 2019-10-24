@@ -1,3 +1,3 @@
-class PutUserResponse extends ResponseBase {
-	user: PutUserStatus;
+class PutUserResponse extends ResponseBase implements IResponse {
+	created: boolean;
 }

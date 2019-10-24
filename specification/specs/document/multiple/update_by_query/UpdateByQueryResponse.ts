@@ -1,14 +1,14 @@
-class UpdateByQueryResponse extends ResponseBase {
+class UpdateByQueryResponse extends ResponseBase implements IResponse {
 	is_valid: boolean;
-	took: long;
+	batches: long;
+	failures: BulkIndexByScrollFailure[];
+	noops: long;
+	requests_per_second: float;
+	retries: Retries;
 	task: TaskId;
 	timed_out: boolean;
+	took: long;
 	total: long;
 	updated: long;
-	batches: long;
 	version_conflicts: long;
-	noops: long;
-	retries: Retries;
-	failures: BulkIndexByScrollFailure[];
-	requests_per_second: float;
 }

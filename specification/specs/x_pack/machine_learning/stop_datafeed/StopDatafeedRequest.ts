@@ -1,5 +1,7 @@
-@rest_spec_name("xpack.ml.stop_datafeed")
+@rest_spec_name("ml.stop_datafeed")
 class StopDatafeedRequest extends RequestBase {
-	timeout: Time;
+	@request_parameter()
+	allow_no_datafeeds: boolean;
 	force: boolean;
+	timeout: Time;
 }

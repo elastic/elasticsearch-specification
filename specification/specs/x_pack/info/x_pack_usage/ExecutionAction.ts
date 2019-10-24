@@ -1,4 +1,4 @@
 class ExecutionAction {
 	total: long;
-	total_in_ms: long;
+	total_in_milliseconds: long;
 }

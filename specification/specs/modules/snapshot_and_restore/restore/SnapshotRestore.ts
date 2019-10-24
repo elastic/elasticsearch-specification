@@ -1,5 +1,5 @@
 class SnapshotRestore {
-	snapshot: string;
 	indices: IndexName[];
+	name: string;
 	shards: ShardStatistics;
 }

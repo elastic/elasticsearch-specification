@@ -1,3 +1,4 @@
-class KeepTypesTokenFilter extends TokenFilterBase implements ITokenFilter {
+class KeepTypesTokenFilter extends TokenFilterBase {
+	mode: KeepTypesMode;
 	types: string[];
 }

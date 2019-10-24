@@ -1,3 +1,3 @@
 class IcuFoldingTokenFilter extends TokenFilterBase {
-	unicodeSetFilter: string;
+	unicode_set_filter: string;
 }

@@ -1,6 +1,6 @@
 class HunspellTokenFilter extends TokenFilterBase {
-	locale: string;
-	dictionary: string;
 	dedup: boolean;
+	dictionary: string;
+	locale: string;
 	longest_only: boolean;
 }

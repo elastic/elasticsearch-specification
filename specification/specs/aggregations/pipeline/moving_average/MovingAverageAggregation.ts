@@ -1,6 +1,6 @@
 class MovingAverageAggregation {
-	model: MovingAverageModel;
-	window: integer;
 	minimize: boolean;
+	model: MovingAverageModel;
 	predict: integer;
+	window: integer;
 }

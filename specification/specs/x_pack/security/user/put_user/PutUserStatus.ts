@@ -1,3 +1,0 @@
-class PutUserStatus {
-	created: boolean;
-}

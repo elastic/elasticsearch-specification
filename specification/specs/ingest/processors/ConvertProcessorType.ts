@@ -1,7 +1,9 @@
 enum ConvertProcessorType {
 	integer = 0,
-	float = 1,
-	string = 2,
-	boolean = 3,
-	auto = 4
+	long = 1,
+	float = 2,
+	double = 3,
+	string = 4,
+	boolean = 5,
+	auto = 6
 }

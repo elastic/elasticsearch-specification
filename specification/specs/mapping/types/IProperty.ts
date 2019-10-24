@@ -1,5 +1,5 @@
 interface IProperty {
+	local_metadata: Dictionary<string, any>;
 	name: PropertyName;
 	type: string;
-	local_metadata: Dictionary<string, any>;
 }

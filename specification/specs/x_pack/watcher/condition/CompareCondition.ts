@@ -1,6 +1,5 @@
-@class_serializer("CompareConditionConverter")
 class CompareCondition {
-	path: string;
 	comparison: string;
+	path: string;
 	value: any;
 }

@@ -1,4 +1,4 @@
 class AlertingCount {
-	total: long;
 	active: long;
+	total: long;
 }

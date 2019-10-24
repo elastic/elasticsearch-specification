@@ -1,3 +1,3 @@
-class RevertModelSnapshotResponse extends AcknowledgedResponseBase {
+class RevertModelSnapshotResponse extends ResponseBase implements IResponse {
 	model: ModelSnapshot;
 }

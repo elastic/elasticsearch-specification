@@ -1,11 +1,11 @@
 class ExplainAnalyzeToken {
+	bytes: string;
+	end_offset: long;
+	keyword: boolean;
+	position: long;
+	position_length: long;
+	start_offset: long;
+	term_frequency: long;
 	token: string;
 	type: string;
-	start_offset: long;
-	end_offset: long;
-	position: long;
-	positionLength: long;
-	termFrequency: long;
-	keyword: boolean;
-	bytes: string;
 }

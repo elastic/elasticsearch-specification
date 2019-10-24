@@ -1,9 +1,11 @@
-@rest_spec_name("xpack.security.put_role")
+@rest_spec_name("security.put_role")
 class PutRoleRequest extends RequestBase {
-	cluster: string[];
-	run_as: string[];
-	indices: IndicesPrivileges[];
-	metadata: Dictionary<string, any>;
 	@request_parameter()
 	refresh: Refresh;
+	applications: ApplicationPrivileges[];
+	cluster: string[];
+	global: Dictionary<string, any>;
+	indices: IndicesPrivileges[];
+	metadata: Dictionary<string, any>;
+	run_as: string[];
 }

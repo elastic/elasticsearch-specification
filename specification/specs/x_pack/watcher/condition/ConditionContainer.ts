@@ -1,7 +1,7 @@
 class ConditionContainer {
 	always: AlwaysCondition;
-	never: NeverCondition;
-	compare: CompareCondition;
 	array_compare: ArrayCompareCondition;
+	compare: CompareCondition;
+	never: NeverCondition;
 	script: ScriptCondition;
 }

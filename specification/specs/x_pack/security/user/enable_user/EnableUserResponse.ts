@@ -1,2 +1,2 @@
-class EnableUserResponse extends ResponseBase {
+class EnableUserResponse extends ResponseBase implements IResponse {
 }

@@ -1,10 +1,10 @@
-class TermVectorsResponse extends ResponseBase {
-	_index: string;
-	_type: string;
-	_id: string;
-	_version: long;
+class TermVectorsResponse extends ResponseBase implements IResponse {
+	is_valid: boolean;
 	found: boolean;
-	took: long;
-	@prop_serializer("ResolvableDictionaryJsonConverter`2")
+	id: string;
+	index: string;
 	term_vectors: Dictionary<Field, TermVector>;
+	took: long;
+	type: string;
+	version: long;
 }

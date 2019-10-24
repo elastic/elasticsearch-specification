@@ -1,0 +1,2 @@
+class DynamicResponseBase extends ResponseBase {
+}

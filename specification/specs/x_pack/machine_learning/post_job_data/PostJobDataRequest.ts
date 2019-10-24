@@ -1,9 +1,8 @@
-@rest_spec_name("xpack.ml.post_data")
-@class_serializer("PostJobDataConverter")
+@rest_spec_name("ml.post_data")
 class PostJobDataRequest extends RequestBase {
-	data: any[];
-	@request_parameter()
-	reset_start: Date;
 	@request_parameter()
 	reset_end: Date;
+	@request_parameter()
+	reset_start: Date;
+	data: any[];
 }

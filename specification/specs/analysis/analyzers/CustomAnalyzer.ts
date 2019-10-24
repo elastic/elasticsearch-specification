@@ -1,6 +1,6 @@
 class CustomAnalyzer extends AnalyzerBase {
-	tokenizer: string;
-	filter: string[];
 	char_filter: string[];
+	filter: string[];
 	position_offset_gap: integer;
+	tokenizer: string;
 }

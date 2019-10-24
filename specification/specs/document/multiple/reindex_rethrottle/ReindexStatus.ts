@@ -1,13 +1,13 @@
 class ReindexStatus {
-	total: long;
-	updated: long;
+	batches: long;
 	created: long;
 	deleted: long;
-	batches: long;
-	version_conflicts: long;
 	noops: long;
-	retries: Retries;
-	throttled_millis: long;
 	requests_per_second: float;
-	throttled_until_millis: long;
+	retries: Retries;
+	throttled_in_milliseconds: long;
+	throttled_until_in_milliseconds: long;
+	total: long;
+	updated: long;
+	version_conflicts: long;
 }

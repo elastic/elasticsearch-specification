@@ -1,7 +1,6 @@
 class ClusterJvm {
-	max_uptime: string;
-	max_uptime_in_millis: long;
-	versions: ClusterJvmVersion[];
-	mem: ClusterJvmMemory;
+	max_uptime_in_milliseconds: long;
+	memory: ClusterJvmMemory;
 	threads: long;
+	versions: ClusterJvmVersion[];
 }

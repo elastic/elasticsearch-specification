@@ -1,6 +1,6 @@
-@rest_spec_name("xpack.license.post")
+@rest_spec_name("license.post")
 class PostLicenseRequest extends RequestBase {
-	license: License;
 	@request_parameter()
 	acknowledge: boolean;
+	license: License;
 }

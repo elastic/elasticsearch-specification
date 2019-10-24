@@ -1,6 +1,6 @@
 class ClusterIndicesShardsStats {
-	total: double;
+	index: ClusterIndicesShardsIndexStats;
 	primaries: double;
 	replication: double;
-	index: ClusterIndicesShardsIndexStats;
+	total: double;
 }

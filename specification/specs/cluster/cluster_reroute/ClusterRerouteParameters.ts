@@ -1,8 +1,8 @@
 class ClusterRerouteParameters {
-	index: string;
-	shard: integer;
-	from_node: string;
-	to_node: string;
-	node: string;
 	allow_primary: boolean;
+	from_node: string;
+	index: string;
+	node: string;
+	shard: integer;
+	to_node: string;
 }

@@ -1,0 +1,2 @@
+class IpRangeProperty extends RangePropertyBase {
+}

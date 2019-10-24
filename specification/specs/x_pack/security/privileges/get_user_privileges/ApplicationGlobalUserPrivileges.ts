@@ -1,0 +1,3 @@
+class ApplicationGlobalUserPrivileges {
+	manage: ManageUserPrivileges;
+}

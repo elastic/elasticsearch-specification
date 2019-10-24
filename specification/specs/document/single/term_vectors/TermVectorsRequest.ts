@@ -1,11 +1,8 @@
 @rest_spec_name("termvectors")
 class TermVectorsRequest<TDocument> extends RequestBase {
-	@prop_serializer("SourceConverter")
-	doc: TDocument;
-	per_field_analyzer: Dictionary<Field, string>;
+	document: TDocument;
 	filter: TermVectorFilter;
-	@request_parameter()
-	term_statistics: boolean;
+	per_field_analyzer: Dictionary<Field, string>;
 	@request_parameter()
 	field_statistics: boolean;
 	@request_parameter()
@@ -13,17 +10,17 @@ class TermVectorsRequest<TDocument> extends RequestBase {
 	@request_parameter()
 	offsets: boolean;
 	@request_parameter()
-	positions: boolean;
-	@request_parameter()
 	payloads: boolean;
+	@request_parameter()
+	positions: boolean;
 	@request_parameter()
 	preference: string;
 	@request_parameter()
+	realtime: boolean;
+	@request_parameter()
 	routing: Routing;
 	@request_parameter()
-	parent: string;
-	@request_parameter()
-	realtime: boolean;
+	term_statistics: boolean;
 	@request_parameter()
 	version: long;
 	@request_parameter()

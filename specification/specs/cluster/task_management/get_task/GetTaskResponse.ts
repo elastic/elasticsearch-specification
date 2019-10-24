@@ -1,4 +1,4 @@
-class GetTaskResponse extends ResponseBase {
+class GetTaskResponse extends ResponseBase implements IResponse {
 	completed: boolean;
 	task: TaskInfo;
 }

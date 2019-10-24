@@ -1,2 +1,2 @@
-class ClearScrollResponse extends ResponseBase {
+class ClearScrollResponse extends ResponseBase implements IResponse {
 }

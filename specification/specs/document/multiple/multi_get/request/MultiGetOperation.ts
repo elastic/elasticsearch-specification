@@ -1,11 +1,10 @@
 class MultiGetOperation {
-	_index: IndexName;
-	_type: TypeName;
-	_id: Id;
-	stored_fields: Field[];
+	can_be_flattened: boolean;
+	id: Id;
+	index: IndexName;
 	routing: string;
-	_source: Union<boolean, SourceFilter>;
+	source: Union<boolean, SourceFilter>;
+	stored_fields: Field[];
 	version: long;
 	version_type: VersionType;
-	can_be_flattened: boolean;
 }

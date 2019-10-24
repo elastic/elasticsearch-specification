@@ -2,9 +2,7 @@
 class CreateRequest<TDocument> extends RequestBase {
 	document: TDocument;
 	@request_parameter()
-	wait_for_active_shards: string;
-	@request_parameter()
-	parent: string;
+	pipeline: string;
 	@request_parameter()
 	refresh: Refresh;
 	@request_parameter()
@@ -16,5 +14,5 @@ class CreateRequest<TDocument> extends RequestBase {
 	@request_parameter()
 	version_type: VersionType;
 	@request_parameter()
-	pipeline: string;
+	wait_for_active_shards: string;
 }

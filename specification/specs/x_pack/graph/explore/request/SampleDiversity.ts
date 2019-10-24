@@ -1,4 +1,4 @@
 class SampleDiversity {
 	field: Field;
-	max_docs_per_value: integer;
+	max_documents_per_value: integer;
 }

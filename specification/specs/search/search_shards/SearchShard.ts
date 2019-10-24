@@ -1,8 +1,8 @@
 class SearchShard {
-	state: string;
-	primary: boolean;
+	index: string;
 	node: string;
+	primary: boolean;
 	relocating_node: string;
 	shard: integer;
-	index: string;
+	state: string;
 }

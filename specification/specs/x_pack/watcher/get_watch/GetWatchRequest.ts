@@ -1,3 +1,3 @@
-@rest_spec_name("xpack.watcher.get_watch")
+@rest_spec_name("watcher.get_watch")
 class GetWatchRequest extends RequestBase {
 }

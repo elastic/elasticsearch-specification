@@ -1,3 +1,3 @@
-@rest_spec_name("xpack.migration.deprecations")
+@rest_spec_name("migration.deprecations")
 class DeprecationInfoRequest extends RequestBase {
 }

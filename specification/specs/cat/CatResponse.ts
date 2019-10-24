@@ -1,3 +1,3 @@
-class CatResponse<TCatRecord> extends ResponseBase {
+class CatResponse<TCatRecord> extends ResponseBase implements IResponse {
 	records: TCatRecord[];
 }

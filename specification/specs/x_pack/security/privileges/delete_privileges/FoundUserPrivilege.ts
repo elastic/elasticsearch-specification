@@ -1,0 +1,3 @@
+class FoundUserPrivilege {
+	found: boolean;
+}

@@ -1,4 +1,4 @@
 class IpRangeAggregation {
 	field: Field;
-	ranges: IpRange[];
+	ranges: IpRangeAggregationRange[];
 }

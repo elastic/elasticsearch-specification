@@ -1,7 +1,7 @@
-class GraphExploreResponse extends ResponseBase {
-	took: long;
-	timed_out: boolean;
+class GraphExploreResponse extends ResponseBase implements IResponse {
 	connections: GraphConnection[];
-	vertices: GraphVertex[];
 	failures: ShardFailure[];
+	timed_out: boolean;
+	took: long;
+	vertices: GraphVertex[];
 }

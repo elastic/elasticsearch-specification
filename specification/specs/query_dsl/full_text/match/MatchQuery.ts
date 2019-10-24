@@ -1,15 +1,15 @@
-@class_serializer("FieldNameQueryJsonConverter`1")
 class MatchQuery {
-	query: string;
 	analyzer: string;
-	fuzzy_rewrite: MultiTermQueryRewrite;
-	fuzziness: Fuzziness;
-	fuzzy_transpositions: boolean;
+	auto_generate_synonyms_phrase_query: boolean;
 	cutoff_frequency: double;
-	prefix_length: integer;
-	max_expansions: integer;
+	fuzziness: Fuzziness;
+	fuzzy_rewrite: MultiTermQueryRewrite;
+	fuzzy_transpositions: boolean;
 	lenient: boolean;
+	max_expansions: integer;
 	minimum_should_match: MinimumShouldMatch;
 	operator: Operator;
+	prefix_length: integer;
+	query: string;
 	zero_terms_query: ZeroTermsQuery;
 }

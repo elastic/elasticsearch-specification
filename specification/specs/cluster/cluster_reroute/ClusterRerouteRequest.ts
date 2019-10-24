@@ -6,11 +6,11 @@ class ClusterRerouteRequest extends RequestBase {
 	@request_parameter()
 	explain: boolean;
 	@request_parameter()
-	retry_failed: boolean;
+	master_timeout: Time;
 	@request_parameter()
 	metric: string[];
 	@request_parameter()
-	master_timeout: Time;
+	retry_failed: boolean;
 	@request_parameter()
 	timeout: Time;
 }

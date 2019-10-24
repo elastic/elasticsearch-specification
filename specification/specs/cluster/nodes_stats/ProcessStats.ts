@@ -1,6 +1,6 @@
 class ProcessStats {
-	timestamp: long;
+	c_p_u: CPUStats;
+	memory: MemoryStats;
 	open_file_descriptors: integer;
-	cpu: CPUStats;
-	mem: MemoryStats;
+	timestamp: long;
 }

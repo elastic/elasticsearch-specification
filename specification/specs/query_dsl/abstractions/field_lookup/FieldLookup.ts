@@ -1,7 +1,6 @@
 class FieldLookup {
-	index: IndexName;
-	type: TypeName;
 	id: Id;
+	index: IndexName;
 	path: Field;
 	routing: Routing;
 }

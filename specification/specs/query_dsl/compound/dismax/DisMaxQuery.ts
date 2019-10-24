@@ -1,4 +1,4 @@
 class DisMaxQuery {
-	tie_breaker: double;
 	queries: QueryContainer[];
+	tie_breaker: double;
 }

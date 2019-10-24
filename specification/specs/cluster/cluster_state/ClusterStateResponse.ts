@@ -1,11 +1,8 @@
 class ClusterStateResponse extends ResponseBase {
+	state: string[];
 	cluster_name: string;
+	cluster_u_u_i_d: string;
 	master_node: string;
-	state_uuid: string;
+	state_u_u_i_d: string;
 	version: long;
-	nodes: Dictionary<string, NodeState>;
-	metadata: MetadataState;
-	routing_table: RoutingTableState;
-	routing_nodes: RoutingNodesState;
-	blocks: BlockState;
 }

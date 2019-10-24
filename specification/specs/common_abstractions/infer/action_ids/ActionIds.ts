@@ -1,1 +1,0 @@
-class ActionIds extends String {}

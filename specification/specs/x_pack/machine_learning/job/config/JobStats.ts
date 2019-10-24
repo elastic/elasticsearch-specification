@@ -1,9 +1,11 @@
 class JobStats {
 	assignment_explanation: string;
-	job_id: string;
 	data_counts: DataCounts;
+	forecasts: JobForecastStatistics;
+	job_id: string;
 	model_size_stats: ModelSizeStats;
-	state: JobState;
 	node: DiscoveryNode;
 	open_time: Time;
+	state: JobState;
+	timing_stats: TimingStats;
 }

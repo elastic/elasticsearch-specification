@@ -1,18 +1,17 @@
 class SlackAttachment {
-	fallback: string;
-	color: string;
-	pretext: string;
-	author_name: string;
-	author_link: string;
 	author_icon: string;
-	title: string;
-	title_link: string;
-	text: string;
+	author_link: string;
+	author_name: string;
+	color: string;
+	fallback: string;
 	fields: SlackAttachmentField[];
-	image_url: string;
-	thumb_url: string;
 	footer: string;
 	footer_icon: string;
-	@prop_serializer("EpochSecondsDateTimeJsonConverter")
+	image_url: string;
+	pretext: string;
+	text: string;
+	thumb_url: string;
+	title: string;
+	title_link: string;
 	ts: Date;
 }

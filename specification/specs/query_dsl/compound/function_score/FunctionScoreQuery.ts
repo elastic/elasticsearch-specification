@@ -1,8 +1,8 @@
 class FunctionScoreQuery {
-	query: QueryContainer;
+	boost_mode: FunctionBoostMode;
 	functions: ScoreFunction[];
 	max_boost: double;
-	score_mode: FunctionScoreMode;
-	boost_mode: FunctionBoostMode;
 	min_score: double;
+	query: QueryContainer;
+	score_mode: FunctionScoreMode;
 }

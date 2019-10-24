@@ -1,13 +1,15 @@
 class PhraseSuggester {
-	text: string;
-	shard_size: integer;
-	gram_size: integer;
-	real_word_error_likelihood: double;
-	confidence: double;
-	max_errors: double;
-	separator: string;
-	direct_generator: DirectGenerator[];
-	highlight: PhraseSuggestHighlight;
 	collate: PhraseSuggestCollate;
+	confidence: double;
+	direct_generator: DirectGenerator[];
+	force_unigrams: boolean;
+	gram_size: integer;
+	highlight: PhraseSuggestHighlight;
+	max_errors: double;
+	real_word_error_likelihood: double;
+	separator: string;
+	shard_size: integer;
 	smoothing: SmoothingModelContainer;
+	text: string;
+	token_limit: integer;
 }

@@ -1,8 +1,8 @@
 class CatAllocationRecord implements ICatRecord {
-	shards: string;
-	diskUsed: string;
-	diskAvail: string;
-	diskRatio: string;
+	disk_available: string;
+	disk_ratio: string;
+	disk_used: string;
 	ip: string;
 	node: string;
+	shards: string;
 }

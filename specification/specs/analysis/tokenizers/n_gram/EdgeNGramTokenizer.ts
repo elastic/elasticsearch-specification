@@ -1,5 +1,5 @@
 class EdgeNGramTokenizer extends TokenizerBase {
-	min_gram: integer;
 	max_gram: integer;
+	min_gram: integer;
 	token_chars: TokenChar[];
 }

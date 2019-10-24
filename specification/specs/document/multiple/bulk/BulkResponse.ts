@@ -1,7 +1,7 @@
-class BulkResponse extends ResponseBase {
-	is_valid: boolean;
-	took: long;
+class BulkResponse extends ResponseBase implements IResponse {
 	errors: boolean;
-	items: BulkResponseItem[];
-	items_with_errors: BulkResponseItem[];
+	is_valid: boolean;
+	items: BulkResponseItemBase[];
+	items_with_errors: BulkResponseItemBase[];
+	took: long;
 }

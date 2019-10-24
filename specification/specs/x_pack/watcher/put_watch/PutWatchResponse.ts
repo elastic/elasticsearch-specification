@@ -1,5 +1,7 @@
-class PutWatchResponse extends ResponseBase {
-	_id: string;
-	_version: integer;
+class PutWatchResponse extends ResponseBase implements IResponse {
 	created: boolean;
+	id: string;
+	version: integer;
+	sequence_number: long;
+	primary_term: long;
 }

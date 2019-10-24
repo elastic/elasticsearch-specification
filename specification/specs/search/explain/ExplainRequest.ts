@@ -1,8 +1,5 @@
 @rest_spec_name("explain")
-class ExplainRequest<TDocument> extends RequestBase {
-	@request_parameter()
-	stored_fields: Field[];
-	query: QueryContainer;
+class ExplainRequest extends RequestBase {
 	@request_parameter()
 	analyze_wildcard: boolean;
 	@request_parameter()
@@ -14,8 +11,6 @@ class ExplainRequest<TDocument> extends RequestBase {
 	@request_parameter()
 	lenient: boolean;
 	@request_parameter()
-	parent: string;
-	@request_parameter()
 	preference: string;
 	@request_parameter()
 	query_on_query_string: string;
@@ -24,7 +19,10 @@ class ExplainRequest<TDocument> extends RequestBase {
 	@request_parameter()
 	source_enabled: boolean;
 	@request_parameter()
-	source_exclude: Field[];
+	source_excludes: Field[];
 	@request_parameter()
-	source_include: Field[];
+	source_includes: Field[];
+	query: QueryContainer;
+	@request_parameter()
+	stored_fields: Field[];
 }

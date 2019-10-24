@@ -1,18 +1,20 @@
 class MultiMatchQuery {
-	type: TextQueryType;
-	query: string;
 	analyzer: string;
-	fuzzy_rewrite: MultiTermQueryRewrite;
-	fuzziness: Fuzziness;
+	auto_generate_synonyms_phrase_query: boolean;
 	cutoff_frequency: double;
-	prefix_length: integer;
-	max_expansions: integer;
-	slop: integer;
+	fields: Field[];
+	fuzziness: Fuzziness;
+	fuzzy_rewrite: MultiTermQueryRewrite;
+	fuzzy_transpositions: boolean;
 	lenient: boolean;
-	use_dis_max: boolean;
-	tie_breaker: double;
+	max_expansions: integer;
 	minimum_should_match: MinimumShouldMatch;
 	operator: Operator;
-	fields: Field[];
+	prefix_length: integer;
+	query: string;
+	slop: integer;
+	tie_breaker: double;
+	type: TextQueryType;
+	use_dis_max: boolean;
 	zero_terms_query: ZeroTermsQuery;
 }

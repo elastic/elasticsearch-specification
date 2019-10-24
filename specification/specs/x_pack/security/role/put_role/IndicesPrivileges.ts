@@ -1,7 +1,6 @@
 class IndicesPrivileges {
-	@prop_serializer("IndicesJsonConverter")
+	field_security: FieldSecurity;
 	names: Indices;
 	privileges: string[];
-	field_security: FieldSecurity;
 	query: QueryContainer;
 }

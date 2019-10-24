@@ -1,4 +1,4 @@
-class MultiGetResponse extends ResponseBase {
-	is_valid: boolean;
+class MultiGetResponse extends ResponseBase implements IResponse {
 	hits: MultiGetHit<any>[];
+	is_valid: boolean;
 }

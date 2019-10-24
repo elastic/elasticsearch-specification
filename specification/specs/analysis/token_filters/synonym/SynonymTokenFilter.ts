@@ -1,8 +1,8 @@
 class SynonymTokenFilter extends TokenFilterBase {
-	synonyms_path: string;
-	format: SynonymFormat;
-	synonyms: string[];
-	ignore_case: boolean;
 	expand: boolean;
+	format: SynonymFormat;
+	lenient: boolean;
+	synonyms: string[];
+	synonyms_path: string;
 	tokenizer: string;
 }

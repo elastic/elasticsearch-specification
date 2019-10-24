@@ -1,9 +1,10 @@
 class PluginStats {
-	name: string;
-	version: string;
+	class_name: string;
 	description: string;
-	classname: string;
-	jvm: boolean;
-	isolated: boolean;
-	site: boolean;
+	elasticsearch_version: string;
+	extended_plugins: string[];
+	name: string;
+	has_native_controller: boolean;
+	java_version: string;
+	version: string;
 }

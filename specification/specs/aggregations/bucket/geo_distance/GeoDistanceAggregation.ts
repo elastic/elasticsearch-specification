@@ -1,7 +1,7 @@
 class GeoDistanceAggregation {
+	distance_type: GeoDistanceType;
 	field: Field;
 	origin: GeoLocation;
-	unit: DistanceUnit;
-	distance_type: GeoDistanceType;
 	ranges: AggregationRange[];
+	unit: DistanceUnit;
 }

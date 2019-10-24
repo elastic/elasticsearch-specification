@@ -1,3 +1,3 @@
-class AcknowledgeWatchResponse extends ResponseBase {
+class AcknowledgeWatchResponse extends ResponseBase implements IResponse {
 	status: WatchStatus;
 }

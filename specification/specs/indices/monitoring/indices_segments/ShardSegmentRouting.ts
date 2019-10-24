@@ -1,5 +1,5 @@
 class ShardSegmentRouting {
-	state: string;
-	primary: boolean;
 	node: string;
+	primary: boolean;
+	state: string;
 }

@@ -1,4 +1,4 @@
-class SearchShardsResponse extends ResponseBase {
-	shards: SearchShard[][];
+class SearchShardsResponse extends ResponseBase implements IResponse {
 	nodes: Dictionary<string, SearchNode>;
+	shards: SearchShard[][];
 }

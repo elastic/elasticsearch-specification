@@ -1,4 +1,4 @@
 class LicenseAcknowledgement {
-	message: string;
 	license: string[];
+	message: string;
 }

@@ -1,11 +1,12 @@
 class MultiGetHit<TDocument> {
-	source: TDocument;
-	index: string;
+	error: MainError;
 	found: boolean;
+	id: string;
+	index: string;
+	routing: string;
+	source: TDocument;
 	type: string;
 	version: long;
-	id: string;
-	parent: string;
-	routing: string;
-	error: MainError;
+	sequence_number: long;
+	primary_term: long;
 }

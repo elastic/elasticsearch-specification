@@ -1,5 +1,5 @@
-class DeleteWatchResponse extends ResponseBase {
-	_id: string;
-	_version: integer;
+class DeleteWatchResponse extends ResponseBase implements IResponse {
 	found: boolean;
+	id: string;
+	version: integer;
 }

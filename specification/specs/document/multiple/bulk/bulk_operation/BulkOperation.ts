@@ -1,11 +1,9 @@
 class BulkOperation {
+	id: Id;
+	index: IndexName;
 	operation: string;
-	_index: IndexName;
-	_type: TypeName;
-	_id: Id;
+	retries_on_conflict: integer;
+	routing: Routing;
 	version: long;
 	version_type: VersionType;
-	routing: Routing;
-	parent: Id;
-	retry_on_conflict: integer;
 }

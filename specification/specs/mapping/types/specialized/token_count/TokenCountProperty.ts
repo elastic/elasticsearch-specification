@@ -1,6 +1,6 @@
 class TokenCountProperty extends DocValuesPropertyBase {
 	analyzer: string;
-	index: boolean;
 	boost: double;
+	index: boolean;
 	null_value: double;
 }

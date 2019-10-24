@@ -1,4 +1,4 @@
-@rest_spec_name("xpack.ml.update_job")
+@rest_spec_name("ml.update_job")
 class UpdateJobRequest extends RequestBase {
 	analysis_limits: AnalysisMemoryLimit;
 	background_persist_interval: Time;

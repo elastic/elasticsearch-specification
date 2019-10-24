@@ -1,14 +1,15 @@
 class ShardRecovery {
 	id: long;
-	type: string;
-	stage: string;
+	index: RecoveryIndexStatus;
 	primary: boolean;
+	source: RecoveryOrigin;
+	stage: string;
+	start: RecoveryStartStatus;
 	start_time: Date;
 	stop_time: Date;
-	total_time_in_millis: long;
-	source: RecoveryOrigin;
 	target: RecoveryOrigin;
-	index: RecoveryIndexStatus;
+	total_time_in_milliseconds: long;
 	translog: RecoveryTranslogStatus;
-	start: RecoveryStartStatus;
+	type: string;
+	verify_index: RecoveryVerifyIndex;
 }

@@ -1,9 +1,8 @@
-@class_serializer("CatFielddataRecordJsonConverter")
 class CatFielddataRecord implements ICatRecord {
-	id: string;
+	field: string;
 	host: string;
+	id: string;
 	ip: string;
 	node: string;
-	field: string;
 	size: string;
 }

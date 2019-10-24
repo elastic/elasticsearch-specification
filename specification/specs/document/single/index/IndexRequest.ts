@@ -2,11 +2,13 @@
 class IndexRequest<TDocument> extends RequestBase {
 	document: TDocument;
 	@request_parameter()
-	wait_for_active_shards: string;
+	if_primary_term: long;
+	@request_parameter()
+	if_sequence_number: long;
 	@request_parameter()
 	op_type: OpType;
 	@request_parameter()
-	parent: string;
+	pipeline: string;
 	@request_parameter()
 	refresh: Refresh;
 	@request_parameter()
@@ -18,5 +20,5 @@ class IndexRequest<TDocument> extends RequestBase {
 	@request_parameter()
 	version_type: VersionType;
 	@request_parameter()
-	pipeline: string;
+	wait_for_active_shards: string;
 }

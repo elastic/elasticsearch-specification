@@ -1,4 +1,4 @@
 class ExecutionState {
-	timestamp: Date;
 	successful: boolean;
+	timestamp: Date;
 }

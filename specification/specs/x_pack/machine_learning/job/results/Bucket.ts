@@ -1,14 +1,13 @@
 class Bucket {
-	job_id: string;
-	@prop_serializer("EpochMillisecondsDateTimeJsonConverter")
-	timestamp: Date;
 	anomaly_score: double;
-	bucket_span: Time;
-	initial_anomaly_score: double;
-	event_count: long;
-	is_interim: boolean;
 	bucket_influencers: BucketInfluencer[];
-	processing_time_ms: double;
+	bucket_span: Time;
+	event_count: long;
+	initial_anomaly_score: double;
+	is_interim: boolean;
+	job_id: string;
 	partition_scores: PartitionScore[];
+	processing_time_milliseconds: double;
 	result_type: string;
+	timestamp: Date;
 }

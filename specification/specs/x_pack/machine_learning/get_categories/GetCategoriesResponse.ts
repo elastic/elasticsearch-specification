@@ -1,4 +1,4 @@
-class GetCategoriesResponse extends ResponseBase {
-	count: long;
+class GetCategoriesResponse extends ResponseBase implements IResponse {
 	categories: CategoryDefinition[];
+	count: long;
 }

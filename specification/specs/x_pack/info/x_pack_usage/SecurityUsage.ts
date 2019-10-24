@@ -1,9 +1,10 @@
 class SecurityUsage extends XPackUsage {
-	system_key: SecurityFeatureToggle;
 	anonymous: SecurityFeatureToggle;
-	ssl: SslUsage;
-	ipfilter: IpFilterUsage;
 	audit: AuditUsage;
-	roles: Dictionary<string, RoleUsage>;
+	ip_filter: IpFilterUsage;
 	realms: Dictionary<string, RealmUsage>;
+	role_mapping: Dictionary<string, RoleMappingUsage>;
+	roles: Dictionary<string, RoleUsage>;
+	ssl: SslUsage;
+	system_key: SecurityFeatureToggle;
 }

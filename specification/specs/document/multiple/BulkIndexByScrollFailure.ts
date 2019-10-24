@@ -1,7 +1,7 @@
 class BulkIndexByScrollFailure {
-	index: string;
-	type: string;
+	cause: MainError;
 	id: string;
-	cause: BulkIndexFailureCause;
+	index: string;
 	status: integer;
+	type: string;
 }

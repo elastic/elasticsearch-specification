@@ -1,7 +1,7 @@
 class MinimalLicenseInformation {
-	uid: string;
-	type: LicenseType;
+	expiry_date_in_milliseconds: long;
 	mode: LicenseType;
 	status: LicenseStatus;
-	expiry_date_in_millis: long;
+	type: LicenseType;
+	u_i_d: string;
 }

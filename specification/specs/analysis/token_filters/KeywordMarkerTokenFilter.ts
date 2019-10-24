@@ -1,5 +1,6 @@
 class KeywordMarkerTokenFilter extends TokenFilterBase {
+	ignore_case: boolean;
 	keywords: string[];
 	keywords_path: string;
-	ignore_case: boolean;
+	keywords_pattern: string;
 }

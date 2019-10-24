@@ -1,7 +1,7 @@
 class CatAliasesRecord implements ICatRecord {
 	alias: string;
-	index: string;
 	filter: string;
-	indexRouting: string;
-	searchRouting: string;
+	index: string;
+	index_routing: string;
+	search_routing: string;
 }

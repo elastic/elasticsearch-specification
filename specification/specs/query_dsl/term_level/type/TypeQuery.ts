@@ -1,3 +1,0 @@
-class TypeQuery {
-	value: TypeName;
-}

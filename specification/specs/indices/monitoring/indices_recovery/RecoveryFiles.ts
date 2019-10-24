@@ -1,7 +1,7 @@
 class RecoveryFiles {
-	total: long;
-	reused: long;
-	recovered: long;
-	percent: string;
 	details: RecoveryFileDetails[];
+	percent: string;
+	recovered: long;
+	reused: long;
+	total: long;
 }

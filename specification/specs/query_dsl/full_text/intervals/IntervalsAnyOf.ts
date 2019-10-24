@@ -1,0 +1,3 @@
+class IntervalsAnyOf {
+	intervals: IntervalsContainer[];
+}

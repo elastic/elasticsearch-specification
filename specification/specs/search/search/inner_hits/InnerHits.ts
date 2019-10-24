@@ -1,12 +1,14 @@
 class InnerHits {
-	name: string;
+	collapse: FieldCollapse;
+	doc_value_fields: Field[];
+	explain: boolean;
 	from: integer;
+	highlight: Highlight;
+	ignore_unmapped: boolean;
+	name: string;
+	script_fields: Dictionary<string, ScriptField>;
 	size: integer;
 	sort: Sort[];
-	highlight: Highlight;
-	explain: boolean;
-	_source: Union<boolean, SourceFilter>;
+	source: Union<boolean, SourceFilter>;
 	version: boolean;
-	script_fields: Dictionary<string, ScriptField>;
-	docvalue_fields: Field[];
 }

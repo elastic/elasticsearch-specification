@@ -1,2 +1,2 @@
-class RefreshResponse extends ShardsOperationResponseBase {
+class RefreshResponse extends ShardsOperationResponseBase implements IResponse {
 }

@@ -1,9 +1,12 @@
 class ClusterNodesStats {
 	count: ClusterNodeCount;
-	versions: string[];
-	os: ClusterOperatingSystemStats;
-	process: ClusterProcess;
+	discovery_types: Dictionary<string, integer>;
+	file_system: ClusterFileSystem;
 	jvm: ClusterJvm;
-	fs: ClusterFileSystem;
+	network_types: ClusterNetworkTypes;
+	operating_system: ClusterOperatingSystemStats;
+	packaging_types: NodePackagingType[];
 	plugins: PluginStats[];
+	process: ClusterProcess;
+	versions: string[];
 }

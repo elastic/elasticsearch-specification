@@ -1,0 +1,3 @@
+class PutPrivilegesStatus {
+	created: boolean;
+}

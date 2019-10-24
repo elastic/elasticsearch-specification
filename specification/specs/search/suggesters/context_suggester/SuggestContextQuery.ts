@@ -1,7 +1,7 @@
 class SuggestContextQuery {
-	context: Context;
 	boost: double;
-	prefix: boolean;
-	precision: Union<Distance, integer>;
+	context: Context;
 	neighbours: Union<Distance[], integer[]>;
+	precision: Union<Distance, integer>;
+	prefix: boolean;
 }

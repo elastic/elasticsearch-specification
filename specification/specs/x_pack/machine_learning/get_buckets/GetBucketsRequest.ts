@@ -1,15 +1,11 @@
-@rest_spec_name("xpack.ml.get_buckets")
+@rest_spec_name("ml.get_buckets")
 class GetBucketsRequest extends RequestBase {
 	anomaly_score: double;
-	desc: boolean;
-	@prop_serializer("IsoDateTimeConverter")
+	descending: boolean;
 	end: Date;
 	exclude_interim: boolean;
 	expand: boolean;
 	page: Page;
 	sort: Field;
-	@prop_serializer("IsoDateTimeConverter")
 	start: Date;
-	@prop_serializer("IsoDateTimeConverter")
-	timestamp: Date;
 }

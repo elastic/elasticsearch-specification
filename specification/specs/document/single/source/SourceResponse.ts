@@ -1,3 +1,3 @@
-class SourceResponse<T> extends ResponseBase {
-	body: T;
+class SourceResponse<TDocument> extends ResponseBase {
+	body: TDocument;
 }

@@ -1,2 +1,2 @@
-class DeleteScriptResponse extends AcknowledgedResponseBase {
+class DeleteScriptResponse extends AcknowledgedResponseBase implements IResponse {
 }

@@ -1,5 +1,5 @@
 class SearchProfile {
-	rewrite_time: long;
-	query: QueryProfile[];
 	collector: Collector[];
+	query: QueryProfile[];
+	rewrite_time: long;
 }

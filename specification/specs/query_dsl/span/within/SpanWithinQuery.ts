@@ -1,4 +1,4 @@
 class SpanWithinQuery {
-	little: SpanQuery;
 	big: SpanQuery;
+	little: SpanQuery;
 }

@@ -1,9 +1,8 @@
-@class_serializer("FieldNameQueryJsonConverter`1")
 class CommonTermsQuery {
-	query: string;
-	cutoff_frequency: double;
-	low_freq_operator: Operator;
-	high_freq_operator: Operator;
-	minimum_should_match: MinimumShouldMatch;
 	analyzer: string;
+	cutoff_frequency: double;
+	high_frequency_operator: Operator;
+	low_frequency_operator: Operator;
+	minimum_should_match: MinimumShouldMatch;
+	query: string;
 }

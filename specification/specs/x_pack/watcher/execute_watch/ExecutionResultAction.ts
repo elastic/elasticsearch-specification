@@ -1,13 +1,12 @@
 class ExecutionResultAction {
-	id: string;
-	type: ActionType;
-	status: Status;
 	email: EmailActionResult;
+	id: string;
 	index: IndexActionResult;
-	webhook: WebhookActionResult;
 	logging: LoggingActionResult;
-	pagerduty: PagerDutyActionResult;
-	hipchat: HipChatActionResult;
-	slack: SlackActionResult;
+	pager_duty: PagerDutyActionResult;
 	reason: string;
+	slack: SlackActionResult;
+	status: Status;
+	type: ActionType;
+	webhook: WebhookActionResult;
 }

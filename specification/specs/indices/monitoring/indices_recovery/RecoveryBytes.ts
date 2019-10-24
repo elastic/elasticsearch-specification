@@ -1,6 +1,6 @@
 class RecoveryBytes {
-	total: long;
-	reused: long;
-	recovered: long;
 	percent: string;
+	recovered: long;
+	reused: long;
+	total: long;
 }

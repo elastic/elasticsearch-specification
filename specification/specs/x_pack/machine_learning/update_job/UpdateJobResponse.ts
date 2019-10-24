@@ -1,2 +1,2 @@
-class UpdateJobResponse extends ResponseBase {
+class UpdateJobResponse extends ResponseBase implements IResponse {
 }

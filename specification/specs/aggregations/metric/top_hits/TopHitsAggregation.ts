@@ -1,12 +1,13 @@
 class TopHitsAggregation {
+	doc_value_fields: Field[];
+	explain: boolean;
 	from: integer;
+	highlight: Highlight;
+	script_fields: Dictionary<string, ScriptField>;
 	size: integer;
 	sort: Sort[];
-	_source: Union<boolean, SourceFilter>;
-	highlight: Highlight;
-	explain: boolean;
-	script_fields: Dictionary<string, ScriptField>;
+	source: Union<boolean, SourceFilter>;
 	stored_fields: Field[];
-	version: boolean;
 	track_scores: boolean;
+	version: boolean;
 }

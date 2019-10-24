@@ -1,18 +1,20 @@
 class NodeStats {
-	timestamp: long;
-	name: string;
-	transport_address: string;
-	host: string;
-	ip: string | string[];
-	roles: NodeRole[];
-	indices: IndexStats;
-	os: OperatingSystemStats;
-	process: ProcessStats;
-	script: ScriptStats;
-	jvm: NodeJvmStats;
-	thread_pool: Dictionary<string, ThreadCountStats>;
+	adaptive_selection: Dictionary<string, AdaptiveSelectionStats>;
 	breakers: Dictionary<string, BreakerStats>;
-	fs: FileSystemStats;
-	transport: TransportStats;
+	file_system: FileSystemStats;
+	host: string;
 	http: HttpStats;
+	indices: IndexStats;
+	ingest: NodeIngestStats;
+	ip: string[];
+	jvm: NodeJvmStats;
+	name: string;
+	operating_system: OperatingSystemStats;
+	process: ProcessStats;
+	roles: NodeRole[];
+	script: ScriptStats;
+	thread_pool: Dictionary<string, ThreadCountStats>;
+	timestamp: long;
+	transport: TransportStats;
+	transport_address: string;
 }

@@ -1,4 +1,4 @@
 class IcuNormalizationCharFilter extends CharFilterBase {
-	name: IcuNormalizationType;
 	mode: IcuNormalizationMode;
+	name: IcuNormalizationType;
 }

@@ -1,5 +1,5 @@
 class ClusterShardMetrics {
-	min: double;
-	max: double;
 	avg: double;
+	max: double;
+	min: double;
 }

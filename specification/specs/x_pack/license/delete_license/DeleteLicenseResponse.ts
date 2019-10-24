@@ -1,2 +1,2 @@
-class DeleteLicenseResponse extends ResponseBase {
+class DeleteLicenseResponse extends ResponseBase implements IResponse {
 }

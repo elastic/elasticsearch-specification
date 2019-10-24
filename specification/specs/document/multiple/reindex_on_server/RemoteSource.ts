@@ -1,5 +1,5 @@
 class RemoteSource {
 	host: Uri;
-	username: string;
 	password: string;
+	username: string;
 }

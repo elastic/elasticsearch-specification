@@ -1,7 +1,7 @@
 class SourceField {
-	enabled: boolean;
 	compress: boolean;
 	compress_threshold: string;
-	includes: string[];
+	enabled: boolean;
 	excludes: string[];
+	includes: string[];
 }

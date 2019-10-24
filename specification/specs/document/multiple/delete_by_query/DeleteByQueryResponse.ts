@@ -1,17 +1,17 @@
-class DeleteByQueryResponse extends ResponseBase {
+class DeleteByQueryResponse extends ResponseBase implements IResponse {
 	is_valid: boolean;
-	took: long;
-	task: TaskId;
-	timed_out: boolean;
-	slice_id: integer;
-	deleted: long;
 	batches: long;
-	version_conflicts: long;
-	noops: long;
-	retries: Retries;
-	throttled_millis: long;
-	requests_per_second: float;
-	throttled_until_millis: long;
-	total: long;
+	deleted: long;
 	failures: BulkIndexByScrollFailure[];
+	noops: long;
+	requests_per_second: float;
+	retries: Retries;
+	slice_id: integer;
+	task: TaskId;
+	throttled_milliseconds: long;
+	throttled_until_milliseconds: long;
+	timed_out: boolean;
+	took: long;
+	total: long;
+	version_conflicts: long;
 }

@@ -1,5 +1,6 @@
-class MultiSearchResponse extends ResponseBase {
+class MultiSearchResponse extends ResponseBase implements IResponse {
+	took: long;
+	all_responses: IResponse[];
 	is_valid: boolean;
 	total_responses: integer;
-	all_responses: IResponse[];
 }

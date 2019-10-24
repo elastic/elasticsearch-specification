@@ -1,4 +1,3 @@
-@class_serializer("GetRepositoryResponseJsonConverter")
-class GetRepositoryResponse extends ResponseBase {
+class GetRepositoryResponse extends ResponseBase implements IResponse {
 	repositories: Dictionary<string, SnapshotRepository>;
 }

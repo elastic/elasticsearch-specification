@@ -1,3 +1,3 @@
-@rest_spec_name("xpack.security.get_role")
+@rest_spec_name("security.get_role")
 class GetRoleRequest extends RequestBase {
 }

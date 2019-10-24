@@ -1,11 +1,11 @@
 class NodeJvmInfo {
-	pid: integer;
-	version: string;
-	vm_name: string;
-	vm_version: string;
-	vm_vendor: string;
-	memory_pools: string[];
 	gc_collectors: string[];
-	start_time_in_millis: long;
-	mem: NodeInfoJVMMemory;
+	memory: NodeInfoJvmMemory;
+	memory_pools: string[];
+	pid: integer;
+	start_time: long;
+	version: string;
+	v_m_name: string;
+	v_m_vendor: string;
+	v_m_version: string;
 }

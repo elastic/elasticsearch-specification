@@ -1,3 +1,3 @@
-class NodesHotThreadsResponse extends ResponseBase {
+class NodesHotThreadsResponse extends ResponseBase implements IResponse {
 	hot_threads: HotThreadInformation[];
 }

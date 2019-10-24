@@ -1,4 +1,4 @@
 class ShardStoreException {
-	type: string;
 	reason: string;
+	type: string;
 }

@@ -1,4 +1,3 @@
-class IndicesResponseBase extends ResponseBase {
-	acknowledged: boolean;
-	_shards: ShardStatistics;
+class IndicesResponseBase extends AcknowledgedResponseBase implements IResponse {
+	shards_hit: ShardStatistics;
 }

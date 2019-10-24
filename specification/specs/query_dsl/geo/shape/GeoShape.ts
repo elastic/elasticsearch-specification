@@ -1,0 +1,3 @@
+class GeoShape {
+	type: string;
+}

@@ -1,8 +1,6 @@
 @rest_spec_name("exists_source")
 class SourceExistsRequest extends RequestBase {
 	@request_parameter()
-	parent: string;
-	@request_parameter()
 	preference: string;
 	@request_parameter()
 	realtime: boolean;
@@ -13,9 +11,9 @@ class SourceExistsRequest extends RequestBase {
 	@request_parameter()
 	source_enabled: boolean;
 	@request_parameter()
-	source_exclude: Field[];
+	source_excludes: Field[];
 	@request_parameter()
-	source_include: Field[];
+	source_includes: Field[];
 	@request_parameter()
 	version: long;
 	@request_parameter()

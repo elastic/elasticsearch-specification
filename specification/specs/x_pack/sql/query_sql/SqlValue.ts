@@ -1,0 +1,2 @@
+class SqlValue extends LazyDocument {
+}

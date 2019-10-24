@@ -1,7 +1,7 @@
 class SnapshotShardFailure {
-	node_id: string;
 	index: string;
-	shard_id: string;
+	node_id: string;
 	reason: string;
+	shard_id: string;
 	status: string;
 }

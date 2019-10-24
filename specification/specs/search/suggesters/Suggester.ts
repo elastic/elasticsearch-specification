@@ -1,5 +1,5 @@
 class Suggester {
-	field: Field;
 	analyzer: string;
+	field: Field;
 	size: integer;
 }

@@ -1,8 +1,8 @@
 class SuggestBucket {
-	text: string;
+	completion: CompletionSuggester;
+	phrase: PhraseSuggester;
 	prefix: string;
 	regex: string;
 	term: TermSuggester;
-	phrase: PhraseSuggester;
-	completion: CompletionSuggester;
+	text: string;
 }

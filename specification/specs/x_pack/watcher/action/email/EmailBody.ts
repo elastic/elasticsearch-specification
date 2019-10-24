@@ -1,4 +1,4 @@
 class EmailBody {
-	text: string;
 	html: string;
+	text: string;
 }

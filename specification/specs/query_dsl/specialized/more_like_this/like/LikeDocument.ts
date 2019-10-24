@@ -1,10 +1,8 @@
 class LikeDocument {
-	_index: IndexName;
-	_type: TypeName;
-	_id: Id;
+	document: any;
 	fields: Field[];
-	_routing: Routing;
-	@prop_serializer("SourceConverter")
-	doc: any;
+	id: Id;
+	index: IndexName;
 	per_field_analyzer: Dictionary<Field, string>;
+	routing: Routing;
 }

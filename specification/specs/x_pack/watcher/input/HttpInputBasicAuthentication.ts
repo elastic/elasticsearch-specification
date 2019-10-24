@@ -1,4 +1,4 @@
 class HttpInputBasicAuthentication {
-	username: string;
 	password: string;
+	username: string;
 }

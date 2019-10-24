@@ -1,3 +1,3 @@
-class StopDatafeedResponse extends ResponseBase {
+class StopDatafeedResponse extends ResponseBase implements IResponse {
 	stopped: boolean;
 }

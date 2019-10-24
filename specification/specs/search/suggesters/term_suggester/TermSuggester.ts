@@ -1,14 +1,14 @@
 class TermSuggester {
-	text: string;
-	shard_size: integer;
-	prefix_length: integer;
-	suggest_mode: SuggestMode;
-	min_word_length: integer;
+	lowercase_terms: boolean;
 	max_edits: integer;
 	max_inspections: integer;
-	min_doc_freq: double;
-	max_term_freq: double;
+	max_term_frequency: float;
+	min_doc_frequency: float;
+	min_word_length: integer;
+	prefix_length: integer;
+	shard_size: integer;
 	sort: SuggestSort;
-	lowercase_terms: boolean;
 	string_distance: StringDistance;
+	suggest_mode: SuggestMode;
+	text: string;
 }

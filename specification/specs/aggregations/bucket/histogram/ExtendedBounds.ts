@@ -1,4 +1,4 @@
 class ExtendedBounds<T> {
-	min: T;
-	max: T;
+	maximum: T;
+	minimum: T;
 }

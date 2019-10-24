@@ -1,9 +1,9 @@
 class ReindexNode {
-	name: string;
-	transport_address: string;
+	attributes: Dictionary<string, string>;
 	host: string;
 	ip: string;
+	name: string;
 	roles: string[];
-	attributes: Dictionary<string, string>;
 	tasks: Dictionary<TaskId, ReindexTask>;
+	transport_address: string;
 }

@@ -1,12 +1,13 @@
 class CatIndicesRecord implements ICatRecord {
-	'docs.count': string;
-	'docs.deleted': string;
+	docs_count: string;
+	docs_deleted: string;
 	health: string;
 	index: string;
-	pri: string;
-	'pri.store.size': string;
-	rep: string;
-	'store.size': string;
+	u_u_i_d: string;
+	primary: string;
+	primary_store_size: string;
+	replica: string;
 	status: string;
-	tm: string;
+	store_size: string;
+	total_memory: string;
 }

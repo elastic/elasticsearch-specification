@@ -1,3 +1,3 @@
-@rest_spec_name("xpack.security.get_user")
+@rest_spec_name("security.get_user")
 class GetUserRequest extends RequestBase {
 }

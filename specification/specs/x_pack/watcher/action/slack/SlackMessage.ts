@@ -1,8 +1,8 @@
 class SlackMessage {
-	from: string;
-	to: string[];
-	icon: string;
-	text: string;
 	attachments: SlackAttachment[];
 	dynamic_attachments: SlackDynamicAttachment;
+	from: string;
+	icon: string;
+	text: string;
+	to: string[];
 }

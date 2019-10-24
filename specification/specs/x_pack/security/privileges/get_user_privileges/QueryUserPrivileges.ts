@@ -1,0 +1,3 @@
+class QueryUserPrivileges {
+	term: TermUserPrivileges;
+}

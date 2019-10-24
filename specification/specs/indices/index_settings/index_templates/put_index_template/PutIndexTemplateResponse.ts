@@ -1,2 +1,2 @@
-class PutIndexTemplateResponse extends AcknowledgedResponseBase {
+class PutIndexTemplateResponse extends AcknowledgedResponseBase implements IResponse {
 }

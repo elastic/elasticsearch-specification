@@ -1,6 +1,6 @@
 class XPackRoleMapping {
-	metadata: Dictionary<string, any>;
 	enabled: boolean;
+	metadata: Dictionary<string, any>;
 	roles: string[];
 	rules: RoleMappingRuleBase;
 }

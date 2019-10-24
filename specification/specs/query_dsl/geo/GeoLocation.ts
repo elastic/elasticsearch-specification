@@ -1,4 +1,4 @@
 class GeoLocation {
-	lat: double;
-	lon: double;
+	latitude: double;
+	longitude: double;
 }

@@ -1,18 +1,18 @@
 class IndexStats {
-	docs: DocStats;
-	store: StoreStats;
-	indexing: IndexingStats;
-	get: GetStats;
-	search: SearchStats;
-	merges: MergesStats;
-	refresh: RefreshStats;
-	flush: FlushStats;
-	warmer: WarmerStats;
-	query_cache: QueryCacheStats;
-	fielddata: FielddataStats;
 	completion: CompletionStats;
-	segments: SegmentsStats;
-	translog: TranslogStats;
-	request_cache: RequestCacheStats;
+	documents: DocStats;
+	fielddata: FielddataStats;
+	flush: FlushStats;
+	get: GetStats;
+	indexing: IndexingStats;
+	merges: MergesStats;
+	query_cache: QueryCacheStats;
 	recovery: RecoveryStats;
+	refresh: RefreshStats;
+	request_cache: RequestCacheStats;
+	search: SearchStats;
+	segments: SegmentsStats;
+	store: StoreStats;
+	translog: TranslogStats;
+	warmer: WarmerStats;
 }

@@ -1,4 +1,4 @@
-class PutRoleMappingResponse extends ResponseBase {
-	role_mapping: PutRoleMappingStatus;
+class PutRoleMappingResponse extends ResponseBase implements IResponse {
 	created: boolean;
+	role_mapping: PutRoleMappingStatus;
 }
