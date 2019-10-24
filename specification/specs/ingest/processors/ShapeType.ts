@@ -1,4 +1,4 @@
 enum ShapeType {
-	geo_shape = 0,
-	shape = 1
+	geo_shape,
+	shape
 }

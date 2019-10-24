@@ -1,4 +1,4 @@
 enum MatchType {
-	simple = 0,
-	regex = 1
+	simple,
+	regex
 }

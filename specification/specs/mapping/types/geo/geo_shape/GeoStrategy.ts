@@ -1,4 +1,4 @@
 enum GeoStrategy {
-	recursive = 0,
-	term = 1
+	recursive,
+	term
 }

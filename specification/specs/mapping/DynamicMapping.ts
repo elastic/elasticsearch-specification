@@ -1,3 +1,3 @@
 enum DynamicMapping {
-	strict = 0
+	strict
 }

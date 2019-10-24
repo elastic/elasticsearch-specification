@@ -1,5 +1,5 @@
 enum SamplerAggregationExecutionHint {
-	map = 0,
-	global_ordinals = 1,
-	bytes_hash = 2
+	map,
+	global_ordinals,
+	bytes_hash
 }

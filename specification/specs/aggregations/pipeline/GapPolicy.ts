@@ -1,4 +1,4 @@
 enum GapPolicy {
-	skip = 0,
-	insert_zeros = 1
+	skip,
+	insert_zeros
 }

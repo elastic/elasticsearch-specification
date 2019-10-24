@@ -1,6 +1,6 @@
 enum RecoveryInitialShards {
-	quorem = 0,
-	'quorem-1' = 1,
-	full = 2,
-	'full-1' = 3
+	quorem,
+	'quorem-1',
+	full,
+	'full-1'
 }

@@ -1,6 +1,6 @@
 enum IndexOptions {
-	docs = 0,
-	freqs = 1,
-	positions = 2,
-	offsets = 3
+	docs,
+	freqs,
+	positions,
+	offsets
 }

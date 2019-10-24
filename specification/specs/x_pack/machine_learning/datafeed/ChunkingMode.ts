@@ -1,5 +1,5 @@
 enum ChunkingMode {
-	auto = 0,
-	manual = 1,
-	off = 2
+	auto,
+	manual,
+	off
 }

@@ -1,3 +1,3 @@
 enum AccessTokenGrantType {
-	password = 0
+	password
 }
