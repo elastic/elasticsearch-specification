@@ -19,7 +19,7 @@ export class SwaggerGenerator {
       definitions: new JsonSchemaBuilder(this.specification).build()
     };
 
-    const swaggerRoot = Yaml.safeDump(swag, { noRefs: true, lineWidth: 400 });
+    const swaggerRoot = Yaml.safeDump(swag, { noRefs: true, lineWidth: 400, skipInvalid: true });
     const f = __dirname + "/" + folder;
 
     fs.writeFileSync( f + "/index.yml", swaggerRoot);

@@ -8,16 +8,16 @@ class SwaggerEndpointBuilder {
         return this.specification.endpoints
             .map(e => e.url.paths.map(p => ({ endpoint: e, path: p })))
             .reduce((a, paths) => a.concat(paths), [])
-            .reduce((o, e) => (Object.assign({}, o, { [e.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path) })), {});
+            .reduce((o, e) => (Object.assign({}, o, { [e.path.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path) })), {});
     }
     static createPath(e, url) {
         const path = {
-            parameters: e.url.queryStringParameters
+            parameters: e.queryStringParameters
                 .map(SwaggerEndpointBuilder.urlQueryStringToParameter)
         };
-        if (e.bodyDocumentation)
+        if (e.body)
             path.parameters.push(SwaggerEndpointBuilder.urlBodyToParameter(e));
-        return e.methods
+        return url.methods
             .map(m => m.toLowerCase())
             .reduce((o, m) => (Object.assign({}, o, { [m]: SwaggerEndpointBuilder.createOperation(e, url) })), path);
     }
@@ -28,18 +28,17 @@ class SwaggerEndpointBuilder {
             tags: [endpoint.name],
             consumes: defaultContentTypes,
             produces: defaultContentTypes,
-            parameters: endpoint.url.parts
-                .filter(p => url.match(new RegExp("\{" + p.name + "\}")))
+            parameters: url.parts
                 .map(SwaggerEndpointBuilder.urlPartToParameter),
-            externalDocs: endpoint.documentation ? { url: endpoint.documentation } : null
+            externalDocs: endpoint.documentation ? { url: endpoint.documentation.url || "" } : null
         };
     }
     static urlBodyToParameter(e) {
         return {
             in: "body",
             name: "request",
-            description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
-            required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
+            description: e.body ? e.body.description : null,
+            required: e.body ? e.body.required : false,
             schema: { $ref: "#/definitions/" + e.typeMapping.request }
         };
     }

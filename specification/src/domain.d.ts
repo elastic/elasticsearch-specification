@@ -48,22 +48,43 @@ declare module Domain {
         required: boolean;
         constructor(data: any);
     }
+    class Documentation {
+        description: string;
+        url: string;
+        constructor(data: any);
+    }
+    enum Stability {
+        stable = 0,
+        beta = 1,
+        experimental = 2,
+    }
+    class Deprecation {
+        version: string;
+        description: string;
+        constructor(data: any);
+    }
     class Endpoint {
         name: string;
-        documentation: string;
-        bodyDocumentation: BodyDocumentation;
-        methods: string[];
-        url: Route;
         typeMapping: RestSpecMapping;
+        documentation: Documentation;
+        stability: Stability;
+        body: BodyDocumentation;
+        url: Url;
+        queryStringParameters: QueryStringParameter[];
+        deprecated: Deprecation;
         constructor(file: string, restSpecMapping: {
             [p: string]: RestSpecMapping;
         });
     }
-    class Route {
+    class UrlPath {
         path: string;
-        paths: string[];
+        methods: string[];
         parts: RoutePart[];
-        queryStringParameters: QueryStringParameter[];
+        deprecated: Deprecation;
+        constructor(data: any);
+    }
+    class Url {
+        paths: UrlPath[];
         constructor(data: any);
     }
     class RestSpecTypeConverter {

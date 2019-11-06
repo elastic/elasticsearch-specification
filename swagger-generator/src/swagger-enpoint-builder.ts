@@ -1,6 +1,6 @@
 import {Specification} from "../../specification/src/api-specification";
 import {Path, Schema, Operation, Response, Parameter} from "swagger-schema-official";
-import {Endpoint, QueryStringParameter, RoutePart} from "../../specification/src/domain";
+import {Endpoint, QueryStringParameter, RoutePart, UrlPath} from "../../specification/src/domain";
 
 export type Paths = { [p: string]: Path};
 
@@ -12,34 +12,33 @@ export class SwaggerEndpointBuilder {
     return this.specification.endpoints
       .map(e => e.url.paths.map(p => ({ endpoint: e, path: p})))
       .reduce((a, paths) => a.concat(paths), [])
-      .reduce((o, e) => ({...o, [e.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path)}), {});
+      .reduce((o, e) => ({...o, [e.path.path]: SwaggerEndpointBuilder.createPath(e.endpoint, e.path)}), {});
   }
 
-  private static createPath(e: Endpoint, url: string): Path {
+  private static createPath(e: Endpoint, url: UrlPath): Path {
     const path: Path = {
-      parameters: e.url.queryStringParameters
+      parameters: e.queryStringParameters
         .map(SwaggerEndpointBuilder.urlQueryStringToParameter)
     };
 
-    if (e.bodyDocumentation)
+    if (e.body)
       path.parameters.push(SwaggerEndpointBuilder.urlBodyToParameter(e));
 
-    return e.methods
+    return url.methods
       .map(m => m.toLowerCase())
       .reduce((o, m) => ({...o, [m]: SwaggerEndpointBuilder.createOperation(e, url)}), path);
   }
 
-  private static createOperation(endpoint: Endpoint, url: string): Operation {
+  private static createOperation(endpoint: Endpoint, url: UrlPath): Operation {
     const defaultContentTypes = ["application/json"];
     return {
       responses: SwaggerEndpointBuilder.getResponses(endpoint),
       tags: [endpoint.name],
       consumes: defaultContentTypes,
       produces: defaultContentTypes,
-      parameters: endpoint.url.parts
-        .filter(p => url.match(new RegExp("\{" + p.name + "\}")))
+      parameters: url.parts
         .map(SwaggerEndpointBuilder.urlPartToParameter),
-      externalDocs: endpoint.documentation ? {url: endpoint.documentation} : null
+      externalDocs: endpoint.documentation ? {url: endpoint.documentation.url || ""} : null
     };
   }
 
@@ -47,8 +46,8 @@ export class SwaggerEndpointBuilder {
     return {
       in: "body",
       name: "request",
-      description: e.bodyDocumentation ? e.bodyDocumentation.description : null,
-      required: e.bodyDocumentation ? e.bodyDocumentation.required : false,
+      description: e.body ? e.body.description : null,
+      required: e.body ? e.body.required : false,
       schema: {$ref: "#/definitions/" + e.typeMapping.request }
     };
   }

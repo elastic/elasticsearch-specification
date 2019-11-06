@@ -1,5 +1,6 @@
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
 import * as _ from "lodash";
+import { BreakpointResolver } from "ntypescript";
 
 module Domain {
   import Any = ts.formatting.Shared.TokenRange.Any;
@@ -55,14 +56,35 @@ module Domain {
       this.required = !!data.required;
     }
   }
+  export class Documentation {
+    description: string;
+    url: string;
+    constructor(data: any) {
+      this.description = data.description;
+      this.url = data.url;
+    }
+  }
+  export enum Stability { stable, beta, experimental }
+
+  export class Deprecation {
+    version: string;
+    description: string;
+    constructor(data: any) {
+      this.version = data.version;
+      this.description = data.description;
+    }
+  }
 
   export class Endpoint {
     name: string;
-    documentation: string;
-    bodyDocumentation: BodyDocumentation;
-    methods: string[];
-    url: Route;
     typeMapping: RestSpecMapping;
+
+    documentation: Documentation;
+    stability: Stability;
+    body: BodyDocumentation;
+    url: Url;
+    queryStringParameters: QueryStringParameter[] = [];
+    deprecated: Deprecation;
 
     constructor(file: string, restSpecMapping: { [p: string]: RestSpecMapping }) {
       const json = require(file);
@@ -71,26 +93,44 @@ module Domain {
       this.typeMapping = restSpecMapping[this.name];
       const data = json[this.name];
 
-      this.documentation = data.documentation;
-      this.methods = data.methods;
-      if (data.body)
-        this.bodyDocumentation  = new BodyDocumentation(data.body);
+      this.documentation = new Documentation(data.documentation);
+      this.queryStringParameters = _(data.params).map((v, k) => new QueryStringParameter(k, v)).value();
 
-      this.url = new Route(data.url);
+      if (data.body)
+        this.body  = new BodyDocumentation(data.body);
+      if (data.deprecated) 
+        this.deprecated = new Deprecation(data.deprecated);
+
+      switch(data.stability)
+      {
+        case "stable": this.stability =  Stability.stable; break;
+        case "beta": this.stability = Stability.stable; break;
+        case "experimental": this.stability = Stability.stable; break;
+      };
+
+      this.url = new Url(data.url);
+    }
+  }
+  export class UrlPath {
+    path: string;
+    methods: string[];
+    parts: RoutePart[];
+    deprecated: Deprecation;
+    constructor(data: any) {
+      this.path = data.path;
+      this.methods = data.methods;
+      this.parts = _(data.parts).map((v, k) => new RoutePart(k, v)).value();
+      if (data.deprecated) 
+        this.deprecated = new Deprecation(data.deprecated);
     }
   }
 
-  export class Route {
-    path: string;
-    paths: string[];
-    parts: RoutePart[];
-    queryStringParameters: QueryStringParameter[] = [];
+  export class Url {
+    paths: UrlPath[];
+
 
     constructor(data: any) {
-      this.path = data.path;
-      this.paths = data.paths;
-      this.parts = _(data.parts).map((v, k) => new RoutePart(k, v)).value();
-      this.queryStringParameters = _(data.params).map((v, k) => new QueryStringParameter(k, v)).value();
+      this.paths = _(data.paths).map(p => new UrlPath(p)).value();
     }
   }
   export class RestSpecTypeConverter {

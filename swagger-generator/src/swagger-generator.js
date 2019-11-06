@@ -18,7 +18,7 @@ class SwaggerGenerator {
             paths: new swagger_enpoint_builder_1.SwaggerEndpointBuilder(this.specification).build(),
             definitions: new json_schema_builder_1.JsonSchemaBuilder(this.specification).build()
         };
-        const swaggerRoot = Yaml.safeDump(swag, { noRefs: true, lineWidth: 400 });
+        const swaggerRoot = Yaml.safeDump(swag, { noRefs: true, lineWidth: 400, skipInvalid: true });
         const f = __dirname + "/" + folder;
         fs.writeFileSync(f + "/index.yml", swaggerRoot);
         fs.writeFileSync(f + "/index.json", JSON.stringify(swag));
