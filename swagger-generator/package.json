@@ -7,24 +7,18 @@
   "scripts": {
     "start": "node src/swagger-ui.js",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/index.js",
-    "compile": "ntsc -p .",
-    "typings": "typings",
+    "compile": "tsc",
     "swagger": "node src/swagger-ui.js",
     "both": "npm run compile && node src/index.js && node src/swagger-ui.js"
   },
   "author": "Elastic",
   "license": "MIT",
   "devDependencies": {
-    "@types/lodash": "^4.14.110",
-    "@types/node": "^10.5.1",
+    "@types/node": "^13.7.7",
+    "@types/lodash": "^4.14.149",
     "@types/swagger-schema-official": "^2.0.10",
-    "eclint": "^1.1.5",
-    "gulp": "^3.9.0",
-    "gulp-add-src": "^0.2.0",
-    "ntypescript": "1.201706190042.1",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2",
-    "typings": "0.6.8"
+    "typescript": "^3.8.3",
+    "tslint": "^6.0.0"
   },
   "dependencies": {
     "elasticsearch-client-specification": "file:../specification",

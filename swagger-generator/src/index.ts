@@ -1,4 +1,5 @@
 import {Specification} from "../../specification/src/api-specification";
+import {SwaggerEndpointBuilder} from "./swagger-enpoint-builder";
 import {SwaggerGenerator} from "./swagger-generator";
 // tslint:disable:no-console
 
