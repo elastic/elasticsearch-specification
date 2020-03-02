@@ -6,23 +6,19 @@
   "scripts": {
     "start": "npm run compile && node src/main.js",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
-    "compile": "ntsc -p .",
-    "typings": "typings",
-    "build": "gulp --gulpfile build/gulpfile.js"
+    "compile": "tsc"
   },
   "author": "Elastic",
   "license": "MIT",
   "devDependencies": {
-    "eclint": "^1.1.5",
-    "gulp": "^3.9.0",
-    "gulp-add-src": "^0.2.0",
-    "ntypescript": "1.201706190042.1",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2",
-    "typings": "0.6.8"
+    "@types/node": "^13.7.7",
+    "@types/lodash": "^4.14.149",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3"
   },
   "dependencies": {
-    "glob": "^7.1.1",
-    "lodash": "^3.10.1"
+    "byots": "3.9.0-dev.20200229.5.1",
+    "glob": "^7.1.6",
+    "lodash": "^4.17.15"
   }
 }

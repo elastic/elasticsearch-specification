@@ -1,6 +1,6 @@
 enum VersionType {
-	internal,
-	external,
-	external_gte,
-	force
+	internal = 0,
+	external = 1,
+	external_gte = 2,
+	force = 3
 }

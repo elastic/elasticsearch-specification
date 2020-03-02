@@ -1,4 +1,4 @@
 enum RuleFilterType {
-	include,
-	exclude
+	include = 0,
+	exclude = 1
 }

@@ -1,3 +1,5 @@
+import * as ts from 'byots'
+
 export class SpecValidator {
   static validate(program: ts.Program): string[] {
     const errors: string[] = [];

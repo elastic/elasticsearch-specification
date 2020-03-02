@@ -1,4 +1,4 @@
 enum EdgeNGramSide {
-	front,
-	back
+	front = 0,
+	back = 1
 }

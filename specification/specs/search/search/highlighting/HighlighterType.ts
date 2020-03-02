@@ -1,5 +1,5 @@
 enum HighlighterType {
-	plain,
-	fvh,
-	unified
+	plain = 0,
+	fvh = 1,
+	unified = 2
 }

@@ -1,5 +1,5 @@
 enum ShardStoreAllocation {
-	primary,
-	replica,
-	unused
+	primary = 0,
+	replica = 1,
+	unused = 2
 }

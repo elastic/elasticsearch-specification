@@ -1,7 +1,7 @@
 enum Normalization {
-	no,
-	h1,
-	h2,
-	h3,
-	z
+	no = 0,
+	h1 = 1,
+	h2 = 2,
+	h3 = 3,
+	z = 4
 }

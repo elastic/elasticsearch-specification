@@ -1,5 +1,5 @@
 enum GeoValidationMethod {
-	coerce,
-	ignore_malformed,
-	strict
+	coerce = 0,
+	ignore_malformed = 1,
+	strict = 2
 }

@@ -1,5 +1,6 @@
 import { RestSpecMapping } from "./rest-spec-mapping";
 import Domain = require("../domain");
+import * as ts from 'byots';
 export declare class TypeReader {
     private program;
     private checker;
@@ -9,5 +10,5 @@ export declare class TypeReader {
         [id: string]: RestSpecMapping;
     };
     constructor(program: ts.Program);
-    private visit(node);
+    private visit;
 }

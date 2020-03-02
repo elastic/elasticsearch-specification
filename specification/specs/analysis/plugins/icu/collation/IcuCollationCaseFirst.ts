@@ -1,4 +1,4 @@
 enum IcuCollationCaseFirst {
-	lower,
-	upper
+	lower = 0,
+	upper = 1
 }

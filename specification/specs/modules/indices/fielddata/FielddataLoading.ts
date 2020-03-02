@@ -1,4 +1,4 @@
 enum FielddataLoading {
-	eager,
-	eager_global_ordinals
+	eager = 0,
+	eager_global_ordinals = 1
 }

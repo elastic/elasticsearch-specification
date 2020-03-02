@@ -1,4 +1,4 @@
 enum SuggestSort {
-	score,
-	frequency
+	score = 0,
+	frequency = 1
 }

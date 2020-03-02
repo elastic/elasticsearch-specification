@@ -1,5 +1,5 @@
 enum DistinctCountFunction {
-	DistinctCount,
-	LowDistinctCount,
-	HighDistinctCount
+	DistinctCount = 0,
+	LowDistinctCount = 1,
+	HighDistinctCount = 2
 }

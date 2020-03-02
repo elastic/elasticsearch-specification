@@ -1,6 +1,6 @@
 enum DatafeedState {
-	started,
-	stopped,
-	starting,
-	stopping
+	started = 0,
+	stopped = 1,
+	starting = 2,
+	stopping = 3
 }

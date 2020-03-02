@@ -1,4 +1,4 @@
 enum HoltWintersType {
-	add,
-	mult
+	add = 0,
+	mult = 1
 }

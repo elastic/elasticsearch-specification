@@ -1,5 +1,5 @@
 enum ScriptLang {
-	painless,
-	expression,
-	mustache
+	painless = 0,
+	expression = 1,
+	mustache = 2
 }

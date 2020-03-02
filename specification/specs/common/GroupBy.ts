@@ -1,5 +1,5 @@
 enum GroupBy {
-	nodes,
-	parents,
-	none
+	nodes = 0,
+	parents = 1,
+	none = 2
 }

@@ -1,5 +1,5 @@
 enum PhoneticNameType {
-	generic,
-	ashkenazi,
-	sephardic
+	generic = 0,
+	ashkenazi = 1,
+	sephardic = 2
 }

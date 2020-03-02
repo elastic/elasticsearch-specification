@@ -1,4 +1,4 @@
 enum IndexSortMode {
-	min,
-	max
+	min = 0,
+	max = 1
 }

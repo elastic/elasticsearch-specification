@@ -1,4 +1,4 @@
 enum IcuNormalizationMode {
-	decompose,
-	compose
+	decompose = 0,
+	compose = 1
 }

@@ -1,6 +1,6 @@
 enum ExcludeFrequent {
-	all,
-	none,
-	by,
-	over
+	all = 0,
+	none = 1,
+	by = 2,
+	over = 3
 }

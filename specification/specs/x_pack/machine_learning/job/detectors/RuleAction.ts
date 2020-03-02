@@ -1,4 +1,4 @@
 enum RuleAction {
-	skip_result,
-	skip_model_update
+	skip_result = 0,
+	skip_model_update = 1
 }

@@ -1,5 +1,5 @@
 enum ClusterStatus {
-	green,
-	yellow,
-	red
+	green = 0,
+	yellow = 1,
+	red = 2
 }

@@ -1,5 +1,5 @@
 enum Level {
-	cluster,
-	indices,
-	shards
+	cluster = 0,
+	indices = 1,
+	shards = 2
 }

@@ -1,6 +1,6 @@
 enum GeoPointFielddataFormat {
-	array,
-	doc_values,
-	compressed,
-	disabled
+	array = 0,
+	doc_values = 1,
+	compressed = 2,
+	disabled = 3
 }

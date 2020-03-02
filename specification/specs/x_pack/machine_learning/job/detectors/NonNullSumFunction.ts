@@ -1,5 +1,5 @@
 enum NonNullSumFunction {
-	NonNullSum,
-	HighNonNullSum,
-	LowNonNullSum
+	NonNullSum = 0,
+	HighNonNullSum = 1,
+	LowNonNullSum = 2
 }

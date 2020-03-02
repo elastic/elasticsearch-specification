@@ -1,5 +1,5 @@
 enum LifecycleOperationMode {
-	RUNNING,
-	STOPPING,
-	STOPPED
+	RUNNING = 0,
+	STOPPING = 1,
+	STOPPED = 2
 }

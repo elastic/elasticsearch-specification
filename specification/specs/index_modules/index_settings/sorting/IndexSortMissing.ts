@@ -1,4 +1,4 @@
 enum IndexSortMissing {
-	_first,
-	_last
+	_first = 0,
+	_last = 1
 }

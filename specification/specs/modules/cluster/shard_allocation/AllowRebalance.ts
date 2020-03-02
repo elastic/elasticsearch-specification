@@ -1,5 +1,5 @@
 enum AllowRebalance {
-	always,
-	indices_primaries_active,
-	indices_all_active
+	always = 0,
+	indices_primaries_active = 1,
+	indices_all_active = 2
 }

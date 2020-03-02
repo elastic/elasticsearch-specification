@@ -1,4 +1,4 @@
 enum NumericFielddataFormat {
-	array,
-	disabled
+	array = 0,
+	disabled = 1
 }

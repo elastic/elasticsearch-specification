@@ -1,4 +1,4 @@
 enum IcuCollationDecomposition {
-	no,
-	identical
+	no = 0,
+	identical = 1
 }

@@ -1,4 +1,4 @@
 enum FollowerIndexStatus {
-	active,
-	paused
+	active = 0,
+	paused = 1
 }

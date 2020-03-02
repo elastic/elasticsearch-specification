@@ -1,4 +1,4 @@
 enum GeoExecution {
-	memory,
-	indexed
+	memory = 0,
+	indexed = 1
 }

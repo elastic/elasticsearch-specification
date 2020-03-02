@@ -1,9 +1,8 @@
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
 import * as _ from "lodash";
-import { BreakpointResolver } from "ntypescript";
+import * as ts from 'byots'
 
-module Domain {
-  import Any = ts.formatting.Shared.TokenRange.Any;
+namespace Domain {
 
   export class Type {
     constructor(public name: string) {}
@@ -88,17 +87,18 @@ module Domain {
 
     constructor(file: string, restSpecMapping: { [p: string]: RestSpecMapping }) {
       const json = require(file);
-
+      // @ts-ignore
       this.name = _(json).keys().first();
       this.typeMapping = restSpecMapping[this.name];
       const data = json[this.name];
 
       this.documentation = new Documentation(data.documentation);
+      // @ts-ignore
       this.queryStringParameters = _(data.params).map((v, k) => new QueryStringParameter(k, v)).value();
 
       if (data.body)
         this.body  = new BodyDocumentation(data.body);
-      if (data.deprecated) 
+      if (data.deprecated)
         this.deprecated = new Deprecation(data.deprecated);
 
       switch(data.stability)
@@ -119,8 +119,9 @@ module Domain {
     constructor(data: any) {
       this.path = data.path;
       this.methods = data.methods;
+      // @ts-ignore
       this.parts = _(data.parts).map((v, k) => new RoutePart(k, v)).value();
-      if (data.deprecated) 
+      if (data.deprecated)
         this.deprecated = new Deprecation(data.deprecated);
     }
   }
@@ -128,8 +129,8 @@ module Domain {
   export class Url {
     paths: UrlPath[];
 
-
     constructor(data: any) {
+      // @ts-ignore
       this.paths = _(data.paths).map(p => new UrlPath(p)).value();
     }
   }

@@ -1,4 +1,4 @@
 enum TranslogDurability {
-	request,
-	async
+	request = 0,
+	async = 1
 }

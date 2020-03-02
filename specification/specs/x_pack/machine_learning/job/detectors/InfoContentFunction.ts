@@ -1,5 +1,5 @@
 enum InfoContentFunction {
-	InfoContent,
-	HighInfoContent,
-	LowInfoContent
+	InfoContent = 0,
+	HighInfoContent = 1,
+	LowInfoContent = 2
 }

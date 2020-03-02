@@ -1,5 +1,5 @@
 enum ThreadType {
-	cpu,
-	wait,
-	block
+	cpu = 0,
+	wait = 1,
+	block = 2
 }

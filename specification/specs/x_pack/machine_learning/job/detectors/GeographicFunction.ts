@@ -1,3 +1,3 @@
 enum GeographicFunction {
-	LatLong
+	LatLong = 0
 }

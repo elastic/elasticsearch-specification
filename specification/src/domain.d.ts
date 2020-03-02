@@ -1,5 +1,5 @@
 import { RestSpecMapping } from "./specification/rest-spec-mapping";
-declare module Domain {
+declare namespace Domain {
     class Type {
         name: string;
         constructor(name: string);
@@ -56,7 +56,7 @@ declare module Domain {
     enum Stability {
         stable = 0,
         beta = 1,
-        experimental = 2,
+        experimental = 2
     }
     class Deprecation {
         version: string;

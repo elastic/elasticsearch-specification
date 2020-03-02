@@ -1,3 +1,3 @@
 enum HighlighterTagsSchema {
-	styled
+	styled = 0
 }

@@ -1,4 +1,4 @@
 enum IndexSortOrder {
-	asc,
-	desc
+	asc = 0,
+	desc = 1
 }

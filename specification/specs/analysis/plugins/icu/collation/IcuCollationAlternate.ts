@@ -1,4 +1,4 @@
 enum IcuCollationAlternate {
-	shifted,
-	'non-ignorable'
+	shifted = 0,
+	'non-ignorable' = 1
 }

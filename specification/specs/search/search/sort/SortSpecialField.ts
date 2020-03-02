@@ -1,4 +1,4 @@
 enum SortSpecialField {
-	_score,
-	_doc
+	_score = 0,
+	_doc = 1
 }

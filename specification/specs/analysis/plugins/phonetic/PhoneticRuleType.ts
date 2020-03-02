@@ -1,4 +1,4 @@
 enum PhoneticRuleType {
-	approx,
-	exact
+	approx = 0,
+	exact = 1
 }

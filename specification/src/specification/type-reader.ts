@@ -1,6 +1,7 @@
 import { TypeName, RestSpecName, RestSpecMapping } from "./rest-spec-mapping";
 import Domain = require("../domain");
 import * as _ from "lodash";
+import * as ts from 'byots'
 
 class Visitor {
   constructor(protected checker: ts.TypeChecker) {}
@@ -119,7 +120,7 @@ class InterfaceVisitor extends Visitor {
   }
 
   private createUnion(t: ts.TypeReferenceNode, typeName) {
-    const args: ts.Node[] = t.typeArguments;
+    const args: ts.Node[] = t.typeArguments.map(n=>n as ts.Node);
     const types = args.map(ct => this.visitTypeNode(ct));
     if (types.length < 2)
       throw Error("A union should have at least two types but saw " + types.length + " on " + typeName);
@@ -129,7 +130,7 @@ class InterfaceVisitor extends Visitor {
   }
 
   private createDictionary(t: ts.TypeReferenceNode, typeName) {
-    const args: ts.Node[] = t.typeArguments;
+    const args: ts.Node[] = t.typeArguments.map(n=>n as ts.Node);
     const types = args.map(ct => this.visitTypeNode(ct));
     if (types.length !== 2)
       throw Error("A dictionary should contain 2 type args but found " + types.length + " on " + typeName);
@@ -149,7 +150,7 @@ class InterfaceVisitor extends Visitor {
   ];
 
   private annotate(declaration: Domain.TypeDeclaration, symbol: ts.Symbol) {
-    const documentation = ts.displayPartsToString(symbol.getDocumentationComment());
+    const documentation = ts.displayPartsToString(symbol.getDocumentationComment(null));
   }
 }
 

@@ -5,9 +5,9 @@ const specification = Specification.loadWithValidation();
 
 const errorsLength = specification.domain_errors.length + specification.endpoint_errors.length;
 
-//const searchAPI = specification.endpoints.find(e => e.name === "search");
-//const searchRequest = specification.typeLookup[searchAPI.typeMapping.request];
-//const searchResponse = specification.typeLookup[searchAPI.typeMapping.response];
+// const searchAPI = specification.endpoints.find(e => e.name === "search");
+// const searchRequest = specification.typeLookup[searchAPI.typeMapping.request];
+// const searchResponse = specification.typeLookup[searchAPI.typeMapping.response];
 
 console.log(`
 The specification contains

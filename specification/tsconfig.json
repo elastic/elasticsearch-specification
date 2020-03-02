@@ -17,15 +17,5 @@
     },
     "compileOnSave": true,
     "buildOnSave": true,
-    "files": [
-        "src/domain.ts",
-        "src/main.ts",
-        "src/api-specification.ts",
-        "src/specification/validator.ts",
-        "src/specification/type-reader.ts",
-        "typings/main.d.ts",
-        "typings/main/ambient/lodash/lodash.d.ts",
-        "typings/main/ambient/node/node.d.ts",
-        "node_modules/ntypescript/bin/ntypescript.d.ts"
-    ]
+    "include": ["src/**.ts"]
 }

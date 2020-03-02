@@ -1,7 +1,7 @@
 enum TokenChar {
-	letter,
-	digit,
-	whitespace,
-	punctuation,
-	symbol
+	letter = 0,
+	digit = 1,
+	whitespace = 2,
+	punctuation = 3,
+	symbol = 4
 }

@@ -1,3 +1,3 @@
 enum HighlighterOrder {
-	score
+	score = 0
 }

@@ -1,5 +1,5 @@
 enum CharacterType {
-	Whitespace,
-	Alpha,
-	Comment
+	Whitespace = 0,
+	Alpha = 1,
+	Comment = 2
 }

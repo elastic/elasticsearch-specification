@@ -1,4 +1,4 @@
 enum KeepTypesMode {
-	include,
-	exclude
+	include = 0,
+	exclude = 1
 }

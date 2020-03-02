@@ -1,5 +1,5 @@
 enum ResponseContentType {
-	json,
-	yaml,
-	text
+	json = 0,
+	yaml = 1,
+	text = 2
 }

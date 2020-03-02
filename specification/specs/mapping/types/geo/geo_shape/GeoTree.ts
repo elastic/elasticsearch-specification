@@ -1,4 +1,4 @@
 enum GeoTree {
-	geohash,
-	quadtree
+	geohash = 0,
+	quadtree = 1
 }

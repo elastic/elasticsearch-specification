@@ -1,7 +1,7 @@
 enum MatrixStatsMode {
-	avg,
-	min,
-	max,
-	sum,
-	median
+	avg = 0,
+	min = 1,
+	max = 2,
+	sum = 3,
+	median = 4
 }

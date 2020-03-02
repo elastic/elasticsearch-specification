@@ -1,5 +1,5 @@
 enum ShapeRelation {
-	intersects,
-	disjoint,
-	within
+	intersects = 0,
+	disjoint = 1,
+	within = 2
 }

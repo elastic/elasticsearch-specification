@@ -1,6 +1,6 @@
 enum MultiValueMode {
-	min,
-	max,
-	avg,
-	sum
+	min = 0,
+	max = 1,
+	avg = 2,
+	sum = 3
 }

@@ -1,6 +1,6 @@
 enum Status {
-	success,
-	failure,
-	simulated,
-	throttled
+	success = 0,
+	failure = 1,
+	simulated = 2,
+	throttled = 3
 }

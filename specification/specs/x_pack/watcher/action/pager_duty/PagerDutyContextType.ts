@@ -1,4 +1,4 @@
 enum PagerDutyContextType {
-	link,
-	image
+	link = 0,
+	image = 1
 }

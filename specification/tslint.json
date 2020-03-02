@@ -6,7 +6,7 @@
     "no-consecutive-blank-lines": true,
     "member-ordering": [false],
     "object-literal-sort-keys": false,
-    "trailing-comma": [true, {"multiline": "ignore", "singleline": "never"}],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
     "object-literal-key-quotes": [true, "as-needed"],
     "curly": [true, "as-needed"],
     "member-access": [true, "no-public"],

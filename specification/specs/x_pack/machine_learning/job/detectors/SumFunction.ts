@@ -1,5 +1,5 @@
 enum SumFunction {
-	Sum,
-	HighSum,
-	LowSum
+	Sum = 0,
+	HighSum = 1,
+	LowSum = 2
 }

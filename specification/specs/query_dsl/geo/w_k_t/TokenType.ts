@@ -1,7 +1,7 @@
 enum TokenType {
-	None,
-	Word,
-	LParen,
-	RParen,
-	Comma
+	None = 0,
+	Word = 1,
+	LParen = 2,
+	RParen = 3,
+	Comma = 4
 }

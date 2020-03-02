@@ -1,4 +1,4 @@
 enum TimeFunction {
-	TimeOfDay,
-	TimeOfWeek
+	TimeOfDay = 0,
+	TimeOfWeek = 1
 }

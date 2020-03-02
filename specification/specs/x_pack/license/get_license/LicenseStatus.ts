@@ -1,6 +1,6 @@
 enum LicenseStatus {
-	active,
-	valid,
-	invalid,
-	expired
+	active = 0,
+	valid = 1,
+	invalid = 2,
+	expired = 3
 }

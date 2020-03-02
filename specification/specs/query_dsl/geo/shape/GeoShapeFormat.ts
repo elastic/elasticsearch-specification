@@ -1,4 +1,0 @@
-enum GeoShapeFormat {
-	GeoJson,
-	WellKnownText
-}

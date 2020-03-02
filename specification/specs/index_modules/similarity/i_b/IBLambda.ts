@@ -1,4 +1,4 @@
 enum IBLambda {
-	df,
-	ttf
+	df = 0,
+	ttf = 1
 }

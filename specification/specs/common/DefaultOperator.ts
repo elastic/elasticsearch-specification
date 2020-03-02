@@ -1,4 +1,4 @@
 enum DefaultOperator {
-	AND,
-	OR
+	AND = 0,
+	OR = 1
 }

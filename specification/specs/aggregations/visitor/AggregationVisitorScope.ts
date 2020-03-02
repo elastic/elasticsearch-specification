@@ -1,5 +1,5 @@
 enum AggregationVisitorScope {
-	Unknown,
-	Aggregation,
-	Bucket
+	Unknown = 0,
+	Aggregation = 1,
+	Bucket = 2
 }

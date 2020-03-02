@@ -1,4 +1,4 @@
 enum StringFielddataFormat {
-	paged_bytes,
-	disabled
+	paged_bytes = 0,
+	disabled = 1
 }

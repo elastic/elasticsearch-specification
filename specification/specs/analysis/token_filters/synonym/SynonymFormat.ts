@@ -1,4 +1,4 @@
 enum SynonymFormat {
-	solr,
-	wordnet
+	solr = 0,
+	wordnet = 1
 }

@@ -1,5 +1,5 @@
 enum PagerDutyEventType {
-	trigger,
-	resolve,
-	acknowledge
+	trigger = 0,
+	resolve = 1,
+	acknowledge = 2
 }

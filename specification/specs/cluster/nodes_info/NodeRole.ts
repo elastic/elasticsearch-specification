@@ -1,7 +1,7 @@
 enum NodeRole {
-	master,
-	data,
-	client,
-	ingest,
-	ml
+	master = 0,
+	data = 1,
+	client = 2,
+	ingest = 3,
+	ml = 4
 }

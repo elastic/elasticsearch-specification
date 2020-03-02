@@ -1,5 +1,5 @@
 enum NonZeroCountFunction {
-	NonZeroCount,
-	LowNonZeroCount,
-	HighNonZeroCount
+	NonZeroCount = 0,
+	LowNonZeroCount = 1,
+	HighNonZeroCount = 2
 }

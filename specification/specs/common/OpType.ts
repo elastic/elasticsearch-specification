@@ -1,4 +1,4 @@
 enum OpType {
-	index,
-	create
+	index = 0,
+	create = 1
 }

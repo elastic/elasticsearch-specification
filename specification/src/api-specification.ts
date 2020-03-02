@@ -4,10 +4,7 @@ import {TypeReader} from "./specification/type-reader";
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
 import * as _ from "lodash";
 import * as glob from "glob";
-// will be marked as unused but the require is what brings in the global `ts` variable
-// tslint:disable:no-var-requires
-const typescript = require("ntypescript");
-// tslint:enable:no-var-requires
+import * as ts from 'byots'
 
 export type TypeDictionary = { [p: string]: Domain.TypeDeclaration };
 export class Specification {
@@ -69,6 +66,7 @@ export class EndpointReader {
       .filter(f => !f.match(/tsconfig/))
       .filter(f => !f.match(/tslint/))
       .map(f => new Domain.Endpoint(f, restSpecMapping))
+      // @ts-ignore
       .value();
   }
 }
