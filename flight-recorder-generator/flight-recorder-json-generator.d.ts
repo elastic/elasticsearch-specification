@@ -3,9 +3,11 @@ export declare class FlightRecorderJsonGenerator {
     private specification;
     constructor(specification: Specification);
     export(folder: string): void;
-    private toType;
+    private createRequestResponse;
     private dispatchInterface;
-    private createEnumSchema;
+    private static createValueType;
+    private static createEnumSchema;
+    private lookupType;
     private createTypeSchema;
     private createArraySchema;
     private createDictionarySchema;

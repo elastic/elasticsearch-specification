@@ -9,82 +9,125 @@ class FlightRecorderJsonGenerator {
     }
     export(folder) {
         const f = path.join(__dirname, folder);
+        if (!fs.existsSync(f))
+            fs.mkdirSync(f);
         this.specification.endpoints.forEach(api => {
             const pathPrefix = path.join(f, api.name);
-            const request = this.toType(api.typeMapping.request);
+            const request = {
+                api: api.name,
+                args: {
+                    body: this.createRequestResponse(api.typeMapping.request)
+                }
+            };
             fs.writeFileSync(pathPrefix + "_request.json", JSON.stringify(request, null, 2));
-            const response = this.toType(api.typeMapping.response);
+            const response = {
+                api: api.name,
+                headers: {},
+                payload: {
+                    body: this.createRequestResponse(api.typeMapping.response)
+                },
+                statusCode: [200]
+            };
             fs.writeFileSync(pathPrefix + "_response.json", JSON.stringify(response, null, 2));
         });
     }
-    toType(typeName) {
-        const type = this.specification.typeLookup[typeName];
-        return this.toSchema(type);
+    createRequestResponse(typeName) {
+        const type = this.lookupType(typeName);
+        const seenTypes = new Set();
+        seenTypes.add(typeName);
+        return this.toSchema(type, seenTypes, typeName);
     }
-    dispatchInterface(i) {
+    dispatchInterface(i, seenTypes) {
         if (i.inheritsFromUnresolved.some(t => t === "String"))
             return "__" + i.name + "__";
-        switch (i.name) {
+        const valueType = FlightRecorderJsonGenerator.createValueType(i.name);
+        if (valueType !== null)
+            return valueType;
+        return i.properties.reduce((o, p) => (Object.assign(Object.assign({}, o), { [p.name]: this.createInterfaceProperty(p, seenTypes) })), {});
+    }
+    static createValueType(typeName) {
+        switch (typeName) {
             case "Uri": return "__uri__";
             case "Date": return "__date__";
             case "TimeSpan": return "__duration__";
+            case "TDocument":
+            case "TPartialDocument":
             case "SourceDocument": return "__source__";
+            case "T": return "__value__";
+            case "TResult": return "__value__";
+            case "string":
+            case "boolean":
             case "short":
             case "byte":
             case "integer":
             case "long":
             case "float":
             case "double":
-                return i.name;
+                return typeName;
+            case "object":
+                return {};
         }
-        return i.properties.reduce((o, p) => (Object.assign(Object.assign({}, o), { [p.name]: this.createInterfaceProperty(p) })), {});
+        return null;
     }
-    createEnumSchema(enumType) {
+    static createEnumSchema(enumType) {
         return {
             type: "string",
             description: enumType.flags ? "flags" : null,
             enum: enumType.members.map(e => e.name)
         };
     }
-    createTypeSchema(type) {
-        if (type.name === "boolean")
-            return "boolean";
-        if (type.name === "string")
-            return "string";
-        const i = this.specification.typeLookup[type.name];
-        return {};
+    lookupType(typeName) {
+        let i = this.specification.typeLookup[typeName];
+        if (i != null)
+            return i;
+        typeName = typeName.replace(/<.+$/, "");
+        i = this.specification.typeLookup[typeName];
+        if (i == null && typeName !== "object" &&
+            (!typeName.endsWith("Response") && !typeName.endsWith("Request")))
+            throw Error("Can not find " + typeName);
+        return i;
     }
-    createArraySchema(arr) {
-        return [this.dispatchInstanceOf(arr.of)];
+    createTypeSchema(type, seenTypes) {
+        const valueType = FlightRecorderJsonGenerator.createValueType(type.name);
+        if (valueType !== null)
+            return valueType;
+        if (seenTypes.has(type.name))
+            return { $type: `Circular reference to: ${type.name}` };
+        seenTypes.add(type.name);
+        const i = this.lookupType(type.name);
+        return this.toSchema(i, seenTypes, type.name);
     }
-    createDictionarySchema(dict) {
-        return { __name__: this.dispatchInstanceOf(dict.value) };
+    createArraySchema(arr, seenTypes) {
+        return [this.dispatchInstanceOf(arr.of, seenTypes)];
     }
-    createInterfaceProperty(property) {
-        return this.dispatchInstanceOf(property.type);
+    createDictionarySchema(dict, seenTypes) {
+        return { __name__: this.dispatchInstanceOf(dict.value, seenTypes) };
     }
-    createUnionOfSchema(union) {
+    createInterfaceProperty(property, seenTypes) {
+        return this.dispatchInstanceOf(property.type, seenTypes);
+    }
+    createUnionOfSchema(union, seenTypes) {
         return { __anyOf__: [
-                union.items.map(i => this.dispatchInstanceOf(i))
+                union.items.map(i => this.dispatchInstanceOf(i, seenTypes))
             ] };
     }
-    dispatchInstanceOf(type) {
+    dispatchInstanceOf(type, seenTypes) {
         if (type instanceof Domain.Dictionary)
-            return this.createDictionarySchema(type);
+            return this.createDictionarySchema(type, seenTypes);
         if (type instanceof Domain.UnionOf)
-            return this.createUnionOfSchema(type);
+            return this.createUnionOfSchema(type, seenTypes);
         if (type instanceof Domain.Type)
-            return this.createTypeSchema(type);
+            return this.createTypeSchema(type, seenTypes);
         if (type instanceof Domain.ArrayOf)
-            return this.createArraySchema(type);
+            return this.createArraySchema(type, seenTypes);
         return { type: "object", description: "Unknown InstanceOf" };
     }
-    toSchema(type) {
+    toSchema(type, seenTypes, lastAddedType) {
         if (type instanceof Domain.Enum)
-            return this.createEnumSchema(type);
+            return FlightRecorderJsonGenerator.createEnumSchema(type);
         if (type instanceof Domain.Interface)
-            return this.dispatchInterface(type);
-        return { type: "object", description: "Unknown TypeDeclaration" };
+            return this.dispatchInterface(type, seenTypes);
+        return { type: "object", description: "undefined in spec" + lastAddedType };
     }
 }
 exports.FlightRecorderJsonGenerator = FlightRecorderJsonGenerator;
