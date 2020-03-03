@@ -12,11 +12,14 @@ export class FlightRecorderJsonGenerator {
       fs.mkdirSync(f);
     this.specification.endpoints.forEach(api => {
       const pathPrefix = path.join(f, api.name);
+      const body =this.createRequestResponse(api.typeMapping.request);
+      const args = api.queryStringParameters.reduce((o, p) => ({...o, [p.name]: p.type}), {});
+      // @ts-ignore
+      args.body = body;
+
       const request = {
         api: api.name,
-        args: {
-          body: this.createRequestResponse(api.typeMapping.request)
-        }
+        args
       };
       fs.writeFileSync(pathPrefix + "_request.json", JSON.stringify(request, null, 2));
       const response = {
@@ -44,7 +47,9 @@ export class FlightRecorderJsonGenerator {
     const valueType = FlightRecorderJsonGenerator.createValueType(i.name);
     if (valueType !== null) return valueType;
 
-    return i.properties.reduce((o, p) => ({...o, [p.name]: this.createInterfaceProperty(p, seenTypes)}), {});
+    return i.properties
+      .filter(p => !p.isRequestParameter)
+      .reduce((o, p) => ({...o, [p.name]: this.createInterfaceProperty(p, seenTypes)}), {});
   }
 
   private static createValueType(typeName) {
@@ -91,7 +96,7 @@ export class FlightRecorderJsonGenerator {
     return i;
   }
 
-  private createTypeSchema(type: Domain.Type, seenTypes) {
+  private createTypeSchema(type: Domain.Type, seenTypes: Set<string>) {
     const valueType = FlightRecorderJsonGenerator.createValueType(type.name);
     if (valueType !== null) return valueType;
 
@@ -99,7 +104,9 @@ export class FlightRecorderJsonGenerator {
     seenTypes.add(type.name);
 
     const i = this.lookupType(type.name);
-    return this.toSchema(i, seenTypes, type.name);
+    const schema = this.toSchema(i, seenTypes, type.name);
+    seenTypes.delete(type.name);
+    return schema;
   }
 
   private createArraySchema(arr: Domain.ArrayOf, seenTypes) {
@@ -107,7 +114,6 @@ export class FlightRecorderJsonGenerator {
   }
 
   private createDictionarySchema(dict: Domain.Dictionary, seenTypes: Set<string>) {
-    // todo handle additionalProperties and find out how we can type the key.
     return { __name__ : this.dispatchInstanceOf(dict.value, seenTypes) };
   }
 
@@ -116,7 +122,6 @@ export class FlightRecorderJsonGenerator {
   }
 
   private createUnionOfSchema(union: Domain.UnionOf, seenTypes: Set<string>) {
-    // union should be oneOf but open api does not support the full json-schema draft 4
     return { __anyOf__ : [
       union.items.map(i => this.dispatchInstanceOf(i, seenTypes))
     ] };

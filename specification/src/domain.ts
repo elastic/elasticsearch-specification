@@ -34,7 +34,7 @@ namespace Domain {
   }
 
   export class InterfaceProperty {
-    constructor(public name: string) {}
+    constructor(public name: string, public isRequestParameter: boolean) {}
     type: InstanceOf;
   }
 

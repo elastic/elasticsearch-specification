@@ -87,7 +87,10 @@ class InterfaceVisitor extends Visitor {
     const name = this.symbolName(p.name);
     const returnType = this.visitTypeNode(p.type);
 
-    const prop = new Domain.InterfaceProperty(name);
+    const decorator = _(p.decorators || [])
+      .map(d => d.expression.getText())
+      .find(d => d.startsWith("request_parameter"));
+    const prop = new Domain.InterfaceProperty(name, !!decorator);
     prop.type = returnType;
     parent.properties.push(prop);
   }
