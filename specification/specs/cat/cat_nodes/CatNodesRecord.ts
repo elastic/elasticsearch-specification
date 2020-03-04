@@ -1,7 +1,7 @@
 class CatNodesRecord implements ICatRecord {
 	build: string;
 	completion_size: string;
-	c_p_u: string;
+	cpu: string;
 	disk_available: string;
 	fielddata_evictions: string;
 	fielddata_memory: string;
@@ -31,9 +31,9 @@ class CatNodesRecord implements ICatRecord {
 	indexing_index_total: string;
 	ip: string;
 	jdk: string;
-	load_fifteen_minute: string;
-	load_five_minute: string;
-	load_one_minute: string;
+	load_15m: string;
+	load_5m: string;
+	load_1m: string;
 	master: string;
 	merges_current: string;
 	merges_current_docs: string;

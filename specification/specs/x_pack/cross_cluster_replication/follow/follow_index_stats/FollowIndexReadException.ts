@@ -1,5 +1,5 @@
 class FollowIndexReadException {
-	from_squence_number: long;
+	from_seq_no: long;
 	retries: integer;
 	exception: ErrorCause;
 }

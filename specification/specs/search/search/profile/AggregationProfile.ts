@@ -1,6 +1,6 @@
 class AggregationProfile {
 	breakdown: AggregationBreakdown;
 	description: string;
-	time_in_nanoseconds: long;
+	time_in_nanos: long;
 	type: string;
 }

@@ -1,14 +1,14 @@
 class BulkResponseItemBase {
 	error: MainError;
-	id: string;
-	index: string;
+	_id: string;
+	_index: string;
 	operation: string;
-	primary_term: long;
+	_primary_term: long;
 	result: string;
-	sequence_number: long;
-	shards: ShardStatistics;
+	_seq_no: long;
+	_shards: ShardStatistics;
 	status: integer;
-	type: string;
-	version: long;
+	_type: string;
+	_version: long;
 	is_valid: boolean;
 }

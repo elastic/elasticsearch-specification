@@ -3,9 +3,9 @@ class ExplainAnalyzeToken {
 	end_offset: long;
 	keyword: boolean;
 	position: long;
-	position_length: long;
+	positionLength: long;
 	start_offset: long;
-	term_frequency: long;
+	termFrequency: long;
 	token: string;
 	type: string;
 }

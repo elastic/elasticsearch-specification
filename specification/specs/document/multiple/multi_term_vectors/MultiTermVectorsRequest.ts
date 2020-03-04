@@ -1,6 +1,6 @@
 @rest_spec_name("mtermvectors")
 class MultiTermVectorsRequest extends RequestBase {
-	documents: MultiTermVectorOperation[];
+	docs: MultiTermVectorOperation[];
 	ids: Id[];
 	@request_parameter()
 	field_statistics: boolean;

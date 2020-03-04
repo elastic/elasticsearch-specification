@@ -1,6 +1,6 @@
 class ShardsSegment {
-	committed_segments: integer;
+	num_committed_segments: integer;
 	routing: ShardSegmentRouting;
-	search_segments: integer;
+	num_search_segments: integer;
 	segments: Dictionary<string, Segment>;
 }

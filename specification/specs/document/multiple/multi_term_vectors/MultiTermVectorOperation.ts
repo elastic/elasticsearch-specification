@@ -1,9 +1,9 @@
 class MultiTermVectorOperation {
-	document: any;
+	doc: any;
 	field_statistics: boolean;
 	filter: TermVectorFilter;
-	id: Id;
-	index: IndexName;
+	_id: Id;
+	_index: IndexName;
 	offsets: boolean;
 	payloads: boolean;
 	positions: boolean;

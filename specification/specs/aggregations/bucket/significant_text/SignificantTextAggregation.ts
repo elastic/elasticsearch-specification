@@ -5,13 +5,13 @@ class SignificantTextAggregation {
 	execution_hint: TermsAggregationExecutionHint;
 	field: Field;
 	filter_duplicate_text: boolean;
-	google_normalized_distance: GoogleNormalizedDistanceHeuristic;
+	gnd: GoogleNormalizedDistanceHeuristic;
 	include: IncludeExclude;
-	minimum_document_count: long;
+	min_doc_count: long;
 	mutual_information: MutualInformationHeuristic;
-	percentage_score: PercentageScoreHeuristic;
-	script: ScriptedHeuristic;
-	shard_minimum_document_count: long;
+	percentage: PercentageScoreHeuristic;
+	script_heuristic: ScriptedHeuristic;
+	shard_min_doc_count: long;
 	shard_size: integer;
 	size: integer;
 	source_fields: Field[];

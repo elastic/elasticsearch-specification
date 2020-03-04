@@ -3,7 +3,7 @@ class ExecutionResultAction {
 	id: string;
 	index: IndexActionResult;
 	logging: LoggingActionResult;
-	pager_duty: PagerDutyActionResult;
+	pagerduty: PagerDutyActionResult;
 	reason: string;
 	slack: SlackActionResult;
 	status: Status;

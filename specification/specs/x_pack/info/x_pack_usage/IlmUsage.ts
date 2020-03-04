@@ -1,4 +1,4 @@
 class IlmUsage {
 	policy_count: integer;
-	policy_statistics: IlmPolicyStatistics[];
+	policy_stats: IlmPolicyStatistics[];
 }

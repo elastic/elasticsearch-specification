@@ -1,10 +1,10 @@
 class NodeJvmStats {
 	buffer_pools: Dictionary<string, NodeBufferPool>;
 	classes: JvmClassesStats;
-	garbage_collection: GarbageCollectionStats;
-	memory: MemoryStats;
+	gc: GarbageCollectionStats;
+	mem: MemoryStats;
 	threads: ThreadStats;
 	timestamp: long;
 	uptime: string;
-	uptime_in_milliseconds: long;
+	uptime_in_millis: long;
 }

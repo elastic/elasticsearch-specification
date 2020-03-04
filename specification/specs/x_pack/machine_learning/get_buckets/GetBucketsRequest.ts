@@ -1,7 +1,7 @@
 @rest_spec_name("ml.get_buckets")
 class GetBucketsRequest extends RequestBase {
 	anomaly_score: double;
-	descending: boolean;
+	desc: boolean;
 	end: Date;
 	exclude_interim: boolean;
 	expand: boolean;

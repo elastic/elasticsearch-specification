@@ -7,7 +7,7 @@ class PutJobResponse extends ResponseBase implements IResponse {
 	description: string;
 	job_id: string;
 	job_type: string;
-	model_plot_config: ModelPlotConfig;
+	model_plot: ModelPlotConfig;
 	model_snapshot_id: string;
 	model_snapshot_retention_days: long;
 	renormalization_window_days: long;

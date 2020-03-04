@@ -1,5 +1,5 @@
 class LoadAverageStats {
-	fifteen_minute: float;
-	five_minute: float;
-	one_minute: float;
+	'15m': float;
+	'5m': float;
+	'1m': float;
 }

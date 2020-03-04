@@ -5,10 +5,10 @@ class ShardRecovery {
 	source: RecoveryOrigin;
 	stage: string;
 	start: RecoveryStartStatus;
-	start_time: Date;
-	stop_time: Date;
+	start_time_in_millis: Date;
+	stop_time_in_millis: Date;
 	target: RecoveryOrigin;
-	total_time_in_milliseconds: long;
+	total_time_in_millis: long;
 	translog: RecoveryTranslogStatus;
 	type: string;
 	verify_index: RecoveryVerifyIndex;

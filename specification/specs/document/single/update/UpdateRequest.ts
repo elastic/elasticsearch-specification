@@ -5,7 +5,7 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 	doc_as_upsert: boolean;
 	script: Script;
 	scripted_upsert: boolean;
-	source: Union<boolean, SourceFilter>;
+	_source: Union<boolean, SourceFilter>;
 	upsert: TDocument;
 	@request_parameter()
 	if_primary_term: long;

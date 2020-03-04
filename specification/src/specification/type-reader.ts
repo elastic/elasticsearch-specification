@@ -1,7 +1,7 @@
 import { TypeName, RestSpecName, RestSpecMapping } from "./rest-spec-mapping";
 import Domain = require("../domain");
-import * as _ from "lodash";
-import * as ts from 'byots'
+import _ from "lodash";
+import * as ts from "byots";
 
 class Visitor {
   constructor(protected checker: ts.TypeChecker) {}
@@ -9,7 +9,7 @@ class Visitor {
 }
 
 class EnumVisitor extends Visitor {
-  constructor(private enumNode: ts.EnumDeclaration, checker: ts.TypeChecker) {super(checker)}
+  constructor(private enumNode: ts.EnumDeclaration, checker: ts.TypeChecker) {super(checker); }
 
   visit(): Domain.Enum {
     const name = this.symbolName(this.enumNode.name);
@@ -87,7 +87,10 @@ class InterfaceVisitor extends Visitor {
     const name = this.symbolName(p.name);
     const returnType = this.visitTypeNode(p.type);
 
-    const prop = new Domain.InterfaceProperty(name);
+    const decorator = _(p.decorators || [])
+      .map(d => d.expression.getText())
+      .find(d => d.startsWith("request_parameter"));
+    const prop = new Domain.InterfaceProperty(name, !!decorator);
     prop.type = returnType;
     parent.properties.push(prop);
   }
@@ -120,7 +123,7 @@ class InterfaceVisitor extends Visitor {
   }
 
   private createUnion(t: ts.TypeReferenceNode, typeName) {
-    const args: ts.Node[] = t.typeArguments.map(n=>n as ts.Node);
+    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node);
     const types = args.map(ct => this.visitTypeNode(ct));
     if (types.length < 2)
       throw Error("A union should have at least two types but saw " + types.length + " on " + typeName);
@@ -130,7 +133,7 @@ class InterfaceVisitor extends Visitor {
   }
 
   private createDictionary(t: ts.TypeReferenceNode, typeName) {
-    const args: ts.Node[] = t.typeArguments.map(n=>n as ts.Node);
+    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node);
     const types = args.map(ct => this.visitTypeNode(ct));
     if (types.length !== 2)
       throw Error("A dictionary should contain 2 type args but found " + types.length + " on " + typeName);

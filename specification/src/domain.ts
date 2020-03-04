@@ -1,6 +1,5 @@
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
-import * as _ from "lodash";
-import * as ts from 'byots'
+import _ from "lodash";
 
 namespace Domain {
 
@@ -34,7 +33,7 @@ namespace Domain {
   }
 
   export class InterfaceProperty {
-    constructor(public name: string) {}
+    constructor(public name: string, public isRequestParameter: boolean) {}
     type: InstanceOf;
   }
 

@@ -1,12 +1,12 @@
 class GetResponse<TDocument> extends ResponseBase {
 	fields: Dictionary<string, LazyDocument>;
 	found: boolean;
-	id: string;
-	index: string;
-	primary_term: long;
-	routing: string;
-	sequence_number: long;
-	source: TDocument;
-	type: string;
-	version: long;
+	_id: string;
+	_index: string;
+	_primary_term: long;
+	_routing: string;
+	_seq_no: long;
+	_source: TDocument;
+	_type: string;
+	_version: long;
 }

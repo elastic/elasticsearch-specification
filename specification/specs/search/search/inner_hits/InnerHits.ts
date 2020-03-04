@@ -1,6 +1,6 @@
 class InnerHits {
 	collapse: FieldCollapse;
-	doc_value_fields: Field[];
+	docvalue_fields: Field[];
 	explain: boolean;
 	from: integer;
 	highlight: Highlight;
@@ -9,6 +9,6 @@ class InnerHits {
 	script_fields: Dictionary<string, ScriptField>;
 	size: integer;
 	sort: Sort[];
-	source: Union<boolean, SourceFilter>;
+	_source: Union<boolean, SourceFilter>;
 	version: boolean;
 }

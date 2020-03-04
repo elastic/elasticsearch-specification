@@ -6,8 +6,8 @@ class TaskState {
 	id: long;
 	node: string;
 	parent_task_id: TaskId;
-	running_time_in_nano_seconds: long;
-	start_time_in_milliseconds: long;
+	running_time_in_nanos: long;
+	start_time_in_millis: long;
 	status: TaskStatus;
 	type: string;
 }

@@ -1,7 +1,7 @@
 class ClusterOperatingSystemStats {
 	allocated_processors: integer;
 	available_processors: integer;
-	memory: OperatingSystemMemoryInfo;
+	mem: OperatingSystemMemoryInfo;
 	names: ClusterOperatingSystemName[];
 	pretty_names: ClusterOperatingSystemPrettyNane[];
 }

@@ -4,7 +4,7 @@ class TermsAggregation {
 	execution_hint: TermsAggregationExecutionHint;
 	field: Field;
 	include: TermsInclude;
-	minimum_document_count: integer;
+	min_doc_count: integer;
 	missing: any;
 	order: TermsOrder[];
 	script: Script;

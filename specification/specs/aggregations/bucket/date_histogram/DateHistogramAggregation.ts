@@ -5,7 +5,7 @@ class DateHistogramAggregation {
 	interval: Union<DateInterval, Time>;
 	calendar_interval: Union<DateInterval, Time>;
 	fixed_interval: Union<DateInterval, Time>;
-	minimum_document_count: integer;
+	min_doc_count: integer;
 	missing: Date;
 	offset: string;
 	order: HistogramOrder;

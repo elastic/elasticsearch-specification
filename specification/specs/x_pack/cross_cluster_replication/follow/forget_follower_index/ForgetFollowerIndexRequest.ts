@@ -2,6 +2,6 @@
 class ForgetFollowerIndexRequest extends RequestBase {
 	follower_cluster: string;
 	follower_index: IndexName;
-	follower_index_u_u_i_d: string;
+	follower_index_uuid: string;
 	leader_remote_cluster: string;
 }

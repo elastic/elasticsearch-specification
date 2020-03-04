@@ -1,5 +1,5 @@
 class HttpInputRequest {
-	authentication: HttpInputAuthentication;
+	auth: HttpInputAuthentication;
 	body: string;
 	connection_timeout: Time;
 	headers: Dictionary<string, string>;

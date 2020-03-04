@@ -1,7 +1,7 @@
 class NodeStats {
 	adaptive_selection: Dictionary<string, AdaptiveSelectionStats>;
 	breakers: Dictionary<string, BreakerStats>;
-	file_system: FileSystemStats;
+	fs: FileSystemStats;
 	host: string;
 	http: HttpStats;
 	indices: IndexStats;
@@ -9,7 +9,7 @@ class NodeStats {
 	ip: string[];
 	jvm: NodeJvmStats;
 	name: string;
-	operating_system: OperatingSystemStats;
+	os: OperatingSystemStats;
 	process: ProcessStats;
 	roles: NodeRole[];
 	script: ScriptStats;

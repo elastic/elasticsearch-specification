@@ -1,13 +1,13 @@
 class IcuCollationTokenFilter extends TokenFilterBase {
 	alternate: IcuCollationAlternate;
-	case_first: IcuCollationCaseFirst;
-	case_level: boolean;
+	caseFirst: IcuCollationCaseFirst;
+	caseLevel: boolean;
 	country: string;
 	decomposition: IcuCollationDecomposition;
-	hiragana_quaternary_mode: boolean;
+	hiraganaQuaternaryMode: boolean;
 	language: string;
 	numeric: boolean;
 	strength: IcuCollationStrength;
-	variable_top: string;
+	variableTop: string;
 	variant: string;
 }

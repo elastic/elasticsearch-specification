@@ -4,5 +4,5 @@ class RecoveryTranslogStatus {
 	total: long;
 	total_on_start: long;
 	total_time: string;
-	total_time_in_milliseconds: long;
+	total_time_in_millis: long;
 }

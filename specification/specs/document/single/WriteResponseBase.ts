@@ -1,10 +1,10 @@
 class WriteResponseBase extends ResponseBase implements IResponse {
-	id: string;
-	index: string;
-	primary_term: long;
+	_id: string;
+	_index: string;
+	_primary_term: long;
 	result: Result;
-	sequence_number: long;
-	shards: ShardStatistics;
-	type: string;
-	version: long;
+	_seq_no: long;
+	_shards: ShardStatistics;
+	_type: string;
+	_version: long;
 }

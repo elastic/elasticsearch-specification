@@ -1,10 +1,10 @@
 class TermVectorsResponse extends ResponseBase implements IResponse {
 	is_valid: boolean;
 	found: boolean;
-	id: string;
-	index: string;
+	_id: string;
+	_index: string;
 	term_vectors: Dictionary<Field, TermVector>;
 	took: long;
-	type: string;
-	version: long;
+	_type: string;
+	_version: long;
 }

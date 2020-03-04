@@ -1,5 +1,5 @@
 class PluginStats {
-	class_name: string;
+	classname: string;
 	description: string;
 	elasticsearch_version: string;
 	extended_plugins: string[];

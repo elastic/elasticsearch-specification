@@ -1,9 +1,9 @@
 class AdaptiveSelectionStats {
-	average_queue_size: long;
-	average_response_time: long;
-	average_response_time_in_nanoseconds: long;
-	average_service_time: string;
-	average_service_time_in_nanoseconds: long;
+	avg_queue_size: long;
+	avg_response_time: long;
+	avg_response_time_ns: long;
+	avg_service_time: string;
+	avg_service_time_ns: long;
 	outgoing_searches: long;
 	rank: string;
 }

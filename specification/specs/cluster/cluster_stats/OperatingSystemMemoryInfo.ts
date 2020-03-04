@@ -1,7 +1,7 @@
 class OperatingSystemMemoryInfo {
-	free_bytes: long;
+	free_in_bytes: long;
 	free_percent: integer;
-	total_bytes: long;
-	used_bytes: long;
+	total_in_bytes: long;
+	used_in_bytes: long;
 	used_percent: integer;
 }

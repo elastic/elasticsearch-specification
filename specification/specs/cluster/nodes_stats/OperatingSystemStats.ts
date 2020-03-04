@@ -1,6 +1,6 @@
 class OperatingSystemStats {
 	cpu: CPUStats;
-	memory: ExtendedMemoryStats;
+	mem: ExtendedMemoryStats;
 	swap: MemoryStats;
 	timestamp: long;
 }

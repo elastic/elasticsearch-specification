@@ -1,6 +1,6 @@
 class CatPendingTasksRecord implements ICatRecord {
-	insert_order: integer;
+	insertOrder: integer;
 	priority: string;
 	source: string;
-	time_in_queue: string;
+	timeInQueue: string;
 }

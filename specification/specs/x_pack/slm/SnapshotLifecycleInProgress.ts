@@ -1,6 +1,6 @@
 class SnapshotLifecycleInProgress {
 	name: string;
-	u_u_i_d: string;
+	uuid: string;
 	state: string;
-	start_time: Date;
+	start_time_millis: Date;
 }

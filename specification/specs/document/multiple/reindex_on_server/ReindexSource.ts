@@ -5,5 +5,5 @@ class ReindexSource {
 	size: integer;
 	slice: SlicedScroll;
 	sort: Sort[];
-	source: Field[];
+	_source: Field[];
 }

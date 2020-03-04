@@ -1,7 +1,7 @@
 class LanguageAnalyzer extends AnalyzerBase {
 	language: Language;
-	stem_exclusion_list: string[];
-	stop_words: StopWords;
+	stem_exclusion: string[];
+	stopwords: StopWords;
 	stopwords_path: string;
 	type: string;
 }

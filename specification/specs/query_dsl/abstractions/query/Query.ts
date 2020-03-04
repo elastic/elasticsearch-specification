@@ -4,5 +4,5 @@ class Query {
 	is_strict: boolean;
 	is_verbatim: boolean;
 	is_writable: boolean;
-	name: string;
+	_name: string;
 }

@@ -4,12 +4,12 @@ class XPackUsageResponse extends ResponseBase implements IResponse {
 	data_frame: XPackUsage;
 	flattened: XPackUsage;
 	data_science: XPackUsage;
-	index_lifecycle_management: IlmUsage;
+	ilm: IlmUsage;
 	ccr: CcrUsage;
-	alerting: AlertingUsage;
+	watcher: AlertingUsage;
 	graph: XPackUsage;
 	logstash: XPackUsage;
-	machine_learning: MachineLearningUsage;
+	ml: MachineLearningUsage;
 	monitoring: MonitoringUsage;
 	security: SecurityUsage;
 	vectors: VectorUsage;

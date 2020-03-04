@@ -30,7 +30,8 @@ declare namespace Domain {
     }
     class InterfaceProperty {
         name: string;
-        constructor(name: string);
+        isRequestParameter: boolean;
+        constructor(name: string, isRequestParameter: boolean);
         type: InstanceOf;
     }
     class Enum extends TypeDeclaration {

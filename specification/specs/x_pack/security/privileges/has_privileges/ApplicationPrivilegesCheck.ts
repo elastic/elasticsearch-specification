@@ -1,5 +1,5 @@
 class ApplicationPrivilegesCheck {
-	name: string;
+	application: string;
 	privileges: string[];
 	resources: string[];
 }

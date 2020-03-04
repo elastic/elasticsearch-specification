@@ -1,5 +1,5 @@
 class SimulatePipelineDocument {
-	id: Id;
-	index: IndexName;
-	source: any;
+	_id: Id;
+	_index: IndexName;
+	_source: any;
 }

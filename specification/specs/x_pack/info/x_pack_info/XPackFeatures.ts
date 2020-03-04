@@ -6,7 +6,7 @@ class XPackFeatures {
 	graph: XPackFeature;
 	ilm: XPackFeature;
 	logstash: XPackFeature;
-	machine_learning: XPackFeature;
+	ml: XPackFeature;
 	monitoring: XPackFeature;
 	rollup: XPackFeature;
 	security: XPackFeature;

@@ -6,7 +6,7 @@ class NodeInfo {
 	jvm: NodeJvmInfo;
 	name: string;
 	network: NodeInfoNetwork;
-	operating_system: NodeOperatingSystemInfo;
+	os: NodeOperatingSystemInfo;
 	plugins: PluginStats[];
 	process: NodeProcessInfo;
 	roles: NodeRole[];

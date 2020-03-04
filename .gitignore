@@ -38,4 +38,4 @@ node_modules
 
 # Build output directory
 dist/
-
+flight-recorder-generator/output

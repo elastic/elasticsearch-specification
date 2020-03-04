@@ -1,17 +1,17 @@
 class CatSegmentsRecord implements ICatRecord {
 	committed: string;
 	compound: string;
-	docs_count: string;
-	docs_deleted: string;
+	'docs.count': string;
+	'docs.deleted': string;
 	generation: string;
 	id: string;
 	index: string;
 	ip: string;
-	primary_replica: string;
+	prirep: string;
 	searchable: string;
 	segment: string;
 	shard: string;
 	size: string;
-	size_memory: string;
+	'size.memory': string;
 	version: string;
 }

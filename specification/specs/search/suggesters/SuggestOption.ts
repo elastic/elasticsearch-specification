@@ -1,14 +1,14 @@
 class SuggestOption<TDocument> {
 	collate_match: boolean;
 	contexts: Dictionary<string, Context[]>;
-	document_score: double;
+	_score: double;
 	fields: Dictionary<string, LazyDocument>;
-	frequency: long;
+	freq: long;
 	highlighted: string;
-	id: string;
-	index: IndexName;
+	_id: string;
+	_index: IndexName;
 	score: double;
-	source: TDocument;
-	suggest_score: double;
+	_source: TDocument;
+	score: double;
 	text: string;
 }

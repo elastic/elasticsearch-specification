@@ -4,5 +4,5 @@ class CreateApiKeyRequest extends RequestBase {
 	refresh: Refresh;
 	expiration: Time;
 	name: string;
-	roles: Dictionary<string, ApiKeyRole>;
+	role_descriptors: Dictionary<string, ApiKeyRole>;
 }
