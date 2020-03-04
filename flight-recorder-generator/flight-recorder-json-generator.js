@@ -1,8 +1,19 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
-const path = require("path");
-const Domain = require("elasticsearch-client-specification/src/domain");
+const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
+const Domain = __importStar(require("elasticsearch-client-specification/src/domain"));
+const json_stable_stringify_1 = __importDefault(require("json-stable-stringify"));
 class FlightRecorderJsonGenerator {
     constructor(specification) {
         this.specification = specification;
@@ -20,7 +31,7 @@ class FlightRecorderJsonGenerator {
                 api: api.name,
                 args
             };
-            fs.writeFileSync(pathPrefix + "_request.json", JSON.stringify(request, null, 2));
+            fs.writeFileSync(pathPrefix + "_request.json", json_stable_stringify_1.default(request, { space: 2 }));
             const response = {
                 api: api.name,
                 headers: {},
@@ -29,7 +40,7 @@ class FlightRecorderJsonGenerator {
                 },
                 statusCode: [200]
             };
-            fs.writeFileSync(pathPrefix + "_response.json", JSON.stringify(response, null, 2));
+            fs.writeFileSync(pathPrefix + "_response.json", json_stable_stringify_1.default(response, { space: 2 }));
         });
     }
     createRequestResponse(typeName) {
@@ -60,13 +71,15 @@ class FlightRecorderJsonGenerator {
             case "TResult": return "__value__";
             case "string":
             case "boolean":
+                return typeName;
             case "short":
             case "byte":
             case "integer":
             case "long":
+                return "number";
             case "float":
             case "double":
-                return typeName;
+                return "number";
             case "object":
                 return {};
         }

@@ -2,9 +2,9 @@ import Domain = require("./domain");
 import {SpecValidator} from "./specification/validator";
 import {TypeReader} from "./specification/type-reader";
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
-import * as _ from "lodash";
+import _ from "lodash";
 import * as glob from "glob";
-import * as ts from 'byots'
+import * as ts from "byots";
 
 export type TypeDictionary = { [p: string]: Domain.TypeDeclaration };
 export class Specification {

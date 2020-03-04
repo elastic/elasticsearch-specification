@@ -1,6 +1,5 @@
 import {RestSpecMapping} from "./specification/rest-spec-mapping";
-import * as _ from "lodash";
-import * as ts from 'byots'
+import _ from "lodash";
 
 namespace Domain {
 

@@ -2,6 +2,7 @@ import {Specification} from "../specification/src/api-specification";
 import * as fs from "fs";
 import * as path from "path";
 import * as Domain from "elasticsearch-client-specification/src/domain";
+import stringify from 'json-stable-stringify'
 
 export class FlightRecorderJsonGenerator {
   constructor(private specification: Specification) { }
@@ -21,7 +22,7 @@ export class FlightRecorderJsonGenerator {
         api: api.name,
         args
       };
-      fs.writeFileSync(pathPrefix + "_request.json", JSON.stringify(request, null, 2));
+      fs.writeFileSync(pathPrefix + "_request.json", stringify(request, {space:2}));
       const response = {
         api: api.name,
         headers: {},
@@ -31,7 +32,7 @@ export class FlightRecorderJsonGenerator {
         },
         statusCode: [200]
       };
-      fs.writeFileSync(pathPrefix + "_response.json", JSON.stringify(response, null, 2));
+      fs.writeFileSync(pathPrefix + "_response.json", stringify(response, {space:2}));
     });
 
   }
@@ -64,13 +65,15 @@ export class FlightRecorderJsonGenerator {
       case "TResult" : return "__value__";
       case "string" :
       case "boolean" :
+        return typeName;
       case "short" :
       case "byte" :
       case "integer" :
       case "long" :
+        return "number";
       case "float" :
       case "double" :
-        return typeName;
+        return "number";
       case "object" :
         return {}
     }

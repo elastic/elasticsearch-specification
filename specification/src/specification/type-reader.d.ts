@@ -1,6 +1,6 @@
 import { RestSpecMapping } from "./rest-spec-mapping";
 import Domain = require("../domain");
-import * as ts from 'byots';
+import * as ts from "byots";
 export declare class TypeReader {
     private program;
     private checker;
