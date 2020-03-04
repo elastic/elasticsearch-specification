@@ -14,9 +14,15 @@ export class FlightRecorderJsonGenerator {
     this.specification.endpoints.forEach(api => {
       const pathPrefix = path.join(f, api.name);
       const body =this.createRequestResponse(api.typeMapping.request);
-      const args = api.queryStringParameters.reduce((o, p) => ({...o, [p.name]: p.type}), {});
-      // @ts-ignore
-      args.body = body;
+      let args = api.queryStringParameters.reduce((o, p) => ({...o, [p.name]: p.type}), {});
+      args = api.url.paths
+        .flatMap(p=>p.parts)
+        .reduce((o, p) => ({...o, [p.name]: p.type}), args);
+      // tslint:disable-next-line:curly
+      if (Object.keys(body).length > 0) {
+        // @ts-ignore
+        args.body = body;
+      }
 
       const request = {
         api: api.name,
@@ -25,7 +31,10 @@ export class FlightRecorderJsonGenerator {
       fs.writeFileSync(pathPrefix + "_request.json", stringify(request, {space:2}));
       const response = {
         api: api.name,
-        headers: {},
+        headers: {
+          "content-length": "string",
+          "content-type": "application/json; charset=UTF-8"
+        },
         payload: {
           body: this.createRequestResponse(api.typeMapping.response)
 
@@ -55,6 +64,7 @@ export class FlightRecorderJsonGenerator {
 
   private static createValueType(typeName) {
     switch (typeName) {
+      case "Time" : return "__time__";
       case "Uri" : return "__uri__";
       case "Date" : return "__date__";
       case "TimeSpan" : return "__duration__";
@@ -81,11 +91,12 @@ export class FlightRecorderJsonGenerator {
   }
 
   private static createEnumSchema(enumType: Domain.Enum) {
-    return {
-      type: "string",
-      description: enumType.flags ? "flags" : null,
-      enum: enumType.members.map(e => e.name)
-    };
+    return "enum";
+    // return {
+      // type: "string",
+      // description: enumType.flags ? "flags" : null,
+      // enum: enumType.members.map(e => e.name)
+    // };
   }
 
   private lookupType(typeName) {
