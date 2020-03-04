@@ -1,4 +1,4 @@
 class MutualInformationHeuristic {
-	background_is_super_set: boolean;
+	background_is_superset: boolean;
 	include_negatives: boolean;
 }

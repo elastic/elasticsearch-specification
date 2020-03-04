@@ -6,5 +6,5 @@ class SnapshotStatus {
 	snapshot: string;
 	state: string;
 	stats: SnapshotStats;
-	u_u_i_d: string;
+	uuid: string;
 }

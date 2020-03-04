@@ -3,7 +3,7 @@ class UpdateByQueryRequest extends RequestBase {
 	slice: SlicedScroll;
 	query: QueryContainer;
 	script: Script;
-	maximum_documents: long;
+	max_docs: long;
 	@request_parameter()
 	allow_no_indices: boolean;
 	@request_parameter()

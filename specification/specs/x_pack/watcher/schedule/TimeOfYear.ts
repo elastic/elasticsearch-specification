@@ -1,5 +1,5 @@
 class TimeOfYear {
 	at: string[];
-	in: Month[];
+	int: Month[];
 	on: integer[];
 }

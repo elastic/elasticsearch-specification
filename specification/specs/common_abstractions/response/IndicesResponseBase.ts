@@ -1,3 +1,3 @@
 class IndicesResponseBase extends AcknowledgedResponseBase implements IResponse {
-	shards_hit: ShardStatistics;
+	_shards: ShardStatistics;
 }

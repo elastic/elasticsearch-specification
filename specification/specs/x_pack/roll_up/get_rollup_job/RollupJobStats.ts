@@ -5,8 +5,8 @@ class RollupJobStats {
 	trigger_count: long;
 	search_failures: long;
 	index_failures: long;
-	index_time_in_milliseconds: long;
+	index_time_in_ms: long;
 	index_total: long;
-	search_time_in_milliseconds: long;
+	search_time_in_ms: long;
 	search_total: long;
 }

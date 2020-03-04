@@ -1,5 +1,5 @@
 class PipelineSimulation {
-	document: DocumentSimulation;
+	doc: DocumentSimulation;
 	processor_results: PipelineSimulation[];
 	tag: string;
 }

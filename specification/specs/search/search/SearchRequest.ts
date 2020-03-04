@@ -54,10 +54,10 @@ class SearchRequest extends RequestBase {
 	total_hits_as_integer: boolean;
 	@request_parameter()
 	typed_keys: boolean;
-	aggregations: Dictionary<string, AggregationContainer>;
+	aggs: Dictionary<string, AggregationContainer>;
 	collapse: FieldCollapse;
 	@request_parameter()
-	doc_value_fields: Field[];
+	docvalue_fields: Field[];
 	explain: boolean;
 	from: integer;
 	highlight: Highlight;
@@ -72,7 +72,7 @@ class SearchRequest extends RequestBase {
 	size: integer;
 	slice: SlicedScroll;
 	sort: Sort[];
-	source: Union<boolean, SourceFilter>;
+	_source: Union<boolean, SourceFilter>;
 	@request_parameter()
 	stored_fields: Field[];
 	suggest: Dictionary<string, SuggestBucket>;

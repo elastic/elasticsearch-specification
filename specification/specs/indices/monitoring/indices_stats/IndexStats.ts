@@ -1,6 +1,6 @@
 class IndexStats {
 	completion: CompletionStats;
-	documents: DocStats;
+	docs: DocStats;
 	fielddata: FielddataStats;
 	flush: FlushStats;
 	get: GetStats;

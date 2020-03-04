@@ -4,8 +4,8 @@ class ReindexTask {
 	description: string;
 	id: long;
 	node: string;
-	running_time_in_nanoseconds: long;
-	start_time_in_milliseconds: long;
+	running_time_in_nanos: long;
+	start_time_in_millis: long;
 	status: ReindexStatus;
 	type: string;
 }

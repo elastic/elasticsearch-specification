@@ -1,4 +1,4 @@
 class IcuTransformTokenFilter extends TokenFilterBase {
-	direction: IcuTransformDirection;
+	dir: IcuTransformDirection;
 	id: string;
 }

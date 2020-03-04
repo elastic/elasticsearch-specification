@@ -4,7 +4,7 @@ class SegmentsStats {
 	fixed_bit_set_memory_in_bytes: long;
 	index_writer_max_memory_in_bytes: long;
 	index_writer_memory_in_bytes: long;
-	maximum_unsafe_auto_id_timestamp: long;
+	max_unsafe_auto_id_timestamp: long;
 	memory_in_bytes: long;
 	norms_memory_in_bytes: long;
 	points_memory_in_bytes: long;

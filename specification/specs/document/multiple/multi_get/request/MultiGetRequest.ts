@@ -2,7 +2,7 @@
 class MultiGetRequest extends RequestBase {
 	@request_parameter()
 	stored_fields: Field[];
-	documents: MultiGetOperation[];
+	docs: MultiGetOperation[];
 	@request_parameter()
 	preference: string;
 	@request_parameter()

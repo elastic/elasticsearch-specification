@@ -1,4 +1,4 @@
 class TextIndexPrefixes {
-	max_characters: integer;
-	min_characters: integer;
+	max_chars: integer;
+	min_chars: integer;
 }

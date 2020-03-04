@@ -5,8 +5,8 @@ class TaskStatus {
 	noops: long;
 	requests_per_second: float;
 	retries: TaskRetries;
-	throttled_milliseconds: long;
-	throttled_until_milliseconds: long;
+	throttled_millis: long;
+	throttled_until_millis: long;
 	total: long;
 	updated: long;
 	version_conflicts: long;

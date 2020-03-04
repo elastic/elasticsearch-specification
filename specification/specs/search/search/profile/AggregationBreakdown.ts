@@ -4,7 +4,7 @@ class AggregationBreakdown {
 	collect: long;
 	collect_count: long;
 	initialize: long;
-	initialize_count: long;
+	intialize_count: long;
 	reduce: long;
 	reduce_count: long;
 }

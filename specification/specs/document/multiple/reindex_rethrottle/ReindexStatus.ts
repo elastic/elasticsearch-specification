@@ -5,8 +5,8 @@ class ReindexStatus {
 	noops: long;
 	requests_per_second: float;
 	retries: Retries;
-	throttled_in_milliseconds: long;
-	throttled_until_in_milliseconds: long;
+	throttled_millis: long;
+	throttled_until_millis: long;
 	total: long;
 	updated: long;
 	version_conflicts: long;

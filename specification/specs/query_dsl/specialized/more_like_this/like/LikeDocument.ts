@@ -1,8 +1,8 @@
 class LikeDocument {
-	document: any;
+	doc: any;
 	fields: Field[];
-	id: Id;
-	index: IndexName;
+	_id: Id;
+	_index: IndexName;
 	per_field_analyzer: Dictionary<Field, string>;
 	routing: Routing;
 }

@@ -1,8 +1,8 @@
 class AggregationContainer {
 	adjacency_matrix: AdjacencyMatrixAggregation;
-	aggregations: Dictionary<string, AggregationContainer>;
-	average: AverageAggregation;
-	average_bucket: AverageBucketAggregation;
+	aggs: Dictionary<string, AggregationContainer>;
+	avg: AverageAggregation;
+	avg_bucket: AverageBucketAggregation;
 	bucket_script: BucketScriptAggregation;
 	bucket_selector: BucketSelectorAggregation;
 	bucket_sort: BucketSortAggregation;
@@ -22,8 +22,8 @@ class AggregationContainer {
 	geo_bounds: GeoBoundsAggregation;
 	geo_centroid: GeoCentroidAggregation;
 	geo_distance: GeoDistanceAggregation;
-	geo_hash: GeoHashGridAggregation;
-	geo_tile: GeoTileGridAggregation;
+	geohash_grid: GeoHashGridAggregation;
+	geotile_grid: GeoTileGridAggregation;
 	global: GlobalAggregation;
 	histogram: HistogramAggregation;
 	ip_range: IpRangeAggregation;
@@ -34,8 +34,8 @@ class AggregationContainer {
 	min: MinAggregation;
 	min_bucket: MinBucketAggregation;
 	missing: MissingAggregation;
-	moving_average: MovingAverageAggregation;
-	moving_function: MovingFunctionAggregation;
+	moving_avg: MovingAverageAggregation;
+	moving_fn: MovingFunctionAggregation;
 	nested: NestedAggregation;
 	parent: ParentAggregation;
 	percentile_ranks: PercentileRanksAggregation;
@@ -46,7 +46,7 @@ class AggregationContainer {
 	reverse_nested: ReverseNestedAggregation;
 	sampler: SamplerAggregation;
 	scripted_metric: ScriptedMetricAggregation;
-	serial_differencing: SerialDifferencingAggregation;
+	serial_diff: SerialDifferencingAggregation;
 	significant_terms: SignificantTermsAggregation;
 	significant_text: SignificantTextAggregation;
 	stats: StatsAggregation;
@@ -56,6 +56,6 @@ class AggregationContainer {
 	terms: TermsAggregation;
 	top_hits: TopHitsAggregation;
 	value_count: ValueCountAggregation;
-	weighted_average: WeightedAverageAggregation;
+	weighted_avg: WeightedAverageAggregation;
 	median_absolute_deviation: MedianAbsoluteDeviationAggregation;
 }

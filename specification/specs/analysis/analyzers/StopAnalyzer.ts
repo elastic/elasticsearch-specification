@@ -1,4 +1,4 @@
 class StopAnalyzer extends AnalyzerBase {
-	stop_words: StopWords;
+	stopwords: StopWords;
 	stopwords_path: string;
 }

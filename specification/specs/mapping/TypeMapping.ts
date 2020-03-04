@@ -4,12 +4,12 @@ class TypeMapping {
 	dynamic: Union<boolean, DynamicMapping>;
 	dynamic_date_formats: string[];
 	dynamic_templates: Dictionary<string, DynamicTemplate>;
-	field_names_field: FieldNamesField;
+	_field_names: FieldNamesField;
 	index_field: IndexField;
-	meta: Dictionary<string, any>;
+	_meta: Dictionary<string, any>;
 	numeric_detection: boolean;
 	properties: Dictionary<PropertyName, IProperty>;
-	routing_field: RoutingField;
-	size_field: SizeField;
-	source_field: SourceField;
+	_routing: RoutingField;
+	_size: SizeField;
+	_source: SourceField;
 }

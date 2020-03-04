@@ -1,7 +1,7 @@
 class HasPrivilegesResponse extends ResponseBase implements IResponse {
-	applications: Dictionary<string, ResourcePrivileges[]>;
-	clusters: Dictionary<string, boolean>;
+	application: Dictionary<string, ResourcePrivileges[]>;
+	cluster: Dictionary<string, boolean>;
 	has_all_requested: boolean;
-	indices: ResourcePrivileges[];
+	index: ResourcePrivileges[];
 	username: string;
 }

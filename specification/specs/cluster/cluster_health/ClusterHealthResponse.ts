@@ -12,7 +12,7 @@ class ClusterHealthResponse extends ResponseBase implements IResponse {
 	number_of_pending_tasks: integer;
 	relocating_shards: integer;
 	status: Health;
-	task_max_wait_time_in_queue_in_milliseconds: long;
+	task_max_waiting_in_queue_millis: long;
 	timed_out: boolean;
 	unassigned_shards: integer;
 }

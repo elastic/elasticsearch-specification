@@ -3,7 +3,7 @@ class AutoFollowPattern {
 	leader_index_patterns: string[];
 	max_outstanding_read_requests: long;
 	max_outstanding_write_requests: integer;
-	max_poll_timeout: Time;
+	read_poll_timeout: Time;
 	max_read_request_operation_count: integer;
 	max_read_request_size: string;
 	max_retry_delay: Time;

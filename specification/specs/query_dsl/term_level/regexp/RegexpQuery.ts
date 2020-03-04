@@ -1,5 +1,5 @@
 class RegexpQuery {
 	flags: string;
-	maximum_determinized_states: integer;
+	max_determinized_states: integer;
 	value: string;
 }

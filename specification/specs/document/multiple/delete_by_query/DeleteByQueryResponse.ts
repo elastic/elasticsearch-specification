@@ -8,8 +8,8 @@ class DeleteByQueryResponse extends ResponseBase implements IResponse {
 	retries: Retries;
 	slice_id: integer;
 	task: TaskId;
-	throttled_milliseconds: long;
-	throttled_until_milliseconds: long;
+	throttled_millis: long;
+	throttled_until_millis: long;
 	timed_out: boolean;
 	took: long;
 	total: long;

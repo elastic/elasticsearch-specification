@@ -7,13 +7,13 @@ class CatThreadPoolRecord implements ICatRecord {
 	ip: string;
 	keep_alive: Time;
 	largest: integer;
-	maximum: integer;
+	max: integer;
 	name: string;
 	node_id: string;
 	node_name: string;
 	pool_size: integer;
 	port: integer;
-	process_id: integer;
+	pid: integer;
 	queue: integer;
 	queue_size: integer;
 	rejected: long;

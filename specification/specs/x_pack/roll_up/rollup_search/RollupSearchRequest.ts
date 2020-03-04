@@ -4,7 +4,7 @@ class RollupSearchRequest extends RequestBase {
 	total_hits_as_integer: boolean;
 	@request_parameter()
 	typed_keys: boolean;
-	aggregations: Dictionary<string, AggregationContainer>;
+	aggs: Dictionary<string, AggregationContainer>;
 	query: QueryContainer;
 	size: integer;
 }

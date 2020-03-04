@@ -1,6 +1,6 @@
 @rest_spec_name("ml.get_records")
 class GetAnomalyRecordsRequest extends RequestBase {
-	descending: boolean;
+	desc: boolean;
 	end: Date;
 	exclude_interim: boolean;
 	page: Page;

@@ -1,10 +1,10 @@
 class ShardSegments {
 	count: long;
-	document_values_memory_in_bytes: long;
+	doc_values_memory_in_bytes: long;
 	file_sizes: Dictionary<string, ShardFileSizeInfo>;
-	fixed_bit_memory_in_bytes: long;
+	fixed_bit_set_memory_in_bytes: long;
 	index_writer_memory_in_bytes: long;
-	max_unsafe_auto_id_time_stamp: long;
+	max_unsafe_auto_id_timestamp: long;
 	memory_in_bytes: long;
 	norms_memory_in_bytes: long;
 	points_memory_in_bytes: long;

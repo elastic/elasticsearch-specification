@@ -1,9 +1,9 @@
 class CPUStats {
 	percent: integer;
-	system: string;
-	system_in_milliseconds: long;
+	sys: string;
+	sys_in_millis: long;
 	total: string;
-	total_in_milliseconds: long;
+	total_in_millis: long;
 	user: string;
-	user_in_milliseconds: long;
+	user_in_millis: long;
 }

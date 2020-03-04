@@ -1,10 +1,10 @@
 @rest_spec_name("reindex")
 class ReindexOnServerRequest extends RequestBase {
 	conflicts: Conflicts;
-	destination: ReindexDestination;
+	dest: ReindexDestination;
 	script: Script;
 	size: long;
-	maximum_documents: long;
+	max_docs: long;
 	source: ReindexSource;
 	@request_parameter()
 	refresh: boolean;

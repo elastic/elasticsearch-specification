@@ -2,7 +2,7 @@
 class DeleteByQueryRequest extends RequestBase {
 	query: QueryContainer;
 	slice: SlicedScroll;
-	maximum_documents: long;
+	max_docs: long;
 	@request_parameter()
 	allow_no_indices: boolean;
 	@request_parameter()

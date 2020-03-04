@@ -1,6 +1,6 @@
 @rest_spec_name("termvectors")
 class TermVectorsRequest<TDocument> extends RequestBase {
-	document: TDocument;
+	doc: TDocument;
 	filter: TermVectorFilter;
 	per_field_analyzer: Dictionary<Field, string>;
 	@request_parameter()

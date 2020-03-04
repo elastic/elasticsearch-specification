@@ -1,9 +1,9 @@
 class SpanQuery {
 	span_containing: SpanContainingQuery;
-	span_field_masking: SpanFieldMaskingQuery;
+	field_masking_span: SpanFieldMaskingQuery;
 	span_first: SpanFirstQuery;
 	span_gap: SpanGapQuery;
-	span_multi_term: SpanMultiTermQuery;
+	span_multi: SpanMultiTermQuery;
 	span_near: SpanNearQuery;
 	span_not: SpanNotQuery;
 	span_or: SpanOrQuery;

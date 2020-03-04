@@ -1,7 +1,7 @@
 class ClusterIndicesStats {
 	completion: CompletionStats;
 	count: long;
-	documents: DocStats;
+	docs: DocStats;
 	fielddata: FielddataStats;
 	query_cache: QueryCacheStats;
 	segments: SegmentsStats;

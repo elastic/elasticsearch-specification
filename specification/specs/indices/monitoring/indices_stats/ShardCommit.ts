@@ -1,6 +1,6 @@
 class ShardCommit {
 	generation: integer;
 	id: string;
-	number_of_documents: long;
+	num_docs: long;
 	user_data: Dictionary<string, string>;
 }

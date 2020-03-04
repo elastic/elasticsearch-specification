@@ -1,5 +1,5 @@
 class NodeProcessInfo {
 	id: long;
-	mlock_all: boolean;
-	refresh_interval_in_milliseconds: long;
+	mlockall: boolean;
+	refresh_interval_in_millis: long;
 }

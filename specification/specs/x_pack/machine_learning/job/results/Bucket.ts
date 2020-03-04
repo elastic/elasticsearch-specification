@@ -7,7 +7,7 @@ class Bucket {
 	is_interim: boolean;
 	job_id: string;
 	partition_scores: PartitionScore[];
-	processing_time_milliseconds: double;
+	processing_time_ms: double;
 	result_type: string;
 	timestamp: Date;
 }

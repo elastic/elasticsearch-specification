@@ -1,14 +1,14 @@
 class CatHealthRecord implements ICatRecord {
 	cluster: string;
 	epoch: string;
-	initializing: string;
-	node_data: string;
-	node_total: string;
+	init: string;
+	'node.data': string;
+	'node.total': string;
 	pending_tasks: string;
-	primary: string;
-	relocating: string;
+	pri: string;
+	relo: string;
 	shards: string;
 	status: string;
 	timestamp: string;
-	unassigned: string;
+	unassign: string;
 }

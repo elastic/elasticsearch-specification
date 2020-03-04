@@ -1,7 +1,7 @@
 class QueryContainer {
 	bool: BoolQuery;
 	boosting: BoostingQuery;
-	common_terms: CommonTermsQuery;
+	common: CommonTermsQuery;
 	constant_score: ConstantScoreQuery;
 	dis_max: DisMaxQuery;
 	exists: ExistsQuery;
@@ -39,9 +39,9 @@ class QueryContainer {
 	script_score: ScriptScoreQuery;
 	simple_query_string: SimpleQueryStringQuery;
 	span_containing: SpanContainingQuery;
-	span_field_masking: SpanFieldMaskingQuery;
+	field_masking_span: SpanFieldMaskingQuery;
 	span_first: SpanFirstQuery;
-	span_multi_term: SpanMultiTermQuery;
+	span_multi: SpanMultiTermQuery;
 	span_near: SpanNearQuery;
 	span_not: SpanNotQuery;
 	span_or: SpanOrQuery;

@@ -1,13 +1,13 @@
 class ShardStats {
 	commit: ShardCommit;
 	completion: ShardCompletion;
-	documents: ShardDocs;
+	docs: ShardDocs;
 	fielddata: ShardFielddata;
 	flush: ShardFlush;
 	get: ShardGet;
 	indexing: ShardIndexing;
 	merges: ShardMerges;
-	path: ShardPath;
+	shard_path: ShardPath;
 	query_cache: ShardQueryCache;
 	recovery: ShardStatsRecovery;
 	refresh: ShardRefresh;
@@ -15,8 +15,8 @@ class ShardStats {
 	routing: ShardRouting;
 	search: ShardSearch;
 	segments: ShardSegments;
-	sequence_number: ShardSequenceNumber;
+	seq_no: ShardSequenceNumber;
 	store: ShardStatsStore;
-	transaction_log: ShardTransactionLog;
+	translog: ShardTransactionLog;
 	warmer: ShardWarmer;
 }

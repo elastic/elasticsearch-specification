@@ -14,7 +14,7 @@ class QueryStringQuery {
 	fuzzy_rewrite: MultiTermQueryRewrite;
 	fuzzy_transpositions: boolean;
 	lenient: boolean;
-	maximum_determinized_states: integer;
+	max_determinized_states: integer;
 	minimum_should_match: MinimumShouldMatch;
 	phrase_slop: double;
 	query: string;

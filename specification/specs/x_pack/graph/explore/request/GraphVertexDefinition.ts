@@ -2,7 +2,7 @@ class GraphVertexDefinition {
 	exclude: string[];
 	field: Field;
 	include: GraphVertexInclude[];
-	minimum_document_count: long;
-	shard_minimum_document_count: long;
+	min_doc_count: long;
+	shard_min_doc_count: long;
 	size: integer;
 }
