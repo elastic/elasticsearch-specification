@@ -5,6 +5,7 @@ import {RestSpecMapping} from "./specification/rest-spec-mapping";
 import _ from "lodash";
 import * as glob from "glob";
 import * as ts from "byots";
+import {typeDirectiveIsEqualTo} from "byots/bin/typescript";
 
 export type TypeDictionary = { [p: string]: Domain.TypeDeclaration };
 export class Specification {
@@ -15,7 +16,6 @@ export class Specification {
   types: Domain.TypeDeclaration[] = [];
   typeLookup: TypeDictionary = {};
   domain_errors: string[] = [];
-
   endpoints: Domain.Endpoint[] = [];
   endpoint_errors: string[] = [];
 
@@ -38,14 +38,17 @@ export class Specification {
     const types = [].concat(specVisitor.interfaces).concat(specVisitor.enums);
     // resolve inherits by creating the proper pointers to instances, pretty hairy but it works
     const dictTypes = types.reduce((o, p) => ({...o, [p.name]: p}), {}) as TypeDictionary;
+    const stringType = new Domain.Interface("string");
+    const lookup = (key: string) => key === "string" ? stringType : (dictTypes[key] as Domain.Interface);
     types.forEach(t => {
       if (!(t instanceof Domain.Interface)) return;
-      t.inherits = t.inheritsFromUnresolved
-        .map(i =>
-          i === "String"
-            ? new Domain.Interface("String")
-            : (dictTypes[i] as Domain.Interface)
-        );
+      t.inherits = [];
+      for (const key of Object.keys(t.inheritsFromUnresolved)) {
+        const refType = lookup(key);
+        const ref = new Domain.ImplementsReference(refType);
+        ref.closedGenerics = t.inheritsFromUnresolved[key];
+        t.inherits.push(ref);
+      }
     });
     this.types = types;
     this.typeLookup = dictTypes;

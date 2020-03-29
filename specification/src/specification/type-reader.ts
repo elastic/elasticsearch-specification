@@ -1,7 +1,7 @@
-import { TypeName, RestSpecName, RestSpecMapping } from "./rest-spec-mapping";
-import Domain = require("../domain");
+import {RestSpecMapping, RestSpecName, TypeName} from "./rest-spec-mapping";
 import _ from "lodash";
 import * as ts from "byots";
+import Domain = require("../domain");
 
 class Visitor {
   constructor(protected checker: ts.TypeChecker) {}
@@ -60,6 +60,10 @@ class InterfaceVisitor extends Visitor {
     ts.forEachChild(this.interfaceNode,
         c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface));
 
+    const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference;
+    const generics = lookup.typeArguments || [];
+    domainInterface.openGenerics = generics.map(g => g.getSymbol().name);
+
     const s = this.interfaceNode.symbol;
     const x: any = s.valueDeclaration;
     const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || [];
@@ -69,7 +73,20 @@ class InterfaceVisitor extends Visitor {
         c.forEach(node => p.push(node));
         return c;
       }, [])
-      .map(node => ((node as any).expression as ts.Identifier).text);
+      .reduce((c, node) => {
+        const expression = ((node as any).expression as ts.Identifier);
+        const name = expression.text;
+        // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
+        const typeRef = node as ts.TypeReferenceNode;
+        if (!typeRef.typeArguments) return c;
+        c[name] = (typeRef.typeArguments).map(g => {
+          const typeArgRef = g as ts.TypeReferenceNode;
+          return !typeArgRef.typeName
+            ? this.visitTypeNode(g)
+            : this.visitTypeReference(typeArgRef);
+        });
+        return c;
+      }, {});
 
     return domainInterface;
   }

@@ -9,6 +9,5 @@ class SuggestOption<TDocument> {
 	_index: IndexName;
 	score: double;
 	_source: TDocument;
-	score: double;
 	text: string;
 }

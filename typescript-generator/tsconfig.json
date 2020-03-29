@@ -1,21 +1,27 @@
 {
-  "compileOnSave" : false,
   "compilerOptions": {
     "target": "es2019",
     "module": "commonjs",
-    "moduleResolution": "node",
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "isolatedModules": false,
     "jsx": "react",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": false,
+    "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
     "noLib": false,
     "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noEmit" : true
+    "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true
   },
-  "exclude": [ "node_modules", "build", "src", "typings" ]
+  "compileOnSave": true,
+  "buildOnSave": true,
+  "include": [
+    "*.ts"
+  ],
+  "typeAcquisition": {
+    "enable": true
+  }
 }

@@ -25,8 +25,15 @@ declare namespace Domain {
     }
     class Interface extends TypeDeclaration {
         properties: InterfaceProperty[];
-        inheritsFromUnresolved: string[];
-        inherits: Domain.Interface[];
+        inheritsFromUnresolved: Record<string, InstanceOf[]>;
+        inherits: Domain.ImplementsReference[];
+        openGenerics: string[];
+        implementsUnion: () => boolean;
+    }
+    class ImplementsReference {
+        type: Domain.Interface;
+        constructor(type: Domain.Interface);
+        closedGenerics: Domain.InstanceOf[];
     }
     class InterfaceProperty {
         name: string;

@@ -17,7 +17,7 @@ namespace Domain {
     value: InstanceOf;
   }
   export class UnionOf {
-    type = new Type("dictionary");
+    type = new Type("union");
     items: InstanceOf[] = [];
   }
   export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf;
@@ -28,8 +28,15 @@ namespace Domain {
 
   export class Interface extends TypeDeclaration {
     properties: InterfaceProperty[] = [];
-    inheritsFromUnresolved: string[] = [];
-    inherits: Domain.Interface[] = [];
+    inheritsFromUnresolved: Record<string, InstanceOf[]> = {};
+    inherits: Domain.ImplementsReference[] = [];
+    openGenerics: string[];
+    implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes("Union");
+  }
+
+  export class ImplementsReference  {
+    constructor(public type: Domain.Interface) {}
+    closedGenerics: Domain.InstanceOf[];
   }
 
   export class InterfaceProperty {
