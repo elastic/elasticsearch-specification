@@ -28,20 +28,15 @@ const $properties = (type: Domain.Interface) => type.properties.map($property).j
 const $typeExtends = (type: Domain.Interface) => {
   return type.inherits.length === 0
     ? ``
-    : `extends ${type.inherits.map($handleDictionaryResponse).join(", ")}`;
+    : `extends ${type.inherits.map(t => t.type.name).join(", ")}`;
 };
-const $handleDictionaryResponse = (ref: Domain.ImplementsReference) => {
-  if (ref.type === undefined) {
-    console.log(ref);
-    return "";
-  }
 
-  return ref.type.name !== "DictionaryResponseBase"
-    ? ref.type.name
-    : `ResponseBase, Record<${$instanceOf(ref.closedGenerics[0])}, any>`;
-  // For now we don't know quite what to do with dictionary responses
-  // : `ResponseBase, Record<${ref.closedGenerics.map($instanceOf)}>`;
-}
+const $generateRecordResponse = (type: Domain.Interface, record: Domain.ImplementsReference) => `
+type ${type.name}RecordIndexer = Record<${record.closedGenerics.map($instanceOf)}>
+// noinspection JSUnusedLocalSymbols
+export type ${type.name} =  ${type.name}RecordIndexer & ResponseBase
+`;
+
 const $typeGenerics = (type: Domain.Interface) => {
   return type.openGenerics.length === 0
     ? ``
@@ -55,6 +50,7 @@ export interface ${type.name}${$typeGenerics(type)} ${$typeExtends(type)} {
 const $createUnionType = (type: Domain.Interface) => `
 export type ${type.name} = ${type.inherits[0].closedGenerics.map($instanceOf).join(" | ")};
 `;
+
 const stringTypes =
   ["Field", "Id", "Ids", "IndexName", "Indices", "Routing", "LongId", "IndexMetrics", "Metrics", "Name", "Names",
   "NodeIds", "PropertyName", "RelationName", "TaskId", "Timestamp",
@@ -72,6 +68,8 @@ const $createType = (type: Domain.Interface) => {
   if (objectTypes.includes(type.name))
     return `export type ${type.name} = Record<string, any>;
 `;
+  const record = type.inherits.find(i => i.type.name === "DictionaryResponseBase");
+  if (record) return $generateRecordResponse(type, record);
   if (type.implementsUnion()) return $createUnionType(type);
   return $type(type)
 };

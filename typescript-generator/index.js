@@ -40,17 +40,13 @@ const $properties = (type) => type.properties.map($property).join("\n");
 const $typeExtends = (type) => {
     return type.inherits.length === 0
         ? ``
-        : `extends ${type.inherits.map($handleDictionaryResponse).join(", ")}`;
+        : `extends ${type.inherits.map(t => t.type.name).join(", ")}`;
 };
-const $handleDictionaryResponse = (ref) => {
-    if (ref.type === undefined) {
-        console.log(ref);
-        return "";
-    }
-    return ref.type.name !== "DictionaryResponseBase"
-        ? ref.type.name
-        : `ResponseBase, Record<${$instanceOf(ref.closedGenerics[0])}, any>`;
-};
+const $generateRecordResponse = (type, record) => `
+type ${type.name}RecordIndexer = Record<${record.closedGenerics.map($instanceOf)}>
+// noinspection JSUnusedLocalSymbols
+export type ${type.name} =  ${type.name}RecordIndexer & ResponseBase
+`;
 const $typeGenerics = (type) => {
     return type.openGenerics.length === 0
         ? ``
@@ -80,6 +76,9 @@ const $createType = (type) => {
     if (objectTypes.includes(type.name))
         return `export type ${type.name} = Record<string, any>;
 `;
+    const record = type.inherits.find(i => i.type.name === "DictionaryResponseBase");
+    if (record)
+        return $generateRecordResponse(type, record);
     if (type.implementsUnion())
         return $createUnionType(type);
     return $type(type);

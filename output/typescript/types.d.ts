@@ -2121,9 +2121,6 @@ export interface RemoteInfo {
 }
 export interface RemoteInfoRequest {
 }
-export interface RemoteInfoResponse extends ResponseBase, Record<string, any> {
-    remotes: Record<string, RemoteInfo>;
-}
 export interface RootNodeInfoRequest {
 }
 export interface RootNodeInfoResponse {
@@ -3120,10 +3117,6 @@ export interface GetAliasRequest {
     ignore_unavailable: boolean;
     local: boolean;
 }
-export interface GetAliasResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, IndexAliases>;
-    is_valid: boolean;
-}
 export interface IndexAliases {
     aliases: Record<string, AliasDefinition>;
 }
@@ -3240,8 +3233,6 @@ export interface GetIndexRequest {
     local: boolean;
     master_timeout: Time;
 }
-export interface GetIndexResponse extends ResponseBase, Record<IndexName, any> {
-}
 export interface ExistsResponse {
     exists: boolean;
 }
@@ -3352,9 +3343,6 @@ export interface GetIndexSettingsRequest {
     local: boolean;
     master_timeout: Time;
 }
-export interface GetIndexSettingsResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, IndexState>;
-}
 export interface DeleteIndexTemplateRequest {
     master_timeout: Time;
     timeout: Time;
@@ -3366,9 +3354,6 @@ export interface GetIndexTemplateRequest {
     include_type_name: boolean;
     local: boolean;
     master_timeout: Time;
-}
-export interface GetIndexTemplateResponse extends ResponseBase, Record<string, any> {
-    template_mappings: Record<string, TemplateMapping>;
 }
 export interface TemplateMapping {
     aliases: Record<IndexName, Alias>;
@@ -3418,10 +3403,6 @@ export interface GetFieldMappingRequest {
     include_type_name: boolean;
     local: boolean;
 }
-export interface GetFieldMappingResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, TypeFieldMappings>;
-    is_valid: boolean;
-}
 export interface TypeFieldMappings {
     mappings: Record<Field, FieldMapping>;
 }
@@ -3432,9 +3413,6 @@ export interface GetMappingRequest {
     include_type_name: boolean;
     local: boolean;
     master_timeout: Time;
-}
-export interface GetMappingResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, IndexMappings>;
 }
 export interface IndexMappings {
     item: TypeMapping;
@@ -3506,9 +3484,8 @@ export interface RecoveryStatusRequest {
     active_only: boolean;
     detailed: boolean;
 }
-export interface RecoveryStatusResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, RecoveryStatus>;
-}
+declare type RecoveryStatusResponseRecordIndexer = Record<IndexName, RecoveryStatus>;
+export declare type RecoveryStatusResponse = RecoveryStatusResponseRecordIndexer & ResponseBase;
 export interface RecoveryTranslogStatus {
     percent: string;
     recovered: long;
@@ -3870,9 +3847,6 @@ export interface DeletePipelineResponse {
 }
 export interface GetPipelineRequest {
     master_timeout: Time;
-}
-export interface GetPipelineResponse extends ResponseBase, Record<string, any> {
-    pipelines: Record<string, Pipeline>;
 }
 export interface GrokProcessorPatternsRequest {
 }
@@ -5756,9 +5730,6 @@ export interface LifecycleExplain {
 }
 export interface GetLifecycleRequest {
 }
-export interface GetLifecycleResponse extends ResponseBase, Record<string, any> {
-    policies: Record<string, LifecyclePolicy>;
-}
 export interface LifecyclePolicy {
     modified_date: Date;
     policy: Policy;
@@ -6793,9 +6764,6 @@ export interface DeleteRollupJobResponse {
 }
 export interface GetRollupCapabilitiesRequest {
 }
-export interface GetRollupCapabilitiesResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, RollupCapabilities>;
-}
 export interface RollupCapabilities {
     rollup_jobs: RollupCapabilitiesJob[];
 }
@@ -6806,9 +6774,6 @@ export interface RollupCapabilitiesJob {
     rollup_index: string;
 }
 export interface GetRollupIndexCapabilitiesRequest {
-}
-export interface GetRollupIndexCapabilitiesResponse extends ResponseBase, Record<IndexName, any> {
-    indices: Record<IndexName, RollupIndexCapabilities>;
 }
 export interface RollupIndexCapabilities {
     rollup_jobs: RollupIndexCapabilitiesJob[];
@@ -6978,16 +6943,10 @@ export interface ClearCachedRealmsResponse {
 export interface DeletePrivilegesRequest {
     refresh: Refresh;
 }
-export interface DeletePrivilegesResponse extends ResponseBase, Record<string, any> {
-    applications: Record<string, Record<string, FoundUserPrivilege>>;
-}
 export interface FoundUserPrivilege {
     found: boolean;
 }
 export interface GetPrivilegesRequest {
-}
-export interface GetPrivilegesResponse extends ResponseBase, Record<string, any> {
-    applications: Record<string, Record<string, PrivilegesActions>>;
 }
 export interface ApplicationGlobalUserPrivileges {
     manage: ManageUserPrivileges;
@@ -7061,9 +7020,6 @@ export interface PutPrivilegesRequest {
     refresh: Refresh;
     applications: Record<string, Record<string, PrivilegesActions>>;
 }
-export interface PutPrivilegesResponse extends ResponseBase, Record<string, any> {
-    applications: Record<string, Record<string, PutPrivilegesStatus>>;
-}
 export interface PutPrivilegesStatus {
     created: boolean;
 }
@@ -7084,9 +7040,6 @@ export interface DeleteRoleResponse {
     found: boolean;
 }
 export interface GetRoleRequest {
-}
-export interface GetRoleResponse extends ResponseBase, Record<string, any> {
-    roles: Record<string, XPackRole>;
 }
 export interface XPackRole {
     cluster: string[];
@@ -7127,9 +7080,6 @@ export interface DeleteRoleMappingResponse {
     found: boolean;
 }
 export interface GetRoleMappingRequest {
-}
-export interface GetRoleMappingResponse extends ResponseBase, Record<string, any> {
-    role_mappings: Record<string, XPackRoleMapping>;
 }
 export interface XPackRoleMapping {
     enabled: boolean;
@@ -7177,9 +7127,6 @@ export interface EnableUserRequest {
 export interface EnableUserResponse {
 }
 export interface GetUserRequest {
-}
-export interface GetUserResponse extends ResponseBase, Record<string, any> {
-    users: Record<string, XPackUser>;
 }
 export interface XPackUser {
     email: string;
@@ -7258,9 +7205,6 @@ export interface ExecuteSnapshotLifecycleResponse {
     snapshot_name: string;
 }
 export interface GetSnapshotLifecycleRequest {
-}
-export interface GetSnapshotLifecycleResponse extends ResponseBase, Record<string, any> {
-    policies: Record<string, SnapshotLifecyclePolicyMetadata>;
 }
 export interface PutSnapshotLifecycleRequest {
     config: SnapshotLifecycleConfig;
@@ -9039,3 +8983,4 @@ export declare enum WatcherState {
     started = "started",
     stopping = "stopping"
 }
+export {};
