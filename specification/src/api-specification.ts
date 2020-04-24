@@ -1,16 +1,16 @@
+import * as path from 'path'
 import { SpecValidator } from './specification/validator'
 import { TypeReader } from './specification/type-reader'
 import { RestSpecMapping } from './specification/rest-spec-mapping'
 import _ from 'lodash'
 import * as glob from 'glob'
 import * as ts from 'byots'
-import { typeDirectiveIsEqualTo } from 'byots/bin/typescript'
 import Domain = require('./domain');
 
 export type TypeDictionary = { [p: string]: Domain.TypeDeclaration };
 export class Specification {
-  private specsFolder = __dirname + '/../specs';
-  private configPath = this.specsFolder + '/tsconfig.json';
+  private specsFolder = path.join(__dirname, '..', 'specs');
+  private configPath = path.join(this.specsFolder, 'tsconfig.json');
   private readonly program: ts.Program;
 
   types: Domain.TypeDeclaration[] = [];
@@ -65,7 +65,7 @@ export class EndpointReader {
   endpoints: Domain.Endpoint[];
 
   constructor (types: Domain.Interface[], restSpecMapping: { [p: string]: RestSpecMapping }) {
-    this.endpoints = _(glob.sync(__dirname + '/../specs/**/*.json'))
+    this.endpoints = _(glob.sync(path.join(__dirname, '..', 'specs', '**', '*.json')))
       .filter(f => !f.match(/tsconfig/))
       .filter(f => !f.match(/tslint/))
       .map(f => new Domain.Endpoint(f, restSpecMapping))
