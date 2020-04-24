@@ -18,9 +18,9 @@ interface double {}
 
 @namespace('')
 class PlainRequestBase<TParameters> extends RequestBase {
-	error_trace: boolean;
-	filter_path: string[];
-	human: boolean;
-	pretty: boolean;
-	source_query_string: string;
+  error_trace: boolean;
+  filter_path: string[];
+  human: boolean;
+  pretty: boolean;
+  source_query_string: string;
 }
