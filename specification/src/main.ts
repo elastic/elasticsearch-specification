@@ -1,9 +1,9 @@
 // tslint:disable:no-console
-import {Specification} from "./api-specification";
+import { Specification } from './api-specification'
 
-const specification = Specification.loadWithValidation();
+const specification = Specification.loadWithValidation()
 
-const errorsLength = specification.domain_errors.length + specification.endpoint_errors.length;
+const errorsLength = specification.domain_errors.length + specification.endpoint_errors.length
 
 // const searchAPI = specification.endpoints.find(e => e.name === "search");
 // const searchRequest = specification.typeLookup[searchAPI.typeMapping.request];
@@ -14,6 +14,6 @@ The specification contains
   - ${errorsLength} Errors
   - ${specification.endpoints.length} API Endpoints
   - ${specification.types.length} Types.
-`);
+`)
 
-console.log("Done!");
+console.log('Done!')
