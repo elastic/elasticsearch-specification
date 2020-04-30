@@ -115,6 +115,7 @@ namespace Domain {
     body: BodyDocumentation;
     url: Url;
     queryStringParameters: QueryStringParameter[] = [];
+    routeParts: RoutePart[] = [];
     deprecated: Deprecation;
 
     constructor (file: string, restSpecMapping: { [p: string]: RestSpecMapping }) {
@@ -128,6 +129,31 @@ namespace Domain {
       // @ts-ignore
       this.queryStringParameters = _(data.params).map((v, k) => new QueryStringParameter(k, v)).value()
 
+      const routeParts = _(data.url.paths).reduce((acc, val) => {
+        for (const part in val.parts) {
+          acc[part] = { required: false, ...val.parts[part] }
+        }
+        return acc
+      }, {})
+      // defines if there are required path parameters
+      let allParts = []
+      for (const path of data.url.paths) {
+        if (path.parts) {
+          allParts.push(Object.keys(path.parts))
+        } else {
+          allParts = []
+          break
+        }
+      }
+      if (allParts.length > 0) {
+        intersect(Object.keys(routeParts)).forEach(part => {
+          routeParts[part].required = true
+        })
+      }
+      for (const part in routeParts) {
+        this.routeParts.push(new RoutePart(part, routeParts[part]))
+      }
+
       if (data.body) { this.body = new BodyDocumentation(data.body) }
       if (data.deprecated) { this.deprecated = new Deprecation(data.deprecated) }
 
@@ -138,6 +164,12 @@ namespace Domain {
       };
 
       this.url = new Url(data.url)
+
+      function intersect (first: any, ...rest: any[]): any[] {
+        return rest.reduce((accum, current) => {
+          return accum.filter(x => current.indexOf(x) !== -1)
+        }, first)
+      }
     }
   }
   export class UrlPath {
@@ -212,6 +244,11 @@ namespace Domain {
         case 'datafeed_id':
         case 'snapshot_id':
         case 'filter_id':
+        case 'calendar_id':
+        case 'event_id':
+        case 'forecast_id':
+        case 'policy_id':
+        case 'policy':
         case 'id': return specType === 'string' ? 'Id' : 'Ids'
         case 'category_id': return 'CategoryId'
         case 'nodes':
@@ -230,12 +267,14 @@ namespace Domain {
         case 'lang':
         case 'username':
         case 'usernames':
+        case 'user':
         case 'realm':
         case 'realms':
         case 'alias':
         case 'context':
         case 'name':
         case 'thread_pool_patterns':
+        case 'application':
           return specType === 'string' ? 'Name' : 'Names'
         case 'parent_task_id':
         case 'task_id': return 'TaskId'
