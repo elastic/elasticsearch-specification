@@ -5,7 +5,6 @@ namespace Domain {
 
   export class Type {
     name: string
-    nullable: boolean
     constructor (name: string) {
       this.name = name
     }
