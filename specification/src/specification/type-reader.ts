@@ -39,10 +39,9 @@ class InterfaceVisitor extends Visitor {
     super(checker)
   }
 
-  visit(): Domain.Interface {
-    const n = this.symbolName(this.interfaceNode.name);
-    this.name = n;
-    const domainInterface = new Domain.Interface(n);
+  visit (): Domain.Interface | Domain.RequestInterface {
+    const n = this.symbolName(this.interfaceNode.name)
+    this.name = n
 
     const decorator = _(this.interfaceNode.decorators || [])
       .map(d => d.expression.getText())
@@ -54,6 +53,8 @@ class InterfaceVisitor extends Visitor {
       if (responseName.endsWith('ExistsResponse')) responseName = 'ExistsResponse'
       this.specMapping = new RestSpecMapping(restSpec, n, responseName)
     }
+
+    const domainInterface = restSpec ? new Domain.RequestInterface(n) : new Domain.Interface(n)
 
     ts.forEachChild(this.interfaceNode,
       c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface))
@@ -89,25 +90,27 @@ class InterfaceVisitor extends Visitor {
     return domainInterface
   }
 
-  private isPropertySignature(p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface): boolean {
+  private isPropertySignature (p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface | Domain.RequestInterface): boolean {
     if (p.kind === ts.SyntaxKind.PropertySignature) return true
     if (p.kind === ts.SyntaxKind.PropertyDeclaration) return true
     ts.forEachChild(p, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent))
     return false
   }
 
-  private visitInterfaceProperty(p: ts.PropertySignature, parent: Domain.Interface) {
+  private visitInterfaceProperty (p: ts.PropertySignature, parent: Domain.Interface | Domain.RequestInterface) {
     if (!this.isPropertySignature(p, parent)) return
 
-    const name = this.symbolName(p.name);
-    const returnType = this.visitTypeNode(p.type);
+    const name = this.symbolName(p.name)
 
-    const decorator = _(p.decorators || [])
-      .map(d => d.expression.getText())
-      .find(d => d.startsWith("request_parameter"));
-    const prop = new Domain.InterfaceProperty(name, !!decorator);
-    prop.type = returnType;
-    parent.properties.push(prop);
+    const prop = new Domain.InterfaceProperty(name, this.visitTypeNode(p.type))
+    if (parent instanceof Domain.RequestInterface) {
+      const decorator = _(p.decorators || [])
+        .map(d => d.expression.getText())
+        .find(d => d.startsWith('request_parameter'))
+      parent[decorator ? 'query' : 'body'].push(prop)
+    } else {
+      parent.properties.push(prop)
+    }
   }
 
   private visitTypeNode (t: ts.Node, indent: number = 0): Domain.InstanceOf { // eslint-disable-line
@@ -174,7 +177,7 @@ class InterfaceVisitor extends Visitor {
 export class TypeReader {
   private checker: ts.TypeChecker;
 
-  interfaces: Domain.Interface[] = [];
+  interfaces: (Domain.Interface | Domain.RequestInterface)[] = [];
   enums: Domain.Enum[] = [];
   // TS1337 :( https://github.com/Microsoft/TypeScript/issues/1778
   /** @type {Object.<RestSpecName, TypeName>} */

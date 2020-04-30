@@ -4,8 +4,11 @@ import _ from 'lodash'
 namespace Domain {
 
   export class Type {
-    constructor (public name: string) {}
-    nullable: boolean;
+    name: string
+    nullable: boolean
+    constructor (name: string) {
+      this.name = name
+    }
   }
   export class ArrayOf {
     type = new Type('array');
@@ -34,19 +37,42 @@ namespace Domain {
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
   }
 
+  export class RequestInterface extends TypeDeclaration {
+    body: InterfaceProperty[] = [];
+    query: InterfaceProperty[] = [];
+    path: InterfaceProperty[] = [];
+    inheritsFromUnresolved: Record<string, InstanceOf[]> = {};
+    inherits: Domain.ImplementsReference[] = [];
+    openGenerics: string[];
+    implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
+  }
+
   export class ImplementsReference {
     constructor (public type: Domain.Interface) {}
     closedGenerics: Domain.InstanceOf[];
   }
 
   export class InterfaceProperty {
-    constructor (public name: string, public isRequestParameter: boolean) {}
-    type: InstanceOf;
+    name: string
+    type: InstanceOf
+    nullable: boolean
+    constructor (name: string, type: InstanceOf, nullable: boolean = true) {
+      this.name = name
+      this.type = type
+      this.nullable = nullable
+    }
   }
 
   export class Enum extends TypeDeclaration {
-    constructor (public name: string, public flags: boolean = false) { super(name) }
-    members: EnumMember[] = [];
+    name: string
+    flags: boolean
+    members: EnumMember[]
+    constructor (name: string, members: EnumMember[] = [], flags: boolean = false) {
+      super(name)
+      this.name = name
+      this.flags = flags
+      this.members = members
+    }
   }
 
   export class EnumMember {
