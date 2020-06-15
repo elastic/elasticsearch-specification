@@ -35,5 +35,7 @@ enum FieldType {
 	rank_feature = 33,
 	rank_features = 34,
 	flattened = 35,
-	shape = 36
+	shape = 36,
+	histogram = 37,
+	constant_keyword = 38
 }

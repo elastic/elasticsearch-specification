@@ -8,4 +8,5 @@ class UpdateJobRequest extends RequestBase {
 	model_snapshot_retention_days: long;
 	renormalization_window_days: long;
 	results_retention_days: long;
+	allow_lazy_open: boolean;
 }

@@ -4,4 +4,5 @@ class FieldCapabilities {
 	non_aggregatable_indices: Indices;
 	non_searchable_indices: Indices;
 	searchable: boolean;
+	meta: Dictionary<string, string[]>;
 }

@@ -1,6 +1,8 @@
 @rest_spec_name("cat.nodes")
 class CatNodesRequest extends RequestBase {
 	@request_parameter()
+	bytes: Bytes;
+	@request_parameter()
 	format: string;
 	@request_parameter()
 	full_id: boolean;

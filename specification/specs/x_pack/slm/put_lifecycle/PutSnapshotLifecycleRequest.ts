@@ -4,4 +4,5 @@ class PutSnapshotLifecycleRequest extends RequestBase {
 	name: string;
 	repository: string;
 	schedule: CronExpression;
+	retention: SnapshotRetentionConfiguration;
 }

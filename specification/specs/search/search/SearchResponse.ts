@@ -1,6 +1,7 @@
 class SearchResponse<TDocument> extends ResponseBase {
 	aggregations: Dictionary<string, Aggregate>;
 	_clusters: ClusterStatistics;
+	documents: TDocument[];
 	fields: Dictionary<string, LazyDocument>;
 	hits: HitsMetadata<TDocument>;
 	max_score: double;

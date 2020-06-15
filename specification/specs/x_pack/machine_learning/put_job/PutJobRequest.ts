@@ -7,4 +7,5 @@ class PutJobRequest extends RequestBase {
 	model_plot: ModelPlotConfig;
 	model_snapshot_retention_days: long;
 	results_index_name: IndexName;
+	allow_lazy_open: boolean;
 }

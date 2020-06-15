@@ -1,7 +1,9 @@
 class LifecycleExplain {
 	action: string;
 	action_time_millis: Date;
+	is_auto_retryable_error: boolean;
 	failed_step: string;
+	failed_step_retry_count: integer;
 	index: IndexName;
 	lifecycle_date_millis: Date;
 	managed: boolean;

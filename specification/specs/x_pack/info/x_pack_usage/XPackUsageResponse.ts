@@ -2,7 +2,7 @@ class XPackUsageResponse extends ResponseBase implements IResponse {
 	sql: SqlUsage;
 	rollup: XPackUsage;
 	data_frame: XPackUsage;
-	flattened: XPackUsage;
+	flattened: FlattenedUsage;
 	data_science: XPackUsage;
 	ilm: IlmUsage;
 	ccr: CcrUsage;
@@ -12,6 +12,9 @@ class XPackUsageResponse extends ResponseBase implements IResponse {
 	ml: MachineLearningUsage;
 	monitoring: MonitoringUsage;
 	security: SecurityUsage;
+	transform: XPackUsage;
 	vectors: VectorUsage;
 	voting_only: XPackUsage;
+	slm: SlmUsage;
+	enrich: XPackUsage;
 }

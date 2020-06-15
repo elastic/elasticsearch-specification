@@ -5,6 +5,8 @@ class GetApiKeyRequest extends RequestBase {
 	@request_parameter()
 	name: string;
 	@request_parameter()
+	owner: boolean;
+	@request_parameter()
 	realm_name: string;
 	@request_parameter()
 	username: string;
