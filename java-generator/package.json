@@ -1,0 +1,26 @@
+{
+  "name": "typescript-generator",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% index.js",
+    "compile": "tsc",
+    "start": "npm run compile && node index.js"
+  },
+  "author": "Elastic",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.7.7",
+    "@types/lodash": "^4.14.149",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "change-case": "^4.1.1",
+    "elasticsearch-client-specification": "file:../specification",
+    "json-stable-stringify": "^1.0.1",
+    "lodash": "^4.17.15"
+  }
+}
