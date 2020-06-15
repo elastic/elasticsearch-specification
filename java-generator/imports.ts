@@ -13,9 +13,12 @@ const $referencedTypes = (instance: Domain.InstanceOf) : Domain.TypeDeclaration[
       .concat(instance.closedGenerics.map($referencedTypes).flat(Infinity))
       .concat(inherits);
   }
-  else if (instance instanceof Domain.ArrayOf) return $referencedTypes(instance.of).flat(Infinity);
-  else if (instance instanceof Domain.Dictionary) return [$referencedTypes(instance.key), $referencedTypes(instance.value)].flat(Infinity);
-  else if (instance instanceof Domain.UnionOf) return instance.items.map($referencedTypes).flat(Infinity);
+  else if (instance instanceof Domain.ArrayOf) return $referencedTypes(instance.of)
+    .flat<Domain.TypeDeclaration>(Infinity);
+  else if (instance instanceof Domain.Dictionary) return [$referencedTypes(instance.key), $referencedTypes(instance.value)]
+    .flat<Domain.TypeDeclaration>(Infinity);
+  else if (instance instanceof Domain.UnionOf) return instance.items.map($referencedTypes)
+    .flat<Domain.TypeDeclaration>(Infinity);
 };
 
 const $import = (ns: string) => `import org.elasticsearch.${ns}.*;`;
