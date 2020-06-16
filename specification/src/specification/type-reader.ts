@@ -2,6 +2,7 @@ import {RestSpecMapping, RestSpecName, TypeName} from "./rest-spec-mapping";
 import _ from "lodash";
 import * as ts from "byots";
 import Domain = require("../domain");
+import path from "path";
 
 class Visitor {
   constructor(protected checker: ts.TypeChecker) {}
@@ -9,11 +10,11 @@ class Visitor {
 }
 
 class EnumVisitor extends Visitor {
-  constructor(private enumNode: ts.EnumDeclaration, checker: ts.TypeChecker) {super(checker); }
+  constructor(private enumNode: ts.EnumDeclaration, checker: ts.TypeChecker, private namespace: string) {super(checker); }
 
   visit(): Domain.Enum {
     const name = this.symbolName(this.enumNode.name);
-    const domainEnum = new Domain.Enum(name);
+    const domainEnum = new Domain.Enum(name, this.namespace);
     for (const child of this.enumNode.getChildren())
       this.visitMember(child as ts.EnumMember, domainEnum);
     return domainEnum;
@@ -30,21 +31,25 @@ class EnumVisitor extends Visitor {
     if (!this.isMember(member, e)) return;
 
     const name = this.symbolName(member.name);
-    e.members.push(new Domain.EnumMember(name));
+    const description = (member.jsDoc || []).map(c => c.comment).join(".").trim();
+
+    e.members.push(new Domain.EnumMember(description || name, name));
   }
 }
 
 class InterfaceVisitor extends Visitor {
   name: TypeName;
   specMapping: RestSpecMapping;
-  constructor(private interfaceNode: ts.InterfaceDeclaration | ts.ClassDeclaration, checker: ts.TypeChecker) {
-    super(checker);
-  }
+
+  constructor(
+    private interfaceNode: ts.InterfaceDeclaration | ts.ClassDeclaration,
+    checker: ts.TypeChecker,
+    private namespace: string) { super(checker); }
 
   visit(): Domain.Interface {
     const n = this.symbolName(this.interfaceNode.name);
     this.name = n;
-    const domainInterface = new Domain.Interface(n);
+    const domainInterface = new Domain.Interface(n, this.namespace);
 
     const decorator = _(this.interfaceNode.decorators || [])
       .map(d => d.expression.getText())
@@ -136,7 +141,11 @@ class InterfaceVisitor extends Visitor {
     const typeName = t.typeName.getText();
     if (typeName.startsWith("Dictionary")) return this.createDictionary(t, typeName);
     if (typeName.startsWith("Union")) return this.createUnion(t, typeName);
-    return new Domain.Type(t.getText());
+    const typed = new Domain.Type(typeName);
+    if (!t.typeArguments || t.typeArguments.length === 0)
+      return typed;
+    typed.closedGenerics = t.typeArguments.map(gt => this.visitTypeNode(gt));
+    return typed;
   }
 
   private createUnion(t: ts.TypeReferenceNode, typeName) {
@@ -187,30 +196,34 @@ export class TypeReader {
     this.restSpecMapping = {};
     this.checker = program.getTypeChecker();
     for (const f of this.program.getSourceFiles()) {
-      if (!f.path.match(/specification\/specs/)) continue;
-      this.visit(f);
+      if (!f.path.match(/specification[\/\\]specs/)) continue;
+      let ns = path.dirname(f.path)
+        .replace(/.*specification[\/\\]specs[\/\\]?/, "")
+        .replace(/[\/\\]/g, ".");
+      if (ns === "") ns = "internal";
+      this.visit(f, ns);
     }
   }
 
-  private visit(node: ts.Node) {
+  private visit(node: ts.Node, namespace: string) {
       switch (node.kind) {
         case ts.SyntaxKind.ClassDeclaration:
-          const cv = new InterfaceVisitor(node as ts.ClassDeclaration, this.checker);
+          const cv = new InterfaceVisitor(node as ts.ClassDeclaration, this.checker, namespace);
           const c = cv.visit();
           if (cv.specMapping) this.restSpecMapping[cv.specMapping.spec] = cv.specMapping;
           this.interfaces.push(c);
           break;
         case ts.SyntaxKind.InterfaceDeclaration:
-          const iv = new InterfaceVisitor(node as ts.InterfaceDeclaration, this.checker);
+          const iv = new InterfaceVisitor(node as ts.InterfaceDeclaration, this.checker, namespace);
           const i = iv.visit();
           this.interfaces.push(i);
           break;
 
         case ts.SyntaxKind.EnumDeclaration:
-          const ev = new EnumVisitor(node as ts.EnumDeclaration, this.checker);
+          const ev = new EnumVisitor(node as ts.EnumDeclaration, this.checker, namespace);
           this.enums.push(ev.visit());
           break;
       }
-      ts.forEachChild(node, c => this.visit(c));
+      ts.forEachChild(node, c => this.visit(c, namespace));
   }
 }
