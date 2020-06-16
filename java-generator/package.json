@@ -19,8 +19,8 @@
     "@typescript-eslint/parser": "^2.29.0",
     "standardx": "^5.0.0",
     "ts-node": "^8.10.2",
-    "tslint": "^6.0.0",
-    "typescript": "^3.9.5"
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.2"
   },
   "dependencies": {
     "change-case": "^4.1.1",
