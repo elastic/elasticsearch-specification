@@ -1,3 +1,4 @@
+@class_serializer("SortOrderFormatter`1")
 class TermsOrder {
 	count_ascending: TermsOrder;
 	count_descending: TermsOrder;

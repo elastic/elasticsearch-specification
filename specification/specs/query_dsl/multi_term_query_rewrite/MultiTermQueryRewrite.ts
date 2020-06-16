@@ -1,3 +1,4 @@
+@class_serializer("MultiTermQueryRewriteFormatter")
 class MultiTermQueryRewrite {
 	constant_score: MultiTermQueryRewrite;
 	constant_score_boolean: MultiTermQueryRewrite;

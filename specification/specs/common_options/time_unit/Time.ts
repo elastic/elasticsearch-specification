@@ -1,3 +1,4 @@
+@class_serializer("TimeFormatter")
 class Time {
 	factor: double;
 	interval: TimeUnit;

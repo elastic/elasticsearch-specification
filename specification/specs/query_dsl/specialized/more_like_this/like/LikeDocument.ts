@@ -1,4 +1,5 @@
 class LikeDocument {
+	@prop_serializer("SourceFormatter`1")
 	doc: any;
 	fields: Field[];
 	_id: Id;

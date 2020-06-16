@@ -1,3 +1,4 @@
+@class_serializer("BulkResponseItemFormatter")
 class BulkResponseItemBase {
 	error: MainError;
 	_id: string;
@@ -10,5 +11,4 @@ class BulkResponseItemBase {
 	status: integer;
 	_type: string;
 	_version: long;
-	is_valid: boolean;
 }

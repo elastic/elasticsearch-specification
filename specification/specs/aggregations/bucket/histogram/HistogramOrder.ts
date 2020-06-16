@@ -1,3 +1,4 @@
+@class_serializer("SortOrderFormatter`1")
 class HistogramOrder {
 	count_ascending: HistogramOrder;
 	count_descending: HistogramOrder;

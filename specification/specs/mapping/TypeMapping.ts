@@ -1,6 +1,7 @@
 class TypeMapping {
 	all_field: AllField;
 	date_detection: boolean;
+	@prop_serializer("DynamicMappingFormatter")
 	dynamic: Union<boolean, DynamicMapping>;
 	dynamic_date_formats: string[];
 	dynamic_templates: Dictionary<string, DynamicTemplate>;

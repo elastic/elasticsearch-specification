@@ -1,5 +1,6 @@
 class DataCounts {
 	bucket_count: long;
+	@prop_serializer("NullableDateTimeOffsetEpochMillisecondsFormatter")
 	earliest_record_timestamp: Date;
 	empty_bucket_count: long;
 	input_bytes: long;
@@ -7,9 +8,13 @@ class DataCounts {
 	input_record_count: long;
 	invalid_date_count: long;
 	job_id: string;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	last_data_time: Date;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	latest_empty_bucket_timestamp: Date;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	latest_record_timestamp: Date;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	latest_sparse_bucket_timestamp: Date;
 	missing_field_count: long;
 	out_of_order_timestamp_count: long;

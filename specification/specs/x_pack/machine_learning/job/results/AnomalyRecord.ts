@@ -19,6 +19,7 @@ class AnomalyRecord {
 	probability: double;
 	record_score: double;
 	result_type: string;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	timestamp: Date;
 	typical: double[];
 }

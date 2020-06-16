@@ -1,3 +1,4 @@
+@class_serializer("FieldNameQueryFormatter`2")
 class CommonTermsQuery {
 	analyzer: string;
 	cutoff_frequency: double;

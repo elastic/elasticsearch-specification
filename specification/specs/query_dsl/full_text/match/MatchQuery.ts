@@ -1,3 +1,4 @@
+@class_serializer("FieldNameQueryFormatter`2")
 class MatchQuery {
 	analyzer: string;
 	auto_generate_synonyms_phrase_query: boolean;

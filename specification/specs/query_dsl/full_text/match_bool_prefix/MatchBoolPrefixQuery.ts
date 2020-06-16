@@ -1,3 +1,4 @@
+@class_serializer("FieldNameQueryFormatter`2")
 class MatchBoolPrefixQuery {
 	analyzer: string;
 	fuzziness: Fuzziness;

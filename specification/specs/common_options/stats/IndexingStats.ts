@@ -11,5 +11,6 @@ class IndexingStats {
 	index_time: string;
 	index_time_in_millis: long;
 	index_total: long;
+	@prop_serializer("VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2")
 	types: Dictionary<string, IndexingStats>;
 }
