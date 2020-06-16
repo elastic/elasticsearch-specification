@@ -3,7 +3,6 @@ class AsyncSearch<TDocument> {
 	_clusters: ClusterStatistics;
 	documents: TDocument[];
 	fields: Dictionary<string, LazyDocument>;
-	hits: Hit<TDocument>[];
 	hits: HitsMetadata<TDocument>;
 	max_score: double;
 	num_reduce_phases: long;

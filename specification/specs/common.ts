@@ -45,6 +45,11 @@ interface long {}
 interface float {}
 interface double {}
 
+class ScrollId extends String {}
+class ScrollIds extends String {}
+class CategoryId extends String {}
+class ActionIds extends String {}
+
 @namespace("")
 class PlainRequestBase<TParameters> extends RequestBase {
 	error_trace: boolean;
