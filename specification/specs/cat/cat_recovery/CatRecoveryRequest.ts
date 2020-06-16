@@ -1,7 +1,11 @@
 @rest_spec_name("cat.recovery")
 class CatRecoveryRequest extends RequestBase {
 	@request_parameter()
+	active_only: boolean;
+	@request_parameter()
 	bytes: Bytes;
+	@request_parameter()
+	detailed: boolean;
 	@request_parameter()
 	format: string;
 	@request_parameter()

@@ -9,4 +9,5 @@ class ClusterNodesStats {
 	plugins: PluginStats[];
 	process: ClusterProcess;
 	versions: string[];
+	ingest: ClusterIngestStats;
 }

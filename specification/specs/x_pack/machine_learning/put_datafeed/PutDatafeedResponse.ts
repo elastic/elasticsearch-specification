@@ -9,4 +9,5 @@ class PutDatafeedResponse extends ResponseBase implements IResponse {
 	query_delay: Time;
 	script_fields: Dictionary<string, ScriptField>;
 	scroll_size: integer;
+	max_empty_searches: integer;
 }

@@ -31,6 +31,8 @@ class SearchRequest extends RequestBase {
 	@request_parameter()
 	preference: string;
 	@request_parameter()
+	query_on_query_string: string;
+	@request_parameter()
 	request_cache: boolean;
 	@request_parameter()
 	routing: Routing;

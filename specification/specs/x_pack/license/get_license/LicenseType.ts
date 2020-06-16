@@ -6,5 +6,6 @@ enum LicenseType {
 	dev = 4,
 	silver = 5,
 	gold = 6,
-	platinum = 7
+	platinum = 7,
+	enterprise = 8
 }

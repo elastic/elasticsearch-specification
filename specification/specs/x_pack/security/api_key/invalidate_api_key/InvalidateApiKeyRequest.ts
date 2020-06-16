@@ -4,4 +4,5 @@ class InvalidateApiKeyRequest extends RequestBase {
 	name: string;
 	realm_name: string;
 	username: string;
+	owner: boolean;
 }
