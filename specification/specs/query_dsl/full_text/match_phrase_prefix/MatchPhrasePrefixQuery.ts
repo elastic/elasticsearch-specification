@@ -1,3 +1,4 @@
+@class_serializer("FieldNameQueryFormatter`2")
 class MatchPhrasePrefixQuery {
 	analyzer: string;
 	max_expansions: integer;

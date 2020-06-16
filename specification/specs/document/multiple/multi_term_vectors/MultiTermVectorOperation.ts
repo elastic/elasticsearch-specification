@@ -1,4 +1,5 @@
 class MultiTermVectorOperation {
+	@prop_serializer("SourceFormatter`1")
 	doc: any;
 	field_statistics: boolean;
 	filter: TermVectorFilter;

@@ -1,4 +1,3 @@
-class UpdateResponse<TDocument> extends ResponseBase {
-	is_valid: boolean;
+class UpdateResponse<TDocument> extends WriteResponseBase {
 	get: InlineGet<TDocument>;
 }

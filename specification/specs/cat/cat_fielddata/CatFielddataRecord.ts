@@ -1,3 +1,4 @@
+@class_serializer("CatFielddataRecordFormatter")
 class CatFielddataRecord implements ICatRecord {
 	field: string;
 	host: string;

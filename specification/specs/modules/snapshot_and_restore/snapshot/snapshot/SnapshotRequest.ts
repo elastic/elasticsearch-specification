@@ -2,6 +2,7 @@
 class SnapshotRequest extends RequestBase {
 	ignore_unavailable: boolean;
 	include_global_state: boolean;
+	@prop_serializer("IndicesMultiSyntaxFormatter")
 	indices: Indices;
 	partial: boolean;
 	metadata: Dictionary<string, any>;

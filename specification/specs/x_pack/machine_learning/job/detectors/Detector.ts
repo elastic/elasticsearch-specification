@@ -1,3 +1,4 @@
+@class_serializer("DetectorFormatter")
 class Detector {
 	custom_rules: DetectionRule[];
 	detector_description: string;

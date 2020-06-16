@@ -13,5 +13,6 @@ class SlackAttachment {
 	thumb_url: string;
 	title: string;
 	title_link: string;
+	@prop_serializer("NullableDateTimeOffsetEpochSecondsFormatter")
 	ts: Date;
 }

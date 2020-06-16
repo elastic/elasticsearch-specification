@@ -1,4 +1,5 @@
 @rest_spec_name("bulk")
+@class_serializer("BulkRequestFormatter")
 class BulkRequest extends RequestBase {
 	operations: BulkOperation[];
 	@request_parameter()

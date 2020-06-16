@@ -17,6 +17,7 @@ class NodeInfo {
 	http: NodeInfoHttp;
 	network: NodeInfoNetwork;
 	plugins: PluginStats[];
+	@prop_serializer("VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2")
 	thread_pool: Dictionary<string, NodeThreadPoolInfo>;
 	transport: NodeInfoTransport;
 }

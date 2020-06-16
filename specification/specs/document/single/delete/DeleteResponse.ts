@@ -1,3 +1,2 @@
-class DeleteResponse extends ResponseBase implements IResponse {
-	is_valid: boolean;
+class DeleteResponse extends WriteResponseBase implements IResponse {
 }

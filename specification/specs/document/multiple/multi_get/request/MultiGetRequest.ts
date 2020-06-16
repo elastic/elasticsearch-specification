@@ -1,4 +1,5 @@
 @rest_spec_name("mget")
+@class_serializer("MultiGetRequestFormatter")
 class MultiGetRequest extends RequestBase {
 	@request_parameter()
 	stored_fields: Field[];

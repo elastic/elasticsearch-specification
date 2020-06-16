@@ -1,5 +1,4 @@
 class DeleteByQueryResponse extends ResponseBase implements IResponse {
-	is_valid: boolean;
 	batches: long;
 	deleted: long;
 	failures: BulkIndexByScrollFailure[];

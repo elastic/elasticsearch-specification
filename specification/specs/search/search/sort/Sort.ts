@@ -1,3 +1,4 @@
+@class_serializer("SortFormatter")
 class Sort {
 	missing: any;
 	mode: SortMode;

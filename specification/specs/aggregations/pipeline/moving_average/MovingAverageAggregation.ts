@@ -1,3 +1,4 @@
+@class_serializer("MovingAverageAggregationFormatter")
 class MovingAverageAggregation {
 	minimize: boolean;
 	model: MovingAverageModel;

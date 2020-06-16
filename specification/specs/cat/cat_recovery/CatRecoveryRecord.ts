@@ -17,8 +17,10 @@ class CatRecoveryRecord implements ICatRecord {
 	target_host: string;
 	target_node: string;
 	time: string;
+	@prop_serializer("NullableStringLongFormatter")
 	translog_ops: long;
 	translog_ops_percent: string;
+	@prop_serializer("NullableStringLongFormatter")
 	translog_ops_recovered: long;
 	type: string;
 }
