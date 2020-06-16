@@ -37,7 +37,6 @@ class CatJobsRecord implements ICatRecord {
 	'model.bucket_allocation_failures': string;
 	'model.by_fields': string;
 	'model.bytes': string;
-	'model.bytes': string;
 	'model.categorization_status': ModelCategorizationStatus;
 	'model.categorized_doc_count': string;
 	'model.dead_category_count': string;

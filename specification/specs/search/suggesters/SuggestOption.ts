@@ -10,6 +10,5 @@ class SuggestOption<TDocument> {
 	score: double;
 	@prop_serializer("SourceFormatter`1")
 	_source: TDocument;
-	score: double;
 	text: string;
 }
