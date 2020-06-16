@@ -13,4 +13,5 @@ class PutJobResponse extends ResponseBase implements IResponse {
 	renormalization_window_days: long;
 	results_index_name: string;
 	results_retention_days: long;
+	allow_lazy_open: boolean;
 }

@@ -6,6 +6,7 @@ class LicenseInformation {
 	issued_to: string;
 	issuer: string;
 	max_nodes: long;
+	max_resource_units: integer;
 	status: LicenseStatus;
 	type: LicenseType;
 	uid: string;

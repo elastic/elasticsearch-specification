@@ -5,4 +5,5 @@ class SynonymTokenFilter extends TokenFilterBase {
 	synonyms: string[];
 	synonyms_path: string;
 	tokenizer: string;
+	updateable: boolean;
 }

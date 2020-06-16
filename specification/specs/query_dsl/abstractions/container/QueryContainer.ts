@@ -22,6 +22,7 @@ class QueryContainer {
 	is_writable: boolean;
 	match: MatchQuery;
 	match_all: MatchAllQuery;
+	match_bool_prefix: MatchBoolPrefixQuery;
 	match_none: MatchNoneQuery;
 	match_phrase: MatchPhraseQuery;
 	match_phrase_prefix: MatchPhrasePrefixQuery;

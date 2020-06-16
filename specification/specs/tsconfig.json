@@ -1,10 +1,8 @@
 {
   "compileOnSave" : false,
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es5",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
     "isolatedModules": false,
     "jsx": "react",
     "experimentalDecorators": true,

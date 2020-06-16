@@ -1,3 +1,3 @@
 interface IResponse {
-	error: ServerError;
+	server_error: ServerError;
 }

@@ -3,6 +3,7 @@ class AggregationContainer {
 	aggs: Dictionary<string, AggregationContainer>;
 	avg: AverageAggregation;
 	avg_bucket: AverageBucketAggregation;
+	boxplot: BoxplotAggregation;
 	bucket_script: BucketScriptAggregation;
 	bucket_selector: BucketSelectorAggregation;
 	bucket_sort: BucketSortAggregation;
@@ -58,4 +59,6 @@ class AggregationContainer {
 	value_count: ValueCountAggregation;
 	weighted_avg: WeightedAverageAggregation;
 	median_absolute_deviation: MedianAbsoluteDeviationAggregation;
+	string_stats: StringStatsAggregation;
+	top_metrics: TopMetricsAggregation;
 }

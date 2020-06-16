@@ -1,6 +1,8 @@
 @rest_spec_name("cat.aliases")
 class CatAliasesRequest extends RequestBase {
 	@request_parameter()
+	expand_wildcards: ExpandWildcards;
+	@request_parameter()
 	format: string;
 	@request_parameter()
 	headers: string[];

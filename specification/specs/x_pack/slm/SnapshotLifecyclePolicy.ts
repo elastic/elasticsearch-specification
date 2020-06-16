@@ -3,4 +3,5 @@ class SnapshotLifecyclePolicy {
 	name: string;
 	repository: string;
 	schedule: CronExpression;
+	retention: SnapshotRetentionConfiguration;
 }

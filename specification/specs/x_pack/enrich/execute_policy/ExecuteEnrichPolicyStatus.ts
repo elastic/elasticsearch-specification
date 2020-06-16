@@ -1,0 +1,3 @@
+class ExecuteEnrichPolicyStatus {
+	phase: EnrichPolicyPhase;
+}
