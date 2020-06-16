@@ -3,6 +3,7 @@ class DatafeedConfig {
 	chunking_config: ChunkingConfig;
 	datafeed_id: string;
 	frequency: Time;
+	@prop_serializer("IndicesFormatter")
 	indices: Indices;
 	job_id: string;
 	query: QueryContainer;

@@ -8,5 +8,6 @@ class BucketInfluencer {
 	job_id: string;
 	probability: double;
 	result_type: string;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	timestamp: Date;
 }

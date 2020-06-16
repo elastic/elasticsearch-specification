@@ -1,5 +1,6 @@
 @rest_spec_name("termvectors")
 class TermVectorsRequest<TDocument> extends RequestBase {
+	@prop_serializer("SourceFormatter`1")
 	doc: TDocument;
 	filter: TermVectorFilter;
 	per_field_analyzer: Dictionary<Field, string>;

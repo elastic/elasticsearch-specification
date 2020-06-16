@@ -2,6 +2,7 @@ class PutJobResponse extends ResponseBase implements IResponse {
 	analysis_config: AnalysisConfig;
 	analysis_limits: AnalysisLimits;
 	background_persist_interval: Time;
+	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
 	create_time: Date;
 	data_description: DataDescription;
 	description: string;

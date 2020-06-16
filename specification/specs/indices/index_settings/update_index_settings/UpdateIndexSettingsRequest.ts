@@ -1,4 +1,5 @@
 @rest_spec_name("indices.put_settings")
+@class_serializer("UpdateIndexSettingsRequestFormatter")
 class UpdateIndexSettingsRequest extends RequestBase {
 	index_settings: Dictionary<string, any>;
 	@request_parameter()

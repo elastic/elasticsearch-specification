@@ -1,3 +1,4 @@
+@class_serializer("DynamicResponseFormatter`1")
 class ClusterStateResponse extends ResponseBase {
 	state: string[];
 	cluster_name: string;

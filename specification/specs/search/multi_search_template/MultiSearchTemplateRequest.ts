@@ -1,4 +1,5 @@
 @rest_spec_name("msearch_template")
+@class_serializer("MultiSearchTemplateFormatter")
 class MultiSearchTemplateRequest extends RequestBase {
 	@request_parameter()
 	ccs_minimize_roundtrips: boolean;

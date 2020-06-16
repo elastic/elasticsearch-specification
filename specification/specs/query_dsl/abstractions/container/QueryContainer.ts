@@ -1,3 +1,4 @@
+@class_serializer("QueryContainerInterfaceFormatter")
 class QueryContainer {
 	bool: BoolQuery;
 	boosting: BoostingQuery;

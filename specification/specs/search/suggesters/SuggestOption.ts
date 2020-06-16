@@ -8,6 +8,7 @@ class SuggestOption<TDocument> {
 	_id: string;
 	_index: IndexName;
 	score: double;
+	@prop_serializer("SourceFormatter`1")
 	_source: TDocument;
 	score: double;
 	text: string;

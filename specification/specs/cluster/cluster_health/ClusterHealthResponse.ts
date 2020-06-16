@@ -4,6 +4,7 @@ class ClusterHealthResponse extends ResponseBase implements IResponse {
 	active_shards_percent_as_number: double;
 	cluster_name: string;
 	delayed_unassigned_shards: integer;
+	@prop_serializer("ResolvableReadOnlyDictionaryFormatter`2")
 	indices: Dictionary<IndexName, IndexHealthStats>;
 	initializing_shards: integer;
 	number_of_data_nodes: integer;
