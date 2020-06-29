@@ -2,8 +2,8 @@
 class Sort {
 	missing: any;
 	mode: SortMode;
-	numeric_type: NumericType;
 	nested: NestedSort;
+	numeric_type: NumericType;
 	order: SortOrder;
 	sort_key: Field;
 }

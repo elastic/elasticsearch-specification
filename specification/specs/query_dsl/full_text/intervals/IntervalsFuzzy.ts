@@ -1,8 +1,8 @@
 class IntervalsFuzzy {
 	analyzer: string;
-	prefix_length: integer;
-	transpositions: boolean;
 	fuzziness: Fuzziness;
+	prefix_length: integer;
 	term: string;
+	transpositions: boolean;
 	use_field: Field;
 }

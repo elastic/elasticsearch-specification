@@ -1,7 +1,7 @@
 class PercolateQuery {
-	@prop_serializer("SourceFormatter`1")
+	/* prop_serializer: SourceFormatter`1 */
 	document: any;
-	@prop_serializer("SourceFormatter`1")
+	/* prop_serializer: SourceFormatter`1 */
 	documents: any[];
 	field: Field;
 	id: Id;

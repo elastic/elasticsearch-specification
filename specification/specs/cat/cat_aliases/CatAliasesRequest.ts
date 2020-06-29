@@ -1,19 +1,15 @@
 @rest_spec_name("cat.aliases")
 class CatAliasesRequest extends RequestBase {
-	@request_parameter()
-	expand_wildcards: ExpandWildcards;
-	@request_parameter()
-	format: string;
-	@request_parameter()
-	headers: string[];
-	@request_parameter()
-	help: boolean;
-	@request_parameter()
-	local: boolean;
-	@request_parameter()
-	master_timeout: Time;
-	@request_parameter()
-	sort_by_columns: string[];
-	@request_parameter()
-	verbose: boolean;
+	query_parameters: {
+		expand_wildcards: ExpandWildcards;
+		format: string;
+		headers: string[];
+		help: boolean;
+		local: boolean;
+		master_timeout: Time;
+		sort_by_columns: string[];
+		verbose: boolean;
+	}
+	body: {
+	}
 }

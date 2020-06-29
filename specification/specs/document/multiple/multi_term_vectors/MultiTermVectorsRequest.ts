@@ -1,27 +1,20 @@
 @rest_spec_name("mtermvectors")
 class MultiTermVectorsRequest extends RequestBase {
-	docs: MultiTermVectorOperation[];
-	ids: Id[];
-	@request_parameter()
-	field_statistics: boolean;
-	@request_parameter()
-	fields: Field[];
-	@request_parameter()
-	offsets: boolean;
-	@request_parameter()
-	payloads: boolean;
-	@request_parameter()
-	positions: boolean;
-	@request_parameter()
-	preference: string;
-	@request_parameter()
-	realtime: boolean;
-	@request_parameter()
-	routing: Routing;
-	@request_parameter()
-	term_statistics: boolean;
-	@request_parameter()
-	version: long;
-	@request_parameter()
-	version_type: VersionType;
+	query_parameters: {
+		fields: Field[];
+		field_statistics: boolean;
+		offsets: boolean;
+		payloads: boolean;
+		positions: boolean;
+		preference: string;
+		realtime: boolean;
+		routing: Routing;
+		term_statistics: boolean;
+		version: long;
+		version_type: VersionType;
+	}
+	body: {
+		docs: MultiTermVectorOperation[];
+		ids: Id[];
+	}
 }

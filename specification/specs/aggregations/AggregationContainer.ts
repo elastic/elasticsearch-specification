@@ -1,6 +1,7 @@
 class AggregationContainer {
 	adjacency_matrix: AdjacencyMatrixAggregation;
 	aggs: Dictionary<string, AggregationContainer>;
+	auto_date_histogram: AutoDateHistogramAggregation;
 	avg: AverageAggregation;
 	avg_bucket: AverageBucketAggregation;
 	boxplot: BoxplotAggregation;
@@ -10,10 +11,9 @@ class AggregationContainer {
 	cardinality: CardinalityAggregation;
 	children: ChildrenAggregation;
 	composite: CompositeAggregation;
-	cumulative_sum: CumulativeSumAggregation;
 	cumulative_cardinality: CumulativeCardinalityAggregation;
+	cumulative_sum: CumulativeSumAggregation;
 	date_histogram: DateHistogramAggregation;
-	auto_date_histogram: AutoDateHistogramAggregation;
 	date_range: DateRangeAggregation;
 	derivative: DerivativeAggregation;
 	extended_stats: ExtendedStatsAggregation;
@@ -31,6 +31,7 @@ class AggregationContainer {
 	matrix_stats: MatrixStatsAggregation;
 	max: MaxAggregation;
 	max_bucket: MaxBucketAggregation;
+	median_absolute_deviation: MedianAbsoluteDeviationAggregation;
 	meta: Dictionary<string, any>;
 	min: MinAggregation;
 	min_bucket: MinBucketAggregation;
@@ -52,13 +53,12 @@ class AggregationContainer {
 	significant_text: SignificantTextAggregation;
 	stats: StatsAggregation;
 	stats_bucket: StatsBucketAggregation;
+	string_stats: StringStatsAggregation;
 	sum: SumAggregation;
 	sum_bucket: SumBucketAggregation;
 	terms: TermsAggregation;
 	top_hits: TopHitsAggregation;
+	top_metrics: TopMetricsAggregation;
 	value_count: ValueCountAggregation;
 	weighted_avg: WeightedAverageAggregation;
-	median_absolute_deviation: MedianAbsoluteDeviationAggregation;
-	string_stats: StringStatsAggregation;
-	top_metrics: TopMetricsAggregation;
 }

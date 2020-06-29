@@ -1,9 +1,10 @@
 @rest_spec_name("tasks.cancel")
 class CancelTasksRequest extends RequestBase {
-	@request_parameter()
-	actions: string[];
-	@request_parameter()
-	nodes: string[];
-	@request_parameter()
-	parent_task_id: string;
+	query_parameters: {
+		actions: string[];
+		nodes: string[];
+		parent_task_id: string;
+	}
+	body: {
+	}
 }

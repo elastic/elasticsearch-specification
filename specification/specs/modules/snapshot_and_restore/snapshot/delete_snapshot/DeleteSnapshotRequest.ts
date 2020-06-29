@@ -1,5 +1,8 @@
 @rest_spec_name("snapshot.delete")
 class DeleteSnapshotRequest extends RequestBase {
-	@request_parameter()
-	master_timeout: Time;
+	query_parameters: {
+		master_timeout: Time;
+	}
+	body: {
+	}
 }

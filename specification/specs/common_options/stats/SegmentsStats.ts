@@ -1,6 +1,7 @@
 class SegmentsStats {
 	count: long;
 	doc_values_memory_in_bytes: long;
+	file_sizes: Dictionary<string, ShardFileSizeInfo>;
 	fixed_bit_set_memory_in_bytes: long;
 	index_writer_max_memory_in_bytes: long;
 	index_writer_memory_in_bytes: long;
@@ -12,5 +13,4 @@ class SegmentsStats {
 	terms_memory_in_bytes: long;
 	term_vectors_memory_in_bytes: long;
 	version_map_memory_in_bytes: long;
-	file_sizes: Dictionary<string, ShardFileSizeInfo>;
 }

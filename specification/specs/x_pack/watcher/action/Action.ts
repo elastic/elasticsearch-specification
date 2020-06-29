@@ -1,9 +1,9 @@
 class Action {
 	action_type: ActionType;
-	name: string;
-	throttle_period: Time;
+	condition: ConditionContainer;
 	foreach: string;
 	max_iterations: integer;
+	name: string;
+	throttle_period: Time;
 	transform: TransformContainer;
-	condition: ConditionContainer;
 }

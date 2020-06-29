@@ -1,11 +1,14 @@
 @rest_spec_name("transform.put_transform")
 class PutTransformRequest extends RequestBase {
-	@request_parameter()
-	defer_validation: boolean;
-	description: string;
-	source: TransformSource;
-	dest: TransformDestination;
-	frequency: Time;
-	pivot: TransformPivot;
-	sync: TransformSyncContainer;
+	query_parameters: {
+		defer_validation: boolean;
+	}
+	body: {
+		description: string;
+		dest: TransformDestination;
+		frequency: Time;
+		pivot: TransformPivot;
+		source: TransformSource;
+		sync: TransformSyncContainer;
+	}
 }

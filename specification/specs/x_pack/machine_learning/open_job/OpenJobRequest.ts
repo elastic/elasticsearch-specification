@@ -1,4 +1,8 @@
 @rest_spec_name("ml.open_job")
 class OpenJobRequest extends RequestBase {
-	timeout: Time;
+	query_parameters: {
+	}
+	body: {
+		timeout: Time;
+	}
 }

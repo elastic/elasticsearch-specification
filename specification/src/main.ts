@@ -15,5 +15,9 @@ The specification contains
   - ${specification.endpoints.length} API Endpoints
   - ${specification.types.length} Types.
 `)
+  for (const e of specification.endpoints) {
+    console.log(specification.typeLookup[e.typeMapping.request])
+  }
+
 
 console.log('Done!')
