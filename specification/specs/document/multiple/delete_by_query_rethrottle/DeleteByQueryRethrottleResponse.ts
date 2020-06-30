@@ -1,0 +1,2 @@
+class DeleteByQueryRethrottleResponse extends ListTasksResponse {
+}

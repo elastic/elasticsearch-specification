@@ -144,15 +144,9 @@ class InterfaceVisitor extends Visitor {
     switch (t.kind) {
       case ts.SyntaxKind.ArrayType : return this.visitArrayType(t as ts.ArrayTypeNode);
       case ts.SyntaxKind.ExpressionWithTypeArguments:
-        const tsx = t as ts.ExpressionWithTypeArguments;
-        const types = tsx.typeArguments;
-        if (types) {
-          console.log(types)
-        }
-        return undefined;
-      case ts.SyntaxKind.TypeLiteral:
-       const lit = t as ts.TypeLiteralNode;
-       return undefined;
+        const lit = t as ts.TypeLiteralNode;
+        return new Domain.Type(lit.getText());
+      case ts.SyntaxKind.TypeLiteral:return undefined;
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode);
       case ts.SyntaxKind.StringKeyword : return new Domain.Type("string");
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type("boolean");
