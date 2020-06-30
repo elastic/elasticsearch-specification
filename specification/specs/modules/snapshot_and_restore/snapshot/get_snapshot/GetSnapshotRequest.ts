@@ -1,9 +1,10 @@
 @rest_spec_name("snapshot.get")
 class GetSnapshotRequest extends RequestBase {
-	@request_parameter()
-	ignore_unavailable: boolean;
-	@request_parameter()
-	master_timeout: Time;
-	@request_parameter()
-	verbose: boolean;
+	query_parameters: {
+		ignore_unavailable: boolean;
+		master_timeout: Time;
+		verbose: boolean;
+	}
+	body: {
+	}
 }

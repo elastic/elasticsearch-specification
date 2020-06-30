@@ -1,9 +1,13 @@
 @rest_spec_name("transform.preview_transform")
 class PreviewTransformRequest extends RequestBase {
-	description: string;
-	source: TransformSource;
-	dest: TransformDestination;
-	frequency: Time;
-	pivot: TransformPivot;
-	sync: TransformSyncContainer;
+	query_parameters: {
+	}
+	body: {
+		description: string;
+		dest: TransformDestination;
+		frequency: Time;
+		pivot: TransformPivot;
+		source: TransformSource;
+		sync: TransformSyncContainer;
+	}
 }

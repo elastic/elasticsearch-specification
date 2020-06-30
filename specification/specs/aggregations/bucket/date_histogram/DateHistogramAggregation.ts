@@ -1,10 +1,10 @@
 class DateHistogramAggregation {
+	calendar_interval: Union<DateInterval, Time>;
 	extended_bounds: ExtendedBounds<DateMath>;
 	field: Field;
+	fixed_interval: Union<DateInterval, Time>;
 	format: string;
 	interval: Union<DateInterval, Time>;
-	calendar_interval: Union<DateInterval, Time>;
-	fixed_interval: Union<DateInterval, Time>;
 	min_doc_count: integer;
 	missing: Date;
 	offset: string;

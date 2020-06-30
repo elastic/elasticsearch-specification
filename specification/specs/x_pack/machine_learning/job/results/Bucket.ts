@@ -9,6 +9,6 @@ class Bucket {
 	partition_scores: PartitionScore[];
 	processing_time_ms: double;
 	result_type: string;
-	@prop_serializer("DateTimeOffsetEpochMillisecondsFormatter")
+	/* prop_serializer: DateTimeOffsetEpochMillisecondsFormatter */
 	timestamp: Date;
 }

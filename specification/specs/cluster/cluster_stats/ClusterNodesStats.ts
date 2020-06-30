@@ -2,6 +2,7 @@ class ClusterNodesStats {
 	count: ClusterNodeCount;
 	discovery_types: Dictionary<string, integer>;
 	fs: ClusterFileSystem;
+	ingest: ClusterIngestStats;
 	jvm: ClusterJvm;
 	network_types: ClusterNetworkTypes;
 	os: ClusterOperatingSystemStats;
@@ -9,5 +10,4 @@ class ClusterNodesStats {
 	plugins: PluginStats[];
 	process: ClusterProcess;
 	versions: string[];
-	ingest: ClusterIngestStats;
 }

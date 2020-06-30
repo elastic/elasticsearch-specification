@@ -1,23 +1,23 @@
 class NodeInfo {
-	name: string;
-	transport_address: string;
-	host: string;
-	ip: string;
-	version: string;
-	build_flavor: string;
-	build_type: string;
-	build_hash: string;
-	total_indexing_buffer: long;
-	roles: NodeRole[];
 	attributes: Dictionary<string, string>;
-	settings: string[];
-	os: NodeOperatingSystemInfo;
-	process: NodeProcessInfo;
-	jvm: NodeJvmInfo;
+	build_flavor: string;
+	build_hash: string;
+	build_type: string;
+	host: string;
 	http: NodeInfoHttp;
+	ip: string;
+	jvm: NodeJvmInfo;
+	name: string;
 	network: NodeInfoNetwork;
+	os: NodeOperatingSystemInfo;
 	plugins: PluginStats[];
-	@prop_serializer("VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2")
+	process: NodeProcessInfo;
+	roles: NodeRole[];
+	settings: string[];
+	/* prop_serializer: VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
 	thread_pool: Dictionary<string, NodeThreadPoolInfo>;
+	total_indexing_buffer: long;
 	transport: NodeInfoTransport;
+	transport_address: string;
+	version: string;
 }
