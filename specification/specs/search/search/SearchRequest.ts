@@ -1,88 +1,61 @@
 @rest_spec_name("search")
 class SearchRequest extends RequestBase {
-	@request_parameter()
-	allow_no_indices: boolean;
-	@request_parameter()
-	allow_partial_search_results: boolean;
-	@request_parameter()
-	analyze_wildcard: boolean;
-	@request_parameter()
-	analyzer: string;
-	@request_parameter()
-	batched_reduce_size: long;
-	@request_parameter()
-	ccs_minimize_roundtrips: boolean;
-	@request_parameter()
-	default_operator: DefaultOperator;
-	@request_parameter()
-	df: string;
-	@request_parameter()
-	expand_wildcards: ExpandWildcards;
-	@request_parameter()
-	ignore_throttled: boolean;
-	@request_parameter()
-	ignore_unavailable: boolean;
-	@request_parameter()
-	lenient: boolean;
-	@request_parameter()
-	max_concurrent_shard_requests: long;
-	@request_parameter()
-	pre_filter_shard_size: long;
-	@request_parameter()
-	preference: string;
-	@request_parameter()
-	query_on_query_string: string;
-	@request_parameter()
-	request_cache: boolean;
-	@request_parameter()
-	routing: Routing;
-	@request_parameter()
-	scroll: Time;
-	@request_parameter()
-	search_type: SearchType;
-	@request_parameter()
-	sequence_number_primary_term: boolean;
-	@request_parameter()
-	stats: string[];
-	@request_parameter()
-	suggest_field: Field;
-	@request_parameter()
-	suggest_mode: SuggestMode;
-	@request_parameter()
-	suggest_size: long;
-	@request_parameter()
-	suggest_text: string;
-	@request_parameter()
-	total_hits_as_integer: boolean;
-	@request_parameter()
-	typed_keys: boolean;
-	aggs: Dictionary<string, AggregationContainer>;
-	collapse: FieldCollapse;
-	@request_parameter()
-	docvalue_fields: Field[];
-	explain: boolean;
-	from: integer;
-	highlight: Highlight;
-	@prop_serializer("IndicesBoostFormatter")
-	indices_boost: Dictionary<IndexName, double>;
-	min_score: double;
-	post_filter: QueryContainer;
-	profile: boolean;
-	query: QueryContainer;
-	rescore: Rescore[];
-	script_fields: Dictionary<string, ScriptField>;
-	search_after: any[];
-	size: integer;
-	slice: SlicedScroll;
-	sort: Sort[];
-	_source: Union<boolean, SourceFilter>;
-	@request_parameter()
-	stored_fields: Field[];
-	suggest: Dictionary<string, SuggestBucket>;
-	terminate_after: long;
-	timeout: string;
-	track_scores: boolean;
-	@request_parameter()
-	track_total_hits: boolean;
-	version: boolean;
+	query_parameters: {
+		allow_no_indices: boolean;
+		allow_partial_search_results: boolean;
+		analyzer: string;
+		analyze_wildcard: boolean;
+		batched_reduce_size: long;
+		ccs_minimize_roundtrips: boolean;
+		default_operator: DefaultOperator;
+		df: string;
+		docvalue_fields: Field[];
+		expand_wildcards: ExpandWildcards;
+		ignore_throttled: boolean;
+		ignore_unavailable: boolean;
+		lenient: boolean;
+		max_concurrent_shard_requests: long;
+		preference: string;
+		pre_filter_shard_size: long;
+		query_on_query_string: string;
+		request_cache: boolean;
+		routing: Routing;
+		scroll: Time;
+		search_type: SearchType;
+		sequence_number_primary_term: boolean;
+		stats: string[];
+		stored_fields: Field[];
+		suggest_field: Field;
+		suggest_mode: SuggestMode;
+		suggest_size: long;
+		suggest_text: string;
+		total_hits_as_integer: boolean;
+		track_total_hits: boolean;
+		typed_keys: boolean;
+	}
+	body: {
+		aggs: Dictionary<string, AggregationContainer>;
+		collapse: FieldCollapse;
+		explain: boolean;
+		from: integer;
+		highlight: Highlight;
+		/* prop_serializer: IndicesBoostFormatter */
+		indices_boost: Dictionary<IndexName, double>;
+		min_score: double;
+		post_filter: QueryContainer;
+		profile: boolean;
+		query: QueryContainer;
+		rescore: Rescore[];
+		script_fields: Dictionary<string, ScriptField>;
+		search_after: any[];
+		size: integer;
+		slice: SlicedScroll;
+		sort: Sort[];
+		_source: Union<boolean, SourceFilter>;
+		suggest: Dictionary<string, SuggestBucket>;
+		terminate_after: long;
+		timeout: string;
+		track_scores: boolean;
+		version: boolean;
+	}
 }

@@ -1,8 +1,10 @@
 @rest_spec_name("indices.update_aliases")
 class BulkAliasRequest extends RequestBase {
-	actions: AliasAction[];
-	@request_parameter()
-	master_timeout: Time;
-	@request_parameter()
-	timeout: Time;
+	query_parameters: {
+		master_timeout: Time;
+		timeout: Time;
+	}
+	body: {
+		actions: AliasAction[];
+	}
 }

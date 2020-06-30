@@ -1,6 +1,6 @@
 @class_serializer("MultiSearchResponseFormatter")
 class MultiSearchResponse extends ResponseBase implements IResponse {
-	took: long;
 	all_responses: IResponse[];
+	took: long;
 	total_responses: integer;
 }

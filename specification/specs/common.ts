@@ -6,6 +6,7 @@ function request_parameter() {return function (ns: any, x:any){}}
 function namespace(ns: string) {return function (ns: any){}}
 
 interface Uri {}
+interface String {}
 interface Date {}
 interface TimeSpan {}
 interface SourceDocument {}
@@ -45,16 +46,15 @@ interface long {}
 interface float {}
 interface double {}
 
-class ScrollId extends String {}
-class ScrollIds extends String {}
-class CategoryId extends String {}
-class ActionIds extends String {}
-
 @namespace("")
 class PlainRequestBase<TParameters> extends RequestBase {
-	error_trace: boolean;
-	filter_path: string[];
-	human: boolean;
-	pretty: boolean;
-	source_query_string: string;
+	query_parameters: {
+	}
+	body: {
+		error_trace: boolean;
+		filter_path: string[];
+		human: boolean;
+		pretty: boolean;
+		source_query_string: string;
+	}
 }

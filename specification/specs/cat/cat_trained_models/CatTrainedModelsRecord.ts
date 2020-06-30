@@ -1,6 +1,6 @@
 class CatTrainedModelsRecord implements ICatRecord {
-	create_time: string;
 	created_by: string;
+	create_time: string;
 	data_frame_analytics_id: string;
 	description: string;
 	heap_size: string;

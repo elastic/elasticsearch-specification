@@ -49,12 +49,12 @@ class InterfaceVisitor extends Visitor {
   visit(): Domain.Interface {
     const n = this.symbolName(this.interfaceNode.name);
     this.name = n;
-    const domainInterface = new Domain.Interface(n, this.namespace);
 
     const decorator = _(this.interfaceNode.decorators || [])
       .map(d => d.expression.getText())
       .find(t => t.startsWith("rest_spec_name"));
 
+    // only exists on requests
     const restSpec = decorator ? decorator.split("\"")[1] : null;
     if (restSpec) {
       let responseName = n.replace("Request", "Response");
@@ -62,8 +62,14 @@ class InterfaceVisitor extends Visitor {
       this.specMapping = new RestSpecMapping(restSpec, n, responseName);
     }
 
-    ts.forEachChild(this.interfaceNode,
-        c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface));
+    const domainInterface = restSpec ? new Domain.RequestInterface(n, this.namespace) : new Domain.Interface(n, this.namespace);
+
+    if (!restSpec)
+      ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface));
+    else
+    {
+      ts.forEachChild(this.interfaceNode, c => this.visitRequestProperties(c as ts.PropertySignature, domainInterface));
+    }
 
     const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference;
     const generics = lookup.typeArguments || [];
@@ -83,7 +89,13 @@ class InterfaceVisitor extends Visitor {
         const name = expression.text;
         // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
         const typeRef = node as ts.TypeReferenceNode;
-        if (!typeRef.typeArguments) return c;
+        if (!typeRef.typeArguments) {
+          const type = !typeRef.typeName
+            ? this.visitTypeNode(node)
+            : this.visitTypeReference(typeRef);
+          c[name] = [type];
+          return c;
+        }
         c[name] = (typeRef.typeArguments).map(g => {
           const typeArgRef = g as ts.TypeReferenceNode;
           return !typeArgRef.typeName
@@ -92,7 +104,6 @@ class InterfaceVisitor extends Visitor {
         });
         return c;
       }, {});
-
     return domainInterface;
   }
 
@@ -103,16 +114,28 @@ class InterfaceVisitor extends Visitor {
     return false;
   }
 
-  private visitInterfaceProperty(p: ts.PropertySignature, parent: Domain.Interface) {
+  private visitRequestProperties(p: ts.PropertySignature, parent: Domain.RequestInterface) {
+    if (!this.isPropertySignature(p, parent)) return;
+    const name = this.symbolName(p.name);
+
+    const returnType = this.visitTypeNode(p.type);
+    ts.forEachChild(p.type, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent, name === "query_parameters"));
+
+    if (name === "query_parameters")
+      parent.queryParameters = parent.properties.filter(prop=>prop.isRequestParameter);
+    else if (name === "body") {
+      const bodyProps = parent.properties.filter(prop=>!prop.isRequestParameter);
+      parent.body = bodyProps.length > 0 ? bodyProps : returnType;
+    }
+  }
+
+  private visitInterfaceProperty(p: ts.PropertySignature, parent: Domain.Interface,  isQueryParam:boolean = false) {
     if (!this.isPropertySignature(p, parent)) return;
 
     const name = this.symbolName(p.name);
     const returnType = this.visitTypeNode(p.type);
 
-    const decorator = _(p.decorators || [])
-      .map(d => d.expression.getText())
-      .find(d => d.startsWith("request_parameter"));
-    const prop = new Domain.InterfaceProperty(name, !!decorator);
+    const prop = new Domain.InterfaceProperty(name, isQueryParam);
     prop.type = returnType;
     parent.properties.push(prop);
   }
@@ -120,10 +143,16 @@ class InterfaceVisitor extends Visitor {
   private visitTypeNode(t: ts.Node, indent: number = 0): Domain.InstanceOf {
     switch (t.kind) {
       case ts.SyntaxKind.ArrayType : return this.visitArrayType(t as ts.ArrayTypeNode);
+      case ts.SyntaxKind.ExpressionWithTypeArguments:
+        const lit = t as ts.TypeLiteralNode;
+        return new Domain.Type(lit.getText());
+      case ts.SyntaxKind.TypeLiteral:return undefined;
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode);
       case ts.SyntaxKind.StringKeyword : return new Domain.Type("string");
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type("boolean");
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type("object");
+      default:
+        console.log(t.kind)
     }
   }
 

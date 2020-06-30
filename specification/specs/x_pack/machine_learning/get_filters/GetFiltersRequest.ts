@@ -1,7 +1,9 @@
 @rest_spec_name("ml.get_filters")
 class GetFiltersRequest extends RequestBase {
-	@request_parameter()
-	from: integer;
-	@request_parameter()
-	size: integer;
+	query_parameters: {
+		from: integer;
+		size: integer;
+	}
+	body: {
+	}
 }

@@ -8,10 +8,10 @@ class CatTransformsRecord implements ICatRecord {
 	documents_processed: long;
 	frequency: Time;
 	id: string;
+	indexed_documents_exp_avg: long;
 	index_failure: long;
 	index_time: long;
 	index_total: long;
-	indexed_documents_exp_avg: long;
 	max_page_search_size: long;
 	pages_processed: long;
 	pipeline: string;
@@ -21,7 +21,7 @@ class CatTransformsRecord implements ICatRecord {
 	search_failure: long;
 	search_time: long;
 	search_total: long;
-	@prop_serializer("IndicesFormatter")
+	/* prop_serializer: IndicesFormatter */
 	source_index: Indices;
 	state: TransformState;
 	transform_type: TransformType;

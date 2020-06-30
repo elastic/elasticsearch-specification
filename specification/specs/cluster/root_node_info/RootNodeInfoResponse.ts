@@ -1,7 +1,7 @@
 class RootNodeInfoResponse extends ResponseBase implements IResponse {
-	name: string;
 	cluster_name: string;
 	cluster_uuid: string;
-	version: ElasticsearchVersionInfo;
+	name: string;
 	tagline: string;
+	version: ElasticsearchVersionInfo;
 }

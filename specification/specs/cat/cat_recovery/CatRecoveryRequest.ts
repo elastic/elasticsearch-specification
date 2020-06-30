@@ -1,21 +1,16 @@
 @rest_spec_name("cat.recovery")
 class CatRecoveryRequest extends RequestBase {
-	@request_parameter()
-	active_only: boolean;
-	@request_parameter()
-	bytes: Bytes;
-	@request_parameter()
-	detailed: boolean;
-	@request_parameter()
-	format: string;
-	@request_parameter()
-	headers: string[];
-	@request_parameter()
-	help: boolean;
-	@request_parameter()
-	master_timeout: Time;
-	@request_parameter()
-	sort_by_columns: string[];
-	@request_parameter()
-	verbose: boolean;
+	query_parameters: {
+		active_only: boolean;
+		bytes: Bytes;
+		detailed: boolean;
+		format: string;
+		headers: string[];
+		help: boolean;
+		master_timeout: Time;
+		sort_by_columns: string[];
+		verbose: boolean;
+	}
+	body: {
+	}
 }

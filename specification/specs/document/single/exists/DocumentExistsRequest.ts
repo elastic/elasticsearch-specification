@@ -1,23 +1,17 @@
 @rest_spec_name("exists")
 class DocumentExistsRequest extends RequestBase {
-	@request_parameter()
-	preference: string;
-	@request_parameter()
-	realtime: boolean;
-	@request_parameter()
-	refresh: boolean;
-	@request_parameter()
-	routing: Routing;
-	@request_parameter()
-	source_enabled: boolean;
-	@request_parameter()
-	source_excludes: Field[];
-	@request_parameter()
-	source_includes: Field[];
-	@request_parameter()
-	stored_fields: Field[];
-	@request_parameter()
-	version: long;
-	@request_parameter()
-	version_type: VersionType;
+	query_parameters: {
+		preference: string;
+		realtime: boolean;
+		refresh: boolean;
+		routing: Routing;
+		source_enabled: boolean;
+		source_excludes: Field[];
+		source_includes: Field[];
+		stored_fields: Field[];
+		version: long;
+		version_type: VersionType;
+	}
+	body: {
+	}
 }

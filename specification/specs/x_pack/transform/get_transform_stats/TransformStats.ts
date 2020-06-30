@@ -1,8 +1,8 @@
 class TransformStats {
-	id: string;
-	state: string;
-	reason: string;
-	node: NodeAttributes;
-	stats: TransformIndexerStats;
 	checkpointing: TransformCheckpointingInfo;
+	id: string;
+	node: NodeAttributes;
+	reason: string;
+	state: string;
+	stats: TransformIndexerStats;
 }

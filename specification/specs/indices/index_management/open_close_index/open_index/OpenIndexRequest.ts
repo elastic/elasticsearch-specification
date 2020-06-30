@@ -1,15 +1,13 @@
 @rest_spec_name("indices.open")
 class OpenIndexRequest extends RequestBase {
-	@request_parameter()
-	allow_no_indices: boolean;
-	@request_parameter()
-	expand_wildcards: ExpandWildcards;
-	@request_parameter()
-	ignore_unavailable: boolean;
-	@request_parameter()
-	master_timeout: Time;
-	@request_parameter()
-	timeout: Time;
-	@request_parameter()
-	wait_for_active_shards: string;
+	query_parameters: {
+		allow_no_indices: boolean;
+		expand_wildcards: ExpandWildcards;
+		ignore_unavailable: boolean;
+		master_timeout: Time;
+		timeout: Time;
+		wait_for_active_shards: string;
+	}
+	body: {
+	}
 }

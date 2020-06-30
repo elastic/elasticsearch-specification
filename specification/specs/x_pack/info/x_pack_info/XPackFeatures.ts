@@ -1,11 +1,11 @@
 class XPackFeatures {
 	analytics: XPackFeature;
 	ccr: XPackFeature;
-	enrich: XPackFeature;
 	data_frame: XPackFeature;
+	data_science: XPackFeature;
+	enrich: XPackFeature;
 	flattened: XPackFeature;
 	frozen_indices: XPackFeature;
-	data_science: XPackFeature;
 	graph: XPackFeature;
 	ilm: XPackFeature;
 	logstash: XPackFeature;
