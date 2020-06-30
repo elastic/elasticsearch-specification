@@ -1,5 +1,6 @@
 import { RestSpecMapping } from './specification/rest-spec-mapping'
 import _ from 'lodash'
+import ts from "byots/bin/typescript";
 
 namespace Domain {
 
@@ -33,6 +34,11 @@ namespace Domain {
     inherits: Domain.ImplementsReference[] = [];
     openGenerics: string[];
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
+  }
+
+  export class RequestInterface extends Interface {
+    body: InstanceOf | InterfaceProperty[];
+    queryParameters: InterfaceProperty[];
   }
 
   export class ImplementsReference {

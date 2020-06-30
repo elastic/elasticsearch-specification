@@ -16,8 +16,9 @@ The specification contains
   - ${specification.types.length} Types.
 `)
   for (const e of specification.endpoints) {
-    console.log(specification.typeLookup[e.typeMapping.request])
+    const type = specification.typeLookup[e.typeMapping.request];
+    if (["IndexRequest", "SearchRequest"].includes(type.name))
+      console.log(type);
   }
-
 
 console.log('Done!')
