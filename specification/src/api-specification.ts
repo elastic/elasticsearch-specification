@@ -37,9 +37,9 @@ export class Specification {
     const specVisitor = new TypeReader(this.program)
     const types = [].concat(specVisitor.interfaces).concat(specVisitor.enums)
     // resolve inherits by creating the proper pointers to instances, pretty hairy but it works
-    const dictTypes = types.reduce((o, p) => ({ ...o, [p.name]: p }), {}) as TypeDictionary
-    const stringType = new Domain.Interface('string')
-    const lookup = (key: string) => key === 'string' ? stringType : (dictTypes[key] as Domain.Interface)
+    const dictTypes = types.reduce((o, p) => ({...o, [p.name]: p}), {}) as TypeDictionary;
+    const stringType = new Domain.Interface("string" , "internal");
+    const lookup = (key: string) => key === "string" ? stringType : (dictTypes[key] as Domain.Interface);
     types.forEach(t => {
       if (!(t instanceof Domain.Interface)) return
       t.inherits = []

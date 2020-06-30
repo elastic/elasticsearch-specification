@@ -5,6 +5,7 @@ class QueryContainer {
 	common: CommonTermsQuery;
 	constant_score: ConstantScoreQuery;
 	dis_max: DisMaxQuery;
+	distance_feature: DistanceFeatureQuery;
 	exists: ExistsQuery;
 	function_score: FunctionScoreQuery;
 	fuzzy: FuzzyQuery;
@@ -12,7 +13,6 @@ class QueryContainer {
 	geo_distance: GeoDistanceQuery;
 	geo_polygon: GeoPolygonQuery;
 	geo_shape: GeoShapeQuery;
-	shape: ShapeQuery;
 	has_child: HasChildQuery;
 	has_parent: HasParentQuery;
 	ids: IdsQuery;
@@ -32,13 +32,16 @@ class QueryContainer {
 	nested: NestedQuery;
 	parent_id: ParentIdQuery;
 	percolate: PercolateQuery;
+	pinned: PinnedQuery;
 	prefix: PrefixQuery;
 	query_string: QueryStringQuery;
 	range: RangeQuery;
+	rank_feature: RankFeatureQuery;
 	raw_query: RawQuery;
 	regexp: RegexpQuery;
 	script: ScriptQuery;
 	script_score: ScriptScoreQuery;
+	shape: ShapeQuery;
 	simple_query_string: SimpleQueryStringQuery;
 	span_containing: SpanContainingQuery;
 	field_masking_span: SpanFieldMaskingQuery;
@@ -53,7 +56,4 @@ class QueryContainer {
 	terms: TermsQuery;
 	terms_set: TermsSetQuery;
 	wildcard: WildcardQuery;
-	rank_feature: RankFeatureQuery;
-	distance_feature: DistanceFeatureQuery;
-	pinned: PinnedQuery;
 }

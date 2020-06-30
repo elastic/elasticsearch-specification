@@ -1,5 +1,5 @@
 class TaskExecutingNode {
-	@prop_serializer("VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2")
+	/* prop_serializer: VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
 	attributes: Dictionary<string, string>;
 	host: string;
 	ip: string;

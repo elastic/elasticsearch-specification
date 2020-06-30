@@ -1,21 +1,16 @@
 @rest_spec_name("cat.tasks")
 class CatTasksRequest extends RequestBase {
-	@request_parameter()
-	actions: string[];
-	@request_parameter()
-	detailed: boolean;
-	@request_parameter()
-	format: string;
-	@request_parameter()
-	headers: string[];
-	@request_parameter()
-	help: boolean;
-	@request_parameter()
-	node_id: string[];
-	@request_parameter()
-	parent_task: long;
-	@request_parameter()
-	sort_by_columns: string[];
-	@request_parameter()
-	verbose: boolean;
+	query_parameters: {
+		actions: string[];
+		detailed: boolean;
+		format: string;
+		headers: string[];
+		help: boolean;
+		node_id: string[];
+		parent_task: long;
+		sort_by_columns: string[];
+		verbose: boolean;
+	}
+	body: {
+	}
 }

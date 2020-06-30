@@ -1,6 +1,6 @@
 class QueryUsage {
-	total: integer;
-	paging: integer;
-	failed: integer;
 	count: integer;
+	failed: integer;
+	paging: integer;
+	total: integer;
 }

@@ -1,10 +1,13 @@
 import { RestSpecMapping } from './specification/rest-spec-mapping'
 import _ from 'lodash'
+import ts from "byots/bin/typescript";
 
 namespace Domain {
 
   export class Type {
     name: string
+    nullable: boolean;
+    closedGenerics: InstanceOf[] = [];
     constructor (name: string) {
       this.name = name
     }
@@ -25,7 +28,7 @@ namespace Domain {
   export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf;
 
   export class TypeDeclaration {
-    constructor (public name: string) {}
+    constructor(public name: string, public namespace: string) {}
   }
 
   export class Interface extends TypeDeclaration {
@@ -36,14 +39,10 @@ namespace Domain {
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
   }
 
-  export class RequestInterface extends TypeDeclaration {
-    body: InterfaceProperty[] = [];
-    query: InterfaceProperty[] = [];
+  export class RequestInterface extends Interface {
+    body: InstanceOf | InterfaceProperty[];
+    queryParameters: InterfaceProperty[];
     path: InterfaceProperty[] = [];
-    inheritsFromUnresolved: Record<string, InstanceOf[]> = {};
-    inherits: Domain.ImplementsReference[] = [];
-    openGenerics: string[];
-    implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
   }
 
   export class ImplementsReference {
@@ -55,10 +54,12 @@ namespace Domain {
     name: string
     type: InstanceOf
     nullable: boolean
-    constructor (name: string, type: InstanceOf, nullable: boolean = true) {
+    isRequestParameter: boolean
+    constructor (name: string, isRequestParameter: boolean, nullable: boolean = true) {
       this.name = name
-      this.type = type
+      this.type = null
       this.nullable = nullable
+      this.isRequestParameter = isRequestParameter
     }
   }
 
@@ -66,16 +67,18 @@ namespace Domain {
     name: string
     flags: boolean
     members: EnumMember[]
-    constructor (name: string, members: EnumMember[] = [], flags: boolean = false) {
-      super(name)
+    namespace: string
+    constructor (name: string, namespace: string, flags: boolean = false) {
+      super(name, namespace)
       this.name = name
       this.flags = flags
-      this.members = members
+      this.members = []
+      this.namespace = namespace
     }
   }
 
   export class EnumMember {
-    constructor (public name: string) {}
+    constructor(public name: string, public stringRepresentation: string) {}
   }
 
   export class BodyDocumentation {
