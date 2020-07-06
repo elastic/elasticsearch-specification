@@ -1,16 +1,16 @@
 enum DateMathTimeUnit {
-  /** Second */
+  /** @alternate_name Second */
 	s = 0,
-  /** Minute */
+  /** @alternate_name Minute */
 	m = 1,
-  /** Hour */
+  /** @alternate_name Hour */
 	h = 2,
-  /** Day */
+  /** @alternate_name Day */
 	d = 3,
-  /** Week */
+  /** @alternate_name Week */
 	w = 4,
-  /** Month */
+  /** @alternate_name Month */
 	M = 5,
-  /** Year */
+  /** @alternate_name Year */
 	y = 6
 }

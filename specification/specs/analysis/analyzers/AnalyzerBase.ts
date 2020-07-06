@@ -1,4 +1,4 @@
-class AnalyzerBase implements IAnalyzer {
+class AnalyzerBase {
 	type: string;
 	version: string;
 }

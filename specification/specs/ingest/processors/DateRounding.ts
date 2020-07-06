@@ -1,16 +1,16 @@
 enum DateRounding {
-  /** Seconds */
+  /** @alternate_name Seconds */
 	s = 0,
-  /** Minutes */
+  /** @alternate_name Minutes */
 	m = 1,
-  /** Hours */
+  /** @alternate_name Hours */
 	h = 2,
-  /** Days */
+  /** @alternate_name Days */
 	d = 3,
-  /** Weeks */
+  /** @alternate_name Weeks */
 	w = 4,
-  /** Months */
+  /** @alternate_name Months */
 	M = 5,
-  /** Years */
+  /** @alternate_name Years */
 	y = 6
 }
