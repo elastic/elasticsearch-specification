@@ -4,11 +4,11 @@ class GetModelSnapshotsRequest extends RequestBase {
 	}
 	body: {
 		desc: boolean;
-		/* prop_serializer: NullableDateTimeOffsetEpochMillisecondsFormatter */
+		/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
 		end: Date;
 		page: Page;
 		sort: Field;
-		/* prop_serializer: NullableDateTimeOffsetEpochMillisecondsFormatter */
+		/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
 		start: Date;
 	}
 }
