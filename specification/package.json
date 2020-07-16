@@ -6,6 +6,7 @@
   "scripts": {
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
     "start": "ts-node src/main.ts",
+    "format": "ts-node src/format.ts",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
     "compile": "tsc"
   },

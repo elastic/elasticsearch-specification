@@ -63,6 +63,7 @@ export class Specification {
         const property = new Domain.InterfaceProperty(
           routePart.name,
           new Domain.Type(routePart.type),
+          true,
           routePart.required
         )
         requestInterface.path.push(property)

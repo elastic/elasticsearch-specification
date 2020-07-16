@@ -138,8 +138,7 @@ class InterfaceVisitor extends Visitor {
     const name = this.symbolName(p.name)
     const returnType = this.visitTypeNode(p.type);
 
-    const prop = new Domain.InterfaceProperty(name, isQueryParam);
-    prop.type = returnType;
+    const prop = new Domain.InterfaceProperty(name, returnType, isQueryParam);
     parent.properties.push(prop);
   }
 

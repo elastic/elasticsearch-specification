@@ -55,9 +55,14 @@ namespace Domain {
     type: InstanceOf
     nullable: boolean
     isRequestParameter: boolean
-    constructor (name: string, isRequestParameter: boolean, nullable: boolean = true) {
+    constructor (
+      name: string,
+      type: InstanceOf,
+      isRequestParameter: boolean,
+      nullable: boolean = true
+    ) {
       this.name = name
-      this.type = null
+      this.type = type
       this.nullable = nullable
       this.isRequestParameter = isRequestParameter
     }
@@ -251,6 +256,8 @@ namespace Domain {
         case 'forecast_id':
         case 'policy_id':
         case 'policy':
+        case 'transform_id':
+        case 'model_id':
         case 'id': return specType === 'string' ? 'Id' : 'Ids'
         case 'category_id': return 'CategoryId'
         case 'nodes':
