@@ -1,0 +1,2 @@
+class DropProcessor extends ProcessorBase {
+}

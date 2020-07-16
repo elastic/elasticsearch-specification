@@ -1,5 +1,5 @@
 class MultiTermVectorOperation {
-	/* prop_serializer: SourceFormatter`1 */
+	/** @prop_serializer SourceFormatter`1 */
 	doc: any;
 	fields: Field[];
 	field_statistics: boolean;

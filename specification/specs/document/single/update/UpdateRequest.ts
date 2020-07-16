@@ -13,13 +13,13 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 	}
 	body: {
 		detect_noop: boolean;
-		/* prop_serializer: SourceFormatter`1 */
+		/** @prop_serializer SourceFormatter`1 */
 		doc: TPartialDocument;
 		doc_as_upsert: boolean;
 		script: Script;
 		scripted_upsert: boolean;
 		_source: Union<boolean, SourceFilter>;
-		/* prop_serializer: SourceFormatter`1 */
+		/** @prop_serializer SourceFormatter`1 */
 		upsert: TDocument;
 	}
 }

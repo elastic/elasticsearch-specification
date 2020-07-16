@@ -1,5 +1,5 @@
 class Pipeline {
 	description: string;
-	on_failure: Processor[];
-	processors: Processor[];
+	on_failure: IProcessor[];
+	processors: IProcessor[];
 }

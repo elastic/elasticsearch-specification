@@ -39,7 +39,7 @@ class SearchRequest extends RequestBase {
 		explain: boolean;
 		from: integer;
 		highlight: Highlight;
-		/* prop_serializer: IndicesBoostFormatter */
+		/** @prop_serializer IndicesBoostFormatter */
 		indices_boost: Dictionary<IndexName, double>;
 		min_score: double;
 		post_filter: QueryContainer;
