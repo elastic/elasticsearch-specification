@@ -10,7 +10,7 @@ class PutDatafeedRequest extends RequestBase {
 		aggregations: Dictionary<string, AggregationContainer>;
 		chunking_config: ChunkingConfig;
 		frequency: Time;
-		/* prop_serializer: IndicesFormatter */
+		/** @prop_serializer IndicesFormatter */
 		indices: Indices;
 		job_id: Id;
 		max_empty_searches: integer;

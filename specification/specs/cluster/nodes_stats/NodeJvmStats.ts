@@ -1,5 +1,5 @@
 class NodeJvmStats {
-	/* prop_serializer: VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
+	/** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
 	buffer_pools: Dictionary<string, NodeBufferPool>;
 	classes: JvmClassesStats;
 	gc: GarbageCollectionStats;

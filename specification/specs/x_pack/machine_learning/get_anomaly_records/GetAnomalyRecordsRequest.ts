@@ -4,13 +4,13 @@ class GetAnomalyRecordsRequest extends RequestBase {
 	}
 	body: {
 		desc: boolean;
-		/* prop_serializer: NullableDateTimeOffsetEpochMillisecondsFormatter */
+		/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
 		end: Date;
 		exclude_interim: boolean;
 		page: Page;
 		record_score: double;
 		sort: Field;
-		/* prop_serializer: NullableDateTimeOffsetEpochMillisecondsFormatter */
+		/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
 		start: Date;
 	}
 }

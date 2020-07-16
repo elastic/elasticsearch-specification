@@ -14,7 +14,7 @@ class TermVectorsRequest<TDocument> extends RequestBase {
 		version_type: VersionType;
 	}
 	body: {
-		/* prop_serializer: SourceFormatter`1 */
+		/** @prop_serializer SourceFormatter`1 */
 		doc: TDocument;
 		filter: TermVectorFilter;
 		per_field_analyzer: Dictionary<Field, string>;
