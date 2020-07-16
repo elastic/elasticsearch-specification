@@ -6,7 +6,7 @@ class PutPipelineRequest extends RequestBase {
 	}
 	body: {
 		description: string;
-		on_failure: IProcessor[];
-		processors: IProcessor[];
+		on_failure: ProcessorContainer[];
+		processors: ProcessorContainer[];
 	}
 }
