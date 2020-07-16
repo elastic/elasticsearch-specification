@@ -19,7 +19,7 @@ class AsyncSearchSubmitRequest extends RequestBase {
 		highlight: Highlight;
 		ignore_throttled: boolean;
 		ignore_unavailable: boolean;
-		/* prop_serializer: IndicesBoostFormatter */
+		/** @prop_serializer IndicesBoostFormatter */
 		indices_boost: Dictionary<IndexName, double>;
 		keep_alive: Time;
 		keep_on_completion: boolean;

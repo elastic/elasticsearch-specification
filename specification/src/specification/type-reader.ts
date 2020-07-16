@@ -18,6 +18,7 @@ class EnumVisitor extends Visitor {
     for (const child of this.enumNode.getChildren()) {
       this.visitMember(child as ts.EnumMember, domainEnum)
     }
+    domainEnum.generatorHints  = InterfaceVisitor.createGeneratorHints(this.enumNode.jsDoc || []);
     return domainEnum
   }
 
@@ -31,9 +32,10 @@ class EnumVisitor extends Visitor {
     if (!this.isMember(member, e)) return
 
     const name = this.symbolName(member.name);
-    const description = (member.jsDoc || []).map(c => c.comment).join(".").trim();
-
-    e.members.push(new Domain.EnumMember(description || name, name));
+    const hints = InterfaceVisitor.createGeneratorHints(member.jsDoc || []);
+    const enumMember = new Domain.EnumMember(hints.alternateName || name, name);
+    enumMember.generatorHints  = hints;
+    e.members.push(enumMember);
   }
 }
 
@@ -74,6 +76,8 @@ class InterfaceVisitor extends Visitor {
       ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface as Domain.Interface))
     }
 
+    domainInterface.generatorHints  = InterfaceVisitor.createGeneratorHints(this.interfaceNode.jsDoc || []);
+
     const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference
     const generics = lookup.typeArguments || []
     domainInterface.openGenerics = generics.map(g => g.getSymbol().name)
@@ -110,11 +114,18 @@ class InterfaceVisitor extends Visitor {
     return domainInterface;
   }
 
-  private isPropertySignature (p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface | Domain.RequestInterface): boolean {
-    if (p.kind === ts.SyntaxKind.PropertySignature) return true
-    if (p.kind === ts.SyntaxKind.PropertyDeclaration) return true
-    ts.forEachChild(p, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent))
-    return false
+  public static createGeneratorHints(jsDocs: ts.JSDoc[]): Domain.GeneratorDocumentation {
+    const description = jsDocs.map(j => j.comment || "").join("\n");
+    const keyValues = jsDocs.flatMap(j => (j.tags || [])).reduce((o, p) => ({...o, [p.tagName.escapedText]: p.comment}), {});
+
+    return new Domain.GeneratorDocumentation(description, keyValues);
+  }
+
+  private isPropertySignature(p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface | Domain.RequestInterface): boolean {
+    if (p.kind === ts.SyntaxKind.PropertySignature) return true;
+    if (p.kind === ts.SyntaxKind.PropertyDeclaration) return true;
+    ts.forEachChild(p, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent));
+    return false;
   }
 
   private visitRequestProperties(p: ts.PropertySignature, parent: Domain.RequestInterface) {
@@ -125,20 +136,23 @@ class InterfaceVisitor extends Visitor {
     ts.forEachChild(p.type, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent, name === "query_parameters"));
 
     if (name === "query_parameters")
-      parent.queryParameters = parent.properties.filter(prop=>prop.isRequestParameter);
+      parent.queryParameters = parent.properties.filter(prop => prop.isRequestParameter);
     else if (name === "body") {
-      const bodyProps = parent.properties.filter(prop=>!prop.isRequestParameter);
+      const bodyProps = parent.properties.filter(prop => !prop.isRequestParameter);
       parent.body = bodyProps.length > 0 ? bodyProps : returnType;
     }
   }
 
-  private visitInterfaceProperty(p: ts.PropertySignature, parent: Domain.Interface,  isQueryParam:boolean = false) {
+  private visitInterfaceProperty(p: ts.PropertySignature, parent: Domain.Interface,  isQueryParam: boolean = false) {
     if (!this.isPropertySignature(p, parent)) return;
 
     const name = this.symbolName(p.name)
     const returnType = this.visitTypeNode(p.type);
 
     const prop = new Domain.InterfaceProperty(name, returnType, isQueryParam);
+    prop.type = returnType;
+    prop.generatorHints  = InterfaceVisitor.createGeneratorHints(p.jsDoc || []);
+
     parent.properties.push(prop);
   }
 
@@ -148,13 +162,13 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.ExpressionWithTypeArguments:
         const lit = t as ts.TypeLiteralNode;
         return new Domain.Type(lit.getText());
-      case ts.SyntaxKind.TypeLiteral:return undefined;
+      case ts.SyntaxKind.TypeLiteral: return undefined;
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode);
       case ts.SyntaxKind.StringKeyword : return new Domain.Type("string");
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type("boolean");
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type("object");
       default:
-        console.log(t.kind)
+        console.log(t.kind);
     }
   }
 

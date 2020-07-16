@@ -1,5 +1,5 @@
-import { RestSpecMapping } from './specification/rest-spec-mapping'
-import _ from 'lodash'
+import { RestSpecMapping } from "./specification/rest-spec-mapping";
+import _ from "lodash";
 import ts from "byots/bin/typescript";
 
 namespace Domain {
@@ -13,22 +13,50 @@ namespace Domain {
     }
   }
   export class ArrayOf {
-    type = new Type('array');
+    type = new Type("array");
     of: InstanceOf;
   }
   export class Dictionary {
-    type = new Type('dictionary');
+    type = new Type("dictionary");
     key: InstanceOf;
     value: InstanceOf;
   }
   export class UnionOf {
-    type = new Type('union');
+    type = new Type("union");
     items: InstanceOf[] = [];
   }
   export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf;
 
+  export class GeneratorDocumentation {
+    constructor(description: string, keyValues: Record<string, string>) {
+      this.description = description;
+      this.annotations = keyValues || {};
+
+      this.alternateName = this.annotations.alternate_name;
+      this.customSerializationRoutine = this.annotations.prop_serializer;
+
+    }
+
+    annotations: Record<string, string>;
+
+    /** a textual description of the type or property */
+    description: string;
+
+    /** presents a suggestion for an alternate name in case of conflicts */
+    alternateName: string;
+
+    /**
+     * The name of the custom serialization routine, in some cases the spec knows there is no 1-1 mapping.
+     * This property can be used to generate stubs for manual serialization work
+     */
+    customSerializationRoutine: string;
+  }
+
   export class TypeDeclaration {
     constructor(public name: string, public namespace: string) {}
+
+    /** generator hinting, never null */
+    generatorHints: GeneratorDocumentation;
   }
 
   export class Interface extends TypeDeclaration {
@@ -36,7 +64,7 @@ namespace Domain {
     inheritsFromUnresolved: Record<string, InstanceOf[]> = {};
     inherits: Domain.ImplementsReference[] = [];
     openGenerics: string[];
-    implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
+    implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes("Union");
   }
 
   export class RequestInterface extends Interface {
@@ -46,7 +74,7 @@ namespace Domain {
   }
 
   export class ImplementsReference {
-    constructor (public type: Domain.Interface) {}
+    constructor(public type: Domain.Interface) {}
     closedGenerics: Domain.InstanceOf[];
   }
 
@@ -55,6 +83,8 @@ namespace Domain {
     type: InstanceOf
     nullable: boolean
     isRequestParameter: boolean
+    /** generator hinting, never null */
+    generatorHints: GeneratorDocumentation;
     constructor (
       name: string,
       type: InstanceOf,
@@ -84,22 +114,25 @@ namespace Domain {
 
   export class EnumMember {
     constructor(public name: string, public stringRepresentation: string) {}
+
+    /** generator hinting, never null */
+    generatorHints: Domain.GeneratorDocumentation;
   }
 
   export class BodyDocumentation {
     description: string;
     required: boolean;
-    constructor (data: any) {
-      this.description = data.description
-      this.required = !!data.required
+    constructor(data: any) {
+      this.description = data.description;
+      this.required = !!data.required;
     }
   }
   export class Documentation {
     description: string;
     url: string;
-    constructor (data: any) {
-      this.description = data.description
-      this.url = data.url
+    constructor(data: any) {
+      this.description = data.description;
+      this.url = data.url;
     }
   }
   export enum Stability { stable, beta, experimental }
@@ -107,9 +140,9 @@ namespace Domain {
   export class Deprecation {
     version: string;
     description: string;
-    constructor (data: any) {
-      this.version = data.version
-      this.description = data.description
+    constructor(data: any) {
+      this.version = data.version;
+      this.description = data.description;
     }
   }
 
@@ -125,16 +158,16 @@ namespace Domain {
     routeParts: RoutePart[] = [];
     deprecated: Deprecation;
 
-    constructor (file: string, restSpecMapping: { [p: string]: RestSpecMapping }) {
-      const json = require(file)
+    constructor(file: string, restSpecMapping: { [p: string]: RestSpecMapping }) {
+      const json = require(file);
       // @ts-ignore
-      this.name = _(json).keys().first()
-      this.typeMapping = restSpecMapping[this.name]
-      const data = json[this.name]
+      this.name = _(json).keys().first();
+      this.typeMapping = restSpecMapping[this.name];
+      const data = json[this.name];
 
-      this.documentation = new Documentation(data.documentation)
+      this.documentation = new Documentation(data.documentation);
       // @ts-ignore
-      this.queryStringParameters = _(data.params).map((v, k) => new QueryStringParameter(k, v)).value()
+      this.queryStringParameters = _(data.params).map((v, k) => new QueryStringParameter(k, v)).value();
 
       const routeParts = _(data.url.paths).reduce((acc, val) => {
         for (const part in val.parts) {
@@ -165,10 +198,10 @@ namespace Domain {
       if (data.deprecated) { this.deprecated = new Deprecation(data.deprecated) }
 
       switch (data.stability) {
-        case 'stable': this.stability = Stability.stable; break
-        case 'beta': this.stability = Stability.stable; break
-        case 'experimental': this.stability = Stability.stable; break
-      };
+        case "stable": this.stability = Stability.stable; break;
+        case "beta": this.stability = Stability.stable; break;
+        case "experimental": this.stability = Stability.stable; break;
+      }
 
       this.url = new Url(data.url)
 
@@ -184,60 +217,60 @@ namespace Domain {
     methods: string[];
     parts: RoutePart[];
     deprecated: Deprecation;
-    constructor (data: any) {
-      this.path = data.path
-      this.methods = data.methods
+    constructor(data: any) {
+      this.path = data.path;
+      this.methods = data.methods;
       // @ts-ignore
-      this.parts = _(data.parts).map((v, k) => new RoutePart(k, v)).value()
-      if (data.deprecated) { this.deprecated = new Deprecation(data.deprecated) }
+      this.parts = _(data.parts).map((v, k) => new RoutePart(k, v)).value();
+      if (data.deprecated) { this.deprecated = new Deprecation(data.deprecated); }
     }
   }
 
   export class Url {
     paths: UrlPath[];
 
-    constructor (data: any) {
+    constructor(data: any) {
       // @ts-ignore
-      this.paths = _(data.paths).map(p => new UrlPath(p)).value()
+      this.paths = _(data.paths).map(p => new UrlPath(p)).value();
     }
   }
   export class RestSpecTypeConverter {
     // https://github.com/elastic/elasticsearch-net/blob/master/src/CodeGeneration/ApiGenerator/Domain/ApiQueryParameters.cs
-    static toQueryStringType (name: string, specType: string): string {
-      if (name === 'routing') return 'Routing'
-      const fieldsParams = ['fields', '_source_include', '_source_exclude']
-      const isFields = fieldsParams.some(n => n === name) || name.endsWith('_fields')
-      const isField = name.indexOf('field') >= 0
+    static toQueryStringType(name: string, specType: string): string {
+      if (name === "routing") return "Routing";
+      const fieldsParams = ["fields", "_source_include", "_source_exclude"];
+      const isFields = fieldsParams.some(n => n === name) || name.endsWith("_fields");
+      const isField = name.indexOf("field") >= 0;
       if (isFields || isField) {
         switch (specType) {
-          case 'list': return 'Fields'
-          case 'string': return isField ? 'Field' : 'Fields'
+          case "list": return "Fields";
+          case "string": return isField ? "Field" : "Fields";
         }
       }
 
-      const doubleFields = ['boost', 'percen', 'score']
-      const isDoubleField = doubleFields.some(n => name.toLowerCase().indexOf(n) >= 0)
+      const doubleFields = ["boost", "percen", "score"];
+      const isDoubleField = doubleFields.some(n => name.toLowerCase().indexOf(n) >= 0);
       switch (specType) {
-        case 'boolean': return 'boolean'
-        case 'list': return 'string' // todo array of strings should be a string with a comment
-        case 'integer': return 'int'
-        case 'date': return 'Date'
-        case 'enum': return name // todo LOOKUP
-        case 'number':
-          return isDoubleField ? 'double' : 'long'
-        case 'duration':
-        case 'time':
-          return 'Time'
-        case 'text':
-        case 'string':
-        case '':
+        case "boolean": return "boolean";
+        case "list": return "string"; // todo array of strings should be a string with a comment
+        case "integer": return "int";
+        case "date": return "Date";
+        case "enum": return name; // todo LOOKUP
+        case "number":
+          return isDoubleField ? "double" : "long";
+        case "duration":
+        case "time":
+          return "Time";
+        case "text":
+        case "string":
+        case "":
         case null:
-          return 'string'
+          return "string";
       }
-      return specType + '_'
+      return specType + "_";
     }
 
-    static toRouteParamType (name: string, specType: string): string {
+    static toRouteParamType(name: string, specType: string): string {
       // https://github.com/elastic/elasticsearch-net/blob/master/src/CodeGeneration/ApiGenerator/Domain/ApiUrlPart.cs
       switch (name) {
         case 'index':
@@ -300,12 +333,12 @@ namespace Domain {
     required: boolean;
     default: boolean;
 
-    constructor (name: string, data: any) {
-      this.name = name
-      this.type = RestSpecTypeConverter.toQueryStringType(name, data.type)
-      this.description = data.description || name
-      this.required = !!data.required
-      this.default = data.default || null
+    constructor(name: string, data: any) {
+      this.name = name;
+      this.type = RestSpecTypeConverter.toQueryStringType(name, data.type);
+      this.description = data.description || name;
+      this.required = !!data.required;
+      this.default = data.default || null;
     }
   }
 
@@ -315,11 +348,11 @@ namespace Domain {
     description: string;
     required: boolean;
 
-    constructor (name: string, data: any) {
-      this.name = name
-      this.type = RestSpecTypeConverter.toRouteParamType(name, data.type)
-      this.description = data.description || name
-      this.required = !!data.required
+    constructor(name: string, data: any) {
+      this.name = name;
+      this.type = RestSpecTypeConverter.toRouteParamType(name, data.type);
+      this.description = data.description || name;
+      this.required = !!data.required;
     }
   }
 
