@@ -48,9 +48,6 @@ const $typeGenerics = (type: Domain.Interface| Domain.RequestInterface) => {
     : `<${type.openGenerics.map(g => `${g}`).join(', ')}>`
 }
 const $type = (type: Domain.Interface | Domain.RequestInterface) => {
-  if (type.name === 'IndexResponse') {
-    console.log(type)
-  }
   if (type instanceof Domain.RequestInterface) {
     const path = type.path.map(p => $property(p)).join('\n')
     const query = type.queryParameters.map(p => $property(p)).join('\n')
