@@ -1,36 +1,35 @@
-import {RestSpecMapping, RestSpecName, TypeName} from "./rest-spec-mapping";
-import _ from "lodash";
-import * as ts from "byots";
-import Domain = require("../domain");
-import path from "path";
+import { RestSpecMapping, RestSpecName, TypeName } from "./rest-spec-mapping"
+import _ from "lodash"
+import * as ts from "byots"
+import Domain = require("../domain")
+import path from "path"
 
 class Visitor {
-  constructor(protected checker: ts.TypeChecker) {}
+  constructor (protected checker: ts.TypeChecker) {}
   protected symbolName = (node: ts.Node): string => this.checker.getSymbolAtLocation(node).getName();
 }
 
 class EnumVisitor extends Visitor {
-  constructor(private enumNode: ts.EnumDeclaration, checker: ts.TypeChecker, private namespace: string) {super(checker); }
+  constructor (private enumNode: ts.EnumDeclaration, checker: ts.TypeChecker, private namespace: string) { super(checker) }
 
-  visit(): Domain.Enum {
-    const name = this.symbolName(this.enumNode.name);
-    const domainEnum = new Domain.Enum(name, this.namespace);
-    for (const child of this.enumNode.getChildren())
-      this.visitMember(child as ts.EnumMember, domainEnum);
-
+  visit (): Domain.Enum {
+    const name = this.symbolName(this.enumNode.name)
+    const domainEnum = new Domain.Enum(name, this.namespace)
+    for (const child of this.enumNode.getChildren()) {
+      this.visitMember(child as ts.EnumMember, domainEnum)
+    }
     domainEnum.generatorHints  = InterfaceVisitor.createGeneratorHints(this.enumNode.jsDoc || []);
-    return domainEnum;
+    return domainEnum
   }
 
-  private isMember(member: ts.EnumMember, e: Domain.Enum): boolean {
-    if (member.kind === ts.SyntaxKind.EnumMember) return true;
-    for (const child of member.getChildren())
-      this.visitMember(child as ts.EnumMember, e);
-    return false;
+  private isMember (member: ts.EnumMember, e: Domain.Enum): boolean {
+    if (member.kind === ts.SyntaxKind.EnumMember) return true
+    for (const child of member.getChildren()) { this.visitMember(child as ts.EnumMember, e) }
+    return false
   }
 
-  private visitMember(member: ts.EnumMember, e: Domain.Enum) {
-    if (!this.isMember(member, e)) return;
+  private visitMember (member: ts.EnumMember, e: Domain.Enum) {
+    if (!this.isMember(member, e)) return
 
     const name = this.symbolName(member.name);
     const hints = InterfaceVisitor.createGeneratorHints(member.jsDoc || []);
@@ -43,53 +42,55 @@ class EnumVisitor extends Visitor {
 class InterfaceVisitor extends Visitor {
   name: TypeName;
   specMapping: RestSpecMapping;
-
   constructor(
     private interfaceNode: ts.InterfaceDeclaration | ts.ClassDeclaration,
     checker: ts.TypeChecker,
-    private namespace: string) { super(checker); }
+    private namespace: string
+ ) {
+   super(checker)
+ }
 
   visit(): Domain.Interface {
-    const n = this.symbolName(this.interfaceNode.name);
-    this.name = n;
+    const n = this.symbolName(this.interfaceNode.name)
+    this.name = n
 
     const decorator = _(this.interfaceNode.decorators || [])
       .map(d => d.expression.getText())
-      .find(t => t.startsWith("rest_spec_name"));
+      .find(t => t.startsWith('rest_spec_name'))
 
     // only exists on requests
-    const restSpec = decorator ? decorator.split("\"")[1] : null;
+    const restSpec = decorator ? decorator.split('"')[1] : null
     if (restSpec) {
-      let responseName = n.replace("Request", "Response");
-      if (responseName.endsWith("ExistsResponse")) responseName = "ExistsResponse";
-      this.specMapping = new RestSpecMapping(restSpec, n, responseName);
+      let responseName = n.replace('Request', 'Response')
+      if (responseName.endsWith('ExistsResponse')) responseName = 'ExistsResponse'
+      this.specMapping = new RestSpecMapping(restSpec, n, responseName)
     }
 
-    const domainInterface = restSpec ? new Domain.RequestInterface(n, this.namespace) : new Domain.Interface(n, this.namespace);
+    const domainInterface = restSpec
+      ? new Domain.RequestInterface(n, this.namespace)
+      : new Domain.Interface(n, this.namespace)
 
-    if (!restSpec)
-      ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface));
-    else
-      ts.forEachChild(this.interfaceNode, c => this.visitRequestProperties(c as ts.PropertySignature, domainInterface as Domain.RequestInterface));
+    if (restSpec) {
+      ts.forEachChild(this.interfaceNode, c => this.visitRequestProperties(c as ts.PropertySignature, domainInterface as Domain.RequestInterface))
+    } else {
+      ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface as Domain.Interface))
+    }
 
     domainInterface.generatorHints  = InterfaceVisitor.createGeneratorHints(this.interfaceNode.jsDoc || []);
 
-    const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference;
-    const generics = lookup.typeArguments || [];
-    domainInterface.openGenerics = generics.map(g => g.getSymbol().name);
+    const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference
+    const generics = lookup.typeArguments || []
+    domainInterface.openGenerics = generics.map(g => g.getSymbol().name)
 
-    const s = this.interfaceNode.symbol;
-    const x: any = s.valueDeclaration;
-    const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || [];
+    const s = this.interfaceNode.symbol
+    const x: any = s.valueDeclaration
+    const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || []
+
     domainInterface.inheritsFromUnresolved = heritageClauses
-      .map(c => ((c as any).types || []) as ts.Node[])
-      .reduce((p, c) => {
-        c.forEach(node => p.push(node));
-        return c;
-      }, [])
+      .flatMap(c => ((c as any).types || []) as ts.Node[])
       .reduce((c, node) => {
-        const expression = ((node as any).expression as ts.Identifier);
-        const name = expression.text;
+        const expression = ((node as any).expression as ts.Identifier)
+        const name = expression.text
         // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
         const typeRef = node as ts.TypeReferenceNode;
         if (!typeRef.typeArguments) {
@@ -97,14 +98,14 @@ class InterfaceVisitor extends Visitor {
             ? this.visitTypeNode(node)
             : this.visitTypeReference(typeRef);
           c[name] = [type];
-          return c;
+        } else {
+          c[name] = (typeRef.typeArguments).map(g => {
+            const typeArgRef = g as ts.TypeReferenceNode
+            return !typeArgRef.typeName
+              ? this.visitTypeNode(g)
+              : this.visitTypeReference(typeArgRef);
+          });
         }
-        c[name] = (typeRef.typeArguments).map(g => {
-          const typeArgRef = g as ts.TypeReferenceNode;
-          return !typeArgRef.typeName
-            ? this.visitTypeNode(g)
-            : this.visitTypeReference(typeArgRef);
-        });
         return c;
       }, {});
     return domainInterface;
@@ -117,7 +118,7 @@ class InterfaceVisitor extends Visitor {
     return new Domain.GeneratorDocumentation(description, keyValues);
   }
 
-  private isPropertySignature(p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface): boolean {
+  private isPropertySignature(p: ts.PropertySignature | ts.PropertyDeclaration, parent: Domain.Interface | Domain.RequestInterface): boolean {
     if (p.kind === ts.SyntaxKind.PropertySignature) return true;
     if (p.kind === ts.SyntaxKind.PropertyDeclaration) return true;
     ts.forEachChild(p, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent));
@@ -142,17 +143,17 @@ class InterfaceVisitor extends Visitor {
   private visitInterfaceProperty(p: ts.PropertySignature, parent: Domain.Interface,  isQueryParam: boolean = false) {
     if (!this.isPropertySignature(p, parent)) return;
 
-    const name = this.symbolName(p.name);
+    const name = this.symbolName(p.name)
     const returnType = this.visitTypeNode(p.type);
 
-    const prop = new Domain.InterfaceProperty(name, isQueryParam);
+    const prop = new Domain.InterfaceProperty(name, returnType, isQueryParam);
     prop.type = returnType;
     prop.generatorHints  = InterfaceVisitor.createGeneratorHints(p.jsDoc || []);
 
     parent.properties.push(prop);
   }
 
-  private visitTypeNode(t: ts.Node, indent: number = 0): Domain.InstanceOf {
+  private visitTypeNode (t: ts.Node, indent: number = 0): Domain.InstanceOf { // eslint-disable-line
     switch (t.kind) {
       case ts.SyntaxKind.ArrayType : return this.visitArrayType(t as ts.ArrayTypeNode);
       case ts.SyntaxKind.ExpressionWithTypeArguments:
@@ -168,15 +169,15 @@ class InterfaceVisitor extends Visitor {
     }
   }
 
-  private visitArrayType(t: ts.ArrayTypeNode): Domain.ArrayOf {
-    const array = new Domain.ArrayOf();
-    const childrenX: ts.Node[] = [];
-    ts.forEachChild(t, c => childrenX.push(c));
-    const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k === c.kind));
-    if (children.size() !== 1) throw Error("Expected array to have 1 usable child but saw " + children.size());
+  private visitArrayType (t: ts.ArrayTypeNode): Domain.ArrayOf {
+    const array = new Domain.ArrayOf()
+    const childrenX: ts.Node[] = []
+    ts.forEachChild(t, c => childrenX.push(c))
+    const children = _(childrenX).filter(c => _(this.typeKinds).some(k => k === c.kind))
+    if (children.size() !== 1) throw Error('Expected array to have 1 usable child but saw ' + children.size())
 
-    array.of = this.visitTypeNode(children.first());
-    return array;
+    array.of = this.visitTypeNode(children.first())
+    return array
   }
   private visitTypeReference(t: ts.TypeReferenceNode): Domain.InstanceOf {
     const typeName = t.typeName.getText();
@@ -189,26 +190,24 @@ class InterfaceVisitor extends Visitor {
     return typed;
   }
 
-  private createUnion(t: ts.TypeReferenceNode, typeName) {
-    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node);
-    const types = args.map(ct => this.visitTypeNode(ct));
-    if (types.length < 2)
-      throw Error("A union should have at least two types but saw " + types.length + " on " + typeName);
-    const union = new Domain.UnionOf();
-    union.items = types;
-    return union;
+  private createUnion (t: ts.TypeReferenceNode, typeName) {
+    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node)
+    const types = args.map(ct => this.visitTypeNode(ct))
+    if (types.length < 2) { throw Error('A union should have at least two types but saw ' + types.length + ' on ' + typeName) }
+    const union = new Domain.UnionOf()
+    union.items = types
+    return union
   }
 
-  private createDictionary(t: ts.TypeReferenceNode, typeName) {
-    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node);
-    const types = args.map(ct => this.visitTypeNode(ct));
-    if (types.length !== 2)
-      throw Error("A dictionary should contain 2 type args but found " + types.length + " on " + typeName);
+  private createDictionary (t: ts.TypeReferenceNode, typeName) {
+    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node)
+    const types = args.map(ct => this.visitTypeNode(ct))
+    if (types.length !== 2) { throw Error('A dictionary should contain 2 type args but found ' + types.length + ' on ' + typeName) }
 
-    const map = new Domain.Dictionary();
-    map.key = types[0];
-    map.value = types[1];
-    return map;
+    const map = new Domain.Dictionary()
+    map.key = types[0]
+    map.value = types[1]
+    return map
   }
 
   private typeKinds: ts.SyntaxKind[] = [
@@ -219,23 +218,23 @@ class InterfaceVisitor extends Visitor {
     ts.SyntaxKind.TypeReference
   ];
 
-  private annotate(declaration: Domain.TypeDeclaration, symbol: ts.Symbol) {
-    const documentation = ts.displayPartsToString(symbol.getDocumentationComment(null));
+  private annotate (declaration: Domain.TypeDeclaration, symbol: ts.Symbol) {
+    const documentation = ts.displayPartsToString(symbol.getDocumentationComment(null)) // eslint-disable-line
   }
 }
 
 export class TypeReader {
   private checker: ts.TypeChecker;
 
-  interfaces: Domain.Interface[] = [];
+  interfaces: (Domain.Interface | Domain.RequestInterface)[] = [];
   enums: Domain.Enum[] = [];
   // TS1337 :( https://github.com/Microsoft/TypeScript/issues/1778
   /** @type {Object.<RestSpecName, TypeName>} */
   restSpecMapping: { [id: string]: RestSpecMapping };
 
-  constructor(private program: ts.Program) {
-    this.restSpecMapping = {};
-    this.checker = program.getTypeChecker();
+  constructor (private program: ts.Program) {
+    this.restSpecMapping = {}
+    this.checker = program.getTypeChecker()
     for (const f of this.program.getSourceFiles()) {
       if (!f.path.match(/specification[\/\\]specs/)) continue;
       let ns = path.dirname(f.path)
