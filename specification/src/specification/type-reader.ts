@@ -85,12 +85,9 @@ class InterfaceVisitor extends Visitor {
     const s = this.interfaceNode.symbol
     const x: any = s.valueDeclaration
     const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || []
+
     domainInterface.inheritsFromUnresolved = heritageClauses
-      .map(c => ((c as any).types || []) as ts.Node[])
-      .reduce((p, c) => {
-        c.forEach(node => p.push(node))
-        return c
-      }, [])
+      .flatMap(c => ((c as any).types || []) as ts.Node[])
       .reduce((c, node) => {
         const expression = ((node as any).expression as ts.Identifier)
         const name = expression.text
@@ -101,14 +98,14 @@ class InterfaceVisitor extends Visitor {
             ? this.visitTypeNode(node)
             : this.visitTypeReference(typeRef);
           c[name] = [type];
-          return c;
+        } else {
+          c[name] = (typeRef.typeArguments).map(g => {
+            const typeArgRef = g as ts.TypeReferenceNode
+            return !typeArgRef.typeName
+              ? this.visitTypeNode(g)
+              : this.visitTypeReference(typeArgRef);
+          });
         }
-        c[name] = (typeRef.typeArguments).map(g => {
-          const typeArgRef = g as ts.TypeReferenceNode
-          return !typeArgRef.typeName
-            ? this.visitTypeNode(g)
-            : this.visitTypeReference(typeArgRef);
-        });
         return c;
       }, {});
     return domainInterface;
