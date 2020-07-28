@@ -10,7 +10,5 @@ class CreateRequest<TDocument> extends RequestBase {
 		version_type: VersionType;
 		wait_for_active_shards: string;
 	}
-	body: {
-		document: TDocument;
-	}
+	body: TDocument;
 }

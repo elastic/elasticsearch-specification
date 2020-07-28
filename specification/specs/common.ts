@@ -6,7 +6,6 @@ function request_parameter() {return function (ns: any, x:any){}}
 function namespace(ns: string) {return function (ns: any){}}
 
 interface Uri {}
-interface String {}
 interface Date {}
 interface TimeSpan {}
 interface SourceDocument {}
