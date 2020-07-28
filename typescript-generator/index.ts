@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { Specification } from '../specification/src/api-specification'
-import Domain, { ArrayOf, Dictionary, Type, UnionOf } from 'elasticsearch-client-specification/src/domain'
+import Domain, { ArrayOf, Dictionary, Type, UnionOf, ImplementsReference } from 'elasticsearch-client-specification/src/domain'
 
 const specification = Specification.load()
 let typeDefinitions = ''
@@ -48,6 +48,10 @@ const stringOrNumberTypes = [
   'Routing'
 ]
 
+const stringOrArrayOfStrings = [
+  'StopWords'
+]
+
 for (const type of specification.types) {
   if (type instanceof Domain.RequestInterface) {
     typeDefinitions += buildRequestInterface(type) + '\n\n'
@@ -72,7 +76,15 @@ function buildInterface (type: Domain.Interface): string {
     return `export type ${type.name} = number`
   }
 
-  let code = `export interface ${type.name}${buildGeneric(type)} {\n`
+  if (stringOrNumberTypes.includes(type.name)) {
+    return `export type ${type.name} = string | number`
+  }
+
+  if (stringOrArrayOfStrings.includes(type.name)) {
+    return `export type ${type.name} = string | string[]`
+  }
+
+  let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
     if (property.type === undefined) continue
     code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
@@ -116,8 +128,12 @@ function buildRequestInterface (type: Domain.RequestInterface): string {
 
 function buildEnum (type: Domain.Enum): string {
   if (process.env.ENUM_AS_UNION) {
-    // @ts-ignore
-    const types = type.members.map(maybeBoolean)
+    const types = type.members.map(member => {
+      if (member.stringRepresentation === 'true' || member.stringRepresentation === 'false') {
+        return member.stringRepresentation
+      }
+      return `"${member.stringRepresentation}"`
+    })
     return `export type ${type.name} = ${types.join(' | ')}`
   }
   let code = `export enum ${type.name} {\n`
@@ -126,22 +142,22 @@ function buildEnum (type: Domain.Enum): string {
   }
   code += '}'
   return code
-
-  function maybeBoolean (data: string): string {
-    if (data === 'true' || data === 'false') {
-      return data
-    }
-    return `"${data}"`
-  }
 }
 
-function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf): string {
+function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsReference): string {
   if (type instanceof ArrayOf) {
     return `${unwrapType(type.of)}[]`
   } else if (type instanceof Dictionary) {
     return `Record<${unwrapType(type.key)}, ${unwrapType(type.value)}>`
   } else if (type instanceof UnionOf) {
     return type.items.map(unwrapType).join(' | ')
+  } else if (type instanceof ImplementsReference) {
+    // TODO: if the closedGenerics is 2 more than there is a generic,
+    //       otherwise is just a repetition of the type?
+    if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 1) {
+      return `${type.type.name}<${type.closedGenerics.map(unwrapType).join(', ')}>`
+    }
+    return type.type.name
   } else {
     if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 0) {
       return `${type.name}<${type.closedGenerics.map(unwrapType).join(', ')}>`
@@ -153,6 +169,17 @@ function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf): string {
 function buildGeneric (type: Domain.Interface | Domain.RequestInterface): string {
   if (Array.isArray(type.openGenerics) && type.openGenerics.length > 0) {
     return `<${type.openGenerics.join(', ')}>`
+  }
+  return ''
+}
+
+function buildInherits (type: Domain.Interface | Domain.RequestInterface): string {
+  if (Array.isArray(type.inherits) && type.inherits.length > 0) {
+    let code = ' extends '
+    for (const inherit of type.inherits) {
+      code += unwrapType(inherit) + ', '
+    }
+    return code.slice(0, -2)
   }
   return ''
 }
