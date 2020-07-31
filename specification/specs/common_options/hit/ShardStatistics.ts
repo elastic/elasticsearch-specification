@@ -3,4 +3,5 @@ class ShardStatistics {
 	failures: ShardFailure[];
 	successful: integer;
 	total: integer;
+  skipped: integer;
 }

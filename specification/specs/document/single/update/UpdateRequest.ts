@@ -2,7 +2,7 @@
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 	query_parameters: {
 		if_primary_term: long;
-		if_sequence_number: long;
+		if_seq_no: long;
 		lang: string;
 		refresh: Refresh;
 		retry_on_conflict: long;

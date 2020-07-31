@@ -6,8 +6,8 @@ class GetRequest extends RequestBase {
 		refresh: boolean;
 		routing: Routing;
 		source_enabled: boolean;
-		source_excludes: Field[];
-		source_includes: Field[];
+		_source_excludes: Field[];
+		_source_includes: Field[];
 		stored_fields: Field[];
 		version: long;
 		version_type: VersionType;

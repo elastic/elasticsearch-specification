@@ -2,7 +2,7 @@
 class DeleteRequest extends RequestBase {
 	query_parameters: {
 		if_primary_term: long;
-		if_sequence_number: long;
+		if_seq_no: long;
 		refresh: Refresh;
 		routing: Routing;
 		timeout: Time;
