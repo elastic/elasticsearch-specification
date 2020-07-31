@@ -3067,6 +3067,7 @@ export interface ShardStatistics {
   failures?: ShardFailure[]
   successful?: integer
   total?: integer
+  skipped?: integer
 }
 
 export interface MinimumShouldMatch extends Union<integer, string> {
@@ -3657,6 +3658,7 @@ export interface WriteResponseBase extends ResponseBase, IResponse {
   _shards?: ShardStatistics
   _type?: string
   _version?: long
+  forced_refresh?: boolean
 }
 
 export interface CreateRequest<TDocument> {
@@ -3681,7 +3683,7 @@ export interface DeleteRequest {
   index?: IndexName
   type?: TypeName
   if_primary_term?: long
-  if_sequence_number?: long
+  if_seq_no?: long
   refresh?: Refresh
   routing?: Routing
   timeout?: Time
@@ -3718,8 +3720,8 @@ export interface GetRequest {
   refresh?: boolean
   routing?: Routing
   source_enabled?: boolean
-  source_excludes?: Field[]
-  source_includes?: Field[]
+  _source_excludes?: Field[]
+  _source_includes?: Field[]
   stored_fields?: Field[]
   version?: long
   version_type?: VersionType
@@ -3874,7 +3876,7 @@ export interface UpdateRequest<TDocument, TPartialDocument> {
   index?: IndexName
   type?: TypeName
   if_primary_term?: long
-  if_sequence_number?: long
+  if_seq_no?: long
   lang?: string
   refresh?: Refresh
   retry_on_conflict?: long
@@ -6544,6 +6546,8 @@ export interface ExplanationDetail {
 export interface InlineGet<TDocument> {
   fields?: Record<string, LazyDocument>
   found?: boolean
+  _seq_no?: long
+  _primary_term?: long
   _source?: TDocument
 }
 
