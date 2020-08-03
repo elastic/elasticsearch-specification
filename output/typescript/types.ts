@@ -19,7 +19,7 @@ export interface ErrorCause {
   failed_shards?: ShardFailure[]
   grouped?: boolean
   index?: string
-  index_u_u_i_d?: string
+  index_uuid?: string
   language?: string
   licensed_expired_feature?: string
   line?: integer
@@ -29,7 +29,7 @@ export interface ErrorCause {
   resource_type?: string
   script?: string
   script_stack?: string[]
-  shard?: integer
+  shard?: integer | string
   stack_trace?: string
   type?: string
 }
@@ -2930,11 +2930,6 @@ export interface ElasticsearchResponse {
 export interface ElasticsearchUrlFormatter {
 }
 
-export interface ServerError {
-  error?: MainError
-  status?: integer
-}
-
 export interface ShardFailure {
   index?: string
   node?: string
@@ -3012,8 +3007,12 @@ export interface ElasticsearchVersionInfo {
   number?: string
 }
 
+export interface ErrorResponse extends IResponse {
+  error?: MainError
+  status?: integer
+}
+
 export interface IResponse {
-  server_error?: ServerError
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase, IResponse {
@@ -3021,8 +3020,6 @@ export interface IndicesResponseBase extends AcknowledgedResponseBase, IResponse
 }
 
 export interface ResponseBase extends IResponse {
-  debug_information?: string
-  server_error?: ServerError
 }
 
 export interface ShardsOperationResponseBase extends ResponseBase, IResponse {
@@ -3281,7 +3278,7 @@ export interface Retries {
   search?: long
 }
 
-export interface BulkRequest {
+export interface BulkRequest<TSource> {
   index: IndexName
   type: TypeName
   pipeline?: string
@@ -3293,31 +3290,47 @@ export interface BulkRequest {
   timeout?: Time
   type_query_string?: string
   wait_for_active_shards?: string
-  body: BulkOperation[]
+  body: Array<BulkOperationContainer | TSource>
 }
 
 export interface BulkResponse extends ResponseBase, IResponse {
   errors?: boolean
-  items?: BulkResponseItemBase[]
-  items_with_errors?: BulkResponseItemBase[]
+  items?: BulkResponseItemContainer[]
   took?: long
 }
 
 export interface BulkOperation {
   _id?: Id
   _index?: IndexName
-  operation?: string
   retry_on_conflict?: integer
   routing?: Routing
   version?: long
   version_type?: VersionType
 }
 
+export interface BulkOperationContainer {
+  index?: BulkIndexOperation
+  create?: BulkCreateOperation
+  update?: BulkUpdateOperation
+  delete?: BulkDeleteOperation
+}
+
+export interface BulkIndexOperation extends BulkOperation {
+}
+
+export interface BulkCreateOperation extends BulkOperation {
+}
+
+export interface BulkUpdateOperation extends BulkOperation {
+}
+
+export interface BulkDeleteOperation extends BulkOperation {
+}
+
 export interface BulkResponseItemBase {
   error?: MainError
   _id?: string
   _index?: string
-  operation?: string
   _primary_term?: long
   result?: string
   _seq_no?: long
@@ -3325,6 +3338,26 @@ export interface BulkResponseItemBase {
   status?: integer
   _type?: string
   _version?: long
+  forced_refresh?: boolean
+}
+
+export interface BulkResponseItemContainer {
+  index?: BulkIndexResponseItem
+  create?: BulkCreateResponseItem
+  update?: BulkUpdateResponseItem
+  delete?: BulkDeleteResponseItem
+}
+
+export interface BulkIndexResponseItem extends BulkResponseItemBase {
+}
+
+export interface BulkCreateResponseItem extends BulkResponseItemBase {
+}
+
+export interface BulkUpdateResponseItem extends BulkResponseItemBase {
+}
+
+export interface BulkDeleteResponseItem extends BulkResponseItemBase {
 }
 
 export interface DeleteByQueryRequest {
@@ -3725,6 +3758,7 @@ export interface GetRequest {
   stored_fields?: Field[]
   version?: long
   version_type?: VersionType
+  _source?: boolean | string | string[]
 }
 
 export interface GetResponse<TDocument> extends ResponseBase {
@@ -3884,6 +3918,7 @@ export interface UpdateRequest<TDocument, TPartialDocument> {
   source_enabled?: boolean
   timeout?: Time
   wait_for_active_shards?: string
+  _source?: boolean | string | string[]
   body: {
     detect_noop?: boolean
     doc?: TPartialDocument
@@ -6666,6 +6701,7 @@ export interface SearchRequest {
   total_hits_as_integer?: boolean
   track_total_hits?: boolean
   typed_keys?: boolean
+  rest_total_hits_as_int?: boolean
   body: {
     aggs?: Record<string, AggregationContainer>
     collapse?: FieldCollapse
