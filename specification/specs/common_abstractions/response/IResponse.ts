@@ -1,3 +1,4 @@
 interface IResponse {
-	server_error: ServerError;
+	// error: MainError;
+  // status: integer;
 }

@@ -1,6 +1,6 @@
 @rest_spec_name("bulk")
 @class_serializer("BulkRequestFormatter")
-class BulkRequest extends RequestBase {
+class BulkRequest<TSource> extends RequestBase {
 	query_parameters: {
 		pipeline: string;
 		refresh: Refresh;
@@ -12,5 +12,5 @@ class BulkRequest extends RequestBase {
 		type_query_string: string;
 		wait_for_active_shards: string;
 	}
-	body: BulkOperation[];
+	body: Array<Union<BulkOperationContainer, TSource>>;
 }

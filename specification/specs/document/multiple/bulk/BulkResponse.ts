@@ -1,6 +1,5 @@
 class BulkResponse extends ResponseBase implements IResponse {
 	errors: boolean;
-	items: BulkResponseItemBase[];
-	items_with_errors: BulkResponseItemBase[];
+	items: BulkResponseItemContainer[];
 	took: long;
 }

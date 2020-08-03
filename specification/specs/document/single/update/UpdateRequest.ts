@@ -10,6 +10,7 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 		source_enabled: boolean;
 		timeout: Time;
 		wait_for_active_shards: string;
+		_source: Union<boolean, Union<string, string[]>>;
 	}
 	body: {
 		detect_noop: boolean;
