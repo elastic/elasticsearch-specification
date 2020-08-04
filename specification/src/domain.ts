@@ -186,7 +186,8 @@ namespace Domain {
         }
       }
       if (allParts.length > 0) {
-        intersect(Object.keys(routeParts)).forEach(part => {
+        // @ts-ignore
+        intersect(...allParts).forEach(part => {
           routeParts[part].required = true
         })
       }
