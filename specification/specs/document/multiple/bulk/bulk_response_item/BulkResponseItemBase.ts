@@ -11,6 +11,7 @@ class BulkResponseItemBase {
 	_type: string;
 	_version: long;
   forced_refresh: boolean;
+  get: GetResponse<LazyDocument>;
 }
 
 class BulkResponseItemContainer {

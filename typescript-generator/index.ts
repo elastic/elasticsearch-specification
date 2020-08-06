@@ -1,7 +1,14 @@
 import fs from 'fs'
 import path from 'path'
 import { Specification } from '../specification/src/api-specification'
-import Domain, { ArrayOf, Dictionary, Type, UnionOf, ImplementsReference } from 'elasticsearch-client-specification/src/domain'
+import Domain, {
+  ArrayOf,
+  Dictionary,
+  Type,
+  UnionOf,
+  ImplementsReference,
+  SingleKeyDictionary
+} from 'elasticsearch-client-specification/src/domain'
 
 const specification = Specification.load()
 let typeDefinitions = ''
@@ -52,10 +59,15 @@ const stringOrArrayOfStrings = [
   'StopWords'
 ]
 
+const interfaceToSkip = [
+  'KeyValue'
+]
+
 for (const type of specification.types) {
   if (type instanceof Domain.RequestInterface) {
     typeDefinitions += buildRequestInterface(type) + '\n\n'
   } else if (type instanceof Domain.Interface) {
+    if (interfaceToSkip.includes(type.name)) continue
     typeDefinitions += buildInterface(type) + '\n\n'
   } else if (type instanceof Domain.Enum) {
     typeDefinitions += buildEnum(type) + '\n\n'
@@ -144,11 +156,13 @@ function buildEnum (type: Domain.Enum): string {
   return code
 }
 
-function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsReference): string {
+function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsReference | SingleKeyDictionary): string {
   if (type instanceof ArrayOf) {
     return `${unwrapType(type.of)}[]`
   } else if (type instanceof Dictionary) {
     return `Record<${unwrapType(type.key)}, ${unwrapType(type.value)}>`
+  } else if (type instanceof SingleKeyDictionary) {
+    return `Record<string, ${unwrapType(type.value)}>`
   } else if (type instanceof UnionOf) {
     return type.items.map(unwrapType).join(' | ')
   } else if (type instanceof ImplementsReference) {

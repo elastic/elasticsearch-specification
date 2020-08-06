@@ -183,6 +183,7 @@ class InterfaceVisitor extends Visitor {
     const typeName = t.typeName.getText();
     if (typeName.startsWith("Dictionary")) return this.createDictionary(t, typeName);
     if (typeName.startsWith("Union")) return this.createUnion(t, typeName);
+    if (typeName.startsWith("SingleKeyDictionary")) return this.createSingleKeyDictionary(t, typeName);
     const typed = new Domain.Type(typeName);
     if (!t.typeArguments || t.typeArguments.length === 0)
       return typed;
@@ -207,6 +208,16 @@ class InterfaceVisitor extends Visitor {
     const map = new Domain.Dictionary()
     map.key = types[0]
     map.value = types[1]
+    return map
+  }
+
+  private createSingleKeyDictionary (t: ts.TypeReferenceNode, typeName) {
+    const args: ts.Node[] = t.typeArguments.map(n => n as ts.Node)
+    const types = args.map(ct => this.visitTypeNode(ct))
+    if (types.length !== 1) { throw Error('A SingleKeyDictionary should contain 1 type args but found ' + types.length + ' on ' + typeName) }
+
+    const map = new Domain.SingleKeyDictionary()
+    map.value = types[0]
     return map
   }
 

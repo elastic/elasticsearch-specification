@@ -21,11 +21,15 @@ namespace Domain {
     key: InstanceOf;
     value: InstanceOf;
   }
+  export class SingleKeyDictionary {
+    type = new Type("singlekeydictionary");
+    value: InstanceOf;
+  }
   export class UnionOf {
     type = new Type("union");
     items: InstanceOf[] = [];
   }
-  export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf;
+  export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf|SingleKeyDictionary;
 
   export class GeneratorDocumentation {
     constructor(description: string, keyValues: Record<string, string>) {
