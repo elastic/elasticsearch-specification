@@ -11,7 +11,7 @@ class GetRequest extends RequestBase {
 		stored_fields: Field[];
 		version: long;
 		version_type: VersionType;
-		_source: Union<boolean, Union<string, string[]>>;
+		_source: Union<boolean, Field, Field[]>;
 	}
 	body: {
 	}

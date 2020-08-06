@@ -10,7 +10,7 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 		source_enabled: boolean;
 		timeout: Time;
 		wait_for_active_shards: string;
-		_source: Union<boolean, Union<string, string[]>>;
+		_source: Union<boolean, Field, Field[]>;
 	}
 	body: {
 		detect_noop: boolean;
@@ -19,7 +19,7 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 		doc_as_upsert: boolean;
 		script: Script;
 		scripted_upsert: boolean;
-		_source: Union<boolean, SourceFilter>;
+		_source: Union<boolean, Field, Field[], SourceFilter>;
 		/** @prop_serializer SourceFormatter`1 */
 		upsert: TDocument;
 	}

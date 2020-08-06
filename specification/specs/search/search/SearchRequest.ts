@@ -54,7 +54,7 @@ class SearchRequest extends RequestBase {
 		size: integer;
 		slice: SlicedScroll;
 		sort: Array<SingleKeyDictionary<Union<Sort, SortOrder>>>;
-		_source: Union<Union<boolean, Field>, Union<Field[], SourceFilter>>;
+		_source: Union<boolean, Field, Field[], SourceFilter>;
 		suggest: Dictionary<string, SuggestBucket>;
 		terminate_after: long;
 		timeout: string;
