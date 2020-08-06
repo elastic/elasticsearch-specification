@@ -33,6 +33,8 @@ class SearchRequest extends RequestBase {
 		track_total_hits: boolean;
 		typed_keys: boolean;
     rest_total_hits_as_int: boolean;
+		_source_excludes: Union<Field, Field[]>;
+		_source_includes: Union<Field, Field[]>;
 	}
 	body: {
 		aggs: Dictionary<string, AggregationContainer>;
@@ -51,8 +53,8 @@ class SearchRequest extends RequestBase {
 		search_after: any[];
 		size: integer;
 		slice: SlicedScroll;
-		sort: Sort[];
-		_source: Union<boolean, SourceFilter>;
+		sort: Array<SingleKeyDictionary<Union<Sort, SortOrder>>>;
+		_source: Union<Union<boolean, Field>, Union<Field[], SourceFilter>>;
 		suggest: Dictionary<string, SuggestBucket>;
 		terminate_after: long;
 		timeout: string;

@@ -1,5 +1,5 @@
 @class_serializer("SourceFilterFormatter")
 class SourceFilter {
-	excludes: Field[];
-	includes: Field[];
+	excludes: Union<Field, Field[]>;
+	includes: Union<Field, Field[]>;
 }
