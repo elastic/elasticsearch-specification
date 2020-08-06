@@ -7,4 +7,5 @@ class WriteResponseBase extends ResponseBase implements IResponse {
 	_shards: ShardStatistics;
 	_type: string;
 	_version: long;
+  forced_refresh: boolean;
 }

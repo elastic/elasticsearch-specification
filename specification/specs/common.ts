@@ -20,7 +20,7 @@ class ErrorCause {
 	failed_shards: ShardFailure[];
 	grouped: boolean;
 	index: string;
-	index_u_u_i_d: string;
+	index_uuid: string;
 	language: string;
 	licensed_expired_feature: string;
 	line: integer;
@@ -30,7 +30,7 @@ class ErrorCause {
 	resource_type: string;
 	script: string;
 	script_stack: string[];
-	shard: integer;
+	shard: Union<integer, string>;
 	stack_trace: string;
 	type: string;
 }

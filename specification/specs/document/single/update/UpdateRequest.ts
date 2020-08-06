@@ -2,7 +2,7 @@
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 	query_parameters: {
 		if_primary_term: long;
-		if_sequence_number: long;
+		if_seq_no: long;
 		lang: string;
 		refresh: Refresh;
 		retry_on_conflict: long;
@@ -10,6 +10,7 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
 		source_enabled: boolean;
 		timeout: Time;
 		wait_for_active_shards: string;
+		_source: Union<boolean, Union<string, string[]>>;
 	}
 	body: {
 		detect_noop: boolean;

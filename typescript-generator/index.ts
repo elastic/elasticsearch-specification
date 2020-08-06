@@ -1,79 +1,17 @@
-/* tslint:disable:no-console */
-import { Specification } from '../specification/src/api-specification'
-import Domain, { ArrayOf, Dictionary, Type, UnionOf } from 'elasticsearch-client-specification/src/domain'
 import fs from 'fs'
+import path from 'path'
+import { Specification } from '../specification/src/api-specification'
+import Domain, {
+  ArrayOf,
+  Dictionary,
+  Type,
+  UnionOf,
+  ImplementsReference,
+  SingleKeyDictionary
+} from 'elasticsearch-client-specification/src/domain'
 
 const specification = Specification.load()
-
-if (specification.domain_errors.length + specification.endpoint_errors.length !== 0) {
-  if (specification.endpoint_errors.length > 0) console.error('The specification contains the following endpoint mapping errors:')
-  for (const e of specification.endpoint_errors) console.error('  - ' + e)
-// tslint:disable-next-line:max-line-length
-} else console.log('The specification contains no errors in any of the ' + specification.endpoints.length + ' endpoints yielding ' + specification.types.length + ' types')
-
-const $instanceOf = (instance: Domain.InstanceOf) => {
-  // Type|ArrayOf|Dictionary|UnionOf;
-  if (instance instanceof Type) return `${instance.name}`
-  else if (instance instanceof ArrayOf) return `${$instanceOf(instance.of)}[]`
-  else if (instance instanceof Dictionary) return `Record<${$instanceOf(instance.key)}, ${$instanceOf(instance.value)}>`
-  else if (instance instanceof UnionOf) return `${instance.items.map($instanceOf).join(' | ')}`
-}
-const $propertyName = (prop: string) =>
-  prop.includes('.') || prop.includes('-') || prop.match(/^(\d|\W)/)
-    ? `"${prop}"`
-    : prop
-
-const $property = (prop: Domain.InterfaceProperty, indentation = 2) => {
-  let nullable = '?'
-  if (prop.type instanceof Domain.Type) {
-    nullable = prop.nullable === false ? '' : '?'
-  }
-  return `${' '.repeat(indentation)}${$propertyName(prop.name)}${nullable}: ${$instanceOf(prop.type)}`
-}
-const $typeExtends = (type: Domain.Interface | Domain.RequestInterface) => {
-  return type.inherits.length === 0
-    ? ''
-    : `extends ${type.inherits.map(t => t.type.name).join(', ')}`
-}
-
-const $generateRecordResponse = (type: Domain.Interface, record: Domain.ImplementsReference) => `
-type ${type.name}RecordIndexer = Record<${record.closedGenerics.map($instanceOf)}>
-// noinspection JSUnusedLocalSymbols
-export type ${type.name} =  ${type.name}RecordIndexer & ResponseBase
-`
-
-const $typeGenerics = (type: Domain.Interface| Domain.RequestInterface) => {
-  return type.openGenerics.length === 0
-    ? ''
-    : `<${type.openGenerics.map(g => `${g}`).join(', ')}>`
-}
-const $type = (type: Domain.Interface | Domain.RequestInterface) => {
-  if (type instanceof Domain.RequestInterface) {
-    const path = type.path.map(p => $property(p)).join('\n')
-    const query = type.queryParameters.map(p => $property(p)).join('\n')
-    let body = ''
-    if (Array.isArray(type.body) && type.body.length > 0) {
-      body += '  body?: {\n'
-      body += type.body.map(p => $property(p, 4)).join('\n')
-      body += '\n  }'
-    }
-    let code = `\nexport interface ${type.name}${$typeGenerics(type)} ${$typeExtends(type)} {`
-    if (path.length > 0) code += '\n' + path
-    if (query.length > 0) code += '\n' + query
-    if (body.length > 0) code += '\n' + body
-    code += '\n}\n'
-    return code
-  } else {
-    let code = `\nexport interface ${type.name}${$typeGenerics(type)} ${$typeExtends(type)} {`
-    if (type.properties.length > 0) code += '\n' + type.properties.map(p => $property(p)).join('\n')
-    code += '\n}\n'
-    return code
-  }
-}
-
-const $createUnionType = (type: Domain.Interface | Domain.RequestInterface) => `
-export type ${type.name} = ${type.inherits[0].closedGenerics.map($instanceOf).join(' | ')};
-`
+let typeDefinitions = ''
 
 const stringTypes = [
   'ActionIds',
@@ -101,61 +39,167 @@ const stringTypes = [
   'Types',
   'Uri',
 ]
+
+const numberTypes = [
+  'short',
+  'byte',
+  'integer',
+  'long',
+  'float',
+  'double'
+]
+
 const stringOrNumberTypes = [
   'Id',
   'Ids',
   'Routing'
 ]
-const numberTypes = ['short', 'byte', 'integer', 'long', 'float', 'double']
-const objectTypes = ['SourceDocument']
-const $createType = (type: Domain.Interface | Domain.RequestInterface) => {
+
+const stringOrArrayOfStrings = [
+  'StopWords'
+]
+
+const interfaceToSkip = [
+  'KeyValue'
+]
+
+for (const type of specification.types) {
+  if (type instanceof Domain.RequestInterface) {
+    typeDefinitions += buildRequestInterface(type) + '\n\n'
+  } else if (type instanceof Domain.Interface) {
+    if (interfaceToSkip.includes(type.name)) continue
+    typeDefinitions += buildInterface(type) + '\n\n'
+  } else if (type instanceof Domain.Enum) {
+    typeDefinitions += buildEnum(type) + '\n\n'
+  }
+}
+
+fs.writeFileSync(
+  path.join(__dirname, '..', 'output', 'typescript', 'types.ts'),
+  typeDefinitions.slice(0, -2) // removes last two '\n\n\'
+)
+
+function buildInterface (type: Domain.Interface): string {
   if (stringTypes.includes(type.name)) {
-    return `export type ${type.name} = string;
-`
+    return `export type ${type.name} = string`
   }
-  if (stringOrNumberTypes.includes(type.name)) {
-    return `export type ${type.name} = string | number;
-`
-  }
+
   if (numberTypes.includes(type.name)) {
-    return `export type ${type.name} = number;
-`
+    return `export type ${type.name} = number`
   }
-  if (objectTypes.includes(type.name)) {
-    return `export type ${type.name} = Record<string, any>;
-`
+
+  if (stringOrNumberTypes.includes(type.name)) {
+    return `export type ${type.name} = string | number`
   }
-  const record = type.inherits.find(i => i.type.name === 'DictionaryResponseBase')
-  if (record && type instanceof Domain.Interface) return $generateRecordResponse(type, record)
-  if (type.implementsUnion()) return $createUnionType(type)
-  return $type(type)
+
+  if (stringOrArrayOfStrings.includes(type.name)) {
+    return `export type ${type.name} = string | string[]`
+  }
+
+  let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
+  for (const property of type.properties) {
+    if (property.type === undefined) continue
+    code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+  }
+  code += '}'
+  return code
 }
 
-const $enumFlag = (e: Domain.EnumMember, flag: boolean, n: number) => !flag ? `"${e.name}"` : `1 << ${n + 1}`
-const $enumValue = (e: Domain.EnumMember, flag: boolean, n: number) => `  ${$propertyName(e.name)} = ${$enumFlag(e, flag, n)}`
-const $enumValues = (e: Domain.Enum) => e.members.map((m, i) => $enumValue(m, e.flags, i)).join(',\n')
-const $enum = (e: Domain.Enum) => {
-  if (process.env.ENUM_AS_UNION) {
-    const types = e.members.map(m => {
-      if (typeof m.name === 'string') {
-        if (m.name === 'true' || m.name === 'false') {
-          return m.name
-        }
-        return  "'" + m.name + "'"
+function buildRequestInterface (type: Domain.RequestInterface): string {
+  let code = `export interface ${type.name}${buildGeneric(type)} {\n`
+  if (type.path !== undefined) {
+    for (const property of type.path) {
+      if (property.type === undefined) continue
+      code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+    }
+  }
+
+  if (type.queryParameters !== undefined) {
+    for (const property of type.queryParameters) {
+      if (property.type === undefined) continue
+      code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+    }
+  }
+
+  if (type.body !== undefined) {
+    if (Array.isArray(type.body)) {
+      code += '  body: {\n'
+      for (const property of type.body) {
+        if (property.type === undefined) continue
+        code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
       }
-      return m.name
-    })
-    return `\nexport type ${e.name } = ${types.join(' | ')}\n`
+      code += '  }\n'
+    } else {
+      code += `  body: ${unwrapType(type.body)}\n`
+    }
   }
-  return `
-export enum ${e.name} {
-${$enumValues(e)}
-}
-`
-}
-const $renderType = (type: Domain.TypeDeclaration) => {
-  if (type instanceof Domain.Interface || type instanceof Domain.RequestInterface) return $createType(type)
-  else if (type instanceof Domain.Enum) return $enum(type)
+
+  code += '}'
+  return code
 }
 
-fs.writeFileSync('../output/typescript/types.ts', specification.types.map($renderType).join(''))
+function buildEnum (type: Domain.Enum): string {
+  if (process.env.ENUM_AS_UNION) {
+    const types = type.members.map(member => {
+      if (member.stringRepresentation === 'true' || member.stringRepresentation === 'false') {
+        return member.stringRepresentation
+      }
+      return `"${member.stringRepresentation}"`
+    })
+    return `export type ${type.name} = ${types.join(' | ')}`
+  }
+  let code = `export enum ${type.name} {\n`
+  for (const member of type.members) {
+    code += `  ${cleanPropertyName(member.name)} = "${member.stringRepresentation}",\n`
+  }
+  code += '}'
+  return code
+}
+
+function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsReference | SingleKeyDictionary): string {
+  if (type instanceof ArrayOf) {
+    return `${unwrapType(type.of)}[]`
+  } else if (type instanceof Dictionary) {
+    return `Record<${unwrapType(type.key)}, ${unwrapType(type.value)}>`
+  } else if (type instanceof SingleKeyDictionary) {
+    return `Record<string, ${unwrapType(type.value)}>`
+  } else if (type instanceof UnionOf) {
+    return type.items.map(unwrapType).join(' | ')
+  } else if (type instanceof ImplementsReference) {
+    // TODO: if the closedGenerics is 2 more than there is a generic,
+    //       otherwise is just a repetition of the type?
+    if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 1) {
+      return `${type.type.name}<${type.closedGenerics.map(unwrapType).join(', ')}>`
+    }
+    return type.type.name
+  } else {
+    if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 0) {
+      return `${type.name}<${type.closedGenerics.map(unwrapType).join(', ')}>`
+    }
+    return type.name
+  }
+}
+
+function buildGeneric (type: Domain.Interface | Domain.RequestInterface): string {
+  if (Array.isArray(type.openGenerics) && type.openGenerics.length > 0) {
+    return `<${type.openGenerics.join(', ')}>`
+  }
+  return ''
+}
+
+function buildInherits (type: Domain.Interface | Domain.RequestInterface): string {
+  if (Array.isArray(type.inherits) && type.inherits.length > 0) {
+    let code = ' extends '
+    for (const inherit of type.inherits) {
+      code += unwrapType(inherit) + ', '
+    }
+    return code.slice(0, -2)
+  }
+  return ''
+}
+
+function cleanPropertyName (name: string): string {
+  return name.includes('.') || name.includes('-') || name.match(/^(\d|\W)/)
+    ? `"${name}"`
+    : name
+}

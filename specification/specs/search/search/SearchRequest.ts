@@ -32,6 +32,7 @@ class SearchRequest extends RequestBase {
 		total_hits_as_integer: boolean;
 		track_total_hits: boolean;
 		typed_keys: boolean;
+    rest_total_hits_as_int: boolean;
 	}
 	body: {
 		aggs: Dictionary<string, AggregationContainer>;

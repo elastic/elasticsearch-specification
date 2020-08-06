@@ -3,7 +3,7 @@
 class IndexRequest<TDocument> extends RequestBase {
 	query_parameters: {
 		if_primary_term: long;
-		if_sequence_number: long;
+		if_seq_no: long;
 		op_type: OpType;
 		pipeline: string;
 		refresh: Refresh;
@@ -13,5 +13,5 @@ class IndexRequest<TDocument> extends RequestBase {
 		version_type: VersionType;
 		wait_for_active_shards: string;
 	}
-	body: TDocument
+	body: TDocument;
 }
