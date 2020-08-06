@@ -123,14 +123,14 @@ function buildRequestInterface (type: Domain.RequestInterface): string {
 
   if (type.body !== undefined) {
     if (Array.isArray(type.body)) {
-      code += '  body: {\n'
+      code += '  body?: {\n'
       for (const property of type.body) {
         if (property.type === undefined) continue
         code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
       }
       code += '  }\n'
     } else {
-      code += `  body: ${unwrapType(type.body)}\n`
+      code += `  body?: ${unwrapType(type.body)}\n`
     }
   }
 
