@@ -1,4 +1,4 @@
-class ErrorResponse implements IResponse {
+class ErrorResponse {
   error: MainError;
   status: integer;
 }

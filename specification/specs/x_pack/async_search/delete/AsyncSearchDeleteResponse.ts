@@ -1,2 +1,2 @@
-class AsyncSearchDeleteResponse extends AcknowledgedResponseBase implements IResponse {
+class AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
 }

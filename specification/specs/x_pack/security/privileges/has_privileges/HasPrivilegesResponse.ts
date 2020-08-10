@@ -1,4 +1,4 @@
-class HasPrivilegesResponse extends ResponseBase implements IResponse {
+class HasPrivilegesResponse extends ResponseBase {
 	/** @prop_serializer ApplicationsPrivilegesFormatter */
 	application: Dictionary<string, ResourcePrivileges[]>;
 	cluster: Dictionary<string, boolean>;

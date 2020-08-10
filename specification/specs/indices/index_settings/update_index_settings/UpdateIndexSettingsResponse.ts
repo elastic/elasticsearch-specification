@@ -1,2 +1,2 @@
-class UpdateIndexSettingsResponse extends AcknowledgedResponseBase implements IResponse {
+class UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
 }

@@ -1,2 +1,2 @@
-class DeleteLifecycleResponse extends AcknowledgedResponseBase implements IResponse {
+class DeleteLifecycleResponse extends AcknowledgedResponseBase {
 }

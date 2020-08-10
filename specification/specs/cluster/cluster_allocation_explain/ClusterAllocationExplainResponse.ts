@@ -1,4 +1,4 @@
-class ClusterAllocationExplainResponse extends ResponseBase implements IResponse {
+class ClusterAllocationExplainResponse extends ResponseBase {
 	allocate_explanation: string;
 	allocation_delay: string;
 	allocation_delay_in_millis: long;

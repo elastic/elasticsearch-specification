@@ -1,4 +1,4 @@
-class PutDatafeedResponse extends ResponseBase implements IResponse {
+class PutDatafeedResponse extends ResponseBase {
 	aggregations: Dictionary<string, AggregationContainer>;
 	chunking_config: ChunkingConfig;
 	datafeed_id: string;

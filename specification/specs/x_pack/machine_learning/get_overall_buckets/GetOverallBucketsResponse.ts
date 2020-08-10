@@ -1,4 +1,4 @@
-class GetOverallBucketsResponse extends ResponseBase implements IResponse {
+class GetOverallBucketsResponse extends ResponseBase {
 	count: long;
 	overall_buckets: OverallBucket[];
 }

@@ -1,4 +1,4 @@
-class ResponseBase implements IResponse {
+class ResponseBase {
   // error: MainError;
   // status: integer;
 }

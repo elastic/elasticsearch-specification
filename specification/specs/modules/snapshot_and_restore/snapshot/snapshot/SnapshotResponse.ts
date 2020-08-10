@@ -1,4 +1,4 @@
-class SnapshotResponse extends ResponseBase implements IResponse {
+class SnapshotResponse extends ResponseBase {
 	accepted: boolean;
 	snapshot: SnapshotInfo;
 }

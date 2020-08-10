@@ -1,3 +1,3 @@
-class ExplainLifecycleResponse extends ResponseBase implements IResponse {
+class ExplainLifecycleResponse extends ResponseBase {
 	indices: Dictionary<string, LifecycleExplain>;
 }

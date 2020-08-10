@@ -1,4 +1,4 @@
-class EnrichStatsResponse extends ResponseBase implements IResponse {
+class EnrichStatsResponse extends ResponseBase {
 	coordinator_stats: CoordinatorStats[];
 	executing_policies: ExecutingPolicy[];
 }

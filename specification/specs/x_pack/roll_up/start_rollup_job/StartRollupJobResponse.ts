@@ -1,3 +1,3 @@
-class StartRollupJobResponse extends ResponseBase implements IResponse {
+class StartRollupJobResponse extends ResponseBase {
 	started: boolean;
 }

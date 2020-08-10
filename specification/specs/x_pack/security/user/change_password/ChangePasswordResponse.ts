@@ -1,2 +1,2 @@
-class ChangePasswordResponse extends ResponseBase implements IResponse {
+class ChangePasswordResponse extends ResponseBase {
 }

@@ -1,4 +1,4 @@
-class ValidateQueryResponse extends ResponseBase implements IResponse {
+class ValidateQueryResponse extends ResponseBase {
 	explanations: ValidationExplanation[];
 	_shards: ShardStatistics;
 	valid: boolean;

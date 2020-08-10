@@ -1,3 +1,3 @@
-class FlushJobResponse extends ResponseBase implements IResponse {
+class FlushJobResponse extends ResponseBase {
 	flushed: boolean;
 }

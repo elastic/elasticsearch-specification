@@ -1,4 +1,4 @@
-class ReindexOnServerResponse extends ResponseBase implements IResponse {
+class ReindexOnServerResponse extends ResponseBase {
 	batches: long;
 	created: long;
 	failures: BulkIndexByScrollFailure[];

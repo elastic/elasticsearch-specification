@@ -1,2 +1,2 @@
-class MoveToStepResponse extends AcknowledgedResponseBase implements IResponse {
+class MoveToStepResponse extends AcknowledgedResponseBase {
 }

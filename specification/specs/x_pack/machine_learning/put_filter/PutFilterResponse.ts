@@ -1,4 +1,4 @@
-class PutFilterResponse extends ResponseBase implements IResponse {
+class PutFilterResponse extends ResponseBase {
 	description: string;
 	filter_id: string;
 	items: string[];

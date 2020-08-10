@@ -1,4 +1,4 @@
-class GetDatafeedStatsResponse extends ResponseBase implements IResponse {
+class GetDatafeedStatsResponse extends ResponseBase {
 	count: long;
 	datafeeds: DatafeedStats[];
 }

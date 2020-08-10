@@ -1,2 +1,2 @@
-class DeleteAliasResponse extends ResponseBase implements IResponse {
+class DeleteAliasResponse extends ResponseBase {
 }

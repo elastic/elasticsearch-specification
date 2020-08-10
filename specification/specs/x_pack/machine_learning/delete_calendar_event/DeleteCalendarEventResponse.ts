@@ -1,2 +1,2 @@
-class DeleteCalendarEventResponse extends AcknowledgedResponseBase implements IResponse {
+class DeleteCalendarEventResponse extends AcknowledgedResponseBase {
 }

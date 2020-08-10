@@ -1,4 +1,4 @@
-class GetModelSnapshotsResponse extends ResponseBase implements IResponse {
+class GetModelSnapshotsResponse extends ResponseBase {
 	count: long;
 	model_snapshots: ModelSnapshot[];
 }

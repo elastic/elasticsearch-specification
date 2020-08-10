@@ -1,2 +1,2 @@
-class PutLifecycleResponse extends AcknowledgedResponseBase implements IResponse {
+class PutLifecycleResponse extends AcknowledgedResponseBase {
 }

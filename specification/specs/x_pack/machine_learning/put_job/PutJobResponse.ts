@@ -1,4 +1,4 @@
-class PutJobResponse extends ResponseBase implements IResponse {
+class PutJobResponse extends ResponseBase {
 	allow_lazy_open: boolean;
 	analysis_config: AnalysisConfig;
 	analysis_limits: AnalysisLimits;

@@ -1,2 +1,2 @@
-class BulkAliasResponse extends AcknowledgedResponseBase implements IResponse {
+class BulkAliasResponse extends AcknowledgedResponseBase {
 }

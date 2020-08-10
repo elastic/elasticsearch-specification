@@ -1,4 +1,4 @@
-class GetWatchResponse extends ResponseBase implements IResponse {
+class GetWatchResponse extends ResponseBase {
 	found: boolean;
 	_id: string;
 	status: WatchStatus;

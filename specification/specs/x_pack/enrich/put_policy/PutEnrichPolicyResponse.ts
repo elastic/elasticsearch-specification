@@ -1,2 +1,2 @@
-class PutEnrichPolicyResponse extends AcknowledgedResponseBase implements IResponse {
+class PutEnrichPolicyResponse extends AcknowledgedResponseBase {
 }

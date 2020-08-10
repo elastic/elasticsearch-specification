@@ -1,4 +1,4 @@
-class RootNodeInfoResponse extends ResponseBase implements IResponse {
+class RootNodeInfoResponse extends ResponseBase {
 	cluster_name: string;
 	cluster_uuid: string;
 	name: string;

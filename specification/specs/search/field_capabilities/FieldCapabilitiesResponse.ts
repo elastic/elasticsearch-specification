@@ -1,3 +1,3 @@
-class FieldCapabilitiesResponse extends ResponseBase implements IResponse {
+class FieldCapabilitiesResponse extends ResponseBase {
 	fields: Dictionary<Field, Dictionary<string, FieldCapabilities>>;
 }

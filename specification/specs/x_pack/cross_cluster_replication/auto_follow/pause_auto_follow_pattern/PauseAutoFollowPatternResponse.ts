@@ -1,2 +1,2 @@
-class PauseAutoFollowPatternResponse extends AcknowledgedResponseBase implements IResponse {
+class PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }

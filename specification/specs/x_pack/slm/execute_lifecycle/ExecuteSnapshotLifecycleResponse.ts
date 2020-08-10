@@ -1,3 +1,3 @@
-class ExecuteSnapshotLifecycleResponse extends ResponseBase implements IResponse {
+class ExecuteSnapshotLifecycleResponse extends ResponseBase {
 	snapshot_name: string;
 }

@@ -1,4 +1,4 @@
-class GetSnapshotLifecycleStatsResponse extends ResponseBase implements IResponse {
+class GetSnapshotLifecycleStatsResponse extends ResponseBase {
 	retention_deletion_time: string;
 	retention_deletion_time_millis: long;
 	retention_failed: long;

@@ -1,2 +1,2 @@
-class PutScriptResponse extends AcknowledgedResponseBase implements IResponse {
+class PutScriptResponse extends AcknowledgedResponseBase {
 }

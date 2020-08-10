@@ -1,3 +1,3 @@
-class ClearSqlCursorResponse extends ResponseBase implements IResponse {
+class ClearSqlCursorResponse extends ResponseBase {
 	succeeded: boolean;
 }
