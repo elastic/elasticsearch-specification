@@ -3030,7 +3030,7 @@ export interface ShardsOperationResponseBase extends ResponseBase, IResponse {
   _shards?: ShardStatistics
 }
 
-export interface Union<T1, T2, T3, T4, T5, T7, T8, T9, T10> {
+export interface Union<TFirst, TSecond> {
 }
 
 export interface DateMath extends String {
@@ -3763,7 +3763,7 @@ export interface GetRequest {
   stored_fields?: Field[]
   version?: long
   version_type?: VersionType
-  _source?: boolean | Field | Field[]
+  _source?: boolean | string | string[]
 }
 
 export interface GetResponse<TDocument> extends ResponseBase {
@@ -3923,14 +3923,14 @@ export interface UpdateRequest<TDocument, TPartialDocument> {
   source_enabled?: boolean
   timeout?: Time
   wait_for_active_shards?: string
-  _source?: boolean | Field | Field[]
+  _source?: boolean | string | string[]
   body?: {
     detect_noop?: boolean
     doc?: TPartialDocument
     doc_as_upsert?: boolean
     script?: Script
     scripted_upsert?: boolean
-    _source?: boolean | Field | Field[] | SourceFilter
+    _source?: boolean | SourceFilter
     upsert?: TDocument
   }
 }
