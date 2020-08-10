@@ -164,9 +164,19 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.StringKeyword : return new Domain.Type("string");
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type("boolean");
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type("object");
+      case ts.SyntaxKind.UnionType: return this.visitUnionType(t as ts.TypeLiteralNode)
       default:
         console.log(t.kind);
     }
+  }
+
+  private visitUnionType(t: ts.TypeLiteralNode): Domain.UnionOf {
+    // @ts-ignore
+    const types = (t.types as ts.Node[]).map(type=>this.visitTypeNode(type));
+
+    const u =  new Domain.UnionOf();
+    u.items = types;
+    return u;
   }
 
   private visitArrayType (t: ts.ArrayTypeNode): Domain.ArrayOf {

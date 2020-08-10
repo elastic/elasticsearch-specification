@@ -21,7 +21,7 @@ class QueryContainer {
 	is_strict: boolean;
 	is_verbatim: boolean;
 	is_writable: boolean;
-	match: SingleKeyDictionary<Union<MatchQuery, string>>;
+	match: SingleKeyDictionary<MatchQuery | string>; // { key: MatchQuery | string }
 	match_all: MatchAllQuery;
 	match_bool_prefix: MatchBoolPrefixQuery;
 	match_none: MatchNoneQuery;
