@@ -1,4 +1,4 @@
-class IndicesStatsResponse extends ResponseBase implements IResponse {
+class IndicesStatsResponse extends ResponseBase {
 	/** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
 	indices: Dictionary<string, IndicesStats>;
 	_shards: ShardStatistics;

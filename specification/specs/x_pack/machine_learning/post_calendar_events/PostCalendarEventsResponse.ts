@@ -1,3 +1,3 @@
-class PostCalendarEventsResponse extends ResponseBase implements IResponse {
+class PostCalendarEventsResponse extends ResponseBase {
 	events: ScheduledEvent[];
 }

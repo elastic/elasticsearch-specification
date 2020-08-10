@@ -1,3 +1,3 @@
-class UpdateModelSnapshotResponse extends AcknowledgedResponseBase implements IResponse {
+class UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
 	model: ModelSnapshot;
 }

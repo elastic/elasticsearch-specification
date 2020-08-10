@@ -1,4 +1,4 @@
-class ReloadSearchAnalyzersResponse extends ResponseBase implements IResponse {
+class ReloadSearchAnalyzersResponse extends ResponseBase {
 	reload_details: ReloadDetails[];
 	_shards: ShardStatistics;
 }

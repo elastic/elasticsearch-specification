@@ -1,4 +1,4 @@
-class GraphExploreResponse extends ResponseBase implements IResponse {
+class GraphExploreResponse extends ResponseBase {
 	connections: GraphConnection[];
 	failures: ShardFailure[];
 	timed_out: boolean;

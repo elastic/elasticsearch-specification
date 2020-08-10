@@ -1,4 +1,4 @@
-class InvalidateApiKeyResponse extends ResponseBase implements IResponse {
+class InvalidateApiKeyResponse extends ResponseBase {
 	error_count: integer;
 	error_details: ErrorCause[];
 	invalidated_api_keys: string[];

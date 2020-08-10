@@ -1,3 +1,3 @@
-class ExistsResponse extends ResponseBase implements IResponse {
+class ExistsResponse extends ResponseBase {
 	exists: boolean;
 }

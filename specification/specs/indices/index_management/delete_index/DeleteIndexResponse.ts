@@ -1,2 +1,2 @@
-class DeleteIndexResponse extends IndicesResponseBase implements IResponse {
+class DeleteIndexResponse extends IndicesResponseBase {
 }

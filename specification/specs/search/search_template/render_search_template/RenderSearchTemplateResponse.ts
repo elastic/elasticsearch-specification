@@ -1,3 +1,3 @@
-class RenderSearchTemplateResponse extends ResponseBase implements IResponse {
+class RenderSearchTemplateResponse extends ResponseBase {
 	template_output: LazyDocument;
 }

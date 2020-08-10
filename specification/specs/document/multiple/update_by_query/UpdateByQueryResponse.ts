@@ -1,4 +1,4 @@
-class UpdateByQueryResponse extends ResponseBase implements IResponse {
+class UpdateByQueryResponse extends ResponseBase {
 	batches: long;
 	failures: BulkIndexByScrollFailure[];
 	noops: long;

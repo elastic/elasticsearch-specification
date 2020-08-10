@@ -1,2 +1,2 @@
-class PutTransformResponse extends AcknowledgedResponseBase implements IResponse {
+class PutTransformResponse extends AcknowledgedResponseBase {
 }

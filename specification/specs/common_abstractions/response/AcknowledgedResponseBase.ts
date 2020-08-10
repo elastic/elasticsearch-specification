@@ -1,3 +1,3 @@
-class AcknowledgedResponseBase extends ResponseBase implements IResponse {
+class AcknowledgedResponseBase extends ResponseBase {
 	acknowledged: boolean;
 }

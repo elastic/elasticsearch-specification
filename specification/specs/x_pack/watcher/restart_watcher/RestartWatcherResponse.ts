@@ -1,2 +1,2 @@
-class RestartWatcherResponse extends AcknowledgedResponseBase implements IResponse {
+class RestartWatcherResponse extends AcknowledgedResponseBase {
 }

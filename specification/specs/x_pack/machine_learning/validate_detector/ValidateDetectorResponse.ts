@@ -1,2 +1,2 @@
-class ValidateDetectorResponse extends AcknowledgedResponseBase implements IResponse {
+class ValidateDetectorResponse extends AcknowledgedResponseBase {
 }

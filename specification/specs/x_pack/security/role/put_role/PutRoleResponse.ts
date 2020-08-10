@@ -1,3 +1,3 @@
-class PutRoleResponse extends ResponseBase implements IResponse {
+class PutRoleResponse extends ResponseBase {
 	role: PutRoleStatus;
 }

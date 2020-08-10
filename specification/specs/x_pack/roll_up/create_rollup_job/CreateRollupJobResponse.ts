@@ -1,2 +1,2 @@
-class CreateRollupJobResponse extends AcknowledgedResponseBase implements IResponse {
+class CreateRollupJobResponse extends AcknowledgedResponseBase {
 }

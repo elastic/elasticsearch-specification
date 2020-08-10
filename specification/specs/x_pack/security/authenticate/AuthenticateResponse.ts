@@ -1,4 +1,4 @@
-class AuthenticateResponse extends ResponseBase implements IResponse {
+class AuthenticateResponse extends ResponseBase {
 	authentication_realm: RealmInfo;
 	email: string;
 	full_name: string;

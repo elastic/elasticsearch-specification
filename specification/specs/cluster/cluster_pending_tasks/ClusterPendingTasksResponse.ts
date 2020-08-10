@@ -1,3 +1,3 @@
-class ClusterPendingTasksResponse extends ResponseBase implements IResponse {
+class ClusterPendingTasksResponse extends ResponseBase {
 	tasks: PendingTask[];
 }

@@ -1,2 +1,2 @@
-class ExecuteRetentionResponse extends AcknowledgedResponseBase implements IResponse {
+class ExecuteRetentionResponse extends AcknowledgedResponseBase {
 }

@@ -1,3 +1,3 @@
-class ForecastJobResponse extends AcknowledgedResponseBase implements IResponse {
+class ForecastJobResponse extends AcknowledgedResponseBase {
 	forecast_id: string;
 }

@@ -1,4 +1,4 @@
-class RolloverIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class RolloverIndexResponse extends AcknowledgedResponseBase {
 	conditions: Dictionary<string, boolean>;
 	dry_run: boolean;
 	new_index: string;

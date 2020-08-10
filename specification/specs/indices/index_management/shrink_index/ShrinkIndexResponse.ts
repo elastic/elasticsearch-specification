@@ -1,3 +1,3 @@
-class ShrinkIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class ShrinkIndexResponse extends AcknowledgedResponseBase {
 	shards_acknowledged: boolean;
 }

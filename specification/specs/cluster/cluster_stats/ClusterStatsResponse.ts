@@ -1,4 +1,4 @@
-class ClusterStatsResponse extends NodesResponseBase implements IResponse {
+class ClusterStatsResponse extends NodesResponseBase {
 	cluster_name: string;
 	cluster_uuid: string;
 	indices: ClusterIndicesStats;

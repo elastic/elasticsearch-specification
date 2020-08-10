@@ -1,2 +1,2 @@
-class OpenIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class OpenIndexResponse extends AcknowledgedResponseBase {
 }

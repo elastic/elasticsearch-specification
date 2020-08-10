@@ -1,4 +1,4 @@
-class DeleteByQueryResponse extends ResponseBase implements IResponse {
+class DeleteByQueryResponse extends ResponseBase {
 	batches: long;
 	deleted: long;
 	failures: BulkIndexByScrollFailure[];

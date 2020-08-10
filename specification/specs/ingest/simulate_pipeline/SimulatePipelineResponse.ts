@@ -1,3 +1,3 @@
-class SimulatePipelineResponse extends ResponseBase implements IResponse {
+class SimulatePipelineResponse extends ResponseBase {
 	docs: PipelineSimulation[];
 }

@@ -1,4 +1,4 @@
-class GetCalendarsResponse extends ResponseBase implements IResponse {
+class GetCalendarsResponse extends ResponseBase {
 	calendars: Calendar[];
 	count: long;
 }

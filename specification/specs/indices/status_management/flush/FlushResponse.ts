@@ -1,2 +1,2 @@
-class FlushResponse extends ShardsOperationResponseBase implements IResponse {
+class FlushResponse extends ShardsOperationResponseBase {
 }

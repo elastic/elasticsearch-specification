@@ -1,4 +1,4 @@
-class PostJobDataResponse extends ResponseBase implements IResponse {
+class PostJobDataResponse extends ResponseBase {
 	bucket_count: long;
 	/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
 	earliest_record_timestamp: Date;

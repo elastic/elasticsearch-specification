@@ -1,3 +1,3 @@
-class SplitIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class SplitIndexResponse extends AcknowledgedResponseBase {
 	shards_acknowledged: boolean;
 }

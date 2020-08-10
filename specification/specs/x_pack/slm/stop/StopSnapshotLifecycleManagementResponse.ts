@@ -1,2 +1,2 @@
-class StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase implements IResponse {
+class StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
 }

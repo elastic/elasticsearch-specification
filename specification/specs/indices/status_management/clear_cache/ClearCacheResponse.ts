@@ -1,2 +1,2 @@
-class ClearCacheResponse extends ShardsOperationResponseBase implements IResponse {
+class ClearCacheResponse extends ShardsOperationResponseBase {
 }

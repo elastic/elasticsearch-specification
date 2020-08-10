@@ -1,3 +1,3 @@
-class ActivateWatchResponse extends ResponseBase implements IResponse {
+class ActivateWatchResponse extends ResponseBase {
 	status: ActivationStatus;
 }

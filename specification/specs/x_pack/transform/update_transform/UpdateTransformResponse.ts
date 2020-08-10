@@ -1,4 +1,4 @@
-class UpdateTransformResponse extends ResponseBase implements IResponse {
+class UpdateTransformResponse extends ResponseBase {
 	create_time: long;
 	create_time_date_time: Date;
 	description: string;

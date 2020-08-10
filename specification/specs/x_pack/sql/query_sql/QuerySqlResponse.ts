@@ -1,4 +1,4 @@
-class QuerySqlResponse extends ResponseBase implements IResponse {
+class QuerySqlResponse extends ResponseBase {
 	columns: SqlColumn[];
 	cursor: string;
 	rows: SqlValue[][];

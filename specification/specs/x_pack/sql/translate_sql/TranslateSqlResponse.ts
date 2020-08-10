@@ -1,3 +1,3 @@
-class TranslateSqlResponse extends ResponseBase implements IResponse {
+class TranslateSqlResponse extends ResponseBase {
 	result: SearchRequest;
 }

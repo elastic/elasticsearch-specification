@@ -1,3 +1,3 @@
-class GetSnapshotLifecycleManagementStatusResponse extends ResponseBase implements IResponse {
+class GetSnapshotLifecycleManagementStatusResponse extends ResponseBase {
 	operation_mode: LifecycleOperationMode;
 }
