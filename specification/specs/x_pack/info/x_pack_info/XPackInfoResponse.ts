@@ -1,4 +1,4 @@
-class XPackInfoResponse extends ResponseBase implements IResponse {
+class XPackInfoResponse extends ResponseBase {
 	build: XPackBuildInformation;
 	features: XPackFeatures;
 	license: MinimalLicenseInformation;

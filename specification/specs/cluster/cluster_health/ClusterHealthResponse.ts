@@ -1,4 +1,4 @@
-class ClusterHealthResponse extends ResponseBase implements IResponse {
+class ClusterHealthResponse extends ResponseBase {
 	active_primary_shards: integer;
 	active_shards: integer;
 	active_shards_percent_as_number: double;

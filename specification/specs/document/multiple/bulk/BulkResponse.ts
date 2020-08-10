@@ -1,4 +1,4 @@
-class BulkResponse extends ResponseBase implements IResponse {
+class BulkResponse extends ResponseBase {
 	errors: boolean;
 	items: BulkResponseItemContainer[];
 	took: long;

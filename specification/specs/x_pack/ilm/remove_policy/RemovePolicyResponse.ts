@@ -1,4 +1,4 @@
-class RemovePolicyResponse extends ResponseBase implements IResponse {
+class RemovePolicyResponse extends ResponseBase {
 	failed_indexes: string[];
 	has_failures: boolean;
 }

@@ -1,2 +1,2 @@
-class DeleteForecastResponse extends AcknowledgedResponseBase implements IResponse {
+class DeleteForecastResponse extends AcknowledgedResponseBase {
 }

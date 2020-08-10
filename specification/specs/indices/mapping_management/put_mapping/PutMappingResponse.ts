@@ -1,2 +1,2 @@
-class PutMappingResponse extends IndicesResponseBase implements IResponse {
+class PutMappingResponse extends IndicesResponseBase {
 }

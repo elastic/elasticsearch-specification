@@ -1,3 +1,3 @@
-class GetRollupJobResponse extends ResponseBase implements IResponse {
+class GetRollupJobResponse extends ResponseBase {
 	jobs: RollupJobInformation[];
 }

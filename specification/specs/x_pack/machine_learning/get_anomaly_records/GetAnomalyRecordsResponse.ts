@@ -1,4 +1,4 @@
-class GetAnomalyRecordsResponse extends ResponseBase implements IResponse {
+class GetAnomalyRecordsResponse extends ResponseBase {
 	count: long;
 	records: AnomalyRecord[];
 }

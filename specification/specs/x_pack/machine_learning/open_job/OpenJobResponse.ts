@@ -1,3 +1,3 @@
-class OpenJobResponse extends ResponseBase implements IResponse {
+class OpenJobResponse extends ResponseBase {
 	opened: boolean;
 }

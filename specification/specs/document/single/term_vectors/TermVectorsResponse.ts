@@ -1,4 +1,4 @@
-class TermVectorsResponse extends ResponseBase implements IResponse {
+class TermVectorsResponse extends ResponseBase {
 	found: boolean;
 	_id: string;
 	_index: string;

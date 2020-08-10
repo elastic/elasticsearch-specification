@@ -1,2 +1,2 @@
-class DeleteResponse extends WriteResponseBase implements IResponse {
+class DeleteResponse extends WriteResponseBase {
 }

@@ -1,3 +1,3 @@
-class GetEnrichPolicyResponse extends ResponseBase implements IResponse {
+class GetEnrichPolicyResponse extends ResponseBase {
 	policies: NamedPolicyMetadata[];
 }

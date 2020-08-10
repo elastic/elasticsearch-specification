@@ -1,3 +1,3 @@
-class FollowInfoResponse extends ResponseBase implements IResponse {
+class FollowInfoResponse extends ResponseBase {
 	follower_indices: FollowerInfo[];
 }

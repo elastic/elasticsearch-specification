@@ -1,4 +1,4 @@
-class GetJobStatsResponse extends ResponseBase implements IResponse {
+class GetJobStatsResponse extends ResponseBase {
 	count: long;
 	jobs: JobStats[];
 }

@@ -1,3 +1,3 @@
-class StopRollupJobResponse extends ResponseBase implements IResponse {
+class StopRollupJobResponse extends ResponseBase {
 	stopped: boolean;
 }

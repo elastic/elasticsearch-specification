@@ -1,4 +1,4 @@
-class CancelTasksResponse extends ResponseBase implements IResponse {
+class CancelTasksResponse extends ResponseBase {
 	node_failures: ErrorCause[];
 	nodes: Dictionary<string, TaskExecutingNode>;
 }

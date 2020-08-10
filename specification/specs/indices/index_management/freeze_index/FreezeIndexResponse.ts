@@ -1,3 +1,3 @@
-class FreezeIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class FreezeIndexResponse extends AcknowledgedResponseBase {
 	shards_acknowledged: boolean;
 }

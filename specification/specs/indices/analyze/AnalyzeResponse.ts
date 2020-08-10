@@ -1,4 +1,4 @@
-class AnalyzeResponse extends ResponseBase implements IResponse {
+class AnalyzeResponse extends ResponseBase {
 	detail: AnalyzeDetail;
 	tokens: AnalyzeToken[];
 }

@@ -1,3 +1,3 @@
-class GetScriptResponse extends ResponseBase implements IResponse {
+class GetScriptResponse extends ResponseBase {
 	script: StoredScript;
 }

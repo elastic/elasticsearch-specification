@@ -1,4 +1,4 @@
-class GetUserPrivilegesResponse extends ResponseBase implements IResponse {
+class GetUserPrivilegesResponse extends ResponseBase {
 	applications: ApplicationResourcePrivileges[];
 	cluster: string[];
 	global: GlobalPrivileges[];

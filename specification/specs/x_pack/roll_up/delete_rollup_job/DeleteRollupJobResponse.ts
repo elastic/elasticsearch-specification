@@ -1,2 +1,2 @@
-class DeleteRollupJobResponse extends AcknowledgedResponseBase implements IResponse {
+class DeleteRollupJobResponse extends AcknowledgedResponseBase {
 }

@@ -1,4 +1,4 @@
-class XPackUsageResponse extends ResponseBase implements IResponse {
+class XPackUsageResponse extends ResponseBase {
 	watcher: AlertingUsage;
 	ccr: CcrUsage;
 	data_frame: XPackUsage;

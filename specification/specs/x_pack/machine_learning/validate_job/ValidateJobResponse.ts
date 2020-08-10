@@ -1,2 +1,2 @@
-class ValidateJobResponse extends AcknowledgedResponseBase implements IResponse {
+class ValidateJobResponse extends AcknowledgedResponseBase {
 }

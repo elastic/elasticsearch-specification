@@ -1,3 +1,3 @@
-class SnapshotStatusResponse extends ResponseBase implements IResponse {
+class SnapshotStatusResponse extends ResponseBase {
 	snapshots: SnapshotStatus[];
 }

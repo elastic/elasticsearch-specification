@@ -1,4 +1,4 @@
-class ClusterRerouteResponse extends ResponseBase implements IResponse {
+class ClusterRerouteResponse extends ResponseBase {
 	explanations: ClusterRerouteExplanation[];
 	state: string[];
 }

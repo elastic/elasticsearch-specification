@@ -1,2 +1,2 @@
-class PutAliasResponse extends ResponseBase implements IResponse {
+class PutAliasResponse extends ResponseBase {
 }

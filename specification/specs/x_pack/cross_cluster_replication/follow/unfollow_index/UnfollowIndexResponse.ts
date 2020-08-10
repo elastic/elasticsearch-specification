@@ -1,2 +1,2 @@
-class UnfollowIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class UnfollowIndexResponse extends AcknowledgedResponseBase {
 }

@@ -1,3 +1,3 @@
-class NodesResponseBase extends ResponseBase implements IResponse {
+class NodesResponseBase extends ResponseBase {
 	_nodes: NodeStatistics;
 }

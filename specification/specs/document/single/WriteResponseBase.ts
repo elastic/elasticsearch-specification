@@ -1,4 +1,4 @@
-class WriteResponseBase extends ResponseBase implements IResponse {
+class WriteResponseBase extends ResponseBase {
 	_id: string;
 	_index: string;
 	_primary_term: long;

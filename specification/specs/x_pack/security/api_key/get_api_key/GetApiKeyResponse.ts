@@ -1,3 +1,3 @@
-class GetApiKeyResponse extends ResponseBase implements IResponse {
+class GetApiKeyResponse extends ResponseBase {
 	api_keys: ApiKeys[];
 }

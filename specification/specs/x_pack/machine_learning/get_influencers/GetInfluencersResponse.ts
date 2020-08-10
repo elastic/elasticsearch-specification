@@ -1,4 +1,4 @@
-class GetInfluencersResponse extends ResponseBase implements IResponse {
+class GetInfluencersResponse extends ResponseBase {
 	count: long;
 	influencers: BucketInfluencer[];
 }

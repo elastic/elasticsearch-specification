@@ -1,4 +1,4 @@
-class PutCalendarJobResponse extends ResponseBase implements IResponse {
+class PutCalendarJobResponse extends ResponseBase {
 	calendar_id: string;
 	description: string;
 	job_ids: string[];

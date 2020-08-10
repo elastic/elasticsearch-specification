@@ -1,4 +1,4 @@
-class GetTransformStatsResponse extends ResponseBase implements IResponse {
+class GetTransformStatsResponse extends ResponseBase {
 	count: long;
 	transforms: TransformStats[];
 }

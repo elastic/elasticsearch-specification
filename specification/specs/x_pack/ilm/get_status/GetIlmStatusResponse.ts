@@ -1,3 +1,3 @@
-class GetIlmStatusResponse extends ResponseBase implements IResponse {
+class GetIlmStatusResponse extends ResponseBase {
 	operation_mode: LifecycleOperationMode;
 }

@@ -1,3 +1,3 @@
-class FollowIndexStatsResponse extends ResponseBase implements IResponse {
+class FollowIndexStatsResponse extends ResponseBase {
 	indices: FollowIndexStats[];
 }

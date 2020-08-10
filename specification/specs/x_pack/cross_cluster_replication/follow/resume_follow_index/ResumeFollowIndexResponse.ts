@@ -1,2 +1,2 @@
-class ResumeFollowIndexResponse extends AcknowledgedResponseBase implements IResponse {
+class ResumeFollowIndexResponse extends AcknowledgedResponseBase {
 }

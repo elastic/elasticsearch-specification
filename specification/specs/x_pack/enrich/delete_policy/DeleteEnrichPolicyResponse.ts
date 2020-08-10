@@ -1,2 +1,2 @@
-class DeleteEnrichPolicyResponse extends AcknowledgedResponseBase implements IResponse {
+class DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
 }

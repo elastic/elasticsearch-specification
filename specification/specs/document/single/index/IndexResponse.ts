@@ -1,2 +1,2 @@
-class IndexResponse extends WriteResponseBase implements IResponse {
+class IndexResponse extends WriteResponseBase {
 }

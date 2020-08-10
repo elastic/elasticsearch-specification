@@ -1,4 +1,4 @@
-class GetFiltersResponse extends ResponseBase implements IResponse {
+class GetFiltersResponse extends ResponseBase {
 	count: long;
 	filters: Filter[];
 }

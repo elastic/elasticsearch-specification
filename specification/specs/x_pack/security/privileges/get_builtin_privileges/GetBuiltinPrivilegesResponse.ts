@@ -1,4 +1,4 @@
-class GetBuiltinPrivilegesResponse extends ResponseBase implements IResponse {
+class GetBuiltinPrivilegesResponse extends ResponseBase {
 	cluster: string[];
 	index: string[];
 }
