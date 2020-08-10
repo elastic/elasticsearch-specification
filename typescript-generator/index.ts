@@ -33,6 +33,7 @@ const stringTypes = [
   'ScrollId',
   'ScrollIds',
   'TaskId',
+  'Time',
   'TimeSpan',
   'Timestamp',
   'TypeName',
