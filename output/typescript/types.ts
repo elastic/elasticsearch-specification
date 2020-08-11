@@ -1,9 +1,7 @@
 export type Uri = string
 
-export interface String {
+export interface Date {
 }
-
-export type Date = string
 
 export type TimeSpan = string
 
@@ -58,6 +56,44 @@ export type ScrollIds = string
 export type CategoryId = string
 
 export type ActionIds = string
+
+export type Field = string
+
+export type Fields = string
+
+export type Id = string | number
+
+export type Ids = string | number
+
+export type IndexName = string
+
+export type Indices = string
+
+export type TypeName = string
+
+export type Types = string
+
+export type Routing = string | number
+
+export type LongId = string
+
+export type IndexMetrics = string
+
+export type Metrics = string
+
+export type Name = string
+
+export type Names = string
+
+export type NodeIds = string
+
+export type PropertyName = string
+
+export type RelationName = string
+
+export type TaskId = string
+
+export type Timestamp = string
 
 export interface PlainRequestBase<TParameters> extends RequestBase {
 }
@@ -2945,44 +2981,6 @@ export interface ShardFailure {
 export interface UrlParameter {
 }
 
-export type Field = string
-
-export type Fields = string
-
-export type Id = string | number
-
-export type Ids = string | number
-
-export type IndexName = string
-
-export type Indices = string
-
-export type TypeName = string
-
-export type Types = string
-
-export type Routing = string | number
-
-export type LongId = string
-
-export type IndexMetrics = string
-
-export type Metrics = string
-
-export type Name = string
-
-export type Names = string
-
-export type NodeIds = string
-
-export type PropertyName = string
-
-export type RelationName = string
-
-export type TaskId = string
-
-export type Timestamp = string
-
 export interface LazyDocument {
 }
 
@@ -3030,11 +3028,9 @@ export interface ShardsOperationResponseBase extends ResponseBase {
 export interface Union<TFirst, TSecond> {
 }
 
-export interface DateMath extends String {
-}
+export type DateMath = string
 
-export interface DateMathExpression extends String {
-}
+export type DateMathExpression = string
 
 export interface DateMathTime {
   factor?: integer
@@ -3068,8 +3064,7 @@ export interface ShardStatistics {
   skipped?: integer
 }
 
-export interface MinimumShouldMatch extends Union<integer, string> {
-}
+export type MinimumShouldMatch = integer | string
 
 export interface AggregationRange {
   from?: double
@@ -6407,8 +6402,7 @@ export interface MoreLikeThisQuery {
   version_type?: VersionType
 }
 
-export interface Like extends Union<string, LikeDocument> {
-}
+export type Like = string | LikeDocument
 
 export interface LikeDocument {
   doc?: object
@@ -6620,7 +6614,7 @@ export interface MultiSearchRequest {
 }
 
 export interface MultiSearchResponse extends ResponseBase {
-  all_responses?: IResponse[]
+  all_responses?: ResponseBase[]
   took?: long
   total_responses?: integer
 }
@@ -7071,10 +7065,7 @@ export interface SuggestFuzziness {
   unicode_aware?: boolean
 }
 
-export interface Context extends Union<string, GeoLocation> {
-  category?: string
-  geo?: GeoLocation
-}
+export type Context = string | GeoLocation
 
 export interface SuggestContextQuery {
   boost?: double
