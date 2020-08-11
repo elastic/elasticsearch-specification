@@ -13,43 +13,6 @@ import Domain, {
 const specification = Specification.load()
 let typeDefinitions = ''
 
-const stringTypes = [
-  'ActionIds',
-  'CategoryId',
-  'Date',
-  'Field',
-  'Fields',
-  'IndexMetrics',
-  'IndexName',
-  'Indices',
-  'LongId',
-  'Metrics',
-  'Name',
-  'Names',
-  'Node',
-  'NodeIds',
-  'PropertyName',
-  'RelationName',
-  'ScrollId',
-  'ScrollIds',
-  'TaskId',
-  'Time',
-  'TimeSpan',
-  'Timestamp',
-  'TypeName',
-  'Types',
-  'Uri',
-]
-
-const numberTypes = [
-  'short',
-  'byte',
-  'integer',
-  'long',
-  'float',
-  'double'
-]
-
 const stringOrNumberTypes = [
   'Id',
   'Ids',
@@ -65,7 +28,13 @@ const interfaceToSkip = [
 ]
 
 for (const type of specification.types) {
-  if (type instanceof Domain.RequestInterface) {
+  if (type instanceof Domain.StringAlias) {
+    typeDefinitions += buildStringAlias(type) + '\n\n'
+  } else if (type instanceof Domain.NumberAlias) {
+    typeDefinitions += buildNumberAlias(type) + '\n\n'
+  } else if (type instanceof Domain.UnionAlias) {
+    typeDefinitions += buildUnionAlias(type) + '\n\n'
+  } else if (type instanceof Domain.RequestInterface) {
     typeDefinitions += buildRequestInterface(type) + '\n\n'
   } else if (type instanceof Domain.Interface) {
     if (interfaceToSkip.includes(type.name)) continue
@@ -80,15 +49,19 @@ fs.writeFileSync(
   typeDefinitions.slice(0, -2) // removes last two '\n\n\'
 )
 
+function buildStringAlias (type: Domain.StringAlias): string {
+  return `export type ${type.name} = string`
+}
+
+function buildNumberAlias (type: Domain.NumberAlias): string {
+  return `export type ${type.name} = number`
+}
+
+function buildUnionAlias (type: Domain.UnionAlias): string {
+  return `export type ${type.name} = ${unwrapType(type.wraps)}`
+}
+
 function buildInterface (type: Domain.Interface): string {
-  if (stringTypes.includes(type.name)) {
-    return `export type ${type.name} = string`
-  }
-
-  if (numberTypes.includes(type.name)) {
-    return `export type ${type.name} = number`
-  }
-
   if (stringOrNumberTypes.includes(type.name)) {
     return `export type ${type.name} = string | number`
   }
