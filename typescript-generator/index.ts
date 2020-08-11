@@ -13,20 +13,6 @@ import Domain, {
 const specification = Specification.load()
 let typeDefinitions = ''
 
-const stringOrNumberTypes = [
-  'Id',
-  'Ids',
-  'Routing'
-]
-
-const stringOrArrayOfStrings = [
-  'StopWords'
-]
-
-const interfaceToSkip = [
-  'KeyValue'
-]
-
 for (const type of specification.types) {
   if (type instanceof Domain.StringAlias) {
     typeDefinitions += buildStringAlias(type) + '\n\n'
@@ -37,7 +23,6 @@ for (const type of specification.types) {
   } else if (type instanceof Domain.RequestInterface) {
     typeDefinitions += buildRequestInterface(type) + '\n\n'
   } else if (type instanceof Domain.Interface) {
-    if (interfaceToSkip.includes(type.name)) continue
     typeDefinitions += buildInterface(type) + '\n\n'
   } else if (type instanceof Domain.Enum) {
     typeDefinitions += buildEnum(type) + '\n\n'
@@ -62,14 +47,6 @@ function buildUnionAlias (type: Domain.UnionAlias): string {
 }
 
 function buildInterface (type: Domain.Interface): string {
-  if (stringOrNumberTypes.includes(type.name)) {
-    return `export type ${type.name} = string | number`
-  }
-
-  if (stringOrArrayOfStrings.includes(type.name)) {
-    return `export type ${type.name} = string | string[]`
-  }
-
   let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
     if (property.type === undefined) continue
