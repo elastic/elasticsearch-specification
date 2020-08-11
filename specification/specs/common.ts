@@ -5,10 +5,11 @@ function prop_serializer(ns: string) {return function (ns: any, x:any){}}
 function request_parameter() {return function (ns: any, x:any){}}
 function namespace(ns: string) {return function (ns: any){}}
 
-interface Uri {}
-interface String {}
+type Uri = string
+// this should be `type Date = string`, but `Date` is already defined by TS
+// so we shoukd figure out a different name
 interface Date {}
-interface TimeSpan {}
+type TimeSpan = string
 interface SourceDocument {}
 @class_serializer("ErrorCauseFormatter")
 class ErrorCause {
@@ -52,13 +53,13 @@ type CategoryId = string
 type ActionIds = string
 type Field = string
 type Fields = string
-type Id = string
-type Ids = string
+type Id = string | number
+type Ids = string | number
 type IndexName = string
 type Indices = string
 type TypeName = string
 type Types = string
-type Routing = string
+type Routing = string | number
 type LongId = string
 type IndexMetrics = string
 type Metrics = string

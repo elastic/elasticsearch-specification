@@ -1,2 +1,2 @@
 @class_serializer("DateMathExpressionFormatter")
-class DateMathExpression extends String {}
+type DateMathExpression = string
