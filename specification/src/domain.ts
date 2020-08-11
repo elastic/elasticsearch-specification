@@ -76,6 +76,9 @@ namespace Domain {
   export class StringAlias extends TypeDeclaration {
 
   }
+  export class NumberAlias extends TypeDeclaration {
+
+  }
 
   export class RequestInterface extends Interface {
     body: InstanceOf | InterfaceProperty[];

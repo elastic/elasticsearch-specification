@@ -72,9 +72,12 @@ class InterfaceVisitor extends Visitor {
     if (typeAlias !== null && typeAlias.kind === ts.SyntaxKind.TypeAliasDeclaration) {
       const wrappedType = this.visitTypeNode(typeAlias.type);
       if (wrappedType instanceof Domain.Type) {
-        if (wrappedType.name !== "string")
-          throw new Error(`Please only create type aliases for strings or unions, ${wrappedType.name} does not comply`);
-        return new Domain.StringAlias(n, this.namespace);
+        if (wrappedType.name !== "string" && wrappedType.name !== "number") {
+          throw new Error(`Please only create type aliases for strings, numbers or unions, ${wrappedType.name} does not comply`);
+        }
+        return wrappedType.name === "string"
+          ? new Domain.StringAlias(n, this.namespace)
+          : new Domain.NumberAlias(n, this.namespace);
       }
       else if (wrappedType instanceof Domain.UnionOf) {
         const ua = new Domain.UnionAlias(n, this.namespace);
@@ -181,6 +184,7 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.TypeLiteral: return undefined;
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode);
       case ts.SyntaxKind.StringKeyword : return new Domain.Type("string");
+      case ts.SyntaxKind.NumberKeyword : return new Domain.Type("number");
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type("boolean");
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type("object");
       case ts.SyntaxKind.UnionType: return this.visitUnionType(t as ts.TypeLiteralNode)
