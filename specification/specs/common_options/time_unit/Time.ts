@@ -1,2 +1,4 @@
-@class_serializer("TimeFormatter")
+/*
+ * @class_serializer  TimeFormatter
+ */
 type Time = string
