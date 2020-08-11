@@ -39,12 +39,12 @@ class MainError extends ErrorCause {
 	headers: Dictionary<string, string>;
 	root_cause: ErrorCause[];
 }
-interface short {}
-interface byte {}
-interface integer {}
-interface long {}
-interface float {}
-interface double {}
+type short = number
+type byte = number
+type integer = number
+type long = number
+type float = number
+type double = number
 
 type ScrollId = string
 type ScrollIds = string
