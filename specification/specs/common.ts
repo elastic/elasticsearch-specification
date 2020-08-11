@@ -46,10 +46,29 @@ interface long {}
 interface float {}
 interface double {}
 
-class ScrollId extends String {}
-class ScrollIds extends String {}
-class CategoryId extends String {}
-class ActionIds extends String {}
+type ScrollId = string
+type ScrollIds = string
+type CategoryId = string
+type ActionIds = string
+type Field = string
+type Fields = string
+type Id = string
+type Ids = string
+type IndexName = string
+type Indices = string
+type TypeName = string
+type Types = string
+type Routing = string
+type LongId = string
+type IndexMetrics = string
+type Metrics = string
+type Name = string
+type Names = string
+type NodeIds = string
+type PropertyName = string
+type RelationName = string
+type TaskId = string
+type Timestamp = string
 
 @namespace("")
 class PlainRequestBase<TParameters> extends RequestBase {

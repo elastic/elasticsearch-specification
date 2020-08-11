@@ -1,1 +1,0 @@
-class Names extends String {}
