@@ -70,6 +70,15 @@ namespace Domain {
     openGenerics: string[];
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes("Union");
   }
+  export class UnionAlias extends TypeDeclaration {
+    wraps: Domain.UnionOf;
+  }
+  export class StringAlias extends TypeDeclaration {
+
+  }
+  export class NumberAlias extends TypeDeclaration {
+
+  }
 
   export class RequestInterface extends Interface {
     body: InstanceOf | InterfaceProperty[];

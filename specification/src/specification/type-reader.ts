@@ -3,6 +3,7 @@ import _ from "lodash"
 import * as ts from "byots"
 import Domain = require("../domain")
 import path from "path"
+import {UnionAlias} from "../domain";
 
 class Visitor {
   constructor (protected checker: ts.TypeChecker) {}
@@ -43,14 +44,14 @@ class InterfaceVisitor extends Visitor {
   name: TypeName;
   specMapping: RestSpecMapping;
   constructor(
-    private interfaceNode: ts.InterfaceDeclaration | ts.ClassDeclaration,
+    private interfaceNode: ts.InterfaceDeclaration | ts.ClassDeclaration | ts.TypeAliasDeclaration,
     checker: ts.TypeChecker,
     private namespace: string
  ) {
    super(checker)
  }
 
-  visit(): Domain.Interface {
+  visit(): Domain.TypeDeclaration {
     const n = this.symbolName(this.interfaceNode.name)
     this.name = n
 
@@ -66,52 +67,73 @@ class InterfaceVisitor extends Visitor {
       this.specMapping = new RestSpecMapping(restSpec, n, responseName)
     }
 
-    const domainInterface = restSpec
-      ? new Domain.RequestInterface(n, this.namespace)
-      : new Domain.Interface(n, this.namespace)
+    const generatorHints = InterfaceVisitor.createGeneratorHints(this.interfaceNode.jsDoc || [])
+    const typeAlias = this.interfaceNode as ts.TypeAliasDeclaration
+    if (typeAlias !== null && typeAlias.kind === ts.SyntaxKind.TypeAliasDeclaration) {
+      const wrappedType = this.visitTypeNode(typeAlias.type);
+      if (wrappedType instanceof Domain.Type) {
+        if (wrappedType.name !== "string" && wrappedType.name !== "number") {
+          throw new Error(`Please only create type aliases for strings, numbers or unions, ${wrappedType.name} does not comply`);
+        }
+        return wrappedType.name === "string"
+          ? new Domain.StringAlias(n, this.namespace)
+          : new Domain.NumberAlias(n, this.namespace);
+      }
+      else if (wrappedType instanceof Domain.UnionOf) {
+        const ua = new Domain.UnionAlias(n, this.namespace);
+        ua.wraps = wrappedType;
+        return ua;
+      }
+      throw new Error(`Please only create type aliases for strings or unions, ${n} does not comply`);
+    }
+    else {
+      const domainInterface = restSpec
+        ? new Domain.RequestInterface(n, this.namespace)
+        : new Domain.Interface(n, this.namespace)
+      domainInterface.generatorHints = generatorHints;
 
-    if (restSpec) {
-      ts.forEachChild(this.interfaceNode, c => this.visitRequestProperties(c as ts.PropertySignature, domainInterface as Domain.RequestInterface))
-    } else {
-      ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface as Domain.Interface))
+      if (restSpec) {
+        ts.forEachChild(this.interfaceNode, c => this.visitRequestProperties(c as ts.PropertySignature, domainInterface as Domain.RequestInterface))
+      } else {
+        ts.forEachChild(this.interfaceNode, c => this.visitInterfaceProperty(c as ts.PropertySignature, domainInterface as Domain.Interface))
+      }
+
+      const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference
+      const generics = lookup.typeArguments || []
+      domainInterface.openGenerics = generics.map(g => g.getSymbol().name)
+
+      const s = this.interfaceNode.symbol
+      const x: any = s.valueDeclaration
+      const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || []
+
+      domainInterface.inheritsFromUnresolved = heritageClauses
+        .flatMap(c => ((c as any).types || []) as ts.Node[])
+        .reduce((c, node) => {
+          const expression = ((node as any).expression as ts.Identifier)
+          const name = expression.text
+          // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
+          const typeRef = node as ts.TypeReferenceNode;
+          if (!typeRef.typeArguments) {
+            const type = !typeRef.typeName
+              ? this.visitTypeNode(node)
+              : this.visitTypeReference(typeRef);
+            c[name] = [type];
+          } else {
+            c[name] = (typeRef.typeArguments).map(g => {
+              const typeArgRef = g as ts.TypeReferenceNode
+              return !typeArgRef.typeName
+                ? this.visitTypeNode(g)
+                : this.visitTypeReference(typeArgRef);
+            });
+          }
+          return c;
+        }, {});
+      return domainInterface;
     }
 
-    domainInterface.generatorHints  = InterfaceVisitor.createGeneratorHints(this.interfaceNode.jsDoc || []);
-
-    const lookup = this.checker.getTypeAtLocation(this.interfaceNode) as ts.TypeReference
-    const generics = lookup.typeArguments || []
-    domainInterface.openGenerics = generics.map(g => g.getSymbol().name)
-
-    const s = this.interfaceNode.symbol
-    const x: any = s.valueDeclaration
-    const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || []
-
-    domainInterface.inheritsFromUnresolved = heritageClauses
-      .flatMap(c => ((c as any).types || []) as ts.Node[])
-      .reduce((c, node) => {
-        const expression = ((node as any).expression as ts.Identifier)
-        const name = expression.text
-        // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
-        const typeRef = node as ts.TypeReferenceNode;
-        if (!typeRef.typeArguments) {
-          const type = !typeRef.typeName
-            ? this.visitTypeNode(node)
-            : this.visitTypeReference(typeRef);
-          c[name] = [type];
-        } else {
-          c[name] = (typeRef.typeArguments).map(g => {
-            const typeArgRef = g as ts.TypeReferenceNode
-            return !typeArgRef.typeName
-              ? this.visitTypeNode(g)
-              : this.visitTypeReference(typeArgRef);
-          });
-        }
-        return c;
-      }, {});
-    return domainInterface;
   }
 
-  public static createGeneratorHints(jsDocs: ts.JSDoc[]): Domain.GeneratorDocumentation {
+  static createGeneratorHints(jsDocs: ts.JSDoc[]): Domain.GeneratorDocumentation {
     const description = jsDocs.map(j => j.comment || "").join("\n");
     const keyValues = jsDocs.flatMap(j => (j.tags || [])).reduce((o, p) => ({...o, [p.tagName.escapedText]: p.comment}), {});
 
@@ -162,6 +184,7 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.TypeLiteral: return undefined;
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode);
       case ts.SyntaxKind.StringKeyword : return new Domain.Type("string");
+      case ts.SyntaxKind.NumberKeyword : return new Domain.Type("number");
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type("boolean");
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type("object");
       case ts.SyntaxKind.UnionType: return this.visitUnionType(t as ts.TypeLiteralNode)
@@ -247,7 +270,7 @@ class InterfaceVisitor extends Visitor {
 export class TypeReader {
   private checker: ts.TypeChecker;
 
-  interfaces: (Domain.Interface | Domain.RequestInterface)[] = [];
+  interfaces: (Domain.TypeDeclaration)[] = [];
   enums: Domain.Enum[] = [];
   // TS1337 :( https://github.com/Microsoft/TypeScript/issues/1778
   /** @type {Object.<RestSpecName, TypeName>} */
@@ -262,29 +285,42 @@ export class TypeReader {
         .replace(/.*specification[\/\\]specs[\/\\]?/, "")
         .replace(/[\/\\]/g, ".");
       if (ns === "") ns = "internal";
-      this.visit(f, ns);
+      try {
+        this.visit(f, ns);
+      }
+      catch (e) {
+        // tslint:disable-next-line:no-console
+        console.log(f.fileName)
+        throw e
+      }
     }
   }
 
   private visit(node: ts.Node, namespace: string) {
-      switch (node.kind) {
-        case ts.SyntaxKind.ClassDeclaration:
-          const cv = new InterfaceVisitor(node as ts.ClassDeclaration, this.checker, namespace);
-          const c = cv.visit();
-          if (cv.specMapping) this.restSpecMapping[cv.specMapping.spec] = cv.specMapping;
-          this.interfaces.push(c);
-          break;
-        case ts.SyntaxKind.InterfaceDeclaration:
-          const iv = new InterfaceVisitor(node as ts.InterfaceDeclaration, this.checker, namespace);
-          const i = iv.visit();
-          this.interfaces.push(i);
-          break;
+    let visitChildren = true;
+    switch (node.kind) {
+      case ts.SyntaxKind.ClassDeclaration:
+        const cv = new InterfaceVisitor(node as ts.ClassDeclaration, this.checker, namespace);
+        const c = cv.visit();
+        if (cv.specMapping) this.restSpecMapping[cv.specMapping.spec] = cv.specMapping;
+        this.interfaces.push(c);
+        break;
+      case ts.SyntaxKind.InterfaceDeclaration:
+        const iv = new InterfaceVisitor(node as ts.InterfaceDeclaration, this.checker, namespace);
+        const i = iv.visit();
+        this.interfaces.push(i);
+        break;
 
-        case ts.SyntaxKind.EnumDeclaration:
-          const ev = new EnumVisitor(node as ts.EnumDeclaration, this.checker, namespace);
-          this.enums.push(ev.visit());
-          break;
-      }
-      ts.forEachChild(node, c => this.visit(c, namespace));
+      case ts.SyntaxKind.EnumDeclaration:
+        const ev = new EnumVisitor(node as ts.EnumDeclaration, this.checker, namespace);
+        this.enums.push(ev.visit());
+        break;
+      case ts.SyntaxKind.TypeAliasDeclaration:
+        const av = new InterfaceVisitor(node as ts.TypeAliasDeclaration, this.checker, namespace);
+        this.interfaces.push(av.visit());
+        visitChildren = false;
+        break;
+    }
+    if (visitChildren) ts.forEachChild(node, c => this.visit(c, namespace));
   }
 }
