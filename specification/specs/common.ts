@@ -54,11 +54,11 @@ type ActionIds = string
 type Field = string
 type Fields = string
 type Id = string | number
-type Ids = string | number
+type Ids = string | number | string[]
 type IndexName = string
-type Indices = string
+type Indices = string | string[]
 type TypeName = string
-type Types = string
+type Types = string | string[]
 type Routing = string | number
 type LongId = string
 type IndexMetrics = string
@@ -70,16 +70,3 @@ type PropertyName = string
 type RelationName = string
 type TaskId = string
 type Timestamp = string
-
-@namespace("")
-class PlainRequestBase<TParameters> extends RequestBase {
-	query_parameters: {
-	}
-	body: {
-		error_trace: boolean;
-		filter_path: string[];
-		human: boolean;
-		pretty: boolean;
-		source_query_string: string;
-	}
-}
