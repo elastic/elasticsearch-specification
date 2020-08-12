@@ -57,7 +57,7 @@ function buildInterface (type: Domain.Interface): string {
 }
 
 function buildRequestInterface (type: Domain.RequestInterface): string {
-  let code = `export interface ${type.name}${buildGeneric(type)} {\n`
+  let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   if (type.path !== undefined) {
     for (const property of type.path) {
       if (property.type === undefined) continue
