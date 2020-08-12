@@ -63,15 +63,15 @@ export type Fields = string
 
 export type Id = string | number
 
-export type Ids = string | number
+export type Ids = string | number | string[]
 
 export type IndexName = string
 
-export type Indices = string
+export type Indices = string | string[]
 
 export type TypeName = string
 
-export type Types = string
+export type Types = string | string[]
 
 export type Routing = string | number
 
@@ -94,9 +94,6 @@ export type RelationName = string
 export type TaskId = string
 
 export type Timestamp = string
-
-export interface PlainRequestBase<TParameters> extends RequestBase {
-}
 
 export interface Aggregate {
   meta?: Record<string, object>
@@ -1151,7 +1148,7 @@ export interface CatAliasesRecord extends ICatRecord {
   searchRouting?: string
 }
 
-export interface CatAliasesRequest {
+export interface CatAliasesRequest extends RequestBase {
   name?: Names
   expand_wildcards?: ExpandWildcards
   format?: string
@@ -1180,7 +1177,7 @@ export interface CatAllocationRecord extends ICatRecord {
   shards?: string
 }
 
-export interface CatAllocationRequest {
+export interface CatAllocationRequest extends RequestBase {
   node_id?: NodeIds
   bytes?: Bytes
   format?: string
@@ -1202,7 +1199,7 @@ export interface CatCountRecord extends ICatRecord {
   timestamp?: string
 }
 
-export interface CatCountRequest {
+export interface CatCountRequest extends RequestBase {
   index?: Indices
   format?: string
   headers?: string[]
@@ -1236,7 +1233,7 @@ export interface CatDataFrameAnalyticsRecord extends ICatRecord {
   version?: string
 }
 
-export interface CatDataFrameAnalyticsRequest {
+export interface CatDataFrameAnalyticsRequest extends RequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
@@ -1266,7 +1263,7 @@ export interface CatDatafeedsRecord extends ICatRecord {
   state?: DatafeedState
 }
 
-export interface CatDatafeedsRequest {
+export interface CatDatafeedsRequest extends RequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
   format?: string
@@ -1289,7 +1286,7 @@ export interface CatFielddataRecord extends ICatRecord {
   size?: string
 }
 
-export interface CatFielddataRequest {
+export interface CatFielddataRequest extends RequestBase {
   fields?: Fields
   bytes?: Bytes
   format?: string
@@ -1320,7 +1317,7 @@ export interface CatHealthRecord extends ICatRecord {
   unassign?: string
 }
 
-export interface CatHealthRequest {
+export interface CatHealthRequest extends RequestBase {
   format?: string
   headers?: string[]
   help?: boolean
@@ -1339,7 +1336,7 @@ export interface CatHelpRecord extends ICatRecord {
   endpoint?: string
 }
 
-export interface CatHelpRequest {
+export interface CatHelpRequest extends RequestBase {
   help?: boolean
   sort_by_columns?: string[]
 }
@@ -1362,7 +1359,7 @@ export interface CatIndicesRecord extends ICatRecord {
   uuid?: string
 }
 
-export interface CatIndicesRequest {
+export interface CatIndicesRequest extends RequestBase {
   index?: Indices
   bytes?: Bytes
   expand_wildcards?: ExpandWildcards
@@ -1440,7 +1437,7 @@ export interface CatJobsRecord extends ICatRecord {
   state?: JobState
 }
 
-export interface CatJobsRequest {
+export interface CatJobsRequest extends RequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
   bytes?: Bytes
@@ -1461,7 +1458,7 @@ export interface CatMasterRecord extends ICatRecord {
   node?: string
 }
 
-export interface CatMasterRequest {
+export interface CatMasterRequest extends RequestBase {
   format?: string
   headers?: string[]
   help?: boolean
@@ -1486,7 +1483,7 @@ export interface CatNodeAttributesRecord extends ICatRecord {
   value?: string
 }
 
-export interface CatNodeAttributesRequest {
+export interface CatNodeAttributesRequest extends RequestBase {
   format?: string
   headers?: string[]
   help?: boolean
@@ -1574,7 +1571,7 @@ export interface CatNodesRecord extends ICatRecord {
   version?: string
 }
 
-export interface CatNodesRequest {
+export interface CatNodesRequest extends RequestBase {
   bytes?: Bytes
   format?: string
   full_id?: boolean
@@ -1597,7 +1594,7 @@ export interface CatPendingTasksRecord extends ICatRecord {
   timeInQueue?: string
 }
 
-export interface CatPendingTasksRequest {
+export interface CatPendingTasksRequest extends RequestBase {
   format?: string
   headers?: string[]
   help?: boolean
@@ -1622,7 +1619,7 @@ export interface CatPluginsRecord extends ICatRecord {
   version?: string
 }
 
-export interface CatPluginsRequest {
+export interface CatPluginsRequest extends RequestBase {
   format?: string
   headers?: string[]
   help?: boolean
@@ -1661,7 +1658,7 @@ export interface CatRecoveryRecord extends ICatRecord {
   type?: string
 }
 
-export interface CatRecoveryRequest {
+export interface CatRecoveryRequest extends RequestBase {
   index?: Indices
   active_only?: boolean
   bytes?: Bytes
@@ -1683,7 +1680,7 @@ export interface CatRepositoriesRecord extends ICatRecord {
   type?: string
 }
 
-export interface CatRepositoriesRequest {
+export interface CatRepositoriesRequest extends RequestBase {
   format?: string
   headers?: string[]
   help?: boolean
@@ -1715,7 +1712,7 @@ export interface CatSegmentsRecord extends ICatRecord {
   version?: string
 }
 
-export interface CatSegmentsRequest {
+export interface CatSegmentsRequest extends RequestBase {
   index?: Indices
   bytes?: Bytes
   format?: string
@@ -1790,7 +1787,7 @@ export interface CatShardsRecord extends ICatRecord {
   "warmer.total_time"?: string
 }
 
-export interface CatShardsRequest {
+export interface CatShardsRequest extends RequestBase {
   index?: Indices
   bytes?: Bytes
   format?: string
@@ -1820,7 +1817,7 @@ export interface CatSnapshotsRecord extends ICatRecord {
   total_shards?: long
 }
 
-export interface CatSnapshotsRequest {
+export interface CatSnapshotsRequest extends RequestBase {
   repository?: Names
   format?: string
   headers?: string[]
@@ -1847,7 +1844,7 @@ export interface CatTasksRecord extends ICatRecord {
   type?: string
 }
 
-export interface CatTasksRequest {
+export interface CatTasksRequest extends RequestBase {
   actions?: string[]
   detailed?: boolean
   format?: string
@@ -1870,7 +1867,7 @@ export interface CatTemplatesRecord extends ICatRecord {
   version?: long
 }
 
-export interface CatTemplatesRequest {
+export interface CatTemplatesRequest extends RequestBase {
   name?: Name
   format?: string
   headers?: string[]
@@ -1908,7 +1905,7 @@ export interface CatThreadPoolRecord extends ICatRecord {
   type?: string
 }
 
-export interface CatThreadPoolRequest {
+export interface CatThreadPoolRequest extends RequestBase {
   thread_pool_patterns?: Names
   format?: string
   headers?: string[]
@@ -1941,7 +1938,7 @@ export interface CatTrainedModelsRecord extends ICatRecord {
   version?: string
 }
 
-export interface CatTrainedModelsRequest {
+export interface CatTrainedModelsRequest extends RequestBase {
   model_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
@@ -1988,7 +1985,7 @@ export interface CatTransformsRecord extends ICatRecord {
   version?: string
 }
 
-export interface CatTransformsRequest {
+export interface CatTransformsRequest extends RequestBase {
   transform_id?: Id
   allow_no_match?: boolean
   format?: string
@@ -2030,7 +2027,7 @@ export interface AllocationStore {
   store_exception?: string
 }
 
-export interface ClusterAllocationExplainRequest {
+export interface ClusterAllocationExplainRequest extends RequestBase {
   include_disk_info?: boolean
   include_yes_decisions?: boolean
   body?: {
@@ -2091,7 +2088,7 @@ export interface UnassignedInformation {
   reason?: UnassignedInformationReason
 }
 
-export interface ClusterHealthRequest {
+export interface ClusterHealthRequest extends RequestBase {
   index?: Indices
   expand_wildcards?: ExpandWildcards
   level?: Level
@@ -2146,7 +2143,7 @@ export interface ShardHealthStats {
   unassigned_shards?: integer
 }
 
-export interface ClusterPendingTasksRequest {
+export interface ClusterPendingTasksRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
 }
@@ -2184,7 +2181,7 @@ export interface ClusterRerouteParameters {
   to_node?: string
 }
 
-export interface ClusterRerouteRequest {
+export interface ClusterRerouteRequest extends RequestBase {
   dry_run?: boolean
   explain?: boolean
   master_timeout?: Time
@@ -2205,7 +2202,7 @@ export interface ClusterRerouteCommand {
   name?: string
 }
 
-export interface ClusterGetSettingsRequest {
+export interface ClusterGetSettingsRequest extends RequestBase {
   flat_settings?: boolean
   include_defaults?: boolean
   master_timeout?: Time
@@ -2217,7 +2214,7 @@ export interface ClusterGetSettingsResponse extends ResponseBase {
   transient?: Record<string, object>
 }
 
-export interface ClusterPutSettingsRequest {
+export interface ClusterPutSettingsRequest extends RequestBase {
   flat_settings?: boolean
   master_timeout?: Time
   timeout?: Time
@@ -2233,7 +2230,7 @@ export interface ClusterPutSettingsResponse extends ResponseBase {
   transient?: Record<string, object>
 }
 
-export interface ClusterStateRequest {
+export interface ClusterStateRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
   allow_no_indices?: boolean
@@ -2381,7 +2378,7 @@ export interface ClusterShardMetrics {
   min?: double
 }
 
-export interface ClusterStatsRequest {
+export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
   flat_settings?: boolean
   timeout?: Time
@@ -2417,7 +2414,7 @@ export interface HotThreadInformation {
   threads?: string[]
 }
 
-export interface NodesHotThreadsRequest {
+export interface NodesHotThreadsRequest extends RequestBase {
   node_id?: NodeIds
   ignore_idle_threads?: boolean
   interval?: Time
@@ -2550,7 +2547,7 @@ export interface NodeThreadPoolInfo {
   type?: string
 }
 
-export interface NodesInfoRequest {
+export interface NodesInfoRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   flat_settings?: boolean
@@ -2708,7 +2705,7 @@ export interface NodeStats {
   transport_address?: string
 }
 
-export interface NodesStatsRequest {
+export interface NodesStatsRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   index_metric?: IndexMetrics
@@ -2803,7 +2800,7 @@ export interface NodeUsageInformation {
   timestamp?: Date
 }
 
-export interface NodesUsageRequest {
+export interface NodesUsageRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   timeout?: Time
@@ -2814,13 +2811,13 @@ export interface NodesUsageResponse extends NodesResponseBase {
   nodes?: Record<string, NodeUsageInformation>
 }
 
-export interface PingRequest {
+export interface PingRequest extends RequestBase {
 }
 
 export interface PingResponse extends ResponseBase {
 }
 
-export interface ReloadSecureSettingsRequest {
+export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
 }
@@ -2839,14 +2836,14 @@ export interface RemoteInfo {
   skip_unavailable?: boolean
 }
 
-export interface RemoteInfoRequest {
+export interface RemoteInfoRequest extends RequestBase {
 }
 
 export interface RemoteInfoResponse extends DictionaryResponseBase<string, RemoteInfo> {
   remotes?: Record<string, RemoteInfo>
 }
 
-export interface RootNodeInfoRequest {
+export interface RootNodeInfoRequest extends RequestBase {
 }
 
 export interface RootNodeInfoResponse extends ResponseBase {
@@ -2857,7 +2854,7 @@ export interface RootNodeInfoResponse extends ResponseBase {
   version?: ElasticsearchVersionInfo
 }
 
-export interface CancelTasksRequest {
+export interface CancelTasksRequest extends RequestBase {
   task_id?: TaskId
   actions?: string[]
   nodes?: string[]
@@ -2869,7 +2866,7 @@ export interface CancelTasksResponse extends ResponseBase {
   nodes?: Record<string, TaskExecutingNode>
 }
 
-export interface GetTaskRequest {
+export interface GetTaskRequest extends RequestBase {
   task_id: TaskId
   timeout?: Time
   wait_for_completion?: boolean
@@ -2894,7 +2891,7 @@ export interface TaskInfo {
   type?: string
 }
 
-export interface ListTasksRequest {
+export interface ListTasksRequest extends RequestBase {
   actions?: string[]
   detailed?: boolean
   group_by?: GroupBy
@@ -2985,6 +2982,11 @@ export interface LazyDocument {
 }
 
 export interface RequestBase {
+  error_trace?: boolean
+  filter_path?: string | string[]
+  human?: boolean
+  pretty?: boolean
+  source_query_string?: string
 }
 
 export interface AcknowledgedResponseBase extends ResponseBase {
@@ -3268,7 +3270,7 @@ export interface Retries {
   search?: long
 }
 
-export interface BulkRequest<TSource> {
+export interface BulkRequest<TSource> extends RequestBase {
   index?: IndexName
   type?: TypeName
   pipeline?: string
@@ -3351,7 +3353,7 @@ export interface BulkUpdateResponseItem extends BulkResponseItemBase {
 export interface BulkDeleteResponseItem extends BulkResponseItemBase {
 }
 
-export interface DeleteByQueryRequest {
+export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -3410,7 +3412,7 @@ export interface DeleteByQueryResponse extends ResponseBase {
   version_conflicts?: long
 }
 
-export interface DeleteByQueryRethrottleRequest {
+export interface DeleteByQueryRethrottleRequest extends RequestBase {
   task_id: TaskId
   requests_per_second?: long
 }
@@ -3429,7 +3431,7 @@ export interface MultiGetOperation {
   version_type?: VersionType
 }
 
-export interface MultiGetRequest {
+export interface MultiGetRequest extends RequestBase {
   index?: IndexName
   type?: TypeName
   preference?: string
@@ -3478,7 +3480,7 @@ export interface MultiTermVectorOperation {
   version_type?: VersionType
 }
 
-export interface MultiTermVectorsRequest {
+export interface MultiTermVectorsRequest extends RequestBase {
   index?: IndexName
   type?: TypeName
   fields?: Field[]
@@ -3510,7 +3512,7 @@ export interface ReindexDestination {
   version_type?: VersionType
 }
 
-export interface ReindexOnServerRequest {
+export interface ReindexOnServerRequest extends RequestBase {
   refresh?: boolean
   requests_per_second?: long
   scroll?: Time
@@ -3574,7 +3576,7 @@ export interface ReindexNode {
   transport_address?: string
 }
 
-export interface ReindexRethrottleRequest {
+export interface ReindexRethrottleRequest extends RequestBase {
   task_id: TaskId
   requests_per_second?: long
 }
@@ -3609,7 +3611,7 @@ export interface ReindexTask {
   type?: string
 }
 
-export interface UpdateByQueryRequest {
+export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -3668,7 +3670,7 @@ export interface UpdateByQueryResponse extends ResponseBase {
   version_conflicts?: long
 }
 
-export interface UpdateByQueryRethrottleRequest {
+export interface UpdateByQueryRethrottleRequest extends RequestBase {
   task_id: TaskId
   requests_per_second?: long
 }
@@ -3685,7 +3687,7 @@ export interface WriteResponseBase extends ResponseBase {
   forced_refresh?: boolean
 }
 
-export interface CreateRequest<TDocument> {
+export interface CreateRequest<TDocument> extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3702,7 +3704,7 @@ export interface CreateRequest<TDocument> {
 export interface CreateResponse extends WriteResponseBase {
 }
 
-export interface DeleteRequest {
+export interface DeleteRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3719,7 +3721,7 @@ export interface DeleteRequest {
 export interface DeleteResponse extends WriteResponseBase {
 }
 
-export interface DocumentExistsRequest {
+export interface DocumentExistsRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3735,7 +3737,7 @@ export interface DocumentExistsRequest {
   version_type?: VersionType
 }
 
-export interface GetRequest {
+export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3765,7 +3767,7 @@ export interface GetResponse<TDocument> extends ResponseBase {
   _version?: long
 }
 
-export interface IndexRequest<TDocument> {
+export interface IndexRequest<TDocument> extends RequestBase {
   id?: Id
   index: IndexName
   type?: TypeName
@@ -3785,7 +3787,7 @@ export interface IndexRequest<TDocument> {
 export interface IndexResponse extends WriteResponseBase {
 }
 
-export interface SourceRequest {
+export interface SourceRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3804,7 +3806,7 @@ export interface SourceResponse<TDocument> extends ResponseBase {
   body?: TDocument
 }
 
-export interface SourceExistsRequest {
+export interface SourceExistsRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3848,7 +3850,7 @@ export interface TermVectorTerm {
   ttf?: integer
 }
 
-export interface TermVectorsRequest<TDocument> {
+export interface TermVectorsRequest<TDocument> extends RequestBase {
   index: IndexName
   id?: Id
   type?: TypeName
@@ -3896,7 +3898,7 @@ export interface Token {
   start_offset?: integer
 }
 
-export interface UpdateRequest<TDocument, TPartialDocument> {
+export interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -3948,7 +3950,7 @@ export interface AliasDefinition {
   search_routing?: string
 }
 
-export interface BulkAliasRequest {
+export interface BulkAliasRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   body?: {
@@ -3962,7 +3964,7 @@ export interface BulkAliasResponse extends AcknowledgedResponseBase {
 export interface AliasAction {
 }
 
-export interface AliasExistsRequest {
+export interface AliasExistsRequest extends RequestBase {
   name: Names
   index?: Indices
   allow_no_indices?: boolean
@@ -3971,7 +3973,7 @@ export interface AliasExistsRequest {
   local?: boolean
 }
 
-export interface DeleteAliasRequest {
+export interface DeleteAliasRequest extends RequestBase {
   index: Indices
   name: Names
   master_timeout?: Time
@@ -3981,7 +3983,7 @@ export interface DeleteAliasRequest {
 export interface DeleteAliasResponse extends ResponseBase {
 }
 
-export interface GetAliasRequest {
+export interface GetAliasRequest extends RequestBase {
   name?: Names
   index?: Indices
   allow_no_indices?: boolean
@@ -3998,7 +4000,7 @@ export interface IndexAliases {
   aliases?: Record<string, AliasDefinition>
 }
 
-export interface PutAliasRequest {
+export interface PutAliasRequest extends RequestBase {
   index: Indices
   name: Name
   master_timeout?: Time
@@ -4022,7 +4024,7 @@ export interface AnalyzeDetail {
   tokenizer?: TokenDetail
 }
 
-export interface AnalyzeRequest {
+export interface AnalyzeRequest extends RequestBase {
   index?: IndexName
   body?: {
     analyzer?: string
@@ -4073,7 +4075,7 @@ export interface TokenDetail {
   tokens?: ExplainAnalyzeToken[]
 }
 
-export interface CloneIndexRequest {
+export interface CloneIndexRequest extends RequestBase {
   index: IndexName
   target: IndexName
   master_timeout?: Time
@@ -4090,7 +4092,7 @@ export interface CloneIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface CreateIndexRequest {
+export interface CreateIndexRequest extends RequestBase {
   index: IndexName
   include_type_name?: boolean
   master_timeout?: Time
@@ -4108,7 +4110,7 @@ export interface CreateIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface DeleteIndexRequest {
+export interface DeleteIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4120,7 +4122,7 @@ export interface DeleteIndexRequest {
 export interface DeleteIndexResponse extends IndicesResponseBase {
 }
 
-export interface FreezeIndexRequest {
+export interface FreezeIndexRequest extends RequestBase {
   index: IndexName
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4134,7 +4136,7 @@ export interface FreezeIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface GetIndexRequest {
+export interface GetIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4154,7 +4156,7 @@ export interface ExistsResponse extends ResponseBase {
   exists?: boolean
 }
 
-export interface IndexExistsRequest {
+export interface IndexExistsRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4164,7 +4166,7 @@ export interface IndexExistsRequest {
   local?: boolean
 }
 
-export interface CloseIndexRequest {
+export interface CloseIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4188,7 +4190,7 @@ export interface CloseShardResult {
   failures?: ShardFailure[]
 }
 
-export interface OpenIndexRequest {
+export interface OpenIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4207,7 +4209,7 @@ export interface RolloverConditions {
   max_size?: string
 }
 
-export interface RolloverIndexRequest {
+export interface RolloverIndexRequest extends RequestBase {
   alias: Name
   new_index?: IndexName
   dry_run?: boolean
@@ -4232,7 +4234,7 @@ export interface RolloverIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface ShrinkIndexRequest {
+export interface ShrinkIndexRequest extends RequestBase {
   index: IndexName
   target: IndexName
   master_timeout?: Time
@@ -4248,7 +4250,7 @@ export interface ShrinkIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface SplitIndexRequest {
+export interface SplitIndexRequest extends RequestBase {
   index: IndexName
   target: IndexName
   master_timeout?: Time
@@ -4264,7 +4266,7 @@ export interface SplitIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface TypeExistsRequest {
+export interface TypeExistsRequest extends RequestBase {
   index: Indices
   type: Types
   allow_no_indices?: boolean
@@ -4273,7 +4275,7 @@ export interface TypeExistsRequest {
   local?: boolean
 }
 
-export interface UnfreezeIndexRequest {
+export interface UnfreezeIndexRequest extends RequestBase {
   index: IndexName
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4287,7 +4289,7 @@ export interface UnfreezeIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged?: boolean
 }
 
-export interface GetIndexSettingsRequest {
+export interface GetIndexSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
   allow_no_indices?: boolean
@@ -4303,7 +4305,7 @@ export interface GetIndexSettingsResponse extends DictionaryResponseBase<IndexNa
   indices?: Record<IndexName, IndexState>
 }
 
-export interface DeleteIndexTemplateRequest {
+export interface DeleteIndexTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Time
   timeout?: Time
@@ -4312,7 +4314,7 @@ export interface DeleteIndexTemplateRequest {
 export interface DeleteIndexTemplateResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetIndexTemplateRequest {
+export interface GetIndexTemplateRequest extends RequestBase {
   name?: Names
   flat_settings?: boolean
   include_type_name?: boolean
@@ -4333,14 +4335,14 @@ export interface TemplateMapping {
   version?: integer
 }
 
-export interface IndexTemplateExistsRequest {
+export interface IndexTemplateExistsRequest extends RequestBase {
   name: Names
   flat_settings?: boolean
   local?: boolean
   master_timeout?: Time
 }
 
-export interface PutIndexTemplateRequest {
+export interface PutIndexTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   flat_settings?: boolean
@@ -4360,7 +4362,7 @@ export interface PutIndexTemplateRequest {
 export interface PutIndexTemplateResponse extends AcknowledgedResponseBase {
 }
 
-export interface UpdateIndexSettingsRequest {
+export interface UpdateIndexSettingsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4377,7 +4379,7 @@ export interface UpdateIndexSettingsRequest {
 export interface UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetFieldMappingRequest {
+export interface GetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
   type?: Types
@@ -4397,7 +4399,7 @@ export interface TypeFieldMappings {
   mappings?: Record<Field, FieldMapping>
 }
 
-export interface GetMappingRequest {
+export interface GetMappingRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -4417,7 +4419,7 @@ export interface IndexMappings {
   mappings?: TypeMapping
 }
 
-export interface PutMappingRequest {
+export interface PutMappingRequest extends RequestBase {
   index?: Indices
   type?: TypeName
   allow_no_indices?: boolean
@@ -4492,7 +4494,7 @@ export interface RecoveryStatus {
   shards?: ShardRecovery[]
 }
 
-export interface RecoveryStatusRequest {
+export interface RecoveryStatusRequest extends RequestBase {
   index?: Indices
   active_only?: boolean
   detailed?: boolean
@@ -4549,7 +4551,7 @@ export interface Segment {
   version?: string
 }
 
-export interface SegmentsRequest {
+export interface SegmentsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4579,7 +4581,7 @@ export interface IndicesShardStores {
   shards?: Record<string, ShardStoreWrapper>
 }
 
-export interface IndicesShardStoresRequest {
+export interface IndicesShardStoresRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4637,7 +4639,7 @@ export interface IndicesStats {
   uuid?: string
 }
 
-export interface IndicesStatsRequest {
+export interface IndicesStatsRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
   completion_fields?: Field[]
@@ -4850,7 +4852,7 @@ export interface ReloadDetails {
   reloaded_node_ids?: string[]
 }
 
-export interface ReloadSearchAnalyzersRequest {
+export interface ReloadSearchAnalyzersRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4862,7 +4864,7 @@ export interface ReloadSearchAnalyzersResponse extends ResponseBase {
   _shards?: ShardStatistics
 }
 
-export interface ClearCacheRequest {
+export interface ClearCacheRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4876,7 +4878,7 @@ export interface ClearCacheRequest {
 export interface ClearCacheResponse extends ShardsOperationResponseBase {
 }
 
-export interface FlushRequest {
+export interface FlushRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4888,7 +4890,7 @@ export interface FlushRequest {
 export interface FlushResponse extends ShardsOperationResponseBase {
 }
 
-export interface ForceMergeRequest {
+export interface ForceMergeRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4901,7 +4903,7 @@ export interface ForceMergeRequest {
 export interface ForceMergeResponse extends ShardsOperationResponseBase {
 }
 
-export interface RefreshRequest {
+export interface RefreshRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4911,7 +4913,7 @@ export interface RefreshRequest {
 export interface RefreshResponse extends ShardsOperationResponseBase {
 }
 
-export interface SyncedFlushRequest {
+export interface SyncedFlushRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4970,7 +4972,7 @@ export interface ProcessorContainer {
   circle?: CircleProcessor
 }
 
-export interface DeletePipelineRequest {
+export interface DeletePipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
@@ -4979,7 +4981,7 @@ export interface DeletePipelineRequest {
 export interface DeletePipelineResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetPipelineRequest {
+export interface GetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Time
 }
@@ -4988,7 +4990,7 @@ export interface GetPipelineResponse extends DictionaryResponseBase<string, Pipe
   pipelines?: Record<string, Pipeline>
 }
 
-export interface GrokProcessorPatternsRequest {
+export interface GrokProcessorPatternsRequest extends RequestBase {
 }
 
 export interface GrokProcessorPatternsResponse extends ResponseBase {
@@ -5223,7 +5225,7 @@ export interface UserAgentProcessor extends ProcessorBase {
   target_field?: Field
 }
 
-export interface PutPipelineRequest {
+export interface PutPipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
@@ -5263,7 +5265,7 @@ export interface SimulatePipelineDocument {
   _source?: object
 }
 
-export interface SimulatePipelineRequest {
+export interface SimulatePipelineRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
@@ -5659,7 +5661,7 @@ export interface StoredScript {
   source?: string
 }
 
-export interface DeleteScriptRequest {
+export interface DeleteScriptRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
@@ -5668,7 +5670,7 @@ export interface DeleteScriptRequest {
 export interface DeleteScriptResponse extends AcknowledgedResponseBase {
 }
 
-export interface ExecutePainlessScriptRequest {
+export interface ExecutePainlessScriptRequest extends RequestBase {
   body?: {
     context?: string
     context_setup?: PainlessContextSetup
@@ -5686,7 +5688,7 @@ export interface PainlessContextSetup {
   query?: QueryContainer
 }
 
-export interface GetScriptRequest {
+export interface GetScriptRequest extends RequestBase {
   id: Id
   master_timeout?: Time
 }
@@ -5695,7 +5697,7 @@ export interface GetScriptResponse extends ResponseBase {
   script?: StoredScript
 }
 
-export interface PutScriptRequest {
+export interface PutScriptRequest extends RequestBase {
   id: Id
   context?: Name
   master_timeout?: Time
@@ -5712,7 +5714,7 @@ export interface SnapshotRepository {
   type?: string
 }
 
-export interface CleanupRepositoryRequest {
+export interface CleanupRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
   timeout?: Time
@@ -5727,7 +5729,7 @@ export interface CleanupRepositoryResults {
   deleted_bytes?: long
 }
 
-export interface CreateRepositoryRequest {
+export interface CreateRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
   timeout?: Time
@@ -5740,7 +5742,7 @@ export interface CreateRepositoryRequest {
 export interface CreateRepositoryResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteRepositoryRequest {
+export interface DeleteRepositoryRequest extends RequestBase {
   repository: Names
   master_timeout?: Time
   timeout?: Time
@@ -5749,7 +5751,7 @@ export interface DeleteRepositoryRequest {
 export interface DeleteRepositoryResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetRepositoryRequest {
+export interface GetRepositoryRequest extends RequestBase {
   repository?: Names
   local?: boolean
   master_timeout?: Time
@@ -5763,7 +5765,7 @@ export interface CompactNodeInfo {
   name?: string
 }
 
-export interface VerifyRepositoryRequest {
+export interface VerifyRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
   timeout?: Time
@@ -5773,7 +5775,7 @@ export interface VerifyRepositoryResponse extends ResponseBase {
   nodes?: Record<string, CompactNodeInfo>
 }
 
-export interface RestoreRequest {
+export interface RestoreRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Time
@@ -5823,7 +5825,7 @@ export interface SnapshotShardFailure {
   status?: string
 }
 
-export interface DeleteSnapshotRequest {
+export interface DeleteSnapshotRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Time
@@ -5832,7 +5834,7 @@ export interface DeleteSnapshotRequest {
 export interface DeleteSnapshotResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetSnapshotRequest {
+export interface GetSnapshotRequest extends RequestBase {
   repository: Name
   snapshot: Names
   ignore_unavailable?: boolean
@@ -5844,7 +5846,7 @@ export interface GetSnapshotResponse extends ResponseBase {
   snapshots?: SnapshotInfo[]
 }
 
-export interface SnapshotRequest {
+export interface SnapshotRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Time
@@ -5901,7 +5903,7 @@ export interface SnapshotStatus {
   uuid?: string
 }
 
-export interface SnapshotStatusRequest {
+export interface SnapshotStatusRequest extends RequestBase {
   repository?: Name
   snapshot?: Names
   ignore_unavailable?: boolean
@@ -6502,7 +6504,7 @@ export interface WildcardQuery {
 export interface TypedSearchRequest {
 }
 
-export interface CountRequest {
+export interface CountRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -6529,7 +6531,7 @@ export interface CountResponse extends ResponseBase {
   _shards?: ShardStatistics
 }
 
-export interface ExplainRequest {
+export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: TypeName
@@ -6585,7 +6587,7 @@ export interface FieldCapabilities {
   searchable?: boolean
 }
 
-export interface FieldCapabilitiesRequest {
+export interface FieldCapabilitiesRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -6598,7 +6600,7 @@ export interface FieldCapabilitiesResponse extends ResponseBase {
   fields?: Record<Field, Record<string, FieldCapabilities>>
 }
 
-export interface MultiSearchRequest {
+export interface MultiSearchRequest extends RequestBase {
   index?: Indices
   type?: Types
   ccs_minimize_roundtrips?: boolean
@@ -6619,7 +6621,7 @@ export interface MultiSearchResponse extends ResponseBase {
   total_responses?: integer
 }
 
-export interface MultiSearchTemplateRequest {
+export interface MultiSearchTemplateRequest extends RequestBase {
   index?: Indices
   type?: Types
   ccs_minimize_roundtrips?: boolean
@@ -6632,7 +6634,7 @@ export interface MultiSearchTemplateRequest {
   }
 }
 
-export interface ClearScrollRequest {
+export interface ClearScrollRequest extends RequestBase {
   scroll_id?: ScrollIds
   body?: {
     scroll_id?: string[]
@@ -6642,7 +6644,7 @@ export interface ClearScrollRequest {
 export interface ClearScrollResponse extends ResponseBase {
 }
 
-export interface ScrollRequest {
+export interface ScrollRequest extends RequestBase {
   scroll_id?: ScrollId
   total_hits_as_integer?: boolean
   body?: {
@@ -6657,7 +6659,7 @@ export interface SlicedScroll {
   max?: integer
 }
 
-export interface SearchRequest {
+export interface SearchRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -6956,7 +6958,7 @@ export interface SearchShard {
   state?: string
 }
 
-export interface SearchShardsRequest {
+export interface SearchShardsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -6971,7 +6973,7 @@ export interface SearchShardsResponse extends ResponseBase {
   shards?: SearchShard[][]
 }
 
-export interface SearchTemplateRequest {
+export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -6994,7 +6996,7 @@ export interface SearchTemplateRequest {
   }
 }
 
-export interface RenderSearchTemplateRequest {
+export interface RenderSearchTemplateRequest extends RequestBase {
   id?: Id
   body?: {
     file?: string
@@ -7159,7 +7161,7 @@ export interface TermSuggester {
   text?: string
 }
 
-export interface ValidateQueryRequest {
+export interface ValidateQueryRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -7220,14 +7222,14 @@ export interface AsyncSearchResponseBase<TDocument> extends ResponseBase {
   start_time_in_millis?: long
 }
 
-export interface AsyncSearchDeleteRequest {
+export interface AsyncSearchDeleteRequest extends RequestBase {
   id: Id
 }
 
 export interface AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
 }
 
-export interface AsyncSearchGetRequest {
+export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
   body?: {
     keep_alive?: Time
@@ -7239,7 +7241,7 @@ export interface AsyncSearchGetRequest {
 export interface AsyncSearchGetResponse<TDocument> extends ResponseBase {
 }
 
-export interface AsyncSearchSubmitRequest {
+export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   body?: {
     aggs?: Record<string, AggregationContainer>
@@ -7299,7 +7301,7 @@ export interface AsyncSearchSubmitRequest {
 export interface AsyncSearchSubmitResponse<TDocument> extends ResponseBase {
 }
 
-export interface CreateAutoFollowPatternRequest {
+export interface CreateAutoFollowPatternRequest extends RequestBase {
   name: Name
   body?: {
     follow_index_pattern?: string
@@ -7321,7 +7323,7 @@ export interface CreateAutoFollowPatternRequest {
 export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteAutoFollowPatternRequest {
+export interface DeleteAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
@@ -7344,7 +7346,7 @@ export interface AutoFollowPattern {
   remote_cluster?: string
 }
 
-export interface GetAutoFollowPatternRequest {
+export interface GetAutoFollowPatternRequest extends RequestBase {
   name?: Name
 }
 
@@ -7352,21 +7354,21 @@ export interface GetAutoFollowPatternResponse extends ResponseBase {
   patterns?: Record<string, AutoFollowPattern>
 }
 
-export interface PauseAutoFollowPatternRequest {
+export interface PauseAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
 export interface PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface ResumeAutoFollowPatternRequest {
+export interface ResumeAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
 export interface ResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface CreateFollowIndexRequest {
+export interface CreateFollowIndexRequest extends RequestBase {
   index: IndexName
   wait_for_active_shards?: string
   body?: {
@@ -7434,7 +7436,7 @@ export interface FollowIndexStats {
   shards?: FollowIndexShardStats[]
 }
 
-export interface FollowIndexStatsRequest {
+export interface FollowIndexStatsRequest extends RequestBase {
   index: Indices
 }
 
@@ -7455,7 +7457,7 @@ export interface FollowConfig {
   read_poll_timeout?: Time
 }
 
-export interface FollowInfoRequest {
+export interface FollowInfoRequest extends RequestBase {
   index: Indices
 }
 
@@ -7471,7 +7473,7 @@ export interface FollowerInfo {
   status?: FollowerIndexStatus
 }
 
-export interface ForgetFollowerIndexRequest {
+export interface ForgetFollowerIndexRequest extends RequestBase {
   index: IndexName
   body?: {
     follower_cluster?: string
@@ -7485,14 +7487,14 @@ export interface ForgetFollowerIndexResponse extends ResponseBase {
   _shards?: ShardStatistics
 }
 
-export interface PauseFollowIndexRequest {
+export interface PauseFollowIndexRequest extends RequestBase {
   index: IndexName
 }
 
 export interface PauseFollowIndexResponse extends AcknowledgedResponseBase {
 }
 
-export interface ResumeFollowIndexRequest {
+export interface ResumeFollowIndexRequest extends RequestBase {
   index: IndexName
   body?: {
     max_outstanding_read_requests?: long
@@ -7511,7 +7513,7 @@ export interface ResumeFollowIndexRequest {
 export interface ResumeFollowIndexResponse extends AcknowledgedResponseBase {
 }
 
-export interface UnfollowIndexRequest {
+export interface UnfollowIndexRequest extends RequestBase {
   index: IndexName
 }
 
@@ -7536,7 +7538,7 @@ export interface CcrFollowStats {
   indices?: FollowIndexStats[]
 }
 
-export interface CcrStatsRequest {
+export interface CcrStatsRequest extends RequestBase {
 }
 
 export interface CcrStatsResponse extends ResponseBase {
@@ -7564,14 +7566,14 @@ export interface NamedPolicyMetadata {
   config?: NamedPolicyConfig
 }
 
-export interface DeleteEnrichPolicyRequest {
+export interface DeleteEnrichPolicyRequest extends RequestBase {
   name: Name
 }
 
 export interface DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
 }
 
-export interface ExecuteEnrichPolicyRequest {
+export interface ExecuteEnrichPolicyRequest extends RequestBase {
   name: Name
   wait_for_completion?: boolean
 }
@@ -7585,7 +7587,7 @@ export interface ExecuteEnrichPolicyStatus {
   phase?: EnrichPolicyPhase
 }
 
-export interface GetEnrichPolicyRequest {
+export interface GetEnrichPolicyRequest extends RequestBase {
   name?: Names
 }
 
@@ -7593,7 +7595,7 @@ export interface GetEnrichPolicyResponse extends ResponseBase {
   policies?: NamedPolicyMetadata[]
 }
 
-export interface PutEnrichPolicyRequest {
+export interface PutEnrichPolicyRequest extends RequestBase {
   name: Name
   body?: {
     geo_match?: EnrichPolicy
@@ -7612,7 +7614,7 @@ export interface CoordinatorStats {
   remote_requests_total?: long
 }
 
-export interface EnrichStatsRequest {
+export interface EnrichStatsRequest extends RequestBase {
 }
 
 export interface EnrichStatsResponse extends ResponseBase {
@@ -7625,7 +7627,7 @@ export interface ExecutingPolicy {
   task?: TaskInfo
 }
 
-export interface GraphExploreRequest {
+export interface GraphExploreRequest extends RequestBase {
   index: Indices
   type?: Types
   routing?: Routing
@@ -7711,14 +7713,14 @@ export interface Policy {
 export interface LifecycleAction {
 }
 
-export interface DeleteLifecycleRequest {
+export interface DeleteLifecycleRequest extends RequestBase {
   policy: Id
 }
 
 export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface ExplainLifecycleRequest {
+export interface ExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
@@ -7746,7 +7748,7 @@ export interface LifecycleExplain {
   step_time_millis?: Date
 }
 
-export interface GetLifecycleRequest {
+export interface GetLifecycleRequest extends RequestBase {
   policy?: Id
 }
 
@@ -7760,14 +7762,14 @@ export interface LifecyclePolicy {
   version?: integer
 }
 
-export interface GetIlmStatusRequest {
+export interface GetIlmStatusRequest extends RequestBase {
 }
 
 export interface GetIlmStatusResponse extends ResponseBase {
   operation_mode?: LifecycleOperationMode
 }
 
-export interface MoveToStepRequest {
+export interface MoveToStepRequest extends RequestBase {
   index: IndexName
   body?: {
     current_step?: StepKey
@@ -7784,7 +7786,7 @@ export interface StepKey {
   phase?: string
 }
 
-export interface PutLifecycleRequest {
+export interface PutLifecycleRequest extends RequestBase {
   policy: Id
   body?: {
     policy?: Policy
@@ -7794,7 +7796,7 @@ export interface PutLifecycleRequest {
 export interface PutLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface RemovePolicyRequest {
+export interface RemovePolicyRequest extends RequestBase {
   index: IndexName
 }
 
@@ -7803,20 +7805,20 @@ export interface RemovePolicyResponse extends ResponseBase {
   has_failures?: boolean
 }
 
-export interface RetryIlmRequest {
+export interface RetryIlmRequest extends RequestBase {
   index: IndexName
 }
 
 export interface RetryIlmResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartIlmRequest {
+export interface StartIlmRequest extends RequestBase {
 }
 
 export interface StartIlmResponse extends AcknowledgedResponseBase {
 }
 
-export interface StopIlmRequest {
+export interface StopIlmRequest extends RequestBase {
 }
 
 export interface StopIlmResponse extends AcknowledgedResponseBase {
@@ -7871,7 +7873,7 @@ export interface XPackFeatures {
   watcher?: XPackFeature
 }
 
-export interface XPackInfoRequest {
+export interface XPackInfoRequest extends RequestBase {
   categories?: string[]
 }
 
@@ -8062,7 +8064,7 @@ export interface XPackUsage {
   enabled?: boolean
 }
 
-export interface XPackUsageRequest {
+export interface XPackUsageRequest extends RequestBase {
   master_timeout?: Time
 }
 
@@ -8087,20 +8089,20 @@ export interface XPackUsageResponse extends ResponseBase {
   voting_only?: XPackUsage
 }
 
-export interface DeleteLicenseRequest {
+export interface DeleteLicenseRequest extends RequestBase {
 }
 
 export interface DeleteLicenseResponse extends ResponseBase {
 }
 
-export interface GetBasicLicenseStatusRequest {
+export interface GetBasicLicenseStatusRequest extends RequestBase {
 }
 
 export interface GetBasicLicenseStatusResponse extends ResponseBase {
   eligible_to_start_basic?: boolean
 }
 
-export interface GetLicenseRequest {
+export interface GetLicenseRequest extends RequestBase {
   accept_enterprise?: boolean
   local?: boolean
 }
@@ -8134,7 +8136,7 @@ export interface LicenseInformation {
   uid?: string
 }
 
-export interface GetTrialLicenseStatusRequest {
+export interface GetTrialLicenseStatusRequest extends RequestBase {
 }
 
 export interface GetTrialLicenseStatusResponse extends ResponseBase {
@@ -8146,7 +8148,7 @@ export interface LicenseAcknowledgement {
   message?: string
 }
 
-export interface PostLicenseRequest {
+export interface PostLicenseRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: License
@@ -8159,7 +8161,7 @@ export interface PostLicenseResponse extends ResponseBase {
   license_status?: LicenseStatus
 }
 
-export interface StartBasicLicenseRequest {
+export interface StartBasicLicenseRequest extends RequestBase {
   acknowledge?: boolean
 }
 
@@ -8169,7 +8171,7 @@ export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
   error_message?: string
 }
 
-export interface StartTrialLicenseRequest {
+export interface StartTrialLicenseRequest extends RequestBase {
   acknowledge?: boolean
   type_query_string?: string
 }
@@ -8179,7 +8181,7 @@ export interface StartTrialLicenseResponse extends AcknowledgedResponseBase {
   trial_was_started?: boolean
 }
 
-export interface CloseJobRequest {
+export interface CloseJobRequest extends RequestBase {
   job_id: Id
   allow_no_jobs?: boolean
   force?: boolean
@@ -8233,14 +8235,14 @@ export interface DiscoveryNode {
   transport_address?: string
 }
 
-export interface DeleteCalendarRequest {
+export interface DeleteCalendarRequest extends RequestBase {
   calendar_id: Id
 }
 
 export interface DeleteCalendarResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteCalendarEventRequest {
+export interface DeleteCalendarEventRequest extends RequestBase {
   calendar_id: Id
   event_id: Id
 }
@@ -8248,7 +8250,7 @@ export interface DeleteCalendarEventRequest {
 export interface DeleteCalendarEventResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteCalendarJobRequest {
+export interface DeleteCalendarJobRequest extends RequestBase {
   calendar_id: Id
   job_id: Id
 }
@@ -8259,7 +8261,7 @@ export interface DeleteCalendarJobResponse extends ResponseBase {
   job_ids?: Id[]
 }
 
-export interface DeleteDatafeedRequest {
+export interface DeleteDatafeedRequest extends RequestBase {
   datafeed_id: Id
   force?: boolean
 }
@@ -8267,21 +8269,21 @@ export interface DeleteDatafeedRequest {
 export interface DeleteDatafeedResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteExpiredDataRequest {
+export interface DeleteExpiredDataRequest extends RequestBase {
 }
 
 export interface DeleteExpiredDataResponse extends ResponseBase {
   deleted?: boolean
 }
 
-export interface DeleteFilterRequest {
+export interface DeleteFilterRequest extends RequestBase {
   filter_id: Id
 }
 
 export interface DeleteFilterResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteForecastRequest {
+export interface DeleteForecastRequest extends RequestBase {
   job_id: Id
   forecast_id?: Id
   allow_no_forecasts?: boolean
@@ -8291,7 +8293,7 @@ export interface DeleteForecastRequest {
 export interface DeleteForecastResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteJobRequest {
+export interface DeleteJobRequest extends RequestBase {
   job_id: Id
   force?: boolean
   wait_for_completion?: boolean
@@ -8300,7 +8302,7 @@ export interface DeleteJobRequest {
 export interface DeleteJobResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteModelSnapshotRequest {
+export interface DeleteModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
 }
@@ -8308,7 +8310,7 @@ export interface DeleteModelSnapshotRequest {
 export interface DeleteModelSnapshotResponse extends AcknowledgedResponseBase {
 }
 
-export interface EstimateModelMemoryRequest {
+export interface EstimateModelMemoryRequest extends RequestBase {
   body?: {
     analysis_config?: AnalysisConfig
     max_bucket_cardinality?: Record<Field, long>
@@ -8320,7 +8322,7 @@ export interface EstimateModelMemoryResponse extends ResponseBase {
   model_memory_estimate?: string
 }
 
-export interface FlushJobRequest {
+export interface FlushJobRequest extends RequestBase {
   job_id: Id
   skip_time?: string
   body?: {
@@ -8335,7 +8337,7 @@ export interface FlushJobResponse extends ResponseBase {
   flushed?: boolean
 }
 
-export interface ForecastJobRequest {
+export interface ForecastJobRequest extends RequestBase {
   job_id: Id
   body?: {
     duration?: Time
@@ -8347,7 +8349,7 @@ export interface ForecastJobResponse extends AcknowledgedResponseBase {
   forecast_id?: string
 }
 
-export interface GetAnomalyRecordsRequest {
+export interface GetAnomalyRecordsRequest extends RequestBase {
   job_id: Id
   body?: {
     desc?: boolean
@@ -8365,7 +8367,7 @@ export interface GetAnomalyRecordsResponse extends ResponseBase {
   records?: AnomalyRecord[]
 }
 
-export interface GetBucketsRequest {
+export interface GetBucketsRequest extends RequestBase {
   job_id: Id
   timestamp?: Timestamp
   body?: {
@@ -8385,7 +8387,7 @@ export interface GetBucketsResponse extends ResponseBase {
   count?: long
 }
 
-export interface GetCalendarEventsRequest {
+export interface GetCalendarEventsRequest extends RequestBase {
   calendar_id: Id
   end?: Date
   job_id?: string
@@ -8407,7 +8409,7 @@ export interface Calendar {
   job_ids?: string[]
 }
 
-export interface GetCalendarsRequest {
+export interface GetCalendarsRequest extends RequestBase {
   calendar_id?: Id
   body?: {
     page?: Page
@@ -8419,7 +8421,7 @@ export interface GetCalendarsResponse extends ResponseBase {
   count?: long
 }
 
-export interface GetCategoriesRequest {
+export interface GetCategoriesRequest extends RequestBase {
   job_id: Id
   category_id?: CategoryId
   body?: {
@@ -8432,7 +8434,7 @@ export interface GetCategoriesResponse extends ResponseBase {
   count?: long
 }
 
-export interface GetDatafeedStatsRequest {
+export interface GetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
 }
@@ -8442,7 +8444,7 @@ export interface GetDatafeedStatsResponse extends ResponseBase {
   datafeeds?: DatafeedStats[]
 }
 
-export interface GetDatafeedsRequest {
+export interface GetDatafeedsRequest extends RequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
 }
@@ -8458,7 +8460,7 @@ export interface Filter {
   items?: string[]
 }
 
-export interface GetFiltersRequest {
+export interface GetFiltersRequest extends RequestBase {
   filter_id?: Id
   from?: integer
   size?: integer
@@ -8469,7 +8471,7 @@ export interface GetFiltersResponse extends ResponseBase {
   filters?: Filter[]
 }
 
-export interface GetInfluencersRequest {
+export interface GetInfluencersRequest extends RequestBase {
   job_id: Id
   body?: {
     descending?: boolean
@@ -8487,7 +8489,7 @@ export interface GetInfluencersResponse extends ResponseBase {
   influencers?: BucketInfluencer[]
 }
 
-export interface GetJobStatsRequest {
+export interface GetJobStatsRequest extends RequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
 }
@@ -8497,7 +8499,7 @@ export interface GetJobStatsResponse extends ResponseBase {
   jobs?: JobStats[]
 }
 
-export interface GetJobsRequest {
+export interface GetJobsRequest extends RequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
 }
@@ -8507,7 +8509,7 @@ export interface GetJobsResponse extends ResponseBase {
   jobs?: Job[]
 }
 
-export interface GetModelSnapshotsRequest {
+export interface GetModelSnapshotsRequest extends RequestBase {
   job_id: Id
   snapshot_id?: Id
   body?: {
@@ -8524,7 +8526,7 @@ export interface GetModelSnapshotsResponse extends ResponseBase {
   model_snapshots?: ModelSnapshot[]
 }
 
-export interface GetOverallBucketsRequest {
+export interface GetOverallBucketsRequest extends RequestBase {
   job_id: Id
   body?: {
     allow_no_jobs?: boolean
@@ -8812,7 +8814,7 @@ export interface Limits {
   max_model_memory_limit?: string
 }
 
-export interface MachineLearningInfoRequest {
+export interface MachineLearningInfoRequest extends RequestBase {
 }
 
 export interface MachineLearningInfoResponse extends ResponseBase {
@@ -8821,7 +8823,7 @@ export interface MachineLearningInfoResponse extends ResponseBase {
   upgrade_mode?: boolean
 }
 
-export interface OpenJobRequest {
+export interface OpenJobRequest extends RequestBase {
   job_id: Id
   body?: {
     timeout?: Time
@@ -8832,7 +8834,7 @@ export interface OpenJobResponse extends ResponseBase {
   opened?: boolean
 }
 
-export interface PostCalendarEventsRequest {
+export interface PostCalendarEventsRequest extends RequestBase {
   calendar_id: Id
   body?: {
     events?: ScheduledEvent[]
@@ -8851,7 +8853,7 @@ export interface ScheduledEvent {
   start_time?: Date
 }
 
-export interface PostJobDataRequest {
+export interface PostJobDataRequest extends RequestBase {
   job_id: Id
   reset_end?: Date
   reset_start?: Date
@@ -8878,7 +8880,7 @@ export interface PostJobDataResponse extends ResponseBase {
   sparse_bucket_count?: long
 }
 
-export interface PreviewDatafeedRequest {
+export interface PreviewDatafeedRequest extends RequestBase {
   datafeed_id: Id
 }
 
@@ -8886,7 +8888,7 @@ export interface PreviewDatafeedResponse<TDocument> extends ResponseBase {
   data?: TDocument[]
 }
 
-export interface PutCalendarRequest {
+export interface PutCalendarRequest extends RequestBase {
   calendar_id: Id
   body?: {
     description?: string
@@ -8899,7 +8901,7 @@ export interface PutCalendarResponse extends ResponseBase {
   job_ids?: string[]
 }
 
-export interface PutCalendarJobRequest {
+export interface PutCalendarJobRequest extends RequestBase {
   calendar_id: Id
   job_id: Id
 }
@@ -8910,7 +8912,7 @@ export interface PutCalendarJobResponse extends ResponseBase {
   job_ids?: string[]
 }
 
-export interface PutDatafeedRequest {
+export interface PutDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -8944,7 +8946,7 @@ export interface PutDatafeedResponse extends ResponseBase {
   scroll_size?: integer
 }
 
-export interface PutFilterRequest {
+export interface PutFilterRequest extends RequestBase {
   filter_id: Id
   body?: {
     description?: string
@@ -8958,7 +8960,7 @@ export interface PutFilterResponse extends ResponseBase {
   items?: string[]
 }
 
-export interface PutJobRequest {
+export interface PutJobRequest extends RequestBase {
   job_id: Id
   body?: {
     allow_lazy_open?: boolean
@@ -8990,7 +8992,7 @@ export interface PutJobResponse extends ResponseBase {
   results_retention_days?: long
 }
 
-export interface RevertModelSnapshotRequest {
+export interface RevertModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
   body?: {
@@ -9002,7 +9004,7 @@ export interface RevertModelSnapshotResponse extends ResponseBase {
   model?: ModelSnapshot
 }
 
-export interface SetUpgradeModeRequest {
+export interface SetUpgradeModeRequest extends RequestBase {
   enabled?: boolean
   timeout?: Time
 }
@@ -9010,7 +9012,7 @@ export interface SetUpgradeModeRequest {
 export interface SetUpgradeModeResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartDatafeedRequest {
+export interface StartDatafeedRequest extends RequestBase {
   datafeed_id: Id
   body?: {
     end?: Date
@@ -9023,7 +9025,7 @@ export interface StartDatafeedResponse extends ResponseBase {
   started?: boolean
 }
 
-export interface StopDatafeedRequest {
+export interface StopDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_datafeeds?: boolean
   body?: {
@@ -9036,7 +9038,7 @@ export interface StopDatafeedResponse extends ResponseBase {
   stopped?: boolean
 }
 
-export interface UpdateDatafeedRequest {
+export interface UpdateDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -9070,7 +9072,7 @@ export interface UpdateDatafeedResponse extends ResponseBase {
   scroll_size?: integer
 }
 
-export interface UpdateFilterRequest {
+export interface UpdateFilterRequest extends RequestBase {
   filter_id: Id
   body?: {
     add_items?: string[]
@@ -9085,7 +9087,7 @@ export interface UpdateFilterResponse extends ResponseBase {
   items?: string[]
 }
 
-export interface UpdateJobRequest {
+export interface UpdateJobRequest extends RequestBase {
   job_id: Id
   body?: {
     allow_lazy_open?: boolean
@@ -9103,7 +9105,7 @@ export interface UpdateJobRequest {
 export interface UpdateJobResponse extends ResponseBase {
 }
 
-export interface UpdateModelSnapshotRequest {
+export interface UpdateModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
   body?: {
@@ -9116,7 +9118,7 @@ export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
   model?: ModelSnapshot
 }
 
-export interface ValidateDetectorRequest {
+export interface ValidateDetectorRequest extends RequestBase {
   body?: {
     detector?: Detector
   }
@@ -9125,7 +9127,7 @@ export interface ValidateDetectorRequest {
 export interface ValidateDetectorResponse extends AcknowledgedResponseBase {
 }
 
-export interface ValidateJobRequest {
+export interface ValidateJobRequest extends RequestBase {
   body?: {
     analysis_config?: AnalysisConfig
     analysis_limits?: AnalysisLimits
@@ -9147,7 +9149,7 @@ export interface DeprecationInfo {
   url?: string
 }
 
-export interface DeprecationInfoRequest {
+export interface DeprecationInfoRequest extends RequestBase {
   index?: IndexName
 }
 
@@ -9157,7 +9159,7 @@ export interface DeprecationInfoResponse extends ResponseBase {
   node_settings?: DeprecationInfo[]
 }
 
-export interface CreateRollupJobRequest {
+export interface CreateRollupJobRequest extends RequestBase {
   id: Id
   body?: {
     cron?: string
@@ -9172,14 +9174,14 @@ export interface CreateRollupJobRequest {
 export interface CreateRollupJobResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteRollupJobRequest {
+export interface DeleteRollupJobRequest extends RequestBase {
   id: Id
 }
 
 export interface DeleteRollupJobResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetRollupCapabilitiesRequest {
+export interface GetRollupCapabilitiesRequest extends RequestBase {
   id?: Id
 }
 
@@ -9198,7 +9200,7 @@ export interface RollupCapabilitiesJob {
   rollup_index?: string
 }
 
-export interface GetRollupIndexCapabilitiesRequest {
+export interface GetRollupIndexCapabilitiesRequest extends RequestBase {
   index: IndexName
 }
 
@@ -9217,7 +9219,7 @@ export interface RollupIndexCapabilitiesJob {
   rollup_index?: string
 }
 
-export interface GetRollupJobRequest {
+export interface GetRollupJobRequest extends RequestBase {
   id?: Id
 }
 
@@ -9289,7 +9291,7 @@ export interface TermsRollupGrouping {
   fields?: Field[]
 }
 
-export interface RollupSearchRequest {
+export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: TypeName
   total_hits_as_integer?: boolean
@@ -9304,7 +9306,7 @@ export interface RollupSearchRequest {
 export interface RollupSearchResponse<TDocument> extends ResponseBase {
 }
 
-export interface StartRollupJobRequest {
+export interface StartRollupJobRequest extends RequestBase {
   id: Id
 }
 
@@ -9312,7 +9314,7 @@ export interface StartRollupJobResponse extends ResponseBase {
   started?: boolean
 }
 
-export interface StopRollupJobRequest {
+export interface StopRollupJobRequest extends RequestBase {
   id: Id
   timeout?: Time
   wait_for_completion?: boolean
@@ -9336,7 +9338,7 @@ export interface ApiKeyRole {
   index?: ApiKeyPrivileges[]
 }
 
-export interface CreateApiKeyRequest {
+export interface CreateApiKeyRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     expiration?: Time
@@ -9362,7 +9364,7 @@ export interface ApiKeys {
   username?: string
 }
 
-export interface GetApiKeyRequest {
+export interface GetApiKeyRequest extends RequestBase {
   id?: string
   name?: string
   owner?: boolean
@@ -9374,7 +9376,7 @@ export interface GetApiKeyResponse extends ResponseBase {
   api_keys?: ApiKeys[]
 }
 
-export interface InvalidateApiKeyRequest {
+export interface InvalidateApiKeyRequest extends RequestBase {
   body?: {
     id?: string
     name?: string
@@ -9391,7 +9393,7 @@ export interface InvalidateApiKeyResponse extends ResponseBase {
   previously_invalidated_api_keys?: string[]
 }
 
-export interface AuthenticateRequest {
+export interface AuthenticateRequest extends RequestBase {
 }
 
 export interface AuthenticateResponse extends ResponseBase {
@@ -9409,7 +9411,7 @@ export interface RealmInfo {
   type?: string
 }
 
-export interface ClearCachedRealmsRequest {
+export interface ClearCachedRealmsRequest extends RequestBase {
   realms: Names
   usernames?: string[]
 }
@@ -9419,7 +9421,7 @@ export interface ClearCachedRealmsResponse extends ResponseBase {
   nodes?: Record<string, SecurityNode>
 }
 
-export interface DeletePrivilegesRequest {
+export interface DeletePrivilegesRequest extends RequestBase {
   application: Name
   name: Name
   refresh?: Refresh
@@ -9433,7 +9435,7 @@ export interface FoundUserPrivilege {
   found?: boolean
 }
 
-export interface GetBuiltinPrivilegesRequest {
+export interface GetBuiltinPrivilegesRequest extends RequestBase {
 }
 
 export interface GetBuiltinPrivilegesResponse extends ResponseBase {
@@ -9441,7 +9443,7 @@ export interface GetBuiltinPrivilegesResponse extends ResponseBase {
   index?: string[]
 }
 
-export interface GetPrivilegesRequest {
+export interface GetPrivilegesRequest extends RequestBase {
   application?: Name
   name?: Name
 }
@@ -9465,7 +9467,7 @@ export interface FieldSecuritySettings {
   grant?: string[]
 }
 
-export interface GetUserPrivilegesRequest {
+export interface GetUserPrivilegesRequest extends RequestBase {
 }
 
 export interface GetUserPrivilegesResponse extends ResponseBase {
@@ -9505,7 +9507,7 @@ export interface ApplicationPrivilegesCheck {
   resources?: string[]
 }
 
-export interface HasPrivilegesRequest {
+export interface HasPrivilegesRequest extends RequestBase {
   user?: Name
   body?: {
     application?: ApplicationPrivilegesCheck[]
@@ -9537,7 +9539,7 @@ export interface PrivilegesActions {
   metadata?: Record<string, object>
 }
 
-export interface PutPrivilegesRequest {
+export interface PutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     applications?: Record<string, Record<string, PrivilegesActions>>
@@ -9557,7 +9559,7 @@ export interface FieldSecurity {
   grant?: Field[]
 }
 
-export interface ClearCachedRolesRequest {
+export interface ClearCachedRolesRequest extends RequestBase {
   name: Names
 }
 
@@ -9566,7 +9568,7 @@ export interface ClearCachedRolesResponse extends ResponseBase {
   nodes?: Record<string, SecurityNode>
 }
 
-export interface DeleteRoleRequest {
+export interface DeleteRoleRequest extends RequestBase {
   name: Name
   refresh?: Refresh
 }
@@ -9575,7 +9577,7 @@ export interface DeleteRoleResponse extends ResponseBase {
   found?: boolean
 }
 
-export interface GetRoleRequest {
+export interface GetRoleRequest extends RequestBase {
   name?: Name
 }
 
@@ -9603,7 +9605,7 @@ export interface IndicesPrivileges {
   query?: QueryContainer
 }
 
-export interface PutRoleRequest {
+export interface PutRoleRequest extends RequestBase {
   name: Name
   refresh?: Refresh
   body?: {
@@ -9624,7 +9626,7 @@ export interface PutRoleStatus {
   created?: boolean
 }
 
-export interface DeleteRoleMappingRequest {
+export interface DeleteRoleMappingRequest extends RequestBase {
   name: Name
   refresh?: Refresh
 }
@@ -9633,7 +9635,7 @@ export interface DeleteRoleMappingResponse extends ResponseBase {
   found?: boolean
 }
 
-export interface GetRoleMappingRequest {
+export interface GetRoleMappingRequest extends RequestBase {
   name?: Name
 }
 
@@ -9648,7 +9650,7 @@ export interface XPackRoleMapping {
   rules?: RoleMappingRuleBase
 }
 
-export interface PutRoleMappingRequest {
+export interface PutRoleMappingRequest extends RequestBase {
   name: Name
   refresh?: Refresh
   body?: {
@@ -9672,7 +9674,7 @@ export interface PutRoleMappingStatus {
 export interface RoleMappingRuleBase {
 }
 
-export interface ChangePasswordRequest {
+export interface ChangePasswordRequest extends RequestBase {
   username?: Name
   refresh?: Refresh
   body?: {
@@ -9683,7 +9685,7 @@ export interface ChangePasswordRequest {
 export interface ChangePasswordResponse extends ResponseBase {
 }
 
-export interface DeleteUserRequest {
+export interface DeleteUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
 }
@@ -9692,7 +9694,7 @@ export interface DeleteUserResponse extends ResponseBase {
   found?: boolean
 }
 
-export interface DisableUserRequest {
+export interface DisableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
 }
@@ -9700,7 +9702,7 @@ export interface DisableUserRequest {
 export interface DisableUserResponse extends ResponseBase {
 }
 
-export interface EnableUserRequest {
+export interface EnableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
 }
@@ -9708,7 +9710,7 @@ export interface EnableUserRequest {
 export interface EnableUserResponse extends ResponseBase {
 }
 
-export interface GetUserRequest {
+export interface GetUserRequest extends RequestBase {
   username?: Names
 }
 
@@ -9724,7 +9726,7 @@ export interface XPackUser {
   username?: string
 }
 
-export interface GetUserAccessTokenRequest {
+export interface GetUserAccessTokenRequest extends RequestBase {
   body?: {
     grant_type?: AccessTokenGrantType
     scope?: string
@@ -9738,7 +9740,7 @@ export interface GetUserAccessTokenResponse extends ResponseBase {
   type?: string
 }
 
-export interface InvalidateUserAccessTokenRequest {
+export interface InvalidateUserAccessTokenRequest extends RequestBase {
 }
 
 export interface InvalidateUserAccessTokenResponse extends ResponseBase {
@@ -9748,7 +9750,7 @@ export interface InvalidateUserAccessTokenResponse extends ResponseBase {
   previously_invalidated_tokens?: long
 }
 
-export interface PutUserRequest {
+export interface PutUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
   body?: {
@@ -9807,14 +9809,14 @@ export interface SnapshotRetentionConfiguration {
   min_count?: integer
 }
 
-export interface DeleteSnapshotLifecycleRequest {
+export interface DeleteSnapshotLifecycleRequest extends RequestBase {
   policy_id: Id
 }
 
 export interface DeleteSnapshotLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface ExecuteSnapshotLifecycleRequest {
+export interface ExecuteSnapshotLifecycleRequest extends RequestBase {
   policy_id: Id
 }
 
@@ -9822,13 +9824,13 @@ export interface ExecuteSnapshotLifecycleResponse extends ResponseBase {
   snapshot_name?: string
 }
 
-export interface ExecuteRetentionRequest {
+export interface ExecuteRetentionRequest extends RequestBase {
 }
 
 export interface ExecuteRetentionResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetSnapshotLifecycleRequest {
+export interface GetSnapshotLifecycleRequest extends RequestBase {
   policy_id?: Ids
 }
 
@@ -9836,7 +9838,7 @@ export interface GetSnapshotLifecycleResponse extends DictionaryResponseBase<str
   policies?: Record<string, SnapshotLifecyclePolicyMetadata>
 }
 
-export interface GetSnapshotLifecycleStatsRequest {
+export interface GetSnapshotLifecycleStatsRequest extends RequestBase {
 }
 
 export interface GetSnapshotLifecycleStatsResponse extends ResponseBase {
@@ -9851,14 +9853,14 @@ export interface GetSnapshotLifecycleStatsResponse extends ResponseBase {
   total_snapshots_taken?: long
 }
 
-export interface GetSnapshotLifecycleManagementStatusRequest {
+export interface GetSnapshotLifecycleManagementStatusRequest extends RequestBase {
 }
 
 export interface GetSnapshotLifecycleManagementStatusResponse extends ResponseBase {
   operation_mode?: LifecycleOperationMode
 }
 
-export interface PutSnapshotLifecycleRequest {
+export interface PutSnapshotLifecycleRequest extends RequestBase {
   policy_id: Id
   body?: {
     config?: SnapshotLifecycleConfig
@@ -9872,13 +9874,13 @@ export interface PutSnapshotLifecycleRequest {
 export interface PutSnapshotLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartSnapshotLifecycleManagementRequest {
+export interface StartSnapshotLifecycleManagementRequest extends RequestBase {
 }
 
 export interface StartSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
 }
 
-export interface StopSnapshotLifecycleManagementRequest {
+export interface StopSnapshotLifecycleManagementRequest extends RequestBase {
 }
 
 export interface StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
@@ -9891,7 +9893,7 @@ export interface SqlRequest {
   time_zone?: string
 }
 
-export interface ClearSqlCursorRequest {
+export interface ClearSqlCursorRequest extends RequestBase {
   body?: {
     cursor?: string
   }
@@ -9901,7 +9903,7 @@ export interface ClearSqlCursorResponse extends ResponseBase {
   succeeded?: boolean
 }
 
-export interface QuerySqlRequest {
+export interface QuerySqlRequest extends RequestBase {
   format?: string
   body?: {
     columnar?: boolean
@@ -9928,7 +9930,7 @@ export interface SqlColumn {
 export interface SqlValue extends LazyDocument {
 }
 
-export interface TranslateSqlRequest {
+export interface TranslateSqlRequest extends RequestBase {
   body?: {
     fetch_size?: integer
     filter?: QueryContainer
@@ -9951,7 +9953,7 @@ export interface ClusterCertificateInformation {
   subject_dn?: string
 }
 
-export interface GetCertificatesRequest {
+export interface GetCertificatesRequest extends RequestBase {
 }
 
 export interface GetCertificatesResponse extends ResponseBase {
@@ -9980,7 +9982,7 @@ export interface TransformTimeSync {
   field?: Field
 }
 
-export interface DeleteTransformRequest {
+export interface DeleteTransformRequest extends RequestBase {
   transform_id: Id
   force?: boolean
 }
@@ -9988,7 +9990,7 @@ export interface DeleteTransformRequest {
 export interface DeleteTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface GetTransformRequest {
+export interface GetTransformRequest extends RequestBase {
   transform_id?: Id
   allow_no_match?: boolean
   from?: integer
@@ -10000,7 +10002,7 @@ export interface GetTransformResponse extends ResponseBase {
   transforms?: Transform[]
 }
 
-export interface GetTransformStatsRequest {
+export interface GetTransformStatsRequest extends RequestBase {
   transform_id: Id
   allow_no_match?: boolean
   from?: long
@@ -10083,7 +10085,7 @@ export interface TransformPivot {
   max_page_search_size?: integer
 }
 
-export interface PreviewTransformRequest {
+export interface PreviewTransformRequest extends RequestBase {
   body?: {
     description?: string
     dest?: TransformDestination
@@ -10099,7 +10101,7 @@ export interface PreviewTransformResponse<TTransform> extends ResponseBase {
   preview?: TTransform[]
 }
 
-export interface PutTransformRequest {
+export interface PutTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
   body?: {
@@ -10115,7 +10117,7 @@ export interface PutTransformRequest {
 export interface PutTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartTransformRequest {
+export interface StartTransformRequest extends RequestBase {
   transform_id: Id
   timeout?: Time
 }
@@ -10123,7 +10125,7 @@ export interface StartTransformRequest {
 export interface StartTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface StopTransformRequest {
+export interface StopTransformRequest extends RequestBase {
   transform_id: Id
   allow_no_match?: boolean
   force?: boolean
@@ -10135,7 +10137,7 @@ export interface StopTransformRequest {
 export interface StopTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface UpdateTransformRequest {
+export interface UpdateTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
   body?: {
@@ -10176,7 +10178,7 @@ export interface AcknowledgeState {
   timestamp?: Date
 }
 
-export interface AcknowledgeWatchRequest {
+export interface AcknowledgeWatchRequest extends RequestBase {
   watch_id: Id
   action_id?: ActionIds
 }
@@ -10285,7 +10287,7 @@ export interface SlackMessage {
   to?: string[]
 }
 
-export interface ActivateWatchRequest {
+export interface ActivateWatchRequest extends RequestBase {
   watch_id: Id
 }
 
@@ -10334,7 +10336,7 @@ export interface ScriptCondition {
   params?: Record<string, object>
 }
 
-export interface DeactivateWatchRequest {
+export interface DeactivateWatchRequest extends RequestBase {
   watch_id: Id
 }
 
@@ -10342,7 +10344,7 @@ export interface DeactivateWatchResponse extends ResponseBase {
   status?: ActivationStatus
 }
 
-export interface DeleteWatchRequest {
+export interface DeleteWatchRequest extends RequestBase {
   id: Id
 }
 
@@ -10352,7 +10354,7 @@ export interface DeleteWatchResponse extends ResponseBase {
   _version?: integer
 }
 
-export interface ExecuteWatchRequest {
+export interface ExecuteWatchRequest extends RequestBase {
   id?: Id
   debug?: boolean
   body?: {
@@ -10504,7 +10506,7 @@ export interface WebhookActionResult {
   response?: HttpInputResponseResult
 }
 
-export interface GetWatchRequest {
+export interface GetWatchRequest extends RequestBase {
   id: Id
 }
 
@@ -10589,7 +10591,7 @@ export interface SimpleInput {
   payload?: Record<string, object>
 }
 
-export interface PutWatchRequest {
+export interface PutWatchRequest extends RequestBase {
   id: Id
   active?: boolean
   if_primary_term?: long
@@ -10675,13 +10677,13 @@ export interface TimeOfYear {
   on?: integer[]
 }
 
-export interface StartWatcherRequest {
+export interface StartWatcherRequest extends RequestBase {
 }
 
 export interface StartWatcherResponse extends AcknowledgedResponseBase {
 }
 
-export interface StopWatcherRequest {
+export interface StopWatcherRequest extends RequestBase {
 }
 
 export interface StopWatcherResponse extends AcknowledgedResponseBase {
@@ -10745,7 +10747,7 @@ export interface WatcherNodeStats {
   watcher_state?: WatcherState
 }
 
-export interface WatcherStatsRequest {
+export interface WatcherStatsRequest extends RequestBase {
   metric?: Metrics
   emit_stacktraces?: boolean
 }
@@ -10756,1447 +10758,374 @@ export interface WatcherStatsResponse extends ResponseBase {
   stats?: WatcherNodeStats[]
 }
 
-export enum MinimumInterval {
-  second = "second",
-  minute = "minute",
-  hour = "hour",
-  day = "day",
-  month = "month",
-  year = "year",
-}
-
-export enum DateInterval {
-  second = "second",
-  minute = "minute",
-  hour = "hour",
-  day = "day",
-  week = "week",
-  month = "month",
-  quarter = "quarter",
-  year = "year",
-}
-
-export enum GeoHashPrecision {
-  Precision1 = "Precision1",
-  Precision2 = "Precision2",
-  Precision3 = "Precision3",
-  Precision4 = "Precision4",
-  Precision5 = "Precision5",
-  Precision6 = "Precision6",
-  Precision7 = "Precision7",
-  Precision8 = "Precision8",
-  Precision9 = "Precision9",
-  Precision10 = "Precision10",
-  Precision11 = "Precision11",
-  Precision12 = "Precision12",
-}
-
-export enum GeoTilePrecision {
-  Precision0 = "Precision0",
-  Precision1 = "Precision1",
-  Precision2 = "Precision2",
-  Precision3 = "Precision3",
-  Precision4 = "Precision4",
-  Precision5 = "Precision5",
-  Precision6 = "Precision6",
-  Precision7 = "Precision7",
-  Precision8 = "Precision8",
-  Precision9 = "Precision9",
-  Precision10 = "Precision10",
-  Precision11 = "Precision11",
-  Precision12 = "Precision12",
-  Precision13 = "Precision13",
-  Precision14 = "Precision14",
-  Precision15 = "Precision15",
-  Precision16 = "Precision16",
-  Precision17 = "Precision17",
-  Precision18 = "Precision18",
-  Precision19 = "Precision19",
-  Precision20 = "Precision20",
-  Precision21 = "Precision21",
-  Precision22 = "Precision22",
-  Precision23 = "Precision23",
-  Precision24 = "Precision24",
-  Precision25 = "Precision25",
-  Precision26 = "Precision26",
-  Precision27 = "Precision27",
-  Precision28 = "Precision28",
-  Precision29 = "Precision29",
-}
-
-export enum SamplerAggregationExecutionHint {
-  map = "map",
-  global_ordinals = "global_ordinals",
-  bytes_hash = "bytes_hash",
-}
-
-export enum TermsAggregationCollectMode {
-  depth_first = "depth_first",
-  breadth_first = "breadth_first",
-}
-
-export enum TermsAggregationExecutionHint {
-  map = "map",
-  global_ordinals = "global_ordinals",
-  global_ordinals_hash = "global_ordinals_hash",
-  global_ordinals_low_cardinality = "global_ordinals_low_cardinality",
-}
-
-export enum MatrixStatsMode {
-  avg = "avg",
-  min = "min",
-  max = "max",
-  sum = "sum",
-  median = "median",
-}
-
-export enum ValueType {
-  string = "string",
-  long = "long",
-  double = "double",
-  number = "number",
-  date = "date",
-  date_nanos = "date_nanos",
-  ip = "ip",
-  numeric = "numeric",
-  geo_point = "geo_point",
-  boolean = "boolean",
-}
-
-export enum GapPolicy {
-  skip = "skip",
-  insert_zeros = "insert_zeros",
-}
-
-export enum HoltWintersType {
-  add = "add",
-  mult = "mult",
-}
-
-export enum AggregationVisitorScope {
-  Unknown = "Unknown",
-  Aggregation = "Aggregation",
-  Bucket = "Bucket",
-}
-
-export enum Language {
-  Arabic = "Arabic",
-  Armenian = "Armenian",
-  Basque = "Basque",
-  Brazilian = "Brazilian",
-  Bulgarian = "Bulgarian",
-  Catalan = "Catalan",
-  Chinese = "Chinese",
-  Cjk = "Cjk",
-  Czech = "Czech",
-  Danish = "Danish",
-  Dutch = "Dutch",
-  English = "English",
-  Estonian = "Estonian",
-  Finnish = "Finnish",
-  French = "French",
-  Galician = "Galician",
-  German = "German",
-  Greek = "Greek",
-  Hindi = "Hindi",
-  Hungarian = "Hungarian",
-  Indonesian = "Indonesian",
-  Irish = "Irish",
-  Italian = "Italian",
-  Latvian = "Latvian",
-  Norwegian = "Norwegian",
-  Persian = "Persian",
-  Portuguese = "Portuguese",
-  Romanian = "Romanian",
-  Russian = "Russian",
-  Sorani = "Sorani",
-  Spanish = "Spanish",
-  Swedish = "Swedish",
-  Turkish = "Turkish",
-  Thai = "Thai",
-}
-
-export enum SnowballLanguage {
-  Armenian = "Armenian",
-  Basque = "Basque",
-  Catalan = "Catalan",
-  Danish = "Danish",
-  Dutch = "Dutch",
-  English = "English",
-  Finnish = "Finnish",
-  French = "French",
-  German = "German",
-  German2 = "German2",
-  Hungarian = "Hungarian",
-  Italian = "Italian",
-  Kp = "Kp",
-  Lovins = "Lovins",
-  Norwegian = "Norwegian",
-  Porter = "Porter",
-  Portuguese = "Portuguese",
-  Romanian = "Romanian",
-  Russian = "Russian",
-  Spanish = "Spanish",
-  Swedish = "Swedish",
-  Turkish = "Turkish",
-}
-
-export enum IcuCollationAlternate {
-  shifted = "shifted",
-  "non-ignorable" = "non-ignorable",
-}
-
-export enum IcuCollationCaseFirst {
-  lower = "lower",
-  upper = "upper",
-}
-
-export enum IcuCollationDecomposition {
-  no = "no",
-  identical = "identical",
-}
-
-export enum IcuCollationStrength {
-  primary = "primary",
-  secondary = "secondary",
-  tertiary = "tertiary",
-  quaternary = "quaternary",
-  identical = "identical",
-}
-
-export enum IcuNormalizationMode {
-  decompose = "decompose",
-  compose = "compose",
-}
-
-export enum IcuNormalizationType {
-  nfc = "nfc",
-  nfkc = "nfkc",
-  nfkc_cf = "nfkc_cf",
-}
-
-export enum IcuTransformDirection {
-  forward = "forward",
-  reverse = "reverse",
-}
-
-export enum KuromojiTokenizationMode {
-  normal = "normal",
-  search = "search",
-  extended = "extended",
-}
-
-export enum PhoneticEncoder {
-  metaphone = "metaphone",
-  double_metaphone = "double_metaphone",
-  soundex = "soundex",
-  refined_soundex = "refined_soundex",
-  caverphone1 = "caverphone1",
-  caverphone2 = "caverphone2",
-  cologne = "cologne",
-  nysiis = "nysiis",
-  koelnerphonetik = "koelnerphonetik",
-  haasephonetik = "haasephonetik",
-  beider_morse = "beider_morse",
-  daitch_mokotoff = "daitch_mokotoff",
-}
-
-export enum PhoneticLanguage {
-  any = "any",
-  comomon = "comomon",
-  cyrillic = "cyrillic",
-  english = "english",
-  french = "french",
-  german = "german",
-  hebrew = "hebrew",
-  hungarian = "hungarian",
-  polish = "polish",
-  romanian = "romanian",
-  russian = "russian",
-  spanish = "spanish",
-}
-
-export enum PhoneticNameType {
-  generic = "generic",
-  ashkenazi = "ashkenazi",
-  sephardic = "sephardic",
-}
-
-export enum PhoneticRuleType {
-  approx = "approx",
-  exact = "exact",
-}
-
-export enum KeepTypesMode {
-  include = "include",
-  exclude = "exclude",
-}
-
-export enum DelimitedPayloadEncoding {
-  int = "int",
-  float = "float",
-  identity = "identity",
-}
-
-export enum EdgeNGramSide {
-  front = "front",
-  back = "back",
-}
-
-export enum SynonymFormat {
-  solr = "solr",
-  wordnet = "wordnet",
-}
-
-export enum NoriDecompoundMode {
-  discard = "discard",
-  none = "none",
-  mixed = "mixed",
-}
-
-export enum TokenChar {
-  letter = "letter",
-  digit = "digit",
-  whitespace = "whitespace",
-  punctuation = "punctuation",
-  symbol = "symbol",
-  custom = "custom",
-}
-
-export enum ModelCategorizationStatus {
-  ok = "ok",
-  warn = "warn",
-}
-
-export enum ModelMemoryStatus {
-  ok = "ok",
-  soft_limit = "soft_limit",
-  hard_limit = "hard_limit",
-}
-
-export enum TransformState {
-  STARTED = "STARTED",
-  INDEXING = "INDEXING",
-  ABORTING = "ABORTING",
-  STOPPING = "STOPPING",
-  STOPPED = "STOPPED",
-  FAILED = "FAILED",
-}
-
-export enum TransformType {
-  batch = "batch",
-  continuous = "continuous",
-}
-
-export enum ClusterStatus {
-  green = "green",
-  yellow = "yellow",
-  red = "red",
-}
-
-export enum AllocationExplainDecision {
-  NO = "NO",
-  YES = "YES",
-  THROTTLE = "THROTTLE",
-  ALWAYS = "ALWAYS",
-}
-
-export enum Decision {
-  yes = "yes",
-  no = "no",
-  worse_balance = "worse_balance",
-  throttled = "throttled",
-  awaiting_info = "awaiting_info",
-  allocation_delayed = "allocation_delayed",
-  no_valid_shard_copy = "no_valid_shard_copy",
-  no_attempt = "no_attempt",
-}
-
-export enum StoreCopy {
-  NONE = "NONE",
-  AVAILABLE = "AVAILABLE",
-  CORRUPT = "CORRUPT",
-  IO_ERROR = "IO_ERROR",
-  STALE = "STALE",
-  UNKNOWN = "UNKNOWN",
-}
-
-export enum UnassignedInformationReason {
-  INDEX_CREATED = "INDEX_CREATED",
-  CLUSTER_RECOVERED = "CLUSTER_RECOVERED",
-  INDEX_REOPENED = "INDEX_REOPENED",
-  DANGLING_INDEX_IMPORTED = "DANGLING_INDEX_IMPORTED",
-  NEW_INDEX_RESTORED = "NEW_INDEX_RESTORED",
-  EXISTING_INDEX_RESTORED = "EXISTING_INDEX_RESTORED",
-  REPLICA_ADDED = "REPLICA_ADDED",
-  ALLOCATION_FAILED = "ALLOCATION_FAILED",
-  NODE_LEFT = "NODE_LEFT",
-  REROUTE_CANCELLED = "REROUTE_CANCELLED",
-  REINITIALIZED = "REINITIALIZED",
-  REALLOCATED_REPLICA = "REALLOCATED_REPLICA",
-  PRIMARY_FAILED = "PRIMARY_FAILED",
-  FORCED_EMPTY_PRIMARY = "FORCED_EMPTY_PRIMARY",
-  MANUAL_ALLOCATION = "MANUAL_ALLOCATION",
-}
-
-export enum NodeRole {
-  master = "master",
-  data = "data",
-  client = "client",
-  ingest = "ingest",
-  ml = "ml",
-  voting_only = "voting_only",
-  transform = "transform",
-  remote_cluster_client = "remote_cluster_client",
-  coordinating_only = "coordinating_only",
-}
-
-export enum Bytes {
-  b = "b",
-  k = "k",
-  kb = "kb",
-  m = "m",
-  mb = "mb",
-  g = "g",
-  gb = "gb",
-  t = "t",
-  tb = "tb",
-  p = "p",
-  pb = "pb",
-}
-
-export enum Conflicts {
-  abort = "abort",
-  proceed = "proceed",
-}
-
-export enum DefaultOperator {
-  AND = "AND",
-  OR = "OR",
-}
-
-export enum ExpandWildcards {
-  open = "open",
-  closed = "closed",
-  hidden = "hidden",
-  none = "none",
-  all = "all",
-}
-
-export enum GroupBy {
-  nodes = "nodes",
-  parents = "parents",
-  none = "none",
-}
-
-export enum Health {
-  green = "green",
-  yellow = "yellow",
-  red = "red",
-}
-
-export enum HttpMethod {
-  GET = "GET",
-  POST = "POST",
-  PUT = "PUT",
-  DELETE = "DELETE",
-  HEAD = "HEAD",
-}
-
-export enum Level {
-  cluster = "cluster",
-  indices = "indices",
-  shards = "shards",
-}
-
-export enum OpType {
-  index = "index",
-  create = "create",
-}
-
-export enum PipelineFailure {
-  BadAuthentication = "BadAuthentication",
-  BadResponse = "BadResponse",
-  PingFailure = "PingFailure",
-  SniffFailure = "SniffFailure",
-  CouldNotStartSniffOnStartup = "CouldNotStartSniffOnStartup",
-  MaxTimeoutReached = "MaxTimeoutReached",
-  MaxRetriesReached = "MaxRetriesReached",
-  Unexpected = "Unexpected",
-  BadRequest = "BadRequest",
-  NoNodesAttempted = "NoNodesAttempted",
-}
-
-export enum Refresh {
-  true = "true",
-  false = "false",
-  wait_for = "wait_for",
-}
-
-export enum SearchType {
-  query_then_fetch = "query_then_fetch",
-  dfs_query_then_fetch = "dfs_query_then_fetch",
-}
-
-export enum Size {
-  Raw = "Raw",
-  k = "k",
-  m = "m",
-  g = "g",
-  t = "t",
-  p = "p",
-}
-
-export enum SuggestMode {
-  missing = "missing",
-  popular = "popular",
-  always = "always",
-}
-
-export enum ThreadType {
-  cpu = "cpu",
-  wait = "wait",
-  block = "block",
-}
-
-export enum VersionType {
-  internal = "internal",
-  external = "external",
-  external_gte = "external_gte",
-  force = "force",
-}
-
-export enum WaitForEvents {
-  immediate = "immediate",
-  urgent = "urgent",
-  high = "high",
-  normal = "normal",
-  low = "low",
-  languid = "languid",
-}
-
-export enum WaitForStatus {
-  green = "green",
-  yellow = "yellow",
-  red = "red",
-}
-
-export enum DateMathOperation {
-  "+" = "+",
-  "-" = "-",
-}
-
-export enum DateMathTimeUnit {
-  Second = "s",
-  Minute = "m",
-  Hour = "h",
-  Day = "d",
-  Week = "w",
-  Month = "M",
-  Year = "y",
-}
-
-export enum DistanceUnit {
-  in = "in",
-  ft = "ft",
-  yd = "yd",
-  mi = "mi",
-  nmi = "nmi",
-  km = "km",
-  m = "m",
-  cm = "cm",
-  mm = "mm",
-}
-
-export enum GeoDistanceType {
-  arc = "arc",
-  plane = "plane",
-}
-
-export enum GeoShapeRelation {
-  intersects = "intersects",
-  disjoint = "disjoint",
-  within = "within",
-  contains = "contains",
-}
-
-export enum ShapeRelation {
-  intersects = "intersects",
-  disjoint = "disjoint",
-  within = "within",
-}
-
-export enum TimeUnit {
-  nanos = "nanos",
-  micros = "micros",
-  ms = "ms",
-  s = "s",
-  m = "m",
-  h = "h",
-  d = "d",
-}
-
-export enum Result {
-  Error = "Error",
-  created = "created",
-  updated = "updated",
-  deleted = "deleted",
-  not_found = "not_found",
-  noop = "noop",
-}
-
-export enum RecoveryInitialShards {
-  quorem = "quorem",
-  "quorem-1" = "quorem-1",
-  full = "full",
-  "full-1" = "full-1",
-}
-
-export enum LogLevel {
-  error = "error",
-  warn = "warn",
-  info = "info",
-  debug = "debug",
-  trace = "trace",
-}
-
-export enum IndexSortMissing {
-  _first = "_first",
-  _last = "_last",
-}
-
-export enum IndexSortMode {
-  min = "min",
-  max = "max",
-}
-
-export enum IndexSortOrder {
-  asc = "asc",
-  desc = "desc",
-}
-
-export enum FileSystemStorageImplementation {
-  simplefs = "simplefs",
-  niofs = "niofs",
-  mmapfs = "mmapfs",
-  default_fs = "default_fs",
-}
-
-export enum TranslogDurability {
-  request = "request",
-  async = "async",
-}
-
-export enum Normalization {
-  no = "no",
-  h1 = "h1",
-  h2 = "h2",
-  h3 = "h3",
-  z = "z",
-}
-
-export enum DFIIndependenceMeasure {
-  standardized = "standardized",
-  saturated = "saturated",
-  chisquared = "chisquared",
-}
-
-export enum DFRAfterEffect {
-  no = "no",
-  b = "b",
-  l = "l",
-}
-
-export enum DFRBasicModel {
-  be = "be",
-  d = "d",
-  g = "g",
-  if = "if",
-  in = "in",
-  ine = "ine",
-  p = "p",
-}
-
-export enum IBDistribution {
-  ll = "ll",
-  spl = "spl",
-}
-
-export enum IBLambda {
-  df = "df",
-  ttf = "ttf",
-}
-
-export enum ShardStoreAllocation {
-  primary = "primary",
-  replica = "replica",
-  unused = "unused",
-}
-
-export enum ShardRoutingState {
-  UNASSIGNED = "UNASSIGNED",
-  INITIALIZING = "INITIALIZING",
-  STARTED = "STARTED",
-  RELOCATING = "RELOCATING",
-}
-
-export enum ConvertProcessorType {
-  integer = "integer",
-  long = "long",
-  float = "float",
-  double = "double",
-  string = "string",
-  boolean = "boolean",
-  auto = "auto",
-}
-
-export enum DateRounding {
-  s = "s",
-  m = "m",
-  h = "h",
-  d = "d",
-  w = "w",
-  M = "M",
-  y = "y",
-}
-
-export enum ShapeType {
-  geo_shape = "geo_shape",
-  shape = "shape",
-}
-
-export enum UserAgentProperty {
-  NAME = "NAME",
-  MAJOR = "MAJOR",
-  MINOR = "MINOR",
-  PATCH = "PATCH",
-  OS = "OS",
-  OS_NAME = "OS_NAME",
-  OS_MAJOR = "OS_MAJOR",
-  OS_MINOR = "OS_MINOR",
-  DEVICE = "DEVICE",
-  BUILD = "BUILD",
-}
-
-export enum DynamicMapping {
-  strict = "strict",
-}
-
-export enum TermVectorOption {
-  no = "no",
-  yes = "yes",
-  with_offsets = "with_offsets",
-  with_positions = "with_positions",
-  with_positions_offsets = "with_positions_offsets",
-  with_positions_offsets_payloads = "with_positions_offsets_payloads",
-}
-
-export enum MatchType {
-  simple = "simple",
-  regex = "regex",
-}
-
-export enum FieldType {
-  none = "none",
-  geo_point = "geo_point",
-  geo_shape = "geo_shape",
-  ip = "ip",
-  binary = "binary",
-  keyword = "keyword",
-  text = "text",
-  search_as_you_type = "search_as_you_type",
-  date = "date",
-  date_nanos = "date_nanos",
-  boolean = "boolean",
-  completion = "completion",
-  nested = "nested",
-  object = "object",
-  murmur3 = "murmur3",
-  token_count = "token_count",
-  percolator = "percolator",
-  integer = "integer",
-  long = "long",
-  short = "short",
-  byte = "byte",
-  float = "float",
-  half_float = "half_float",
-  scaled_float = "scaled_float",
-  double = "double",
-  integer_range = "integer_range",
-  float_range = "float_range",
-  long_range = "long_range",
-  double_range = "double_range",
-  date_range = "date_range",
-  ip_range = "ip_range",
-  alias = "alias",
-  join = "join",
-  rank_feature = "rank_feature",
-  rank_features = "rank_features",
-  flattened = "flattened",
-  shape = "shape",
-  histogram = "histogram",
-  constant_keyword = "constant_keyword",
-}
-
-export enum NumberType {
-  float = "float",
-  half_float = "half_float",
-  scaled_float = "scaled_float",
-  double = "double",
-  integer = "integer",
-  long = "long",
-  short = "short",
-  byte = "byte",
-}
-
-export enum RangeType {
-  integer_range = "integer_range",
-  float_range = "float_range",
-  long_range = "long_range",
-  double_range = "double_range",
-  date_range = "date_range",
-  ip_range = "ip_range",
-}
-
-export enum IndexOptions {
-  docs = "docs",
-  freqs = "freqs",
-  positions = "positions",
-  offsets = "offsets",
-}
-
-export enum GeoOrientation {
-  ClockWise = "ClockWise",
-  CounterClockWise = "CounterClockWise",
-}
-
-export enum GeoStrategy {
-  recursive = "recursive",
-  term = "term",
-}
-
-export enum GeoTree {
-  geohash = "geohash",
-  quadtree = "quadtree",
-}
-
-export enum ShapeOrientation {
-  ClockWise = "ClockWise",
-  CounterClockWise = "CounterClockWise",
-}
-
-export enum AllocationEnable {
-  all = "all",
-  primaries = "primaries",
-  new_primaries = "new_primaries",
-  none = "none",
-}
-
-export enum AllowRebalance {
-  always = "always",
-  indices_primaries_active = "indices_primaries_active",
-  indices_all_active = "indices_all_active",
-}
-
-export enum RebalanceEnable {
-  all = "all",
-  primaries = "primaries",
-  replicas = "replicas",
-  none = "none",
-}
-
-export enum FielddataLoading {
-  eager = "eager",
-  eager_global_ordinals = "eager_global_ordinals",
-}
-
-export enum GeoPointFielddataFormat {
-  array = "array",
-  doc_values = "doc_values",
-  compressed = "compressed",
-  disabled = "disabled",
-}
-
-export enum NumericFielddataFormat {
-  array = "array",
-  disabled = "disabled",
-}
-
-export enum StringFielddataFormat {
-  paged_bytes = "paged_bytes",
-  disabled = "disabled",
-}
-
-export enum ScriptLang {
-  painless = "painless",
-  expression = "expression",
-  mustache = "mustache",
-}
-
-export enum Operator {
-  and = "and",
-  or = "or",
-}
-
-export enum FunctionBoostMode {
-  multiply = "multiply",
-  replace = "replace",
-  sum = "sum",
-  avg = "avg",
-  max = "max",
-  min = "min",
-}
-
-export enum FunctionScoreMode {
-  multiply = "multiply",
-  sum = "sum",
-  avg = "avg",
-  first = "first",
-  max = "max",
-  min = "min",
-}
-
-export enum MultiValueMode {
-  min = "min",
-  max = "max",
-  avg = "avg",
-  sum = "sum",
-}
-
-export enum FieldValueFactorModifier {
-  none = "none",
-  log = "log",
-  log1p = "log1p",
-  log2p = "log2p",
-  ln = "ln",
-  ln1p = "ln1p",
-  ln2p = "ln2p",
-  square = "square",
-  sqrt = "sqrt",
-  reciprocal = "reciprocal",
-}
-
-export enum TextQueryType {
-  best_fields = "best_fields",
-  most_fields = "most_fields",
-  cross_fields = "cross_fields",
-  phrase = "phrase",
-  phrase_prefix = "phrase_prefix",
-  bool_prefix = "bool_prefix",
-}
-
-export enum ZeroTermsQuery {
-  all = "all",
-  none = "none",
-}
-
-export enum SimpleQueryStringFlags {
-  NONE = "NONE",
-  AND = "AND",
-  OR = "OR",
-  NOT = "NOT",
-  PREFIX = "PREFIX",
-  PHRASE = "PHRASE",
-  PRECEDENCE = "PRECEDENCE",
-  ESCAPE = "ESCAPE",
-  WHITESPACE = "WHITESPACE",
-  FUZZY = "FUZZY",
-  NEAR = "NEAR",
-  SLOP = "SLOP",
-  ALL = "ALL",
-}
-
-export enum GeoValidationMethod {
-  coerce = "coerce",
-  ignore_malformed = "ignore_malformed",
-  strict = "strict",
-}
-
-export enum GeoExecution {
-  memory = "memory",
-  indexed = "indexed",
-}
-
-export enum GeoFormat {
-  GeoJson = "GeoJson",
-  WellKnownText = "WellKnownText",
-}
-
-export enum CharacterType {
-  Whitespace = "Whitespace",
-  Alpha = "Alpha",
-  Comment = "Comment",
-}
-
-export enum TokenType {
-  None = "None",
-  Word = "Word",
-  LParen = "LParen",
-  RParen = "RParen",
-  Comma = "Comma",
-}
-
-export enum ChildScoreMode {
-  none = "none",
-  avg = "avg",
-  sum = "sum",
-  max = "max",
-  min = "min",
-}
-
-export enum NestedScoreMode {
-  avg = "avg",
-  sum = "sum",
-  min = "min",
-  max = "max",
-  none = "none",
-}
-
-export enum RewriteMultiTerm {
-  constant_score = "constant_score",
-  scoring_boolean = "scoring_boolean",
-  constant_score_boolean = "constant_score_boolean",
-  top_terms_N = "top_terms_N",
-  top_terms_boost_N = "top_terms_boost_N",
-  top_terms_blended_freqs_N = "top_terms_blended_freqs_N",
-}
-
-export enum RangeRelation {
-  within = "within",
-  contains = "contains",
-  intersects = "intersects",
-}
-
-export enum VisitorScope {
-  Unknown = "Unknown",
-  Query = "Query",
-  Filter = "Filter",
-  Must = "Must",
-  MustNot = "MustNot",
-  Should = "Should",
-  PositiveQuery = "PositiveQuery",
-  NegativeQuery = "NegativeQuery",
-  Span = "Span",
-}
-
-export enum BoundaryScanner {
-  chars = "chars",
-  sentence = "sentence",
-  word = "word",
-}
-
-export enum HighlighterEncoder {
-  default = "default",
-  html = "html",
-}
-
-export enum HighlighterFragmenter {
-  simple = "simple",
-  span = "span",
-}
-
-export enum HighlighterOrder {
-  score = "score",
-}
-
-export enum HighlighterTagsSchema {
-  styled = "styled",
-}
-
-export enum HighlighterType {
-  plain = "plain",
-  fvh = "fvh",
-  unified = "unified",
-}
-
-export enum TotalHitsRelation {
-  eq = "eq",
-  gte = "gte",
-}
-
-export enum ScoreMode {
-  avg = "avg",
-  max = "max",
-  min = "min",
-  multiply = "multiply",
-  total = "total",
-}
-
-export enum NumericType {
-  long = "long",
-  double = "double",
-  date = "date",
-  date_nanos = "date_nanos",
-}
-
-export enum SortMode {
-  min = "min",
-  max = "max",
-  sum = "sum",
-  avg = "avg",
-  median = "median",
-}
-
-export enum SortOrder {
-  asc = "asc",
-  desc = "desc",
-}
-
-export enum SortSpecialField {
-  _score = "_score",
-  _doc = "_doc",
-}
-
-export enum StringDistance {
-  internal = "internal",
-  damerau_levenshtein = "damerau_levenshtein",
-  levenshtein = "levenshtein",
-  jaro_winkler = "jaro_winkler",
-  ngram = "ngram",
-}
-
-export enum SuggestSort {
-  score = "score",
-  frequency = "frequency",
-}
-
-export enum FollowerIndexStatus {
-  active = "active",
-  paused = "paused",
-}
-
-export enum EnrichPolicyPhase {
-  SCHEDULED = "SCHEDULED",
-  RUNNING = "RUNNING",
-  COMPLETE = "COMPLETE",
-  FAILED = "FAILED",
-}
-
-export enum LifecycleOperationMode {
-  RUNNING = "RUNNING",
-  STOPPING = "STOPPING",
-  STOPPED = "STOPPED",
-}
-
-export enum LicenseStatus {
-  active = "active",
-  valid = "valid",
-  invalid = "invalid",
-  expired = "expired",
-}
-
-export enum LicenseType {
-  missing = "missing",
-  trial = "trial",
-  basic = "basic",
-  standard = "standard",
-  dev = "dev",
-  silver = "silver",
-  gold = "gold",
-  platinum = "platinum",
-  enterprise = "enterprise",
-}
-
-export enum ChunkingMode {
-  auto = "auto",
-  manual = "manual",
-  off = "off",
-}
-
-export enum DatafeedState {
-  started = "started",
-  stopped = "stopped",
-  starting = "starting",
-  stopping = "stopping",
-}
-
-export enum JobState {
-  closing = "closing",
-  closed = "closed",
-  opened = "opened",
-  failed = "failed",
-  opening = "opening",
-}
-
-export enum MemoryStatus {
-  ok = "ok",
-  soft_limit = "soft_limit",
-  hard_limit = "hard_limit",
-}
-
-export enum AppliesTo {
-  actual = "actual",
-  typical = "typical",
-  diff_from_typical = "diff_from_typical",
-  time = "time",
-}
-
-export enum ConditionOperator {
-  gt = "gt",
-  gte = "gte",
-  lt = "lt",
-  lte = "lte",
-}
-
-export enum CountFunction {
-  Count = "Count",
-  HighCount = "HighCount",
-  LowCount = "LowCount",
-}
-
-export enum DistinctCountFunction {
-  DistinctCount = "DistinctCount",
-  LowDistinctCount = "LowDistinctCount",
-  HighDistinctCount = "HighDistinctCount",
-}
-
-export enum GeographicFunction {
-  LatLong = "LatLong",
-}
-
-export enum InfoContentFunction {
-  InfoContent = "InfoContent",
-  HighInfoContent = "HighInfoContent",
-  LowInfoContent = "LowInfoContent",
-}
-
-export enum MetricFunction {
-  Min = "Min",
-  Max = "Max",
-  Median = "Median",
-  HighMedian = "HighMedian",
-  LowMedian = "LowMedian",
-  Mean = "Mean",
-  HighMean = "HighMean",
-  LowMean = "LowMean",
-  Metric = "Metric",
-  Varp = "Varp",
-  HighVarp = "HighVarp",
-  LowVarp = "LowVarp",
-}
-
-export enum NonNullSumFunction {
-  NonNullSum = "NonNullSum",
-  HighNonNullSum = "HighNonNullSum",
-  LowNonNullSum = "LowNonNullSum",
-}
-
-export enum NonZeroCountFunction {
-  NonZeroCount = "NonZeroCount",
-  LowNonZeroCount = "LowNonZeroCount",
-  HighNonZeroCount = "HighNonZeroCount",
-}
-
-export enum RareFunction {
-  Rare = "Rare",
-  FreqRare = "FreqRare",
-}
-
-export enum RuleAction {
-  skip_result = "skip_result",
-  skip_model_update = "skip_model_update",
-}
-
-export enum RuleFilterType {
-  include = "include",
-  exclude = "exclude",
-}
-
-export enum SumFunction {
-  Sum = "Sum",
-  HighSum = "HighSum",
-  LowSum = "LowSum",
-}
-
-export enum TimeFunction {
-  TimeOfDay = "TimeOfDay",
-  TimeOfWeek = "TimeOfWeek",
-}
-
-export enum ExcludeFrequent {
-  all = "all",
-  none = "none",
-  by = "by",
-  over = "over",
-}
-
-export enum DeprecationWarningLevel {
-  none = "none",
-  info = "info",
-  warning = "warning",
-  critical = "critical",
-}
-
-export enum IndexingJobState {
-  started = "started",
-  indexing = "indexing",
-  stopping = "stopping",
-  stopped = "stopped",
-  aborting = "aborting",
-}
-
-export enum RollupMetric {
-  min = "min",
-  max = "max",
-  sum = "sum",
-  avg = "avg",
-  value_count = "value_count",
-}
-
-export enum AccessTokenGrantType {
-  password = "password",
-}
-
-export enum AcknowledgementState {
-  awaits_successful_execution = "awaits_successful_execution",
-  ackable = "ackable",
-  acked = "acked",
-}
-
-export enum ActionType {
-  email = "email",
-  webhook = "webhook",
-  index = "index",
-  logging = "logging",
-  slack = "slack",
-  pagerduty = "pagerduty",
-}
-
-export enum DataAttachmentFormat {
-  json = "json",
-  yaml = "yaml",
-}
-
-export enum EmailPriority {
-  lowest = "lowest",
-  low = "low",
-  normal = "normal",
-  high = "high",
-  highest = "highest",
-}
-
-export enum PagerDutyContextType {
-  link = "link",
-  image = "image",
-}
-
-export enum PagerDutyEventType {
-  trigger = "trigger",
-  resolve = "resolve",
-  acknowledge = "acknowledge",
-}
-
-export enum ConditionType {
-  always = "always",
-  never = "never",
-  script = "script",
-  compare = "compare",
-  array_compare = "array_compare",
-}
-
-export enum Quantifier {
-  some = "some",
-  all = "all",
-}
-
-export enum ActionExecutionState {
-  awaits_execution = "awaits_execution",
-  checking = "checking",
-  execution_not_needed = "execution_not_needed",
-  throttled = "throttled",
-  executed = "executed",
-  failed = "failed",
-  deleted_while_queued = "deleted_while_queued",
-  not_executed_already_queued = "not_executed_already_queued",
-}
-
-export enum ActionExecutionMode {
-  simulate = "simulate",
-  force_simulate = "force_simulate",
-  execute = "execute",
-  force_execute = "force_execute",
-  skip = "skip",
-}
-
-export enum Status {
-  success = "success",
-  failure = "failure",
-  simulated = "simulated",
-  throttled = "throttled",
-}
-
-export enum ConnectionScheme {
-  http = "http",
-  https = "https",
-}
-
-export enum HttpInputMethod {
-  head = "head",
-  get = "get",
-  post = "post",
-  put = "put",
-  delete = "delete",
-}
-
-export enum InputType {
-  http = "http",
-  search = "search",
-  simple = "simple",
-}
-
-export enum ResponseContentType {
-  json = "json",
-  yaml = "yaml",
-  text = "text",
-}
-
-export enum Day {
-  sunday = "sunday",
-  monday = "monday",
-  tuesday = "tuesday",
-  wednesday = "wednesday",
-  thursday = "thursday",
-  friday = "friday",
-  saturday = "saturday",
-}
-
-export enum IntervalUnit {
-  s = "s",
-  m = "m",
-  h = "h",
-  d = "d",
-  w = "w",
-}
-
-export enum Month {
-  january = "january",
-  february = "february",
-  march = "march",
-  april = "april",
-  may = "may",
-  june = "june",
-  july = "july",
-  august = "august",
-  september = "september",
-  october = "october",
-  november = "november",
-  december = "december",
-}
-
-export enum ExecutionPhase {
-  awaits_execution = "awaits_execution",
-  started = "started",
-  input = "input",
-  condition = "condition",
-  actions = "actions",
-  watch_transform = "watch_transform",
-  aborted = "aborted",
-  finished = "finished",
-}
-
-export enum WatcherState {
-  stopped = "stopped",
-  starting = "starting",
-  started = "started",
-  stopping = "stopping",
-}
+export type MinimumInterval = "second" | "minute" | "hour" | "day" | "month" | "year"
+
+export type DateInterval = "second" | "minute" | "hour" | "day" | "week" | "month" | "quarter" | "year"
+
+export type GeoHashPrecision = "Precision1" | "Precision2" | "Precision3" | "Precision4" | "Precision5" | "Precision6" | "Precision7" | "Precision8" | "Precision9" | "Precision10" | "Precision11" | "Precision12"
+
+export type GeoTilePrecision = "Precision0" | "Precision1" | "Precision2" | "Precision3" | "Precision4" | "Precision5" | "Precision6" | "Precision7" | "Precision8" | "Precision9" | "Precision10" | "Precision11" | "Precision12" | "Precision13" | "Precision14" | "Precision15" | "Precision16" | "Precision17" | "Precision18" | "Precision19" | "Precision20" | "Precision21" | "Precision22" | "Precision23" | "Precision24" | "Precision25" | "Precision26" | "Precision27" | "Precision28" | "Precision29"
+
+export type SamplerAggregationExecutionHint = "map" | "global_ordinals" | "bytes_hash"
+
+export type TermsAggregationCollectMode = "depth_first" | "breadth_first"
+
+export type TermsAggregationExecutionHint = "map" | "global_ordinals" | "global_ordinals_hash" | "global_ordinals_low_cardinality"
+
+export type MatrixStatsMode = "avg" | "min" | "max" | "sum" | "median"
+
+export type ValueType = "string" | "long" | "double" | "number" | "date" | "date_nanos" | "ip" | "numeric" | "geo_point" | "boolean"
+
+export type GapPolicy = "skip" | "insert_zeros"
+
+export type HoltWintersType = "add" | "mult"
+
+export type AggregationVisitorScope = "Unknown" | "Aggregation" | "Bucket"
+
+export type Language = "Arabic" | "Armenian" | "Basque" | "Brazilian" | "Bulgarian" | "Catalan" | "Chinese" | "Cjk" | "Czech" | "Danish" | "Dutch" | "English" | "Estonian" | "Finnish" | "French" | "Galician" | "German" | "Greek" | "Hindi" | "Hungarian" | "Indonesian" | "Irish" | "Italian" | "Latvian" | "Norwegian" | "Persian" | "Portuguese" | "Romanian" | "Russian" | "Sorani" | "Spanish" | "Swedish" | "Turkish" | "Thai"
+
+export type SnowballLanguage = "Armenian" | "Basque" | "Catalan" | "Danish" | "Dutch" | "English" | "Finnish" | "French" | "German" | "German2" | "Hungarian" | "Italian" | "Kp" | "Lovins" | "Norwegian" | "Porter" | "Portuguese" | "Romanian" | "Russian" | "Spanish" | "Swedish" | "Turkish"
+
+export type IcuCollationAlternate = "shifted" | "non-ignorable"
+
+export type IcuCollationCaseFirst = "lower" | "upper"
+
+export type IcuCollationDecomposition = "no" | "identical"
+
+export type IcuCollationStrength = "primary" | "secondary" | "tertiary" | "quaternary" | "identical"
+
+export type IcuNormalizationMode = "decompose" | "compose"
+
+export type IcuNormalizationType = "nfc" | "nfkc" | "nfkc_cf"
+
+export type IcuTransformDirection = "forward" | "reverse"
+
+export type KuromojiTokenizationMode = "normal" | "search" | "extended"
+
+export type PhoneticEncoder = "metaphone" | "double_metaphone" | "soundex" | "refined_soundex" | "caverphone1" | "caverphone2" | "cologne" | "nysiis" | "koelnerphonetik" | "haasephonetik" | "beider_morse" | "daitch_mokotoff"
+
+export type PhoneticLanguage = "any" | "comomon" | "cyrillic" | "english" | "french" | "german" | "hebrew" | "hungarian" | "polish" | "romanian" | "russian" | "spanish"
+
+export type PhoneticNameType = "generic" | "ashkenazi" | "sephardic"
+
+export type PhoneticRuleType = "approx" | "exact"
+
+export type KeepTypesMode = "include" | "exclude"
+
+export type DelimitedPayloadEncoding = "int" | "float" | "identity"
+
+export type EdgeNGramSide = "front" | "back"
+
+export type SynonymFormat = "solr" | "wordnet"
+
+export type NoriDecompoundMode = "discard" | "none" | "mixed"
+
+export type TokenChar = "letter" | "digit" | "whitespace" | "punctuation" | "symbol" | "custom"
+
+export type ModelCategorizationStatus = "ok" | "warn"
+
+export type ModelMemoryStatus = "ok" | "soft_limit" | "hard_limit"
+
+export type TransformState = "STARTED" | "INDEXING" | "ABORTING" | "STOPPING" | "STOPPED" | "FAILED"
+
+export type TransformType = "batch" | "continuous"
+
+export type ClusterStatus = "green" | "yellow" | "red"
+
+export type AllocationExplainDecision = "NO" | "YES" | "THROTTLE" | "ALWAYS"
+
+export type Decision = "yes" | "no" | "worse_balance" | "throttled" | "awaiting_info" | "allocation_delayed" | "no_valid_shard_copy" | "no_attempt"
+
+export type StoreCopy = "NONE" | "AVAILABLE" | "CORRUPT" | "IO_ERROR" | "STALE" | "UNKNOWN"
+
+export type UnassignedInformationReason = "INDEX_CREATED" | "CLUSTER_RECOVERED" | "INDEX_REOPENED" | "DANGLING_INDEX_IMPORTED" | "NEW_INDEX_RESTORED" | "EXISTING_INDEX_RESTORED" | "REPLICA_ADDED" | "ALLOCATION_FAILED" | "NODE_LEFT" | "REROUTE_CANCELLED" | "REINITIALIZED" | "REALLOCATED_REPLICA" | "PRIMARY_FAILED" | "FORCED_EMPTY_PRIMARY" | "MANUAL_ALLOCATION"
+
+export type NodeRole = "master" | "data" | "client" | "ingest" | "ml" | "voting_only" | "transform" | "remote_cluster_client" | "coordinating_only"
+
+export type Bytes = "b" | "k" | "kb" | "m" | "mb" | "g" | "gb" | "t" | "tb" | "p" | "pb"
+
+export type Conflicts = "abort" | "proceed"
+
+export type DefaultOperator = "AND" | "OR"
+
+export type ExpandWildcards = "open" | "closed" | "hidden" | "none" | "all"
+
+export type GroupBy = "nodes" | "parents" | "none"
+
+export type Health = "green" | "yellow" | "red"
+
+export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "HEAD"
+
+export type Level = "cluster" | "indices" | "shards"
+
+export type OpType = "index" | "create"
+
+export type PipelineFailure = "BadAuthentication" | "BadResponse" | "PingFailure" | "SniffFailure" | "CouldNotStartSniffOnStartup" | "MaxTimeoutReached" | "MaxRetriesReached" | "Unexpected" | "BadRequest" | "NoNodesAttempted"
+
+export type Refresh = true | false | "wait_for"
+
+export type SearchType = "query_then_fetch" | "dfs_query_then_fetch"
+
+export type Size = "Raw" | "k" | "m" | "g" | "t" | "p"
+
+export type SuggestMode = "missing" | "popular" | "always"
+
+export type ThreadType = "cpu" | "wait" | "block"
+
+export type VersionType = "internal" | "external" | "external_gte" | "force"
+
+export type WaitForEvents = "immediate" | "urgent" | "high" | "normal" | "low" | "languid"
+
+export type WaitForStatus = "green" | "yellow" | "red"
+
+export type DateMathOperation = "+" | "-"
+
+export type DateMathTimeUnit = "s" | "m" | "h" | "d" | "w" | "M" | "y"
+
+export type DistanceUnit = "in" | "ft" | "yd" | "mi" | "nmi" | "km" | "m" | "cm" | "mm"
+
+export type GeoDistanceType = "arc" | "plane"
+
+export type GeoShapeRelation = "intersects" | "disjoint" | "within" | "contains"
+
+export type ShapeRelation = "intersects" | "disjoint" | "within"
+
+export type TimeUnit = "nanos" | "micros" | "ms" | "s" | "m" | "h" | "d"
+
+export type Result = "Error" | "created" | "updated" | "deleted" | "not_found" | "noop"
+
+export type RecoveryInitialShards = "quorem" | "quorem-1" | "full" | "full-1"
+
+export type LogLevel = "error" | "warn" | "info" | "debug" | "trace"
+
+export type IndexSortMissing = "_first" | "_last"
+
+export type IndexSortMode = "min" | "max"
+
+export type IndexSortOrder = "asc" | "desc"
+
+export type FileSystemStorageImplementation = "simplefs" | "niofs" | "mmapfs" | "default_fs"
+
+export type TranslogDurability = "request" | "async"
+
+export type Normalization = "no" | "h1" | "h2" | "h3" | "z"
+
+export type DFIIndependenceMeasure = "standardized" | "saturated" | "chisquared"
+
+export type DFRAfterEffect = "no" | "b" | "l"
+
+export type DFRBasicModel = "be" | "d" | "g" | "if" | "in" | "ine" | "p"
+
+export type IBDistribution = "ll" | "spl"
+
+export type IBLambda = "df" | "ttf"
+
+export type ShardStoreAllocation = "primary" | "replica" | "unused"
+
+export type ShardRoutingState = "UNASSIGNED" | "INITIALIZING" | "STARTED" | "RELOCATING"
+
+export type ConvertProcessorType = "integer" | "long" | "float" | "double" | "string" | "boolean" | "auto"
+
+export type DateRounding = "s" | "m" | "h" | "d" | "w" | "M" | "y"
+
+export type ShapeType = "geo_shape" | "shape"
+
+export type UserAgentProperty = "NAME" | "MAJOR" | "MINOR" | "PATCH" | "OS" | "OS_NAME" | "OS_MAJOR" | "OS_MINOR" | "DEVICE" | "BUILD"
+
+export type DynamicMapping = "strict"
+
+export type TermVectorOption = "no" | "yes" | "with_offsets" | "with_positions" | "with_positions_offsets" | "with_positions_offsets_payloads"
+
+export type MatchType = "simple" | "regex"
+
+export type FieldType = "none" | "geo_point" | "geo_shape" | "ip" | "binary" | "keyword" | "text" | "search_as_you_type" | "date" | "date_nanos" | "boolean" | "completion" | "nested" | "object" | "murmur3" | "token_count" | "percolator" | "integer" | "long" | "short" | "byte" | "float" | "half_float" | "scaled_float" | "double" | "integer_range" | "float_range" | "long_range" | "double_range" | "date_range" | "ip_range" | "alias" | "join" | "rank_feature" | "rank_features" | "flattened" | "shape" | "histogram" | "constant_keyword"
+
+export type NumberType = "float" | "half_float" | "scaled_float" | "double" | "integer" | "long" | "short" | "byte"
+
+export type RangeType = "integer_range" | "float_range" | "long_range" | "double_range" | "date_range" | "ip_range"
+
+export type IndexOptions = "docs" | "freqs" | "positions" | "offsets"
+
+export type GeoOrientation = "ClockWise" | "CounterClockWise"
+
+export type GeoStrategy = "recursive" | "term"
+
+export type GeoTree = "geohash" | "quadtree"
+
+export type ShapeOrientation = "ClockWise" | "CounterClockWise"
+
+export type AllocationEnable = "all" | "primaries" | "new_primaries" | "none"
+
+export type AllowRebalance = "always" | "indices_primaries_active" | "indices_all_active"
+
+export type RebalanceEnable = "all" | "primaries" | "replicas" | "none"
+
+export type FielddataLoading = "eager" | "eager_global_ordinals"
+
+export type GeoPointFielddataFormat = "array" | "doc_values" | "compressed" | "disabled"
+
+export type NumericFielddataFormat = "array" | "disabled"
+
+export type StringFielddataFormat = "paged_bytes" | "disabled"
+
+export type ScriptLang = "painless" | "expression" | "mustache"
+
+export type Operator = "and" | "or"
+
+export type FunctionBoostMode = "multiply" | "replace" | "sum" | "avg" | "max" | "min"
+
+export type FunctionScoreMode = "multiply" | "sum" | "avg" | "first" | "max" | "min"
+
+export type MultiValueMode = "min" | "max" | "avg" | "sum"
+
+export type FieldValueFactorModifier = "none" | "log" | "log1p" | "log2p" | "ln" | "ln1p" | "ln2p" | "square" | "sqrt" | "reciprocal"
+
+export type TextQueryType = "best_fields" | "most_fields" | "cross_fields" | "phrase" | "phrase_prefix" | "bool_prefix"
+
+export type ZeroTermsQuery = "all" | "none"
+
+export type SimpleQueryStringFlags = "NONE" | "AND" | "OR" | "NOT" | "PREFIX" | "PHRASE" | "PRECEDENCE" | "ESCAPE" | "WHITESPACE" | "FUZZY" | "NEAR" | "SLOP" | "ALL"
+
+export type GeoValidationMethod = "coerce" | "ignore_malformed" | "strict"
+
+export type GeoExecution = "memory" | "indexed"
+
+export type GeoFormat = "GeoJson" | "WellKnownText"
+
+export type CharacterType = "Whitespace" | "Alpha" | "Comment"
+
+export type TokenType = "None" | "Word" | "LParen" | "RParen" | "Comma"
+
+export type ChildScoreMode = "none" | "avg" | "sum" | "max" | "min"
+
+export type NestedScoreMode = "avg" | "sum" | "min" | "max" | "none"
+
+export type RewriteMultiTerm = "constant_score" | "scoring_boolean" | "constant_score_boolean" | "top_terms_N" | "top_terms_boost_N" | "top_terms_blended_freqs_N"
+
+export type RangeRelation = "within" | "contains" | "intersects"
+
+export type VisitorScope = "Unknown" | "Query" | "Filter" | "Must" | "MustNot" | "Should" | "PositiveQuery" | "NegativeQuery" | "Span"
+
+export type BoundaryScanner = "chars" | "sentence" | "word"
+
+export type HighlighterEncoder = "default" | "html"
+
+export type HighlighterFragmenter = "simple" | "span"
+
+export type HighlighterOrder = "score"
+
+export type HighlighterTagsSchema = "styled"
+
+export type HighlighterType = "plain" | "fvh" | "unified"
+
+export type TotalHitsRelation = "eq" | "gte"
+
+export type ScoreMode = "avg" | "max" | "min" | "multiply" | "total"
+
+export type NumericType = "long" | "double" | "date" | "date_nanos"
+
+export type SortMode = "min" | "max" | "sum" | "avg" | "median"
+
+export type SortOrder = "asc" | "desc"
+
+export type SortSpecialField = "_score" | "_doc"
+
+export type StringDistance = "internal" | "damerau_levenshtein" | "levenshtein" | "jaro_winkler" | "ngram"
+
+export type SuggestSort = "score" | "frequency"
+
+export type FollowerIndexStatus = "active" | "paused"
+
+export type EnrichPolicyPhase = "SCHEDULED" | "RUNNING" | "COMPLETE" | "FAILED"
+
+export type LifecycleOperationMode = "RUNNING" | "STOPPING" | "STOPPED"
+
+export type LicenseStatus = "active" | "valid" | "invalid" | "expired"
+
+export type LicenseType = "missing" | "trial" | "basic" | "standard" | "dev" | "silver" | "gold" | "platinum" | "enterprise"
+
+export type ChunkingMode = "auto" | "manual" | "off"
+
+export type DatafeedState = "started" | "stopped" | "starting" | "stopping"
+
+export type JobState = "closing" | "closed" | "opened" | "failed" | "opening"
+
+export type MemoryStatus = "ok" | "soft_limit" | "hard_limit"
+
+export type AppliesTo = "actual" | "typical" | "diff_from_typical" | "time"
+
+export type ConditionOperator = "gt" | "gte" | "lt" | "lte"
+
+export type CountFunction = "Count" | "HighCount" | "LowCount"
+
+export type DistinctCountFunction = "DistinctCount" | "LowDistinctCount" | "HighDistinctCount"
+
+export type GeographicFunction = "LatLong"
+
+export type InfoContentFunction = "InfoContent" | "HighInfoContent" | "LowInfoContent"
+
+export type MetricFunction = "Min" | "Max" | "Median" | "HighMedian" | "LowMedian" | "Mean" | "HighMean" | "LowMean" | "Metric" | "Varp" | "HighVarp" | "LowVarp"
+
+export type NonNullSumFunction = "NonNullSum" | "HighNonNullSum" | "LowNonNullSum"
+
+export type NonZeroCountFunction = "NonZeroCount" | "LowNonZeroCount" | "HighNonZeroCount"
+
+export type RareFunction = "Rare" | "FreqRare"
+
+export type RuleAction = "skip_result" | "skip_model_update"
+
+export type RuleFilterType = "include" | "exclude"
+
+export type SumFunction = "Sum" | "HighSum" | "LowSum"
+
+export type TimeFunction = "TimeOfDay" | "TimeOfWeek"
+
+export type ExcludeFrequent = "all" | "none" | "by" | "over"
+
+export type DeprecationWarningLevel = "none" | "info" | "warning" | "critical"
+
+export type IndexingJobState = "started" | "indexing" | "stopping" | "stopped" | "aborting"
+
+export type RollupMetric = "min" | "max" | "sum" | "avg" | "value_count"
+
+export type AccessTokenGrantType = "password"
+
+export type AcknowledgementState = "awaits_successful_execution" | "ackable" | "acked"
+
+export type ActionType = "email" | "webhook" | "index" | "logging" | "slack" | "pagerduty"
+
+export type DataAttachmentFormat = "json" | "yaml"
+
+export type EmailPriority = "lowest" | "low" | "normal" | "high" | "highest"
+
+export type PagerDutyContextType = "link" | "image"
+
+export type PagerDutyEventType = "trigger" | "resolve" | "acknowledge"
+
+export type ConditionType = "always" | "never" | "script" | "compare" | "array_compare"
+
+export type Quantifier = "some" | "all"
+
+export type ActionExecutionState = "awaits_execution" | "checking" | "execution_not_needed" | "throttled" | "executed" | "failed" | "deleted_while_queued" | "not_executed_already_queued"
+
+export type ActionExecutionMode = "simulate" | "force_simulate" | "execute" | "force_execute" | "skip"
+
+export type Status = "success" | "failure" | "simulated" | "throttled"
+
+export type ConnectionScheme = "http" | "https"
+
+export type HttpInputMethod = "head" | "get" | "post" | "put" | "delete"
+
+export type InputType = "http" | "search" | "simple"
+
+export type ResponseContentType = "json" | "yaml" | "text"
+
+export type Day = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday"
+
+export type IntervalUnit = "s" | "m" | "h" | "d" | "w"
+
+export type Month = "january" | "february" | "march" | "april" | "may" | "june" | "july" | "august" | "september" | "october" | "november" | "december"
+
+export type ExecutionPhase = "awaits_execution" | "started" | "input" | "condition" | "actions" | "watch_transform" | "aborted" | "finished"
+
+export type WatcherState = "stopped" | "starting" | "started" | "stopping"
