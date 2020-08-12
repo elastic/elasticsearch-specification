@@ -11,6 +11,18 @@ import Domain, {
 } from 'elasticsearch-client-specification/src/domain'
 
 const specification = Specification.load()
+const stableApis = [
+  'IndexRequest',
+  'IndexResponse',
+  'CreateRequest',
+  'CreateResponse',
+  'DeleteRequest',
+  'DeleteResponse',
+  'UpdateRequest',
+  'UpdateResponse',
+  'GetRequest',
+  'GetResponse'
+]
 let typeDefinitions = ''
 
 for (const type of specification.types) {
@@ -47,7 +59,8 @@ function buildUnionAlias (type: Domain.UnionAlias): string {
 }
 
 function buildInterface (type: Domain.Interface): string {
-  let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
+  let code = generateComment(type)
+  code += `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
     if (property.type === undefined) continue
     code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
@@ -57,7 +70,8 @@ function buildInterface (type: Domain.Interface): string {
 }
 
 function buildRequestInterface (type: Domain.RequestInterface): string {
-  let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
+  let code = generateComment(type)
+  code += `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   if (type.path !== undefined) {
     for (const property of type.path) {
       if (property.type === undefined) continue
@@ -161,4 +175,20 @@ function cleanPropertyName (name: string): string {
   return name.includes('.') || name.includes('-') || name.match(/^(\d|\W)/)
     ? `"${name}"`
     : name
+}
+
+function generateComment (type: Domain.Interface | Domain.RequestInterface): string {
+  if (stableApis.includes(type.name)) {
+    let comment = '/**\n'
+    comment += ' * @description Stability: STABLE\n'
+    comment += ' */\n'
+    return comment
+  } else if (type.name.endsWith('Request') ||type.name.endsWith('Response')) {
+    let comment = '/**\n'
+    comment += ' * @description Stability: UNSTABLE\n'
+    comment += ' */\n'
+    return comment
+  } else {
+    return ''
+  }
 }
