@@ -23,10 +23,16 @@ const stableApis = [
   'GetRequest',
   'GetResponse'
 ]
+const skipInterface = [
+  'ResponseBase',
+  'DictionaryResponseBase'
+]
 let typeDefinitions = ''
 
 for (const type of specification.types) {
-  if (type instanceof Domain.StringAlias) {
+  if (skipInterface.includes(type.name)) {
+    continue
+  } else if (type instanceof Domain.StringAlias) {
     typeDefinitions += buildStringAlias(type) + '\n\n'
   } else if (type instanceof Domain.NumberAlias) {
     typeDefinitions += buildNumberAlias(type) + '\n\n'
@@ -131,14 +137,8 @@ function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsRef
   } else if (type instanceof UnionOf) {
     return type.items.map(unwrapType).join(' | ')
   } else if (type instanceof ImplementsReference) {
-    // TODO: this logic for handling interfaces that extends Union types
-    //       works for generating the right code, but it triggers a
-    //       compilation error. See 'MinimumShouldMatch' for example.
-    //       Feature disabled at the moment, otherwise the output will
-    //       not compile. Delete '<remove-me>' from the check below
-    //       for enabling it back.
-    if (type.type.name === 'Union<remove-me>') {
-    return type.closedGenerics.map(unwrapType).join(' | ')
+    if (type.type.name === 'DictionaryResponseBase') {
+      return `Record<${type.closedGenerics.map(unwrapType).join(', ')}>`
     // TODO: if the closedGenerics is 2 more than there is a generic,
     //       otherwise is just a repetition of the type?
     } else if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 1) {
@@ -162,6 +162,9 @@ function buildGeneric (type: Domain.Interface | Domain.RequestInterface): string
 
 function buildInherits (type: Domain.Interface | Domain.RequestInterface): string {
   if (Array.isArray(type.inherits) && type.inherits.length > 0) {
+    if (type.inherits.length === 1 && type.inheritsFromUnresolved.ResponseBase) {
+      return ''
+    }
     let code = ' extends '
     for (const inherit of type.inherits) {
       code += unwrapType(inherit) + ', '
