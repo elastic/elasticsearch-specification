@@ -1,3 +1,1 @@
-class RemoteInfoResponse extends DictionaryResponseBase<string, RemoteInfo> {
-	remotes: Dictionary<string, RemoteInfo>;
-}
+class RemoteInfoResponse extends DictionaryResponseBase<string, RemoteInfo> {}
