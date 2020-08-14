@@ -1,1 +1,1 @@
-class DateMath extends String {}
+type DateMath = string

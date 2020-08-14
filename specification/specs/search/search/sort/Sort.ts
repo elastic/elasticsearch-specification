@@ -5,5 +5,4 @@ class Sort {
 	nested: NestedSort;
 	numeric_type: NumericType;
 	order: SortOrder;
-	sort_key: Field;
 }

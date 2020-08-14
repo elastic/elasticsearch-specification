@@ -1,3 +1,1 @@
-class GetIndexSettingsResponse extends DictionaryResponseBase<IndexName, IndexState> {
-	indices: Dictionary<IndexName, IndexState>;
-}
+class GetIndexSettingsResponse extends DictionaryResponseBase<IndexName, IndexState> {}

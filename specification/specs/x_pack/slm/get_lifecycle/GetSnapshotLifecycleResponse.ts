@@ -1,3 +1,1 @@
-class GetSnapshotLifecycleResponse extends DictionaryResponseBase<string, SnapshotLifecyclePolicyMetadata> {
-	policies: Dictionary<string, SnapshotLifecyclePolicyMetadata>;
-}
+class GetSnapshotLifecycleResponse extends DictionaryResponseBase<string, SnapshotLifecyclePolicyMetadata> {}

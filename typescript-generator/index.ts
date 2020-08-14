@@ -11,63 +11,36 @@ import Domain, {
 } from 'elasticsearch-client-specification/src/domain'
 
 const specification = Specification.load()
+const stableApis = [
+  'IndexRequest',
+  'IndexResponse',
+  'CreateRequest',
+  'CreateResponse',
+  'DeleteRequest',
+  'DeleteResponse',
+  'UpdateRequest',
+  'UpdateResponse',
+  'GetRequest',
+  'GetResponse'
+]
+const skipInterface = [
+  'ResponseBase',
+  'DictionaryResponseBase'
+]
 let typeDefinitions = ''
 
-const stringTypes = [
-  'ActionIds',
-  'CategoryId',
-  'Date',
-  'Field',
-  'Fields',
-  'IndexMetrics',
-  'IndexName',
-  'Indices',
-  'LongId',
-  'Metrics',
-  'Name',
-  'Names',
-  'Node',
-  'NodeIds',
-  'PropertyName',
-  'RelationName',
-  'ScrollId',
-  'ScrollIds',
-  'TaskId',
-  'TimeSpan',
-  'Timestamp',
-  'TypeName',
-  'Types',
-  'Uri',
-]
-
-const numberTypes = [
-  'short',
-  'byte',
-  'integer',
-  'long',
-  'float',
-  'double'
-]
-
-const stringOrNumberTypes = [
-  'Id',
-  'Ids',
-  'Routing'
-]
-
-const stringOrArrayOfStrings = [
-  'StopWords'
-]
-
-const interfaceToSkip = [
-  'KeyValue'
-]
-
 for (const type of specification.types) {
-  if (type instanceof Domain.RequestInterface) {
+  if (skipInterface.includes(type.name)) {
+    continue
+  } else if (type instanceof Domain.StringAlias) {
+    typeDefinitions += buildStringAlias(type) + '\n\n'
+  } else if (type instanceof Domain.NumberAlias) {
+    typeDefinitions += buildNumberAlias(type) + '\n\n'
+  } else if (type instanceof Domain.UnionAlias) {
+    typeDefinitions += buildUnionAlias(type) + '\n\n'
+  } else if (type instanceof Domain.RequestInterface) {
     typeDefinitions += buildRequestInterface(type) + '\n\n'
   } else if (type instanceof Domain.Interface) {
-    if (interfaceToSkip.includes(type.name)) continue
     typeDefinitions += buildInterface(type) + '\n\n'
   } else if (type instanceof Domain.Enum) {
     typeDefinitions += buildEnum(type) + '\n\n'
@@ -79,24 +52,21 @@ fs.writeFileSync(
   typeDefinitions.slice(0, -2) // removes last two '\n\n\'
 )
 
+function buildStringAlias (type: Domain.StringAlias): string {
+  return `export type ${type.name} = string`
+}
+
+function buildNumberAlias (type: Domain.NumberAlias): string {
+  return `export type ${type.name} = number`
+}
+
+function buildUnionAlias (type: Domain.UnionAlias): string {
+  return `export type ${type.name} = ${unwrapType(type.wraps)}`
+}
+
 function buildInterface (type: Domain.Interface): string {
-  if (stringTypes.includes(type.name)) {
-    return `export type ${type.name} = string`
-  }
-
-  if (numberTypes.includes(type.name)) {
-    return `export type ${type.name} = number`
-  }
-
-  if (stringOrNumberTypes.includes(type.name)) {
-    return `export type ${type.name} = string | number`
-  }
-
-  if (stringOrArrayOfStrings.includes(type.name)) {
-    return `export type ${type.name} = string | string[]`
-  }
-
-  let code = `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
+  let code = generateComment(type)
+  code += `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
     if (property.type === undefined) continue
     code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
@@ -106,7 +76,8 @@ function buildInterface (type: Domain.Interface): string {
 }
 
 function buildRequestInterface (type: Domain.RequestInterface): string {
-  let code = `export interface ${type.name}${buildGeneric(type)} {\n`
+  let code = generateComment(type)
+  code += `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   if (type.path !== undefined) {
     for (const property of type.path) {
       if (property.type === undefined) continue
@@ -123,14 +94,14 @@ function buildRequestInterface (type: Domain.RequestInterface): string {
 
   if (type.body !== undefined) {
     if (Array.isArray(type.body)) {
-      code += '  body: {\n'
+      code += '  body?: {\n'
       for (const property of type.body) {
         if (property.type === undefined) continue
         code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
       }
       code += '  }\n'
     } else {
-      code += `  body: ${unwrapType(type.body)}\n`
+      code += `  body?: ${unwrapType(type.body)}\n`
     }
   }
 
@@ -166,9 +137,11 @@ function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsRef
   } else if (type instanceof UnionOf) {
     return type.items.map(unwrapType).join(' | ')
   } else if (type instanceof ImplementsReference) {
+    if (type.type.name === 'DictionaryResponseBase') {
+      return `Record<${type.closedGenerics.map(unwrapType).join(', ')}>`
     // TODO: if the closedGenerics is 2 more than there is a generic,
     //       otherwise is just a repetition of the type?
-    if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 1) {
+    } else if (Array.isArray(type.closedGenerics) && type.closedGenerics.length > 1) {
       return `${type.type.name}<${type.closedGenerics.map(unwrapType).join(', ')}>`
     }
     return type.type.name
@@ -189,6 +162,9 @@ function buildGeneric (type: Domain.Interface | Domain.RequestInterface): string
 
 function buildInherits (type: Domain.Interface | Domain.RequestInterface): string {
   if (Array.isArray(type.inherits) && type.inherits.length > 0) {
+    if (type.inherits.length === 1 && type.inheritsFromUnresolved.ResponseBase) {
+      return ''
+    }
     let code = ' extends '
     for (const inherit of type.inherits) {
       code += unwrapType(inherit) + ', '
@@ -202,4 +178,20 @@ function cleanPropertyName (name: string): string {
   return name.includes('.') || name.includes('-') || name.match(/^(\d|\W)/)
     ? `"${name}"`
     : name
+}
+
+function generateComment (type: Domain.Interface | Domain.RequestInterface): string {
+  if (stableApis.includes(type.name)) {
+    let comment = '/**\n'
+    comment += ' * @description Stability: STABLE\n'
+    comment += ' */\n'
+    return comment
+  } else if (type.name.endsWith('Request') ||type.name.endsWith('Response')) {
+    let comment = '/**\n'
+    comment += ' * @description Stability: UNSTABLE\n'
+    comment += ' */\n'
+    return comment
+  } else {
+    return ''
+  }
 }
