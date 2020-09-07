@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "isolatedModules": false,
     "jsx": "react",
+    "outDir": "lib",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
@@ -19,6 +20,6 @@
   "compileOnSave": true,
   "buildOnSave": true,
   "include": [
-    "src/**.ts"
+    "."
   ]
 }
