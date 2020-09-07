@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "isolatedModules": false,
     "jsx": "react",
-    "outDir": "lib",
+    "outDir": "lib/src",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
@@ -19,7 +19,10 @@
   },
   "compileOnSave": true,
   "buildOnSave": true,
+  "exclude": [
+    "specs"
+  ],
   "include": [
-    "src"
+    "."
   ]
 }
