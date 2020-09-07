@@ -18,5 +18,8 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "compileOnSave": true,
-  "buildOnSave": true
+  "buildOnSave": true,
+  "include": [
+    "src"
+  ]
 }

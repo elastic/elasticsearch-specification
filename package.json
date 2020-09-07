@@ -10,8 +10,9 @@
     "format": "ts-node src/format.ts",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
     "compile": "tsc --project specification/tsconfig.json",
-    "copy": "cpy 'specs/**/*.json' ./lib --cwd=specification --no-overwrite --parents",
-    "prepare": "npm run compile && npm run copy"
+    "copy:json": "cpy 'specs/**/*.json' ./lib --cwd=specification --no-overwrite --parents",
+    "copy:specs": "cpy 'specs' ./lib --cwd=specification --no-overwrite --parents",
+    "prepare": "npm run compile && npm run copy:specs"
   },
   "author": "Elastic",
   "license": "MIT",
