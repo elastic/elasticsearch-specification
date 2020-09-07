@@ -7,3 +7,6 @@ flight-recorder-generator
 output
 typescript-generator
 specification/node_modules
+specification/src
+specification/tslint.json
+specification/tsconfig.json
