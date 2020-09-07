@@ -2,7 +2,8 @@
   "name": "elasticsearch-client-specification",
   "version": "0.0.1",
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
-  "main": "specification/src/api-specification.js",
+  "main": "specification/src/api-specification.ts",
+  "types": "specification/src/api-specification.ts",
   "scripts": {
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
     "start": "ts-node src/main.ts",
