@@ -5,4 +5,5 @@ class MatchPhrasePrefixQuery {
 	query: string;
 	slop: integer;
 	zero_terms_query: ZeroTermsQuery;
+  boost: float;
 }

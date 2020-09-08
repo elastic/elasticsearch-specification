@@ -4,4 +4,5 @@ class FuzzyQuery {
 	prefix_length: integer;
 	rewrite: MultiTermQueryRewrite;
 	transpositions: boolean;
+  boost: float;
 }

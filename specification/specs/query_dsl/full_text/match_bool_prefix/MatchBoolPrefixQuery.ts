@@ -9,4 +9,5 @@ class MatchBoolPrefixQuery {
 	operator: Operator;
 	prefix_length: integer;
 	query: string;
+  boost: float;
 }

@@ -13,4 +13,5 @@ class MatchQuery {
 	prefix_length: integer;
 	query: string;
 	zero_terms_query: ZeroTermsQuery;
+  boost: float;
 }

@@ -6,4 +6,5 @@ class CommonTermsQuery {
 	low_freq_operator: Operator;
 	minimum_should_match: MinimumShouldMatch;
 	query: string;
+  boost: float;
 }

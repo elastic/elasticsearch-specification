@@ -12,4 +12,5 @@ class SimpleQueryStringQuery {
 	minimum_should_match: MinimumShouldMatch;
 	query: string;
 	quote_field_suffix: string;
+  boost: float;
 }

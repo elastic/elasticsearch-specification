@@ -3,4 +3,5 @@ class MatchPhraseQuery {
 	analyzer: string;
 	query: string;
 	slop: integer;
+  boost: float;
 }

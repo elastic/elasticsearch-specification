@@ -24,4 +24,5 @@ class QueryStringQuery {
 	tie_breaker: double;
 	time_zone: string;
 	type: TextQueryType;
+  boost: float;
 }

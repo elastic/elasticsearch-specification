@@ -17,4 +17,5 @@ class MultiMatchQuery {
 	type: TextQueryType;
 	use_dis_max: boolean;
 	zero_terms_query: ZeroTermsQuery;
+  boost: float;
 }
