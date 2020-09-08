@@ -1,4 +1,4 @@
-class QueryStringQuery {
+class QueryStringQuery extends QueryBase {
 	allow_leading_wildcard: boolean;
 	analyzer: string;
 	analyze_wildcard: boolean;
@@ -24,5 +24,4 @@ class QueryStringQuery {
 	tie_breaker: double;
 	time_zone: string;
 	type: TextQueryType;
-  boost: float;
 }

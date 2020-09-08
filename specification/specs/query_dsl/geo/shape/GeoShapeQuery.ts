@@ -1,5 +1,5 @@
 @class_serializer("CompositeFormatter`3")
-class GeoShapeQuery {
+class GeoShapeQuery extends QueryBase {
 	ignore_unmapped: boolean;
 	indexed_shape: FieldLookup;
 	relation: GeoShapeRelation;

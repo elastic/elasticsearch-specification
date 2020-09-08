@@ -6624,12 +6624,11 @@ declare namespace T {
     snapshots?: SnapshotStatus[]
   }
 
-  export interface MatchAllQuery {
+  export interface MatchAllQuery extends QueryBase {
     norm_field?: string
-    boost?: float
   }
 
-  export interface MatchNoneQuery {
+  export interface MatchNoneQuery extends QueryBase {
   }
 
   export interface QueryContainer {
@@ -6702,12 +6701,8 @@ declare namespace T {
     field?: Field
   }
 
-  export interface Query {
-    boost?: double
-    conditionless?: boolean
-    is_strict?: boolean
-    is_verbatim?: boolean
-    is_writable?: boolean
+  export interface QueryBase {
+    boost?: float
     _name?: string
   }
 
@@ -6752,14 +6747,13 @@ declare namespace T {
     weight?: double
   }
 
-  export interface CommonTermsQuery {
+  export interface CommonTermsQuery extends QueryBase {
     analyzer?: string
     cutoff_frequency?: double
     high_freq_operator?: Operator
     low_freq_operator?: Operator
     minimum_should_match?: MinimumShouldMatch
     query?: string
-    boost?: float
   }
 
   export interface Intervals {
@@ -6823,7 +6817,7 @@ declare namespace T {
     use_field?: Field
   }
 
-  export interface IntervalsQuery {
+  export interface IntervalsQuery extends QueryBase {
   }
 
   export interface IntervalsWildcard {
@@ -6832,7 +6826,7 @@ declare namespace T {
     use_field?: Field
   }
 
-  export interface MatchQuery {
+  export interface MatchQuery extends QueryBase {
     analyzer?: string
     auto_generate_synonyms_phrase_query?: boolean
     cutoff_frequency?: double
@@ -6846,10 +6840,9 @@ declare namespace T {
     prefix_length?: integer
     query?: string
     zero_terms_query?: ZeroTermsQuery
-    boost?: float
   }
 
-  export interface MatchBoolPrefixQuery {
+  export interface MatchBoolPrefixQuery extends QueryBase {
     analyzer?: string
     fuzziness?: Fuzziness
     fuzzy_rewrite?: MultiTermQueryRewrite
@@ -6859,26 +6852,23 @@ declare namespace T {
     operator?: Operator
     prefix_length?: integer
     query?: string
-    boost?: float
   }
 
-  export interface MatchPhraseQuery {
+  export interface MatchPhraseQuery extends QueryBase {
     analyzer?: string
     query?: string
     slop?: integer
-    boost?: float
   }
 
-  export interface MatchPhrasePrefixQuery {
+  export interface MatchPhrasePrefixQuery extends QueryBase {
     analyzer?: string
     max_expansions?: integer
     query?: string
     slop?: integer
     zero_terms_query?: ZeroTermsQuery
-    boost?: float
   }
 
-  export interface MultiMatchQuery {
+  export interface MultiMatchQuery extends QueryBase {
     analyzer?: string
     auto_generate_synonyms_phrase_query?: boolean
     cutoff_frequency?: double
@@ -6897,10 +6887,9 @@ declare namespace T {
     type?: TextQueryType
     use_dis_max?: boolean
     zero_terms_query?: ZeroTermsQuery
-    boost?: float
   }
 
-  export interface QueryStringQuery {
+  export interface QueryStringQuery extends QueryBase {
     allow_leading_wildcard?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
@@ -6926,10 +6915,9 @@ declare namespace T {
     tie_breaker?: double
     time_zone?: string
     type?: TextQueryType
-    boost?: float
   }
 
-  export interface SimpleQueryStringQuery {
+  export interface SimpleQueryStringQuery extends QueryBase {
     analyzer?: string
     analyze_wildcard?: boolean
     auto_generate_synonyms_phrase_query?: boolean
@@ -6943,7 +6931,6 @@ declare namespace T {
     minimum_should_match?: MinimumShouldMatch
     query?: string
     quote_field_suffix?: string
-    boost?: float
   }
 
   export interface GeoCoordinate extends GeoLocation {
@@ -6961,20 +6948,20 @@ declare namespace T {
     wkt?: string
   }
 
-  export interface GeoBoundingBoxQuery {
+  export interface GeoBoundingBoxQuery extends QueryBase {
     bounding_box?: BoundingBox
     type?: GeoExecution
     validation_method?: GeoValidationMethod
   }
 
-  export interface GeoDistanceQuery {
+  export interface GeoDistanceQuery extends QueryBase {
     distance?: Distance
     distance_type?: GeoDistanceType
     location?: GeoLocation
     validation_method?: GeoValidationMethod
   }
 
-  export interface GeoPolygonQuery {
+  export interface GeoPolygonQuery extends QueryBase {
     points?: GeoLocation[]
     validation_method?: GeoValidationMethod
   }
@@ -6983,14 +6970,14 @@ declare namespace T {
     type?: string
   }
 
-  export interface GeoShapeQuery {
+  export interface GeoShapeQuery extends QueryBase {
     ignore_unmapped?: boolean
     indexed_shape?: FieldLookup
     relation?: GeoShapeRelation
     shape?: GeoShape
   }
 
-  export interface HasChildQuery {
+  export interface HasChildQuery extends QueryBase {
     ignore_unmapped?: boolean
     inner_hits?: InnerHits
     max_children?: integer
@@ -7000,7 +6987,7 @@ declare namespace T {
     type?: RelationName
   }
 
-  export interface HasParentQuery {
+  export interface HasParentQuery extends QueryBase {
     ignore_unmapped?: boolean
     inner_hits?: InnerHits
     parent_type?: RelationName
@@ -7008,7 +6995,7 @@ declare namespace T {
     score?: boolean
   }
 
-  export interface NestedQuery {
+  export interface NestedQuery extends QueryBase {
     ignore_unmapped?: boolean
     inner_hits?: InnerHits
     path?: Field
@@ -7016,7 +7003,7 @@ declare namespace T {
     score_mode?: NestedScoreMode
   }
 
-  export interface ParentIdQuery {
+  export interface ParentIdQuery extends QueryBase {
     id?: Id
     ignore_unmapped?: boolean
     type?: RelationName
@@ -7034,7 +7021,7 @@ declare namespace T {
     raw?: string
   }
 
-  export interface SpanQuery {
+  export interface SpanQuery extends QueryBase {
     span_containing?: SpanContainingQuery
     field_masking_span?: SpanFieldMaskingQuery
     span_first?: SpanFirstQuery
@@ -7100,12 +7087,12 @@ declare namespace T {
     little?: SpanQuery
   }
 
-  export interface DistanceFeatureQuery {
+  export interface DistanceFeatureQuery extends QueryBase {
     origin?: GeoCoordinate | DateMath
     pivot?: Distance | Time
   }
 
-  export interface MoreLikeThisQuery {
+  export interface MoreLikeThisQuery extends QueryBase {
     analyzer?: string
     boost_terms?: double
     fields?: Field[]
@@ -7137,7 +7124,7 @@ declare namespace T {
     routing?: Routing
   }
 
-  export interface PercolateQuery {
+  export interface PercolateQuery extends QueryBase {
     document?: object
     documents?: object[]
     field?: Field
@@ -7148,7 +7135,7 @@ declare namespace T {
     version?: long
   }
 
-  export interface PinnedQuery {
+  export interface PinnedQuery extends QueryBase {
     ids?: Id[]
     organic?: QueryContainer
   }
@@ -7156,86 +7143,77 @@ declare namespace T {
   export interface RankFeatureFunction {
   }
 
-  export interface RankFeatureQuery {
+  export interface RankFeatureQuery extends QueryBase {
     function?: RankFeatureFunction
   }
 
-  export interface ScriptQuery {
+  export interface ScriptQuery extends QueryBase {
     script?: Script
   }
 
-  export interface ScriptScoreQuery {
+  export interface ScriptScoreQuery extends QueryBase {
     query?: QueryContainer
     script?: Script
   }
 
-  export interface ShapeQuery {
+  export interface ShapeQuery extends QueryBase {
     ignore_unmapped?: boolean
     indexed_shape?: FieldLookup
     relation?: ShapeRelation
     shape?: GeoShape
   }
 
-  export interface ExistsQuery {
+  export interface ExistsQuery extends QueryBase {
     field?: Field
   }
 
-  export interface FuzzyQuery {
+  export interface FuzzyQuery extends QueryBase {
     max_expansions?: integer
     prefix_length?: integer
     rewrite?: MultiTermQueryRewrite
     transpositions?: boolean
-    boost?: float
   }
 
-  export interface IdsQuery {
+  export interface IdsQuery extends QueryBase {
     values?: Id[]
-    boost?: float
   }
 
-  export interface PrefixQuery {
+  export interface PrefixQuery extends QueryBase {
     rewrite?: MultiTermQueryRewrite
-    boost?: float
   }
 
-  export interface RangeQuery {
+  export interface RangeQuery extends QueryBase {
     gt?: double | DateMath
     gte?: double | DateMath
     lt?: double | DateMath
     lte?: double | DateMath
     relation?: RangeRelation
-    boost?: float
     time_zone?: string
   }
 
-  export interface RegexpQuery {
+  export interface RegexpQuery extends QueryBase {
     flags?: string
     max_determinized_states?: integer
     value?: string
-    boost?: float
   }
 
-  export interface TermQuery {
+  export interface TermQuery extends QueryBase {
     value?: string
-    boost?: float
   }
 
-  export interface TermsQuery {
+  export interface TermsQuery extends QueryBase {
     terms?: string[]
     terms_lookup?: FieldLookup
-    boost?: float
   }
 
-  export interface TermsSetQuery {
+  export interface TermsSetQuery extends QueryBase {
     minimum_should_match_field?: Field
     minimum_should_match_script?: Script
     terms?: string[]
-    boost?: float
   }
 
-  export interface WildcardQuery {
+  export interface WildcardQuery extends QueryBase {
     rewrite?: MultiTermQueryRewrite
-    boost?: float
   }
 
   /**
@@ -7480,6 +7458,7 @@ declare namespace T {
       from?: integer
       highlight?: Highlight
       indices_boost?: Record<IndexName, double>
+      docvalue_fields?: Array<Field | DocValueField>
       min_score?: double
       post_filter?: QueryContainer
       profile?: boolean
@@ -7628,6 +7607,7 @@ declare namespace T {
     ignore_unmapped?: boolean
     name?: string
     script_fields?: Record<string, ScriptField>
+    seq_no_primary_term?: boolean
     size?: integer
     sort?: Array<Record<string, Sort | SortOrder>>
     _source?: boolean | SourceFilter
@@ -7722,6 +7702,11 @@ declare namespace T {
   export interface SourceFilter {
     excludes?: Field | Field[]
     includes?: Field | Field[]
+  }
+
+  export interface DocValueField {
+    field?: Field
+    format?: string
   }
 
   export interface SearchNode {

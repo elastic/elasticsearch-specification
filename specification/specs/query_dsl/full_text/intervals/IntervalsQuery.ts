@@ -1,3 +1,3 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class IntervalsQuery {
+class IntervalsQuery extends QueryBase {
 }

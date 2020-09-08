@@ -1,5 +1,4 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class WildcardQuery {
+class WildcardQuery extends QueryBase {
 	rewrite: MultiTermQueryRewrite;
-  boost: float;
 }

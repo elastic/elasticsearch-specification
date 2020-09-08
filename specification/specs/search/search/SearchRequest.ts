@@ -44,6 +44,7 @@ class SearchRequest extends RequestBase {
 		highlight: Highlight;
 		/** @prop_serializer IndicesBoostFormatter */
 		indices_boost: Dictionary<IndexName, double>;
+    docvalue_fields: Array<Field | DocValueField>;
 		min_score: double;
 		post_filter: QueryContainer;
 		profile: boolean;

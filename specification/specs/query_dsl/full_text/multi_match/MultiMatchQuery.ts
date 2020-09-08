@@ -1,4 +1,4 @@
-class MultiMatchQuery {
+class MultiMatchQuery extends QueryBase {
 	analyzer: string;
 	auto_generate_synonyms_phrase_query: boolean;
 	cutoff_frequency: double;
@@ -17,5 +17,4 @@ class MultiMatchQuery {
 	type: TextQueryType;
 	use_dis_max: boolean;
 	zero_terms_query: ZeroTermsQuery;
-  boost: float;
 }

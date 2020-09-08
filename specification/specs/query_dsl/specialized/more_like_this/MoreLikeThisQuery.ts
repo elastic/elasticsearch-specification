@@ -1,4 +1,4 @@
-class MoreLikeThisQuery {
+class MoreLikeThisQuery extends QueryBase {
 	analyzer: string;
 	boost_terms: double;
 	fields: Field[];

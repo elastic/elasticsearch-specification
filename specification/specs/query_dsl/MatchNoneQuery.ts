@@ -1,2 +1,2 @@
-class MatchNoneQuery {
+class MatchNoneQuery extends QueryBase {
 }

@@ -1,4 +1,4 @@
 @class_serializer("RankFeatureQueryFormatter")
-class RankFeatureQuery {
+class RankFeatureQuery extends QueryBase {
 	function: RankFeatureFunction;
 }
