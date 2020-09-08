@@ -1,0 +1,13 @@
+README.md
+csharp-generator
+java-generator
+swagger-generator
+barebones-example
+flight-recorder-generator
+output
+typescript-generator
+specification/node_modules
+specification/src/*
+specification/specs/*
+specification/tslint.json
+specification/tsconfig.json

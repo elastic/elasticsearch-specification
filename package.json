@@ -1,0 +1,53 @@
+{
+  "name": "elasticsearch-client-specification",
+  "version": "0.0.1",
+  "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
+  "main": "specification/lib/src/api-specification.js",
+  "types": "specification/lib/src/api-specification.d.ts",
+  "scripts": {
+    "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
+    "start": "ts-node src/main.ts",
+    "format": "ts-node src/format.ts",
+    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
+    "compile": "tsc --project specification/tsconfig.json",
+    "copy:json": "cpy 'specs/**/*.json' ./lib --cwd=specification --no-overwrite --parents",
+    "copy:specs": "cpy 'specs' ./lib --cwd=specification --no-overwrite --parents",
+    "prepare": "npm run compile && npm run copy:specs"
+  },
+  "author": "Elastic",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^13.7.7",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "cpy-cli": "^3.1.1",
+    "standardx": "^5.0.0",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "byots": "3.9.0-dev.20200229.5.1",
+    "glob": "^7.1.6",
+    "lodash": "^4.17.15"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "camelcase": "off",
+      "no-useless-constructor": "off",
+      "@typescript-eslint/no-unused-vars": "error",
+      "no-case-declarations": "off"
+    }
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ],
+    "ignore": [
+      "specs"
+    ]
+  }
+}

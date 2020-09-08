@@ -280,9 +280,9 @@ export class TypeReader {
     this.restSpecMapping = {}
     this.checker = program.getTypeChecker()
     for (const f of this.program.getSourceFiles()) {
-      if (!f.path.match(/specification[\/\\]specs/)) continue;
+      if (!f.path.includes('specs')) continue;
       let ns = path.dirname(f.path)
-        .replace(/.*specification[\/\\]specs[\/\\]?/, "")
+        .replace(/.*[\/\\]specs[\/\\]?/, "")
         .replace(/[\/\\]/g, ".");
       if (ns === "") ns = "internal";
       try {
