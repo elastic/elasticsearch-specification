@@ -1,14 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { Specification } from 'elasticsearch-client-specification'
-import Domain, {
-  ArrayOf,
-  Dictionary,
-  Type,
-  UnionOf,
-  ImplementsReference,
-  SingleKeyDictionary
-} from 'elasticsearch-client-specification/src/domain'
+import Domain from 'elasticsearch-client-specification/src/domain'
 
 const specification = Specification.load()
 const stableApis = [
@@ -70,8 +63,10 @@ for (const type of specification.types) {
 typeDefinitions = typeDefinitions.slice(0, -2)
 typeDefinitions += '\n}\n\nexport default T'
 
+const exportName = 'types-' + process.env.ENUM_AS_UNION ? 'for-validation' : '';
+
 fs.writeFileSync(
-  path.join(__dirname, '..', 'output', 'typescript', 'types.ts'),
+  path.join(__dirname, '..', 'output', 'typescript', `${exportName}.ts`),
   typeDefinitions
 )
 
@@ -150,16 +145,16 @@ function buildEnum (type: Domain.Enum): string {
   return code
 }
 
-function unwrapType (type: ArrayOf | Dictionary | Type | UnionOf | ImplementsReference | SingleKeyDictionary): string {
-  if (type instanceof ArrayOf) {
+function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Domain.UnionOf | Domain.ImplementsReference | Domain.SingleKeyDictionary): string {
+  if (type instanceof Domain.ArrayOf) {
     return `${unwrapType(type.of)}[]`
-  } else if (type instanceof Dictionary) {
+  } else if (type instanceof Domain.Dictionary) {
     return `Record<${unwrapType(type.key)}, ${unwrapType(type.value)}>`
-  } else if (type instanceof SingleKeyDictionary) {
+  } else if (type instanceof Domain.SingleKeyDictionary) {
     return `Record<string, ${unwrapType(type.value)}>`
-  } else if (type instanceof UnionOf) {
+  } else if (type instanceof Domain.UnionOf) {
     return type.items.map(unwrapType).join(' | ')
-  } else if (type instanceof ImplementsReference) {
+  } else if (type instanceof Domain.ImplementsReference) {
     if (type.type.name === 'DictionaryResponseBase') {
       return `Record<${type.closedGenerics.map(unwrapType).join(', ')}>`
     // TODO: if the closedGenerics is 2 more than there is a generic,

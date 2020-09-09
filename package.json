@@ -7,9 +7,9 @@
   "scripts": {
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
     "compile:specs": "tsc --project specification/tsconfig.json",
-    "compile:typescript-output": "ENUM_AS_UNION=true npm run start --prefix typescript-generator",
+    "compile:ts-validation": "ENUM_AS_UNION=true npm run start --prefix typescript-generator",
     "copy:specs": "cpy 'specs' ./lib --cwd=specification --no-overwrite --parents",
-    "prepare": "npm run compile:specs && npm run compile:typescript-output && npm run copy:specs"
+    "prepare": "npm run compile:specs && npm run copy:specs"
   },
   "author": "Elastic",
   "license": "MIT",
