@@ -11,6 +11,6 @@ class MatchQuery extends QueryBase {
   minimum_should_match: MinimumShouldMatch;
   operator: Operator;
   prefix_length: integer;
-  query: string;
+  query: string | float | boolean;
   zero_terms_query: ZeroTermsQuery;
 }

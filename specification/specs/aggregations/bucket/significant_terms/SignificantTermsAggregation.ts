@@ -1,11 +1,11 @@
 class SignificantTermsAggregation {
   background_filter: QueryContainer;
   chi_square: ChiSquareHeuristic;
-  exclude: IncludeExclude;
+  exclude: string | string[];
   execution_hint: TermsAggregationExecutionHint;
   field: Field;
   gnd: GoogleNormalizedDistanceHeuristic;
-  include: IncludeExclude;
+  include: string | string[];
   min_doc_count: long;
   mutual_information: MutualInformationHeuristic;
   percentage: PercentageScoreHeuristic;

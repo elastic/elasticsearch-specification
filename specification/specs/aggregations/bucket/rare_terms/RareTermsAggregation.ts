@@ -1,8 +1,9 @@
 class RareTermsAggregation {
-  exclude: TermsExclude;
+  exclude: string | string[];
   field: Field;
-  include: TermsInclude;
+  include: string | string[] | TermsInclude;
   max_doc_count: long;
-  missing: any;
+  missing: Missing;
   precision: double;
+  value_type: string;
 }

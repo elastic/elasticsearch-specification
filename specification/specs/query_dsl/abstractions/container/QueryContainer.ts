@@ -21,7 +21,7 @@ class QueryContainer {
   is_strict: boolean;
   is_verbatim: boolean;
   is_writable: boolean;
-  match: SingleKeyDictionary<MatchQuery | string>; // { key: MatchQuery | string }
+  match: SingleKeyDictionary<MatchQuery | string | float | boolean>;
   match_all: MatchAllQuery;
   match_bool_prefix: SingleKeyDictionary<Union<MatchBoolPrefixQuery, string>>;
   match_none: MatchNoneQuery;
@@ -52,7 +52,7 @@ class QueryContainer {
   span_or: SpanOrQuery;
   span_term: SingleKeyDictionary<Union<SpanTermQuery, string>>;
   span_within: SpanWithinQuery;
-  term: SingleKeyDictionary<Union<TermQuery, string>>;
+  term: SingleKeyDictionary<TermQuery | string | number | boolean>;
   terms: SingleKeyDictionary<Union<TermsQuery, string[]>>;
   terms_set: SingleKeyDictionary<Union<TermsSetQuery, string>>;
   wildcard: SingleKeyDictionary<Union<WildcardQuery, string>>;

@@ -1,5 +1,5 @@
 class CompositeAggregation {
-  after: Dictionary<string, any>;
+  after: Dictionary<string, string | float>;
   size: integer;
-  sources: CompositeAggregationSource[];
+  sources: Array<Dictionary<string, CompositeAggregationSource>>;
 }

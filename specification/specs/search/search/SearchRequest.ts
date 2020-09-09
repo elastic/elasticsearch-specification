@@ -41,6 +41,7 @@ class SearchRequest extends RequestBase {
   }
   body: {
     aggs: Dictionary<string, AggregationContainer>;
+    aggregations: Dictionary<string, AggregationContainer>;
     collapse: FieldCollapse;
     explain: boolean;
     from: integer;

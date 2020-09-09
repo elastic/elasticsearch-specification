@@ -3,4 +3,5 @@ class PercentileRanksAggregation {
   keyed: boolean;
   method: PercentilesMethod;
   values: double[];
+  field: Field;
 }

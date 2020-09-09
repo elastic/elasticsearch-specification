@@ -1,8 +1,8 @@
 class BoolQuery {
-  filter: QueryContainer[];
+  filter: QueryContainer | QueryContainer[];
   minimum_should_match: MinimumShouldMatch;
-  must: QueryContainer[];
-  must_not: QueryContainer[];
-  should: QueryContainer[];
+  must: QueryContainer | QueryContainer[];
+  must_not: QueryContainer | QueryContainer[];
+  should: QueryContainer | QueryContainer[];
   _name: string;
 }
