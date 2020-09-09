@@ -4,4 +4,5 @@ class IntervalsMatch {
 	ordered: boolean;
 	query: string;
 	use_field: Field;
+  filter: IntervalsFilter;
 }

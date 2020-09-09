@@ -30,11 +30,14 @@ class SearchRequest extends RequestBase {
 		suggest_size: long;
 		suggest_text: string;
 		total_hits_as_integer: boolean;
-		track_total_hits: boolean;
+		track_total_hits: boolean | integer;
 		typed_keys: boolean;
     rest_total_hits_as_int: boolean;
 		_source_excludes: Union<Field, Field[]>;
 		_source_includes: Union<Field, Field[]>;
+    seq_no_primary_term: boolean;
+    q: string;
+    size: integer;
 	}
 	body: {
 		aggs: Dictionary<string, AggregationContainer>;
@@ -42,16 +45,17 @@ class SearchRequest extends RequestBase {
 		explain: boolean;
 		from: integer;
 		highlight: Highlight;
+    track_total_hits: boolean | integer;
 		/** @prop_serializer IndicesBoostFormatter */
-		indices_boost: Dictionary<IndexName, double>;
+		indices_boost: Array<Dictionary<IndexName, double>>;
     docvalue_fields: Array<Field | DocValueField>;
 		min_score: double;
 		post_filter: QueryContainer;
 		profile: boolean;
 		query: QueryContainer;
-		rescore: Rescore[];
+		rescore: Rescore | Rescore[];
 		script_fields: Dictionary<string, ScriptField>;
-		search_after: any[];
+		search_after: Array<integer | string>;
 		size: integer;
 		slice: SlicedScroll;
 		sort: Array<SingleKeyDictionary<Union<Sort, SortOrder>>>;
@@ -61,5 +65,7 @@ class SearchRequest extends RequestBase {
 		timeout: string;
 		track_scores: boolean;
 		version: boolean;
+    seq_no_primary_term: boolean;
+    stored_fields: Field | Field[];
 	}
 }

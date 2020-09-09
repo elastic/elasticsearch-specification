@@ -35,7 +35,7 @@ class QueryContainer {
 	pinned: PinnedQuery;
 	prefix: SingleKeyDictionary<Union<PrefixQuery, string>>;
 	query_string: QueryStringQuery;
-	range: RangeQuery;
+	range: SingleKeyDictionary<RangeQuery>;
 	rank_feature: SingleKeyDictionary<Union<RankFeatureQuery, string>>;
 	raw_query: RawQuery;
 	regexp: SingleKeyDictionary<Union<RegexpQuery, string>>;
@@ -53,7 +53,7 @@ class QueryContainer {
 	span_term: SingleKeyDictionary<Union<SpanTermQuery, string>>;
 	span_within: SpanWithinQuery;
 	term: SingleKeyDictionary<Union<TermQuery, string>>;
-	terms: SingleKeyDictionary<Union<TermsQuery, string>>;
+	terms: SingleKeyDictionary<Union<TermsQuery, string[]>>;
 	terms_set: SingleKeyDictionary<Union<TermsSetQuery, string>>;
 	wildcard: SingleKeyDictionary<Union<WildcardQuery, string>>;
 }
