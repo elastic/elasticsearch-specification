@@ -1,4 +1,4 @@
 enum ConnectionScheme {
-	http = 0,
-	https = 1
+  http = 0,
+  https = 1
 }

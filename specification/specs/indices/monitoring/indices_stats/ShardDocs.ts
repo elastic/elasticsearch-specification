@@ -1,4 +1,4 @@
 class ShardDocs {
-	count: long;
-	deleted: long;
+  count: long;
+  deleted: long;
 }

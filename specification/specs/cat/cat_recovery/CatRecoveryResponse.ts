@@ -1,3 +1,3 @@
 class CatRecoveryResponse extends ResponseBase {
-	records: CatRecoveryRecord[];
+  records: CatRecoveryRecord[];
 }

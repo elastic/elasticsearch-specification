@@ -1,4 +1,4 @@
 interface ITokenizer {
-	type: string;
-	version: string;
+  type: string;
+  version: string;
 }

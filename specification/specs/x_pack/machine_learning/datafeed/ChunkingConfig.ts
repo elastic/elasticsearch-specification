@@ -1,4 +1,4 @@
 class ChunkingConfig {
-	mode: ChunkingMode;
-	time_span: Time;
+  mode: ChunkingMode;
+  time_span: Time;
 }

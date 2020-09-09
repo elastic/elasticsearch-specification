@@ -1,3 +1,3 @@
 class CloseShardResult {
-	failures: ShardFailure[];
+  failures: ShardFailure[];
 }

@@ -1,3 +1,3 @@
 class InlineScript {
-	source: string;
+  source: string;
 }

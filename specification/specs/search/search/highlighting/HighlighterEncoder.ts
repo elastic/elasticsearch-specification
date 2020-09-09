@@ -1,4 +1,4 @@
 enum HighlighterEncoder {
-	default = 0,
-	html = 1
+  default = 0,
+  html = 1
 }

@@ -1,3 +1,3 @@
 class CatHelpRecord implements ICatRecord {
-	endpoint: string;
+  endpoint: string;
 }

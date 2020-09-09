@@ -1,3 +1,3 @@
 class NamedPolicyMetadata {
-	config: NamedPolicyConfig;
+  config: NamedPolicyConfig;
 }

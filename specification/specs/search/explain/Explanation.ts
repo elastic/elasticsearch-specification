@@ -1,5 +1,5 @@
 class Explanation {
-	description: string;
-	details: ExplanationDetail[];
-	value: float;
+  description: string;
+  details: ExplanationDetail[];
+  value: float;
 }

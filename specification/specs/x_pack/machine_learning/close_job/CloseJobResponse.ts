@@ -1,3 +1,3 @@
 class CloseJobResponse extends ResponseBase {
-	closed: boolean;
+  closed: boolean;
 }

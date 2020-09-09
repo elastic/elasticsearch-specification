@@ -1,3 +1,3 @@
 class GlobalPrivileges {
-	application: ApplicationGlobalUserPrivileges;
+  application: ApplicationGlobalUserPrivileges;
 }

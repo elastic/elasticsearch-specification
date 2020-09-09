@@ -1,8 +1,8 @@
 @class_serializer("SortFormatter")
 class Sort {
-	missing: any;
-	mode: SortMode;
-	nested: NestedSort;
-	numeric_type: NumericType;
-	order: SortOrder;
+  missing: any;
+  mode: SortMode;
+  nested: NestedSort;
+  numeric_type: NumericType;
+  order: SortOrder;
 }

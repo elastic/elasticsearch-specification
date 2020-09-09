@@ -1,6 +1,6 @@
 class Dictionary<TKey, TValue> {
-	key: TKey;
-	value: TValue;
+  key: TKey;
+  value: TValue;
 }
 
 class SingleKeyDictionary<TValue> {

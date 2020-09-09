@@ -1,3 +1,3 @@
 class AcknowledgedResponseBase extends ResponseBase {
-	acknowledged: boolean;
+  acknowledged: boolean;
 }

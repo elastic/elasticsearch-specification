@@ -1,5 +1,5 @@
 class RecoveryFileDetails {
-	length: long;
-	name: string;
-	recovered: long;
+  length: long;
+  name: string;
+  recovered: long;
 }

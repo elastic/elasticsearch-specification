@@ -1,4 +1,4 @@
 class NodeInfoNetwork {
-	primary_interface: NodeInfoNetworkInterface;
-	refresh_interval: integer;
+  primary_interface: NodeInfoNetworkInterface;
+  refresh_interval: integer;
 }

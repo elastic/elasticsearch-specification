@@ -1,4 +1,4 @@
 enum DataAttachmentFormat {
-	json = 0,
-	yaml = 1
+  json = 0,
+  yaml = 1
 }

@@ -1,3 +1,3 @@
 class CatSnapshotsResponse extends ResponseBase {
-	records: CatSnapshotsRecord[];
+  records: CatSnapshotsRecord[];
 }

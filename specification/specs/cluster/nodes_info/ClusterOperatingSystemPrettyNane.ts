@@ -1,4 +1,4 @@
 class ClusterOperatingSystemPrettyNane {
-	count: integer;
-	pretty_name: string;
+  count: integer;
+  pretty_name: string;
 }

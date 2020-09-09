@@ -1,7 +1,7 @@
 class GeoHashGridAggregation {
-	bounds: BoundingBox;
-	field: Field;
-	precision: GeoHashPrecision;
-	shard_size: integer;
-	size: integer;
+  bounds: BoundingBox;
+  field: Field;
+  precision: GeoHashPrecision;
+  shard_size: integer;
+  size: integer;
 }

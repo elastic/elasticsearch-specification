@@ -1,3 +1,3 @@
 class CatTransformsResponse extends ResponseBase {
-	records: CatTransformsRecord[];
+  records: CatTransformsRecord[];
 }

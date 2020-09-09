@@ -1,4 +1,4 @@
 enum Quantifier {
-	some = 0,
-	all = 1
+  some = 0,
+  all = 1
 }

@@ -1,4 +1,4 @@
 class TruncateTokenFilter extends TokenFilterBase {
-	/** @prop_serializer NullableStringIntFormatter */
-	length: integer;
+  /** @prop_serializer NullableStringIntFormatter */
+  length: integer;
 }

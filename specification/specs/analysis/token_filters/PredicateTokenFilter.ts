@@ -1,3 +1,3 @@
 class PredicateTokenFilter extends TokenFilterBase {
-	script: Script;
+  script: Script;
 }

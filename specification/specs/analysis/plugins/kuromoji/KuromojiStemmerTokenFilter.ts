@@ -1,4 +1,4 @@
 class KuromojiStemmerTokenFilter extends TokenFilterBase {
-	/** @prop_serializer NullableStringIntFormatter */
-	minimum_length: integer;
+  /** @prop_serializer NullableStringIntFormatter */
+  minimum_length: integer;
 }

@@ -1,4 +1,4 @@
 class SslUsage {
-	http: SecurityFeatureToggle;
-	transport: SecurityFeatureToggle;
+  http: SecurityFeatureToggle;
+  transport: SecurityFeatureToggle;
 }

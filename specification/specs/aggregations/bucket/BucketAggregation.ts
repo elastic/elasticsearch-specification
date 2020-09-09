@@ -1,3 +1,3 @@
 class BucketAggregation {
-	aggregations: Dictionary<string, AggregationContainer>;
+  aggregations: Dictionary<string, AggregationContainer>;
 }

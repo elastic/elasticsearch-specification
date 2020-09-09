@@ -180,9 +180,9 @@
         "description":"Size on the scroll request powering the delete by query"
       },
       "wait_for_completion": {
-         "type" : "boolean",
-         "default": true,
-         "description" : "Should the request should block until the delete by query is complete."
+        "type" : "boolean",
+        "default": true,
+        "description" : "Should the request should block until the delete by query is complete."
       },
       "requests_per_second": {
         "type": "number",

@@ -1,4 +1,4 @@
 class MappingCharFilter extends CharFilterBase {
-	mappings: string[];
-	mappings_path: string;
+  mappings: string[];
+  mappings_path: string;
 }

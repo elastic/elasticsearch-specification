@@ -1,3 +1,3 @@
 class CatJobsResponse extends ResponseBase {
-	records: CatJobsRecord[];
+  records: CatJobsRecord[];
 }

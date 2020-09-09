@@ -1,3 +1,3 @@
 class CatDatafeedsResponse extends ResponseBase {
-	records: CatDatafeedsRecord[];
+  records: CatDatafeedsRecord[];
 }

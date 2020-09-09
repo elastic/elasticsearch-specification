@@ -1,3 +1,3 @@
 class GrokProcessorPatternsResponse extends ResponseBase {
-	patterns: Dictionary<string, string>;
+  patterns: Dictionary<string, string>;
 }

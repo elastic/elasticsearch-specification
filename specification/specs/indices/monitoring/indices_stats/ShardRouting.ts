@@ -1,6 +1,6 @@
 class ShardRouting {
-	node: string;
-	primary: boolean;
-	relocating_node: string;
-	state: ShardRoutingState;
+  node: string;
+  primary: boolean;
+  relocating_node: string;
+  state: ShardRoutingState;
 }

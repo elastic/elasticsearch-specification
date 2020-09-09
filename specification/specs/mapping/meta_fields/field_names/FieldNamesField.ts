@@ -1,3 +1,3 @@
 class FieldNamesField {
-	enabled: boolean;
+  enabled: boolean;
 }

@@ -1,3 +1,3 @@
 class CompletionStats {
-	size_in_bytes: long;
+  size_in_bytes: long;
 }

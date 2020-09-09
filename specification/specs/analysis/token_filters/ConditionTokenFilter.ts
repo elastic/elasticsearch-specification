@@ -1,4 +1,4 @@
 class ConditionTokenFilter extends TokenFilterBase {
-	filter: string[];
-	script: Script;
+  filter: string[];
+  script: Script;
 }

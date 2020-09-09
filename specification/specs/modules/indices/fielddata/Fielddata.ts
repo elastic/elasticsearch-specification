@@ -1,4 +1,4 @@
 class Fielddata {
-	filter: FielddataFilter;
-	loading: FielddataLoading;
+  filter: FielddataFilter;
+  loading: FielddataLoading;
 }

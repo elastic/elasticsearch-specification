@@ -1,5 +1,5 @@
 class DateRangeExpression {
-	from: DateMath;
-	key: string;
-	to: DateMath;
+  from: DateMath;
+  key: string;
+  to: DateMath;
 }

@@ -1,4 +1,4 @@
 class ThreadStats {
-	count: long;
-	peak_count: long;
+  count: long;
+  peak_count: long;
 }

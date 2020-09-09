@@ -1,4 +1,4 @@
 enum IBDistribution {
-	ll = 0,
-	spl = 1
+  ll = 0,
+  spl = 1
 }

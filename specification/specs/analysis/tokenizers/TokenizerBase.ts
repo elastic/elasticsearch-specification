@@ -1,4 +1,4 @@
 class TokenizerBase implements ITokenizer {
-	type: string;
-	version: string;
+  type: string;
+  version: string;
 }

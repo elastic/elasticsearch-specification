@@ -1,4 +1,4 @@
 class HttpStats {
-	current_open: integer;
-	total_opened: long;
+  current_open: integer;
+  total_opened: long;
 }

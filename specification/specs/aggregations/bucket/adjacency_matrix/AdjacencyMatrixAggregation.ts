@@ -1,3 +1,3 @@
 class AdjacencyMatrixAggregation {
-	filters: Dictionary<string, QueryContainer>;
+  filters: Dictionary<string, QueryContainer>;
 }

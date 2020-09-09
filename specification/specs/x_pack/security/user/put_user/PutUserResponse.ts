@@ -1,3 +1,3 @@
 class PutUserResponse extends ResponseBase {
-	created: boolean;
+  created: boolean;
 }

@@ -1,5 +1,5 @@
 class RollupJobInformation {
-	config: RollupJobConfiguration;
-	stats: RollupJobStats;
-	status: RollupJobStatus;
+  config: RollupJobConfiguration;
+  stats: RollupJobStats;
+  status: RollupJobStatus;
 }

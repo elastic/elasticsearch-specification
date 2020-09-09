@@ -1,5 +1,5 @@
 class MovingFunctionAggregation {
-	script: string;
-	shift: integer;
-	window: integer;
+  script: string;
+  shift: integer;
+  window: integer;
 }

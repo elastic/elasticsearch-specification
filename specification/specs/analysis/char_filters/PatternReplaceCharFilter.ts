@@ -1,5 +1,5 @@
 class PatternReplaceCharFilter extends CharFilterBase {
-	flags: string;
-	pattern: string;
-	replacement: string;
+  flags: string;
+  pattern: string;
+  replacement: string;
 }

@@ -1,4 +1,4 @@
 enum GeoFormat {
-	GeoJson = 0,
-	WellKnownText = 1
+  GeoJson = 0,
+  WellKnownText = 1
 }

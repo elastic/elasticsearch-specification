@@ -1,3 +1,3 @@
 class LowercaseTokenFilter extends TokenFilterBase {
-	language: string;
+  language: string;
 }

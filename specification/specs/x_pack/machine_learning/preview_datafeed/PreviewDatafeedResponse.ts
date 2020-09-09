@@ -1,3 +1,3 @@
 class PreviewDatafeedResponse<TDocument> extends ResponseBase {
-	data: TDocument[];
+  data: TDocument[];
 }

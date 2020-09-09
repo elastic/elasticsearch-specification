@@ -1,3 +1,3 @@
 class GetLicenseResponse extends ResponseBase {
-	license: LicenseInformation;
+  license: LicenseInformation;
 }

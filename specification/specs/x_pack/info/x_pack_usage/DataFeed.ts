@@ -1,3 +1,3 @@
 class DataFeed {
-	count: long;
+  count: long;
 }

@@ -1,3 +1,3 @@
 class SpanMultiTermQuery {
-	match: QueryContainer;
+  match: QueryContainer;
 }

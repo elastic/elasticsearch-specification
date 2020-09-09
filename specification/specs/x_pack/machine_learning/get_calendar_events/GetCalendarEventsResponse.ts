@@ -1,4 +1,4 @@
 class GetCalendarEventsResponse extends ResponseBase {
-	count: integer;
-	events: ScheduledEvent[];
+  count: integer;
+  events: ScheduledEvent[];
 }

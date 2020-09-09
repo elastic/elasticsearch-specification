@@ -1,4 +1,4 @@
 enum IcuTransformDirection {
-	forward = 0,
-	reverse = 1
+  forward = 0,
+  reverse = 1
 }

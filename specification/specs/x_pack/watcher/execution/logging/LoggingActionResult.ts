@@ -1,3 +1,3 @@
 class LoggingActionResult {
-	logged_text: string;
+  logged_text: string;
 }

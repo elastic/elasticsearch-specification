@@ -1,4 +1,4 @@
 class AnalyzerBase {
-	type: string;
-	version: string;
+  type: string;
+  version: string;
 }

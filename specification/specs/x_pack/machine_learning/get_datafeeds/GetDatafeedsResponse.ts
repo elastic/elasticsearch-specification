@@ -1,4 +1,4 @@
 class GetDatafeedsResponse extends ResponseBase {
-	count: long;
-	datafeeds: DatafeedConfig[];
+  count: long;
+  datafeeds: DatafeedConfig[];
 }

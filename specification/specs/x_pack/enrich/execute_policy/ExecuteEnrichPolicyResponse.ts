@@ -1,4 +1,4 @@
 class ExecuteEnrichPolicyResponse extends ResponseBase {
-	status: ExecuteEnrichPolicyStatus;
-	task_id: TaskId;
+  status: ExecuteEnrichPolicyStatus;
+  task_id: TaskId;
 }

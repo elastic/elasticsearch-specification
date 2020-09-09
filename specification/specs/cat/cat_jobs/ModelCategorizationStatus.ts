@@ -1,4 +1,4 @@
 enum ModelCategorizationStatus {
-	ok = 0,
-	warn = 1
+  ok = 0,
+  warn = 1
 }

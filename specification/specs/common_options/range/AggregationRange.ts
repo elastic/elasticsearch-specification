@@ -1,5 +1,5 @@
 class AggregationRange {
-	from: double;
-	key: string;
-	to: double;
+  from: double;
+  key: string;
+  to: double;
 }

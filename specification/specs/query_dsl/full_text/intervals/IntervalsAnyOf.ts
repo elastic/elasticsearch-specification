@@ -1,4 +1,4 @@
 class IntervalsAnyOf {
-	intervals: IntervalsContainer[];
+  intervals: IntervalsContainer[];
   filter: IntervalsFilter;
 }

@@ -1,3 +1,3 @@
 class CatRepositoriesResponse extends ResponseBase {
-	records: CatRepositoriesRecord[];
+  records: CatRepositoriesRecord[];
 }

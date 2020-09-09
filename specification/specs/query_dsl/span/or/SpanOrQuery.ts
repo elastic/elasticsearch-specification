@@ -1,3 +1,3 @@
 class SpanOrQuery {
-	clauses: SpanQuery[];
+  clauses: SpanQuery[];
 }

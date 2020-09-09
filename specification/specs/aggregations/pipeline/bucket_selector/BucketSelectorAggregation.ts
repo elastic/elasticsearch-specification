@@ -1,3 +1,3 @@
 class BucketSelectorAggregation {
-	script: Script;
+  script: Script;
 }
