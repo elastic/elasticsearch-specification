@@ -4,8 +4,8 @@ java-generator
 swagger-generator
 barebones-example
 flight-recorder-generator
-output
-!output/typescript
+output/java
+output/csharp
 typescript-generator
 specification/node_modules
 specification/src/*
