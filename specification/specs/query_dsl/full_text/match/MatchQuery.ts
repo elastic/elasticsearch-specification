@@ -1,5 +1,5 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class MatchQuery {
+class MatchQuery extends QueryBase {
 	analyzer: string;
 	auto_generate_synonyms_phrase_query: boolean;
 	cutoff_frequency: double;

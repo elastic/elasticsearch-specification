@@ -5,4 +5,5 @@ class FunctionScoreQuery {
 	min_score: double;
 	query: QueryContainer;
 	score_mode: FunctionScoreMode;
+  boost: float;
 }

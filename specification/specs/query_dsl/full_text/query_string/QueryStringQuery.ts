@@ -1,4 +1,4 @@
-class QueryStringQuery {
+class QueryStringQuery extends QueryBase {
 	allow_leading_wildcard: boolean;
 	analyzer: string;
 	analyze_wildcard: boolean;

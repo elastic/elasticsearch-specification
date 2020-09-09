@@ -1,5 +1,5 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class CommonTermsQuery {
+class CommonTermsQuery extends QueryBase {
 	analyzer: string;
 	cutoff_frequency: double;
 	high_freq_operator: Operator;

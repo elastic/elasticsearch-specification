@@ -1,4 +1,4 @@
-class ScriptScoreQuery {
+class ScriptScoreQuery extends QueryBase {
 	query: QueryContainer;
 	script: Script;
 }

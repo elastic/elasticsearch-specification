@@ -1,4 +1,4 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class PrefixQuery {
+class PrefixQuery extends QueryBase {
 	rewrite: MultiTermQueryRewrite;
 }

@@ -1,5 +1,5 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class TermQuery {
+class TermQuery extends QueryBase {
 	/** @prop_serializer SourceWriteFormatter`1 */
-	value: any;
+	value: string;
 }

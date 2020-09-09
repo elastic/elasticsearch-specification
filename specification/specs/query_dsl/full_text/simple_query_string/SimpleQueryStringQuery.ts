@@ -1,4 +1,4 @@
-class SimpleQueryStringQuery {
+class SimpleQueryStringQuery extends QueryBase {
 	analyzer: string;
 	analyze_wildcard: boolean;
 	auto_generate_synonyms_phrase_query: boolean;

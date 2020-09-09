@@ -70,3 +70,5 @@ type PropertyName = string
 type RelationName = string
 type TaskId = string
 type Timestamp = string
+type Fuzziness = string | integer
+type MultiTermQueryRewrite = string

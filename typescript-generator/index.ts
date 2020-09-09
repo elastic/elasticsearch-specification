@@ -27,7 +27,27 @@ const skipInterface = [
   'ResponseBase',
   'DictionaryResponseBase'
 ]
-let typeDefinitions = ''
+
+let typeDefinitions = `/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+declare namespace T {\n`
 
 for (const type of specification.types) {
   if (skipInterface.includes(type.name)) {
@@ -47,65 +67,68 @@ for (const type of specification.types) {
   }
 }
 
+typeDefinitions = typeDefinitions.slice(0, -2)
+typeDefinitions += '\n}\n\nexport default T'
+
 fs.writeFileSync(
   path.join(__dirname, '..', 'output', 'typescript', 'types.ts'),
-  typeDefinitions.slice(0, -2) // removes last two '\n\n\'
+  typeDefinitions
 )
 
 function buildStringAlias (type: Domain.StringAlias): string {
-  return `export type ${type.name} = string`
+  return `  export type ${type.name} = string`
 }
 
 function buildNumberAlias (type: Domain.NumberAlias): string {
-  return `export type ${type.name} = number`
+  return `  export type ${type.name} = number`
 }
 
 function buildUnionAlias (type: Domain.UnionAlias): string {
-  return `export type ${type.name} = ${unwrapType(type.wraps)}`
+  return `  export type ${type.name} = ${unwrapType(type.wraps)}`
 }
 
 function buildInterface (type: Domain.Interface): string {
   let code = generateComment(type)
-  code += `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
+  code += `  export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
     if (property.type === undefined) continue
-    code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+    code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
   }
-  code += '}'
+  code += '  }'
   return code
 }
 
 function buildRequestInterface (type: Domain.RequestInterface): string {
   let code = generateComment(type)
-  code += `export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
+  code += `  export interface ${type.name}${buildGeneric(type)}${buildInherits(type)} {\n`
   if (type.path !== undefined) {
     for (const property of type.path) {
       if (property.type === undefined) continue
-      code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+      code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
     }
   }
 
   if (type.queryParameters !== undefined) {
     for (const property of type.queryParameters) {
       if (property.type === undefined) continue
-      code += `  ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+      code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
     }
   }
 
   if (type.body !== undefined) {
     if (Array.isArray(type.body)) {
-      code += '  body?: {\n'
+      code += '    body?: {\n'
       for (const property of type.body) {
         if (property.type === undefined) continue
-        code += `    ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
+        code += `      ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
       }
-      code += '  }\n'
+      code += '    }\n'
     } else {
-      code += `  body?: ${unwrapType(type.body)}\n`
+      code += `    body?: ${unwrapType(type.body)}\n`
     }
   }
 
-  code += '}'
+  code += '  }'
   return code
 }
 
@@ -117,13 +140,13 @@ function buildEnum (type: Domain.Enum): string {
       }
       return `"${member.stringRepresentation}"`
     })
-    return `export type ${type.name} = ${types.join(' | ')}`
+    return `  export type ${type.name} = ${types.join(' | ')}`
   }
-  let code = `export enum ${type.name} {\n`
+  let code = `  export enum ${type.name} {\n`
   for (const member of type.members) {
-    code += `  ${cleanPropertyName(member.name)} = "${member.stringRepresentation}",\n`
+    code += `    ${cleanPropertyName(member.name)} = "${member.stringRepresentation}",\n`
   }
-  code += '}'
+  code += '  }'
   return code
 }
 
@@ -182,14 +205,14 @@ function cleanPropertyName (name: string): string {
 
 function generateComment (type: Domain.Interface | Domain.RequestInterface): string {
   if (stableApis.includes(type.name)) {
-    let comment = '/**\n'
-    comment += ' * @description Stability: STABLE\n'
-    comment += ' */\n'
+    let comment = '  /**\n'
+    comment += '   * @description Stability: STABLE\n'
+    comment += '   */\n'
     return comment
   } else if (type.name.endsWith('Request') ||type.name.endsWith('Response')) {
-    let comment = '/**\n'
-    comment += ' * @description Stability: UNSTABLE\n'
-    comment += ' */\n'
+    let comment = '  /**\n'
+    comment += '   * @description Stability: UNSTABLE\n'
+    comment += '   */\n'
     return comment
   } else {
     return ''

@@ -1,4 +1,4 @@
-class SpanQuery {
+class SpanQuery extends QueryBase {
 	span_containing: SpanContainingQuery;
 	field_masking_span: SpanFieldMaskingQuery;
 	span_first: SpanFirstQuery;

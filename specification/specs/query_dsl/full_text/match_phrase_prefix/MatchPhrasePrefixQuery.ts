@@ -1,5 +1,5 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class MatchPhrasePrefixQuery {
+class MatchPhrasePrefixQuery extends QueryBase {
 	analyzer: string;
 	max_expansions: integer;
 	query: string;

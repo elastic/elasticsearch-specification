@@ -1,5 +1,8 @@
 @class_serializer("TermsQueryFormatter")
-class TermsQuery {
-	terms: any[];
-	terms_lookup: FieldLookup;
+class TermsQuery extends QueryBase {
+	terms: string[];
+  index: IndexName;
+  id: Id;
+  path: string;
+  routing: Routing
 }

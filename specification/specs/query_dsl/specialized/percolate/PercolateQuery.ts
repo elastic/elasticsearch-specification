@@ -1,4 +1,4 @@
-class PercolateQuery {
+class PercolateQuery extends QueryBase {
 	/** @prop_serializer SourceFormatter`1 */
 	document: any;
 	/** @prop_serializer SourceFormatter`1 */

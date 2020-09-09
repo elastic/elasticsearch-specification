@@ -1,5 +1,5 @@
 @class_serializer("FieldNameQueryFormatter`2")
-class MatchBoolPrefixQuery {
+class MatchBoolPrefixQuery extends QueryBase {
 	analyzer: string;
 	fuzziness: Fuzziness;
 	fuzzy_rewrite: MultiTermQueryRewrite;

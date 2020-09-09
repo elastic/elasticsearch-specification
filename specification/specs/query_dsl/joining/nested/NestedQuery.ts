@@ -1,4 +1,4 @@
-class NestedQuery {
+class NestedQuery extends QueryBase {
 	ignore_unmapped: boolean;
 	inner_hits: InnerHits;
 	path: Field;

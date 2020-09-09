@@ -1,3 +1,3 @@
-class IdsQuery {
+class IdsQuery extends QueryBase {
 	values: Id[];
 }
