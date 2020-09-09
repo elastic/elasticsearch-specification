@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { Specification } from '../specification/src/api-specification'
+import { Specification } from 'elasticsearch-client-specification'
 import Domain, {
   ArrayOf,
   Dictionary,
