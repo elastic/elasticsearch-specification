@@ -115,6 +115,10 @@ declare namespace T {
 
   export type Timestamp = string
 
+  export type Fuzziness = string | integer
+
+  export type MultiTermQueryRewrite = string
+
   export interface Aggregate {
     meta?: Record<string, object>
   }
@@ -3323,14 +3327,6 @@ declare namespace T {
   export interface DateMathTime {
     factor?: integer
     interval?: DateMathTimeUnit
-  }
-
-  export interface Fuzziness {
-    auto?: boolean
-    edit_distance?: integer
-    high?: integer
-    low?: integer
-    ratio?: double
   }
 
   export interface Distance {
@@ -6667,7 +6663,7 @@ declare namespace T {
     pinned?: PinnedQuery
     prefix?: Record<string, PrefixQuery | string>
     query_string?: QueryStringQuery
-    range?: RangeQuery
+    range?: Record<string, RangeQuery>
     rank_feature?: Record<string, RankFeatureQuery | string>
     raw_query?: RawQuery
     regexp?: Record<string, RegexpQuery | string>
@@ -6685,7 +6681,7 @@ declare namespace T {
     span_term?: Record<string, SpanTermQuery | string>
     span_within?: SpanWithinQuery
     term?: Record<string, TermQuery | string>
-    terms?: Record<string, TermsQuery | string>
+    terms?: Record<string, TermsQuery | string[]>
     terms_set?: Record<string, TermsSetQuery | string>
     wildcard?: Record<string, WildcardQuery | string>
   }
@@ -6764,10 +6760,12 @@ declare namespace T {
     intervals?: IntervalsContainer[]
     max_gaps?: integer
     ordered?: boolean
+    filter?: IntervalsFilter
   }
 
   export interface IntervalsAnyOf {
     intervals?: IntervalsContainer[]
+    filter?: IntervalsFilter
   }
 
   export interface IntervalsContainer {
@@ -6806,9 +6804,7 @@ declare namespace T {
     ordered?: boolean
     query?: string
     use_field?: Field
-  }
-
-  export interface IntervalsNoFilter {
+    filter?: IntervalsFilter
   }
 
   export interface IntervalsPrefix {
@@ -6818,6 +6814,12 @@ declare namespace T {
   }
 
   export interface IntervalsQuery extends QueryBase {
+    all_of?: IntervalsAllOf
+    any_of?: IntervalsAnyOf
+    fuzzy?: IntervalsFuzzy
+    match?: IntervalsMatch
+    prefix?: IntervalsPrefix
+    wildcard?: IntervalsWildcard
   }
 
   export interface IntervalsWildcard {
@@ -7009,14 +7011,6 @@ declare namespace T {
     type?: RelationName
   }
 
-  export interface MultiTermQueryRewrite {
-    constant_score?: MultiTermQueryRewrite
-    constant_score_boolean?: MultiTermQueryRewrite
-    rewrite?: RewriteMultiTerm
-    scoring_boolean?: MultiTermQueryRewrite
-    size?: integer
-  }
-
   export interface RawQuery {
     raw?: string
   }
@@ -7203,7 +7197,10 @@ declare namespace T {
 
   export interface TermsQuery extends QueryBase {
     terms?: string[]
-    terms_lookup?: FieldLookup
+    index?: IndexName
+    id?: Id
+    path?: string
+    routing?: Routing
   }
 
   export interface TermsSetQuery extends QueryBase {
@@ -7446,26 +7443,30 @@ declare namespace T {
     suggest_size?: long
     suggest_text?: string
     total_hits_as_integer?: boolean
-    track_total_hits?: boolean
+    track_total_hits?: boolean | integer
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
     _source_excludes?: Field | Field[]
     _source_includes?: Field | Field[]
+    seq_no_primary_term?: boolean
+    q?: string
+    size?: integer
     body?: {
       aggs?: Record<string, AggregationContainer>
       collapse?: FieldCollapse
       explain?: boolean
       from?: integer
       highlight?: Highlight
-      indices_boost?: Record<IndexName, double>
+      track_total_hits?: boolean | integer
+      indices_boost?: Array<Record<IndexName, double>>
       docvalue_fields?: Array<Field | DocValueField>
       min_score?: double
       post_filter?: QueryContainer
       profile?: boolean
       query?: QueryContainer
-      rescore?: Rescore[]
+      rescore?: Rescore | Rescore[]
       script_fields?: Record<string, ScriptField>
-      search_after?: object[]
+      search_after?: Array<integer | string>
       size?: integer
       slice?: SlicedScroll
       sort?: Array<Record<string, Sort | SortOrder>>
@@ -7475,6 +7476,8 @@ declare namespace T {
       timeout?: string
       track_scores?: boolean
       version?: boolean
+      seq_no_primary_term?: boolean
+      stored_fields?: Field | Field[]
     }
   }
 
@@ -7501,7 +7504,7 @@ declare namespace T {
 
   export interface FieldCollapse {
     field?: Field
-    inner_hits?: InnerHits
+    inner_hits?: InnerHits | InnerHits[]
     max_concurrent_group_searches?: integer
   }
 
@@ -13347,6 +13350,8 @@ declare namespace T {
   export enum Operator {
     and = "and",
     or = "or",
+    AND = "AND",
+    OR = "OR",
   }
 
   export enum FunctionBoostMode {
