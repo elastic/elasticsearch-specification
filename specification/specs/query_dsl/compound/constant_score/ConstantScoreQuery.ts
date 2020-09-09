@@ -1,4 +1,4 @@
 class ConstantScoreQuery {
-	filter: QueryContainer;
+  filter: QueryContainer;
   boost: float;
 }

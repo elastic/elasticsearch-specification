@@ -1,3 +1,3 @@
 class QueryUserPrivileges {
-	term: TermUserPrivileges;
+  term: TermUserPrivileges;
 }

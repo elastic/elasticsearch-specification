@@ -1,4 +1,4 @@
 class ShardFileSizeInfo {
-	description: string;
-	size_in_bytes: long;
+  description: string;
+  size_in_bytes: long;
 }

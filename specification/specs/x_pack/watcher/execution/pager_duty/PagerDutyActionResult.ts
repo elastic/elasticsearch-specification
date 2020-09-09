@@ -1,3 +1,3 @@
 class PagerDutyActionResult {
-	sent_event: PagerDutyActionEventResult;
+  sent_event: PagerDutyActionEventResult;
 }

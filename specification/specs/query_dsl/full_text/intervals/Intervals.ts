@@ -1,3 +1,3 @@
 class Intervals {
-	filter: IntervalsFilter;
+  filter: IntervalsFilter;
 }

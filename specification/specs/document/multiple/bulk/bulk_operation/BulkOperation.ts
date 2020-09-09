@@ -1,10 +1,10 @@
 class BulkOperation {
-	_id: Id;
-	_index: IndexName;
-	retry_on_conflict: integer;
-	routing: Routing;
-	version: long;
-	version_type: VersionType;
+  _id: Id;
+  _index: IndexName;
+  retry_on_conflict: integer;
+  routing: Routing;
+  version: long;
+  version_type: VersionType;
 }
 
 class BulkOperationContainer {

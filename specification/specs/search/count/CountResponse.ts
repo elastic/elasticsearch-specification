@@ -1,4 +1,4 @@
 class CountResponse extends ResponseBase {
-	count: long;
-	_shards: ShardStatistics;
+  count: long;
+  _shards: ShardStatistics;
 }

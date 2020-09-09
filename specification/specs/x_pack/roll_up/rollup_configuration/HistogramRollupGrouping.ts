@@ -1,4 +1,4 @@
 class HistogramRollupGrouping {
-	fields: Field[];
-	interval: long;
+  fields: Field[];
+  interval: long;
 }

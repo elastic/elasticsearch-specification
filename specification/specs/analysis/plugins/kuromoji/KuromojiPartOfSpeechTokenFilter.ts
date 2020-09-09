@@ -1,3 +1,3 @@
 class KuromojiPartOfSpeechTokenFilter extends TokenFilterBase {
-	stoptags: string[];
+  stoptags: string[];
 }

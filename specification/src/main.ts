@@ -15,14 +15,13 @@ The specification contains
   - ${specification.endpoints.length} API Endpoints
   - ${specification.types.length} Types.
 `)
-  for (const e of specification.endpoints) {
-    const type = specification.typeLookup[e.typeMapping.request];
-    // if (["IndexRequest", "SearchRequest"].includes(type.name))
-    //  console.log(type);
-  }
+for (const e of specification.endpoints) {
+  const type = specification.typeLookup[e.typeMapping.request]
+  // if (["IndexRequest", "SearchRequest"].includes(type.name))
+  //  console.log(type);
+}
 for (const t of specification.types) {
-  if (["StopWords"].includes(t.name))
-    console.log(t);
+  if (['StopWords'].includes(t.name)) { console.log(t) }
 }
 
 console.log('Done!')

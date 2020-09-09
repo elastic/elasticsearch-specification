@@ -1,5 +1,5 @@
 class RuleCondition {
-	applies_to: AppliesTo;
-	operator: ConditionOperator;
-	value: double;
+  applies_to: AppliesTo;
+  operator: ConditionOperator;
+  value: double;
 }

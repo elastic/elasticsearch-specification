@@ -1,3 +1,3 @@
 class MissingAggregation {
-	field: Field;
+  field: Field;
 }

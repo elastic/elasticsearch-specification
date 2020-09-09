@@ -1,4 +1,4 @@
 class TaskRetries {
-	bulk: integer;
-	search: integer;
+  bulk: integer;
+  search: integer;
 }

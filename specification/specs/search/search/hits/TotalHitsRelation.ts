@@ -1,4 +1,4 @@
 enum TotalHitsRelation {
-	eq = 0,
-	gte = 1
+  eq = 0,
+  gte = 1
 }

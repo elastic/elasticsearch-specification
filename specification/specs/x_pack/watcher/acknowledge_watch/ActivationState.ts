@@ -1,4 +1,4 @@
 class ActivationState {
-	active: boolean;
-	timestamp: Date;
+  active: boolean;
+  timestamp: Date;
 }

@@ -1,4 +1,4 @@
 class StoreStats {
-	size: string;
-	size_in_bytes: double;
+  size: string;
+  size_in_bytes: double;
 }

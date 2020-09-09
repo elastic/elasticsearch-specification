@@ -1,5 +1,5 @@
 class AllocationDecision {
-	decider: string;
-	decision: AllocationExplainDecision;
-	explanation: string;
+  decider: string;
+  decision: AllocationExplainDecision;
+  explanation: string;
 }

@@ -1,3 +1,3 @@
 class UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
-	model: ModelSnapshot;
+  model: ModelSnapshot;
 }

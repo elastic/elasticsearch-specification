@@ -1,4 +1,4 @@
 enum HighlighterFragmenter {
-	simple = 0,
-	span = 1
+  simple = 0,
+  span = 1
 }

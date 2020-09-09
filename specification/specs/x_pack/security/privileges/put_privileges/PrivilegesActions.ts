@@ -1,4 +1,4 @@
 class PrivilegesActions {
-	actions: string[];
-	metadata: Dictionary<string, any>;
+  actions: string[];
+  metadata: Dictionary<string, any>;
 }

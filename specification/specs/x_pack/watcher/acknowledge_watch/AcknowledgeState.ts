@@ -1,4 +1,4 @@
 class AcknowledgeState {
-	state: AcknowledgementState;
-	timestamp: Date;
+  state: AcknowledgementState;
+  timestamp: Date;
 }

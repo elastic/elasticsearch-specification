@@ -1,4 +1,4 @@
 class IndexActionResult {
-	id: string;
-	response: IndexActionResultIndexResponse;
+  id: string;
+  response: IndexActionResultIndexResponse;
 }

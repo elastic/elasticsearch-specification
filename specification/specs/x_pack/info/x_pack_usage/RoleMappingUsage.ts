@@ -1,4 +1,4 @@
 class RoleMappingUsage {
-	enabled: integer;
-	size: integer;
+  enabled: integer;
+  size: integer;
 }

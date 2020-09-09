@@ -1,3 +1,3 @@
 class DeleteExpiredDataResponse extends ResponseBase {
-	deleted: boolean;
+  deleted: boolean;
 }

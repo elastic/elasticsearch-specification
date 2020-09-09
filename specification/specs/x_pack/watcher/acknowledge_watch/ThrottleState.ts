@@ -1,4 +1,4 @@
 class ThrottleState {
-	reason: string;
-	timestamp: Date;
+  reason: string;
+  timestamp: Date;
 }

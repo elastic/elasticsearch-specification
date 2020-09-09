@@ -1,3 +1,3 @@
 class CatShardsResponse extends ResponseBase {
-	records: CatShardsRecord[];
+  records: CatShardsRecord[];
 }

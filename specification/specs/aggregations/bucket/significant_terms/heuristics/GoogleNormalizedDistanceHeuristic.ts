@@ -1,3 +1,3 @@
 class GoogleNormalizedDistanceHeuristic {
-	background_is_superset: boolean;
+  background_is_superset: boolean;
 }

@@ -1,3 +1,3 @@
 class CatFielddataResponse extends ResponseBase {
-	records: CatFielddataRecord[];
+  records: CatFielddataRecord[];
 }

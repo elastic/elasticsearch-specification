@@ -1,3 +1,3 @@
 class StemmerTokenFilter extends TokenFilterBase {
-	language: string;
+  language: string;
 }

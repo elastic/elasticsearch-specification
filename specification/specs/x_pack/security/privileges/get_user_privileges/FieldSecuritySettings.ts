@@ -1,4 +1,4 @@
 class FieldSecuritySettings {
-	except: string[];
-	grant: string[];
+  except: string[];
+  grant: string[];
 }

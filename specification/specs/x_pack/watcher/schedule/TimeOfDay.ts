@@ -1,4 +1,4 @@
 class TimeOfDay {
-	hour: integer[];
-	minute: integer[];
+  hour: integer[];
+  minute: integer[];
 }

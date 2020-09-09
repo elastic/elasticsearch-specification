@@ -1,4 +1,4 @@
 enum Conflicts {
-	abort = 0,
-	proceed = 1
+  abort = 0,
+  proceed = 1
 }

@@ -1,4 +1,4 @@
 class IndexMappings {
-	item: TypeMapping;
-	mappings: TypeMapping;
+  item: TypeMapping;
+  mappings: TypeMapping;
 }

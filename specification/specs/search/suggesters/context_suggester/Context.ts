@@ -4,4 +4,3 @@
  * @class_serializer ContextFormatter
  */
 type Context = string | GeoLocation
-

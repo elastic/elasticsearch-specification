@@ -1,5 +1,5 @@
 class NestedIdentity {
-	field: Field;
-	_nested: NestedIdentity;
-	offset: integer;
+  field: Field;
+  _nested: NestedIdentity;
+  offset: integer;
 }

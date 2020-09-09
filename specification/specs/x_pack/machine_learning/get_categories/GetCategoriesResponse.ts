@@ -1,4 +1,4 @@
 class GetCategoriesResponse extends ResponseBase {
-	categories: CategoryDefinition[];
-	count: long;
+  categories: CategoryDefinition[];
+  count: long;
 }

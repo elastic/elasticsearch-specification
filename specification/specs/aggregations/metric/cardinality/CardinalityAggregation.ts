@@ -1,4 +1,4 @@
 class CardinalityAggregation {
-	precision_threshold: integer;
-	rehash: boolean;
+  precision_threshold: integer;
+  rehash: boolean;
 }

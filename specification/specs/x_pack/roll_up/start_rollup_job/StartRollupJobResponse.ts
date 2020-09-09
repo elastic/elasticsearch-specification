@@ -1,3 +1,3 @@
 class StartRollupJobResponse extends ResponseBase {
-	started: boolean;
+  started: boolean;
 }

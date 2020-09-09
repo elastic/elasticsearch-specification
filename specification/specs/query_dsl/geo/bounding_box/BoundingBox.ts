@@ -1,5 +1,5 @@
 class BoundingBox {
-	bottom_right: GeoLocation;
-	top_left: GeoLocation;
-	wkt: string;
+  bottom_right: GeoLocation;
+  top_left: GeoLocation;
+  wkt: string;
 }

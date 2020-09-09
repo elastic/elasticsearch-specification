@@ -1,3 +1,3 @@
 class Limits {
-	max_model_memory_limit: string;
+  max_model_memory_limit: string;
 }

@@ -1,4 +1,4 @@
 class CleanupRepositoryResults {
-	deleted_blobs: long;
-	deleted_bytes: long;
+  deleted_blobs: long;
+  deleted_bytes: long;
 }

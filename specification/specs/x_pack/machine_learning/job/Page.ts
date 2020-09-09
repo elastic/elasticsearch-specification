@@ -1,4 +1,4 @@
 class Page {
-	from: integer;
-	size: integer;
+  from: integer;
+  size: integer;
 }

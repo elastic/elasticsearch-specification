@@ -1,3 +1,3 @@
 class CharGroupTokenizer extends TokenizerBase {
-	tokenize_on_chars: string[];
+  tokenize_on_chars: string[];
 }

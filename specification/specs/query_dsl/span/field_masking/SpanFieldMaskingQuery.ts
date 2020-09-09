@@ -1,4 +1,4 @@
 class SpanFieldMaskingQuery {
-	field: Field;
-	query: SpanQuery;
+  field: Field;
+  query: SpanQuery;
 }

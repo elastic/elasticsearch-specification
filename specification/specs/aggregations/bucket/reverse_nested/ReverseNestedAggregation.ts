@@ -1,3 +1,3 @@
 class ReverseNestedAggregation {
-	path: Field;
+  path: Field;
 }

@@ -1,4 +1,4 @@
 enum RareFunction {
-	Rare = 0,
-	FreqRare = 1
+  Rare = 0,
+  FreqRare = 1
 }

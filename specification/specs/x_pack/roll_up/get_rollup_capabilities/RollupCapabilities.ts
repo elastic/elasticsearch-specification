@@ -1,3 +1,3 @@
 class RollupCapabilities {
-	rollup_jobs: RollupCapabilitiesJob[];
+  rollup_jobs: RollupCapabilitiesJob[];
 }

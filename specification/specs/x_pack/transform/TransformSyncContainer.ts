@@ -1,3 +1,3 @@
 class TransformSyncContainer {
-	time: TransformTimeSync;
+  time: TransformTimeSync;
 }

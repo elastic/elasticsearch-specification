@@ -1,3 +1,3 @@
 class BoxplotAggregation {
-	compression: double;
+  compression: double;
 }

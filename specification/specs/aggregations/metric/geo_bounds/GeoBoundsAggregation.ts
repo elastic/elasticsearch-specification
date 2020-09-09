@@ -1,3 +1,3 @@
 class GeoBoundsAggregation {
-	wrap_longitude: boolean;
+  wrap_longitude: boolean;
 }

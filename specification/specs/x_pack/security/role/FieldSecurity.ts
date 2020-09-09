@@ -1,4 +1,4 @@
 class FieldSecurity {
-	except: Field[];
-	grant: Field[];
+  except: Field[];
+  grant: Field[];
 }

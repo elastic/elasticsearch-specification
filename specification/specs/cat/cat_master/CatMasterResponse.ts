@@ -1,3 +1,3 @@
 class CatMasterResponse extends ResponseBase {
-	records: CatMasterRecord[];
+  records: CatMasterRecord[];
 }

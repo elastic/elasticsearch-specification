@@ -1,5 +1,5 @@
 class ClusterStatistics {
-	skipped: integer;
-	successful: integer;
-	total: integer;
+  skipped: integer;
+  successful: integer;
+  total: integer;
 }

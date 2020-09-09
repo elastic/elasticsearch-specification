@@ -1,4 +1,4 @@
 class ClusterOperatingSystemName {
-	count: integer;
-	name: string;
+  count: integer;
+  name: string;
 }

@@ -1,4 +1,4 @@
 class DocStats {
-	count: long;
-	deleted: long;
+  count: long;
+  deleted: long;
 }

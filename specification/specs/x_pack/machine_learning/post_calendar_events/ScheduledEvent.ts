@@ -1,9 +1,9 @@
 class ScheduledEvent {
-	calendar_id: Id;
-	description: string;
-	/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-	end_time: Date;
-	event_id: Id;
-	/** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-	start_time: Date;
+  calendar_id: Id;
+  description: string;
+  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
+  end_time: Date;
+  event_id: Id;
+  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
+  start_time: Date;
 }

@@ -1,4 +1,4 @@
 class ScriptStats {
-	cache_evictions: long;
-	compilations: long;
+  cache_evictions: long;
+  compilations: long;
 }

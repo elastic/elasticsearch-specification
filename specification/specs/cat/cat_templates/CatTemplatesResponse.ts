@@ -1,3 +1,3 @@
 class CatTemplatesResponse extends ResponseBase {
-	records: CatTemplatesRecord[];
+  records: CatTemplatesRecord[];
 }

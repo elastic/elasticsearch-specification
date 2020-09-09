@@ -1,3 +1,3 @@
 class MedianAbsoluteDeviationAggregation {
-	compression: double;
+  compression: double;
 }

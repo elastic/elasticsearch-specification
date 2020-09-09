@@ -1,3 +1,3 @@
 class TriggerEventContainer {
-	schedule: ScheduleTriggerEvent;
+  schedule: ScheduleTriggerEvent;
 }

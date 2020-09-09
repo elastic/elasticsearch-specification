@@ -1,5 +1,5 @@
 class ClusterIndicesShardsIndexStats {
-	primaries: ClusterShardMetrics;
-	replication: ClusterShardMetrics;
-	shards: ClusterShardMetrics;
+  primaries: ClusterShardMetrics;
+  replication: ClusterShardMetrics;
+  shards: ClusterShardMetrics;
 }

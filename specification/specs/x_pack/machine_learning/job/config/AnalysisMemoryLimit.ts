@@ -1,3 +1,3 @@
 class AnalysisMemoryLimit {
-	model_memory_limit: string;
+  model_memory_limit: string;
 }

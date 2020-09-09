@@ -1,4 +1,4 @@
 class ResourcePrivileges {
-	privileges: Dictionary<string, boolean>;
-	resource: string;
+  privileges: Dictionary<string, boolean>;
+  resource: string;
 }

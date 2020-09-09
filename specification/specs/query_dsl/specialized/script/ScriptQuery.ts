@@ -1,3 +1,3 @@
 class ScriptQuery extends QueryBase {
-	script: Script;
+  script: Script;
 }

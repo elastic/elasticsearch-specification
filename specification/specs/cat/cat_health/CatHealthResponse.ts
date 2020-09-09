@@ -1,3 +1,3 @@
 class CatHealthResponse extends ResponseBase {
-	records: CatHealthRecord[];
+  records: CatHealthRecord[];
 }

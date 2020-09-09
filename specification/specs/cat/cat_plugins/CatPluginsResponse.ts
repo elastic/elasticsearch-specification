@@ -1,3 +1,3 @@
 class CatPluginsResponse extends ResponseBase {
-	records: CatPluginsRecord[];
+  records: CatPluginsRecord[];
 }

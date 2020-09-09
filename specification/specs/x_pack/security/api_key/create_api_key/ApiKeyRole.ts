@@ -1,4 +1,4 @@
 class ApiKeyRole {
-	cluster: string[];
-	index: ApiKeyPrivileges[];
+  cluster: string[];
+  index: ApiKeyPrivileges[];
 }

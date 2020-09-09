@@ -1,6 +1,6 @@
 class InputContainer {
-	chain: ChainInput;
-	http: HttpInput;
-	search: SearchInput;
-	simple: SimpleInput;
+  chain: ChainInput;
+  http: HttpInput;
+  search: SearchInput;
+  simple: SimpleInput;
 }

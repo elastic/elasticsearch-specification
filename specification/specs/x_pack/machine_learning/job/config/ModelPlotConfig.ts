@@ -1,3 +1,3 @@
 class ModelPlotConfig {
-	terms: Field[];
+  terms: Field[];
 }

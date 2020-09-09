@@ -1,4 +1,4 @@
 class HttpInputProxy {
-	host: string;
-	port: integer;
+  host: string;
+  port: integer;
 }

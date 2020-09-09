@@ -1,5 +1,5 @@
 class TriggerEventResult {
-	manual: TriggerEventContainer;
-	triggered_time: Date;
-	type: string;
+  manual: TriggerEventContainer;
+  triggered_time: Date;
+  type: string;
 }
