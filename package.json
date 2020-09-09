@@ -6,13 +6,10 @@
   "types": "specification/lib/src/api-specification.d.ts",
   "scripts": {
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
-    "start": "ts-node src/main.ts",
-    "format": "ts-node src/format.ts",
-    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
-    "compile": "tsc --project specification/tsconfig.json",
-    "copy:json": "cpy 'specs/**/*.json' ./lib --cwd=specification --no-overwrite --parents",
+    "compile:specs": "tsc --project specification/tsconfig.json",
+    "compile:typescript-output": "ENUM_AS_UNION=true npm run start --prefix typescript-generator",
     "copy:specs": "cpy 'specs' ./lib --cwd=specification --no-overwrite --parents",
-    "prepare": "npm run compile && npm run copy:specs"
+    "prepare": "npm run compile:specs && npm run compile:typescript-output && npm run copy:specs"
   },
   "author": "Elastic",
   "license": "MIT",

@@ -5,6 +5,7 @@ swagger-generator
 barebones-example
 flight-recorder-generator
 output
+!output/typescript
 typescript-generator
 specification/node_modules
 specification/src/*

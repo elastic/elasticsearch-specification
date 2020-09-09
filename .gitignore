@@ -41,4 +41,6 @@ dist/
 flight-recorder-generator/output
 *.d.ts
 java-generator/*.js
+package-lock.json
+specification/**/*.js
 specification/lib
