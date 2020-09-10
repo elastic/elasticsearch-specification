@@ -262,9 +262,9 @@ declare namespace T {
   }
 
   export interface DateRangeExpression {
-    from?: DateMath
+    from?: DateMath | float
     key?: string
-    to?: DateMath
+    to?: DateMath | float
   }
 
   export interface FiltersAggregation {
@@ -512,20 +512,27 @@ declare namespace T {
 
   export interface PercentileRanksAggregation {
     keyed?: boolean
-    method?: PercentilesMethod
     values?: double[]
     field?: Field
+    hdr?: HdrMethod
+    tdigest?: TDigest
   }
 
   export interface PercentilesAggregation {
     keyed?: boolean
-    method?: PercentilesMethod
     percents?: double[]
     field?: Field
     missing?: Missing
+    hdr?: HdrMethod
+    tdigest?: TDigest
   }
 
-  export interface PercentilesMethod {
+  export interface HdrMethod {
+    number_of_significant_value_digits?: integer
+  }
+
+  export interface TDigest {
+    compression?: integer
   }
 
   export interface ScriptedMetricAggregation {
