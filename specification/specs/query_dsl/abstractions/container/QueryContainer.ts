@@ -52,7 +52,7 @@ class QueryContainer {
   span_or: SpanOrQuery;
   span_term: SingleKeyDictionary<Union<SpanTermQuery, string>>;
   span_within: SpanWithinQuery;
-  term: SingleKeyDictionary<TermQuery | string | number | boolean>;
+  term: SingleKeyDictionary<TermQuery | string | float | boolean>;
   terms: SingleKeyDictionary<Union<TermsQuery, string[]>>;
   terms_set: SingleKeyDictionary<Union<TermsSetQuery, string>>;
   wildcard: SingleKeyDictionary<Union<WildcardQuery, string>>;
