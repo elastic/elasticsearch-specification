@@ -16,4 +16,5 @@ class Highlight {
   pre_tags: string[];
   require_field_match: boolean;
   tags_schema: HighlighterTagsSchema;
+  type: HighlighterType;
 }
