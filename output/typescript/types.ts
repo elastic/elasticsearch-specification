@@ -7409,7 +7409,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @description Stability: STABLE
    */
   export interface SearchRequest extends RequestBase {
     index?: Indices
