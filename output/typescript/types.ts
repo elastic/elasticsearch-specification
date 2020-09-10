@@ -7470,7 +7470,7 @@ declare namespace T {
       search_after?: Array<integer | string>
       size?: integer
       slice?: SlicedScroll
-      sort?: Array<Record<string, Sort | SortOrder>>
+      sort?: Array<Record<string, Sort | SortOrder> | string>
       _source?: boolean | Field | Field[] | SourceFilter
       suggest?: Record<string, SuggestBucket>
       terminate_after?: long
