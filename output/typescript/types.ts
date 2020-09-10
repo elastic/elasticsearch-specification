@@ -6680,7 +6680,7 @@ declare namespace T {
     span_or?: SpanOrQuery
     span_term?: Record<string, SpanTermQuery | string>
     span_within?: SpanWithinQuery
-    term?: Record<string, TermQuery | string | number | boolean>
+    term?: Record<string, TermQuery | string | float | boolean>
     terms?: Record<string, TermsQuery | string[]>
     terms_set?: Record<string, TermsSetQuery | string>
     wildcard?: Record<string, WildcardQuery | string>
@@ -7192,7 +7192,7 @@ declare namespace T {
   }
 
   export interface TermQuery extends QueryBase {
-    value?: string
+    value?: string | float | boolean
   }
 
   export interface TermsQuery extends QueryBase {
