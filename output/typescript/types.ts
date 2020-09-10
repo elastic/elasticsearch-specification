@@ -7527,6 +7527,7 @@ declare namespace T {
     pre_tags?: string[]
     require_field_match?: boolean
     tags_schema?: HighlighterTagsSchema
+    type?: HighlighterType
   }
 
   export interface HighlightField {
