@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { Specification } from 'elasticsearch-client-specification'
-import Domain from 'elasticsearch-client-specification/src/domain'
+import { Specification } from '../specification/src/api-specification'
+import Domain from '../specification/src/domain'
 
 const specification = Specification.load()
 const stableApis = [
@@ -129,21 +129,13 @@ function buildRequestInterface (type: Domain.RequestInterface): string {
 }
 
 function buildEnum (type: Domain.Enum): string {
-  if (process.env.ENUM_AS_UNION) {
-    const types = type.members.map(member => {
-      if (member.stringRepresentation === 'true' || member.stringRepresentation === 'false') {
-        return member.stringRepresentation
-      }
-      return `"${member.stringRepresentation}"`
-    })
-    return `  export type ${type.name} = ${types.join(' | ')}`
-  }
-  let code = `  export enum ${type.name} {\n`
-  for (const member of type.members) {
-    code += `    ${cleanPropertyName(member.name)} = "${member.stringRepresentation}",\n`
-  }
-  code += '  }'
-  return code
+  const types = type.members.map(member => {
+    if (member.stringRepresentation === 'true' || member.stringRepresentation === 'false') {
+      return member.stringRepresentation
+    }
+    return `"${member.stringRepresentation}"`
+  })
+  return `  export type ${type.name} = ${types.join(' | ')}`
 }
 
 function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Domain.UnionOf | Domain.ImplementsReference | Domain.SingleKeyDictionary): string {

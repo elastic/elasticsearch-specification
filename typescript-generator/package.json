@@ -23,7 +23,6 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
-    "elasticsearch-client-specification": "file:../specification",
     "lodash": "^4.17.15",
     "json-stable-stringify": "^1.0.1"
   },
