@@ -1,7 +1,7 @@
 class DateRangeAggregation {
   field: Field;
   format: string;
-  missing: any;
+  missing: Missing;
   ranges: DateRangeExpression[];
   time_zone: string;
 }

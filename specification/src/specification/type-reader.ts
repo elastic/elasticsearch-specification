@@ -181,6 +181,7 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.StringKeyword : return new Domain.Type('string')
       case ts.SyntaxKind.NumberKeyword : return new Domain.Type('number')
       case ts.SyntaxKind.BooleanKeyword : return new Domain.Type('boolean')
+      case ts.SyntaxKind.NullKeyword : return new Domain.Type('null')
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type('object')
       case ts.SyntaxKind.UnionType: return this.visitUnionType(t as ts.TypeLiteralNode)
       default:

@@ -7,4 +7,5 @@ class HistogramAggregation {
   offset: double;
   order: HistogramOrder;
   script: Script;
+  format: string;
 }

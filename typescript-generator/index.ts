@@ -14,7 +14,8 @@ const stableApis = [
   'UpdateRequest',
   'UpdateResponse',
   'GetRequest',
-  'GetResponse'
+  'GetResponse',
+  'SearchRequest'
 ]
 const skipInterface = [
   'ResponseBase',

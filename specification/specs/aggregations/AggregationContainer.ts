@@ -1,6 +1,7 @@
 class AggregationContainer {
   adjacency_matrix: AdjacencyMatrixAggregation;
   aggs: Dictionary<string, AggregationContainer>;
+  aggregations: Dictionary<string, AggregationContainer>;
   auto_date_histogram: AutoDateHistogramAggregation;
   avg: AverageAggregation;
   avg_bucket: AverageBucketAggregation;
@@ -18,7 +19,7 @@ class AggregationContainer {
   derivative: DerivativeAggregation;
   extended_stats: ExtendedStatsAggregation;
   extended_stats_bucket: ExtendedStatsBucketAggregation;
-  filter: FilterAggregation;
+  filter: QueryContainer;
   filters: FiltersAggregation;
   geo_bounds: GeoBoundsAggregation;
   geo_centroid: GeoCentroidAggregation;
@@ -32,7 +33,7 @@ class AggregationContainer {
   max: MaxAggregation;
   max_bucket: MaxBucketAggregation;
   median_absolute_deviation: MedianAbsoluteDeviationAggregation;
-  meta: Dictionary<string, any>;
+  meta: Dictionary<string, string | number | boolean>;
   min: MinAggregation;
   min_bucket: MinBucketAggregation;
   missing: MissingAggregation;
@@ -62,3 +63,5 @@ class AggregationContainer {
   value_count: ValueCountAggregation;
   weighted_avg: WeightedAverageAggregation;
 }
+
+type Missing = string | integer | boolean;
