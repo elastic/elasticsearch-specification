@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { Specification } from 'elasticsearch-client-specification'
-import Domain from 'elasticsearch-client-specification/src/domain'
+import { Specification } from '../specification/src/api-specification'
+import Domain from '../specification/src/domain'
 
 const specification = Specification.load()
 const stableApis = [
