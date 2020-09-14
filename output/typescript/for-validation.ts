@@ -119,6 +119,10 @@ declare namespace T {
 
   export type MultiTermQueryRewrite = string
 
+  export type GeoTilePrecision = number
+
+  export type GeoHashPrecision = number
+
   export interface Aggregate {
     meta?: Record<string, object>
   }
@@ -131,6 +135,7 @@ declare namespace T {
   export interface AggregationContainer {
     adjacency_matrix?: AdjacencyMatrixAggregation
     aggs?: Record<string, AggregationContainer>
+    aggregations?: Record<string, AggregationContainer>
     auto_date_histogram?: AutoDateHistogramAggregation
     avg?: AverageAggregation
     avg_bucket?: AverageBucketAggregation
@@ -148,7 +153,7 @@ declare namespace T {
     derivative?: DerivativeAggregation
     extended_stats?: ExtendedStatsAggregation
     extended_stats_bucket?: ExtendedStatsBucketAggregation
-    filter?: FilterAggregation
+    filter?: QueryContainer
     filters?: FiltersAggregation
     geo_bounds?: GeoBoundsAggregation
     geo_centroid?: GeoCentroidAggregation
@@ -162,7 +167,7 @@ declare namespace T {
     max?: MaxAggregation
     max_bucket?: MaxBucketAggregation
     median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-    meta?: Record<string, object>
+    meta?: Record<string, string | number | boolean>
     min?: MinAggregation
     min_bucket?: MinBucketAggregation
     missing?: MissingAggregation
@@ -193,6 +198,8 @@ declare namespace T {
     weighted_avg?: WeightedAverageAggregation
   }
 
+  export type Missing = string | integer | boolean
+
   export interface BucketAggregation {
     aggregations?: Record<string, AggregationContainer>
   }
@@ -218,17 +225,16 @@ declare namespace T {
   }
 
   export interface CompositeAggregation {
-    after?: Record<string, object>
+    after?: Record<string, string | float>
     size?: integer
-    sources?: CompositeAggregationSource[]
+    sources?: Array<Record<string, CompositeAggregationSource>>
   }
 
   export interface CompositeAggregationSource {
-    field?: Field
-    missing_bucket?: boolean
-    name?: string
-    order?: SortOrder
-    source_type?: string
+    terms?: TermsAggregation
+    histogram?: HistogramAggregation
+    date_histogram?: DateHistogramAggregation
+    geotile_grid?: GeoTileGridAggregation
   }
 
   export interface DateHistogramAggregation {
@@ -250,19 +256,15 @@ declare namespace T {
   export interface DateRangeAggregation {
     field?: Field
     format?: string
-    missing?: object
+    missing?: Missing
     ranges?: DateRangeExpression[]
     time_zone?: string
   }
 
   export interface DateRangeExpression {
-    from?: DateMath
+    from?: DateMath | float
     key?: string
-    to?: DateMath
-  }
-
-  export interface FilterAggregation {
-    filter?: QueryContainer
+    to?: DateMath | float
   }
 
   export interface FiltersAggregation {
@@ -274,7 +276,7 @@ declare namespace T {
   export interface GeoDistanceAggregation {
     distance_type?: GeoDistanceType
     field?: Field
-    origin?: GeoLocation
+    origin?: GeoLocation | string
     ranges?: AggregationRange[]
     unit?: DistanceUnit
   }
@@ -311,6 +313,7 @@ declare namespace T {
     offset?: double
     order?: HistogramOrder
     script?: Script
+    format?: string
   }
 
   export interface HistogramOrder {
@@ -335,6 +338,7 @@ declare namespace T {
 
   export interface MissingAggregation {
     field?: Field
+    missing?: Missing
   }
 
   export interface NestedAggregation {
@@ -352,12 +356,13 @@ declare namespace T {
   }
 
   export interface RareTermsAggregation {
-    exclude?: TermsExclude
+    exclude?: string | string[]
     field?: Field
-    include?: TermsInclude
+    include?: string | string[] | TermsInclude
     max_doc_count?: long
-    missing?: object
+    missing?: Missing
     precision?: double
+    value_type?: string
   }
 
   export interface ReverseNestedAggregation {
@@ -371,19 +376,14 @@ declare namespace T {
     shard_size?: integer
   }
 
-  export interface IncludeExclude {
-    pattern?: string
-    values?: string[]
-  }
-
   export interface SignificantTermsAggregation {
     background_filter?: QueryContainer
     chi_square?: ChiSquareHeuristic
-    exclude?: IncludeExclude
+    exclude?: string | string[]
     execution_hint?: TermsAggregationExecutionHint
     field?: Field
     gnd?: GoogleNormalizedDistanceHeuristic
-    include?: IncludeExclude
+    include?: string | string[]
     min_doc_count?: long
     mutual_information?: MutualInformationHeuristic
     percentage?: PercentageScoreHeuristic
@@ -417,12 +417,12 @@ declare namespace T {
   export interface SignificantTextAggregation {
     background_filter?: QueryContainer
     chi_square?: ChiSquareHeuristic
-    exclude?: IncludeExclude
+    exclude?: string | string[]
     execution_hint?: TermsAggregationExecutionHint
     field?: Field
     filter_duplicate_text?: boolean
     gnd?: GoogleNormalizedDistanceHeuristic
-    include?: IncludeExclude
+    include?: string | string[]
     min_doc_count?: long
     mutual_information?: MutualInformationHeuristic
     percentage?: PercentageScoreHeuristic
@@ -435,38 +435,23 @@ declare namespace T {
 
   export interface TermsAggregation {
     collect_mode?: TermsAggregationCollectMode
-    exclude?: TermsExclude
+    exclude?: string | string[]
     execution_hint?: TermsAggregationExecutionHint
     field?: Field
-    include?: TermsInclude
+    include?: string | string[] | TermsInclude
     min_doc_count?: integer
-    missing?: object
-    order?: TermsOrder[]
+    missing?: Missing
+    value_type?: string
+    order?: Record<string, SortOrder>
     script?: Script
     shard_size?: integer
     show_term_doc_count_error?: boolean
     size?: integer
   }
 
-  export interface TermsExclude {
-    pattern?: string
-    values?: string[]
-  }
-
   export interface TermsInclude {
     num_partitions?: long
     partition?: long
-    pattern?: string
-    values?: string[]
-  }
-
-  export interface TermsOrder {
-    count_ascending?: TermsOrder
-    count_descending?: TermsOrder
-    key?: string
-    key_ascending?: TermsOrder
-    key_descending?: TermsOrder
-    order?: SortOrder
   }
 
   export interface MatrixAggregation {
@@ -498,10 +483,12 @@ declare namespace T {
   export interface CardinalityAggregation {
     precision_threshold?: integer
     rehash?: boolean
+    field?: Field
   }
 
   export interface ExtendedStatsAggregation {
     sigma?: double
+    field?: Field
   }
 
   export interface GeoBoundsAggregation {
@@ -516,6 +503,8 @@ declare namespace T {
 
   export interface MedianAbsoluteDeviationAggregation {
     compression?: double
+    field?: Field
+    missing?: Missing
   }
 
   export interface MinAggregation {
@@ -523,17 +512,27 @@ declare namespace T {
 
   export interface PercentileRanksAggregation {
     keyed?: boolean
-    method?: PercentilesMethod
     values?: double[]
+    field?: Field
+    hdr?: HdrMethod
+    tdigest?: TDigest
   }
 
   export interface PercentilesAggregation {
     keyed?: boolean
-    method?: PercentilesMethod
     percents?: double[]
+    field?: Field
+    missing?: Missing
+    hdr?: HdrMethod
+    tdigest?: TDigest
   }
 
-  export interface PercentilesMethod {
+  export interface HdrMethod {
+    number_of_significant_value_digits?: integer
+  }
+
+  export interface TDigest {
+    compression?: integer
   }
 
   export interface ScriptedMetricAggregation {
@@ -564,11 +563,12 @@ declare namespace T {
     highlight?: Highlight
     script_fields?: Record<string, ScriptField>
     size?: integer
-    sort?: Sort[]
+    sort?: string | Array<Record<string, Sort | SortOrder>>
     _source?: boolean | SourceFilter
     stored_fields?: Field[]
     track_scores?: boolean
     version?: boolean
+    seq_no_primary_term?: boolean
   }
 
   export interface TopMetricsAggregation {
@@ -6649,7 +6649,7 @@ declare namespace T {
     is_strict?: boolean
     is_verbatim?: boolean
     is_writable?: boolean
-    match?: Record<string, MatchQuery | string>
+    match?: Record<string, MatchQuery | string | float | boolean>
     match_all?: MatchAllQuery
     match_bool_prefix?: Record<string, MatchBoolPrefixQuery | string>
     match_none?: MatchNoneQuery
@@ -6680,7 +6680,7 @@ declare namespace T {
     span_or?: SpanOrQuery
     span_term?: Record<string, SpanTermQuery | string>
     span_within?: SpanWithinQuery
-    term?: Record<string, TermQuery | string>
+    term?: Record<string, TermQuery | string | float | boolean>
     terms?: Record<string, TermsQuery | string[]>
     terms_set?: Record<string, TermsSetQuery | string>
     wildcard?: Record<string, WildcardQuery | string>
@@ -6703,11 +6703,11 @@ declare namespace T {
   }
 
   export interface BoolQuery {
-    filter?: QueryContainer[]
+    filter?: QueryContainer | QueryContainer[]
     minimum_should_match?: MinimumShouldMatch
-    must?: QueryContainer[]
-    must_not?: QueryContainer[]
-    should?: QueryContainer[]
+    must?: QueryContainer | QueryContainer[]
+    must_not?: QueryContainer | QueryContainer[]
+    should?: QueryContainer | QueryContainer[]
     _name?: string
   }
 
@@ -6840,7 +6840,7 @@ declare namespace T {
     minimum_should_match?: MinimumShouldMatch
     operator?: Operator
     prefix_length?: integer
-    query?: string
+    query?: string | float | boolean
     zero_terms_query?: ZeroTermsQuery
   }
 
@@ -7192,7 +7192,7 @@ declare namespace T {
   }
 
   export interface TermQuery extends QueryBase {
-    value?: string
+    value?: string | float | boolean
   }
 
   export interface TermsQuery extends QueryBase {
@@ -7409,7 +7409,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @description Stability: STABLE
    */
   export interface SearchRequest extends RequestBase {
     index?: Indices
@@ -7453,6 +7453,7 @@ declare namespace T {
     size?: integer
     body?: {
       aggs?: Record<string, AggregationContainer>
+      aggregations?: Record<string, AggregationContainer>
       collapse?: FieldCollapse
       explain?: boolean
       from?: integer
@@ -7469,7 +7470,7 @@ declare namespace T {
       search_after?: Array<integer | string>
       size?: integer
       slice?: SlicedScroll
-      sort?: Array<Record<string, Sort | SortOrder>>
+      sort?: Array<Record<string, Sort | SortOrder> | string>
       _source?: boolean | Field | Field[] | SourceFilter
       suggest?: Record<string, SuggestBucket>
       terminate_after?: long
@@ -7526,6 +7527,7 @@ declare namespace T {
     pre_tags?: string[]
     require_field_match?: boolean
     tags_schema?: HighlighterTagsSchema
+    type?: HighlighterType
   }
 
   export interface HighlightField {
@@ -7695,7 +7697,7 @@ declare namespace T {
   }
 
   export interface Sort {
-    missing?: object
+    missing?: Missing
     mode?: SortMode
     nested?: NestedSort
     numeric_type?: NumericType
@@ -12473,10 +12475,6 @@ declare namespace T {
   export type MinimumInterval = "second" | "minute" | "hour" | "day" | "month" | "year"
 
   export type DateInterval = "second" | "minute" | "hour" | "day" | "week" | "month" | "quarter" | "year"
-
-  export type GeoHashPrecision = "Precision1" | "Precision2" | "Precision3" | "Precision4" | "Precision5" | "Precision6" | "Precision7" | "Precision8" | "Precision9" | "Precision10" | "Precision11" | "Precision12"
-
-  export type GeoTilePrecision = "Precision0" | "Precision1" | "Precision2" | "Precision3" | "Precision4" | "Precision5" | "Precision6" | "Precision7" | "Precision8" | "Precision9" | "Precision10" | "Precision11" | "Precision12" | "Precision13" | "Precision14" | "Precision15" | "Precision16" | "Precision17" | "Precision18" | "Precision19" | "Precision20" | "Precision21" | "Precision22" | "Precision23" | "Precision24" | "Precision25" | "Precision26" | "Precision27" | "Precision28" | "Precision29"
 
   export type SamplerAggregationExecutionHint = "map" | "global_ordinals" | "bytes_hash"
 
