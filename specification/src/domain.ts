@@ -29,7 +29,10 @@ namespace Domain {
     type = new Type('union');
     items: InstanceOf[] = [];
   }
-  export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf|SingleKeyDictionary;
+  export class UserDefinedValue {
+    type = new Type('userdefinedvalue');
+  }
+  export type InstanceOf = Type|ArrayOf|Dictionary|UnionOf|SingleKeyDictionary|UserDefinedValue;
 
   export class GeneratorDocumentation {
     constructor (description: string, keyValues: Record<string, string>) {

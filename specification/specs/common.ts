@@ -74,3 +74,5 @@ type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number
 type GeoHashPrecision = number
+
+class UserDefinedValue {}
