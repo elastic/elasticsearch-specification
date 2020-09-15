@@ -138,7 +138,7 @@ function buildEnum (type: Domain.Enum): string {
   return `  export type ${type.name} = ${types.join(' | ')}`
 }
 
-function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Domain.UnionOf | Domain.ImplementsReference | Domain.SingleKeyDictionary): string {
+function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Domain.UnionOf | Domain.ImplementsReference | Domain.SingleKeyDictionary | Domain.UserDefinedValue): string {
   if (type instanceof Domain.ArrayOf) {
     return `${unwrapType(type.of)}[]`
   } else if (type instanceof Domain.Dictionary) {
@@ -147,6 +147,8 @@ function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Do
     return `Record<string, ${unwrapType(type.value)}>`
   } else if (type instanceof Domain.UnionOf) {
     return type.items.map(unwrapType).join(' | ')
+  } else if (type instanceof Domain.UserDefinedValue) {
+    return 'any'
   } else if (type instanceof Domain.ImplementsReference) {
     if (type.type.name === 'DictionaryResponseBase') {
       return `Record<${type.closedGenerics.map(unwrapType).join(', ')}>`
