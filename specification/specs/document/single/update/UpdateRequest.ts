@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("update")
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
   query_parameters: {

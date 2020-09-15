@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("delete")
 class DeleteRequest extends RequestBase {
   query_parameters: {

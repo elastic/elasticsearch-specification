@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("create")
 @class_serializer("CreateRequestFormatter`1")
 class CreateRequest<TDocument> extends RequestBase {

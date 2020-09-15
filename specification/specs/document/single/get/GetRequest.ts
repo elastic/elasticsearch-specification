@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("get")
 class GetRequest extends RequestBase {
   query_parameters: {
