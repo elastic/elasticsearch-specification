@@ -6,8 +6,9 @@
   "types": "specification/lib/src/api-specification.d.ts",
   "scripts": {
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
+    "compile:brain": "tsc --project specification/specs/tsconfig.json --noEmit",
     "compile:specs": "tsc --project specification/tsconfig.json",
-    "compile:ts-validation": "ENUM_AS_UNION=true npm run start --prefix typescript-generator",
+    "compile:ts-validation": "npm run start --prefix typescript-generator",
     "copy:specs": "cpy 'specs' ./lib --cwd=specification --no-overwrite --parents",
     "prepare": "npm run compile:specs && npm run copy:specs"
   },

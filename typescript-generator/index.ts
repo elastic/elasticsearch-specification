@@ -64,7 +64,7 @@ for (const type of specification.types) {
 typeDefinitions = typeDefinitions.slice(0, -2)
 typeDefinitions += '\n}\n\nexport default T'
 
-const exportName = 'types-' + process.env.ENUM_AS_UNION ? 'for-validation' : '';
+const exportName = 'types';
 
 fs.writeFileSync(
   path.join(__dirname, '..', 'output', 'typescript', `${exportName}.ts`),
