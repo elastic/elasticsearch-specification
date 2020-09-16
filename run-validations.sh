@@ -8,5 +8,8 @@ npm run compile:brain
 npm run compile:specs
 npm run compile:ts-validation
 
+# assumes the flight recorder is checked out next to generator
+pushd ../clients-flight-recorder
+
 
 
