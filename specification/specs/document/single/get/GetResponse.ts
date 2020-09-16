@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 class GetResponse<TDocument> extends ResponseBase {
   fields: Dictionary<string, LazyDocument>;
   found: boolean;

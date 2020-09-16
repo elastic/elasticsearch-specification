@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("index")
 @class_serializer("IndexRequestFormatter`1")
 class IndexRequest<TDocument> extends RequestBase {

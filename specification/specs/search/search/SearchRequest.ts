@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("search")
 class SearchRequest extends RequestBase {
   query_parameters: {

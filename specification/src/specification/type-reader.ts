@@ -214,6 +214,7 @@ class InterfaceVisitor extends Visitor {
     if (typeName.startsWith('Dictionary')) return this.createDictionary(t, typeName)
     if (typeName.startsWith('Union')) return this.createUnion(t, typeName)
     if (typeName.startsWith('SingleKeyDictionary')) return this.createSingleKeyDictionary(t, typeName)
+    if (typeName.startsWith('UserDefinedValue')) return this.createUserDefinedValue(t, typeName)
     const typed = new Domain.Type(typeName)
     if (!t.typeArguments || t.typeArguments.length === 0) { return typed }
     typed.closedGenerics = t.typeArguments.map(gt => this.visitTypeNode(gt))
@@ -248,6 +249,10 @@ class InterfaceVisitor extends Visitor {
     const map = new Domain.SingleKeyDictionary()
     map.value = types[0]
     return map
+  }
+
+  private createUserDefinedValue (t: ts.TypeReferenceNode, typeName) {
+    return new Domain.UserDefinedValue()
   }
 
   private typeKinds: ts.SyntaxKind[] = [

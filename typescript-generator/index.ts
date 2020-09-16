@@ -4,22 +4,12 @@ import { Specification } from '../specification/src/api-specification'
 import Domain from '../specification/src/domain'
 
 const specification = Specification.load()
-const stableApis = [
-  'IndexRequest',
-  'IndexResponse',
-  'CreateRequest',
-  'CreateResponse',
-  'DeleteRequest',
-  'DeleteResponse',
-  'UpdateRequest',
-  'UpdateResponse',
-  'GetRequest',
-  'GetResponse',
-  'SearchRequest'
-]
+
 const skipInterface = [
   'ResponseBase',
-  'DictionaryResponseBase'
+  'DictionaryResponseBase',
+  'UserDefinedValue',
+  'SingleKeyDictionary'
 ]
 
 let typeDefinitions = `/*
@@ -138,7 +128,7 @@ function buildEnum (type: Domain.Enum): string {
   return `  export type ${type.name} = ${types.join(' | ')}`
 }
 
-function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Domain.UnionOf | Domain.ImplementsReference | Domain.SingleKeyDictionary): string {
+function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Domain.UnionOf | Domain.ImplementsReference | Domain.SingleKeyDictionary | Domain.UserDefinedValue): string {
   if (type instanceof Domain.ArrayOf) {
     return `${unwrapType(type.of)}[]`
   } else if (type instanceof Domain.Dictionary) {
@@ -147,6 +137,8 @@ function unwrapType (type: Domain.ArrayOf | Domain.Dictionary | Domain.Type | Do
     return `Record<string, ${unwrapType(type.value)}>`
   } else if (type instanceof Domain.UnionOf) {
     return type.items.map(unwrapType).join(' | ')
+  } else if (type instanceof Domain.UserDefinedValue) {
+    return 'any'
   } else if (type instanceof Domain.ImplementsReference) {
     if (type.type.name === 'DictionaryResponseBase') {
       return `Record<${type.closedGenerics.map(unwrapType).join(', ')}>`
@@ -192,14 +184,14 @@ function cleanPropertyName (name: string): string {
 }
 
 function generateComment (type: Domain.Interface | Domain.RequestInterface): string {
-  if (stableApis.includes(type.name)) {
+  if (type.generatorHints.annotations.type_stability) {
     let comment = '  /**\n'
-    comment += '   * @description Stability: STABLE\n'
+    comment += `   * @type_stability ${type.generatorHints.annotations.type_stability.toUpperCase()} \n`
     comment += '   */\n'
     return comment
   } else if (type.name.endsWith('Request') ||type.name.endsWith('Response')) {
     let comment = '  /**\n'
-    comment += '   * @description Stability: UNSTABLE\n'
+    comment += '   * @type_stability UNSTABLE\n'
     comment += '   */\n'
     return comment
   } else {
