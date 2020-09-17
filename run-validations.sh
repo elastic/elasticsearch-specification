@@ -4,9 +4,9 @@ set -euo pipefail
 [ -z "$FAST" ] && npm install --prefix specification
 [ -z "$FAST" ] && npm install --prefix typescript-generator
 
-[ -z "$FAST" ] && npm run compile:brain
-[ -z "$FAST" ] && npm run compile:specs
-[ -z "$FAST" ] && npm run compile:ts-validation
+npm run compile:brain
+npm run compile:specs
+npm run compile:ts-validation
 
 recorderFolder="../clients-flight-recorder"
 recorderScript="${recorderFolder}/run-validations.sh"
