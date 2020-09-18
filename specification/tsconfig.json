@@ -20,7 +20,8 @@
   "compileOnSave": true,
   "buildOnSave": true,
   "exclude": [
-    "specs"
+    "specs",
+    "lib"
   ],
   "include": [
     "."
