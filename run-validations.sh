@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-[ -z "$FAST" ] && npm install --prefix specification
-[ -z "$FAST" ] && npm install --prefix typescript-generator
+FAST=${FAST=false}
+
+[[ "$FAST" != "false" ]] && npm install --prefix specification
+[[ "$FAST" != "false" ]] && npm install --prefix typescript-generator
 
 npm run compile:brain
 npm run compile:specs
