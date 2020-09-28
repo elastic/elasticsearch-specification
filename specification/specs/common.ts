@@ -52,7 +52,8 @@ type ScrollIds = string
 type CategoryId = string
 type ActionIds = string
 type Field = string
-type Fields = string
+/** Wildcard (*) pattern or array of patterns containing source fields to return */
+type Fields = Field | Field[]
 type Id = string | number
 type Ids = string | number | string[]
 type IndexName = string
