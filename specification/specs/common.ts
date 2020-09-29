@@ -52,7 +52,8 @@ type ScrollIds = string
 type CategoryId = string
 type ActionIds = string
 type Field = string
-type Fields = string
+/** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
+type Fields = Field | Field[]
 type Id = string | number
 type Ids = string | number | string[]
 type IndexName = string
