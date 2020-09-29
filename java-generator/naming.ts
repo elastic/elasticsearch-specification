@@ -1,19 +1,32 @@
 import * as changeCase from "change-case";
 import Domain from "elasticsearch-client-specification/src/domain";
+import {specification} from "./specs";
 
 export const stringTypes =
   ["Field", "Id", "Ids", "IndexName", "Indices", "Routing", "LongId", "IndexMetrics", "Metrics", "Name", "Names",
     "NodeIds", "PropertyName", "RelationName", "TaskId", "Timestamp",
     "Uri", "Date", "TimeSpan"
   ];
-export const numberTypes = ["short", "byte", "integer", "long", "float", "double"];
+export const numberTypes = [
+  "short", "byte", "integer", "long", "float", "double",
+  "number" // FIXME: should not be present
+];
+const boxedNumberTypes = {
+  byte: "Byte",
+  short: "Short",
+  int: "Integer",
+  long: "Long",
+  float: "Float",
+  double: "Double",
+  number: "Double" // FIXME: should not be present
+};
+
 export const objectTypes = ["SourceDocument"];
 
-const reservedTypes = ["string", "integer", "double", "boolean", "object"];
-
 export const $typeName = (name: string) => {
-  if (reservedTypes.includes(name) || !name.includes("<"))
-    return changeCase.pascalCase(name, {stripRegexp:/[^A-Z0-9<>]/gi });
+  if (name === "Array") {
+    return "List";
+  }
 
   return changeCase.pascalCase(name, {stripRegexp:/[^A-Z0-9<>]/gi });
 };
@@ -39,16 +52,51 @@ export const $parseFieldName = (prop: string) => {
   return changeCase.constantCase(prop);
 };
 
-export const $instanceOf = (instance: Domain.InstanceOf) => {
+export const $isPrimitiveType = (instance: Domain.InstanceOf): boolean => {
+  if (instance instanceof Domain.Type) {
+    const realType = specification.typeLookup[instance.name];
+    if (realType instanceof Domain.NumberAlias) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export const $instanceOf = (instance: Domain.InstanceOf, boxed: boolean): string => {
+
   if (instance instanceof Domain.Type)  {
+    const realType = specification.typeLookup[instance.name];
+    if (realType instanceof Domain.StringAlias) return `String`;
+    if (realType instanceof Domain.NumberAlias) {
+      const primitiveType = realType.name === "integer" ? "int" : realType.name;
+      return boxed ? boxedNumberTypes[primitiveType] : primitiveType;
+    }
+
     if (instance.closedGenerics.length === 0)
       return $typeName(instance.name);
 
-    const generics = instance.closedGenerics.map($instanceOf).flat(Infinity);
+    const generics = instance.closedGenerics.map(t => $instanceOf(t, true)).flat(Infinity);
     return `${$typeName(instance.name)}<${generics.join(", ")}>`;
   }
-  else if (instance instanceof Domain.ArrayOf) return `List<${$instanceOf(instance.of)}>`;
-  else if (instance instanceof Domain.Dictionary) return `NamedContainer<${$instanceOf(instance.key)}, ${$instanceOf(instance.value)}>`;
-  else if (instance instanceof Domain.UnionOf) return `Either<${instance.items.map($instanceOf).join(", ")}>`;
+  else if (instance instanceof Domain.ArrayOf) return `List<${$instanceOf(instance.of, true)}>`;
+  else if (instance instanceof Domain.Dictionary) return `NamedContainer<${$instanceOf(instance.key, true)}, ${$instanceOf(instance.value, true)}>`;
+  else if (instance instanceof Domain.UnionOf) return `Union${instance.items.length}<${instance.items.map(t => $instanceOf(t, true)).join(", ")}>`;
+  else if (instance instanceof Domain.SingleKeyDictionary) {
+    return `SingleKeyDictionary<${$instanceOf(instance.value, true)}>`;
+  } else if (instance instanceof Domain.UserDefinedValue) {
+    return "Object";
+  } else {
+    console.error(`Don't know how to "instanceof" `, instance);
+    throw Error(`Don't know how to "instanceof" ${typeof instance}`)
+  }
 };
 
+/**
+ * Returns the implementation type for a domain type. Used for containers like lists whose public type is an interface
+ * but need a concrete implementation for the type .
+ * @param instance
+ */
+export const $implementationOf = (instance: Domain.InstanceOf): string => {
+  return $instanceOf(instance, false);
+}

@@ -7,18 +7,15 @@ const $referencedTypes = (instance: Domain.InstanceOf) : Domain.TypeDeclaration[
     const type = specification.typeLookup[instance.name];
     const inherits =
       type instanceof Domain.Interface
-        ? type.inherits.flatMap(t=> t.closedGenerics.map($referencedTypes)).flat()
+        ? type.inherits.flatMap(t=> t.closedGenerics.flatMap($referencedTypes))
         : [];
     return [type]
-      .concat(instance.closedGenerics.map($referencedTypes).flat(Infinity))
+      .concat(instance.closedGenerics.flatMap($referencedTypes))
       .concat(inherits);
   }
-  else if (instance instanceof Domain.ArrayOf) return $referencedTypes(instance.of)
-    .flat<Domain.TypeDeclaration>(Infinity);
-  else if (instance instanceof Domain.Dictionary) return [$referencedTypes(instance.key), $referencedTypes(instance.value)]
-    .flat<Domain.TypeDeclaration>(Infinity);
-  else if (instance instanceof Domain.UnionOf) return instance.items.map($referencedTypes)
-    .flat<Domain.TypeDeclaration>(Infinity);
+  else if (instance instanceof Domain.ArrayOf) return $referencedTypes(instance.of);
+  else if (instance instanceof Domain.Dictionary) return [$referencedTypes(instance.key), $referencedTypes(instance.value)].flat();
+  else if (instance instanceof Domain.UnionOf) return instance.items.flatMap($referencedTypes)
 };
 
 const $import = (ns: string) => `import org.elasticsearch.${ns}.*;`;

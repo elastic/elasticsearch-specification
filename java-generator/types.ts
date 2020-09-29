@@ -1,39 +1,75 @@
 import Domain from "elasticsearch-client-specification/src/domain";
-import {$fieldName, $instanceOf, $parseFieldName, $propertyName, $typeName} from "./naming";
+import {$fieldName, $instanceOf, $isPrimitiveType, $parseFieldName, $propertyName, $typeName} from "./naming";
 import * as changeCase from "change-case";
 import {$imports} from "./imports";
 import {$parseProperties} from "./types-parser-read";
 import {$writeProperties} from "./types-parser-write";
 
+function isBaseClassName(name: string): boolean {
+  return name === "RequestBase" || name === "ResponseBase";
+}
+
+export function $isBaseClass(type: Domain.Interface): boolean {
+  return isBaseClassName(type.name);
+}
+
 const $typeExtends = (type: Domain.Interface) => {
-  return type.inherits.length === 0
-    ? ``
-    : `extends ${type.inherits.map($handleDictionaryResponse).join(", ")}`;
+  if (type.inherits.length === 0) {
+    return "";
+  } else {
+    return `extends ${type.inherits.map(ref => $handleDictionaryResponse(type, ref)).join(", ")}`;
+  }
 };
 
-const $handleDictionaryResponse = (ref: Domain.ImplementsReference) => {
+const $handleDictionaryResponse = (type: Domain.Interface, ref: Domain.ImplementsReference) => {
   if (ref.type === undefined) return "";
 
-  return ref.type.name === "DictionaryResponseBase"
-    ? `${$typeName(ref.type.name)}<${ref.closedGenerics.map($instanceOf).join(", ")}>`
-    : $typeName(ref.type.name);
+  if (ref.type.name === "DictionaryResponseBase") {
+    return `${$typeName(ref.type.name)}<${ref.closedGenerics.map(t => $instanceOf(t, true)).join(", ")}>`;
+  }
+
+  if ($isBaseClass(ref.type)) {
+    return `${$typeName(ref.type.name)}<${type.name}>`;
+  }
+
+  return $typeName(ref.type.name);
 };
 
 const $implementsXContent = (type: Domain.Interface) => {
-  return type.name === "DictionaryResponseBase"
-    ? ``
-    : `implements XContentable<${$typeName(type.name)}${$typeGenerics(type)}>`;
+  if (type.name === "DictionaryResponseBase") return "";
+  if ($isBaseClass(type)) return `implements XContentable<T>`;
+  return `implements XContentable<${$typeName(type.name)}>`;
 };
 
 const $xCContentImplementation = (type: Domain.Interface) => {
   if(type.name === "DictionaryResponseBase") return "";
-  return `
+
+  if ($isBaseClass(type)) return `
   @Override
   public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
     builder.startObject();
-    ${$writeProperties(type)}
+    toXContentInternal(builder, params);
     builder.endObject();
     return builder;
+  }
+
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    ${$writeProperties(type)}
+  }
+`
+
+  // TODO: do not generate ToXContent for responses and FromXContent for requests
+  // (but should be configurable to produce a server)
+  let superToXContent = "super.toXContentInternal(builder, params);";
+  if (type.inherits.length === 0) {
+    superToXContent = "";
+  }
+
+  return `
+  @Override
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    ${superToXContent}
+    ${$writeProperties(type)}
   }
 
   @Override
@@ -51,24 +87,76 @@ const $xCContentImplementation = (type: Domain.Interface) => {
 };
 
 const $abstractClass = (type: Domain.Interface) => {
-  return type.name === "DictionaryResponseBase"
+  return type.name === "DictionaryResponseBase" || $isBaseClass(type)
     ? `abstract `
     : ``;
 };
 
 const $typeGenerics = (type: Domain.Interface) => {
-  return type.openGenerics.length === 0
-    ? ``
-    : `<${type.openGenerics.map(g => `${g}`).join(", ")}>`;
+  if ($isBaseClass(type)) return `<T extends ${$typeName(type.name)}<T>>`;
+
+  if (type.openGenerics.length === 0) return "";
+
+  return `<${type.openGenerics.map(g =>
+    `${g}`
+  ).join(", ")}>`;
 };
 
-const $property = (prop: Domain.InterfaceProperty, parent: Domain.Interface) => `
+const $property = (prop: Domain.InterfaceProperty, parent: Domain.Interface) => {
+  let suppressWarnings = "";
+  let returnThis = "return this";
+
+  if ($isBaseClass(parent)) {
+    suppressWarnings = `@SuppressWarnings("unchecked")\n  `;
+    returnThis = "return (T)this";
+  }
+
+  if ($isBaseClass(parent)) {
+    return `
   static final ParseField ${$parseFieldName(prop.name)} = new ParseField("${prop.name}");
-  private ${$instanceOf(prop.type)} ${$fieldName(prop.name)};
-  public ${$instanceOf(prop.type)} get${$propertyName(prop.name)}() { return this.${$fieldName(prop.name)}; }
-  public ${$typeName(parent.name)}${$typeGenerics(parent)} set${$propertyName(prop.name)}(${$instanceOf(prop.type)} val) { this.${$fieldName(prop.name)} = val; return this; }
-`;
-const $properties = (type: Domain.Interface) => type.properties.map(p => $property(p, type)).join("\n");
+  private ${$instanceOf(prop.type, false)} ${$fieldName(prop.name)};
+  private boolean ${$fieldName(prop.name)}$isSet;
+  public ${$instanceOf(prop.type, false)} get${$propertyName(prop.name)}() { return this.${$fieldName(prop.name)}; }
+  ${suppressWarnings}public T set${$propertyName(prop.name)}(${$instanceOf(prop.type, false)} val) {
+    this.${$fieldName(prop.name)} = val;
+    ${$fieldName(prop.name)}$isSet = true;
+    ${returnThis};
+  }
+`
+  } else if ($isPrimitiveType(prop.type)) {
+    return `
+  static final ParseField ${$parseFieldName(prop.name)} = new ParseField("${prop.name}");
+  private ${$instanceOf(prop.type, false)} ${$fieldName(prop.name)};
+  private boolean ${$fieldName(prop.name)}$isSet;
+  public ${$instanceOf(prop.type, false)} get${$propertyName(prop.name)}() { return this.${$fieldName(prop.name)}; }
+  ${suppressWarnings}public ${$typeName(parent.name)}${$typeGenerics(parent)} set${$propertyName(prop.name)}(${$instanceOf(prop.type, false)} val) {
+    this.${$fieldName(prop.name)} = val;
+    ${$fieldName(prop.name)}$isSet = true;
+    ${returnThis};
+  }
+`  } else {
+  return `
+  static final ParseField ${$parseFieldName(prop.name)} = new ParseField("${prop.name}");
+  private ${$instanceOf(prop.type, false)} ${$fieldName(prop.name)};
+  public ${$instanceOf(prop.type, false)} get${$propertyName(prop.name)}() { return this.${$fieldName(prop.name)}; }
+  ${suppressWarnings}public ${$typeName(parent.name)}${$typeGenerics(parent)} set${$propertyName(prop.name)}(${$instanceOf(prop.type, false)} val) { this.${$fieldName(prop.name)} = val; ${returnThis}; }
+`}
+
+}
+const $properties = (type: Domain.Interface): string => {
+  const propsSeen = new Map<string, Domain.InterfaceProperty>();
+
+  return type.properties.map(p => {
+    const prevProp = propsSeen.get(p.name);
+    if (prevProp) {
+      console.log(`Duplicate property: ${type.name}.${p.name} (query param: ${prevProp.isRequestParameter}/${p.isRequestParameter})`);
+      return "";
+    } else {
+      propsSeen.set(p.name, p);
+      return $property(p, type)
+    }
+  }).join("");
+}
 
 export const $createClass = (type: Domain.Interface) => `
 package org.elasticsearch.${type.namespace};
@@ -79,9 +167,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 ${[...$imports(type)].join("\n")}

@@ -9,11 +9,13 @@ import {$createClass} from "./types";
 import {$createEnum} from "./enums";
 import {specification} from "./specs";
 
+import {Emitter, testIt} from "./emitter";
+
 if (specification.domain_errors.length + specification.endpoint_errors.length !== 0) {
   if (specification.endpoint_errors.length > 0) console.error("The specification contains the following endpoint mapping errors:");
   for (const e of specification.endpoint_errors) console.error("  - " + e);
 // tslint:disable-next-line:max-line-length
-} else console.log("The specification contains no errors in any of the " + specification.endpoints.length + " endpoints yielding " + specification.types.length + " types");
+} else console.log("The specification contains no errors in any of the " + specification.endpoints.length + " endpoints yielding " + specification.types.length + " types.");
 
 const $createType = (type: Domain.Interface) => {
   if (stringTypes.includes(type.name))
@@ -25,20 +27,113 @@ const $createType = (type: Domain.Interface) => {
 };
 
 const $renderType = (type: Domain.TypeDeclaration) => {
-  if (type instanceof Domain.Interface) return $createType(type);
-  else if (type instanceof Domain.Enum) return $createEnum(type);
+  if (type instanceof Domain.Interface) return $createType(type)
+  if (type instanceof Domain.Enum) return $createEnum(type);
+
+  console.log(`Don't know how to render ${type.constructor.name}(${type.name})`);
 };
 
-for (const type of specification.types) {
-  if (numberTypes.includes(type.name)) continue;
-  if (type.name === "Date") continue;
-  if (type.name === "Dictionary") continue;
+const OUTPUT_DIR = "../output/java/src/main/java/org/elasticsearch";
+
+const spec = specification;
+
+// Do not generate, point to the hand-written version
+spec.typeLookup.SingleKeyDictionary.namespace = "org.elasticsearch";
+
+spec.types.forEach(type => {
+  // Move core types to a single package -- Why?
   if (type.namespace.startsWith("mapping.types.core."))
     type.namespace = "mapping.types.core";
-  const ns = type.namespace;
-  const folder = ns.replace(/\./g, "/");
-  const exportFolder = `../output/java/src/main/java/org/elasticsearch/${folder}`;
-  if (!fs.existsSync(exportFolder)) fs.mkdirSync(exportFolder, { recursive: true });
-  fs.writeFileSync(`${exportFolder}/${changeCase.pascalCase(type.name)}.java`, $renderType(type));
+
+  if (type.namespace.endsWith(".boolean")) {
+    type.namespace += "_";
+  }
+
+  if (type instanceof Domain.UnionAlias) {
+    if (type.wraps.items.length === 2
+      && type.wraps.items[0] instanceof Domain.Type
+      && type.wraps.items[0].name === "string") {
+      // Only keep the second part of the union
+      //replaceType(type, new Domain.NumberAlias(type.name, ));
+      return; //TODO
+    }
+  }
+
+  if (type instanceof Domain.RequestInterface) {
+    normalizeArrays(type.properties);
+    if (type.queryParameters) {
+      normalizeArrays(type.queryParameters);
+    }
+
+    if (type.body && type.body[0] instanceof Domain.InterfaceProperty) {
+      // @ts-ignore
+      normalizeArrays(type.body);
+    }
+  } else if (type instanceof Domain.Interface) {
+    normalizeArrays(type.properties);
+  }
+})
+
+function normalizeArrays(props: Domain.InterfaceProperty[]): void {
+  props.forEach((prop, idx) => {
+    if (prop.type instanceof Domain.Type && prop.type.name === "Array") {
+      const newType = new Domain.ArrayOf();
+      newType.of = prop.type.closedGenerics[0];
+      prop.type = newType;
+    }
+  })
 }
 
+// generateOne("CatNodeAttributesRecord");
+generateAll();
+
+function generateOne(name: string) {
+  generateType(specification.typeLookup[name]);
+}
+
+function generateAll() {
+  // Cleanup previously generated files, keeping top-level helper classes.
+  fs.readdirSync(OUTPUT_DIR).forEach(name => {
+    const file = `${OUTPUT_DIR}/${name}`;
+    if (fs.statSync(file).isDirectory()) {
+      fs.rmdirSync(`${OUTPUT_DIR}/${name}`, {recursive: true})
+    }
+  });
+
+  let filesCount = 0;
+  for (const type of specification.types) {
+    if (generateType(type)) {
+      filesCount++;
+    }
+  }
+  console.log(`${filesCount} files generated.`);
+}
+
+function generateType(type: Domain.TypeDeclaration): boolean {
+  if (numberTypes.includes(type.name)
+    || type.name === "Date"
+    || type.name === "Dictionary"
+    || type.name === "SingleKeyDictionary"
+    || type instanceof Domain.StringAlias
+    || type instanceof Domain.UnionAlias
+    || type instanceof Domain.NumberAlias
+    || type.namespace === "org.elastisearch") {
+    // console.log(`Skipping ${type.constructor.name} ${type.name}`);
+    return;
+  }
+
+  const ns = type.namespace;
+  const folder = ns.replace(/\./g, "/");
+  const exportFolder = `${OUTPUT_DIR}/${folder}`;
+  if (!fs.existsSync(exportFolder)) fs.mkdirSync(exportFolder, { recursive: true });
+
+  const render = $renderType(type);
+  if (!render) {
+    console.error(`Nothing generated for type ${type.constructor.name}(${type.name})`);
+    return false;
+  } else {
+    fs.writeFileSync(`${exportFolder}/${changeCase.pascalCase(type.name)}.java`, render);
+    // console.log(`Rendered type ${type.constructor.name}(${type.name})`)
+    return true;
+  }
+}

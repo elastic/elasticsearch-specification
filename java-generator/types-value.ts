@@ -4,6 +4,10 @@ import {$typeName} from "./naming";
 export const $createValueObject = (type: Domain.Interface, valueType: string) => `
 package org.elasticsearch.${type.namespace};
 
+//
+// Generated code - Do not edit (value)
+//
+
 import java.io.IOException;
 import java.util.Objects;
 import org.elasticsearch.XContentable;

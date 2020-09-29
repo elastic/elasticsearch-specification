@@ -3,15 +3,16 @@ import {$fieldName, $instanceOf, $parseFieldName, $propertyName, $typeName, stri
 import * as changeCase from "change-case";
 import {specification} from "./specs";
 
-const valueTypes = ["String", "Float", "Double", "Integer", "Boolean", "Long"];
-const $declareType = (type: Domain.InstanceOf) => {
+const valueTypes = ["String", "Float", "Double", "Integer", "Boolean", "Long",
+"boolean", "int", "long", "float", "double"];
+const $declareType = (type: Domain.InstanceOf): string => {
   if (type instanceof  Domain.ArrayOf) return $declareType(type.of);
   if (type instanceof Domain.Type) {
     const lookup = specification.typeLookup[type.name];
     if (lookup instanceof Domain.Enum) return "Field";
   }
-  const t = $instanceOf(type);
-  if (valueTypes.includes(t)) return t.replace("Integer", "Int");
+  const t = $instanceOf(type, false);
+  if (valueTypes.includes(t)) return t.replace("Integer", "int");
   return "Object";
 };
 
@@ -27,25 +28,25 @@ const $valueParse = (typeSymbol:string, type: Domain.InstanceOf, parent: Domain.
   if (typeSymbol === "String") return "(p, t) -> p.text()";
   if (stringTypes.includes(typeSymbol)) return `(p, t) -> ${typeSymbol}.createFrom(p)`;
 
-  if (type instanceof Domain.UnionOf) return `(p, t) ->  new ${typeSymbol}() /* TODO UnionOf */`;
+  if (type instanceof Domain.UnionOf) return `(p, t) ->  new ${typeSymbol}()`;
   if (type instanceof  Domain.ArrayOf) {
     if (recurse !== 0) return `(p, t) -> null /* TODO ${typeSymbol} */`;
-    return $valueParse($instanceOf(type.of), type.of, parent, ++recurse)
+    return $valueParse($instanceOf(type.of, false), type.of, parent, ++recurse)
   }
 
   if (type instanceof Domain.Dictionary) {
     const $key = (i: Domain.InstanceOf) => {
       if (i instanceof Domain.Type) {
-        if (valueTypes.includes($instanceOf(i)))
+        if (valueTypes.includes($instanceOf(i, false)))
           return `n -> () -> n`;
         if (stringTypes.includes(i.name))
-          return `n -> () -> new ${$instanceOf(i)}(n)`;
-        return `${$instanceOf(i)}.PARSER.apply(p, null)`;
+          return `n -> () -> new ${$instanceOf(i, false)}(n)`;
+        return `${$instanceOf(i, false)}.PARSER.apply(p, null)`;
       }
-      return `null /* TODO ${$instanceOf(i)} */`;
+      return `null /* TODO ${$instanceOf(i, false)} */`;
     };
     const $val = (i: Domain.InstanceOf) => {
-      const ti = $instanceOf(i);
+      const ti = $instanceOf(i, false);
       if (i instanceof Domain.Type) {
         if (ti === "Object") return `XContentParser::binaryValue`;
         if (ti === "String") return `pp -> pp.text()`;
@@ -63,6 +64,14 @@ const $valueParse = (typeSymbol:string, type: Domain.InstanceOf, parent: Domain.
     return `(p, t) -> new NamedContainer<>(${$key(type.key)},${$val(type.value)})`;
   }
 
+  if (type instanceof Domain.SingleKeyDictionary) {
+    return `null /* TODO SingleKeyDictionary ${type.value} */`;
+  }
+
+  if (type instanceof Domain.UserDefinedValue) {
+    return `null /* TODO UserDefinedValue */`;
+  }
+
   const t = specification.typeLookup[type.name];
   if (t instanceof Domain.Enum)
     return `(p, t) -> ${typeSymbol}.PARSER.apply(p)`;
@@ -77,9 +86,18 @@ const $valueParse = (typeSymbol:string, type: Domain.InstanceOf, parent: Domain.
 
 const recursiveArray = (t: Domain.InstanceOf) => t instanceof Domain.ArrayOf ? recursiveArray(t.of) : t;
 
+const primitiveParseDeclare = {
+  boolean: "Boolean",
+  int: "Int",
+  long: "Long",
+  float: "Float",
+  double: "Double"
+}
+
 const $parseProperty = (prop: Domain.InterfaceProperty, parent: Domain.Interface) => {
-  const typeSymbol = $instanceOf(prop.type);
+  const typeSymbol = $instanceOf(prop.type, false);
   let declareType = $declareType(prop.type);
+  declareType = primitiveParseDeclare[declareType] || declareType;
   if (prop.type instanceof Domain.ArrayOf) declareType += "Array";
   const exp = $propertyExpression(prop, parent);
   let args = $valueParse(typeSymbol, prop.type, parent);
@@ -96,7 +114,7 @@ const $parseProperty = (prop: Domain.InterfaceProperty, parent: Domain.Interface
   const declareParser = `PARSER.declare${declareType}(${exp}, ${args}${trailingArgs});`;
 
   if (closedOverType instanceof Domain.Type && closedOverType.closedGenerics.length > 0) {
-    const closedOverSymbol = $instanceOf(closedOverType);
+    const closedOverSymbol = $instanceOf(closedOverType, false);
     const field = $fieldName(prop.name);
     let instance = `${closedOverSymbol} ${field} = new ${closedOverSymbol}();`;
     if (closedOverSymbol.includes("<T>") || closedOverSymbol.includes("<TDocument>"))
@@ -111,4 +129,5 @@ const $parseProperty = (prop: Domain.InterfaceProperty, parent: Domain.Interface
   return [declareParser];
 };
 
+// FIXME: add properties of the parent class
 export const $parseProperties = (type: Domain.Interface) => type.properties.flatMap(p => $parseProperty(p, type)).join("\n    ");

@@ -10,6 +10,10 @@ const $enumParseCases = (e: Domain.Enum) => e.members.map((m,i)=> $enumParseCase
 export const $createEnum = (e: Domain.Enum) => `
 package org.elasticsearch.${e.namespace};
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;

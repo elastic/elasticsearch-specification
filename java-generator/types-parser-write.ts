@@ -1,17 +1,37 @@
 import Domain from "elasticsearch-client-specification/src/domain";
-import {$fieldName, $instanceOf, $parseFieldName, $propertyName, $typeName, numberTypes, stringTypes} from "./naming";
+import {
+  $fieldName,
+  $instanceOf,
+  $isPrimitiveType,
+  $parseFieldName,
+  $propertyName,
+  $typeName,
+  numberTypes,
+  stringTypes
+} from "./naming";
 import * as changeCase from "change-case";
 import {specification} from "./specs";
 
-const directWriteTypes = ["Object", "String", "Integer", "Boolean", "Double", "Long", "Float"];
+const directWriteTypes = [
+  "Object", "String",
+  "Integer", "Boolean", "Double", "Long", "Float",
+  "byte", "char", "short", "int", "long","float", "double", "boolean"
+];
 
-const $writePropertyWrapped = (prop: Domain.InterfaceProperty, parent: Domain.Interface) =>
-  [`if (${$fieldName(prop.name)} != null) {`]
+const $writePropertyWrapped = (prop: Domain.InterfaceProperty, parent: Domain.Interface) => {
+  let setTest = "";
+  if ($isPrimitiveType(prop.type)) {
+    setTest = `if (${$fieldName(prop.name)}$isSet) {`;
+  } else {
+    setTest = `if (${$fieldName(prop.name)} != null) {`;
+  }
+  return [setTest]
     .concat($writeProperty(prop, parent).map(e => `  ${e}`))
     .concat([`}`]);
+}
 
 const $writeProperty = (prop: Domain.InterfaceProperty, parent: Domain.Interface) : string[] => {
-  const typeSymbol = $instanceOf(prop.type);
+  const typeSymbol = $instanceOf(prop.type, false);
   if (directWriteTypes.includes(typeSymbol))
     return [`builder.field(${$parseFieldName(prop.name)}.getPreferredName(), ${$fieldName(prop.name)});`];
 
@@ -21,21 +41,21 @@ const $writeProperty = (prop: Domain.InterfaceProperty, parent: Domain.Interface
       `  DateTimeFormatter.ISO_DATE.format(${$fieldName(prop.name)}.toInstant()));`
     ];
 
-  if (prop.type instanceof Domain.UnionOf) {
-    const lr = (type: Domain.InstanceOf) => {
-      const s = $instanceOf(type);
-      if (directWriteTypes.includes(s)) return "builder::value";
-      if (s === "Date")
-        return `r -> builder.value(DateTimeFormatter.ISO_DATE.format(r.toInstant()))`;
-      if (type instanceof Domain.ArrayOf)
-        return `builder::value /* TODO ${s} */`;
-      return "r-> r.toXContent(builder, params)";
-    };
-    return [
-      `builder.field(${$parseFieldName(prop.name)}.getPreferredName());`,
-      `${$fieldName(prop.name)}.map(${lr(prop.type.items[0])}, ${lr(prop.type.items[1])});`,
-    ];
-  }
+  // if (prop.type instanceof Domain.UnionOf) {
+  //   const lr = (type: Domain.InstanceOf) => {
+  //     const s = $instanceOf(type, false);
+  //     if (directWriteTypes.includes(s)) return "builder::value";
+  //     if (s === "Date")
+  //       return `r -> builder.value(DateTimeFormatter.ISO_DATE.format(r.toInstant()))`;
+  //     if (type instanceof Domain.ArrayOf)
+  //       return `builder::value /* TODO ${s} */`;
+  //     return "r-> r.toXContent(builder, params)";
+  //   };
+  //   return [
+  //     `builder.field(${$parseFieldName(prop.name)}.getPreferredName());`,
+  //     `${$fieldName(prop.name)}.map(${lr(prop.type.items[0])}, ${lr(prop.type.items[1])});`,
+  //   ];
+  // }
   if (prop.type instanceof Domain.ArrayOf)
     return [
       `builder.array(${$parseFieldName(prop.name)}.getPreferredName(), ${$fieldName(prop.name)});`,
