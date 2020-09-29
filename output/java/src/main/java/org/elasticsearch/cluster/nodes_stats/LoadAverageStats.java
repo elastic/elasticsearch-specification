@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class LoadAverageStats  implements XContentable<LoadAverageStats> {
   
   static final ParseField AVERAGE15M = new ParseField("15m");
-  private Float _average15m;
-  public Float getAverage15m() { return this._average15m; }
-  public LoadAverageStats setAverage15m(Float val) { this._average15m = val; return this; }
-
+  private float _average15m;
+  private boolean _average15m$isSet;
+  public float getAverage15m() { return this._average15m; }
+  public LoadAverageStats setAverage15m(float val) {
+    this._average15m = val;
+    _average15m$isSet = true;
+    return this;
+  }
 
   static final ParseField AVERAGE5M = new ParseField("5m");
-  private Float _average5m;
-  public Float getAverage5m() { return this._average5m; }
-  public LoadAverageStats setAverage5m(Float val) { this._average5m = val; return this; }
-
+  private float _average5m;
+  private boolean _average5m$isSet;
+  public float getAverage5m() { return this._average5m; }
+  public LoadAverageStats setAverage5m(float val) {
+    this._average5m = val;
+    _average5m$isSet = true;
+    return this;
+  }
 
   static final ParseField AVERAGE1M = new ParseField("1m");
-  private Float _average1m;
-  public Float getAverage1m() { return this._average1m; }
-  public LoadAverageStats setAverage1m(Float val) { this._average1m = val; return this; }
+  private float _average1m;
+  private boolean _average1m$isSet;
+  public float getAverage1m() { return this._average1m; }
+  public LoadAverageStats setAverage1m(float val) {
+    this._average1m = val;
+    _average1m$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_average15m != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_average15m$isSet) {
       builder.field(AVERAGE15M.getPreferredName(), _average15m);
     }
-    if (_average5m != null) {
+    if (_average5m$isSet) {
       builder.field(AVERAGE5M.getPreferredName(), _average5m);
     }
-    if (_average1m != null) {
+    if (_average1m$isSet) {
       builder.field(AVERAGE1M.getPreferredName(), _average1m);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

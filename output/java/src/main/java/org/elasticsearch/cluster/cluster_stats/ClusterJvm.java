@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,22 +16,29 @@ import org.elasticsearch.cluster.cluster_stats.*;
 public class ClusterJvm  implements XContentable<ClusterJvm> {
   
   static final ParseField MAX_UPTIME_IN_MILLIS = new ParseField("max_uptime_in_millis");
-  private Long _maxUptimeInMillis;
-  public Long getMaxUptimeInMillis() { return this._maxUptimeInMillis; }
-  public ClusterJvm setMaxUptimeInMillis(Long val) { this._maxUptimeInMillis = val; return this; }
-
+  private long _maxUptimeInMillis;
+  private boolean _maxUptimeInMillis$isSet;
+  public long getMaxUptimeInMillis() { return this._maxUptimeInMillis; }
+  public ClusterJvm setMaxUptimeInMillis(long val) {
+    this._maxUptimeInMillis = val;
+    _maxUptimeInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField MEM = new ParseField("mem");
   private ClusterJvmMemory _mem;
   public ClusterJvmMemory getMem() { return this._mem; }
   public ClusterJvm setMem(ClusterJvmMemory val) { this._mem = val; return this; }
 
-
   static final ParseField THREADS = new ParseField("threads");
-  private Long _threads;
-  public Long getThreads() { return this._threads; }
-  public ClusterJvm setThreads(Long val) { this._threads = val; return this; }
-
+  private long _threads;
+  private boolean _threads$isSet;
+  public long getThreads() { return this._threads; }
+  public ClusterJvm setThreads(long val) {
+    this._threads = val;
+    _threads$isSet = true;
+    return this;
+  }
 
   static final ParseField VERSIONS = new ParseField("versions");
   private List<ClusterJvmVersion> _versions;
@@ -43,23 +48,21 @@ public class ClusterJvm  implements XContentable<ClusterJvm> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_maxUptimeInMillis != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_maxUptimeInMillis$isSet) {
       builder.field(MAX_UPTIME_IN_MILLIS.getPreferredName(), _maxUptimeInMillis);
     }
     if (_mem != null) {
       builder.field(MEM.getPreferredName());
       _mem.toXContent(builder, params);
     }
-    if (_threads != null) {
+    if (_threads$isSet) {
       builder.field(THREADS.getPreferredName(), _threads);
     }
     if (_versions != null) {
       builder.array(VERSIONS.getPreferredName(), _versions);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

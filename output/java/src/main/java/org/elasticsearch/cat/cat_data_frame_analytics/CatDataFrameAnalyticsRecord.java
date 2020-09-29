@@ -7,104 +7,87 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatDataFrameAnalyticsRecord  implements XContentable<CatDataFrameAnalyticsRecord> {
+public class CatDataFrameAnalyticsRecord extends ICatRecord implements XContentable<CatDataFrameAnalyticsRecord> {
   
   static final ParseField ASSIGNMENT_EXPLANATION = new ParseField("assignment_explanation");
   private String _assignmentExplanation;
   public String getAssignmentExplanation() { return this._assignmentExplanation; }
   public CatDataFrameAnalyticsRecord setAssignmentExplanation(String val) { this._assignmentExplanation = val; return this; }
 
-
   static final ParseField CREATE_TIME = new ParseField("create_time");
   private String _createTime;
   public String getCreateTime() { return this._createTime; }
   public CatDataFrameAnalyticsRecord setCreateTime(String val) { this._createTime = val; return this; }
-
 
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public CatDataFrameAnalyticsRecord setDescription(String val) { this._description = val; return this; }
 
-
   static final ParseField DEST_INDEX = new ParseField("dest_index");
   private String _destIndex;
   public String getDestIndex() { return this._destIndex; }
   public CatDataFrameAnalyticsRecord setDestIndex(String val) { this._destIndex = val; return this; }
-
 
   static final ParseField FAILURE_REASON = new ParseField("failure_reason");
   private String _failureReason;
   public String getFailureReason() { return this._failureReason; }
   public CatDataFrameAnalyticsRecord setFailureReason(String val) { this._failureReason = val; return this; }
 
-
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public CatDataFrameAnalyticsRecord setId(String val) { this._id = val; return this; }
-
 
   static final ParseField MODEL_MEMORY_LIMIT = new ParseField("model_memory_limit");
   private String _modelMemoryLimit;
   public String getModelMemoryLimit() { return this._modelMemoryLimit; }
   public CatDataFrameAnalyticsRecord setModelMemoryLimit(String val) { this._modelMemoryLimit = val; return this; }
 
-
   static final ParseField NODE_ADDRESS = new ParseField("node.address");
   private String _nodeAddress;
   public String getNodeAddress() { return this._nodeAddress; }
   public CatDataFrameAnalyticsRecord setNodeAddress(String val) { this._nodeAddress = val; return this; }
-
 
   static final ParseField NODE_EPHEMERAL_ID = new ParseField("node.ephemeral_id");
   private String _nodeEphemeralId;
   public String getNodeEphemeralId() { return this._nodeEphemeralId; }
   public CatDataFrameAnalyticsRecord setNodeEphemeralId(String val) { this._nodeEphemeralId = val; return this; }
 
-
   static final ParseField NODE_ID = new ParseField("node.id");
   private String _nodeId;
   public String getNodeId() { return this._nodeId; }
   public CatDataFrameAnalyticsRecord setNodeId(String val) { this._nodeId = val; return this; }
-
 
   static final ParseField NODE_NAME = new ParseField("node.name");
   private String _nodeName;
   public String getNodeName() { return this._nodeName; }
   public CatDataFrameAnalyticsRecord setNodeName(String val) { this._nodeName = val; return this; }
 
-
   static final ParseField PROGRESS = new ParseField("progress");
   private String _progress;
   public String getProgress() { return this._progress; }
   public CatDataFrameAnalyticsRecord setProgress(String val) { this._progress = val; return this; }
-
 
   static final ParseField SOURCE_INDEX = new ParseField("source_index");
   private String _sourceIndex;
   public String getSourceIndex() { return this._sourceIndex; }
   public CatDataFrameAnalyticsRecord setSourceIndex(String val) { this._sourceIndex = val; return this; }
 
-
   static final ParseField STATE = new ParseField("state");
   private String _state;
   public String getState() { return this._state; }
   public CatDataFrameAnalyticsRecord setState(String val) { this._state = val; return this; }
 
-
   static final ParseField TYPE = new ParseField("type");
   private String _type;
   public String getType() { return this._type; }
   public CatDataFrameAnalyticsRecord setType(String val) { this._type = val; return this; }
-
 
   static final ParseField VERSION = new ParseField("version");
   private String _version;
@@ -114,8 +97,8 @@ public class CatDataFrameAnalyticsRecord  implements XContentable<CatDataFrameAn
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_assignmentExplanation != null) {
       builder.field(ASSIGNMENT_EXPLANATION.getPreferredName(), _assignmentExplanation);
     }
@@ -164,8 +147,6 @@ public class CatDataFrameAnalyticsRecord  implements XContentable<CatDataFrameAn
     if (_version != null) {
       builder.field(VERSION.getPreferredName(), _version);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

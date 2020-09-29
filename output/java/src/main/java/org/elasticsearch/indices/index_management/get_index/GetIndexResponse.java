@@ -7,33 +7,21 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
-import org.elasticsearch.index_modules.index_settings.*;
 import org.elasticsearch.common_abstractions.response.*;
+import org.elasticsearch.internal.*;
+import org.elasticsearch.index_modules.index_settings.*;
 
-public class GetIndexResponse extends DictionaryResponseBase<IndexName, IndexState> implements XContentable<GetIndexResponse> {
+public class GetIndexResponse extends DictionaryResponseBase<String, IndexState> implements XContentable<GetIndexResponse> {
   
-  static final ParseField INDICES = new ParseField("indices");
-  private NamedContainer<IndexName, IndexState> _indices;
-  public NamedContainer<IndexName, IndexState> getIndices() { return this._indices; }
-  public GetIndexResponse setIndices(NamedContainer<IndexName, IndexState> val) { this._indices = val; return this; }
-
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_indices != null) {
-      builder.field(INDICES.getPreferredName());
-      _indices.toXContent(builder, params);
-    }
-    builder.endObject();
-    return builder;
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    
   }
 
   @Override
@@ -45,7 +33,7 @@ public class GetIndexResponse extends DictionaryResponseBase<IndexName, IndexSta
     new ObjectParser<>(GetIndexResponse.class.getName(), false, GetIndexResponse::new);
 
   static {
-    PARSER.declareObject(GetIndexResponse::setIndices, (p, t) -> new NamedContainer<>(n -> () -> new IndexName(n),pp -> IndexState.PARSER.apply(pp, null)), INDICES);
+    
   }
 
 }

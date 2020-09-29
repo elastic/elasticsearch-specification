@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,25 +19,27 @@ public class StoreStats  implements XContentable<StoreStats> {
   public String getSize() { return this._size; }
   public StoreStats setSize(String val) { this._size = val; return this; }
 
-
   static final ParseField SIZE_IN_BYTES = new ParseField("size_in_bytes");
-  private Double _sizeInBytes;
-  public Double getSizeInBytes() { return this._sizeInBytes; }
-  public StoreStats setSizeInBytes(Double val) { this._sizeInBytes = val; return this; }
+  private double _sizeInBytes;
+  private boolean _sizeInBytes$isSet;
+  public double getSizeInBytes() { return this._sizeInBytes; }
+  public StoreStats setSizeInBytes(double val) {
+    this._sizeInBytes = val;
+    _sizeInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_size != null) {
       builder.field(SIZE.getPreferredName(), _size);
     }
-    if (_sizeInBytes != null) {
+    if (_sizeInBytes$isSet) {
       builder.field(SIZE_IN_BYTES.getPreferredName(), _sizeInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

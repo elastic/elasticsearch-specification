@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class ExplainLifecycleRequest  implements XContentable<ExplainLifecycleRequest> {
+public class ExplainLifecycleRequest extends RequestBase<ExplainLifecycleRequest> implements XContentable<ExplainLifecycleRequest> {
   
   static final ParseField ONLY_ERRORS = new ParseField("only_errors");
   private Boolean _onlyErrors;
   public Boolean getOnlyErrors() { return this._onlyErrors; }
   public ExplainLifecycleRequest setOnlyErrors(Boolean val) { this._onlyErrors = val; return this; }
-
 
   static final ParseField ONLY_MANAGED = new ParseField("only_managed");
   private Boolean _onlyManaged;
@@ -30,16 +27,14 @@ public class ExplainLifecycleRequest  implements XContentable<ExplainLifecycleRe
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_onlyErrors != null) {
       builder.field(ONLY_ERRORS.getPreferredName(), _onlyErrors);
     }
     if (_onlyManaged != null) {
       builder.field(ONLY_MANAGED.getPreferredName(), _onlyManaged);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

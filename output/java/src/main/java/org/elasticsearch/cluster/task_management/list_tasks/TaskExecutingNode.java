@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.task_id.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.cluster.task_management.list_tasks.*;
 
 public class TaskExecutingNode  implements XContentable<TaskExecutingNode> {
@@ -22,36 +20,30 @@ public class TaskExecutingNode  implements XContentable<TaskExecutingNode> {
   public NamedContainer<String, String> getAttributes() { return this._attributes; }
   public TaskExecutingNode setAttributes(NamedContainer<String, String> val) { this._attributes = val; return this; }
 
-
   static final ParseField HOST = new ParseField("host");
   private String _host;
   public String getHost() { return this._host; }
   public TaskExecutingNode setHost(String val) { this._host = val; return this; }
-
 
   static final ParseField IP = new ParseField("ip");
   private String _ip;
   public String getIp() { return this._ip; }
   public TaskExecutingNode setIp(String val) { this._ip = val; return this; }
 
-
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public TaskExecutingNode setName(String val) { this._name = val; return this; }
-
 
   static final ParseField ROLES = new ParseField("roles");
   private List<String> _roles;
   public List<String> getRoles() { return this._roles; }
   public TaskExecutingNode setRoles(List<String> val) { this._roles = val; return this; }
 
-
   static final ParseField TASKS = new ParseField("tasks");
-  private NamedContainer<TaskId, TaskState> _tasks;
-  public NamedContainer<TaskId, TaskState> getTasks() { return this._tasks; }
-  public TaskExecutingNode setTasks(NamedContainer<TaskId, TaskState> val) { this._tasks = val; return this; }
-
+  private NamedContainer<String, TaskState> _tasks;
+  public NamedContainer<String, TaskState> getTasks() { return this._tasks; }
+  public TaskExecutingNode setTasks(NamedContainer<String, TaskState> val) { this._tasks = val; return this; }
 
   static final ParseField TRANSPORT_ADDRESS = new ParseField("transport_address");
   private String _transportAddress;
@@ -61,8 +53,8 @@ public class TaskExecutingNode  implements XContentable<TaskExecutingNode> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_attributes != null) {
       builder.field(ATTRIBUTES.getPreferredName());
       _attributes.toXContent(builder, params);
@@ -86,8 +78,6 @@ public class TaskExecutingNode  implements XContentable<TaskExecutingNode> {
     if (_transportAddress != null) {
       builder.field(TRANSPORT_ADDRESS.getPreferredName(), _transportAddress);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -104,7 +94,7 @@ public class TaskExecutingNode  implements XContentable<TaskExecutingNode> {
     PARSER.declareString(TaskExecutingNode::setIp, IP);
     PARSER.declareString(TaskExecutingNode::setName, NAME);
     PARSER.declareStringArray(TaskExecutingNode::setRoles, ROLES);
-    PARSER.declareObject(TaskExecutingNode::setTasks, (p, t) -> new NamedContainer<>(n -> () -> new TaskId(n),pp -> TaskState.PARSER.apply(pp, null)), TASKS);
+    PARSER.declareObject(TaskExecutingNode::setTasks, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> TaskState.PARSER.apply(pp, null)), TASKS);
     PARSER.declareString(TaskExecutingNode::setTransportAddress, TRANSPORT_ADDRESS);
   }
 

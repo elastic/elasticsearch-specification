@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.action.pager_duty.*;
@@ -21,42 +19,35 @@ public class PagerDutyEvent  implements XContentable<PagerDutyEvent> {
   public String getAccount() { return this._account; }
   public PagerDutyEvent setAccount(String val) { this._account = val; return this; }
 
-
   static final ParseField ATTACH_PAYLOAD = new ParseField("attach_payload");
   private Boolean _attachPayload;
   public Boolean getAttachPayload() { return this._attachPayload; }
   public PagerDutyEvent setAttachPayload(Boolean val) { this._attachPayload = val; return this; }
-
 
   static final ParseField CLIENT = new ParseField("client");
   private String _client;
   public String getClient() { return this._client; }
   public PagerDutyEvent setClient(String val) { this._client = val; return this; }
 
-
   static final ParseField CLIENT_URL = new ParseField("client_url");
   private String _clientUrl;
   public String getClientUrl() { return this._clientUrl; }
   public PagerDutyEvent setClientUrl(String val) { this._clientUrl = val; return this; }
-
 
   static final ParseField CONTEXT = new ParseField("context");
   private List<PagerDutyContext> _context;
   public List<PagerDutyContext> getContext() { return this._context; }
   public PagerDutyEvent setContext(List<PagerDutyContext> val) { this._context = val; return this; }
 
-
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public PagerDutyEvent setDescription(String val) { this._description = val; return this; }
 
-
   static final ParseField EVENT_TYPE = new ParseField("event_type");
   private PagerDutyEventType _eventType;
   public PagerDutyEventType getEventType() { return this._eventType; }
   public PagerDutyEvent setEventType(PagerDutyEventType val) { this._eventType = val; return this; }
-
 
   static final ParseField INCIDENT_KEY = new ParseField("incident_key");
   private String _incidentKey;
@@ -66,8 +57,8 @@ public class PagerDutyEvent  implements XContentable<PagerDutyEvent> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_account != null) {
       builder.field(ACCOUNT.getPreferredName(), _account);
     }
@@ -93,8 +84,6 @@ public class PagerDutyEvent  implements XContentable<PagerDutyEvent> {
     if (_incidentKey != null) {
       builder.field(INCIDENT_KEY.getPreferredName(), _incidentKey);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

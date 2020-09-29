@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class ExecutePainlessScriptResponse<TResult>  implements XContentable<ExecutePainlessScriptResponse<TResult>> {
+public class ExecutePainlessScriptResponse<TResult> extends ResponseBase<ExecutePainlessScriptResponse> implements XContentable<ExecutePainlessScriptResponse> {
   
   static final ParseField RESULT = new ParseField("result");
   private TResult _result;
@@ -24,13 +22,11 @@ public class ExecutePainlessScriptResponse<TResult>  implements XContentable<Exe
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_result != null) {
       builder.field(RESULT.getPreferredName(), _result);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

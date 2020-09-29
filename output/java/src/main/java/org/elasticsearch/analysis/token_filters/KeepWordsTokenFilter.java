@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-
-public class KeepWordsTokenFilter  implements XContentable<KeepWordsTokenFilter> {
+public class KeepWordsTokenFilter extends TokenFilterBase implements XContentable<KeepWordsTokenFilter> {
   
   static final ParseField KEEP_WORDS = new ParseField("keep_words");
   private List<String> _keepWords;
   public List<String> getKeepWords() { return this._keepWords; }
   public KeepWordsTokenFilter setKeepWords(List<String> val) { this._keepWords = val; return this; }
 
-
   static final ParseField KEEP_WORDS_CASE = new ParseField("keep_words_case");
   private Boolean _keepWordsCase;
   public Boolean getKeepWordsCase() { return this._keepWordsCase; }
   public KeepWordsTokenFilter setKeepWordsCase(Boolean val) { this._keepWordsCase = val; return this; }
-
 
   static final ParseField KEEP_WORDS_PATH = new ParseField("keep_words_path");
   private String _keepWordsPath;
@@ -36,8 +32,8 @@ public class KeepWordsTokenFilter  implements XContentable<KeepWordsTokenFilter>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_keepWords != null) {
       builder.array(KEEP_WORDS.getPreferredName(), _keepWords);
     }
@@ -47,8 +43,6 @@ public class KeepWordsTokenFilter  implements XContentable<KeepWordsTokenFilter>
     if (_keepWordsPath != null) {
       builder.field(KEEP_WORDS_PATH.getPreferredName(), _keepWordsPath);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

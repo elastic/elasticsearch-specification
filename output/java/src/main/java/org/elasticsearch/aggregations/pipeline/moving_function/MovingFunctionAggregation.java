@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,34 +19,40 @@ public class MovingFunctionAggregation  implements XContentable<MovingFunctionAg
   public String getScript() { return this._script; }
   public MovingFunctionAggregation setScript(String val) { this._script = val; return this; }
 
+  static final ParseField SHIFT = new ParseField("shift");
+  private int _shift;
+  private boolean _shift$isSet;
+  public int getShift() { return this._shift; }
+  public MovingFunctionAggregation setShift(int val) {
+    this._shift = val;
+    _shift$isSet = true;
+    return this;
+  }
 
   static final ParseField WINDOW = new ParseField("window");
-  private Integer _window;
-  public Integer getWindow() { return this._window; }
-  public MovingFunctionAggregation setWindow(Integer val) { this._window = val; return this; }
-
-
-  static final ParseField SHIFT = new ParseField("shift");
-  private Integer _shift;
-  public Integer getShift() { return this._shift; }
-  public MovingFunctionAggregation setShift(Integer val) { this._shift = val; return this; }
+  private int _window;
+  private boolean _window$isSet;
+  public int getWindow() { return this._window; }
+  public MovingFunctionAggregation setWindow(int val) {
+    this._window = val;
+    _window$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_script != null) {
       builder.field(SCRIPT.getPreferredName(), _script);
     }
-    if (_window != null) {
-      builder.field(WINDOW.getPreferredName(), _window);
-    }
-    if (_shift != null) {
+    if (_shift$isSet) {
       builder.field(SHIFT.getPreferredName(), _shift);
     }
-    builder.endObject();
-    return builder;
+    if (_window$isSet) {
+      builder.field(WINDOW.getPreferredName(), _window);
+    }
   }
 
   @Override
@@ -61,8 +65,8 @@ public class MovingFunctionAggregation  implements XContentable<MovingFunctionAg
 
   static {
     PARSER.declareString(MovingFunctionAggregation::setScript, SCRIPT);
-    PARSER.declareInt(MovingFunctionAggregation::setWindow, WINDOW);
     PARSER.declareInt(MovingFunctionAggregation::setShift, SHIFT);
+    PARSER.declareInt(MovingFunctionAggregation::setWindow, WINDOW);
   }
 
 }

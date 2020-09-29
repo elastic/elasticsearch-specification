@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,18 +19,20 @@ public class NodeInfoHttp  implements XContentable<NodeInfoHttp> {
   public List<String> getBoundAddress() { return this._boundAddress; }
   public NodeInfoHttp setBoundAddress(List<String> val) { this._boundAddress = val; return this; }
 
-
   static final ParseField MAX_CONTENT_LENGTH = new ParseField("max_content_length");
   private String _maxContentLength;
   public String getMaxContentLength() { return this._maxContentLength; }
   public NodeInfoHttp setMaxContentLength(String val) { this._maxContentLength = val; return this; }
 
-
   static final ParseField MAX_CONTENT_LENGTH_IN_BYTES = new ParseField("max_content_length_in_bytes");
-  private Long _maxContentLengthInBytes;
-  public Long getMaxContentLengthInBytes() { return this._maxContentLengthInBytes; }
-  public NodeInfoHttp setMaxContentLengthInBytes(Long val) { this._maxContentLengthInBytes = val; return this; }
-
+  private long _maxContentLengthInBytes;
+  private boolean _maxContentLengthInBytes$isSet;
+  public long getMaxContentLengthInBytes() { return this._maxContentLengthInBytes; }
+  public NodeInfoHttp setMaxContentLengthInBytes(long val) {
+    this._maxContentLengthInBytes = val;
+    _maxContentLengthInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField PUBLISH_ADDRESS = new ParseField("publish_address");
   private String _publishAddress;
@@ -42,22 +42,20 @@ public class NodeInfoHttp  implements XContentable<NodeInfoHttp> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_boundAddress != null) {
       builder.array(BOUND_ADDRESS.getPreferredName(), _boundAddress);
     }
     if (_maxContentLength != null) {
       builder.field(MAX_CONTENT_LENGTH.getPreferredName(), _maxContentLength);
     }
-    if (_maxContentLengthInBytes != null) {
+    if (_maxContentLengthInBytes$isSet) {
       builder.field(MAX_CONTENT_LENGTH_IN_BYTES.getPreferredName(), _maxContentLengthInBytes);
     }
     if (_publishAddress != null) {
       builder.field(PUBLISH_ADDRESS.getPreferredName(), _publishAddress);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

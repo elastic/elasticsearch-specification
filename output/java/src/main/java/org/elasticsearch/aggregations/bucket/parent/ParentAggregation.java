@@ -7,31 +7,26 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.relation_name.*;
+import org.elasticsearch.internal.*;
 
 public class ParentAggregation  implements XContentable<ParentAggregation> {
   
   static final ParseField TYPE = new ParseField("type");
-  private RelationName _type;
-  public RelationName getType() { return this._type; }
-  public ParentAggregation setType(RelationName val) { this._type = val; return this; }
+  private String _type;
+  public String getType() { return this._type; }
+  public ParentAggregation setType(String val) { this._type = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_type != null) {
-      builder.field(TYPE.getPreferredName());
-      _type.toXContent(builder, params);
+      builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -43,7 +38,7 @@ public class ParentAggregation  implements XContentable<ParentAggregation> {
     new ObjectParser<>(ParentAggregation.class.getName(), false, ParentAggregation::new);
 
   static {
-    PARSER.declareObject(ParentAggregation::setType, (p, t) -> RelationName.createFrom(p), TYPE);
+    PARSER.declareString(ParentAggregation::setType, TYPE);
   }
 
 }

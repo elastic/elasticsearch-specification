@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,34 +15,49 @@ import org.elasticsearch.internal.*;
 public class AnalyzeToken  implements XContentable<AnalyzeToken> {
   
   static final ParseField END_OFFSET = new ParseField("end_offset");
-  private Long _endOffset;
-  public Long getEndOffset() { return this._endOffset; }
-  public AnalyzeToken setEndOffset(Long val) { this._endOffset = val; return this; }
-
+  private long _endOffset;
+  private boolean _endOffset$isSet;
+  public long getEndOffset() { return this._endOffset; }
+  public AnalyzeToken setEndOffset(long val) {
+    this._endOffset = val;
+    _endOffset$isSet = true;
+    return this;
+  }
 
   static final ParseField POSITION = new ParseField("position");
-  private Long _position;
-  public Long getPosition() { return this._position; }
-  public AnalyzeToken setPosition(Long val) { this._position = val; return this; }
-
+  private long _position;
+  private boolean _position$isSet;
+  public long getPosition() { return this._position; }
+  public AnalyzeToken setPosition(long val) {
+    this._position = val;
+    _position$isSet = true;
+    return this;
+  }
 
   static final ParseField POSITION_LENGTH = new ParseField("position_length");
-  private Long _positionLength;
-  public Long getPositionLength() { return this._positionLength; }
-  public AnalyzeToken setPositionLength(Long val) { this._positionLength = val; return this; }
-
+  private long _positionLength;
+  private boolean _positionLength$isSet;
+  public long getPositionLength() { return this._positionLength; }
+  public AnalyzeToken setPositionLength(long val) {
+    this._positionLength = val;
+    _positionLength$isSet = true;
+    return this;
+  }
 
   static final ParseField START_OFFSET = new ParseField("start_offset");
-  private Long _startOffset;
-  public Long getStartOffset() { return this._startOffset; }
-  public AnalyzeToken setStartOffset(Long val) { this._startOffset = val; return this; }
-
+  private long _startOffset;
+  private boolean _startOffset$isSet;
+  public long getStartOffset() { return this._startOffset; }
+  public AnalyzeToken setStartOffset(long val) {
+    this._startOffset = val;
+    _startOffset$isSet = true;
+    return this;
+  }
 
   static final ParseField TOKEN = new ParseField("token");
   private String _token;
   public String getToken() { return this._token; }
   public AnalyzeToken setToken(String val) { this._token = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -54,18 +67,18 @@ public class AnalyzeToken  implements XContentable<AnalyzeToken> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_endOffset != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_endOffset$isSet) {
       builder.field(END_OFFSET.getPreferredName(), _endOffset);
     }
-    if (_position != null) {
+    if (_position$isSet) {
       builder.field(POSITION.getPreferredName(), _position);
     }
-    if (_positionLength != null) {
+    if (_positionLength$isSet) {
       builder.field(POSITION_LENGTH.getPreferredName(), _positionLength);
     }
-    if (_startOffset != null) {
+    if (_startOffset$isSet) {
       builder.field(START_OFFSET.getPreferredName(), _startOffset);
     }
     if (_token != null) {
@@ -74,8 +87,6 @@ public class AnalyzeToken  implements XContentable<AnalyzeToken> {
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

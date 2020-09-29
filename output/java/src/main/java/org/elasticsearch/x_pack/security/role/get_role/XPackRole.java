@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.security.role.put_role.*;
@@ -21,18 +19,15 @@ public class XPackRole  implements XContentable<XPackRole> {
   public List<String> getCluster() { return this._cluster; }
   public XPackRole setCluster(List<String> val) { this._cluster = val; return this; }
 
-
   static final ParseField INDICES = new ParseField("indices");
   private List<IndicesPrivileges> _indices;
   public List<IndicesPrivileges> getIndices() { return this._indices; }
   public XPackRole setIndices(List<IndicesPrivileges> val) { this._indices = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public XPackRole setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
-
 
   static final ParseField RUN_AS = new ParseField("run_as");
   private List<String> _runAs;
@@ -42,8 +37,8 @@ public class XPackRole  implements XContentable<XPackRole> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cluster != null) {
       builder.array(CLUSTER.getPreferredName(), _cluster);
     }
@@ -57,8 +52,6 @@ public class XPackRole  implements XContentable<XPackRole> {
     if (_runAs != null) {
       builder.array(RUN_AS.getPreferredName(), _runAs);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

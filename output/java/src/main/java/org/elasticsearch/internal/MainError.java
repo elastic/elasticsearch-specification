@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 
-public class MainError  implements XContentable<MainError> {
+public class MainError extends ErrorCause implements XContentable<MainError> {
   
   static final ParseField HEADERS = new ParseField("headers");
   private NamedContainer<String, String> _headers;
   public NamedContainer<String, String> getHeaders() { return this._headers; }
   public MainError setHeaders(NamedContainer<String, String> val) { this._headers = val; return this; }
-
 
   static final ParseField ROOT_CAUSE = new ParseField("root_cause");
   private List<ErrorCause> _rootCause;
@@ -30,8 +27,8 @@ public class MainError  implements XContentable<MainError> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_headers != null) {
       builder.field(HEADERS.getPreferredName());
       _headers.toXContent(builder, params);
@@ -39,8 +36,6 @@ public class MainError  implements XContentable<MainError> {
     if (_rootCause != null) {
       builder.array(ROOT_CAUSE.getPreferredName(), _rootCause);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,44 @@ import org.elasticsearch.internal.*;
 public class AggregationRange  implements XContentable<AggregationRange> {
   
   static final ParseField FROM = new ParseField("from");
-  private Double _from;
-  public Double getFrom() { return this._from; }
-  public AggregationRange setFrom(Double val) { this._from = val; return this; }
-
+  private double _from;
+  private boolean _from$isSet;
+  public double getFrom() { return this._from; }
+  public AggregationRange setFrom(double val) {
+    this._from = val;
+    _from$isSet = true;
+    return this;
+  }
 
   static final ParseField KEY = new ParseField("key");
   private String _key;
   public String getKey() { return this._key; }
   public AggregationRange setKey(String val) { this._key = val; return this; }
 
-
   static final ParseField TO = new ParseField("to");
-  private Double _to;
-  public Double getTo() { return this._to; }
-  public AggregationRange setTo(Double val) { this._to = val; return this; }
+  private double _to;
+  private boolean _to$isSet;
+  public double getTo() { return this._to; }
+  public AggregationRange setTo(double val) {
+    this._to = val;
+    _to$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_from != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_from$isSet) {
       builder.field(FROM.getPreferredName(), _from);
     }
     if (_key != null) {
       builder.field(KEY.getPreferredName(), _key);
     }
-    if (_to != null) {
+    if (_to$isSet) {
       builder.field(TO.getPreferredName(), _to);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

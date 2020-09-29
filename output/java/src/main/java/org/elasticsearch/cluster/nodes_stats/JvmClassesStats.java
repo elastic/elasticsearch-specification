@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class JvmClassesStats  implements XContentable<JvmClassesStats> {
   
   static final ParseField CURRENT_LOADED_COUNT = new ParseField("current_loaded_count");
-  private Long _currentLoadedCount;
-  public Long getCurrentLoadedCount() { return this._currentLoadedCount; }
-  public JvmClassesStats setCurrentLoadedCount(Long val) { this._currentLoadedCount = val; return this; }
-
+  private long _currentLoadedCount;
+  private boolean _currentLoadedCount$isSet;
+  public long getCurrentLoadedCount() { return this._currentLoadedCount; }
+  public JvmClassesStats setCurrentLoadedCount(long val) {
+    this._currentLoadedCount = val;
+    _currentLoadedCount$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_LOADED_COUNT = new ParseField("total_loaded_count");
-  private Long _totalLoadedCount;
-  public Long getTotalLoadedCount() { return this._totalLoadedCount; }
-  public JvmClassesStats setTotalLoadedCount(Long val) { this._totalLoadedCount = val; return this; }
-
+  private long _totalLoadedCount;
+  private boolean _totalLoadedCount$isSet;
+  public long getTotalLoadedCount() { return this._totalLoadedCount; }
+  public JvmClassesStats setTotalLoadedCount(long val) {
+    this._totalLoadedCount = val;
+    _totalLoadedCount$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_UNLOADED_COUNT = new ParseField("total_unloaded_count");
-  private Long _totalUnloadedCount;
-  public Long getTotalUnloadedCount() { return this._totalUnloadedCount; }
-  public JvmClassesStats setTotalUnloadedCount(Long val) { this._totalUnloadedCount = val; return this; }
+  private long _totalUnloadedCount;
+  private boolean _totalUnloadedCount$isSet;
+  public long getTotalUnloadedCount() { return this._totalUnloadedCount; }
+  public JvmClassesStats setTotalUnloadedCount(long val) {
+    this._totalUnloadedCount = val;
+    _totalUnloadedCount$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_currentLoadedCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_currentLoadedCount$isSet) {
       builder.field(CURRENT_LOADED_COUNT.getPreferredName(), _currentLoadedCount);
     }
-    if (_totalLoadedCount != null) {
+    if (_totalLoadedCount$isSet) {
       builder.field(TOTAL_LOADED_COUNT.getPreferredName(), _totalLoadedCount);
     }
-    if (_totalUnloadedCount != null) {
+    if (_totalUnloadedCount$isSet) {
       builder.field(TOTAL_UNLOADED_COUNT.getPreferredName(), _totalUnloadedCount);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

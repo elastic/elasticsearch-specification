@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class FielddataFrequencyFilter  implements XContentable<FielddataFrequencyFilter> {
   
   static final ParseField MAX = new ParseField("max");
-  private Double _max;
-  public Double getMax() { return this._max; }
-  public FielddataFrequencyFilter setMax(Double val) { this._max = val; return this; }
-
+  private double _max;
+  private boolean _max$isSet;
+  public double getMax() { return this._max; }
+  public FielddataFrequencyFilter setMax(double val) {
+    this._max = val;
+    _max$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN = new ParseField("min");
-  private Double _min;
-  public Double getMin() { return this._min; }
-  public FielddataFrequencyFilter setMin(Double val) { this._min = val; return this; }
-
+  private double _min;
+  private boolean _min$isSet;
+  public double getMin() { return this._min; }
+  public FielddataFrequencyFilter setMin(double val) {
+    this._min = val;
+    _min$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN_SEGMENT_SIZE = new ParseField("min_segment_size");
-  private Integer _minSegmentSize;
-  public Integer getMinSegmentSize() { return this._minSegmentSize; }
-  public FielddataFrequencyFilter setMinSegmentSize(Integer val) { this._minSegmentSize = val; return this; }
+  private int _minSegmentSize;
+  private boolean _minSegmentSize$isSet;
+  public int getMinSegmentSize() { return this._minSegmentSize; }
+  public FielddataFrequencyFilter setMinSegmentSize(int val) {
+    this._minSegmentSize = val;
+    _minSegmentSize$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_max != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_max$isSet) {
       builder.field(MAX.getPreferredName(), _max);
     }
-    if (_min != null) {
+    if (_min$isSet) {
       builder.field(MIN.getPreferredName(), _min);
     }
-    if (_minSegmentSize != null) {
+    if (_minSegmentSize$isSet) {
       builder.field(MIN_SEGMENT_SIZE.getPreferredName(), _minSegmentSize);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

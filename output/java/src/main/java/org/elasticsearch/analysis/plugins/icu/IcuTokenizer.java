@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.tokenizers.*;
 
-
-public class IcuTokenizer  implements XContentable<IcuTokenizer> {
+public class IcuTokenizer extends TokenizerBase implements XContentable<IcuTokenizer> {
   
   static final ParseField RULE_FILES = new ParseField("rule_files");
   private String _ruleFiles;
@@ -24,13 +22,11 @@ public class IcuTokenizer  implements XContentable<IcuTokenizer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ruleFiles != null) {
       builder.field(RULE_FILES.getPreferredName(), _ruleFiles);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

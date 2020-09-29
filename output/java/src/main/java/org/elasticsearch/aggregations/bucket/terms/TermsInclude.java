@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,36 @@ import org.elasticsearch.internal.*;
 public class TermsInclude  implements XContentable<TermsInclude> {
   
   static final ParseField NUM_PARTITIONS = new ParseField("num_partitions");
-  private Long _numPartitions;
-  public Long getNumPartitions() { return this._numPartitions; }
-  public TermsInclude setNumPartitions(Long val) { this._numPartitions = val; return this; }
-
+  private long _numPartitions;
+  private boolean _numPartitions$isSet;
+  public long getNumPartitions() { return this._numPartitions; }
+  public TermsInclude setNumPartitions(long val) {
+    this._numPartitions = val;
+    _numPartitions$isSet = true;
+    return this;
+  }
 
   static final ParseField PARTITION = new ParseField("partition");
-  private Long _partition;
-  public Long getPartition() { return this._partition; }
-  public TermsInclude setPartition(Long val) { this._partition = val; return this; }
-
-
-  static final ParseField PATTERN = new ParseField("pattern");
-  private String _pattern;
-  public String getPattern() { return this._pattern; }
-  public TermsInclude setPattern(String val) { this._pattern = val; return this; }
-
-
-  static final ParseField VALUES = new ParseField("values");
-  private List<String> _values;
-  public List<String> getValues() { return this._values; }
-  public TermsInclude setValues(List<String> val) { this._values = val; return this; }
+  private long _partition;
+  private boolean _partition$isSet;
+  public long getPartition() { return this._partition; }
+  public TermsInclude setPartition(long val) {
+    this._partition = val;
+    _partition$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_numPartitions != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_numPartitions$isSet) {
       builder.field(NUM_PARTITIONS.getPreferredName(), _numPartitions);
     }
-    if (_partition != null) {
+    if (_partition$isSet) {
       builder.field(PARTITION.getPreferredName(), _partition);
     }
-    if (_pattern != null) {
-      builder.field(PATTERN.getPreferredName(), _pattern);
-    }
-    if (_values != null) {
-      builder.array(VALUES.getPreferredName(), _values);
-    }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -71,8 +58,6 @@ public class TermsInclude  implements XContentable<TermsInclude> {
   static {
     PARSER.declareLong(TermsInclude::setNumPartitions, NUM_PARTITIONS);
     PARSER.declareLong(TermsInclude::setPartition, PARTITION);
-    PARSER.declareString(TermsInclude::setPattern, PATTERN);
-    PARSER.declareStringArray(TermsInclude::setValues, VALUES);
   }
 
 }

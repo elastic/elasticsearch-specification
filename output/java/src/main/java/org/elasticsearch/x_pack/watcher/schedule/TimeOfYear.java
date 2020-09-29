@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.schedule.*;
@@ -22,12 +20,10 @@ public class TimeOfYear  implements XContentable<TimeOfYear> {
   public List<String> getAt() { return this._at; }
   public TimeOfYear setAt(List<String> val) { this._at = val; return this; }
 
-
   static final ParseField INT = new ParseField("int");
   private List<Month> _int;
   public List<Month> getInt() { return this._int; }
   public TimeOfYear setInt(List<Month> val) { this._int = val; return this; }
-
 
   static final ParseField ON = new ParseField("on");
   private List<Integer> _on;
@@ -37,8 +33,8 @@ public class TimeOfYear  implements XContentable<TimeOfYear> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_at != null) {
       builder.array(AT.getPreferredName(), _at);
     }
@@ -48,8 +44,6 @@ public class TimeOfYear  implements XContentable<TimeOfYear> {
     if (_on != null) {
       builder.array(ON.getPreferredName(), _on);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -2,13 +2,18 @@ package org.elasticsearch;
 
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.ConstructingObjectParser;
+import org.elasticsearch.common.xcontent.ToXContent;
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentParseException;
+import org.elasticsearch.common.xcontent.XContentParser;
 import org.elasticsearch.mapping.meta_fields.source.SourceField;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Either<A, B> {
+public class Either<A extends XContentable<A>, B extends XContentable<B>> implements XContentable<Either<A,B>> {
   // TODO should be protected after we fix the generated Either parsing
   public Either() {}
 
@@ -17,7 +22,7 @@ public class Either<A, B> {
     throw new NotImplementedException();
   }
 
-  public static <A, B> Either<A,B> left(A value) {
+  public static <A extends XContentable<A>, B extends XContentable<B>> Either<A, B> left(A value) {
     return new Either<A,B>() {
       @Override
       public <C, E extends Exception> C map(
@@ -28,7 +33,7 @@ public class Either<A, B> {
     };
   }
 
-  public static <A, B> Either<A,B> right(B value) {
+  public static <A extends XContentable<A>, B extends XContentable<B>> Either<A,B> right(B value) {
     return new Either<A,B>() {
       @Override
       public <C, E extends Exception> C map(
@@ -37,5 +42,15 @@ public class Either<A, B> {
         return right.apply(value);
       }
     };
+  }
+
+  @Override
+  public Either<A, B> fromXContent(XContentParser parser) throws IOException, XContentParseException {
+    return null;
+  }
+
+  @Override
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    // TODO
   }
 }

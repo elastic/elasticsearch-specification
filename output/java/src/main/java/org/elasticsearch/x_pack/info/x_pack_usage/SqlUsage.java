@@ -7,21 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.x_pack.info.x_pack_usage.*;
 
-public class SqlUsage  implements XContentable<SqlUsage> {
+public class SqlUsage extends XPackUsage implements XContentable<SqlUsage> {
   
   static final ParseField FEATURES = new ParseField("features");
   private NamedContainer<String, Integer> _features;
   public NamedContainer<String, Integer> getFeatures() { return this._features; }
   public SqlUsage setFeatures(NamedContainer<String, Integer> val) { this._features = val; return this; }
-
 
   static final ParseField QUERIES = new ParseField("queries");
   private NamedContainer<String, QueryUsage> _queries;
@@ -31,8 +28,8 @@ public class SqlUsage  implements XContentable<SqlUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_features != null) {
       builder.field(FEATURES.getPreferredName());
       _features.toXContent(builder, params);
@@ -41,8 +38,6 @@ public class SqlUsage  implements XContentable<SqlUsage> {
       builder.field(QUERIES.getPreferredName());
       _queries.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -54,7 +49,7 @@ public class SqlUsage  implements XContentable<SqlUsage> {
     new ObjectParser<>(SqlUsage.class.getName(), false, SqlUsage::new);
 
   static {
-    PARSER.declareObject(SqlUsage::setFeatures, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> pp.intValue()), FEATURES);
+    PARSER.declareObject(SqlUsage::setFeatures, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> int.PARSER.apply(pp, null)), FEATURES);
     PARSER.declareObject(SqlUsage::setQueries, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> QueryUsage.PARSER.apply(pp, null)), QUERIES);
   }
 

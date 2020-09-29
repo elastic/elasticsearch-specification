@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.suggesters.context_suggester.*;
@@ -22,24 +20,20 @@ public class CompletionSuggester  implements XContentable<CompletionSuggester> {
   public NamedContainer<String, List<SuggestContextQuery>> getContexts() { return this._contexts; }
   public CompletionSuggester setContexts(NamedContainer<String, List<SuggestContextQuery>> val) { this._contexts = val; return this; }
 
-
   static final ParseField FUZZY = new ParseField("fuzzy");
   private SuggestFuzziness _fuzzy;
   public SuggestFuzziness getFuzzy() { return this._fuzzy; }
   public CompletionSuggester setFuzzy(SuggestFuzziness val) { this._fuzzy = val; return this; }
-
 
   static final ParseField PREFIX = new ParseField("prefix");
   private String _prefix;
   public String getPrefix() { return this._prefix; }
   public CompletionSuggester setPrefix(String val) { this._prefix = val; return this; }
 
-
   static final ParseField REGEX = new ParseField("regex");
   private String _regex;
   public String getRegex() { return this._regex; }
   public CompletionSuggester setRegex(String val) { this._regex = val; return this; }
-
 
   static final ParseField SKIP_DUPLICATES = new ParseField("skip_duplicates");
   private Boolean _skipDuplicates;
@@ -49,8 +43,8 @@ public class CompletionSuggester  implements XContentable<CompletionSuggester> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_contexts != null) {
       builder.field(CONTEXTS.getPreferredName());
       _contexts.toXContent(builder, params);
@@ -68,8 +62,6 @@ public class CompletionSuggester  implements XContentable<CompletionSuggester> {
     if (_skipDuplicates != null) {
       builder.field(SKIP_DUPLICATES.getPreferredName(), _skipDuplicates);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

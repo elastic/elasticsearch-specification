@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.security.api_key.get_api_key.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetApiKeyResponse  implements XContentable<GetApiKeyResponse> {
+public class GetApiKeyResponse extends ResponseBase<GetApiKeyResponse> implements XContentable<GetApiKeyResponse> {
   
   static final ParseField API_KEYS = new ParseField("api_keys");
   private List<ApiKeys> _apiKeys;
@@ -24,13 +23,11 @@ public class GetApiKeyResponse  implements XContentable<GetApiKeyResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_apiKeys != null) {
       builder.array(API_KEYS.getPreferredName(), _apiKeys);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

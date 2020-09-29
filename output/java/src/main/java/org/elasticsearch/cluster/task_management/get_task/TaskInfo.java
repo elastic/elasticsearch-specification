@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.task_management.get_task.*;
@@ -23,60 +21,65 @@ public class TaskInfo  implements XContentable<TaskInfo> {
   public String getAction() { return this._action; }
   public TaskInfo setAction(String val) { this._action = val; return this; }
 
-
   static final ParseField CANCELLABLE = new ParseField("cancellable");
   private Boolean _cancellable;
   public Boolean getCancellable() { return this._cancellable; }
   public TaskInfo setCancellable(Boolean val) { this._cancellable = val; return this; }
-
 
   static final ParseField CHILDREN = new ParseField("children");
   private List<TaskInfo> _children;
   public List<TaskInfo> getChildren() { return this._children; }
   public TaskInfo setChildren(List<TaskInfo> val) { this._children = val; return this; }
 
-
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public TaskInfo setDescription(String val) { this._description = val; return this; }
-
 
   static final ParseField HEADERS = new ParseField("headers");
   private NamedContainer<String, String> _headers;
   public NamedContainer<String, String> getHeaders() { return this._headers; }
   public TaskInfo setHeaders(NamedContainer<String, String> val) { this._headers = val; return this; }
 
-
   static final ParseField ID = new ParseField("id");
-  private Long _id;
-  public Long getId() { return this._id; }
-  public TaskInfo setId(Long val) { this._id = val; return this; }
-
+  private long _id;
+  private boolean _id$isSet;
+  public long getId() { return this._id; }
+  public TaskInfo setId(long val) {
+    this._id = val;
+    _id$isSet = true;
+    return this;
+  }
 
   static final ParseField NODE = new ParseField("node");
   private String _node;
   public String getNode() { return this._node; }
   public TaskInfo setNode(String val) { this._node = val; return this; }
 
-
   static final ParseField RUNNING_TIME_IN_NANOS = new ParseField("running_time_in_nanos");
-  private Long _runningTimeInNanos;
-  public Long getRunningTimeInNanos() { return this._runningTimeInNanos; }
-  public TaskInfo setRunningTimeInNanos(Long val) { this._runningTimeInNanos = val; return this; }
-
+  private long _runningTimeInNanos;
+  private boolean _runningTimeInNanos$isSet;
+  public long getRunningTimeInNanos() { return this._runningTimeInNanos; }
+  public TaskInfo setRunningTimeInNanos(long val) {
+    this._runningTimeInNanos = val;
+    _runningTimeInNanos$isSet = true;
+    return this;
+  }
 
   static final ParseField START_TIME_IN_MILLIS = new ParseField("start_time_in_millis");
-  private Long _startTimeInMillis;
-  public Long getStartTimeInMillis() { return this._startTimeInMillis; }
-  public TaskInfo setStartTimeInMillis(Long val) { this._startTimeInMillis = val; return this; }
-
+  private long _startTimeInMillis;
+  private boolean _startTimeInMillis$isSet;
+  public long getStartTimeInMillis() { return this._startTimeInMillis; }
+  public TaskInfo setStartTimeInMillis(long val) {
+    this._startTimeInMillis = val;
+    _startTimeInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField STATUS = new ParseField("status");
   private TaskStatus _status;
   public TaskStatus getStatus() { return this._status; }
   public TaskInfo setStatus(TaskStatus val) { this._status = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -86,8 +89,8 @@ public class TaskInfo  implements XContentable<TaskInfo> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_action != null) {
       builder.field(ACTION.getPreferredName(), _action);
     }
@@ -104,16 +107,16 @@ public class TaskInfo  implements XContentable<TaskInfo> {
       builder.field(HEADERS.getPreferredName());
       _headers.toXContent(builder, params);
     }
-    if (_id != null) {
+    if (_id$isSet) {
       builder.field(ID.getPreferredName(), _id);
     }
     if (_node != null) {
       builder.field(NODE.getPreferredName(), _node);
     }
-    if (_runningTimeInNanos != null) {
+    if (_runningTimeInNanos$isSet) {
       builder.field(RUNNING_TIME_IN_NANOS.getPreferredName(), _runningTimeInNanos);
     }
-    if (_startTimeInMillis != null) {
+    if (_startTimeInMillis$isSet) {
       builder.field(START_TIME_IN_MILLIS.getPreferredName(), _startTimeInMillis);
     }
     if (_status != null) {
@@ -123,8 +126,6 @@ public class TaskInfo  implements XContentable<TaskInfo> {
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

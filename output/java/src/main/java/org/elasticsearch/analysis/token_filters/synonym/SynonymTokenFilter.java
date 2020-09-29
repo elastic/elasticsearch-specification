@@ -7,50 +7,43 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.token_filters.synonym.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class SynonymTokenFilter  implements XContentable<SynonymTokenFilter> {
+public class SynonymTokenFilter extends TokenFilterBase implements XContentable<SynonymTokenFilter> {
   
   static final ParseField EXPAND = new ParseField("expand");
   private Boolean _expand;
   public Boolean getExpand() { return this._expand; }
   public SynonymTokenFilter setExpand(Boolean val) { this._expand = val; return this; }
 
-
   static final ParseField FORMAT = new ParseField("format");
   private SynonymFormat _format;
   public SynonymFormat getFormat() { return this._format; }
   public SynonymTokenFilter setFormat(SynonymFormat val) { this._format = val; return this; }
-
 
   static final ParseField LENIENT = new ParseField("lenient");
   private Boolean _lenient;
   public Boolean getLenient() { return this._lenient; }
   public SynonymTokenFilter setLenient(Boolean val) { this._lenient = val; return this; }
 
-
   static final ParseField SYNONYMS = new ParseField("synonyms");
   private List<String> _synonyms;
   public List<String> getSynonyms() { return this._synonyms; }
   public SynonymTokenFilter setSynonyms(List<String> val) { this._synonyms = val; return this; }
-
 
   static final ParseField SYNONYMS_PATH = new ParseField("synonyms_path");
   private String _synonymsPath;
   public String getSynonymsPath() { return this._synonymsPath; }
   public SynonymTokenFilter setSynonymsPath(String val) { this._synonymsPath = val; return this; }
 
-
   static final ParseField TOKENIZER = new ParseField("tokenizer");
   private String _tokenizer;
   public String getTokenizer() { return this._tokenizer; }
   public SynonymTokenFilter setTokenizer(String val) { this._tokenizer = val; return this; }
-
 
   static final ParseField UPDATEABLE = new ParseField("updateable");
   private Boolean _updateable;
@@ -60,8 +53,8 @@ public class SynonymTokenFilter  implements XContentable<SynonymTokenFilter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_expand != null) {
       builder.field(EXPAND.getPreferredName(), _expand);
     }
@@ -84,8 +77,6 @@ public class SynonymTokenFilter  implements XContentable<SynonymTokenFilter> {
     if (_updateable != null) {
       builder.field(UPDATEABLE.getPreferredName(), _updateable);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

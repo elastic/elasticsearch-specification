@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,18 +19,15 @@ public class HotThreadInformation  implements XContentable<HotThreadInformation>
   public List<String> getHosts() { return this._hosts; }
   public HotThreadInformation setHosts(List<String> val) { this._hosts = val; return this; }
 
-
   static final ParseField NODE_ID = new ParseField("node_id");
   private String _nodeId;
   public String getNodeId() { return this._nodeId; }
   public HotThreadInformation setNodeId(String val) { this._nodeId = val; return this; }
 
-
   static final ParseField NODE_NAME = new ParseField("node_name");
   private String _nodeName;
   public String getNodeName() { return this._nodeName; }
   public HotThreadInformation setNodeName(String val) { this._nodeName = val; return this; }
-
 
   static final ParseField THREADS = new ParseField("threads");
   private List<String> _threads;
@@ -42,8 +37,8 @@ public class HotThreadInformation  implements XContentable<HotThreadInformation>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_hosts != null) {
       builder.array(HOSTS.getPreferredName(), _hosts);
     }
@@ -56,8 +51,6 @@ public class HotThreadInformation  implements XContentable<HotThreadInformation>
     if (_threads != null) {
       builder.array(THREADS.getPreferredName(), _threads);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

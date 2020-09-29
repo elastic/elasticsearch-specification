@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.indices.circuit_breaker.*;
@@ -23,18 +21,15 @@ public class IndicesModuleSettings  implements XContentable<IndicesModuleSetting
   public CircuitBreakerSettings getCircuitBreakerSettings() { return this._circuitBreakerSettings; }
   public IndicesModuleSettings setCircuitBreakerSettings(CircuitBreakerSettings val) { this._circuitBreakerSettings = val; return this; }
 
-
   static final ParseField FIELDDATA_SETTINGS = new ParseField("fielddata_settings");
   private FielddataSettings _fielddataSettings;
   public FielddataSettings getFielddataSettings() { return this._fielddataSettings; }
   public IndicesModuleSettings setFielddataSettings(FielddataSettings val) { this._fielddataSettings = val; return this; }
 
-
   static final ParseField QEUERIES_CACHE_SIZE = new ParseField("qeueries_cache_size");
   private String _qeueriesCacheSize;
   public String getQeueriesCacheSize() { return this._qeueriesCacheSize; }
   public IndicesModuleSettings setQeueriesCacheSize(String val) { this._qeueriesCacheSize = val; return this; }
-
 
   static final ParseField RECOVERY_SETTINGS = new ParseField("recovery_settings");
   private IndicesRecoverySettings _recoverySettings;
@@ -44,8 +39,8 @@ public class IndicesModuleSettings  implements XContentable<IndicesModuleSetting
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_circuitBreakerSettings != null) {
       builder.field(CIRCUIT_BREAKER_SETTINGS.getPreferredName());
       _circuitBreakerSettings.toXContent(builder, params);
@@ -61,8 +56,6 @@ public class IndicesModuleSettings  implements XContentable<IndicesModuleSetting
       builder.field(RECOVERY_SETTINGS.getPreferredName());
       _recoverySettings.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

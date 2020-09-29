@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,7 +19,6 @@ public class TimeOfMonth  implements XContentable<TimeOfMonth> {
   public List<String> getAt() { return this._at; }
   public TimeOfMonth setAt(List<String> val) { this._at = val; return this; }
 
-
   static final ParseField ON = new ParseField("on");
   private List<Integer> _on;
   public List<Integer> getOn() { return this._on; }
@@ -30,16 +27,14 @@ public class TimeOfMonth  implements XContentable<TimeOfMonth> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_at != null) {
       builder.array(AT.getPreferredName(), _at);
     }
     if (_on != null) {
       builder.array(ON.getPreferredName(), _on);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.suggesters.phrase_suggester.*;
@@ -21,12 +19,10 @@ public class PhraseSuggestCollate  implements XContentable<PhraseSuggestCollate>
   public NamedContainer<String, Object> getParams() { return this._params; }
   public PhraseSuggestCollate setParams(NamedContainer<String, Object> val) { this._params = val; return this; }
 
-
   static final ParseField PRUNE = new ParseField("prune");
   private Boolean _prune;
   public Boolean getPrune() { return this._prune; }
   public PhraseSuggestCollate setPrune(Boolean val) { this._prune = val; return this; }
-
 
   static final ParseField QUERY = new ParseField("query");
   private PhraseSuggestCollateQuery _query;
@@ -36,8 +32,8 @@ public class PhraseSuggestCollate  implements XContentable<PhraseSuggestCollate>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_params != null) {
       builder.field(PARAMS.getPreferredName());
       _params.toXContent(builder, params);
@@ -49,8 +45,6 @@ public class PhraseSuggestCollate  implements XContentable<PhraseSuggestCollate>
       builder.field(QUERY.getPreferredName());
       _query.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

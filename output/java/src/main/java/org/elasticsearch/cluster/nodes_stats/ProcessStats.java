@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_stats.*;
@@ -22,29 +20,36 @@ public class ProcessStats  implements XContentable<ProcessStats> {
   public CpuStats getCpu() { return this._cpu; }
   public ProcessStats setCpu(CpuStats val) { this._cpu = val; return this; }
 
-
   static final ParseField MEM = new ParseField("mem");
   private MemoryStats _mem;
   public MemoryStats getMem() { return this._mem; }
   public ProcessStats setMem(MemoryStats val) { this._mem = val; return this; }
 
-
   static final ParseField OPEN_FILE_DESCRIPTORS = new ParseField("open_file_descriptors");
-  private Integer _openFileDescriptors;
-  public Integer getOpenFileDescriptors() { return this._openFileDescriptors; }
-  public ProcessStats setOpenFileDescriptors(Integer val) { this._openFileDescriptors = val; return this; }
-
+  private int _openFileDescriptors;
+  private boolean _openFileDescriptors$isSet;
+  public int getOpenFileDescriptors() { return this._openFileDescriptors; }
+  public ProcessStats setOpenFileDescriptors(int val) {
+    this._openFileDescriptors = val;
+    _openFileDescriptors$isSet = true;
+    return this;
+  }
 
   static final ParseField TIMESTAMP = new ParseField("timestamp");
-  private Long _timestamp;
-  public Long getTimestamp() { return this._timestamp; }
-  public ProcessStats setTimestamp(Long val) { this._timestamp = val; return this; }
+  private long _timestamp;
+  private boolean _timestamp$isSet;
+  public long getTimestamp() { return this._timestamp; }
+  public ProcessStats setTimestamp(long val) {
+    this._timestamp = val;
+    _timestamp$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cpu != null) {
       builder.field(CPU.getPreferredName());
       _cpu.toXContent(builder, params);
@@ -53,14 +58,12 @@ public class ProcessStats  implements XContentable<ProcessStats> {
       builder.field(MEM.getPreferredName());
       _mem.toXContent(builder, params);
     }
-    if (_openFileDescriptors != null) {
+    if (_openFileDescriptors$isSet) {
       builder.field(OPEN_FILE_DESCRIPTORS.getPreferredName(), _openFileDescriptors);
     }
-    if (_timestamp != null) {
+    if (_timestamp$isSet) {
       builder.field(TIMESTAMP.getPreferredName(), _timestamp);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

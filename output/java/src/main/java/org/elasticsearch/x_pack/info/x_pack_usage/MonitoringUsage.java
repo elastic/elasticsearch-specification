@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.x_pack.info.x_pack_usage.*;
 
-public class MonitoringUsage  implements XContentable<MonitoringUsage> {
+public class MonitoringUsage extends XPackUsage implements XContentable<MonitoringUsage> {
   
   static final ParseField COLLECTION_ENABLED = new ParseField("collection_enabled");
   private Boolean _collectionEnabled;
   public Boolean getCollectionEnabled() { return this._collectionEnabled; }
   public MonitoringUsage setCollectionEnabled(Boolean val) { this._collectionEnabled = val; return this; }
-
 
   static final ParseField ENABLED_EXPORTERS = new ParseField("enabled_exporters");
   private NamedContainer<String, Long> _enabledExporters;
@@ -30,8 +28,8 @@ public class MonitoringUsage  implements XContentable<MonitoringUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_collectionEnabled != null) {
       builder.field(COLLECTION_ENABLED.getPreferredName(), _collectionEnabled);
     }
@@ -39,8 +37,6 @@ public class MonitoringUsage  implements XContentable<MonitoringUsage> {
       builder.field(ENABLED_EXPORTERS.getPreferredName());
       _enabledExporters.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -53,7 +49,7 @@ public class MonitoringUsage  implements XContentable<MonitoringUsage> {
 
   static {
     PARSER.declareBoolean(MonitoringUsage::setCollectionEnabled, COLLECTION_ENABLED);
-    PARSER.declareObject(MonitoringUsage::setEnabledExporters, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> pp.longValue()), ENABLED_EXPORTERS);
+    PARSER.declareObject(MonitoringUsage::setEnabledExporters, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> long.PARSER.apply(pp, null)), ENABLED_EXPORTERS);
   }
 
 }

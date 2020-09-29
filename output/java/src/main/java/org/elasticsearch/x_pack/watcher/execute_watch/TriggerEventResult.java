@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.trigger.*;
@@ -22,12 +20,10 @@ public class TriggerEventResult  implements XContentable<TriggerEventResult> {
   public TriggerEventContainer getManual() { return this._manual; }
   public TriggerEventResult setManual(TriggerEventContainer val) { this._manual = val; return this; }
 
-
   static final ParseField TRIGGERED_TIME = new ParseField("triggered_time");
   private Date _triggeredTime;
   public Date getTriggeredTime() { return this._triggeredTime; }
   public TriggerEventResult setTriggeredTime(Date val) { this._triggeredTime = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -37,8 +33,8 @@ public class TriggerEventResult  implements XContentable<TriggerEventResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_manual != null) {
       builder.field(MANUAL.getPreferredName());
       _manual.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class TriggerEventResult  implements XContentable<TriggerEventResult> {
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

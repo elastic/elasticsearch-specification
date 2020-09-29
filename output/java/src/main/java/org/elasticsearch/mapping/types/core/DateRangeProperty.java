@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.mapping.types.core.*;
+import org.elasticsearch.mapping.types.*;
 
-
-public class DateRangeProperty  implements XContentable<DateRangeProperty> {
+public class DateRangeProperty extends RangePropertyBase implements XContentable<DateRangeProperty> {
   
   static final ParseField FORMAT = new ParseField("format");
   private String _format;
@@ -24,13 +23,11 @@ public class DateRangeProperty  implements XContentable<DateRangeProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_format != null) {
       builder.field(FORMAT.getPreferredName(), _format);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

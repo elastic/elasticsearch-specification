@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_info.*;
@@ -22,48 +20,50 @@ public class NodeJvmInfo  implements XContentable<NodeJvmInfo> {
   public List<String> getGcCollectors() { return this._gcCollectors; }
   public NodeJvmInfo setGcCollectors(List<String> val) { this._gcCollectors = val; return this; }
 
-
   static final ParseField MEM = new ParseField("mem");
   private NodeInfoJvmMemory _mem;
   public NodeInfoJvmMemory getMem() { return this._mem; }
   public NodeJvmInfo setMem(NodeInfoJvmMemory val) { this._mem = val; return this; }
-
 
   static final ParseField MEMORY_POOLS = new ParseField("memory_pools");
   private List<String> _memoryPools;
   public List<String> getMemoryPools() { return this._memoryPools; }
   public NodeJvmInfo setMemoryPools(List<String> val) { this._memoryPools = val; return this; }
 
-
   static final ParseField PID = new ParseField("pid");
-  private Integer _pid;
-  public Integer getPid() { return this._pid; }
-  public NodeJvmInfo setPid(Integer val) { this._pid = val; return this; }
-
+  private int _pid;
+  private boolean _pid$isSet;
+  public int getPid() { return this._pid; }
+  public NodeJvmInfo setPid(int val) {
+    this._pid = val;
+    _pid$isSet = true;
+    return this;
+  }
 
   static final ParseField START_TIME_IN_MILLIS = new ParseField("start_time_in_millis");
-  private Long _startTimeInMillis;
-  public Long getStartTimeInMillis() { return this._startTimeInMillis; }
-  public NodeJvmInfo setStartTimeInMillis(Long val) { this._startTimeInMillis = val; return this; }
-
+  private long _startTimeInMillis;
+  private boolean _startTimeInMillis$isSet;
+  public long getStartTimeInMillis() { return this._startTimeInMillis; }
+  public NodeJvmInfo setStartTimeInMillis(long val) {
+    this._startTimeInMillis = val;
+    _startTimeInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField VERSION = new ParseField("version");
   private String _version;
   public String getVersion() { return this._version; }
   public NodeJvmInfo setVersion(String val) { this._version = val; return this; }
 
-
   static final ParseField VM_NAME = new ParseField("vm_name");
   private String _vmName;
   public String getVmName() { return this._vmName; }
   public NodeJvmInfo setVmName(String val) { this._vmName = val; return this; }
 
-
   static final ParseField VM_VENDOR = new ParseField("vm_vendor");
   private String _vmVendor;
   public String getVmVendor() { return this._vmVendor; }
   public NodeJvmInfo setVmVendor(String val) { this._vmVendor = val; return this; }
-
 
   static final ParseField VM_VERSION = new ParseField("vm_version");
   private String _vmVersion;
@@ -73,8 +73,8 @@ public class NodeJvmInfo  implements XContentable<NodeJvmInfo> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_gcCollectors != null) {
       builder.array(GC_COLLECTORS.getPreferredName(), _gcCollectors);
     }
@@ -85,10 +85,10 @@ public class NodeJvmInfo  implements XContentable<NodeJvmInfo> {
     if (_memoryPools != null) {
       builder.array(MEMORY_POOLS.getPreferredName(), _memoryPools);
     }
-    if (_pid != null) {
+    if (_pid$isSet) {
       builder.field(PID.getPreferredName(), _pid);
     }
-    if (_startTimeInMillis != null) {
+    if (_startTimeInMillis$isSet) {
       builder.field(START_TIME_IN_MILLIS.getPreferredName(), _startTimeInMillis);
     }
     if (_version != null) {
@@ -103,8 +103,6 @@ public class NodeJvmInfo  implements XContentable<NodeJvmInfo> {
     if (_vmVersion != null) {
       builder.field(VM_VERSION.getPreferredName(), _vmVersion);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

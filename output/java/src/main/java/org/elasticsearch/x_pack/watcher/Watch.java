@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.action.*;
@@ -26,42 +24,35 @@ public class Watch  implements XContentable<Watch> {
   public NamedContainer<String, Action> getActions() { return this._actions; }
   public Watch setActions(NamedContainer<String, Action> val) { this._actions = val; return this; }
 
-
   static final ParseField CONDITION = new ParseField("condition");
   private ConditionContainer _condition;
   public ConditionContainer getCondition() { return this._condition; }
   public Watch setCondition(ConditionContainer val) { this._condition = val; return this; }
-
 
   static final ParseField INPUT = new ParseField("input");
   private InputContainer _input;
   public InputContainer getInput() { return this._input; }
   public Watch setInput(InputContainer val) { this._input = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public Watch setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
-
 
   static final ParseField STATUS = new ParseField("status");
   private WatchStatus _status;
   public WatchStatus getStatus() { return this._status; }
   public Watch setStatus(WatchStatus val) { this._status = val; return this; }
 
-
   static final ParseField THROTTLE_PERIOD = new ParseField("throttle_period");
   private String _throttlePeriod;
   public String getThrottlePeriod() { return this._throttlePeriod; }
   public Watch setThrottlePeriod(String val) { this._throttlePeriod = val; return this; }
 
-
   static final ParseField TRANSFORM = new ParseField("transform");
   private TransformContainer _transform;
   public TransformContainer getTransform() { return this._transform; }
   public Watch setTransform(TransformContainer val) { this._transform = val; return this; }
-
 
   static final ParseField TRIGGER = new ParseField("trigger");
   private TriggerContainer _trigger;
@@ -71,8 +62,8 @@ public class Watch  implements XContentable<Watch> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_actions != null) {
       builder.field(ACTIONS.getPreferredName());
       _actions.toXContent(builder, params);
@@ -104,8 +95,6 @@ public class Watch  implements XContentable<Watch> {
       builder.field(TRIGGER.getPreferredName());
       _trigger.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

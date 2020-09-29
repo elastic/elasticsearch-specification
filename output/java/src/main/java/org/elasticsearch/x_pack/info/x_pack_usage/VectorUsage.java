@@ -7,48 +7,58 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.x_pack.info.x_pack_usage.*;
 
-public class VectorUsage  implements XContentable<VectorUsage> {
+public class VectorUsage extends XPackUsage implements XContentable<VectorUsage> {
   
-  static final ParseField DENSE_VECTOR_FIELDS_COUNT = new ParseField("dense_vector_fields_count");
-  private Integer _denseVectorFieldsCount;
-  public Integer getDenseVectorFieldsCount() { return this._denseVectorFieldsCount; }
-  public VectorUsage setDenseVectorFieldsCount(Integer val) { this._denseVectorFieldsCount = val; return this; }
+  static final ParseField DENSE_VECTOR_DIMS_AVG_COUNT = new ParseField("dense_vector_dims_avg_count");
+  private int _denseVectorDimsAvgCount;
+  private boolean _denseVectorDimsAvgCount$isSet;
+  public int getDenseVectorDimsAvgCount() { return this._denseVectorDimsAvgCount; }
+  public VectorUsage setDenseVectorDimsAvgCount(int val) {
+    this._denseVectorDimsAvgCount = val;
+    _denseVectorDimsAvgCount$isSet = true;
+    return this;
+  }
 
+  static final ParseField DENSE_VECTOR_FIELDS_COUNT = new ParseField("dense_vector_fields_count");
+  private int _denseVectorFieldsCount;
+  private boolean _denseVectorFieldsCount$isSet;
+  public int getDenseVectorFieldsCount() { return this._denseVectorFieldsCount; }
+  public VectorUsage setDenseVectorFieldsCount(int val) {
+    this._denseVectorFieldsCount = val;
+    _denseVectorFieldsCount$isSet = true;
+    return this;
+  }
 
   static final ParseField SPARSE_VECTOR_FIELDS_COUNT = new ParseField("sparse_vector_fields_count");
-  private Integer _sparseVectorFieldsCount;
-  public Integer getSparseVectorFieldsCount() { return this._sparseVectorFieldsCount; }
-  public VectorUsage setSparseVectorFieldsCount(Integer val) { this._sparseVectorFieldsCount = val; return this; }
-
-
-  static final ParseField DENSE_VECTOR_DIMS_AVG_COUNT = new ParseField("dense_vector_dims_avg_count");
-  private Integer _denseVectorDimsAvgCount;
-  public Integer getDenseVectorDimsAvgCount() { return this._denseVectorDimsAvgCount; }
-  public VectorUsage setDenseVectorDimsAvgCount(Integer val) { this._denseVectorDimsAvgCount = val; return this; }
+  private int _sparseVectorFieldsCount;
+  private boolean _sparseVectorFieldsCount$isSet;
+  public int getSparseVectorFieldsCount() { return this._sparseVectorFieldsCount; }
+  public VectorUsage setSparseVectorFieldsCount(int val) {
+    this._sparseVectorFieldsCount = val;
+    _sparseVectorFieldsCount$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_denseVectorFieldsCount != null) {
-      builder.field(DENSE_VECTOR_FIELDS_COUNT.getPreferredName(), _denseVectorFieldsCount);
-    }
-    if (_sparseVectorFieldsCount != null) {
-      builder.field(SPARSE_VECTOR_FIELDS_COUNT.getPreferredName(), _sparseVectorFieldsCount);
-    }
-    if (_denseVectorDimsAvgCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_denseVectorDimsAvgCount$isSet) {
       builder.field(DENSE_VECTOR_DIMS_AVG_COUNT.getPreferredName(), _denseVectorDimsAvgCount);
     }
-    builder.endObject();
-    return builder;
+    if (_denseVectorFieldsCount$isSet) {
+      builder.field(DENSE_VECTOR_FIELDS_COUNT.getPreferredName(), _denseVectorFieldsCount);
+    }
+    if (_sparseVectorFieldsCount$isSet) {
+      builder.field(SPARSE_VECTOR_FIELDS_COUNT.getPreferredName(), _sparseVectorFieldsCount);
+    }
   }
 
   @Override
@@ -60,9 +70,9 @@ public class VectorUsage  implements XContentable<VectorUsage> {
     new ObjectParser<>(VectorUsage.class.getName(), false, VectorUsage::new);
 
   static {
+    PARSER.declareInt(VectorUsage::setDenseVectorDimsAvgCount, DENSE_VECTOR_DIMS_AVG_COUNT);
     PARSER.declareInt(VectorUsage::setDenseVectorFieldsCount, DENSE_VECTOR_FIELDS_COUNT);
     PARSER.declareInt(VectorUsage::setSparseVectorFieldsCount, SPARSE_VECTOR_FIELDS_COUNT);
-    PARSER.declareInt(VectorUsage::setDenseVectorDimsAvgCount, DENSE_VECTOR_DIMS_AVG_COUNT);
   }
 
 }

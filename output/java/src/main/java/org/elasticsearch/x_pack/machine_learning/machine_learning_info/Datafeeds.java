@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,20 +15,23 @@ import org.elasticsearch.internal.*;
 public class Datafeeds  implements XContentable<Datafeeds> {
   
   static final ParseField SCROLL_SIZE = new ParseField("scroll_size");
-  private Integer _scrollSize;
-  public Integer getScrollSize() { return this._scrollSize; }
-  public Datafeeds setScrollSize(Integer val) { this._scrollSize = val; return this; }
+  private int _scrollSize;
+  private boolean _scrollSize$isSet;
+  public int getScrollSize() { return this._scrollSize; }
+  public Datafeeds setScrollSize(int val) {
+    this._scrollSize = val;
+    _scrollSize$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_scrollSize != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_scrollSize$isSet) {
       builder.field(SCROLL_SIZE.getPreferredName(), _scrollSize);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

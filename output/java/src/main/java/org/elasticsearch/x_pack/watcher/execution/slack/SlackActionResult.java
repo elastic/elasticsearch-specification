@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.slack.*;
@@ -21,7 +19,6 @@ public class SlackActionResult  implements XContentable<SlackActionResult> {
   public String getAccount() { return this._account; }
   public SlackActionResult setAccount(String val) { this._account = val; return this; }
 
-
   static final ParseField SENT_MESSAGES = new ParseField("sent_messages");
   private List<SlackActionMessageResult> _sentMessages;
   public List<SlackActionMessageResult> getSentMessages() { return this._sentMessages; }
@@ -30,16 +27,14 @@ public class SlackActionResult  implements XContentable<SlackActionResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_account != null) {
       builder.field(ACCOUNT.getPreferredName(), _account);
     }
     if (_sentMessages != null) {
       builder.array(SENT_MESSAGES.getPreferredName(), _sentMessages);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

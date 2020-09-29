@@ -7,39 +7,45 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class LengthTokenFilter  implements XContentable<LengthTokenFilter> {
+public class LengthTokenFilter extends TokenFilterBase implements XContentable<LengthTokenFilter> {
   
   static final ParseField MAX = new ParseField("max");
-  private Integer _max;
-  public Integer getMax() { return this._max; }
-  public LengthTokenFilter setMax(Integer val) { this._max = val; return this; }
-
+  private int _max;
+  private boolean _max$isSet;
+  public int getMax() { return this._max; }
+  public LengthTokenFilter setMax(int val) {
+    this._max = val;
+    _max$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN = new ParseField("min");
-  private Integer _min;
-  public Integer getMin() { return this._min; }
-  public LengthTokenFilter setMin(Integer val) { this._min = val; return this; }
+  private int _min;
+  private boolean _min$isSet;
+  public int getMin() { return this._min; }
+  public LengthTokenFilter setMin(int val) {
+    this._min = val;
+    _min$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_max != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_max$isSet) {
       builder.field(MAX.getPreferredName(), _max);
     }
-    if (_min != null) {
+    if (_min$isSet) {
       builder.field(MIN.getPreferredName(), _min);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

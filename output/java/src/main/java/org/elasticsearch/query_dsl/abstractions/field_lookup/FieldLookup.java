@@ -7,15 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
-import org.elasticsearch.common_abstractions.infer.join_field_routing.*;
+import org.elasticsearch.internal.*;
 
 public class FieldLookup  implements XContentable<FieldLookup> {
   
@@ -24,18 +19,15 @@ public class FieldLookup  implements XContentable<FieldLookup> {
   public Id getId() { return this._id; }
   public FieldLookup setId(Id val) { this._id = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("index");
-  private IndexName _index;
-  public IndexName getIndex() { return this._index; }
-  public FieldLookup setIndex(IndexName val) { this._index = val; return this; }
-
+  private String _index;
+  public String getIndex() { return this._index; }
+  public FieldLookup setIndex(String val) { this._index = val; return this; }
 
   static final ParseField PATH = new ParseField("path");
-  private Field _path;
-  public Field getPath() { return this._path; }
-  public FieldLookup setPath(Field val) { this._path = val; return this; }
-
+  private String _path;
+  public String getPath() { return this._path; }
+  public FieldLookup setPath(String val) { this._path = val; return this; }
 
   static final ParseField ROUTING = new ParseField("routing");
   private Routing _routing;
@@ -45,26 +37,22 @@ public class FieldLookup  implements XContentable<FieldLookup> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_id != null) {
       builder.field(ID.getPreferredName());
       _id.toXContent(builder, params);
     }
     if (_index != null) {
-      builder.field(INDEX.getPreferredName());
-      _index.toXContent(builder, params);
+      builder.field(INDEX.getPreferredName(), _index);
     }
     if (_path != null) {
-      builder.field(PATH.getPreferredName());
-      _path.toXContent(builder, params);
+      builder.field(PATH.getPreferredName(), _path);
     }
     if (_routing != null) {
       builder.field(ROUTING.getPreferredName());
       _routing.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -77,8 +65,8 @@ public class FieldLookup  implements XContentable<FieldLookup> {
 
   static {
     PARSER.declareObject(FieldLookup::setId, (p, t) -> Id.createFrom(p), ID);
-    PARSER.declareObject(FieldLookup::setIndex, (p, t) -> IndexName.createFrom(p), INDEX);
-    PARSER.declareObject(FieldLookup::setPath, (p, t) -> Field.createFrom(p), PATH);
+    PARSER.declareString(FieldLookup::setIndex, INDEX);
+    PARSER.declareString(FieldLookup::setPath, PATH);
     PARSER.declareObject(FieldLookup::setRouting, (p, t) -> Routing.createFrom(p), ROUTING);
   }
 

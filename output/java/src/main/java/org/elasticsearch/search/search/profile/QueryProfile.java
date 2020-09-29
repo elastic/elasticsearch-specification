@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search.profile.*;
@@ -22,24 +20,25 @@ public class QueryProfile  implements XContentable<QueryProfile> {
   public QueryBreakdown getBreakdown() { return this._breakdown; }
   public QueryProfile setBreakdown(QueryBreakdown val) { this._breakdown = val; return this; }
 
-
   static final ParseField CHILDREN = new ParseField("children");
   private List<QueryProfile> _children;
   public List<QueryProfile> getChildren() { return this._children; }
   public QueryProfile setChildren(List<QueryProfile> val) { this._children = val; return this; }
-
 
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public QueryProfile setDescription(String val) { this._description = val; return this; }
 
-
   static final ParseField TIME_IN_NANOS = new ParseField("time_in_nanos");
-  private Long _timeInNanos;
-  public Long getTimeInNanos() { return this._timeInNanos; }
-  public QueryProfile setTimeInNanos(Long val) { this._timeInNanos = val; return this; }
-
+  private long _timeInNanos;
+  private boolean _timeInNanos$isSet;
+  public long getTimeInNanos() { return this._timeInNanos; }
+  public QueryProfile setTimeInNanos(long val) {
+    this._timeInNanos = val;
+    _timeInNanos$isSet = true;
+    return this;
+  }
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -49,8 +48,8 @@ public class QueryProfile  implements XContentable<QueryProfile> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_breakdown != null) {
       builder.field(BREAKDOWN.getPreferredName());
       _breakdown.toXContent(builder, params);
@@ -61,14 +60,12 @@ public class QueryProfile  implements XContentable<QueryProfile> {
     if (_description != null) {
       builder.field(DESCRIPTION.getPreferredName(), _description);
     }
-    if (_timeInNanos != null) {
+    if (_timeInNanos$isSet) {
       builder.field(TIME_IN_NANOS.getPreferredName(), _timeInNanos);
     }
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

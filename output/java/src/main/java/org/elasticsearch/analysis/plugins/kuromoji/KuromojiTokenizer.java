@@ -7,45 +7,44 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.kuromoji.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.tokenizers.*;
 
-public class KuromojiTokenizer  implements XContentable<KuromojiTokenizer> {
+public class KuromojiTokenizer extends TokenizerBase implements XContentable<KuromojiTokenizer> {
   
   static final ParseField DISCARD_PUNCTUATION = new ParseField("discard_punctuation");
   private Boolean _discardPunctuation;
   public Boolean getDiscardPunctuation() { return this._discardPunctuation; }
   public KuromojiTokenizer setDiscardPunctuation(Boolean val) { this._discardPunctuation = val; return this; }
 
-
   static final ParseField MODE = new ParseField("mode");
   private KuromojiTokenizationMode _mode;
   public KuromojiTokenizationMode getMode() { return this._mode; }
   public KuromojiTokenizer setMode(KuromojiTokenizationMode val) { this._mode = val; return this; }
 
-
   static final ParseField NBEST_COST = new ParseField("nbest_cost");
-  private Integer _nbestCost;
-  public Integer getNbestCost() { return this._nbestCost; }
-  public KuromojiTokenizer setNbestCost(Integer val) { this._nbestCost = val; return this; }
-
+  private int _nbestCost;
+  private boolean _nbestCost$isSet;
+  public int getNbestCost() { return this._nbestCost; }
+  public KuromojiTokenizer setNbestCost(int val) {
+    this._nbestCost = val;
+    _nbestCost$isSet = true;
+    return this;
+  }
 
   static final ParseField NBEST_EXAMPLES = new ParseField("nbest_examples");
   private String _nbestExamples;
   public String getNbestExamples() { return this._nbestExamples; }
   public KuromojiTokenizer setNbestExamples(String val) { this._nbestExamples = val; return this; }
 
-
   static final ParseField USER_DICTIONARY = new ParseField("user_dictionary");
   private String _userDictionary;
   public String getUserDictionary() { return this._userDictionary; }
   public KuromojiTokenizer setUserDictionary(String val) { this._userDictionary = val; return this; }
-
 
   static final ParseField USER_DICTIONARY_RULES = new ParseField("user_dictionary_rules");
   private List<String> _userDictionaryRules;
@@ -55,8 +54,8 @@ public class KuromojiTokenizer  implements XContentable<KuromojiTokenizer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_discardPunctuation != null) {
       builder.field(DISCARD_PUNCTUATION.getPreferredName(), _discardPunctuation);
     }
@@ -64,7 +63,7 @@ public class KuromojiTokenizer  implements XContentable<KuromojiTokenizer> {
       builder.field(MODE.getPreferredName());
       _mode.toXContent(builder, params);
     }
-    if (_nbestCost != null) {
+    if (_nbestCost$isSet) {
       builder.field(NBEST_COST.getPreferredName(), _nbestCost);
     }
     if (_nbestExamples != null) {
@@ -76,8 +75,6 @@ public class KuromojiTokenizer  implements XContentable<KuromojiTokenizer> {
     if (_userDictionaryRules != null) {
       builder.array(USER_DICTIONARY_RULES.getPreferredName(), _userDictionaryRules);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

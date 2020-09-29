@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.condition.*;
@@ -21,24 +19,20 @@ public class ConditionContainer  implements XContentable<ConditionContainer> {
   public AlwaysCondition getAlways() { return this._always; }
   public ConditionContainer setAlways(AlwaysCondition val) { this._always = val; return this; }
 
-
   static final ParseField ARRAY_COMPARE = new ParseField("array_compare");
   private ArrayCompareCondition _arrayCompare;
   public ArrayCompareCondition getArrayCompare() { return this._arrayCompare; }
   public ConditionContainer setArrayCompare(ArrayCompareCondition val) { this._arrayCompare = val; return this; }
-
 
   static final ParseField COMPARE = new ParseField("compare");
   private CompareCondition _compare;
   public CompareCondition getCompare() { return this._compare; }
   public ConditionContainer setCompare(CompareCondition val) { this._compare = val; return this; }
 
-
   static final ParseField NEVER = new ParseField("never");
   private NeverCondition _never;
   public NeverCondition getNever() { return this._never; }
   public ConditionContainer setNever(NeverCondition val) { this._never = val; return this; }
-
 
   static final ParseField SCRIPT = new ParseField("script");
   private ScriptCondition _script;
@@ -48,8 +42,8 @@ public class ConditionContainer  implements XContentable<ConditionContainer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_always != null) {
       builder.field(ALWAYS.getPreferredName());
       _always.toXContent(builder, params);
@@ -70,8 +64,6 @@ public class ConditionContainer  implements XContentable<ConditionContainer> {
       builder.field(SCRIPT.getPreferredName());
       _script.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

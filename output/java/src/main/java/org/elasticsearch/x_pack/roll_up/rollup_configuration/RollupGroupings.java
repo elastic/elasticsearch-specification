@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.roll_up.rollup_configuration.*;
@@ -21,12 +19,10 @@ public class RollupGroupings  implements XContentable<RollupGroupings> {
   public DateHistogramRollupGrouping getDateHistogram() { return this._dateHistogram; }
   public RollupGroupings setDateHistogram(DateHistogramRollupGrouping val) { this._dateHistogram = val; return this; }
 
-
   static final ParseField HISTOGRAM = new ParseField("histogram");
   private HistogramRollupGrouping _histogram;
   public HistogramRollupGrouping getHistogram() { return this._histogram; }
   public RollupGroupings setHistogram(HistogramRollupGrouping val) { this._histogram = val; return this; }
-
 
   static final ParseField TERMS = new ParseField("terms");
   private TermsRollupGrouping _terms;
@@ -36,8 +32,8 @@ public class RollupGroupings  implements XContentable<RollupGroupings> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_dateHistogram != null) {
       builder.field(DATE_HISTOGRAM.getPreferredName());
       _dateHistogram.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class RollupGroupings  implements XContentable<RollupGroupings> {
       builder.field(TERMS.getPreferredName());
       _terms.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

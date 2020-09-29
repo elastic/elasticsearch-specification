@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class UpdateModelSnapshotRequest  implements XContentable<UpdateModelSnapshotRequest> {
+public class UpdateModelSnapshotRequest extends RequestBase<UpdateModelSnapshotRequest> implements XContentable<UpdateModelSnapshotRequest> {
   
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public UpdateModelSnapshotRequest setDescription(String val) { this._description = val; return this; }
-
 
   static final ParseField RETAIN = new ParseField("retain");
   private Boolean _retain;
@@ -30,16 +27,14 @@ public class UpdateModelSnapshotRequest  implements XContentable<UpdateModelSnap
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_description != null) {
       builder.field(DESCRIPTION.getPreferredName(), _description);
     }
     if (_retain != null) {
       builder.field(RETAIN.getPreferredName(), _retain);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

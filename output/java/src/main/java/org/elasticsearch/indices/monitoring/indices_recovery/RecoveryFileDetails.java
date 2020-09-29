@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,44 @@ import org.elasticsearch.internal.*;
 public class RecoveryFileDetails  implements XContentable<RecoveryFileDetails> {
   
   static final ParseField LENGTH = new ParseField("length");
-  private Long _length;
-  public Long getLength() { return this._length; }
-  public RecoveryFileDetails setLength(Long val) { this._length = val; return this; }
-
+  private long _length;
+  private boolean _length$isSet;
+  public long getLength() { return this._length; }
+  public RecoveryFileDetails setLength(long val) {
+    this._length = val;
+    _length$isSet = true;
+    return this;
+  }
 
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public RecoveryFileDetails setName(String val) { this._name = val; return this; }
 
-
   static final ParseField RECOVERED = new ParseField("recovered");
-  private Long _recovered;
-  public Long getRecovered() { return this._recovered; }
-  public RecoveryFileDetails setRecovered(Long val) { this._recovered = val; return this; }
+  private long _recovered;
+  private boolean _recovered$isSet;
+  public long getRecovered() { return this._recovered; }
+  public RecoveryFileDetails setRecovered(long val) {
+    this._recovered = val;
+    _recovered$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_length != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_length$isSet) {
       builder.field(LENGTH.getPreferredName(), _length);
     }
     if (_name != null) {
       builder.field(NAME.getPreferredName(), _name);
     }
-    if (_recovered != null) {
+    if (_recovered$isSet) {
       builder.field(RECOVERED.getPreferredName(), _recovered);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

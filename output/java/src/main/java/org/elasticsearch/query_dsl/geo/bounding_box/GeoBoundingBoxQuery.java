@@ -7,27 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.geo.bounding_box.*;
 import org.elasticsearch.query_dsl.geo.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class GeoBoundingBoxQuery  implements XContentable<GeoBoundingBoxQuery> {
+public class GeoBoundingBoxQuery extends QueryBase implements XContentable<GeoBoundingBoxQuery> {
   
   static final ParseField BOUNDING_BOX = new ParseField("bounding_box");
   private BoundingBox _boundingBox;
   public BoundingBox getBoundingBox() { return this._boundingBox; }
   public GeoBoundingBoxQuery setBoundingBox(BoundingBox val) { this._boundingBox = val; return this; }
 
-
   static final ParseField TYPE = new ParseField("type");
   private GeoExecution _type;
   public GeoExecution getType() { return this._type; }
   public GeoBoundingBoxQuery setType(GeoExecution val) { this._type = val; return this; }
-
 
   static final ParseField VALIDATION_METHOD = new ParseField("validation_method");
   private GeoValidationMethod _validationMethod;
@@ -37,8 +34,8 @@ public class GeoBoundingBoxQuery  implements XContentable<GeoBoundingBoxQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_boundingBox != null) {
       builder.field(BOUNDING_BOX.getPreferredName());
       _boundingBox.toXContent(builder, params);
@@ -51,8 +48,6 @@ public class GeoBoundingBoxQuery  implements XContentable<GeoBoundingBoxQuery> {
       builder.field(VALIDATION_METHOD.getPreferredName());
       _validationMethod.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

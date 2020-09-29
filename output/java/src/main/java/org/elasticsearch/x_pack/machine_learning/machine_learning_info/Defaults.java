@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.machine_learning_info.*;
@@ -21,7 +19,6 @@ public class Defaults  implements XContentable<Defaults> {
   public AnomalyDetectors getAnomalyDetectors() { return this._anomalyDetectors; }
   public Defaults setAnomalyDetectors(AnomalyDetectors val) { this._anomalyDetectors = val; return this; }
 
-
   static final ParseField DATAFEEDS = new ParseField("datafeeds");
   private Datafeeds _datafeeds;
   public Datafeeds getDatafeeds() { return this._datafeeds; }
@@ -30,8 +27,8 @@ public class Defaults  implements XContentable<Defaults> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_anomalyDetectors != null) {
       builder.field(ANOMALY_DETECTORS.getPreferredName());
       _anomalyDetectors.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class Defaults  implements XContentable<Defaults> {
       builder.field(DATAFEEDS.getPreferredName());
       _datafeeds.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

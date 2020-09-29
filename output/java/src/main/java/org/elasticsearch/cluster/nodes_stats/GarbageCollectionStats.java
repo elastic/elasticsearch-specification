@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_stats.*;
@@ -24,14 +22,12 @@ public class GarbageCollectionStats  implements XContentable<GarbageCollectionSt
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_collectors != null) {
       builder.field(COLLECTORS.getPreferredName());
       _collectors.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

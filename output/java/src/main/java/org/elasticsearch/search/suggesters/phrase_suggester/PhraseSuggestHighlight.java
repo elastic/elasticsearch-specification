@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class PhraseSuggestHighlight  implements XContentable<PhraseSuggestHighli
   public String getPostTag() { return this._postTag; }
   public PhraseSuggestHighlight setPostTag(String val) { this._postTag = val; return this; }
 
-
   static final ParseField PRE_TAG = new ParseField("pre_tag");
   private String _preTag;
   public String getPreTag() { return this._preTag; }
@@ -30,16 +27,14 @@ public class PhraseSuggestHighlight  implements XContentable<PhraseSuggestHighli
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_postTag != null) {
       builder.field(POST_TAG.getPreferredName(), _postTag);
     }
     if (_preTag != null) {
       builder.field(PRE_TAG.getPreferredName(), _preTag);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
+import org.elasticsearch.internal.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class IdsQuery  implements XContentable<IdsQuery> {
+public class IdsQuery extends QueryBase implements XContentable<IdsQuery> {
   
   static final ParseField VALUES = new ParseField("values");
   private List<Id> _values;
@@ -24,13 +23,11 @@ public class IdsQuery  implements XContentable<IdsQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_values != null) {
       builder.array(VALUES.getPreferredName(), _values);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

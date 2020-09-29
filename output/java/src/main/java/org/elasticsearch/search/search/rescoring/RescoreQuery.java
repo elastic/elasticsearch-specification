@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.abstractions.container.*;
@@ -23,18 +21,25 @@ public class RescoreQuery  implements XContentable<RescoreQuery> {
   public QueryContainer getRescoreQuery() { return this._rescoreQuery; }
   public RescoreQuery setRescoreQuery(QueryContainer val) { this._rescoreQuery = val; return this; }
 
-
   static final ParseField QUERY_WEIGHT = new ParseField("query_weight");
-  private Double _queryWeight;
-  public Double getQueryWeight() { return this._queryWeight; }
-  public RescoreQuery setQueryWeight(Double val) { this._queryWeight = val; return this; }
-
+  private double _queryWeight;
+  private boolean _queryWeight$isSet;
+  public double getQueryWeight() { return this._queryWeight; }
+  public RescoreQuery setQueryWeight(double val) {
+    this._queryWeight = val;
+    _queryWeight$isSet = true;
+    return this;
+  }
 
   static final ParseField RESCORE_QUERY_WEIGHT = new ParseField("rescore_query_weight");
-  private Double _rescoreQueryWeight;
-  public Double getRescoreQueryWeight() { return this._rescoreQueryWeight; }
-  public RescoreQuery setRescoreQueryWeight(Double val) { this._rescoreQueryWeight = val; return this; }
-
+  private double _rescoreQueryWeight;
+  private boolean _rescoreQueryWeight$isSet;
+  public double getRescoreQueryWeight() { return this._rescoreQueryWeight; }
+  public RescoreQuery setRescoreQueryWeight(double val) {
+    this._rescoreQueryWeight = val;
+    _rescoreQueryWeight$isSet = true;
+    return this;
+  }
 
   static final ParseField SCORE_MODE = new ParseField("score_mode");
   private ScoreMode _scoreMode;
@@ -44,24 +49,22 @@ public class RescoreQuery  implements XContentable<RescoreQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_rescoreQuery != null) {
       builder.field(RESCORE_QUERY.getPreferredName());
       _rescoreQuery.toXContent(builder, params);
     }
-    if (_queryWeight != null) {
+    if (_queryWeight$isSet) {
       builder.field(QUERY_WEIGHT.getPreferredName(), _queryWeight);
     }
-    if (_rescoreQueryWeight != null) {
+    if (_rescoreQueryWeight$isSet) {
       builder.field(RESCORE_QUERY_WEIGHT.getPreferredName(), _rescoreQueryWeight);
     }
     if (_scoreMode != null) {
       builder.field(SCORE_MODE.getPreferredName());
       _scoreMode.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class SlackAttachmentField  implements XContentable<SlackAttachmentField>
   public Boolean getShort() { return this._short; }
   public SlackAttachmentField setShort(Boolean val) { this._short = val; return this; }
 
-
   static final ParseField TITLE = new ParseField("title");
   private String _title;
   public String getTitle() { return this._title; }
   public SlackAttachmentField setTitle(String val) { this._title = val; return this; }
-
 
   static final ParseField VALUE = new ParseField("value");
   private String _value;
@@ -36,8 +32,8 @@ public class SlackAttachmentField  implements XContentable<SlackAttachmentField>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_short != null) {
       builder.field(SHORT.getPreferredName(), _short);
     }
@@ -47,8 +43,6 @@ public class SlackAttachmentField  implements XContentable<SlackAttachmentField>
     if (_value != null) {
       builder.field(VALUE.getPreferredName(), _value);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

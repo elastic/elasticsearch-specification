@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class WatcherStatsRequest  implements XContentable<WatcherStatsRequest> {
+public class WatcherStatsRequest extends RequestBase<WatcherStatsRequest> implements XContentable<WatcherStatsRequest> {
   
   static final ParseField EMIT_STACKTRACES = new ParseField("emit_stacktraces");
   private Boolean _emitStacktraces;
@@ -24,13 +22,11 @@ public class WatcherStatsRequest  implements XContentable<WatcherStatsRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_emitStacktraces != null) {
       builder.field(EMIT_STACKTRACES.getPreferredName(), _emitStacktraces);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

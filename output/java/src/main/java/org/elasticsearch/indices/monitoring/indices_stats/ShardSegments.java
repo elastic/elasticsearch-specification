@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,129 +16,175 @@ import org.elasticsearch.indices.monitoring.indices_stats.*;
 public class ShardSegments  implements XContentable<ShardSegments> {
   
   static final ParseField COUNT = new ParseField("count");
-  private Long _count;
-  public Long getCount() { return this._count; }
-  public ShardSegments setCount(Long val) { this._count = val; return this; }
-
+  private long _count;
+  private boolean _count$isSet;
+  public long getCount() { return this._count; }
+  public ShardSegments setCount(long val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField DOC_VALUES_MEMORY_IN_BYTES = new ParseField("doc_values_memory_in_bytes");
-  private Long _docValuesMemoryInBytes;
-  public Long getDocValuesMemoryInBytes() { return this._docValuesMemoryInBytes; }
-  public ShardSegments setDocValuesMemoryInBytes(Long val) { this._docValuesMemoryInBytes = val; return this; }
-
+  private long _docValuesMemoryInBytes;
+  private boolean _docValuesMemoryInBytes$isSet;
+  public long getDocValuesMemoryInBytes() { return this._docValuesMemoryInBytes; }
+  public ShardSegments setDocValuesMemoryInBytes(long val) {
+    this._docValuesMemoryInBytes = val;
+    _docValuesMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField FILE_SIZES = new ParseField("file_sizes");
   private NamedContainer<String, ShardFileSizeInfo> _fileSizes;
   public NamedContainer<String, ShardFileSizeInfo> getFileSizes() { return this._fileSizes; }
   public ShardSegments setFileSizes(NamedContainer<String, ShardFileSizeInfo> val) { this._fileSizes = val; return this; }
 
-
   static final ParseField FIXED_BIT_SET_MEMORY_IN_BYTES = new ParseField("fixed_bit_set_memory_in_bytes");
-  private Long _fixedBitSetMemoryInBytes;
-  public Long getFixedBitSetMemoryInBytes() { return this._fixedBitSetMemoryInBytes; }
-  public ShardSegments setFixedBitSetMemoryInBytes(Long val) { this._fixedBitSetMemoryInBytes = val; return this; }
-
+  private long _fixedBitSetMemoryInBytes;
+  private boolean _fixedBitSetMemoryInBytes$isSet;
+  public long getFixedBitSetMemoryInBytes() { return this._fixedBitSetMemoryInBytes; }
+  public ShardSegments setFixedBitSetMemoryInBytes(long val) {
+    this._fixedBitSetMemoryInBytes = val;
+    _fixedBitSetMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField INDEX_WRITER_MEMORY_IN_BYTES = new ParseField("index_writer_memory_in_bytes");
-  private Long _indexWriterMemoryInBytes;
-  public Long getIndexWriterMemoryInBytes() { return this._indexWriterMemoryInBytes; }
-  public ShardSegments setIndexWriterMemoryInBytes(Long val) { this._indexWriterMemoryInBytes = val; return this; }
-
+  private long _indexWriterMemoryInBytes;
+  private boolean _indexWriterMemoryInBytes$isSet;
+  public long getIndexWriterMemoryInBytes() { return this._indexWriterMemoryInBytes; }
+  public ShardSegments setIndexWriterMemoryInBytes(long val) {
+    this._indexWriterMemoryInBytes = val;
+    _indexWriterMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_UNSAFE_AUTO_ID_TIMESTAMP = new ParseField("max_unsafe_auto_id_timestamp");
-  private Long _maxUnsafeAutoIdTimestamp;
-  public Long getMaxUnsafeAutoIdTimestamp() { return this._maxUnsafeAutoIdTimestamp; }
-  public ShardSegments setMaxUnsafeAutoIdTimestamp(Long val) { this._maxUnsafeAutoIdTimestamp = val; return this; }
-
+  private long _maxUnsafeAutoIdTimestamp;
+  private boolean _maxUnsafeAutoIdTimestamp$isSet;
+  public long getMaxUnsafeAutoIdTimestamp() { return this._maxUnsafeAutoIdTimestamp; }
+  public ShardSegments setMaxUnsafeAutoIdTimestamp(long val) {
+    this._maxUnsafeAutoIdTimestamp = val;
+    _maxUnsafeAutoIdTimestamp$isSet = true;
+    return this;
+  }
 
   static final ParseField MEMORY_IN_BYTES = new ParseField("memory_in_bytes");
-  private Long _memoryInBytes;
-  public Long getMemoryInBytes() { return this._memoryInBytes; }
-  public ShardSegments setMemoryInBytes(Long val) { this._memoryInBytes = val; return this; }
-
+  private long _memoryInBytes;
+  private boolean _memoryInBytes$isSet;
+  public long getMemoryInBytes() { return this._memoryInBytes; }
+  public ShardSegments setMemoryInBytes(long val) {
+    this._memoryInBytes = val;
+    _memoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField NORMS_MEMORY_IN_BYTES = new ParseField("norms_memory_in_bytes");
-  private Long _normsMemoryInBytes;
-  public Long getNormsMemoryInBytes() { return this._normsMemoryInBytes; }
-  public ShardSegments setNormsMemoryInBytes(Long val) { this._normsMemoryInBytes = val; return this; }
-
+  private long _normsMemoryInBytes;
+  private boolean _normsMemoryInBytes$isSet;
+  public long getNormsMemoryInBytes() { return this._normsMemoryInBytes; }
+  public ShardSegments setNormsMemoryInBytes(long val) {
+    this._normsMemoryInBytes = val;
+    _normsMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField POINTS_MEMORY_IN_BYTES = new ParseField("points_memory_in_bytes");
-  private Long _pointsMemoryInBytes;
-  public Long getPointsMemoryInBytes() { return this._pointsMemoryInBytes; }
-  public ShardSegments setPointsMemoryInBytes(Long val) { this._pointsMemoryInBytes = val; return this; }
-
+  private long _pointsMemoryInBytes;
+  private boolean _pointsMemoryInBytes$isSet;
+  public long getPointsMemoryInBytes() { return this._pointsMemoryInBytes; }
+  public ShardSegments setPointsMemoryInBytes(long val) {
+    this._pointsMemoryInBytes = val;
+    _pointsMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField STORED_FIELDS_MEMORY_IN_BYTES = new ParseField("stored_fields_memory_in_bytes");
-  private Long _storedFieldsMemoryInBytes;
-  public Long getStoredFieldsMemoryInBytes() { return this._storedFieldsMemoryInBytes; }
-  public ShardSegments setStoredFieldsMemoryInBytes(Long val) { this._storedFieldsMemoryInBytes = val; return this; }
-
+  private long _storedFieldsMemoryInBytes;
+  private boolean _storedFieldsMemoryInBytes$isSet;
+  public long getStoredFieldsMemoryInBytes() { return this._storedFieldsMemoryInBytes; }
+  public ShardSegments setStoredFieldsMemoryInBytes(long val) {
+    this._storedFieldsMemoryInBytes = val;
+    _storedFieldsMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField TERMS_MEMORY_IN_BYTES = new ParseField("terms_memory_in_bytes");
-  private Long _termsMemoryInBytes;
-  public Long getTermsMemoryInBytes() { return this._termsMemoryInBytes; }
-  public ShardSegments setTermsMemoryInBytes(Long val) { this._termsMemoryInBytes = val; return this; }
-
+  private long _termsMemoryInBytes;
+  private boolean _termsMemoryInBytes$isSet;
+  public long getTermsMemoryInBytes() { return this._termsMemoryInBytes; }
+  public ShardSegments setTermsMemoryInBytes(long val) {
+    this._termsMemoryInBytes = val;
+    _termsMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField TERM_VECTORS_MEMORY_IN_BYTES = new ParseField("term_vectors_memory_in_bytes");
-  private Long _termVectorsMemoryInBytes;
-  public Long getTermVectorsMemoryInBytes() { return this._termVectorsMemoryInBytes; }
-  public ShardSegments setTermVectorsMemoryInBytes(Long val) { this._termVectorsMemoryInBytes = val; return this; }
-
+  private long _termVectorsMemoryInBytes;
+  private boolean _termVectorsMemoryInBytes$isSet;
+  public long getTermVectorsMemoryInBytes() { return this._termVectorsMemoryInBytes; }
+  public ShardSegments setTermVectorsMemoryInBytes(long val) {
+    this._termVectorsMemoryInBytes = val;
+    _termVectorsMemoryInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField VERSION_MAP_MEMORY_IN_BYTES = new ParseField("version_map_memory_in_bytes");
-  private Long _versionMapMemoryInBytes;
-  public Long getVersionMapMemoryInBytes() { return this._versionMapMemoryInBytes; }
-  public ShardSegments setVersionMapMemoryInBytes(Long val) { this._versionMapMemoryInBytes = val; return this; }
+  private long _versionMapMemoryInBytes;
+  private boolean _versionMapMemoryInBytes$isSet;
+  public long getVersionMapMemoryInBytes() { return this._versionMapMemoryInBytes; }
+  public ShardSegments setVersionMapMemoryInBytes(long val) {
+    this._versionMapMemoryInBytes = val;
+    _versionMapMemoryInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_count != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
-    if (_docValuesMemoryInBytes != null) {
+    if (_docValuesMemoryInBytes$isSet) {
       builder.field(DOC_VALUES_MEMORY_IN_BYTES.getPreferredName(), _docValuesMemoryInBytes);
     }
     if (_fileSizes != null) {
       builder.field(FILE_SIZES.getPreferredName());
       _fileSizes.toXContent(builder, params);
     }
-    if (_fixedBitSetMemoryInBytes != null) {
+    if (_fixedBitSetMemoryInBytes$isSet) {
       builder.field(FIXED_BIT_SET_MEMORY_IN_BYTES.getPreferredName(), _fixedBitSetMemoryInBytes);
     }
-    if (_indexWriterMemoryInBytes != null) {
+    if (_indexWriterMemoryInBytes$isSet) {
       builder.field(INDEX_WRITER_MEMORY_IN_BYTES.getPreferredName(), _indexWriterMemoryInBytes);
     }
-    if (_maxUnsafeAutoIdTimestamp != null) {
+    if (_maxUnsafeAutoIdTimestamp$isSet) {
       builder.field(MAX_UNSAFE_AUTO_ID_TIMESTAMP.getPreferredName(), _maxUnsafeAutoIdTimestamp);
     }
-    if (_memoryInBytes != null) {
+    if (_memoryInBytes$isSet) {
       builder.field(MEMORY_IN_BYTES.getPreferredName(), _memoryInBytes);
     }
-    if (_normsMemoryInBytes != null) {
+    if (_normsMemoryInBytes$isSet) {
       builder.field(NORMS_MEMORY_IN_BYTES.getPreferredName(), _normsMemoryInBytes);
     }
-    if (_pointsMemoryInBytes != null) {
+    if (_pointsMemoryInBytes$isSet) {
       builder.field(POINTS_MEMORY_IN_BYTES.getPreferredName(), _pointsMemoryInBytes);
     }
-    if (_storedFieldsMemoryInBytes != null) {
+    if (_storedFieldsMemoryInBytes$isSet) {
       builder.field(STORED_FIELDS_MEMORY_IN_BYTES.getPreferredName(), _storedFieldsMemoryInBytes);
     }
-    if (_termsMemoryInBytes != null) {
+    if (_termsMemoryInBytes$isSet) {
       builder.field(TERMS_MEMORY_IN_BYTES.getPreferredName(), _termsMemoryInBytes);
     }
-    if (_termVectorsMemoryInBytes != null) {
+    if (_termVectorsMemoryInBytes$isSet) {
       builder.field(TERM_VECTORS_MEMORY_IN_BYTES.getPreferredName(), _termVectorsMemoryInBytes);
     }
-    if (_versionMapMemoryInBytes != null) {
+    if (_versionMapMemoryInBytes$isSet) {
       builder.field(VERSION_MAP_MEMORY_IN_BYTES.getPreferredName(), _versionMapMemoryInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.snapshot_and_restore.repositories.cleanup_repository.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class CleanupRepositoryResponse  implements XContentable<CleanupRepositoryResponse> {
+public class CleanupRepositoryResponse extends ResponseBase<CleanupRepositoryResponse> implements XContentable<CleanupRepositoryResponse> {
   
   static final ParseField RESULTS = new ParseField("results");
   private CleanupRepositoryResults _results;
@@ -24,14 +23,12 @@ public class CleanupRepositoryResponse  implements XContentable<CleanupRepositor
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_results != null) {
       builder.field(RESULTS.getPreferredName());
       _results.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

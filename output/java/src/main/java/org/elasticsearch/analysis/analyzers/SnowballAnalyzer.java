@@ -7,21 +7,19 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.languages.*;
 import org.elasticsearch.analysis.*;
+import org.elasticsearch.analysis.analyzers.*;
 
-public class SnowballAnalyzer  implements XContentable<SnowballAnalyzer> {
+public class SnowballAnalyzer extends AnalyzerBase implements XContentable<SnowballAnalyzer> {
   
   static final ParseField LANGUAGE = new ParseField("language");
   private SnowballLanguage _language;
   public SnowballLanguage getLanguage() { return this._language; }
   public SnowballAnalyzer setLanguage(SnowballLanguage val) { this._language = val; return this; }
-
 
   static final ParseField STOPWORDS = new ParseField("stopwords");
   private StopWords _stopwords;
@@ -31,8 +29,8 @@ public class SnowballAnalyzer  implements XContentable<SnowballAnalyzer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_language != null) {
       builder.field(LANGUAGE.getPreferredName());
       _language.toXContent(builder, params);
@@ -41,8 +39,6 @@ public class SnowballAnalyzer  implements XContentable<SnowballAnalyzer> {
       builder.field(STOPWORDS.getPreferredName());
       _stopwords.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -55,7 +51,7 @@ public class SnowballAnalyzer  implements XContentable<SnowballAnalyzer> {
 
   static {
     PARSER.declareField(SnowballAnalyzer::setLanguage, (p, t) -> SnowballLanguage.PARSER.apply(p), LANGUAGE, ObjectParser.ValueType.STRING_OR_NULL);
-    PARSER.declareObject(SnowballAnalyzer::setStopwords, (p, t) -> new StopWords().fromXContent(p), STOPWORDS);
+    PARSER.declareObject(SnowballAnalyzer::setStopwords, (p, t) -> StopWords.PARSER.apply(p, t), STOPWORDS);
   }
 
 }

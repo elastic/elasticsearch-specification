@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.mapping.*;
@@ -21,7 +19,6 @@ public class IndexMappings  implements XContentable<IndexMappings> {
   public TypeMapping getItem() { return this._item; }
   public IndexMappings setItem(TypeMapping val) { this._item = val; return this; }
 
-
   static final ParseField MAPPINGS = new ParseField("mappings");
   private TypeMapping _mappings;
   public TypeMapping getMappings() { return this._mappings; }
@@ -30,8 +27,8 @@ public class IndexMappings  implements XContentable<IndexMappings> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_item != null) {
       builder.field(ITEM.getPreferredName());
       _item.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class IndexMappings  implements XContentable<IndexMappings> {
       builder.field(MAPPINGS.getPreferredName());
       _mappings.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class NodeInfoTransport  implements XContentable<NodeInfoTransport> {
   public List<String> getBoundAddress() { return this._boundAddress; }
   public NodeInfoTransport setBoundAddress(List<String> val) { this._boundAddress = val; return this; }
 
-
   static final ParseField PUBLISH_ADDRESS = new ParseField("publish_address");
   private String _publishAddress;
   public String getPublishAddress() { return this._publishAddress; }
@@ -30,16 +27,14 @@ public class NodeInfoTransport  implements XContentable<NodeInfoTransport> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_boundAddress != null) {
       builder.array(BOUND_ADDRESS.getPreferredName(), _boundAddress);
     }
     if (_publishAddress != null) {
       builder.field(PUBLISH_ADDRESS.getPreferredName(), _publishAddress);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

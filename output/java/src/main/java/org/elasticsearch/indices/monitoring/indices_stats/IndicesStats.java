@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.monitoring.indices_stats.*;
@@ -21,18 +19,15 @@ public class IndicesStats  implements XContentable<IndicesStats> {
   public IndexStats getPrimaries() { return this._primaries; }
   public IndicesStats setPrimaries(IndexStats val) { this._primaries = val; return this; }
 
-
   static final ParseField SHARDS = new ParseField("shards");
   private NamedContainer<String, List<ShardStats>> _shards;
   public NamedContainer<String, List<ShardStats>> getShards() { return this._shards; }
   public IndicesStats setShards(NamedContainer<String, List<ShardStats>> val) { this._shards = val; return this; }
 
-
   static final ParseField TOTAL = new ParseField("total");
   private IndexStats _total;
   public IndexStats getTotal() { return this._total; }
   public IndicesStats setTotal(IndexStats val) { this._total = val; return this; }
-
 
   static final ParseField UUID = new ParseField("uuid");
   private String _uuid;
@@ -42,8 +37,8 @@ public class IndicesStats  implements XContentable<IndicesStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_primaries != null) {
       builder.field(PRIMARIES.getPreferredName());
       _primaries.toXContent(builder, params);
@@ -59,8 +54,6 @@ public class IndicesStats  implements XContentable<IndicesStats> {
     if (_uuid != null) {
       builder.field(UUID.getPreferredName(), _uuid);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.email.*;
@@ -28,54 +26,45 @@ public class ExecutionResultAction  implements XContentable<ExecutionResultActio
   public EmailActionResult getEmail() { return this._email; }
   public ExecutionResultAction setEmail(EmailActionResult val) { this._email = val; return this; }
 
-
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public ExecutionResultAction setId(String val) { this._id = val; return this; }
-
 
   static final ParseField INDEX = new ParseField("index");
   private IndexActionResult _index;
   public IndexActionResult getIndex() { return this._index; }
   public ExecutionResultAction setIndex(IndexActionResult val) { this._index = val; return this; }
 
-
   static final ParseField LOGGING = new ParseField("logging");
   private LoggingActionResult _logging;
   public LoggingActionResult getLogging() { return this._logging; }
   public ExecutionResultAction setLogging(LoggingActionResult val) { this._logging = val; return this; }
-
 
   static final ParseField PAGERDUTY = new ParseField("pagerduty");
   private PagerDutyActionResult _pagerduty;
   public PagerDutyActionResult getPagerduty() { return this._pagerduty; }
   public ExecutionResultAction setPagerduty(PagerDutyActionResult val) { this._pagerduty = val; return this; }
 
-
   static final ParseField REASON = new ParseField("reason");
   private String _reason;
   public String getReason() { return this._reason; }
   public ExecutionResultAction setReason(String val) { this._reason = val; return this; }
-
 
   static final ParseField SLACK = new ParseField("slack");
   private SlackActionResult _slack;
   public SlackActionResult getSlack() { return this._slack; }
   public ExecutionResultAction setSlack(SlackActionResult val) { this._slack = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private Status _status;
   public Status getStatus() { return this._status; }
   public ExecutionResultAction setStatus(Status val) { this._status = val; return this; }
 
-
   static final ParseField TYPE = new ParseField("type");
   private ActionType _type;
   public ActionType getType() { return this._type; }
   public ExecutionResultAction setType(ActionType val) { this._type = val; return this; }
-
 
   static final ParseField WEBHOOK = new ParseField("webhook");
   private WebhookActionResult _webhook;
@@ -85,8 +74,8 @@ public class ExecutionResultAction  implements XContentable<ExecutionResultActio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_email != null) {
       builder.field(EMAIL.getPreferredName());
       _email.toXContent(builder, params);
@@ -125,8 +114,6 @@ public class ExecutionResultAction  implements XContentable<ExecutionResultActio
       builder.field(WEBHOOK.getPreferredName());
       _webhook.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

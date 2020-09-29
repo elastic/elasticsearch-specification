@@ -7,37 +7,34 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.date_math.*;
+import org.elasticsearch.internal.*;
 
 public class DateRangeExpression  implements XContentable<DateRangeExpression> {
   
   static final ParseField FROM = new ParseField("from");
-  private DateMath _from;
-  public DateMath getFrom() { return this._from; }
-  public DateRangeExpression setFrom(DateMath val) { this._from = val; return this; }
-
+  private Union2<String, Float> _from;
+  public Union2<String, Float> getFrom() { return this._from; }
+  public DateRangeExpression setFrom(Union2<String, Float> val) { this._from = val; return this; }
 
   static final ParseField KEY = new ParseField("key");
   private String _key;
   public String getKey() { return this._key; }
   public DateRangeExpression setKey(String val) { this._key = val; return this; }
 
-
   static final ParseField TO = new ParseField("to");
-  private DateMath _to;
-  public DateMath getTo() { return this._to; }
-  public DateRangeExpression setTo(DateMath val) { this._to = val; return this; }
+  private Union2<String, Float> _to;
+  public Union2<String, Float> getTo() { return this._to; }
+  public DateRangeExpression setTo(Union2<String, Float> val) { this._to = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_from != null) {
       builder.field(FROM.getPreferredName());
       _from.toXContent(builder, params);
@@ -49,8 +46,6 @@ public class DateRangeExpression  implements XContentable<DateRangeExpression> {
       builder.field(TO.getPreferredName());
       _to.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,9 +57,9 @@ public class DateRangeExpression  implements XContentable<DateRangeExpression> {
     new ObjectParser<>(DateRangeExpression.class.getName(), false, DateRangeExpression::new);
 
   static {
-    PARSER.declareObject(DateRangeExpression::setFrom, (p, t) -> DateMath.PARSER.apply(p, t), FROM);
+    PARSER.declareObject(DateRangeExpression::setFrom, (p, t) ->  new Union2<String, Float>(), FROM);
     PARSER.declareString(DateRangeExpression::setKey, KEY);
-    PARSER.declareObject(DateRangeExpression::setTo, (p, t) -> DateMath.PARSER.apply(p, t), TO);
+    PARSER.declareObject(DateRangeExpression::setTo, (p, t) ->  new Union2<String, Float>(), TO);
   }
 
 }

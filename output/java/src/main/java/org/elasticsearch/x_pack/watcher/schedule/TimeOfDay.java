@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,7 +19,6 @@ public class TimeOfDay  implements XContentable<TimeOfDay> {
   public List<Integer> getHour() { return this._hour; }
   public TimeOfDay setHour(List<Integer> val) { this._hour = val; return this; }
 
-
   static final ParseField MINUTE = new ParseField("minute");
   private List<Integer> _minute;
   public List<Integer> getMinute() { return this._minute; }
@@ -30,16 +27,14 @@ public class TimeOfDay  implements XContentable<TimeOfDay> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_hour != null) {
       builder.array(HOUR.getPreferredName(), _hour);
     }
     if (_minute != null) {
       builder.array(MINUTE.getPreferredName(), _minute);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

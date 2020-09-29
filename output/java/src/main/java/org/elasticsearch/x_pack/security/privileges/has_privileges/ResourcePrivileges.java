@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class ResourcePrivileges  implements XContentable<ResourcePrivileges> {
   public NamedContainer<String, Boolean> getPrivileges() { return this._privileges; }
   public ResourcePrivileges setPrivileges(NamedContainer<String, Boolean> val) { this._privileges = val; return this; }
 
-
   static final ParseField RESOURCE = new ParseField("resource");
   private String _resource;
   public String getResource() { return this._resource; }
@@ -30,8 +27,8 @@ public class ResourcePrivileges  implements XContentable<ResourcePrivileges> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_privileges != null) {
       builder.field(PRIVILEGES.getPreferredName());
       _privileges.toXContent(builder, params);
@@ -39,8 +36,6 @@ public class ResourcePrivileges  implements XContentable<ResourcePrivileges> {
     if (_resource != null) {
       builder.field(RESOURCE.getPreferredName(), _resource);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

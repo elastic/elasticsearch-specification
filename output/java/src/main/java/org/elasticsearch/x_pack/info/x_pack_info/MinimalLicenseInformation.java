@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,28 +16,29 @@ import org.elasticsearch.x_pack.license.get_license.*;
 public class MinimalLicenseInformation  implements XContentable<MinimalLicenseInformation> {
   
   static final ParseField EXPIRY_DATE_IN_MILLIS = new ParseField("expiry_date_in_millis");
-  private Long _expiryDateInMillis;
-  public Long getExpiryDateInMillis() { return this._expiryDateInMillis; }
-  public MinimalLicenseInformation setExpiryDateInMillis(Long val) { this._expiryDateInMillis = val; return this; }
-
+  private long _expiryDateInMillis;
+  private boolean _expiryDateInMillis$isSet;
+  public long getExpiryDateInMillis() { return this._expiryDateInMillis; }
+  public MinimalLicenseInformation setExpiryDateInMillis(long val) {
+    this._expiryDateInMillis = val;
+    _expiryDateInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField MODE = new ParseField("mode");
   private LicenseType _mode;
   public LicenseType getMode() { return this._mode; }
   public MinimalLicenseInformation setMode(LicenseType val) { this._mode = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private LicenseStatus _status;
   public LicenseStatus getStatus() { return this._status; }
   public MinimalLicenseInformation setStatus(LicenseStatus val) { this._status = val; return this; }
 
-
   static final ParseField TYPE = new ParseField("type");
   private LicenseType _type;
   public LicenseType getType() { return this._type; }
   public MinimalLicenseInformation setType(LicenseType val) { this._type = val; return this; }
-
 
   static final ParseField UID = new ParseField("uid");
   private String _uid;
@@ -49,9 +48,9 @@ public class MinimalLicenseInformation  implements XContentable<MinimalLicenseIn
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_expiryDateInMillis != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_expiryDateInMillis$isSet) {
       builder.field(EXPIRY_DATE_IN_MILLIS.getPreferredName(), _expiryDateInMillis);
     }
     if (_mode != null) {
@@ -69,8 +68,6 @@ public class MinimalLicenseInformation  implements XContentable<MinimalLicenseIn
     if (_uid != null) {
       builder.field(UID.getPreferredName(), _uid);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

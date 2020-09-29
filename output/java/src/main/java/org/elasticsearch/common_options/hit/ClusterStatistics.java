@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class ClusterStatistics  implements XContentable<ClusterStatistics> {
   
   static final ParseField SKIPPED = new ParseField("skipped");
-  private Integer _skipped;
-  public Integer getSkipped() { return this._skipped; }
-  public ClusterStatistics setSkipped(Integer val) { this._skipped = val; return this; }
-
+  private int _skipped;
+  private boolean _skipped$isSet;
+  public int getSkipped() { return this._skipped; }
+  public ClusterStatistics setSkipped(int val) {
+    this._skipped = val;
+    _skipped$isSet = true;
+    return this;
+  }
 
   static final ParseField SUCCESSFUL = new ParseField("successful");
-  private Integer _successful;
-  public Integer getSuccessful() { return this._successful; }
-  public ClusterStatistics setSuccessful(Integer val) { this._successful = val; return this; }
-
+  private int _successful;
+  private boolean _successful$isSet;
+  public int getSuccessful() { return this._successful; }
+  public ClusterStatistics setSuccessful(int val) {
+    this._successful = val;
+    _successful$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
-  private Integer _total;
-  public Integer getTotal() { return this._total; }
-  public ClusterStatistics setTotal(Integer val) { this._total = val; return this; }
+  private int _total;
+  private boolean _total$isSet;
+  public int getTotal() { return this._total; }
+  public ClusterStatistics setTotal(int val) {
+    this._total = val;
+    _total$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_skipped != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_skipped$isSet) {
       builder.field(SKIPPED.getPreferredName(), _skipped);
     }
-    if (_successful != null) {
+    if (_successful$isSet) {
       builder.field(SUCCESSFUL.getPreferredName(), _successful);
     }
-    if (_total != null) {
+    if (_total$isSet) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

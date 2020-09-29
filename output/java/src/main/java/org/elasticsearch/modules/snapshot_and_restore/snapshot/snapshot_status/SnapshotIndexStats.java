@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.snapshot_and_restore.snapshot.snapshot_status.*;
@@ -21,12 +19,10 @@ public class SnapshotIndexStats  implements XContentable<SnapshotIndexStats> {
   public NamedContainer<String, SnapshotShardsStats> getShards() { return this._shards; }
   public SnapshotIndexStats setShards(NamedContainer<String, SnapshotShardsStats> val) { this._shards = val; return this; }
 
-
   static final ParseField SHARDS_STATS = new ParseField("shards_stats");
   private SnapshotShardsStats _shardsStats;
   public SnapshotShardsStats getShardsStats() { return this._shardsStats; }
   public SnapshotIndexStats setShardsStats(SnapshotShardsStats val) { this._shardsStats = val; return this; }
-
 
   static final ParseField STATS = new ParseField("stats");
   private SnapshotStats _stats;
@@ -36,8 +32,8 @@ public class SnapshotIndexStats  implements XContentable<SnapshotIndexStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_shards != null) {
       builder.field(SHARDS.getPreferredName());
       _shards.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class SnapshotIndexStats  implements XContentable<SnapshotIndexStats> {
       builder.field(STATS.getPreferredName());
       _stats.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

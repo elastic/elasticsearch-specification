@@ -7,17 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search.collapsing.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.search.search.highlighting.*;
 import org.elasticsearch.common_options.scripting.*;
-import org.elasticsearch.search.search.sort.*;
 import org.elasticsearch.search.search.source_filtering.*;
 
 public class InnerHits  implements XContentable<InnerHits> {
@@ -27,66 +23,70 @@ public class InnerHits  implements XContentable<InnerHits> {
   public FieldCollapse getCollapse() { return this._collapse; }
   public InnerHits setCollapse(FieldCollapse val) { this._collapse = val; return this; }
 
-
   static final ParseField DOCVALUE_FIELDS = new ParseField("docvalue_fields");
-  private List<Field> _docvalueFields;
-  public List<Field> getDocvalueFields() { return this._docvalueFields; }
-  public InnerHits setDocvalueFields(List<Field> val) { this._docvalueFields = val; return this; }
-
+  private List<String> _docvalueFields;
+  public List<String> getDocvalueFields() { return this._docvalueFields; }
+  public InnerHits setDocvalueFields(List<String> val) { this._docvalueFields = val; return this; }
 
   static final ParseField EXPLAIN = new ParseField("explain");
   private Boolean _explain;
   public Boolean getExplain() { return this._explain; }
   public InnerHits setExplain(Boolean val) { this._explain = val; return this; }
 
-
   static final ParseField FROM = new ParseField("from");
-  private Integer _from;
-  public Integer getFrom() { return this._from; }
-  public InnerHits setFrom(Integer val) { this._from = val; return this; }
-
+  private int _from;
+  private boolean _from$isSet;
+  public int getFrom() { return this._from; }
+  public InnerHits setFrom(int val) {
+    this._from = val;
+    _from$isSet = true;
+    return this;
+  }
 
   static final ParseField HIGHLIGHT = new ParseField("highlight");
   private Highlight _highlight;
   public Highlight getHighlight() { return this._highlight; }
   public InnerHits setHighlight(Highlight val) { this._highlight = val; return this; }
 
-
   static final ParseField IGNORE_UNMAPPED = new ParseField("ignore_unmapped");
   private Boolean _ignoreUnmapped;
   public Boolean getIgnoreUnmapped() { return this._ignoreUnmapped; }
   public InnerHits setIgnoreUnmapped(Boolean val) { this._ignoreUnmapped = val; return this; }
-
 
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public InnerHits setName(String val) { this._name = val; return this; }
 
-
   static final ParseField SCRIPT_FIELDS = new ParseField("script_fields");
   private NamedContainer<String, ScriptField> _scriptFields;
   public NamedContainer<String, ScriptField> getScriptFields() { return this._scriptFields; }
   public InnerHits setScriptFields(NamedContainer<String, ScriptField> val) { this._scriptFields = val; return this; }
 
+  static final ParseField SEQ_NO_PRIMARY_TERM = new ParseField("seq_no_primary_term");
+  private Boolean _seqNoPrimaryTerm;
+  public Boolean getSeqNoPrimaryTerm() { return this._seqNoPrimaryTerm; }
+  public InnerHits setSeqNoPrimaryTerm(Boolean val) { this._seqNoPrimaryTerm = val; return this; }
 
   static final ParseField SIZE = new ParseField("size");
-  private Integer _size;
-  public Integer getSize() { return this._size; }
-  public InnerHits setSize(Integer val) { this._size = val; return this; }
-
+  private int _size;
+  private boolean _size$isSet;
+  public int getSize() { return this._size; }
+  public InnerHits setSize(int val) {
+    this._size = val;
+    _size$isSet = true;
+    return this;
+  }
 
   static final ParseField SORT = new ParseField("sort");
-  private List<Sort> _sort;
-  public List<Sort> getSort() { return this._sort; }
-  public InnerHits setSort(List<Sort> val) { this._sort = val; return this; }
-
+  private List<SingleKeyDictionary<Union2<Sort, SortOrder>>> _sort;
+  public List<SingleKeyDictionary<Union2<Sort, SortOrder>>> getSort() { return this._sort; }
+  public InnerHits setSort(List<SingleKeyDictionary<Union2<Sort, SortOrder>>> val) { this._sort = val; return this; }
 
   static final ParseField SOURCE = new ParseField("_source");
-  private Either<Boolean, SourceFilter> _source;
-  public Either<Boolean, SourceFilter> getSource() { return this._source; }
-  public InnerHits setSource(Either<Boolean, SourceFilter> val) { this._source = val; return this; }
-
+  private Union2<Boolean, SourceFilter> _source;
+  public Union2<Boolean, SourceFilter> getSource() { return this._source; }
+  public InnerHits setSource(Union2<Boolean, SourceFilter> val) { this._source = val; return this; }
 
   static final ParseField VERSION = new ParseField("version");
   private Boolean _version;
@@ -96,8 +96,8 @@ public class InnerHits  implements XContentable<InnerHits> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_collapse != null) {
       builder.field(COLLAPSE.getPreferredName());
       _collapse.toXContent(builder, params);
@@ -108,7 +108,7 @@ public class InnerHits  implements XContentable<InnerHits> {
     if (_explain != null) {
       builder.field(EXPLAIN.getPreferredName(), _explain);
     }
-    if (_from != null) {
+    if (_from$isSet) {
       builder.field(FROM.getPreferredName(), _from);
     }
     if (_highlight != null) {
@@ -125,7 +125,10 @@ public class InnerHits  implements XContentable<InnerHits> {
       builder.field(SCRIPT_FIELDS.getPreferredName());
       _scriptFields.toXContent(builder, params);
     }
-    if (_size != null) {
+    if (_seqNoPrimaryTerm != null) {
+      builder.field(SEQ_NO_PRIMARY_TERM.getPreferredName(), _seqNoPrimaryTerm);
+    }
+    if (_size$isSet) {
       builder.field(SIZE.getPreferredName(), _size);
     }
     if (_sort != null) {
@@ -133,13 +136,11 @@ public class InnerHits  implements XContentable<InnerHits> {
     }
     if (_source != null) {
       builder.field(SOURCE.getPreferredName());
-      _source.map(builder::value, r-> r.toXContent(builder, params));
+      _source.toXContent(builder, params);
     }
     if (_version != null) {
       builder.field(VERSION.getPreferredName(), _version);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -152,16 +153,17 @@ public class InnerHits  implements XContentable<InnerHits> {
 
   static {
     PARSER.declareObject(InnerHits::setCollapse, (p, t) -> FieldCollapse.PARSER.apply(p, t), COLLAPSE);
-    PARSER.declareObjectArray(InnerHits::setDocvalueFields, (p, t) -> Field.createFrom(p), DOCVALUE_FIELDS);
+    PARSER.declareStringArray(InnerHits::setDocvalueFields, DOCVALUE_FIELDS);
     PARSER.declareBoolean(InnerHits::setExplain, EXPLAIN);
     PARSER.declareInt(InnerHits::setFrom, FROM);
     PARSER.declareObject(InnerHits::setHighlight, (p, t) -> Highlight.PARSER.apply(p, t), HIGHLIGHT);
     PARSER.declareBoolean(InnerHits::setIgnoreUnmapped, IGNORE_UNMAPPED);
     PARSER.declareString(InnerHits::setName, NAME);
     PARSER.declareObject(InnerHits::setScriptFields, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> ScriptField.PARSER.apply(pp, null)), SCRIPT_FIELDS);
+    PARSER.declareBoolean(InnerHits::setSeqNoPrimaryTerm, SEQ_NO_PRIMARY_TERM);
     PARSER.declareInt(InnerHits::setSize, SIZE);
-    PARSER.declareObjectArray(InnerHits::setSort, (p, t) -> Sort.PARSER.apply(p, t), SORT);
-    PARSER.declareObject(InnerHits::setSource, (p, t) ->  new Either<Boolean, SourceFilter>() /* TODO UnionOf */, SOURCE);
+    PARSER.declareObjectArray(InnerHits::setSort, null /* TODO SingleKeyDictionary [object Object] */, SORT);
+    PARSER.declareObject(InnerHits::setSource, (p, t) ->  new Union2<Boolean, SourceFilter>(), SOURCE);
     PARSER.declareBoolean(InnerHits::setVersion, VERSION);
   }
 

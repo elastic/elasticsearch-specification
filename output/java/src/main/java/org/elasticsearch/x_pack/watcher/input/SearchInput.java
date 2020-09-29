@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.input.*;
@@ -22,23 +20,21 @@ public class SearchInput  implements XContentable<SearchInput> {
   public List<String> getExtract() { return this._extract; }
   public SearchInput setExtract(List<String> val) { this._extract = val; return this; }
 
-
   static final ParseField REQUEST = new ParseField("request");
   private SearchInputRequest _request;
   public SearchInputRequest getRequest() { return this._request; }
   public SearchInput setRequest(SearchInputRequest val) { this._request = val; return this; }
 
-
   static final ParseField TIMEOUT = new ParseField("timeout");
-  private Time _timeout;
-  public Time getTimeout() { return this._timeout; }
-  public SearchInput setTimeout(Time val) { this._timeout = val; return this; }
+  private String _timeout;
+  public String getTimeout() { return this._timeout; }
+  public SearchInput setTimeout(String val) { this._timeout = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_extract != null) {
       builder.array(EXTRACT.getPreferredName(), _extract);
     }
@@ -47,11 +43,8 @@ public class SearchInput  implements XContentable<SearchInput> {
       _request.toXContent(builder, params);
     }
     if (_timeout != null) {
-      builder.field(TIMEOUT.getPreferredName());
-      _timeout.toXContent(builder, params);
+      builder.field(TIMEOUT.getPreferredName(), _timeout);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -65,7 +58,7 @@ public class SearchInput  implements XContentable<SearchInput> {
   static {
     PARSER.declareStringArray(SearchInput::setExtract, EXTRACT);
     PARSER.declareObject(SearchInput::setRequest, (p, t) -> SearchInputRequest.PARSER.apply(p, t), REQUEST);
-    PARSER.declareObject(SearchInput::setTimeout, (p, t) -> Time.PARSER.apply(p, t), TIMEOUT);
+    PARSER.declareString(SearchInput::setTimeout, TIMEOUT);
   }
 
 }

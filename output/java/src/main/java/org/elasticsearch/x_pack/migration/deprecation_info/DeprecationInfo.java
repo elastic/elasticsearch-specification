@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.migration.deprecation_info.*;
@@ -21,18 +19,15 @@ public class DeprecationInfo  implements XContentable<DeprecationInfo> {
   public String getDetails() { return this._details; }
   public DeprecationInfo setDetails(String val) { this._details = val; return this; }
 
-
   static final ParseField LEVEL = new ParseField("level");
   private DeprecationWarningLevel _level;
   public DeprecationWarningLevel getLevel() { return this._level; }
   public DeprecationInfo setLevel(DeprecationWarningLevel val) { this._level = val; return this; }
 
-
   static final ParseField MESSAGE = new ParseField("message");
   private String _message;
   public String getMessage() { return this._message; }
   public DeprecationInfo setMessage(String val) { this._message = val; return this; }
-
 
   static final ParseField URL = new ParseField("url");
   private String _url;
@@ -42,8 +37,8 @@ public class DeprecationInfo  implements XContentable<DeprecationInfo> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_details != null) {
       builder.field(DETAILS.getPreferredName(), _details);
     }
@@ -57,8 +52,6 @@ public class DeprecationInfo  implements XContentable<DeprecationInfo> {
     if (_url != null) {
       builder.field(URL.getPreferredName(), _url);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

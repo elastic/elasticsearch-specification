@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.mapping.types.*;
 
-
-public class RankFeatureProperty  implements XContentable<RankFeatureProperty> {
+public class RankFeatureProperty extends PropertyBase implements XContentable<RankFeatureProperty> {
   
   static final ParseField POSITIVE_SCORE_IMPACT = new ParseField("positive_score_impact");
   private Boolean _positiveScoreImpact;
@@ -24,13 +22,11 @@ public class RankFeatureProperty  implements XContentable<RankFeatureProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_positiveScoreImpact != null) {
       builder.field(POSITIVE_SCORE_IMPACT.getPreferredName(), _positiveScoreImpact);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

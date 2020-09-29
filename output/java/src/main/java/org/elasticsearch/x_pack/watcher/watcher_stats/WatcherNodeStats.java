@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.watcher_stats.*;
@@ -22,24 +20,25 @@ public class WatcherNodeStats  implements XContentable<WatcherNodeStats> {
   public List<WatchRecordStats> getCurrentWatches() { return this._currentWatches; }
   public WatcherNodeStats setCurrentWatches(List<WatchRecordStats> val) { this._currentWatches = val; return this; }
 
-
   static final ParseField EXECUTION_THREAD_POOL = new ParseField("execution_thread_pool");
   private ExecutionThreadPool _executionThreadPool;
   public ExecutionThreadPool getExecutionThreadPool() { return this._executionThreadPool; }
   public WatcherNodeStats setExecutionThreadPool(ExecutionThreadPool val) { this._executionThreadPool = val; return this; }
-
 
   static final ParseField QUEUED_WATCHES = new ParseField("queued_watches");
   private List<WatchRecordQueuedStats> _queuedWatches;
   public List<WatchRecordQueuedStats> getQueuedWatches() { return this._queuedWatches; }
   public WatcherNodeStats setQueuedWatches(List<WatchRecordQueuedStats> val) { this._queuedWatches = val; return this; }
 
-
   static final ParseField WATCH_COUNT = new ParseField("watch_count");
-  private Long _watchCount;
-  public Long getWatchCount() { return this._watchCount; }
-  public WatcherNodeStats setWatchCount(Long val) { this._watchCount = val; return this; }
-
+  private long _watchCount;
+  private boolean _watchCount$isSet;
+  public long getWatchCount() { return this._watchCount; }
+  public WatcherNodeStats setWatchCount(long val) {
+    this._watchCount = val;
+    _watchCount$isSet = true;
+    return this;
+  }
 
   static final ParseField WATCHER_STATE = new ParseField("watcher_state");
   private WatcherState _watcherState;
@@ -49,8 +48,8 @@ public class WatcherNodeStats  implements XContentable<WatcherNodeStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_currentWatches != null) {
       builder.array(CURRENT_WATCHES.getPreferredName(), _currentWatches);
     }
@@ -61,15 +60,13 @@ public class WatcherNodeStats  implements XContentable<WatcherNodeStats> {
     if (_queuedWatches != null) {
       builder.array(QUEUED_WATCHES.getPreferredName(), _queuedWatches);
     }
-    if (_watchCount != null) {
+    if (_watchCount$isSet) {
       builder.field(WATCH_COUNT.getPreferredName(), _watchCount);
     }
     if (_watcherState != null) {
       builder.field(WATCHER_STATE.getPreferredName());
       _watcherState.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

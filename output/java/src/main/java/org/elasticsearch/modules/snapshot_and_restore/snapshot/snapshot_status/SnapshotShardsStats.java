@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,65 +15,88 @@ import org.elasticsearch.internal.*;
 public class SnapshotShardsStats  implements XContentable<SnapshotShardsStats> {
   
   static final ParseField DONE = new ParseField("done");
-  private Long _done;
-  public Long getDone() { return this._done; }
-  public SnapshotShardsStats setDone(Long val) { this._done = val; return this; }
-
+  private long _done;
+  private boolean _done$isSet;
+  public long getDone() { return this._done; }
+  public SnapshotShardsStats setDone(long val) {
+    this._done = val;
+    _done$isSet = true;
+    return this;
+  }
 
   static final ParseField FAILED = new ParseField("failed");
-  private Long _failed;
-  public Long getFailed() { return this._failed; }
-  public SnapshotShardsStats setFailed(Long val) { this._failed = val; return this; }
-
+  private long _failed;
+  private boolean _failed$isSet;
+  public long getFailed() { return this._failed; }
+  public SnapshotShardsStats setFailed(long val) {
+    this._failed = val;
+    _failed$isSet = true;
+    return this;
+  }
 
   static final ParseField FINALIZING = new ParseField("finalizing");
-  private Long _finalizing;
-  public Long getFinalizing() { return this._finalizing; }
-  public SnapshotShardsStats setFinalizing(Long val) { this._finalizing = val; return this; }
-
+  private long _finalizing;
+  private boolean _finalizing$isSet;
+  public long getFinalizing() { return this._finalizing; }
+  public SnapshotShardsStats setFinalizing(long val) {
+    this._finalizing = val;
+    _finalizing$isSet = true;
+    return this;
+  }
 
   static final ParseField INITIALIZING = new ParseField("initializing");
-  private Long _initializing;
-  public Long getInitializing() { return this._initializing; }
-  public SnapshotShardsStats setInitializing(Long val) { this._initializing = val; return this; }
-
+  private long _initializing;
+  private boolean _initializing$isSet;
+  public long getInitializing() { return this._initializing; }
+  public SnapshotShardsStats setInitializing(long val) {
+    this._initializing = val;
+    _initializing$isSet = true;
+    return this;
+  }
 
   static final ParseField STARTED = new ParseField("started");
-  private Long _started;
-  public Long getStarted() { return this._started; }
-  public SnapshotShardsStats setStarted(Long val) { this._started = val; return this; }
-
+  private long _started;
+  private boolean _started$isSet;
+  public long getStarted() { return this._started; }
+  public SnapshotShardsStats setStarted(long val) {
+    this._started = val;
+    _started$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
-  private Long _total;
-  public Long getTotal() { return this._total; }
-  public SnapshotShardsStats setTotal(Long val) { this._total = val; return this; }
+  private long _total;
+  private boolean _total$isSet;
+  public long getTotal() { return this._total; }
+  public SnapshotShardsStats setTotal(long val) {
+    this._total = val;
+    _total$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_done != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_done$isSet) {
       builder.field(DONE.getPreferredName(), _done);
     }
-    if (_failed != null) {
+    if (_failed$isSet) {
       builder.field(FAILED.getPreferredName(), _failed);
     }
-    if (_finalizing != null) {
+    if (_finalizing$isSet) {
       builder.field(FINALIZING.getPreferredName(), _finalizing);
     }
-    if (_initializing != null) {
+    if (_initializing$isSet) {
       builder.field(INITIALIZING.getPreferredName(), _initializing);
     }
-    if (_started != null) {
+    if (_started$isSet) {
       builder.field(STARTED.getPreferredName(), _started);
     }
-    if (_total != null) {
+    if (_total$isSet) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

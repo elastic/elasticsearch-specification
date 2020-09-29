@@ -7,69 +7,57 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
-import org.elasticsearch.search.search.sort.*;
+import org.elasticsearch.aggregations.bucket.terms.*;
+import org.elasticsearch.aggregations.bucket.histogram.*;
+import org.elasticsearch.aggregations.bucket.date_histogram.*;
+import org.elasticsearch.aggregations.bucket.geo_tile_grid.*;
 
 public class CompositeAggregationSource  implements XContentable<CompositeAggregationSource> {
   
-  static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public CompositeAggregationSource setField(Field val) { this._field = val; return this; }
+  static final ParseField TERMS = new ParseField("terms");
+  private TermsAggregation _terms;
+  public TermsAggregation getTerms() { return this._terms; }
+  public CompositeAggregationSource setTerms(TermsAggregation val) { this._terms = val; return this; }
 
+  static final ParseField HISTOGRAM = new ParseField("histogram");
+  private HistogramAggregation _histogram;
+  public HistogramAggregation getHistogram() { return this._histogram; }
+  public CompositeAggregationSource setHistogram(HistogramAggregation val) { this._histogram = val; return this; }
 
-  static final ParseField MISSING_BUCKET = new ParseField("missing_bucket");
-  private Boolean _missingBucket;
-  public Boolean getMissingBucket() { return this._missingBucket; }
-  public CompositeAggregationSource setMissingBucket(Boolean val) { this._missingBucket = val; return this; }
+  static final ParseField DATE_HISTOGRAM = new ParseField("date_histogram");
+  private DateHistogramAggregation _dateHistogram;
+  public DateHistogramAggregation getDateHistogram() { return this._dateHistogram; }
+  public CompositeAggregationSource setDateHistogram(DateHistogramAggregation val) { this._dateHistogram = val; return this; }
 
-
-  static final ParseField NAME = new ParseField("name");
-  private String _name;
-  public String getName() { return this._name; }
-  public CompositeAggregationSource setName(String val) { this._name = val; return this; }
-
-
-  static final ParseField ORDER = new ParseField("order");
-  private SortOrder _order;
-  public SortOrder getOrder() { return this._order; }
-  public CompositeAggregationSource setOrder(SortOrder val) { this._order = val; return this; }
-
-
-  static final ParseField SOURCE_TYPE = new ParseField("source_type");
-  private String _sourceType;
-  public String getSourceType() { return this._sourceType; }
-  public CompositeAggregationSource setSourceType(String val) { this._sourceType = val; return this; }
+  static final ParseField GEOTILE_GRID = new ParseField("geotile_grid");
+  private GeoTileGridAggregation _geotileGrid;
+  public GeoTileGridAggregation getGeotileGrid() { return this._geotileGrid; }
+  public CompositeAggregationSource setGeotileGrid(GeoTileGridAggregation val) { this._geotileGrid = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_terms != null) {
+      builder.field(TERMS.getPreferredName());
+      _terms.toXContent(builder, params);
     }
-    if (_missingBucket != null) {
-      builder.field(MISSING_BUCKET.getPreferredName(), _missingBucket);
+    if (_histogram != null) {
+      builder.field(HISTOGRAM.getPreferredName());
+      _histogram.toXContent(builder, params);
     }
-    if (_name != null) {
-      builder.field(NAME.getPreferredName(), _name);
+    if (_dateHistogram != null) {
+      builder.field(DATE_HISTOGRAM.getPreferredName());
+      _dateHistogram.toXContent(builder, params);
     }
-    if (_order != null) {
-      builder.field(ORDER.getPreferredName());
-      _order.toXContent(builder, params);
+    if (_geotileGrid != null) {
+      builder.field(GEOTILE_GRID.getPreferredName());
+      _geotileGrid.toXContent(builder, params);
     }
-    if (_sourceType != null) {
-      builder.field(SOURCE_TYPE.getPreferredName(), _sourceType);
-    }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -81,11 +69,10 @@ public class CompositeAggregationSource  implements XContentable<CompositeAggreg
     new ObjectParser<>(CompositeAggregationSource.class.getName(), false, CompositeAggregationSource::new);
 
   static {
-    PARSER.declareObject(CompositeAggregationSource::setField, (p, t) -> Field.createFrom(p), FIELD);
-    PARSER.declareBoolean(CompositeAggregationSource::setMissingBucket, MISSING_BUCKET);
-    PARSER.declareString(CompositeAggregationSource::setName, NAME);
-    PARSER.declareField(CompositeAggregationSource::setOrder, (p, t) -> SortOrder.PARSER.apply(p), ORDER, ObjectParser.ValueType.STRING_OR_NULL);
-    PARSER.declareString(CompositeAggregationSource::setSourceType, SOURCE_TYPE);
+    PARSER.declareObject(CompositeAggregationSource::setTerms, (p, t) -> TermsAggregation.PARSER.apply(p, t), TERMS);
+    PARSER.declareObject(CompositeAggregationSource::setHistogram, (p, t) -> HistogramAggregation.PARSER.apply(p, t), HISTOGRAM);
+    PARSER.declareObject(CompositeAggregationSource::setDateHistogram, (p, t) -> DateHistogramAggregation.PARSER.apply(p, t), DATE_HISTOGRAM);
+    PARSER.declareObject(CompositeAggregationSource::setGeotileGrid, (p, t) -> GeoTileGridAggregation.PARSER.apply(p, t), GEOTILE_GRID);
   }
 
 }

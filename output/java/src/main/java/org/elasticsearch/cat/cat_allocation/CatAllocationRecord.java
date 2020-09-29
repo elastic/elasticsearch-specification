@@ -7,68 +7,57 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatAllocationRecord  implements XContentable<CatAllocationRecord> {
+public class CatAllocationRecord extends ICatRecord implements XContentable<CatAllocationRecord> {
   
   static final ParseField DISK_AVAIL = new ParseField("disk.avail");
   private String _diskAvail;
   public String getDiskAvail() { return this._diskAvail; }
   public CatAllocationRecord setDiskAvail(String val) { this._diskAvail = val; return this; }
 
-
   static final ParseField DISK_INDICES = new ParseField("disk.indices");
   private String _diskIndices;
   public String getDiskIndices() { return this._diskIndices; }
   public CatAllocationRecord setDiskIndices(String val) { this._diskIndices = val; return this; }
-
 
   static final ParseField DISK_PERCENT = new ParseField("disk.percent");
   private String _diskPercent;
   public String getDiskPercent() { return this._diskPercent; }
   public CatAllocationRecord setDiskPercent(String val) { this._diskPercent = val; return this; }
 
-
   static final ParseField DISK_RATIO = new ParseField("disk_ratio");
   private String _diskRatio;
   public String getDiskRatio() { return this._diskRatio; }
   public CatAllocationRecord setDiskRatio(String val) { this._diskRatio = val; return this; }
-
 
   static final ParseField DISK_TOTAL = new ParseField("disk.total");
   private String _diskTotal;
   public String getDiskTotal() { return this._diskTotal; }
   public CatAllocationRecord setDiskTotal(String val) { this._diskTotal = val; return this; }
 
-
   static final ParseField DISK_USED = new ParseField("disk.used");
   private String _diskUsed;
   public String getDiskUsed() { return this._diskUsed; }
   public CatAllocationRecord setDiskUsed(String val) { this._diskUsed = val; return this; }
-
 
   static final ParseField HOST = new ParseField("host");
   private String _host;
   public String getHost() { return this._host; }
   public CatAllocationRecord setHost(String val) { this._host = val; return this; }
 
-
   static final ParseField IP = new ParseField("ip");
   private String _ip;
   public String getIp() { return this._ip; }
   public CatAllocationRecord setIp(String val) { this._ip = val; return this; }
 
-
   static final ParseField NODE = new ParseField("node");
   private String _node;
   public String getNode() { return this._node; }
   public CatAllocationRecord setNode(String val) { this._node = val; return this; }
-
 
   static final ParseField SHARDS = new ParseField("shards");
   private String _shards;
@@ -78,8 +67,8 @@ public class CatAllocationRecord  implements XContentable<CatAllocationRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_diskAvail != null) {
       builder.field(DISK_AVAIL.getPreferredName(), _diskAvail);
     }
@@ -110,8 +99,6 @@ public class CatAllocationRecord  implements XContentable<CatAllocationRecord> {
     if (_shards != null) {
       builder.field(SHARDS.getPreferredName(), _shards);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

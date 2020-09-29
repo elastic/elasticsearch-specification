@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,57 @@ import org.elasticsearch.internal.*;
 public class Token  implements XContentable<Token> {
   
   static final ParseField END_OFFSET = new ParseField("end_offset");
-  private Integer _endOffset;
-  public Integer getEndOffset() { return this._endOffset; }
-  public Token setEndOffset(Integer val) { this._endOffset = val; return this; }
-
+  private int _endOffset;
+  private boolean _endOffset$isSet;
+  public int getEndOffset() { return this._endOffset; }
+  public Token setEndOffset(int val) {
+    this._endOffset = val;
+    _endOffset$isSet = true;
+    return this;
+  }
 
   static final ParseField PAYLOAD = new ParseField("payload");
   private String _payload;
   public String getPayload() { return this._payload; }
   public Token setPayload(String val) { this._payload = val; return this; }
 
-
   static final ParseField POSITION = new ParseField("position");
-  private Integer _position;
-  public Integer getPosition() { return this._position; }
-  public Token setPosition(Integer val) { this._position = val; return this; }
-
+  private int _position;
+  private boolean _position$isSet;
+  public int getPosition() { return this._position; }
+  public Token setPosition(int val) {
+    this._position = val;
+    _position$isSet = true;
+    return this;
+  }
 
   static final ParseField START_OFFSET = new ParseField("start_offset");
-  private Integer _startOffset;
-  public Integer getStartOffset() { return this._startOffset; }
-  public Token setStartOffset(Integer val) { this._startOffset = val; return this; }
+  private int _startOffset;
+  private boolean _startOffset$isSet;
+  public int getStartOffset() { return this._startOffset; }
+  public Token setStartOffset(int val) {
+    this._startOffset = val;
+    _startOffset$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_endOffset != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_endOffset$isSet) {
       builder.field(END_OFFSET.getPreferredName(), _endOffset);
     }
     if (_payload != null) {
       builder.field(PAYLOAD.getPreferredName(), _payload);
     }
-    if (_position != null) {
+    if (_position$isSet) {
       builder.field(POSITION.getPreferredName(), _position);
     }
-    if (_startOffset != null) {
+    if (_startOffset$isSet) {
       builder.field(START_OFFSET.getPreferredName(), _startOffset);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

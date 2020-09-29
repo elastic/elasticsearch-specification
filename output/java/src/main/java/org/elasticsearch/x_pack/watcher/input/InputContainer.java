@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.input.*;
@@ -21,18 +19,15 @@ public class InputContainer  implements XContentable<InputContainer> {
   public ChainInput getChain() { return this._chain; }
   public InputContainer setChain(ChainInput val) { this._chain = val; return this; }
 
-
   static final ParseField HTTP = new ParseField("http");
   private HttpInput _http;
   public HttpInput getHttp() { return this._http; }
   public InputContainer setHttp(HttpInput val) { this._http = val; return this; }
 
-
   static final ParseField SEARCH = new ParseField("search");
   private SearchInput _search;
   public SearchInput getSearch() { return this._search; }
   public InputContainer setSearch(SearchInput val) { this._search = val; return this; }
-
 
   static final ParseField SIMPLE = new ParseField("simple");
   private SimpleInput _simple;
@@ -42,8 +37,8 @@ public class InputContainer  implements XContentable<InputContainer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_chain != null) {
       builder.field(CHAIN.getPreferredName());
       _chain.toXContent(builder, params);
@@ -60,8 +55,6 @@ public class InputContainer  implements XContentable<InputContainer> {
       builder.field(SIMPLE.getPreferredName());
       _simple.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

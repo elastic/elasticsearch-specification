@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.schedule.*;
@@ -21,36 +19,30 @@ public class ScheduleContainer  implements XContentable<ScheduleContainer> {
   public CronExpression getCron() { return this._cron; }
   public ScheduleContainer setCron(CronExpression val) { this._cron = val; return this; }
 
-
   static final ParseField DAILY = new ParseField("daily");
   private DailySchedule _daily;
   public DailySchedule getDaily() { return this._daily; }
   public ScheduleContainer setDaily(DailySchedule val) { this._daily = val; return this; }
-
 
   static final ParseField HOURLY = new ParseField("hourly");
   private HourlySchedule _hourly;
   public HourlySchedule getHourly() { return this._hourly; }
   public ScheduleContainer setHourly(HourlySchedule val) { this._hourly = val; return this; }
 
-
   static final ParseField INTERVAL = new ParseField("interval");
   private Interval _interval;
   public Interval getInterval() { return this._interval; }
   public ScheduleContainer setInterval(Interval val) { this._interval = val; return this; }
-
 
   static final ParseField MONTHLY = new ParseField("monthly");
   private List<TimeOfMonth> _monthly;
   public List<TimeOfMonth> getMonthly() { return this._monthly; }
   public ScheduleContainer setMonthly(List<TimeOfMonth> val) { this._monthly = val; return this; }
 
-
   static final ParseField WEEKLY = new ParseField("weekly");
   private List<TimeOfWeek> _weekly;
   public List<TimeOfWeek> getWeekly() { return this._weekly; }
   public ScheduleContainer setWeekly(List<TimeOfWeek> val) { this._weekly = val; return this; }
-
 
   static final ParseField YEARLY = new ParseField("yearly");
   private List<TimeOfYear> _yearly;
@@ -60,8 +52,8 @@ public class ScheduleContainer  implements XContentable<ScheduleContainer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cron != null) {
       builder.field(CRON.getPreferredName());
       _cron.toXContent(builder, params);
@@ -87,8 +79,6 @@ public class ScheduleContainer  implements XContentable<ScheduleContainer> {
     if (_yearly != null) {
       builder.array(YEARLY.getPreferredName(), _yearly);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

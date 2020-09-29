@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,90 +19,110 @@ public class DataPathStats  implements XContentable<DataPathStats> {
   public String getAvailable() { return this._available; }
   public DataPathStats setAvailable(String val) { this._available = val; return this; }
 
-
   static final ParseField AVAILABLE_IN_BYTES = new ParseField("available_in_bytes");
-  private Long _availableInBytes;
-  public Long getAvailableInBytes() { return this._availableInBytes; }
-  public DataPathStats setAvailableInBytes(Long val) { this._availableInBytes = val; return this; }
-
+  private long _availableInBytes;
+  private boolean _availableInBytes$isSet;
+  public long getAvailableInBytes() { return this._availableInBytes; }
+  public DataPathStats setAvailableInBytes(long val) {
+    this._availableInBytes = val;
+    _availableInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField DISK_QUEUE = new ParseField("disk_queue");
   private String _diskQueue;
   public String getDiskQueue() { return this._diskQueue; }
   public DataPathStats setDiskQueue(String val) { this._diskQueue = val; return this; }
 
-
   static final ParseField DISK_READS = new ParseField("disk_reads");
-  private Long _diskReads;
-  public Long getDiskReads() { return this._diskReads; }
-  public DataPathStats setDiskReads(Long val) { this._diskReads = val; return this; }
-
+  private long _diskReads;
+  private boolean _diskReads$isSet;
+  public long getDiskReads() { return this._diskReads; }
+  public DataPathStats setDiskReads(long val) {
+    this._diskReads = val;
+    _diskReads$isSet = true;
+    return this;
+  }
 
   static final ParseField DISK_READ_SIZE = new ParseField("disk_read_size");
   private String _diskReadSize;
   public String getDiskReadSize() { return this._diskReadSize; }
   public DataPathStats setDiskReadSize(String val) { this._diskReadSize = val; return this; }
 
-
   static final ParseField DISK_READ_SIZE_IN_BYTES = new ParseField("disk_read_size_in_bytes");
-  private Long _diskReadSizeInBytes;
-  public Long getDiskReadSizeInBytes() { return this._diskReadSizeInBytes; }
-  public DataPathStats setDiskReadSizeInBytes(Long val) { this._diskReadSizeInBytes = val; return this; }
-
+  private long _diskReadSizeInBytes;
+  private boolean _diskReadSizeInBytes$isSet;
+  public long getDiskReadSizeInBytes() { return this._diskReadSizeInBytes; }
+  public DataPathStats setDiskReadSizeInBytes(long val) {
+    this._diskReadSizeInBytes = val;
+    _diskReadSizeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField DISK_WRITES = new ParseField("disk_writes");
-  private Long _diskWrites;
-  public Long getDiskWrites() { return this._diskWrites; }
-  public DataPathStats setDiskWrites(Long val) { this._diskWrites = val; return this; }
-
+  private long _diskWrites;
+  private boolean _diskWrites$isSet;
+  public long getDiskWrites() { return this._diskWrites; }
+  public DataPathStats setDiskWrites(long val) {
+    this._diskWrites = val;
+    _diskWrites$isSet = true;
+    return this;
+  }
 
   static final ParseField DISK_WRITE_SIZE = new ParseField("disk_write_size");
   private String _diskWriteSize;
   public String getDiskWriteSize() { return this._diskWriteSize; }
   public DataPathStats setDiskWriteSize(String val) { this._diskWriteSize = val; return this; }
 
-
   static final ParseField DISK_WRITE_SIZE_IN_BYTES = new ParseField("disk_write_size_in_bytes");
-  private Long _diskWriteSizeInBytes;
-  public Long getDiskWriteSizeInBytes() { return this._diskWriteSizeInBytes; }
-  public DataPathStats setDiskWriteSizeInBytes(Long val) { this._diskWriteSizeInBytes = val; return this; }
-
+  private long _diskWriteSizeInBytes;
+  private boolean _diskWriteSizeInBytes$isSet;
+  public long getDiskWriteSizeInBytes() { return this._diskWriteSizeInBytes; }
+  public DataPathStats setDiskWriteSizeInBytes(long val) {
+    this._diskWriteSizeInBytes = val;
+    _diskWriteSizeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField FREE = new ParseField("free");
   private String _free;
   public String getFree() { return this._free; }
   public DataPathStats setFree(String val) { this._free = val; return this; }
 
-
   static final ParseField FREE_IN_BYTES = new ParseField("free_in_bytes");
-  private Long _freeInBytes;
-  public Long getFreeInBytes() { return this._freeInBytes; }
-  public DataPathStats setFreeInBytes(Long val) { this._freeInBytes = val; return this; }
-
+  private long _freeInBytes;
+  private boolean _freeInBytes$isSet;
+  public long getFreeInBytes() { return this._freeInBytes; }
+  public DataPathStats setFreeInBytes(long val) {
+    this._freeInBytes = val;
+    _freeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField MOUNT = new ParseField("mount");
   private String _mount;
   public String getMount() { return this._mount; }
   public DataPathStats setMount(String val) { this._mount = val; return this; }
 
-
   static final ParseField PATH = new ParseField("path");
   private String _path;
   public String getPath() { return this._path; }
   public DataPathStats setPath(String val) { this._path = val; return this; }
-
 
   static final ParseField TOTAL = new ParseField("total");
   private String _total;
   public String getTotal() { return this._total; }
   public DataPathStats setTotal(String val) { this._total = val; return this; }
 
-
   static final ParseField TOTAL_IN_BYTES = new ParseField("total_in_bytes");
-  private Long _totalInBytes;
-  public Long getTotalInBytes() { return this._totalInBytes; }
-  public DataPathStats setTotalInBytes(Long val) { this._totalInBytes = val; return this; }
-
+  private long _totalInBytes;
+  private boolean _totalInBytes$isSet;
+  public long getTotalInBytes() { return this._totalInBytes; }
+  public DataPathStats setTotalInBytes(long val) {
+    this._totalInBytes = val;
+    _totalInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -114,39 +132,39 @@ public class DataPathStats  implements XContentable<DataPathStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_available != null) {
       builder.field(AVAILABLE.getPreferredName(), _available);
     }
-    if (_availableInBytes != null) {
+    if (_availableInBytes$isSet) {
       builder.field(AVAILABLE_IN_BYTES.getPreferredName(), _availableInBytes);
     }
     if (_diskQueue != null) {
       builder.field(DISK_QUEUE.getPreferredName(), _diskQueue);
     }
-    if (_diskReads != null) {
+    if (_diskReads$isSet) {
       builder.field(DISK_READS.getPreferredName(), _diskReads);
     }
     if (_diskReadSize != null) {
       builder.field(DISK_READ_SIZE.getPreferredName(), _diskReadSize);
     }
-    if (_diskReadSizeInBytes != null) {
+    if (_diskReadSizeInBytes$isSet) {
       builder.field(DISK_READ_SIZE_IN_BYTES.getPreferredName(), _diskReadSizeInBytes);
     }
-    if (_diskWrites != null) {
+    if (_diskWrites$isSet) {
       builder.field(DISK_WRITES.getPreferredName(), _diskWrites);
     }
     if (_diskWriteSize != null) {
       builder.field(DISK_WRITE_SIZE.getPreferredName(), _diskWriteSize);
     }
-    if (_diskWriteSizeInBytes != null) {
+    if (_diskWriteSizeInBytes$isSet) {
       builder.field(DISK_WRITE_SIZE_IN_BYTES.getPreferredName(), _diskWriteSizeInBytes);
     }
     if (_free != null) {
       builder.field(FREE.getPreferredName(), _free);
     }
-    if (_freeInBytes != null) {
+    if (_freeInBytes$isSet) {
       builder.field(FREE_IN_BYTES.getPreferredName(), _freeInBytes);
     }
     if (_mount != null) {
@@ -158,14 +176,12 @@ public class DataPathStats  implements XContentable<DataPathStats> {
     if (_total != null) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    if (_totalInBytes != null) {
+    if (_totalInBytes$isSet) {
       builder.field(TOTAL_IN_BYTES.getPreferredName(), _totalInBytes);
     }
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,7 +19,6 @@ public class SnapshotLifecycleInvocationRecord  implements XContentable<Snapshot
   public String getSnapshotName() { return this._snapshotName; }
   public SnapshotLifecycleInvocationRecord setSnapshotName(String val) { this._snapshotName = val; return this; }
 
-
   static final ParseField TIME = new ParseField("time");
   private Date _time;
   public Date getTime() { return this._time; }
@@ -30,8 +27,8 @@ public class SnapshotLifecycleInvocationRecord  implements XContentable<Snapshot
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_snapshotName != null) {
       builder.field(SNAPSHOT_NAME.getPreferredName(), _snapshotName);
     }
@@ -39,8 +36,6 @@ public class SnapshotLifecycleInvocationRecord  implements XContentable<Snapshot
       builder.field(TIME.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_time.toInstant()));
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_abstractions.lazy_document.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class RenderSearchTemplateResponse  implements XContentable<RenderSearchTemplateResponse> {
+public class RenderSearchTemplateResponse extends ResponseBase<RenderSearchTemplateResponse> implements XContentable<RenderSearchTemplateResponse> {
   
   static final ParseField TEMPLATE_OUTPUT = new ParseField("template_output");
   private LazyDocument _templateOutput;
@@ -24,14 +23,12 @@ public class RenderSearchTemplateResponse  implements XContentable<RenderSearchT
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_templateOutput != null) {
       builder.field(TEMPLATE_OUTPUT.getPreferredName());
       _templateOutput.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

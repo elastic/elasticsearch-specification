@@ -7,27 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.validate.*;
 import org.elasticsearch.common_options.hit.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class ValidateQueryResponse  implements XContentable<ValidateQueryResponse> {
+public class ValidateQueryResponse extends ResponseBase<ValidateQueryResponse> implements XContentable<ValidateQueryResponse> {
   
   static final ParseField EXPLANATIONS = new ParseField("explanations");
   private List<ValidationExplanation> _explanations;
   public List<ValidationExplanation> getExplanations() { return this._explanations; }
   public ValidateQueryResponse setExplanations(List<ValidationExplanation> val) { this._explanations = val; return this; }
 
-
   static final ParseField SHARDS = new ParseField("_shards");
   private ShardStatistics _shards;
   public ShardStatistics getShards() { return this._shards; }
   public ValidateQueryResponse setShards(ShardStatistics val) { this._shards = val; return this; }
-
 
   static final ParseField VALID = new ParseField("valid");
   private Boolean _valid;
@@ -37,8 +34,8 @@ public class ValidateQueryResponse  implements XContentable<ValidateQueryRespons
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_explanations != null) {
       builder.array(EXPLANATIONS.getPreferredName(), _explanations);
     }
@@ -49,8 +46,6 @@ public class ValidateQueryResponse  implements XContentable<ValidateQueryRespons
     if (_valid != null) {
       builder.field(VALID.getPreferredName(), _valid);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

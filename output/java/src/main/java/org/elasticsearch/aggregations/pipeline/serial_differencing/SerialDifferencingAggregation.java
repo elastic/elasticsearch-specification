@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,20 +15,23 @@ import org.elasticsearch.internal.*;
 public class SerialDifferencingAggregation  implements XContentable<SerialDifferencingAggregation> {
   
   static final ParseField LAG = new ParseField("lag");
-  private Integer _lag;
-  public Integer getLag() { return this._lag; }
-  public SerialDifferencingAggregation setLag(Integer val) { this._lag = val; return this; }
+  private int _lag;
+  private boolean _lag$isSet;
+  public int getLag() { return this._lag; }
+  public SerialDifferencingAggregation setLag(int val) {
+    this._lag = val;
+    _lag$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_lag != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_lag$isSet) {
       builder.field(LAG.getPreferredName(), _lag);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

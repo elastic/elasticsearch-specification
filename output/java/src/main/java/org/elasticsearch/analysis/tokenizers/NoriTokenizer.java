@@ -7,32 +7,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.tokenizers.*;
 
-public class NoriTokenizer  implements XContentable<NoriTokenizer> {
+public class NoriTokenizer extends TokenizerBase implements XContentable<NoriTokenizer> {
   
   static final ParseField DECOMPOUND_MODE = new ParseField("decompound_mode");
   private NoriDecompoundMode _decompoundMode;
   public NoriDecompoundMode getDecompoundMode() { return this._decompoundMode; }
   public NoriTokenizer setDecompoundMode(NoriDecompoundMode val) { this._decompoundMode = val; return this; }
 
-
   static final ParseField DISCARD_PUNCTUATION = new ParseField("discard_punctuation");
   private Boolean _discardPunctuation;
   public Boolean getDiscardPunctuation() { return this._discardPunctuation; }
   public NoriTokenizer setDiscardPunctuation(Boolean val) { this._discardPunctuation = val; return this; }
 
-
   static final ParseField USER_DICTIONARY = new ParseField("user_dictionary");
   private String _userDictionary;
   public String getUserDictionary() { return this._userDictionary; }
   public NoriTokenizer setUserDictionary(String val) { this._userDictionary = val; return this; }
-
 
   static final ParseField USER_DICTIONARY_RULES = new ParseField("user_dictionary_rules");
   private List<String> _userDictionaryRules;
@@ -42,8 +37,8 @@ public class NoriTokenizer  implements XContentable<NoriTokenizer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_decompoundMode != null) {
       builder.field(DECOMPOUND_MODE.getPreferredName());
       _decompoundMode.toXContent(builder, params);
@@ -57,8 +52,6 @@ public class NoriTokenizer  implements XContentable<NoriTokenizer> {
     if (_userDictionaryRules != null) {
       builder.array(USER_DICTIONARY_RULES.getPreferredName(), _userDictionaryRules);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

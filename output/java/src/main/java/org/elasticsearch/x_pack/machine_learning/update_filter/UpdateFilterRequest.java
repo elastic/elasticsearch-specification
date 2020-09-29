@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class UpdateFilterRequest  implements XContentable<UpdateFilterRequest> {
+public class UpdateFilterRequest extends RequestBase<UpdateFilterRequest> implements XContentable<UpdateFilterRequest> {
   
   static final ParseField ADD_ITEMS = new ParseField("add_items");
   private List<String> _addItems;
   public List<String> getAddItems() { return this._addItems; }
   public UpdateFilterRequest setAddItems(List<String> val) { this._addItems = val; return this; }
 
-
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public UpdateFilterRequest setDescription(String val) { this._description = val; return this; }
-
 
   static final ParseField REMOVE_ITEMS = new ParseField("remove_items");
   private List<String> _removeItems;
@@ -36,8 +32,8 @@ public class UpdateFilterRequest  implements XContentable<UpdateFilterRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_addItems != null) {
       builder.array(ADD_ITEMS.getPreferredName(), _addItems);
     }
@@ -47,8 +43,6 @@ public class UpdateFilterRequest  implements XContentable<UpdateFilterRequest> {
     if (_removeItems != null) {
       builder.array(REMOVE_ITEMS.getPreferredName(), _removeItems);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

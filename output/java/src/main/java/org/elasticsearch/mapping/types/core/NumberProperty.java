@@ -7,63 +7,71 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.modules.indices.fielddata.numeric.*;
+import org.elasticsearch.mapping.types.*;
 
-public class NumberProperty  implements XContentable<NumberProperty> {
+public class NumberProperty extends DocValuesPropertyBase implements XContentable<NumberProperty> {
   
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public NumberProperty setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public NumberProperty setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField COERCE = new ParseField("coerce");
   private Boolean _coerce;
   public Boolean getCoerce() { return this._coerce; }
   public NumberProperty setCoerce(Boolean val) { this._coerce = val; return this; }
 
-
   static final ParseField FIELDDATA = new ParseField("fielddata");
   private NumericFielddata _fielddata;
   public NumericFielddata getFielddata() { return this._fielddata; }
   public NumberProperty setFielddata(NumericFielddata val) { this._fielddata = val; return this; }
-
 
   static final ParseField IGNORE_MALFORMED = new ParseField("ignore_malformed");
   private Boolean _ignoreMalformed;
   public Boolean getIgnoreMalformed() { return this._ignoreMalformed; }
   public NumberProperty setIgnoreMalformed(Boolean val) { this._ignoreMalformed = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
   public Boolean getIndex() { return this._index; }
   public NumberProperty setIndex(Boolean val) { this._index = val; return this; }
 
-
   static final ParseField NULL_VALUE = new ParseField("null_value");
-  private Double _nullValue;
-  public Double getNullValue() { return this._nullValue; }
-  public NumberProperty setNullValue(Double val) { this._nullValue = val; return this; }
-
+  private double _nullValue;
+  private boolean _nullValue$isSet;
+  public double getNullValue() { return this._nullValue; }
+  public NumberProperty setNullValue(double val) {
+    this._nullValue = val;
+    _nullValue$isSet = true;
+    return this;
+  }
 
   static final ParseField SCALING_FACTOR = new ParseField("scaling_factor");
-  private Double _scalingFactor;
-  public Double getScalingFactor() { return this._scalingFactor; }
-  public NumberProperty setScalingFactor(Double val) { this._scalingFactor = val; return this; }
+  private double _scalingFactor;
+  private boolean _scalingFactor$isSet;
+  public double getScalingFactor() { return this._scalingFactor; }
+  public NumberProperty setScalingFactor(double val) {
+    this._scalingFactor = val;
+    _scalingFactor$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_boost != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_coerce != null) {
@@ -79,14 +87,12 @@ public class NumberProperty  implements XContentable<NumberProperty> {
     if (_index != null) {
       builder.field(INDEX.getPreferredName(), _index);
     }
-    if (_nullValue != null) {
+    if (_nullValue$isSet) {
       builder.field(NULL_VALUE.getPreferredName(), _nullValue);
     }
-    if (_scalingFactor != null) {
+    if (_scalingFactor$isSet) {
       builder.field(SCALING_FACTOR.getPreferredName(), _scalingFactor);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

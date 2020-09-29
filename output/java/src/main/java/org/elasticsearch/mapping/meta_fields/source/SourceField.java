@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,24 +19,20 @@ public class SourceField  implements XContentable<SourceField> {
   public Boolean getCompress() { return this._compress; }
   public SourceField setCompress(Boolean val) { this._compress = val; return this; }
 
-
   static final ParseField COMPRESS_THRESHOLD = new ParseField("compress_threshold");
   private String _compressThreshold;
   public String getCompressThreshold() { return this._compressThreshold; }
   public SourceField setCompressThreshold(String val) { this._compressThreshold = val; return this; }
-
 
   static final ParseField ENABLED = new ParseField("enabled");
   private Boolean _enabled;
   public Boolean getEnabled() { return this._enabled; }
   public SourceField setEnabled(Boolean val) { this._enabled = val; return this; }
 
-
   static final ParseField EXCLUDES = new ParseField("excludes");
   private List<String> _excludes;
   public List<String> getExcludes() { return this._excludes; }
   public SourceField setExcludes(List<String> val) { this._excludes = val; return this; }
-
 
   static final ParseField INCLUDES = new ParseField("includes");
   private List<String> _includes;
@@ -48,8 +42,8 @@ public class SourceField  implements XContentable<SourceField> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_compress != null) {
       builder.field(COMPRESS.getPreferredName(), _compress);
     }
@@ -65,8 +59,6 @@ public class SourceField  implements XContentable<SourceField> {
     if (_includes != null) {
       builder.array(INCLUDES.getPreferredName(), _includes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

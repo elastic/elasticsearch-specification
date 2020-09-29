@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search.rescoring.*;
@@ -22,26 +20,28 @@ public class Rescore  implements XContentable<Rescore> {
   public RescoreQuery getQuery() { return this._query; }
   public Rescore setQuery(RescoreQuery val) { this._query = val; return this; }
 
-
   static final ParseField WINDOW_SIZE = new ParseField("window_size");
-  private Integer _windowSize;
-  public Integer getWindowSize() { return this._windowSize; }
-  public Rescore setWindowSize(Integer val) { this._windowSize = val; return this; }
+  private int _windowSize;
+  private boolean _windowSize$isSet;
+  public int getWindowSize() { return this._windowSize; }
+  public Rescore setWindowSize(int val) {
+    this._windowSize = val;
+    _windowSize$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_query != null) {
       builder.field(QUERY.getPreferredName());
       _query.toXContent(builder, params);
     }
-    if (_windowSize != null) {
+    if (_windowSize$isSet) {
       builder.field(WINDOW_SIZE.getPreferredName(), _windowSize);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

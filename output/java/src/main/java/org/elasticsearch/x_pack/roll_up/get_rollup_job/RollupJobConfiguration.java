@@ -7,14 +7,11 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.roll_up.rollup_configuration.*;
 import org.elasticsearch.internal.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
 import org.elasticsearch.common_options.time_unit.*;
 
 public class RollupJobConfiguration  implements XContentable<RollupJobConfiguration> {
@@ -24,53 +21,51 @@ public class RollupJobConfiguration  implements XContentable<RollupJobConfigurat
   public String getCron() { return this._cron; }
   public RollupJobConfiguration setCron(String val) { this._cron = val; return this; }
 
-
   static final ParseField GROUPS = new ParseField("groups");
   private RollupGroupings _groups;
   public RollupGroupings getGroups() { return this._groups; }
   public RollupJobConfiguration setGroups(RollupGroupings val) { this._groups = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public RollupJobConfiguration setId(String val) { this._id = val; return this; }
 
-
   static final ParseField INDEX_PATTERN = new ParseField("index_pattern");
   private String _indexPattern;
   public String getIndexPattern() { return this._indexPattern; }
   public RollupJobConfiguration setIndexPattern(String val) { this._indexPattern = val; return this; }
-
 
   static final ParseField METRICS = new ParseField("metrics");
   private List<RollupFieldMetric> _metrics;
   public List<RollupFieldMetric> getMetrics() { return this._metrics; }
   public RollupJobConfiguration setMetrics(List<RollupFieldMetric> val) { this._metrics = val; return this; }
 
-
   static final ParseField PAGE_SIZE = new ParseField("page_size");
-  private Long _pageSize;
-  public Long getPageSize() { return this._pageSize; }
-  public RollupJobConfiguration setPageSize(Long val) { this._pageSize = val; return this; }
-
+  private long _pageSize;
+  private boolean _pageSize$isSet;
+  public long getPageSize() { return this._pageSize; }
+  public RollupJobConfiguration setPageSize(long val) {
+    this._pageSize = val;
+    _pageSize$isSet = true;
+    return this;
+  }
 
   static final ParseField ROLLUP_INDEX = new ParseField("rollup_index");
-  private IndexName _rollupIndex;
-  public IndexName getRollupIndex() { return this._rollupIndex; }
-  public RollupJobConfiguration setRollupIndex(IndexName val) { this._rollupIndex = val; return this; }
-
+  private String _rollupIndex;
+  public String getRollupIndex() { return this._rollupIndex; }
+  public RollupJobConfiguration setRollupIndex(String val) { this._rollupIndex = val; return this; }
 
   static final ParseField TIMEOUT = new ParseField("timeout");
-  private Time _timeout;
-  public Time getTimeout() { return this._timeout; }
-  public RollupJobConfiguration setTimeout(Time val) { this._timeout = val; return this; }
+  private String _timeout;
+  public String getTimeout() { return this._timeout; }
+  public RollupJobConfiguration setTimeout(String val) { this._timeout = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cron != null) {
       builder.field(CRON.getPreferredName(), _cron);
     }
@@ -87,19 +82,15 @@ public class RollupJobConfiguration  implements XContentable<RollupJobConfigurat
     if (_metrics != null) {
       builder.array(METRICS.getPreferredName(), _metrics);
     }
-    if (_pageSize != null) {
+    if (_pageSize$isSet) {
       builder.field(PAGE_SIZE.getPreferredName(), _pageSize);
     }
     if (_rollupIndex != null) {
-      builder.field(ROLLUP_INDEX.getPreferredName());
-      _rollupIndex.toXContent(builder, params);
+      builder.field(ROLLUP_INDEX.getPreferredName(), _rollupIndex);
     }
     if (_timeout != null) {
-      builder.field(TIMEOUT.getPreferredName());
-      _timeout.toXContent(builder, params);
+      builder.field(TIMEOUT.getPreferredName(), _timeout);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -117,8 +108,8 @@ public class RollupJobConfiguration  implements XContentable<RollupJobConfigurat
     PARSER.declareString(RollupJobConfiguration::setIndexPattern, INDEX_PATTERN);
     PARSER.declareObjectArray(RollupJobConfiguration::setMetrics, (p, t) -> RollupFieldMetric.PARSER.apply(p, t), METRICS);
     PARSER.declareLong(RollupJobConfiguration::setPageSize, PAGE_SIZE);
-    PARSER.declareObject(RollupJobConfiguration::setRollupIndex, (p, t) -> IndexName.createFrom(p), ROLLUP_INDEX);
-    PARSER.declareObject(RollupJobConfiguration::setTimeout, (p, t) -> Time.PARSER.apply(p, t), TIMEOUT);
+    PARSER.declareString(RollupJobConfiguration::setRollupIndex, ROLLUP_INDEX);
+    PARSER.declareString(RollupJobConfiguration::setTimeout, TIMEOUT);
   }
 
 }

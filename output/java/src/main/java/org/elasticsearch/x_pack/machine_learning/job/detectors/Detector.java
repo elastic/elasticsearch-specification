@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.job.detectors.*;
@@ -23,30 +21,30 @@ public class Detector  implements XContentable<Detector> {
   public List<DetectionRule> getCustomRules() { return this._customRules; }
   public Detector setCustomRules(List<DetectionRule> val) { this._customRules = val; return this; }
 
-
   static final ParseField DETECTOR_DESCRIPTION = new ParseField("detector_description");
   private String _detectorDescription;
   public String getDetectorDescription() { return this._detectorDescription; }
   public Detector setDetectorDescription(String val) { this._detectorDescription = val; return this; }
 
-
   static final ParseField DETECTOR_INDEX = new ParseField("detector_index");
-  private Integer _detectorIndex;
-  public Integer getDetectorIndex() { return this._detectorIndex; }
-  public Detector setDetectorIndex(Integer val) { this._detectorIndex = val; return this; }
-
+  private int _detectorIndex;
+  private boolean _detectorIndex$isSet;
+  public int getDetectorIndex() { return this._detectorIndex; }
+  public Detector setDetectorIndex(int val) {
+    this._detectorIndex = val;
+    _detectorIndex$isSet = true;
+    return this;
+  }
 
   static final ParseField EXCLUDE_FREQUENT = new ParseField("exclude_frequent");
   private ExcludeFrequent _excludeFrequent;
   public ExcludeFrequent getExcludeFrequent() { return this._excludeFrequent; }
   public Detector setExcludeFrequent(ExcludeFrequent val) { this._excludeFrequent = val; return this; }
 
-
   static final ParseField FUNCTION = new ParseField("function");
   private String _function;
   public String getFunction() { return this._function; }
   public Detector setFunction(String val) { this._function = val; return this; }
-
 
   static final ParseField USE_NULL = new ParseField("use_null");
   private Boolean _useNull;
@@ -56,15 +54,15 @@ public class Detector  implements XContentable<Detector> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_customRules != null) {
       builder.array(CUSTOM_RULES.getPreferredName(), _customRules);
     }
     if (_detectorDescription != null) {
       builder.field(DETECTOR_DESCRIPTION.getPreferredName(), _detectorDescription);
     }
-    if (_detectorIndex != null) {
+    if (_detectorIndex$isSet) {
       builder.field(DETECTOR_INDEX.getPreferredName(), _detectorIndex);
     }
     if (_excludeFrequent != null) {
@@ -77,8 +75,6 @@ public class Detector  implements XContentable<Detector> {
     if (_useNull != null) {
       builder.field(USE_NULL.getPreferredName(), _useNull);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

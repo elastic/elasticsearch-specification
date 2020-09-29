@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.aggregations.pipeline.*;
@@ -21,12 +19,10 @@ public class PipelineAggregation  implements XContentable<PipelineAggregation> {
   public BucketsPath getBucketsPath() { return this._bucketsPath; }
   public PipelineAggregation setBucketsPath(BucketsPath val) { this._bucketsPath = val; return this; }
 
-
   static final ParseField FORMAT = new ParseField("format");
   private String _format;
   public String getFormat() { return this._format; }
   public PipelineAggregation setFormat(String val) { this._format = val; return this; }
-
 
   static final ParseField GAP_POLICY = new ParseField("gap_policy");
   private GapPolicy _gapPolicy;
@@ -36,8 +32,8 @@ public class PipelineAggregation  implements XContentable<PipelineAggregation> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_bucketsPath != null) {
       builder.field(BUCKETS_PATH.getPreferredName());
       _bucketsPath.toXContent(builder, params);
@@ -49,8 +45,6 @@ public class PipelineAggregation  implements XContentable<PipelineAggregation> {
       builder.field(GAP_POLICY.getPreferredName());
       _gapPolicy.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

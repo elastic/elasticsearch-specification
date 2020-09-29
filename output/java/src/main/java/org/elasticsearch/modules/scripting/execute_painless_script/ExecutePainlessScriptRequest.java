@@ -7,27 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.scripting.execute_painless_script.*;
 import org.elasticsearch.common_options.scripting.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class ExecutePainlessScriptRequest  implements XContentable<ExecutePainlessScriptRequest> {
+public class ExecutePainlessScriptRequest extends RequestBase<ExecutePainlessScriptRequest> implements XContentable<ExecutePainlessScriptRequest> {
   
   static final ParseField CONTEXT = new ParseField("context");
   private String _context;
   public String getContext() { return this._context; }
   public ExecutePainlessScriptRequest setContext(String val) { this._context = val; return this; }
 
-
   static final ParseField CONTEXT_SETUP = new ParseField("context_setup");
   private PainlessContextSetup _contextSetup;
   public PainlessContextSetup getContextSetup() { return this._contextSetup; }
   public ExecutePainlessScriptRequest setContextSetup(PainlessContextSetup val) { this._contextSetup = val; return this; }
-
 
   static final ParseField SCRIPT = new ParseField("script");
   private InlineScript _script;
@@ -37,8 +34,8 @@ public class ExecutePainlessScriptRequest  implements XContentable<ExecutePainle
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_context != null) {
       builder.field(CONTEXT.getPreferredName(), _context);
     }
@@ -50,8 +47,6 @@ public class ExecutePainlessScriptRequest  implements XContentable<ExecutePainle
       builder.field(SCRIPT.getPreferredName());
       _script.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

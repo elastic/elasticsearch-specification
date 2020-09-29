@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,36 +19,35 @@ public class ClusterJvmVersion  implements XContentable<ClusterJvmVersion> {
   public Boolean getBundledJdk() { return this._bundledJdk; }
   public ClusterJvmVersion setBundledJdk(Boolean val) { this._bundledJdk = val; return this; }
 
-
   static final ParseField COUNT = new ParseField("count");
-  private Integer _count;
-  public Integer getCount() { return this._count; }
-  public ClusterJvmVersion setCount(Integer val) { this._count = val; return this; }
-
+  private int _count;
+  private boolean _count$isSet;
+  public int getCount() { return this._count; }
+  public ClusterJvmVersion setCount(int val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField USING_BUNDLED_JDK = new ParseField("using_bundled_jdk");
   private Boolean _usingBundledJdk;
   public Boolean getUsingBundledJdk() { return this._usingBundledJdk; }
   public ClusterJvmVersion setUsingBundledJdk(Boolean val) { this._usingBundledJdk = val; return this; }
 
-
   static final ParseField VERSION = new ParseField("version");
   private String _version;
   public String getVersion() { return this._version; }
   public ClusterJvmVersion setVersion(String val) { this._version = val; return this; }
-
 
   static final ParseField VM_NAME = new ParseField("vm_name");
   private String _vmName;
   public String getVmName() { return this._vmName; }
   public ClusterJvmVersion setVmName(String val) { this._vmName = val; return this; }
 
-
   static final ParseField VM_VENDOR = new ParseField("vm_vendor");
   private String _vmVendor;
   public String getVmVendor() { return this._vmVendor; }
   public ClusterJvmVersion setVmVendor(String val) { this._vmVendor = val; return this; }
-
 
   static final ParseField VM_VERSION = new ParseField("vm_version");
   private String _vmVersion;
@@ -60,12 +57,12 @@ public class ClusterJvmVersion  implements XContentable<ClusterJvmVersion> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_bundledJdk != null) {
       builder.field(BUNDLED_JDK.getPreferredName(), _bundledJdk);
     }
-    if (_count != null) {
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
     if (_usingBundledJdk != null) {
@@ -83,8 +80,6 @@ public class ClusterJvmVersion  implements XContentable<ClusterJvmVersion> {
     if (_vmVersion != null) {
       builder.field(VM_VERSION.getPreferredName(), _vmVersion);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

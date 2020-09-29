@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.cluster_allocation_explain.*;
@@ -22,53 +20,51 @@ public class NodeAllocationExplanation  implements XContentable<NodeAllocationEx
   public List<AllocationDecision> getDeciders() { return this._deciders; }
   public NodeAllocationExplanation setDeciders(List<AllocationDecision> val) { this._deciders = val; return this; }
 
-
   static final ParseField NODE_ATTRIBUTES = new ParseField("node_attributes");
   private NamedContainer<String, String> _nodeAttributes;
   public NamedContainer<String, String> getNodeAttributes() { return this._nodeAttributes; }
   public NodeAllocationExplanation setNodeAttributes(NamedContainer<String, String> val) { this._nodeAttributes = val; return this; }
-
 
   static final ParseField NODE_DECISION = new ParseField("node_decision");
   private Decision _nodeDecision;
   public Decision getNodeDecision() { return this._nodeDecision; }
   public NodeAllocationExplanation setNodeDecision(Decision val) { this._nodeDecision = val; return this; }
 
-
   static final ParseField NODE_ID = new ParseField("node_id");
   private String _nodeId;
   public String getNodeId() { return this._nodeId; }
   public NodeAllocationExplanation setNodeId(String val) { this._nodeId = val; return this; }
-
 
   static final ParseField NODE_NAME = new ParseField("node_name");
   private String _nodeName;
   public String getNodeName() { return this._nodeName; }
   public NodeAllocationExplanation setNodeName(String val) { this._nodeName = val; return this; }
 
-
   static final ParseField STORE = new ParseField("store");
   private AllocationStore _store;
   public AllocationStore getStore() { return this._store; }
   public NodeAllocationExplanation setStore(AllocationStore val) { this._store = val; return this; }
-
 
   static final ParseField TRANSPORT_ADDRESS = new ParseField("transport_address");
   private String _transportAddress;
   public String getTransportAddress() { return this._transportAddress; }
   public NodeAllocationExplanation setTransportAddress(String val) { this._transportAddress = val; return this; }
 
-
   static final ParseField WEIGHT_RANKING = new ParseField("weight_ranking");
-  private Integer _weightRanking;
-  public Integer getWeightRanking() { return this._weightRanking; }
-  public NodeAllocationExplanation setWeightRanking(Integer val) { this._weightRanking = val; return this; }
+  private int _weightRanking;
+  private boolean _weightRanking$isSet;
+  public int getWeightRanking() { return this._weightRanking; }
+  public NodeAllocationExplanation setWeightRanking(int val) {
+    this._weightRanking = val;
+    _weightRanking$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_deciders != null) {
       builder.array(DECIDERS.getPreferredName(), _deciders);
     }
@@ -93,11 +89,9 @@ public class NodeAllocationExplanation  implements XContentable<NodeAllocationEx
     if (_transportAddress != null) {
       builder.field(TRANSPORT_ADDRESS.getPreferredName(), _transportAddress);
     }
-    if (_weightRanking != null) {
+    if (_weightRanking$isSet) {
       builder.field(WEIGHT_RANKING.getPreferredName(), _weightRanking);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

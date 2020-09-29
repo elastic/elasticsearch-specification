@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,62 @@ import org.elasticsearch.internal.*;
 public class GraphConnection  implements XContentable<GraphConnection> {
   
   static final ParseField DOC_COUNT = new ParseField("doc_count");
-  private Long _docCount;
-  public Long getDocCount() { return this._docCount; }
-  public GraphConnection setDocCount(Long val) { this._docCount = val; return this; }
-
+  private long _docCount;
+  private boolean _docCount$isSet;
+  public long getDocCount() { return this._docCount; }
+  public GraphConnection setDocCount(long val) {
+    this._docCount = val;
+    _docCount$isSet = true;
+    return this;
+  }
 
   static final ParseField SOURCE = new ParseField("source");
-  private Long _source;
-  public Long getSource() { return this._source; }
-  public GraphConnection setSource(Long val) { this._source = val; return this; }
-
+  private long _source;
+  private boolean _source$isSet;
+  public long getSource() { return this._source; }
+  public GraphConnection setSource(long val) {
+    this._source = val;
+    _source$isSet = true;
+    return this;
+  }
 
   static final ParseField TARGET = new ParseField("target");
-  private Long _target;
-  public Long getTarget() { return this._target; }
-  public GraphConnection setTarget(Long val) { this._target = val; return this; }
-
+  private long _target;
+  private boolean _target$isSet;
+  public long getTarget() { return this._target; }
+  public GraphConnection setTarget(long val) {
+    this._target = val;
+    _target$isSet = true;
+    return this;
+  }
 
   static final ParseField WEIGHT = new ParseField("weight");
-  private Double _weight;
-  public Double getWeight() { return this._weight; }
-  public GraphConnection setWeight(Double val) { this._weight = val; return this; }
+  private double _weight;
+  private boolean _weight$isSet;
+  public double getWeight() { return this._weight; }
+  public GraphConnection setWeight(double val) {
+    this._weight = val;
+    _weight$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_docCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_docCount$isSet) {
       builder.field(DOC_COUNT.getPreferredName(), _docCount);
     }
-    if (_source != null) {
+    if (_source$isSet) {
       builder.field(SOURCE.getPreferredName(), _source);
     }
-    if (_target != null) {
+    if (_target$isSet) {
       builder.field(TARGET.getPreferredName(), _target);
     }
-    if (_weight != null) {
+    if (_weight$isSet) {
       builder.field(WEIGHT.getPreferredName(), _weight);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

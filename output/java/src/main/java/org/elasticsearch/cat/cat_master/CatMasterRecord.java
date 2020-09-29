@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatMasterRecord  implements XContentable<CatMasterRecord> {
+public class CatMasterRecord extends ICatRecord implements XContentable<CatMasterRecord> {
   
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public CatMasterRecord setId(String val) { this._id = val; return this; }
 
-
   static final ParseField IP = new ParseField("ip");
   private String _ip;
   public String getIp() { return this._ip; }
   public CatMasterRecord setIp(String val) { this._ip = val; return this; }
-
 
   static final ParseField NODE = new ParseField("node");
   private String _node;
@@ -36,8 +32,8 @@ public class CatMasterRecord  implements XContentable<CatMasterRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
@@ -47,8 +43,6 @@ public class CatMasterRecord  implements XContentable<CatMasterRecord> {
     if (_node != null) {
       builder.field(NODE.getPreferredName(), _node);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

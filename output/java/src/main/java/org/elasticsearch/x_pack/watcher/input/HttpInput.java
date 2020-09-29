@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.input.*;
@@ -21,12 +19,10 @@ public class HttpInput  implements XContentable<HttpInput> {
   public List<String> getExtract() { return this._extract; }
   public HttpInput setExtract(List<String> val) { this._extract = val; return this; }
 
-
   static final ParseField REQUEST = new ParseField("request");
   private HttpInputRequest _request;
   public HttpInputRequest getRequest() { return this._request; }
   public HttpInput setRequest(HttpInputRequest val) { this._request = val; return this; }
-
 
   static final ParseField RESPONSE_CONTENT_TYPE = new ParseField("response_content_type");
   private ResponseContentType _responseContentType;
@@ -36,8 +32,8 @@ public class HttpInput  implements XContentable<HttpInput> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_extract != null) {
       builder.array(EXTRACT.getPreferredName(), _extract);
     }
@@ -49,8 +45,6 @@ public class HttpInput  implements XContentable<HttpInput> {
       builder.field(RESPONSE_CONTENT_TYPE.getPreferredName());
       _responseContentType.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

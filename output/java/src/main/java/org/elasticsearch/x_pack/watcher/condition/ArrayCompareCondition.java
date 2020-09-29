@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.condition.*;
@@ -21,24 +19,20 @@ public class ArrayCompareCondition  implements XContentable<ArrayCompareConditio
   public String getArrayPath() { return this._arrayPath; }
   public ArrayCompareCondition setArrayPath(String val) { this._arrayPath = val; return this; }
 
-
   static final ParseField COMPARISON = new ParseField("comparison");
   private String _comparison;
   public String getComparison() { return this._comparison; }
   public ArrayCompareCondition setComparison(String val) { this._comparison = val; return this; }
-
 
   static final ParseField PATH = new ParseField("path");
   private String _path;
   public String getPath() { return this._path; }
   public ArrayCompareCondition setPath(String val) { this._path = val; return this; }
 
-
   static final ParseField QUANTIFIER = new ParseField("quantifier");
   private Quantifier _quantifier;
   public Quantifier getQuantifier() { return this._quantifier; }
   public ArrayCompareCondition setQuantifier(Quantifier val) { this._quantifier = val; return this; }
-
 
   static final ParseField VALUE = new ParseField("value");
   private Object _value;
@@ -48,8 +42,8 @@ public class ArrayCompareCondition  implements XContentable<ArrayCompareConditio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_arrayPath != null) {
       builder.field(ARRAY_PATH.getPreferredName(), _arrayPath);
     }
@@ -66,8 +60,6 @@ public class ArrayCompareCondition  implements XContentable<ArrayCompareConditio
     if (_value != null) {
       builder.field(VALUE.getPreferredName(), _value);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

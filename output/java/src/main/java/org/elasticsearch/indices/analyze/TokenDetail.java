@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.analyze.*;
@@ -21,7 +19,6 @@ public class TokenDetail  implements XContentable<TokenDetail> {
   public String getName() { return this._name; }
   public TokenDetail setName(String val) { this._name = val; return this; }
 
-
   static final ParseField TOKENS = new ParseField("tokens");
   private List<ExplainAnalyzeToken> _tokens;
   public List<ExplainAnalyzeToken> getTokens() { return this._tokens; }
@@ -30,16 +27,14 @@ public class TokenDetail  implements XContentable<TokenDetail> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_name != null) {
       builder.field(NAME.getPreferredName(), _name);
     }
     if (_tokens != null) {
       builder.array(TOKENS.getPreferredName(), _tokens);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

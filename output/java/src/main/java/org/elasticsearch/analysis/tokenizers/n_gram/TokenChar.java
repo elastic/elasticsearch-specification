@@ -1,6 +1,10 @@
 
 package org.elasticsearch.analysis.tokenizers.n_gram;
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;

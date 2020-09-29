@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class DeleteExpiredDataResponse  implements XContentable<DeleteExpiredDataResponse> {
+public class DeleteExpiredDataResponse extends ResponseBase<DeleteExpiredDataResponse> implements XContentable<DeleteExpiredDataResponse> {
   
   static final ParseField DELETED = new ParseField("deleted");
   private Boolean _deleted;
@@ -24,13 +22,11 @@ public class DeleteExpiredDataResponse  implements XContentable<DeleteExpiredDat
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_deleted != null) {
       builder.field(DELETED.getPreferredName(), _deleted);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

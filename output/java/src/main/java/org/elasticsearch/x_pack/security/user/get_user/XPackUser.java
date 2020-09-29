@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,24 +19,20 @@ public class XPackUser  implements XContentable<XPackUser> {
   public String getEmail() { return this._email; }
   public XPackUser setEmail(String val) { this._email = val; return this; }
 
-
   static final ParseField FULL_NAME = new ParseField("full_name");
   private String _fullName;
   public String getFullName() { return this._fullName; }
   public XPackUser setFullName(String val) { this._fullName = val; return this; }
-
 
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public XPackUser setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
 
-
   static final ParseField ROLES = new ParseField("roles");
   private List<String> _roles;
   public List<String> getRoles() { return this._roles; }
   public XPackUser setRoles(List<String> val) { this._roles = val; return this; }
-
 
   static final ParseField USERNAME = new ParseField("username");
   private String _username;
@@ -48,8 +42,8 @@ public class XPackUser  implements XContentable<XPackUser> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_email != null) {
       builder.field(EMAIL.getPreferredName(), _email);
     }
@@ -66,8 +60,6 @@ public class XPackUser  implements XContentable<XPackUser> {
     if (_username != null) {
       builder.field(USERNAME.getPreferredName(), _username);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

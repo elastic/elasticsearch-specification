@@ -7,45 +7,44 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.phonetic.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class PhoneticTokenFilter  implements XContentable<PhoneticTokenFilter> {
+public class PhoneticTokenFilter extends TokenFilterBase implements XContentable<PhoneticTokenFilter> {
   
   static final ParseField ENCODER = new ParseField("encoder");
   private PhoneticEncoder _encoder;
   public PhoneticEncoder getEncoder() { return this._encoder; }
   public PhoneticTokenFilter setEncoder(PhoneticEncoder val) { this._encoder = val; return this; }
 
-
   static final ParseField LANGUAGESET = new ParseField("languageset");
   private List<PhoneticLanguage> _languageset;
   public List<PhoneticLanguage> getLanguageset() { return this._languageset; }
   public PhoneticTokenFilter setLanguageset(List<PhoneticLanguage> val) { this._languageset = val; return this; }
 
-
   static final ParseField MAX_CODE_LEN = new ParseField("max_code_len");
-  private Integer _maxCodeLen;
-  public Integer getMaxCodeLen() { return this._maxCodeLen; }
-  public PhoneticTokenFilter setMaxCodeLen(Integer val) { this._maxCodeLen = val; return this; }
-
+  private int _maxCodeLen;
+  private boolean _maxCodeLen$isSet;
+  public int getMaxCodeLen() { return this._maxCodeLen; }
+  public PhoneticTokenFilter setMaxCodeLen(int val) {
+    this._maxCodeLen = val;
+    _maxCodeLen$isSet = true;
+    return this;
+  }
 
   static final ParseField NAME_TYPE = new ParseField("name_type");
   private PhoneticNameType _nameType;
   public PhoneticNameType getNameType() { return this._nameType; }
   public PhoneticTokenFilter setNameType(PhoneticNameType val) { this._nameType = val; return this; }
 
-
   static final ParseField REPLACE = new ParseField("replace");
   private Boolean _replace;
   public Boolean getReplace() { return this._replace; }
   public PhoneticTokenFilter setReplace(Boolean val) { this._replace = val; return this; }
-
 
   static final ParseField RULE_TYPE = new ParseField("rule_type");
   private PhoneticRuleType _ruleType;
@@ -55,8 +54,8 @@ public class PhoneticTokenFilter  implements XContentable<PhoneticTokenFilter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_encoder != null) {
       builder.field(ENCODER.getPreferredName());
       _encoder.toXContent(builder, params);
@@ -64,7 +63,7 @@ public class PhoneticTokenFilter  implements XContentable<PhoneticTokenFilter> {
     if (_languageset != null) {
       builder.array(LANGUAGESET.getPreferredName(), _languageset);
     }
-    if (_maxCodeLen != null) {
+    if (_maxCodeLen$isSet) {
       builder.field(MAX_CODE_LEN.getPreferredName(), _maxCodeLen);
     }
     if (_nameType != null) {
@@ -78,8 +77,6 @@ public class PhoneticTokenFilter  implements XContentable<PhoneticTokenFilter> {
       builder.field(RULE_TYPE.getPreferredName());
       _ruleType.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

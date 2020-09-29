@@ -7,30 +7,32 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class TruncateTokenFilter  implements XContentable<TruncateTokenFilter> {
+public class TruncateTokenFilter extends TokenFilterBase implements XContentable<TruncateTokenFilter> {
   
   static final ParseField LENGTH = new ParseField("length");
-  private Integer _length;
-  public Integer getLength() { return this._length; }
-  public TruncateTokenFilter setLength(Integer val) { this._length = val; return this; }
+  private int _length;
+  private boolean _length$isSet;
+  public int getLength() { return this._length; }
+  public TruncateTokenFilter setLength(int val) {
+    this._length = val;
+    _length$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_length != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_length$isSet) {
       builder.field(LENGTH.getPreferredName(), _length);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

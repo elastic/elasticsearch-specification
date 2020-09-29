@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class StartBasicLicenseResponse  implements XContentable<StartBasicLicenseResponse> {
+public class StartBasicLicenseResponse extends AcknowledgedResponseBase implements XContentable<StartBasicLicenseResponse> {
   
   static final ParseField ACKNOWLEDGE = new ParseField("acknowledge");
   private NamedContainer<String, List<String>> _acknowledge;
   public NamedContainer<String, List<String>> getAcknowledge() { return this._acknowledge; }
   public StartBasicLicenseResponse setAcknowledge(NamedContainer<String, List<String>> val) { this._acknowledge = val; return this; }
 
-
   static final ParseField BASIC_WAS_STARTED = new ParseField("basic_was_started");
   private Boolean _basicWasStarted;
   public Boolean getBasicWasStarted() { return this._basicWasStarted; }
   public StartBasicLicenseResponse setBasicWasStarted(Boolean val) { this._basicWasStarted = val; return this; }
-
 
   static final ParseField ERROR_MESSAGE = new ParseField("error_message");
   private String _errorMessage;
@@ -36,8 +32,8 @@ public class StartBasicLicenseResponse  implements XContentable<StartBasicLicens
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_acknowledge != null) {
       builder.field(ACKNOWLEDGE.getPreferredName());
       _acknowledge.toXContent(builder, params);
@@ -48,8 +44,6 @@ public class StartBasicLicenseResponse  implements XContentable<StartBasicLicens
     if (_errorMessage != null) {
       builder.field(ERROR_MESSAGE.getPreferredName(), _errorMessage);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

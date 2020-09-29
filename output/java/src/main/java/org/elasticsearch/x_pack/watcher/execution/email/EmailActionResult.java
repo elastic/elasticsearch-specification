@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.email.*;
@@ -21,12 +19,10 @@ public class EmailActionResult  implements XContentable<EmailActionResult> {
   public String getAccount() { return this._account; }
   public EmailActionResult setAccount(String val) { this._account = val; return this; }
 
-
   static final ParseField MESSAGE = new ParseField("message");
   private EmailResult _message;
   public EmailResult getMessage() { return this._message; }
   public EmailActionResult setMessage(EmailResult val) { this._message = val; return this; }
-
 
   static final ParseField REASON = new ParseField("reason");
   private String _reason;
@@ -36,8 +32,8 @@ public class EmailActionResult  implements XContentable<EmailActionResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_account != null) {
       builder.field(ACCOUNT.getPreferredName(), _account);
     }
@@ -48,8 +44,6 @@ public class EmailActionResult  implements XContentable<EmailActionResult> {
     if (_reason != null) {
       builder.field(REASON.getPreferredName(), _reason);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

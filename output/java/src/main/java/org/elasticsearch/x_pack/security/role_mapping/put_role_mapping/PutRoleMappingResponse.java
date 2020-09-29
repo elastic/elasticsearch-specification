@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.security.role_mapping.put_role_mapping.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class PutRoleMappingResponse  implements XContentable<PutRoleMappingResponse> {
+public class PutRoleMappingResponse extends ResponseBase<PutRoleMappingResponse> implements XContentable<PutRoleMappingResponse> {
   
   static final ParseField CREATED = new ParseField("created");
   private Boolean _created;
   public Boolean getCreated() { return this._created; }
   public PutRoleMappingResponse setCreated(Boolean val) { this._created = val; return this; }
-
 
   static final ParseField ROLE_MAPPING = new ParseField("role_mapping");
   private PutRoleMappingStatus _roleMapping;
@@ -30,8 +28,8 @@ public class PutRoleMappingResponse  implements XContentable<PutRoleMappingRespo
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_created != null) {
       builder.field(CREATED.getPreferredName(), _created);
     }
@@ -39,8 +37,6 @@ public class PutRoleMappingResponse  implements XContentable<PutRoleMappingRespo
       builder.field(ROLE_MAPPING.getPreferredName());
       _roleMapping.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

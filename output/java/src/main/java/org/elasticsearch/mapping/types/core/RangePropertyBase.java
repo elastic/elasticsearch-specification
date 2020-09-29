@@ -7,26 +7,28 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.mapping.types.*;
 
-public class RangePropertyBase  implements XContentable<RangePropertyBase> {
+public class RangePropertyBase extends DocValuesPropertyBase implements XContentable<RangePropertyBase> {
   
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public RangePropertyBase setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public RangePropertyBase setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField COERCE = new ParseField("coerce");
   private Boolean _coerce;
   public Boolean getCoerce() { return this._coerce; }
   public RangePropertyBase setCoerce(Boolean val) { this._coerce = val; return this; }
-
 
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
@@ -36,9 +38,9 @@ public class RangePropertyBase  implements XContentable<RangePropertyBase> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_boost != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_coerce != null) {
@@ -47,8 +49,6 @@ public class RangePropertyBase  implements XContentable<RangePropertyBase> {
     if (_index != null) {
       builder.field(INDEX.getPreferredName(), _index);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

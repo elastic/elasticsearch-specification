@@ -7,21 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.common_options.scripting.*;
 
 public class SingleGroupSource  implements XContentable<SingleGroupSource> {
   
   static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public SingleGroupSource setField(Field val) { this._field = val; return this; }
-
+  private String _field;
+  public String getField() { return this._field; }
+  public SingleGroupSource setField(String val) { this._field = val; return this; }
 
   static final ParseField SCRIPT = new ParseField("script");
   private Script _script;
@@ -31,18 +28,15 @@ public class SingleGroupSource  implements XContentable<SingleGroupSource> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+      builder.field(FIELD.getPreferredName(), _field);
     }
     if (_script != null) {
       builder.field(SCRIPT.getPreferredName());
       _script.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -54,7 +48,7 @@ public class SingleGroupSource  implements XContentable<SingleGroupSource> {
     new ObjectParser<>(SingleGroupSource.class.getName(), false, SingleGroupSource::new);
 
   static {
-    PARSER.declareObject(SingleGroupSource::setField, (p, t) -> Field.createFrom(p), FIELD);
+    PARSER.declareString(SingleGroupSource::setField, FIELD);
     PARSER.declareObject(SingleGroupSource::setScript, (p, t) -> Script.PARSER.apply(p, t), SCRIPT);
   }
 

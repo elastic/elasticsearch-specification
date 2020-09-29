@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execute_watch.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class ExecuteWatchResponse  implements XContentable<ExecuteWatchResponse> {
+public class ExecuteWatchResponse extends ResponseBase<ExecuteWatchResponse> implements XContentable<ExecuteWatchResponse> {
   
   static final ParseField ID = new ParseField("_id");
   private String _id;
   public String getId() { return this._id; }
   public ExecuteWatchResponse setId(String val) { this._id = val; return this; }
-
 
   static final ParseField WATCH_RECORD = new ParseField("watch_record");
   private WatchRecord _watchRecord;
@@ -30,8 +28,8 @@ public class ExecuteWatchResponse  implements XContentable<ExecuteWatchResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
@@ -39,8 +37,6 @@ public class ExecuteWatchResponse  implements XContentable<ExecuteWatchResponse>
       builder.field(WATCH_RECORD.getPreferredName());
       _watchRecord.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

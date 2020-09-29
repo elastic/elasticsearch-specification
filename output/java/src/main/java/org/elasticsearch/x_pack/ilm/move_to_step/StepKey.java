@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class StepKey  implements XContentable<StepKey> {
   public String getAction() { return this._action; }
   public StepKey setAction(String val) { this._action = val; return this; }
 
-
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public StepKey setName(String val) { this._name = val; return this; }
-
 
   static final ParseField PHASE = new ParseField("phase");
   private String _phase;
@@ -36,8 +32,8 @@ public class StepKey  implements XContentable<StepKey> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_action != null) {
       builder.field(ACTION.getPreferredName(), _action);
     }
@@ -47,8 +43,6 @@ public class StepKey  implements XContentable<StepKey> {
     if (_phase != null) {
       builder.field(PHASE.getPreferredName(), _phase);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.job.detectors.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class ValidateDetectorRequest  implements XContentable<ValidateDetectorRequest> {
+public class ValidateDetectorRequest extends RequestBase<ValidateDetectorRequest> implements XContentable<ValidateDetectorRequest> {
   
   static final ParseField DETECTOR = new ParseField("detector");
   private Detector _detector;
@@ -24,14 +23,12 @@ public class ValidateDetectorRequest  implements XContentable<ValidateDetectorRe
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_detector != null) {
       builder.field(DETECTOR.getPreferredName());
       _detector.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

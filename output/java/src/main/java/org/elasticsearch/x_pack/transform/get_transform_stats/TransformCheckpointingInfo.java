@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,40 +16,46 @@ import org.elasticsearch.x_pack.transform.get_transform_stats.*;
 public class TransformCheckpointingInfo  implements XContentable<TransformCheckpointingInfo> {
   
   static final ParseField CHANGES_LAST_DETECTED_AT = new ParseField("changes_last_detected_at");
-  private Long _changesLastDetectedAt;
-  public Long getChangesLastDetectedAt() { return this._changesLastDetectedAt; }
-  public TransformCheckpointingInfo setChangesLastDetectedAt(Long val) { this._changesLastDetectedAt = val; return this; }
-
+  private long _changesLastDetectedAt;
+  private boolean _changesLastDetectedAt$isSet;
+  public long getChangesLastDetectedAt() { return this._changesLastDetectedAt; }
+  public TransformCheckpointingInfo setChangesLastDetectedAt(long val) {
+    this._changesLastDetectedAt = val;
+    _changesLastDetectedAt$isSet = true;
+    return this;
+  }
 
   static final ParseField CHANGES_LAST_DETECTED_AT_DATE_TIME = new ParseField("changes_last_detected_at_date_time");
   private Date _changesLastDetectedAtDateTime;
   public Date getChangesLastDetectedAtDateTime() { return this._changesLastDetectedAtDateTime; }
   public TransformCheckpointingInfo setChangesLastDetectedAtDateTime(Date val) { this._changesLastDetectedAtDateTime = val; return this; }
 
-
   static final ParseField LAST = new ParseField("last");
   private TransformCheckpointStats _last;
   public TransformCheckpointStats getLast() { return this._last; }
   public TransformCheckpointingInfo setLast(TransformCheckpointStats val) { this._last = val; return this; }
-
 
   static final ParseField NEXT = new ParseField("next");
   private TransformCheckpointStats _next;
   public TransformCheckpointStats getNext() { return this._next; }
   public TransformCheckpointingInfo setNext(TransformCheckpointStats val) { this._next = val; return this; }
 
-
   static final ParseField OPERATIONS_BEHIND = new ParseField("operations_behind");
-  private Long _operationsBehind;
-  public Long getOperationsBehind() { return this._operationsBehind; }
-  public TransformCheckpointingInfo setOperationsBehind(Long val) { this._operationsBehind = val; return this; }
+  private long _operationsBehind;
+  private boolean _operationsBehind$isSet;
+  public long getOperationsBehind() { return this._operationsBehind; }
+  public TransformCheckpointingInfo setOperationsBehind(long val) {
+    this._operationsBehind = val;
+    _operationsBehind$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_changesLastDetectedAt != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_changesLastDetectedAt$isSet) {
       builder.field(CHANGES_LAST_DETECTED_AT.getPreferredName(), _changesLastDetectedAt);
     }
     if (_changesLastDetectedAtDateTime != null) {
@@ -66,11 +70,9 @@ public class TransformCheckpointingInfo  implements XContentable<TransformCheckp
       builder.field(NEXT.getPreferredName());
       _next.toXContent(builder, params);
     }
-    if (_operationsBehind != null) {
+    if (_operationsBehind$isSet) {
       builder.field(OPERATIONS_BEHIND.getPreferredName(), _operationsBehind);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

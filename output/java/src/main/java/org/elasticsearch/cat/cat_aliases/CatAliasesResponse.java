@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cat.cat_aliases.*;
+import org.elasticsearch.cat.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class CatAliasesResponse  implements XContentable<CatAliasesResponse> {
+public class CatAliasesResponse extends ResponseBase<CatAliasesResponse> implements XContentable<CatAliasesResponse> {
   
   static final ParseField RECORDS = new ParseField("records");
   private List<CatAliasesRecord> _records;
@@ -24,13 +24,11 @@ public class CatAliasesResponse  implements XContentable<CatAliasesResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_records != null) {
       builder.array(RECORDS.getPreferredName(), _records);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

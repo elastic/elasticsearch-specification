@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.icu.normalization.*;
+import org.elasticsearch.analysis.char_filters.*;
 
-public class IcuNormalizationCharFilter  implements XContentable<IcuNormalizationCharFilter> {
+public class IcuNormalizationCharFilter extends CharFilterBase implements XContentable<IcuNormalizationCharFilter> {
   
   static final ParseField MODE = new ParseField("mode");
   private IcuNormalizationMode _mode;
   public IcuNormalizationMode getMode() { return this._mode; }
   public IcuNormalizationCharFilter setMode(IcuNormalizationMode val) { this._mode = val; return this; }
-
 
   static final ParseField NAME = new ParseField("name");
   private IcuNormalizationType _name;
@@ -30,8 +28,8 @@ public class IcuNormalizationCharFilter  implements XContentable<IcuNormalizatio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_mode != null) {
       builder.field(MODE.getPreferredName());
       _mode.toXContent(builder, params);
@@ -40,8 +38,6 @@ public class IcuNormalizationCharFilter  implements XContentable<IcuNormalizatio
       builder.field(NAME.getPreferredName());
       _name.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

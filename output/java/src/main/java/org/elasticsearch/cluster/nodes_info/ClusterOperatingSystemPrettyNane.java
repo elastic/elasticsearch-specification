@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,10 +15,14 @@ import org.elasticsearch.internal.*;
 public class ClusterOperatingSystemPrettyNane  implements XContentable<ClusterOperatingSystemPrettyNane> {
   
   static final ParseField COUNT = new ParseField("count");
-  private Integer _count;
-  public Integer getCount() { return this._count; }
-  public ClusterOperatingSystemPrettyNane setCount(Integer val) { this._count = val; return this; }
-
+  private int _count;
+  private boolean _count$isSet;
+  public int getCount() { return this._count; }
+  public ClusterOperatingSystemPrettyNane setCount(int val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField PRETTY_NAME = new ParseField("pretty_name");
   private String _prettyName;
@@ -30,16 +32,14 @@ public class ClusterOperatingSystemPrettyNane  implements XContentable<ClusterOp
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_count != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
     if (_prettyName != null) {
       builder.field(PRETTY_NAME.getPreferredName(), _prettyName);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

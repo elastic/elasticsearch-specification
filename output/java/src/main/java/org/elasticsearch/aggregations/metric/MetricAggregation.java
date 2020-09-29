@@ -7,28 +7,28 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.common_options.scripting.*;
 
 public class MetricAggregation  implements XContentable<MetricAggregation> {
   
   static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public MetricAggregation setField(Field val) { this._field = val; return this; }
-
+  private String _field;
+  public String getField() { return this._field; }
+  public MetricAggregation setField(String val) { this._field = val; return this; }
 
   static final ParseField MISSING = new ParseField("missing");
-  private Double _missing;
-  public Double getMissing() { return this._missing; }
-  public MetricAggregation setMissing(Double val) { this._missing = val; return this; }
-
+  private double _missing;
+  private boolean _missing$isSet;
+  public double getMissing() { return this._missing; }
+  public MetricAggregation setMissing(double val) {
+    this._missing = val;
+    _missing$isSet = true;
+    return this;
+  }
 
   static final ParseField SCRIPT = new ParseField("script");
   private Script _script;
@@ -38,21 +38,18 @@ public class MetricAggregation  implements XContentable<MetricAggregation> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+      builder.field(FIELD.getPreferredName(), _field);
     }
-    if (_missing != null) {
+    if (_missing$isSet) {
       builder.field(MISSING.getPreferredName(), _missing);
     }
     if (_script != null) {
       builder.field(SCRIPT.getPreferredName());
       _script.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -64,7 +61,7 @@ public class MetricAggregation  implements XContentable<MetricAggregation> {
     new ObjectParser<>(MetricAggregation.class.getName(), false, MetricAggregation::new);
 
   static {
-    PARSER.declareObject(MetricAggregation::setField, (p, t) -> Field.createFrom(p), FIELD);
+    PARSER.declareString(MetricAggregation::setField, FIELD);
     PARSER.declareDouble(MetricAggregation::setMissing, MISSING);
     PARSER.declareObject(MetricAggregation::setScript, (p, t) -> Script.PARSER.apply(p, t), SCRIPT);
   }

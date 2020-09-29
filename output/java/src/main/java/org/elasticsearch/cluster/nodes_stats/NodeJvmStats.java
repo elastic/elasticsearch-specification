@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_stats.*;
@@ -22,53 +20,56 @@ public class NodeJvmStats  implements XContentable<NodeJvmStats> {
   public NamedContainer<String, NodeBufferPool> getBufferPools() { return this._bufferPools; }
   public NodeJvmStats setBufferPools(NamedContainer<String, NodeBufferPool> val) { this._bufferPools = val; return this; }
 
-
   static final ParseField CLASSES = new ParseField("classes");
   private JvmClassesStats _classes;
   public JvmClassesStats getClasses() { return this._classes; }
   public NodeJvmStats setClasses(JvmClassesStats val) { this._classes = val; return this; }
-
 
   static final ParseField GC = new ParseField("gc");
   private GarbageCollectionStats _gc;
   public GarbageCollectionStats getGc() { return this._gc; }
   public NodeJvmStats setGc(GarbageCollectionStats val) { this._gc = val; return this; }
 
-
   static final ParseField MEM = new ParseField("mem");
   private MemoryStats _mem;
   public MemoryStats getMem() { return this._mem; }
   public NodeJvmStats setMem(MemoryStats val) { this._mem = val; return this; }
-
 
   static final ParseField THREADS = new ParseField("threads");
   private ThreadStats _threads;
   public ThreadStats getThreads() { return this._threads; }
   public NodeJvmStats setThreads(ThreadStats val) { this._threads = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
-  private Long _timestamp;
-  public Long getTimestamp() { return this._timestamp; }
-  public NodeJvmStats setTimestamp(Long val) { this._timestamp = val; return this; }
-
+  private long _timestamp;
+  private boolean _timestamp$isSet;
+  public long getTimestamp() { return this._timestamp; }
+  public NodeJvmStats setTimestamp(long val) {
+    this._timestamp = val;
+    _timestamp$isSet = true;
+    return this;
+  }
 
   static final ParseField UPTIME = new ParseField("uptime");
   private String _uptime;
   public String getUptime() { return this._uptime; }
   public NodeJvmStats setUptime(String val) { this._uptime = val; return this; }
 
-
   static final ParseField UPTIME_IN_MILLIS = new ParseField("uptime_in_millis");
-  private Long _uptimeInMillis;
-  public Long getUptimeInMillis() { return this._uptimeInMillis; }
-  public NodeJvmStats setUptimeInMillis(Long val) { this._uptimeInMillis = val; return this; }
+  private long _uptimeInMillis;
+  private boolean _uptimeInMillis$isSet;
+  public long getUptimeInMillis() { return this._uptimeInMillis; }
+  public NodeJvmStats setUptimeInMillis(long val) {
+    this._uptimeInMillis = val;
+    _uptimeInMillis$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_bufferPools != null) {
       builder.field(BUFFER_POOLS.getPreferredName());
       _bufferPools.toXContent(builder, params);
@@ -89,17 +90,15 @@ public class NodeJvmStats  implements XContentable<NodeJvmStats> {
       builder.field(THREADS.getPreferredName());
       _threads.toXContent(builder, params);
     }
-    if (_timestamp != null) {
+    if (_timestamp$isSet) {
       builder.field(TIMESTAMP.getPreferredName(), _timestamp);
     }
     if (_uptime != null) {
       builder.field(UPTIME.getPreferredName(), _uptime);
     }
-    if (_uptimeInMillis != null) {
+    if (_uptimeInMillis$isSet) {
       builder.field(UPTIME_IN_MILLIS.getPreferredName(), _uptimeInMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

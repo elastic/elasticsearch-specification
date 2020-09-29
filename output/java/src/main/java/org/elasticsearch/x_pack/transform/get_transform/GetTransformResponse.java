@@ -7,21 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.x_pack.watcher.transform.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetTransformResponse  implements XContentable<GetTransformResponse> {
+public class GetTransformResponse extends ResponseBase<GetTransformResponse> implements XContentable<GetTransformResponse> {
   
   static final ParseField COUNT = new ParseField("count");
-  private Long _count;
-  public Long getCount() { return this._count; }
-  public GetTransformResponse setCount(Long val) { this._count = val; return this; }
-
+  private long _count;
+  private boolean _count$isSet;
+  public long getCount() { return this._count; }
+  public GetTransformResponse setCount(long val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField TRANSFORMS = new ParseField("transforms");
   private List<Transform> _transforms;
@@ -31,16 +34,14 @@ public class GetTransformResponse  implements XContentable<GetTransformResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_count != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
     if (_transforms != null) {
       builder.array(TRANSFORMS.getPreferredName(), _transforms);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

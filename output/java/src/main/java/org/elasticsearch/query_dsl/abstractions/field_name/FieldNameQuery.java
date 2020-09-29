@@ -7,31 +7,26 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class FieldNameQuery  implements XContentable<FieldNameQuery> {
   
   static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public FieldNameQuery setField(Field val) { this._field = val; return this; }
+  private String _field;
+  public String getField() { return this._field; }
+  public FieldNameQuery setField(String val) { this._field = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+      builder.field(FIELD.getPreferredName(), _field);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -43,7 +38,7 @@ public class FieldNameQuery  implements XContentable<FieldNameQuery> {
     new ObjectParser<>(FieldNameQuery.class.getName(), false, FieldNameQuery::new);
 
   static {
-    PARSER.declareObject(FieldNameQuery::setField, (p, t) -> Field.createFrom(p), FIELD);
+    PARSER.declareString(FieldNameQuery::setField, FIELD);
   }
 
 }

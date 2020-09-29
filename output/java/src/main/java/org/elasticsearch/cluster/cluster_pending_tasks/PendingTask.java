@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,40 +15,46 @@ import org.elasticsearch.internal.*;
 public class PendingTask  implements XContentable<PendingTask> {
   
   static final ParseField INSERT_ORDER = new ParseField("insert_order");
-  private Integer _insertOrder;
-  public Integer getInsertOrder() { return this._insertOrder; }
-  public PendingTask setInsertOrder(Integer val) { this._insertOrder = val; return this; }
-
+  private int _insertOrder;
+  private boolean _insertOrder$isSet;
+  public int getInsertOrder() { return this._insertOrder; }
+  public PendingTask setInsertOrder(int val) {
+    this._insertOrder = val;
+    _insertOrder$isSet = true;
+    return this;
+  }
 
   static final ParseField PRIORITY = new ParseField("priority");
   private String _priority;
   public String getPriority() { return this._priority; }
   public PendingTask setPriority(String val) { this._priority = val; return this; }
 
-
   static final ParseField SOURCE = new ParseField("source");
   private String _source;
   public String getSource() { return this._source; }
   public PendingTask setSource(String val) { this._source = val; return this; }
-
 
   static final ParseField TIME_IN_QUEUE = new ParseField("time_in_queue");
   private String _timeInQueue;
   public String getTimeInQueue() { return this._timeInQueue; }
   public PendingTask setTimeInQueue(String val) { this._timeInQueue = val; return this; }
 
-
   static final ParseField TIME_IN_QUEUE_MILLIS = new ParseField("time_in_queue_millis");
-  private Integer _timeInQueueMillis;
-  public Integer getTimeInQueueMillis() { return this._timeInQueueMillis; }
-  public PendingTask setTimeInQueueMillis(Integer val) { this._timeInQueueMillis = val; return this; }
+  private int _timeInQueueMillis;
+  private boolean _timeInQueueMillis$isSet;
+  public int getTimeInQueueMillis() { return this._timeInQueueMillis; }
+  public PendingTask setTimeInQueueMillis(int val) {
+    this._timeInQueueMillis = val;
+    _timeInQueueMillis$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_insertOrder != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_insertOrder$isSet) {
       builder.field(INSERT_ORDER.getPreferredName(), _insertOrder);
     }
     if (_priority != null) {
@@ -62,11 +66,9 @@ public class PendingTask  implements XContentable<PendingTask> {
     if (_timeInQueue != null) {
       builder.field(TIME_IN_QUEUE.getPreferredName(), _timeInQueue);
     }
-    if (_timeInQueueMillis != null) {
+    if (_timeInQueueMillis$isSet) {
       builder.field(TIME_IN_QUEUE_MILLIS.getPreferredName(), _timeInQueueMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

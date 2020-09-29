@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.suggesters.completion_suggester.*;
@@ -23,30 +21,25 @@ public class SuggestBucket  implements XContentable<SuggestBucket> {
   public CompletionSuggester getCompletion() { return this._completion; }
   public SuggestBucket setCompletion(CompletionSuggester val) { this._completion = val; return this; }
 
-
   static final ParseField PHRASE = new ParseField("phrase");
   private PhraseSuggester _phrase;
   public PhraseSuggester getPhrase() { return this._phrase; }
   public SuggestBucket setPhrase(PhraseSuggester val) { this._phrase = val; return this; }
-
 
   static final ParseField PREFIX = new ParseField("prefix");
   private String _prefix;
   public String getPrefix() { return this._prefix; }
   public SuggestBucket setPrefix(String val) { this._prefix = val; return this; }
 
-
   static final ParseField REGEX = new ParseField("regex");
   private String _regex;
   public String getRegex() { return this._regex; }
   public SuggestBucket setRegex(String val) { this._regex = val; return this; }
 
-
   static final ParseField TERM = new ParseField("term");
   private TermSuggester _term;
   public TermSuggester getTerm() { return this._term; }
   public SuggestBucket setTerm(TermSuggester val) { this._term = val; return this; }
-
 
   static final ParseField TEXT = new ParseField("text");
   private String _text;
@@ -56,8 +49,8 @@ public class SuggestBucket  implements XContentable<SuggestBucket> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_completion != null) {
       builder.field(COMPLETION.getPreferredName());
       _completion.toXContent(builder, params);
@@ -79,8 +72,6 @@ public class SuggestBucket  implements XContentable<SuggestBucket> {
     if (_text != null) {
       builder.field(TEXT.getPreferredName(), _text);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

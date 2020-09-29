@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.datafeed.*;
@@ -21,24 +19,20 @@ public class DatafeedStats  implements XContentable<DatafeedStats> {
   public String getAssignmentExplanation() { return this._assignmentExplanation; }
   public DatafeedStats setAssignmentExplanation(String val) { this._assignmentExplanation = val; return this; }
 
-
   static final ParseField DATAFEED_ID = new ParseField("datafeed_id");
   private String _datafeedId;
   public String getDatafeedId() { return this._datafeedId; }
   public DatafeedStats setDatafeedId(String val) { this._datafeedId = val; return this; }
-
 
   static final ParseField NODE = new ParseField("node");
   private DiscoveryNode _node;
   public DiscoveryNode getNode() { return this._node; }
   public DatafeedStats setNode(DiscoveryNode val) { this._node = val; return this; }
 
-
   static final ParseField STATE = new ParseField("state");
   private DatafeedState _state;
   public DatafeedState getState() { return this._state; }
   public DatafeedStats setState(DatafeedState val) { this._state = val; return this; }
-
 
   static final ParseField TIMING_STATS = new ParseField("timing_stats");
   private DatafeedTimingStats _timingStats;
@@ -48,8 +42,8 @@ public class DatafeedStats  implements XContentable<DatafeedStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_assignmentExplanation != null) {
       builder.field(ASSIGNMENT_EXPLANATION.getPreferredName(), _assignmentExplanation);
     }
@@ -68,8 +62,6 @@ public class DatafeedStats  implements XContentable<DatafeedStats> {
       builder.field(TIMING_STATS.getPreferredName());
       _timingStats.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

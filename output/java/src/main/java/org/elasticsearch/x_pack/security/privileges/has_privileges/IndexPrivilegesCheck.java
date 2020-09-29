@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class IndexPrivilegesCheck  implements XContentable<IndexPrivilegesCheck>
   public List<String> getNames() { return this._names; }
   public IndexPrivilegesCheck setNames(List<String> val) { this._names = val; return this; }
 
-
   static final ParseField PRIVILEGES = new ParseField("privileges");
   private List<String> _privileges;
   public List<String> getPrivileges() { return this._privileges; }
@@ -30,16 +27,14 @@ public class IndexPrivilegesCheck  implements XContentable<IndexPrivilegesCheck>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_names != null) {
       builder.array(NAMES.getPreferredName(), _names);
     }
     if (_privileges != null) {
       builder.array(PRIVILEGES.getPreferredName(), _privileges);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

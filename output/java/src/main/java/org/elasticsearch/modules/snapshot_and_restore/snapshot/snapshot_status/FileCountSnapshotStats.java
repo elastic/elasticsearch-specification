@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class FileCountSnapshotStats  implements XContentable<FileCountSnapshotStats> {
   
   static final ParseField FILE_COUNT = new ParseField("file_count");
-  private Integer _fileCount;
-  public Integer getFileCount() { return this._fileCount; }
-  public FileCountSnapshotStats setFileCount(Integer val) { this._fileCount = val; return this; }
-
+  private int _fileCount;
+  private boolean _fileCount$isSet;
+  public int getFileCount() { return this._fileCount; }
+  public FileCountSnapshotStats setFileCount(int val) {
+    this._fileCount = val;
+    _fileCount$isSet = true;
+    return this;
+  }
 
   static final ParseField SIZE_IN_BYTES = new ParseField("size_in_bytes");
-  private Long _sizeInBytes;
-  public Long getSizeInBytes() { return this._sizeInBytes; }
-  public FileCountSnapshotStats setSizeInBytes(Long val) { this._sizeInBytes = val; return this; }
+  private long _sizeInBytes;
+  private boolean _sizeInBytes$isSet;
+  public long getSizeInBytes() { return this._sizeInBytes; }
+  public FileCountSnapshotStats setSizeInBytes(long val) {
+    this._sizeInBytes = val;
+    _sizeInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_fileCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_fileCount$isSet) {
       builder.field(FILE_COUNT.getPreferredName(), _fileCount);
     }
-    if (_sizeInBytes != null) {
+    if (_sizeInBytes$isSet) {
       builder.field(SIZE_IN_BYTES.getPreferredName(), _sizeInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

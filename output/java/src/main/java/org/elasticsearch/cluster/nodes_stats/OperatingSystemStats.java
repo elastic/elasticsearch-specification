@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_stats.*;
@@ -22,29 +20,31 @@ public class OperatingSystemStats  implements XContentable<OperatingSystemStats>
   public CpuStats getCpu() { return this._cpu; }
   public OperatingSystemStats setCpu(CpuStats val) { this._cpu = val; return this; }
 
-
   static final ParseField MEM = new ParseField("mem");
   private ExtendedMemoryStats _mem;
   public ExtendedMemoryStats getMem() { return this._mem; }
   public OperatingSystemStats setMem(ExtendedMemoryStats val) { this._mem = val; return this; }
-
 
   static final ParseField SWAP = new ParseField("swap");
   private MemoryStats _swap;
   public MemoryStats getSwap() { return this._swap; }
   public OperatingSystemStats setSwap(MemoryStats val) { this._swap = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
-  private Long _timestamp;
-  public Long getTimestamp() { return this._timestamp; }
-  public OperatingSystemStats setTimestamp(Long val) { this._timestamp = val; return this; }
+  private long _timestamp;
+  private boolean _timestamp$isSet;
+  public long getTimestamp() { return this._timestamp; }
+  public OperatingSystemStats setTimestamp(long val) {
+    this._timestamp = val;
+    _timestamp$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cpu != null) {
       builder.field(CPU.getPreferredName());
       _cpu.toXContent(builder, params);
@@ -57,11 +57,9 @@ public class OperatingSystemStats  implements XContentable<OperatingSystemStats>
       builder.field(SWAP.getPreferredName());
       _swap.toXContent(builder, params);
     }
-    if (_timestamp != null) {
+    if (_timestamp$isSet) {
       builder.field(TIMESTAMP.getPreferredName(), _timestamp);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

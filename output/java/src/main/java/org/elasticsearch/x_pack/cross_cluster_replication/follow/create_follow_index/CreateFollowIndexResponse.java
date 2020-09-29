@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class CreateFollowIndexResponse  implements XContentable<CreateFollowIndexResponse> {
+public class CreateFollowIndexResponse extends ResponseBase<CreateFollowIndexResponse> implements XContentable<CreateFollowIndexResponse> {
   
   static final ParseField FOLLOW_INDEX_CREATED = new ParseField("follow_index_created");
   private Boolean _followIndexCreated;
   public Boolean getFollowIndexCreated() { return this._followIndexCreated; }
   public CreateFollowIndexResponse setFollowIndexCreated(Boolean val) { this._followIndexCreated = val; return this; }
 
-
   static final ParseField FOLLOW_INDEX_SHARDS_ACKED = new ParseField("follow_index_shards_acked");
   private Boolean _followIndexShardsAcked;
   public Boolean getFollowIndexShardsAcked() { return this._followIndexShardsAcked; }
   public CreateFollowIndexResponse setFollowIndexShardsAcked(Boolean val) { this._followIndexShardsAcked = val; return this; }
-
 
   static final ParseField INDEX_FOLLOWING_STARTED = new ParseField("index_following_started");
   private Boolean _indexFollowingStarted;
@@ -36,8 +32,8 @@ public class CreateFollowIndexResponse  implements XContentable<CreateFollowInde
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_followIndexCreated != null) {
       builder.field(FOLLOW_INDEX_CREATED.getPreferredName(), _followIndexCreated);
     }
@@ -47,8 +43,6 @@ public class CreateFollowIndexResponse  implements XContentable<CreateFollowInde
     if (_indexFollowingStarted != null) {
       builder.field(INDEX_FOLLOWING_STARTED.getPreferredName(), _indexFollowingStarted);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

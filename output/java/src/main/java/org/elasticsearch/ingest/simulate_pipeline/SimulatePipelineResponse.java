@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.ingest.simulate_pipeline.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class SimulatePipelineResponse  implements XContentable<SimulatePipelineResponse> {
+public class SimulatePipelineResponse extends ResponseBase<SimulatePipelineResponse> implements XContentable<SimulatePipelineResponse> {
   
   static final ParseField DOCS = new ParseField("docs");
   private List<PipelineSimulation> _docs;
@@ -24,13 +23,11 @@ public class SimulatePipelineResponse  implements XContentable<SimulatePipelineR
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_docs != null) {
       builder.array(DOCS.getPreferredName(), _docs);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

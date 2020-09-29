@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,70 +16,86 @@ import org.elasticsearch.x_pack.machine_learning.job.config.*;
 public class ModelSizeStats  implements XContentable<ModelSizeStats> {
   
   static final ParseField BUCKET_ALLOCATION_FAILURES_COUNT = new ParseField("bucket_allocation_failures_count");
-  private Long _bucketAllocationFailuresCount;
-  public Long getBucketAllocationFailuresCount() { return this._bucketAllocationFailuresCount; }
-  public ModelSizeStats setBucketAllocationFailuresCount(Long val) { this._bucketAllocationFailuresCount = val; return this; }
-
+  private long _bucketAllocationFailuresCount;
+  private boolean _bucketAllocationFailuresCount$isSet;
+  public long getBucketAllocationFailuresCount() { return this._bucketAllocationFailuresCount; }
+  public ModelSizeStats setBucketAllocationFailuresCount(long val) {
+    this._bucketAllocationFailuresCount = val;
+    _bucketAllocationFailuresCount$isSet = true;
+    return this;
+  }
 
   static final ParseField JOB_ID = new ParseField("job_id");
   private String _jobId;
   public String getJobId() { return this._jobId; }
   public ModelSizeStats setJobId(String val) { this._jobId = val; return this; }
 
-
   static final ParseField LOG_TIME = new ParseField("log_time");
   private Date _logTime;
   public Date getLogTime() { return this._logTime; }
   public ModelSizeStats setLogTime(Date val) { this._logTime = val; return this; }
-
 
   static final ParseField MEMORY_STATUS = new ParseField("memory_status");
   private MemoryStatus _memoryStatus;
   public MemoryStatus getMemoryStatus() { return this._memoryStatus; }
   public ModelSizeStats setMemoryStatus(MemoryStatus val) { this._memoryStatus = val; return this; }
 
-
   static final ParseField MODEL_BYTES = new ParseField("model_bytes");
-  private Long _modelBytes;
-  public Long getModelBytes() { return this._modelBytes; }
-  public ModelSizeStats setModelBytes(Long val) { this._modelBytes = val; return this; }
-
+  private long _modelBytes;
+  private boolean _modelBytes$isSet;
+  public long getModelBytes() { return this._modelBytes; }
+  public ModelSizeStats setModelBytes(long val) {
+    this._modelBytes = val;
+    _modelBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField RESULT_TYPE = new ParseField("result_type");
   private String _resultType;
   public String getResultType() { return this._resultType; }
   public ModelSizeStats setResultType(String val) { this._resultType = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private Date _timestamp;
   public Date getTimestamp() { return this._timestamp; }
   public ModelSizeStats setTimestamp(Date val) { this._timestamp = val; return this; }
 
-
   static final ParseField TOTAL_BY_FIELD_COUNT = new ParseField("total_by_field_count");
-  private Long _totalByFieldCount;
-  public Long getTotalByFieldCount() { return this._totalByFieldCount; }
-  public ModelSizeStats setTotalByFieldCount(Long val) { this._totalByFieldCount = val; return this; }
-
+  private long _totalByFieldCount;
+  private boolean _totalByFieldCount$isSet;
+  public long getTotalByFieldCount() { return this._totalByFieldCount; }
+  public ModelSizeStats setTotalByFieldCount(long val) {
+    this._totalByFieldCount = val;
+    _totalByFieldCount$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_OVER_FIELD_COUNT = new ParseField("total_over_field_count");
-  private Long _totalOverFieldCount;
-  public Long getTotalOverFieldCount() { return this._totalOverFieldCount; }
-  public ModelSizeStats setTotalOverFieldCount(Long val) { this._totalOverFieldCount = val; return this; }
-
+  private long _totalOverFieldCount;
+  private boolean _totalOverFieldCount$isSet;
+  public long getTotalOverFieldCount() { return this._totalOverFieldCount; }
+  public ModelSizeStats setTotalOverFieldCount(long val) {
+    this._totalOverFieldCount = val;
+    _totalOverFieldCount$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_PARTITION_FIELD_COUNT = new ParseField("total_partition_field_count");
-  private Long _totalPartitionFieldCount;
-  public Long getTotalPartitionFieldCount() { return this._totalPartitionFieldCount; }
-  public ModelSizeStats setTotalPartitionFieldCount(Long val) { this._totalPartitionFieldCount = val; return this; }
+  private long _totalPartitionFieldCount;
+  private boolean _totalPartitionFieldCount$isSet;
+  public long getTotalPartitionFieldCount() { return this._totalPartitionFieldCount; }
+  public ModelSizeStats setTotalPartitionFieldCount(long val) {
+    this._totalPartitionFieldCount = val;
+    _totalPartitionFieldCount$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_bucketAllocationFailuresCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_bucketAllocationFailuresCount$isSet) {
       builder.field(BUCKET_ALLOCATION_FAILURES_COUNT.getPreferredName(), _bucketAllocationFailuresCount);
     }
     if (_jobId != null) {
@@ -95,7 +109,7 @@ public class ModelSizeStats  implements XContentable<ModelSizeStats> {
       builder.field(MEMORY_STATUS.getPreferredName());
       _memoryStatus.toXContent(builder, params);
     }
-    if (_modelBytes != null) {
+    if (_modelBytes$isSet) {
       builder.field(MODEL_BYTES.getPreferredName(), _modelBytes);
     }
     if (_resultType != null) {
@@ -105,17 +119,15 @@ public class ModelSizeStats  implements XContentable<ModelSizeStats> {
       builder.field(TIMESTAMP.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_timestamp.toInstant()));
     }
-    if (_totalByFieldCount != null) {
+    if (_totalByFieldCount$isSet) {
       builder.field(TOTAL_BY_FIELD_COUNT.getPreferredName(), _totalByFieldCount);
     }
-    if (_totalOverFieldCount != null) {
+    if (_totalOverFieldCount$isSet) {
       builder.field(TOTAL_OVER_FIELD_COUNT.getPreferredName(), _totalOverFieldCount);
     }
-    if (_totalPartitionFieldCount != null) {
+    if (_totalPartitionFieldCount$isSet) {
       builder.field(TOTAL_PARTITION_FIELD_COUNT.getPreferredName(), _totalPartitionFieldCount);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

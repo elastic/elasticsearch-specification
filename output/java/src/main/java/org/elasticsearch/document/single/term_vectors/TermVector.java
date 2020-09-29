@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.document.single.term_vectors.*;
@@ -21,7 +19,6 @@ public class TermVector  implements XContentable<TermVector> {
   public FieldStatistics getFieldStatistics() { return this._fieldStatistics; }
   public TermVector setFieldStatistics(FieldStatistics val) { this._fieldStatistics = val; return this; }
 
-
   static final ParseField TERMS = new ParseField("terms");
   private NamedContainer<String, TermVectorTerm> _terms;
   public NamedContainer<String, TermVectorTerm> getTerms() { return this._terms; }
@@ -30,8 +27,8 @@ public class TermVector  implements XContentable<TermVector> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_fieldStatistics != null) {
       builder.field(FIELD_STATISTICS.getPreferredName());
       _fieldStatistics.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class TermVector  implements XContentable<TermVector> {
       builder.field(TERMS.getPreferredName());
       _terms.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

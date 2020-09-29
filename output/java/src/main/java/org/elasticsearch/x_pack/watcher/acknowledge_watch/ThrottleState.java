@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,7 +19,6 @@ public class ThrottleState  implements XContentable<ThrottleState> {
   public String getReason() { return this._reason; }
   public ThrottleState setReason(String val) { this._reason = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private Date _timestamp;
   public Date getTimestamp() { return this._timestamp; }
@@ -30,8 +27,8 @@ public class ThrottleState  implements XContentable<ThrottleState> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_reason != null) {
       builder.field(REASON.getPreferredName(), _reason);
     }
@@ -39,8 +36,6 @@ public class ThrottleState  implements XContentable<ThrottleState> {
       builder.field(TIMESTAMP.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_timestamp.toInstant()));
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

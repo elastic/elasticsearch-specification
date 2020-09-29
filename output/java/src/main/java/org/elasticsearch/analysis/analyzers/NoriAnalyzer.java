@@ -7,26 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.tokenizers.*;
+import org.elasticsearch.analysis.analyzers.*;
 
-public class NoriAnalyzer  implements XContentable<NoriAnalyzer> {
+public class NoriAnalyzer extends AnalyzerBase implements XContentable<NoriAnalyzer> {
   
   static final ParseField DECOMPOUND_MODE = new ParseField("decompound_mode");
   private NoriDecompoundMode _decompoundMode;
   public NoriDecompoundMode getDecompoundMode() { return this._decompoundMode; }
   public NoriAnalyzer setDecompoundMode(NoriDecompoundMode val) { this._decompoundMode = val; return this; }
 
-
   static final ParseField STOPTAGS = new ParseField("stoptags");
   private List<String> _stoptags;
   public List<String> getStoptags() { return this._stoptags; }
   public NoriAnalyzer setStoptags(List<String> val) { this._stoptags = val; return this; }
-
 
   static final ParseField USER_DICTIONARY = new ParseField("user_dictionary");
   private String _userDictionary;
@@ -36,8 +33,8 @@ public class NoriAnalyzer  implements XContentable<NoriAnalyzer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_decompoundMode != null) {
       builder.field(DECOMPOUND_MODE.getPreferredName());
       _decompoundMode.toXContent(builder, params);
@@ -48,8 +45,6 @@ public class NoriAnalyzer  implements XContentable<NoriAnalyzer> {
     if (_userDictionary != null) {
       builder.field(USER_DICTIONARY.getPreferredName(), _userDictionary);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

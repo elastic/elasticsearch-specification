@@ -7,32 +7,28 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.info.x_pack_info.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class XPackInfoResponse  implements XContentable<XPackInfoResponse> {
+public class XPackInfoResponse extends ResponseBase<XPackInfoResponse> implements XContentable<XPackInfoResponse> {
   
   static final ParseField BUILD = new ParseField("build");
   private XPackBuildInformation _build;
   public XPackBuildInformation getBuild() { return this._build; }
   public XPackInfoResponse setBuild(XPackBuildInformation val) { this._build = val; return this; }
 
-
   static final ParseField FEATURES = new ParseField("features");
   private XPackFeatures _features;
   public XPackFeatures getFeatures() { return this._features; }
   public XPackInfoResponse setFeatures(XPackFeatures val) { this._features = val; return this; }
 
-
   static final ParseField LICENSE = new ParseField("license");
   private MinimalLicenseInformation _license;
   public MinimalLicenseInformation getLicense() { return this._license; }
   public XPackInfoResponse setLicense(MinimalLicenseInformation val) { this._license = val; return this; }
-
 
   static final ParseField TAGLINE = new ParseField("tagline");
   private String _tagline;
@@ -42,8 +38,8 @@ public class XPackInfoResponse  implements XContentable<XPackInfoResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_build != null) {
       builder.field(BUILD.getPreferredName());
       _build.toXContent(builder, params);
@@ -59,8 +55,6 @@ public class XPackInfoResponse  implements XContentable<XPackInfoResponse> {
     if (_tagline != null) {
       builder.field(TAGLINE.getPreferredName(), _tagline);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

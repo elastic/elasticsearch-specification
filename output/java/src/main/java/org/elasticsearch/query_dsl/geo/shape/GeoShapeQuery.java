@@ -7,34 +7,30 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.abstractions.field_lookup.*;
 import org.elasticsearch.common_options.geo.*;
 import org.elasticsearch.query_dsl.geo.shape.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class GeoShapeQuery  implements XContentable<GeoShapeQuery> {
+public class GeoShapeQuery extends QueryBase implements XContentable<GeoShapeQuery> {
   
   static final ParseField IGNORE_UNMAPPED = new ParseField("ignore_unmapped");
   private Boolean _ignoreUnmapped;
   public Boolean getIgnoreUnmapped() { return this._ignoreUnmapped; }
   public GeoShapeQuery setIgnoreUnmapped(Boolean val) { this._ignoreUnmapped = val; return this; }
 
-
   static final ParseField INDEXED_SHAPE = new ParseField("indexed_shape");
   private FieldLookup _indexedShape;
   public FieldLookup getIndexedShape() { return this._indexedShape; }
   public GeoShapeQuery setIndexedShape(FieldLookup val) { this._indexedShape = val; return this; }
 
-
   static final ParseField RELATION = new ParseField("relation");
   private GeoShapeRelation _relation;
   public GeoShapeRelation getRelation() { return this._relation; }
   public GeoShapeQuery setRelation(GeoShapeRelation val) { this._relation = val; return this; }
-
 
   static final ParseField SHAPE = new ParseField("shape");
   private GeoShape _shape;
@@ -44,8 +40,8 @@ public class GeoShapeQuery  implements XContentable<GeoShapeQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ignoreUnmapped != null) {
       builder.field(IGNORE_UNMAPPED.getPreferredName(), _ignoreUnmapped);
     }
@@ -61,8 +57,6 @@ public class GeoShapeQuery  implements XContentable<GeoShapeQuery> {
       builder.field(SHAPE.getPreferredName());
       _shape.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,24 +19,20 @@ public class DiscoveryNode  implements XContentable<DiscoveryNode> {
   public NamedContainer<String, String> getAttributes() { return this._attributes; }
   public DiscoveryNode setAttributes(NamedContainer<String, String> val) { this._attributes = val; return this; }
 
-
   static final ParseField EPHEMERAL_ID = new ParseField("ephemeral_id");
   private String _ephemeralId;
   public String getEphemeralId() { return this._ephemeralId; }
   public DiscoveryNode setEphemeralId(String val) { this._ephemeralId = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public DiscoveryNode setId(String val) { this._id = val; return this; }
 
-
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public DiscoveryNode setName(String val) { this._name = val; return this; }
-
 
   static final ParseField TRANSPORT_ADDRESS = new ParseField("transport_address");
   private String _transportAddress;
@@ -48,8 +42,8 @@ public class DiscoveryNode  implements XContentable<DiscoveryNode> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_attributes != null) {
       builder.field(ATTRIBUTES.getPreferredName());
       _attributes.toXContent(builder, params);
@@ -66,8 +60,6 @@ public class DiscoveryNode  implements XContentable<DiscoveryNode> {
     if (_transportAddress != null) {
       builder.field(TRANSPORT_ADDRESS.getPreferredName(), _transportAddress);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,34 +15,41 @@ import org.elasticsearch.internal.*;
 public class GraphVertex  implements XContentable<GraphVertex> {
   
   static final ParseField DEPTH = new ParseField("depth");
-  private Long _depth;
-  public Long getDepth() { return this._depth; }
-  public GraphVertex setDepth(Long val) { this._depth = val; return this; }
-
+  private long _depth;
+  private boolean _depth$isSet;
+  public long getDepth() { return this._depth; }
+  public GraphVertex setDepth(long val) {
+    this._depth = val;
+    _depth$isSet = true;
+    return this;
+  }
 
   static final ParseField FIELD = new ParseField("field");
   private String _field;
   public String getField() { return this._field; }
   public GraphVertex setField(String val) { this._field = val; return this; }
 
-
   static final ParseField TERM = new ParseField("term");
   private String _term;
   public String getTerm() { return this._term; }
   public GraphVertex setTerm(String val) { this._term = val; return this; }
 
-
   static final ParseField WEIGHT = new ParseField("weight");
-  private Double _weight;
-  public Double getWeight() { return this._weight; }
-  public GraphVertex setWeight(Double val) { this._weight = val; return this; }
+  private double _weight;
+  private boolean _weight$isSet;
+  public double getWeight() { return this._weight; }
+  public GraphVertex setWeight(double val) {
+    this._weight = val;
+    _weight$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_depth != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_depth$isSet) {
       builder.field(DEPTH.getPreferredName(), _depth);
     }
     if (_field != null) {
@@ -53,11 +58,9 @@ public class GraphVertex  implements XContentable<GraphVertex> {
     if (_term != null) {
       builder.field(TERM.getPreferredName(), _term);
     }
-    if (_weight != null) {
+    if (_weight$isSet) {
       builder.field(WEIGHT.getPreferredName(), _weight);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class FieldSecuritySettings  implements XContentable<FieldSecuritySetting
   public List<String> getExcept() { return this._except; }
   public FieldSecuritySettings setExcept(List<String> val) { this._except = val; return this; }
 
-
   static final ParseField GRANT = new ParseField("grant");
   private List<String> _grant;
   public List<String> getGrant() { return this._grant; }
@@ -30,16 +27,14 @@ public class FieldSecuritySettings  implements XContentable<FieldSecuritySetting
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_except != null) {
       builder.array(EXCEPT.getPreferredName(), _except);
     }
     if (_grant != null) {
       builder.array(GRANT.getPreferredName(), _grant);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

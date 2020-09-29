@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.kuromoji.*;
+import org.elasticsearch.analysis.analyzers.*;
 
-public class KuromojiAnalyzer  implements XContentable<KuromojiAnalyzer> {
+public class KuromojiAnalyzer extends AnalyzerBase implements XContentable<KuromojiAnalyzer> {
   
   static final ParseField MODE = new ParseField("mode");
   private KuromojiTokenizationMode _mode;
   public KuromojiTokenizationMode getMode() { return this._mode; }
   public KuromojiAnalyzer setMode(KuromojiTokenizationMode val) { this._mode = val; return this; }
-
 
   static final ParseField USER_DICTIONARY = new ParseField("user_dictionary");
   private String _userDictionary;
@@ -30,8 +28,8 @@ public class KuromojiAnalyzer  implements XContentable<KuromojiAnalyzer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_mode != null) {
       builder.field(MODE.getPreferredName());
       _mode.toXContent(builder, params);
@@ -39,8 +37,6 @@ public class KuromojiAnalyzer  implements XContentable<KuromojiAnalyzer> {
     if (_userDictionary != null) {
       builder.field(USER_DICTIONARY.getPreferredName(), _userDictionary);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

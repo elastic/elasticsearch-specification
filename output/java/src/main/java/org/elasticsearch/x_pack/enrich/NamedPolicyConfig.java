@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.enrich.*;
@@ -21,7 +19,6 @@ public class NamedPolicyConfig  implements XContentable<NamedPolicyConfig> {
   public NamedPolicy getGeoMatch() { return this._geoMatch; }
   public NamedPolicyConfig setGeoMatch(NamedPolicy val) { this._geoMatch = val; return this; }
 
-
   static final ParseField MATCH = new ParseField("match");
   private NamedPolicy _match;
   public NamedPolicy getMatch() { return this._match; }
@@ -30,8 +27,8 @@ public class NamedPolicyConfig  implements XContentable<NamedPolicyConfig> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_geoMatch != null) {
       builder.field(GEO_MATCH.getPreferredName());
       _geoMatch.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class NamedPolicyConfig  implements XContentable<NamedPolicyConfig> {
       builder.field(MATCH.getPreferredName());
       _match.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

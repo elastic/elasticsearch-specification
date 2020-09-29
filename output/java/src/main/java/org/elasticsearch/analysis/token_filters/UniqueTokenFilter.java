@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-
-public class UniqueTokenFilter  implements XContentable<UniqueTokenFilter> {
+public class UniqueTokenFilter extends TokenFilterBase implements XContentable<UniqueTokenFilter> {
   
   static final ParseField ONLY_ON_SAME_POSITION = new ParseField("only_on_same_position");
   private Boolean _onlyOnSamePosition;
@@ -24,13 +22,11 @@ public class UniqueTokenFilter  implements XContentable<UniqueTokenFilter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_onlyOnSamePosition != null) {
       builder.field(ONLY_ON_SAME_POSITION.getPreferredName(), _onlyOnSamePosition);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

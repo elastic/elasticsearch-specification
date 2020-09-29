@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.mapping.types.*;
 
-
-public class HistogramProperty  implements XContentable<HistogramProperty> {
+public class HistogramProperty extends PropertyBase implements XContentable<HistogramProperty> {
   
   static final ParseField IGNORE_MALFORMED = new ParseField("ignore_malformed");
   private Boolean _ignoreMalformed;
@@ -24,13 +22,11 @@ public class HistogramProperty  implements XContentable<HistogramProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ignoreMalformed != null) {
       builder.field(IGNORE_MALFORMED.getPreferredName(), _ignoreMalformed);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

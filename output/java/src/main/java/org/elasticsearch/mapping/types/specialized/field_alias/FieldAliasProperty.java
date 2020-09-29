@@ -7,31 +7,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
+import org.elasticsearch.mapping.types.*;
 
-public class FieldAliasProperty  implements XContentable<FieldAliasProperty> {
+public class FieldAliasProperty extends PropertyBase implements XContentable<FieldAliasProperty> {
   
   static final ParseField PATH = new ParseField("path");
-  private Field _path;
-  public Field getPath() { return this._path; }
-  public FieldAliasProperty setPath(Field val) { this._path = val; return this; }
+  private String _path;
+  public String getPath() { return this._path; }
+  public FieldAliasProperty setPath(String val) { this._path = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_path != null) {
-      builder.field(PATH.getPreferredName());
-      _path.toXContent(builder, params);
+      builder.field(PATH.getPreferredName(), _path);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -43,7 +39,7 @@ public class FieldAliasProperty  implements XContentable<FieldAliasProperty> {
     new ObjectParser<>(FieldAliasProperty.class.getName(), false, FieldAliasProperty::new);
 
   static {
-    PARSER.declareObject(FieldAliasProperty::setPath, (p, t) -> Field.createFrom(p), PATH);
+    PARSER.declareString(FieldAliasProperty::setPath, PATH);
   }
 
 }

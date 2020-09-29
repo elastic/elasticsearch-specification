@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class DataDescription  implements XContentable<DataDescription> {
   
@@ -21,12 +19,10 @@ public class DataDescription  implements XContentable<DataDescription> {
   public String getFormat() { return this._format; }
   public DataDescription setFormat(String val) { this._format = val; return this; }
 
-
   static final ParseField TIME_FIELD = new ParseField("time_field");
-  private Field _timeField;
-  public Field getTimeField() { return this._timeField; }
-  public DataDescription setTimeField(Field val) { this._timeField = val; return this; }
-
+  private String _timeField;
+  public String getTimeField() { return this._timeField; }
+  public DataDescription setTimeField(String val) { this._timeField = val; return this; }
 
   static final ParseField TIME_FORMAT = new ParseField("time_format");
   private String _timeFormat;
@@ -36,20 +32,17 @@ public class DataDescription  implements XContentable<DataDescription> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_format != null) {
       builder.field(FORMAT.getPreferredName(), _format);
     }
     if (_timeField != null) {
-      builder.field(TIME_FIELD.getPreferredName());
-      _timeField.toXContent(builder, params);
+      builder.field(TIME_FIELD.getPreferredName(), _timeField);
     }
     if (_timeFormat != null) {
       builder.field(TIME_FORMAT.getPreferredName(), _timeFormat);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,7 +55,7 @@ public class DataDescription  implements XContentable<DataDescription> {
 
   static {
     PARSER.declareString(DataDescription::setFormat, FORMAT);
-    PARSER.declareObject(DataDescription::setTimeField, (p, t) -> Field.createFrom(p), TIME_FIELD);
+    PARSER.declareString(DataDescription::setTimeField, TIME_FIELD);
     PARSER.declareString(DataDescription::setTimeFormat, TIME_FORMAT);
   }
 

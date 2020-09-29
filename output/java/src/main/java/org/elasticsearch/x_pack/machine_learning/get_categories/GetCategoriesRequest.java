@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.job.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class GetCategoriesRequest  implements XContentable<GetCategoriesRequest> {
+public class GetCategoriesRequest extends RequestBase<GetCategoriesRequest> implements XContentable<GetCategoriesRequest> {
   
   static final ParseField PAGE = new ParseField("page");
   private Page _page;
@@ -24,14 +23,12 @@ public class GetCategoriesRequest  implements XContentable<GetCategoriesRequest>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_page != null) {
       builder.field(PAGE.getPreferredName());
       _page.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

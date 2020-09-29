@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.stats.*;
@@ -21,90 +19,75 @@ public class IndexStats  implements XContentable<IndexStats> {
   public CompletionStats getCompletion() { return this._completion; }
   public IndexStats setCompletion(CompletionStats val) { this._completion = val; return this; }
 
-
   static final ParseField DOCS = new ParseField("docs");
   private DocStats _docs;
   public DocStats getDocs() { return this._docs; }
   public IndexStats setDocs(DocStats val) { this._docs = val; return this; }
-
 
   static final ParseField FIELDDATA = new ParseField("fielddata");
   private FielddataStats _fielddata;
   public FielddataStats getFielddata() { return this._fielddata; }
   public IndexStats setFielddata(FielddataStats val) { this._fielddata = val; return this; }
 
-
   static final ParseField FLUSH = new ParseField("flush");
   private FlushStats _flush;
   public FlushStats getFlush() { return this._flush; }
   public IndexStats setFlush(FlushStats val) { this._flush = val; return this; }
-
 
   static final ParseField GET = new ParseField("get");
   private GetStats _get;
   public GetStats getGet() { return this._get; }
   public IndexStats setGet(GetStats val) { this._get = val; return this; }
 
-
   static final ParseField INDEXING = new ParseField("indexing");
   private IndexingStats _indexing;
   public IndexingStats getIndexing() { return this._indexing; }
   public IndexStats setIndexing(IndexingStats val) { this._indexing = val; return this; }
-
 
   static final ParseField MERGES = new ParseField("merges");
   private MergesStats _merges;
   public MergesStats getMerges() { return this._merges; }
   public IndexStats setMerges(MergesStats val) { this._merges = val; return this; }
 
-
   static final ParseField QUERY_CACHE = new ParseField("query_cache");
   private QueryCacheStats _queryCache;
   public QueryCacheStats getQueryCache() { return this._queryCache; }
   public IndexStats setQueryCache(QueryCacheStats val) { this._queryCache = val; return this; }
-
 
   static final ParseField RECOVERY = new ParseField("recovery");
   private RecoveryStats _recovery;
   public RecoveryStats getRecovery() { return this._recovery; }
   public IndexStats setRecovery(RecoveryStats val) { this._recovery = val; return this; }
 
-
   static final ParseField REFRESH = new ParseField("refresh");
   private RefreshStats _refresh;
   public RefreshStats getRefresh() { return this._refresh; }
   public IndexStats setRefresh(RefreshStats val) { this._refresh = val; return this; }
-
 
   static final ParseField REQUEST_CACHE = new ParseField("request_cache");
   private RequestCacheStats _requestCache;
   public RequestCacheStats getRequestCache() { return this._requestCache; }
   public IndexStats setRequestCache(RequestCacheStats val) { this._requestCache = val; return this; }
 
-
   static final ParseField SEARCH = new ParseField("search");
   private SearchStats _search;
   public SearchStats getSearch() { return this._search; }
   public IndexStats setSearch(SearchStats val) { this._search = val; return this; }
-
 
   static final ParseField SEGMENTS = new ParseField("segments");
   private SegmentsStats _segments;
   public SegmentsStats getSegments() { return this._segments; }
   public IndexStats setSegments(SegmentsStats val) { this._segments = val; return this; }
 
-
   static final ParseField STORE = new ParseField("store");
   private StoreStats _store;
   public StoreStats getStore() { return this._store; }
   public IndexStats setStore(StoreStats val) { this._store = val; return this; }
 
-
   static final ParseField TRANSLOG = new ParseField("translog");
   private TranslogStats _translog;
   public TranslogStats getTranslog() { return this._translog; }
   public IndexStats setTranslog(TranslogStats val) { this._translog = val; return this; }
-
 
   static final ParseField WARMER = new ParseField("warmer");
   private WarmerStats _warmer;
@@ -114,8 +97,8 @@ public class IndexStats  implements XContentable<IndexStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_completion != null) {
       builder.field(COMPLETION.getPreferredName());
       _completion.toXContent(builder, params);
@@ -180,8 +163,6 @@ public class IndexStats  implements XContentable<IndexStats> {
       builder.field(WARMER.getPreferredName());
       _warmer.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

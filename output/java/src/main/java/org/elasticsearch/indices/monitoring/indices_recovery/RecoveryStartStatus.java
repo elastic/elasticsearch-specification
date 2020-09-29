@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,10 +15,14 @@ import org.elasticsearch.internal.*;
 public class RecoveryStartStatus  implements XContentable<RecoveryStartStatus> {
   
   static final ParseField CHECK_INDEX_TIME = new ParseField("check_index_time");
-  private Long _checkIndexTime;
-  public Long getCheckIndexTime() { return this._checkIndexTime; }
-  public RecoveryStartStatus setCheckIndexTime(Long val) { this._checkIndexTime = val; return this; }
-
+  private long _checkIndexTime;
+  private boolean _checkIndexTime$isSet;
+  public long getCheckIndexTime() { return this._checkIndexTime; }
+  public RecoveryStartStatus setCheckIndexTime(long val) {
+    this._checkIndexTime = val;
+    _checkIndexTime$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_TIME_IN_MILLIS = new ParseField("total_time_in_millis");
   private String _totalTimeInMillis;
@@ -30,16 +32,14 @@ public class RecoveryStartStatus  implements XContentable<RecoveryStartStatus> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_checkIndexTime != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_checkIndexTime$isSet) {
       builder.field(CHECK_INDEX_TIME.getPreferredName(), _checkIndexTime);
     }
     if (_totalTimeInMillis != null) {
       builder.field(TOTAL_TIME_IN_MILLIS.getPreferredName(), _totalTimeInMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,74 +15,91 @@ import org.elasticsearch.internal.*;
 public class TransportStats  implements XContentable<TransportStats> {
   
   static final ParseField RX_COUNT = new ParseField("rx_count");
-  private Long _rxCount;
-  public Long getRxCount() { return this._rxCount; }
-  public TransportStats setRxCount(Long val) { this._rxCount = val; return this; }
-
+  private long _rxCount;
+  private boolean _rxCount$isSet;
+  public long getRxCount() { return this._rxCount; }
+  public TransportStats setRxCount(long val) {
+    this._rxCount = val;
+    _rxCount$isSet = true;
+    return this;
+  }
 
   static final ParseField RX_SIZE = new ParseField("rx_size");
   private String _rxSize;
   public String getRxSize() { return this._rxSize; }
   public TransportStats setRxSize(String val) { this._rxSize = val; return this; }
 
-
   static final ParseField RX_SIZE_IN_BYTES = new ParseField("rx_size_in_bytes");
-  private Long _rxSizeInBytes;
-  public Long getRxSizeInBytes() { return this._rxSizeInBytes; }
-  public TransportStats setRxSizeInBytes(Long val) { this._rxSizeInBytes = val; return this; }
-
+  private long _rxSizeInBytes;
+  private boolean _rxSizeInBytes$isSet;
+  public long getRxSizeInBytes() { return this._rxSizeInBytes; }
+  public TransportStats setRxSizeInBytes(long val) {
+    this._rxSizeInBytes = val;
+    _rxSizeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField SERVER_OPEN = new ParseField("server_open");
-  private Integer _serverOpen;
-  public Integer getServerOpen() { return this._serverOpen; }
-  public TransportStats setServerOpen(Integer val) { this._serverOpen = val; return this; }
-
+  private int _serverOpen;
+  private boolean _serverOpen$isSet;
+  public int getServerOpen() { return this._serverOpen; }
+  public TransportStats setServerOpen(int val) {
+    this._serverOpen = val;
+    _serverOpen$isSet = true;
+    return this;
+  }
 
   static final ParseField TX_COUNT = new ParseField("tx_count");
-  private Long _txCount;
-  public Long getTxCount() { return this._txCount; }
-  public TransportStats setTxCount(Long val) { this._txCount = val; return this; }
-
+  private long _txCount;
+  private boolean _txCount$isSet;
+  public long getTxCount() { return this._txCount; }
+  public TransportStats setTxCount(long val) {
+    this._txCount = val;
+    _txCount$isSet = true;
+    return this;
+  }
 
   static final ParseField TX_SIZE = new ParseField("tx_size");
   private String _txSize;
   public String getTxSize() { return this._txSize; }
   public TransportStats setTxSize(String val) { this._txSize = val; return this; }
 
-
   static final ParseField TX_SIZE_IN_BYTES = new ParseField("tx_size_in_bytes");
-  private Long _txSizeInBytes;
-  public Long getTxSizeInBytes() { return this._txSizeInBytes; }
-  public TransportStats setTxSizeInBytes(Long val) { this._txSizeInBytes = val; return this; }
+  private long _txSizeInBytes;
+  private boolean _txSizeInBytes$isSet;
+  public long getTxSizeInBytes() { return this._txSizeInBytes; }
+  public TransportStats setTxSizeInBytes(long val) {
+    this._txSizeInBytes = val;
+    _txSizeInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_rxCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_rxCount$isSet) {
       builder.field(RX_COUNT.getPreferredName(), _rxCount);
     }
     if (_rxSize != null) {
       builder.field(RX_SIZE.getPreferredName(), _rxSize);
     }
-    if (_rxSizeInBytes != null) {
+    if (_rxSizeInBytes$isSet) {
       builder.field(RX_SIZE_IN_BYTES.getPreferredName(), _rxSizeInBytes);
     }
-    if (_serverOpen != null) {
+    if (_serverOpen$isSet) {
       builder.field(SERVER_OPEN.getPreferredName(), _serverOpen);
     }
-    if (_txCount != null) {
+    if (_txCount$isSet) {
       builder.field(TX_COUNT.getPreferredName(), _txCount);
     }
     if (_txSize != null) {
       builder.field(TX_SIZE.getPreferredName(), _txSize);
     }
-    if (_txSizeInBytes != null) {
+    if (_txSizeInBytes$isSet) {
       builder.field(TX_SIZE_IN_BYTES.getPreferredName(), _txSizeInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

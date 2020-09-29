@@ -7,31 +7,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.query_dsl.multi_term_query_rewrite.*;
+import org.elasticsearch.internal.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class PrefixQuery  implements XContentable<PrefixQuery> {
+public class PrefixQuery extends QueryBase implements XContentable<PrefixQuery> {
   
   static final ParseField REWRITE = new ParseField("rewrite");
-  private MultiTermQueryRewrite _rewrite;
-  public MultiTermQueryRewrite getRewrite() { return this._rewrite; }
-  public PrefixQuery setRewrite(MultiTermQueryRewrite val) { this._rewrite = val; return this; }
+  private String _rewrite;
+  public String getRewrite() { return this._rewrite; }
+  public PrefixQuery setRewrite(String val) { this._rewrite = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_rewrite != null) {
-      builder.field(REWRITE.getPreferredName());
-      _rewrite.toXContent(builder, params);
+      builder.field(REWRITE.getPreferredName(), _rewrite);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -43,7 +39,7 @@ public class PrefixQuery  implements XContentable<PrefixQuery> {
     new ObjectParser<>(PrefixQuery.class.getName(), false, PrefixQuery::new);
 
   static {
-    PARSER.declareObject(PrefixQuery::setRewrite, (p, t) -> MultiTermQueryRewrite.PARSER.apply(p, t), REWRITE);
+    PARSER.declareString(PrefixQuery::setRewrite, REWRITE);
   }
 
 }

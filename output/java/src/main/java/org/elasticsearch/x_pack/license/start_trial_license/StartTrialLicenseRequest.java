@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class StartTrialLicenseRequest  implements XContentable<StartTrialLicenseRequest> {
+public class StartTrialLicenseRequest extends RequestBase<StartTrialLicenseRequest> implements XContentable<StartTrialLicenseRequest> {
   
   static final ParseField ACKNOWLEDGE = new ParseField("acknowledge");
   private Boolean _acknowledge;
   public Boolean getAcknowledge() { return this._acknowledge; }
   public StartTrialLicenseRequest setAcknowledge(Boolean val) { this._acknowledge = val; return this; }
-
 
   static final ParseField TYPE_QUERY_STRING = new ParseField("type_query_string");
   private String _typeQueryString;
@@ -30,16 +27,14 @@ public class StartTrialLicenseRequest  implements XContentable<StartTrialLicense
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_acknowledge != null) {
       builder.field(ACKNOWLEDGE.getPreferredName(), _acknowledge);
     }
     if (_typeQueryString != null) {
       builder.field(TYPE_QUERY_STRING.getPreferredName(), _typeQueryString);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

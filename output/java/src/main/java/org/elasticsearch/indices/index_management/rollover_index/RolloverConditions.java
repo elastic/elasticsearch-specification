@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
@@ -18,16 +16,19 @@ import org.elasticsearch.internal.*;
 public class RolloverConditions  implements XContentable<RolloverConditions> {
   
   static final ParseField MAX_AGE = new ParseField("max_age");
-  private Time _maxAge;
-  public Time getMaxAge() { return this._maxAge; }
-  public RolloverConditions setMaxAge(Time val) { this._maxAge = val; return this; }
-
+  private String _maxAge;
+  public String getMaxAge() { return this._maxAge; }
+  public RolloverConditions setMaxAge(String val) { this._maxAge = val; return this; }
 
   static final ParseField MAX_DOCS = new ParseField("max_docs");
-  private Long _maxDocs;
-  public Long getMaxDocs() { return this._maxDocs; }
-  public RolloverConditions setMaxDocs(Long val) { this._maxDocs = val; return this; }
-
+  private long _maxDocs;
+  private boolean _maxDocs$isSet;
+  public long getMaxDocs() { return this._maxDocs; }
+  public RolloverConditions setMaxDocs(long val) {
+    this._maxDocs = val;
+    _maxDocs$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_SIZE = new ParseField("max_size");
   private String _maxSize;
@@ -37,20 +38,17 @@ public class RolloverConditions  implements XContentable<RolloverConditions> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_maxAge != null) {
-      builder.field(MAX_AGE.getPreferredName());
-      _maxAge.toXContent(builder, params);
+      builder.field(MAX_AGE.getPreferredName(), _maxAge);
     }
-    if (_maxDocs != null) {
+    if (_maxDocs$isSet) {
       builder.field(MAX_DOCS.getPreferredName(), _maxDocs);
     }
     if (_maxSize != null) {
       builder.field(MAX_SIZE.getPreferredName(), _maxSize);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,7 +60,7 @@ public class RolloverConditions  implements XContentable<RolloverConditions> {
     new ObjectParser<>(RolloverConditions.class.getName(), false, RolloverConditions::new);
 
   static {
-    PARSER.declareObject(RolloverConditions::setMaxAge, (p, t) -> Time.PARSER.apply(p, t), MAX_AGE);
+    PARSER.declareString(RolloverConditions::setMaxAge, MAX_AGE);
     PARSER.declareLong(RolloverConditions::setMaxDocs, MAX_DOCS);
     PARSER.declareString(RolloverConditions::setMaxSize, MAX_SIZE);
   }

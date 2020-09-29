@@ -7,27 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.monitoring.indices_stats.*;
 import org.elasticsearch.common_options.hit.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class IndicesStatsResponse  implements XContentable<IndicesStatsResponse> {
+public class IndicesStatsResponse extends ResponseBase<IndicesStatsResponse> implements XContentable<IndicesStatsResponse> {
   
   static final ParseField INDICES = new ParseField("indices");
   private NamedContainer<String, IndicesStats> _indices;
   public NamedContainer<String, IndicesStats> getIndices() { return this._indices; }
   public IndicesStatsResponse setIndices(NamedContainer<String, IndicesStats> val) { this._indices = val; return this; }
 
-
   static final ParseField SHARDS = new ParseField("_shards");
   private ShardStatistics _shards;
   public ShardStatistics getShards() { return this._shards; }
   public IndicesStatsResponse setShards(ShardStatistics val) { this._shards = val; return this; }
-
 
   static final ParseField ALL = new ParseField("_all");
   private IndicesStats _all;
@@ -37,8 +34,8 @@ public class IndicesStatsResponse  implements XContentable<IndicesStatsResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_indices != null) {
       builder.field(INDICES.getPreferredName());
       _indices.toXContent(builder, params);
@@ -51,8 +48,6 @@ public class IndicesStatsResponse  implements XContentable<IndicesStatsResponse>
       builder.field(ALL.getPreferredName());
       _all.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

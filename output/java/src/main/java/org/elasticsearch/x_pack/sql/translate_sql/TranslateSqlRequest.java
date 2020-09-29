@@ -7,33 +7,34 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.query_dsl.abstractions.container.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class TranslateSqlRequest  implements XContentable<TranslateSqlRequest> {
+public class TranslateSqlRequest extends RequestBase<TranslateSqlRequest> implements XContentable<TranslateSqlRequest> {
   
   static final ParseField FETCH_SIZE = new ParseField("fetch_size");
-  private Integer _fetchSize;
-  public Integer getFetchSize() { return this._fetchSize; }
-  public TranslateSqlRequest setFetchSize(Integer val) { this._fetchSize = val; return this; }
-
+  private int _fetchSize;
+  private boolean _fetchSize$isSet;
+  public int getFetchSize() { return this._fetchSize; }
+  public TranslateSqlRequest setFetchSize(int val) {
+    this._fetchSize = val;
+    _fetchSize$isSet = true;
+    return this;
+  }
 
   static final ParseField FILTER = new ParseField("filter");
   private QueryContainer _filter;
   public QueryContainer getFilter() { return this._filter; }
   public TranslateSqlRequest setFilter(QueryContainer val) { this._filter = val; return this; }
 
-
   static final ParseField QUERY = new ParseField("query");
   private String _query;
   public String getQuery() { return this._query; }
   public TranslateSqlRequest setQuery(String val) { this._query = val; return this; }
-
 
   static final ParseField TIME_ZONE = new ParseField("time_zone");
   private String _timeZone;
@@ -43,9 +44,9 @@ public class TranslateSqlRequest  implements XContentable<TranslateSqlRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_fetchSize != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_fetchSize$isSet) {
       builder.field(FETCH_SIZE.getPreferredName(), _fetchSize);
     }
     if (_filter != null) {
@@ -58,8 +59,6 @@ public class TranslateSqlRequest  implements XContentable<TranslateSqlRequest> {
     if (_timeZone != null) {
       builder.field(TIME_ZONE.getPreferredName(), _timeZone);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

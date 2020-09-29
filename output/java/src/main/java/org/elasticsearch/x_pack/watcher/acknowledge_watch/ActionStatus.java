@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.acknowledge_watch.*;
@@ -21,18 +19,15 @@ public class ActionStatus  implements XContentable<ActionStatus> {
   public AcknowledgeState getAck() { return this._ack; }
   public ActionStatus setAck(AcknowledgeState val) { this._ack = val; return this; }
 
-
   static final ParseField LAST_EXECUTION = new ParseField("last_execution");
   private ExecutionState _lastExecution;
   public ExecutionState getLastExecution() { return this._lastExecution; }
   public ActionStatus setLastExecution(ExecutionState val) { this._lastExecution = val; return this; }
 
-
   static final ParseField LAST_SUCCESSFUL_EXECUTION = new ParseField("last_successful_execution");
   private ExecutionState _lastSuccessfulExecution;
   public ExecutionState getLastSuccessfulExecution() { return this._lastSuccessfulExecution; }
   public ActionStatus setLastSuccessfulExecution(ExecutionState val) { this._lastSuccessfulExecution = val; return this; }
-
 
   static final ParseField LAST_THROTTLE = new ParseField("last_throttle");
   private ThrottleState _lastThrottle;
@@ -42,8 +37,8 @@ public class ActionStatus  implements XContentable<ActionStatus> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_ack != null) {
       builder.field(ACK.getPreferredName());
       _ack.toXContent(builder, params);
@@ -60,8 +55,6 @@ public class ActionStatus  implements XContentable<ActionStatus> {
       builder.field(LAST_THROTTLE.getPreferredName());
       _lastThrottle.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

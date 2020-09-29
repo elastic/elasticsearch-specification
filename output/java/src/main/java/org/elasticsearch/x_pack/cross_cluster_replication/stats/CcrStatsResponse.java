@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.cross_cluster_replication.stats.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class CcrStatsResponse  implements XContentable<CcrStatsResponse> {
+public class CcrStatsResponse extends ResponseBase<CcrStatsResponse> implements XContentable<CcrStatsResponse> {
   
   static final ParseField AUTO_FOLLOW_STATS = new ParseField("auto_follow_stats");
   private CcrAutoFollowStats _autoFollowStats;
   public CcrAutoFollowStats getAutoFollowStats() { return this._autoFollowStats; }
   public CcrStatsResponse setAutoFollowStats(CcrAutoFollowStats val) { this._autoFollowStats = val; return this; }
-
 
   static final ParseField FOLLOW_STATS = new ParseField("follow_stats");
   private CcrFollowStats _followStats;
@@ -30,8 +28,8 @@ public class CcrStatsResponse  implements XContentable<CcrStatsResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_autoFollowStats != null) {
       builder.field(AUTO_FOLLOW_STATS.getPreferredName());
       _autoFollowStats.toXContent(builder, params);
@@ -40,8 +38,6 @@ public class CcrStatsResponse  implements XContentable<CcrStatsResponse> {
       builder.field(FOLLOW_STATS.getPreferredName());
       _followStats.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

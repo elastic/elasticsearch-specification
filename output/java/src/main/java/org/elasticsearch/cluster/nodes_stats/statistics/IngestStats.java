@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,56 +16,70 @@ import org.elasticsearch.cluster.nodes_stats.statistics.*;
 public class IngestStats  implements XContentable<IngestStats> {
   
   static final ParseField COUNT = new ParseField("count");
-  private Long _count;
-  public Long getCount() { return this._count; }
-  public IngestStats setCount(Long val) { this._count = val; return this; }
-
+  private long _count;
+  private boolean _count$isSet;
+  public long getCount() { return this._count; }
+  public IngestStats setCount(long val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField CURRENT = new ParseField("current");
-  private Long _current;
-  public Long getCurrent() { return this._current; }
-  public IngestStats setCurrent(Long val) { this._current = val; return this; }
-
+  private long _current;
+  private boolean _current$isSet;
+  public long getCurrent() { return this._current; }
+  public IngestStats setCurrent(long val) {
+    this._current = val;
+    _current$isSet = true;
+    return this;
+  }
 
   static final ParseField FAILED = new ParseField("failed");
-  private Long _failed;
-  public Long getFailed() { return this._failed; }
-  public IngestStats setFailed(Long val) { this._failed = val; return this; }
-
-
-  static final ParseField TIME_IN_MILLIS = new ParseField("time_in_millis");
-  private Long _timeInMillis;
-  public Long getTimeInMillis() { return this._timeInMillis; }
-  public IngestStats setTimeInMillis(Long val) { this._timeInMillis = val; return this; }
-
+  private long _failed;
+  private boolean _failed$isSet;
+  public long getFailed() { return this._failed; }
+  public IngestStats setFailed(long val) {
+    this._failed = val;
+    _failed$isSet = true;
+    return this;
+  }
 
   static final ParseField PROCESSORS = new ParseField("processors");
   private List<KeyedProcessorStats> _processors;
   public List<KeyedProcessorStats> getProcessors() { return this._processors; }
   public IngestStats setProcessors(List<KeyedProcessorStats> val) { this._processors = val; return this; }
 
+  static final ParseField TIME_IN_MILLIS = new ParseField("time_in_millis");
+  private long _timeInMillis;
+  private boolean _timeInMillis$isSet;
+  public long getTimeInMillis() { return this._timeInMillis; }
+  public IngestStats setTimeInMillis(long val) {
+    this._timeInMillis = val;
+    _timeInMillis$isSet = true;
+    return this;
+  }
+
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_count != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
-    if (_current != null) {
+    if (_current$isSet) {
       builder.field(CURRENT.getPreferredName(), _current);
     }
-    if (_failed != null) {
+    if (_failed$isSet) {
       builder.field(FAILED.getPreferredName(), _failed);
-    }
-    if (_timeInMillis != null) {
-      builder.field(TIME_IN_MILLIS.getPreferredName(), _timeInMillis);
     }
     if (_processors != null) {
       builder.array(PROCESSORS.getPreferredName(), _processors);
     }
-    builder.endObject();
-    return builder;
+    if (_timeInMillis$isSet) {
+      builder.field(TIME_IN_MILLIS.getPreferredName(), _timeInMillis);
+    }
   }
 
   @Override
@@ -82,8 +94,8 @@ public class IngestStats  implements XContentable<IngestStats> {
     PARSER.declareLong(IngestStats::setCount, COUNT);
     PARSER.declareLong(IngestStats::setCurrent, CURRENT);
     PARSER.declareLong(IngestStats::setFailed, FAILED);
-    PARSER.declareLong(IngestStats::setTimeInMillis, TIME_IN_MILLIS);
     PARSER.declareObjectArray(IngestStats::setProcessors, (p, t) -> KeyedProcessorStats.PARSER.apply(p, t), PROCESSORS);
+    PARSER.declareLong(IngestStats::setTimeInMillis, TIME_IN_MILLIS);
   }
 
 }

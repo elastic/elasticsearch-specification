@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.mapping.types.*;
 
-
-public class DocValuesPropertyBase  implements XContentable<DocValuesPropertyBase> {
+public class DocValuesPropertyBase extends CorePropertyBase implements XContentable<DocValuesPropertyBase> {
   
   static final ParseField DOC_VALUES = new ParseField("doc_values");
   private Boolean _docValues;
@@ -24,13 +22,11 @@ public class DocValuesPropertyBase  implements XContentable<DocValuesPropertyBas
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_docValues != null) {
       builder.field(DOC_VALUES.getPreferredName(), _docValues);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.schedule.*;
@@ -17,21 +15,19 @@ import org.elasticsearch.x_pack.watcher.schedule.*;
 public class DailySchedule  implements XContentable<DailySchedule> {
   
   static final ParseField AT = new ParseField("at");
-  private Either<List<String>, TimeOfDay> _at;
-  public Either<List<String>, TimeOfDay> getAt() { return this._at; }
-  public DailySchedule setAt(Either<List<String>, TimeOfDay> val) { this._at = val; return this; }
+  private Union2<List<String>, TimeOfDay> _at;
+  public Union2<List<String>, TimeOfDay> getAt() { return this._at; }
+  public DailySchedule setAt(Union2<List<String>, TimeOfDay> val) { this._at = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_at != null) {
       builder.field(AT.getPreferredName());
-      _at.map(builder::value /* TODO List<String> */, r-> r.toXContent(builder, params));
+      _at.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -43,7 +39,7 @@ public class DailySchedule  implements XContentable<DailySchedule> {
     new ObjectParser<>(DailySchedule.class.getName(), false, DailySchedule::new);
 
   static {
-    PARSER.declareObject(DailySchedule::setAt, (p, t) ->  new Either<List<String>, TimeOfDay>() /* TODO UnionOf */, AT);
+    PARSER.declareObject(DailySchedule::setAt, (p, t) ->  new Union2<List<String>, TimeOfDay>(), AT);
   }
 
 }

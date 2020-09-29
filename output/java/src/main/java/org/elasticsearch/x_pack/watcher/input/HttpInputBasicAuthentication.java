@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class HttpInputBasicAuthentication  implements XContentable<HttpInputBasi
   public String getPassword() { return this._password; }
   public HttpInputBasicAuthentication setPassword(String val) { this._password = val; return this; }
 
-
   static final ParseField USERNAME = new ParseField("username");
   private String _username;
   public String getUsername() { return this._username; }
@@ -30,16 +27,14 @@ public class HttpInputBasicAuthentication  implements XContentable<HttpInputBasi
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_password != null) {
       builder.field(PASSWORD.getPreferredName(), _password);
     }
     if (_username != null) {
       builder.field(USERNAME.getPreferredName(), _username);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

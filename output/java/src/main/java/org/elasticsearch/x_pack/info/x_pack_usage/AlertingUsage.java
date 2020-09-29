@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.info.x_pack_usage.*;
 
-public class AlertingUsage  implements XContentable<AlertingUsage> {
+public class AlertingUsage extends XPackUsage implements XContentable<AlertingUsage> {
   
   static final ParseField COUNT = new ParseField("count");
   private AlertingCount _count;
   public AlertingCount getCount() { return this._count; }
   public AlertingUsage setCount(AlertingCount val) { this._count = val; return this; }
 
-
   static final ParseField EXECUTION = new ParseField("execution");
   private AlertingExecution _execution;
   public AlertingExecution getExecution() { return this._execution; }
   public AlertingUsage setExecution(AlertingExecution val) { this._execution = val; return this; }
-
 
   static final ParseField WATCH = new ParseField("watch");
   private AlertingInput _watch;
@@ -36,8 +32,8 @@ public class AlertingUsage  implements XContentable<AlertingUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_count != null) {
       builder.field(COUNT.getPreferredName());
       _count.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class AlertingUsage  implements XContentable<AlertingUsage> {
       builder.field(WATCH.getPreferredName());
       _watch.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

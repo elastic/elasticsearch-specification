@@ -7,31 +7,26 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class ReverseNestedAggregation  implements XContentable<ReverseNestedAggregation> {
   
   static final ParseField PATH = new ParseField("path");
-  private Field _path;
-  public Field getPath() { return this._path; }
-  public ReverseNestedAggregation setPath(Field val) { this._path = val; return this; }
+  private String _path;
+  public String getPath() { return this._path; }
+  public ReverseNestedAggregation setPath(String val) { this._path = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_path != null) {
-      builder.field(PATH.getPreferredName());
-      _path.toXContent(builder, params);
+      builder.field(PATH.getPreferredName(), _path);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -43,7 +38,7 @@ public class ReverseNestedAggregation  implements XContentable<ReverseNestedAggr
     new ObjectParser<>(ReverseNestedAggregation.class.getName(), false, ReverseNestedAggregation::new);
 
   static {
-    PARSER.declareObject(ReverseNestedAggregation::setPath, (p, t) -> Field.createFrom(p), PATH);
+    PARSER.declareString(ReverseNestedAggregation::setPath, PATH);
   }
 
 }

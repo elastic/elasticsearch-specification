@@ -7,26 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.watcher_stats.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class WatcherStatsResponse  implements XContentable<WatcherStatsResponse> {
+public class WatcherStatsResponse extends ResponseBase<WatcherStatsResponse> implements XContentable<WatcherStatsResponse> {
   
   static final ParseField CLUSTER_NAME = new ParseField("cluster_name");
   private String _clusterName;
   public String getClusterName() { return this._clusterName; }
   public WatcherStatsResponse setClusterName(String val) { this._clusterName = val; return this; }
 
-
   static final ParseField MANUALLY_STOPPED = new ParseField("manually_stopped");
   private Boolean _manuallyStopped;
   public Boolean getManuallyStopped() { return this._manuallyStopped; }
   public WatcherStatsResponse setManuallyStopped(Boolean val) { this._manuallyStopped = val; return this; }
-
 
   static final ParseField STATS = new ParseField("stats");
   private List<WatcherNodeStats> _stats;
@@ -36,8 +33,8 @@ public class WatcherStatsResponse  implements XContentable<WatcherStatsResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_clusterName != null) {
       builder.field(CLUSTER_NAME.getPreferredName(), _clusterName);
     }
@@ -47,8 +44,6 @@ public class WatcherStatsResponse  implements XContentable<WatcherStatsResponse>
     if (_stats != null) {
       builder.array(STATS.getPreferredName(), _stats);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

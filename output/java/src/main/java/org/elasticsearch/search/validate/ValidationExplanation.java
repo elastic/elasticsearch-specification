@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,18 +19,15 @@ public class ValidationExplanation  implements XContentable<ValidationExplanatio
   public String getError() { return this._error; }
   public ValidationExplanation setError(String val) { this._error = val; return this; }
 
-
   static final ParseField EXPLANATION = new ParseField("explanation");
   private String _explanation;
   public String getExplanation() { return this._explanation; }
   public ValidationExplanation setExplanation(String val) { this._explanation = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("index");
   private String _index;
   public String getIndex() { return this._index; }
   public ValidationExplanation setIndex(String val) { this._index = val; return this; }
-
 
   static final ParseField VALID = new ParseField("valid");
   private Boolean _valid;
@@ -42,8 +37,8 @@ public class ValidationExplanation  implements XContentable<ValidationExplanatio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_error != null) {
       builder.field(ERROR.getPreferredName(), _error);
     }
@@ -56,8 +51,6 @@ public class ValidationExplanation  implements XContentable<ValidationExplanatio
     if (_valid != null) {
       builder.field(VALID.getPreferredName(), _valid);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

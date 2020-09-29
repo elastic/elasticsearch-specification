@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class GetDatafeedsRequest  implements XContentable<GetDatafeedsRequest> {
+public class GetDatafeedsRequest extends RequestBase<GetDatafeedsRequest> implements XContentable<GetDatafeedsRequest> {
   
   static final ParseField ALLOW_NO_DATAFEEDS = new ParseField("allow_no_datafeeds");
   private Boolean _allowNoDatafeeds;
@@ -24,13 +22,11 @@ public class GetDatafeedsRequest  implements XContentable<GetDatafeedsRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_allowNoDatafeeds != null) {
       builder.field(ALLOW_NO_DATAFEEDS.getPreferredName(), _allowNoDatafeeds);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

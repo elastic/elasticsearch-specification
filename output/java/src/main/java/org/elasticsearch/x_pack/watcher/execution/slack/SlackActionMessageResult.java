@@ -7,13 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.action.slack.*;
 import org.elasticsearch.x_pack.watcher.execution.*;
+import org.elasticsearch.x_pack.watcher.input.*;
 
 public class SlackActionMessageResult  implements XContentable<SlackActionMessageResult> {
   
@@ -22,30 +21,25 @@ public class SlackActionMessageResult  implements XContentable<SlackActionMessag
   public SlackMessage getMessage() { return this._message; }
   public SlackActionMessageResult setMessage(SlackMessage val) { this._message = val; return this; }
 
-
   static final ParseField REASON = new ParseField("reason");
   private String _reason;
   public String getReason() { return this._reason; }
   public SlackActionMessageResult setReason(String val) { this._reason = val; return this; }
-
 
   static final ParseField REQUEST = new ParseField("request");
   private HttpInputRequestResult _request;
   public HttpInputRequestResult getRequest() { return this._request; }
   public SlackActionMessageResult setRequest(HttpInputRequestResult val) { this._request = val; return this; }
 
-
   static final ParseField RESPONSE = new ParseField("response");
   private HttpInputResponseResult _response;
   public HttpInputResponseResult getResponse() { return this._response; }
   public SlackActionMessageResult setResponse(HttpInputResponseResult val) { this._response = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private Status _status;
   public Status getStatus() { return this._status; }
   public SlackActionMessageResult setStatus(Status val) { this._status = val; return this; }
-
 
   static final ParseField TO = new ParseField("to");
   private String _to;
@@ -55,8 +49,8 @@ public class SlackActionMessageResult  implements XContentable<SlackActionMessag
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_message != null) {
       builder.field(MESSAGE.getPreferredName());
       _message.toXContent(builder, params);
@@ -79,8 +73,6 @@ public class SlackActionMessageResult  implements XContentable<SlackActionMessag
     if (_to != null) {
       builder.field(TO.getPreferredName(), _to);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

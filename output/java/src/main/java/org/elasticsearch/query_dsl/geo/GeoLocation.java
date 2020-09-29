@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class GeoLocation  implements XContentable<GeoLocation> {
   
   static final ParseField LAT = new ParseField("lat");
-  private Double _lat;
-  public Double getLat() { return this._lat; }
-  public GeoLocation setLat(Double val) { this._lat = val; return this; }
-
+  private double _lat;
+  private boolean _lat$isSet;
+  public double getLat() { return this._lat; }
+  public GeoLocation setLat(double val) {
+    this._lat = val;
+    _lat$isSet = true;
+    return this;
+  }
 
   static final ParseField LON = new ParseField("lon");
-  private Double _lon;
-  public Double getLon() { return this._lon; }
-  public GeoLocation setLon(Double val) { this._lon = val; return this; }
+  private double _lon;
+  private boolean _lon$isSet;
+  public double getLon() { return this._lon; }
+  public GeoLocation setLon(double val) {
+    this._lon = val;
+    _lon$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_lat != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_lat$isSet) {
       builder.field(LAT.getPreferredName(), _lat);
     }
-    if (_lon != null) {
+    if (_lon$isSet) {
       builder.field(LON.getPreferredName(), _lon);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

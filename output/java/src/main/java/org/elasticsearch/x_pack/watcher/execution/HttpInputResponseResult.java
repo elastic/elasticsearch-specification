@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,23 +19,26 @@ public class HttpInputResponseResult  implements XContentable<HttpInputResponseR
   public String getBody() { return this._body; }
   public HttpInputResponseResult setBody(String val) { this._body = val; return this; }
 
-
   static final ParseField HEADERS = new ParseField("headers");
   private NamedContainer<String, List<String>> _headers;
   public NamedContainer<String, List<String>> getHeaders() { return this._headers; }
   public HttpInputResponseResult setHeaders(NamedContainer<String, List<String>> val) { this._headers = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
-  private Integer _status;
-  public Integer getStatus() { return this._status; }
-  public HttpInputResponseResult setStatus(Integer val) { this._status = val; return this; }
+  private int _status;
+  private boolean _status$isSet;
+  public int getStatus() { return this._status; }
+  public HttpInputResponseResult setStatus(int val) {
+    this._status = val;
+    _status$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_body != null) {
       builder.field(BODY.getPreferredName(), _body);
     }
@@ -45,11 +46,9 @@ public class HttpInputResponseResult  implements XContentable<HttpInputResponseR
       builder.field(HEADERS.getPreferredName());
       _headers.toXContent(builder, params);
     }
-    if (_status != null) {
+    if (_status$isSet) {
       builder.field(STATUS.getPreferredName(), _status);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

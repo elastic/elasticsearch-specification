@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,62 @@ import org.elasticsearch.internal.*;
 public class JobStatistics  implements XContentable<JobStatistics> {
   
   static final ParseField AVG = new ParseField("avg");
-  private Double _avg;
-  public Double getAvg() { return this._avg; }
-  public JobStatistics setAvg(Double val) { this._avg = val; return this; }
-
+  private double _avg;
+  private boolean _avg$isSet;
+  public double getAvg() { return this._avg; }
+  public JobStatistics setAvg(double val) {
+    this._avg = val;
+    _avg$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX = new ParseField("max");
-  private Double _max;
-  public Double getMax() { return this._max; }
-  public JobStatistics setMax(Double val) { this._max = val; return this; }
-
+  private double _max;
+  private boolean _max$isSet;
+  public double getMax() { return this._max; }
+  public JobStatistics setMax(double val) {
+    this._max = val;
+    _max$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN = new ParseField("min");
-  private Double _min;
-  public Double getMin() { return this._min; }
-  public JobStatistics setMin(Double val) { this._min = val; return this; }
-
+  private double _min;
+  private boolean _min$isSet;
+  public double getMin() { return this._min; }
+  public JobStatistics setMin(double val) {
+    this._min = val;
+    _min$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
-  private Double _total;
-  public Double getTotal() { return this._total; }
-  public JobStatistics setTotal(Double val) { this._total = val; return this; }
+  private double _total;
+  private boolean _total$isSet;
+  public double getTotal() { return this._total; }
+  public JobStatistics setTotal(double val) {
+    this._total = val;
+    _total$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_avg != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_avg$isSet) {
       builder.field(AVG.getPreferredName(), _avg);
     }
-    if (_max != null) {
+    if (_max$isSet) {
       builder.field(MAX.getPreferredName(), _max);
     }
-    if (_min != null) {
+    if (_min$isSet) {
       builder.field(MIN.getPreferredName(), _min);
     }
-    if (_total != null) {
+    if (_total$isSet) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

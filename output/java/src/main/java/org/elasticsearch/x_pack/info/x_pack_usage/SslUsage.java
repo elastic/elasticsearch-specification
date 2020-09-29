@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.info.x_pack_usage.*;
@@ -21,7 +19,6 @@ public class SslUsage  implements XContentable<SslUsage> {
   public SecurityFeatureToggle getHttp() { return this._http; }
   public SslUsage setHttp(SecurityFeatureToggle val) { this._http = val; return this; }
 
-
   static final ParseField TRANSPORT = new ParseField("transport");
   private SecurityFeatureToggle _transport;
   public SecurityFeatureToggle getTransport() { return this._transport; }
@@ -30,8 +27,8 @@ public class SslUsage  implements XContentable<SslUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_http != null) {
       builder.field(HTTP.getPreferredName());
       _http.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class SslUsage  implements XContentable<SslUsage> {
       builder.field(TRANSPORT.getPreferredName());
       _transport.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

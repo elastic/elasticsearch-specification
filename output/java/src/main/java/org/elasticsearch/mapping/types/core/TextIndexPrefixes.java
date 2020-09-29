@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class TextIndexPrefixes  implements XContentable<TextIndexPrefixes> {
   
   static final ParseField MAX_CHARS = new ParseField("max_chars");
-  private Integer _maxChars;
-  public Integer getMaxChars() { return this._maxChars; }
-  public TextIndexPrefixes setMaxChars(Integer val) { this._maxChars = val; return this; }
-
+  private int _maxChars;
+  private boolean _maxChars$isSet;
+  public int getMaxChars() { return this._maxChars; }
+  public TextIndexPrefixes setMaxChars(int val) {
+    this._maxChars = val;
+    _maxChars$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN_CHARS = new ParseField("min_chars");
-  private Integer _minChars;
-  public Integer getMinChars() { return this._minChars; }
-  public TextIndexPrefixes setMinChars(Integer val) { this._minChars = val; return this; }
+  private int _minChars;
+  private boolean _minChars$isSet;
+  public int getMinChars() { return this._minChars; }
+  public TextIndexPrefixes setMinChars(int val) {
+    this._minChars = val;
+    _minChars$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_maxChars != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_maxChars$isSet) {
       builder.field(MAX_CHARS.getPreferredName(), _maxChars);
     }
-    if (_minChars != null) {
+    if (_minChars$isSet) {
       builder.field(MIN_CHARS.getPreferredName(), _minChars);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

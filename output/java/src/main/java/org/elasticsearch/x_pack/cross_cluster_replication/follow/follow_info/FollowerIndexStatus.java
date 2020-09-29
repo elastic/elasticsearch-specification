@@ -1,6 +1,10 @@
 
 package org.elasticsearch.x_pack.cross_cluster_replication.follow.follow_info;
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;

@@ -7,63 +7,60 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.job.config.*;
 import org.elasticsearch.internal.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class ValidateJobRequest  implements XContentable<ValidateJobRequest> {
+public class ValidateJobRequest extends RequestBase<ValidateJobRequest> implements XContentable<ValidateJobRequest> {
   
   static final ParseField ANALYSIS_CONFIG = new ParseField("analysis_config");
   private AnalysisConfig _analysisConfig;
   public AnalysisConfig getAnalysisConfig() { return this._analysisConfig; }
   public ValidateJobRequest setAnalysisConfig(AnalysisConfig val) { this._analysisConfig = val; return this; }
 
-
   static final ParseField ANALYSIS_LIMITS = new ParseField("analysis_limits");
   private AnalysisLimits _analysisLimits;
   public AnalysisLimits getAnalysisLimits() { return this._analysisLimits; }
   public ValidateJobRequest setAnalysisLimits(AnalysisLimits val) { this._analysisLimits = val; return this; }
-
 
   static final ParseField DATA_DESCRIPTION = new ParseField("data_description");
   private DataDescription _dataDescription;
   public DataDescription getDataDescription() { return this._dataDescription; }
   public ValidateJobRequest setDataDescription(DataDescription val) { this._dataDescription = val; return this; }
 
-
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public ValidateJobRequest setDescription(String val) { this._description = val; return this; }
-
 
   static final ParseField MODEL_PLOT = new ParseField("model_plot");
   private ModelPlotConfig _modelPlot;
   public ModelPlotConfig getModelPlot() { return this._modelPlot; }
   public ValidateJobRequest setModelPlot(ModelPlotConfig val) { this._modelPlot = val; return this; }
 
-
   static final ParseField MODEL_SNAPSHOT_RETENTION_DAYS = new ParseField("model_snapshot_retention_days");
-  private Long _modelSnapshotRetentionDays;
-  public Long getModelSnapshotRetentionDays() { return this._modelSnapshotRetentionDays; }
-  public ValidateJobRequest setModelSnapshotRetentionDays(Long val) { this._modelSnapshotRetentionDays = val; return this; }
-
+  private long _modelSnapshotRetentionDays;
+  private boolean _modelSnapshotRetentionDays$isSet;
+  public long getModelSnapshotRetentionDays() { return this._modelSnapshotRetentionDays; }
+  public ValidateJobRequest setModelSnapshotRetentionDays(long val) {
+    this._modelSnapshotRetentionDays = val;
+    _modelSnapshotRetentionDays$isSet = true;
+    return this;
+  }
 
   static final ParseField RESULTS_INDEX_NAME = new ParseField("results_index_name");
-  private IndexName _resultsIndexName;
-  public IndexName getResultsIndexName() { return this._resultsIndexName; }
-  public ValidateJobRequest setResultsIndexName(IndexName val) { this._resultsIndexName = val; return this; }
+  private String _resultsIndexName;
+  public String getResultsIndexName() { return this._resultsIndexName; }
+  public ValidateJobRequest setResultsIndexName(String val) { this._resultsIndexName = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_analysisConfig != null) {
       builder.field(ANALYSIS_CONFIG.getPreferredName());
       _analysisConfig.toXContent(builder, params);
@@ -83,15 +80,12 @@ public class ValidateJobRequest  implements XContentable<ValidateJobRequest> {
       builder.field(MODEL_PLOT.getPreferredName());
       _modelPlot.toXContent(builder, params);
     }
-    if (_modelSnapshotRetentionDays != null) {
+    if (_modelSnapshotRetentionDays$isSet) {
       builder.field(MODEL_SNAPSHOT_RETENTION_DAYS.getPreferredName(), _modelSnapshotRetentionDays);
     }
     if (_resultsIndexName != null) {
-      builder.field(RESULTS_INDEX_NAME.getPreferredName());
-      _resultsIndexName.toXContent(builder, params);
+      builder.field(RESULTS_INDEX_NAME.getPreferredName(), _resultsIndexName);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -109,7 +103,7 @@ public class ValidateJobRequest  implements XContentable<ValidateJobRequest> {
     PARSER.declareString(ValidateJobRequest::setDescription, DESCRIPTION);
     PARSER.declareObject(ValidateJobRequest::setModelPlot, (p, t) -> ModelPlotConfig.PARSER.apply(p, t), MODEL_PLOT);
     PARSER.declareLong(ValidateJobRequest::setModelSnapshotRetentionDays, MODEL_SNAPSHOT_RETENTION_DAYS);
-    PARSER.declareObject(ValidateJobRequest::setResultsIndexName, (p, t) -> IndexName.createFrom(p), RESULTS_INDEX_NAME);
+    PARSER.declareString(ValidateJobRequest::setResultsIndexName, RESULTS_INDEX_NAME);
   }
 
 }

@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-
-public class StemmerOverrideTokenFilter  implements XContentable<StemmerOverrideTokenFilter> {
+public class StemmerOverrideTokenFilter extends TokenFilterBase implements XContentable<StemmerOverrideTokenFilter> {
   
   static final ParseField RULES = new ParseField("rules");
   private List<String> _rules;
   public List<String> getRules() { return this._rules; }
   public StemmerOverrideTokenFilter setRules(List<String> val) { this._rules = val; return this; }
-
 
   static final ParseField RULES_PATH = new ParseField("rules_path");
   private String _rulesPath;
@@ -30,16 +27,14 @@ public class StemmerOverrideTokenFilter  implements XContentable<StemmerOverride
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_rules != null) {
       builder.array(RULES.getPreferredName(), _rules);
     }
     if (_rulesPath != null) {
       builder.field(RULES_PATH.getPreferredName(), _rulesPath);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

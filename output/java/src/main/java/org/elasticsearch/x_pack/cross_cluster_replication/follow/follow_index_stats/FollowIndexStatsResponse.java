@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.cross_cluster_replication.follow.follow_index_stats.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class FollowIndexStatsResponse  implements XContentable<FollowIndexStatsResponse> {
+public class FollowIndexStatsResponse extends ResponseBase<FollowIndexStatsResponse> implements XContentable<FollowIndexStatsResponse> {
   
   static final ParseField INDICES = new ParseField("indices");
   private List<FollowIndexStats> _indices;
@@ -24,13 +23,11 @@ public class FollowIndexStatsResponse  implements XContentable<FollowIndexStatsR
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_indices != null) {
       builder.array(INDICES.getPreferredName(), _indices);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

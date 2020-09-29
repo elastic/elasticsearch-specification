@@ -7,38 +7,34 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
-import org.elasticsearch.common_abstractions.infer.relation_name.*;
+import org.elasticsearch.internal.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class ParentIdQuery  implements XContentable<ParentIdQuery> {
+public class ParentIdQuery extends QueryBase implements XContentable<ParentIdQuery> {
   
   static final ParseField ID = new ParseField("id");
   private Id _id;
   public Id getId() { return this._id; }
   public ParentIdQuery setId(Id val) { this._id = val; return this; }
 
-
   static final ParseField IGNORE_UNMAPPED = new ParseField("ignore_unmapped");
   private Boolean _ignoreUnmapped;
   public Boolean getIgnoreUnmapped() { return this._ignoreUnmapped; }
   public ParentIdQuery setIgnoreUnmapped(Boolean val) { this._ignoreUnmapped = val; return this; }
 
-
   static final ParseField TYPE = new ParseField("type");
-  private RelationName _type;
-  public RelationName getType() { return this._type; }
-  public ParentIdQuery setType(RelationName val) { this._type = val; return this; }
+  private String _type;
+  public String getType() { return this._type; }
+  public ParentIdQuery setType(String val) { this._type = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_id != null) {
       builder.field(ID.getPreferredName());
       _id.toXContent(builder, params);
@@ -47,11 +43,8 @@ public class ParentIdQuery  implements XContentable<ParentIdQuery> {
       builder.field(IGNORE_UNMAPPED.getPreferredName(), _ignoreUnmapped);
     }
     if (_type != null) {
-      builder.field(TYPE.getPreferredName());
-      _type.toXContent(builder, params);
+      builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -65,7 +58,7 @@ public class ParentIdQuery  implements XContentable<ParentIdQuery> {
   static {
     PARSER.declareObject(ParentIdQuery::setId, (p, t) -> Id.createFrom(p), ID);
     PARSER.declareBoolean(ParentIdQuery::setIgnoreUnmapped, IGNORE_UNMAPPED);
-    PARSER.declareObject(ParentIdQuery::setType, (p, t) -> RelationName.createFrom(p), TYPE);
+    PARSER.declareString(ParentIdQuery::setType, TYPE);
   }
 
 }

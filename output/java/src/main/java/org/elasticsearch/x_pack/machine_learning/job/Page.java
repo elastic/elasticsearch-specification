@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class Page  implements XContentable<Page> {
   
   static final ParseField FROM = new ParseField("from");
-  private Integer _from;
-  public Integer getFrom() { return this._from; }
-  public Page setFrom(Integer val) { this._from = val; return this; }
-
+  private int _from;
+  private boolean _from$isSet;
+  public int getFrom() { return this._from; }
+  public Page setFrom(int val) {
+    this._from = val;
+    _from$isSet = true;
+    return this;
+  }
 
   static final ParseField SIZE = new ParseField("size");
-  private Integer _size;
-  public Integer getSize() { return this._size; }
-  public Page setSize(Integer val) { this._size = val; return this; }
+  private int _size;
+  private boolean _size$isSet;
+  public int getSize() { return this._size; }
+  public Page setSize(int val) {
+    this._size = val;
+    _size$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_from != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_from$isSet) {
       builder.field(FROM.getPreferredName(), _from);
     }
-    if (_size != null) {
+    if (_size$isSet) {
       builder.field(SIZE.getPreferredName(), _size);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

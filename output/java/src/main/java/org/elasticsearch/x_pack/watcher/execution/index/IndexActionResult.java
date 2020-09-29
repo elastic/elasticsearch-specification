@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.index.*;
@@ -21,7 +19,6 @@ public class IndexActionResult  implements XContentable<IndexActionResult> {
   public String getId() { return this._id; }
   public IndexActionResult setId(String val) { this._id = val; return this; }
 
-
   static final ParseField RESPONSE = new ParseField("response");
   private IndexActionResultIndexResponse _response;
   public IndexActionResultIndexResponse getResponse() { return this._response; }
@@ -30,8 +27,8 @@ public class IndexActionResult  implements XContentable<IndexActionResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
@@ -39,8 +36,6 @@ public class IndexActionResult  implements XContentable<IndexActionResult> {
       builder.field(RESPONSE.getPreferredName());
       _response.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

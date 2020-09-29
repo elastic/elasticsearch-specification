@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.watcher_stats.*;
 
-public class WatchRecordStats  implements XContentable<WatchRecordStats> {
+public class WatchRecordStats extends WatchRecordQueuedStats implements XContentable<WatchRecordStats> {
   
   static final ParseField EXECUTION_PHASE = new ParseField("execution_phase");
   private ExecutionPhase _executionPhase;
@@ -24,14 +22,12 @@ public class WatchRecordStats  implements XContentable<WatchRecordStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_executionPhase != null) {
       builder.field(EXECUTION_PHASE.getPreferredName());
       _executionPhase.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

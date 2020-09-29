@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,62 @@ import org.elasticsearch.internal.*;
 public class ShardTransactionLog  implements XContentable<ShardTransactionLog> {
   
   static final ParseField OPERATIONS = new ParseField("operations");
-  private Long _operations;
-  public Long getOperations() { return this._operations; }
-  public ShardTransactionLog setOperations(Long val) { this._operations = val; return this; }
-
+  private long _operations;
+  private boolean _operations$isSet;
+  public long getOperations() { return this._operations; }
+  public ShardTransactionLog setOperations(long val) {
+    this._operations = val;
+    _operations$isSet = true;
+    return this;
+  }
 
   static final ParseField SIZE_IN_BYTES = new ParseField("size_in_bytes");
-  private Long _sizeInBytes;
-  public Long getSizeInBytes() { return this._sizeInBytes; }
-  public ShardTransactionLog setSizeInBytes(Long val) { this._sizeInBytes = val; return this; }
-
+  private long _sizeInBytes;
+  private boolean _sizeInBytes$isSet;
+  public long getSizeInBytes() { return this._sizeInBytes; }
+  public ShardTransactionLog setSizeInBytes(long val) {
+    this._sizeInBytes = val;
+    _sizeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField UNCOMMITTED_OPERATIONS = new ParseField("uncommitted_operations");
-  private Long _uncommittedOperations;
-  public Long getUncommittedOperations() { return this._uncommittedOperations; }
-  public ShardTransactionLog setUncommittedOperations(Long val) { this._uncommittedOperations = val; return this; }
-
+  private long _uncommittedOperations;
+  private boolean _uncommittedOperations$isSet;
+  public long getUncommittedOperations() { return this._uncommittedOperations; }
+  public ShardTransactionLog setUncommittedOperations(long val) {
+    this._uncommittedOperations = val;
+    _uncommittedOperations$isSet = true;
+    return this;
+  }
 
   static final ParseField UNCOMMITTED_SIZE_IN_BYTES = new ParseField("uncommitted_size_in_bytes");
-  private Long _uncommittedSizeInBytes;
-  public Long getUncommittedSizeInBytes() { return this._uncommittedSizeInBytes; }
-  public ShardTransactionLog setUncommittedSizeInBytes(Long val) { this._uncommittedSizeInBytes = val; return this; }
+  private long _uncommittedSizeInBytes;
+  private boolean _uncommittedSizeInBytes$isSet;
+  public long getUncommittedSizeInBytes() { return this._uncommittedSizeInBytes; }
+  public ShardTransactionLog setUncommittedSizeInBytes(long val) {
+    this._uncommittedSizeInBytes = val;
+    _uncommittedSizeInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_operations != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_operations$isSet) {
       builder.field(OPERATIONS.getPreferredName(), _operations);
     }
-    if (_sizeInBytes != null) {
+    if (_sizeInBytes$isSet) {
       builder.field(SIZE_IN_BYTES.getPreferredName(), _sizeInBytes);
     }
-    if (_uncommittedOperations != null) {
+    if (_uncommittedOperations$isSet) {
       builder.field(UNCOMMITTED_OPERATIONS.getPreferredName(), _uncommittedOperations);
     }
-    if (_uncommittedSizeInBytes != null) {
+    if (_uncommittedSizeInBytes$isSet) {
       builder.field(UNCOMMITTED_SIZE_IN_BYTES.getPreferredName(), _uncommittedSizeInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

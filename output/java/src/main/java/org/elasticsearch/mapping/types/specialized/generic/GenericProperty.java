@@ -7,83 +7,86 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.modules.indices.fielddata.string.*;
 import org.elasticsearch.mapping.types.core.*;
 import org.elasticsearch.mapping.*;
+import org.elasticsearch.mapping.types.*;
 
-public class GenericProperty  implements XContentable<GenericProperty> {
+public class GenericProperty extends DocValuesPropertyBase implements XContentable<GenericProperty> {
   
   static final ParseField ANALYZER = new ParseField("analyzer");
   private String _analyzer;
   public String getAnalyzer() { return this._analyzer; }
   public GenericProperty setAnalyzer(String val) { this._analyzer = val; return this; }
 
-
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public GenericProperty setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public GenericProperty setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField FIELDDATA = new ParseField("fielddata");
   private StringFielddata _fielddata;
   public StringFielddata getFielddata() { return this._fielddata; }
   public GenericProperty setFielddata(StringFielddata val) { this._fielddata = val; return this; }
 
-
   static final ParseField IGNORE_ABOVE = new ParseField("ignore_above");
-  private Integer _ignoreAbove;
-  public Integer getIgnoreAbove() { return this._ignoreAbove; }
-  public GenericProperty setIgnoreAbove(Integer val) { this._ignoreAbove = val; return this; }
-
+  private int _ignoreAbove;
+  private boolean _ignoreAbove$isSet;
+  public int getIgnoreAbove() { return this._ignoreAbove; }
+  public GenericProperty setIgnoreAbove(int val) {
+    this._ignoreAbove = val;
+    _ignoreAbove$isSet = true;
+    return this;
+  }
 
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
   public Boolean getIndex() { return this._index; }
   public GenericProperty setIndex(Boolean val) { this._index = val; return this; }
 
-
   static final ParseField INDEX_OPTIONS = new ParseField("index_options");
   private IndexOptions _indexOptions;
   public IndexOptions getIndexOptions() { return this._indexOptions; }
   public GenericProperty setIndexOptions(IndexOptions val) { this._indexOptions = val; return this; }
-
 
   static final ParseField NORMS = new ParseField("norms");
   private Boolean _norms;
   public Boolean getNorms() { return this._norms; }
   public GenericProperty setNorms(Boolean val) { this._norms = val; return this; }
 
-
   static final ParseField NULL_VALUE = new ParseField("null_value");
   private String _nullValue;
   public String getNullValue() { return this._nullValue; }
   public GenericProperty setNullValue(String val) { this._nullValue = val; return this; }
 
-
   static final ParseField POSITION_INCREMENT_GAP = new ParseField("position_increment_gap");
-  private Integer _positionIncrementGap;
-  public Integer getPositionIncrementGap() { return this._positionIncrementGap; }
-  public GenericProperty setPositionIncrementGap(Integer val) { this._positionIncrementGap = val; return this; }
-
+  private int _positionIncrementGap;
+  private boolean _positionIncrementGap$isSet;
+  public int getPositionIncrementGap() { return this._positionIncrementGap; }
+  public GenericProperty setPositionIncrementGap(int val) {
+    this._positionIncrementGap = val;
+    _positionIncrementGap$isSet = true;
+    return this;
+  }
 
   static final ParseField SEARCH_ANALYZER = new ParseField("search_analyzer");
   private String _searchAnalyzer;
   public String getSearchAnalyzer() { return this._searchAnalyzer; }
   public GenericProperty setSearchAnalyzer(String val) { this._searchAnalyzer = val; return this; }
 
-
   static final ParseField TERM_VECTOR = new ParseField("term_vector");
   private TermVectorOption _termVector;
   public TermVectorOption getTermVector() { return this._termVector; }
   public GenericProperty setTermVector(TermVectorOption val) { this._termVector = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -93,19 +96,19 @@ public class GenericProperty  implements XContentable<GenericProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_analyzer != null) {
       builder.field(ANALYZER.getPreferredName(), _analyzer);
     }
-    if (_boost != null) {
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_fielddata != null) {
       builder.field(FIELDDATA.getPreferredName());
       _fielddata.toXContent(builder, params);
     }
-    if (_ignoreAbove != null) {
+    if (_ignoreAbove$isSet) {
       builder.field(IGNORE_ABOVE.getPreferredName(), _ignoreAbove);
     }
     if (_index != null) {
@@ -121,7 +124,7 @@ public class GenericProperty  implements XContentable<GenericProperty> {
     if (_nullValue != null) {
       builder.field(NULL_VALUE.getPreferredName(), _nullValue);
     }
-    if (_positionIncrementGap != null) {
+    if (_positionIncrementGap$isSet) {
       builder.field(POSITION_INCREMENT_GAP.getPreferredName(), _positionIncrementGap);
     }
     if (_searchAnalyzer != null) {
@@ -134,8 +137,6 @@ public class GenericProperty  implements XContentable<GenericProperty> {
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

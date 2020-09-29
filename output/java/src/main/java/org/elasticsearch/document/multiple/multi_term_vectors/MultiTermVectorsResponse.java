@@ -7,30 +7,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.document.single.term_vectors.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class MultiTermVectorsResponse  implements XContentable<MultiTermVectorsResponse> {
+public class MultiTermVectorsResponse extends ResponseBase<MultiTermVectorsResponse> implements XContentable<MultiTermVectorsResponse> {
   
   static final ParseField DOCS = new ParseField("docs");
-  private List<TermVectors> _docs;
-  public List<TermVectors> getDocs() { return this._docs; }
-  public MultiTermVectorsResponse setDocs(List<TermVectors> val) { this._docs = val; return this; }
+  private List<TermVectorsResult> _docs;
+  public List<TermVectorsResult> getDocs() { return this._docs; }
+  public MultiTermVectorsResponse setDocs(List<TermVectorsResult> val) { this._docs = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_docs != null) {
       builder.array(DOCS.getPreferredName(), _docs);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -42,7 +39,7 @@ public class MultiTermVectorsResponse  implements XContentable<MultiTermVectorsR
     new ObjectParser<>(MultiTermVectorsResponse.class.getName(), false, MultiTermVectorsResponse::new);
 
   static {
-    PARSER.declareObjectArray(MultiTermVectorsResponse::setDocs, (p, t) -> TermVectors.PARSER.apply(p, t), DOCS);
+    PARSER.declareObjectArray(MultiTermVectorsResponse::setDocs, (p, t) -> TermVectorsResult.PARSER.apply(p, t), DOCS);
   }
 
 }

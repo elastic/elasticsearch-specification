@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-
-public class NoriPartOfSpeechTokenFilter  implements XContentable<NoriPartOfSpeechTokenFilter> {
+public class NoriPartOfSpeechTokenFilter extends TokenFilterBase implements XContentable<NoriPartOfSpeechTokenFilter> {
   
   static final ParseField STOPTAGS = new ParseField("stoptags");
   private List<String> _stoptags;
@@ -24,13 +22,11 @@ public class NoriPartOfSpeechTokenFilter  implements XContentable<NoriPartOfSpee
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_stoptags != null) {
       builder.array(STOPTAGS.getPreferredName(), _stoptags);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

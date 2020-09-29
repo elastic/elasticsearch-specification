@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.icu.transform.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class IcuTransformTokenFilter  implements XContentable<IcuTransformTokenFilter> {
+public class IcuTransformTokenFilter extends TokenFilterBase implements XContentable<IcuTransformTokenFilter> {
   
   static final ParseField DIR = new ParseField("dir");
   private IcuTransformDirection _dir;
   public IcuTransformDirection getDir() { return this._dir; }
   public IcuTransformTokenFilter setDir(IcuTransformDirection val) { this._dir = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
@@ -30,8 +28,8 @@ public class IcuTransformTokenFilter  implements XContentable<IcuTransformTokenF
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_dir != null) {
       builder.field(DIR.getPreferredName());
       _dir.toXContent(builder, params);
@@ -39,8 +37,6 @@ public class IcuTransformTokenFilter  implements XContentable<IcuTransformTokenF
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

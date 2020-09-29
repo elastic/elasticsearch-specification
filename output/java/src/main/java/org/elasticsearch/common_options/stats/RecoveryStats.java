@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,57 @@ import org.elasticsearch.internal.*;
 public class RecoveryStats  implements XContentable<RecoveryStats> {
   
   static final ParseField CURRENT_AS_SOURCE = new ParseField("current_as_source");
-  private Long _currentAsSource;
-  public Long getCurrentAsSource() { return this._currentAsSource; }
-  public RecoveryStats setCurrentAsSource(Long val) { this._currentAsSource = val; return this; }
-
+  private long _currentAsSource;
+  private boolean _currentAsSource$isSet;
+  public long getCurrentAsSource() { return this._currentAsSource; }
+  public RecoveryStats setCurrentAsSource(long val) {
+    this._currentAsSource = val;
+    _currentAsSource$isSet = true;
+    return this;
+  }
 
   static final ParseField CURRENT_AS_TARGET = new ParseField("current_as_target");
-  private Long _currentAsTarget;
-  public Long getCurrentAsTarget() { return this._currentAsTarget; }
-  public RecoveryStats setCurrentAsTarget(Long val) { this._currentAsTarget = val; return this; }
-
+  private long _currentAsTarget;
+  private boolean _currentAsTarget$isSet;
+  public long getCurrentAsTarget() { return this._currentAsTarget; }
+  public RecoveryStats setCurrentAsTarget(long val) {
+    this._currentAsTarget = val;
+    _currentAsTarget$isSet = true;
+    return this;
+  }
 
   static final ParseField THROTTLE_TIME = new ParseField("throttle_time");
   private String _throttleTime;
   public String getThrottleTime() { return this._throttleTime; }
   public RecoveryStats setThrottleTime(String val) { this._throttleTime = val; return this; }
 
-
   static final ParseField THROTTLE_TIME_IN_MILLIS = new ParseField("throttle_time_in_millis");
-  private Long _throttleTimeInMillis;
-  public Long getThrottleTimeInMillis() { return this._throttleTimeInMillis; }
-  public RecoveryStats setThrottleTimeInMillis(Long val) { this._throttleTimeInMillis = val; return this; }
+  private long _throttleTimeInMillis;
+  private boolean _throttleTimeInMillis$isSet;
+  public long getThrottleTimeInMillis() { return this._throttleTimeInMillis; }
+  public RecoveryStats setThrottleTimeInMillis(long val) {
+    this._throttleTimeInMillis = val;
+    _throttleTimeInMillis$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_currentAsSource != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_currentAsSource$isSet) {
       builder.field(CURRENT_AS_SOURCE.getPreferredName(), _currentAsSource);
     }
-    if (_currentAsTarget != null) {
+    if (_currentAsTarget$isSet) {
       builder.field(CURRENT_AS_TARGET.getPreferredName(), _currentAsTarget);
     }
     if (_throttleTime != null) {
       builder.field(THROTTLE_TIME.getPreferredName(), _throttleTime);
     }
-    if (_throttleTimeInMillis != null) {
+    if (_throttleTimeInMillis$isSet) {
       builder.field(THROTTLE_TIME_IN_MILLIS.getPreferredName(), _throttleTimeInMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,36 +19,30 @@ public class ApiKeys  implements XContentable<ApiKeys> {
   public Date getCreation() { return this._creation; }
   public ApiKeys setCreation(Date val) { this._creation = val; return this; }
 
-
   static final ParseField EXPIRATION = new ParseField("expiration");
   private Date _expiration;
   public Date getExpiration() { return this._expiration; }
   public ApiKeys setExpiration(Date val) { this._expiration = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public ApiKeys setId(String val) { this._id = val; return this; }
 
-
   static final ParseField INVALIDATED = new ParseField("invalidated");
   private Boolean _invalidated;
   public Boolean getInvalidated() { return this._invalidated; }
   public ApiKeys setInvalidated(Boolean val) { this._invalidated = val; return this; }
-
 
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public ApiKeys setName(String val) { this._name = val; return this; }
 
-
   static final ParseField REALM = new ParseField("realm");
   private String _realm;
   public String getRealm() { return this._realm; }
   public ApiKeys setRealm(String val) { this._realm = val; return this; }
-
 
   static final ParseField USERNAME = new ParseField("username");
   private String _username;
@@ -60,8 +52,8 @@ public class ApiKeys  implements XContentable<ApiKeys> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_creation != null) {
       builder.field(CREATION.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_creation.toInstant()));
@@ -85,8 +77,6 @@ public class ApiKeys  implements XContentable<ApiKeys> {
     if (_username != null) {
       builder.field(USERNAME.getPreferredName(), _username);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

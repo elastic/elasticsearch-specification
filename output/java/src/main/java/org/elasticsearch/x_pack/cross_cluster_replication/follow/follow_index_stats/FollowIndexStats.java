@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.cross_cluster_replication.follow.follow_index_stats.*;
@@ -21,7 +19,6 @@ public class FollowIndexStats  implements XContentable<FollowIndexStats> {
   public String getIndex() { return this._index; }
   public FollowIndexStats setIndex(String val) { this._index = val; return this; }
 
-
   static final ParseField SHARDS = new ParseField("shards");
   private List<FollowIndexShardStats> _shards;
   public List<FollowIndexShardStats> getShards() { return this._shards; }
@@ -30,16 +27,14 @@ public class FollowIndexStats  implements XContentable<FollowIndexStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_index != null) {
       builder.field(INDEX.getPreferredName(), _index);
     }
     if (_shards != null) {
       builder.array(SHARDS.getPreferredName(), _shards);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

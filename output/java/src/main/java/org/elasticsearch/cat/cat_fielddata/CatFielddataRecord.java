@@ -7,44 +7,37 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatFielddataRecord  implements XContentable<CatFielddataRecord> {
+public class CatFielddataRecord extends ICatRecord implements XContentable<CatFielddataRecord> {
   
   static final ParseField FIELD = new ParseField("field");
   private String _field;
   public String getField() { return this._field; }
   public CatFielddataRecord setField(String val) { this._field = val; return this; }
 
-
   static final ParseField HOST = new ParseField("host");
   private String _host;
   public String getHost() { return this._host; }
   public CatFielddataRecord setHost(String val) { this._host = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public CatFielddataRecord setId(String val) { this._id = val; return this; }
 
-
   static final ParseField IP = new ParseField("ip");
   private String _ip;
   public String getIp() { return this._ip; }
   public CatFielddataRecord setIp(String val) { this._ip = val; return this; }
 
-
   static final ParseField NODE = new ParseField("node");
   private String _node;
   public String getNode() { return this._node; }
   public CatFielddataRecord setNode(String val) { this._node = val; return this; }
-
 
   static final ParseField SIZE = new ParseField("size");
   private String _size;
@@ -54,8 +47,8 @@ public class CatFielddataRecord  implements XContentable<CatFielddataRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_field != null) {
       builder.field(FIELD.getPreferredName(), _field);
     }
@@ -74,8 +67,6 @@ public class CatFielddataRecord  implements XContentable<CatFielddataRecord> {
     if (_size != null) {
       builder.field(SIZE.getPreferredName(), _size);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

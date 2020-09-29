@@ -7,26 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class PostJobDataRequest  implements XContentable<PostJobDataRequest> {
+public class PostJobDataRequest extends RequestBase<PostJobDataRequest> implements XContentable<PostJobDataRequest> {
   
   static final ParseField RESET_END = new ParseField("reset_end");
   private Date _resetEnd;
   public Date getResetEnd() { return this._resetEnd; }
   public PostJobDataRequest setResetEnd(Date val) { this._resetEnd = val; return this; }
 
-
   static final ParseField RESET_START = new ParseField("reset_start");
   private Date _resetStart;
   public Date getResetStart() { return this._resetStart; }
   public PostJobDataRequest setResetStart(Date val) { this._resetStart = val; return this; }
-
 
   static final ParseField DATA = new ParseField("data");
   private List<Object> _data;
@@ -36,8 +33,8 @@ public class PostJobDataRequest  implements XContentable<PostJobDataRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_resetEnd != null) {
       builder.field(RESET_END.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_resetEnd.toInstant()));
@@ -49,8 +46,6 @@ public class PostJobDataRequest  implements XContentable<PostJobDataRequest> {
     if (_data != null) {
       builder.array(DATA.getPreferredName(), _data);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-
-public class KuromojiReadingFormTokenFilter  implements XContentable<KuromojiReadingFormTokenFilter> {
+public class KuromojiReadingFormTokenFilter extends TokenFilterBase implements XContentable<KuromojiReadingFormTokenFilter> {
   
   static final ParseField USE_ROMAJI = new ParseField("use_romaji");
   private Boolean _useRomaji;
@@ -24,13 +22,11 @@ public class KuromojiReadingFormTokenFilter  implements XContentable<KuromojiRea
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_useRomaji != null) {
       builder.field(USE_ROMAJI.getPreferredName(), _useRomaji);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

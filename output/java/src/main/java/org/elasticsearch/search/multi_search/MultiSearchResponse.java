@@ -7,49 +7,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.internal.*;
+import org.elasticsearch.search.search.*;
 import org.elasticsearch.common_abstractions.response.*;
 
-public class MultiSearchResponse  implements XContentable<MultiSearchResponse> {
+public class MultiSearchResponse extends ResponseBase<MultiSearchResponse> implements XContentable<MultiSearchResponse> {
   
-  static final ParseField TOOK = new ParseField("took");
-  private Long _took;
-  public Long getTook() { return this._took; }
-  public MultiSearchResponse setTook(Long val) { this._took = val; return this; }
-
-
-  static final ParseField ALL_RESPONSES = new ParseField("all_responses");
-  private List<IResponse> _allResponses;
-  public List<IResponse> getAllResponses() { return this._allResponses; }
-  public MultiSearchResponse setAllResponses(List<IResponse> val) { this._allResponses = val; return this; }
-
-
-  static final ParseField TOTAL_RESPONSES = new ParseField("total_responses");
-  private Integer _totalResponses;
-  public Integer getTotalResponses() { return this._totalResponses; }
-  public MultiSearchResponse setTotalResponses(Integer val) { this._totalResponses = val; return this; }
+  static final ParseField RESPONSES = new ParseField("responses");
+  private List<SearchResponse<Object>> _responses;
+  public List<SearchResponse<Object>> getResponses() { return this._responses; }
+  public MultiSearchResponse setResponses(List<SearchResponse<Object>> val) { this._responses = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_took != null) {
-      builder.field(TOOK.getPreferredName(), _took);
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_responses != null) {
+      builder.array(RESPONSES.getPreferredName(), _responses);
     }
-    if (_allResponses != null) {
-      builder.array(ALL_RESPONSES.getPreferredName(), _allResponses);
-    }
-    if (_totalResponses != null) {
-      builder.field(TOTAL_RESPONSES.getPreferredName(), _totalResponses);
-    }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -61,9 +39,8 @@ public class MultiSearchResponse  implements XContentable<MultiSearchResponse> {
     new ObjectParser<>(MultiSearchResponse.class.getName(), false, MultiSearchResponse::new);
 
   static {
-    PARSER.declareLong(MultiSearchResponse::setTook, TOOK);
-    PARSER.declareObjectArray(MultiSearchResponse::setAllResponses, (p, t) -> IResponse.PARSER.apply(p, t), ALL_RESPONSES);
-    PARSER.declareInt(MultiSearchResponse::setTotalResponses, TOTAL_RESPONSES);
+    SearchResponse<Object> _responses = new SearchResponse<Object>();
+    PARSER.declareObjectArray(MultiSearchResponse::setResponses, (p, t) -> _responses.PARSER.apply(p, t), RESPONSES);
   }
 
 }

@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.x_pack.info.x_pack_usage.*;
 
-
-public class AuditUsage  implements XContentable<AuditUsage> {
+public class AuditUsage extends SecurityFeatureToggle implements XContentable<AuditUsage> {
   
   static final ParseField OUTPUTS = new ParseField("outputs");
   private List<String> _outputs;
@@ -24,13 +22,11 @@ public class AuditUsage  implements XContentable<AuditUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_outputs != null) {
       builder.array(OUTPUTS.getPreferredName(), _outputs);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

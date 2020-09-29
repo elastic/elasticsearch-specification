@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.monitoring.indices_shard_stores.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class IndicesShardStoresResponse  implements XContentable<IndicesShardStoresResponse> {
+public class IndicesShardStoresResponse extends ResponseBase<IndicesShardStoresResponse> implements XContentable<IndicesShardStoresResponse> {
   
   static final ParseField INDICES = new ParseField("indices");
   private NamedContainer<String, IndicesShardStores> _indices;
@@ -24,14 +23,12 @@ public class IndicesShardStoresResponse  implements XContentable<IndicesShardSto
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_indices != null) {
       builder.field(INDICES.getPreferredName());
       _indices.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

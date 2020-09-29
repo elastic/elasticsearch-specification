@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class HttpStats  implements XContentable<HttpStats> {
   
   static final ParseField CURRENT_OPEN = new ParseField("current_open");
-  private Integer _currentOpen;
-  public Integer getCurrentOpen() { return this._currentOpen; }
-  public HttpStats setCurrentOpen(Integer val) { this._currentOpen = val; return this; }
-
+  private int _currentOpen;
+  private boolean _currentOpen$isSet;
+  public int getCurrentOpen() { return this._currentOpen; }
+  public HttpStats setCurrentOpen(int val) {
+    this._currentOpen = val;
+    _currentOpen$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_OPENED = new ParseField("total_opened");
-  private Long _totalOpened;
-  public Long getTotalOpened() { return this._totalOpened; }
-  public HttpStats setTotalOpened(Long val) { this._totalOpened = val; return this; }
+  private long _totalOpened;
+  private boolean _totalOpened$isSet;
+  public long getTotalOpened() { return this._totalOpened; }
+  public HttpStats setTotalOpened(long val) {
+    this._totalOpened = val;
+    _totalOpened$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_currentOpen != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_currentOpen$isSet) {
       builder.field(CURRENT_OPEN.getPreferredName(), _currentOpen);
     }
-    if (_totalOpened != null) {
+    if (_totalOpened$isSet) {
       builder.field(TOTAL_OPENED.getPreferredName(), _totalOpened);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

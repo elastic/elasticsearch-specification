@@ -7,30 +7,26 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class TermsRollupGrouping  implements XContentable<TermsRollupGrouping> {
   
   static final ParseField FIELDS = new ParseField("fields");
-  private List<Field> _fields;
-  public List<Field> getFields() { return this._fields; }
-  public TermsRollupGrouping setFields(List<Field> val) { this._fields = val; return this; }
+  private List<String> _fields;
+  public List<String> getFields() { return this._fields; }
+  public TermsRollupGrouping setFields(List<String> val) { this._fields = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_fields != null) {
       builder.array(FIELDS.getPreferredName(), _fields);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -42,7 +38,7 @@ public class TermsRollupGrouping  implements XContentable<TermsRollupGrouping> {
     new ObjectParser<>(TermsRollupGrouping.class.getName(), false, TermsRollupGrouping::new);
 
   static {
-    PARSER.declareObjectArray(TermsRollupGrouping::setFields, (p, t) -> Field.createFrom(p), FIELDS);
+    PARSER.declareStringArray(TermsRollupGrouping::setFields, FIELDS);
   }
 
 }

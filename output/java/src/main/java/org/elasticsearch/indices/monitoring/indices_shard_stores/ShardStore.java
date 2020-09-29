@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.monitoring.indices_shard_stores.*;
@@ -22,42 +20,40 @@ public class ShardStore  implements XContentable<ShardStore> {
   public ShardStoreAllocation getAllocation() { return this._allocation; }
   public ShardStore setAllocation(ShardStoreAllocation val) { this._allocation = val; return this; }
 
-
   static final ParseField ALLOCATION_ID = new ParseField("allocation_id");
   private String _allocationId;
   public String getAllocationId() { return this._allocationId; }
   public ShardStore setAllocationId(String val) { this._allocationId = val; return this; }
-
 
   static final ParseField ATTRIBUTES = new ParseField("attributes");
   private NamedContainer<String, Object> _attributes;
   public NamedContainer<String, Object> getAttributes() { return this._attributes; }
   public ShardStore setAttributes(NamedContainer<String, Object> val) { this._attributes = val; return this; }
 
-
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public ShardStore setId(String val) { this._id = val; return this; }
 
-
   static final ParseField LEGACY_VERSION = new ParseField("legacy_version");
-  private Long _legacyVersion;
-  public Long getLegacyVersion() { return this._legacyVersion; }
-  public ShardStore setLegacyVersion(Long val) { this._legacyVersion = val; return this; }
-
+  private long _legacyVersion;
+  private boolean _legacyVersion$isSet;
+  public long getLegacyVersion() { return this._legacyVersion; }
+  public ShardStore setLegacyVersion(long val) {
+    this._legacyVersion = val;
+    _legacyVersion$isSet = true;
+    return this;
+  }
 
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public ShardStore setName(String val) { this._name = val; return this; }
 
-
   static final ParseField STORE_EXCEPTION = new ParseField("store_exception");
   private ShardStoreException _storeException;
   public ShardStoreException getStoreException() { return this._storeException; }
   public ShardStore setStoreException(ShardStoreException val) { this._storeException = val; return this; }
-
 
   static final ParseField TRANSPORT_ADDRESS = new ParseField("transport_address");
   private String _transportAddress;
@@ -67,8 +63,8 @@ public class ShardStore  implements XContentable<ShardStore> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_allocation != null) {
       builder.field(ALLOCATION.getPreferredName());
       _allocation.toXContent(builder, params);
@@ -83,7 +79,7 @@ public class ShardStore  implements XContentable<ShardStore> {
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
-    if (_legacyVersion != null) {
+    if (_legacyVersion$isSet) {
       builder.field(LEGACY_VERSION.getPreferredName(), _legacyVersion);
     }
     if (_name != null) {
@@ -96,8 +92,6 @@ public class ShardStore  implements XContentable<ShardStore> {
     if (_transportAddress != null) {
       builder.field(TRANSPORT_ADDRESS.getPreferredName(), _transportAddress);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

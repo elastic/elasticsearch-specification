@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search_shards.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class SearchShardsResponse  implements XContentable<SearchShardsResponse> {
+public class SearchShardsResponse extends ResponseBase<SearchShardsResponse> implements XContentable<SearchShardsResponse> {
   
   static final ParseField NODES = new ParseField("nodes");
   private NamedContainer<String, SearchNode> _nodes;
   public NamedContainer<String, SearchNode> getNodes() { return this._nodes; }
   public SearchShardsResponse setNodes(NamedContainer<String, SearchNode> val) { this._nodes = val; return this; }
-
 
   static final ParseField SHARDS = new ParseField("shards");
   private List<List<SearchShard>> _shards;
@@ -30,8 +28,8 @@ public class SearchShardsResponse  implements XContentable<SearchShardsResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_nodes != null) {
       builder.field(NODES.getPreferredName());
       _nodes.toXContent(builder, params);
@@ -39,8 +37,6 @@ public class SearchShardsResponse  implements XContentable<SearchShardsResponse>
     if (_shards != null) {
       builder.array(SHARDS.getPreferredName(), _shards);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

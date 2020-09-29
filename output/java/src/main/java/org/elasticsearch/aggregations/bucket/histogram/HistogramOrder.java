@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.aggregations.bucket.histogram.*;
@@ -22,30 +20,25 @@ public class HistogramOrder  implements XContentable<HistogramOrder> {
   public HistogramOrder getCountAscending() { return this._countAscending; }
   public HistogramOrder setCountAscending(HistogramOrder val) { this._countAscending = val; return this; }
 
-
   static final ParseField COUNT_DESCENDING = new ParseField("count_descending");
   private HistogramOrder _countDescending;
   public HistogramOrder getCountDescending() { return this._countDescending; }
   public HistogramOrder setCountDescending(HistogramOrder val) { this._countDescending = val; return this; }
-
 
   static final ParseField KEY = new ParseField("key");
   private String _key;
   public String getKey() { return this._key; }
   public HistogramOrder setKey(String val) { this._key = val; return this; }
 
-
   static final ParseField KEY_ASCENDING = new ParseField("key_ascending");
   private HistogramOrder _keyAscending;
   public HistogramOrder getKeyAscending() { return this._keyAscending; }
   public HistogramOrder setKeyAscending(HistogramOrder val) { this._keyAscending = val; return this; }
 
-
   static final ParseField KEY_DESCENDING = new ParseField("key_descending");
   private HistogramOrder _keyDescending;
   public HistogramOrder getKeyDescending() { return this._keyDescending; }
   public HistogramOrder setKeyDescending(HistogramOrder val) { this._keyDescending = val; return this; }
-
 
   static final ParseField ORDER = new ParseField("order");
   private SortOrder _order;
@@ -55,8 +48,8 @@ public class HistogramOrder  implements XContentable<HistogramOrder> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_countAscending != null) {
       builder.field(COUNT_ASCENDING.getPreferredName());
       _countAscending.toXContent(builder, params);
@@ -80,8 +73,6 @@ public class HistogramOrder  implements XContentable<HistogramOrder> {
       builder.field(ORDER.getPreferredName());
       _order.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

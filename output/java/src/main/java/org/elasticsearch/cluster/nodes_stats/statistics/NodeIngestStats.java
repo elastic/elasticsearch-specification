@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_stats.statistics.*;
@@ -21,7 +19,6 @@ public class NodeIngestStats  implements XContentable<NodeIngestStats> {
   public NamedContainer<String, IngestStats> getPipelines() { return this._pipelines; }
   public NodeIngestStats setPipelines(NamedContainer<String, IngestStats> val) { this._pipelines = val; return this; }
 
-
   static final ParseField TOTAL = new ParseField("total");
   private IngestStats _total;
   public IngestStats getTotal() { return this._total; }
@@ -30,8 +27,8 @@ public class NodeIngestStats  implements XContentable<NodeIngestStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_pipelines != null) {
       builder.field(PIPELINES.getPreferredName());
       _pipelines.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class NodeIngestStats  implements XContentable<NodeIngestStats> {
       builder.field(TOTAL.getPreferredName());
       _total.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

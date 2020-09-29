@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class Filter  implements XContentable<Filter> {
   public String getDescription() { return this._description; }
   public Filter setDescription(String val) { this._description = val; return this; }
 
-
   static final ParseField FILTER_ID = new ParseField("filter_id");
   private String _filterId;
   public String getFilterId() { return this._filterId; }
   public Filter setFilterId(String val) { this._filterId = val; return this; }
-
 
   static final ParseField ITEMS = new ParseField("items");
   private List<String> _items;
@@ -36,8 +32,8 @@ public class Filter  implements XContentable<Filter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_description != null) {
       builder.field(DESCRIPTION.getPreferredName(), _description);
     }
@@ -47,8 +43,6 @@ public class Filter  implements XContentable<Filter> {
     if (_items != null) {
       builder.array(ITEMS.getPreferredName(), _items);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

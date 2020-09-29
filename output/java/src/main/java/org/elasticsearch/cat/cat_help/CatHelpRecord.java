@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatHelpRecord  implements XContentable<CatHelpRecord> {
+public class CatHelpRecord extends ICatRecord implements XContentable<CatHelpRecord> {
   
   static final ParseField ENDPOINT = new ParseField("endpoint");
   private String _endpoint;
@@ -24,13 +22,11 @@ public class CatHelpRecord  implements XContentable<CatHelpRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_endpoint != null) {
       builder.field(ENDPOINT.getPreferredName(), _endpoint);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

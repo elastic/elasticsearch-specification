@@ -7,26 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class GetSnapshotRequest  implements XContentable<GetSnapshotRequest> {
+public class GetSnapshotRequest extends RequestBase<GetSnapshotRequest> implements XContentable<GetSnapshotRequest> {
   
   static final ParseField IGNORE_UNAVAILABLE = new ParseField("ignore_unavailable");
   private Boolean _ignoreUnavailable;
   public Boolean getIgnoreUnavailable() { return this._ignoreUnavailable; }
   public GetSnapshotRequest setIgnoreUnavailable(Boolean val) { this._ignoreUnavailable = val; return this; }
 
-
   static final ParseField MASTER_TIMEOUT = new ParseField("master_timeout");
-  private Time _masterTimeout;
-  public Time getMasterTimeout() { return this._masterTimeout; }
-  public GetSnapshotRequest setMasterTimeout(Time val) { this._masterTimeout = val; return this; }
-
+  private String _masterTimeout;
+  public String getMasterTimeout() { return this._masterTimeout; }
+  public GetSnapshotRequest setMasterTimeout(String val) { this._masterTimeout = val; return this; }
 
   static final ParseField VERBOSE = new ParseField("verbose");
   private Boolean _verbose;
@@ -36,20 +33,17 @@ public class GetSnapshotRequest  implements XContentable<GetSnapshotRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ignoreUnavailable != null) {
       builder.field(IGNORE_UNAVAILABLE.getPreferredName(), _ignoreUnavailable);
     }
     if (_masterTimeout != null) {
-      builder.field(MASTER_TIMEOUT.getPreferredName());
-      _masterTimeout.toXContent(builder, params);
+      builder.field(MASTER_TIMEOUT.getPreferredName(), _masterTimeout);
     }
     if (_verbose != null) {
       builder.field(VERBOSE.getPreferredName(), _verbose);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,7 +56,7 @@ public class GetSnapshotRequest  implements XContentable<GetSnapshotRequest> {
 
   static {
     PARSER.declareBoolean(GetSnapshotRequest::setIgnoreUnavailable, IGNORE_UNAVAILABLE);
-    PARSER.declareObject(GetSnapshotRequest::setMasterTimeout, (p, t) -> Time.PARSER.apply(p, t), MASTER_TIMEOUT);
+    PARSER.declareString(GetSnapshotRequest::setMasterTimeout, MASTER_TIMEOUT);
     PARSER.declareBoolean(GetSnapshotRequest::setVerbose, VERBOSE);
   }
 

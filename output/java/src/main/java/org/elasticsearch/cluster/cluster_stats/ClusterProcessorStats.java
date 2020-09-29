@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,47 +15,62 @@ import org.elasticsearch.internal.*;
 public class ClusterProcessorStats  implements XContentable<ClusterProcessorStats> {
   
   static final ParseField COUNT = new ParseField("count");
-  private Long _count;
-  public Long getCount() { return this._count; }
-  public ClusterProcessorStats setCount(Long val) { this._count = val; return this; }
-
+  private long _count;
+  private boolean _count$isSet;
+  public long getCount() { return this._count; }
+  public ClusterProcessorStats setCount(long val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField CURRENT = new ParseField("current");
-  private Long _current;
-  public Long getCurrent() { return this._current; }
-  public ClusterProcessorStats setCurrent(Long val) { this._current = val; return this; }
-
+  private long _current;
+  private boolean _current$isSet;
+  public long getCurrent() { return this._current; }
+  public ClusterProcessorStats setCurrent(long val) {
+    this._current = val;
+    _current$isSet = true;
+    return this;
+  }
 
   static final ParseField FAILED = new ParseField("failed");
-  private Long _failed;
-  public Long getFailed() { return this._failed; }
-  public ClusterProcessorStats setFailed(Long val) { this._failed = val; return this; }
-
+  private long _failed;
+  private boolean _failed$isSet;
+  public long getFailed() { return this._failed; }
+  public ClusterProcessorStats setFailed(long val) {
+    this._failed = val;
+    _failed$isSet = true;
+    return this;
+  }
 
   static final ParseField TIME_IN_MILLIS = new ParseField("time_in_millis");
-  private Long _timeInMillis;
-  public Long getTimeInMillis() { return this._timeInMillis; }
-  public ClusterProcessorStats setTimeInMillis(Long val) { this._timeInMillis = val; return this; }
+  private long _timeInMillis;
+  private boolean _timeInMillis$isSet;
+  public long getTimeInMillis() { return this._timeInMillis; }
+  public ClusterProcessorStats setTimeInMillis(long val) {
+    this._timeInMillis = val;
+    _timeInMillis$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_count != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
-    if (_current != null) {
+    if (_current$isSet) {
       builder.field(CURRENT.getPreferredName(), _current);
     }
-    if (_failed != null) {
+    if (_failed$isSet) {
       builder.field(FAILED.getPreferredName(), _failed);
     }
-    if (_timeInMillis != null) {
+    if (_timeInMillis$isSet) {
       builder.field(TIME_IN_MILLIS.getPreferredName(), _timeInMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

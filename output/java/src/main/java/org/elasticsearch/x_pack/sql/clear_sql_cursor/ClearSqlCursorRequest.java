@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class ClearSqlCursorRequest  implements XContentable<ClearSqlCursorRequest> {
+public class ClearSqlCursorRequest extends RequestBase<ClearSqlCursorRequest> implements XContentable<ClearSqlCursorRequest> {
   
   static final ParseField CURSOR = new ParseField("cursor");
   private String _cursor;
@@ -24,13 +22,11 @@ public class ClearSqlCursorRequest  implements XContentable<ClearSqlCursorReques
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_cursor != null) {
       builder.field(CURSOR.getPreferredName(), _cursor);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

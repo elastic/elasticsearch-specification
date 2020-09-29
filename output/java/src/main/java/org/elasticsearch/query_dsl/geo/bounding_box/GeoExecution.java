@@ -1,6 +1,10 @@
 
 package org.elasticsearch.query_dsl.geo.bounding_box;
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;

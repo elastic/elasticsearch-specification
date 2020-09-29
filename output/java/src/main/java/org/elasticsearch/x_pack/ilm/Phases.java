@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.ilm.*;
@@ -21,18 +19,15 @@ public class Phases  implements XContentable<Phases> {
   public Phase getCold() { return this._cold; }
   public Phases setCold(Phase val) { this._cold = val; return this; }
 
-
   static final ParseField DELETE = new ParseField("delete");
   private Phase _delete;
   public Phase getDelete() { return this._delete; }
   public Phases setDelete(Phase val) { this._delete = val; return this; }
 
-
   static final ParseField HOT = new ParseField("hot");
   private Phase _hot;
   public Phase getHot() { return this._hot; }
   public Phases setHot(Phase val) { this._hot = val; return this; }
-
 
   static final ParseField WARM = new ParseField("warm");
   private Phase _warm;
@@ -42,8 +37,8 @@ public class Phases  implements XContentable<Phases> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cold != null) {
       builder.field(COLD.getPreferredName());
       _cold.toXContent(builder, params);
@@ -60,8 +55,6 @@ public class Phases  implements XContentable<Phases> {
       builder.field(WARM.getPreferredName());
       _warm.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

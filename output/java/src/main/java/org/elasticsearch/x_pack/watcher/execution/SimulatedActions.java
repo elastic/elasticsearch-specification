@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.*;
@@ -21,12 +19,10 @@ public class SimulatedActions  implements XContentable<SimulatedActions> {
   public List<String> getActions() { return this._actions; }
   public SimulatedActions setActions(List<String> val) { this._actions = val; return this; }
 
-
   static final ParseField ALL = new ParseField("all");
   private SimulatedActions _all;
   public SimulatedActions getAll() { return this._all; }
   public SimulatedActions setAll(SimulatedActions val) { this._all = val; return this; }
-
 
   static final ParseField USE_ALL = new ParseField("use_all");
   private Boolean _useAll;
@@ -36,8 +32,8 @@ public class SimulatedActions  implements XContentable<SimulatedActions> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_actions != null) {
       builder.array(ACTIONS.getPreferredName(), _actions);
     }
@@ -48,8 +44,6 @@ public class SimulatedActions  implements XContentable<SimulatedActions> {
     if (_useAll != null) {
       builder.field(USE_ALL.getPreferredName(), _useAll);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

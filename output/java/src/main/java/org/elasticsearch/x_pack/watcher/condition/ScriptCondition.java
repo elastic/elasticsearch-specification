@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class ScriptCondition  implements XContentable<ScriptCondition> {
   public String getLang() { return this._lang; }
   public ScriptCondition setLang(String val) { this._lang = val; return this; }
 
-
   static final ParseField PARAMS = new ParseField("params");
   private NamedContainer<String, Object> _params;
   public NamedContainer<String, Object> getParams() { return this._params; }
@@ -30,8 +27,8 @@ public class ScriptCondition  implements XContentable<ScriptCondition> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_lang != null) {
       builder.field(LANG.getPreferredName(), _lang);
     }
@@ -39,8 +36,6 @@ public class ScriptCondition  implements XContentable<ScriptCondition> {
       builder.field(PARAMS.getPreferredName());
       _params.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

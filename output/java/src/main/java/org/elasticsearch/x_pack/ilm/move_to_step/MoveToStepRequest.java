@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.ilm.move_to_step.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class MoveToStepRequest  implements XContentable<MoveToStepRequest> {
+public class MoveToStepRequest extends RequestBase<MoveToStepRequest> implements XContentable<MoveToStepRequest> {
   
   static final ParseField CURRENT_STEP = new ParseField("current_step");
   private StepKey _currentStep;
   public StepKey getCurrentStep() { return this._currentStep; }
   public MoveToStepRequest setCurrentStep(StepKey val) { this._currentStep = val; return this; }
-
 
   static final ParseField NEXT_STEP = new ParseField("next_step");
   private StepKey _nextStep;
@@ -30,8 +28,8 @@ public class MoveToStepRequest  implements XContentable<MoveToStepRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_currentStep != null) {
       builder.field(CURRENT_STEP.getPreferredName());
       _currentStep.toXContent(builder, params);
@@ -40,8 +38,6 @@ public class MoveToStepRequest  implements XContentable<MoveToStepRequest> {
       builder.field(NEXT_STEP.getPreferredName());
       _nextStep.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class XPackUsage  implements XContentable<XPackUsage> {
   public Boolean getAvailable() { return this._available; }
   public XPackUsage setAvailable(Boolean val) { this._available = val; return this; }
 
-
   static final ParseField ENABLED = new ParseField("enabled");
   private Boolean _enabled;
   public Boolean getEnabled() { return this._enabled; }
@@ -30,16 +27,14 @@ public class XPackUsage  implements XContentable<XPackUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_available != null) {
       builder.field(AVAILABLE.getPreferredName(), _available);
     }
     if (_enabled != null) {
       builder.field(ENABLED.getPreferredName(), _enabled);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

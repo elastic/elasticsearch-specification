@@ -7,26 +7,28 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.mapping.types.*;
 
-public class IpProperty  implements XContentable<IpProperty> {
+public class IpProperty extends DocValuesPropertyBase implements XContentable<IpProperty> {
   
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public IpProperty setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public IpProperty setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
   public Boolean getIndex() { return this._index; }
   public IpProperty setIndex(Boolean val) { this._index = val; return this; }
-
 
   static final ParseField NULL_VALUE = new ParseField("null_value");
   private String _nullValue;
@@ -36,9 +38,9 @@ public class IpProperty  implements XContentable<IpProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_boost != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_index != null) {
@@ -47,8 +49,6 @@ public class IpProperty  implements XContentable<IpProperty> {
     if (_nullValue != null) {
       builder.field(NULL_VALUE.getPreferredName(), _nullValue);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

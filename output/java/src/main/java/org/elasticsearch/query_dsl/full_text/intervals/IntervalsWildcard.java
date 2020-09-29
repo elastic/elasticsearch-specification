@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class IntervalsWildcard  implements XContentable<IntervalsWildcard> {
   
@@ -21,23 +19,21 @@ public class IntervalsWildcard  implements XContentable<IntervalsWildcard> {
   public String getAnalyzer() { return this._analyzer; }
   public IntervalsWildcard setAnalyzer(String val) { this._analyzer = val; return this; }
 
-
   static final ParseField PATTERN = new ParseField("pattern");
   private String _pattern;
   public String getPattern() { return this._pattern; }
   public IntervalsWildcard setPattern(String val) { this._pattern = val; return this; }
 
-
   static final ParseField USE_FIELD = new ParseField("use_field");
-  private Field _useField;
-  public Field getUseField() { return this._useField; }
-  public IntervalsWildcard setUseField(Field val) { this._useField = val; return this; }
+  private String _useField;
+  public String getUseField() { return this._useField; }
+  public IntervalsWildcard setUseField(String val) { this._useField = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_analyzer != null) {
       builder.field(ANALYZER.getPreferredName(), _analyzer);
     }
@@ -45,11 +41,8 @@ public class IntervalsWildcard  implements XContentable<IntervalsWildcard> {
       builder.field(PATTERN.getPreferredName(), _pattern);
     }
     if (_useField != null) {
-      builder.field(USE_FIELD.getPreferredName());
-      _useField.toXContent(builder, params);
+      builder.field(USE_FIELD.getPreferredName(), _useField);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -63,7 +56,7 @@ public class IntervalsWildcard  implements XContentable<IntervalsWildcard> {
   static {
     PARSER.declareString(IntervalsWildcard::setAnalyzer, ANALYZER);
     PARSER.declareString(IntervalsWildcard::setPattern, PATTERN);
-    PARSER.declareObject(IntervalsWildcard::setUseField, (p, t) -> Field.createFrom(p), USE_FIELD);
+    PARSER.declareString(IntervalsWildcard::setUseField, USE_FIELD);
   }
 
 }

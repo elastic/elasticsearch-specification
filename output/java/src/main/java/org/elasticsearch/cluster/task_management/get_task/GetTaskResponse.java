@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.task_management.get_task.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetTaskResponse  implements XContentable<GetTaskResponse> {
+public class GetTaskResponse extends ResponseBase<GetTaskResponse> implements XContentable<GetTaskResponse> {
   
   static final ParseField COMPLETED = new ParseField("completed");
   private Boolean _completed;
   public Boolean getCompleted() { return this._completed; }
   public GetTaskResponse setCompleted(Boolean val) { this._completed = val; return this; }
-
 
   static final ParseField TASK = new ParseField("task");
   private TaskInfo _task;
@@ -30,8 +28,8 @@ public class GetTaskResponse  implements XContentable<GetTaskResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_completed != null) {
       builder.field(COMPLETED.getPreferredName(), _completed);
     }
@@ -39,8 +37,6 @@ public class GetTaskResponse  implements XContentable<GetTaskResponse> {
       builder.field(TASK.getPreferredName());
       _task.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

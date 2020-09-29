@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.specialized.rank_feature.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class RankFeatureQuery  implements XContentable<RankFeatureQuery> {
+public class RankFeatureQuery extends QueryBase implements XContentable<RankFeatureQuery> {
   
   static final ParseField FUNCTION = new ParseField("function");
   private RankFeatureFunction _function;
@@ -24,14 +23,12 @@ public class RankFeatureQuery  implements XContentable<RankFeatureQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_function != null) {
       builder.field(FUNCTION.getPreferredName());
       _function.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

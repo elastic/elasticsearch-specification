@@ -7,38 +7,32 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class GetApiKeyRequest  implements XContentable<GetApiKeyRequest> {
+public class GetApiKeyRequest extends RequestBase<GetApiKeyRequest> implements XContentable<GetApiKeyRequest> {
   
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public GetApiKeyRequest setId(String val) { this._id = val; return this; }
 
-
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public GetApiKeyRequest setName(String val) { this._name = val; return this; }
-
 
   static final ParseField OWNER = new ParseField("owner");
   private Boolean _owner;
   public Boolean getOwner() { return this._owner; }
   public GetApiKeyRequest setOwner(Boolean val) { this._owner = val; return this; }
 
-
   static final ParseField REALM_NAME = new ParseField("realm_name");
   private String _realmName;
   public String getRealmName() { return this._realmName; }
   public GetApiKeyRequest setRealmName(String val) { this._realmName = val; return this; }
-
 
   static final ParseField USERNAME = new ParseField("username");
   private String _username;
@@ -48,8 +42,8 @@ public class GetApiKeyRequest  implements XContentable<GetApiKeyRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
@@ -65,8 +59,6 @@ public class GetApiKeyRequest  implements XContentable<GetApiKeyRequest> {
     if (_username != null) {
       builder.field(USERNAME.getPreferredName(), _username);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

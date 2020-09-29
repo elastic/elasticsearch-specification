@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,36 +19,45 @@ public class IndicesRecoverySettings  implements XContentable<IndicesRecoverySet
   public Boolean getCompress() { return this._compress; }
   public IndicesRecoverySettings setCompress(Boolean val) { this._compress = val; return this; }
 
-
   static final ParseField CONCURRENT_SMALL_FILE_STREAMS = new ParseField("concurrent_small_file_streams");
-  private Integer _concurrentSmallFileStreams;
-  public Integer getConcurrentSmallFileStreams() { return this._concurrentSmallFileStreams; }
-  public IndicesRecoverySettings setConcurrentSmallFileStreams(Integer val) { this._concurrentSmallFileStreams = val; return this; }
-
+  private int _concurrentSmallFileStreams;
+  private boolean _concurrentSmallFileStreams$isSet;
+  public int getConcurrentSmallFileStreams() { return this._concurrentSmallFileStreams; }
+  public IndicesRecoverySettings setConcurrentSmallFileStreams(int val) {
+    this._concurrentSmallFileStreams = val;
+    _concurrentSmallFileStreams$isSet = true;
+    return this;
+  }
 
   static final ParseField CONCURRENT_STREAMS = new ParseField("concurrent_streams");
-  private Integer _concurrentStreams;
-  public Integer getConcurrentStreams() { return this._concurrentStreams; }
-  public IndicesRecoverySettings setConcurrentStreams(Integer val) { this._concurrentStreams = val; return this; }
-
+  private int _concurrentStreams;
+  private boolean _concurrentStreams$isSet;
+  public int getConcurrentStreams() { return this._concurrentStreams; }
+  public IndicesRecoverySettings setConcurrentStreams(int val) {
+    this._concurrentStreams = val;
+    _concurrentStreams$isSet = true;
+    return this;
+  }
 
   static final ParseField FILE_CHUNK_SIZE = new ParseField("file_chunk_size");
   private String _fileChunkSize;
   public String getFileChunkSize() { return this._fileChunkSize; }
   public IndicesRecoverySettings setFileChunkSize(String val) { this._fileChunkSize = val; return this; }
 
-
   static final ParseField MAX_BYTES_PER_SECOND = new ParseField("max_bytes_per_second");
   private String _maxBytesPerSecond;
   public String getMaxBytesPerSecond() { return this._maxBytesPerSecond; }
   public IndicesRecoverySettings setMaxBytesPerSecond(String val) { this._maxBytesPerSecond = val; return this; }
 
-
   static final ParseField TRANSLOG_OPERATIONS = new ParseField("translog_operations");
-  private Integer _translogOperations;
-  public Integer getTranslogOperations() { return this._translogOperations; }
-  public IndicesRecoverySettings setTranslogOperations(Integer val) { this._translogOperations = val; return this; }
-
+  private int _translogOperations;
+  private boolean _translogOperations$isSet;
+  public int getTranslogOperations() { return this._translogOperations; }
+  public IndicesRecoverySettings setTranslogOperations(int val) {
+    this._translogOperations = val;
+    _translogOperations$isSet = true;
+    return this;
+  }
 
   static final ParseField TRANSLOG_SIZE = new ParseField("translog_size");
   private String _translogSize;
@@ -60,15 +67,15 @@ public class IndicesRecoverySettings  implements XContentable<IndicesRecoverySet
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_compress != null) {
       builder.field(COMPRESS.getPreferredName(), _compress);
     }
-    if (_concurrentSmallFileStreams != null) {
+    if (_concurrentSmallFileStreams$isSet) {
       builder.field(CONCURRENT_SMALL_FILE_STREAMS.getPreferredName(), _concurrentSmallFileStreams);
     }
-    if (_concurrentStreams != null) {
+    if (_concurrentStreams$isSet) {
       builder.field(CONCURRENT_STREAMS.getPreferredName(), _concurrentStreams);
     }
     if (_fileChunkSize != null) {
@@ -77,14 +84,12 @@ public class IndicesRecoverySettings  implements XContentable<IndicesRecoverySet
     if (_maxBytesPerSecond != null) {
       builder.field(MAX_BYTES_PER_SECOND.getPreferredName(), _maxBytesPerSecond);
     }
-    if (_translogOperations != null) {
+    if (_translogOperations$isSet) {
       builder.field(TRANSLOG_OPERATIONS.getPreferredName(), _translogOperations);
     }
     if (_translogSize != null) {
       builder.field(TRANSLOG_SIZE.getPreferredName(), _translogSize);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,140 +7,128 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.cat.*;
 
-public class CatRecoveryRecord  implements XContentable<CatRecoveryRecord> {
+public class CatRecoveryRecord extends ICatRecord implements XContentable<CatRecoveryRecord> {
   
   static final ParseField BYTES = new ParseField("bytes");
   private String _bytes;
   public String getBytes() { return this._bytes; }
   public CatRecoveryRecord setBytes(String val) { this._bytes = val; return this; }
 
-
   static final ParseField BYTES_PERCENT = new ParseField("bytes_percent");
   private String _bytesPercent;
   public String getBytesPercent() { return this._bytesPercent; }
   public CatRecoveryRecord setBytesPercent(String val) { this._bytesPercent = val; return this; }
-
 
   static final ParseField BYTES_RECOVERED = new ParseField("bytes_recovered");
   private String _bytesRecovered;
   public String getBytesRecovered() { return this._bytesRecovered; }
   public CatRecoveryRecord setBytesRecovered(String val) { this._bytesRecovered = val; return this; }
 
-
   static final ParseField BYTES_TOTAL = new ParseField("bytes_total");
   private String _bytesTotal;
   public String getBytesTotal() { return this._bytesTotal; }
   public CatRecoveryRecord setBytesTotal(String val) { this._bytesTotal = val; return this; }
-
 
   static final ParseField FILES = new ParseField("files");
   private String _files;
   public String getFiles() { return this._files; }
   public CatRecoveryRecord setFiles(String val) { this._files = val; return this; }
 
-
   static final ParseField FILES_PERCENT = new ParseField("files_percent");
   private String _filesPercent;
   public String getFilesPercent() { return this._filesPercent; }
   public CatRecoveryRecord setFilesPercent(String val) { this._filesPercent = val; return this; }
-
 
   static final ParseField FILES_RECOVERED = new ParseField("files_recovered");
   private String _filesRecovered;
   public String getFilesRecovered() { return this._filesRecovered; }
   public CatRecoveryRecord setFilesRecovered(String val) { this._filesRecovered = val; return this; }
 
-
   static final ParseField FILES_TOTAL = new ParseField("files_total");
   private String _filesTotal;
   public String getFilesTotal() { return this._filesTotal; }
   public CatRecoveryRecord setFilesTotal(String val) { this._filesTotal = val; return this; }
-
 
   static final ParseField INDEX = new ParseField("index");
   private String _index;
   public String getIndex() { return this._index; }
   public CatRecoveryRecord setIndex(String val) { this._index = val; return this; }
 
-
   static final ParseField REPOSITORY = new ParseField("repository");
   private String _repository;
   public String getRepository() { return this._repository; }
   public CatRecoveryRecord setRepository(String val) { this._repository = val; return this; }
-
 
   static final ParseField SHARD = new ParseField("shard");
   private String _shard;
   public String getShard() { return this._shard; }
   public CatRecoveryRecord setShard(String val) { this._shard = val; return this; }
 
-
   static final ParseField SNAPSHOT = new ParseField("snapshot");
   private String _snapshot;
   public String getSnapshot() { return this._snapshot; }
   public CatRecoveryRecord setSnapshot(String val) { this._snapshot = val; return this; }
-
 
   static final ParseField SOURCE_HOST = new ParseField("source_host");
   private String _sourceHost;
   public String getSourceHost() { return this._sourceHost; }
   public CatRecoveryRecord setSourceHost(String val) { this._sourceHost = val; return this; }
 
-
   static final ParseField SOURCE_NODE = new ParseField("source_node");
   private String _sourceNode;
   public String getSourceNode() { return this._sourceNode; }
   public CatRecoveryRecord setSourceNode(String val) { this._sourceNode = val; return this; }
-
 
   static final ParseField STAGE = new ParseField("stage");
   private String _stage;
   public String getStage() { return this._stage; }
   public CatRecoveryRecord setStage(String val) { this._stage = val; return this; }
 
-
   static final ParseField TARGET_HOST = new ParseField("target_host");
   private String _targetHost;
   public String getTargetHost() { return this._targetHost; }
   public CatRecoveryRecord setTargetHost(String val) { this._targetHost = val; return this; }
-
 
   static final ParseField TARGET_NODE = new ParseField("target_node");
   private String _targetNode;
   public String getTargetNode() { return this._targetNode; }
   public CatRecoveryRecord setTargetNode(String val) { this._targetNode = val; return this; }
 
-
   static final ParseField TIME = new ParseField("time");
   private String _time;
   public String getTime() { return this._time; }
   public CatRecoveryRecord setTime(String val) { this._time = val; return this; }
 
-
   static final ParseField TRANSLOG_OPS = new ParseField("translog_ops");
-  private Long _translogOps;
-  public Long getTranslogOps() { return this._translogOps; }
-  public CatRecoveryRecord setTranslogOps(Long val) { this._translogOps = val; return this; }
-
+  private long _translogOps;
+  private boolean _translogOps$isSet;
+  public long getTranslogOps() { return this._translogOps; }
+  public CatRecoveryRecord setTranslogOps(long val) {
+    this._translogOps = val;
+    _translogOps$isSet = true;
+    return this;
+  }
 
   static final ParseField TRANSLOG_OPS_PERCENT = new ParseField("translog_ops_percent");
   private String _translogOpsPercent;
   public String getTranslogOpsPercent() { return this._translogOpsPercent; }
   public CatRecoveryRecord setTranslogOpsPercent(String val) { this._translogOpsPercent = val; return this; }
 
-
   static final ParseField TRANSLOG_OPS_RECOVERED = new ParseField("translog_ops_recovered");
-  private Long _translogOpsRecovered;
-  public Long getTranslogOpsRecovered() { return this._translogOpsRecovered; }
-  public CatRecoveryRecord setTranslogOpsRecovered(Long val) { this._translogOpsRecovered = val; return this; }
-
+  private long _translogOpsRecovered;
+  private boolean _translogOpsRecovered$isSet;
+  public long getTranslogOpsRecovered() { return this._translogOpsRecovered; }
+  public CatRecoveryRecord setTranslogOpsRecovered(long val) {
+    this._translogOpsRecovered = val;
+    _translogOpsRecovered$isSet = true;
+    return this;
+  }
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -150,8 +138,8 @@ public class CatRecoveryRecord  implements XContentable<CatRecoveryRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_bytes != null) {
       builder.field(BYTES.getPreferredName(), _bytes);
     }
@@ -206,20 +194,18 @@ public class CatRecoveryRecord  implements XContentable<CatRecoveryRecord> {
     if (_time != null) {
       builder.field(TIME.getPreferredName(), _time);
     }
-    if (_translogOps != null) {
+    if (_translogOps$isSet) {
       builder.field(TRANSLOG_OPS.getPreferredName(), _translogOps);
     }
     if (_translogOpsPercent != null) {
       builder.field(TRANSLOG_OPS_PERCENT.getPreferredName(), _translogOpsPercent);
     }
-    if (_translogOpsRecovered != null) {
+    if (_translogOpsRecovered$isSet) {
       builder.field(TRANSLOG_OPS_RECOVERED.getPreferredName(), _translogOpsRecovered);
     }
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

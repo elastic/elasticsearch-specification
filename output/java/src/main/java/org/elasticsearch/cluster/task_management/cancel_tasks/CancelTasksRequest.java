@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class CancelTasksRequest  implements XContentable<CancelTasksRequest> {
+public class CancelTasksRequest extends RequestBase<CancelTasksRequest> implements XContentable<CancelTasksRequest> {
   
   static final ParseField ACTIONS = new ParseField("actions");
   private List<String> _actions;
   public List<String> getActions() { return this._actions; }
   public CancelTasksRequest setActions(List<String> val) { this._actions = val; return this; }
 
-
   static final ParseField NODES = new ParseField("nodes");
   private List<String> _nodes;
   public List<String> getNodes() { return this._nodes; }
   public CancelTasksRequest setNodes(List<String> val) { this._nodes = val; return this; }
-
 
   static final ParseField PARENT_TASK_ID = new ParseField("parent_task_id");
   private String _parentTaskId;
@@ -36,8 +32,8 @@ public class CancelTasksRequest  implements XContentable<CancelTasksRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_actions != null) {
       builder.array(ACTIONS.getPreferredName(), _actions);
     }
@@ -47,8 +43,6 @@ public class CancelTasksRequest  implements XContentable<CancelTasksRequest> {
     if (_parentTaskId != null) {
       builder.field(PARENT_TASK_ID.getPreferredName(), _parentTaskId);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

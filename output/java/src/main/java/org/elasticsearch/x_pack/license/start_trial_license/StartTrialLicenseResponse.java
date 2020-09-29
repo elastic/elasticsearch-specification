@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class StartTrialLicenseResponse  implements XContentable<StartTrialLicenseResponse> {
+public class StartTrialLicenseResponse extends AcknowledgedResponseBase implements XContentable<StartTrialLicenseResponse> {
   
   static final ParseField ERROR_MESSAGE = new ParseField("error_message");
   private String _errorMessage;
   public String getErrorMessage() { return this._errorMessage; }
   public StartTrialLicenseResponse setErrorMessage(String val) { this._errorMessage = val; return this; }
-
 
   static final ParseField TRIAL_WAS_STARTED = new ParseField("trial_was_started");
   private Boolean _trialWasStarted;
@@ -30,16 +27,14 @@ public class StartTrialLicenseResponse  implements XContentable<StartTrialLicens
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_errorMessage != null) {
       builder.field(ERROR_MESSAGE.getPreferredName(), _errorMessage);
     }
     if (_trialWasStarted != null) {
       builder.field(TRIAL_WAS_STARTED.getPreferredName(), _trialWasStarted);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

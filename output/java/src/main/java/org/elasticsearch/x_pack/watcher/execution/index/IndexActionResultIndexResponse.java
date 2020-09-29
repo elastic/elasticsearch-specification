@@ -7,14 +7,11 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
-import org.elasticsearch.document.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.document.*;
 
 public class IndexActionResultIndexResponse  implements XContentable<IndexActionResultIndexResponse> {
   
@@ -23,35 +20,36 @@ public class IndexActionResultIndexResponse  implements XContentable<IndexAction
   public Boolean getCreated() { return this._created; }
   public IndexActionResultIndexResponse setCreated(Boolean val) { this._created = val; return this; }
 
-
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public IndexActionResultIndexResponse setId(String val) { this._id = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("index");
-  private IndexName _index;
-  public IndexName getIndex() { return this._index; }
-  public IndexActionResultIndexResponse setIndex(IndexName val) { this._index = val; return this; }
-
+  private String _index;
+  public String getIndex() { return this._index; }
+  public IndexActionResultIndexResponse setIndex(String val) { this._index = val; return this; }
 
   static final ParseField RESULT = new ParseField("result");
   private Result _result;
   public Result getResult() { return this._result; }
   public IndexActionResultIndexResponse setResult(Result val) { this._result = val; return this; }
 
-
   static final ParseField VERSION = new ParseField("version");
-  private Integer _version;
-  public Integer getVersion() { return this._version; }
-  public IndexActionResultIndexResponse setVersion(Integer val) { this._version = val; return this; }
+  private int _version;
+  private boolean _version$isSet;
+  public int getVersion() { return this._version; }
+  public IndexActionResultIndexResponse setVersion(int val) {
+    this._version = val;
+    _version$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_created != null) {
       builder.field(CREATED.getPreferredName(), _created);
     }
@@ -59,18 +57,15 @@ public class IndexActionResultIndexResponse  implements XContentable<IndexAction
       builder.field(ID.getPreferredName(), _id);
     }
     if (_index != null) {
-      builder.field(INDEX.getPreferredName());
-      _index.toXContent(builder, params);
+      builder.field(INDEX.getPreferredName(), _index);
     }
     if (_result != null) {
       builder.field(RESULT.getPreferredName());
       _result.toXContent(builder, params);
     }
-    if (_version != null) {
+    if (_version$isSet) {
       builder.field(VERSION.getPreferredName(), _version);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -84,7 +79,7 @@ public class IndexActionResultIndexResponse  implements XContentable<IndexAction
   static {
     PARSER.declareBoolean(IndexActionResultIndexResponse::setCreated, CREATED);
     PARSER.declareString(IndexActionResultIndexResponse::setId, ID);
-    PARSER.declareObject(IndexActionResultIndexResponse::setIndex, (p, t) -> IndexName.createFrom(p), INDEX);
+    PARSER.declareString(IndexActionResultIndexResponse::setIndex, INDEX);
     PARSER.declareField(IndexActionResultIndexResponse::setResult, (p, t) -> Result.PARSER.apply(p), RESULT, ObjectParser.ValueType.STRING_OR_NULL);
     PARSER.declareInt(IndexActionResultIndexResponse::setVersion, VERSION);
   }

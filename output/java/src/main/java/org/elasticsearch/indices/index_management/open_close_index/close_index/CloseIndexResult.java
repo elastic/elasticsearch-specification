@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.index_management.open_close_index.close_index.*;
@@ -21,7 +19,6 @@ public class CloseIndexResult  implements XContentable<CloseIndexResult> {
   public Boolean getClosed() { return this._closed; }
   public CloseIndexResult setClosed(Boolean val) { this._closed = val; return this; }
 
-
   static final ParseField SHARDS = new ParseField("shards");
   private NamedContainer<String, CloseShardResult> _shards;
   public NamedContainer<String, CloseShardResult> getShards() { return this._shards; }
@@ -30,8 +27,8 @@ public class CloseIndexResult  implements XContentable<CloseIndexResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_closed != null) {
       builder.field(CLOSED.getPreferredName(), _closed);
     }
@@ -39,8 +36,6 @@ public class CloseIndexResult  implements XContentable<CloseIndexResult> {
       builder.field(SHARDS.getPreferredName());
       _shards.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

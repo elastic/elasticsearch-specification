@@ -7,33 +7,34 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.modules.indices.fielddata.numeric.*;
+import org.elasticsearch.mapping.types.*;
 
-public class BooleanProperty  implements XContentable<BooleanProperty> {
+public class BooleanProperty extends DocValuesPropertyBase implements XContentable<BooleanProperty> {
   
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public BooleanProperty setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public BooleanProperty setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField FIELDDATA = new ParseField("fielddata");
   private NumericFielddata _fielddata;
   public NumericFielddata getFielddata() { return this._fielddata; }
   public BooleanProperty setFielddata(NumericFielddata val) { this._fielddata = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
   public Boolean getIndex() { return this._index; }
   public BooleanProperty setIndex(Boolean val) { this._index = val; return this; }
-
 
   static final ParseField NULL_VALUE = new ParseField("null_value");
   private Boolean _nullValue;
@@ -43,9 +44,9 @@ public class BooleanProperty  implements XContentable<BooleanProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_boost != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_fielddata != null) {
@@ -58,8 +59,6 @@ public class BooleanProperty  implements XContentable<BooleanProperty> {
     if (_nullValue != null) {
       builder.field(NULL_VALUE.getPreferredName(), _nullValue);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

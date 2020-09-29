@@ -7,27 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.license.post_license.*;
 import org.elasticsearch.x_pack.license.get_license.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class PostLicenseResponse  implements XContentable<PostLicenseResponse> {
+public class PostLicenseResponse extends ResponseBase<PostLicenseResponse> implements XContentable<PostLicenseResponse> {
   
   static final ParseField ACKNOWLEDGE = new ParseField("acknowledge");
   private LicenseAcknowledgement _acknowledge;
   public LicenseAcknowledgement getAcknowledge() { return this._acknowledge; }
   public PostLicenseResponse setAcknowledge(LicenseAcknowledgement val) { this._acknowledge = val; return this; }
 
-
   static final ParseField ACKNOWLEDGED = new ParseField("acknowledged");
   private Boolean _acknowledged;
   public Boolean getAcknowledged() { return this._acknowledged; }
   public PostLicenseResponse setAcknowledged(Boolean val) { this._acknowledged = val; return this; }
-
 
   static final ParseField LICENSE_STATUS = new ParseField("license_status");
   private LicenseStatus _licenseStatus;
@@ -37,8 +34,8 @@ public class PostLicenseResponse  implements XContentable<PostLicenseResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_acknowledge != null) {
       builder.field(ACKNOWLEDGE.getPreferredName());
       _acknowledge.toXContent(builder, params);
@@ -50,8 +47,6 @@ public class PostLicenseResponse  implements XContentable<PostLicenseResponse> {
       builder.field(LICENSE_STATUS.getPreferredName());
       _licenseStatus.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

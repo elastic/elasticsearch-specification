@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -22,48 +20,45 @@ public class ModelSnapshot  implements XContentable<ModelSnapshot> {
   public String getDescription() { return this._description; }
   public ModelSnapshot setDescription(String val) { this._description = val; return this; }
 
-
   static final ParseField JOB_ID = new ParseField("job_id");
   private String _jobId;
   public String getJobId() { return this._jobId; }
   public ModelSnapshot setJobId(String val) { this._jobId = val; return this; }
-
 
   static final ParseField LATEST_RECORD_TIME_STAMP = new ParseField("latest_record_time_stamp");
   private Date _latestRecordTimeStamp;
   public Date getLatestRecordTimeStamp() { return this._latestRecordTimeStamp; }
   public ModelSnapshot setLatestRecordTimeStamp(Date val) { this._latestRecordTimeStamp = val; return this; }
 
-
   static final ParseField LATEST_RESULT_TIME_STAMP = new ParseField("latest_result_time_stamp");
   private Date _latestResultTimeStamp;
   public Date getLatestResultTimeStamp() { return this._latestResultTimeStamp; }
   public ModelSnapshot setLatestResultTimeStamp(Date val) { this._latestResultTimeStamp = val; return this; }
-
 
   static final ParseField MODEL_SIZE_STATS = new ParseField("model_size_stats");
   private ModelSizeStats _modelSizeStats;
   public ModelSizeStats getModelSizeStats() { return this._modelSizeStats; }
   public ModelSnapshot setModelSizeStats(ModelSizeStats val) { this._modelSizeStats = val; return this; }
 
-
   static final ParseField RETAIN = new ParseField("retain");
   private Boolean _retain;
   public Boolean getRetain() { return this._retain; }
   public ModelSnapshot setRetain(Boolean val) { this._retain = val; return this; }
 
-
   static final ParseField SNAPSHOT_DOC_COUNT = new ParseField("snapshot_doc_count");
-  private Long _snapshotDocCount;
-  public Long getSnapshotDocCount() { return this._snapshotDocCount; }
-  public ModelSnapshot setSnapshotDocCount(Long val) { this._snapshotDocCount = val; return this; }
-
+  private long _snapshotDocCount;
+  private boolean _snapshotDocCount$isSet;
+  public long getSnapshotDocCount() { return this._snapshotDocCount; }
+  public ModelSnapshot setSnapshotDocCount(long val) {
+    this._snapshotDocCount = val;
+    _snapshotDocCount$isSet = true;
+    return this;
+  }
 
   static final ParseField SNAPSHOT_ID = new ParseField("snapshot_id");
   private String _snapshotId;
   public String getSnapshotId() { return this._snapshotId; }
   public ModelSnapshot setSnapshotId(String val) { this._snapshotId = val; return this; }
-
 
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private Date _timestamp;
@@ -73,8 +68,8 @@ public class ModelSnapshot  implements XContentable<ModelSnapshot> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_description != null) {
       builder.field(DESCRIPTION.getPreferredName(), _description);
     }
@@ -96,7 +91,7 @@ public class ModelSnapshot  implements XContentable<ModelSnapshot> {
     if (_retain != null) {
       builder.field(RETAIN.getPreferredName(), _retain);
     }
-    if (_snapshotDocCount != null) {
+    if (_snapshotDocCount$isSet) {
       builder.field(SNAPSHOT_DOC_COUNT.getPreferredName(), _snapshotDocCount);
     }
     if (_snapshotId != null) {
@@ -106,8 +101,6 @@ public class ModelSnapshot  implements XContentable<ModelSnapshot> {
       builder.field(TIMESTAMP.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_timestamp.toInstant()));
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

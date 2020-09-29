@@ -7,51 +7,44 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common.*;
 import org.elasticsearch.x_pack.security.role.put_role.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class PutRoleRequest  implements XContentable<PutRoleRequest> {
+public class PutRoleRequest extends RequestBase<PutRoleRequest> implements XContentable<PutRoleRequest> {
   
   static final ParseField REFRESH = new ParseField("refresh");
   private Refresh _refresh;
   public Refresh getRefresh() { return this._refresh; }
   public PutRoleRequest setRefresh(Refresh val) { this._refresh = val; return this; }
 
-
   static final ParseField APPLICATIONS = new ParseField("applications");
   private List<ApplicationPrivileges> _applications;
   public List<ApplicationPrivileges> getApplications() { return this._applications; }
   public PutRoleRequest setApplications(List<ApplicationPrivileges> val) { this._applications = val; return this; }
-
 
   static final ParseField CLUSTER = new ParseField("cluster");
   private List<String> _cluster;
   public List<String> getCluster() { return this._cluster; }
   public PutRoleRequest setCluster(List<String> val) { this._cluster = val; return this; }
 
-
   static final ParseField GLOBAL = new ParseField("global");
   private NamedContainer<String, Object> _global;
   public NamedContainer<String, Object> getGlobal() { return this._global; }
   public PutRoleRequest setGlobal(NamedContainer<String, Object> val) { this._global = val; return this; }
-
 
   static final ParseField INDICES = new ParseField("indices");
   private List<IndicesPrivileges> _indices;
   public List<IndicesPrivileges> getIndices() { return this._indices; }
   public PutRoleRequest setIndices(List<IndicesPrivileges> val) { this._indices = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public PutRoleRequest setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
-
 
   static final ParseField RUN_AS = new ParseField("run_as");
   private List<String> _runAs;
@@ -61,8 +54,8 @@ public class PutRoleRequest  implements XContentable<PutRoleRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_refresh != null) {
       builder.field(REFRESH.getPreferredName());
       _refresh.toXContent(builder, params);
@@ -87,8 +80,6 @@ public class PutRoleRequest  implements XContentable<PutRoleRequest> {
     if (_runAs != null) {
       builder.array(RUN_AS.getPreferredName(), _runAs);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

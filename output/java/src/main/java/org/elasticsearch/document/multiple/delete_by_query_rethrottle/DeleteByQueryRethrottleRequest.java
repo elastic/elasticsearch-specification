@@ -7,30 +7,32 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class DeleteByQueryRethrottleRequest  implements XContentable<DeleteByQueryRethrottleRequest> {
+public class DeleteByQueryRethrottleRequest extends RequestBase<DeleteByQueryRethrottleRequest> implements XContentable<DeleteByQueryRethrottleRequest> {
   
   static final ParseField REQUESTS_PER_SECOND = new ParseField("requests_per_second");
-  private Long _requestsPerSecond;
-  public Long getRequestsPerSecond() { return this._requestsPerSecond; }
-  public DeleteByQueryRethrottleRequest setRequestsPerSecond(Long val) { this._requestsPerSecond = val; return this; }
+  private long _requestsPerSecond;
+  private boolean _requestsPerSecond$isSet;
+  public long getRequestsPerSecond() { return this._requestsPerSecond; }
+  public DeleteByQueryRethrottleRequest setRequestsPerSecond(long val) {
+    this._requestsPerSecond = val;
+    _requestsPerSecond$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_requestsPerSecond != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_requestsPerSecond$isSet) {
       builder.field(REQUESTS_PER_SECOND.getPreferredName(), _requestsPerSecond);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

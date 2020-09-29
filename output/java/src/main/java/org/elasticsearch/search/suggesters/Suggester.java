@@ -7,12 +7,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
 import org.elasticsearch.internal.*;
 
 public class Suggester  implements XContentable<Suggester> {
@@ -22,35 +19,35 @@ public class Suggester  implements XContentable<Suggester> {
   public String getAnalyzer() { return this._analyzer; }
   public Suggester setAnalyzer(String val) { this._analyzer = val; return this; }
 
-
   static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public Suggester setField(Field val) { this._field = val; return this; }
-
+  private String _field;
+  public String getField() { return this._field; }
+  public Suggester setField(String val) { this._field = val; return this; }
 
   static final ParseField SIZE = new ParseField("size");
-  private Integer _size;
-  public Integer getSize() { return this._size; }
-  public Suggester setSize(Integer val) { this._size = val; return this; }
+  private int _size;
+  private boolean _size$isSet;
+  public int getSize() { return this._size; }
+  public Suggester setSize(int val) {
+    this._size = val;
+    _size$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_analyzer != null) {
       builder.field(ANALYZER.getPreferredName(), _analyzer);
     }
     if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+      builder.field(FIELD.getPreferredName(), _field);
     }
-    if (_size != null) {
+    if (_size$isSet) {
       builder.field(SIZE.getPreferredName(), _size);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -63,7 +60,7 @@ public class Suggester  implements XContentable<Suggester> {
 
   static {
     PARSER.declareString(Suggester::setAnalyzer, ANALYZER);
-    PARSER.declareObject(Suggester::setField, (p, t) -> Field.createFrom(p), FIELD);
+    PARSER.declareString(Suggester::setField, FIELD);
     PARSER.declareInt(Suggester::setSize, SIZE);
   }
 

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.ingest.simulate_pipeline.*;
@@ -21,12 +19,10 @@ public class PipelineSimulation  implements XContentable<PipelineSimulation> {
   public DocumentSimulation getDoc() { return this._doc; }
   public PipelineSimulation setDoc(DocumentSimulation val) { this._doc = val; return this; }
 
-
   static final ParseField PROCESSOR_RESULTS = new ParseField("processor_results");
   private List<PipelineSimulation> _processorResults;
   public List<PipelineSimulation> getProcessorResults() { return this._processorResults; }
   public PipelineSimulation setProcessorResults(List<PipelineSimulation> val) { this._processorResults = val; return this; }
-
 
   static final ParseField TAG = new ParseField("tag");
   private String _tag;
@@ -36,8 +32,8 @@ public class PipelineSimulation  implements XContentable<PipelineSimulation> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_doc != null) {
       builder.field(DOC.getPreferredName());
       _doc.toXContent(builder, params);
@@ -48,8 +44,6 @@ public class PipelineSimulation  implements XContentable<PipelineSimulation> {
     if (_tag != null) {
       builder.field(TAG.getPreferredName(), _tag);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

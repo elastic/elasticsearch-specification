@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.analyze.*;
@@ -21,18 +19,15 @@ public class AnalyzeDetail  implements XContentable<AnalyzeDetail> {
   public List<CharFilterDetail> getCharfilters() { return this._charfilters; }
   public AnalyzeDetail setCharfilters(List<CharFilterDetail> val) { this._charfilters = val; return this; }
 
-
   static final ParseField CUSTOM_ANALYZER = new ParseField("custom_analyzer");
   private Boolean _customAnalyzer;
   public Boolean getCustomAnalyzer() { return this._customAnalyzer; }
   public AnalyzeDetail setCustomAnalyzer(Boolean val) { this._customAnalyzer = val; return this; }
 
-
   static final ParseField TOKENFILTERS = new ParseField("tokenfilters");
   private List<TokenDetail> _tokenfilters;
   public List<TokenDetail> getTokenfilters() { return this._tokenfilters; }
   public AnalyzeDetail setTokenfilters(List<TokenDetail> val) { this._tokenfilters = val; return this; }
-
 
   static final ParseField TOKENIZER = new ParseField("tokenizer");
   private TokenDetail _tokenizer;
@@ -42,8 +37,8 @@ public class AnalyzeDetail  implements XContentable<AnalyzeDetail> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_charfilters != null) {
       builder.array(CHARFILTERS.getPreferredName(), _charfilters);
     }
@@ -57,8 +52,6 @@ public class AnalyzeDetail  implements XContentable<AnalyzeDetail> {
       builder.field(TOKENIZER.getPreferredName());
       _tokenizer.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

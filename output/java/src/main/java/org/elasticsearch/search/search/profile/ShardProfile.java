@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search.profile.*;
@@ -21,12 +19,10 @@ public class ShardProfile  implements XContentable<ShardProfile> {
   public List<AggregationProfile> getAggregations() { return this._aggregations; }
   public ShardProfile setAggregations(List<AggregationProfile> val) { this._aggregations = val; return this; }
 
-
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public ShardProfile setId(String val) { this._id = val; return this; }
-
 
   static final ParseField SEARCHES = new ParseField("searches");
   private List<SearchProfile> _searches;
@@ -36,8 +32,8 @@ public class ShardProfile  implements XContentable<ShardProfile> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_aggregations != null) {
       builder.array(AGGREGATIONS.getPreferredName(), _aggregations);
     }
@@ -47,8 +43,6 @@ public class ShardProfile  implements XContentable<ShardProfile> {
     if (_searches != null) {
       builder.array(SEARCHES.getPreferredName(), _searches);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

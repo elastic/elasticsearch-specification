@@ -7,39 +7,34 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.token_filters.*;
 
 public class CategorizationAnalyzer  implements XContentable<CategorizationAnalyzer> {
   
+  static final ParseField FILTER = new ParseField("filter");
+  private List<ITokenFilter> _filter;
+  public List<ITokenFilter> getFilter() { return this._filter; }
+  public CategorizationAnalyzer setFilter(List<ITokenFilter> val) { this._filter = val; return this; }
+
   static final ParseField TOKENIZER = new ParseField("tokenizer");
   private String _tokenizer;
   public String getTokenizer() { return this._tokenizer; }
   public CategorizationAnalyzer setTokenizer(String val) { this._tokenizer = val; return this; }
 
 
-  static final ParseField FILTER = new ParseField("filter");
-  private List<ITokenFilter> _filter;
-  public List<ITokenFilter> getFilter() { return this._filter; }
-  public CategorizationAnalyzer setFilter(List<ITokenFilter> val) { this._filter = val; return this; }
-
-
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_tokenizer != null) {
-      builder.field(TOKENIZER.getPreferredName(), _tokenizer);
-    }
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_filter != null) {
       builder.array(FILTER.getPreferredName(), _filter);
     }
-    builder.endObject();
-    return builder;
+    if (_tokenizer != null) {
+      builder.field(TOKENIZER.getPreferredName(), _tokenizer);
+    }
   }
 
   @Override
@@ -51,8 +46,8 @@ public class CategorizationAnalyzer  implements XContentable<CategorizationAnaly
     new ObjectParser<>(CategorizationAnalyzer.class.getName(), false, CategorizationAnalyzer::new);
 
   static {
-    PARSER.declareString(CategorizationAnalyzer::setTokenizer, TOKENIZER);
     PARSER.declareObjectArray(CategorizationAnalyzer::setFilter, (p, t) -> ITokenFilter.PARSER.apply(p, t), FILTER);
+    PARSER.declareString(CategorizationAnalyzer::setTokenizer, TOKENIZER);
   }
 
 }

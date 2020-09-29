@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.ilm.get_status.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetSnapshotLifecycleManagementStatusResponse  implements XContentable<GetSnapshotLifecycleManagementStatusResponse> {
+public class GetSnapshotLifecycleManagementStatusResponse extends ResponseBase<GetSnapshotLifecycleManagementStatusResponse> implements XContentable<GetSnapshotLifecycleManagementStatusResponse> {
   
   static final ParseField OPERATION_MODE = new ParseField("operation_mode");
   private LifecycleOperationMode _operationMode;
@@ -24,14 +23,12 @@ public class GetSnapshotLifecycleManagementStatusResponse  implements XContentab
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_operationMode != null) {
       builder.field(OPERATION_MODE.getPreferredName());
       _operationMode.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

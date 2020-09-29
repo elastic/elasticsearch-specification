@@ -7,44 +7,48 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class ShingleTokenFilter  implements XContentable<ShingleTokenFilter> {
+public class ShingleTokenFilter extends TokenFilterBase implements XContentable<ShingleTokenFilter> {
   
   static final ParseField FILLER_TOKEN = new ParseField("filler_token");
   private String _fillerToken;
   public String getFillerToken() { return this._fillerToken; }
   public ShingleTokenFilter setFillerToken(String val) { this._fillerToken = val; return this; }
 
-
   static final ParseField MAX_SHINGLE_SIZE = new ParseField("max_shingle_size");
-  private Integer _maxShingleSize;
-  public Integer getMaxShingleSize() { return this._maxShingleSize; }
-  public ShingleTokenFilter setMaxShingleSize(Integer val) { this._maxShingleSize = val; return this; }
-
+  private int _maxShingleSize;
+  private boolean _maxShingleSize$isSet;
+  public int getMaxShingleSize() { return this._maxShingleSize; }
+  public ShingleTokenFilter setMaxShingleSize(int val) {
+    this._maxShingleSize = val;
+    _maxShingleSize$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN_SHINGLE_SIZE = new ParseField("min_shingle_size");
-  private Integer _minShingleSize;
-  public Integer getMinShingleSize() { return this._minShingleSize; }
-  public ShingleTokenFilter setMinShingleSize(Integer val) { this._minShingleSize = val; return this; }
-
+  private int _minShingleSize;
+  private boolean _minShingleSize$isSet;
+  public int getMinShingleSize() { return this._minShingleSize; }
+  public ShingleTokenFilter setMinShingleSize(int val) {
+    this._minShingleSize = val;
+    _minShingleSize$isSet = true;
+    return this;
+  }
 
   static final ParseField OUTPUT_UNIGRAMS = new ParseField("output_unigrams");
   private Boolean _outputUnigrams;
   public Boolean getOutputUnigrams() { return this._outputUnigrams; }
   public ShingleTokenFilter setOutputUnigrams(Boolean val) { this._outputUnigrams = val; return this; }
 
-
   static final ParseField OUTPUT_UNIGRAMS_IF_NO_SHINGLES = new ParseField("output_unigrams_if_no_shingles");
   private Boolean _outputUnigramsIfNoShingles;
   public Boolean getOutputUnigramsIfNoShingles() { return this._outputUnigramsIfNoShingles; }
   public ShingleTokenFilter setOutputUnigramsIfNoShingles(Boolean val) { this._outputUnigramsIfNoShingles = val; return this; }
-
 
   static final ParseField TOKEN_SEPARATOR = new ParseField("token_separator");
   private String _tokenSeparator;
@@ -54,15 +58,15 @@ public class ShingleTokenFilter  implements XContentable<ShingleTokenFilter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_fillerToken != null) {
       builder.field(FILLER_TOKEN.getPreferredName(), _fillerToken);
     }
-    if (_maxShingleSize != null) {
+    if (_maxShingleSize$isSet) {
       builder.field(MAX_SHINGLE_SIZE.getPreferredName(), _maxShingleSize);
     }
-    if (_minShingleSize != null) {
+    if (_minShingleSize$isSet) {
       builder.field(MIN_SHINGLE_SIZE.getPreferredName(), _minShingleSize);
     }
     if (_outputUnigrams != null) {
@@ -74,8 +78,6 @@ public class ShingleTokenFilter  implements XContentable<ShingleTokenFilter> {
     if (_tokenSeparator != null) {
       builder.field(TOKEN_SEPARATOR.getPreferredName(), _tokenSeparator);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

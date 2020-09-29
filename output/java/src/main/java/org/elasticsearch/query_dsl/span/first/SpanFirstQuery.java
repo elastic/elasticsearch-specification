@@ -7,21 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.query_dsl.span.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
 public class SpanFirstQuery  implements XContentable<SpanFirstQuery> {
   
   static final ParseField END = new ParseField("end");
-  private Integer _end;
-  public Integer getEnd() { return this._end; }
-  public SpanFirstQuery setEnd(Integer val) { this._end = val; return this; }
-
+  private int _end;
+  private boolean _end$isSet;
+  public int getEnd() { return this._end; }
+  public SpanFirstQuery setEnd(int val) {
+    this._end = val;
+    _end$isSet = true;
+    return this;
+  }
 
   static final ParseField MATCH = new ParseField("match");
   private SpanQuery _match;
@@ -31,17 +34,15 @@ public class SpanFirstQuery  implements XContentable<SpanFirstQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_end != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_end$isSet) {
       builder.field(END.getPreferredName(), _end);
     }
     if (_match != null) {
       builder.field(MATCH.getPreferredName());
       _match.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

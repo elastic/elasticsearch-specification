@@ -7,80 +7,68 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.datafeed.*;
+import org.elasticsearch.cat.*;
 
-public class CatDatafeedsRecord  implements XContentable<CatDatafeedsRecord> {
+public class CatDatafeedsRecord extends ICatRecord implements XContentable<CatDatafeedsRecord> {
   
   static final ParseField ASSIGNMENT_EXPLANATION = new ParseField("assignment_explanation");
   private String _assignmentExplanation;
   public String getAssignmentExplanation() { return this._assignmentExplanation; }
   public CatDatafeedsRecord setAssignmentExplanation(String val) { this._assignmentExplanation = val; return this; }
 
-
   static final ParseField BUCKETS_COUNT = new ParseField("buckets.count");
   private String _bucketsCount;
   public String getBucketsCount() { return this._bucketsCount; }
   public CatDatafeedsRecord setBucketsCount(String val) { this._bucketsCount = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public CatDatafeedsRecord setId(String val) { this._id = val; return this; }
 
-
   static final ParseField NODE_ADDRESS = new ParseField("node.address");
   private String _nodeAddress;
   public String getNodeAddress() { return this._nodeAddress; }
   public CatDatafeedsRecord setNodeAddress(String val) { this._nodeAddress = val; return this; }
-
 
   static final ParseField NODE_EPHEMERAL_ID = new ParseField("node.ephemeral_id");
   private String _nodeEphemeralId;
   public String getNodeEphemeralId() { return this._nodeEphemeralId; }
   public CatDatafeedsRecord setNodeEphemeralId(String val) { this._nodeEphemeralId = val; return this; }
 
-
   static final ParseField NODE_ID = new ParseField("node.id");
   private String _nodeId;
   public String getNodeId() { return this._nodeId; }
   public CatDatafeedsRecord setNodeId(String val) { this._nodeId = val; return this; }
-
 
   static final ParseField NODE_NAME = new ParseField("node.name");
   private String _nodeName;
   public String getNodeName() { return this._nodeName; }
   public CatDatafeedsRecord setNodeName(String val) { this._nodeName = val; return this; }
 
-
   static final ParseField SEARCH_BUCKET_AVG = new ParseField("search.bucket_avg");
   private String _searchBucketAvg;
   public String getSearchBucketAvg() { return this._searchBucketAvg; }
   public CatDatafeedsRecord setSearchBucketAvg(String val) { this._searchBucketAvg = val; return this; }
-
 
   static final ParseField SEARCH_COUNT = new ParseField("search.count");
   private String _searchCount;
   public String getSearchCount() { return this._searchCount; }
   public CatDatafeedsRecord setSearchCount(String val) { this._searchCount = val; return this; }
 
-
   static final ParseField SEARCH_EXP_AVG_HOUR = new ParseField("search.exp_avg_hour");
   private String _searchExpAvgHour;
   public String getSearchExpAvgHour() { return this._searchExpAvgHour; }
   public CatDatafeedsRecord setSearchExpAvgHour(String val) { this._searchExpAvgHour = val; return this; }
 
-
   static final ParseField SEARCH_TIME = new ParseField("search.time");
   private String _searchTime;
   public String getSearchTime() { return this._searchTime; }
   public CatDatafeedsRecord setSearchTime(String val) { this._searchTime = val; return this; }
-
 
   static final ParseField STATE = new ParseField("state");
   private DatafeedState _state;
@@ -90,8 +78,8 @@ public class CatDatafeedsRecord  implements XContentable<CatDatafeedsRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_assignmentExplanation != null) {
       builder.field(ASSIGNMENT_EXPLANATION.getPreferredName(), _assignmentExplanation);
     }
@@ -129,8 +117,6 @@ public class CatDatafeedsRecord  implements XContentable<CatDatafeedsRecord> {
       builder.field(STATE.getPreferredName());
       _state.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

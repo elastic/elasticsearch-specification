@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.icu.normalization.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class IcuNormalizationTokenFilter  implements XContentable<IcuNormalizationTokenFilter> {
+public class IcuNormalizationTokenFilter extends TokenFilterBase implements XContentable<IcuNormalizationTokenFilter> {
   
   static final ParseField NAME = new ParseField("name");
   private IcuNormalizationType _name;
@@ -24,14 +23,12 @@ public class IcuNormalizationTokenFilter  implements XContentable<IcuNormalizati
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_name != null) {
       builder.field(NAME.getPreferredName());
       _name.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

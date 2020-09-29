@@ -7,45 +7,44 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.mapping.types.specialized.completion.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.mapping.types.*;
 
-public class CompletionProperty  implements XContentable<CompletionProperty> {
+public class CompletionProperty extends DocValuesPropertyBase implements XContentable<CompletionProperty> {
   
   static final ParseField ANALYZER = new ParseField("analyzer");
   private String _analyzer;
   public String getAnalyzer() { return this._analyzer; }
   public CompletionProperty setAnalyzer(String val) { this._analyzer = val; return this; }
 
-
   static final ParseField CONTEXTS = new ParseField("contexts");
   private List<SuggestContext> _contexts;
   public List<SuggestContext> getContexts() { return this._contexts; }
   public CompletionProperty setContexts(List<SuggestContext> val) { this._contexts = val; return this; }
 
-
   static final ParseField MAX_INPUT_LENGTH = new ParseField("max_input_length");
-  private Integer _maxInputLength;
-  public Integer getMaxInputLength() { return this._maxInputLength; }
-  public CompletionProperty setMaxInputLength(Integer val) { this._maxInputLength = val; return this; }
-
+  private int _maxInputLength;
+  private boolean _maxInputLength$isSet;
+  public int getMaxInputLength() { return this._maxInputLength; }
+  public CompletionProperty setMaxInputLength(int val) {
+    this._maxInputLength = val;
+    _maxInputLength$isSet = true;
+    return this;
+  }
 
   static final ParseField PRESERVE_POSITION_INCREMENTS = new ParseField("preserve_position_increments");
   private Boolean _preservePositionIncrements;
   public Boolean getPreservePositionIncrements() { return this._preservePositionIncrements; }
   public CompletionProperty setPreservePositionIncrements(Boolean val) { this._preservePositionIncrements = val; return this; }
 
-
   static final ParseField PRESERVE_SEPARATORS = new ParseField("preserve_separators");
   private Boolean _preserveSeparators;
   public Boolean getPreserveSeparators() { return this._preserveSeparators; }
   public CompletionProperty setPreserveSeparators(Boolean val) { this._preserveSeparators = val; return this; }
-
 
   static final ParseField SEARCH_ANALYZER = new ParseField("search_analyzer");
   private String _searchAnalyzer;
@@ -55,15 +54,15 @@ public class CompletionProperty  implements XContentable<CompletionProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_analyzer != null) {
       builder.field(ANALYZER.getPreferredName(), _analyzer);
     }
     if (_contexts != null) {
       builder.array(CONTEXTS.getPreferredName(), _contexts);
     }
-    if (_maxInputLength != null) {
+    if (_maxInputLength$isSet) {
       builder.field(MAX_INPUT_LENGTH.getPreferredName(), _maxInputLength);
     }
     if (_preservePositionIncrements != null) {
@@ -75,8 +74,6 @@ public class CompletionProperty  implements XContentable<CompletionProperty> {
     if (_searchAnalyzer != null) {
       builder.field(SEARCH_ANALYZER.getPreferredName(), _searchAnalyzer);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

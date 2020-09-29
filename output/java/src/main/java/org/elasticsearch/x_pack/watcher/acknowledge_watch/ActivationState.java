@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,7 +19,6 @@ public class ActivationState  implements XContentable<ActivationState> {
   public Boolean getActive() { return this._active; }
   public ActivationState setActive(Boolean val) { this._active = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private Date _timestamp;
   public Date getTimestamp() { return this._timestamp; }
@@ -30,8 +27,8 @@ public class ActivationState  implements XContentable<ActivationState> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_active != null) {
       builder.field(ACTIVE.getPreferredName(), _active);
     }
@@ -39,8 +36,6 @@ public class ActivationState  implements XContentable<ActivationState> {
       builder.field(TIMESTAMP.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_timestamp.toInstant()));
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

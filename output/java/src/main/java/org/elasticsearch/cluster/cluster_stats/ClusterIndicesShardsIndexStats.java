@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.cluster_stats.*;
@@ -21,12 +19,10 @@ public class ClusterIndicesShardsIndexStats  implements XContentable<ClusterIndi
   public ClusterShardMetrics getPrimaries() { return this._primaries; }
   public ClusterIndicesShardsIndexStats setPrimaries(ClusterShardMetrics val) { this._primaries = val; return this; }
 
-
   static final ParseField REPLICATION = new ParseField("replication");
   private ClusterShardMetrics _replication;
   public ClusterShardMetrics getReplication() { return this._replication; }
   public ClusterIndicesShardsIndexStats setReplication(ClusterShardMetrics val) { this._replication = val; return this; }
-
 
   static final ParseField SHARDS = new ParseField("shards");
   private ClusterShardMetrics _shards;
@@ -36,8 +32,8 @@ public class ClusterIndicesShardsIndexStats  implements XContentable<ClusterIndi
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_primaries != null) {
       builder.field(PRIMARIES.getPreferredName());
       _primaries.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class ClusterIndicesShardsIndexStats  implements XContentable<ClusterIndi
       builder.field(SHARDS.getPreferredName());
       _shards.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

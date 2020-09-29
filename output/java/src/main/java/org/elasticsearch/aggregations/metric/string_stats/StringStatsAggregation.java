@@ -7,33 +7,28 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.common_options.scripting.*;
 
 public class StringStatsAggregation  implements XContentable<StringStatsAggregation> {
   
   static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public StringStatsAggregation setField(Field val) { this._field = val; return this; }
-
+  private String _field;
+  public String getField() { return this._field; }
+  public StringStatsAggregation setField(String val) { this._field = val; return this; }
 
   static final ParseField MISSING = new ParseField("missing");
   private Object _missing;
   public Object getMissing() { return this._missing; }
   public StringStatsAggregation setMissing(Object val) { this._missing = val; return this; }
 
-
   static final ParseField SCRIPT = new ParseField("script");
   private Script _script;
   public Script getScript() { return this._script; }
   public StringStatsAggregation setScript(Script val) { this._script = val; return this; }
-
 
   static final ParseField SHOW_DISTRIBUTION = new ParseField("show_distribution");
   private Boolean _showDistribution;
@@ -43,11 +38,10 @@ public class StringStatsAggregation  implements XContentable<StringStatsAggregat
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+      builder.field(FIELD.getPreferredName(), _field);
     }
     if (_missing != null) {
       builder.field(MISSING.getPreferredName(), _missing);
@@ -59,8 +53,6 @@ public class StringStatsAggregation  implements XContentable<StringStatsAggregat
     if (_showDistribution != null) {
       builder.field(SHOW_DISTRIBUTION.getPreferredName(), _showDistribution);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -72,7 +64,7 @@ public class StringStatsAggregation  implements XContentable<StringStatsAggregat
     new ObjectParser<>(StringStatsAggregation.class.getName(), false, StringStatsAggregation::new);
 
   static {
-    PARSER.declareObject(StringStatsAggregation::setField, (p, t) -> Field.createFrom(p), FIELD);
+    PARSER.declareString(StringStatsAggregation::setField, FIELD);
     PARSER.declareObject(StringStatsAggregation::setMissing, (p, t) -> p.objectText(), MISSING);
     PARSER.declareObject(StringStatsAggregation::setScript, (p, t) -> Script.PARSER.apply(p, t), SCRIPT);
     PARSER.declareBoolean(StringStatsAggregation::setShowDistribution, SHOW_DISTRIBUTION);

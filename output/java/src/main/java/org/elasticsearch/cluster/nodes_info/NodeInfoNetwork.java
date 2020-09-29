@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_info.*;
@@ -22,26 +20,28 @@ public class NodeInfoNetwork  implements XContentable<NodeInfoNetwork> {
   public NodeInfoNetworkInterface getPrimaryInterface() { return this._primaryInterface; }
   public NodeInfoNetwork setPrimaryInterface(NodeInfoNetworkInterface val) { this._primaryInterface = val; return this; }
 
-
   static final ParseField REFRESH_INTERVAL = new ParseField("refresh_interval");
-  private Integer _refreshInterval;
-  public Integer getRefreshInterval() { return this._refreshInterval; }
-  public NodeInfoNetwork setRefreshInterval(Integer val) { this._refreshInterval = val; return this; }
+  private int _refreshInterval;
+  private boolean _refreshInterval$isSet;
+  public int getRefreshInterval() { return this._refreshInterval; }
+  public NodeInfoNetwork setRefreshInterval(int val) {
+    this._refreshInterval = val;
+    _refreshInterval$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_primaryInterface != null) {
       builder.field(PRIMARY_INTERFACE.getPreferredName());
       _primaryInterface.toXContent(builder, params);
     }
-    if (_refreshInterval != null) {
+    if (_refreshInterval$isSet) {
       builder.field(REFRESH_INTERVAL.getPreferredName(), _refreshInterval);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

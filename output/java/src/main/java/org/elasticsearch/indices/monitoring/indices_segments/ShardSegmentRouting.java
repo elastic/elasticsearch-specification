@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class ShardSegmentRouting  implements XContentable<ShardSegmentRouting> {
   public String getNode() { return this._node; }
   public ShardSegmentRouting setNode(String val) { this._node = val; return this; }
 
-
   static final ParseField PRIMARY = new ParseField("primary");
   private Boolean _primary;
   public Boolean getPrimary() { return this._primary; }
   public ShardSegmentRouting setPrimary(Boolean val) { this._primary = val; return this; }
-
 
   static final ParseField STATE = new ParseField("state");
   private String _state;
@@ -36,8 +32,8 @@ public class ShardSegmentRouting  implements XContentable<ShardSegmentRouting> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_node != null) {
       builder.field(NODE.getPreferredName(), _node);
     }
@@ -47,8 +43,6 @@ public class ShardSegmentRouting  implements XContentable<ShardSegmentRouting> {
     if (_state != null) {
       builder.field(STATE.getPreferredName(), _state);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

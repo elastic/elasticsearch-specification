@@ -7,68 +7,60 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class GetIndexRequest  implements XContentable<GetIndexRequest> {
+public class GetIndexRequest extends RequestBase<GetIndexRequest> implements XContentable<GetIndexRequest> {
   
   static final ParseField ALLOW_NO_INDICES = new ParseField("allow_no_indices");
   private Boolean _allowNoIndices;
   public Boolean getAllowNoIndices() { return this._allowNoIndices; }
   public GetIndexRequest setAllowNoIndices(Boolean val) { this._allowNoIndices = val; return this; }
 
-
   static final ParseField EXPAND_WILDCARDS = new ParseField("expand_wildcards");
   private ExpandWildcards _expandWildcards;
   public ExpandWildcards getExpandWildcards() { return this._expandWildcards; }
   public GetIndexRequest setExpandWildcards(ExpandWildcards val) { this._expandWildcards = val; return this; }
-
 
   static final ParseField FLAT_SETTINGS = new ParseField("flat_settings");
   private Boolean _flatSettings;
   public Boolean getFlatSettings() { return this._flatSettings; }
   public GetIndexRequest setFlatSettings(Boolean val) { this._flatSettings = val; return this; }
 
-
   static final ParseField IGNORE_UNAVAILABLE = new ParseField("ignore_unavailable");
   private Boolean _ignoreUnavailable;
   public Boolean getIgnoreUnavailable() { return this._ignoreUnavailable; }
   public GetIndexRequest setIgnoreUnavailable(Boolean val) { this._ignoreUnavailable = val; return this; }
-
 
   static final ParseField INCLUDE_DEFAULTS = new ParseField("include_defaults");
   private Boolean _includeDefaults;
   public Boolean getIncludeDefaults() { return this._includeDefaults; }
   public GetIndexRequest setIncludeDefaults(Boolean val) { this._includeDefaults = val; return this; }
 
-
   static final ParseField INCLUDE_TYPE_NAME = new ParseField("include_type_name");
   private Boolean _includeTypeName;
   public Boolean getIncludeTypeName() { return this._includeTypeName; }
   public GetIndexRequest setIncludeTypeName(Boolean val) { this._includeTypeName = val; return this; }
-
 
   static final ParseField LOCAL = new ParseField("local");
   private Boolean _local;
   public Boolean getLocal() { return this._local; }
   public GetIndexRequest setLocal(Boolean val) { this._local = val; return this; }
 
-
   static final ParseField MASTER_TIMEOUT = new ParseField("master_timeout");
-  private Time _masterTimeout;
-  public Time getMasterTimeout() { return this._masterTimeout; }
-  public GetIndexRequest setMasterTimeout(Time val) { this._masterTimeout = val; return this; }
+  private String _masterTimeout;
+  public String getMasterTimeout() { return this._masterTimeout; }
+  public GetIndexRequest setMasterTimeout(String val) { this._masterTimeout = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_allowNoIndices != null) {
       builder.field(ALLOW_NO_INDICES.getPreferredName(), _allowNoIndices);
     }
@@ -92,11 +84,8 @@ public class GetIndexRequest  implements XContentable<GetIndexRequest> {
       builder.field(LOCAL.getPreferredName(), _local);
     }
     if (_masterTimeout != null) {
-      builder.field(MASTER_TIMEOUT.getPreferredName());
-      _masterTimeout.toXContent(builder, params);
+      builder.field(MASTER_TIMEOUT.getPreferredName(), _masterTimeout);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -115,7 +104,7 @@ public class GetIndexRequest  implements XContentable<GetIndexRequest> {
     PARSER.declareBoolean(GetIndexRequest::setIncludeDefaults, INCLUDE_DEFAULTS);
     PARSER.declareBoolean(GetIndexRequest::setIncludeTypeName, INCLUDE_TYPE_NAME);
     PARSER.declareBoolean(GetIndexRequest::setLocal, LOCAL);
-    PARSER.declareObject(GetIndexRequest::setMasterTimeout, (p, t) -> Time.PARSER.apply(p, t), MASTER_TIMEOUT);
+    PARSER.declareString(GetIndexRequest::setMasterTimeout, MASTER_TIMEOUT);
   }
 
 }

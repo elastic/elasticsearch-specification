@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.geo.*;
@@ -21,12 +19,10 @@ public class BoundingBox  implements XContentable<BoundingBox> {
   public GeoLocation getBottomRight() { return this._bottomRight; }
   public BoundingBox setBottomRight(GeoLocation val) { this._bottomRight = val; return this; }
 
-
   static final ParseField TOP_LEFT = new ParseField("top_left");
   private GeoLocation _topLeft;
   public GeoLocation getTopLeft() { return this._topLeft; }
   public BoundingBox setTopLeft(GeoLocation val) { this._topLeft = val; return this; }
-
 
   static final ParseField WKT = new ParseField("wkt");
   private String _wkt;
@@ -36,8 +32,8 @@ public class BoundingBox  implements XContentable<BoundingBox> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_bottomRight != null) {
       builder.field(BOTTOM_RIGHT.getPreferredName());
       _bottomRight.toXContent(builder, params);
@@ -49,8 +45,6 @@ public class BoundingBox  implements XContentable<BoundingBox> {
     if (_wkt != null) {
       builder.field(WKT.getPreferredName(), _wkt);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

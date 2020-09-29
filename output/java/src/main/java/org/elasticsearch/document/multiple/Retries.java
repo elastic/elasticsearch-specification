@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class Retries  implements XContentable<Retries> {
   
   static final ParseField BULK = new ParseField("bulk");
-  private Long _bulk;
-  public Long getBulk() { return this._bulk; }
-  public Retries setBulk(Long val) { this._bulk = val; return this; }
-
+  private long _bulk;
+  private boolean _bulk$isSet;
+  public long getBulk() { return this._bulk; }
+  public Retries setBulk(long val) {
+    this._bulk = val;
+    _bulk$isSet = true;
+    return this;
+  }
 
   static final ParseField SEARCH = new ParseField("search");
-  private Long _search;
-  public Long getSearch() { return this._search; }
-  public Retries setSearch(Long val) { this._search = val; return this; }
+  private long _search;
+  private boolean _search$isSet;
+  public long getSearch() { return this._search; }
+  public Retries setSearch(long val) {
+    this._search = val;
+    _search$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_bulk != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_bulk$isSet) {
       builder.field(BULK.getPreferredName(), _bulk);
     }
-    if (_search != null) {
+    if (_search$isSet) {
       builder.field(SEARCH.getPreferredName(), _search);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

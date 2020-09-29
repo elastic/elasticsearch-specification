@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.plugins.icu.normalization.*;
+import org.elasticsearch.analysis.analyzers.*;
 
-public class IcuAnalyzer  implements XContentable<IcuAnalyzer> {
+public class IcuAnalyzer extends AnalyzerBase implements XContentable<IcuAnalyzer> {
   
   static final ParseField METHOD = new ParseField("method");
   private IcuNormalizationType _method;
   public IcuNormalizationType getMethod() { return this._method; }
   public IcuAnalyzer setMethod(IcuNormalizationType val) { this._method = val; return this; }
-
 
   static final ParseField MODE = new ParseField("mode");
   private IcuNormalizationMode _mode;
@@ -30,8 +28,8 @@ public class IcuAnalyzer  implements XContentable<IcuAnalyzer> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_method != null) {
       builder.field(METHOD.getPreferredName());
       _method.toXContent(builder, params);
@@ -40,8 +38,6 @@ public class IcuAnalyzer  implements XContentable<IcuAnalyzer> {
       builder.field(MODE.getPreferredName());
       _mode.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

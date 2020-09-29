@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.indices.*;
+import org.elasticsearch.internal.*;
 
 public class SnapshotLifecycleConfig  implements XContentable<SnapshotLifecycleConfig> {
   
@@ -21,12 +19,10 @@ public class SnapshotLifecycleConfig  implements XContentable<SnapshotLifecycleC
   public Boolean getIgnoreUnavailable() { return this._ignoreUnavailable; }
   public SnapshotLifecycleConfig setIgnoreUnavailable(Boolean val) { this._ignoreUnavailable = val; return this; }
 
-
   static final ParseField INCLUDE_GLOBAL_STATE = new ParseField("include_global_state");
   private Boolean _includeGlobalState;
   public Boolean getIncludeGlobalState() { return this._includeGlobalState; }
   public SnapshotLifecycleConfig setIncludeGlobalState(Boolean val) { this._includeGlobalState = val; return this; }
-
 
   static final ParseField INDICES = new ParseField("indices");
   private Indices _indices;
@@ -36,8 +32,8 @@ public class SnapshotLifecycleConfig  implements XContentable<SnapshotLifecycleC
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_ignoreUnavailable != null) {
       builder.field(IGNORE_UNAVAILABLE.getPreferredName(), _ignoreUnavailable);
     }
@@ -48,8 +44,6 @@ public class SnapshotLifecycleConfig  implements XContentable<SnapshotLifecycleC
       builder.field(INDICES.getPreferredName());
       _indices.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

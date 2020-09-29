@@ -9,6 +9,11 @@ import java.io.IOException;
 
 public interface XContentable<T> extends FromXContentable<T> {
 
-  XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException;
+  default XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    this.toXContentInternal(builder, params);
+    return builder;
+  }
 
+  default void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+  }
 }

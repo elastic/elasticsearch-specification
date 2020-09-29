@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class ClusterRerouteDecision  implements XContentable<ClusterRerouteDecis
   public String getDecider() { return this._decider; }
   public ClusterRerouteDecision setDecider(String val) { this._decider = val; return this; }
 
-
   static final ParseField DECISION = new ParseField("decision");
   private String _decision;
   public String getDecision() { return this._decision; }
   public ClusterRerouteDecision setDecision(String val) { this._decision = val; return this; }
-
 
   static final ParseField EXPLANATION = new ParseField("explanation");
   private String _explanation;
@@ -36,8 +32,8 @@ public class ClusterRerouteDecision  implements XContentable<ClusterRerouteDecis
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_decider != null) {
       builder.field(DECIDER.getPreferredName(), _decider);
     }
@@ -47,8 +43,6 @@ public class ClusterRerouteDecision  implements XContentable<ClusterRerouteDecis
     if (_explanation != null) {
       builder.field(EXPLANATION.getPreferredName(), _explanation);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

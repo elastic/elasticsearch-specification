@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.cluster_reroute.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class ClusterRerouteResponse  implements XContentable<ClusterRerouteResponse> {
+public class ClusterRerouteResponse extends ResponseBase<ClusterRerouteResponse> implements XContentable<ClusterRerouteResponse> {
   
   static final ParseField EXPLANATIONS = new ParseField("explanations");
   private List<ClusterRerouteExplanation> _explanations;
   public List<ClusterRerouteExplanation> getExplanations() { return this._explanations; }
   public ClusterRerouteResponse setExplanations(List<ClusterRerouteExplanation> val) { this._explanations = val; return this; }
-
 
   static final ParseField STATE = new ParseField("state");
   private List<String> _state;
@@ -30,16 +28,14 @@ public class ClusterRerouteResponse  implements XContentable<ClusterRerouteRespo
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_explanations != null) {
       builder.array(EXPLANATIONS.getPreferredName(), _explanations);
     }
     if (_state != null) {
       builder.array(STATE.getPreferredName(), _state);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

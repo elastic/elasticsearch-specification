@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.graph.explore.request.*;
@@ -22,12 +20,10 @@ public class Hop  implements XContentable<Hop> {
   public Hop getConnections() { return this._connections; }
   public Hop setConnections(Hop val) { this._connections = val; return this; }
 
-
   static final ParseField QUERY = new ParseField("query");
   private QueryContainer _query;
   public QueryContainer getQuery() { return this._query; }
   public Hop setQuery(QueryContainer val) { this._query = val; return this; }
-
 
   static final ParseField VERTICES = new ParseField("vertices");
   private List<GraphVertexDefinition> _vertices;
@@ -37,8 +33,8 @@ public class Hop  implements XContentable<Hop> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_connections != null) {
       builder.field(CONNECTIONS.getPreferredName());
       _connections.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class Hop  implements XContentable<Hop> {
     if (_vertices != null) {
       builder.array(VERTICES.getPreferredName(), _vertices);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

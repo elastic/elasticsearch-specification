@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,68 +16,74 @@ import org.elasticsearch.x_pack.watcher.condition.*;
 import org.elasticsearch.x_pack.watcher.input.*;
 import org.elasticsearch.x_pack.watcher.transform.*;
 import org.elasticsearch.x_pack.watcher.trigger.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class PutWatchRequest  implements XContentable<PutWatchRequest> {
+public class PutWatchRequest extends RequestBase<PutWatchRequest> implements XContentable<PutWatchRequest> {
   
   static final ParseField ACTIVE = new ParseField("active");
   private Boolean _active;
   public Boolean getActive() { return this._active; }
   public PutWatchRequest setActive(Boolean val) { this._active = val; return this; }
 
-
   static final ParseField IF_PRIMARY_TERM = new ParseField("if_primary_term");
-  private Long _ifPrimaryTerm;
-  public Long getIfPrimaryTerm() { return this._ifPrimaryTerm; }
-  public PutWatchRequest setIfPrimaryTerm(Long val) { this._ifPrimaryTerm = val; return this; }
-
+  private long _ifPrimaryTerm;
+  private boolean _ifPrimaryTerm$isSet;
+  public long getIfPrimaryTerm() { return this._ifPrimaryTerm; }
+  public PutWatchRequest setIfPrimaryTerm(long val) {
+    this._ifPrimaryTerm = val;
+    _ifPrimaryTerm$isSet = true;
+    return this;
+  }
 
   static final ParseField IF_SEQUENCE_NUMBER = new ParseField("if_sequence_number");
-  private Long _ifSequenceNumber;
-  public Long getIfSequenceNumber() { return this._ifSequenceNumber; }
-  public PutWatchRequest setIfSequenceNumber(Long val) { this._ifSequenceNumber = val; return this; }
-
+  private long _ifSequenceNumber;
+  private boolean _ifSequenceNumber$isSet;
+  public long getIfSequenceNumber() { return this._ifSequenceNumber; }
+  public PutWatchRequest setIfSequenceNumber(long val) {
+    this._ifSequenceNumber = val;
+    _ifSequenceNumber$isSet = true;
+    return this;
+  }
 
   static final ParseField VERSION = new ParseField("version");
-  private Long _version;
-  public Long getVersion() { return this._version; }
-  public PutWatchRequest setVersion(Long val) { this._version = val; return this; }
-
+  private long _version;
+  private boolean _version$isSet;
+  public long getVersion() { return this._version; }
+  public PutWatchRequest setVersion(long val) {
+    this._version = val;
+    _version$isSet = true;
+    return this;
+  }
 
   static final ParseField ACTIONS = new ParseField("actions");
   private NamedContainer<String, Action> _actions;
   public NamedContainer<String, Action> getActions() { return this._actions; }
   public PutWatchRequest setActions(NamedContainer<String, Action> val) { this._actions = val; return this; }
 
-
   static final ParseField CONDITION = new ParseField("condition");
   private ConditionContainer _condition;
   public ConditionContainer getCondition() { return this._condition; }
   public PutWatchRequest setCondition(ConditionContainer val) { this._condition = val; return this; }
-
 
   static final ParseField INPUT = new ParseField("input");
   private InputContainer _input;
   public InputContainer getInput() { return this._input; }
   public PutWatchRequest setInput(InputContainer val) { this._input = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public PutWatchRequest setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
-
 
   static final ParseField THROTTLE_PERIOD = new ParseField("throttle_period");
   private String _throttlePeriod;
   public String getThrottlePeriod() { return this._throttlePeriod; }
   public PutWatchRequest setThrottlePeriod(String val) { this._throttlePeriod = val; return this; }
 
-
   static final ParseField TRANSFORM = new ParseField("transform");
   private TransformContainer _transform;
   public TransformContainer getTransform() { return this._transform; }
   public PutWatchRequest setTransform(TransformContainer val) { this._transform = val; return this; }
-
 
   static final ParseField TRIGGER = new ParseField("trigger");
   private TriggerContainer _trigger;
@@ -89,18 +93,18 @@ public class PutWatchRequest  implements XContentable<PutWatchRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_active != null) {
       builder.field(ACTIVE.getPreferredName(), _active);
     }
-    if (_ifPrimaryTerm != null) {
+    if (_ifPrimaryTerm$isSet) {
       builder.field(IF_PRIMARY_TERM.getPreferredName(), _ifPrimaryTerm);
     }
-    if (_ifSequenceNumber != null) {
+    if (_ifSequenceNumber$isSet) {
       builder.field(IF_SEQUENCE_NUMBER.getPreferredName(), _ifSequenceNumber);
     }
-    if (_version != null) {
+    if (_version$isSet) {
       builder.field(VERSION.getPreferredName(), _version);
     }
     if (_actions != null) {
@@ -130,8 +134,6 @@ public class PutWatchRequest  implements XContentable<PutWatchRequest> {
       builder.field(TRIGGER.getPreferredName());
       _trigger.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

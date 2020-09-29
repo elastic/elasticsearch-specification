@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.task_management.get_task.*;
@@ -21,7 +19,6 @@ public class ExecutingPolicy  implements XContentable<ExecutingPolicy> {
   public String getName() { return this._name; }
   public ExecutingPolicy setName(String val) { this._name = val; return this; }
 
-
   static final ParseField TASK = new ParseField("task");
   private TaskInfo _task;
   public TaskInfo getTask() { return this._task; }
@@ -30,8 +27,8 @@ public class ExecutingPolicy  implements XContentable<ExecutingPolicy> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_name != null) {
       builder.field(NAME.getPreferredName(), _name);
     }
@@ -39,8 +36,6 @@ public class ExecutingPolicy  implements XContentable<ExecutingPolicy> {
       builder.field(TASK.getPreferredName());
       _task.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

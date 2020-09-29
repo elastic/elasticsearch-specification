@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,35 +19,36 @@ public class CurrentNode  implements XContentable<CurrentNode> {
   public String getId() { return this._id; }
   public CurrentNode setId(String val) { this._id = val; return this; }
 
-
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public CurrentNode setName(String val) { this._name = val; return this; }
-
 
   static final ParseField ATTRIBUTES = new ParseField("attributes");
   private NamedContainer<String, String> _attributes;
   public NamedContainer<String, String> getAttributes() { return this._attributes; }
   public CurrentNode setAttributes(NamedContainer<String, String> val) { this._attributes = val; return this; }
 
-
   static final ParseField TRANSPORT_ADDRESS = new ParseField("transport_address");
   private String _transportAddress;
   public String getTransportAddress() { return this._transportAddress; }
   public CurrentNode setTransportAddress(String val) { this._transportAddress = val; return this; }
 
-
   static final ParseField WEIGHT_RANKING = new ParseField("weight_ranking");
-  private Integer _weightRanking;
-  public Integer getWeightRanking() { return this._weightRanking; }
-  public CurrentNode setWeightRanking(Integer val) { this._weightRanking = val; return this; }
+  private int _weightRanking;
+  private boolean _weightRanking$isSet;
+  public int getWeightRanking() { return this._weightRanking; }
+  public CurrentNode setWeightRanking(int val) {
+    this._weightRanking = val;
+    _weightRanking$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_id != null) {
       builder.field(ID.getPreferredName(), _id);
     }
@@ -63,11 +62,9 @@ public class CurrentNode  implements XContentable<CurrentNode> {
     if (_transportAddress != null) {
       builder.field(TRANSPORT_ADDRESS.getPreferredName(), _transportAddress);
     }
-    if (_weightRanking != null) {
+    if (_weightRanking$isSet) {
       builder.field(WEIGHT_RANKING.getPreferredName(), _weightRanking);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

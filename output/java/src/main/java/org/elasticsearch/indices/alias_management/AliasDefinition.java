@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.abstractions.container.*;
@@ -21,24 +19,20 @@ public class AliasDefinition  implements XContentable<AliasDefinition> {
   public QueryContainer getFilter() { return this._filter; }
   public AliasDefinition setFilter(QueryContainer val) { this._filter = val; return this; }
 
-
   static final ParseField INDEX_ROUTING = new ParseField("index_routing");
   private String _indexRouting;
   public String getIndexRouting() { return this._indexRouting; }
   public AliasDefinition setIndexRouting(String val) { this._indexRouting = val; return this; }
-
 
   static final ParseField IS_WRITE_INDEX = new ParseField("is_write_index");
   private Boolean _isWriteIndex;
   public Boolean getIsWriteIndex() { return this._isWriteIndex; }
   public AliasDefinition setIsWriteIndex(Boolean val) { this._isWriteIndex = val; return this; }
 
-
   static final ParseField ROUTING = new ParseField("routing");
   private String _routing;
   public String getRouting() { return this._routing; }
   public AliasDefinition setRouting(String val) { this._routing = val; return this; }
-
 
   static final ParseField SEARCH_ROUTING = new ParseField("search_routing");
   private String _searchRouting;
@@ -48,8 +42,8 @@ public class AliasDefinition  implements XContentable<AliasDefinition> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_filter != null) {
       builder.field(FILTER.getPreferredName());
       _filter.toXContent(builder, params);
@@ -66,8 +60,6 @@ public class AliasDefinition  implements XContentable<AliasDefinition> {
     if (_searchRouting != null) {
       builder.field(SEARCH_ROUTING.getPreferredName(), _searchRouting);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

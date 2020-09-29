@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.roll_up.get_rollup_job.*;
@@ -21,12 +19,10 @@ public class RollupJobInformation  implements XContentable<RollupJobInformation>
   public RollupJobConfiguration getConfig() { return this._config; }
   public RollupJobInformation setConfig(RollupJobConfiguration val) { this._config = val; return this; }
 
-
   static final ParseField STATS = new ParseField("stats");
   private RollupJobStats _stats;
   public RollupJobStats getStats() { return this._stats; }
   public RollupJobInformation setStats(RollupJobStats val) { this._stats = val; return this; }
-
 
   static final ParseField STATUS = new ParseField("status");
   private RollupJobStatus _status;
@@ -36,8 +32,8 @@ public class RollupJobInformation  implements XContentable<RollupJobInformation>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_config != null) {
       builder.field(CONFIG.getPreferredName());
       _config.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class RollupJobInformation  implements XContentable<RollupJobInformation>
       builder.field(STATUS.getPreferredName());
       _status.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

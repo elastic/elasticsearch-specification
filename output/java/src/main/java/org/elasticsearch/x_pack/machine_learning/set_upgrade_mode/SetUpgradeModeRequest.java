@@ -7,40 +7,35 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class SetUpgradeModeRequest  implements XContentable<SetUpgradeModeRequest> {
+public class SetUpgradeModeRequest extends RequestBase<SetUpgradeModeRequest> implements XContentable<SetUpgradeModeRequest> {
   
   static final ParseField ENABLED = new ParseField("enabled");
   private Boolean _enabled;
   public Boolean getEnabled() { return this._enabled; }
   public SetUpgradeModeRequest setEnabled(Boolean val) { this._enabled = val; return this; }
 
-
   static final ParseField TIMEOUT = new ParseField("timeout");
-  private Time _timeout;
-  public Time getTimeout() { return this._timeout; }
-  public SetUpgradeModeRequest setTimeout(Time val) { this._timeout = val; return this; }
+  private String _timeout;
+  public String getTimeout() { return this._timeout; }
+  public SetUpgradeModeRequest setTimeout(String val) { this._timeout = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_enabled != null) {
       builder.field(ENABLED.getPreferredName(), _enabled);
     }
     if (_timeout != null) {
-      builder.field(TIMEOUT.getPreferredName());
-      _timeout.toXContent(builder, params);
+      builder.field(TIMEOUT.getPreferredName(), _timeout);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -53,7 +48,7 @@ public class SetUpgradeModeRequest  implements XContentable<SetUpgradeModeReques
 
   static {
     PARSER.declareBoolean(SetUpgradeModeRequest::setEnabled, ENABLED);
-    PARSER.declareObject(SetUpgradeModeRequest::setTimeout, (p, t) -> Time.PARSER.apply(p, t), TIMEOUT);
+    PARSER.declareString(SetUpgradeModeRequest::setTimeout, TIMEOUT);
   }
 
 }

@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.char_filters.*;
 
-
-public class MappingCharFilter  implements XContentable<MappingCharFilter> {
+public class MappingCharFilter extends CharFilterBase implements XContentable<MappingCharFilter> {
   
   static final ParseField MAPPINGS = new ParseField("mappings");
   private List<String> _mappings;
   public List<String> getMappings() { return this._mappings; }
   public MappingCharFilter setMappings(List<String> val) { this._mappings = val; return this; }
-
 
   static final ParseField MAPPINGS_PATH = new ParseField("mappings_path");
   private String _mappingsPath;
@@ -30,16 +27,14 @@ public class MappingCharFilter  implements XContentable<MappingCharFilter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_mappings != null) {
       builder.array(MAPPINGS.getPreferredName(), _mappings);
     }
     if (_mappingsPath != null) {
       builder.field(MAPPINGS_PATH.getPreferredName(), _mappingsPath);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

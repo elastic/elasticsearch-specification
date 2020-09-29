@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,25 +19,27 @@ public class NodeInfoMemory  implements XContentable<NodeInfoMemory> {
   public String getTotal() { return this._total; }
   public NodeInfoMemory setTotal(String val) { this._total = val; return this; }
 
-
   static final ParseField TOTAL_IN_BYTES = new ParseField("total_in_bytes");
-  private Long _totalInBytes;
-  public Long getTotalInBytes() { return this._totalInBytes; }
-  public NodeInfoMemory setTotalInBytes(Long val) { this._totalInBytes = val; return this; }
+  private long _totalInBytes;
+  private boolean _totalInBytes$isSet;
+  public long getTotalInBytes() { return this._totalInBytes; }
+  public NodeInfoMemory setTotalInBytes(long val) {
+    this._totalInBytes = val;
+    _totalInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_total != null) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    if (_totalInBytes != null) {
+    if (_totalInBytes$isSet) {
       builder.field(TOTAL_IN_BYTES.getPreferredName(), _totalInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

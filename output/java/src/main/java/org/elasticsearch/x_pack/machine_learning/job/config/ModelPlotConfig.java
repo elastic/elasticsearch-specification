@@ -7,30 +7,26 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class ModelPlotConfig  implements XContentable<ModelPlotConfig> {
   
   static final ParseField TERMS = new ParseField("terms");
-  private List<Field> _terms;
-  public List<Field> getTerms() { return this._terms; }
-  public ModelPlotConfig setTerms(List<Field> val) { this._terms = val; return this; }
+  private List<String> _terms;
+  public List<String> getTerms() { return this._terms; }
+  public ModelPlotConfig setTerms(List<String> val) { this._terms = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_terms != null) {
       builder.array(TERMS.getPreferredName(), _terms);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -42,7 +38,7 @@ public class ModelPlotConfig  implements XContentable<ModelPlotConfig> {
     new ObjectParser<>(ModelPlotConfig.class.getName(), false, ModelPlotConfig::new);
 
   static {
-    PARSER.declareObjectArray(ModelPlotConfig::setTerms, (p, t) -> Field.createFrom(p), TERMS);
+    PARSER.declareStringArray(ModelPlotConfig::setTerms, TERMS);
   }
 
 }

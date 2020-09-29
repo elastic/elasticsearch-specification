@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.*;
@@ -22,12 +20,10 @@ public class ExecutionResultCondition  implements XContentable<ExecutionResultCo
   public Boolean getMet() { return this._met; }
   public ExecutionResultCondition setMet(Boolean val) { this._met = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private Status _status;
   public Status getStatus() { return this._status; }
   public ExecutionResultCondition setStatus(Status val) { this._status = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private ConditionType _type;
@@ -37,8 +33,8 @@ public class ExecutionResultCondition  implements XContentable<ExecutionResultCo
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_met != null) {
       builder.field(MET.getPreferredName(), _met);
     }
@@ -50,8 +46,6 @@ public class ExecutionResultCondition  implements XContentable<ExecutionResultCo
       builder.field(TYPE.getPreferredName());
       _type.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

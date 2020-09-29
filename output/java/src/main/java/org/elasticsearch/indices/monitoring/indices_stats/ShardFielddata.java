@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,29 +15,36 @@ import org.elasticsearch.internal.*;
 public class ShardFielddata  implements XContentable<ShardFielddata> {
   
   static final ParseField EVICTIONS = new ParseField("evictions");
-  private Long _evictions;
-  public Long getEvictions() { return this._evictions; }
-  public ShardFielddata setEvictions(Long val) { this._evictions = val; return this; }
-
+  private long _evictions;
+  private boolean _evictions$isSet;
+  public long getEvictions() { return this._evictions; }
+  public ShardFielddata setEvictions(long val) {
+    this._evictions = val;
+    _evictions$isSet = true;
+    return this;
+  }
 
   static final ParseField MEMORY_SIZE_IN_BYTES = new ParseField("memory_size_in_bytes");
-  private Long _memorySizeInBytes;
-  public Long getMemorySizeInBytes() { return this._memorySizeInBytes; }
-  public ShardFielddata setMemorySizeInBytes(Long val) { this._memorySizeInBytes = val; return this; }
+  private long _memorySizeInBytes;
+  private boolean _memorySizeInBytes$isSet;
+  public long getMemorySizeInBytes() { return this._memorySizeInBytes; }
+  public ShardFielddata setMemorySizeInBytes(long val) {
+    this._memorySizeInBytes = val;
+    _memorySizeInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_evictions != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_evictions$isSet) {
       builder.field(EVICTIONS.getPreferredName(), _evictions);
     }
-    if (_memorySizeInBytes != null) {
+    if (_memorySizeInBytes$isSet) {
       builder.field(MEMORY_SIZE_IN_BYTES.getPreferredName(), _memorySizeInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,40 +7,35 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class SnapshotStatusRequest  implements XContentable<SnapshotStatusRequest> {
+public class SnapshotStatusRequest extends RequestBase<SnapshotStatusRequest> implements XContentable<SnapshotStatusRequest> {
   
   static final ParseField IGNORE_UNAVAILABLE = new ParseField("ignore_unavailable");
   private Boolean _ignoreUnavailable;
   public Boolean getIgnoreUnavailable() { return this._ignoreUnavailable; }
   public SnapshotStatusRequest setIgnoreUnavailable(Boolean val) { this._ignoreUnavailable = val; return this; }
 
-
   static final ParseField MASTER_TIMEOUT = new ParseField("master_timeout");
-  private Time _masterTimeout;
-  public Time getMasterTimeout() { return this._masterTimeout; }
-  public SnapshotStatusRequest setMasterTimeout(Time val) { this._masterTimeout = val; return this; }
+  private String _masterTimeout;
+  public String getMasterTimeout() { return this._masterTimeout; }
+  public SnapshotStatusRequest setMasterTimeout(String val) { this._masterTimeout = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ignoreUnavailable != null) {
       builder.field(IGNORE_UNAVAILABLE.getPreferredName(), _ignoreUnavailable);
     }
     if (_masterTimeout != null) {
-      builder.field(MASTER_TIMEOUT.getPreferredName());
-      _masterTimeout.toXContent(builder, params);
+      builder.field(MASTER_TIMEOUT.getPreferredName(), _masterTimeout);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -53,7 +48,7 @@ public class SnapshotStatusRequest  implements XContentable<SnapshotStatusReques
 
   static {
     PARSER.declareBoolean(SnapshotStatusRequest::setIgnoreUnavailable, IGNORE_UNAVAILABLE);
-    PARSER.declareObject(SnapshotStatusRequest::setMasterTimeout, (p, t) -> Time.PARSER.apply(p, t), MASTER_TIMEOUT);
+    PARSER.declareString(SnapshotStatusRequest::setMasterTimeout, MASTER_TIMEOUT);
   }
 
 }

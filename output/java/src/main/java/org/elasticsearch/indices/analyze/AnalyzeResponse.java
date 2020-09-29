@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.analyze.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class AnalyzeResponse  implements XContentable<AnalyzeResponse> {
+public class AnalyzeResponse extends ResponseBase<AnalyzeResponse> implements XContentable<AnalyzeResponse> {
   
   static final ParseField DETAIL = new ParseField("detail");
   private AnalyzeDetail _detail;
   public AnalyzeDetail getDetail() { return this._detail; }
   public AnalyzeResponse setDetail(AnalyzeDetail val) { this._detail = val; return this; }
-
 
   static final ParseField TOKENS = new ParseField("tokens");
   private List<AnalyzeToken> _tokens;
@@ -30,8 +28,8 @@ public class AnalyzeResponse  implements XContentable<AnalyzeResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_detail != null) {
       builder.field(DETAIL.getPreferredName());
       _detail.toXContent(builder, params);
@@ -39,8 +37,6 @@ public class AnalyzeResponse  implements XContentable<AnalyzeResponse> {
     if (_tokens != null) {
       builder.array(TOKENS.getPreferredName(), _tokens);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

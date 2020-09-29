@@ -7,45 +7,44 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class ForceMergeRequest  implements XContentable<ForceMergeRequest> {
+public class ForceMergeRequest extends RequestBase<ForceMergeRequest> implements XContentable<ForceMergeRequest> {
   
   static final ParseField ALLOW_NO_INDICES = new ParseField("allow_no_indices");
   private Boolean _allowNoIndices;
   public Boolean getAllowNoIndices() { return this._allowNoIndices; }
   public ForceMergeRequest setAllowNoIndices(Boolean val) { this._allowNoIndices = val; return this; }
 
-
   static final ParseField EXPAND_WILDCARDS = new ParseField("expand_wildcards");
   private ExpandWildcards _expandWildcards;
   public ExpandWildcards getExpandWildcards() { return this._expandWildcards; }
   public ForceMergeRequest setExpandWildcards(ExpandWildcards val) { this._expandWildcards = val; return this; }
-
 
   static final ParseField FLUSH = new ParseField("flush");
   private Boolean _flush;
   public Boolean getFlush() { return this._flush; }
   public ForceMergeRequest setFlush(Boolean val) { this._flush = val; return this; }
 
-
   static final ParseField IGNORE_UNAVAILABLE = new ParseField("ignore_unavailable");
   private Boolean _ignoreUnavailable;
   public Boolean getIgnoreUnavailable() { return this._ignoreUnavailable; }
   public ForceMergeRequest setIgnoreUnavailable(Boolean val) { this._ignoreUnavailable = val; return this; }
 
-
   static final ParseField MAX_NUM_SEGMENTS = new ParseField("max_num_segments");
-  private Long _maxNumSegments;
-  public Long getMaxNumSegments() { return this._maxNumSegments; }
-  public ForceMergeRequest setMaxNumSegments(Long val) { this._maxNumSegments = val; return this; }
-
+  private long _maxNumSegments;
+  private boolean _maxNumSegments$isSet;
+  public long getMaxNumSegments() { return this._maxNumSegments; }
+  public ForceMergeRequest setMaxNumSegments(long val) {
+    this._maxNumSegments = val;
+    _maxNumSegments$isSet = true;
+    return this;
+  }
 
   static final ParseField ONLY_EXPUNGE_DELETES = new ParseField("only_expunge_deletes");
   private Boolean _onlyExpungeDeletes;
@@ -55,8 +54,8 @@ public class ForceMergeRequest  implements XContentable<ForceMergeRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_allowNoIndices != null) {
       builder.field(ALLOW_NO_INDICES.getPreferredName(), _allowNoIndices);
     }
@@ -70,14 +69,12 @@ public class ForceMergeRequest  implements XContentable<ForceMergeRequest> {
     if (_ignoreUnavailable != null) {
       builder.field(IGNORE_UNAVAILABLE.getPreferredName(), _ignoreUnavailable);
     }
-    if (_maxNumSegments != null) {
+    if (_maxNumSegments$isSet) {
       builder.field(MAX_NUM_SEGMENTS.getPreferredName(), _maxNumSegments);
     }
     if (_onlyExpungeDeletes != null) {
       builder.field(ONLY_EXPUNGE_DELETES.getPreferredName(), _onlyExpungeDeletes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

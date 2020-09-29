@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -22,48 +20,50 @@ public class NodeOperatingSystemInfo  implements XContentable<NodeOperatingSyste
   public String getArch() { return this._arch; }
   public NodeOperatingSystemInfo setArch(String val) { this._arch = val; return this; }
 
-
   static final ParseField AVAILABLE_PROCESSORS = new ParseField("available_processors");
-  private Integer _availableProcessors;
-  public Integer getAvailableProcessors() { return this._availableProcessors; }
-  public NodeOperatingSystemInfo setAvailableProcessors(Integer val) { this._availableProcessors = val; return this; }
-
+  private int _availableProcessors;
+  private boolean _availableProcessors$isSet;
+  public int getAvailableProcessors() { return this._availableProcessors; }
+  public NodeOperatingSystemInfo setAvailableProcessors(int val) {
+    this._availableProcessors = val;
+    _availableProcessors$isSet = true;
+    return this;
+  }
 
   static final ParseField CPU = new ParseField("cpu");
   private NodeInfoOscpu _cpu;
   public NodeInfoOscpu getCpu() { return this._cpu; }
   public NodeOperatingSystemInfo setCpu(NodeInfoOscpu val) { this._cpu = val; return this; }
 
-
   static final ParseField MEM = new ParseField("mem");
   private NodeInfoMemory _mem;
   public NodeInfoMemory getMem() { return this._mem; }
   public NodeOperatingSystemInfo setMem(NodeInfoMemory val) { this._mem = val; return this; }
-
 
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public NodeOperatingSystemInfo setName(String val) { this._name = val; return this; }
 
-
   static final ParseField PRETTY_NAME = new ParseField("pretty_name");
   private String _prettyName;
   public String getPrettyName() { return this._prettyName; }
   public NodeOperatingSystemInfo setPrettyName(String val) { this._prettyName = val; return this; }
 
-
   static final ParseField REFRESH_INTERVAL_IN_MILLIS = new ParseField("refresh_interval_in_millis");
-  private Integer _refreshIntervalInMillis;
-  public Integer getRefreshIntervalInMillis() { return this._refreshIntervalInMillis; }
-  public NodeOperatingSystemInfo setRefreshIntervalInMillis(Integer val) { this._refreshIntervalInMillis = val; return this; }
-
+  private int _refreshIntervalInMillis;
+  private boolean _refreshIntervalInMillis$isSet;
+  public int getRefreshIntervalInMillis() { return this._refreshIntervalInMillis; }
+  public NodeOperatingSystemInfo setRefreshIntervalInMillis(int val) {
+    this._refreshIntervalInMillis = val;
+    _refreshIntervalInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField SWAP = new ParseField("swap");
   private NodeInfoMemory _swap;
   public NodeInfoMemory getSwap() { return this._swap; }
   public NodeOperatingSystemInfo setSwap(NodeInfoMemory val) { this._swap = val; return this; }
-
 
   static final ParseField VERSION = new ParseField("version");
   private String _version;
@@ -73,12 +73,12 @@ public class NodeOperatingSystemInfo  implements XContentable<NodeOperatingSyste
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_arch != null) {
       builder.field(ARCH.getPreferredName(), _arch);
     }
-    if (_availableProcessors != null) {
+    if (_availableProcessors$isSet) {
       builder.field(AVAILABLE_PROCESSORS.getPreferredName(), _availableProcessors);
     }
     if (_cpu != null) {
@@ -95,7 +95,7 @@ public class NodeOperatingSystemInfo  implements XContentable<NodeOperatingSyste
     if (_prettyName != null) {
       builder.field(PRETTY_NAME.getPreferredName(), _prettyName);
     }
-    if (_refreshIntervalInMillis != null) {
+    if (_refreshIntervalInMillis$isSet) {
       builder.field(REFRESH_INTERVAL_IN_MILLIS.getPreferredName(), _refreshIntervalInMillis);
     }
     if (_swap != null) {
@@ -105,8 +105,6 @@ public class NodeOperatingSystemInfo  implements XContentable<NodeOperatingSyste
     if (_version != null) {
       builder.field(VERSION.getPreferredName(), _version);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

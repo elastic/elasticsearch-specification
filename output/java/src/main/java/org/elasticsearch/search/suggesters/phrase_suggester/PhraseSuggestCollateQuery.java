@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
+import org.elasticsearch.internal.*;
 
 public class PhraseSuggestCollateQuery  implements XContentable<PhraseSuggestCollateQuery> {
   
@@ -20,7 +18,6 @@ public class PhraseSuggestCollateQuery  implements XContentable<PhraseSuggestCol
   private Id _id;
   public Id getId() { return this._id; }
   public PhraseSuggestCollateQuery setId(Id val) { this._id = val; return this; }
-
 
   static final ParseField SOURCE = new ParseField("source");
   private String _source;
@@ -30,8 +27,8 @@ public class PhraseSuggestCollateQuery  implements XContentable<PhraseSuggestCol
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_id != null) {
       builder.field(ID.getPreferredName());
       _id.toXContent(builder, params);
@@ -39,8 +36,6 @@ public class PhraseSuggestCollateQuery  implements XContentable<PhraseSuggestCol
     if (_source != null) {
       builder.field(SOURCE.getPreferredName(), _source);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

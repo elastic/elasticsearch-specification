@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.job.detectors.*;
@@ -22,23 +20,26 @@ public class RuleCondition  implements XContentable<RuleCondition> {
   public AppliesTo getAppliesTo() { return this._appliesTo; }
   public RuleCondition setAppliesTo(AppliesTo val) { this._appliesTo = val; return this; }
 
-
   static final ParseField OPERATOR = new ParseField("operator");
   private ConditionOperator _operator;
   public ConditionOperator getOperator() { return this._operator; }
   public RuleCondition setOperator(ConditionOperator val) { this._operator = val; return this; }
 
-
   static final ParseField VALUE = new ParseField("value");
-  private Double _value;
-  public Double getValue() { return this._value; }
-  public RuleCondition setValue(Double val) { this._value = val; return this; }
+  private double _value;
+  private boolean _value$isSet;
+  public double getValue() { return this._value; }
+  public RuleCondition setValue(double val) {
+    this._value = val;
+    _value$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_appliesTo != null) {
       builder.field(APPLIES_TO.getPreferredName());
       _appliesTo.toXContent(builder, params);
@@ -47,11 +48,9 @@ public class RuleCondition  implements XContentable<RuleCondition> {
       builder.field(OPERATOR.getPreferredName());
       _operator.toXContent(builder, params);
     }
-    if (_value != null) {
+    if (_value$isSet) {
       builder.field(VALUE.getPreferredName(), _value);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

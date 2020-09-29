@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.*;
@@ -22,12 +20,10 @@ public class ExecutionResultInput  implements XContentable<ExecutionResultInput>
   public NamedContainer<String, Object> getPayload() { return this._payload; }
   public ExecutionResultInput setPayload(NamedContainer<String, Object> val) { this._payload = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private Status _status;
   public Status getStatus() { return this._status; }
   public ExecutionResultInput setStatus(Status val) { this._status = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private InputType _type;
@@ -37,8 +33,8 @@ public class ExecutionResultInput  implements XContentable<ExecutionResultInput>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_payload != null) {
       builder.field(PAYLOAD.getPreferredName());
       _payload.toXContent(builder, params);
@@ -51,8 +47,6 @@ public class ExecutionResultInput  implements XContentable<ExecutionResultInput>
       builder.field(TYPE.getPreferredName());
       _type.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

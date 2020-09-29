@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.abstractions.container.*;
@@ -22,26 +20,28 @@ public class ScoreFunction  implements XContentable<ScoreFunction> {
   public QueryContainer getFilter() { return this._filter; }
   public ScoreFunction setFilter(QueryContainer val) { this._filter = val; return this; }
 
-
   static final ParseField WEIGHT = new ParseField("weight");
-  private Double _weight;
-  public Double getWeight() { return this._weight; }
-  public ScoreFunction setWeight(Double val) { this._weight = val; return this; }
+  private double _weight;
+  private boolean _weight$isSet;
+  public double getWeight() { return this._weight; }
+  public ScoreFunction setWeight(double val) {
+    this._weight = val;
+    _weight$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_filter != null) {
       builder.field(FILTER.getPreferredName());
       _filter.toXContent(builder, params);
     }
-    if (_weight != null) {
+    if (_weight$isSet) {
       builder.field(WEIGHT.getPreferredName(), _weight);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

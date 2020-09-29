@@ -7,26 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.explain.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class ExplainResponse<TDocument>  implements XContentable<ExplainResponse<TDocument>> {
+public class ExplainResponse<TDocument> extends ResponseBase<ExplainResponse> implements XContentable<ExplainResponse> {
   
   static final ParseField EXPLANATION = new ParseField("explanation");
   private ExplanationDetail _explanation;
   public ExplanationDetail getExplanation() { return this._explanation; }
   public ExplainResponse<TDocument> setExplanation(ExplanationDetail val) { this._explanation = val; return this; }
 
-
   static final ParseField GET = new ParseField("get");
   private InlineGet<TDocument> _get;
   public InlineGet<TDocument> getGet() { return this._get; }
   public ExplainResponse<TDocument> setGet(InlineGet<TDocument> val) { this._get = val; return this; }
-
 
   static final ParseField MATCHED = new ParseField("matched");
   private Boolean _matched;
@@ -36,8 +33,8 @@ public class ExplainResponse<TDocument>  implements XContentable<ExplainResponse
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_explanation != null) {
       builder.field(EXPLANATION.getPreferredName());
       _explanation.toXContent(builder, params);
@@ -49,8 +46,6 @@ public class ExplainResponse<TDocument>  implements XContentable<ExplainResponse
     if (_matched != null) {
       builder.field(MATCHED.getPreferredName(), _matched);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

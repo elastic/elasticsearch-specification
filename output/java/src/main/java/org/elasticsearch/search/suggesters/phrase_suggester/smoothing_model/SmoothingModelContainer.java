@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.suggesters.phrase_suggester.smoothing_model.*;
@@ -21,12 +19,10 @@ public class SmoothingModelContainer  implements XContentable<SmoothingModelCont
   public LaplaceSmoothingModel getLaplace() { return this._laplace; }
   public SmoothingModelContainer setLaplace(LaplaceSmoothingModel val) { this._laplace = val; return this; }
 
-
   static final ParseField LINEAR_INTERPOLATION = new ParseField("linear_interpolation");
   private LinearInterpolationSmoothingModel _linearInterpolation;
   public LinearInterpolationSmoothingModel getLinearInterpolation() { return this._linearInterpolation; }
   public SmoothingModelContainer setLinearInterpolation(LinearInterpolationSmoothingModel val) { this._linearInterpolation = val; return this; }
-
 
   static final ParseField STUPID_BACKOFF = new ParseField("stupid_backoff");
   private StupidBackoffSmoothingModel _stupidBackoff;
@@ -36,8 +32,8 @@ public class SmoothingModelContainer  implements XContentable<SmoothingModelCont
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_laplace != null) {
       builder.field(LAPLACE.getPreferredName());
       _laplace.toXContent(builder, params);
@@ -50,8 +46,6 @@ public class SmoothingModelContainer  implements XContentable<SmoothingModelCont
       builder.field(STUPID_BACKOFF.getPreferredName());
       _stupidBackoff.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

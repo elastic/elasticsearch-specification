@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class PrivilegesActions  implements XContentable<PrivilegesActions> {
   public List<String> getActions() { return this._actions; }
   public PrivilegesActions setActions(List<String> val) { this._actions = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
@@ -30,8 +27,8 @@ public class PrivilegesActions  implements XContentable<PrivilegesActions> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_actions != null) {
       builder.array(ACTIONS.getPreferredName(), _actions);
     }
@@ -39,8 +36,6 @@ public class PrivilegesActions  implements XContentable<PrivilegesActions> {
       builder.field(METADATA.getPreferredName());
       _metadata.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

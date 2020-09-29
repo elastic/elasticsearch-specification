@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class PutCalendarRequest  implements XContentable<PutCalendarRequest> {
+public class PutCalendarRequest extends RequestBase<PutCalendarRequest> implements XContentable<PutCalendarRequest> {
   
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
@@ -24,13 +22,11 @@ public class PutCalendarRequest  implements XContentable<PutCalendarRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_description != null) {
       builder.field(DESCRIPTION.getPreferredName(), _description);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,25 +19,27 @@ public class OverallBucketJobInfo  implements XContentable<OverallBucketJobInfo>
   public String getJobId() { return this._jobId; }
   public OverallBucketJobInfo setJobId(String val) { this._jobId = val; return this; }
 
-
   static final ParseField MAX_ANOMALY_SCORE = new ParseField("max_anomaly_score");
-  private Double _maxAnomalyScore;
-  public Double getMaxAnomalyScore() { return this._maxAnomalyScore; }
-  public OverallBucketJobInfo setMaxAnomalyScore(Double val) { this._maxAnomalyScore = val; return this; }
+  private double _maxAnomalyScore;
+  private boolean _maxAnomalyScore$isSet;
+  public double getMaxAnomalyScore() { return this._maxAnomalyScore; }
+  public OverallBucketJobInfo setMaxAnomalyScore(double val) {
+    this._maxAnomalyScore = val;
+    _maxAnomalyScore$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_jobId != null) {
       builder.field(JOB_ID.getPreferredName(), _jobId);
     }
-    if (_maxAnomalyScore != null) {
+    if (_maxAnomalyScore$isSet) {
       builder.field(MAX_ANOMALY_SCORE.getPreferredName(), _maxAnomalyScore);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

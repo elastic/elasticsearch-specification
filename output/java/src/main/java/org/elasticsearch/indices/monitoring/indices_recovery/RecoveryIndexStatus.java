@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.monitoring.indices_recovery.*;
@@ -22,41 +20,51 @@ public class RecoveryIndexStatus  implements XContentable<RecoveryIndexStatus> {
   public RecoveryBytes getBytes() { return this._bytes; }
   public RecoveryIndexStatus setBytes(RecoveryBytes val) { this._bytes = val; return this; }
 
-
   static final ParseField FILES = new ParseField("files");
   private RecoveryFiles _files;
   public RecoveryFiles getFiles() { return this._files; }
   public RecoveryIndexStatus setFiles(RecoveryFiles val) { this._files = val; return this; }
-
 
   static final ParseField SIZE = new ParseField("size");
   private RecoveryBytes _size;
   public RecoveryBytes getSize() { return this._size; }
   public RecoveryIndexStatus setSize(RecoveryBytes val) { this._size = val; return this; }
 
-
   static final ParseField SOURCE_THROTTLE_TIME_IN_MILLIS = new ParseField("source_throttle_time_in_millis");
-  private Long _sourceThrottleTimeInMillis;
-  public Long getSourceThrottleTimeInMillis() { return this._sourceThrottleTimeInMillis; }
-  public RecoveryIndexStatus setSourceThrottleTimeInMillis(Long val) { this._sourceThrottleTimeInMillis = val; return this; }
-
+  private long _sourceThrottleTimeInMillis;
+  private boolean _sourceThrottleTimeInMillis$isSet;
+  public long getSourceThrottleTimeInMillis() { return this._sourceThrottleTimeInMillis; }
+  public RecoveryIndexStatus setSourceThrottleTimeInMillis(long val) {
+    this._sourceThrottleTimeInMillis = val;
+    _sourceThrottleTimeInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField TARGET_THROTTLE_TIME_IN_MILLIS = new ParseField("target_throttle_time_in_millis");
-  private Long _targetThrottleTimeInMillis;
-  public Long getTargetThrottleTimeInMillis() { return this._targetThrottleTimeInMillis; }
-  public RecoveryIndexStatus setTargetThrottleTimeInMillis(Long val) { this._targetThrottleTimeInMillis = val; return this; }
-
+  private long _targetThrottleTimeInMillis;
+  private boolean _targetThrottleTimeInMillis$isSet;
+  public long getTargetThrottleTimeInMillis() { return this._targetThrottleTimeInMillis; }
+  public RecoveryIndexStatus setTargetThrottleTimeInMillis(long val) {
+    this._targetThrottleTimeInMillis = val;
+    _targetThrottleTimeInMillis$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_TIME_IN_MILLIS = new ParseField("total_time_in_millis");
-  private Long _totalTimeInMillis;
-  public Long getTotalTimeInMillis() { return this._totalTimeInMillis; }
-  public RecoveryIndexStatus setTotalTimeInMillis(Long val) { this._totalTimeInMillis = val; return this; }
+  private long _totalTimeInMillis;
+  private boolean _totalTimeInMillis$isSet;
+  public long getTotalTimeInMillis() { return this._totalTimeInMillis; }
+  public RecoveryIndexStatus setTotalTimeInMillis(long val) {
+    this._totalTimeInMillis = val;
+    _totalTimeInMillis$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_bytes != null) {
       builder.field(BYTES.getPreferredName());
       _bytes.toXContent(builder, params);
@@ -69,17 +77,15 @@ public class RecoveryIndexStatus  implements XContentable<RecoveryIndexStatus> {
       builder.field(SIZE.getPreferredName());
       _size.toXContent(builder, params);
     }
-    if (_sourceThrottleTimeInMillis != null) {
+    if (_sourceThrottleTimeInMillis$isSet) {
       builder.field(SOURCE_THROTTLE_TIME_IN_MILLIS.getPreferredName(), _sourceThrottleTimeInMillis);
     }
-    if (_targetThrottleTimeInMillis != null) {
+    if (_targetThrottleTimeInMillis$isSet) {
       builder.field(TARGET_THROTTLE_TIME_IN_MILLIS.getPreferredName(), _targetThrottleTimeInMillis);
     }
-    if (_totalTimeInMillis != null) {
+    if (_totalTimeInMillis$isSet) {
       builder.field(TOTAL_TIME_IN_MILLIS.getPreferredName(), _totalTimeInMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

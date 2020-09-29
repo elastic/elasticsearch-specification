@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,74 +15,101 @@ import org.elasticsearch.internal.*;
 public class QueryCacheStats  implements XContentable<QueryCacheStats> {
   
   static final ParseField CACHE_COUNT = new ParseField("cache_count");
-  private Long _cacheCount;
-  public Long getCacheCount() { return this._cacheCount; }
-  public QueryCacheStats setCacheCount(Long val) { this._cacheCount = val; return this; }
-
+  private long _cacheCount;
+  private boolean _cacheCount$isSet;
+  public long getCacheCount() { return this._cacheCount; }
+  public QueryCacheStats setCacheCount(long val) {
+    this._cacheCount = val;
+    _cacheCount$isSet = true;
+    return this;
+  }
 
   static final ParseField CACHE_SIZE = new ParseField("cache_size");
-  private Long _cacheSize;
-  public Long getCacheSize() { return this._cacheSize; }
-  public QueryCacheStats setCacheSize(Long val) { this._cacheSize = val; return this; }
-
+  private long _cacheSize;
+  private boolean _cacheSize$isSet;
+  public long getCacheSize() { return this._cacheSize; }
+  public QueryCacheStats setCacheSize(long val) {
+    this._cacheSize = val;
+    _cacheSize$isSet = true;
+    return this;
+  }
 
   static final ParseField EVICTIONS = new ParseField("evictions");
-  private Long _evictions;
-  public Long getEvictions() { return this._evictions; }
-  public QueryCacheStats setEvictions(Long val) { this._evictions = val; return this; }
-
+  private long _evictions;
+  private boolean _evictions$isSet;
+  public long getEvictions() { return this._evictions; }
+  public QueryCacheStats setEvictions(long val) {
+    this._evictions = val;
+    _evictions$isSet = true;
+    return this;
+  }
 
   static final ParseField HIT_COUNT = new ParseField("hit_count");
-  private Long _hitCount;
-  public Long getHitCount() { return this._hitCount; }
-  public QueryCacheStats setHitCount(Long val) { this._hitCount = val; return this; }
-
+  private long _hitCount;
+  private boolean _hitCount$isSet;
+  public long getHitCount() { return this._hitCount; }
+  public QueryCacheStats setHitCount(long val) {
+    this._hitCount = val;
+    _hitCount$isSet = true;
+    return this;
+  }
 
   static final ParseField MEMORY_SIZE_IN_BYTES = new ParseField("memory_size_in_bytes");
-  private Long _memorySizeInBytes;
-  public Long getMemorySizeInBytes() { return this._memorySizeInBytes; }
-  public QueryCacheStats setMemorySizeInBytes(Long val) { this._memorySizeInBytes = val; return this; }
-
+  private long _memorySizeInBytes;
+  private boolean _memorySizeInBytes$isSet;
+  public long getMemorySizeInBytes() { return this._memorySizeInBytes; }
+  public QueryCacheStats setMemorySizeInBytes(long val) {
+    this._memorySizeInBytes = val;
+    _memorySizeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField MISS_COUNT = new ParseField("miss_count");
-  private Long _missCount;
-  public Long getMissCount() { return this._missCount; }
-  public QueryCacheStats setMissCount(Long val) { this._missCount = val; return this; }
-
+  private long _missCount;
+  private boolean _missCount$isSet;
+  public long getMissCount() { return this._missCount; }
+  public QueryCacheStats setMissCount(long val) {
+    this._missCount = val;
+    _missCount$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_COUNT = new ParseField("total_count");
-  private Long _totalCount;
-  public Long getTotalCount() { return this._totalCount; }
-  public QueryCacheStats setTotalCount(Long val) { this._totalCount = val; return this; }
+  private long _totalCount;
+  private boolean _totalCount$isSet;
+  public long getTotalCount() { return this._totalCount; }
+  public QueryCacheStats setTotalCount(long val) {
+    this._totalCount = val;
+    _totalCount$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_cacheCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_cacheCount$isSet) {
       builder.field(CACHE_COUNT.getPreferredName(), _cacheCount);
     }
-    if (_cacheSize != null) {
+    if (_cacheSize$isSet) {
       builder.field(CACHE_SIZE.getPreferredName(), _cacheSize);
     }
-    if (_evictions != null) {
+    if (_evictions$isSet) {
       builder.field(EVICTIONS.getPreferredName(), _evictions);
     }
-    if (_hitCount != null) {
+    if (_hitCount$isSet) {
       builder.field(HIT_COUNT.getPreferredName(), _hitCount);
     }
-    if (_memorySizeInBytes != null) {
+    if (_memorySizeInBytes$isSet) {
       builder.field(MEMORY_SIZE_IN_BYTES.getPreferredName(), _memorySizeInBytes);
     }
-    if (_missCount != null) {
+    if (_missCount$isSet) {
       builder.field(MISS_COUNT.getPreferredName(), _missCount);
     }
-    if (_totalCount != null) {
+    if (_totalCount$isSet) {
       builder.field(TOTAL_COUNT.getPreferredName(), _totalCount);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

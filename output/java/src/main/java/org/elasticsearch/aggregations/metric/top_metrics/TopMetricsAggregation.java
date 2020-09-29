@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.aggregations.metric.top_metrics.*;
@@ -23,12 +21,15 @@ public class TopMetricsAggregation  implements XContentable<TopMetricsAggregatio
   public List<TopMetricsValue> getMetrics() { return this._metrics; }
   public TopMetricsAggregation setMetrics(List<TopMetricsValue> val) { this._metrics = val; return this; }
 
-
   static final ParseField SIZE = new ParseField("size");
-  private Integer _size;
-  public Integer getSize() { return this._size; }
-  public TopMetricsAggregation setSize(Integer val) { this._size = val; return this; }
-
+  private int _size;
+  private boolean _size$isSet;
+  public int getSize() { return this._size; }
+  public TopMetricsAggregation setSize(int val) {
+    this._size = val;
+    _size$isSet = true;
+    return this;
+  }
 
   static final ParseField SORT = new ParseField("sort");
   private List<Sort> _sort;
@@ -38,19 +39,17 @@ public class TopMetricsAggregation  implements XContentable<TopMetricsAggregatio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_metrics != null) {
       builder.array(METRICS.getPreferredName(), _metrics);
     }
-    if (_size != null) {
+    if (_size$isSet) {
       builder.field(SIZE.getPreferredName(), _size);
     }
     if (_sort != null) {
       builder.array(SORT.getPreferredName(), _sort);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

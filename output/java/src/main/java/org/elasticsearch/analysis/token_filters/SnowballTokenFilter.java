@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.languages.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class SnowballTokenFilter  implements XContentable<SnowballTokenFilter> {
+public class SnowballTokenFilter extends TokenFilterBase implements XContentable<SnowballTokenFilter> {
   
   static final ParseField LANGUAGE = new ParseField("language");
   private SnowballLanguage _language;
@@ -24,14 +23,12 @@ public class SnowballTokenFilter  implements XContentable<SnowballTokenFilter> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_language != null) {
       builder.field(LANGUAGE.getPreferredName());
       _language.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

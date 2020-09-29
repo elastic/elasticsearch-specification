@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,30 +19,30 @@ public class AllocationStore  implements XContentable<AllocationStore> {
   public String getAllocationId() { return this._allocationId; }
   public AllocationStore setAllocationId(String val) { this._allocationId = val; return this; }
 
-
   static final ParseField FOUND = new ParseField("found");
   private Boolean _found;
   public Boolean getFound() { return this._found; }
   public AllocationStore setFound(Boolean val) { this._found = val; return this; }
-
 
   static final ParseField IN_SYNC = new ParseField("in_sync");
   private Boolean _inSync;
   public Boolean getInSync() { return this._inSync; }
   public AllocationStore setInSync(Boolean val) { this._inSync = val; return this; }
 
-
   static final ParseField MATCHING_SIZE_IN_BYTES = new ParseField("matching_size_in_bytes");
-  private Long _matchingSizeInBytes;
-  public Long getMatchingSizeInBytes() { return this._matchingSizeInBytes; }
-  public AllocationStore setMatchingSizeInBytes(Long val) { this._matchingSizeInBytes = val; return this; }
-
+  private long _matchingSizeInBytes;
+  private boolean _matchingSizeInBytes$isSet;
+  public long getMatchingSizeInBytes() { return this._matchingSizeInBytes; }
+  public AllocationStore setMatchingSizeInBytes(long val) {
+    this._matchingSizeInBytes = val;
+    _matchingSizeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField MATCHING_SYNC_ID = new ParseField("matching_sync_id");
   private Boolean _matchingSyncId;
   public Boolean getMatchingSyncId() { return this._matchingSyncId; }
   public AllocationStore setMatchingSyncId(Boolean val) { this._matchingSyncId = val; return this; }
-
 
   static final ParseField STORE_EXCEPTION = new ParseField("store_exception");
   private String _storeException;
@@ -54,8 +52,8 @@ public class AllocationStore  implements XContentable<AllocationStore> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_allocationId != null) {
       builder.field(ALLOCATION_ID.getPreferredName(), _allocationId);
     }
@@ -65,7 +63,7 @@ public class AllocationStore  implements XContentable<AllocationStore> {
     if (_inSync != null) {
       builder.field(IN_SYNC.getPreferredName(), _inSync);
     }
-    if (_matchingSizeInBytes != null) {
+    if (_matchingSizeInBytes$isSet) {
       builder.field(MATCHING_SIZE_IN_BYTES.getPreferredName(), _matchingSizeInBytes);
     }
     if (_matchingSyncId != null) {
@@ -74,8 +72,6 @@ public class AllocationStore  implements XContentable<AllocationStore> {
     if (_storeException != null) {
       builder.field(STORE_EXCEPTION.getPreferredName(), _storeException);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

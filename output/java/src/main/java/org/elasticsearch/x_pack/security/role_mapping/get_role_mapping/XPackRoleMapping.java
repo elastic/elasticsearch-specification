@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.security.role_mapping.rules.role.*;
@@ -21,18 +19,15 @@ public class XPackRoleMapping  implements XContentable<XPackRoleMapping> {
   public Boolean getEnabled() { return this._enabled; }
   public XPackRoleMapping setEnabled(Boolean val) { this._enabled = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public XPackRoleMapping setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
 
-
   static final ParseField ROLES = new ParseField("roles");
   private List<String> _roles;
   public List<String> getRoles() { return this._roles; }
   public XPackRoleMapping setRoles(List<String> val) { this._roles = val; return this; }
-
 
   static final ParseField RULES = new ParseField("rules");
   private RoleMappingRuleBase _rules;
@@ -42,8 +37,8 @@ public class XPackRoleMapping  implements XContentable<XPackRoleMapping> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_enabled != null) {
       builder.field(ENABLED.getPreferredName(), _enabled);
     }
@@ -58,8 +53,6 @@ public class XPackRoleMapping  implements XContentable<XPackRoleMapping> {
       builder.field(RULES.getPreferredName());
       _rules.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

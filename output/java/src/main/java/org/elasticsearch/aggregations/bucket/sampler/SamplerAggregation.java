@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.aggregations.bucket.sampler.*;
@@ -23,45 +21,50 @@ public class SamplerAggregation  implements XContentable<SamplerAggregation> {
   public SamplerAggregationExecutionHint getExecutionHint() { return this._executionHint; }
   public SamplerAggregation setExecutionHint(SamplerAggregationExecutionHint val) { this._executionHint = val; return this; }
 
-
   static final ParseField MAX_DOCS_PER_VALUE = new ParseField("max_docs_per_value");
-  private Integer _maxDocsPerValue;
-  public Integer getMaxDocsPerValue() { return this._maxDocsPerValue; }
-  public SamplerAggregation setMaxDocsPerValue(Integer val) { this._maxDocsPerValue = val; return this; }
-
+  private int _maxDocsPerValue;
+  private boolean _maxDocsPerValue$isSet;
+  public int getMaxDocsPerValue() { return this._maxDocsPerValue; }
+  public SamplerAggregation setMaxDocsPerValue(int val) {
+    this._maxDocsPerValue = val;
+    _maxDocsPerValue$isSet = true;
+    return this;
+  }
 
   static final ParseField SCRIPT = new ParseField("script");
   private Script _script;
   public Script getScript() { return this._script; }
   public SamplerAggregation setScript(Script val) { this._script = val; return this; }
 
-
   static final ParseField SHARD_SIZE = new ParseField("shard_size");
-  private Integer _shardSize;
-  public Integer getShardSize() { return this._shardSize; }
-  public SamplerAggregation setShardSize(Integer val) { this._shardSize = val; return this; }
+  private int _shardSize;
+  private boolean _shardSize$isSet;
+  public int getShardSize() { return this._shardSize; }
+  public SamplerAggregation setShardSize(int val) {
+    this._shardSize = val;
+    _shardSize$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_executionHint != null) {
       builder.field(EXECUTION_HINT.getPreferredName());
       _executionHint.toXContent(builder, params);
     }
-    if (_maxDocsPerValue != null) {
+    if (_maxDocsPerValue$isSet) {
       builder.field(MAX_DOCS_PER_VALUE.getPreferredName(), _maxDocsPerValue);
     }
     if (_script != null) {
       builder.field(SCRIPT.getPreferredName());
       _script.toXContent(builder, params);
     }
-    if (_shardSize != null) {
+    if (_shardSize$isSet) {
       builder.field(SHARD_SIZE.getPreferredName(), _shardSize);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

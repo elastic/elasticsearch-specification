@@ -7,21 +7,19 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.query_dsl.span.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
 public class SpanFieldMaskingQuery  implements XContentable<SpanFieldMaskingQuery> {
   
   static final ParseField FIELD = new ParseField("field");
-  private Field _field;
-  public Field getField() { return this._field; }
-  public SpanFieldMaskingQuery setField(Field val) { this._field = val; return this; }
-
+  private String _field;
+  public String getField() { return this._field; }
+  public SpanFieldMaskingQuery setField(String val) { this._field = val; return this; }
 
   static final ParseField QUERY = new ParseField("query");
   private SpanQuery _query;
@@ -31,18 +29,15 @@ public class SpanFieldMaskingQuery  implements XContentable<SpanFieldMaskingQuer
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_field != null) {
-      builder.field(FIELD.getPreferredName());
-      _field.toXContent(builder, params);
+      builder.field(FIELD.getPreferredName(), _field);
     }
     if (_query != null) {
       builder.field(QUERY.getPreferredName());
       _query.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -54,7 +49,7 @@ public class SpanFieldMaskingQuery  implements XContentable<SpanFieldMaskingQuer
     new ObjectParser<>(SpanFieldMaskingQuery.class.getName(), false, SpanFieldMaskingQuery::new);
 
   static {
-    PARSER.declareObject(SpanFieldMaskingQuery::setField, (p, t) -> Field.createFrom(p), FIELD);
+    PARSER.declareString(SpanFieldMaskingQuery::setField, FIELD);
     PARSER.declareObject(SpanFieldMaskingQuery::setQuery, (p, t) -> SpanQuery.PARSER.apply(p, t), QUERY);
   }
 

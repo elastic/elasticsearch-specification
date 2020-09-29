@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class ClusterProcessOpenFileDescriptors  implements XContentable<ClusterProcessOpenFileDescriptors> {
   
   static final ParseField AVG = new ParseField("avg");
-  private Long _avg;
-  public Long getAvg() { return this._avg; }
-  public ClusterProcessOpenFileDescriptors setAvg(Long val) { this._avg = val; return this; }
-
+  private long _avg;
+  private boolean _avg$isSet;
+  public long getAvg() { return this._avg; }
+  public ClusterProcessOpenFileDescriptors setAvg(long val) {
+    this._avg = val;
+    _avg$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX = new ParseField("max");
-  private Long _max;
-  public Long getMax() { return this._max; }
-  public ClusterProcessOpenFileDescriptors setMax(Long val) { this._max = val; return this; }
-
+  private long _max;
+  private boolean _max$isSet;
+  public long getMax() { return this._max; }
+  public ClusterProcessOpenFileDescriptors setMax(long val) {
+    this._max = val;
+    _max$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN = new ParseField("min");
-  private Long _min;
-  public Long getMin() { return this._min; }
-  public ClusterProcessOpenFileDescriptors setMin(Long val) { this._min = val; return this; }
+  private long _min;
+  private boolean _min$isSet;
+  public long getMin() { return this._min; }
+  public ClusterProcessOpenFileDescriptors setMin(long val) {
+    this._min = val;
+    _min$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_avg != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_avg$isSet) {
       builder.field(AVG.getPreferredName(), _avg);
     }
-    if (_max != null) {
+    if (_max$isSet) {
       builder.field(MAX.getPreferredName(), _max);
     }
-    if (_min != null) {
+    if (_min$isSet) {
       builder.field(MIN.getPreferredName(), _min);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

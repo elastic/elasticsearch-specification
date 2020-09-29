@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.analysis.token_filters.delimited_payload.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class DelimitedPayloadTokenFilter  implements XContentable<DelimitedPayloadTokenFilter> {
+public class DelimitedPayloadTokenFilter extends TokenFilterBase implements XContentable<DelimitedPayloadTokenFilter> {
   
   static final ParseField DELIMITER = new ParseField("delimiter");
   private String _delimiter;
   public String getDelimiter() { return this._delimiter; }
   public DelimitedPayloadTokenFilter setDelimiter(String val) { this._delimiter = val; return this; }
-
 
   static final ParseField ENCODING = new ParseField("encoding");
   private DelimitedPayloadEncoding _encoding;
@@ -30,8 +28,8 @@ public class DelimitedPayloadTokenFilter  implements XContentable<DelimitedPaylo
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_delimiter != null) {
       builder.field(DELIMITER.getPreferredName(), _delimiter);
     }
@@ -39,8 +37,6 @@ public class DelimitedPayloadTokenFilter  implements XContentable<DelimitedPaylo
       builder.field(ENCODING.getPreferredName());
       _encoding.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,339 +7,284 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cat.cat_jobs.*;
 import org.elasticsearch.x_pack.machine_learning.job.config.*;
+import org.elasticsearch.cat.*;
 
-public class CatJobsRecord  implements XContentable<CatJobsRecord> {
+public class CatJobsRecord extends ICatRecord implements XContentable<CatJobsRecord> {
   
   static final ParseField ASSIGNMENT_EXPLANATION = new ParseField("assignment_explanation");
   private String _assignmentExplanation;
   public String getAssignmentExplanation() { return this._assignmentExplanation; }
   public CatJobsRecord setAssignmentExplanation(String val) { this._assignmentExplanation = val; return this; }
 
-
   static final ParseField BUCKETS_COUNT = new ParseField("buckets.count");
   private String _bucketsCount;
   public String getBucketsCount() { return this._bucketsCount; }
   public CatJobsRecord setBucketsCount(String val) { this._bucketsCount = val; return this; }
-
 
   static final ParseField BUCKETS_TIME_EXP_AVG = new ParseField("buckets.time.exp_avg");
   private String _bucketsTimeExpAvg;
   public String getBucketsTimeExpAvg() { return this._bucketsTimeExpAvg; }
   public CatJobsRecord setBucketsTimeExpAvg(String val) { this._bucketsTimeExpAvg = val; return this; }
 
-
   static final ParseField BUCKETS_TIME_EXP_AVG_HOUR = new ParseField("buckets.time.exp_avg_hour");
   private String _bucketsTimeExpAvgHour;
   public String getBucketsTimeExpAvgHour() { return this._bucketsTimeExpAvgHour; }
   public CatJobsRecord setBucketsTimeExpAvgHour(String val) { this._bucketsTimeExpAvgHour = val; return this; }
-
 
   static final ParseField BUCKETS_TIME_MAX = new ParseField("buckets.time.max");
   private String _bucketsTimeMax;
   public String getBucketsTimeMax() { return this._bucketsTimeMax; }
   public CatJobsRecord setBucketsTimeMax(String val) { this._bucketsTimeMax = val; return this; }
 
-
   static final ParseField BUCKETS_TIME_MIN = new ParseField("buckets.time.min");
   private String _bucketsTimeMin;
   public String getBucketsTimeMin() { return this._bucketsTimeMin; }
   public CatJobsRecord setBucketsTimeMin(String val) { this._bucketsTimeMin = val; return this; }
-
 
   static final ParseField BUCKETS_TIME_TOTAL = new ParseField("buckets.time.total");
   private String _bucketsTimeTotal;
   public String getBucketsTimeTotal() { return this._bucketsTimeTotal; }
   public CatJobsRecord setBucketsTimeTotal(String val) { this._bucketsTimeTotal = val; return this; }
 
-
   static final ParseField DATA_BUCKETS = new ParseField("data.buckets");
   private String _dataBuckets;
   public String getDataBuckets() { return this._dataBuckets; }
   public CatJobsRecord setDataBuckets(String val) { this._dataBuckets = val; return this; }
-
 
   static final ParseField DATA_EARLIEST_RECORD = new ParseField("data.earliest_record");
   private String _dataEarliestRecord;
   public String getDataEarliestRecord() { return this._dataEarliestRecord; }
   public CatJobsRecord setDataEarliestRecord(String val) { this._dataEarliestRecord = val; return this; }
 
-
   static final ParseField DATA_EMPTY_BUCKETS = new ParseField("data.empty_buckets");
   private String _dataEmptyBuckets;
   public String getDataEmptyBuckets() { return this._dataEmptyBuckets; }
   public CatJobsRecord setDataEmptyBuckets(String val) { this._dataEmptyBuckets = val; return this; }
-
 
   static final ParseField DATA_INPUT_BYTES = new ParseField("data.input_bytes");
   private String _dataInputBytes;
   public String getDataInputBytes() { return this._dataInputBytes; }
   public CatJobsRecord setDataInputBytes(String val) { this._dataInputBytes = val; return this; }
 
-
   static final ParseField DATA_INPUT_FIELDS = new ParseField("data.input_fields");
   private String _dataInputFields;
   public String getDataInputFields() { return this._dataInputFields; }
   public CatJobsRecord setDataInputFields(String val) { this._dataInputFields = val; return this; }
-
 
   static final ParseField DATA_INPUT_RECORDS = new ParseField("data.input_records");
   private String _dataInputRecords;
   public String getDataInputRecords() { return this._dataInputRecords; }
   public CatJobsRecord setDataInputRecords(String val) { this._dataInputRecords = val; return this; }
 
-
   static final ParseField DATA_INVALID_DATES = new ParseField("data.invalid_dates");
   private String _dataInvalidDates;
   public String getDataInvalidDates() { return this._dataInvalidDates; }
   public CatJobsRecord setDataInvalidDates(String val) { this._dataInvalidDates = val; return this; }
-
 
   static final ParseField DATA_LAST = new ParseField("data.last");
   private String _dataLast;
   public String getDataLast() { return this._dataLast; }
   public CatJobsRecord setDataLast(String val) { this._dataLast = val; return this; }
 
-
   static final ParseField DATA_LAST_EMPTY_BUCKET = new ParseField("data.last_empty_bucket");
   private String _dataLastEmptyBucket;
   public String getDataLastEmptyBucket() { return this._dataLastEmptyBucket; }
   public CatJobsRecord setDataLastEmptyBucket(String val) { this._dataLastEmptyBucket = val; return this; }
-
 
   static final ParseField DATA_LAST_SPARSE_BUCKET = new ParseField("data.last_sparse_bucket");
   private String _dataLastSparseBucket;
   public String getDataLastSparseBucket() { return this._dataLastSparseBucket; }
   public CatJobsRecord setDataLastSparseBucket(String val) { this._dataLastSparseBucket = val; return this; }
 
-
   static final ParseField DATA_LATEST_RECORD = new ParseField("data.latest_record");
   private String _dataLatestRecord;
   public String getDataLatestRecord() { return this._dataLatestRecord; }
   public CatJobsRecord setDataLatestRecord(String val) { this._dataLatestRecord = val; return this; }
-
 
   static final ParseField DATA_MISSING_FIELDS = new ParseField("data.missing_fields");
   private String _dataMissingFields;
   public String getDataMissingFields() { return this._dataMissingFields; }
   public CatJobsRecord setDataMissingFields(String val) { this._dataMissingFields = val; return this; }
 
-
   static final ParseField DATA_OUT_OF_ORDER_TIMESTAMPS = new ParseField("data.out_of_order_timestamps");
   private String _dataOutOfOrderTimestamps;
   public String getDataOutOfOrderTimestamps() { return this._dataOutOfOrderTimestamps; }
   public CatJobsRecord setDataOutOfOrderTimestamps(String val) { this._dataOutOfOrderTimestamps = val; return this; }
-
 
   static final ParseField DATA_PROCESSED_FIELDS = new ParseField("data.processed_fields");
   private String _dataProcessedFields;
   public String getDataProcessedFields() { return this._dataProcessedFields; }
   public CatJobsRecord setDataProcessedFields(String val) { this._dataProcessedFields = val; return this; }
 
-
   static final ParseField DATA_PROCESSED_RECORDS = new ParseField("data.processed_records");
   private String _dataProcessedRecords;
   public String getDataProcessedRecords() { return this._dataProcessedRecords; }
   public CatJobsRecord setDataProcessedRecords(String val) { this._dataProcessedRecords = val; return this; }
-
 
   static final ParseField DATA_SPARSE_BUCKETS = new ParseField("data.sparse_buckets");
   private String _dataSparseBuckets;
   public String getDataSparseBuckets() { return this._dataSparseBuckets; }
   public CatJobsRecord setDataSparseBuckets(String val) { this._dataSparseBuckets = val; return this; }
 
-
   static final ParseField FORECASTS_MEMORY_AVG = new ParseField("forecasts.memory.avg");
   private String _forecastsMemoryAvg;
   public String getForecastsMemoryAvg() { return this._forecastsMemoryAvg; }
   public CatJobsRecord setForecastsMemoryAvg(String val) { this._forecastsMemoryAvg = val; return this; }
-
 
   static final ParseField FORECASTS_MEMORY_MIN = new ParseField("forecasts.memory.min");
   private String _forecastsMemoryMin;
   public String getForecastsMemoryMin() { return this._forecastsMemoryMin; }
   public CatJobsRecord setForecastsMemoryMin(String val) { this._forecastsMemoryMin = val; return this; }
 
-
   static final ParseField FORECASTS_MEMORY_TOTAL = new ParseField("forecasts.memory.total");
   private String _forecastsMemoryTotal;
   public String getForecastsMemoryTotal() { return this._forecastsMemoryTotal; }
   public CatJobsRecord setForecastsMemoryTotal(String val) { this._forecastsMemoryTotal = val; return this; }
-
 
   static final ParseField FORECASTS_RECORDS_AVG = new ParseField("forecasts.records.avg");
   private String _forecastsRecordsAvg;
   public String getForecastsRecordsAvg() { return this._forecastsRecordsAvg; }
   public CatJobsRecord setForecastsRecordsAvg(String val) { this._forecastsRecordsAvg = val; return this; }
 
-
   static final ParseField FORECASTS_RECORDS_MAX = new ParseField("forecasts.records.max");
   private String _forecastsRecordsMax;
   public String getForecastsRecordsMax() { return this._forecastsRecordsMax; }
   public CatJobsRecord setForecastsRecordsMax(String val) { this._forecastsRecordsMax = val; return this; }
-
 
   static final ParseField FORECASTS_RECORDS_MIN = new ParseField("forecasts.records.min");
   private String _forecastsRecordsMin;
   public String getForecastsRecordsMin() { return this._forecastsRecordsMin; }
   public CatJobsRecord setForecastsRecordsMin(String val) { this._forecastsRecordsMin = val; return this; }
 
-
   static final ParseField FORECASTS_RECORDS_TOTAL = new ParseField("forecasts.records.total");
   private String _forecastsRecordsTotal;
   public String getForecastsRecordsTotal() { return this._forecastsRecordsTotal; }
   public CatJobsRecord setForecastsRecordsTotal(String val) { this._forecastsRecordsTotal = val; return this; }
-
 
   static final ParseField FORECASTS_TIME_AVG = new ParseField("forecasts.time.avg");
   private String _forecastsTimeAvg;
   public String getForecastsTimeAvg() { return this._forecastsTimeAvg; }
   public CatJobsRecord setForecastsTimeAvg(String val) { this._forecastsTimeAvg = val; return this; }
 
-
   static final ParseField FORECASTS_TIME_MAX = new ParseField("forecasts.time.max");
   private String _forecastsTimeMax;
   public String getForecastsTimeMax() { return this._forecastsTimeMax; }
   public CatJobsRecord setForecastsTimeMax(String val) { this._forecastsTimeMax = val; return this; }
-
 
   static final ParseField FORECASTS_TIME_MIN = new ParseField("forecasts.time.min");
   private String _forecastsTimeMin;
   public String getForecastsTimeMin() { return this._forecastsTimeMin; }
   public CatJobsRecord setForecastsTimeMin(String val) { this._forecastsTimeMin = val; return this; }
 
-
   static final ParseField FORECASTS_TOTAL = new ParseField("forecasts.total");
   private String _forecastsTotal;
   public String getForecastsTotal() { return this._forecastsTotal; }
   public CatJobsRecord setForecastsTotal(String val) { this._forecastsTotal = val; return this; }
-
 
   static final ParseField ID = new ParseField("id");
   private String _id;
   public String getId() { return this._id; }
   public CatJobsRecord setId(String val) { this._id = val; return this; }
 
-
   static final ParseField MODEL_BUCKET_ALLOCATION_FAILURES = new ParseField("model.bucket_allocation_failures");
   private String _modelBucketAllocationFailures;
   public String getModelBucketAllocationFailures() { return this._modelBucketAllocationFailures; }
   public CatJobsRecord setModelBucketAllocationFailures(String val) { this._modelBucketAllocationFailures = val; return this; }
-
 
   static final ParseField MODEL_BY_FIELDS = new ParseField("model.by_fields");
   private String _modelByFields;
   public String getModelByFields() { return this._modelByFields; }
   public CatJobsRecord setModelByFields(String val) { this._modelByFields = val; return this; }
 
-
   static final ParseField MODEL_BYTES = new ParseField("model.bytes");
   private String _modelBytes;
   public String getModelBytes() { return this._modelBytes; }
   public CatJobsRecord setModelBytes(String val) { this._modelBytes = val; return this; }
-
 
   static final ParseField MODEL_CATEGORIZATION_STATUS = new ParseField("model.categorization_status");
   private ModelCategorizationStatus _modelCategorizationStatus;
   public ModelCategorizationStatus getModelCategorizationStatus() { return this._modelCategorizationStatus; }
   public CatJobsRecord setModelCategorizationStatus(ModelCategorizationStatus val) { this._modelCategorizationStatus = val; return this; }
 
-
   static final ParseField MODEL_CATEGORIZED_DOC_COUNT = new ParseField("model.categorized_doc_count");
   private String _modelCategorizedDocCount;
   public String getModelCategorizedDocCount() { return this._modelCategorizedDocCount; }
   public CatJobsRecord setModelCategorizedDocCount(String val) { this._modelCategorizedDocCount = val; return this; }
-
 
   static final ParseField MODEL_DEAD_CATEGORY_COUNT = new ParseField("model.dead_category_count");
   private String _modelDeadCategoryCount;
   public String getModelDeadCategoryCount() { return this._modelDeadCategoryCount; }
   public CatJobsRecord setModelDeadCategoryCount(String val) { this._modelDeadCategoryCount = val; return this; }
 
-
   static final ParseField MODEL_FREQUENT_CATEGORY_COUNT = new ParseField("model.frequent_category_count");
   private String _modelFrequentCategoryCount;
   public String getModelFrequentCategoryCount() { return this._modelFrequentCategoryCount; }
   public CatJobsRecord setModelFrequentCategoryCount(String val) { this._modelFrequentCategoryCount = val; return this; }
-
 
   static final ParseField MODEL_LOG_TIME = new ParseField("model.log_time");
   private String _modelLogTime;
   public String getModelLogTime() { return this._modelLogTime; }
   public CatJobsRecord setModelLogTime(String val) { this._modelLogTime = val; return this; }
 
-
   static final ParseField MODEL_MEMORY_LIMIT = new ParseField("model.memory_limit");
   private String _modelMemoryLimit;
   public String getModelMemoryLimit() { return this._modelMemoryLimit; }
   public CatJobsRecord setModelMemoryLimit(String val) { this._modelMemoryLimit = val; return this; }
-
 
   static final ParseField MODEL_MEMORY_STATUS = new ParseField("model.memory_status");
   private ModelMemoryStatus _modelMemoryStatus;
   public ModelMemoryStatus getModelMemoryStatus() { return this._modelMemoryStatus; }
   public CatJobsRecord setModelMemoryStatus(ModelMemoryStatus val) { this._modelMemoryStatus = val; return this; }
 
-
   static final ParseField MODEL_OVER_FIELDS = new ParseField("model.over_fields");
   private String _modelOverFields;
   public String getModelOverFields() { return this._modelOverFields; }
   public CatJobsRecord setModelOverFields(String val) { this._modelOverFields = val; return this; }
-
 
   static final ParseField MODEL_PARTITION_FIELDS = new ParseField("model.partition_fields");
   private String _modelPartitionFields;
   public String getModelPartitionFields() { return this._modelPartitionFields; }
   public CatJobsRecord setModelPartitionFields(String val) { this._modelPartitionFields = val; return this; }
 
-
   static final ParseField MODEL_RARE_CATEGORY_COUNT = new ParseField("model.rare_category_count");
   private String _modelRareCategoryCount;
   public String getModelRareCategoryCount() { return this._modelRareCategoryCount; }
   public CatJobsRecord setModelRareCategoryCount(String val) { this._modelRareCategoryCount = val; return this; }
-
 
   static final ParseField MODEL_TIMESTAMP = new ParseField("model.timestamp");
   private String _modelTimestamp;
   public String getModelTimestamp() { return this._modelTimestamp; }
   public CatJobsRecord setModelTimestamp(String val) { this._modelTimestamp = val; return this; }
 
-
   static final ParseField NODE_ADDRESS = new ParseField("node.address");
   private String _nodeAddress;
   public String getNodeAddress() { return this._nodeAddress; }
   public CatJobsRecord setNodeAddress(String val) { this._nodeAddress = val; return this; }
-
 
   static final ParseField NODE_EPHEMERAL_ID = new ParseField("node.ephemeral_id");
   private String _nodeEphemeralId;
   public String getNodeEphemeralId() { return this._nodeEphemeralId; }
   public CatJobsRecord setNodeEphemeralId(String val) { this._nodeEphemeralId = val; return this; }
 
-
   static final ParseField NODE_ID = new ParseField("node.id");
   private String _nodeId;
   public String getNodeId() { return this._nodeId; }
   public CatJobsRecord setNodeId(String val) { this._nodeId = val; return this; }
-
 
   static final ParseField NODE_NAME = new ParseField("node.name");
   private String _nodeName;
   public String getNodeName() { return this._nodeName; }
   public CatJobsRecord setNodeName(String val) { this._nodeName = val; return this; }
 
-
   static final ParseField OPENED_TIME = new ParseField("opened_time");
   private String _openedTime;
   public String getOpenedTime() { return this._openedTime; }
   public CatJobsRecord setOpenedTime(String val) { this._openedTime = val; return this; }
-
 
   static final ParseField STATE = new ParseField("state");
   private JobState _state;
@@ -349,8 +294,8 @@ public class CatJobsRecord  implements XContentable<CatJobsRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_assignmentExplanation != null) {
       builder.field(ASSIGNMENT_EXPLANATION.getPreferredName(), _assignmentExplanation);
     }
@@ -519,8 +464,6 @@ public class CatJobsRecord  implements XContentable<CatJobsRecord> {
       builder.field(STATE.getPreferredName());
       _state.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,57 +7,56 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.cluster_stats.*;
 import org.elasticsearch.cluster.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class ClusterStatsResponse  implements XContentable<ClusterStatsResponse> {
+public class ClusterStatsResponse extends NodesResponseBase implements XContentable<ClusterStatsResponse> {
   
   static final ParseField CLUSTER_NAME = new ParseField("cluster_name");
   private String _clusterName;
   public String getClusterName() { return this._clusterName; }
   public ClusterStatsResponse setClusterName(String val) { this._clusterName = val; return this; }
 
-
   static final ParseField CLUSTER_UUID = new ParseField("cluster_uuid");
   private String _clusterUuid;
   public String getClusterUuid() { return this._clusterUuid; }
   public ClusterStatsResponse setClusterUuid(String val) { this._clusterUuid = val; return this; }
-
 
   static final ParseField INDICES = new ParseField("indices");
   private ClusterIndicesStats _indices;
   public ClusterIndicesStats getIndices() { return this._indices; }
   public ClusterStatsResponse setIndices(ClusterIndicesStats val) { this._indices = val; return this; }
 
-
   static final ParseField NODES = new ParseField("nodes");
   private ClusterNodesStats _nodes;
   public ClusterNodesStats getNodes() { return this._nodes; }
   public ClusterStatsResponse setNodes(ClusterNodesStats val) { this._nodes = val; return this; }
-
 
   static final ParseField STATUS = new ParseField("status");
   private ClusterStatus _status;
   public ClusterStatus getStatus() { return this._status; }
   public ClusterStatsResponse setStatus(ClusterStatus val) { this._status = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
-  private Long _timestamp;
-  public Long getTimestamp() { return this._timestamp; }
-  public ClusterStatsResponse setTimestamp(Long val) { this._timestamp = val; return this; }
+  private long _timestamp;
+  private boolean _timestamp$isSet;
+  public long getTimestamp() { return this._timestamp; }
+  public ClusterStatsResponse setTimestamp(long val) {
+    this._timestamp = val;
+    _timestamp$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_clusterName != null) {
       builder.field(CLUSTER_NAME.getPreferredName(), _clusterName);
     }
@@ -76,11 +75,9 @@ public class ClusterStatsResponse  implements XContentable<ClusterStatsResponse>
       builder.field(STATUS.getPreferredName());
       _status.toXContent(builder, params);
     }
-    if (_timestamp != null) {
+    if (_timestamp$isSet) {
       builder.field(TIMESTAMP.getPreferredName(), _timestamp);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

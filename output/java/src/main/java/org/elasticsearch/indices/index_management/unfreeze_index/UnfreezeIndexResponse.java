@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class UnfreezeIndexResponse  implements XContentable<UnfreezeIndexResponse> {
+public class UnfreezeIndexResponse extends AcknowledgedResponseBase implements XContentable<UnfreezeIndexResponse> {
   
   static final ParseField SHARDS_ACKNOWLEDGED = new ParseField("shards_acknowledged");
   private Boolean _shardsAcknowledged;
@@ -24,13 +22,11 @@ public class UnfreezeIndexResponse  implements XContentable<UnfreezeIndexRespons
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_shardsAcknowledged != null) {
       builder.field(SHARDS_ACKNOWLEDGED.getPreferredName(), _shardsAcknowledged);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

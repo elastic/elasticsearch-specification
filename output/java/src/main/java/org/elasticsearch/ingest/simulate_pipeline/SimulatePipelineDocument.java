@@ -7,13 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
+import org.elasticsearch.internal.*;
 
 public class SimulatePipelineDocument  implements XContentable<SimulatePipelineDocument> {
   
@@ -22,12 +19,10 @@ public class SimulatePipelineDocument  implements XContentable<SimulatePipelineD
   public Id getId() { return this._id; }
   public SimulatePipelineDocument setId(Id val) { this._id = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("_index");
-  private IndexName _index;
-  public IndexName getIndex() { return this._index; }
-  public SimulatePipelineDocument setIndex(IndexName val) { this._index = val; return this; }
-
+  private String _index;
+  public String getIndex() { return this._index; }
+  public SimulatePipelineDocument setIndex(String val) { this._index = val; return this; }
 
   static final ParseField SOURCE = new ParseField("_source");
   private Object _source;
@@ -37,21 +32,18 @@ public class SimulatePipelineDocument  implements XContentable<SimulatePipelineD
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_id != null) {
       builder.field(ID.getPreferredName());
       _id.toXContent(builder, params);
     }
     if (_index != null) {
-      builder.field(INDEX.getPreferredName());
-      _index.toXContent(builder, params);
+      builder.field(INDEX.getPreferredName(), _index);
     }
     if (_source != null) {
       builder.field(SOURCE.getPreferredName(), _source);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -64,7 +56,7 @@ public class SimulatePipelineDocument  implements XContentable<SimulatePipelineD
 
   static {
     PARSER.declareObject(SimulatePipelineDocument::setId, (p, t) -> Id.createFrom(p), ID);
-    PARSER.declareObject(SimulatePipelineDocument::setIndex, (p, t) -> IndexName.createFrom(p), INDEX);
+    PARSER.declareString(SimulatePipelineDocument::setIndex, INDEX);
     PARSER.declareObject(SimulatePipelineDocument::setSource, (p, t) -> p.objectText(), SOURCE);
   }
 

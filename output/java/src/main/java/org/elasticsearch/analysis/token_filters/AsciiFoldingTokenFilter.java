@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-
-public class AsciiFoldingTokenFilter  implements XContentable<AsciiFoldingTokenFilter> {
+public class AsciiFoldingTokenFilter extends TokenFilterBase implements XContentable<AsciiFoldingTokenFilter> {
   
   static final ParseField PRESERVE_ORIGINAL = new ParseField("preserve_original");
   private Boolean _preserveOriginal;
@@ -24,13 +22,11 @@ public class AsciiFoldingTokenFilter  implements XContentable<AsciiFoldingTokenF
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_preserveOriginal != null) {
       builder.field(PRESERVE_ORIGINAL.getPreferredName(), _preserveOriginal);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

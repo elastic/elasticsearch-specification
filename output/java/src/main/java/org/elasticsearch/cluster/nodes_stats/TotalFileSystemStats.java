@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,61 +19,69 @@ public class TotalFileSystemStats  implements XContentable<TotalFileSystemStats>
   public String getAvailable() { return this._available; }
   public TotalFileSystemStats setAvailable(String val) { this._available = val; return this; }
 
-
   static final ParseField AVAILABLE_IN_BYTES = new ParseField("available_in_bytes");
-  private Long _availableInBytes;
-  public Long getAvailableInBytes() { return this._availableInBytes; }
-  public TotalFileSystemStats setAvailableInBytes(Long val) { this._availableInBytes = val; return this; }
-
+  private long _availableInBytes;
+  private boolean _availableInBytes$isSet;
+  public long getAvailableInBytes() { return this._availableInBytes; }
+  public TotalFileSystemStats setAvailableInBytes(long val) {
+    this._availableInBytes = val;
+    _availableInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField FREE = new ParseField("free");
   private String _free;
   public String getFree() { return this._free; }
   public TotalFileSystemStats setFree(String val) { this._free = val; return this; }
 
-
   static final ParseField FREE_IN_BYTES = new ParseField("free_in_bytes");
-  private Long _freeInBytes;
-  public Long getFreeInBytes() { return this._freeInBytes; }
-  public TotalFileSystemStats setFreeInBytes(Long val) { this._freeInBytes = val; return this; }
-
+  private long _freeInBytes;
+  private boolean _freeInBytes$isSet;
+  public long getFreeInBytes() { return this._freeInBytes; }
+  public TotalFileSystemStats setFreeInBytes(long val) {
+    this._freeInBytes = val;
+    _freeInBytes$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
   private String _total;
   public String getTotal() { return this._total; }
   public TotalFileSystemStats setTotal(String val) { this._total = val; return this; }
 
-
   static final ParseField TOTAL_IN_BYTES = new ParseField("total_in_bytes");
-  private Long _totalInBytes;
-  public Long getTotalInBytes() { return this._totalInBytes; }
-  public TotalFileSystemStats setTotalInBytes(Long val) { this._totalInBytes = val; return this; }
+  private long _totalInBytes;
+  private boolean _totalInBytes$isSet;
+  public long getTotalInBytes() { return this._totalInBytes; }
+  public TotalFileSystemStats setTotalInBytes(long val) {
+    this._totalInBytes = val;
+    _totalInBytes$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_available != null) {
       builder.field(AVAILABLE.getPreferredName(), _available);
     }
-    if (_availableInBytes != null) {
+    if (_availableInBytes$isSet) {
       builder.field(AVAILABLE_IN_BYTES.getPreferredName(), _availableInBytes);
     }
     if (_free != null) {
       builder.field(FREE.getPreferredName(), _free);
     }
-    if (_freeInBytes != null) {
+    if (_freeInBytes$isSet) {
       builder.field(FREE_IN_BYTES.getPreferredName(), _freeInBytes);
     }
     if (_total != null) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    if (_totalInBytes != null) {
+    if (_totalInBytes$isSet) {
       builder.field(TOTAL_IN_BYTES.getPreferredName(), _totalInBytes);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

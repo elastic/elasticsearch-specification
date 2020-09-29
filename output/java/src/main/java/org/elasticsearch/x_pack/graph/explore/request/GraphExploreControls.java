@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.graph.explore.request.*;
@@ -23,18 +21,20 @@ public class GraphExploreControls  implements XContentable<GraphExploreControls>
   public SampleDiversity getSampleDiversity() { return this._sampleDiversity; }
   public GraphExploreControls setSampleDiversity(SampleDiversity val) { this._sampleDiversity = val; return this; }
 
-
   static final ParseField SAMPLE_SIZE = new ParseField("sample_size");
-  private Integer _sampleSize;
-  public Integer getSampleSize() { return this._sampleSize; }
-  public GraphExploreControls setSampleSize(Integer val) { this._sampleSize = val; return this; }
-
+  private int _sampleSize;
+  private boolean _sampleSize$isSet;
+  public int getSampleSize() { return this._sampleSize; }
+  public GraphExploreControls setSampleSize(int val) {
+    this._sampleSize = val;
+    _sampleSize$isSet = true;
+    return this;
+  }
 
   static final ParseField TIMEOUT = new ParseField("timeout");
-  private Time _timeout;
-  public Time getTimeout() { return this._timeout; }
-  public GraphExploreControls setTimeout(Time val) { this._timeout = val; return this; }
-
+  private String _timeout;
+  public String getTimeout() { return this._timeout; }
+  public GraphExploreControls setTimeout(String val) { this._timeout = val; return this; }
 
   static final ParseField USE_SIGNIFICANCE = new ParseField("use_significance");
   private Boolean _useSignificance;
@@ -44,24 +44,21 @@ public class GraphExploreControls  implements XContentable<GraphExploreControls>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_sampleDiversity != null) {
       builder.field(SAMPLE_DIVERSITY.getPreferredName());
       _sampleDiversity.toXContent(builder, params);
     }
-    if (_sampleSize != null) {
+    if (_sampleSize$isSet) {
       builder.field(SAMPLE_SIZE.getPreferredName(), _sampleSize);
     }
     if (_timeout != null) {
-      builder.field(TIMEOUT.getPreferredName());
-      _timeout.toXContent(builder, params);
+      builder.field(TIMEOUT.getPreferredName(), _timeout);
     }
     if (_useSignificance != null) {
       builder.field(USE_SIGNIFICANCE.getPreferredName(), _useSignificance);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -75,7 +72,7 @@ public class GraphExploreControls  implements XContentable<GraphExploreControls>
   static {
     PARSER.declareObject(GraphExploreControls::setSampleDiversity, (p, t) -> SampleDiversity.PARSER.apply(p, t), SAMPLE_DIVERSITY);
     PARSER.declareInt(GraphExploreControls::setSampleSize, SAMPLE_SIZE);
-    PARSER.declareObject(GraphExploreControls::setTimeout, (p, t) -> Time.PARSER.apply(p, t), TIMEOUT);
+    PARSER.declareString(GraphExploreControls::setTimeout, TIMEOUT);
     PARSER.declareBoolean(GraphExploreControls::setUseSignificance, USE_SIGNIFICANCE);
   }
 

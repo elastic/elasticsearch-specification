@@ -1,6 +1,10 @@
 
 package org.elasticsearch.x_pack.machine_learning.put_job;
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,30 +19,30 @@ public class SearchShard  implements XContentable<SearchShard> {
   public String getIndex() { return this._index; }
   public SearchShard setIndex(String val) { this._index = val; return this; }
 
-
   static final ParseField NODE = new ParseField("node");
   private String _node;
   public String getNode() { return this._node; }
   public SearchShard setNode(String val) { this._node = val; return this; }
-
 
   static final ParseField PRIMARY = new ParseField("primary");
   private Boolean _primary;
   public Boolean getPrimary() { return this._primary; }
   public SearchShard setPrimary(Boolean val) { this._primary = val; return this; }
 
-
   static final ParseField RELOCATING_NODE = new ParseField("relocating_node");
   private String _relocatingNode;
   public String getRelocatingNode() { return this._relocatingNode; }
   public SearchShard setRelocatingNode(String val) { this._relocatingNode = val; return this; }
 
-
   static final ParseField SHARD = new ParseField("shard");
-  private Integer _shard;
-  public Integer getShard() { return this._shard; }
-  public SearchShard setShard(Integer val) { this._shard = val; return this; }
-
+  private int _shard;
+  private boolean _shard$isSet;
+  public int getShard() { return this._shard; }
+  public SearchShard setShard(int val) {
+    this._shard = val;
+    _shard$isSet = true;
+    return this;
+  }
 
   static final ParseField STATE = new ParseField("state");
   private String _state;
@@ -54,8 +52,8 @@ public class SearchShard  implements XContentable<SearchShard> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_index != null) {
       builder.field(INDEX.getPreferredName(), _index);
     }
@@ -68,14 +66,12 @@ public class SearchShard  implements XContentable<SearchShard> {
     if (_relocatingNode != null) {
       builder.field(RELOCATING_NODE.getPreferredName(), _relocatingNode);
     }
-    if (_shard != null) {
+    if (_shard$isSet) {
       builder.field(SHARD.getPreferredName(), _shard);
     }
     if (_state != null) {
       builder.field(STATE.getPreferredName(), _state);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

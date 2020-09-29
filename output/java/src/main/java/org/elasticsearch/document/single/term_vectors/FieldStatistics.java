@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class FieldStatistics  implements XContentable<FieldStatistics> {
   
   static final ParseField DOC_COUNT = new ParseField("doc_count");
-  private Integer _docCount;
-  public Integer getDocCount() { return this._docCount; }
-  public FieldStatistics setDocCount(Integer val) { this._docCount = val; return this; }
-
+  private int _docCount;
+  private boolean _docCount$isSet;
+  public int getDocCount() { return this._docCount; }
+  public FieldStatistics setDocCount(int val) {
+    this._docCount = val;
+    _docCount$isSet = true;
+    return this;
+  }
 
   static final ParseField SUM_DOC_FREQ = new ParseField("sum_doc_freq");
-  private Long _sumDocFreq;
-  public Long getSumDocFreq() { return this._sumDocFreq; }
-  public FieldStatistics setSumDocFreq(Long val) { this._sumDocFreq = val; return this; }
-
+  private long _sumDocFreq;
+  private boolean _sumDocFreq$isSet;
+  public long getSumDocFreq() { return this._sumDocFreq; }
+  public FieldStatistics setSumDocFreq(long val) {
+    this._sumDocFreq = val;
+    _sumDocFreq$isSet = true;
+    return this;
+  }
 
   static final ParseField SUM_TTF = new ParseField("sum_ttf");
-  private Long _sumTtf;
-  public Long getSumTtf() { return this._sumTtf; }
-  public FieldStatistics setSumTtf(Long val) { this._sumTtf = val; return this; }
+  private long _sumTtf;
+  private boolean _sumTtf$isSet;
+  public long getSumTtf() { return this._sumTtf; }
+  public FieldStatistics setSumTtf(long val) {
+    this._sumTtf = val;
+    _sumTtf$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_docCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_docCount$isSet) {
       builder.field(DOC_COUNT.getPreferredName(), _docCount);
     }
-    if (_sumDocFreq != null) {
+    if (_sumDocFreq$isSet) {
       builder.field(SUM_DOC_FREQ.getPreferredName(), _sumDocFreq);
     }
-    if (_sumTtf != null) {
+    if (_sumTtf$isSet) {
       builder.field(SUM_TTF.getPreferredName(), _sumTtf);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

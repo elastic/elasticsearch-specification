@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.span.containing.*;
@@ -22,62 +20,54 @@ import org.elasticsearch.query_dsl.span.not.*;
 import org.elasticsearch.query_dsl.span.or.*;
 import org.elasticsearch.query_dsl.span.term.*;
 import org.elasticsearch.query_dsl.span.within.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class SpanQuery  implements XContentable<SpanQuery> {
+public class SpanQuery extends QueryBase implements XContentable<SpanQuery> {
   
   static final ParseField SPAN_CONTAINING = new ParseField("span_containing");
   private SpanContainingQuery _spanContaining;
   public SpanContainingQuery getSpanContaining() { return this._spanContaining; }
   public SpanQuery setSpanContaining(SpanContainingQuery val) { this._spanContaining = val; return this; }
 
-
   static final ParseField FIELD_MASKING_SPAN = new ParseField("field_masking_span");
   private SpanFieldMaskingQuery _fieldMaskingSpan;
   public SpanFieldMaskingQuery getFieldMaskingSpan() { return this._fieldMaskingSpan; }
   public SpanQuery setFieldMaskingSpan(SpanFieldMaskingQuery val) { this._fieldMaskingSpan = val; return this; }
-
 
   static final ParseField SPAN_FIRST = new ParseField("span_first");
   private SpanFirstQuery _spanFirst;
   public SpanFirstQuery getSpanFirst() { return this._spanFirst; }
   public SpanQuery setSpanFirst(SpanFirstQuery val) { this._spanFirst = val; return this; }
 
-
   static final ParseField SPAN_GAP = new ParseField("span_gap");
   private SpanGapQuery _spanGap;
   public SpanGapQuery getSpanGap() { return this._spanGap; }
   public SpanQuery setSpanGap(SpanGapQuery val) { this._spanGap = val; return this; }
-
 
   static final ParseField SPAN_MULTI = new ParseField("span_multi");
   private SpanMultiTermQuery _spanMulti;
   public SpanMultiTermQuery getSpanMulti() { return this._spanMulti; }
   public SpanQuery setSpanMulti(SpanMultiTermQuery val) { this._spanMulti = val; return this; }
 
-
   static final ParseField SPAN_NEAR = new ParseField("span_near");
   private SpanNearQuery _spanNear;
   public SpanNearQuery getSpanNear() { return this._spanNear; }
   public SpanQuery setSpanNear(SpanNearQuery val) { this._spanNear = val; return this; }
-
 
   static final ParseField SPAN_NOT = new ParseField("span_not");
   private SpanNotQuery _spanNot;
   public SpanNotQuery getSpanNot() { return this._spanNot; }
   public SpanQuery setSpanNot(SpanNotQuery val) { this._spanNot = val; return this; }
 
-
   static final ParseField SPAN_OR = new ParseField("span_or");
   private SpanOrQuery _spanOr;
   public SpanOrQuery getSpanOr() { return this._spanOr; }
   public SpanQuery setSpanOr(SpanOrQuery val) { this._spanOr = val; return this; }
 
-
   static final ParseField SPAN_TERM = new ParseField("span_term");
   private SpanTermQuery _spanTerm;
   public SpanTermQuery getSpanTerm() { return this._spanTerm; }
   public SpanQuery setSpanTerm(SpanTermQuery val) { this._spanTerm = val; return this; }
-
 
   static final ParseField SPAN_WITHIN = new ParseField("span_within");
   private SpanWithinQuery _spanWithin;
@@ -87,8 +77,8 @@ public class SpanQuery  implements XContentable<SpanQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_spanContaining != null) {
       builder.field(SPAN_CONTAINING.getPreferredName());
       _spanContaining.toXContent(builder, params);
@@ -129,8 +119,6 @@ public class SpanQuery  implements XContentable<SpanQuery> {
       builder.field(SPAN_WITHIN.getPreferredName());
       _spanWithin.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,80 +7,67 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatHealthRecord  implements XContentable<CatHealthRecord> {
+public class CatHealthRecord extends ICatRecord implements XContentable<CatHealthRecord> {
   
   static final ParseField CLUSTER = new ParseField("cluster");
   private String _cluster;
   public String getCluster() { return this._cluster; }
   public CatHealthRecord setCluster(String val) { this._cluster = val; return this; }
 
-
   static final ParseField EPOCH = new ParseField("epoch");
   private String _epoch;
   public String getEpoch() { return this._epoch; }
   public CatHealthRecord setEpoch(String val) { this._epoch = val; return this; }
-
 
   static final ParseField INIT = new ParseField("init");
   private String _init;
   public String getInit() { return this._init; }
   public CatHealthRecord setInit(String val) { this._init = val; return this; }
 
-
   static final ParseField NODE_DATA = new ParseField("node.data");
   private String _nodeData;
   public String getNodeData() { return this._nodeData; }
   public CatHealthRecord setNodeData(String val) { this._nodeData = val; return this; }
-
 
   static final ParseField NODE_TOTAL = new ParseField("node.total");
   private String _nodeTotal;
   public String getNodeTotal() { return this._nodeTotal; }
   public CatHealthRecord setNodeTotal(String val) { this._nodeTotal = val; return this; }
 
-
   static final ParseField PENDING_TASKS = new ParseField("pending_tasks");
   private String _pendingTasks;
   public String getPendingTasks() { return this._pendingTasks; }
   public CatHealthRecord setPendingTasks(String val) { this._pendingTasks = val; return this; }
-
 
   static final ParseField PRI = new ParseField("pri");
   private String _pri;
   public String getPri() { return this._pri; }
   public CatHealthRecord setPri(String val) { this._pri = val; return this; }
 
-
   static final ParseField RELO = new ParseField("relo");
   private String _relo;
   public String getRelo() { return this._relo; }
   public CatHealthRecord setRelo(String val) { this._relo = val; return this; }
-
 
   static final ParseField SHARDS = new ParseField("shards");
   private String _shards;
   public String getShards() { return this._shards; }
   public CatHealthRecord setShards(String val) { this._shards = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private String _status;
   public String getStatus() { return this._status; }
   public CatHealthRecord setStatus(String val) { this._status = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private String _timestamp;
   public String getTimestamp() { return this._timestamp; }
   public CatHealthRecord setTimestamp(String val) { this._timestamp = val; return this; }
-
 
   static final ParseField UNASSIGN = new ParseField("unassign");
   private String _unassign;
@@ -90,8 +77,8 @@ public class CatHealthRecord  implements XContentable<CatHealthRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_cluster != null) {
       builder.field(CLUSTER.getPreferredName(), _cluster);
     }
@@ -128,8 +115,6 @@ public class CatHealthRecord  implements XContentable<CatHealthRecord> {
     if (_unassign != null) {
       builder.field(UNASSIGN.getPreferredName(), _unassign);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

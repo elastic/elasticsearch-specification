@@ -7,50 +7,43 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class PutUserRequest  implements XContentable<PutUserRequest> {
+public class PutUserRequest extends RequestBase<PutUserRequest> implements XContentable<PutUserRequest> {
   
   static final ParseField REFRESH = new ParseField("refresh");
   private Refresh _refresh;
   public Refresh getRefresh() { return this._refresh; }
   public PutUserRequest setRefresh(Refresh val) { this._refresh = val; return this; }
 
-
   static final ParseField EMAIL = new ParseField("email");
   private String _email;
   public String getEmail() { return this._email; }
   public PutUserRequest setEmail(String val) { this._email = val; return this; }
-
 
   static final ParseField FULL_NAME = new ParseField("full_name");
   private String _fullName;
   public String getFullName() { return this._fullName; }
   public PutUserRequest setFullName(String val) { this._fullName = val; return this; }
 
-
   static final ParseField METADATA = new ParseField("metadata");
   private NamedContainer<String, Object> _metadata;
   public NamedContainer<String, Object> getMetadata() { return this._metadata; }
   public PutUserRequest setMetadata(NamedContainer<String, Object> val) { this._metadata = val; return this; }
-
 
   static final ParseField PASSWORD = new ParseField("password");
   private String _password;
   public String getPassword() { return this._password; }
   public PutUserRequest setPassword(String val) { this._password = val; return this; }
 
-
   static final ParseField PASSWORD_HASH = new ParseField("password_hash");
   private String _passwordHash;
   public String getPasswordHash() { return this._passwordHash; }
   public PutUserRequest setPasswordHash(String val) { this._passwordHash = val; return this; }
-
 
   static final ParseField ROLES = new ParseField("roles");
   private List<String> _roles;
@@ -60,8 +53,8 @@ public class PutUserRequest  implements XContentable<PutUserRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_refresh != null) {
       builder.field(REFRESH.getPreferredName());
       _refresh.toXContent(builder, params);
@@ -85,8 +78,6 @@ public class PutUserRequest  implements XContentable<PutUserRequest> {
     if (_roles != null) {
       builder.array(ROLES.getPreferredName(), _roles);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

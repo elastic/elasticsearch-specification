@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class ExecuteSnapshotLifecycleResponse  implements XContentable<ExecuteSnapshotLifecycleResponse> {
+public class ExecuteSnapshotLifecycleResponse extends ResponseBase<ExecuteSnapshotLifecycleResponse> implements XContentable<ExecuteSnapshotLifecycleResponse> {
   
   static final ParseField SNAPSHOT_NAME = new ParseField("snapshot_name");
   private String _snapshotName;
@@ -24,13 +22,11 @@ public class ExecuteSnapshotLifecycleResponse  implements XContentable<ExecuteSn
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_snapshotName != null) {
       builder.field(SNAPSHOT_NAME.getPreferredName(), _snapshotName);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

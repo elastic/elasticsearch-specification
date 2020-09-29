@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class NativeCodeInformation  implements XContentable<NativeCodeInformatio
   public String getBuildHash() { return this._buildHash; }
   public NativeCodeInformation setBuildHash(String val) { this._buildHash = val; return this; }
 
-
   static final ParseField VERSION = new ParseField("version");
   private String _version;
   public String getVersion() { return this._version; }
@@ -30,16 +27,14 @@ public class NativeCodeInformation  implements XContentable<NativeCodeInformatio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_buildHash != null) {
       builder.field(BUILD_HASH.getPreferredName(), _buildHash);
     }
     if (_version != null) {
       builder.field(VERSION.getPreferredName(), _version);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

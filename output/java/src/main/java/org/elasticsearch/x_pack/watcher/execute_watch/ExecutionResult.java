@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execute_watch.*;
@@ -22,24 +20,25 @@ public class ExecutionResult  implements XContentable<ExecutionResult> {
   public List<ExecutionResultAction> getActions() { return this._actions; }
   public ExecutionResult setActions(List<ExecutionResultAction> val) { this._actions = val; return this; }
 
-
   static final ParseField CONDITION = new ParseField("condition");
   private ExecutionResultCondition _condition;
   public ExecutionResultCondition getCondition() { return this._condition; }
   public ExecutionResult setCondition(ExecutionResultCondition val) { this._condition = val; return this; }
 
-
   static final ParseField EXECUTION_DURATION = new ParseField("execution_duration");
-  private Integer _executionDuration;
-  public Integer getExecutionDuration() { return this._executionDuration; }
-  public ExecutionResult setExecutionDuration(Integer val) { this._executionDuration = val; return this; }
-
+  private int _executionDuration;
+  private boolean _executionDuration$isSet;
+  public int getExecutionDuration() { return this._executionDuration; }
+  public ExecutionResult setExecutionDuration(int val) {
+    this._executionDuration = val;
+    _executionDuration$isSet = true;
+    return this;
+  }
 
   static final ParseField EXECUTION_TIME = new ParseField("execution_time");
   private Date _executionTime;
   public Date getExecutionTime() { return this._executionTime; }
   public ExecutionResult setExecutionTime(Date val) { this._executionTime = val; return this; }
-
 
   static final ParseField INPUT = new ParseField("input");
   private ExecutionResultInput _input;
@@ -49,8 +48,8 @@ public class ExecutionResult  implements XContentable<ExecutionResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_actions != null) {
       builder.array(ACTIONS.getPreferredName(), _actions);
     }
@@ -58,7 +57,7 @@ public class ExecutionResult  implements XContentable<ExecutionResult> {
       builder.field(CONDITION.getPreferredName());
       _condition.toXContent(builder, params);
     }
-    if (_executionDuration != null) {
+    if (_executionDuration$isSet) {
       builder.field(EXECUTION_DURATION.getPreferredName(), _executionDuration);
     }
     if (_executionTime != null) {
@@ -69,8 +68,6 @@ public class ExecutionResult  implements XContentable<ExecutionResult> {
       builder.field(INPUT.getPreferredName());
       _input.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

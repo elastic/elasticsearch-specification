@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class NodeInfoNetworkInterface  implements XContentable<NodeInfoNetworkIn
   public String getAddress() { return this._address; }
   public NodeInfoNetworkInterface setAddress(String val) { this._address = val; return this; }
 
-
   static final ParseField MAC_ADDRESS = new ParseField("mac_address");
   private String _macAddress;
   public String getMacAddress() { return this._macAddress; }
   public NodeInfoNetworkInterface setMacAddress(String val) { this._macAddress = val; return this; }
-
 
   static final ParseField NAME = new ParseField("name");
   private String _name;
@@ -36,8 +32,8 @@ public class NodeInfoNetworkInterface  implements XContentable<NodeInfoNetworkIn
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_address != null) {
       builder.field(ADDRESS.getPreferredName(), _address);
     }
@@ -47,8 +43,6 @@ public class NodeInfoNetworkInterface  implements XContentable<NodeInfoNetworkIn
     if (_name != null) {
       builder.field(NAME.getPreferredName(), _name);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

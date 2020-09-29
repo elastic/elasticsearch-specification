@@ -7,20 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.token_filters.*;
 
-public class FingerprintTokenFilter  implements XContentable<FingerprintTokenFilter> {
+public class FingerprintTokenFilter extends TokenFilterBase implements XContentable<FingerprintTokenFilter> {
   
   static final ParseField MAX_OUTPUT_SIZE = new ParseField("max_output_size");
-  private Integer _maxOutputSize;
-  public Integer getMaxOutputSize() { return this._maxOutputSize; }
-  public FingerprintTokenFilter setMaxOutputSize(Integer val) { this._maxOutputSize = val; return this; }
-
+  private int _maxOutputSize;
+  private boolean _maxOutputSize$isSet;
+  public int getMaxOutputSize() { return this._maxOutputSize; }
+  public FingerprintTokenFilter setMaxOutputSize(int val) {
+    this._maxOutputSize = val;
+    _maxOutputSize$isSet = true;
+    return this;
+  }
 
   static final ParseField SEPARATOR = new ParseField("separator");
   private String _separator;
@@ -30,16 +33,14 @@ public class FingerprintTokenFilter  implements XContentable<FingerprintTokenFil
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_maxOutputSize != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_maxOutputSize$isSet) {
       builder.field(MAX_OUTPUT_SIZE.getPreferredName(), _maxOutputSize);
     }
     if (_separator != null) {
       builder.field(SEPARATOR.getPreferredName(), _separator);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

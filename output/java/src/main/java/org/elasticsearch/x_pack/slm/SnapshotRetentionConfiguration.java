@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
@@ -18,39 +16,44 @@ import org.elasticsearch.internal.*;
 public class SnapshotRetentionConfiguration  implements XContentable<SnapshotRetentionConfiguration> {
   
   static final ParseField EXPIRE_AFTER = new ParseField("expire_after");
-  private Time _expireAfter;
-  public Time getExpireAfter() { return this._expireAfter; }
-  public SnapshotRetentionConfiguration setExpireAfter(Time val) { this._expireAfter = val; return this; }
-
-
-  static final ParseField MIN_COUNT = new ParseField("min_count");
-  private Integer _minCount;
-  public Integer getMinCount() { return this._minCount; }
-  public SnapshotRetentionConfiguration setMinCount(Integer val) { this._minCount = val; return this; }
-
+  private String _expireAfter;
+  public String getExpireAfter() { return this._expireAfter; }
+  public SnapshotRetentionConfiguration setExpireAfter(String val) { this._expireAfter = val; return this; }
 
   static final ParseField MAX_COUNT = new ParseField("max_count");
-  private Integer _maxCount;
-  public Integer getMaxCount() { return this._maxCount; }
-  public SnapshotRetentionConfiguration setMaxCount(Integer val) { this._maxCount = val; return this; }
+  private int _maxCount;
+  private boolean _maxCount$isSet;
+  public int getMaxCount() { return this._maxCount; }
+  public SnapshotRetentionConfiguration setMaxCount(int val) {
+    this._maxCount = val;
+    _maxCount$isSet = true;
+    return this;
+  }
+
+  static final ParseField MIN_COUNT = new ParseField("min_count");
+  private int _minCount;
+  private boolean _minCount$isSet;
+  public int getMinCount() { return this._minCount; }
+  public SnapshotRetentionConfiguration setMinCount(int val) {
+    this._minCount = val;
+    _minCount$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_expireAfter != null) {
-      builder.field(EXPIRE_AFTER.getPreferredName());
-      _expireAfter.toXContent(builder, params);
+      builder.field(EXPIRE_AFTER.getPreferredName(), _expireAfter);
     }
-    if (_minCount != null) {
-      builder.field(MIN_COUNT.getPreferredName(), _minCount);
-    }
-    if (_maxCount != null) {
+    if (_maxCount$isSet) {
       builder.field(MAX_COUNT.getPreferredName(), _maxCount);
     }
-    builder.endObject();
-    return builder;
+    if (_minCount$isSet) {
+      builder.field(MIN_COUNT.getPreferredName(), _minCount);
+    }
   }
 
   @Override
@@ -62,9 +65,9 @@ public class SnapshotRetentionConfiguration  implements XContentable<SnapshotRet
     new ObjectParser<>(SnapshotRetentionConfiguration.class.getName(), false, SnapshotRetentionConfiguration::new);
 
   static {
-    PARSER.declareObject(SnapshotRetentionConfiguration::setExpireAfter, (p, t) -> Time.PARSER.apply(p, t), EXPIRE_AFTER);
-    PARSER.declareInt(SnapshotRetentionConfiguration::setMinCount, MIN_COUNT);
+    PARSER.declareString(SnapshotRetentionConfiguration::setExpireAfter, EXPIRE_AFTER);
     PARSER.declareInt(SnapshotRetentionConfiguration::setMaxCount, MAX_COUNT);
+    PARSER.declareInt(SnapshotRetentionConfiguration::setMinCount, MIN_COUNT);
   }
 
 }

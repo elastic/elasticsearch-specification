@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.acknowledge_watch.*;
@@ -22,7 +20,6 @@ public class AcknowledgeState  implements XContentable<AcknowledgeState> {
   public AcknowledgementState getState() { return this._state; }
   public AcknowledgeState setState(AcknowledgementState val) { this._state = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private Date _timestamp;
   public Date getTimestamp() { return this._timestamp; }
@@ -31,8 +28,8 @@ public class AcknowledgeState  implements XContentable<AcknowledgeState> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_state != null) {
       builder.field(STATE.getPreferredName());
       _state.toXContent(builder, params);
@@ -41,8 +38,6 @@ public class AcknowledgeState  implements XContentable<AcknowledgeState> {
       builder.field(TIMESTAMP.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_timestamp.toInstant()));
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class ClusterGetSettingsResponse  implements XContentable<ClusterGetSettingsResponse> {
+public class ClusterGetSettingsResponse extends ResponseBase<ClusterGetSettingsResponse> implements XContentable<ClusterGetSettingsResponse> {
   
   static final ParseField PERSISTENT = new ParseField("persistent");
   private NamedContainer<String, Object> _persistent;
   public NamedContainer<String, Object> getPersistent() { return this._persistent; }
   public ClusterGetSettingsResponse setPersistent(NamedContainer<String, Object> val) { this._persistent = val; return this; }
-
 
   static final ParseField TRANSIENT = new ParseField("transient");
   private NamedContainer<String, Object> _transient;
@@ -30,8 +27,8 @@ public class ClusterGetSettingsResponse  implements XContentable<ClusterGetSetti
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_persistent != null) {
       builder.field(PERSISTENT.getPreferredName());
       _persistent.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class ClusterGetSettingsResponse  implements XContentable<ClusterGetSetti
       builder.field(TRANSIENT.getPreferredName());
       _transient.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

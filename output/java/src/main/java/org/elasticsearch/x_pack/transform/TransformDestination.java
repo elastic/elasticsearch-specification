@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
+import org.elasticsearch.internal.*;
 
 public class TransformDestination  implements XContentable<TransformDestination> {
   
   static final ParseField INDEX = new ParseField("index");
-  private IndexName _index;
-  public IndexName getIndex() { return this._index; }
-  public TransformDestination setIndex(IndexName val) { this._index = val; return this; }
-
+  private String _index;
+  public String getIndex() { return this._index; }
+  public TransformDestination setIndex(String val) { this._index = val; return this; }
 
   static final ParseField PIPELINE = new ParseField("pipeline");
   private String _pipeline;
@@ -30,17 +27,14 @@ public class TransformDestination  implements XContentable<TransformDestination>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_index != null) {
-      builder.field(INDEX.getPreferredName());
-      _index.toXContent(builder, params);
+      builder.field(INDEX.getPreferredName(), _index);
     }
     if (_pipeline != null) {
       builder.field(PIPELINE.getPreferredName(), _pipeline);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -52,7 +46,7 @@ public class TransformDestination  implements XContentable<TransformDestination>
     new ObjectParser<>(TransformDestination.class.getName(), false, TransformDestination::new);
 
   static {
-    PARSER.declareObject(TransformDestination::setIndex, (p, t) -> IndexName.createFrom(p), INDEX);
+    PARSER.declareString(TransformDestination::setIndex, INDEX);
     PARSER.declareString(TransformDestination::setPipeline, PIPELINE);
   }
 

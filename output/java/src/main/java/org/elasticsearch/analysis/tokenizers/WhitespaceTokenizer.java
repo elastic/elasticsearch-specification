@@ -7,30 +7,32 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.analysis.tokenizers.*;
 
-public class WhitespaceTokenizer  implements XContentable<WhitespaceTokenizer> {
+public class WhitespaceTokenizer extends TokenizerBase implements XContentable<WhitespaceTokenizer> {
   
   static final ParseField MAX_TOKEN_LENGTH = new ParseField("max_token_length");
-  private Integer _maxTokenLength;
-  public Integer getMaxTokenLength() { return this._maxTokenLength; }
-  public WhitespaceTokenizer setMaxTokenLength(Integer val) { this._maxTokenLength = val; return this; }
+  private int _maxTokenLength;
+  private boolean _maxTokenLength$isSet;
+  public int getMaxTokenLength() { return this._maxTokenLength; }
+  public WhitespaceTokenizer setMaxTokenLength(int val) {
+    this._maxTokenLength = val;
+    _maxTokenLength$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_maxTokenLength != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_maxTokenLength$isSet) {
       builder.field(MAX_TOKEN_LENGTH.getPreferredName(), _maxTokenLength);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

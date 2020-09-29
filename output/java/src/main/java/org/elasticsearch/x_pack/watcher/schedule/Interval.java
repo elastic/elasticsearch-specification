@@ -7,21 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.x_pack.watcher.schedule.*;
 
-public class Interval  implements XContentable<Interval> {
+public class Interval extends ScheduleBase implements XContentable<Interval> {
   
   static final ParseField FACTOR = new ParseField("factor");
-  private Long _factor;
-  public Long getFactor() { return this._factor; }
-  public Interval setFactor(Long val) { this._factor = val; return this; }
-
+  private long _factor;
+  private boolean _factor$isSet;
+  public long getFactor() { return this._factor; }
+  public Interval setFactor(long val) {
+    this._factor = val;
+    _factor$isSet = true;
+    return this;
+  }
 
   static final ParseField UNIT = new ParseField("unit");
   private IntervalUnit _unit;
@@ -31,17 +33,15 @@ public class Interval  implements XContentable<Interval> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_factor != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_factor$isSet) {
       builder.field(FACTOR.getPreferredName(), _factor);
     }
     if (_unit != null) {
       builder.field(UNIT.getPreferredName());
       _unit.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

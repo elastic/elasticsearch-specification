@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class SqlColumn  implements XContentable<SqlColumn> {
   public String getName() { return this._name; }
   public SqlColumn setName(String val) { this._name = val; return this; }
 
-
   static final ParseField TYPE = new ParseField("type");
   private String _type;
   public String getType() { return this._type; }
@@ -30,16 +27,14 @@ public class SqlColumn  implements XContentable<SqlColumn> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_name != null) {
       builder.field(NAME.getPreferredName(), _name);
     }
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

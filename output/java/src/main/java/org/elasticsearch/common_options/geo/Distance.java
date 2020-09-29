@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,10 +16,14 @@ import org.elasticsearch.common_options.geo.*;
 public class Distance  implements XContentable<Distance> {
   
   static final ParseField PRECISION = new ParseField("precision");
-  private Double _precision;
-  public Double getPrecision() { return this._precision; }
-  public Distance setPrecision(Double val) { this._precision = val; return this; }
-
+  private double _precision;
+  private boolean _precision$isSet;
+  public double getPrecision() { return this._precision; }
+  public Distance setPrecision(double val) {
+    this._precision = val;
+    _precision$isSet = true;
+    return this;
+  }
 
   static final ParseField UNIT = new ParseField("unit");
   private DistanceUnit _unit;
@@ -31,17 +33,15 @@ public class Distance  implements XContentable<Distance> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_precision != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_precision$isSet) {
       builder.field(PRECISION.getPreferredName(), _precision);
     }
     if (_unit != null) {
       builder.field(UNIT.getPreferredName());
       _unit.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

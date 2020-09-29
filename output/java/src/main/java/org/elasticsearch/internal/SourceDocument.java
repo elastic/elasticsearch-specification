@@ -1,6 +1,10 @@
 
 package org.elasticsearch.internal;
 
+//
+// Generated code - Do not edit (value)
+//
+
 import java.io.IOException;
 import java.util.Objects;
 import org.elasticsearch.XContentable;

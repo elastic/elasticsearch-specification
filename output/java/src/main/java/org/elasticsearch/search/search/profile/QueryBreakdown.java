@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,65 +15,88 @@ import org.elasticsearch.internal.*;
 public class QueryBreakdown  implements XContentable<QueryBreakdown> {
   
   static final ParseField ADVANCE = new ParseField("advance");
-  private Long _advance;
-  public Long getAdvance() { return this._advance; }
-  public QueryBreakdown setAdvance(Long val) { this._advance = val; return this; }
-
+  private long _advance;
+  private boolean _advance$isSet;
+  public long getAdvance() { return this._advance; }
+  public QueryBreakdown setAdvance(long val) {
+    this._advance = val;
+    _advance$isSet = true;
+    return this;
+  }
 
   static final ParseField BUILD_SCORER = new ParseField("build_scorer");
-  private Long _buildScorer;
-  public Long getBuildScorer() { return this._buildScorer; }
-  public QueryBreakdown setBuildScorer(Long val) { this._buildScorer = val; return this; }
-
+  private long _buildScorer;
+  private boolean _buildScorer$isSet;
+  public long getBuildScorer() { return this._buildScorer; }
+  public QueryBreakdown setBuildScorer(long val) {
+    this._buildScorer = val;
+    _buildScorer$isSet = true;
+    return this;
+  }
 
   static final ParseField CREATE_WEIGHT = new ParseField("create_weight");
-  private Long _createWeight;
-  public Long getCreateWeight() { return this._createWeight; }
-  public QueryBreakdown setCreateWeight(Long val) { this._createWeight = val; return this; }
-
+  private long _createWeight;
+  private boolean _createWeight$isSet;
+  public long getCreateWeight() { return this._createWeight; }
+  public QueryBreakdown setCreateWeight(long val) {
+    this._createWeight = val;
+    _createWeight$isSet = true;
+    return this;
+  }
 
   static final ParseField MATCH = new ParseField("match");
-  private Long _match;
-  public Long getMatch() { return this._match; }
-  public QueryBreakdown setMatch(Long val) { this._match = val; return this; }
-
+  private long _match;
+  private boolean _match$isSet;
+  public long getMatch() { return this._match; }
+  public QueryBreakdown setMatch(long val) {
+    this._match = val;
+    _match$isSet = true;
+    return this;
+  }
 
   static final ParseField NEXT_DOC = new ParseField("next_doc");
-  private Long _nextDoc;
-  public Long getNextDoc() { return this._nextDoc; }
-  public QueryBreakdown setNextDoc(Long val) { this._nextDoc = val; return this; }
-
+  private long _nextDoc;
+  private boolean _nextDoc$isSet;
+  public long getNextDoc() { return this._nextDoc; }
+  public QueryBreakdown setNextDoc(long val) {
+    this._nextDoc = val;
+    _nextDoc$isSet = true;
+    return this;
+  }
 
   static final ParseField SCORE = new ParseField("score");
-  private Long _score;
-  public Long getScore() { return this._score; }
-  public QueryBreakdown setScore(Long val) { this._score = val; return this; }
+  private long _score;
+  private boolean _score$isSet;
+  public long getScore() { return this._score; }
+  public QueryBreakdown setScore(long val) {
+    this._score = val;
+    _score$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_advance != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_advance$isSet) {
       builder.field(ADVANCE.getPreferredName(), _advance);
     }
-    if (_buildScorer != null) {
+    if (_buildScorer$isSet) {
       builder.field(BUILD_SCORER.getPreferredName(), _buildScorer);
     }
-    if (_createWeight != null) {
+    if (_createWeight$isSet) {
       builder.field(CREATE_WEIGHT.getPreferredName(), _createWeight);
     }
-    if (_match != null) {
+    if (_match$isSet) {
       builder.field(MATCH.getPreferredName(), _match);
     }
-    if (_nextDoc != null) {
+    if (_nextDoc$isSet) {
       builder.field(NEXT_DOC.getPreferredName(), _nextDoc);
     }
-    if (_score != null) {
+    if (_score$isSet) {
       builder.field(SCORE.getPreferredName(), _score);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

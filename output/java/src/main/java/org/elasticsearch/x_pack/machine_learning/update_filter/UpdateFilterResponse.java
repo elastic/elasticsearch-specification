@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class UpdateFilterResponse  implements XContentable<UpdateFilterResponse> {
+public class UpdateFilterResponse extends ResponseBase<UpdateFilterResponse> implements XContentable<UpdateFilterResponse> {
   
   static final ParseField DESCRIPTION = new ParseField("description");
   private String _description;
   public String getDescription() { return this._description; }
   public UpdateFilterResponse setDescription(String val) { this._description = val; return this; }
 
-
   static final ParseField FILTER_ID = new ParseField("filter_id");
   private String _filterId;
   public String getFilterId() { return this._filterId; }
   public UpdateFilterResponse setFilterId(String val) { this._filterId = val; return this; }
-
 
   static final ParseField ITEMS = new ParseField("items");
   private List<String> _items;
@@ -36,8 +32,8 @@ public class UpdateFilterResponse  implements XContentable<UpdateFilterResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_description != null) {
       builder.field(DESCRIPTION.getPreferredName(), _description);
     }
@@ -47,8 +43,6 @@ public class UpdateFilterResponse  implements XContentable<UpdateFilterResponse>
     if (_items != null) {
       builder.array(ITEMS.getPreferredName(), _items);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

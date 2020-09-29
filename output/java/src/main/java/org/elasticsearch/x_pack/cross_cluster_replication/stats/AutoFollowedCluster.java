@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -21,6 +19,15 @@ public class AutoFollowedCluster  implements XContentable<AutoFollowedCluster> {
   public String getClusterName() { return this._clusterName; }
   public AutoFollowedCluster setClusterName(String val) { this._clusterName = val; return this; }
 
+  static final ParseField LAST_SEEN_METADATA_VERSION = new ParseField("last_seen_metadata_version");
+  private long _lastSeenMetadataVersion;
+  private boolean _lastSeenMetadataVersion$isSet;
+  public long getLastSeenMetadataVersion() { return this._lastSeenMetadataVersion; }
+  public AutoFollowedCluster setLastSeenMetadataVersion(long val) {
+    this._lastSeenMetadataVersion = val;
+    _lastSeenMetadataVersion$isSet = true;
+    return this;
+  }
 
   static final ParseField TIME_SINCE_LAST_CHECK_MILLIS = new ParseField("time_since_last_check_millis");
   private Date _timeSinceLastCheckMillis;
@@ -28,28 +35,20 @@ public class AutoFollowedCluster  implements XContentable<AutoFollowedCluster> {
   public AutoFollowedCluster setTimeSinceLastCheckMillis(Date val) { this._timeSinceLastCheckMillis = val; return this; }
 
 
-  static final ParseField LAST_SEEN_METADATA_VERSION = new ParseField("last_seen_metadata_version");
-  private Long _lastSeenMetadataVersion;
-  public Long getLastSeenMetadataVersion() { return this._lastSeenMetadataVersion; }
-  public AutoFollowedCluster setLastSeenMetadataVersion(Long val) { this._lastSeenMetadataVersion = val; return this; }
-
-
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_clusterName != null) {
       builder.field(CLUSTER_NAME.getPreferredName(), _clusterName);
+    }
+    if (_lastSeenMetadataVersion$isSet) {
+      builder.field(LAST_SEEN_METADATA_VERSION.getPreferredName(), _lastSeenMetadataVersion);
     }
     if (_timeSinceLastCheckMillis != null) {
       builder.field(TIME_SINCE_LAST_CHECK_MILLIS.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_timeSinceLastCheckMillis.toInstant()));
     }
-    if (_lastSeenMetadataVersion != null) {
-      builder.field(LAST_SEEN_METADATA_VERSION.getPreferredName(), _lastSeenMetadataVersion);
-    }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,8 +61,8 @@ public class AutoFollowedCluster  implements XContentable<AutoFollowedCluster> {
 
   static {
     PARSER.declareString(AutoFollowedCluster::setClusterName, CLUSTER_NAME);
-    PARSER.declareObject(AutoFollowedCluster::setTimeSinceLastCheckMillis, (p, t) -> Date.from(Instant.from(DateTimeFormatter.ISO_DATE.parse(p.text()))), TIME_SINCE_LAST_CHECK_MILLIS);
     PARSER.declareLong(AutoFollowedCluster::setLastSeenMetadataVersion, LAST_SEEN_METADATA_VERSION);
+    PARSER.declareObject(AutoFollowedCluster::setTimeSinceLastCheckMillis, (p, t) -> Date.from(Instant.from(DateTimeFormatter.ISO_DATE.parse(p.text()))), TIME_SINCE_LAST_CHECK_MILLIS);
   }
 
 }

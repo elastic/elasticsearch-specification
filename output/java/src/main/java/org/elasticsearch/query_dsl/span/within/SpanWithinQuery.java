@@ -7,12 +7,11 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.span.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
 public class SpanWithinQuery  implements XContentable<SpanWithinQuery> {
   
@@ -20,7 +19,6 @@ public class SpanWithinQuery  implements XContentable<SpanWithinQuery> {
   private SpanQuery _big;
   public SpanQuery getBig() { return this._big; }
   public SpanWithinQuery setBig(SpanQuery val) { this._big = val; return this; }
-
 
   static final ParseField LITTLE = new ParseField("little");
   private SpanQuery _little;
@@ -30,8 +28,8 @@ public class SpanWithinQuery  implements XContentable<SpanWithinQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_big != null) {
       builder.field(BIG.getPreferredName());
       _big.toXContent(builder, params);
@@ -40,8 +38,6 @@ public class SpanWithinQuery  implements XContentable<SpanWithinQuery> {
       builder.field(LITTLE.getPreferredName());
       _little.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

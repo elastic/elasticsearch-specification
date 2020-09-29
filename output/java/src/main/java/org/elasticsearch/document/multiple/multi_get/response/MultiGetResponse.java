@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.document.multiple.multi_get.response.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class MultiGetResponse  implements XContentable<MultiGetResponse> {
+public class MultiGetResponse extends ResponseBase<MultiGetResponse> implements XContentable<MultiGetResponse> {
   
   static final ParseField HITS = new ParseField("hits");
   private List<MultiGetHit<Object>> _hits;
@@ -24,13 +23,11 @@ public class MultiGetResponse  implements XContentable<MultiGetResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_hits != null) {
       builder.array(HITS.getPreferredName(), _hits);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

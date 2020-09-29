@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.scripting.*;
@@ -21,24 +19,20 @@ public class ScriptedMetricAggregation  implements XContentable<ScriptedMetricAg
   public Script getCombineScript() { return this._combineScript; }
   public ScriptedMetricAggregation setCombineScript(Script val) { this._combineScript = val; return this; }
 
-
   static final ParseField INIT_SCRIPT = new ParseField("init_script");
   private Script _initScript;
   public Script getInitScript() { return this._initScript; }
   public ScriptedMetricAggregation setInitScript(Script val) { this._initScript = val; return this; }
-
 
   static final ParseField MAP_SCRIPT = new ParseField("map_script");
   private Script _mapScript;
   public Script getMapScript() { return this._mapScript; }
   public ScriptedMetricAggregation setMapScript(Script val) { this._mapScript = val; return this; }
 
-
   static final ParseField PARAMS = new ParseField("params");
   private NamedContainer<String, Object> _params;
   public NamedContainer<String, Object> getParams() { return this._params; }
   public ScriptedMetricAggregation setParams(NamedContainer<String, Object> val) { this._params = val; return this; }
-
 
   static final ParseField REDUCE_SCRIPT = new ParseField("reduce_script");
   private Script _reduceScript;
@@ -48,8 +42,8 @@ public class ScriptedMetricAggregation  implements XContentable<ScriptedMetricAg
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_combineScript != null) {
       builder.field(COMBINE_SCRIPT.getPreferredName());
       _combineScript.toXContent(builder, params);
@@ -70,8 +64,6 @@ public class ScriptedMetricAggregation  implements XContentable<ScriptedMetricAg
       builder.field(REDUCE_SCRIPT.getPreferredName());
       _reduceScript.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

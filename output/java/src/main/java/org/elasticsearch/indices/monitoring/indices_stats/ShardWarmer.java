@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,38 +15,49 @@ import org.elasticsearch.internal.*;
 public class ShardWarmer  implements XContentable<ShardWarmer> {
   
   static final ParseField CURRENT = new ParseField("current");
-  private Long _current;
-  public Long getCurrent() { return this._current; }
-  public ShardWarmer setCurrent(Long val) { this._current = val; return this; }
-
+  private long _current;
+  private boolean _current$isSet;
+  public long getCurrent() { return this._current; }
+  public ShardWarmer setCurrent(long val) {
+    this._current = val;
+    _current$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
-  private Long _total;
-  public Long getTotal() { return this._total; }
-  public ShardWarmer setTotal(Long val) { this._total = val; return this; }
-
+  private long _total;
+  private boolean _total$isSet;
+  public long getTotal() { return this._total; }
+  public ShardWarmer setTotal(long val) {
+    this._total = val;
+    _total$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL_TIME_IN_MILLIS = new ParseField("total_time_in_millis");
-  private Long _totalTimeInMillis;
-  public Long getTotalTimeInMillis() { return this._totalTimeInMillis; }
-  public ShardWarmer setTotalTimeInMillis(Long val) { this._totalTimeInMillis = val; return this; }
+  private long _totalTimeInMillis;
+  private boolean _totalTimeInMillis$isSet;
+  public long getTotalTimeInMillis() { return this._totalTimeInMillis; }
+  public ShardWarmer setTotalTimeInMillis(long val) {
+    this._totalTimeInMillis = val;
+    _totalTimeInMillis$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_current != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_current$isSet) {
       builder.field(CURRENT.getPreferredName(), _current);
     }
-    if (_total != null) {
+    if (_total$isSet) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    if (_totalTimeInMillis != null) {
+    if (_totalTimeInMillis$isSet) {
       builder.field(TOTAL_TIME_IN_MILLIS.getPreferredName(), _totalTimeInMillis);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

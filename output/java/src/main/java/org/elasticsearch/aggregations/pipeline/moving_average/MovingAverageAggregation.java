@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.aggregations.pipeline.moving_average.models.*;
@@ -22,29 +20,36 @@ public class MovingAverageAggregation  implements XContentable<MovingAverageAggr
   public Boolean getMinimize() { return this._minimize; }
   public MovingAverageAggregation setMinimize(Boolean val) { this._minimize = val; return this; }
 
-
   static final ParseField MODEL = new ParseField("model");
   private MovingAverageModel _model;
   public MovingAverageModel getModel() { return this._model; }
   public MovingAverageAggregation setModel(MovingAverageModel val) { this._model = val; return this; }
 
-
   static final ParseField PREDICT = new ParseField("predict");
-  private Integer _predict;
-  public Integer getPredict() { return this._predict; }
-  public MovingAverageAggregation setPredict(Integer val) { this._predict = val; return this; }
-
+  private int _predict;
+  private boolean _predict$isSet;
+  public int getPredict() { return this._predict; }
+  public MovingAverageAggregation setPredict(int val) {
+    this._predict = val;
+    _predict$isSet = true;
+    return this;
+  }
 
   static final ParseField WINDOW = new ParseField("window");
-  private Integer _window;
-  public Integer getWindow() { return this._window; }
-  public MovingAverageAggregation setWindow(Integer val) { this._window = val; return this; }
+  private int _window;
+  private boolean _window$isSet;
+  public int getWindow() { return this._window; }
+  public MovingAverageAggregation setWindow(int val) {
+    this._window = val;
+    _window$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_minimize != null) {
       builder.field(MINIMIZE.getPreferredName(), _minimize);
     }
@@ -52,14 +57,12 @@ public class MovingAverageAggregation  implements XContentable<MovingAverageAggr
       builder.field(MODEL.getPreferredName());
       _model.toXContent(builder, params);
     }
-    if (_predict != null) {
+    if (_predict$isSet) {
       builder.field(PREDICT.getPreferredName(), _predict);
     }
-    if (_window != null) {
+    if (_window$isSet) {
       builder.field(WINDOW.getPreferredName(), _window);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

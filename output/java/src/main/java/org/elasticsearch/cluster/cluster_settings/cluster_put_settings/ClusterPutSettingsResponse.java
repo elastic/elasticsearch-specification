@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class ClusterPutSettingsResponse  implements XContentable<ClusterPutSettingsResponse> {
+public class ClusterPutSettingsResponse extends ResponseBase<ClusterPutSettingsResponse> implements XContentable<ClusterPutSettingsResponse> {
   
   static final ParseField ACKNOWLEDGED = new ParseField("acknowledged");
   private Boolean _acknowledged;
   public Boolean getAcknowledged() { return this._acknowledged; }
   public ClusterPutSettingsResponse setAcknowledged(Boolean val) { this._acknowledged = val; return this; }
 
-
   static final ParseField PERSISTENT = new ParseField("persistent");
   private NamedContainer<String, Object> _persistent;
   public NamedContainer<String, Object> getPersistent() { return this._persistent; }
   public ClusterPutSettingsResponse setPersistent(NamedContainer<String, Object> val) { this._persistent = val; return this; }
-
 
   static final ParseField TRANSIENT = new ParseField("transient");
   private NamedContainer<String, Object> _transient;
@@ -36,8 +32,8 @@ public class ClusterPutSettingsResponse  implements XContentable<ClusterPutSetti
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_acknowledged != null) {
       builder.field(ACKNOWLEDGED.getPreferredName(), _acknowledged);
     }
@@ -49,8 +45,6 @@ public class ClusterPutSettingsResponse  implements XContentable<ClusterPutSetti
       builder.field(TRANSIENT.getPreferredName());
       _transient.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

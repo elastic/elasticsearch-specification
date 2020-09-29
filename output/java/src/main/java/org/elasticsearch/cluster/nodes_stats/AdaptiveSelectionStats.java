@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,40 +15,59 @@ import org.elasticsearch.internal.*;
 public class AdaptiveSelectionStats  implements XContentable<AdaptiveSelectionStats> {
   
   static final ParseField AVG_QUEUE_SIZE = new ParseField("avg_queue_size");
-  private Long _avgQueueSize;
-  public Long getAvgQueueSize() { return this._avgQueueSize; }
-  public AdaptiveSelectionStats setAvgQueueSize(Long val) { this._avgQueueSize = val; return this; }
-
+  private long _avgQueueSize;
+  private boolean _avgQueueSize$isSet;
+  public long getAvgQueueSize() { return this._avgQueueSize; }
+  public AdaptiveSelectionStats setAvgQueueSize(long val) {
+    this._avgQueueSize = val;
+    _avgQueueSize$isSet = true;
+    return this;
+  }
 
   static final ParseField AVG_RESPONSE_TIME = new ParseField("avg_response_time");
-  private Long _avgResponseTime;
-  public Long getAvgResponseTime() { return this._avgResponseTime; }
-  public AdaptiveSelectionStats setAvgResponseTime(Long val) { this._avgResponseTime = val; return this; }
-
+  private long _avgResponseTime;
+  private boolean _avgResponseTime$isSet;
+  public long getAvgResponseTime() { return this._avgResponseTime; }
+  public AdaptiveSelectionStats setAvgResponseTime(long val) {
+    this._avgResponseTime = val;
+    _avgResponseTime$isSet = true;
+    return this;
+  }
 
   static final ParseField AVG_RESPONSE_TIME_NS = new ParseField("avg_response_time_ns");
-  private Long _avgResponseTimeNs;
-  public Long getAvgResponseTimeNs() { return this._avgResponseTimeNs; }
-  public AdaptiveSelectionStats setAvgResponseTimeNs(Long val) { this._avgResponseTimeNs = val; return this; }
-
+  private long _avgResponseTimeNs;
+  private boolean _avgResponseTimeNs$isSet;
+  public long getAvgResponseTimeNs() { return this._avgResponseTimeNs; }
+  public AdaptiveSelectionStats setAvgResponseTimeNs(long val) {
+    this._avgResponseTimeNs = val;
+    _avgResponseTimeNs$isSet = true;
+    return this;
+  }
 
   static final ParseField AVG_SERVICE_TIME = new ParseField("avg_service_time");
   private String _avgServiceTime;
   public String getAvgServiceTime() { return this._avgServiceTime; }
   public AdaptiveSelectionStats setAvgServiceTime(String val) { this._avgServiceTime = val; return this; }
 
-
   static final ParseField AVG_SERVICE_TIME_NS = new ParseField("avg_service_time_ns");
-  private Long _avgServiceTimeNs;
-  public Long getAvgServiceTimeNs() { return this._avgServiceTimeNs; }
-  public AdaptiveSelectionStats setAvgServiceTimeNs(Long val) { this._avgServiceTimeNs = val; return this; }
-
+  private long _avgServiceTimeNs;
+  private boolean _avgServiceTimeNs$isSet;
+  public long getAvgServiceTimeNs() { return this._avgServiceTimeNs; }
+  public AdaptiveSelectionStats setAvgServiceTimeNs(long val) {
+    this._avgServiceTimeNs = val;
+    _avgServiceTimeNs$isSet = true;
+    return this;
+  }
 
   static final ParseField OUTGOING_SEARCHES = new ParseField("outgoing_searches");
-  private Long _outgoingSearches;
-  public Long getOutgoingSearches() { return this._outgoingSearches; }
-  public AdaptiveSelectionStats setOutgoingSearches(Long val) { this._outgoingSearches = val; return this; }
-
+  private long _outgoingSearches;
+  private boolean _outgoingSearches$isSet;
+  public long getOutgoingSearches() { return this._outgoingSearches; }
+  public AdaptiveSelectionStats setOutgoingSearches(long val) {
+    this._outgoingSearches = val;
+    _outgoingSearches$isSet = true;
+    return this;
+  }
 
   static final ParseField RANK = new ParseField("rank");
   private String _rank;
@@ -60,31 +77,29 @@ public class AdaptiveSelectionStats  implements XContentable<AdaptiveSelectionSt
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_avgQueueSize != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_avgQueueSize$isSet) {
       builder.field(AVG_QUEUE_SIZE.getPreferredName(), _avgQueueSize);
     }
-    if (_avgResponseTime != null) {
+    if (_avgResponseTime$isSet) {
       builder.field(AVG_RESPONSE_TIME.getPreferredName(), _avgResponseTime);
     }
-    if (_avgResponseTimeNs != null) {
+    if (_avgResponseTimeNs$isSet) {
       builder.field(AVG_RESPONSE_TIME_NS.getPreferredName(), _avgResponseTimeNs);
     }
     if (_avgServiceTime != null) {
       builder.field(AVG_SERVICE_TIME.getPreferredName(), _avgServiceTime);
     }
-    if (_avgServiceTimeNs != null) {
+    if (_avgServiceTimeNs$isSet) {
       builder.field(AVG_SERVICE_TIME_NS.getPreferredName(), _avgServiceTimeNs);
     }
-    if (_outgoingSearches != null) {
+    if (_outgoingSearches$isSet) {
       builder.field(OUTGOING_SEARCHES.getPreferredName(), _outgoingSearches);
     }
     if (_rank != null) {
       builder.field(RANK.getPreferredName(), _rank);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

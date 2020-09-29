@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.geo.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class GeoPolygonQuery  implements XContentable<GeoPolygonQuery> {
+public class GeoPolygonQuery extends QueryBase implements XContentable<GeoPolygonQuery> {
   
   static final ParseField POINTS = new ParseField("points");
   private List<GeoLocation> _points;
   public List<GeoLocation> getPoints() { return this._points; }
   public GeoPolygonQuery setPoints(List<GeoLocation> val) { this._points = val; return this; }
-
 
   static final ParseField VALIDATION_METHOD = new ParseField("validation_method");
   private GeoValidationMethod _validationMethod;
@@ -30,8 +28,8 @@ public class GeoPolygonQuery  implements XContentable<GeoPolygonQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_points != null) {
       builder.array(POINTS.getPreferredName(), _points);
     }
@@ -39,8 +37,6 @@ public class GeoPolygonQuery  implements XContentable<GeoPolygonQuery> {
       builder.field(VALIDATION_METHOD.getPreferredName());
       _validationMethod.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

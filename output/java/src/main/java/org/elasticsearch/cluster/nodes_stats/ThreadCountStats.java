@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,65 +15,88 @@ import org.elasticsearch.internal.*;
 public class ThreadCountStats  implements XContentable<ThreadCountStats> {
   
   static final ParseField ACTIVE = new ParseField("active");
-  private Long _active;
-  public Long getActive() { return this._active; }
-  public ThreadCountStats setActive(Long val) { this._active = val; return this; }
-
+  private long _active;
+  private boolean _active$isSet;
+  public long getActive() { return this._active; }
+  public ThreadCountStats setActive(long val) {
+    this._active = val;
+    _active$isSet = true;
+    return this;
+  }
 
   static final ParseField COMPLETED = new ParseField("completed");
-  private Long _completed;
-  public Long getCompleted() { return this._completed; }
-  public ThreadCountStats setCompleted(Long val) { this._completed = val; return this; }
-
+  private long _completed;
+  private boolean _completed$isSet;
+  public long getCompleted() { return this._completed; }
+  public ThreadCountStats setCompleted(long val) {
+    this._completed = val;
+    _completed$isSet = true;
+    return this;
+  }
 
   static final ParseField LARGEST = new ParseField("largest");
-  private Long _largest;
-  public Long getLargest() { return this._largest; }
-  public ThreadCountStats setLargest(Long val) { this._largest = val; return this; }
-
+  private long _largest;
+  private boolean _largest$isSet;
+  public long getLargest() { return this._largest; }
+  public ThreadCountStats setLargest(long val) {
+    this._largest = val;
+    _largest$isSet = true;
+    return this;
+  }
 
   static final ParseField QUEUE = new ParseField("queue");
-  private Long _queue;
-  public Long getQueue() { return this._queue; }
-  public ThreadCountStats setQueue(Long val) { this._queue = val; return this; }
-
+  private long _queue;
+  private boolean _queue$isSet;
+  public long getQueue() { return this._queue; }
+  public ThreadCountStats setQueue(long val) {
+    this._queue = val;
+    _queue$isSet = true;
+    return this;
+  }
 
   static final ParseField REJECTED = new ParseField("rejected");
-  private Long _rejected;
-  public Long getRejected() { return this._rejected; }
-  public ThreadCountStats setRejected(Long val) { this._rejected = val; return this; }
-
+  private long _rejected;
+  private boolean _rejected$isSet;
+  public long getRejected() { return this._rejected; }
+  public ThreadCountStats setRejected(long val) {
+    this._rejected = val;
+    _rejected$isSet = true;
+    return this;
+  }
 
   static final ParseField THREADS = new ParseField("threads");
-  private Long _threads;
-  public Long getThreads() { return this._threads; }
-  public ThreadCountStats setThreads(Long val) { this._threads = val; return this; }
+  private long _threads;
+  private boolean _threads$isSet;
+  public long getThreads() { return this._threads; }
+  public ThreadCountStats setThreads(long val) {
+    this._threads = val;
+    _threads$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_active != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_active$isSet) {
       builder.field(ACTIVE.getPreferredName(), _active);
     }
-    if (_completed != null) {
+    if (_completed$isSet) {
       builder.field(COMPLETED.getPreferredName(), _completed);
     }
-    if (_largest != null) {
+    if (_largest$isSet) {
       builder.field(LARGEST.getPreferredName(), _largest);
     }
-    if (_queue != null) {
+    if (_queue$isSet) {
       builder.field(QUEUE.getPreferredName(), _queue);
     }
-    if (_rejected != null) {
+    if (_rejected$isSet) {
       builder.field(REJECTED.getPreferredName(), _rejected);
     }
-    if (_threads != null) {
+    if (_threads$isSet) {
       builder.field(THREADS.getPreferredName(), _threads);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

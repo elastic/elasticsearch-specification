@@ -7,41 +7,35 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class ForecastJobRequest  implements XContentable<ForecastJobRequest> {
+public class ForecastJobRequest extends RequestBase<ForecastJobRequest> implements XContentable<ForecastJobRequest> {
   
   static final ParseField DURATION = new ParseField("duration");
-  private Time _duration;
-  public Time getDuration() { return this._duration; }
-  public ForecastJobRequest setDuration(Time val) { this._duration = val; return this; }
-
+  private String _duration;
+  public String getDuration() { return this._duration; }
+  public ForecastJobRequest setDuration(String val) { this._duration = val; return this; }
 
   static final ParseField EXPIRES_IN = new ParseField("expires_in");
-  private Time _expiresIn;
-  public Time getExpiresIn() { return this._expiresIn; }
-  public ForecastJobRequest setExpiresIn(Time val) { this._expiresIn = val; return this; }
+  private String _expiresIn;
+  public String getExpiresIn() { return this._expiresIn; }
+  public ForecastJobRequest setExpiresIn(String val) { this._expiresIn = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_duration != null) {
-      builder.field(DURATION.getPreferredName());
-      _duration.toXContent(builder, params);
+      builder.field(DURATION.getPreferredName(), _duration);
     }
     if (_expiresIn != null) {
-      builder.field(EXPIRES_IN.getPreferredName());
-      _expiresIn.toXContent(builder, params);
+      builder.field(EXPIRES_IN.getPreferredName(), _expiresIn);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -53,8 +47,8 @@ public class ForecastJobRequest  implements XContentable<ForecastJobRequest> {
     new ObjectParser<>(ForecastJobRequest.class.getName(), false, ForecastJobRequest::new);
 
   static {
-    PARSER.declareObject(ForecastJobRequest::setDuration, (p, t) -> Time.PARSER.apply(p, t), DURATION);
-    PARSER.declareObject(ForecastJobRequest::setExpiresIn, (p, t) -> Time.PARSER.apply(p, t), EXPIRES_IN);
+    PARSER.declareString(ForecastJobRequest::setDuration, DURATION);
+    PARSER.declareString(ForecastJobRequest::setExpiresIn, EXPIRES_IN);
   }
 
 }

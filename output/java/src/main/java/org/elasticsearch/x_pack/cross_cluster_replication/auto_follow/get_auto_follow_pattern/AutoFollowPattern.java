@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -22,72 +20,85 @@ public class AutoFollowPattern  implements XContentable<AutoFollowPattern> {
   public String getFollowIndexPattern() { return this._followIndexPattern; }
   public AutoFollowPattern setFollowIndexPattern(String val) { this._followIndexPattern = val; return this; }
 
-
   static final ParseField LEADER_INDEX_PATTERNS = new ParseField("leader_index_patterns");
   private List<String> _leaderIndexPatterns;
   public List<String> getLeaderIndexPatterns() { return this._leaderIndexPatterns; }
   public AutoFollowPattern setLeaderIndexPatterns(List<String> val) { this._leaderIndexPatterns = val; return this; }
 
-
   static final ParseField MAX_OUTSTANDING_READ_REQUESTS = new ParseField("max_outstanding_read_requests");
-  private Long _maxOutstandingReadRequests;
-  public Long getMaxOutstandingReadRequests() { return this._maxOutstandingReadRequests; }
-  public AutoFollowPattern setMaxOutstandingReadRequests(Long val) { this._maxOutstandingReadRequests = val; return this; }
-
+  private long _maxOutstandingReadRequests;
+  private boolean _maxOutstandingReadRequests$isSet;
+  public long getMaxOutstandingReadRequests() { return this._maxOutstandingReadRequests; }
+  public AutoFollowPattern setMaxOutstandingReadRequests(long val) {
+    this._maxOutstandingReadRequests = val;
+    _maxOutstandingReadRequests$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_OUTSTANDING_WRITE_REQUESTS = new ParseField("max_outstanding_write_requests");
-  private Integer _maxOutstandingWriteRequests;
-  public Integer getMaxOutstandingWriteRequests() { return this._maxOutstandingWriteRequests; }
-  public AutoFollowPattern setMaxOutstandingWriteRequests(Integer val) { this._maxOutstandingWriteRequests = val; return this; }
-
+  private int _maxOutstandingWriteRequests;
+  private boolean _maxOutstandingWriteRequests$isSet;
+  public int getMaxOutstandingWriteRequests() { return this._maxOutstandingWriteRequests; }
+  public AutoFollowPattern setMaxOutstandingWriteRequests(int val) {
+    this._maxOutstandingWriteRequests = val;
+    _maxOutstandingWriteRequests$isSet = true;
+    return this;
+  }
 
   static final ParseField READ_POLL_TIMEOUT = new ParseField("read_poll_timeout");
-  private Time _readPollTimeout;
-  public Time getReadPollTimeout() { return this._readPollTimeout; }
-  public AutoFollowPattern setReadPollTimeout(Time val) { this._readPollTimeout = val; return this; }
-
+  private String _readPollTimeout;
+  public String getReadPollTimeout() { return this._readPollTimeout; }
+  public AutoFollowPattern setReadPollTimeout(String val) { this._readPollTimeout = val; return this; }
 
   static final ParseField MAX_READ_REQUEST_OPERATION_COUNT = new ParseField("max_read_request_operation_count");
-  private Integer _maxReadRequestOperationCount;
-  public Integer getMaxReadRequestOperationCount() { return this._maxReadRequestOperationCount; }
-  public AutoFollowPattern setMaxReadRequestOperationCount(Integer val) { this._maxReadRequestOperationCount = val; return this; }
-
+  private int _maxReadRequestOperationCount;
+  private boolean _maxReadRequestOperationCount$isSet;
+  public int getMaxReadRequestOperationCount() { return this._maxReadRequestOperationCount; }
+  public AutoFollowPattern setMaxReadRequestOperationCount(int val) {
+    this._maxReadRequestOperationCount = val;
+    _maxReadRequestOperationCount$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_READ_REQUEST_SIZE = new ParseField("max_read_request_size");
   private String _maxReadRequestSize;
   public String getMaxReadRequestSize() { return this._maxReadRequestSize; }
   public AutoFollowPattern setMaxReadRequestSize(String val) { this._maxReadRequestSize = val; return this; }
 
-
   static final ParseField MAX_RETRY_DELAY = new ParseField("max_retry_delay");
-  private Time _maxRetryDelay;
-  public Time getMaxRetryDelay() { return this._maxRetryDelay; }
-  public AutoFollowPattern setMaxRetryDelay(Time val) { this._maxRetryDelay = val; return this; }
-
+  private String _maxRetryDelay;
+  public String getMaxRetryDelay() { return this._maxRetryDelay; }
+  public AutoFollowPattern setMaxRetryDelay(String val) { this._maxRetryDelay = val; return this; }
 
   static final ParseField MAX_WRITE_BUFFER_COUNT = new ParseField("max_write_buffer_count");
-  private Integer _maxWriteBufferCount;
-  public Integer getMaxWriteBufferCount() { return this._maxWriteBufferCount; }
-  public AutoFollowPattern setMaxWriteBufferCount(Integer val) { this._maxWriteBufferCount = val; return this; }
-
+  private int _maxWriteBufferCount;
+  private boolean _maxWriteBufferCount$isSet;
+  public int getMaxWriteBufferCount() { return this._maxWriteBufferCount; }
+  public AutoFollowPattern setMaxWriteBufferCount(int val) {
+    this._maxWriteBufferCount = val;
+    _maxWriteBufferCount$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_WRITE_BUFFER_SIZE = new ParseField("max_write_buffer_size");
   private String _maxWriteBufferSize;
   public String getMaxWriteBufferSize() { return this._maxWriteBufferSize; }
   public AutoFollowPattern setMaxWriteBufferSize(String val) { this._maxWriteBufferSize = val; return this; }
 
-
   static final ParseField MAX_WRITE_REQUEST_OPERATION_COUNT = new ParseField("max_write_request_operation_count");
-  private Integer _maxWriteRequestOperationCount;
-  public Integer getMaxWriteRequestOperationCount() { return this._maxWriteRequestOperationCount; }
-  public AutoFollowPattern setMaxWriteRequestOperationCount(Integer val) { this._maxWriteRequestOperationCount = val; return this; }
-
+  private int _maxWriteRequestOperationCount;
+  private boolean _maxWriteRequestOperationCount$isSet;
+  public int getMaxWriteRequestOperationCount() { return this._maxWriteRequestOperationCount; }
+  public AutoFollowPattern setMaxWriteRequestOperationCount(int val) {
+    this._maxWriteRequestOperationCount = val;
+    _maxWriteRequestOperationCount$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_WRITE_REQUEST_SIZE = new ParseField("max_write_request_size");
   private String _maxWriteRequestSize;
   public String getMaxWriteRequestSize() { return this._maxWriteRequestSize; }
   public AutoFollowPattern setMaxWriteRequestSize(String val) { this._maxWriteRequestSize = val; return this; }
-
 
   static final ParseField REMOTE_CLUSTER = new ParseField("remote_cluster");
   private String _remoteCluster;
@@ -97,41 +108,39 @@ public class AutoFollowPattern  implements XContentable<AutoFollowPattern> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_followIndexPattern != null) {
       builder.field(FOLLOW_INDEX_PATTERN.getPreferredName(), _followIndexPattern);
     }
     if (_leaderIndexPatterns != null) {
       builder.array(LEADER_INDEX_PATTERNS.getPreferredName(), _leaderIndexPatterns);
     }
-    if (_maxOutstandingReadRequests != null) {
+    if (_maxOutstandingReadRequests$isSet) {
       builder.field(MAX_OUTSTANDING_READ_REQUESTS.getPreferredName(), _maxOutstandingReadRequests);
     }
-    if (_maxOutstandingWriteRequests != null) {
+    if (_maxOutstandingWriteRequests$isSet) {
       builder.field(MAX_OUTSTANDING_WRITE_REQUESTS.getPreferredName(), _maxOutstandingWriteRequests);
     }
     if (_readPollTimeout != null) {
-      builder.field(READ_POLL_TIMEOUT.getPreferredName());
-      _readPollTimeout.toXContent(builder, params);
+      builder.field(READ_POLL_TIMEOUT.getPreferredName(), _readPollTimeout);
     }
-    if (_maxReadRequestOperationCount != null) {
+    if (_maxReadRequestOperationCount$isSet) {
       builder.field(MAX_READ_REQUEST_OPERATION_COUNT.getPreferredName(), _maxReadRequestOperationCount);
     }
     if (_maxReadRequestSize != null) {
       builder.field(MAX_READ_REQUEST_SIZE.getPreferredName(), _maxReadRequestSize);
     }
     if (_maxRetryDelay != null) {
-      builder.field(MAX_RETRY_DELAY.getPreferredName());
-      _maxRetryDelay.toXContent(builder, params);
+      builder.field(MAX_RETRY_DELAY.getPreferredName(), _maxRetryDelay);
     }
-    if (_maxWriteBufferCount != null) {
+    if (_maxWriteBufferCount$isSet) {
       builder.field(MAX_WRITE_BUFFER_COUNT.getPreferredName(), _maxWriteBufferCount);
     }
     if (_maxWriteBufferSize != null) {
       builder.field(MAX_WRITE_BUFFER_SIZE.getPreferredName(), _maxWriteBufferSize);
     }
-    if (_maxWriteRequestOperationCount != null) {
+    if (_maxWriteRequestOperationCount$isSet) {
       builder.field(MAX_WRITE_REQUEST_OPERATION_COUNT.getPreferredName(), _maxWriteRequestOperationCount);
     }
     if (_maxWriteRequestSize != null) {
@@ -140,8 +149,6 @@ public class AutoFollowPattern  implements XContentable<AutoFollowPattern> {
     if (_remoteCluster != null) {
       builder.field(REMOTE_CLUSTER.getPreferredName(), _remoteCluster);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -157,10 +164,10 @@ public class AutoFollowPattern  implements XContentable<AutoFollowPattern> {
     PARSER.declareStringArray(AutoFollowPattern::setLeaderIndexPatterns, LEADER_INDEX_PATTERNS);
     PARSER.declareLong(AutoFollowPattern::setMaxOutstandingReadRequests, MAX_OUTSTANDING_READ_REQUESTS);
     PARSER.declareInt(AutoFollowPattern::setMaxOutstandingWriteRequests, MAX_OUTSTANDING_WRITE_REQUESTS);
-    PARSER.declareObject(AutoFollowPattern::setReadPollTimeout, (p, t) -> Time.PARSER.apply(p, t), READ_POLL_TIMEOUT);
+    PARSER.declareString(AutoFollowPattern::setReadPollTimeout, READ_POLL_TIMEOUT);
     PARSER.declareInt(AutoFollowPattern::setMaxReadRequestOperationCount, MAX_READ_REQUEST_OPERATION_COUNT);
     PARSER.declareString(AutoFollowPattern::setMaxReadRequestSize, MAX_READ_REQUEST_SIZE);
-    PARSER.declareObject(AutoFollowPattern::setMaxRetryDelay, (p, t) -> Time.PARSER.apply(p, t), MAX_RETRY_DELAY);
+    PARSER.declareString(AutoFollowPattern::setMaxRetryDelay, MAX_RETRY_DELAY);
     PARSER.declareInt(AutoFollowPattern::setMaxWriteBufferCount, MAX_WRITE_BUFFER_COUNT);
     PARSER.declareString(AutoFollowPattern::setMaxWriteBufferSize, MAX_WRITE_BUFFER_SIZE);
     PARSER.declareInt(AutoFollowPattern::setMaxWriteRequestOperationCount, MAX_WRITE_REQUEST_OPERATION_COUNT);

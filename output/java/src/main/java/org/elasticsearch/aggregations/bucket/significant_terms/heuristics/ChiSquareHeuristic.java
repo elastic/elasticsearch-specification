@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class ChiSquareHeuristic  implements XContentable<ChiSquareHeuristic> {
   public Boolean getBackgroundIsSuperset() { return this._backgroundIsSuperset; }
   public ChiSquareHeuristic setBackgroundIsSuperset(Boolean val) { this._backgroundIsSuperset = val; return this; }
 
-
   static final ParseField INCLUDE_NEGATIVES = new ParseField("include_negatives");
   private Boolean _includeNegatives;
   public Boolean getIncludeNegatives() { return this._includeNegatives; }
@@ -30,16 +27,14 @@ public class ChiSquareHeuristic  implements XContentable<ChiSquareHeuristic> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_backgroundIsSuperset != null) {
       builder.field(BACKGROUND_IS_SUPERSET.getPreferredName(), _backgroundIsSuperset);
     }
     if (_includeNegatives != null) {
       builder.field(INCLUDE_NEGATIVES.getPreferredName(), _includeNegatives);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

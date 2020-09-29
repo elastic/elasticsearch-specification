@@ -7,21 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.x_pack.machine_learning.post_calendar_events.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetCalendarEventsResponse  implements XContentable<GetCalendarEventsResponse> {
+public class GetCalendarEventsResponse extends ResponseBase<GetCalendarEventsResponse> implements XContentable<GetCalendarEventsResponse> {
   
   static final ParseField COUNT = new ParseField("count");
-  private Integer _count;
-  public Integer getCount() { return this._count; }
-  public GetCalendarEventsResponse setCount(Integer val) { this._count = val; return this; }
-
+  private int _count;
+  private boolean _count$isSet;
+  public int getCount() { return this._count; }
+  public GetCalendarEventsResponse setCount(int val) {
+    this._count = val;
+    _count$isSet = true;
+    return this;
+  }
 
   static final ParseField EVENTS = new ParseField("events");
   private List<ScheduledEvent> _events;
@@ -31,16 +34,14 @@ public class GetCalendarEventsResponse  implements XContentable<GetCalendarEvent
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_count != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_count$isSet) {
       builder.field(COUNT.getPreferredName(), _count);
     }
     if (_events != null) {
       builder.array(EVENTS.getPreferredName(), _events);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

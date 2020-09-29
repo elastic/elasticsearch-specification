@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class ExecuteEnrichPolicyRequest  implements XContentable<ExecuteEnrichPolicyRequest> {
+public class ExecuteEnrichPolicyRequest extends RequestBase<ExecuteEnrichPolicyRequest> implements XContentable<ExecuteEnrichPolicyRequest> {
   
   static final ParseField WAIT_FOR_COMPLETION = new ParseField("wait_for_completion");
   private Boolean _waitForCompletion;
@@ -24,13 +22,11 @@ public class ExecuteEnrichPolicyRequest  implements XContentable<ExecuteEnrichPo
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_waitForCompletion != null) {
       builder.field(WAIT_FOR_COMPLETION.getPreferredName(), _waitForCompletion);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

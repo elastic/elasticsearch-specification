@@ -7,78 +7,72 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.abstractions.container.*;
 import org.elasticsearch.common_options.minimum_should_match.*;
-import org.elasticsearch.internal.*;
 
 public class BoolQuery  implements XContentable<BoolQuery> {
   
   static final ParseField FILTER = new ParseField("filter");
-  private List<QueryContainer> _filter;
-  public List<QueryContainer> getFilter() { return this._filter; }
-  public BoolQuery setFilter(List<QueryContainer> val) { this._filter = val; return this; }
-
-
-  static final ParseField LOCKED = new ParseField("locked");
-  private Boolean _locked;
-  public Boolean getLocked() { return this._locked; }
-  public BoolQuery setLocked(Boolean val) { this._locked = val; return this; }
-
+  private Union2<QueryContainer, List<QueryContainer>> _filter;
+  public Union2<QueryContainer, List<QueryContainer>> getFilter() { return this._filter; }
+  public BoolQuery setFilter(Union2<QueryContainer, List<QueryContainer>> val) { this._filter = val; return this; }
 
   static final ParseField MINIMUM_SHOULD_MATCH = new ParseField("minimum_should_match");
   private MinimumShouldMatch _minimumShouldMatch;
   public MinimumShouldMatch getMinimumShouldMatch() { return this._minimumShouldMatch; }
   public BoolQuery setMinimumShouldMatch(MinimumShouldMatch val) { this._minimumShouldMatch = val; return this; }
 
-
   static final ParseField MUST = new ParseField("must");
-  private List<QueryContainer> _must;
-  public List<QueryContainer> getMust() { return this._must; }
-  public BoolQuery setMust(List<QueryContainer> val) { this._must = val; return this; }
-
+  private Union2<QueryContainer, List<QueryContainer>> _must;
+  public Union2<QueryContainer, List<QueryContainer>> getMust() { return this._must; }
+  public BoolQuery setMust(Union2<QueryContainer, List<QueryContainer>> val) { this._must = val; return this; }
 
   static final ParseField MUST_NOT = new ParseField("must_not");
-  private List<QueryContainer> _mustNot;
-  public List<QueryContainer> getMustNot() { return this._mustNot; }
-  public BoolQuery setMustNot(List<QueryContainer> val) { this._mustNot = val; return this; }
-
+  private Union2<QueryContainer, List<QueryContainer>> _mustNot;
+  public Union2<QueryContainer, List<QueryContainer>> getMustNot() { return this._mustNot; }
+  public BoolQuery setMustNot(Union2<QueryContainer, List<QueryContainer>> val) { this._mustNot = val; return this; }
 
   static final ParseField SHOULD = new ParseField("should");
-  private List<QueryContainer> _should;
-  public List<QueryContainer> getShould() { return this._should; }
-  public BoolQuery setShould(List<QueryContainer> val) { this._should = val; return this; }
+  private Union2<QueryContainer, List<QueryContainer>> _should;
+  public Union2<QueryContainer, List<QueryContainer>> getShould() { return this._should; }
+  public BoolQuery setShould(Union2<QueryContainer, List<QueryContainer>> val) { this._should = val; return this; }
+
+  static final ParseField NAME = new ParseField("_name");
+  private String _name;
+  public String getName() { return this._name; }
+  public BoolQuery setName(String val) { this._name = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_filter != null) {
-      builder.array(FILTER.getPreferredName(), _filter);
-    }
-    if (_locked != null) {
-      builder.field(LOCKED.getPreferredName(), _locked);
+      builder.field(FILTER.getPreferredName());
+      _filter.toXContent(builder, params);
     }
     if (_minimumShouldMatch != null) {
       builder.field(MINIMUM_SHOULD_MATCH.getPreferredName());
       _minimumShouldMatch.toXContent(builder, params);
     }
     if (_must != null) {
-      builder.array(MUST.getPreferredName(), _must);
+      builder.field(MUST.getPreferredName());
+      _must.toXContent(builder, params);
     }
     if (_mustNot != null) {
-      builder.array(MUST_NOT.getPreferredName(), _mustNot);
+      builder.field(MUST_NOT.getPreferredName());
+      _mustNot.toXContent(builder, params);
     }
     if (_should != null) {
-      builder.array(SHOULD.getPreferredName(), _should);
+      builder.field(SHOULD.getPreferredName());
+      _should.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
+    if (_name != null) {
+      builder.field(NAME.getPreferredName(), _name);
+    }
   }
 
   @Override
@@ -90,12 +84,12 @@ public class BoolQuery  implements XContentable<BoolQuery> {
     new ObjectParser<>(BoolQuery.class.getName(), false, BoolQuery::new);
 
   static {
-    PARSER.declareObjectArray(BoolQuery::setFilter, (p, t) -> QueryContainer.PARSER.apply(p, t), FILTER);
-    PARSER.declareBoolean(BoolQuery::setLocked, LOCKED);
-    PARSER.declareObject(BoolQuery::setMinimumShouldMatch, (p, t) -> new MinimumShouldMatch().fromXContent(p), MINIMUM_SHOULD_MATCH);
-    PARSER.declareObjectArray(BoolQuery::setMust, (p, t) -> QueryContainer.PARSER.apply(p, t), MUST);
-    PARSER.declareObjectArray(BoolQuery::setMustNot, (p, t) -> QueryContainer.PARSER.apply(p, t), MUST_NOT);
-    PARSER.declareObjectArray(BoolQuery::setShould, (p, t) -> QueryContainer.PARSER.apply(p, t), SHOULD);
+    PARSER.declareObject(BoolQuery::setFilter, (p, t) ->  new Union2<QueryContainer, List<QueryContainer>>(), FILTER);
+    PARSER.declareObject(BoolQuery::setMinimumShouldMatch, (p, t) -> MinimumShouldMatch.PARSER.apply(p, t), MINIMUM_SHOULD_MATCH);
+    PARSER.declareObject(BoolQuery::setMust, (p, t) ->  new Union2<QueryContainer, List<QueryContainer>>(), MUST);
+    PARSER.declareObject(BoolQuery::setMustNot, (p, t) ->  new Union2<QueryContainer, List<QueryContainer>>(), MUST_NOT);
+    PARSER.declareObject(BoolQuery::setShould, (p, t) ->  new Union2<QueryContainer, List<QueryContainer>>(), SHOULD);
+    PARSER.declareString(BoolQuery::setName, NAME);
   }
 
 }

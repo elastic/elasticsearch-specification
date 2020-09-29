@@ -7,21 +7,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.ingest.simulate_pipeline.*;
 import org.elasticsearch.ingest.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class SimulatePipelineRequest  implements XContentable<SimulatePipelineRequest> {
+public class SimulatePipelineRequest extends RequestBase<SimulatePipelineRequest> implements XContentable<SimulatePipelineRequest> {
   
+  static final ParseField VERBOSE = new ParseField("verbose");
+  private Boolean _verbose;
+  public Boolean getVerbose() { return this._verbose; }
+  public SimulatePipelineRequest setVerbose(Boolean val) { this._verbose = val; return this; }
+
   static final ParseField DOCS = new ParseField("docs");
   private List<SimulatePipelineDocument> _docs;
   public List<SimulatePipelineDocument> getDocs() { return this._docs; }
   public SimulatePipelineRequest setDocs(List<SimulatePipelineDocument> val) { this._docs = val; return this; }
-
 
   static final ParseField PIPELINE = new ParseField("pipeline");
   private Pipeline _pipeline;
@@ -29,16 +32,13 @@ public class SimulatePipelineRequest  implements XContentable<SimulatePipelineRe
   public SimulatePipelineRequest setPipeline(Pipeline val) { this._pipeline = val; return this; }
 
 
-  static final ParseField VERBOSE = new ParseField("verbose");
-  private Boolean _verbose;
-  public Boolean getVerbose() { return this._verbose; }
-  public SimulatePipelineRequest setVerbose(Boolean val) { this._verbose = val; return this; }
-
-
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_verbose != null) {
+      builder.field(VERBOSE.getPreferredName(), _verbose);
+    }
     if (_docs != null) {
       builder.array(DOCS.getPreferredName(), _docs);
     }
@@ -46,11 +46,6 @@ public class SimulatePipelineRequest  implements XContentable<SimulatePipelineRe
       builder.field(PIPELINE.getPreferredName());
       _pipeline.toXContent(builder, params);
     }
-    if (_verbose != null) {
-      builder.field(VERBOSE.getPreferredName(), _verbose);
-    }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,9 +57,9 @@ public class SimulatePipelineRequest  implements XContentable<SimulatePipelineRe
     new ObjectParser<>(SimulatePipelineRequest.class.getName(), false, SimulatePipelineRequest::new);
 
   static {
+    PARSER.declareBoolean(SimulatePipelineRequest::setVerbose, VERBOSE);
     PARSER.declareObjectArray(SimulatePipelineRequest::setDocs, (p, t) -> SimulatePipelineDocument.PARSER.apply(p, t), DOCS);
     PARSER.declareObject(SimulatePipelineRequest::setPipeline, (p, t) -> Pipeline.PARSER.apply(p, t), PIPELINE);
-    PARSER.declareBoolean(SimulatePipelineRequest::setVerbose, VERBOSE);
   }
 
 }

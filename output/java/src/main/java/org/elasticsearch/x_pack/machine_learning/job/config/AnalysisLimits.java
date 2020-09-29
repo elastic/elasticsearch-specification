@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,10 +15,14 @@ import org.elasticsearch.internal.*;
 public class AnalysisLimits  implements XContentable<AnalysisLimits> {
   
   static final ParseField CATEGORIZATION_EXAMPLES_LIMIT = new ParseField("categorization_examples_limit");
-  private Long _categorizationExamplesLimit;
-  public Long getCategorizationExamplesLimit() { return this._categorizationExamplesLimit; }
-  public AnalysisLimits setCategorizationExamplesLimit(Long val) { this._categorizationExamplesLimit = val; return this; }
-
+  private long _categorizationExamplesLimit;
+  private boolean _categorizationExamplesLimit$isSet;
+  public long getCategorizationExamplesLimit() { return this._categorizationExamplesLimit; }
+  public AnalysisLimits setCategorizationExamplesLimit(long val) {
+    this._categorizationExamplesLimit = val;
+    _categorizationExamplesLimit$isSet = true;
+    return this;
+  }
 
   static final ParseField MODEL_MEMORY_LIMIT = new ParseField("model_memory_limit");
   private String _modelMemoryLimit;
@@ -30,16 +32,14 @@ public class AnalysisLimits  implements XContentable<AnalysisLimits> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_categorizationExamplesLimit != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_categorizationExamplesLimit$isSet) {
       builder.field(CATEGORIZATION_EXAMPLES_LIMIT.getPreferredName(), _categorizationExamplesLimit);
     }
     if (_modelMemoryLimit != null) {
       builder.field(MODEL_MEMORY_LIMIT.getPreferredName(), _modelMemoryLimit);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,44 +7,40 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.query_dsl.geo.*;
 import org.elasticsearch.common_options.date_math.*;
 import org.elasticsearch.common_options.geo.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class DistanceFeatureQuery  implements XContentable<DistanceFeatureQuery> {
+public class DistanceFeatureQuery extends QueryBase implements XContentable<DistanceFeatureQuery> {
   
   static final ParseField ORIGIN = new ParseField("origin");
-  private Either<GeoCoordinate, DateMath> _origin;
-  public Either<GeoCoordinate, DateMath> getOrigin() { return this._origin; }
-  public DistanceFeatureQuery setOrigin(Either<GeoCoordinate, DateMath> val) { this._origin = val; return this; }
-
+  private Union2<GeoCoordinate, String> _origin;
+  public Union2<GeoCoordinate, String> getOrigin() { return this._origin; }
+  public DistanceFeatureQuery setOrigin(Union2<GeoCoordinate, String> val) { this._origin = val; return this; }
 
   static final ParseField PIVOT = new ParseField("pivot");
-  private Either<Distance, Time> _pivot;
-  public Either<Distance, Time> getPivot() { return this._pivot; }
-  public DistanceFeatureQuery setPivot(Either<Distance, Time> val) { this._pivot = val; return this; }
+  private Union2<Distance, String> _pivot;
+  public Union2<Distance, String> getPivot() { return this._pivot; }
+  public DistanceFeatureQuery setPivot(Union2<Distance, String> val) { this._pivot = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_origin != null) {
       builder.field(ORIGIN.getPreferredName());
-      _origin.map(r-> r.toXContent(builder, params), r-> r.toXContent(builder, params));
+      _origin.toXContent(builder, params);
     }
     if (_pivot != null) {
       builder.field(PIVOT.getPreferredName());
-      _pivot.map(r-> r.toXContent(builder, params), r-> r.toXContent(builder, params));
+      _pivot.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -56,8 +52,8 @@ public class DistanceFeatureQuery  implements XContentable<DistanceFeatureQuery>
     new ObjectParser<>(DistanceFeatureQuery.class.getName(), false, DistanceFeatureQuery::new);
 
   static {
-    PARSER.declareObject(DistanceFeatureQuery::setOrigin, (p, t) ->  new Either<GeoCoordinate, DateMath>() /* TODO UnionOf */, ORIGIN);
-    PARSER.declareObject(DistanceFeatureQuery::setPivot, (p, t) ->  new Either<Distance, Time>() /* TODO UnionOf */, PIVOT);
+    PARSER.declareObject(DistanceFeatureQuery::setOrigin, (p, t) ->  new Union2<GeoCoordinate, String>(), ORIGIN);
+    PARSER.declareObject(DistanceFeatureQuery::setPivot, (p, t) ->  new Union2<Distance, String>(), PIVOT);
   }
 
 }

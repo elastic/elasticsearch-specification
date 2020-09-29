@@ -7,58 +7,49 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.document.multiple.bulk.bulk_response_item.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class BulkResponse  implements XContentable<BulkResponse> {
+public class BulkResponse extends ResponseBase<BulkResponse> implements XContentable<BulkResponse> {
   
   static final ParseField ERRORS = new ParseField("errors");
   private Boolean _errors;
   public Boolean getErrors() { return this._errors; }
   public BulkResponse setErrors(Boolean val) { this._errors = val; return this; }
 
-
   static final ParseField ITEMS = new ParseField("items");
-  private List<BulkResponseItemBase> _items;
-  public List<BulkResponseItemBase> getItems() { return this._items; }
-  public BulkResponse setItems(List<BulkResponseItemBase> val) { this._items = val; return this; }
-
-
-  static final ParseField ITEMS_WITH_ERRORS = new ParseField("items_with_errors");
-  private List<BulkResponseItemBase> _itemsWithErrors;
-  public List<BulkResponseItemBase> getItemsWithErrors() { return this._itemsWithErrors; }
-  public BulkResponse setItemsWithErrors(List<BulkResponseItemBase> val) { this._itemsWithErrors = val; return this; }
-
+  private List<BulkResponseItemContainer> _items;
+  public List<BulkResponseItemContainer> getItems() { return this._items; }
+  public BulkResponse setItems(List<BulkResponseItemContainer> val) { this._items = val; return this; }
 
   static final ParseField TOOK = new ParseField("took");
-  private Long _took;
-  public Long getTook() { return this._took; }
-  public BulkResponse setTook(Long val) { this._took = val; return this; }
+  private long _took;
+  private boolean _took$isSet;
+  public long getTook() { return this._took; }
+  public BulkResponse setTook(long val) {
+    this._took = val;
+    _took$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_errors != null) {
       builder.field(ERRORS.getPreferredName(), _errors);
     }
     if (_items != null) {
       builder.array(ITEMS.getPreferredName(), _items);
     }
-    if (_itemsWithErrors != null) {
-      builder.array(ITEMS_WITH_ERRORS.getPreferredName(), _itemsWithErrors);
-    }
-    if (_took != null) {
+    if (_took$isSet) {
       builder.field(TOOK.getPreferredName(), _took);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -71,8 +62,7 @@ public class BulkResponse  implements XContentable<BulkResponse> {
 
   static {
     PARSER.declareBoolean(BulkResponse::setErrors, ERRORS);
-    PARSER.declareObjectArray(BulkResponse::setItems, (p, t) -> BulkResponseItemBase.PARSER.apply(p, t), ITEMS);
-    PARSER.declareObjectArray(BulkResponse::setItemsWithErrors, (p, t) -> BulkResponseItemBase.PARSER.apply(p, t), ITEMS_WITH_ERRORS);
+    PARSER.declareObjectArray(BulkResponse::setItems, (p, t) -> BulkResponseItemContainer.PARSER.apply(p, t), ITEMS);
     PARSER.declareLong(BulkResponse::setTook, TOOK);
   }
 

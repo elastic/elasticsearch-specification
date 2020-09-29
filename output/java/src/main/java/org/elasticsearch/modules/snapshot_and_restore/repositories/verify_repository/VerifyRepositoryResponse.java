@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.snapshot_and_restore.repositories.verify_repository.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class VerifyRepositoryResponse  implements XContentable<VerifyRepositoryResponse> {
+public class VerifyRepositoryResponse extends ResponseBase<VerifyRepositoryResponse> implements XContentable<VerifyRepositoryResponse> {
   
   static final ParseField NODES = new ParseField("nodes");
   private NamedContainer<String, CompactNodeInfo> _nodes;
@@ -24,14 +23,12 @@ public class VerifyRepositoryResponse  implements XContentable<VerifyRepositoryR
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_nodes != null) {
       builder.field(NODES.getPreferredName());
       _nodes.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

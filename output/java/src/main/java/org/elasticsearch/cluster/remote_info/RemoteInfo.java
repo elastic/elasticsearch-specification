@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common_options.time_unit.*;
@@ -22,6 +20,35 @@ public class RemoteInfo  implements XContentable<RemoteInfo> {
   public Boolean getConnected() { return this._connected; }
   public RemoteInfo setConnected(Boolean val) { this._connected = val; return this; }
 
+  static final ParseField INITIAL_CONNECT_TIMEOUT = new ParseField("initial_connect_timeout");
+  private String _initialConnectTimeout;
+  public String getInitialConnectTimeout() { return this._initialConnectTimeout; }
+  public RemoteInfo setInitialConnectTimeout(String val) { this._initialConnectTimeout = val; return this; }
+
+  static final ParseField MAX_CONNECTIONS_PER_CLUSTER = new ParseField("max_connections_per_cluster");
+  private int _maxConnectionsPerCluster;
+  private boolean _maxConnectionsPerCluster$isSet;
+  public int getMaxConnectionsPerCluster() { return this._maxConnectionsPerCluster; }
+  public RemoteInfo setMaxConnectionsPerCluster(int val) {
+    this._maxConnectionsPerCluster = val;
+    _maxConnectionsPerCluster$isSet = true;
+    return this;
+  }
+
+  static final ParseField NUM_NODES_CONNECTED = new ParseField("num_nodes_connected");
+  private long _numNodesConnected;
+  private boolean _numNodesConnected$isSet;
+  public long getNumNodesConnected() { return this._numNodesConnected; }
+  public RemoteInfo setNumNodesConnected(long val) {
+    this._numNodesConnected = val;
+    _numNodesConnected$isSet = true;
+    return this;
+  }
+
+  static final ParseField SEEDS = new ParseField("seeds");
+  private List<String> _seeds;
+  public List<String> getSeeds() { return this._seeds; }
+  public RemoteInfo setSeeds(List<String> val) { this._seeds = val; return this; }
 
   static final ParseField SKIP_UNAVAILABLE = new ParseField("skip_unavailable");
   private Boolean _skipUnavailable;
@@ -29,55 +56,28 @@ public class RemoteInfo  implements XContentable<RemoteInfo> {
   public RemoteInfo setSkipUnavailable(Boolean val) { this._skipUnavailable = val; return this; }
 
 
-  static final ParseField INITIAL_CONNECT_TIMEOUT = new ParseField("initial_connect_timeout");
-  private Time _initialConnectTimeout;
-  public Time getInitialConnectTimeout() { return this._initialConnectTimeout; }
-  public RemoteInfo setInitialConnectTimeout(Time val) { this._initialConnectTimeout = val; return this; }
-
-
-  static final ParseField MAX_CONNECTIONS_PER_CLUSTER = new ParseField("max_connections_per_cluster");
-  private Integer _maxConnectionsPerCluster;
-  public Integer getMaxConnectionsPerCluster() { return this._maxConnectionsPerCluster; }
-  public RemoteInfo setMaxConnectionsPerCluster(Integer val) { this._maxConnectionsPerCluster = val; return this; }
-
-
-  static final ParseField NUM_NODES_CONNECTED = new ParseField("num_nodes_connected");
-  private Long _numNodesConnected;
-  public Long getNumNodesConnected() { return this._numNodesConnected; }
-  public RemoteInfo setNumNodesConnected(Long val) { this._numNodesConnected = val; return this; }
-
-
-  static final ParseField SEEDS = new ParseField("seeds");
-  private List<String> _seeds;
-  public List<String> getSeeds() { return this._seeds; }
-  public RemoteInfo setSeeds(List<String> val) { this._seeds = val; return this; }
-
-
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_connected != null) {
       builder.field(CONNECTED.getPreferredName(), _connected);
     }
-    if (_skipUnavailable != null) {
-      builder.field(SKIP_UNAVAILABLE.getPreferredName(), _skipUnavailable);
-    }
     if (_initialConnectTimeout != null) {
-      builder.field(INITIAL_CONNECT_TIMEOUT.getPreferredName());
-      _initialConnectTimeout.toXContent(builder, params);
+      builder.field(INITIAL_CONNECT_TIMEOUT.getPreferredName(), _initialConnectTimeout);
     }
-    if (_maxConnectionsPerCluster != null) {
+    if (_maxConnectionsPerCluster$isSet) {
       builder.field(MAX_CONNECTIONS_PER_CLUSTER.getPreferredName(), _maxConnectionsPerCluster);
     }
-    if (_numNodesConnected != null) {
+    if (_numNodesConnected$isSet) {
       builder.field(NUM_NODES_CONNECTED.getPreferredName(), _numNodesConnected);
     }
     if (_seeds != null) {
       builder.array(SEEDS.getPreferredName(), _seeds);
     }
-    builder.endObject();
-    return builder;
+    if (_skipUnavailable != null) {
+      builder.field(SKIP_UNAVAILABLE.getPreferredName(), _skipUnavailable);
+    }
   }
 
   @Override
@@ -90,11 +90,11 @@ public class RemoteInfo  implements XContentable<RemoteInfo> {
 
   static {
     PARSER.declareBoolean(RemoteInfo::setConnected, CONNECTED);
-    PARSER.declareBoolean(RemoteInfo::setSkipUnavailable, SKIP_UNAVAILABLE);
-    PARSER.declareObject(RemoteInfo::setInitialConnectTimeout, (p, t) -> Time.PARSER.apply(p, t), INITIAL_CONNECT_TIMEOUT);
+    PARSER.declareString(RemoteInfo::setInitialConnectTimeout, INITIAL_CONNECT_TIMEOUT);
     PARSER.declareInt(RemoteInfo::setMaxConnectionsPerCluster, MAX_CONNECTIONS_PER_CLUSTER);
     PARSER.declareLong(RemoteInfo::setNumNodesConnected, NUM_NODES_CONNECTED);
     PARSER.declareStringArray(RemoteInfo::setSeeds, SEEDS);
+    PARSER.declareBoolean(RemoteInfo::setSkipUnavailable, SKIP_UNAVAILABLE);
   }
 
 }

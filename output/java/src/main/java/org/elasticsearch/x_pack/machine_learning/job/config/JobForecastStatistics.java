@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.info.x_pack_usage.*;
@@ -22,35 +20,36 @@ public class JobForecastStatistics  implements XContentable<JobForecastStatistic
   public JobStatistics getMemoryBytes() { return this._memoryBytes; }
   public JobForecastStatistics setMemoryBytes(JobStatistics val) { this._memoryBytes = val; return this; }
 
-
   static final ParseField PROCESSING_TIME_MS = new ParseField("processing_time_ms");
   private JobStatistics _processingTimeMs;
   public JobStatistics getProcessingTimeMs() { return this._processingTimeMs; }
   public JobForecastStatistics setProcessingTimeMs(JobStatistics val) { this._processingTimeMs = val; return this; }
-
 
   static final ParseField RECORDS = new ParseField("records");
   private JobStatistics _records;
   public JobStatistics getRecords() { return this._records; }
   public JobForecastStatistics setRecords(JobStatistics val) { this._records = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private NamedContainer<String, Long> _status;
   public NamedContainer<String, Long> getStatus() { return this._status; }
   public JobForecastStatistics setStatus(NamedContainer<String, Long> val) { this._status = val; return this; }
 
-
   static final ParseField TOTAL = new ParseField("total");
-  private Long _total;
-  public Long getTotal() { return this._total; }
-  public JobForecastStatistics setTotal(Long val) { this._total = val; return this; }
+  private long _total;
+  private boolean _total$isSet;
+  public long getTotal() { return this._total; }
+  public JobForecastStatistics setTotal(long val) {
+    this._total = val;
+    _total$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_memoryBytes != null) {
       builder.field(MEMORY_BYTES.getPreferredName());
       _memoryBytes.toXContent(builder, params);
@@ -67,11 +66,9 @@ public class JobForecastStatistics  implements XContentable<JobForecastStatistic
       builder.field(STATUS.getPreferredName());
       _status.toXContent(builder, params);
     }
-    if (_total != null) {
+    if (_total$isSet) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -86,7 +83,7 @@ public class JobForecastStatistics  implements XContentable<JobForecastStatistic
     PARSER.declareObject(JobForecastStatistics::setMemoryBytes, (p, t) -> JobStatistics.PARSER.apply(p, t), MEMORY_BYTES);
     PARSER.declareObject(JobForecastStatistics::setProcessingTimeMs, (p, t) -> JobStatistics.PARSER.apply(p, t), PROCESSING_TIME_MS);
     PARSER.declareObject(JobForecastStatistics::setRecords, (p, t) -> JobStatistics.PARSER.apply(p, t), RECORDS);
-    PARSER.declareObject(JobForecastStatistics::setStatus, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> pp.longValue()), STATUS);
+    PARSER.declareObject(JobForecastStatistics::setStatus, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> long.PARSER.apply(pp, null)), STATUS);
     PARSER.declareLong(JobForecastStatistics::setTotal, TOTAL);
   }
 

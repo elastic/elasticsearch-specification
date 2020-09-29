@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search.*;
+import org.elasticsearch.common_abstractions.request.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class TranslateSqlResponse  implements XContentable<TranslateSqlResponse> {
+public class TranslateSqlResponse extends ResponseBase<TranslateSqlResponse> implements XContentable<TranslateSqlResponse> {
   
   static final ParseField RESULT = new ParseField("result");
   private SearchRequest _result;
@@ -24,14 +24,12 @@ public class TranslateSqlResponse  implements XContentable<TranslateSqlResponse>
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_result != null) {
       builder.field(RESULT.getPreferredName());
       _result.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

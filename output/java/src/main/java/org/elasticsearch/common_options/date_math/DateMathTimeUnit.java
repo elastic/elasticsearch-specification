@@ -1,19 +1,23 @@
 
 package org.elasticsearch.common_options.date_math;
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;
 import java.io.IOException;
 
 public enum DateMathTimeUnit implements XContentable<DateMathTimeUnit> {
-  S("s"),
-    M("m"),
-    H("h"),
-    D("d"),
-    W("w"),
-    M("M"),
-    Y("y");
+  Second("s"),
+    Minute("m"),
+    Hour("h"),
+    Day("d"),
+    Week("w"),
+    Month("M"),
+    Year("y");
   private final String textRepresentation;
 
   private DateMathTimeUnit(final String text) { this.textRepresentation = text; }
@@ -34,13 +38,13 @@ public enum DateMathTimeUnit implements XContentable<DateMathTimeUnit> {
   public static final CheckedFunction<XContentParser, DateMathTimeUnit, IOException> PARSER = (parser) -> {
     String text = parser.text();
     switch (text) {
-      case "s": return DateMathTimeUnit.S;
-      case "m": return DateMathTimeUnit.M;
-      case "h": return DateMathTimeUnit.H;
-      case "d": return DateMathTimeUnit.D;
-      case "w": return DateMathTimeUnit.W;
-      case "M": return DateMathTimeUnit.M;
-      case "y": return DateMathTimeUnit.Y;
+      case "s": return DateMathTimeUnit.Second;
+      case "m": return DateMathTimeUnit.Minute;
+      case "h": return DateMathTimeUnit.Hour;
+      case "d": return DateMathTimeUnit.Day;
+      case "w": return DateMathTimeUnit.Week;
+      case "M": return DateMathTimeUnit.Month;
+      case "y": return DateMathTimeUnit.Year;
       default:
         String message = java.lang.String.format("'%s' not a valid value for enum '%s'", text, DateMathTimeUnit.class.getName());
         throw new XContentParseException(parser.getTokenLocation(), message);

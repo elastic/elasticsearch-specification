@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.common.*;
@@ -21,12 +19,10 @@ public class IndicesOptions  implements XContentable<IndicesOptions> {
   public Boolean getAllowNoIndices() { return this._allowNoIndices; }
   public IndicesOptions setAllowNoIndices(Boolean val) { this._allowNoIndices = val; return this; }
 
-
   static final ParseField EXPAND_WILDCARDS = new ParseField("expand_wildcards");
   private ExpandWildcards _expandWildcards;
   public ExpandWildcards getExpandWildcards() { return this._expandWildcards; }
   public IndicesOptions setExpandWildcards(ExpandWildcards val) { this._expandWildcards = val; return this; }
-
 
   static final ParseField IGNORE_UNAVAILABLE = new ParseField("ignore_unavailable");
   private Boolean _ignoreUnavailable;
@@ -36,8 +32,8 @@ public class IndicesOptions  implements XContentable<IndicesOptions> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_allowNoIndices != null) {
       builder.field(ALLOW_NO_INDICES.getPreferredName(), _allowNoIndices);
     }
@@ -48,8 +44,6 @@ public class IndicesOptions  implements XContentable<IndicesOptions> {
     if (_ignoreUnavailable != null) {
       builder.field(IGNORE_UNAVAILABLE.getPreferredName(), _ignoreUnavailable);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

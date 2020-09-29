@@ -7,57 +7,61 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.mapping.types.*;
 
-public class TokenCountProperty  implements XContentable<TokenCountProperty> {
+public class TokenCountProperty extends DocValuesPropertyBase implements XContentable<TokenCountProperty> {
   
   static final ParseField ANALYZER = new ParseField("analyzer");
   private String _analyzer;
   public String getAnalyzer() { return this._analyzer; }
   public TokenCountProperty setAnalyzer(String val) { this._analyzer = val; return this; }
 
-
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public TokenCountProperty setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public TokenCountProperty setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
   public Boolean getIndex() { return this._index; }
   public TokenCountProperty setIndex(Boolean val) { this._index = val; return this; }
 
-
   static final ParseField NULL_VALUE = new ParseField("null_value");
-  private Double _nullValue;
-  public Double getNullValue() { return this._nullValue; }
-  public TokenCountProperty setNullValue(Double val) { this._nullValue = val; return this; }
+  private double _nullValue;
+  private boolean _nullValue$isSet;
+  public double getNullValue() { return this._nullValue; }
+  public TokenCountProperty setNullValue(double val) {
+    this._nullValue = val;
+    _nullValue$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_analyzer != null) {
       builder.field(ANALYZER.getPreferredName(), _analyzer);
     }
-    if (_boost != null) {
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_index != null) {
       builder.field(INDEX.getPreferredName(), _index);
     }
-    if (_nullValue != null) {
+    if (_nullValue$isSet) {
       builder.field(NULL_VALUE.getPreferredName(), _nullValue);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

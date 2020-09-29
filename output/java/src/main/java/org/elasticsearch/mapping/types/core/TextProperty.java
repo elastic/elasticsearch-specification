@@ -7,95 +7,91 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.modules.indices.fielddata.*;
 import org.elasticsearch.mapping.types.core.*;
 import org.elasticsearch.mapping.*;
+import org.elasticsearch.mapping.types.*;
 
-public class TextProperty  implements XContentable<TextProperty> {
+public class TextProperty extends CorePropertyBase implements XContentable<TextProperty> {
   
   static final ParseField ANALYZER = new ParseField("analyzer");
   private String _analyzer;
   public String getAnalyzer() { return this._analyzer; }
   public TextProperty setAnalyzer(String val) { this._analyzer = val; return this; }
 
-
   static final ParseField BOOST = new ParseField("boost");
-  private Double _boost;
-  public Double getBoost() { return this._boost; }
-  public TextProperty setBoost(Double val) { this._boost = val; return this; }
-
+  private double _boost;
+  private boolean _boost$isSet;
+  public double getBoost() { return this._boost; }
+  public TextProperty setBoost(double val) {
+    this._boost = val;
+    _boost$isSet = true;
+    return this;
+  }
 
   static final ParseField EAGER_GLOBAL_ORDINALS = new ParseField("eager_global_ordinals");
   private Boolean _eagerGlobalOrdinals;
   public Boolean getEagerGlobalOrdinals() { return this._eagerGlobalOrdinals; }
   public TextProperty setEagerGlobalOrdinals(Boolean val) { this._eagerGlobalOrdinals = val; return this; }
 
-
   static final ParseField FIELDDATA = new ParseField("fielddata");
   private Boolean _fielddata;
   public Boolean getFielddata() { return this._fielddata; }
   public TextProperty setFielddata(Boolean val) { this._fielddata = val; return this; }
-
 
   static final ParseField FIELDDATA_FREQUENCY_FILTER = new ParseField("fielddata_frequency_filter");
   private FielddataFrequencyFilter _fielddataFrequencyFilter;
   public FielddataFrequencyFilter getFielddataFrequencyFilter() { return this._fielddataFrequencyFilter; }
   public TextProperty setFielddataFrequencyFilter(FielddataFrequencyFilter val) { this._fielddataFrequencyFilter = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("index");
   private Boolean _index;
   public Boolean getIndex() { return this._index; }
   public TextProperty setIndex(Boolean val) { this._index = val; return this; }
-
 
   static final ParseField INDEX_OPTIONS = new ParseField("index_options");
   private IndexOptions _indexOptions;
   public IndexOptions getIndexOptions() { return this._indexOptions; }
   public TextProperty setIndexOptions(IndexOptions val) { this._indexOptions = val; return this; }
 
-
   static final ParseField INDEX_PHRASES = new ParseField("index_phrases");
   private Boolean _indexPhrases;
   public Boolean getIndexPhrases() { return this._indexPhrases; }
   public TextProperty setIndexPhrases(Boolean val) { this._indexPhrases = val; return this; }
-
 
   static final ParseField INDEX_PREFIXES = new ParseField("index_prefixes");
   private TextIndexPrefixes _indexPrefixes;
   public TextIndexPrefixes getIndexPrefixes() { return this._indexPrefixes; }
   public TextProperty setIndexPrefixes(TextIndexPrefixes val) { this._indexPrefixes = val; return this; }
 
-
   static final ParseField NORMS = new ParseField("norms");
   private Boolean _norms;
   public Boolean getNorms() { return this._norms; }
   public TextProperty setNorms(Boolean val) { this._norms = val; return this; }
 
-
   static final ParseField POSITION_INCREMENT_GAP = new ParseField("position_increment_gap");
-  private Integer _positionIncrementGap;
-  public Integer getPositionIncrementGap() { return this._positionIncrementGap; }
-  public TextProperty setPositionIncrementGap(Integer val) { this._positionIncrementGap = val; return this; }
-
+  private int _positionIncrementGap;
+  private boolean _positionIncrementGap$isSet;
+  public int getPositionIncrementGap() { return this._positionIncrementGap; }
+  public TextProperty setPositionIncrementGap(int val) {
+    this._positionIncrementGap = val;
+    _positionIncrementGap$isSet = true;
+    return this;
+  }
 
   static final ParseField SEARCH_ANALYZER = new ParseField("search_analyzer");
   private String _searchAnalyzer;
   public String getSearchAnalyzer() { return this._searchAnalyzer; }
   public TextProperty setSearchAnalyzer(String val) { this._searchAnalyzer = val; return this; }
 
-
   static final ParseField SEARCH_QUOTE_ANALYZER = new ParseField("search_quote_analyzer");
   private String _searchQuoteAnalyzer;
   public String getSearchQuoteAnalyzer() { return this._searchQuoteAnalyzer; }
   public TextProperty setSearchQuoteAnalyzer(String val) { this._searchQuoteAnalyzer = val; return this; }
-
 
   static final ParseField TERM_VECTOR = new ParseField("term_vector");
   private TermVectorOption _termVector;
@@ -105,12 +101,12 @@ public class TextProperty  implements XContentable<TextProperty> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_analyzer != null) {
       builder.field(ANALYZER.getPreferredName(), _analyzer);
     }
-    if (_boost != null) {
+    if (_boost$isSet) {
       builder.field(BOOST.getPreferredName(), _boost);
     }
     if (_eagerGlobalOrdinals != null) {
@@ -140,7 +136,7 @@ public class TextProperty  implements XContentable<TextProperty> {
     if (_norms != null) {
       builder.field(NORMS.getPreferredName(), _norms);
     }
-    if (_positionIncrementGap != null) {
+    if (_positionIncrementGap$isSet) {
       builder.field(POSITION_INCREMENT_GAP.getPreferredName(), _positionIncrementGap);
     }
     if (_searchAnalyzer != null) {
@@ -153,8 +149,6 @@ public class TextProperty  implements XContentable<TextProperty> {
       builder.field(TERM_VECTOR.getPreferredName());
       _termVector.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

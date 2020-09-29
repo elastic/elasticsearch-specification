@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class ClearCachedRealmsRequest  implements XContentable<ClearCachedRealmsRequest> {
+public class ClearCachedRealmsRequest extends RequestBase<ClearCachedRealmsRequest> implements XContentable<ClearCachedRealmsRequest> {
   
   static final ParseField USERNAMES = new ParseField("usernames");
   private List<String> _usernames;
@@ -24,13 +22,11 @@ public class ClearCachedRealmsRequest  implements XContentable<ClearCachedRealms
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_usernames != null) {
       builder.array(USERNAMES.getPreferredName(), _usernames);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

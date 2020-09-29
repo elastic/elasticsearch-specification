@@ -7,33 +7,29 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.acknowledge_watch.*;
 import org.elasticsearch.x_pack.watcher.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetWatchResponse  implements XContentable<GetWatchResponse> {
+public class GetWatchResponse extends ResponseBase<GetWatchResponse> implements XContentable<GetWatchResponse> {
   
   static final ParseField FOUND = new ParseField("found");
   private Boolean _found;
   public Boolean getFound() { return this._found; }
   public GetWatchResponse setFound(Boolean val) { this._found = val; return this; }
 
-
   static final ParseField ID = new ParseField("_id");
   private String _id;
   public String getId() { return this._id; }
   public GetWatchResponse setId(String val) { this._id = val; return this; }
 
-
   static final ParseField STATUS = new ParseField("status");
   private WatchStatus _status;
   public WatchStatus getStatus() { return this._status; }
   public GetWatchResponse setStatus(WatchStatus val) { this._status = val; return this; }
-
 
   static final ParseField WATCH = new ParseField("watch");
   private Watch _watch;
@@ -43,8 +39,8 @@ public class GetWatchResponse  implements XContentable<GetWatchResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_found != null) {
       builder.field(FOUND.getPreferredName(), _found);
     }
@@ -59,8 +55,6 @@ public class GetWatchResponse  implements XContentable<GetWatchResponse> {
       builder.field(WATCH.getPreferredName());
       _watch.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

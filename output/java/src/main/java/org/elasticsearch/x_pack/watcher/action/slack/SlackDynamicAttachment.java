@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.action.slack.*;
@@ -21,7 +19,6 @@ public class SlackDynamicAttachment  implements XContentable<SlackDynamicAttachm
   public SlackAttachment getAttachmentTemplate() { return this._attachmentTemplate; }
   public SlackDynamicAttachment setAttachmentTemplate(SlackAttachment val) { this._attachmentTemplate = val; return this; }
 
-
   static final ParseField LIST_PATH = new ParseField("list_path");
   private String _listPath;
   public String getListPath() { return this._listPath; }
@@ -30,8 +27,8 @@ public class SlackDynamicAttachment  implements XContentable<SlackDynamicAttachm
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_attachmentTemplate != null) {
       builder.field(ATTACHMENT_TEMPLATE.getPreferredName());
       _attachmentTemplate.toXContent(builder, params);
@@ -39,8 +36,6 @@ public class SlackDynamicAttachment  implements XContentable<SlackDynamicAttachm
     if (_listPath != null) {
       builder.field(LIST_PATH.getPreferredName(), _listPath);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

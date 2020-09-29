@@ -7,15 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
-import org.elasticsearch.common_abstractions.infer.index_name.*;
-import org.elasticsearch.common_abstractions.infer.join_field_routing.*;
+import org.elasticsearch.internal.*;
 
 public class LikeDocument  implements XContentable<LikeDocument> {
   
@@ -24,30 +19,25 @@ public class LikeDocument  implements XContentable<LikeDocument> {
   public Object getDoc() { return this._doc; }
   public LikeDocument setDoc(Object val) { this._doc = val; return this; }
 
-
   static final ParseField FIELDS = new ParseField("fields");
-  private List<Field> _fields;
-  public List<Field> getFields() { return this._fields; }
-  public LikeDocument setFields(List<Field> val) { this._fields = val; return this; }
-
+  private List<String> _fields;
+  public List<String> getFields() { return this._fields; }
+  public LikeDocument setFields(List<String> val) { this._fields = val; return this; }
 
   static final ParseField ID = new ParseField("_id");
   private Id _id;
   public Id getId() { return this._id; }
   public LikeDocument setId(Id val) { this._id = val; return this; }
 
-
   static final ParseField INDEX = new ParseField("_index");
-  private IndexName _index;
-  public IndexName getIndex() { return this._index; }
-  public LikeDocument setIndex(IndexName val) { this._index = val; return this; }
-
+  private String _index;
+  public String getIndex() { return this._index; }
+  public LikeDocument setIndex(String val) { this._index = val; return this; }
 
   static final ParseField PER_FIELD_ANALYZER = new ParseField("per_field_analyzer");
-  private NamedContainer<Field, String> _perFieldAnalyzer;
-  public NamedContainer<Field, String> getPerFieldAnalyzer() { return this._perFieldAnalyzer; }
-  public LikeDocument setPerFieldAnalyzer(NamedContainer<Field, String> val) { this._perFieldAnalyzer = val; return this; }
-
+  private NamedContainer<String, String> _perFieldAnalyzer;
+  public NamedContainer<String, String> getPerFieldAnalyzer() { return this._perFieldAnalyzer; }
+  public LikeDocument setPerFieldAnalyzer(NamedContainer<String, String> val) { this._perFieldAnalyzer = val; return this; }
 
   static final ParseField ROUTING = new ParseField("routing");
   private Routing _routing;
@@ -57,8 +47,8 @@ public class LikeDocument  implements XContentable<LikeDocument> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_doc != null) {
       builder.field(DOC.getPreferredName(), _doc);
     }
@@ -70,8 +60,7 @@ public class LikeDocument  implements XContentable<LikeDocument> {
       _id.toXContent(builder, params);
     }
     if (_index != null) {
-      builder.field(INDEX.getPreferredName());
-      _index.toXContent(builder, params);
+      builder.field(INDEX.getPreferredName(), _index);
     }
     if (_perFieldAnalyzer != null) {
       builder.field(PER_FIELD_ANALYZER.getPreferredName());
@@ -81,8 +70,6 @@ public class LikeDocument  implements XContentable<LikeDocument> {
       builder.field(ROUTING.getPreferredName());
       _routing.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -95,10 +82,10 @@ public class LikeDocument  implements XContentable<LikeDocument> {
 
   static {
     PARSER.declareObject(LikeDocument::setDoc, (p, t) -> p.objectText(), DOC);
-    PARSER.declareObjectArray(LikeDocument::setFields, (p, t) -> Field.createFrom(p), FIELDS);
+    PARSER.declareStringArray(LikeDocument::setFields, FIELDS);
     PARSER.declareObject(LikeDocument::setId, (p, t) -> Id.createFrom(p), ID);
-    PARSER.declareObject(LikeDocument::setIndex, (p, t) -> IndexName.createFrom(p), INDEX);
-    PARSER.declareObject(LikeDocument::setPerFieldAnalyzer, (p, t) -> new NamedContainer<>(n -> () -> new Field(n),pp -> pp.text()), PER_FIELD_ANALYZER);
+    PARSER.declareString(LikeDocument::setIndex, INDEX);
+    PARSER.declareObject(LikeDocument::setPerFieldAnalyzer, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> pp.text()), PER_FIELD_ANALYZER);
     PARSER.declareObject(LikeDocument::setRouting, (p, t) -> Routing.createFrom(p), ROUTING);
   }
 

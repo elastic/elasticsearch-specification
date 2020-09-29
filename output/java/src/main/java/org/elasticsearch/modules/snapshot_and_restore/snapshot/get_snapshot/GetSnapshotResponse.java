@@ -7,30 +7,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.snapshot_and_restore.snapshot.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class GetSnapshotResponse  implements XContentable<GetSnapshotResponse> {
+public class GetSnapshotResponse extends ResponseBase<GetSnapshotResponse> implements XContentable<GetSnapshotResponse> {
   
   static final ParseField SNAPSHOTS = new ParseField("snapshots");
-  private List<Snapshot> _snapshots;
-  public List<Snapshot> getSnapshots() { return this._snapshots; }
-  public GetSnapshotResponse setSnapshots(List<Snapshot> val) { this._snapshots = val; return this; }
+  private List<SnapshotInfo> _snapshots;
+  public List<SnapshotInfo> getSnapshots() { return this._snapshots; }
+  public GetSnapshotResponse setSnapshots(List<SnapshotInfo> val) { this._snapshots = val; return this; }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_snapshots != null) {
       builder.array(SNAPSHOTS.getPreferredName(), _snapshots);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -42,7 +39,7 @@ public class GetSnapshotResponse  implements XContentable<GetSnapshotResponse> {
     new ObjectParser<>(GetSnapshotResponse.class.getName(), false, GetSnapshotResponse::new);
 
   static {
-    PARSER.declareObjectArray(GetSnapshotResponse::setSnapshots, (p, t) -> Snapshot.PARSER.apply(p, t), SNAPSHOTS);
+    PARSER.declareObjectArray(GetSnapshotResponse::setSnapshots, (p, t) -> SnapshotInfo.PARSER.apply(p, t), SNAPSHOTS);
   }
 
 }

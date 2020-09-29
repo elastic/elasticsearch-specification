@@ -7,26 +7,22 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.cat.*;
 
-
-public class CatCountRecord  implements XContentable<CatCountRecord> {
+public class CatCountRecord extends ICatRecord implements XContentable<CatCountRecord> {
   
   static final ParseField COUNT = new ParseField("count");
   private String _count;
   public String getCount() { return this._count; }
   public CatCountRecord setCount(String val) { this._count = val; return this; }
 
-
   static final ParseField EPOCH = new ParseField("epoch");
   private String _epoch;
   public String getEpoch() { return this._epoch; }
   public CatCountRecord setEpoch(String val) { this._epoch = val; return this; }
-
 
   static final ParseField TIMESTAMP = new ParseField("timestamp");
   private String _timestamp;
@@ -36,8 +32,8 @@ public class CatCountRecord  implements XContentable<CatCountRecord> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_count != null) {
       builder.field(COUNT.getPreferredName(), _count);
     }
@@ -47,8 +43,6 @@ public class CatCountRecord  implements XContentable<CatCountRecord> {
     if (_timestamp != null) {
       builder.field(TIMESTAMP.getPreferredName(), _timestamp);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

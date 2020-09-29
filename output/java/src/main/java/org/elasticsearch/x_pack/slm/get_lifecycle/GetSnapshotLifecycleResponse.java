@@ -7,32 +7,20 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.x_pack.slm.*;
 import org.elasticsearch.common_abstractions.response.*;
+import org.elasticsearch.x_pack.slm.*;
 
 public class GetSnapshotLifecycleResponse extends DictionaryResponseBase<String, SnapshotLifecyclePolicyMetadata> implements XContentable<GetSnapshotLifecycleResponse> {
   
-  static final ParseField POLICIES = new ParseField("policies");
-  private NamedContainer<String, SnapshotLifecyclePolicyMetadata> _policies;
-  public NamedContainer<String, SnapshotLifecyclePolicyMetadata> getPolicies() { return this._policies; }
-  public GetSnapshotLifecycleResponse setPolicies(NamedContainer<String, SnapshotLifecyclePolicyMetadata> val) { this._policies = val; return this; }
-
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_policies != null) {
-      builder.field(POLICIES.getPreferredName());
-      _policies.toXContent(builder, params);
-    }
-    builder.endObject();
-    return builder;
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    
   }
 
   @Override
@@ -44,7 +32,7 @@ public class GetSnapshotLifecycleResponse extends DictionaryResponseBase<String,
     new ObjectParser<>(GetSnapshotLifecycleResponse.class.getName(), false, GetSnapshotLifecycleResponse::new);
 
   static {
-    PARSER.declareObject(GetSnapshotLifecycleResponse::setPolicies, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> SnapshotLifecyclePolicyMetadata.PARSER.apply(pp, null)), POLICIES);
+    
   }
 
 }

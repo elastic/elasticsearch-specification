@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.indices.fielddata.*;
@@ -21,7 +19,6 @@ public class Fielddata  implements XContentable<Fielddata> {
   public FielddataFilter getFilter() { return this._filter; }
   public Fielddata setFilter(FielddataFilter val) { this._filter = val; return this; }
 
-
   static final ParseField LOADING = new ParseField("loading");
   private FielddataLoading _loading;
   public FielddataLoading getLoading() { return this._loading; }
@@ -30,8 +27,8 @@ public class Fielddata  implements XContentable<Fielddata> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_filter != null) {
       builder.field(FILTER.getPreferredName());
       _filter.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class Fielddata  implements XContentable<Fielddata> {
       builder.field(LOADING.getPreferredName());
       _loading.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

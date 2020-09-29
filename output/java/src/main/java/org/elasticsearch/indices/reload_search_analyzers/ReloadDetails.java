@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class ReloadDetails  implements XContentable<ReloadDetails> {
   public String getIndex() { return this._index; }
   public ReloadDetails setIndex(String val) { this._index = val; return this; }
 
-
   static final ParseField RELOADED_ANALYZERS = new ParseField("reloaded_analyzers");
   private List<String> _reloadedAnalyzers;
   public List<String> getReloadedAnalyzers() { return this._reloadedAnalyzers; }
   public ReloadDetails setReloadedAnalyzers(List<String> val) { this._reloadedAnalyzers = val; return this; }
-
 
   static final ParseField RELOADED_NODE_IDS = new ParseField("reloaded_node_ids");
   private List<String> _reloadedNodeIds;
@@ -36,8 +32,8 @@ public class ReloadDetails  implements XContentable<ReloadDetails> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_index != null) {
       builder.field(INDEX.getPreferredName(), _index);
     }
@@ -47,8 +43,6 @@ public class ReloadDetails  implements XContentable<ReloadDetails> {
     if (_reloadedNodeIds != null) {
       builder.array(RELOADED_NODE_IDS.getPreferredName(), _reloadedNodeIds);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

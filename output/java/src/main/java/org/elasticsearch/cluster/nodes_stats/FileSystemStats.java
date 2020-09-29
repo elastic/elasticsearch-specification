@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.nodes_stats.*;
@@ -22,12 +20,15 @@ public class FileSystemStats  implements XContentable<FileSystemStats> {
   public List<DataPathStats> getData() { return this._data; }
   public FileSystemStats setData(List<DataPathStats> val) { this._data = val; return this; }
 
-
   static final ParseField TIMESTAMP = new ParseField("timestamp");
-  private Long _timestamp;
-  public Long getTimestamp() { return this._timestamp; }
-  public FileSystemStats setTimestamp(Long val) { this._timestamp = val; return this; }
-
+  private long _timestamp;
+  private boolean _timestamp$isSet;
+  public long getTimestamp() { return this._timestamp; }
+  public FileSystemStats setTimestamp(long val) {
+    this._timestamp = val;
+    _timestamp$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
   private TotalFileSystemStats _total;
@@ -37,20 +38,18 @@ public class FileSystemStats  implements XContentable<FileSystemStats> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_data != null) {
       builder.array(DATA.getPreferredName(), _data);
     }
-    if (_timestamp != null) {
+    if (_timestamp$isSet) {
       builder.field(TIMESTAMP.getPreferredName(), _timestamp);
     }
     if (_total != null) {
       builder.field(TOTAL.getPreferredName());
       _total.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

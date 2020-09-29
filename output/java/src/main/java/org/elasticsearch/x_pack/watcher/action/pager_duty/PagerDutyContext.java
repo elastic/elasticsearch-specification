@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.action.pager_duty.*;
@@ -21,12 +19,10 @@ public class PagerDutyContext  implements XContentable<PagerDutyContext> {
   public String getHref() { return this._href; }
   public PagerDutyContext setHref(String val) { this._href = val; return this; }
 
-
   static final ParseField SRC = new ParseField("src");
   private String _src;
   public String getSrc() { return this._src; }
   public PagerDutyContext setSrc(String val) { this._src = val; return this; }
-
 
   static final ParseField TYPE = new ParseField("type");
   private PagerDutyContextType _type;
@@ -36,8 +32,8 @@ public class PagerDutyContext  implements XContentable<PagerDutyContext> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_href != null) {
       builder.field(HREF.getPreferredName(), _href);
     }
@@ -48,8 +44,6 @@ public class PagerDutyContext  implements XContentable<PagerDutyContext> {
       builder.field(TYPE.getPreferredName());
       _type.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

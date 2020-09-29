@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,12 +19,10 @@ public class ShardPath  implements XContentable<ShardPath> {
   public String getDataPath() { return this._dataPath; }
   public ShardPath setDataPath(String val) { this._dataPath = val; return this; }
 
-
   static final ParseField IS_CUSTOM_DATA_PATH = new ParseField("is_custom_data_path");
   private Boolean _isCustomDataPath;
   public Boolean getIsCustomDataPath() { return this._isCustomDataPath; }
   public ShardPath setIsCustomDataPath(Boolean val) { this._isCustomDataPath = val; return this; }
-
 
   static final ParseField STATE_PATH = new ParseField("state_path");
   private String _statePath;
@@ -36,8 +32,8 @@ public class ShardPath  implements XContentable<ShardPath> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_dataPath != null) {
       builder.field(DATA_PATH.getPreferredName(), _dataPath);
     }
@@ -47,8 +43,6 @@ public class ShardPath  implements XContentable<ShardPath> {
     if (_statePath != null) {
       builder.field(STATE_PATH.getPreferredName(), _statePath);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

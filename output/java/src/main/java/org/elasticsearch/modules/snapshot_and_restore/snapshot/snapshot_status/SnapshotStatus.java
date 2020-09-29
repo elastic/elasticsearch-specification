@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.modules.snapshot_and_restore.snapshot.snapshot_status.*;
@@ -21,42 +19,35 @@ public class SnapshotStatus  implements XContentable<SnapshotStatus> {
   public Boolean getIncludeGlobalState() { return this._includeGlobalState; }
   public SnapshotStatus setIncludeGlobalState(Boolean val) { this._includeGlobalState = val; return this; }
 
-
   static final ParseField INDICES = new ParseField("indices");
   private NamedContainer<String, SnapshotIndexStats> _indices;
   public NamedContainer<String, SnapshotIndexStats> getIndices() { return this._indices; }
   public SnapshotStatus setIndices(NamedContainer<String, SnapshotIndexStats> val) { this._indices = val; return this; }
-
 
   static final ParseField REPOSITORY = new ParseField("repository");
   private String _repository;
   public String getRepository() { return this._repository; }
   public SnapshotStatus setRepository(String val) { this._repository = val; return this; }
 
-
   static final ParseField SHARDS_STATS = new ParseField("shards_stats");
   private SnapshotShardsStats _shardsStats;
   public SnapshotShardsStats getShardsStats() { return this._shardsStats; }
   public SnapshotStatus setShardsStats(SnapshotShardsStats val) { this._shardsStats = val; return this; }
-
 
   static final ParseField SNAPSHOT = new ParseField("snapshot");
   private String _snapshot;
   public String getSnapshot() { return this._snapshot; }
   public SnapshotStatus setSnapshot(String val) { this._snapshot = val; return this; }
 
-
   static final ParseField STATE = new ParseField("state");
   private String _state;
   public String getState() { return this._state; }
   public SnapshotStatus setState(String val) { this._state = val; return this; }
 
-
   static final ParseField STATS = new ParseField("stats");
   private SnapshotStats _stats;
   public SnapshotStats getStats() { return this._stats; }
   public SnapshotStatus setStats(SnapshotStats val) { this._stats = val; return this; }
-
 
   static final ParseField UUID = new ParseField("uuid");
   private String _uuid;
@@ -66,8 +57,8 @@ public class SnapshotStatus  implements XContentable<SnapshotStatus> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_includeGlobalState != null) {
       builder.field(INCLUDE_GLOBAL_STATE.getPreferredName(), _includeGlobalState);
     }
@@ -95,8 +86,6 @@ public class SnapshotStatus  implements XContentable<SnapshotStatus> {
     if (_uuid != null) {
       builder.field(UUID.getPreferredName(), _uuid);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

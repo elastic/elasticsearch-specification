@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.job.process.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class RevertModelSnapshotResponse  implements XContentable<RevertModelSnapshotResponse> {
+public class RevertModelSnapshotResponse extends ResponseBase<RevertModelSnapshotResponse> implements XContentable<RevertModelSnapshotResponse> {
   
   static final ParseField MODEL = new ParseField("model");
   private ModelSnapshot _model;
@@ -24,14 +23,12 @@ public class RevertModelSnapshotResponse  implements XContentable<RevertModelSna
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_model != null) {
       builder.field(MODEL.getPreferredName());
       _model.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

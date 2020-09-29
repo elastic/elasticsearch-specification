@@ -7,58 +7,50 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.*;
 import org.elasticsearch.x_pack.watcher.schedule.*;
 import org.elasticsearch.x_pack.watcher.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class ExecuteWatchRequest  implements XContentable<ExecuteWatchRequest> {
+public class ExecuteWatchRequest extends RequestBase<ExecuteWatchRequest> implements XContentable<ExecuteWatchRequest> {
   
   static final ParseField DEBUG = new ParseField("debug");
   private Boolean _debug;
   public Boolean getDebug() { return this._debug; }
   public ExecuteWatchRequest setDebug(Boolean val) { this._debug = val; return this; }
 
-
   static final ParseField ACTION_MODES = new ParseField("action_modes");
   private NamedContainer<String, ActionExecutionMode> _actionModes;
   public NamedContainer<String, ActionExecutionMode> getActionModes() { return this._actionModes; }
   public ExecuteWatchRequest setActionModes(NamedContainer<String, ActionExecutionMode> val) { this._actionModes = val; return this; }
-
 
   static final ParseField ALTERNATIVE_INPUT = new ParseField("alternative_input");
   private NamedContainer<String, Object> _alternativeInput;
   public NamedContainer<String, Object> getAlternativeInput() { return this._alternativeInput; }
   public ExecuteWatchRequest setAlternativeInput(NamedContainer<String, Object> val) { this._alternativeInput = val; return this; }
 
-
   static final ParseField IGNORE_CONDITION = new ParseField("ignore_condition");
   private Boolean _ignoreCondition;
   public Boolean getIgnoreCondition() { return this._ignoreCondition; }
   public ExecuteWatchRequest setIgnoreCondition(Boolean val) { this._ignoreCondition = val; return this; }
-
 
   static final ParseField RECORD_EXECUTION = new ParseField("record_execution");
   private Boolean _recordExecution;
   public Boolean getRecordExecution() { return this._recordExecution; }
   public ExecuteWatchRequest setRecordExecution(Boolean val) { this._recordExecution = val; return this; }
 
-
   static final ParseField SIMULATED_ACTIONS = new ParseField("simulated_actions");
   private SimulatedActions _simulatedActions;
   public SimulatedActions getSimulatedActions() { return this._simulatedActions; }
   public ExecuteWatchRequest setSimulatedActions(SimulatedActions val) { this._simulatedActions = val; return this; }
 
-
   static final ParseField TRIGGER_DATA = new ParseField("trigger_data");
   private ScheduleTriggerEvent _triggerData;
   public ScheduleTriggerEvent getTriggerData() { return this._triggerData; }
   public ExecuteWatchRequest setTriggerData(ScheduleTriggerEvent val) { this._triggerData = val; return this; }
-
 
   static final ParseField WATCH = new ParseField("watch");
   private Watch _watch;
@@ -68,8 +60,8 @@ public class ExecuteWatchRequest  implements XContentable<ExecuteWatchRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_debug != null) {
       builder.field(DEBUG.getPreferredName(), _debug);
     }
@@ -99,8 +91,6 @@ public class ExecuteWatchRequest  implements XContentable<ExecuteWatchRequest> {
       builder.field(WATCH.getPreferredName());
       _watch.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

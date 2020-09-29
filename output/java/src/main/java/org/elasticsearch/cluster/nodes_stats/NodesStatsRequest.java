@@ -7,58 +7,50 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.common.*;
 import org.elasticsearch.common_options.time_unit.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class NodesStatsRequest  implements XContentable<NodesStatsRequest> {
+public class NodesStatsRequest extends RequestBase<NodesStatsRequest> implements XContentable<NodesStatsRequest> {
   
   static final ParseField COMPLETION_FIELDS = new ParseField("completion_fields");
-  private List<Field> _completionFields;
-  public List<Field> getCompletionFields() { return this._completionFields; }
-  public NodesStatsRequest setCompletionFields(List<Field> val) { this._completionFields = val; return this; }
-
+  private List<String> _completionFields;
+  public List<String> getCompletionFields() { return this._completionFields; }
+  public NodesStatsRequest setCompletionFields(List<String> val) { this._completionFields = val; return this; }
 
   static final ParseField FIELDDATA_FIELDS = new ParseField("fielddata_fields");
-  private List<Field> _fielddataFields;
-  public List<Field> getFielddataFields() { return this._fielddataFields; }
-  public NodesStatsRequest setFielddataFields(List<Field> val) { this._fielddataFields = val; return this; }
-
+  private List<String> _fielddataFields;
+  public List<String> getFielddataFields() { return this._fielddataFields; }
+  public NodesStatsRequest setFielddataFields(List<String> val) { this._fielddataFields = val; return this; }
 
   static final ParseField FIELDS = new ParseField("fields");
-  private List<Field> _fields;
-  public List<Field> getFields() { return this._fields; }
-  public NodesStatsRequest setFields(List<Field> val) { this._fields = val; return this; }
-
+  private List<String> _fields;
+  public List<String> getFields() { return this._fields; }
+  public NodesStatsRequest setFields(List<String> val) { this._fields = val; return this; }
 
   static final ParseField GROUPS = new ParseField("groups");
   private Boolean _groups;
   public Boolean getGroups() { return this._groups; }
   public NodesStatsRequest setGroups(Boolean val) { this._groups = val; return this; }
 
-
   static final ParseField INCLUDE_SEGMENT_FILE_SIZES = new ParseField("include_segment_file_sizes");
   private Boolean _includeSegmentFileSizes;
   public Boolean getIncludeSegmentFileSizes() { return this._includeSegmentFileSizes; }
   public NodesStatsRequest setIncludeSegmentFileSizes(Boolean val) { this._includeSegmentFileSizes = val; return this; }
-
 
   static final ParseField LEVEL = new ParseField("level");
   private Level _level;
   public Level getLevel() { return this._level; }
   public NodesStatsRequest setLevel(Level val) { this._level = val; return this; }
 
-
   static final ParseField TIMEOUT = new ParseField("timeout");
-  private Time _timeout;
-  public Time getTimeout() { return this._timeout; }
-  public NodesStatsRequest setTimeout(Time val) { this._timeout = val; return this; }
-
+  private String _timeout;
+  public String getTimeout() { return this._timeout; }
+  public NodesStatsRequest setTimeout(String val) { this._timeout = val; return this; }
 
   static final ParseField TYPES = new ParseField("types");
   private List<String> _types;
@@ -68,8 +60,8 @@ public class NodesStatsRequest  implements XContentable<NodesStatsRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_completionFields != null) {
       builder.array(COMPLETION_FIELDS.getPreferredName(), _completionFields);
     }
@@ -90,14 +82,11 @@ public class NodesStatsRequest  implements XContentable<NodesStatsRequest> {
       _level.toXContent(builder, params);
     }
     if (_timeout != null) {
-      builder.field(TIMEOUT.getPreferredName());
-      _timeout.toXContent(builder, params);
+      builder.field(TIMEOUT.getPreferredName(), _timeout);
     }
     if (_types != null) {
       builder.array(TYPES.getPreferredName(), _types);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -109,13 +98,13 @@ public class NodesStatsRequest  implements XContentable<NodesStatsRequest> {
     new ObjectParser<>(NodesStatsRequest.class.getName(), false, NodesStatsRequest::new);
 
   static {
-    PARSER.declareObjectArray(NodesStatsRequest::setCompletionFields, (p, t) -> Field.createFrom(p), COMPLETION_FIELDS);
-    PARSER.declareObjectArray(NodesStatsRequest::setFielddataFields, (p, t) -> Field.createFrom(p), FIELDDATA_FIELDS);
-    PARSER.declareObjectArray(NodesStatsRequest::setFields, (p, t) -> Field.createFrom(p), FIELDS);
+    PARSER.declareStringArray(NodesStatsRequest::setCompletionFields, COMPLETION_FIELDS);
+    PARSER.declareStringArray(NodesStatsRequest::setFielddataFields, FIELDDATA_FIELDS);
+    PARSER.declareStringArray(NodesStatsRequest::setFields, FIELDS);
     PARSER.declareBoolean(NodesStatsRequest::setGroups, GROUPS);
     PARSER.declareBoolean(NodesStatsRequest::setIncludeSegmentFileSizes, INCLUDE_SEGMENT_FILE_SIZES);
     PARSER.declareField(NodesStatsRequest::setLevel, (p, t) -> Level.PARSER.apply(p), LEVEL, ObjectParser.ValueType.STRING_OR_NULL);
-    PARSER.declareObject(NodesStatsRequest::setTimeout, (p, t) -> Time.PARSER.apply(p, t), TIMEOUT);
+    PARSER.declareString(NodesStatsRequest::setTimeout, TIMEOUT);
     PARSER.declareStringArray(NodesStatsRequest::setTypes, TYPES);
   }
 

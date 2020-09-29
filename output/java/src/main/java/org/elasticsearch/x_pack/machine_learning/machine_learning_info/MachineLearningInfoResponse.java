@@ -7,26 +7,23 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.machine_learning.machine_learning_info.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class MachineLearningInfoResponse  implements XContentable<MachineLearningInfoResponse> {
+public class MachineLearningInfoResponse extends ResponseBase<MachineLearningInfoResponse> implements XContentable<MachineLearningInfoResponse> {
   
   static final ParseField DEFAULTS = new ParseField("defaults");
   private Defaults _defaults;
   public Defaults getDefaults() { return this._defaults; }
   public MachineLearningInfoResponse setDefaults(Defaults val) { this._defaults = val; return this; }
 
-
   static final ParseField LIMITS = new ParseField("limits");
   private Limits _limits;
   public Limits getLimits() { return this._limits; }
   public MachineLearningInfoResponse setLimits(Limits val) { this._limits = val; return this; }
-
 
   static final ParseField UPGRADE_MODE = new ParseField("upgrade_mode");
   private Boolean _upgradeMode;
@@ -36,8 +33,8 @@ public class MachineLearningInfoResponse  implements XContentable<MachineLearnin
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_defaults != null) {
       builder.field(DEFAULTS.getPreferredName());
       _defaults.toXContent(builder, params);
@@ -49,8 +46,6 @@ public class MachineLearningInfoResponse  implements XContentable<MachineLearnin
     if (_upgradeMode != null) {
       builder.field(UPGRADE_MODE.getPreferredName(), _upgradeMode);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

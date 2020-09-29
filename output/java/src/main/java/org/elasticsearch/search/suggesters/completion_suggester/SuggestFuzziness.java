@@ -7,12 +7,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_options.fuzziness.*;
 import org.elasticsearch.internal.*;
 
 public class SuggestFuzziness  implements XContentable<SuggestFuzziness> {
@@ -22,24 +19,30 @@ public class SuggestFuzziness  implements XContentable<SuggestFuzziness> {
   public Fuzziness getFuzziness() { return this._fuzziness; }
   public SuggestFuzziness setFuzziness(Fuzziness val) { this._fuzziness = val; return this; }
 
-
   static final ParseField MIN_LENGTH = new ParseField("min_length");
-  private Integer _minLength;
-  public Integer getMinLength() { return this._minLength; }
-  public SuggestFuzziness setMinLength(Integer val) { this._minLength = val; return this; }
-
+  private int _minLength;
+  private boolean _minLength$isSet;
+  public int getMinLength() { return this._minLength; }
+  public SuggestFuzziness setMinLength(int val) {
+    this._minLength = val;
+    _minLength$isSet = true;
+    return this;
+  }
 
   static final ParseField PREFIX_LENGTH = new ParseField("prefix_length");
-  private Integer _prefixLength;
-  public Integer getPrefixLength() { return this._prefixLength; }
-  public SuggestFuzziness setPrefixLength(Integer val) { this._prefixLength = val; return this; }
-
+  private int _prefixLength;
+  private boolean _prefixLength$isSet;
+  public int getPrefixLength() { return this._prefixLength; }
+  public SuggestFuzziness setPrefixLength(int val) {
+    this._prefixLength = val;
+    _prefixLength$isSet = true;
+    return this;
+  }
 
   static final ParseField TRANSPOSITIONS = new ParseField("transpositions");
   private Boolean _transpositions;
   public Boolean getTranspositions() { return this._transpositions; }
   public SuggestFuzziness setTranspositions(Boolean val) { this._transpositions = val; return this; }
-
 
   static final ParseField UNICODE_AWARE = new ParseField("unicode_aware");
   private Boolean _unicodeAware;
@@ -49,16 +52,16 @@ public class SuggestFuzziness  implements XContentable<SuggestFuzziness> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_fuzziness != null) {
       builder.field(FUZZINESS.getPreferredName());
       _fuzziness.toXContent(builder, params);
     }
-    if (_minLength != null) {
+    if (_minLength$isSet) {
       builder.field(MIN_LENGTH.getPreferredName(), _minLength);
     }
-    if (_prefixLength != null) {
+    if (_prefixLength$isSet) {
       builder.field(PREFIX_LENGTH.getPreferredName(), _prefixLength);
     }
     if (_transpositions != null) {
@@ -67,8 +70,6 @@ public class SuggestFuzziness  implements XContentable<SuggestFuzziness> {
     if (_unicodeAware != null) {
       builder.field(UNICODE_AWARE.getPreferredName(), _unicodeAware);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

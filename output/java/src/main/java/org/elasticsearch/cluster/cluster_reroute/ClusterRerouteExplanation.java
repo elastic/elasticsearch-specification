@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.cluster_reroute.*;
@@ -21,12 +19,10 @@ public class ClusterRerouteExplanation  implements XContentable<ClusterRerouteEx
   public String getCommand() { return this._command; }
   public ClusterRerouteExplanation setCommand(String val) { this._command = val; return this; }
 
-
   static final ParseField DECISIONS = new ParseField("decisions");
   private List<ClusterRerouteDecision> _decisions;
   public List<ClusterRerouteDecision> getDecisions() { return this._decisions; }
   public ClusterRerouteExplanation setDecisions(List<ClusterRerouteDecision> val) { this._decisions = val; return this; }
-
 
   static final ParseField PARAMETERS = new ParseField("parameters");
   private ClusterRerouteParameters _parameters;
@@ -36,8 +32,8 @@ public class ClusterRerouteExplanation  implements XContentable<ClusterRerouteEx
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_command != null) {
       builder.field(COMMAND.getPreferredName(), _command);
     }
@@ -48,8 +44,6 @@ public class ClusterRerouteExplanation  implements XContentable<ClusterRerouteEx
       builder.field(PARAMETERS.getPreferredName());
       _parameters.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

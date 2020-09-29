@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 
@@ -21,7 +19,6 @@ public class IpFilterUsage  implements XContentable<IpFilterUsage> {
   public Boolean getHttp() { return this._http; }
   public IpFilterUsage setHttp(Boolean val) { this._http = val; return this; }
 
-
   static final ParseField TRANSPORT = new ParseField("transport");
   private Boolean _transport;
   public Boolean getTransport() { return this._transport; }
@@ -30,16 +27,14 @@ public class IpFilterUsage  implements XContentable<IpFilterUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_http != null) {
       builder.field(HTTP.getPreferredName(), _http);
     }
     if (_transport != null) {
       builder.field(TRANSPORT.getPreferredName(), _transport);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

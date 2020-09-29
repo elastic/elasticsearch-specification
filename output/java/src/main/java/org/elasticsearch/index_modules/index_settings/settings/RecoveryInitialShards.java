@@ -1,6 +1,10 @@
 
 package org.elasticsearch.index_modules.index_settings.settings;
 
+//
+// Generated code - Do not edit (enum)
+//
+
 import org.elasticsearch.XContentable;
 import org.elasticsearch.common.CheckedFunction;
 import org.elasticsearch.common.xcontent.*;

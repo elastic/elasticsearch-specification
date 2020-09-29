@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.search.search.hits.*;
@@ -23,12 +21,15 @@ public class InnerHitsMetadata  implements XContentable<InnerHitsMetadata> {
   public List<Hit<LazyDocument>> getHits() { return this._hits; }
   public InnerHitsMetadata setHits(List<Hit<LazyDocument>> val) { this._hits = val; return this; }
 
-
   static final ParseField MAX_SCORE = new ParseField("max_score");
-  private Double _maxScore;
-  public Double getMaxScore() { return this._maxScore; }
-  public InnerHitsMetadata setMaxScore(Double val) { this._maxScore = val; return this; }
-
+  private double _maxScore;
+  private boolean _maxScore$isSet;
+  public double getMaxScore() { return this._maxScore; }
+  public InnerHitsMetadata setMaxScore(double val) {
+    this._maxScore = val;
+    _maxScore$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
   private TotalHits _total;
@@ -38,20 +39,18 @@ public class InnerHitsMetadata  implements XContentable<InnerHitsMetadata> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_hits != null) {
       builder.array(HITS.getPreferredName(), _hits);
     }
-    if (_maxScore != null) {
+    if (_maxScore$isSet) {
       builder.field(MAX_SCORE.getPreferredName(), _maxScore);
     }
     if (_total != null) {
       builder.field(TOTAL.getPreferredName());
       _total.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -22,12 +20,10 @@ public class UnassignedInformation  implements XContentable<UnassignedInformatio
   public Date getAt() { return this._at; }
   public UnassignedInformation setAt(Date val) { this._at = val; return this; }
 
-
   static final ParseField LAST_ALLOCATION_STATUS = new ParseField("last_allocation_status");
   private String _lastAllocationStatus;
   public String getLastAllocationStatus() { return this._lastAllocationStatus; }
   public UnassignedInformation setLastAllocationStatus(String val) { this._lastAllocationStatus = val; return this; }
-
 
   static final ParseField REASON = new ParseField("reason");
   private UnassignedInformationReason _reason;
@@ -37,8 +33,8 @@ public class UnassignedInformation  implements XContentable<UnassignedInformatio
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_at != null) {
       builder.field(AT.getPreferredName(),
         DateTimeFormatter.ISO_DATE.format(_at.toInstant()));
@@ -50,8 +46,6 @@ public class UnassignedInformation  implements XContentable<UnassignedInformatio
       builder.field(REASON.getPreferredName());
       _reason.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

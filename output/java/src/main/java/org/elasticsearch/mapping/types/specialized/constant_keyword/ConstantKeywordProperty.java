@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.mapping.types.*;
 
-
-public class ConstantKeywordProperty  implements XContentable<ConstantKeywordProperty> {
+public class ConstantKeywordProperty extends PropertyBase implements XContentable<ConstantKeywordProperty> {
   
   static final ParseField VALUE = new ParseField("value");
   private Object _value;
@@ -24,13 +22,11 @@ public class ConstantKeywordProperty  implements XContentable<ConstantKeywordPro
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_value != null) {
       builder.field(VALUE.getPreferredName(), _value);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

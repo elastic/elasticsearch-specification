@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -18,10 +16,14 @@ import org.elasticsearch.x_pack.info.x_pack_usage.*;
 public class IlmUsage  implements XContentable<IlmUsage> {
   
   static final ParseField POLICY_COUNT = new ParseField("policy_count");
-  private Integer _policyCount;
-  public Integer getPolicyCount() { return this._policyCount; }
-  public IlmUsage setPolicyCount(Integer val) { this._policyCount = val; return this; }
-
+  private int _policyCount;
+  private boolean _policyCount$isSet;
+  public int getPolicyCount() { return this._policyCount; }
+  public IlmUsage setPolicyCount(int val) {
+    this._policyCount = val;
+    _policyCount$isSet = true;
+    return this;
+  }
 
   static final ParseField POLICY_STATS = new ParseField("policy_stats");
   private List<IlmPolicyStatistics> _policyStats;
@@ -31,16 +33,14 @@ public class IlmUsage  implements XContentable<IlmUsage> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_policyCount != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_policyCount$isSet) {
       builder.field(POLICY_COUNT.getPreferredName(), _policyCount);
     }
     if (_policyStats != null) {
       builder.array(POLICY_STATS.getPreferredName(), _policyStats);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

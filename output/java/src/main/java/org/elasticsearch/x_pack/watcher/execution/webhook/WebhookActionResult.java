@@ -7,12 +7,11 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.watcher.execution.*;
+import org.elasticsearch.x_pack.watcher.input.*;
 
 public class WebhookActionResult  implements XContentable<WebhookActionResult> {
   
@@ -20,7 +19,6 @@ public class WebhookActionResult  implements XContentable<WebhookActionResult> {
   private HttpInputRequestResult _request;
   public HttpInputRequestResult getRequest() { return this._request; }
   public WebhookActionResult setRequest(HttpInputRequestResult val) { this._request = val; return this; }
-
 
   static final ParseField RESPONSE = new ParseField("response");
   private HttpInputResponseResult _response;
@@ -30,8 +28,8 @@ public class WebhookActionResult  implements XContentable<WebhookActionResult> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_request != null) {
       builder.field(REQUEST.getPreferredName());
       _request.toXContent(builder, params);
@@ -40,8 +38,6 @@ public class WebhookActionResult  implements XContentable<WebhookActionResult> {
       builder.field(RESPONSE.getPreferredName());
       _response.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

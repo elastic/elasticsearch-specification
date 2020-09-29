@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-
-public class ForecastJobResponse  implements XContentable<ForecastJobResponse> {
+public class ForecastJobResponse extends AcknowledgedResponseBase implements XContentable<ForecastJobResponse> {
   
   static final ParseField FORECAST_ID = new ParseField("forecast_id");
   private String _forecastId;
@@ -24,13 +22,11 @@ public class ForecastJobResponse  implements XContentable<ForecastJobResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_forecastId != null) {
       builder.field(FORECAST_ID.getPreferredName(), _forecastId);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

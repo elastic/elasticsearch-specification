@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.x_pack.machine_learning.job.detectors.*;
 
 public class FilterRef  implements XContentable<FilterRef> {
@@ -22,7 +20,6 @@ public class FilterRef  implements XContentable<FilterRef> {
   public Id getFilterId() { return this._filterId; }
   public FilterRef setFilterId(Id val) { this._filterId = val; return this; }
 
-
   static final ParseField FILTER_TYPE = new ParseField("filter_type");
   private RuleFilterType _filterType;
   public RuleFilterType getFilterType() { return this._filterType; }
@@ -31,8 +28,8 @@ public class FilterRef  implements XContentable<FilterRef> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_filterId != null) {
       builder.field(FILTER_ID.getPreferredName());
       _filterId.toXContent(builder, params);
@@ -41,8 +38,6 @@ public class FilterRef  implements XContentable<FilterRef> {
       builder.field(FILTER_TYPE.getPreferredName());
       _filterType.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

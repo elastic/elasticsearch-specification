@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.field.*;
+import org.elasticsearch.internal.*;
 
 public class SuggestContext  implements XContentable<SuggestContext> {
   
@@ -21,12 +19,10 @@ public class SuggestContext  implements XContentable<SuggestContext> {
   public String getName() { return this._name; }
   public SuggestContext setName(String val) { this._name = val; return this; }
 
-
   static final ParseField PATH = new ParseField("path");
-  private Field _path;
-  public Field getPath() { return this._path; }
-  public SuggestContext setPath(Field val) { this._path = val; return this; }
-
+  private String _path;
+  public String getPath() { return this._path; }
+  public SuggestContext setPath(String val) { this._path = val; return this; }
 
   static final ParseField TYPE = new ParseField("type");
   private String _type;
@@ -36,20 +32,17 @@ public class SuggestContext  implements XContentable<SuggestContext> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_name != null) {
       builder.field(NAME.getPreferredName(), _name);
     }
     if (_path != null) {
-      builder.field(PATH.getPreferredName());
-      _path.toXContent(builder, params);
+      builder.field(PATH.getPreferredName(), _path);
     }
     if (_type != null) {
       builder.field(TYPE.getPreferredName(), _type);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -62,7 +55,7 @@ public class SuggestContext  implements XContentable<SuggestContext> {
 
   static {
     PARSER.declareString(SuggestContext::setName, NAME);
-    PARSER.declareObject(SuggestContext::setPath, (p, t) -> Field.createFrom(p), PATH);
+    PARSER.declareString(SuggestContext::setPath, PATH);
     PARSER.declareString(SuggestContext::setType, TYPE);
   }
 

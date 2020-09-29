@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-
-public class ClearScrollRequest  implements XContentable<ClearScrollRequest> {
+public class ClearScrollRequest extends RequestBase<ClearScrollRequest> implements XContentable<ClearScrollRequest> {
   
   static final ParseField SCROLL_ID = new ParseField("scroll_id");
   private List<String> _scrollId;
@@ -24,13 +22,11 @@ public class ClearScrollRequest  implements XContentable<ClearScrollRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_scrollId != null) {
       builder.array(SCROLL_ID.getPreferredName(), _scrollId);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

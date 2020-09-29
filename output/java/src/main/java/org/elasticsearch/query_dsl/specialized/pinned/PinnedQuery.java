@@ -7,21 +7,19 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.id.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.query_dsl.abstractions.container.*;
+import org.elasticsearch.query_dsl.abstractions.query.*;
 
-public class PinnedQuery  implements XContentable<PinnedQuery> {
+public class PinnedQuery extends QueryBase implements XContentable<PinnedQuery> {
   
   static final ParseField IDS = new ParseField("ids");
   private List<Id> _ids;
   public List<Id> getIds() { return this._ids; }
   public PinnedQuery setIds(List<Id> val) { this._ids = val; return this; }
-
 
   static final ParseField ORGANIC = new ParseField("organic");
   private QueryContainer _organic;
@@ -31,8 +29,8 @@ public class PinnedQuery  implements XContentable<PinnedQuery> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ids != null) {
       builder.array(IDS.getPreferredName(), _ids);
     }
@@ -40,8 +38,6 @@ public class PinnedQuery  implements XContentable<PinnedQuery> {
       builder.field(ORGANIC.getPreferredName());
       _organic.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

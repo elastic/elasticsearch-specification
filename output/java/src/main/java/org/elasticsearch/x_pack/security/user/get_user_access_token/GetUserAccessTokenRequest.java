@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.security.user.get_user_access_token.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class GetUserAccessTokenRequest  implements XContentable<GetUserAccessTokenRequest> {
+public class GetUserAccessTokenRequest extends RequestBase<GetUserAccessTokenRequest> implements XContentable<GetUserAccessTokenRequest> {
   
   static final ParseField GRANT_TYPE = new ParseField("grant_type");
   private AccessTokenGrantType _grantType;
   public AccessTokenGrantType getGrantType() { return this._grantType; }
   public GetUserAccessTokenRequest setGrantType(AccessTokenGrantType val) { this._grantType = val; return this; }
-
 
   static final ParseField SCOPE = new ParseField("scope");
   private String _scope;
@@ -30,8 +28,8 @@ public class GetUserAccessTokenRequest  implements XContentable<GetUserAccessTok
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_grantType != null) {
       builder.field(GRANT_TYPE.getPreferredName());
       _grantType.toXContent(builder, params);
@@ -39,8 +37,6 @@ public class GetUserAccessTokenRequest  implements XContentable<GetUserAccessTok
     if (_scope != null) {
       builder.field(SCOPE.getPreferredName(), _scope);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

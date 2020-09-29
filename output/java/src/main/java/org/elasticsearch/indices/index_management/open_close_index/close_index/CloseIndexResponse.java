@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.indices.index_management.open_close_index.close_index.*;
+import org.elasticsearch.common_abstractions.response.*;
 
-public class CloseIndexResponse  implements XContentable<CloseIndexResponse> {
+public class CloseIndexResponse extends AcknowledgedResponseBase implements XContentable<CloseIndexResponse> {
   
   static final ParseField INDICES = new ParseField("indices");
   private NamedContainer<String, CloseIndexResult> _indices;
   public NamedContainer<String, CloseIndexResult> getIndices() { return this._indices; }
   public CloseIndexResponse setIndices(NamedContainer<String, CloseIndexResult> val) { this._indices = val; return this; }
-
 
   static final ParseField SHARDS_ACKNOWLEDGED = new ParseField("shards_acknowledged");
   private Boolean _shardsAcknowledged;
@@ -30,8 +28,8 @@ public class CloseIndexResponse  implements XContentable<CloseIndexResponse> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_indices != null) {
       builder.field(INDICES.getPreferredName());
       _indices.toXContent(builder, params);
@@ -39,8 +37,6 @@ public class CloseIndexResponse  implements XContentable<CloseIndexResponse> {
     if (_shardsAcknowledged != null) {
       builder.field(SHARDS_ACKNOWLEDGED.getPreferredName(), _shardsAcknowledged);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

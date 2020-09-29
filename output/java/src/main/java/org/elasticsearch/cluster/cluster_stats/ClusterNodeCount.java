@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,65 +15,88 @@ import org.elasticsearch.internal.*;
 public class ClusterNodeCount  implements XContentable<ClusterNodeCount> {
   
   static final ParseField COORDINATING_ONLY = new ParseField("coordinating_only");
-  private Integer _coordinatingOnly;
-  public Integer getCoordinatingOnly() { return this._coordinatingOnly; }
-  public ClusterNodeCount setCoordinatingOnly(Integer val) { this._coordinatingOnly = val; return this; }
-
+  private int _coordinatingOnly;
+  private boolean _coordinatingOnly$isSet;
+  public int getCoordinatingOnly() { return this._coordinatingOnly; }
+  public ClusterNodeCount setCoordinatingOnly(int val) {
+    this._coordinatingOnly = val;
+    _coordinatingOnly$isSet = true;
+    return this;
+  }
 
   static final ParseField DATA = new ParseField("data");
-  private Integer _data;
-  public Integer getData() { return this._data; }
-  public ClusterNodeCount setData(Integer val) { this._data = val; return this; }
-
+  private int _data;
+  private boolean _data$isSet;
+  public int getData() { return this._data; }
+  public ClusterNodeCount setData(int val) {
+    this._data = val;
+    _data$isSet = true;
+    return this;
+  }
 
   static final ParseField INGEST = new ParseField("ingest");
-  private Integer _ingest;
-  public Integer getIngest() { return this._ingest; }
-  public ClusterNodeCount setIngest(Integer val) { this._ingest = val; return this; }
-
+  private int _ingest;
+  private boolean _ingest$isSet;
+  public int getIngest() { return this._ingest; }
+  public ClusterNodeCount setIngest(int val) {
+    this._ingest = val;
+    _ingest$isSet = true;
+    return this;
+  }
 
   static final ParseField MASTER = new ParseField("master");
-  private Integer _master;
-  public Integer getMaster() { return this._master; }
-  public ClusterNodeCount setMaster(Integer val) { this._master = val; return this; }
-
+  private int _master;
+  private boolean _master$isSet;
+  public int getMaster() { return this._master; }
+  public ClusterNodeCount setMaster(int val) {
+    this._master = val;
+    _master$isSet = true;
+    return this;
+  }
 
   static final ParseField TOTAL = new ParseField("total");
-  private Integer _total;
-  public Integer getTotal() { return this._total; }
-  public ClusterNodeCount setTotal(Integer val) { this._total = val; return this; }
-
+  private int _total;
+  private boolean _total$isSet;
+  public int getTotal() { return this._total; }
+  public ClusterNodeCount setTotal(int val) {
+    this._total = val;
+    _total$isSet = true;
+    return this;
+  }
 
   static final ParseField VOTING_ONLY = new ParseField("voting_only");
-  private Integer _votingOnly;
-  public Integer getVotingOnly() { return this._votingOnly; }
-  public ClusterNodeCount setVotingOnly(Integer val) { this._votingOnly = val; return this; }
+  private int _votingOnly;
+  private boolean _votingOnly$isSet;
+  public int getVotingOnly() { return this._votingOnly; }
+  public ClusterNodeCount setVotingOnly(int val) {
+    this._votingOnly = val;
+    _votingOnly$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_coordinatingOnly != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_coordinatingOnly$isSet) {
       builder.field(COORDINATING_ONLY.getPreferredName(), _coordinatingOnly);
     }
-    if (_data != null) {
+    if (_data$isSet) {
       builder.field(DATA.getPreferredName(), _data);
     }
-    if (_ingest != null) {
+    if (_ingest$isSet) {
       builder.field(INGEST.getPreferredName(), _ingest);
     }
-    if (_master != null) {
+    if (_master$isSet) {
       builder.field(MASTER.getPreferredName(), _master);
     }
-    if (_total != null) {
+    if (_total$isSet) {
       builder.field(TOTAL.getPreferredName(), _total);
     }
-    if (_votingOnly != null) {
+    if (_votingOnly$isSet) {
       builder.field(VOTING_ONLY.getPreferredName(), _votingOnly);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

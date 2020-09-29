@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.x_pack.license.get_license.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class PostLicenseRequest  implements XContentable<PostLicenseRequest> {
+public class PostLicenseRequest extends RequestBase<PostLicenseRequest> implements XContentable<PostLicenseRequest> {
   
   static final ParseField ACKNOWLEDGE = new ParseField("acknowledge");
   private Boolean _acknowledge;
   public Boolean getAcknowledge() { return this._acknowledge; }
   public PostLicenseRequest setAcknowledge(Boolean val) { this._acknowledge = val; return this; }
-
 
   static final ParseField LICENSE = new ParseField("license");
   private License _license;
@@ -30,8 +28,8 @@ public class PostLicenseRequest  implements XContentable<PostLicenseRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_acknowledge != null) {
       builder.field(ACKNOWLEDGE.getPreferredName(), _acknowledge);
     }
@@ -39,8 +37,6 @@ public class PostLicenseRequest  implements XContentable<PostLicenseRequest> {
       builder.field(LICENSE.getPreferredName());
       _license.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

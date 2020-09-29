@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.cluster.cluster_stats.*;
@@ -21,7 +19,6 @@ public class ClusterProcess  implements XContentable<ClusterProcess> {
   public ClusterProcessCpu getCpu() { return this._cpu; }
   public ClusterProcess setCpu(ClusterProcessCpu val) { this._cpu = val; return this; }
 
-
   static final ParseField OPEN_FILE_DESCRIPTORS = new ParseField("open_file_descriptors");
   private ClusterProcessOpenFileDescriptors _openFileDescriptors;
   public ClusterProcessOpenFileDescriptors getOpenFileDescriptors() { return this._openFileDescriptors; }
@@ -30,8 +27,8 @@ public class ClusterProcess  implements XContentable<ClusterProcess> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_cpu != null) {
       builder.field(CPU.getPreferredName());
       _cpu.toXContent(builder, params);
@@ -40,8 +37,6 @@ public class ClusterProcess  implements XContentable<ClusterProcess> {
       builder.field(OPEN_FILE_DESCRIPTORS.getPreferredName());
       _openFileDescriptors.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

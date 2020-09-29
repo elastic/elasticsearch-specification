@@ -7,32 +7,33 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
+import org.elasticsearch.cat.*;
 
-public class CatPendingTasksRecord  implements XContentable<CatPendingTasksRecord> {
+public class CatPendingTasksRecord extends ICatRecord implements XContentable<CatPendingTasksRecord> {
   
   static final ParseField INSERT_ORDER = new ParseField("insertOrder");
-  private Integer _insertOrder;
-  public Integer getInsertOrder() { return this._insertOrder; }
-  public CatPendingTasksRecord setInsertOrder(Integer val) { this._insertOrder = val; return this; }
-
+  private int _insertOrder;
+  private boolean _insertOrder$isSet;
+  public int getInsertOrder() { return this._insertOrder; }
+  public CatPendingTasksRecord setInsertOrder(int val) {
+    this._insertOrder = val;
+    _insertOrder$isSet = true;
+    return this;
+  }
 
   static final ParseField PRIORITY = new ParseField("priority");
   private String _priority;
   public String getPriority() { return this._priority; }
   public CatPendingTasksRecord setPriority(String val) { this._priority = val; return this; }
 
-
   static final ParseField SOURCE = new ParseField("source");
   private String _source;
   public String getSource() { return this._source; }
   public CatPendingTasksRecord setSource(String val) { this._source = val; return this; }
-
 
   static final ParseField TIME_IN_QUEUE = new ParseField("timeInQueue");
   private String _timeInQueue;
@@ -42,9 +43,9 @@ public class CatPendingTasksRecord  implements XContentable<CatPendingTasksRecor
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_insertOrder != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
+    if (_insertOrder$isSet) {
       builder.field(INSERT_ORDER.getPreferredName(), _insertOrder);
     }
     if (_priority != null) {
@@ -56,8 +57,6 @@ public class CatPendingTasksRecord  implements XContentable<CatPendingTasksRecor
     if (_timeInQueue != null) {
       builder.field(TIME_IN_QUEUE.getPreferredName(), _timeInQueue);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

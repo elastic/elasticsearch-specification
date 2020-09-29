@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
-import org.elasticsearch.common_abstractions.infer.task_id.*;
+import org.elasticsearch.internal.*;
 import org.elasticsearch.document.multiple.reindex_rethrottle.*;
 
 public class ReindexNode  implements XContentable<ReindexNode> {
@@ -22,36 +20,30 @@ public class ReindexNode  implements XContentable<ReindexNode> {
   public NamedContainer<String, String> getAttributes() { return this._attributes; }
   public ReindexNode setAttributes(NamedContainer<String, String> val) { this._attributes = val; return this; }
 
-
   static final ParseField HOST = new ParseField("host");
   private String _host;
   public String getHost() { return this._host; }
   public ReindexNode setHost(String val) { this._host = val; return this; }
-
 
   static final ParseField IP = new ParseField("ip");
   private String _ip;
   public String getIp() { return this._ip; }
   public ReindexNode setIp(String val) { this._ip = val; return this; }
 
-
   static final ParseField NAME = new ParseField("name");
   private String _name;
   public String getName() { return this._name; }
   public ReindexNode setName(String val) { this._name = val; return this; }
-
 
   static final ParseField ROLES = new ParseField("roles");
   private List<String> _roles;
   public List<String> getRoles() { return this._roles; }
   public ReindexNode setRoles(List<String> val) { this._roles = val; return this; }
 
-
   static final ParseField TASKS = new ParseField("tasks");
-  private NamedContainer<TaskId, ReindexTask> _tasks;
-  public NamedContainer<TaskId, ReindexTask> getTasks() { return this._tasks; }
-  public ReindexNode setTasks(NamedContainer<TaskId, ReindexTask> val) { this._tasks = val; return this; }
-
+  private NamedContainer<String, ReindexTask> _tasks;
+  public NamedContainer<String, ReindexTask> getTasks() { return this._tasks; }
+  public ReindexNode setTasks(NamedContainer<String, ReindexTask> val) { this._tasks = val; return this; }
 
   static final ParseField TRANSPORT_ADDRESS = new ParseField("transport_address");
   private String _transportAddress;
@@ -61,8 +53,8 @@ public class ReindexNode  implements XContentable<ReindexNode> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
     if (_attributes != null) {
       builder.field(ATTRIBUTES.getPreferredName());
       _attributes.toXContent(builder, params);
@@ -86,8 +78,6 @@ public class ReindexNode  implements XContentable<ReindexNode> {
     if (_transportAddress != null) {
       builder.field(TRANSPORT_ADDRESS.getPreferredName(), _transportAddress);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
@@ -104,7 +94,7 @@ public class ReindexNode  implements XContentable<ReindexNode> {
     PARSER.declareString(ReindexNode::setIp, IP);
     PARSER.declareString(ReindexNode::setName, NAME);
     PARSER.declareStringArray(ReindexNode::setRoles, ROLES);
-    PARSER.declareObject(ReindexNode::setTasks, (p, t) -> new NamedContainer<>(n -> () -> new TaskId(n),pp -> ReindexTask.PARSER.apply(pp, null)), TASKS);
+    PARSER.declareObject(ReindexNode::setTasks, (p, t) -> new NamedContainer<>(n -> () -> n,pp -> ReindexTask.PARSER.apply(pp, null)), TASKS);
     PARSER.declareString(ReindexNode::setTransportAddress, TRANSPORT_ADDRESS);
   }
 

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
@@ -17,74 +15,101 @@ import org.elasticsearch.internal.*;
 public class TermVectorFilter  implements XContentable<TermVectorFilter> {
   
   static final ParseField MAX_DOC_FREQ = new ParseField("max_doc_freq");
-  private Integer _maxDocFreq;
-  public Integer getMaxDocFreq() { return this._maxDocFreq; }
-  public TermVectorFilter setMaxDocFreq(Integer val) { this._maxDocFreq = val; return this; }
-
+  private int _maxDocFreq;
+  private boolean _maxDocFreq$isSet;
+  public int getMaxDocFreq() { return this._maxDocFreq; }
+  public TermVectorFilter setMaxDocFreq(int val) {
+    this._maxDocFreq = val;
+    _maxDocFreq$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_NUM_TERMS = new ParseField("max_num_terms");
-  private Integer _maxNumTerms;
-  public Integer getMaxNumTerms() { return this._maxNumTerms; }
-  public TermVectorFilter setMaxNumTerms(Integer val) { this._maxNumTerms = val; return this; }
-
+  private int _maxNumTerms;
+  private boolean _maxNumTerms$isSet;
+  public int getMaxNumTerms() { return this._maxNumTerms; }
+  public TermVectorFilter setMaxNumTerms(int val) {
+    this._maxNumTerms = val;
+    _maxNumTerms$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_TERM_FREQ = new ParseField("max_term_freq");
-  private Integer _maxTermFreq;
-  public Integer getMaxTermFreq() { return this._maxTermFreq; }
-  public TermVectorFilter setMaxTermFreq(Integer val) { this._maxTermFreq = val; return this; }
-
+  private int _maxTermFreq;
+  private boolean _maxTermFreq$isSet;
+  public int getMaxTermFreq() { return this._maxTermFreq; }
+  public TermVectorFilter setMaxTermFreq(int val) {
+    this._maxTermFreq = val;
+    _maxTermFreq$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_WORD_LENGTH = new ParseField("max_word_length");
-  private Integer _maxWordLength;
-  public Integer getMaxWordLength() { return this._maxWordLength; }
-  public TermVectorFilter setMaxWordLength(Integer val) { this._maxWordLength = val; return this; }
-
+  private int _maxWordLength;
+  private boolean _maxWordLength$isSet;
+  public int getMaxWordLength() { return this._maxWordLength; }
+  public TermVectorFilter setMaxWordLength(int val) {
+    this._maxWordLength = val;
+    _maxWordLength$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN_DOC_FREQ = new ParseField("min_doc_freq");
-  private Integer _minDocFreq;
-  public Integer getMinDocFreq() { return this._minDocFreq; }
-  public TermVectorFilter setMinDocFreq(Integer val) { this._minDocFreq = val; return this; }
-
+  private int _minDocFreq;
+  private boolean _minDocFreq$isSet;
+  public int getMinDocFreq() { return this._minDocFreq; }
+  public TermVectorFilter setMinDocFreq(int val) {
+    this._minDocFreq = val;
+    _minDocFreq$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN_TERM_FREQ = new ParseField("min_term_freq");
-  private Integer _minTermFreq;
-  public Integer getMinTermFreq() { return this._minTermFreq; }
-  public TermVectorFilter setMinTermFreq(Integer val) { this._minTermFreq = val; return this; }
-
+  private int _minTermFreq;
+  private boolean _minTermFreq$isSet;
+  public int getMinTermFreq() { return this._minTermFreq; }
+  public TermVectorFilter setMinTermFreq(int val) {
+    this._minTermFreq = val;
+    _minTermFreq$isSet = true;
+    return this;
+  }
 
   static final ParseField MIN_WORD_LENGTH = new ParseField("min_word_length");
-  private Integer _minWordLength;
-  public Integer getMinWordLength() { return this._minWordLength; }
-  public TermVectorFilter setMinWordLength(Integer val) { this._minWordLength = val; return this; }
+  private int _minWordLength;
+  private boolean _minWordLength$isSet;
+  public int getMinWordLength() { return this._minWordLength; }
+  public TermVectorFilter setMinWordLength(int val) {
+    this._minWordLength = val;
+    _minWordLength$isSet = true;
+    return this;
+  }
 
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
-    if (_maxDocFreq != null) {
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    
+    if (_maxDocFreq$isSet) {
       builder.field(MAX_DOC_FREQ.getPreferredName(), _maxDocFreq);
     }
-    if (_maxNumTerms != null) {
+    if (_maxNumTerms$isSet) {
       builder.field(MAX_NUM_TERMS.getPreferredName(), _maxNumTerms);
     }
-    if (_maxTermFreq != null) {
+    if (_maxTermFreq$isSet) {
       builder.field(MAX_TERM_FREQ.getPreferredName(), _maxTermFreq);
     }
-    if (_maxWordLength != null) {
+    if (_maxWordLength$isSet) {
       builder.field(MAX_WORD_LENGTH.getPreferredName(), _maxWordLength);
     }
-    if (_minDocFreq != null) {
+    if (_minDocFreq$isSet) {
       builder.field(MIN_DOC_FREQ.getPreferredName(), _minDocFreq);
     }
-    if (_minTermFreq != null) {
+    if (_minTermFreq$isSet) {
       builder.field(MIN_TERM_FREQ.getPreferredName(), _minTermFreq);
     }
-    if (_minWordLength != null) {
+    if (_minWordLength$isSet) {
       builder.field(MIN_WORD_LENGTH.getPreferredName(), _minWordLength);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override

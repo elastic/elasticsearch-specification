@@ -7,58 +7,65 @@ import java.util.List;
 import java.util.HashMap;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
-import org.elasticsearch.Either;
-import org.elasticsearch.XContentable;
-import org.elasticsearch.NamedContainer;
+import org.elasticsearch.*;
 import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.xcontent.*;
 import org.elasticsearch.internal.*;
 import org.elasticsearch.common.*;
 import org.elasticsearch.search.search.*;
+import org.elasticsearch.common_abstractions.request.*;
 
-public class MultiSearchRequest  implements XContentable<MultiSearchRequest> {
+public class MultiSearchRequest extends RequestBase<MultiSearchRequest> implements XContentable<MultiSearchRequest> {
   
   static final ParseField CCS_MINIMIZE_ROUNDTRIPS = new ParseField("ccs_minimize_roundtrips");
   private Boolean _ccsMinimizeRoundtrips;
   public Boolean getCcsMinimizeRoundtrips() { return this._ccsMinimizeRoundtrips; }
   public MultiSearchRequest setCcsMinimizeRoundtrips(Boolean val) { this._ccsMinimizeRoundtrips = val; return this; }
 
-
   static final ParseField MAX_CONCURRENT_SEARCHES = new ParseField("max_concurrent_searches");
-  private Long _maxConcurrentSearches;
-  public Long getMaxConcurrentSearches() { return this._maxConcurrentSearches; }
-  public MultiSearchRequest setMaxConcurrentSearches(Long val) { this._maxConcurrentSearches = val; return this; }
-
+  private long _maxConcurrentSearches;
+  private boolean _maxConcurrentSearches$isSet;
+  public long getMaxConcurrentSearches() { return this._maxConcurrentSearches; }
+  public MultiSearchRequest setMaxConcurrentSearches(long val) {
+    this._maxConcurrentSearches = val;
+    _maxConcurrentSearches$isSet = true;
+    return this;
+  }
 
   static final ParseField MAX_CONCURRENT_SHARD_REQUESTS = new ParseField("max_concurrent_shard_requests");
-  private Long _maxConcurrentShardRequests;
-  public Long getMaxConcurrentShardRequests() { return this._maxConcurrentShardRequests; }
-  public MultiSearchRequest setMaxConcurrentShardRequests(Long val) { this._maxConcurrentShardRequests = val; return this; }
-
+  private long _maxConcurrentShardRequests;
+  private boolean _maxConcurrentShardRequests$isSet;
+  public long getMaxConcurrentShardRequests() { return this._maxConcurrentShardRequests; }
+  public MultiSearchRequest setMaxConcurrentShardRequests(long val) {
+    this._maxConcurrentShardRequests = val;
+    _maxConcurrentShardRequests$isSet = true;
+    return this;
+  }
 
   static final ParseField PRE_FILTER_SHARD_SIZE = new ParseField("pre_filter_shard_size");
-  private Long _preFilterShardSize;
-  public Long getPreFilterShardSize() { return this._preFilterShardSize; }
-  public MultiSearchRequest setPreFilterShardSize(Long val) { this._preFilterShardSize = val; return this; }
-
+  private long _preFilterShardSize;
+  private boolean _preFilterShardSize$isSet;
+  public long getPreFilterShardSize() { return this._preFilterShardSize; }
+  public MultiSearchRequest setPreFilterShardSize(long val) {
+    this._preFilterShardSize = val;
+    _preFilterShardSize$isSet = true;
+    return this;
+  }
 
   static final ParseField SEARCH_TYPE = new ParseField("search_type");
   private SearchType _searchType;
   public SearchType getSearchType() { return this._searchType; }
   public MultiSearchRequest setSearchType(SearchType val) { this._searchType = val; return this; }
 
-
   static final ParseField TOTAL_HITS_AS_INTEGER = new ParseField("total_hits_as_integer");
   private Boolean _totalHitsAsInteger;
   public Boolean getTotalHitsAsInteger() { return this._totalHitsAsInteger; }
   public MultiSearchRequest setTotalHitsAsInteger(Boolean val) { this._totalHitsAsInteger = val; return this; }
 
-
   static final ParseField TYPED_KEYS = new ParseField("typed_keys");
   private Boolean _typedKeys;
   public Boolean getTypedKeys() { return this._typedKeys; }
   public MultiSearchRequest setTypedKeys(Boolean val) { this._typedKeys = val; return this; }
-
 
   static final ParseField OPERATIONS = new ParseField("operations");
   private NamedContainer<String, SearchRequest> _operations;
@@ -68,18 +75,18 @@ public class MultiSearchRequest  implements XContentable<MultiSearchRequest> {
 
   
   @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    builder.startObject();
+  public void toXContentInternal(XContentBuilder builder, ToXContent.Params params) throws IOException {
+    super.toXContentInternal(builder, params);
     if (_ccsMinimizeRoundtrips != null) {
       builder.field(CCS_MINIMIZE_ROUNDTRIPS.getPreferredName(), _ccsMinimizeRoundtrips);
     }
-    if (_maxConcurrentSearches != null) {
+    if (_maxConcurrentSearches$isSet) {
       builder.field(MAX_CONCURRENT_SEARCHES.getPreferredName(), _maxConcurrentSearches);
     }
-    if (_maxConcurrentShardRequests != null) {
+    if (_maxConcurrentShardRequests$isSet) {
       builder.field(MAX_CONCURRENT_SHARD_REQUESTS.getPreferredName(), _maxConcurrentShardRequests);
     }
-    if (_preFilterShardSize != null) {
+    if (_preFilterShardSize$isSet) {
       builder.field(PRE_FILTER_SHARD_SIZE.getPreferredName(), _preFilterShardSize);
     }
     if (_searchType != null) {
@@ -96,8 +103,6 @@ public class MultiSearchRequest  implements XContentable<MultiSearchRequest> {
       builder.field(OPERATIONS.getPreferredName());
       _operations.toXContent(builder, params);
     }
-    builder.endObject();
-    return builder;
   }
 
   @Override
