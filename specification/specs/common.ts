@@ -52,7 +52,7 @@ type ScrollIds = string
 type CategoryId = string
 type ActionIds = string
 type Field = string
-/** Wildcard (*) pattern or array of patterns containing source fields to return */
+/** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
 type Fields = Field | Field[]
 type Id = string | number
 type Ids = string | number | string[]
