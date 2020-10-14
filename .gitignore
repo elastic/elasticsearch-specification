@@ -44,3 +44,6 @@ java-generator/*.js
 package-lock.json
 specification/**/*.js
 specification/lib
+
+typescript-generator/elasticsearch
+typescript-generator/elasticsearch.tar.gz
