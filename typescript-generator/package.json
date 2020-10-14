@@ -8,7 +8,8 @@
     "lint:fix": "standardx --fix **/*.ts",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% index.js",
     "compile": "tsc",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "client": "ts-node create-client.ts"
   },
   "author": "Elastic",
   "license": "MIT",
@@ -23,8 +24,11 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
+    "gunzip-maybe": "^1.4.2",
+    "json-stable-stringify": "^1.0.1",
     "lodash": "^4.17.15",
-    "json-stable-stringify": "^1.0.1"
+    "simple-get": "^4.0.0",
+    "tar": "^6.0.5"
   },
   "eslintConfig": {
     "rules": {
