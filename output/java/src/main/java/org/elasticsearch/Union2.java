@@ -1,5 +1,6 @@
 package org.elasticsearch;
 
+import org.elasticsearch.common.xcontent.ContextParser;
 import org.elasticsearch.common.xcontent.ToXContent;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentParseException;
@@ -7,27 +8,28 @@ import org.elasticsearch.common.xcontent.XContentParser;
 
 import java.io.IOException;
 
-public class Union2<A, B> implements XContentable<Union2<A, B>> {
+public class Union2<A, B> {
 
-  public static enum Tag{A, B};
+  public enum Tag{A, B};
 
-  private Tag tag;
-  private Object value;
+  private final Tag tag;
+  private final Object value;
 
-  @SuppressWarnings("unchecked")
-  public static <A> Union2<A, ?> fromA(A value) {
-    return (Union2<A, ?>)build(Tag.A, value);
+  private Union2(Tag tag, Object value) {
+    this.tag = tag;
+    this.value = value;
   }
 
-  @SuppressWarnings("unchecked")
-  public static <B> Union2<?, B> fromB(B value) {
-    return (Union2<?, B>)build(Tag.B, value);
+  public static <A, B> Union2<A, B> ofA(A value) {
+    return build(Tag.A, value);
   }
 
-  private static Union2<?, ?> build(Tag tag, Object v) {
-    Union2<?, ?> result = new Union2<>();
-    result.tag = tag;
-    result.value = v;
+  public static <A, B> Union2<A, B> ofB(B value) {
+    return build(Tag.B, value);
+  }
+
+  private static <A, B> Union2<A, B> build(Tag tag, Object v) {
+    Union2<A, B> result = new Union2<>(tag, v);
     return result;
   }
 
@@ -35,35 +37,49 @@ public class Union2<A, B> implements XContentable<Union2<A, B>> {
     return tag;
   }
 
-  @SuppressWarnings("unchecked")
   public A a() {
-    checkVariant(Tag.A);
-    return (A)value;
+    return getVariant(Tag.A);
+  }
+
+  public B b() {
+    return getVariant(Tag.B);
   }
 
   @SuppressWarnings("unchecked")
-  public B b() {
-    checkVariant(Tag.B);
-    return (B)value;
-  }
-
-  @Override
-  public Union2<A, B> fromXContent(XContentParser parser) throws IOException, XContentParseException {
-    // TODO: need parsers for each variant at the type definition site. We'll then try them in order until one succeeds
-    return null;
-  }
-
-  @Override
-  public XContentBuilder toXContent(XContentBuilder builder, ToXContent.Params params) throws IOException {
-    if (value instanceof XContentable) {
-      ((XContentable<?>) value).toXContent(builder, params);
-    } else {
-      builder.value(value);
-    }
-    return builder;
-  }
-
-  private void checkVariant(Tag tag) {
+  private <T> T getVariant(Tag tag) {
     if (this.tag != tag) throw new IllegalStateException("Union holds variant " + tag);
+    return (T) value;
+  }
+
+  //-----------------------------------------------------------------------------------------------
+  // Serialization / deserialization
+
+  public void toXContent(
+    XContentBuilder builder, ToXContent.Params params,
+    TriConsumerIO<A, XContentBuilder, ToXContent.Params> a,
+    TriConsumerIO<B, XContentBuilder, ToXContent.Params> b
+  ) throws IOException {
+    switch (this.tag) {
+      case A:
+        a.accept(this.a(), builder, params);
+      case B:
+        b.accept(this.b(), builder, params);
+    }
+  }
+
+  public static <A, B, Context> ContextParser<Context, Union2<A, B>> parser(
+    XContentParser.Token tokenA, ContextParser<Context, A> parserA,
+    XContentParser.Token tokenB, ContextParser<Context, B> parserB
+  ) {
+    return (p, c) -> {
+      XContentParser.Token t = p.currentToken();
+      if (t == tokenA) {
+        return Union2.ofA(parserA.parse(p, c));
+      } else if (t == tokenB) {
+        return Union2.ofB(parserB.parse(p, c));
+      } else {
+        throw new XContentParseException(p.getTokenLocation(), "Unexpected token '" + t + "'");
+      }
+    };
   }
 }

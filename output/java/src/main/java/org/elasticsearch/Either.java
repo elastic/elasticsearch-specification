@@ -6,8 +6,6 @@ import org.elasticsearch.common.xcontent.ToXContent;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentParseException;
 import org.elasticsearch.common.xcontent.XContentParser;
-import org.elasticsearch.mapping.meta_fields.source.SourceField;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -19,7 +17,7 @@ public class Either<A extends XContentable<A>, B extends XContentable<B>> implem
 
   public <C, E extends Exception> C map(CheckedFunction<? super A, ? extends C, E> left,
                                         CheckedFunction<? super B, ? extends C, E> right) throws E {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
 
   public static <A extends XContentable<A>, B extends XContentable<B>> Either<A, B> left(A value) {
