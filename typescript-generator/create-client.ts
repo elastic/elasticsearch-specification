@@ -32,6 +32,13 @@ let typeDefinitions = `/*
  */
 
 import T from './types'
+import {
+  TransportRequestPromise,
+  TransportRequestCallback,
+  TransportRequestOptions,
+  ApiError,
+  ApiResponse
+} from '../lib/Transport'
 
 /**
   * We are still working on this type, it will arrive soon.
@@ -40,7 +47,93 @@ import T from './types'
   */
 type TODO = Record<string, any>
 
+declare type callbackFn<TResponse, TContext> = (err: ApiError, result: ApiResponse<TResponse, TContext>) => void;
+
 declare class ESAPI {\n`
+
+if (process.env.KIBANA) {
+  typeDefinitions = `/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/// <reference types="node" />
+
+import {
+  ClientOptions,
+  ConnectionPool,
+  Serializer,
+  Transport,
+  errors,
+  RequestEvent,
+  ResurrectEvent,
+  ApiError
+} from '../index'
+import Helpers from '../lib/Helpers'
+import {
+  ApiResponse,
+  TransportRequestPromise,
+  TransportRequestParams,
+  TransportRequestOptions
+} from '../lib/Transport'
+import T from './types'
+
+/**
+  * We are still working on this type, it will arrive soon.
+  * If it's critical for you, please open an issue.
+  * https://github.com/elastic/elasticsearch-js
+  */
+type TODO = Record<string, any>
+
+// Extend API
+interface ClientExtendsCallbackOptions {
+  ConfigurationError: errors.ConfigurationError,
+  makeRequest(params: TransportRequestParams, options?: TransportRequestOptions): Promise<void> | void;
+  result: {
+    body: null,
+    statusCode: null,
+    headers: null,
+    warnings: null
+  }
+}
+declare type extendsCallback = (options: ClientExtendsCallbackOptions) => any;
+// /Extend API
+
+interface KibanaClient {
+  connectionPool: ConnectionPool
+  transport: Transport
+  serializer: Serializer
+  extend(method: string, fn: extendsCallback): void
+  extend(method: string, opts: { force: boolean }, fn: extendsCallback): void;
+  helpers: Helpers
+  child(opts?: ClientOptions): KibanaClient
+  close(): Promise<void>;
+  emit(event: string | symbol, ...args: any[]): boolean;
+  on(event: 'request', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  on(event: 'response', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  on(event: 'sniff', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  on(event: 'resurrect', listener: (err: null, meta: ResurrectEvent) => void): this;
+  once(event: 'request', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  once(event: 'response', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  once(event: 'sniff', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  once(event: 'resurrect', listener: (err: null, meta: ResurrectEvent) => void): this;
+  off(event: string | symbol, listener: (...args: any[]) => void): this;
+`
+}
 
 class MissingEndpoint {
   name: string
@@ -116,7 +209,11 @@ function createFromEndpoints (endpoints: Array<Domain.Endpoint | MissingEndpoint
     typeDefinitions += '  }\n'
   }
   typeDefinitions += '}\n'
-  typeDefinitions += '\nexport default ESAPI\n'
+  if (process.env.KIBANA) {
+    typeDefinitions += '\nexport { KibanaClient }\n'
+  } else {
+    typeDefinitions += '\nexport default ESAPI\n'
+  }
   fs.writeFileSync(
     path.join(__dirname, '..', 'output', 'typescript', 'client.ts'),
     typeDefinitions,
@@ -173,9 +270,23 @@ function generateDefinition (endpoint: Domain.Endpoint | MissingEndpoint): strin
     responseDefinition = 'TODO'
   }
 
-  return `${camelify(name)}<${responseInitialGenerics}${requestInitialGenerics}TContext = unknown>(params?: ${requestDefinition}, options?: any): Promise<${responseDefinition}>`
-}
+  let definition = `${camelify(name)}<${responseInitialGenerics}${requestInitialGenerics}TContext = unknown>(params?: ${requestDefinition}, options?: TransportRequestOptions): TransportRequestPromise<ApiResponse<${responseDefinition}, TContext>>`
 
+  if (process.env.KIBANA) {
+    return definition
+  }
+
+  definition += '\n'
+  definition += `${isNested(endpoint.name) ? '    ' : '  '}${camelify(name)}<${responseInitialGenerics}${requestInitialGenerics}TContext = unknown>(callback: callbackFn<${responseDefinition}, TContext>): TransportRequestCallback`
+
+  definition += '\n'
+  definition += `${isNested(endpoint.name) ? '    ' : '  '}${camelify(name)}<${responseInitialGenerics}${requestInitialGenerics}TContext = unknown>(params: ${requestDefinition}, callback: callbackFn<${responseDefinition}, TContext>): TransportRequestCallback`
+
+  definition += '\n'
+  definition += `${isNested(endpoint.name) ? '    ' : '  '}${camelify(name)}<${responseInitialGenerics}${requestInitialGenerics}TContext = unknown>(params: ${requestDefinition}, options: TransportRequestOptions, callback: callbackFn<${responseDefinition}, TContext>): TransportRequestCallback`
+
+  return definition
+}
 
 function getNamespace (endpoint: Domain.Endpoint | MissingEndpoint): string {
   return isNested(endpoint.name)
