@@ -16,4 +16,5 @@ dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.12'
   compile 'org.elasticsearch.client:elasticsearch-rest-client:7.6.0'
   compile 'org.elasticsearch:elasticsearch-x-content:7.6.0'
+  compile group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
 }
