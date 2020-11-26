@@ -1,5 +1,4 @@
-enum Refresh {
-  true = 0,
-  false = 1,
-  wait_for = 2
+type Refresh = boolean | RefreshOptions
+enum RefreshOptions {
+  wait_for = 1
 }
