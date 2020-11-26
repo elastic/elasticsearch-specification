@@ -273,10 +273,8 @@ export function loadModel(spec: Specification): Model {
     }
 
     else if (inst instanceof Domain.UserDefinedValue) {
-      // Translated to "object" (or any?)
       return {
-        _kind: "instance",
-        type: objectType
+        _kind: "user_defined"
       };
     }
 

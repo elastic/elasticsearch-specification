@@ -25,7 +25,7 @@ export class TypeName {
 /**
  * Type of a value. Used both for property types and nested type definitions.
  */
-export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValueOf
+export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValueOf | UserDefinedValue;
 
 /**
  * A single value
@@ -69,6 +69,20 @@ export class DictionaryOf {
 export class NamedValueOf {
   _kind: "named_value";
   value: ValueOf;
+}
+
+/**
+ * A user defined value. To be used when bubbling a generic parameter up to the top-level class is
+ * inconvenient or impossible (e.g. for lists of user-defined values of possibly different types).
+ *
+ * Clients will allow providing a serializer/deserializer when reading/writing properties of this type,
+ * and should also accept raw json.
+ *
+ * Think twice before using this as it defeats the purpose of a strongly typed API, and deserialization
+ * will also require to buffer raw JSON data which may have performance implications.
+ */
+export class UserDefinedValue {
+  _kind: "user_defined";
 }
 
 // ------------------------------------------------------------------------------------------------
