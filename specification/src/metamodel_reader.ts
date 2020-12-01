@@ -6,7 +6,7 @@ import {
   ValueOf,
   Model,
   Property,
-  RequestInterface,
+  Request,
   Stability,
   TypeDefinition,
   TypeName,
@@ -60,7 +60,7 @@ export function loadModel(spec: Specification): Model {
     }
 
     // Move endpoint docs to the request definition
-    const request = makeTypeDefinition(api.typeMapping.request) as RequestInterface;
+    const request = makeTypeDefinition(api.typeMapping.request) as Request;
     if (!request.description || request.description.length === 0) {
       request.description = nonEmpty(api.body && api.body.description);
     }
@@ -177,12 +177,12 @@ export function loadModel(spec: Specification): Model {
     else if (specType instanceof Domain.StringAlias) {
       // It's just an alias to the internal string type
       return store({
-        kind: "alias",
+        kind: "type_alias",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
         type: {
-          kind: "instance",
+          kind: "instance_of",
           type: { namespace: "internal", name: "string" }
         }
       });
@@ -191,12 +191,12 @@ export function loadModel(spec: Specification): Model {
     else if (specType instanceof Domain.NumberAlias) {
       // It's just an alias to the internal number type
       return store({
-        kind: "alias",
+        kind: "type_alias",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
         type: {
-          kind: "instance",
+          kind: "instance_of",
           type: { namespace: "internal", name: "number" }
         }
       });
@@ -238,7 +238,7 @@ export function loadModel(spec: Specification): Model {
 
     if (inst instanceof Domain.Type) {
       return {
-        kind: "instance",
+        kind: "instance_of",
         type: makeTypeName(inst.name, openGenerics),
         generics: nonEmptyArr(inst.closedGenerics.map(g => makeInstanceOf(g, openGenerics)))
       };
@@ -246,21 +246,21 @@ export function loadModel(spec: Specification): Model {
 
     else if (inst instanceof Domain.ArrayOf) {
       return {
-        kind: "array",
+        kind: "array_of",
         value: makeInstanceOf(inst.of, openGenerics)
       };
     }
 
     else if (inst instanceof Domain.UnionOf) {
       return {
-        kind: "union",
+        kind: "union_of",
         items: inst.items.map(i => makeInstanceOf(i, openGenerics))
       };
     }
 
     else if (inst instanceof Domain.Dictionary) {
       return {
-        kind: "dictionary",
+        kind: "dictionary_of",
         key: makeInstanceOf(inst.key, openGenerics),
         value: makeInstanceOf(inst.value, openGenerics)
       };
@@ -268,14 +268,14 @@ export function loadModel(spec: Specification): Model {
 
     else if (inst instanceof Domain.SingleKeyDictionary) {
       return {
-        kind: "named_value",
+        kind: "named_value_of",
         value: makeInstanceOf(inst.value, openGenerics)
       };
     }
 
     else if (inst instanceof Domain.UserDefinedValue) {
       return {
-        kind: "user_defined"
+        kind: "user_defined_value"
       };
     }
 

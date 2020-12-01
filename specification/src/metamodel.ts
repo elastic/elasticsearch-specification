@@ -31,7 +31,7 @@ export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValue
  * A single value
  */
 export class InstanceOf {
-  kind: "instance";
+  kind: "instance_of";
   type: TypeName;
   // generic parameters: either concrete types or open parameters from the enclosing type
   generics?: ValueOf[];
@@ -41,7 +41,7 @@ export class InstanceOf {
  * An array
  */
 export class ArrayOf {
-  kind: "array";
+  kind: "array_of";
   value: ValueOf;
 }
 
@@ -49,7 +49,7 @@ export class ArrayOf {
  * One of several possible types which don't necessarily have a common superclass
  */
 export class UnionOf {
-  kind: "union";
+  kind: "union_of";
   items: ValueOf[];
 }
 
@@ -57,7 +57,7 @@ export class UnionOf {
  * A dictionary (or map)
  */
 export class DictionaryOf {
-  kind: "dictionary";
+  kind: "dictionary_of";
   key: ValueOf;
   value: ValueOf;
 }
@@ -67,7 +67,7 @@ export class DictionaryOf {
  * associate some value to a field name, e.g. the "sort" field in search.
  */
 export class NamedValueOf {
-  kind: "named_value";
+  kind: "named_value_of";
   value: ValueOf;
 }
 
@@ -82,7 +82,7 @@ export class NamedValueOf {
  * will also require to buffer raw JSON data which may have performance implications.
  */
 export class UserDefinedValue {
-  kind: "user_defined";
+  kind: "user_defined_value";
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ export class Property {
 // ------------------------------------------------------------------------------------------------
 // Type definitions
 
-export type TypeDefinition = Interface | RequestInterface | Union | Enum | TypeAlias;
+export type TypeDefinition = Interface | Request | Union | Enum | TypeAlias;
 
 /**
  * Common attributes for all type definitions
@@ -133,7 +133,7 @@ export class Interface extends BaseType {
 /**
  * A request type
  */
-export class RequestInterface extends BaseType {
+export class Request extends BaseType {
   // Note: does not extend Interface as properties are split across path, query and body
   kind: "request";
   generics?: string[];
@@ -190,7 +190,7 @@ export class Enum extends BaseType {
  * An alias for an existing type.
  */
 export class TypeAlias extends BaseType {
-  kind: "alias";
+  kind: "type_alias";
   type: ValueOf
 }
 
