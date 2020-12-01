@@ -56,8 +56,6 @@ type ScrollIds = string
 type CategoryId = string
 type ActionIds = string
 type Field = string
-/** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
-type Fields = Field | Field[]
 type Id = string | number
 type Ids = string | number | string[]
 type IndexName = string
@@ -79,5 +77,13 @@ type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number
 type GeoHashPrecision = number
+/** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
+type Fields = Field | Field[]
+
+/** A reference to a date field with formatting instructions on how to return the date */
+class DateField {
+  field: Field;
+  format: string;
+}
 
 class UserDefinedValue {}

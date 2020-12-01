@@ -5,7 +5,9 @@ class QueryContainer {
   common: SingleKeyDictionary<Union<CommonTermsQuery, string>>;
   constant_score: ConstantScoreQuery;
   dis_max: DisMaxQuery;
-  distance_feature: SingleKeyDictionary<Union<DistanceFeatureQuery, string>>;
+  // TODO: can be both { __field__ : { options } } and { field: "" ...options }
+  // very lenient parser on the server, never documented as such but used in yamltests as such
+  distance_feature: SingleKeyDictionary<Union<DistanceFeatureQuery, string>> | DistanceFeatureQuery;
   exists: ExistsQuery;
   function_score: FunctionScoreQuery;
   fuzzy: SingleKeyDictionary<Union<FuzzyQuery, string>>;

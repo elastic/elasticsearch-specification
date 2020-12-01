@@ -79,8 +79,6 @@ declare namespace T {
 
   export type Field = string
 
-  export type Fields = Field | Field[]
-
   export type Id = string | number
 
   export type Ids = string | number | string[]
@@ -122,6 +120,13 @@ declare namespace T {
   export type GeoTilePrecision = number
 
   export type GeoHashPrecision = number
+
+  export type Fields = Field | Field[]
+
+  export interface DateField {
+    field?: Field
+    format?: string
+  }
 
   export interface Aggregate {
     meta?: Record<string, object>
@@ -241,6 +246,7 @@ declare namespace T {
   export interface DateHistogramAggregation {
     calendar_interval?: DateInterval | Time
     extended_bounds?: ExtendedBounds<DateMath>
+    hard_bounds?: ExtendedBounds<DateMath>
     field?: Field
     fixed_interval?: DateInterval | Time
     format?: string
@@ -307,6 +313,7 @@ declare namespace T {
 
   export interface HistogramAggregation {
     extended_bounds?: ExtendedBounds<double>
+    hard_bounds?: ExtendedBounds<double>
     field?: Field
     interval?: double
     min_doc_count?: integer
@@ -6645,7 +6652,7 @@ declare namespace T {
     common?: Record<string, CommonTermsQuery | string>
     constant_score?: ConstantScoreQuery
     dis_max?: DisMaxQuery
-    distance_feature?: Record<string, DistanceFeatureQuery | string>
+    distance_feature?: Record<string, DistanceFeatureQuery | string> | DistanceFeatureQuery
     exists?: ExistsQuery
     function_score?: FunctionScoreQuery
     fuzzy?: Record<string, FuzzyQuery | string>
@@ -7094,8 +7101,9 @@ declare namespace T {
   }
 
   export interface DistanceFeatureQuery extends QueryBase {
-    origin?: GeoCoordinate | DateMath
+    origin?: Array<number> | GeoCoordinate | DateMath
     pivot?: Distance | Time
+    field?: Field
   }
 
   export interface MoreLikeThisQuery extends QueryBase {
@@ -7195,6 +7203,8 @@ declare namespace T {
     lte?: double | DateMath
     relation?: RangeRelation
     time_zone?: string
+    from?: double | DateMath
+    to?: double | DateMath
   }
 
   export interface RegexpQuery extends QueryBase {
@@ -7482,8 +7492,9 @@ declare namespace T {
       search_after?: Array<integer | string>
       size?: integer
       slice?: SlicedScroll
-      sort?: Record<string, Sort | SortOrder>[]
+      sort?: Array<Field | Record<string, Sort | SortOrder>>
       _source?: boolean | Fields | SourceFilter
+      fields?: Array<Field | DateField>
       suggest?: Record<string, SuggestBucket>
       terminate_after?: long
       timeout?: string
@@ -7630,6 +7641,7 @@ declare namespace T {
     name?: string
     script_fields?: Record<string, ScriptField>
     seq_no_primary_term?: boolean
+    fields?: Field[]
     size?: integer
     sort?: Array<Record<string, Sort | SortOrder>>
     _source?: boolean | SourceFilter
