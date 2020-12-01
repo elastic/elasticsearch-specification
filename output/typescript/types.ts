@@ -79,7 +79,7 @@ declare namespace T {
 
   export type Field = string
 
-  export type Fields = string
+  export type Fields = Field | Field[]
 
   export type Id = string | number
 
@@ -1158,7 +1158,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatResponse<TCatRecord> {
     records?: TCatRecord[]
@@ -1176,7 +1176,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatAliasesRequest extends RequestBase {
     name?: Names
@@ -1191,7 +1191,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatAliasesResponse {
     records?: CatAliasesRecord[]
@@ -1211,7 +1211,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatAllocationRequest extends RequestBase {
     node_id?: NodeIds
@@ -1226,7 +1226,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatAllocationResponse {
     records?: CatAllocationRecord[]
@@ -1239,7 +1239,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatCountRequest extends RequestBase {
     index?: Indices
@@ -1253,7 +1253,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatCountResponse {
     records?: CatCountRecord[]
@@ -1279,7 +1279,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatDataFrameAnalyticsRequest extends RequestBase {
     id?: Id
@@ -1293,7 +1293,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatDataFrameAnalyticsResponse {
     records?: CatDataFrameAnalyticsRecord[]
@@ -1315,7 +1315,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatDatafeedsRequest extends RequestBase {
     datafeed_id?: Id
@@ -1328,7 +1328,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatDatafeedsResponse {
     records?: CatDatafeedsRecord[]
@@ -1344,7 +1344,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatFielddataRequest extends RequestBase {
     fields?: Fields
@@ -1359,7 +1359,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatFielddataResponse {
     records?: CatFielddataRecord[]
@@ -1381,7 +1381,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatHealthRequest extends RequestBase {
     format?: string
@@ -1395,7 +1395,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatHealthResponse {
     records?: CatHealthRecord[]
@@ -1406,7 +1406,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatHelpRequest extends RequestBase {
     help?: boolean
@@ -1414,7 +1414,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatHelpResponse {
     records?: CatHelpRecord[]
@@ -1435,7 +1435,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatIndicesRequest extends RequestBase {
     index?: Indices
@@ -1454,7 +1454,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatIndicesResponse {
     records?: CatIndicesRecord[]
@@ -1519,7 +1519,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatJobsRequest extends RequestBase {
     job_id?: Id
@@ -1533,7 +1533,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatJobsResponse {
     records?: CatJobsRecord[]
@@ -1546,7 +1546,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatMasterRequest extends RequestBase {
     format?: string
@@ -1559,7 +1559,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatMasterResponse {
     records?: CatMasterRecord[]
@@ -1577,7 +1577,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatNodeAttributesRequest extends RequestBase {
     format?: string
@@ -1590,7 +1590,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatNodeAttributesResponse {
     records?: CatNodeAttributesRecord[]
@@ -1671,7 +1671,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatNodesRequest extends RequestBase {
     bytes?: Bytes
@@ -1686,7 +1686,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatNodesResponse {
     records?: CatNodesRecord[]
@@ -1700,7 +1700,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatPendingTasksRequest extends RequestBase {
     format?: string
@@ -1713,7 +1713,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatPendingTasksResponse {
     records?: CatPendingTasksRecord[]
@@ -1731,7 +1731,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatPluginsRequest extends RequestBase {
     format?: string
@@ -1744,7 +1744,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatPluginsResponse {
     records?: CatPluginsRecord[]
@@ -1776,7 +1776,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatRecoveryRequest extends RequestBase {
     index?: Indices
@@ -1792,7 +1792,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatRecoveryResponse {
     records?: CatRecoveryRecord[]
@@ -1804,7 +1804,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatRepositoriesRequest extends RequestBase {
     format?: string
@@ -1817,7 +1817,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatRepositoriesResponse {
     records?: CatRepositoriesRecord[]
@@ -1842,7 +1842,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatSegmentsRequest extends RequestBase {
     index?: Indices
@@ -1855,7 +1855,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatSegmentsResponse {
     records?: CatSegmentsRecord[]
@@ -1923,7 +1923,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatShardsRequest extends RequestBase {
     index?: Indices
@@ -1938,7 +1938,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatShardsResponse {
     records?: CatShardsRecord[]
@@ -1959,7 +1959,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatSnapshotsRequest extends RequestBase {
     repository?: Names
@@ -1973,7 +1973,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatSnapshotsResponse {
     records?: CatSnapshotsRecord[]
@@ -1992,7 +1992,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTasksRequest extends RequestBase {
     actions?: string[]
@@ -2007,7 +2007,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTasksResponse {
     records?: CatTasksRecord[]
@@ -2021,7 +2021,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTemplatesRequest extends RequestBase {
     name?: Name
@@ -2035,7 +2035,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTemplatesResponse {
     records?: CatTemplatesRecord[]
@@ -2065,7 +2065,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatThreadPoolRequest extends RequestBase {
     thread_pool_patterns?: Names
@@ -2080,7 +2080,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatThreadPoolResponse {
     records?: CatThreadPoolRecord[]
@@ -2104,7 +2104,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTrainedModelsRequest extends RequestBase {
     model_id?: Id
@@ -2120,7 +2120,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTrainedModelsResponse {
     records?: CatTrainedModelsRecord[]
@@ -2157,7 +2157,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTransformsRequest extends RequestBase {
     transform_id?: Id
@@ -2172,7 +2172,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CatTransformsResponse {
     records?: CatTransformsRecord[]
@@ -2205,7 +2205,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterAllocationExplainRequest extends RequestBase {
     include_disk_info?: boolean
@@ -2218,7 +2218,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterAllocationExplainResponse {
     allocate_explanation?: string
@@ -2272,7 +2272,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterHealthRequest extends RequestBase {
     index?: Indices
@@ -2290,7 +2290,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterHealthResponse {
     active_primary_shards?: integer
@@ -2333,7 +2333,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterPendingTasksRequest extends RequestBase {
     local?: boolean
@@ -2341,7 +2341,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterPendingTasksResponse {
     tasks?: PendingTask[]
@@ -2377,7 +2377,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterRerouteRequest extends RequestBase {
     dry_run?: boolean
@@ -2392,7 +2392,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterRerouteResponse {
     explanations?: ClusterRerouteExplanation[]
@@ -2404,7 +2404,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterGetSettingsRequest extends RequestBase {
     flat_settings?: boolean
@@ -2414,7 +2414,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterGetSettingsResponse {
     persistent?: Record<string, object>
@@ -2422,7 +2422,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterPutSettingsRequest extends RequestBase {
     flat_settings?: boolean
@@ -2435,7 +2435,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterPutSettingsResponse {
     acknowledged?: boolean
@@ -2444,7 +2444,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterStateRequest extends RequestBase {
     metric?: Metrics
@@ -2460,7 +2460,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterStateResponse {
     cluster_name?: string
@@ -2598,7 +2598,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterStatsRequest extends RequestBase {
     node_id?: NodeIds
@@ -2607,7 +2607,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClusterStatsResponse extends NodesResponseBase {
     cluster_name?: string
@@ -2640,7 +2640,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesHotThreadsRequest extends RequestBase {
     node_id?: NodeIds
@@ -2653,7 +2653,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesHotThreadsResponse {
     hot_threads?: HotThreadInformation[]
@@ -2779,7 +2779,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesInfoRequest extends RequestBase {
     node_id?: NodeIds
@@ -2789,7 +2789,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesInfoResponse extends NodesResponseBase {
     cluster_name?: string
@@ -2943,7 +2943,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesStatsRequest extends RequestBase {
     node_id?: NodeIds
@@ -2960,7 +2960,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesStatsResponse extends NodesResponseBase {
     cluster_name?: string
@@ -3044,7 +3044,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesUsageRequest extends RequestBase {
     node_id?: NodeIds
@@ -3053,7 +3053,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface NodesUsageResponse extends NodesResponseBase {
     cluster_name?: string
@@ -3061,19 +3061,19 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PingRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PingResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReloadSecureSettingsRequest extends RequestBase {
     node_id?: NodeIds
@@ -3081,7 +3081,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReloadSecureSettingsResponse extends NodesResponseBase {
     cluster_name?: string
@@ -3098,25 +3098,25 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RemoteInfoRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RemoteInfoResponse extends Record<string, RemoteInfo> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RootNodeInfoRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RootNodeInfoResponse {
     cluster_name?: string
@@ -3127,7 +3127,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CancelTasksRequest extends RequestBase {
     task_id?: TaskId
@@ -3137,7 +3137,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CancelTasksResponse {
     node_failures?: ErrorCause[]
@@ -3145,7 +3145,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTaskRequest extends RequestBase {
     task_id: TaskId
@@ -3154,7 +3154,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTaskResponse {
     completed?: boolean
@@ -3176,7 +3176,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ListTasksRequest extends RequestBase {
     actions?: string[]
@@ -3189,7 +3189,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ListTasksResponse {
     node_failures?: ErrorCause[]
@@ -3247,18 +3247,16 @@ declare namespace T {
     value?: TValue
   }
 
-  export interface SingleKeyDictionary<TValue> {
-    value?: TValue
-  }
-
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ElasticsearchResponse {
   }
 
   export interface ElasticsearchUrlFormatter {
   }
+
+  export type Refresh = boolean | RefreshOptions
 
   export interface ShardFailure {
     index?: string
@@ -3302,7 +3300,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ErrorResponse {
     error?: MainError
@@ -3356,14 +3354,20 @@ declare namespace T {
     to?: double
   }
 
-  export interface InlineScript {
+  export interface ScriptBase {
+    lang?: string
+    params?: Record<string, any>
+  }
+
+  export interface InlineScript extends ScriptBase {
     source?: string
   }
 
-  export interface Script {
-    lang?: string
-    params?: Record<string, object>
+  export interface IndexedScript extends ScriptBase {
+    id?: string
   }
+
+  export type Script = InlineScript | IndexedScript | string
 
   export interface ScriptField {
     script?: Script
@@ -3553,7 +3557,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface BulkRequest<TSource> extends RequestBase {
     index?: IndexName
@@ -3571,7 +3575,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface BulkResponse {
     errors?: boolean
@@ -3642,7 +3646,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteByQueryRequest extends RequestBase {
     index: Indices
@@ -3687,7 +3691,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteByQueryResponse {
     batches?: long
@@ -3707,7 +3711,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteByQueryRethrottleRequest extends RequestBase {
     task_id: TaskId
@@ -3715,7 +3719,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteByQueryRethrottleResponse extends ListTasksResponse {
   }
@@ -3732,7 +3736,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiGetRequest extends RequestBase {
     index?: IndexName
@@ -3764,7 +3768,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiGetResponse {
     hits?: MultiGetHit<object>[]
@@ -3787,7 +3791,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiTermVectorsRequest extends RequestBase {
     index?: IndexName
@@ -3810,7 +3814,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiTermVectorsResponse {
     docs?: TermVectorsResult[]
@@ -3825,7 +3829,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReindexOnServerRequest extends RequestBase {
     refresh?: boolean
@@ -3846,7 +3850,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReindexOnServerResponse {
     batches?: long
@@ -3895,7 +3899,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReindexRethrottleRequest extends RequestBase {
     task_id: TaskId
@@ -3903,7 +3907,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReindexRethrottleResponse {
     nodes?: Record<string, ReindexNode>
@@ -3936,7 +3940,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateByQueryRequest extends RequestBase {
     index: Indices
@@ -3984,7 +3988,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateByQueryResponse {
     batches?: long
@@ -4001,7 +4005,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateByQueryRethrottleRequest extends RequestBase {
     task_id: TaskId
@@ -4021,7 +4025,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface CreateRequest<TDocument> extends RequestBase {
     id: Id
@@ -4038,13 +4042,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface CreateResponse extends WriteResponseBase {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface DeleteRequest extends RequestBase {
     id: Id
@@ -4061,13 +4065,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface DeleteResponse extends WriteResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DocumentExistsRequest extends RequestBase {
     id: Id
@@ -4086,7 +4090,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface GetRequest extends RequestBase {
     id: Id
@@ -4106,7 +4110,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface GetResponse<TDocument> {
     fields?: Record<string, LazyDocument>
@@ -4122,7 +4126,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface IndexRequest<TDocument> extends RequestBase {
     id?: Id
@@ -4142,13 +4146,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface IndexResponse extends WriteResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SourceRequest extends RequestBase {
     id: Id
@@ -4166,14 +4170,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SourceResponse<TDocument> {
     body?: TDocument
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SourceExistsRequest extends RequestBase {
     id: Id
@@ -4220,7 +4224,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface TermVectorsRequest<TDocument> extends RequestBase {
     index: IndexName
@@ -4245,7 +4249,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface TermVectorsResponse {
     found?: boolean
@@ -4274,7 +4278,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     id: Id
@@ -4302,7 +4306,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface UpdateResponse<TDocument> extends WriteResponseBase {
     get?: InlineGet<TDocument>
@@ -4332,7 +4336,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface BulkAliasRequest extends RequestBase {
     master_timeout?: Time
@@ -4343,7 +4347,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface BulkAliasResponse extends AcknowledgedResponseBase {
   }
@@ -4352,7 +4356,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AliasExistsRequest extends RequestBase {
     name: Names
@@ -4364,7 +4368,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteAliasRequest extends RequestBase {
     index: Indices
@@ -4374,13 +4378,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteAliasResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetAliasRequest extends RequestBase {
     name?: Names
@@ -4392,7 +4396,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetAliasResponse extends Record<IndexName, IndexAliases> {
   }
@@ -4402,7 +4406,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutAliasRequest extends RequestBase {
     index: Indices
@@ -4419,7 +4423,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutAliasResponse {
   }
@@ -4432,7 +4436,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AnalyzeRequest extends RequestBase {
     index?: IndexName
@@ -4450,7 +4454,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AnalyzeResponse {
     detail?: AnalyzeDetail
@@ -4489,7 +4493,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CloneIndexRequest extends RequestBase {
     index: IndexName
@@ -4504,7 +4508,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CloneIndexResponse extends AcknowledgedResponseBase {
     index?: string
@@ -4512,7 +4516,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateIndexRequest extends RequestBase {
     index: IndexName
@@ -4528,7 +4532,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateIndexResponse extends AcknowledgedResponseBase {
     index?: string
@@ -4536,7 +4540,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteIndexRequest extends RequestBase {
     index: Indices
@@ -4548,13 +4552,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteIndexResponse extends IndicesResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FreezeIndexRequest extends RequestBase {
     index: IndexName
@@ -4567,14 +4571,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FreezeIndexResponse extends AcknowledgedResponseBase {
     shards_acknowledged?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIndexRequest extends RequestBase {
     index: Indices
@@ -4589,20 +4593,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIndexResponse extends Record<IndexName, IndexState> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExistsResponse {
     exists?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndexExistsRequest extends RequestBase {
     index: Indices
@@ -4615,7 +4619,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CloseIndexRequest extends RequestBase {
     index: Indices
@@ -4628,7 +4632,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CloseIndexResponse extends AcknowledgedResponseBase {
     indices?: Record<string, CloseIndexResult>
@@ -4645,7 +4649,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface OpenIndexRequest extends RequestBase {
     index: Indices
@@ -4658,7 +4662,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface OpenIndexResponse extends AcknowledgedResponseBase {
   }
@@ -4670,7 +4674,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RolloverIndexRequest extends RequestBase {
     alias: Name
@@ -4689,7 +4693,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RolloverIndexResponse extends AcknowledgedResponseBase {
     conditions?: Record<string, boolean>
@@ -4701,7 +4705,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ShrinkIndexRequest extends RequestBase {
     index: IndexName
@@ -4716,14 +4720,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ShrinkIndexResponse extends AcknowledgedResponseBase {
     shards_acknowledged?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SplitIndexRequest extends RequestBase {
     index: IndexName
@@ -4738,14 +4742,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SplitIndexResponse extends AcknowledgedResponseBase {
     shards_acknowledged?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface TypeExistsRequest extends RequestBase {
     index: Indices
@@ -4757,7 +4761,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UnfreezeIndexRequest extends RequestBase {
     index: IndexName
@@ -4770,14 +4774,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UnfreezeIndexResponse extends AcknowledgedResponseBase {
     shards_acknowledged?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIndexSettingsRequest extends RequestBase {
     index?: Indices
@@ -4792,13 +4796,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIndexSettingsResponse extends Record<IndexName, IndexState> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteIndexTemplateRequest extends RequestBase {
     name: Name
@@ -4807,13 +4811,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteIndexTemplateResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIndexTemplateRequest extends RequestBase {
     name?: Names
@@ -4824,7 +4828,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIndexTemplateResponse extends Record<string, TemplateMapping> {
   }
@@ -4839,7 +4843,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndexTemplateExistsRequest extends RequestBase {
     name: Names
@@ -4849,7 +4853,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutIndexTemplateRequest extends RequestBase {
     name: Name
@@ -4869,13 +4873,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutIndexTemplateResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateIndexSettingsRequest extends RequestBase {
     index?: Indices
@@ -4892,13 +4896,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetFieldMappingRequest extends RequestBase {
     fields: Fields
@@ -4913,7 +4917,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetFieldMappingResponse extends Record<IndexName, TypeFieldMappings> {
   }
@@ -4923,7 +4927,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetMappingRequest extends RequestBase {
     index?: Indices
@@ -4937,7 +4941,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetMappingResponse extends Record<IndexName, IndexMappings> {
   }
@@ -4948,7 +4952,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutMappingRequest extends RequestBase {
     index?: Indices
@@ -4977,7 +4981,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutMappingResponse extends IndicesResponseBase {
   }
@@ -5029,7 +5033,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RecoveryStatusRequest extends RequestBase {
     index?: Indices
@@ -5038,7 +5042,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RecoveryStatusResponse extends Record<IndexName, RecoveryStatus> {
   }
@@ -5091,7 +5095,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SegmentsRequest extends RequestBase {
     index?: Indices
@@ -5102,7 +5106,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SegmentsResponse {
     indices?: Record<string, IndexSegment>
@@ -5127,7 +5131,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndicesShardStoresRequest extends RequestBase {
     index?: Indices
@@ -5138,7 +5142,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndicesShardStoresResponse {
     indices?: Record<string, IndicesShardStores>
@@ -5191,7 +5195,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndicesStatsRequest extends RequestBase {
     metric?: Metrics
@@ -5208,7 +5212,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndicesStatsResponse {
     indices?: Record<string, IndicesStats>
@@ -5410,7 +5414,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReloadSearchAnalyzersRequest extends RequestBase {
     index: Indices
@@ -5420,7 +5424,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ReloadSearchAnalyzersResponse {
     reload_details?: ReloadDetails[]
@@ -5428,7 +5432,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearCacheRequest extends RequestBase {
     index?: Indices
@@ -5442,13 +5446,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearCacheResponse extends ShardsOperationResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FlushRequest extends RequestBase {
     index?: Indices
@@ -5460,13 +5464,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FlushResponse extends ShardsOperationResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ForceMergeRequest extends RequestBase {
     index?: Indices
@@ -5479,13 +5483,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ForceMergeResponse extends ShardsOperationResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RefreshRequest extends RequestBase {
     index?: Indices
@@ -5495,13 +5499,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RefreshResponse extends ShardsOperationResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SyncedFlushRequest extends RequestBase {
     index?: Indices
@@ -5511,7 +5515,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SyncedFlushResponse extends ShardsOperationResponseBase {
   }
@@ -5566,7 +5570,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeletePipelineRequest extends RequestBase {
     id: Id
@@ -5575,13 +5579,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeletePipelineResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetPipelineRequest extends RequestBase {
     id?: Id
@@ -5589,19 +5593,19 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetPipelineResponse extends Record<string, Pipeline> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GrokProcessorPatternsRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GrokProcessorPatternsResponse {
     patterns?: Record<string, string>
@@ -5836,7 +5840,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutPipelineRequest extends RequestBase {
     id: Id
@@ -5850,7 +5854,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutPipelineResponse extends AcknowledgedResponseBase {
   }
@@ -5882,7 +5886,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SimulatePipelineRequest extends RequestBase {
     id?: Id
@@ -5894,7 +5898,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SimulatePipelineResponse {
     docs?: PipelineSimulation[]
@@ -6284,7 +6288,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteScriptRequest extends RequestBase {
     id: Id
@@ -6293,13 +6297,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteScriptResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecutePainlessScriptRequest extends RequestBase {
     body?: {
@@ -6310,7 +6314,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecutePainlessScriptResponse<TResult> {
     result?: TResult
@@ -6323,7 +6327,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetScriptRequest extends RequestBase {
     id: Id
@@ -6331,14 +6335,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetScriptResponse {
     script?: StoredScript
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutScriptRequest extends RequestBase {
     id: Id
@@ -6351,7 +6355,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutScriptResponse extends AcknowledgedResponseBase {
   }
@@ -6361,7 +6365,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CleanupRepositoryRequest extends RequestBase {
     repository: Name
@@ -6370,7 +6374,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CleanupRepositoryResponse {
     results?: CleanupRepositoryResults
@@ -6382,7 +6386,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateRepositoryRequest extends RequestBase {
     repository: Name
@@ -6395,13 +6399,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateRepositoryResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRepositoryRequest extends RequestBase {
     repository: Names
@@ -6410,13 +6414,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRepositoryResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRepositoryRequest extends RequestBase {
     repository?: Names
@@ -6425,7 +6429,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRepositoryResponse {
     repositories?: Record<string, SnapshotRepository>
@@ -6436,7 +6440,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface VerifyRepositoryRequest extends RequestBase {
     repository: Name
@@ -6445,14 +6449,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface VerifyRepositoryResponse {
     nodes?: Record<string, CompactNodeInfo>
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RestoreRequest extends RequestBase {
     repository: Name
@@ -6473,7 +6477,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RestoreResponse {
     snapshot?: SnapshotRestore
@@ -6508,7 +6512,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteSnapshotRequest extends RequestBase {
     repository: Name
@@ -6517,13 +6521,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteSnapshotResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotRequest extends RequestBase {
     repository: Name
@@ -6534,14 +6538,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotResponse {
     snapshots?: SnapshotInfo[]
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SnapshotRequest extends RequestBase {
     repository: Name
@@ -6558,7 +6562,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SnapshotResponse {
     accepted?: boolean
@@ -6604,7 +6608,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SnapshotStatusRequest extends RequestBase {
     repository?: Name
@@ -6614,7 +6618,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SnapshotStatusResponse {
     snapshots?: SnapshotStatus[]
@@ -7214,13 +7218,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface TypedSearchRequest {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CountRequest extends RequestBase {
     index?: Indices
@@ -7245,7 +7249,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CountResponse {
     count?: long
@@ -7253,7 +7257,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExplainRequest extends RequestBase {
     id: Id
@@ -7277,7 +7281,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExplainResponse<TDocument> {
     explanation?: ExplanationDetail
@@ -7315,7 +7319,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FieldCapabilitiesRequest extends RequestBase {
     index?: Indices
@@ -7327,14 +7331,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FieldCapabilitiesResponse {
     fields?: Record<Field, Record<string, FieldCapabilities>>
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiSearchRequest extends RequestBase {
     index?: Indices
@@ -7352,14 +7356,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiSearchResponse {
     responses?: SearchResponse<object>[]
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MultiSearchTemplateRequest extends RequestBase {
     index?: Indices
@@ -7375,7 +7379,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearScrollRequest extends RequestBase {
     scroll_id?: ScrollIds
@@ -7385,13 +7389,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearScrollResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ScrollRequest extends RequestBase {
     scroll_id?: ScrollId
@@ -7409,7 +7413,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: STABLE
+   * @type_stability STABLE 
    */
   export interface SearchRequest extends RequestBase {
     index?: Indices
@@ -7470,8 +7474,8 @@ declare namespace T {
       search_after?: Array<integer | string>
       size?: integer
       slice?: SlicedScroll
-      sort?: Array<Record<string, Sort | SortOrder> | string>
-      _source?: boolean | Field | Field[] | SourceFilter
+      sort?: Record<string, Sort | SortOrder>[]
+      _source?: boolean | Fields | SourceFilter
       suggest?: Record<string, SuggestBucket>
       terminate_after?: long
       timeout?: string
@@ -7483,7 +7487,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SearchResponse<TDocument> {
     aggregations?: Record<string, Aggregate>
@@ -7494,6 +7498,7 @@ declare namespace T {
     max_score?: double
     num_reduce_phases?: long
     profile?: Profile
+    pit_id?: string
     _scroll_id?: string
     _shards?: ShardStatistics
     suggest?: SuggestDictionary<TDocument>
@@ -7560,6 +7565,8 @@ declare namespace T {
     highlight?: Record<string, string[]>
     inner_hits?: Record<string, InnerHitsResult>
     matched_queries?: string[]
+    _index?: IndexName
+    _id?: Id
     _nested?: NestedIdentity
     _score?: double
     sort?: object[]
@@ -7705,8 +7712,8 @@ declare namespace T {
   }
 
   export interface SourceFilter {
-    excludes?: Field | Field[]
-    includes?: Field | Field[]
+    excludes?: Fields
+    includes?: Fields
   }
 
   export interface DocValueField {
@@ -7729,7 +7736,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SearchShardsRequest extends RequestBase {
     index?: Indices
@@ -7742,7 +7749,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SearchShardsResponse {
     nodes?: Record<string, SearchNode>
@@ -7750,7 +7757,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SearchTemplateRequest extends RequestBase {
     index?: Indices
@@ -7776,7 +7783,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RenderSearchTemplateRequest extends RequestBase {
     id?: Id
@@ -7788,7 +7795,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RenderSearchTemplateResponse {
     template_output?: LazyDocument
@@ -7947,7 +7954,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ValidateQueryRequest extends RequestBase {
     index?: Indices
@@ -7970,7 +7977,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ValidateQueryResponse {
     explanations?: ValidationExplanation[]
@@ -8014,20 +8021,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AsyncSearchDeleteRequest extends RequestBase {
     id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AsyncSearchGetRequest extends RequestBase {
     id: Id
@@ -8039,13 +8046,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AsyncSearchGetResponse<TDocument> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AsyncSearchSubmitRequest extends RequestBase {
     index?: Indices
@@ -8105,13 +8112,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AsyncSearchSubmitResponse<TDocument> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateAutoFollowPatternRequest extends RequestBase {
     name: Name
@@ -8133,20 +8140,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteAutoFollowPatternRequest extends RequestBase {
     name: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
   }
@@ -8168,47 +8175,47 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetAutoFollowPatternRequest extends RequestBase {
     name?: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetAutoFollowPatternResponse {
     patterns?: Record<string, AutoFollowPattern>
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PauseAutoFollowPatternRequest extends RequestBase {
     name: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ResumeAutoFollowPatternRequest extends RequestBase {
     name: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateFollowIndexRequest extends RequestBase {
     index: IndexName
@@ -8230,7 +8237,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateFollowIndexResponse {
     follow_index_created?: boolean
@@ -8282,14 +8289,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FollowIndexStatsRequest extends RequestBase {
     index: Indices
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FollowIndexStatsResponse {
     indices?: FollowIndexStats[]
@@ -8309,14 +8316,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FollowInfoRequest extends RequestBase {
     index: Indices
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FollowInfoResponse {
     follower_indices?: FollowerInfo[]
@@ -8331,7 +8338,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ForgetFollowerIndexRequest extends RequestBase {
     index: IndexName
@@ -8344,27 +8351,27 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ForgetFollowerIndexResponse {
     _shards?: ShardStatistics
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PauseFollowIndexRequest extends RequestBase {
     index: IndexName
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PauseFollowIndexResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ResumeFollowIndexRequest extends RequestBase {
     index: IndexName
@@ -8383,20 +8390,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ResumeFollowIndexResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UnfollowIndexRequest extends RequestBase {
     index: IndexName
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UnfollowIndexResponse extends AcknowledgedResponseBase {
   }
@@ -8420,13 +8427,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CcrStatsRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CcrStatsResponse {
     auto_follow_stats?: CcrAutoFollowStats
@@ -8454,20 +8461,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteEnrichPolicyRequest extends RequestBase {
     name: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteEnrichPolicyRequest extends RequestBase {
     name: Name
@@ -8475,7 +8482,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteEnrichPolicyResponse {
     status?: ExecuteEnrichPolicyStatus
@@ -8487,21 +8494,21 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetEnrichPolicyRequest extends RequestBase {
     name?: Names
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetEnrichPolicyResponse {
     policies?: NamedPolicyMetadata[]
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutEnrichPolicyRequest extends RequestBase {
     name: Name
@@ -8512,7 +8519,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutEnrichPolicyResponse extends AcknowledgedResponseBase {
   }
@@ -8526,13 +8533,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface EnrichStatsRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface EnrichStatsResponse {
     coordinator_stats?: CoordinatorStats[]
@@ -8545,7 +8552,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GraphExploreRequest extends RequestBase {
     index: Indices
@@ -8561,7 +8568,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GraphExploreResponse {
     connections?: GraphConnection[]
@@ -8637,20 +8644,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteLifecycleRequest extends RequestBase {
     policy: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExplainLifecycleRequest extends RequestBase {
     index: IndexName
@@ -8659,7 +8666,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExplainLifecycleResponse {
     indices?: Record<string, LifecycleExplain>
@@ -8684,14 +8691,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetLifecycleRequest extends RequestBase {
     policy?: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetLifecycleResponse extends Record<string, LifecyclePolicy> {
   }
@@ -8703,20 +8710,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIlmStatusRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetIlmStatusResponse {
     operation_mode?: LifecycleOperationMode
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MoveToStepRequest extends RequestBase {
     index: IndexName
@@ -8727,7 +8734,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MoveToStepResponse extends AcknowledgedResponseBase {
   }
@@ -8739,7 +8746,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutLifecycleRequest extends RequestBase {
     policy: Id
@@ -8749,20 +8756,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutLifecycleResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RemovePolicyRequest extends RequestBase {
     index: IndexName
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RemovePolicyResponse {
     failed_indexes?: string[]
@@ -8770,38 +8777,38 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RetryIlmRequest extends RequestBase {
     index: IndexName
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RetryIlmResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartIlmRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartIlmResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopIlmRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopIlmResponse extends AcknowledgedResponseBase {
   }
@@ -8856,14 +8863,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface XPackInfoRequest extends RequestBase {
     categories?: string[]
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface XPackInfoResponse {
     build?: XPackBuildInformation
@@ -9053,14 +9060,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface XPackUsageRequest extends RequestBase {
     master_timeout?: Time
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface XPackUsageResponse {
     watcher?: AlertingUsage
@@ -9084,32 +9091,32 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteLicenseRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteLicenseResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetBasicLicenseStatusRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetBasicLicenseStatusResponse {
     eligible_to_start_basic?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetLicenseRequest extends RequestBase {
     accept_enterprise?: boolean
@@ -9117,7 +9124,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetLicenseResponse {
     license?: LicenseInformation
@@ -9149,13 +9156,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTrialLicenseStatusRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTrialLicenseStatusResponse {
     eligible_to_start_trial?: boolean
@@ -9167,7 +9174,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PostLicenseRequest extends RequestBase {
     acknowledge?: boolean
@@ -9177,7 +9184,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PostLicenseResponse {
     acknowledge?: LicenseAcknowledgement
@@ -9186,14 +9193,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartBasicLicenseRequest extends RequestBase {
     acknowledge?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
     acknowledge?: Record<string, string[]>
@@ -9202,7 +9209,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartTrialLicenseRequest extends RequestBase {
     acknowledge?: boolean
@@ -9210,7 +9217,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartTrialLicenseResponse extends AcknowledgedResponseBase {
     error_message?: string
@@ -9218,7 +9225,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CloseJobRequest extends RequestBase {
     job_id: Id
@@ -9228,7 +9235,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CloseJobResponse {
     closed?: boolean
@@ -9278,20 +9285,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteCalendarRequest extends RequestBase {
     calendar_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteCalendarResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteCalendarEventRequest extends RequestBase {
     calendar_id: Id
@@ -9299,13 +9306,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteCalendarEventResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteCalendarJobRequest extends RequestBase {
     calendar_id: Id
@@ -9313,7 +9320,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteCalendarJobResponse {
     calendar_id?: string
@@ -9322,7 +9329,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteDatafeedRequest extends RequestBase {
     datafeed_id: Id
@@ -9330,39 +9337,39 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteDatafeedResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteExpiredDataRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteExpiredDataResponse {
     deleted?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteFilterRequest extends RequestBase {
     filter_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteFilterResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteForecastRequest extends RequestBase {
     job_id: Id
@@ -9372,13 +9379,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteForecastResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteJobRequest extends RequestBase {
     job_id: Id
@@ -9387,13 +9394,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteJobResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteModelSnapshotRequest extends RequestBase {
     job_id: Id
@@ -9401,13 +9408,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteModelSnapshotResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface EstimateModelMemoryRequest extends RequestBase {
     body?: {
@@ -9418,14 +9425,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface EstimateModelMemoryResponse {
     model_memory_estimate?: string
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FlushJobRequest extends RequestBase {
     job_id: Id
@@ -9439,14 +9446,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface FlushJobResponse {
     flushed?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ForecastJobRequest extends RequestBase {
     job_id: Id
@@ -9457,14 +9464,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ForecastJobResponse extends AcknowledgedResponseBase {
     forecast_id?: string
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetAnomalyRecordsRequest extends RequestBase {
     job_id: Id
@@ -9480,7 +9487,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetAnomalyRecordsResponse {
     count?: long
@@ -9488,7 +9495,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetBucketsRequest extends RequestBase {
     job_id: Id
@@ -9506,7 +9513,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetBucketsResponse {
     buckets?: Bucket[]
@@ -9514,7 +9521,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCalendarEventsRequest extends RequestBase {
     calendar_id: Id
@@ -9528,7 +9535,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCalendarEventsResponse {
     count?: integer
@@ -9542,7 +9549,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCalendarsRequest extends RequestBase {
     calendar_id?: Id
@@ -9552,7 +9559,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCalendarsResponse {
     calendars?: Calendar[]
@@ -9560,7 +9567,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCategoriesRequest extends RequestBase {
     job_id: Id
@@ -9571,7 +9578,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCategoriesResponse {
     categories?: CategoryDefinition[]
@@ -9579,7 +9586,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetDatafeedStatsRequest extends RequestBase {
     datafeed_id?: Id
@@ -9587,7 +9594,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetDatafeedStatsResponse {
     count?: long
@@ -9595,7 +9602,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetDatafeedsRequest extends RequestBase {
     datafeed_id?: Id
@@ -9603,7 +9610,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetDatafeedsResponse {
     count?: long
@@ -9617,7 +9624,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetFiltersRequest extends RequestBase {
     filter_id?: Id
@@ -9626,7 +9633,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetFiltersResponse {
     count?: long
@@ -9634,7 +9641,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetInfluencersRequest extends RequestBase {
     job_id: Id
@@ -9650,7 +9657,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetInfluencersResponse {
     count?: long
@@ -9658,7 +9665,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetJobStatsRequest extends RequestBase {
     job_id?: Id
@@ -9666,7 +9673,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetJobStatsResponse {
     count?: long
@@ -9674,7 +9681,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetJobsRequest extends RequestBase {
     job_id?: Id
@@ -9682,7 +9689,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetJobsResponse {
     count?: long
@@ -9690,7 +9697,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetModelSnapshotsRequest extends RequestBase {
     job_id: Id
@@ -9705,7 +9712,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetModelSnapshotsResponse {
     count?: long
@@ -9713,7 +9720,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetOverallBucketsRequest extends RequestBase {
     job_id: Id
@@ -9729,7 +9736,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetOverallBucketsResponse {
     count?: long
@@ -10007,13 +10014,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MachineLearningInfoRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface MachineLearningInfoResponse {
     defaults?: Defaults
@@ -10022,7 +10029,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface OpenJobRequest extends RequestBase {
     job_id: Id
@@ -10032,14 +10039,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface OpenJobResponse {
     opened?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PostCalendarEventsRequest extends RequestBase {
     calendar_id: Id
@@ -10049,7 +10056,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PostCalendarEventsResponse {
     events?: ScheduledEvent[]
@@ -10064,7 +10071,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PostJobDataRequest extends RequestBase {
     job_id: Id
@@ -10076,7 +10083,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PostJobDataResponse {
     bucket_count?: long
@@ -10097,21 +10104,21 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PreviewDatafeedRequest extends RequestBase {
     datafeed_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PreviewDatafeedResponse<TDocument> {
     data?: TDocument[]
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutCalendarRequest extends RequestBase {
     calendar_id: Id
@@ -10121,7 +10128,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutCalendarResponse {
     calendar_id?: string
@@ -10130,7 +10137,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutCalendarJobRequest extends RequestBase {
     calendar_id: Id
@@ -10138,7 +10145,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutCalendarJobResponse {
     calendar_id?: string
@@ -10147,7 +10154,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutDatafeedRequest extends RequestBase {
     datafeed_id: Id
@@ -10170,7 +10177,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutDatafeedResponse {
     aggregations?: Record<string, AggregationContainer>
@@ -10187,7 +10194,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutFilterRequest extends RequestBase {
     filter_id: Id
@@ -10198,7 +10205,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutFilterResponse {
     description?: string
@@ -10207,7 +10214,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutJobRequest extends RequestBase {
     job_id: Id
@@ -10224,7 +10231,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutJobResponse {
     allow_lazy_open?: boolean
@@ -10245,7 +10252,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RevertModelSnapshotRequest extends RequestBase {
     job_id: Id
@@ -10256,14 +10263,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RevertModelSnapshotResponse {
     model?: ModelSnapshot
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SetUpgradeModeRequest extends RequestBase {
     enabled?: boolean
@@ -10271,13 +10278,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SetUpgradeModeResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartDatafeedRequest extends RequestBase {
     datafeed_id: Id
@@ -10289,14 +10296,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartDatafeedResponse {
     started?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopDatafeedRequest extends RequestBase {
     datafeed_id: Id
@@ -10308,14 +10315,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopDatafeedResponse {
     stopped?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateDatafeedRequest extends RequestBase {
     datafeed_id: Id
@@ -10338,7 +10345,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateDatafeedResponse {
     aggregations?: Record<string, AggregationContainer>
@@ -10355,7 +10362,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateFilterRequest extends RequestBase {
     filter_id: Id
@@ -10367,7 +10374,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateFilterResponse {
     description?: string
@@ -10376,7 +10383,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateJobRequest extends RequestBase {
     job_id: Id
@@ -10394,13 +10401,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateJobResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateModelSnapshotRequest extends RequestBase {
     job_id: Id
@@ -10412,14 +10419,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
     model?: ModelSnapshot
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ValidateDetectorRequest extends RequestBase {
     body?: {
@@ -10428,13 +10435,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ValidateDetectorResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ValidateJobRequest extends RequestBase {
     body?: {
@@ -10449,7 +10456,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ValidateJobResponse extends AcknowledgedResponseBase {
   }
@@ -10462,14 +10469,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeprecationInfoRequest extends RequestBase {
     index?: IndexName
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeprecationInfoResponse {
     cluster_settings?: DeprecationInfo[]
@@ -10478,7 +10485,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateRollupJobRequest extends RequestBase {
     id: Id
@@ -10493,33 +10500,33 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateRollupJobResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRollupJobRequest extends RequestBase {
     id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRollupJobResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRollupCapabilitiesRequest extends RequestBase {
     id?: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRollupCapabilitiesResponse extends Record<IndexName, RollupCapabilities> {
   }
@@ -10536,14 +10543,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRollupIndexCapabilitiesRequest extends RequestBase {
     index: IndexName
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRollupIndexCapabilitiesResponse extends Record<IndexName, RollupIndexCapabilities> {
   }
@@ -10560,14 +10567,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRollupJobRequest extends RequestBase {
     id?: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRollupJobResponse {
     jobs?: RollupJobInformation[]
@@ -10638,7 +10645,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RollupSearchRequest extends RequestBase {
     index: Indices
@@ -10653,27 +10660,27 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RollupSearchResponse<TDocument> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartRollupJobRequest extends RequestBase {
     id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartRollupJobResponse {
     started?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopRollupJobRequest extends RequestBase {
     id: Id
@@ -10682,7 +10689,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopRollupJobResponse {
     stopped?: boolean
@@ -10703,7 +10710,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateApiKeyRequest extends RequestBase {
     refresh?: Refresh
@@ -10715,7 +10722,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface CreateApiKeyResponse {
     api_key?: string
@@ -10735,7 +10742,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetApiKeyRequest extends RequestBase {
     id?: string
@@ -10746,14 +10753,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetApiKeyResponse {
     api_keys?: ApiKeys[]
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface InvalidateApiKeyRequest extends RequestBase {
     body?: {
@@ -10766,7 +10773,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface InvalidateApiKeyResponse {
     error_count?: integer
@@ -10776,13 +10783,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AuthenticateRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AuthenticateResponse {
     authentication_realm?: RealmInfo
@@ -10800,7 +10807,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearCachedRealmsRequest extends RequestBase {
     realms: Names
@@ -10808,7 +10815,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearCachedRealmsResponse {
     cluster_name?: string
@@ -10816,7 +10823,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeletePrivilegesRequest extends RequestBase {
     application: Name
@@ -10825,7 +10832,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeletePrivilegesResponse extends Record<string, Record<string, FoundUserPrivilege>> {
   }
@@ -10835,13 +10842,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetBuiltinPrivilegesRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetBuiltinPrivilegesResponse {
     cluster?: string[]
@@ -10849,7 +10856,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetPrivilegesRequest extends RequestBase {
     application?: Name
@@ -10857,7 +10864,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetPrivilegesResponse extends Record<string, Record<string, PrivilegesActions>> {
   }
@@ -10878,13 +10885,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetUserPrivilegesRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetUserPrivilegesResponse {
     applications?: ApplicationResourcePrivileges[]
@@ -10924,7 +10931,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface HasPrivilegesRequest extends RequestBase {
     user?: Name
@@ -10936,7 +10943,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface HasPrivilegesResponse {
     application?: Record<string, ResourcePrivileges[]>
@@ -10962,7 +10969,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutPrivilegesRequest extends RequestBase {
     refresh?: Refresh
@@ -10972,7 +10979,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutPrivilegesResponse extends Record<string, Record<string, PutPrivilegesStatus>> {
   }
@@ -10987,14 +10994,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearCachedRolesRequest extends RequestBase {
     name: Names
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearCachedRolesResponse {
     cluster_name?: string
@@ -11002,7 +11009,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRoleRequest extends RequestBase {
     name: Name
@@ -11010,21 +11017,21 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRoleResponse {
     found?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRoleRequest extends RequestBase {
     name?: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRoleResponse extends Record<string, XPackRole> {
   }
@@ -11050,7 +11057,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutRoleRequest extends RequestBase {
     name: Name
@@ -11066,7 +11073,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutRoleResponse {
     role?: PutRoleStatus
@@ -11077,7 +11084,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRoleMappingRequest extends RequestBase {
     name: Name
@@ -11085,21 +11092,21 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteRoleMappingResponse {
     found?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRoleMappingRequest extends RequestBase {
     name?: Name
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetRoleMappingResponse extends Record<string, XPackRoleMapping> {
   }
@@ -11112,7 +11119,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutRoleMappingRequest extends RequestBase {
     name: Name
@@ -11127,7 +11134,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutRoleMappingResponse {
     created?: boolean
@@ -11142,7 +11149,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ChangePasswordRequest extends RequestBase {
     username?: Name
@@ -11153,13 +11160,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ChangePasswordResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteUserRequest extends RequestBase {
     username: Name
@@ -11167,14 +11174,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteUserResponse {
     found?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DisableUserRequest extends RequestBase {
     username: Name
@@ -11182,13 +11189,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DisableUserResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface EnableUserRequest extends RequestBase {
     username: Name
@@ -11196,20 +11203,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface EnableUserResponse {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetUserRequest extends RequestBase {
     username?: Names
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetUserResponse extends Record<string, XPackUser> {
   }
@@ -11223,7 +11230,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetUserAccessTokenRequest extends RequestBase {
     body?: {
@@ -11233,7 +11240,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetUserAccessTokenResponse {
     access_token?: string
@@ -11243,13 +11250,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface InvalidateUserAccessTokenRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface InvalidateUserAccessTokenResponse {
     error_count?: long
@@ -11259,7 +11266,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutUserRequest extends RequestBase {
     username: Name
@@ -11275,7 +11282,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutUserResponse {
     created?: boolean
@@ -11324,65 +11331,65 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteSnapshotLifecycleRequest extends RequestBase {
     policy_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteSnapshotLifecycleResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteSnapshotLifecycleRequest extends RequestBase {
     policy_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteSnapshotLifecycleResponse {
     snapshot_name?: string
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteRetentionRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteRetentionResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotLifecycleRequest extends RequestBase {
     policy_id?: Ids
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotLifecycleResponse extends Record<string, SnapshotLifecyclePolicyMetadata> {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotLifecycleStatsRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotLifecycleStatsResponse {
     retention_deletion_time?: string
@@ -11397,20 +11404,20 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotLifecycleManagementStatusRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetSnapshotLifecycleManagementStatusResponse {
     operation_mode?: LifecycleOperationMode
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutSnapshotLifecycleRequest extends RequestBase {
     policy_id: Id
@@ -11424,37 +11431,37 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutSnapshotLifecycleResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartSnapshotLifecycleManagementRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopSnapshotLifecycleManagementRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SqlRequest {
     fetch_size?: integer
@@ -11464,7 +11471,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearSqlCursorRequest extends RequestBase {
     body?: {
@@ -11473,14 +11480,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ClearSqlCursorResponse {
     succeeded?: boolean
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface QuerySqlRequest extends RequestBase {
     format?: string
@@ -11495,7 +11502,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface QuerySqlResponse {
     columns?: SqlColumn[]
@@ -11513,7 +11520,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface TranslateSqlRequest extends RequestBase {
     body?: {
@@ -11525,7 +11532,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface TranslateSqlResponse {
     result?: SearchRequest
@@ -11542,13 +11549,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCertificatesRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetCertificatesResponse {
     certificates?: ClusterCertificateInformation[]
@@ -11577,7 +11584,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteTransformRequest extends RequestBase {
     transform_id: Id
@@ -11585,13 +11592,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteTransformResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTransformRequest extends RequestBase {
     transform_id?: Id
@@ -11601,7 +11608,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTransformResponse {
     count?: long
@@ -11609,7 +11616,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTransformStatsRequest extends RequestBase {
     transform_id: Id
@@ -11619,7 +11626,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetTransformStatsResponse {
     count?: long
@@ -11698,7 +11705,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PreviewTransformRequest extends RequestBase {
     body?: {
@@ -11712,7 +11719,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PreviewTransformResponse<TTransform> {
     generated_dest_index?: IndexState
@@ -11720,7 +11727,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutTransformRequest extends RequestBase {
     transform_id: Id
@@ -11736,13 +11743,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutTransformResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartTransformRequest extends RequestBase {
     transform_id: Id
@@ -11750,13 +11757,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartTransformResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopTransformRequest extends RequestBase {
     transform_id: Id
@@ -11768,13 +11775,13 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopTransformResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateTransformRequest extends RequestBase {
     transform_id: Id
@@ -11789,7 +11796,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface UpdateTransformResponse {
     create_time?: long
@@ -11821,7 +11828,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AcknowledgeWatchRequest extends RequestBase {
     watch_id: Id
@@ -11829,7 +11836,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface AcknowledgeWatchResponse {
     status?: WatchStatus
@@ -11936,14 +11943,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ActivateWatchRequest extends RequestBase {
     watch_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ActivateWatchResponse {
     status?: ActivationStatus
@@ -11991,28 +11998,28 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeactivateWatchRequest extends RequestBase {
     watch_id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeactivateWatchResponse {
     status?: ActivationStatus
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteWatchRequest extends RequestBase {
     id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface DeleteWatchResponse {
     found?: boolean
@@ -12021,7 +12028,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteWatchRequest extends RequestBase {
     id?: Id
@@ -12038,7 +12045,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface ExecuteWatchResponse {
     _id?: string
@@ -12137,7 +12144,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface IndexActionResultIndexResponse {
     created?: boolean
@@ -12182,14 +12189,14 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetWatchRequest extends RequestBase {
     id: Id
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface GetWatchResponse {
     found?: boolean
@@ -12223,7 +12230,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface HttpInputRequest {
     auth?: HttpInputAuthentication
@@ -12264,7 +12271,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface SearchInputRequest {
     body?: SearchRequest
@@ -12279,7 +12286,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutWatchRequest extends RequestBase {
     id: Id
@@ -12299,7 +12306,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface PutWatchResponse {
     created?: boolean
@@ -12310,7 +12317,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface RestartWatcherResponse extends AcknowledgedResponseBase {
   }
@@ -12374,25 +12381,25 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartWatcherRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StartWatcherResponse extends AcknowledgedResponseBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopWatcherRequest extends RequestBase {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface StopWatcherResponse extends AcknowledgedResponseBase {
   }
@@ -12456,7 +12463,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface WatcherStatsRequest extends RequestBase {
     metric?: Metrics
@@ -12464,7 +12471,7 @@ declare namespace T {
   }
 
   /**
-   * @description Stability: UNSTABLE
+   * @type_stability UNSTABLE
    */
   export interface WatcherStatsResponse {
     cluster_name?: string
@@ -12572,7 +12579,7 @@ declare namespace T {
 
   export type PipelineFailure = "BadAuthentication" | "BadResponse" | "PingFailure" | "SniffFailure" | "CouldNotStartSniffOnStartup" | "MaxTimeoutReached" | "MaxRetriesReached" | "Unexpected" | "BadRequest" | "NoNodesAttempted"
 
-  export type Refresh = true | false | "wait_for"
+  export type RefreshOptions = "wait_for"
 
   export type SearchType = "query_then_fetch" | "dfs_query_then_fetch"
 

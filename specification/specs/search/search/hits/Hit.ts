@@ -5,6 +5,8 @@ class Hit<TDocument> {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   inner_hits: Dictionary<string, InnerHitsResult>;
   matched_queries: string[];
+  _index: IndexName;
+  _id: Id;
   _nested: NestedIdentity;
   _score: double;
   sort: any[];
