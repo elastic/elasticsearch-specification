@@ -188,8 +188,14 @@ export interface GeoTileGridAggregation {
   size?: integer
 }
 
+<<<<<<< HEAD
 export interface GlobalAggregation {
 }
+=======
+  export type Fields = Field | Field[]
+
+  export type Id = string | number
+>>>>>>> add _index and _id to Hit
 
 export interface ExtendedBounds<T = unknown> {
   max: T
@@ -344,9 +350,16 @@ export interface TermsAggregation {
   size?: integer
 }
 
+<<<<<<< HEAD
 export type TermsAggregationCollectMode = 'depth_first' | 'breadth_first'
 
 export type TermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
+=======
+  export interface DateField {
+    field?: Field
+    format?: string
+  }
+>>>>>>> add _index and _id to Hit
 
 export interface TermsInclude {
   num_partitions: long
@@ -7881,6 +7894,326 @@ export interface FilterRef {
   filter_id: Id
   filter_type: RuleFilterType
 }
+  export interface ExplanationDetail {
+    description?: string
+    details?: ExplanationDetail[]
+    value?: float
+  }
+
+  export interface InlineGet<TDocument> {
+    fields?: Record<string, LazyDocument>
+    found?: boolean
+    _seq_no?: long
+    _primary_term?: long
+    _source?: TDocument
+  }
+
+  export interface FieldCapabilities {
+    aggregatable?: boolean
+    indices?: Indices
+    meta?: Record<string, string[]>
+    non_aggregatable_indices?: Indices
+    non_searchable_indices?: Indices
+    searchable?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FieldCapabilitiesRequest extends RequestBase {
+    index?: Indices
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    fields?: Field[]
+    ignore_unavailable?: boolean
+    include_unmapped?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FieldCapabilitiesResponse {
+    fields?: Record<Field, Record<string, FieldCapabilities>>
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MultiSearchRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    ccs_minimize_roundtrips?: boolean
+    max_concurrent_searches?: long
+    max_concurrent_shard_requests?: long
+    pre_filter_shard_size?: long
+    search_type?: SearchType
+    total_hits_as_integer?: boolean
+    typed_keys?: boolean
+    body?: {
+      operations?: Record<string, SearchRequest>
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MultiSearchResponse {
+    responses?: SearchResponse<object>[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MultiSearchTemplateRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    ccs_minimize_roundtrips?: boolean
+    max_concurrent_searches?: long
+    search_type?: SearchType
+    total_hits_as_integer?: boolean
+    typed_keys?: boolean
+    body?: {
+      operations?: Record<string, SearchTemplateRequest>
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ClearScrollRequest extends RequestBase {
+    scroll_id?: ScrollIds
+    body?: {
+      scroll_id?: string[]
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ClearScrollResponse {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ScrollRequest extends RequestBase {
+    scroll_id?: ScrollId
+    total_hits_as_integer?: boolean
+    body?: {
+      scroll?: Time
+      scroll_id?: string
+    }
+  }
+
+  export interface SlicedScroll {
+    field?: Field
+    id?: integer
+    max?: integer
+  }
+
+  /**
+   * @type_stability STABLE 
+   */
+  export interface SearchRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    allow_no_indices?: boolean
+    allow_partial_search_results?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    batched_reduce_size?: long
+    ccs_minimize_roundtrips?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    docvalue_fields?: Field[]
+    expand_wildcards?: ExpandWildcards
+    ignore_throttled?: boolean
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    max_concurrent_shard_requests?: long
+    preference?: string
+    pre_filter_shard_size?: long
+    query_on_query_string?: string
+    request_cache?: boolean
+    routing?: Routing
+    scroll?: Time
+    search_type?: SearchType
+    sequence_number_primary_term?: boolean
+    stats?: string[]
+    stored_fields?: Field[]
+    suggest_field?: Field
+    suggest_mode?: SuggestMode
+    suggest_size?: long
+    suggest_text?: string
+    total_hits_as_integer?: boolean
+    track_total_hits?: boolean | integer
+    typed_keys?: boolean
+    rest_total_hits_as_int?: boolean
+    _source_excludes?: Field | Field[]
+    _source_includes?: Field | Field[]
+    seq_no_primary_term?: boolean
+    q?: string
+    size?: integer
+    body?: {
+      aggs?: Record<string, AggregationContainer>
+      aggregations?: Record<string, AggregationContainer>
+      collapse?: FieldCollapse
+      explain?: boolean
+      from?: integer
+      highlight?: Highlight
+      track_total_hits?: boolean | integer
+      indices_boost?: Array<Record<IndexName, double>>
+      docvalue_fields?: Array<Field | DocValueField>
+      min_score?: double
+      post_filter?: QueryContainer
+      profile?: boolean
+      query?: QueryContainer
+      rescore?: Rescore | Rescore[]
+      script_fields?: Record<string, ScriptField>
+      search_after?: Array<integer | string>
+      size?: integer
+      slice?: SlicedScroll
+      sort?: Array<Field | Record<string, Sort | SortOrder>>
+      _source?: boolean | Fields | SourceFilter
+      fields?: Array<Field | DateField>
+      suggest?: Record<string, SuggestBucket>
+      terminate_after?: long
+      timeout?: string
+      track_scores?: boolean
+      version?: boolean
+      seq_no_primary_term?: boolean
+      stored_fields?: Field | Field[]
+      pit?: PointInTimeReference
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface SearchResponse<TDocument> {
+    aggregations?: Record<string, Aggregate>
+    _clusters?: ClusterStatistics
+    documents?: TDocument[]
+    fields?: Record<string, LazyDocument>
+    hits?: HitsMetadata<TDocument>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    pit_id?: string
+    _scroll_id?: string
+    _shards?: ShardStatistics
+    suggest?: SuggestDictionary<TDocument>
+    terminated_early?: boolean
+    timed_out?: boolean
+    took?: long
+    total?: long
+  }
+
+  export interface FieldCollapse {
+    field?: Field
+    inner_hits?: InnerHits | InnerHits[]
+    max_concurrent_group_searches?: integer
+  }
+
+  export interface Highlight {
+    boundary_chars?: string
+    boundary_max_scan?: integer
+    boundary_scanner?: BoundaryScanner
+    boundary_scanner_locale?: string
+    encoder?: HighlighterEncoder
+    fields?: Record<Field, HighlightField>
+    fragmenter?: HighlighterFragmenter
+    fragment_offset?: integer
+    fragment_size?: integer
+    max_fragment_length?: integer
+    no_match_size?: integer
+    number_of_fragments?: integer
+    order?: HighlighterOrder
+    post_tags?: string[]
+    pre_tags?: string[]
+    require_field_match?: boolean
+    tags_schema?: HighlighterTagsSchema
+    type?: HighlighterType
+  }
+
+  export interface HighlightField {
+    boundary_chars?: string
+    boundary_max_scan?: integer
+    boundary_scanner?: BoundaryScanner
+    boundary_scanner_locale?: string
+    field?: Field
+    force_source?: boolean
+    fragmenter?: HighlighterFragmenter
+    fragment_offset?: integer
+    fragment_size?: integer
+    highlight_query?: QueryContainer
+    matched_fields?: Field[]
+    max_fragment_length?: integer
+    no_match_size?: integer
+    number_of_fragments?: integer
+    order?: HighlighterOrder
+    phrase_limit?: integer
+    post_tags?: string[]
+    pre_tags?: string[]
+    require_field_match?: boolean
+    tags_schema?: HighlighterTagsSchema
+    type?: HighlighterType | string
+  }
+
+  export interface Hit<TDocument> {
+    _explanation?: Explanation
+    fields?: Record<string, LazyDocument>
+    highlight?: Record<string, string[]>
+    inner_hits?: Record<string, InnerHitsResult>
+    matched_queries?: string[]
+    _index?: IndexName
+    _id?: Id
+    _nested?: NestedIdentity
+    sort?: Array<number | string>
+    _ignored?: string[]
+    _index?: IndexName
+    _id?: Id
+    _shard?: string
+    _node?: string
+    _source?: TDocument
+    _seq_no?: long
+    _primary_term?: long
+    _score?: double
+    _version?: long
+  }
+
+  export interface HitMetadata<TDocument> {
+    _id?: string
+    _index?: string
+    _primary_term?: long
+    _routing?: string
+    _seq_no?: long
+    _source?: TDocument
+    _type?: string
+    _version?: long
+  }
+
+  export interface HitsMetadata<T> {
+    hits?: Hit<T>[]
+    max_score?: double
+    total?: TotalHits | long
+  }
+
+  export interface InnerHitsMetadata {
+    hits?: Hit<LazyDocument>[]
+    max_score?: double
+    total?: TotalHits | long
+  }
+
+  export interface InnerHitsResult {
+    hits?: InnerHitsMetadata
+  }
+
+  export interface NestedIdentity {
+    field?: Field
+    _nested?: NestedIdentity
+    offset?: integer
+  }
 
 export type RuleAction = 'skip_result' | 'skip_model_update'
 
