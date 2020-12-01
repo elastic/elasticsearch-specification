@@ -10,5 +10,5 @@ class Hit<TDocument> {
   _source: TDocument;
   _nested: NestedIdentity;
   _score: double;
-  sort: any[];
+  sort: Array<number | string>;
 }

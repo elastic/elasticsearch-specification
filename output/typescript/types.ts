@@ -7567,9 +7567,10 @@ declare namespace T {
     matched_queries?: string[]
     _index?: IndexName
     _id?: Id
+    _source?: TDocument
     _nested?: NestedIdentity
     _score?: double
-    sort?: object[]
+    sort?: Array<number | string>
   }
 
   export interface HitMetadata<TDocument> {
