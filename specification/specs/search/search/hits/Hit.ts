@@ -7,6 +7,7 @@ class Hit<TDocument> {
   matched_queries: string[];
   _index: IndexName;
   _id: Id;
+  _source: TDocument;
   _nested: NestedIdentity;
   sort: Array<number | string>;
   _ignored: string[];
