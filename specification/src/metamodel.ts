@@ -18,7 +18,7 @@ export class TypeName {
 // Note: "required" is part of Property. This means we can have optional properties but we can't have null entries in
 // containers (array and dictionary), which doesn't seem to be needed.
 //
-// About the '_kind' property used to tag union type members:
+// About the 'kind' property used to tag union type members:
 // https://blog.logrocket.com/pattern-matching-and-type-safety-in-typescript-1da1231a2e34/
 // https://medium.com/@fillopeter/pattern-matching-with-typescript-done-right-94049ddd671c
 
@@ -31,7 +31,7 @@ export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValue
  * A single value
  */
 export class InstanceOf {
-  _kind: "instance";
+  kind: "instance";
   type: TypeName;
   // generic parameters: either concrete types or open parameters from the enclosing type
   generics?: ValueOf[];
@@ -41,7 +41,7 @@ export class InstanceOf {
  * An array
  */
 export class ArrayOf {
-  _kind: "array";
+  kind: "array";
   value: ValueOf;
 }
 
@@ -49,7 +49,7 @@ export class ArrayOf {
  * One of several possible types which don't necessarily have a common superclass
  */
 export class UnionOf {
-  _kind: "union";
+  kind: "union";
   items: ValueOf[];
 }
 
@@ -57,7 +57,7 @@ export class UnionOf {
  * A dictionary (or map)
  */
 export class DictionaryOf {
-  _kind: "dictionary";
+  kind: "dictionary";
   key: ValueOf;
   value: ValueOf;
 }
@@ -67,7 +67,7 @@ export class DictionaryOf {
  * associate some value to a field name, e.g. the "sort" field in search.
  */
 export class NamedValueOf {
-  _kind: "named_value";
+  kind: "named_value";
   value: ValueOf;
 }
 
@@ -82,7 +82,7 @@ export class NamedValueOf {
  * will also require to buffer raw JSON data which may have performance implications.
  */
 export class UserDefinedValue {
-  _kind: "user_defined";
+  kind: "user_defined";
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ export class Inherits {
  * An interface type
  */
 export class Interface extends BaseType {
-  _kind: "interface";
+  kind: "interface";
   generics?: string[];
   inherits?: Inherits[];
   properties: Property[];
@@ -135,7 +135,7 @@ export class Interface extends BaseType {
  */
 export class RequestInterface extends BaseType {
   // Note: does not extend Interface as properties are split across path, query and body
-  _kind: "request";
+  kind: "request";
   generics?: string[];
   inherits?: Inherits[];
   /** URL path properties */
@@ -163,7 +163,7 @@ export class RequestInterface extends BaseType {
  * a unionOf in a single list of type references.
  */
 export class Union extends BaseType {
-  _kind: "union";
+  kind: "union";
   items: ValueOf[];
 }
 
@@ -182,7 +182,7 @@ export class EnumMember {
  * An enumeration
  */
 export class Enum extends BaseType {
-  _kind: "enum";
+  kind: "enum";
   members: EnumMember[];
 }
 
@@ -190,7 +190,7 @@ export class Enum extends BaseType {
  * An alias for an existing type.
  */
 export class TypeAlias extends BaseType {
-  _kind: "alias";
+  kind: "alias";
   type: ValueOf
 }
 

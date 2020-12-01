@@ -125,7 +125,7 @@ export function loadModel(spec: Specification): Model {
     if (specType instanceof Domain.Enum) {
       // "Enum.flags" doesn't seem to be used and is ignored
       return store({
-        _kind: "enum",
+        kind: "enum",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
@@ -151,7 +151,7 @@ export function loadModel(spec: Specification): Model {
       }
 
       return store({
-        _kind: "request",
+        kind: "request",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
@@ -165,7 +165,7 @@ export function loadModel(spec: Specification): Model {
 
     else if (specType instanceof Domain.UnionAlias) {
       return store({
-        _kind: "union",
+        kind: "union",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
@@ -176,12 +176,12 @@ export function loadModel(spec: Specification): Model {
     else if (specType instanceof Domain.StringAlias) {
       // It's just an alias to the internal string type
       return store({
-        _kind: "alias",
+        kind: "alias",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
         type: {
-          _kind: "instance",
+          kind: "instance",
           type: { namespace: "internal", name: "string" }
         }
       });
@@ -190,12 +190,12 @@ export function loadModel(spec: Specification): Model {
     else if (specType instanceof Domain.NumberAlias) {
       // It's just an alias to the internal number type
       return store({
-        _kind: "alias",
+        kind: "alias",
         name: fullName,
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
         type: {
-          _kind: "instance",
+          kind: "instance",
           type: { namespace: "internal", name: "number" }
         }
       });
@@ -203,7 +203,7 @@ export function loadModel(spec: Specification): Model {
 
     else if (specType instanceof Domain.Interface) {
       return store({
-        _kind: "interface",
+        kind: "interface",
         name: fullName,
         generics: nonEmptyArr(specType.openGenerics),
         inherits: nonEmptyArr(specType.inherits.map(impl => makeImplements(impl, specType.openGenerics))),
@@ -237,7 +237,7 @@ export function loadModel(spec: Specification): Model {
 
     if (inst instanceof Domain.Type) {
       return {
-        _kind: "instance",
+        kind: "instance",
         type: makeTypeName(inst.name, openGenerics),
         generics: nonEmptyArr(inst.closedGenerics.map(g => makeInstanceOf(g, openGenerics)))
       };
@@ -245,21 +245,21 @@ export function loadModel(spec: Specification): Model {
 
     else if (inst instanceof Domain.ArrayOf) {
       return {
-        _kind: "array",
+        kind: "array",
         value: makeInstanceOf(inst.of, openGenerics)
       };
     }
 
     else if (inst instanceof Domain.UnionOf) {
       return {
-        _kind: "union",
+        kind: "union",
         items: inst.items.map(i => makeInstanceOf(i, openGenerics))
       };
     }
 
     else if (inst instanceof Domain.Dictionary) {
       return {
-        _kind: "dictionary",
+        kind: "dictionary",
         key: makeInstanceOf(inst.key, openGenerics),
         value: makeInstanceOf(inst.value, openGenerics)
       };
@@ -267,14 +267,14 @@ export function loadModel(spec: Specification): Model {
 
     else if (inst instanceof Domain.SingleKeyDictionary) {
       return {
-        _kind: "named_value",
+        kind: "named_value",
         value: makeInstanceOf(inst.value, openGenerics)
       };
     }
 
     else if (inst instanceof Domain.UserDefinedValue) {
       return {
-        _kind: "user_defined"
+        kind: "user_defined"
       };
     }
 
