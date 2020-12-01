@@ -8166,10 +8166,7 @@ export interface FilterRef {
     highlight?: Record<string, string[]>
     inner_hits?: Record<string, InnerHitsResult>
     matched_queries?: string[]
-    _index?: IndexName
-    _id?: Id
     _nested?: NestedIdentity
-    sort?: Array<number | string>
     _ignored?: string[]
     _index?: IndexName
     _id?: Id
@@ -8180,6 +8177,7 @@ export interface FilterRef {
     _primary_term?: long
     _score?: double
     _version?: long
+    sort?: Array<number | string>
   }
 
   export interface HitMetadata<TDocument> {
