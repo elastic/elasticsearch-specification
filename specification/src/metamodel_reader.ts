@@ -24,6 +24,7 @@ export function loadModel(spec: Specification): Model {
 
   allTypeNames.set("boolean", { namespace: "internal", name:"boolean" });
   allTypeNames.set("string", { namespace: "internal", name:"string" });
+  allTypeNames.set("number", { namespace: "internal", name:"number" });
   allTypeNames.set("Array", { namespace: "internal", name:"Array" });
 
   // 'any' is translated to 'object'
@@ -311,6 +312,10 @@ export function loadModel(spec: Specification): Model {
 
     const r = { namespace: t.namespace, name: t.name };
     allTypeNames.set(name, r);
+
+    // Make sure the type has been defined
+    makeTypeDefinition(name);
+
     return r;
   }
 
