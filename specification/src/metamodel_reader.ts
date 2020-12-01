@@ -2,15 +2,17 @@ import Domain from "./domain";
 
 import {Specification} from "./api-specification";
 import {
-  Endpoint, Inherits,
-  ValueOf,
+  Endpoint,
+  EnumMember,
+  Inherits,
   Model,
   Property,
   Request,
   Stability,
   TypeDefinition,
   TypeName,
-  UrlTemplate
+  UrlTemplate,
+  ValueOf
 } from "./metamodel";
 
 export function loadModel(spec: Specification): Model {
@@ -131,12 +133,23 @@ export function loadModel(spec: Specification): Model {
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
         members: specType.members.map(m => {
-          return {
+          // Remove "alternate_name" from annotations, it's provided in "stringRepresentation"
+          // Only incarnation up to now is common_options/date_math/DateMathTimeUnit - ideally we should update
+          // the spec to use TypeScript string enumerations.
+          const annotations = m.generatorHints && m.generatorHints.annotations || {};
+          delete annotations.alternate_name;
+
+          const r: EnumMember = {
             name: m.name,
-            stringValue: m.stringRepresentation,
             description: nonEmpty(m.generatorHints && m.generatorHints.description),
-            annotations: nonEmptyObj(m.generatorHints && m.generatorHints.annotations)
+            annotations: nonEmptyObj(annotations)
           };
+
+          if (m.stringRepresentation !== m.name) {
+            r.stringValue = m.stringRepresentation;
+          }
+
+          return r;
         })
       });
     }
@@ -228,8 +241,10 @@ export function loadModel(spec: Specification): Model {
       impl.closedGenerics = [];
     }
 
+    const type = makeTypeName(impl.type.name, openGenerics);
+
     return {
-      type: { namespace: impl.type.namespace, name: impl.type.name },
+      type: type,
       generics: nonEmptyArr(impl.closedGenerics.map(i => makeInstanceOf(i, openGenerics)))
     };
   }

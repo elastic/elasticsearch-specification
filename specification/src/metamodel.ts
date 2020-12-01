@@ -18,9 +18,9 @@ export class TypeName {
 // Note: "required" is part of Property. This means we can have optional properties but we can't have null entries in
 // containers (array and dictionary), which doesn't seem to be needed.
 //
-// About the 'kind' property used to tag union type members:
-// https://blog.logrocket.com/pattern-matching-and-type-safety-in-typescript-1da1231a2e34/
-// https://medium.com/@fillopeter/pattern-matching-with-typescript-done-right-94049ddd671c
+// The 'kind' property is used to tag and disambiguate union type members, and allow type-safe pattern matching in TS:
+// see https://blog.logrocket.com/pattern-matching-and-type-safety-in-typescript-1da1231a2e34/
+// and https://medium.com/@fillopeter/pattern-matching-with-typescript-done-right-94049ddd671c
 
 /**
  * Type of a value. Used both for property types and nested type definitions.
@@ -33,7 +33,7 @@ export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValue
 export class InstanceOf {
   kind: "instance_of";
   type: TypeName;
-  // generic parameters: either concrete types or open parameters from the enclosing type
+  /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: ValueOf[];
 }
 
@@ -169,12 +169,17 @@ export class Union extends BaseType {
 
 /**
  * An enumeration member.
+ *
+ * When enumeration members can become ambiguous when translated to an identifier, the `name` property will be a good
+ * identifier name, and `stringValue` will be the string value to use on the wire.
+ * See DateMathTimeUnit for an example of this, which have members for "m" (minute) and "M" (month).
  */
 export class EnumMember {
+  /** The identifier to use for this enum */
   name: string;
   description?: string;
-  // See DateMathTimeUnit - could we use string enums for this?
-  stringValue: string;
+  /** The value to send of the wire. Use `name` if absent */
+  stringValue?: string;
   annotations?: Record<string, string>;
 }
 
