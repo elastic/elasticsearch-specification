@@ -7587,13 +7587,13 @@ declare namespace T {
   export interface HitsMetadata<T> {
     hits?: Hit<T>[]
     max_score?: double
-    total?: TotalHits
+    total?: TotalHits | long
   }
 
   export interface InnerHitsMetadata {
     hits?: Hit<LazyDocument>[]
     max_score?: double
-    total?: TotalHits
+    total?: TotalHits | long
   }
 
   export interface InnerHitsResult {
