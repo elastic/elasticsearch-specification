@@ -71,5 +71,6 @@ class SearchRequest extends RequestBase {
     version: boolean;
     seq_no_primary_term: boolean;
     stored_fields: Field | Field[];
+    pit: PointInTimeReference
   }
 }

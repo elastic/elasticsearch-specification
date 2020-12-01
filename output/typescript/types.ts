@@ -196,6 +196,7 @@ declare namespace T {
     top_metrics?: TopMetricsAggregation
     value_count?: ValueCountAggregation
     weighted_avg?: WeightedAverageAggregation
+    variable_width_histogram?: VariableWidthHistogramAggregation
   }
 
   export type Missing = string | integer | boolean
@@ -246,7 +247,7 @@ declare namespace T {
     interval?: DateInterval | Time
     min_doc_count?: integer
     missing?: Date
-    offset?: string
+    offset?: Time
     order?: HistogramOrder
     params?: Record<string, object>
     script?: Script
@@ -454,6 +455,13 @@ declare namespace T {
     partition?: long
   }
 
+  export interface VariableWidthHistogramAggregation {
+    field?: Field
+    buckets?: integer
+    shard_size?: integer
+    initial_buffer?: integer
+  }
+
   export interface MatrixAggregation {
     fields?: Field[]
     missing?: Record<Field, double>
@@ -563,7 +571,7 @@ declare namespace T {
     highlight?: Highlight
     script_fields?: Record<string, ScriptField>
     size?: integer
-    sort?: string | Array<Record<string, Sort | SortOrder>>
+    sort?: string | Record<Field, NestedSort> | Array<Record<string, Sort | SortOrder | Record<Field, NestedSort>>>
     _source?: boolean | SourceFilter
     stored_fields?: Field[]
     track_scores?: boolean
@@ -3541,7 +3549,7 @@ declare namespace T {
     total_time_in_millis?: long
   }
 
-  export type Time = string
+  export type Time = string | integer
 
   export interface BulkIndexByScrollFailure {
     cause?: MainError
@@ -7483,6 +7491,7 @@ declare namespace T {
       version?: boolean
       seq_no_primary_term?: boolean
       stored_fields?: Field | Field[]
+      pit?: PointInTimeReference
     }
   }
 
@@ -7627,6 +7636,11 @@ declare namespace T {
     version?: boolean
   }
 
+  export interface PointInTimeReference {
+    id?: string
+    keep_alive?: Time
+  }
+
   export interface AggregationBreakdown {
     build_aggregation?: long
     build_aggregation_count?: long
@@ -7697,11 +7711,14 @@ declare namespace T {
     score_mode?: ScoreMode
   }
 
-  export interface NestedSort {
+  export interface NestedSortValue {
     filter?: QueryContainer
     max_children?: integer
-    nested?: NestedSort
     path?: Field
+  }
+
+  export interface NestedSort {
+    nested?: NestedSortValue
   }
 
   export interface Sort {

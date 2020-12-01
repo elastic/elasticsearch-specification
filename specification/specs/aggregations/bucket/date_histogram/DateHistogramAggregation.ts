@@ -7,7 +7,7 @@ class DateHistogramAggregation {
   interval: Union<DateInterval, Time>;
   min_doc_count: integer;
   missing: Date;
-  offset: string;
+  offset: Time;
   order: HistogramOrder;
   params: Dictionary<string, any>;
   script: Script;
