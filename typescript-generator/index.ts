@@ -31,6 +31,7 @@ let typeDefinitions = `/*
  * under the License.
  */
 
+import { Readable as ReadableStream } from 'stream'
 declare namespace T {\n`
 
 for (const type of specification.types) {
@@ -54,7 +55,7 @@ for (const type of specification.types) {
 typeDefinitions = typeDefinitions.slice(0, -2)
 typeDefinitions += '\n}\n\nexport default T'
 
-const exportName = 'types';
+const exportName = 'types'
 
 fs.writeFileSync(
   path.join(__dirname, '..', 'output', 'typescript', `${exportName}.ts`),
@@ -108,9 +109,9 @@ function buildRequestInterface (type: Domain.RequestInterface): string {
         if (property.type === undefined) continue
         code += `      ${cleanPropertyName(property.name)}${property.nullable ? '?' : ''}: ${unwrapType(property.type)}\n`
       }
-      code += '    }\n'
+      code += '    } | string | Buffer | ReadableStream\n'
     } else {
-      code += `    body?: ${unwrapType(type.body)}\n`
+      code += `    body?: ${unwrapType(type.body)} | string | Buffer | ReadableStream\n`
     }
   }
 
@@ -123,7 +124,7 @@ function buildEnum (type: Domain.Enum): string {
     if (member.stringRepresentation === 'true' || member.stringRepresentation === 'false') {
       return member.stringRepresentation
     }
-    return `"${member.stringRepresentation}"`
+    return `'${member.stringRepresentation}'`
   })
   return `  export type ${type.name} = ${types.join(' | ')}`
 }
@@ -179,17 +180,17 @@ function buildInherits (type: Domain.Interface | Domain.RequestInterface): strin
 
 function cleanPropertyName (name: string): string {
   return name.includes('.') || name.includes('-') || name.match(/^(\d|\W)/)
-    ? `"${name}"`
+    ? `'${name}'`
     : name
 }
 
 function generateComment (type: Domain.Interface | Domain.RequestInterface): string {
   if (type.generatorHints.annotations.type_stability) {
     let comment = '  /**\n'
-    comment += `   * @type_stability ${type.generatorHints.annotations.type_stability.toUpperCase()} \n`
+    comment += `   * @type_stability ${type.generatorHints.annotations.type_stability.toUpperCase()}\n`
     comment += '   */\n'
     return comment
-  } else if (type.name.endsWith('Request') ||type.name.endsWith('Response')) {
+  } else if (type.name.endsWith('Request') || type.name.endsWith('Response')) {
     let comment = '  /**\n'
     comment += '   * @type_stability UNSTABLE\n'
     comment += '   */\n'

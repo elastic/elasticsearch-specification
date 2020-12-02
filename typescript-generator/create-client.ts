@@ -254,7 +254,7 @@ function generateDefinition (endpoint: Domain.Endpoint | MissingEndpoint): strin
     requestDefinition = `T.${requestDefinition}`
     if (requestType.openGenerics.length > 0) {
       requestDefinition += `<${requestType.openGenerics.join(', ')}>`
-      requestInitialGenerics += requestType.openGenerics.join(', ') + ', '
+      requestInitialGenerics += requestType.openGenerics.map(g => `${g} = unknown`).join(', ') + ', '
     }
   } else {
     requestDefinition = 'TODO'
@@ -264,7 +264,7 @@ function generateDefinition (endpoint: Domain.Endpoint | MissingEndpoint): strin
     responseDefinition = `T.${responseDefinition}`
     if (responseType.openGenerics.length > 0) {
       responseDefinition += `<${responseType.openGenerics.join(', ')}>`
-      responseInitialGenerics += responseType.openGenerics.join(', ') + ', '
+      responseInitialGenerics += responseType.openGenerics.map(g => `${g} = unknown`).join(', ') + ', '
     }
   } else {
     responseDefinition = 'TODO'
