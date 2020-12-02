@@ -1,4 +1,4 @@
-class CatThreadPoolRecord implements ICatRecord {
+class CatThreadPoolRecord {
   /** @prop_serializer StringIntFormatter */
   active: integer;
   /** @prop_serializer NullableStringLongFormatter */

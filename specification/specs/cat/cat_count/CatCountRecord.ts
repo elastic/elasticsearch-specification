@@ -1,4 +1,4 @@
-class CatCountRecord implements ICatRecord {
+class CatCountRecord {
   count: string;
   epoch: string;
   timestamp: string;

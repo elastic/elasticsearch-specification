@@ -1,4 +1,4 @@
-class CatNodesRecord implements ICatRecord {
+class CatNodesRecord {
   build: string;
   completion_size: string;
   cpu: string;

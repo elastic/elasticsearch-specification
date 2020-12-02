@@ -1,4 +1,4 @@
-class CatJobsRecord implements ICatRecord {
+class CatJobsRecord {
   assignment_explanation: string;
   'buckets.count': string;
   'buckets.time.exp_avg': string;

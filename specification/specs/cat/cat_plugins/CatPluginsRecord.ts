@@ -1,4 +1,4 @@
-class CatPluginsRecord implements ICatRecord {
+class CatPluginsRecord {
   component: string;
   description: string;
   id: string;

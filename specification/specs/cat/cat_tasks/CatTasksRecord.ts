@@ -1,4 +1,4 @@
-class CatTasksRecord implements ICatRecord {
+class CatTasksRecord {
   action: string;
   ip: string;
   node: string;

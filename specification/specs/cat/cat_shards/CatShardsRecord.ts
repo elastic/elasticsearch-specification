@@ -1,4 +1,4 @@
-class CatShardsRecord implements ICatRecord {
+class CatShardsRecord {
   'completion.size': string;
   docs: string;
   'fielddata.evictions': string;

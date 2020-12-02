@@ -1,4 +1,4 @@
-class CatTemplatesRecord implements ICatRecord {
+class CatTemplatesRecord {
   index_patterns: string;
   name: string;
   /** @prop_serializer StringLongFormatter */

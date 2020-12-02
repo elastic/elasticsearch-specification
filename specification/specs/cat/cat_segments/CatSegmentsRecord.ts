@@ -1,4 +1,4 @@
-class CatSegmentsRecord implements ICatRecord {
+class CatSegmentsRecord {
   committed: string;
   compound: string;
   'docs.count': string;

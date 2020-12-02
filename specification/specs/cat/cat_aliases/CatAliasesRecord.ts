@@ -1,4 +1,4 @@
-class CatAliasesRecord implements ICatRecord {
+class CatAliasesRecord {
   alias: string;
   filter: string;
   index: string;

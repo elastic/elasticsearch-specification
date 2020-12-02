@@ -1,4 +1,4 @@
-class CatTrainedModelsRecord implements ICatRecord {
+class CatTrainedModelsRecord {
   created_by: string;
   create_time: string;
   data_frame_analytics_id: string;

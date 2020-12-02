@@ -1,4 +1,4 @@
-class CatHealthRecord implements ICatRecord {
+class CatHealthRecord {
   cluster: string;
   epoch: string;
   init: string;
