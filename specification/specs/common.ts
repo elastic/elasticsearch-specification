@@ -13,11 +13,15 @@ type TimeSpan = string
 interface SourceDocument {}
 @class_serializer("ErrorCauseFormatter")
 class ErrorCause {
-  additional_properties: Dictionary<string, any>;
+  shard: Union<integer, string>;
+  stack_trace: string;
+  type: string;
+
   bytes_limit: long;
   bytes_wanted: long;
   caused_by: ErrorCause;
   column: integer;
+  col: integer;
   failed_shards: ShardFailure[];
   grouped: boolean;
   index: string;
@@ -25,15 +29,15 @@ class ErrorCause {
   language: string;
   licensed_expired_feature: string;
   line: integer;
+  max_buckets: integer;
   phase: string;
   reason: string;
   resource_id: string[];
+  'resource.id': string;
   resource_type: string;
+  'resource.type': string;
   script: string;
   script_stack: string[];
-  shard: Union<integer, string>;
-  stack_trace: string;
-  type: string;
 }
 @class_serializer("ErrorFormatter")
 class MainError extends ErrorCause {
