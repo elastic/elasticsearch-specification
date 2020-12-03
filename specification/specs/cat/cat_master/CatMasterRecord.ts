@@ -1,4 +1,4 @@
-class CatMasterRecord implements ICatRecord {
+class CatMasterRecord {
   id: string;
   ip: string;
   node: string;

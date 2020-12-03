@@ -1,4 +1,4 @@
-class CatSnapshotsRecord implements ICatRecord {
+class CatSnapshotsRecord {
   duration: Time;
   /** @prop_serializer StringLongFormatter */
   end_epoch: long;

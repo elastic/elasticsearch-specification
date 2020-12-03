@@ -1,4 +1,4 @@
-class CatNodeAttributesRecord implements ICatRecord {
+class CatNodeAttributesRecord {
   attr: string;
   host: string;
   id: string;

@@ -1,4 +1,4 @@
-class CatDatafeedsRecord implements ICatRecord {
+class CatDatafeedsRecord {
   assignment_explanation: string;
   'buckets.count': string;
   id: string;

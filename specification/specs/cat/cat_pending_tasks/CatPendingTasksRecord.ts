@@ -1,4 +1,4 @@
-class CatPendingTasksRecord implements ICatRecord {
+class CatPendingTasksRecord {
   /** @prop_serializer NullableStringIntFormatter */
   insertOrder: integer;
   priority: string;

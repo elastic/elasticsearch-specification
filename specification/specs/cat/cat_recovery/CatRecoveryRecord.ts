@@ -1,4 +1,4 @@
-class CatRecoveryRecord implements ICatRecord {
+class CatRecoveryRecord {
   bytes: string;
   bytes_percent: string;
   bytes_recovered: string;

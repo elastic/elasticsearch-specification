@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("bulk")
 @class_serializer("BulkRequestFormatter")
 class BulkRequest<TSource> extends RequestBase {
@@ -5,12 +8,13 @@ class BulkRequest<TSource> extends RequestBase {
     pipeline: string;
     refresh: Refresh;
     routing: Routing;
-    source_enabled: boolean;
-    source_excludes: Field[];
-    source_includes: Field[];
+    _source: boolean;
+    _source_excludes: Field | Field[];
+    _source_includes: Field | Field[];
     timeout: Time;
     type_query_string: string;
     wait_for_active_shards: string;
+    require_alias: boolean;
   }
   body: Array<Union<BulkOperationContainer, TSource>>;
 }

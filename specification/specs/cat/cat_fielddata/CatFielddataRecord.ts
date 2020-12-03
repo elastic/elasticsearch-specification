@@ -1,5 +1,5 @@
 @class_serializer("CatFielddataRecordFormatter")
-class CatFielddataRecord implements ICatRecord {
+class CatFielddataRecord {
   field: string;
   host: string;
   id: string;

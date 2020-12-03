@@ -15,6 +15,7 @@ class IndexRequest<TDocument> extends RequestBase {
     version: long;
     version_type: VersionType;
     wait_for_active_shards: string;
+    require_alias: boolean;
   }
   body: TDocument;
 }

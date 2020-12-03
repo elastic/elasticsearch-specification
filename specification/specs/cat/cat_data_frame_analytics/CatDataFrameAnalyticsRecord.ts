@@ -1,4 +1,4 @@
-class CatDataFrameAnalyticsRecord implements ICatRecord {
+class CatDataFrameAnalyticsRecord {
   assignment_explanation: string;
   create_time: string;
   description: string;

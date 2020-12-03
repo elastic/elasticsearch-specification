@@ -1,4 +1,4 @@
-class CatAllocationRecord implements ICatRecord {
+class CatAllocationRecord {
   'disk.avail': string;
   'disk.indices': string;
   'disk.percent': string;

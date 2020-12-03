@@ -1,4 +1,4 @@
-class CatIndicesRecord implements ICatRecord {
+class CatIndicesRecord {
   'docs.count': string;
   'docs.deleted': string;
   health: string;
