@@ -27,6 +27,7 @@ export function loadModel(spec: Specification): Model {
   allTypeNames.set("boolean", { namespace: "internal", name:"boolean" });
   allTypeNames.set("string", { namespace: "internal", name:"string" });
   allTypeNames.set("number", { namespace: "internal", name:"number" });
+  allTypeNames.set("null", { namespace: "internal", name:"null" });
   allTypeNames.set("Array", { namespace: "internal", name:"Array" });
 
   // 'any' is translated to 'object'

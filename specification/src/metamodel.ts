@@ -6,6 +6,13 @@
  * Builtin namespaces:
  * - "generic" for type names that are generic parameter values from the enclosing type.
  * - "internal" for primitive and builtin types (e.g. Id, IndexName, etc)
+ *    Builtin types:
+ *    - boolean,
+ *    - string,
+ *    - number: a 64bits floating point number. Additional types will be added for integers.
+ *    - null: the null value. Since JS distinguishes undefined and null, some APIs make use of this value.
+ *    - Array: an array,
+ *    - object: used to represent "any". We may forbid it at some point. UserDefinedValue should be used for user data.
  */
 export class TypeName {
   namespace: string;
@@ -218,6 +225,11 @@ export class Endpoint {
   description: string;
   docUrl: string;
   stability: Stability;
+  /**
+   * The version when this endpoint reached its current stability level.
+   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
+   */
+  since?: string;
   deprecation: Deprecation
 
   request: TypeName;
