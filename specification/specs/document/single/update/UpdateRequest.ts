@@ -8,6 +8,7 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     if_seq_no: long;
     lang: string;
     refresh: Refresh;
+    require_alias: boolean;
     retry_on_conflict: long;
     routing: Routing;
     source_enabled: boolean;
