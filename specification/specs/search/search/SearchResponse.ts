@@ -7,6 +7,7 @@ class SearchResponse<TDocument> extends ResponseBase {
   max_score: double;
   num_reduce_phases: long;
   profile: Profile;
+  pit_id: string;
   _scroll_id: string;
   _shards: ShardStatistics;
   suggest: SuggestDictionary<TDocument>;

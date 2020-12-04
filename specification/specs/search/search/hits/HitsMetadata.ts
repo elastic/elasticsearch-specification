@@ -1,5 +1,5 @@
 class HitsMetadata<T> {
   hits: Hit<T>[];
   max_score: double;
-  total: TotalHits;
+  total: TotalHits | long;
 }
