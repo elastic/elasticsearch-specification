@@ -188,15 +188,8 @@ export interface GeoTileGridAggregation {
   size?: integer
 }
 
-<<<<<<< HEAD
 export interface GlobalAggregation {
 }
-=======
-  export type Fields = Field | Field[]
-
-  export type Id = string | number
->>>>>>> add _index and _id to Hit
-
 export interface ExtendedBounds<T = unknown> {
   max: T
   min: T
@@ -353,14 +346,19 @@ export interface TermsAggregation {
 <<<<<<< HEAD
 export type TermsAggregationCollectMode = 'depth_first' | 'breadth_first'
 
+<<<<<<< HEAD
 export type TermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> add initial support for aggregations
   export interface DateField {
     field?: Field
     format?: string
   }
 >>>>>>> add _index and _id to Hit
 
+<<<<<<< HEAD
 export interface TermsInclude {
   num_partitions: long
   partition: long
@@ -372,6 +370,207 @@ export interface VariableWidthHistogramAggregation {
   shard_size?: integer
   initial_buffer?: integer
 }
+=======
+  export interface Aggregate {
+=======
+  export interface LatLon {
+    lat?: double
+    lon?: double
+  }
+
+  export type Bucket = CompositeBucket | DateHistogramBucket | FiltersBucketItem | IpRangeBucket | RangeBucket | RareTermsBucket<object> | SignificantTermsBucket<object> | KeyedBucket<object>
+
+  export interface BucketBase {
+  }
+
+  export interface CompositeBucket extends BucketBase {
+  }
+
+  export interface DateHistogramBucket extends BucketBase {
+  }
+
+  export interface FiltersBucketItem extends BucketBase {
+    doc_count?: long
+  }
+
+  export interface IpRangeBucket extends BucketBase {
+  }
+
+  export interface RangeBucket extends BucketBase {
+  }
+
+  export interface RareTermsBucket<TKey> extends BucketBase {
+  }
+
+  export interface SignificantTermsBucket<TKey> extends BucketBase {
+  }
+
+  export interface KeyedBucket<TKey> extends BucketBase {
+  }
+
+  export type Aggregate = ValueAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+
+  export interface AggregateBase {
+>>>>>>> add initial support for aggregations
+    meta?: Record<string, object>
+  }
+
+  export interface MultiBucketAggregate<TBucket> extends AggregateBase {
+    buckets?: TBucket[]
+  }
+
+  export interface ValueAggregate extends AggregateBase {
+    value?: double
+    value_as_string?: string
+  }
+
+  export interface KeyedValueAggregate extends ValueAggregate {
+    keys?: string[]
+  }
+
+  export interface AutoDateHistogramAggregate extends AggregateBase {
+    interval?: DateMathTime
+  }
+
+  export interface FiltersAggregate extends AggregateBase {
+    buckets?: FiltersBucketItem[]
+  }
+
+  export interface SignificantTermsAggregate<TKey> extends MultiBucketAggregate {
+    bg_count?: long
+    doc_count?: long
+  }
+
+  export interface TermsAggregate<TKey> extends MultiBucketAggregate {
+    doc_count_error_upper_bound?: long
+    sum_other_doc_count?: long
+  }
+
+  export interface BucketAggregate extends AggregateBase {
+    after_key?: Record<string, any>
+    bg_count?: long
+    doc_count?: long
+    doc_count_error_upper_bound?: long
+    sum_other_doc_count?: long
+    interval?: DateMathTime
+    items?: Bucket
+  }
+
+  export interface CompositeBucketAggregate extends MultiBucketAggregate {
+    after_key?: Record<string, any>
+  }
+
+  export interface SingleBucketAggregate extends AggregateBase {
+  }
+
+  export interface MatrixStatsAggregate extends AggregateBase {
+    correlation?: Record<string, double>
+    covariance?: Record<string, double>
+    count?: integer
+    kurtosis?: double
+    mean?: double
+    skewness?: double
+    variance?: double
+    name?: string
+  }
+
+  export interface BoxPlotAggregate extends AggregateBase {
+    min?: double
+    max?: double
+    q1?: double
+    q2?: double
+    q3?: double
+  }
+
+  export interface StatsAggregate extends AggregateBase {
+    avg?: double
+    count?: double
+    max?: double
+    min?: double
+    sum?: double
+  }
+
+  export interface StandardDeviationBounds {
+    lower?: double
+    upper?: double
+    lower_population?: double
+    upper_population?: double
+    lower_sampling?: double
+    upper_sampling?: double
+  }
+
+  export interface ExtendedStatsAggregate extends StatsAggregate {
+    sum_of_squares?: double
+    variance?: double
+    variance_population?: double
+    variance_sampling?: double
+    std_deviation?: double
+    std_deviation_population?: double
+    std_deviation_sampling?: double
+    std_deviation_bounds?: StandardDeviationBounds
+  }
+
+  export interface GeoBounds {
+    bottom_right?: LatLon
+    top_left?: LatLon
+  }
+
+  export interface GeoBoundsAggregate extends AggregateBase {
+    bounds?: GeoBounds
+  }
+
+  export interface GeoCentroidAggregate extends AggregateBase {
+    count?: long
+    location?: GeoLocation
+  }
+
+  export interface PercentileItem {
+    percentile?: double
+    value?: double
+  }
+
+  export interface PercentilesAggregate extends AggregateBase {
+    items?: PercentileItem[]
+  }
+
+  export interface TDigestPercentilesAggregate extends AggregateBase {
+    values?: Record<string, double>
+  }
+
+  export interface HdrPercentileItem {
+    key?: double
+    value?: double
+  }
+
+  export interface HdrPercentilesAggregate extends AggregateBase {
+    values?: HdrPercentileItem[]
+  }
+
+  export interface ScriptedMetricAggregate extends AggregateBase {
+  }
+
+  export interface StringStatsAggregate extends AggregateBase {
+    count?: long
+    min_length?: integer
+    max_length?: integer
+    avg_length?: double
+    entropy?: long
+    distribution?: Record<string, double>
+  }
+
+  export interface TopHitsAggregate extends AggregateBase {
+  }
+
+  export interface TopMetricsAggregate extends AggregateBase {
+    sort?: double[]
+    metrics?: double[]
+  }
+
+  export interface Aggregation {
+    meta?: Record<string, object>
+    name?: string
+  }
+>>>>>>> add initial support for aggregations
 
 export interface MatrixStatsAggregation {
   mode?: MatrixStatsMode
@@ -6573,9 +6772,2436 @@ export interface CreateAutoFollowPatternRequest extends RequestBase {
 export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
+<<<<<<< HEAD
 export interface DeleteAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
+=======
+  export interface BoundingBox {
+    bottom_right?: GeoLocation
+    top_left?: GeoLocation
+    wkt?: string
+  }
+
+  export interface GeoBoundingBoxQuery extends QueryBase {
+    bounding_box?: BoundingBox
+    type?: GeoExecution
+    validation_method?: GeoValidationMethod
+  }
+
+  export interface GeoDistanceQuery extends QueryBase {
+    distance?: Distance
+    distance_type?: GeoDistanceType
+    location?: GeoLocation
+    validation_method?: GeoValidationMethod
+  }
+
+  export interface GeoPolygonQuery extends QueryBase {
+    points?: GeoLocation[]
+    validation_method?: GeoValidationMethod
+  }
+
+  export interface GeoShape {
+    type?: string
+  }
+
+  export interface GeoShapeQuery extends QueryBase {
+    ignore_unmapped?: boolean
+    indexed_shape?: FieldLookup
+    relation?: GeoShapeRelation
+    shape?: GeoShape
+  }
+
+  export interface HasChildQuery extends QueryBase {
+    ignore_unmapped?: boolean
+    inner_hits?: InnerHits
+    max_children?: integer
+    min_children?: integer
+    query?: QueryContainer
+    score_mode?: ChildScoreMode
+    type?: RelationName
+  }
+
+  export interface HasParentQuery extends QueryBase {
+    ignore_unmapped?: boolean
+    inner_hits?: InnerHits
+    parent_type?: RelationName
+    query?: QueryContainer
+    score?: boolean
+  }
+
+  export interface NestedQuery extends QueryBase {
+    ignore_unmapped?: boolean
+    inner_hits?: InnerHits
+    path?: Field
+    query?: QueryContainer
+    score_mode?: NestedScoreMode
+  }
+
+  export interface ParentIdQuery extends QueryBase {
+    id?: Id
+    ignore_unmapped?: boolean
+    type?: RelationName
+  }
+
+  export interface RawQuery {
+    raw?: string
+  }
+
+  export interface SpanQuery extends QueryBase {
+    span_containing?: SpanContainingQuery
+    field_masking_span?: SpanFieldMaskingQuery
+    span_first?: SpanFirstQuery
+    span_gap?: SpanGapQuery
+    span_multi?: SpanMultiTermQuery
+    span_near?: SpanNearQuery
+    span_not?: SpanNotQuery
+    span_or?: SpanOrQuery
+    span_term?: SpanTermQuery
+    span_within?: SpanWithinQuery
+  }
+
+  export interface SpanSubQuery {
+  }
+
+  export interface SpanContainingQuery {
+    big?: SpanQuery
+    little?: SpanQuery
+  }
+
+  export interface SpanFieldMaskingQuery {
+    field?: Field
+    query?: SpanQuery
+  }
+
+  export interface SpanFirstQuery {
+    end?: integer
+    match?: SpanQuery
+  }
+
+  export interface SpanGapQuery {
+    field?: Field
+    width?: integer
+  }
+
+  export interface SpanMultiTermQuery {
+    match?: QueryContainer
+  }
+
+  export interface SpanNearQuery {
+    clauses?: SpanQuery[]
+    in_order?: boolean
+    slop?: integer
+  }
+
+  export interface SpanNotQuery {
+    dist?: integer
+    exclude?: SpanQuery
+    include?: SpanQuery
+    post?: integer
+    pre?: integer
+  }
+
+  export interface SpanOrQuery {
+    clauses?: SpanQuery[]
+  }
+
+  export interface SpanTermQuery {
+  }
+
+  export interface SpanWithinQuery {
+    big?: SpanQuery
+    little?: SpanQuery
+  }
+
+  export interface DistanceFeatureQuery extends QueryBase {
+    origin?: Array<number> | GeoCoordinate | DateMath
+    pivot?: Distance | Time
+    field?: Field
+  }
+
+  export interface MoreLikeThisQuery extends QueryBase {
+    analyzer?: string
+    boost_terms?: double
+    fields?: Field[]
+    include?: boolean
+    like?: Like[]
+    max_doc_freq?: integer
+    max_query_terms?: integer
+    max_word_length?: integer
+    min_doc_freq?: integer
+    minimum_should_match?: MinimumShouldMatch
+    min_term_freq?: integer
+    min_word_length?: integer
+    per_field_analyzer?: Record<Field, string>
+    routing?: Routing
+    stop_words?: StopWords
+    unlike?: Like[]
+    version?: long
+    version_type?: VersionType
+  }
+
+  export type Like = string | LikeDocument
+
+  export interface LikeDocument {
+    doc?: object
+    fields?: Field[]
+    _id?: Id
+    _index?: IndexName
+    per_field_analyzer?: Record<Field, string>
+    routing?: Routing
+  }
+
+  export interface PercolateQuery extends QueryBase {
+    document?: object
+    documents?: object[]
+    field?: Field
+    id?: Id
+    index?: IndexName
+    preference?: string
+    routing?: Routing
+    version?: long
+  }
+
+  export interface PinnedQuery extends QueryBase {
+    ids?: Id[]
+    organic?: QueryContainer
+  }
+
+  export interface RankFeatureFunction {
+  }
+
+  export interface RankFeatureQuery extends QueryBase {
+    function?: RankFeatureFunction
+  }
+
+  export interface ScriptQuery extends QueryBase {
+    script?: Script
+  }
+
+  export interface ScriptScoreQuery extends QueryBase {
+    query?: QueryContainer
+    script?: Script
+  }
+
+  export interface ShapeQuery extends QueryBase {
+    ignore_unmapped?: boolean
+    indexed_shape?: FieldLookup
+    relation?: ShapeRelation
+    shape?: GeoShape
+  }
+
+  export interface ExistsQuery extends QueryBase {
+    field?: Field
+  }
+
+  export interface FuzzyQuery extends QueryBase {
+    max_expansions?: integer
+    prefix_length?: integer
+    rewrite?: MultiTermQueryRewrite
+    transpositions?: boolean
+  }
+
+  export interface IdsQuery extends QueryBase {
+    values?: Id[]
+  }
+
+  export interface PrefixQuery extends QueryBase {
+    rewrite?: MultiTermQueryRewrite
+  }
+
+  export interface RangeQuery extends QueryBase {
+    gt?: double | DateMath
+    gte?: double | DateMath
+    lt?: double | DateMath
+    lte?: double | DateMath
+    relation?: RangeRelation
+    time_zone?: string
+    from?: double | DateMath
+    to?: double | DateMath
+  }
+
+  export interface RegexpQuery extends QueryBase {
+    flags?: string
+    max_determinized_states?: integer
+    value?: string
+  }
+
+  export interface TermQuery extends QueryBase {
+    value?: string | float | boolean
+  }
+
+  export interface TermsQuery extends QueryBase {
+    terms?: string[]
+    index?: IndexName
+    id?: Id
+    path?: string
+    routing?: Routing
+  }
+
+  export interface TermsSetQuery extends QueryBase {
+    minimum_should_match_field?: Field
+    minimum_should_match_script?: Script
+    terms?: string[]
+  }
+
+  export interface WildcardQuery extends QueryBase {
+    rewrite?: MultiTermQueryRewrite
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface TypedSearchRequest {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CountRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    allow_no_indices?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    expand_wildcards?: ExpandWildcards
+    ignore_throttled?: boolean
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    min_score?: double
+    preference?: string
+    query_on_query_string?: string
+    routing?: Routing
+    terminate_after?: long
+    body?: {
+      query?: QueryContainer
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CountResponse {
+    count?: long
+    _shards?: ShardStatistics
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ExplainRequest extends RequestBase {
+    id: Id
+    index: IndexName
+    type?: TypeName
+    analyzer?: string
+    analyze_wildcard?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    lenient?: boolean
+    preference?: string
+    query_on_query_string?: string
+    routing?: Routing
+    source_enabled?: boolean
+    source_excludes?: Field[]
+    source_includes?: Field[]
+    stored_fields?: Field[]
+    body?: {
+      query?: QueryContainer
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ExplainResponse<TDocument> {
+    explanation?: ExplanationDetail
+    get?: InlineGet<TDocument>
+    matched?: boolean
+  }
+
+  export interface Explanation {
+    description?: string
+    details?: ExplanationDetail[]
+    value?: float
+  }
+
+  export interface ExplanationDetail {
+    description?: string
+    details?: ExplanationDetail[]
+    value?: float
+  }
+
+  export interface InlineGet<TDocument> {
+    fields?: Record<string, LazyDocument>
+    found?: boolean
+    _seq_no?: long
+    _primary_term?: long
+    _source?: TDocument
+  }
+
+  export interface FieldCapabilities {
+    aggregatable?: boolean
+    indices?: Indices
+    meta?: Record<string, string[]>
+    non_aggregatable_indices?: Indices
+    non_searchable_indices?: Indices
+    searchable?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FieldCapabilitiesRequest extends RequestBase {
+    index?: Indices
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    fields?: Field[]
+    ignore_unavailable?: boolean
+    include_unmapped?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FieldCapabilitiesResponse {
+    fields?: Record<Field, Record<string, FieldCapabilities>>
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MultiSearchRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    ccs_minimize_roundtrips?: boolean
+    max_concurrent_searches?: long
+    max_concurrent_shard_requests?: long
+    pre_filter_shard_size?: long
+    search_type?: SearchType
+    total_hits_as_integer?: boolean
+    typed_keys?: boolean
+    body?: {
+      operations?: Record<string, SearchRequest>
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MultiSearchResponse {
+    responses?: SearchResponse<object>[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MultiSearchTemplateRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    ccs_minimize_roundtrips?: boolean
+    max_concurrent_searches?: long
+    search_type?: SearchType
+    total_hits_as_integer?: boolean
+    typed_keys?: boolean
+    body?: {
+      operations?: Record<string, SearchTemplateRequest>
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ClearScrollRequest extends RequestBase {
+    scroll_id?: ScrollIds
+    body?: {
+      scroll_id?: string[]
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ClearScrollResponse {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ScrollRequest extends RequestBase {
+    scroll_id?: ScrollId
+    total_hits_as_integer?: boolean
+    body?: {
+      scroll?: Time
+      scroll_id?: string
+    }
+  }
+
+  export interface SlicedScroll {
+    field?: Field
+    id?: integer
+    max?: integer
+  }
+
+  /**
+   * @type_stability STABLE 
+   */
+  export interface SearchRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    allow_no_indices?: boolean
+    allow_partial_search_results?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    batched_reduce_size?: long
+    ccs_minimize_roundtrips?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    docvalue_fields?: Field[]
+    expand_wildcards?: ExpandWildcards
+    ignore_throttled?: boolean
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    max_concurrent_shard_requests?: long
+    preference?: string
+    pre_filter_shard_size?: long
+    query_on_query_string?: string
+    request_cache?: boolean
+    routing?: Routing
+    scroll?: Time
+    search_type?: SearchType
+    sequence_number_primary_term?: boolean
+    stats?: string[]
+    stored_fields?: Field[]
+    suggest_field?: Field
+    suggest_mode?: SuggestMode
+    suggest_size?: long
+    suggest_text?: string
+    total_hits_as_integer?: boolean
+    track_total_hits?: boolean | integer
+    typed_keys?: boolean
+    rest_total_hits_as_int?: boolean
+    _source_excludes?: Field | Field[]
+    _source_includes?: Field | Field[]
+    seq_no_primary_term?: boolean
+    q?: string
+    size?: integer
+    body?: {
+      aggs?: Record<string, AggregationContainer>
+      aggregations?: Record<string, AggregationContainer>
+      collapse?: FieldCollapse
+      explain?: boolean
+      from?: integer
+      highlight?: Highlight
+      track_total_hits?: boolean | integer
+      indices_boost?: Array<Record<IndexName, double>>
+      docvalue_fields?: Array<Field | DocValueField>
+      min_score?: double
+      post_filter?: QueryContainer
+      profile?: boolean
+      query?: QueryContainer
+      rescore?: Rescore | Rescore[]
+      script_fields?: Record<string, ScriptField>
+      search_after?: Array<integer | string>
+      size?: integer
+      slice?: SlicedScroll
+      sort?: Array<Field | Record<string, Sort | SortOrder>>
+      _source?: boolean | Fields | SourceFilter
+      fields?: Array<Field | DateField>
+      suggest?: Record<string, SuggestBucket>
+      terminate_after?: long
+      timeout?: string
+      track_scores?: boolean
+      version?: boolean
+      seq_no_primary_term?: boolean
+      stored_fields?: Field | Field[]
+      pit?: PointInTimeReference
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface SearchResponse<TDocument> {
+    aggregations?: Record<string, Aggregate>
+    _clusters?: ClusterStatistics
+    documents?: TDocument[]
+    fields?: Record<string, LazyDocument>
+    hits?: HitsMetadata<TDocument>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    pit_id?: string
+    _scroll_id?: string
+    _shards?: ShardStatistics
+    suggest?: SuggestDictionary<TDocument>
+    terminated_early?: boolean
+    timed_out?: boolean
+    took?: long
+    total?: long
+  }
+
+  export interface FieldCollapse {
+    field?: Field
+    inner_hits?: InnerHits | InnerHits[]
+    max_concurrent_group_searches?: integer
+  }
+
+  export interface Highlight {
+    boundary_chars?: string
+    boundary_max_scan?: integer
+    boundary_scanner?: BoundaryScanner
+    boundary_scanner_locale?: string
+    encoder?: HighlighterEncoder
+    fields?: Record<Field, HighlightField>
+    fragmenter?: HighlighterFragmenter
+    fragment_offset?: integer
+    fragment_size?: integer
+    max_fragment_length?: integer
+    no_match_size?: integer
+    number_of_fragments?: integer
+    order?: HighlighterOrder
+    post_tags?: string[]
+    pre_tags?: string[]
+    require_field_match?: boolean
+    tags_schema?: HighlighterTagsSchema
+    type?: HighlighterType
+  }
+
+  export interface HighlightField {
+    boundary_chars?: string
+    boundary_max_scan?: integer
+    boundary_scanner?: BoundaryScanner
+    boundary_scanner_locale?: string
+    field?: Field
+    force_source?: boolean
+    fragmenter?: HighlighterFragmenter
+    fragment_offset?: integer
+    fragment_size?: integer
+    highlight_query?: QueryContainer
+    matched_fields?: Field[]
+    max_fragment_length?: integer
+    no_match_size?: integer
+    number_of_fragments?: integer
+    order?: HighlighterOrder
+    phrase_limit?: integer
+    post_tags?: string[]
+    pre_tags?: string[]
+    require_field_match?: boolean
+    tags_schema?: HighlighterTagsSchema
+    type?: HighlighterType | string
+  }
+
+  export interface Hit<TDocument> {
+    _explanation?: Explanation
+    fields?: Record<string, LazyDocument>
+    highlight?: Record<string, string[]>
+    inner_hits?: Record<string, InnerHitsResult>
+    matched_queries?: string[]
+    _nested?: NestedIdentity
+    _ignored?: string[]
+    _shard?: string
+    _node?: string
+    _score?: double
+    sort?: Array<number | string>
+    _id?: string
+    _index?: string
+    _primary_term?: long
+    _routing?: string
+    _seq_no?: long
+    _source?: TDocument
+    _type?: string
+    _version?: long
+  }
+
+  export interface HitsMetadata<T> {
+    hits?: Hit<T>[]
+    max_score?: double
+    total?: TotalHits | long
+  }
+
+  export interface InnerHitsMetadata {
+    hits?: Hit<LazyDocument>[]
+    max_score?: double
+    total?: TotalHits | long
+  }
+
+  export interface InnerHitsResult {
+    hits?: InnerHitsMetadata
+  }
+
+  export interface NestedIdentity {
+    field?: Field
+    _nested?: NestedIdentity
+    offset?: integer
+  }
+
+  export interface TotalHits {
+    relation?: TotalHitsRelation
+    value?: long
+  }
+
+  export interface InnerHits {
+    collapse?: FieldCollapse
+    docvalue_fields?: Field[]
+    explain?: boolean
+    from?: integer
+    highlight?: Highlight
+    ignore_unmapped?: boolean
+    name?: string
+    script_fields?: Record<string, ScriptField>
+    seq_no_primary_term?: boolean
+    fields?: Field[]
+    size?: integer
+    sort?: Array<Record<string, Sort | SortOrder>>
+    _source?: boolean | SourceFilter
+    version?: boolean
+  }
+
+  export interface PointInTimeReference {
+    id?: string
+    keep_alive?: Time
+  }
+
+  export interface AggregationBreakdown {
+    build_aggregation?: long
+    build_aggregation_count?: long
+    build_leaf_collector?: long
+    build_leaf_collector_count?: long
+    collect?: long
+    collect_count?: long
+    initialize?: long
+    initialize_count?: long
+    reduce?: long
+    reduce_count?: long
+  }
+
+  export interface AggregationProfileDebug {
+  }
+
+  export interface AggregationProfile {
+    breakdown?: AggregationBreakdown
+    description?: string
+    time_in_nanos?: long
+    type?: string
+    debug?: AggregationProfileDebug
+    children?: AggregationProfileDebug[]
+  }
+
+  export interface Collector {
+    children?: Collector[]
+    name?: string
+    reason?: string
+    time_in_nanos?: long
+  }
+
+  export interface Profile {
+    shards?: ShardProfile[]
+  }
+
+  export interface QueryBreakdown {
+    advance?: long
+    advance_count?: long
+    build_scorer?: long
+    build_scorer_count?: long
+    create_weight?: long
+    create_weight_count?: long
+    match?: long
+    match_count?: long
+    shallow_advance?: long
+    shallow_advance_count?: long
+    next_doc?: long
+    next_doc_count?: long
+    score?: long
+    score_count?: long
+    compute_max_score?: long
+    compute_max_score_count?: long
+    set_min_competitive_score?: long
+    set_min_competitive_score_count?: long
+  }
+
+  export interface QueryProfile {
+    breakdown?: QueryBreakdown
+    children?: QueryProfile[]
+    description?: string
+    time_in_nanos?: long
+    type?: string
+  }
+
+  export interface SearchProfile {
+    collector?: Collector[]
+    query?: QueryProfile[]
+    rewrite_time?: long
+  }
+
+  export interface ShardProfile {
+    aggregations?: AggregationProfile[]
+    id?: string
+    searches?: SearchProfile[]
+  }
+
+  export interface Rescore {
+    query?: RescoreQuery
+    window_size?: integer
+  }
+
+  export interface RescoreQuery {
+    rescore_query?: QueryContainer
+    query_weight?: double
+    rescore_query_weight?: double
+    score_mode?: ScoreMode
+  }
+
+  export interface NestedSortValue {
+    filter?: QueryContainer
+    max_children?: integer
+    path?: Field
+  }
+
+  export interface NestedSort {
+    nested?: NestedSortValue
+  }
+
+  export interface Sort {
+    missing?: Missing
+    mode?: SortMode
+    nested?: NestedSort
+    numeric_type?: NumericType
+    order?: SortOrder
+  }
+
+  export interface SourceFilter {
+    excludes?: Fields
+    includes?: Fields
+  }
+
+  export interface DocValueField {
+    field?: Field
+    format?: string
+  }
+
+  export interface SearchNode {
+    name?: string
+    transport_address?: string
+  }
+
+  export interface SearchShard {
+    index?: string
+    node?: string
+    primary?: boolean
+    relocating_node?: string
+    shard?: integer
+    state?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface SearchShardsRequest extends RequestBase {
+    index?: Indices
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    local?: boolean
+    preference?: string
+    routing?: Routing
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface SearchShardsResponse {
+    nodes?: Record<string, SearchNode>
+    shards?: SearchShard[][]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface SearchTemplateRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    allow_no_indices?: boolean
+    ccs_minimize_roundtrips?: boolean
+    expand_wildcards?: ExpandWildcards
+    explain?: boolean
+    ignore_throttled?: boolean
+    ignore_unavailable?: boolean
+    preference?: string
+    profile?: boolean
+    routing?: Routing
+    scroll?: Time
+    search_type?: SearchType
+    total_hits_as_integer?: boolean
+    typed_keys?: boolean
+    body?: {
+      id?: string
+      params?: Record<string, object>
+      source?: string
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface RenderSearchTemplateRequest extends RequestBase {
+    id?: Id
+    body?: {
+      file?: string
+      params?: Record<string, object>
+      source?: string
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface RenderSearchTemplateResponse {
+    template_output?: LazyDocument
+  }
+
+  export interface Suggest<T> {
+    length?: integer
+    offset?: integer
+    options?: SuggestOption<T>[]
+    text?: string
+  }
+
+  export interface SuggestBucket {
+    completion?: CompletionSuggester
+    phrase?: PhraseSuggester
+    prefix?: string
+    regex?: string
+    term?: TermSuggester
+    text?: string
+  }
+
+  export interface SuggestDictionary<T> {
+    item?: Suggest<T>[]
+    keys?: string[]
+    values?: Suggest<T>[][]
+  }
+
+  export interface SuggestOption<TDocument> {
+    collate_match?: boolean
+    contexts?: Record<string, Context[]>
+    fields?: Record<string, LazyDocument>
+    freq?: long
+    highlighted?: string
+    _id?: string
+    _index?: IndexName
+    _score?: double
+    score?: double
+    _source?: TDocument
+    text?: string
+  }
+
+  export interface Suggester {
+    analyzer?: string
+    field?: Field
+    size?: integer
+  }
+
+  export interface CompletionSuggester {
+    contexts?: Record<string, SuggestContextQuery[]>
+    fuzzy?: SuggestFuzziness
+    prefix?: string
+    regex?: string
+    skip_duplicates?: boolean
+  }
+
+  export interface SuggestFuzziness {
+    fuzziness?: Fuzziness
+    min_length?: integer
+    prefix_length?: integer
+    transpositions?: boolean
+    unicode_aware?: boolean
+  }
+
+  export type Context = string | GeoLocation
+
+  export interface SuggestContextQuery {
+    boost?: double
+    context?: Context
+    neighbours?: Distance[] | integer[]
+    precision?: Distance | integer
+    prefix?: boolean
+  }
+
+  export interface DirectGenerator {
+    field?: Field
+    max_edits?: integer
+    max_inspections?: float
+    max_term_freq?: float
+    min_doc_freq?: float
+    min_word_length?: integer
+    post_filter?: string
+    pre_filter?: string
+    prefix_length?: integer
+    size?: integer
+    suggest_mode?: SuggestMode
+  }
+
+  export interface PhraseSuggestCollate {
+    params?: Record<string, object>
+    prune?: boolean
+    query?: PhraseSuggestCollateQuery
+  }
+
+  export interface PhraseSuggestCollateQuery {
+    id?: Id
+    source?: string
+  }
+
+  export interface PhraseSuggestHighlight {
+    post_tag?: string
+    pre_tag?: string
+  }
+
+  export interface PhraseSuggester {
+    collate?: PhraseSuggestCollate
+    confidence?: double
+    direct_generator?: DirectGenerator[]
+    force_unigrams?: boolean
+    gram_size?: integer
+    highlight?: PhraseSuggestHighlight
+    max_errors?: double
+    real_word_error_likelihood?: double
+    separator?: string
+    shard_size?: integer
+    smoothing?: SmoothingModelContainer
+    text?: string
+    token_limit?: integer
+  }
+
+  export interface LaplaceSmoothingModel {
+    alpha?: double
+  }
+
+  export interface LinearInterpolationSmoothingModel {
+    bigram_lambda?: double
+    trigram_lambda?: double
+    unigram_lambda?: double
+  }
+
+  export interface SmoothingModel {
+  }
+
+  export interface SmoothingModelContainer {
+    laplace?: LaplaceSmoothingModel
+    linear_interpolation?: LinearInterpolationSmoothingModel
+    stupid_backoff?: StupidBackoffSmoothingModel
+  }
+
+  export interface StupidBackoffSmoothingModel {
+    discount?: double
+  }
+
+  export interface TermSuggester {
+    lowercase_terms?: boolean
+    max_edits?: integer
+    max_inspections?: integer
+    max_term_freq?: float
+    min_doc_freq?: float
+    min_word_length?: integer
+    prefix_length?: integer
+    shard_size?: integer
+    sort?: SuggestSort
+    string_distance?: StringDistance
+    suggest_mode?: SuggestMode
+    text?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ValidateQueryRequest extends RequestBase {
+    index?: Indices
+    type?: Types
+    allow_no_indices?: boolean
+    all_shards?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    expand_wildcards?: ExpandWildcards
+    explain?: boolean
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    query_on_query_string?: string
+    rewrite?: boolean
+    body?: {
+      query?: QueryContainer
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ValidateQueryResponse {
+    explanations?: ValidationExplanation[]
+    _shards?: ShardStatistics
+    valid?: boolean
+  }
+
+  export interface ValidationExplanation {
+    error?: string
+    explanation?: string
+    index?: string
+    valid?: boolean
+  }
+
+  export interface AsyncSearch<TDocument> {
+    aggregations?: Record<string, Aggregate>
+    _clusters?: ClusterStatistics
+    documents?: TDocument[]
+    fields?: Record<string, LazyDocument>
+    hits?: HitsMetadata<TDocument>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    _scroll_id?: string
+    _shards?: ShardStatistics
+    suggest?: SuggestDictionary<TDocument>
+    terminated_early?: boolean
+    timed_out?: boolean
+    took?: long
+  }
+
+  export interface AsyncSearchResponseBase<TDocument> {
+    expiration_time?: Date
+    expiration_time_in_millis?: long
+    id?: string
+    is_partial?: boolean
+    is_running?: boolean
+    response?: AsyncSearch<TDocument>
+    start_time?: Date
+    start_time_in_millis?: long
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface AsyncSearchDeleteRequest extends RequestBase {
+    id: Id
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface AsyncSearchGetRequest extends RequestBase {
+    id: Id
+    body?: {
+      keep_alive?: Time
+      typed_keys?: boolean
+      wait_for_completion_timeout?: Time
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface AsyncSearchGetResponse<TDocument> {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface AsyncSearchSubmitRequest extends RequestBase {
+    index?: Indices
+    body?: {
+      aggs?: Record<string, AggregationContainer>
+      allow_no_indices?: boolean
+      allow_partial_search_results?: boolean
+      analyzer?: string
+      analyze_wildcard?: boolean
+      batched_reduce_size?: long
+      collapse?: FieldCollapse
+      default_operator?: DefaultOperator
+      df?: string
+      docvalue_fields?: Field[]
+      expand_wildcards?: ExpandWildcards
+      explain?: boolean
+      from?: integer
+      highlight?: Highlight
+      ignore_throttled?: boolean
+      ignore_unavailable?: boolean
+      indices_boost?: Record<IndexName, double>
+      keep_alive?: Time
+      keep_on_completion?: boolean
+      lenient?: boolean
+      max_concurrent_shard_requests?: long
+      min_score?: double
+      post_filter?: QueryContainer
+      preference?: string
+      profile?: boolean
+      query?: QueryContainer
+      query_on_query_string?: string
+      request_cache?: boolean
+      rescore?: Rescore[]
+      routing?: Routing
+      script_fields?: Record<string, ScriptField>
+      search_after?: object[]
+      search_type?: SearchType
+      sequence_number_primary_term?: boolean
+      size?: integer
+      sort?: Sort[]
+      _source?: boolean | SourceFilter
+      stats?: string[]
+      stored_fields?: Field[]
+      suggest?: Record<string, SuggestBucket>
+      suggest_field?: Field
+      suggest_mode?: SuggestMode
+      suggest_size?: long
+      suggest_text?: string
+      terminate_after?: long
+      timeout?: string
+      track_scores?: boolean
+      track_total_hits?: boolean
+      typed_keys?: boolean
+      version?: boolean
+      wait_for_completion_timeout?: Time
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface AsyncSearchSubmitResponse<TDocument> {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CreateAutoFollowPatternRequest extends RequestBase {
+    name: Name
+    body?: {
+      follow_index_pattern?: string
+      leader_index_patterns?: string[]
+      max_outstanding_read_requests?: long
+      max_outstanding_write_requests?: integer
+      max_poll_timeout?: Time
+      max_read_request_operation_count?: integer
+      max_read_request_size?: string
+      max_retry_delay?: Time
+      max_write_buffer_count?: integer
+      max_write_buffer_size?: string
+      max_write_request_operation_count?: integer
+      max_write_request_size?: string
+      remote_cluster?: string
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteAutoFollowPatternRequest extends RequestBase {
+    name: Name
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
+  }
+
+  export interface AutoFollowPattern {
+    follow_index_pattern?: string
+    leader_index_patterns?: string[]
+    max_outstanding_read_requests?: long
+    max_outstanding_write_requests?: integer
+    read_poll_timeout?: Time
+    max_read_request_operation_count?: integer
+    max_read_request_size?: string
+    max_retry_delay?: Time
+    max_write_buffer_count?: integer
+    max_write_buffer_size?: string
+    max_write_request_operation_count?: integer
+    max_write_request_size?: string
+    remote_cluster?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetAutoFollowPatternRequest extends RequestBase {
+    name?: Name
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetAutoFollowPatternResponse {
+    patterns?: Record<string, AutoFollowPattern>
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PauseAutoFollowPatternRequest extends RequestBase {
+    name: Name
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ResumeAutoFollowPatternRequest extends RequestBase {
+    name: Name
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CreateFollowIndexRequest extends RequestBase {
+    index: IndexName
+    wait_for_active_shards?: string
+    body?: {
+      leader_index?: IndexName
+      max_outstanding_read_requests?: long
+      max_outstanding_write_requests?: long
+      max_read_request_operation_count?: long
+      max_read_request_size?: string
+      max_retry_delay?: Time
+      max_write_buffer_count?: long
+      max_write_buffer_size?: string
+      max_write_request_operation_count?: long
+      max_write_request_size?: string
+      read_poll_timeout?: Time
+      remote_cluster?: string
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CreateFollowIndexResponse {
+    follow_index_created?: boolean
+    follow_index_shards_acked?: boolean
+    index_following_started?: boolean
+  }
+
+  export interface FollowIndexReadException {
+    exception?: ErrorCause
+    from_seq_no?: long
+    retries?: integer
+  }
+
+  export interface FollowIndexShardStats {
+    bytes_read?: long
+    failed_read_requests?: long
+    failed_write_requests?: long
+    fatal_exception?: ErrorCause
+    follower_aliases_version?: long
+    follower_global_checkpoint?: long
+    follower_index?: string
+    follower_mapping_version?: long
+    follower_max_seq_no?: long
+    follower_settings_version?: long
+    last_requested_seq_no?: long
+    leader_global_checkpoint?: long
+    leader_index?: string
+    leader_max_seq_no?: long
+    operations_read?: long
+    operations_written?: long
+    outstanding_read_requests?: integer
+    outstanding_write_requests?: integer
+    read_exceptions?: FollowIndexReadException[]
+    remote_cluster?: string
+    shard_id?: integer
+    successful_read_requests?: long
+    successful_write_requests?: long
+    time_since_last_read_millis?: long
+    total_read_remote_exec_time_millis?: long
+    total_read_time_millis?: long
+    total_write_time_millis?: long
+    write_buffer_operation_count?: long
+    write_buffer_size_in_bytes?: long
+  }
+
+  export interface FollowIndexStats {
+    index?: string
+    shards?: FollowIndexShardStats[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FollowIndexStatsRequest extends RequestBase {
+    index: Indices
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FollowIndexStatsResponse {
+    indices?: FollowIndexStats[]
+  }
+
+  export interface FollowConfig {
+    max_outstanding_read_requests?: integer
+    max_outstanding_write_requests?: integer
+    max_read_request_operation_count?: integer
+    max_read_request_size?: string
+    max_retry_delay?: Time
+    max_write_buffer_count?: integer
+    max_write_buffer_size?: string
+    max_write_request_operation_count?: integer
+    max_write_request_size?: string
+    read_poll_timeout?: Time
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FollowInfoRequest extends RequestBase {
+    index: Indices
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface FollowInfoResponse {
+    follower_indices?: FollowerInfo[]
+  }
+
+  export interface FollowerInfo {
+    follower_index?: string
+    leader_index?: string
+    parameters?: FollowConfig
+    remote_cluster?: string
+    status?: FollowerIndexStatus
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ForgetFollowerIndexRequest extends RequestBase {
+    index: IndexName
+    body?: {
+      follower_cluster?: string
+      follower_index?: IndexName
+      follower_index_uuid?: string
+      leader_remote_cluster?: string
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ForgetFollowerIndexResponse {
+    _shards?: ShardStatistics
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PauseFollowIndexRequest extends RequestBase {
+    index: IndexName
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PauseFollowIndexResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ResumeFollowIndexRequest extends RequestBase {
+    index: IndexName
+    body?: {
+      max_outstanding_read_requests?: long
+      max_outstanding_write_requests?: long
+      max_read_request_operation_count?: long
+      max_read_request_size?: string
+      max_retry_delay?: Time
+      max_write_buffer_count?: long
+      max_write_buffer_size?: string
+      max_write_request_operation_count?: long
+      max_write_request_size?: string
+      read_poll_timeout?: Time
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ResumeFollowIndexResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface UnfollowIndexRequest extends RequestBase {
+    index: IndexName
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface UnfollowIndexResponse extends AcknowledgedResponseBase {
+  }
+
+  export interface AutoFollowedCluster {
+    cluster_name?: string
+    last_seen_metadata_version?: long
+    time_since_last_check_millis?: Date
+  }
+
+  export interface CcrAutoFollowStats {
+    auto_followed_clusters?: AutoFollowedCluster[]
+    number_of_failed_follow_indices?: long
+    number_of_failed_remote_cluster_state_requests?: long
+    number_of_successful_follow_indices?: long
+    recent_auto_follow_errors?: ErrorCause[]
+  }
+
+  export interface CcrFollowStats {
+    indices?: FollowIndexStats[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CcrStatsRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CcrStatsResponse {
+    auto_follow_stats?: CcrAutoFollowStats
+    follow_stats?: CcrFollowStats
+  }
+
+  export interface EnrichPolicy {
+    enrich_fields?: Field[]
+    indices?: Indices
+    match_field?: Field
+    query?: string
+  }
+
+  export interface NamedPolicy extends EnrichPolicy {
+    name?: string
+  }
+
+  export interface NamedPolicyConfig {
+    geo_match?: NamedPolicy
+    match?: NamedPolicy
+  }
+
+  export interface NamedPolicyMetadata {
+    config?: NamedPolicyConfig
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteEnrichPolicyRequest extends RequestBase {
+    name: Name
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ExecuteEnrichPolicyRequest extends RequestBase {
+    name: Name
+    wait_for_completion?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ExecuteEnrichPolicyResponse {
+    status?: ExecuteEnrichPolicyStatus
+    task_id?: TaskId
+  }
+
+  export interface ExecuteEnrichPolicyStatus {
+    phase?: EnrichPolicyPhase
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetEnrichPolicyRequest extends RequestBase {
+    name?: Names
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetEnrichPolicyResponse {
+    policies?: NamedPolicyMetadata[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PutEnrichPolicyRequest extends RequestBase {
+    name: Name
+    body?: {
+      geo_match?: EnrichPolicy
+      match?: EnrichPolicy
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PutEnrichPolicyResponse extends AcknowledgedResponseBase {
+  }
+
+  export interface CoordinatorStats {
+    executed_searches_total?: long
+    node_id?: string
+    queue_size?: integer
+    remote_requests_current?: integer
+    remote_requests_total?: long
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface EnrichStatsRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface EnrichStatsResponse {
+    coordinator_stats?: CoordinatorStats[]
+    executing_policies?: ExecutingPolicy[]
+  }
+
+  export interface ExecutingPolicy {
+    name?: string
+    task?: TaskInfo
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GraphExploreRequest extends RequestBase {
+    index: Indices
+    type?: Types
+    routing?: Routing
+    timeout?: Time
+    body?: {
+      connections?: Hop
+      controls?: GraphExploreControls
+      query?: QueryContainer
+      vertices?: GraphVertexDefinition[]
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GraphExploreResponse {
+    connections?: GraphConnection[]
+    failures?: ShardFailure[]
+    timed_out?: boolean
+    took?: long
+    vertices?: GraphVertex[]
+  }
+
+  export interface GraphExploreControls {
+    sample_diversity?: SampleDiversity
+    sample_size?: integer
+    timeout?: Time
+    use_significance?: boolean
+  }
+
+  export interface GraphVertexDefinition {
+    exclude?: string[]
+    field?: Field
+    include?: GraphVertexInclude[]
+    min_doc_count?: long
+    shard_min_doc_count?: long
+    size?: integer
+  }
+
+  export interface GraphVertexInclude {
+    boost?: double
+    term?: string
+  }
+
+  export interface Hop {
+    connections?: Hop
+    query?: QueryContainer
+    vertices?: GraphVertexDefinition[]
+  }
+
+  export interface SampleDiversity {
+    field?: Field
+    max_docs_per_value?: integer
+  }
+
+  export interface GraphConnection {
+    doc_count?: long
+    source?: long
+    target?: long
+    weight?: double
+  }
+
+  export interface GraphVertex {
+    depth?: long
+    field?: string
+    term?: string
+    weight?: double
+  }
+
+  export interface Phase {
+    actions?: Record<string, LifecycleAction>
+    min_age?: Time
+  }
+
+  export interface Phases {
+    cold?: Phase
+    delete?: Phase
+    hot?: Phase
+    warm?: Phase
+  }
+
+  export interface Policy {
+    phases?: Phases
+  }
+
+  export interface LifecycleAction {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteLifecycleRequest extends RequestBase {
+    policy: Id
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ExplainLifecycleRequest extends RequestBase {
+    index: IndexName
+    only_errors?: boolean
+    only_managed?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface ExplainLifecycleResponse {
+    indices?: Record<string, LifecycleExplain>
+  }
+
+  export interface LifecycleExplain {
+    action?: string
+    action_time_millis?: Date
+    age?: Time
+    failed_step?: string
+    failed_step_retry_count?: integer
+    index?: IndexName
+    is_auto_retryable_error?: boolean
+    lifecycle_date_millis?: Date
+    managed?: boolean
+    phase?: string
+    phase_time_millis?: Date
+    policy?: string
+    step?: string
+    step_info?: Record<string, object>
+    step_time_millis?: Date
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetLifecycleRequest extends RequestBase {
+    policy?: Id
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetLifecycleResponse extends Record<string, LifecyclePolicy> {
+  }
+
+  export interface LifecyclePolicy {
+    modified_date?: Date
+    policy?: Policy
+    version?: integer
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetIlmStatusRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetIlmStatusResponse {
+    operation_mode?: LifecycleOperationMode
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MoveToStepRequest extends RequestBase {
+    index: IndexName
+    body?: {
+      current_step?: StepKey
+      next_step?: StepKey
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface MoveToStepResponse extends AcknowledgedResponseBase {
+  }
+
+  export interface StepKey {
+    action?: string
+    name?: string
+    phase?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PutLifecycleRequest extends RequestBase {
+    policy: Id
+    body?: {
+      policy?: Policy
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PutLifecycleResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface RemovePolicyRequest extends RequestBase {
+    index: IndexName
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface RemovePolicyResponse {
+    failed_indexes?: string[]
+    has_failures?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface RetryIlmRequest extends RequestBase {
+    index: IndexName
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface RetryIlmResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StartIlmRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StartIlmResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StopIlmRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StopIlmResponse extends AcknowledgedResponseBase {
+  }
+
+  export interface MinimalLicenseInformation {
+    expiry_date_in_millis?: long
+    mode?: LicenseType
+    status?: LicenseStatus
+    type?: LicenseType
+    uid?: string
+  }
+
+  export interface NativeCodeInformation {
+    build_hash?: string
+    version?: string
+  }
+
+  export interface XPackBuildInformation {
+    date?: Date
+    hash?: string
+  }
+
+  export interface XPackFeature {
+    available?: boolean
+    description?: string
+    enabled?: boolean
+    native_code_info?: NativeCodeInformation
+  }
+
+  export interface XPackFeatures {
+    analytics?: XPackFeature
+    ccr?: XPackFeature
+    data_frame?: XPackFeature
+    data_science?: XPackFeature
+    enrich?: XPackFeature
+    flattened?: XPackFeature
+    frozen_indices?: XPackFeature
+    graph?: XPackFeature
+    ilm?: XPackFeature
+    logstash?: XPackFeature
+    ml?: XPackFeature
+    monitoring?: XPackFeature
+    rollup?: XPackFeature
+    security?: XPackFeature
+    slm?: XPackFeature
+    spatial?: XPackFeature
+    sql?: XPackFeature
+    transform?: XPackFeature
+    vectors?: XPackFeature
+    voting_only?: XPackFeature
+    watcher?: XPackFeature
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface XPackInfoRequest extends RequestBase {
+    categories?: string[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface XPackInfoResponse {
+    build?: XPackBuildInformation
+    features?: XPackFeatures
+    license?: MinimalLicenseInformation
+    tagline?: string
+  }
+
+  export interface AlertingCount {
+    active?: long
+    total?: long
+  }
+
+  export interface AlertingExecution {
+    actions?: Record<string, ExecutionAction>
+  }
+
+  export interface AlertingInput {
+    input?: Record<string, AlertingCount>
+    trigger?: Record<string, AlertingCount>
+  }
+
+  export interface AlertingUsage extends XPackUsage {
+    count?: AlertingCount
+    execution?: AlertingExecution
+    watch?: AlertingInput
+  }
+
+  export interface AuditUsage extends SecurityFeatureToggle {
+    outputs?: string[]
+  }
+
+  export interface CcrUsage extends XPackUsage {
+    auto_follow_patterns_count?: integer
+    follower_indices_count?: integer
+  }
+
+  export interface DataFeed {
+    count?: long
+  }
+
+  export interface ExecutionAction {
+    total?: long
+    total_in_ms?: long
+  }
+
+  export interface FlattenedUsage extends XPackUsage {
+    field_count?: integer
+  }
+
+  export interface ForecastStatistics {
+    forecasted_jobs?: long
+    memory_bytes?: JobStatistics
+    processing_time_ms?: JobStatistics
+    records?: JobStatistics
+    status?: Record<string, long>
+    total?: long
+  }
+
+  export interface IlmPolicyStatistics {
+    indices_managed?: integer
+    phases?: Phases
+  }
+
+  export interface IlmUsage {
+    policy_count?: integer
+    policy_stats?: IlmPolicyStatistics[]
+  }
+
+  export interface IpFilterUsage {
+    http?: boolean
+    transport?: boolean
+  }
+
+  export interface Job {
+    allow_lazy_open?: boolean
+    analysis_config?: AnalysisConfig
+    analysis_limits?: AnalysisLimits
+    background_persist_interval?: Time
+    create_time?: Date
+    data_description?: DataDescription
+    description?: string
+    finished_time?: Date
+    job_id?: string
+    job_type?: string
+    model_plot?: ModelPlotConfig
+    model_snapshot_id?: string
+    model_snapshot_retention_days?: long
+    renormalization_window_days?: long
+    results_index_name?: string
+    results_retention_days?: long
+  }
+
+  export interface JobStatistics {
+    avg?: double
+    max?: double
+    min?: double
+    total?: double
+  }
+
+  export interface MachineLearningUsage extends XPackUsage {
+    datafeeds?: Record<string, DataFeed>
+    jobs?: Record<string, Job>
+    node_count?: integer
+  }
+
+  export interface MonitoringUsage extends XPackUsage {
+    collection_enabled?: boolean
+    enabled_exporters?: Record<string, long>
+  }
+
+  export interface QueryUsage {
+    count?: integer
+    failed?: integer
+    paging?: integer
+    total?: integer
+  }
+
+  export interface RealmUsage extends XPackUsage {
+    name?: string[]
+    order?: long[]
+    size?: long[]
+  }
+
+  export interface RoleMappingUsage {
+    enabled?: integer
+    size?: integer
+  }
+
+  export interface RoleUsage {
+    dls?: boolean
+    fls?: boolean
+    size?: long
+  }
+
+  export interface SecurityFeatureToggle {
+    enabled?: boolean
+  }
+
+  export interface SecurityUsage extends XPackUsage {
+    anonymous?: SecurityFeatureToggle
+    audit?: AuditUsage
+    ipfilter?: IpFilterUsage
+    realms?: Record<string, RealmUsage>
+    role_mapping?: Record<string, RoleMappingUsage>
+    roles?: Record<string, RoleUsage>
+    ssl?: SslUsage
+    system_key?: SecurityFeatureToggle
+  }
+
+  export interface SlmUsage extends XPackUsage {
+    policy_count?: integer
+    policy_stats?: SnapshotLifecycleStats
+  }
+
+  export interface SnapshotLifecycleStats {
+    retention_deletion_time?: string
+    retention_deletion_time_millis?: long
+    retention_failed?: long
+    retention_runs?: long
+    retention_timed_out?: long
+    total_snapshots_deleted?: long
+    total_snapshot_deletion_failures?: long
+    total_snapshots_failed?: long
+    total_snapshots_taken?: long
+  }
+
+  export interface SqlUsage extends XPackUsage {
+    features?: Record<string, integer>
+    queries?: Record<string, QueryUsage>
+  }
+
+  export interface SslUsage {
+    http?: SecurityFeatureToggle
+    transport?: SecurityFeatureToggle
+  }
+
+  export interface VectorUsage extends XPackUsage {
+    dense_vector_dims_avg_count?: integer
+    dense_vector_fields_count?: integer
+    sparse_vector_fields_count?: integer
+  }
+
+  export interface XPackUsage {
+    available?: boolean
+    enabled?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface XPackUsageRequest extends RequestBase {
+    master_timeout?: Time
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface XPackUsageResponse {
+    watcher?: AlertingUsage
+    ccr?: CcrUsage
+    data_frame?: XPackUsage
+    data_science?: XPackUsage
+    enrich?: XPackUsage
+    flattened?: FlattenedUsage
+    graph?: XPackUsage
+    ilm?: IlmUsage
+    logstash?: XPackUsage
+    ml?: MachineLearningUsage
+    monitoring?: MonitoringUsage
+    rollup?: XPackUsage
+    security?: SecurityUsage
+    slm?: SlmUsage
+    sql?: SqlUsage
+    transform?: XPackUsage
+    vectors?: VectorUsage
+    voting_only?: XPackUsage
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteLicenseRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteLicenseResponse {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetBasicLicenseStatusRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetBasicLicenseStatusResponse {
+    eligible_to_start_basic?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetLicenseRequest extends RequestBase {
+    accept_enterprise?: boolean
+    local?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetLicenseResponse {
+    license?: LicenseInformation
+  }
+
+  export interface License {
+    expiry_date_in_millis?: long
+    issue_date_in_millis?: long
+    issued_to?: string
+    issuer?: string
+    max_nodes?: long
+    signature?: string
+    type?: LicenseType
+    uid?: string
+  }
+
+  export interface LicenseInformation {
+    expiry_date?: Date
+    expiry_date_in_millis?: long
+    issue_date?: Date
+    issue_date_in_millis?: long
+    issued_to?: string
+    issuer?: string
+    max_nodes?: long
+    max_resource_units?: integer
+    status?: LicenseStatus
+    type?: LicenseType
+    uid?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetTrialLicenseStatusRequest extends RequestBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetTrialLicenseStatusResponse {
+    eligible_to_start_trial?: boolean
+  }
+
+  export interface LicenseAcknowledgement {
+    license?: string[]
+    message?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PostLicenseRequest extends RequestBase {
+    acknowledge?: boolean
+    body?: {
+      license?: License
+    }
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface PostLicenseResponse {
+    acknowledge?: LicenseAcknowledgement
+    acknowledged?: boolean
+    license_status?: LicenseStatus
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StartBasicLicenseRequest extends RequestBase {
+    acknowledge?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
+    acknowledge?: Record<string, string[]>
+    basic_was_started?: boolean
+    error_message?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StartTrialLicenseRequest extends RequestBase {
+    acknowledge?: boolean
+    type_query_string?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface StartTrialLicenseResponse extends AcknowledgedResponseBase {
+    error_message?: string
+    trial_was_started?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CloseJobRequest extends RequestBase {
+    job_id: Id
+    allow_no_jobs?: boolean
+    force?: boolean
+    timeout?: Time
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface CloseJobResponse {
+    closed?: boolean
+  }
+
+  export interface ChunkingConfig {
+    mode?: ChunkingMode
+    time_span?: Time
+  }
+
+  export interface DatafeedConfig {
+    aggregations?: Record<string, AggregationContainer>
+    chunking_config?: ChunkingConfig
+    datafeed_id?: string
+    frequency?: Time
+    indices?: Indices
+    job_id?: string
+    max_empty_searches?: integer
+    query?: QueryContainer
+    query_delay?: Time
+    script_fields?: Record<string, ScriptField>
+    scroll_size?: integer
+  }
+
+  export interface DatafeedStats {
+    assignment_explanation?: string
+    datafeed_id?: string
+    node?: DiscoveryNode
+    state?: DatafeedState
+    timing_stats?: DatafeedTimingStats
+  }
+
+  export interface DatafeedTimingStats {
+    bucket_count?: long
+    exponential_average_search_time_per_hour_ms?: double
+    job_id?: string
+    search_count?: long
+    total_search_time_ms?: double
+  }
+
+  export interface DiscoveryNode {
+    attributes?: Record<string, string>
+    ephemeral_id?: string
+    id?: string
+    name?: string
+    transport_address?: string
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteCalendarRequest extends RequestBase {
+    calendar_id: Id
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteCalendarResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteCalendarEventRequest extends RequestBase {
+    calendar_id: Id
+    event_id: Id
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteCalendarEventResponse extends AcknowledgedResponseBase {
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteCalendarJobRequest extends RequestBase {
+    calendar_id: Id
+    job_id: Id
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteCalendarJobResponse {
+    calendar_id?: string
+    description?: string
+    job_ids?: Id[]
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteDatafeedRequest extends RequestBase {
+    datafeed_id: Id
+    force?: boolean
+  }
+
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface DeleteDatafeedResponse extends AcknowledgedResponseBase {
+  }
+>>>>>>> add initial support for aggregations
 
 export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
@@ -6721,9 +9347,19 @@ export interface FollowInfoRequest extends RequestBase {
   index: Indices
 }
 
+<<<<<<< HEAD
 export interface FollowInfoResponse extends ResponseBase {
   follower_indices: Array<FollowerInfo>
 }
+=======
+  /**
+   * @type_stability UNSTABLE
+   */
+  export interface GetBucketsResponse {
+    buckets?: ResultBucket[]
+    count?: long
+  }
+>>>>>>> add initial support for aggregations
 
 export interface ForgetFollowerIndexRequest extends RequestBase {
   index: IndexName
@@ -6964,12 +9600,27 @@ export interface Policy {
   phases: Phases
 }
 
+<<<<<<< HEAD
 export interface LifecycleAction {
 }
 
 export interface DeleteLifecycleRequest extends RequestBase {
   policy: Id
 }
+=======
+  export interface BucketInfluencer {
+    bucket_span?: long
+    influencer_field_name?: string
+    influencer_field_value?: string
+    influencer_score?: double
+    initial_influencer_score?: double
+    is_interim?: boolean
+    job_id?: string
+    probability?: double
+    result_type?: string
+    timestamp?: Date
+  }
+>>>>>>> add initial support for aggregations
 
 export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
 }
@@ -7006,8 +9657,31 @@ export interface GetLifecycleRequest extends RequestBase {
   policy?: Id
 }
 
+<<<<<<< HEAD
 export interface GetLifecycleResponse extends DictionaryResponseBase<string, LifecyclePolicy> {
 }
+=======
+  export interface ResultBucket {
+    anomaly_score?: double
+    bucket_influencers?: BucketInfluencer[]
+    bucket_span?: Time
+    event_count?: long
+    initial_anomaly_score?: double
+    is_interim?: boolean
+    job_id?: string
+    partition_scores?: PartitionScore[]
+    processing_time_ms?: double
+    result_type?: string
+    timestamp?: Date
+  }
+
+  export interface AnomalyDetectors {
+    categorization_analyzer?: CategorizationAnalyzer
+    categorization_examples_limit?: integer
+    model_memory_limit?: string
+    model_snapshot_retention_days?: integer
+  }
+>>>>>>> add initial support for aggregations
 
 export interface LifecyclePolicy {
   modified_date: Date

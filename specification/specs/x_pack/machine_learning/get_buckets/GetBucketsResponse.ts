@@ -1,4 +1,4 @@
 class GetBucketsResponse extends ResponseBase {
-  buckets: Bucket[];
+  buckets: ResultBucket[];
   count: long;
 }
