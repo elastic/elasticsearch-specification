@@ -60,3 +60,10 @@ class IndexRequest<TDocument> extends RequestBase { ... }
 ```
 
 And finally open a pull request with your changes.
+
+
+## BirdsEye overview
+
+The work of several repositories come together in this repository. This diagram aims to sketch an overview of how different pieces connect
+
+![overview.png](overview.png)
