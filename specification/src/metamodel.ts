@@ -160,7 +160,17 @@ export class Request extends BaseType {
    * Body type. In most cases this is just a list of properties, except for a few specific cases like bulk requests
    * (an array of bulk operations) or create requests (a user provided document type).
    */
-  body?: ValueOf | Property[];
+  body?: ValueBody | PropertiesBody;
+}
+
+export class ValueBody {
+  kind: "value";
+  value: ValueOf;
+}
+
+export class PropertiesBody {
+  kind: "properties";
+  properties: Property[];
 }
 
 /**

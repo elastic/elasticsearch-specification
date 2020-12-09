@@ -6,12 +6,14 @@ import {
   EnumMember,
   Inherits,
   Model,
+  PropertiesBody,
   Property,
   Request,
   Stability,
   TypeDefinition,
   TypeName,
   UrlTemplate,
+  ValueBody,
   ValueOf
 } from "./metamodel";
 
@@ -156,13 +158,19 @@ export function loadModel(spec: Specification): Model {
     }
 
     else if (specType instanceof Domain.RequestInterface) {
-      let body: ValueOf | Property[];
+      let body: ValueBody | PropertiesBody;
       if (!specType.body) {
         body = undefined;
       } else if (specType.body instanceof Array) {
-        body = specType.body.map(prop => makeProperty(prop, specType.openGenerics))
+        body = {
+          kind: "properties",
+          properties: specType.body.map(prop => makeProperty(prop, specType.openGenerics))
+        }
       } else {
-        body = specType.body && makeInstanceOf(specType.body, specType.openGenerics);
+        body = {
+          kind: "value",
+          value: specType.body && makeInstanceOf(specType.body, specType.openGenerics)
+        };
       }
 
       return store({
