@@ -7,6 +7,7 @@
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
     "start": "ts-node src/main.ts",
     "format": "ts-node src/format.ts",
+    "generate-schema": "ts-node src/metamodel_generate.ts",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
     "compile": "tsc"
   },
