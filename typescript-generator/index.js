@@ -2,7 +2,7 @@
 
 const { writeFileSync } = require('fs')
 const { join } = require('path')
-const { types } = require('../output/schema/schema.json')
+const { types, endpoints } = require('../output/schema/schema.json')
 
 let definitions = `/*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -115,16 +115,25 @@ function createRequest (type) {
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
   }
   if (type.body && type.body.kind === 'properties') {
-    code += '  body?: {\n'
+    code += `  body${isBodyRequired() ? '' : '?'}: {\n`
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
     }
     code += '  }\n'
   } else if (type.body != null) {
-    code += `  body?: ${buildType(type.body)}\n`
+    code += `  body${isBodyRequired() ? '' : '?'}: ${buildType(type.body)}\n`
   }
   code += '}\n'
   return code
+
+  function isBodyRequired () {
+    for (const endpoint of endpoints) {
+      if (endpoint.request.name === type.name.name) {
+        return endpoint.requestBodyRequired
+      }
+    }
+    return false
+  }
 }
 
 function createEnum (type) {
