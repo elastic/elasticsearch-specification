@@ -62,6 +62,7 @@ class AggregationContainer {
   top_metrics: TopMetricsAggregation;
   value_count: ValueCountAggregation;
   weighted_avg: WeightedAverageAggregation;
+  variable_width_histogram: VariableWidthHistogramAggregation;
 }
 
 type Missing = string | integer | boolean;

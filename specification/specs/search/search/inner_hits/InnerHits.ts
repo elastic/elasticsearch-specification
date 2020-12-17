@@ -8,6 +8,7 @@ class InnerHits {
   name: string;
   script_fields: Dictionary<string, ScriptField>;
   seq_no_primary_term: boolean;
+  fields: Field[];
   size: integer;
   sort: Array<SingleKeyDictionary<Union<Sort, SortOrder>>>;
   _source: Union<boolean, SourceFilter>;

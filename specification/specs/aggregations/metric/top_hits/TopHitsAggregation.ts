@@ -5,7 +5,7 @@ class TopHitsAggregation {
   highlight: Highlight;
   script_fields: Dictionary<string, ScriptField>;
   size: integer;
-  sort: string | Array<SingleKeyDictionary<Union<Sort, SortOrder>>>;
+  sort: string | Dictionary<Field, NestedSort> | Array<SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>>;
   _source: Union<boolean, SourceFilter>;
   stored_fields: Field[];
   track_scores: boolean;

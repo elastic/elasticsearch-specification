@@ -1,5 +1,6 @@
 class HistogramAggregation {
   extended_bounds: ExtendedBounds<double>;
+  hard_bounds: ExtendedBounds<double>;
   field: Field;
   interval: double;
   min_doc_count: integer;

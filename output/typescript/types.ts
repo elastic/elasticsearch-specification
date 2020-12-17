@@ -29,11 +29,14 @@ declare namespace T {
   }
 
   export interface ErrorCause {
-    additional_properties?: Record<string, object>
+    shard?: integer | string
+    stack_trace?: string
+    type?: string
     bytes_limit?: long
     bytes_wanted?: long
     caused_by?: ErrorCause
     column?: integer
+    col?: integer
     failed_shards?: ShardFailure[]
     grouped?: boolean
     index?: string
@@ -41,15 +44,15 @@ declare namespace T {
     language?: string
     licensed_expired_feature?: string
     line?: integer
+    max_buckets?: integer
     phase?: string
     reason?: string
     resource_id?: string[]
+    "resource.id"?: string
     resource_type?: string
+    "resource.type"?: string
     script?: string
     script_stack?: string[]
-    shard?: integer | string
-    stack_trace?: string
-    type?: string
   }
 
   export interface MainError extends ErrorCause {
@@ -78,8 +81,6 @@ declare namespace T {
   export type ActionIds = string
 
   export type Field = string
-
-  export type Fields = Field | Field[]
 
   export type Id = string | number
 
@@ -122,6 +123,13 @@ declare namespace T {
   export type GeoTilePrecision = number
 
   export type GeoHashPrecision = number
+
+  export type Fields = Field | Field[]
+
+  export interface DateField {
+    field?: Field
+    format?: string
+  }
 
   export interface Aggregate {
     meta?: Record<string, object>
@@ -196,6 +204,7 @@ declare namespace T {
     top_metrics?: TopMetricsAggregation
     value_count?: ValueCountAggregation
     weighted_avg?: WeightedAverageAggregation
+    variable_width_histogram?: VariableWidthHistogramAggregation
   }
 
   export type Missing = string | integer | boolean
@@ -240,13 +249,14 @@ declare namespace T {
   export interface DateHistogramAggregation {
     calendar_interval?: DateInterval | Time
     extended_bounds?: ExtendedBounds<DateMath>
+    hard_bounds?: ExtendedBounds<DateMath>
     field?: Field
     fixed_interval?: DateInterval | Time
     format?: string
     interval?: DateInterval | Time
     min_doc_count?: integer
     missing?: Date
-    offset?: string
+    offset?: Time
     order?: HistogramOrder
     params?: Record<string, object>
     script?: Script
@@ -306,6 +316,7 @@ declare namespace T {
 
   export interface HistogramAggregation {
     extended_bounds?: ExtendedBounds<double>
+    hard_bounds?: ExtendedBounds<double>
     field?: Field
     interval?: double
     min_doc_count?: integer
@@ -454,6 +465,13 @@ declare namespace T {
     partition?: long
   }
 
+  export interface VariableWidthHistogramAggregation {
+    field?: Field
+    buckets?: integer
+    shard_size?: integer
+    initial_buffer?: integer
+  }
+
   export interface MatrixAggregation {
     fields?: Field[]
     missing?: Record<Field, double>
@@ -563,7 +581,7 @@ declare namespace T {
     highlight?: Highlight
     script_fields?: Record<string, ScriptField>
     size?: integer
-    sort?: string | Array<Record<string, Sort | SortOrder>>
+    sort?: string | Record<Field, NestedSort> | Array<Record<string, Sort | SortOrder | Record<Field, NestedSort>>>
     _source?: boolean | SourceFilter
     stored_fields?: Field[]
     track_scores?: boolean
@@ -1164,10 +1182,7 @@ declare namespace T {
     records?: TCatRecord[]
   }
 
-  export interface ICatRecord {
-  }
-
-  export interface CatAliasesRecord extends ICatRecord {
+  export interface CatAliasesRecord {
     alias?: string
     filter?: string
     index?: string
@@ -1197,7 +1212,7 @@ declare namespace T {
     records?: CatAliasesRecord[]
   }
 
-  export interface CatAllocationRecord extends ICatRecord {
+  export interface CatAllocationRecord {
     "disk.avail"?: string
     "disk.indices"?: string
     "disk.percent"?: string
@@ -1232,7 +1247,7 @@ declare namespace T {
     records?: CatAllocationRecord[]
   }
 
-  export interface CatCountRecord extends ICatRecord {
+  export interface CatCountRecord {
     count?: string
     epoch?: string
     timestamp?: string
@@ -1259,7 +1274,7 @@ declare namespace T {
     records?: CatCountRecord[]
   }
 
-  export interface CatDataFrameAnalyticsRecord extends ICatRecord {
+  export interface CatDataFrameAnalyticsRecord {
     assignment_explanation?: string
     create_time?: string
     description?: string
@@ -1299,7 +1314,7 @@ declare namespace T {
     records?: CatDataFrameAnalyticsRecord[]
   }
 
-  export interface CatDatafeedsRecord extends ICatRecord {
+  export interface CatDatafeedsRecord {
     assignment_explanation?: string
     "buckets.count"?: string
     id?: string
@@ -1334,7 +1349,7 @@ declare namespace T {
     records?: CatDatafeedsRecord[]
   }
 
-  export interface CatFielddataRecord extends ICatRecord {
+  export interface CatFielddataRecord {
     field?: string
     host?: string
     id?: string
@@ -1365,7 +1380,7 @@ declare namespace T {
     records?: CatFielddataRecord[]
   }
 
-  export interface CatHealthRecord extends ICatRecord {
+  export interface CatHealthRecord {
     cluster?: string
     epoch?: string
     init?: string
@@ -1401,7 +1416,7 @@ declare namespace T {
     records?: CatHealthRecord[]
   }
 
-  export interface CatHelpRecord extends ICatRecord {
+  export interface CatHelpRecord {
     endpoint?: string
   }
 
@@ -1420,7 +1435,7 @@ declare namespace T {
     records?: CatHelpRecord[]
   }
 
-  export interface CatIndicesRecord extends ICatRecord {
+  export interface CatIndicesRecord {
     "docs.count"?: string
     "docs.deleted"?: string
     health?: string
@@ -1460,7 +1475,7 @@ declare namespace T {
     records?: CatIndicesRecord[]
   }
 
-  export interface CatJobsRecord extends ICatRecord {
+  export interface CatJobsRecord {
     assignment_explanation?: string
     "buckets.count"?: string
     "buckets.time.exp_avg"?: string
@@ -1539,7 +1554,7 @@ declare namespace T {
     records?: CatJobsRecord[]
   }
 
-  export interface CatMasterRecord extends ICatRecord {
+  export interface CatMasterRecord {
     id?: string
     ip?: string
     node?: string
@@ -1565,7 +1580,7 @@ declare namespace T {
     records?: CatMasterRecord[]
   }
 
-  export interface CatNodeAttributesRecord extends ICatRecord {
+  export interface CatNodeAttributesRecord {
     attr?: string
     host?: string
     id?: string
@@ -1596,7 +1611,7 @@ declare namespace T {
     records?: CatNodeAttributesRecord[]
   }
 
-  export interface CatNodesRecord extends ICatRecord {
+  export interface CatNodesRecord {
     build?: string
     completion_size?: string
     cpu?: string
@@ -1692,7 +1707,7 @@ declare namespace T {
     records?: CatNodesRecord[]
   }
 
-  export interface CatPendingTasksRecord extends ICatRecord {
+  export interface CatPendingTasksRecord {
     insertOrder?: integer
     priority?: string
     source?: string
@@ -1719,7 +1734,7 @@ declare namespace T {
     records?: CatPendingTasksRecord[]
   }
 
-  export interface CatPluginsRecord extends ICatRecord {
+  export interface CatPluginsRecord {
     component?: string
     description?: string
     id?: string
@@ -1750,7 +1765,7 @@ declare namespace T {
     records?: CatPluginsRecord[]
   }
 
-  export interface CatRecoveryRecord extends ICatRecord {
+  export interface CatRecoveryRecord {
     bytes?: string
     bytes_percent?: string
     bytes_recovered?: string
@@ -1798,7 +1813,7 @@ declare namespace T {
     records?: CatRecoveryRecord[]
   }
 
-  export interface CatRepositoriesRecord extends ICatRecord {
+  export interface CatRepositoriesRecord {
     id?: string
     type?: string
   }
@@ -1823,7 +1838,7 @@ declare namespace T {
     records?: CatRepositoriesRecord[]
   }
 
-  export interface CatSegmentsRecord extends ICatRecord {
+  export interface CatSegmentsRecord {
     committed?: string
     compound?: string
     "docs.count"?: string
@@ -1861,7 +1876,7 @@ declare namespace T {
     records?: CatSegmentsRecord[]
   }
 
-  export interface CatShardsRecord extends ICatRecord {
+  export interface CatShardsRecord {
     "completion.size"?: string
     docs?: string
     "fielddata.evictions"?: string
@@ -1944,7 +1959,7 @@ declare namespace T {
     records?: CatShardsRecord[]
   }
 
-  export interface CatSnapshotsRecord extends ICatRecord {
+  export interface CatSnapshotsRecord {
     duration?: Time
     end_epoch?: long
     end_time?: string
@@ -1979,7 +1994,7 @@ declare namespace T {
     records?: CatSnapshotsRecord[]
   }
 
-  export interface CatTasksRecord extends ICatRecord {
+  export interface CatTasksRecord {
     action?: string
     ip?: string
     node?: string
@@ -2013,7 +2028,7 @@ declare namespace T {
     records?: CatTasksRecord[]
   }
 
-  export interface CatTemplatesRecord extends ICatRecord {
+  export interface CatTemplatesRecord {
     index_patterns?: string
     name?: string
     order?: long
@@ -2041,7 +2056,7 @@ declare namespace T {
     records?: CatTemplatesRecord[]
   }
 
-  export interface CatThreadPoolRecord extends ICatRecord {
+  export interface CatThreadPoolRecord {
     active?: integer
     completed?: long
     core?: integer
@@ -2086,7 +2101,7 @@ declare namespace T {
     records?: CatThreadPoolRecord[]
   }
 
-  export interface CatTrainedModelsRecord extends ICatRecord {
+  export interface CatTrainedModelsRecord {
     created_by?: string
     create_time?: string
     data_frame_analytics_id?: string
@@ -2126,7 +2141,7 @@ declare namespace T {
     records?: CatTrainedModelsRecord[]
   }
 
-  export interface CatTransformsRecord extends ICatRecord {
+  export interface CatTransformsRecord {
     changes_last_detection_time?: string
     checkpoint_duration_time_exp_avg?: long
     create_time?: Date
@@ -3541,7 +3556,7 @@ declare namespace T {
     total_time_in_millis?: long
   }
 
-  export type Time = string
+  export type Time = string | integer
 
   export interface BulkIndexByScrollFailure {
     cause?: MainError
@@ -3557,7 +3572,7 @@ declare namespace T {
   }
 
   /**
-   * @type_stability UNSTABLE
+   * @type_stability STABLE 
    */
   export interface BulkRequest<TSource> extends RequestBase {
     index?: IndexName
@@ -3565,22 +3580,24 @@ declare namespace T {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
-    source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    _source?: boolean
+    _source_excludes?: Field | Field[]
+    _source_includes?: Field | Field[]
     timeout?: Time
     type_query_string?: string
     wait_for_active_shards?: string
+    require_alias?: boolean
     body?: Array<BulkOperationContainer | TSource>
   }
 
   /**
-   * @type_stability UNSTABLE
+   * @type_stability STABLE 
    */
   export interface BulkResponse {
     errors?: boolean
     items?: BulkResponseItemContainer[]
     took?: long
+    ingest_took?: long
   }
 
   export interface BulkOperation {
@@ -3613,7 +3630,7 @@ declare namespace T {
 
   export interface BulkResponseItemBase {
     error?: MainError
-    _id?: string
+    _id?: string | null
     _index?: string
     _primary_term?: long
     result?: string
@@ -4142,6 +4159,7 @@ declare namespace T {
     version?: long
     version_type?: VersionType
     wait_for_active_shards?: string
+    require_alias?: boolean
     body?: TDocument
   }
 
@@ -4288,6 +4306,7 @@ declare namespace T {
     if_seq_no?: long
     lang?: string
     refresh?: Refresh
+    require_alias?: boolean
     retry_on_conflict?: long
     routing?: Routing
     source_enabled?: boolean
@@ -6637,7 +6656,7 @@ declare namespace T {
     common?: Record<string, CommonTermsQuery | string>
     constant_score?: ConstantScoreQuery
     dis_max?: DisMaxQuery
-    distance_feature?: Record<string, DistanceFeatureQuery | string>
+    distance_feature?: Record<string, DistanceFeatureQuery | string> | DistanceFeatureQuery
     exists?: ExistsQuery
     function_score?: FunctionScoreQuery
     fuzzy?: Record<string, FuzzyQuery | string>
@@ -7086,8 +7105,9 @@ declare namespace T {
   }
 
   export interface DistanceFeatureQuery extends QueryBase {
-    origin?: GeoCoordinate | DateMath
+    origin?: Array<number> | GeoCoordinate | DateMath
     pivot?: Distance | Time
+    field?: Field
   }
 
   export interface MoreLikeThisQuery extends QueryBase {
@@ -7187,6 +7207,8 @@ declare namespace T {
     lte?: double | DateMath
     relation?: RangeRelation
     time_zone?: string
+    from?: double | DateMath
+    to?: double | DateMath
   }
 
   export interface RegexpQuery extends QueryBase {
@@ -7474,8 +7496,9 @@ declare namespace T {
       search_after?: Array<integer | string>
       size?: integer
       slice?: SlicedScroll
-      sort?: Record<string, Sort | SortOrder>[]
+      sort?: Array<Field | Record<string, Sort | SortOrder>>
       _source?: boolean | Fields | SourceFilter
+      fields?: Array<Field | DateField>
       suggest?: Record<string, SuggestBucket>
       terminate_after?: long
       timeout?: string
@@ -7483,6 +7506,7 @@ declare namespace T {
       version?: boolean
       seq_no_primary_term?: boolean
       stored_fields?: Field | Field[]
+      pit?: PointInTimeReference
     }
   }
 
@@ -7565,12 +7589,18 @@ declare namespace T {
     highlight?: Record<string, string[]>
     inner_hits?: Record<string, InnerHitsResult>
     matched_queries?: string[]
+    _nested?: NestedIdentity
+    sort?: Array<number | string>
+    _ignored?: string[]
     _index?: IndexName
     _id?: Id
+    _shard?: string
+    _node?: string
     _source?: TDocument
-    _nested?: NestedIdentity
+    _seq_no?: long
+    _primary_term?: long
     _score?: double
-    sort?: Array<number | string>
+    _version?: long
   }
 
   export interface HitMetadata<TDocument> {
@@ -7621,10 +7651,16 @@ declare namespace T {
     name?: string
     script_fields?: Record<string, ScriptField>
     seq_no_primary_term?: boolean
+    fields?: Field[]
     size?: integer
     sort?: Array<Record<string, Sort | SortOrder>>
     _source?: boolean | SourceFilter
     version?: boolean
+  }
+
+  export interface PointInTimeReference {
+    id?: string
+    keep_alive?: Time
   }
 
   export interface AggregationBreakdown {
@@ -7697,11 +7733,14 @@ declare namespace T {
     score_mode?: ScoreMode
   }
 
-  export interface NestedSort {
+  export interface NestedSortValue {
     filter?: QueryContainer
     max_children?: integer
-    nested?: NestedSort
     path?: Field
+  }
+
+  export interface NestedSort {
+    nested?: NestedSortValue
   }
 
   export interface Sort {

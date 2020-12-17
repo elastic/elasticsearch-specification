@@ -62,8 +62,9 @@ class SearchRequest extends RequestBase {
     search_after: Array<integer | string>;
     size: integer;
     slice: SlicedScroll;
-    sort: SingleKeyDictionary<Sort | SortOrder>[];
+    sort: Array<Field | SingleKeyDictionary<Sort | SortOrder>>;
     _source: boolean | Fields | SourceFilter;
+    fields: Array<Field | DateField>;
     suggest: Dictionary<string, SuggestBucket>;
     terminate_after: long;
     timeout: string;
@@ -71,5 +72,6 @@ class SearchRequest extends RequestBase {
     version: boolean;
     seq_no_primary_term: boolean;
     stored_fields: Field | Field[];
+    pit: PointInTimeReference
   }
 }
