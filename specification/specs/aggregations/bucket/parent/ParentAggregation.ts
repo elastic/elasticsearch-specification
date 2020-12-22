@@ -1,3 +1,3 @@
 class ParentAggregation {
-  type: RelationName;
+  type?: RelationName;
 }

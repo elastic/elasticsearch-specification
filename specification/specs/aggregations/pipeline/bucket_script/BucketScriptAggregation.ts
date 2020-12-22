@@ -1,3 +1,3 @@
 class BucketScriptAggregation {
-  script: Script;
+  script?: Script;
 }

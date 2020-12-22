@@ -1,7 +1,7 @@
 @rest_spec_name("rollup.delete_job")
 class DeleteRollupJobRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
+  body?: {
   }
 }

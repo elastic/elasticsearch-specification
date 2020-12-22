@@ -1,3 +1,3 @@
 class MatchAllQuery extends QueryBase {
-  norm_field: string;
+  norm_field?: string;
 }
