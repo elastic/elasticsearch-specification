@@ -6,7 +6,7 @@ namespace Domain {
 
   export class Type {
     name: string
-    nullable: boolean;
+    required: boolean;
     closedGenerics: InstanceOf[] = [];
     constructor (name: string) {
       this.name = name
