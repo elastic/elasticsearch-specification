@@ -47334,7 +47334,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -47391,7 +47391,7 @@
               "name": "BoolQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boosting",
@@ -47402,7 +47402,7 @@
               "name": "BoostingQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "common",
@@ -47428,7 +47428,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "constant_score",
@@ -47439,7 +47439,7 @@
               "name": "ConstantScoreQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "dis_max",
@@ -47450,7 +47450,7 @@
               "name": "DisMaxQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "distance_feature",
@@ -47488,7 +47488,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "exists",
@@ -47499,7 +47499,7 @@
               "name": "ExistsQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "function_score",
@@ -47510,7 +47510,7 @@
               "name": "FunctionScoreQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy",
@@ -47536,7 +47536,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_bounding_box",
@@ -47562,7 +47562,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_distance",
@@ -47588,7 +47588,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_polygon",
@@ -47614,7 +47614,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_shape",
@@ -47640,7 +47640,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "has_child",
@@ -47651,7 +47651,7 @@
               "name": "HasChildQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "has_parent",
@@ -47662,7 +47662,7 @@
               "name": "HasParentQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "ids",
@@ -47673,7 +47673,7 @@
               "name": "IdsQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "intervals",
@@ -47699,7 +47699,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_conditionless",
@@ -47710,7 +47710,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_strict",
@@ -47721,7 +47721,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_verbatim",
@@ -47732,7 +47732,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_writable",
@@ -47743,7 +47743,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match",
@@ -47783,7 +47783,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match_all",
@@ -47794,7 +47794,7 @@
               "name": "MatchAllQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match_bool_prefix",
@@ -47820,7 +47820,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match_none",
@@ -47831,7 +47831,7 @@
               "name": "MatchNoneQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match_phrase",
@@ -47857,7 +47857,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match_phrase_prefix",
@@ -47883,7 +47883,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "more_like_this",
@@ -47894,7 +47894,7 @@
               "name": "MoreLikeThisQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "multi_match",
@@ -47905,7 +47905,7 @@
               "name": "MultiMatchQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "nested",
@@ -47916,7 +47916,7 @@
               "name": "NestedQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "parent_id",
@@ -47927,7 +47927,7 @@
               "name": "ParentIdQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "percolate",
@@ -47938,7 +47938,7 @@
               "name": "PercolateQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pinned",
@@ -47949,7 +47949,7 @@
               "name": "PinnedQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix",
@@ -47975,7 +47975,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query_string",
@@ -47986,7 +47986,7 @@
               "name": "QueryStringQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "range",
@@ -48000,7 +48000,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "rank_feature",
@@ -48026,7 +48026,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "raw_query",
@@ -48037,7 +48037,7 @@
               "name": "RawQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "regexp",
@@ -48063,7 +48063,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script",
@@ -48074,7 +48074,7 @@
               "name": "ScriptQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script_score",
@@ -48085,7 +48085,7 @@
               "name": "ScriptScoreQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "shape",
@@ -48111,7 +48111,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "simple_query_string",
@@ -48122,7 +48122,7 @@
               "name": "SimpleQueryStringQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_containing",
@@ -48133,7 +48133,7 @@
               "name": "SpanContainingQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "field_masking_span",
@@ -48144,7 +48144,7 @@
               "name": "SpanFieldMaskingQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_first",
@@ -48155,7 +48155,7 @@
               "name": "SpanFirstQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_multi",
@@ -48166,7 +48166,7 @@
               "name": "SpanMultiTermQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_near",
@@ -48177,7 +48177,7 @@
               "name": "SpanNearQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_not",
@@ -48188,7 +48188,7 @@
               "name": "SpanNotQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_or",
@@ -48199,7 +48199,7 @@
               "name": "SpanOrQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_term",
@@ -48225,7 +48225,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_within",
@@ -48236,7 +48236,7 @@
               "name": "SpanWithinQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "term",
@@ -48276,7 +48276,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "terms",
@@ -48305,7 +48305,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "terms_set",
@@ -48331,7 +48331,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "wildcard",
@@ -48357,7 +48357,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48377,7 +48377,7 @@
               "name": "Id"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "index",
@@ -48388,7 +48388,7 @@
               "name": "IndexName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "path",
@@ -48399,7 +48399,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -48410,7 +48410,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48430,7 +48430,7 @@
               "name": "float"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_name",
@@ -48441,7 +48441,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48476,7 +48476,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -48487,7 +48487,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "must",
@@ -48513,7 +48513,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "must_not",
@@ -48539,7 +48539,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "should",
@@ -48565,7 +48565,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_name",
@@ -48576,7 +48576,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48596,7 +48596,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "negative",
@@ -48607,7 +48607,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "positive",
@@ -48618,7 +48618,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48638,7 +48638,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boost",
@@ -48649,7 +48649,7 @@
               "name": "float"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48672,7 +48672,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tie_breaker",
@@ -48683,7 +48683,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boost",
@@ -48694,7 +48694,7 @@
               "name": "float"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48714,7 +48714,7 @@
               "name": "FunctionBoostMode"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "functions",
@@ -48728,7 +48728,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_boost",
@@ -48739,7 +48739,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min_score",
@@ -48750,7 +48750,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -48761,7 +48761,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "score_mode",
@@ -48772,7 +48772,7 @@
               "name": "FunctionScoreMode"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boost",
@@ -48783,7 +48783,7 @@
               "name": "float"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48857,7 +48857,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "weight",
@@ -48868,7 +48868,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48896,7 +48896,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "cutoff_frequency",
@@ -48907,7 +48907,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "high_freq_operator",
@@ -48918,7 +48918,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "low_freq_operator",
@@ -48929,7 +48929,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -48940,7 +48940,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -48951,7 +48951,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48974,7 +48974,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_gaps",
@@ -48985,7 +48985,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "ordered",
@@ -48996,7 +48996,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "filter",
@@ -49007,7 +49007,7 @@
               "name": "IntervalsFilter"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49030,7 +49030,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "filter",
@@ -49041,7 +49041,7 @@
               "name": "IntervalsFilter"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49061,7 +49061,7 @@
               "name": "IntervalsAllOf"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "any_of",
@@ -49072,7 +49072,7 @@
               "name": "IntervalsAnyOf"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy",
@@ -49083,7 +49083,7 @@
               "name": "IntervalsFuzzy"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match",
@@ -49094,7 +49094,7 @@
               "name": "IntervalsMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix",
@@ -49105,7 +49105,7 @@
               "name": "IntervalsPrefix"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "wildcard",
@@ -49116,7 +49116,7 @@
               "name": "IntervalsWildcard"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49136,7 +49136,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "before",
@@ -49147,7 +49147,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "contained_by",
@@ -49158,7 +49158,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "containing",
@@ -49169,7 +49169,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "not_contained_by",
@@ -49180,7 +49180,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "not_containing",
@@ -49191,7 +49191,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "not_overlapping",
@@ -49202,7 +49202,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "overlapping",
@@ -49213,7 +49213,7 @@
               "name": "IntervalsContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script",
@@ -49224,7 +49224,7 @@
               "name": "Script"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49244,7 +49244,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzziness",
@@ -49255,7 +49255,7 @@
               "name": "Fuzziness"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix_length",
@@ -49266,7 +49266,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "term",
@@ -49277,7 +49277,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "transpositions",
@@ -49288,7 +49288,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "use_field",
@@ -49299,7 +49299,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49319,7 +49319,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_gaps",
@@ -49330,7 +49330,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "ordered",
@@ -49341,7 +49341,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -49352,7 +49352,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "use_field",
@@ -49363,7 +49363,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "filter",
@@ -49374,7 +49374,7 @@
               "name": "IntervalsFilter"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49394,7 +49394,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix",
@@ -49405,7 +49405,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "use_field",
@@ -49416,7 +49416,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49444,7 +49444,7 @@
               "name": "IntervalsAllOf"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "any_of",
@@ -49455,7 +49455,7 @@
               "name": "IntervalsAnyOf"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy",
@@ -49466,7 +49466,7 @@
               "name": "IntervalsFuzzy"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match",
@@ -49477,7 +49477,7 @@
               "name": "IntervalsMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix",
@@ -49488,7 +49488,7 @@
               "name": "IntervalsPrefix"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "wildcard",
@@ -49499,7 +49499,7 @@
               "name": "IntervalsWildcard"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49519,7 +49519,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pattern",
@@ -49530,7 +49530,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "use_field",
@@ -49541,7 +49541,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49569,7 +49569,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "auto_generate_synonyms_phrase_query",
@@ -49580,7 +49580,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "cutoff_frequency",
@@ -49591,7 +49591,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzziness",
@@ -49602,7 +49602,7 @@
               "name": "Fuzziness"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_rewrite",
@@ -49613,7 +49613,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_transpositions",
@@ -49624,7 +49624,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lenient",
@@ -49635,7 +49635,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_expansions",
@@ -49646,7 +49646,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -49657,7 +49657,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "operator",
@@ -49668,7 +49668,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix_length",
@@ -49679,7 +49679,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -49709,7 +49709,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "zero_terms_query",
@@ -49720,7 +49720,7 @@
               "name": "ZeroTermsQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49748,7 +49748,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzziness",
@@ -49759,7 +49759,7 @@
               "name": "Fuzziness"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_rewrite",
@@ -49770,7 +49770,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_transpositions",
@@ -49781,7 +49781,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_expansions",
@@ -49792,7 +49792,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -49803,7 +49803,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "operator",
@@ -49814,7 +49814,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix_length",
@@ -49825,7 +49825,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -49836,7 +49836,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49864,7 +49864,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -49875,7 +49875,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "slop",
@@ -49886,7 +49886,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49914,7 +49914,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_expansions",
@@ -49925,7 +49925,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -49936,7 +49936,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "slop",
@@ -49947,7 +49947,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "zero_terms_query",
@@ -49958,7 +49958,7 @@
               "name": "ZeroTermsQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -49986,7 +49986,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "auto_generate_synonyms_phrase_query",
@@ -49997,7 +49997,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "cutoff_frequency",
@@ -50008,7 +50008,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fields",
@@ -50022,7 +50022,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzziness",
@@ -50033,7 +50033,7 @@
               "name": "Fuzziness"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_rewrite",
@@ -50044,7 +50044,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_transpositions",
@@ -50055,7 +50055,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lenient",
@@ -50066,7 +50066,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_expansions",
@@ -50077,7 +50077,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -50088,7 +50088,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "operator",
@@ -50099,7 +50099,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix_length",
@@ -50110,7 +50110,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -50121,7 +50121,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "slop",
@@ -50132,7 +50132,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tie_breaker",
@@ -50143,7 +50143,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -50154,7 +50154,7 @@
               "name": "TextQueryType"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "use_dis_max",
@@ -50165,7 +50165,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "zero_terms_query",
@@ -50176,7 +50176,7 @@
               "name": "ZeroTermsQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50246,7 +50246,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "analyzer",
@@ -50257,7 +50257,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "analyze_wildcard",
@@ -50268,7 +50268,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "auto_generate_synonyms_phrase_query",
@@ -50279,7 +50279,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "default_field",
@@ -50290,7 +50290,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "default_operator",
@@ -50301,7 +50301,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "enable_position_increments",
@@ -50312,7 +50312,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "escape",
@@ -50323,7 +50323,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fields",
@@ -50337,7 +50337,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzziness",
@@ -50348,7 +50348,7 @@
               "name": "Fuzziness"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_max_expansions",
@@ -50359,7 +50359,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_prefix_length",
@@ -50370,7 +50370,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_rewrite",
@@ -50381,7 +50381,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_transpositions",
@@ -50392,7 +50392,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lenient",
@@ -50403,7 +50403,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_determinized_states",
@@ -50414,7 +50414,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -50425,7 +50425,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "phrase_slop",
@@ -50436,7 +50436,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -50447,7 +50447,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "quote_analyzer",
@@ -50458,7 +50458,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "quote_field_suffix",
@@ -50469,7 +50469,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "rewrite",
@@ -50480,7 +50480,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tie_breaker",
@@ -50491,7 +50491,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "time_zone",
@@ -50502,7 +50502,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -50513,7 +50513,7 @@
               "name": "TextQueryType"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50589,7 +50589,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "analyze_wildcard",
@@ -50600,7 +50600,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "auto_generate_synonyms_phrase_query",
@@ -50611,7 +50611,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "default_operator",
@@ -50622,7 +50622,7 @@
               "name": "Operator"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fields",
@@ -50636,7 +50636,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "flags",
@@ -50647,7 +50647,7 @@
               "name": "SimpleQueryStringFlags"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_max_expansions",
@@ -50658,7 +50658,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_prefix_length",
@@ -50669,7 +50669,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fuzzy_transpositions",
@@ -50680,7 +50680,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lenient",
@@ -50691,7 +50691,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -50702,7 +50702,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -50713,7 +50713,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "quote_field_suffix",
@@ -50724,7 +50724,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50752,7 +50752,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50772,7 +50772,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lon",
@@ -50783,7 +50783,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50821,7 +50821,7 @@
               "name": "GeoLocation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "top_left",
@@ -50832,7 +50832,7 @@
               "name": "GeoLocation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "wkt",
@@ -50843,7 +50843,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50871,7 +50871,7 @@
               "name": "BoundingBox"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -50882,7 +50882,7 @@
               "name": "GeoExecution"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "validation_method",
@@ -50893,7 +50893,7 @@
               "name": "GeoValidationMethod"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -50936,7 +50936,7 @@
               "name": "Distance"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "distance_type",
@@ -50947,7 +50947,7 @@
               "name": "GeoDistanceType"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "location",
@@ -50958,7 +50958,7 @@
               "name": "GeoLocation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "validation_method",
@@ -50969,7 +50969,7 @@
               "name": "GeoValidationMethod"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51000,7 +51000,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "validation_method",
@@ -51011,7 +51011,7 @@
               "name": "GeoValidationMethod"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51031,7 +51031,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51059,7 +51059,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "indexed_shape",
@@ -51070,7 +51070,7 @@
               "name": "FieldLookup"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "relation",
@@ -51081,7 +51081,7 @@
               "name": "GeoShapeRelation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "shape",
@@ -51092,7 +51092,7 @@
               "name": "GeoShape"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51144,7 +51144,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "inner_hits",
@@ -51155,7 +51155,7 @@
               "name": "InnerHits"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_children",
@@ -51166,7 +51166,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min_children",
@@ -51177,7 +51177,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -51188,7 +51188,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "score_mode",
@@ -51199,7 +51199,7 @@
               "name": "ChildScoreMode"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -51210,7 +51210,7 @@
               "name": "RelationName"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51238,7 +51238,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "inner_hits",
@@ -51249,7 +51249,7 @@
               "name": "InnerHits"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "parent_type",
@@ -51260,7 +51260,7 @@
               "name": "RelationName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -51271,7 +51271,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "score",
@@ -51282,7 +51282,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51310,7 +51310,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "inner_hits",
@@ -51321,7 +51321,7 @@
               "name": "InnerHits"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "path",
@@ -51332,7 +51332,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -51343,7 +51343,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "score_mode",
@@ -51354,7 +51354,7 @@
               "name": "NestedScoreMode"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51406,7 +51406,7 @@
               "name": "Id"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "ignore_unmapped",
@@ -51417,7 +51417,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -51428,7 +51428,7 @@
               "name": "RelationName"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51448,7 +51448,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51476,7 +51476,7 @@
               "name": "SpanContainingQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "field_masking_span",
@@ -51487,7 +51487,7 @@
               "name": "SpanFieldMaskingQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_first",
@@ -51498,7 +51498,7 @@
               "name": "SpanFirstQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_gap",
@@ -51509,7 +51509,7 @@
               "name": "SpanGapQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_multi",
@@ -51520,7 +51520,7 @@
               "name": "SpanMultiTermQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_near",
@@ -51531,7 +51531,7 @@
               "name": "SpanNearQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_not",
@@ -51542,7 +51542,7 @@
               "name": "SpanNotQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_or",
@@ -51553,7 +51553,7 @@
               "name": "SpanOrQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_term",
@@ -51564,7 +51564,7 @@
               "name": "SpanTermQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "span_within",
@@ -51575,7 +51575,7 @@
               "name": "SpanWithinQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51595,7 +51595,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "little",
@@ -51606,7 +51606,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51626,7 +51626,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "query",
@@ -51637,7 +51637,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51657,7 +51657,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "match",
@@ -51668,7 +51668,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51688,7 +51688,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "width",
@@ -51699,7 +51699,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51719,7 +51719,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51742,7 +51742,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "in_order",
@@ -51753,7 +51753,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "slop",
@@ -51764,7 +51764,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51784,7 +51784,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "exclude",
@@ -51795,7 +51795,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "include",
@@ -51806,7 +51806,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "post",
@@ -51817,7 +51817,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pre",
@@ -51828,7 +51828,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51851,7 +51851,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51879,7 +51879,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "little",
@@ -51890,7 +51890,7 @@
               "name": "SpanQuery"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -51946,7 +51946,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pivot",
@@ -51969,7 +51969,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "field",
@@ -51980,7 +51980,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52008,7 +52008,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boost_terms",
@@ -52019,7 +52019,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fields",
@@ -52033,7 +52033,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "include",
@@ -52044,7 +52044,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "like",
@@ -52058,7 +52058,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_doc_freq",
@@ -52069,7 +52069,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_query_terms",
@@ -52080,7 +52080,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_word_length",
@@ -52091,7 +52091,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min_doc_freq",
@@ -52102,7 +52102,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match",
@@ -52113,7 +52113,7 @@
               "name": "MinimumShouldMatch"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min_term_freq",
@@ -52124,7 +52124,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min_word_length",
@@ -52135,7 +52135,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "per_field_analyzer",
@@ -52156,7 +52156,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -52167,7 +52167,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stop_words",
@@ -52178,7 +52178,7 @@
               "name": "StopWords"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "unlike",
@@ -52192,7 +52192,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "version",
@@ -52203,7 +52203,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "version_type",
@@ -52214,7 +52214,7 @@
               "name": "VersionType"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52257,7 +52257,7 @@
               "name": "object"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceFormatter`1"
           }
@@ -52274,7 +52274,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_id",
@@ -52285,7 +52285,7 @@
               "name": "Id"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_index",
@@ -52296,7 +52296,7 @@
               "name": "IndexName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "per_field_analyzer",
@@ -52317,7 +52317,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -52328,7 +52328,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52356,7 +52356,7 @@
               "name": "object"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceFormatter`1"
           }
@@ -52373,7 +52373,7 @@
               }
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceFormatter`1"
           }
@@ -52387,7 +52387,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "id",
@@ -52398,7 +52398,7 @@
               "name": "Id"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "index",
@@ -52409,7 +52409,7 @@
               "name": "IndexName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "preference",
@@ -52420,7 +52420,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -52431,7 +52431,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "version",
@@ -52442,7 +52442,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52473,7 +52473,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "organic",
@@ -52484,7 +52484,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52520,7 +52520,7 @@
               "name": "RankFeatureFunction"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52548,7 +52548,7 @@
               "name": "Script"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52576,7 +52576,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script",
@@ -52587,7 +52587,7 @@
               "name": "Script"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52615,7 +52615,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "indexed_shape",
@@ -52626,7 +52626,7 @@
               "name": "FieldLookup"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "relation",
@@ -52637,7 +52637,7 @@
               "name": "ShapeRelation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "shape",
@@ -52648,7 +52648,7 @@
               "name": "GeoShape"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52676,7 +52676,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52704,7 +52704,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "prefix_length",
@@ -52715,7 +52715,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "rewrite",
@@ -52726,7 +52726,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "transpositions",
@@ -52737,7 +52737,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52768,7 +52768,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52796,7 +52796,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -52836,7 +52836,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "gte",
@@ -52859,7 +52859,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lt",
@@ -52882,7 +52882,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "lte",
@@ -52905,7 +52905,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "relation",
@@ -52916,7 +52916,7 @@
               "name": "RangeRelation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "time_zone",
@@ -52927,7 +52927,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "from",
@@ -52950,7 +52950,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "to",
@@ -52973,7 +52973,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -53019,7 +53019,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_determinized_states",
@@ -53030,7 +53030,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "value",
@@ -53041,7 +53041,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -53088,7 +53088,7 @@
               }
             ]
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceWriteFormatter`1"
           }
@@ -53122,7 +53122,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "index",
@@ -53133,7 +53133,7 @@
               "name": "IndexName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "id",
@@ -53144,7 +53144,7 @@
               "name": "Id"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "path",
@@ -53155,7 +53155,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -53166,7 +53166,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -53194,7 +53194,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "minimum_should_match_script",
@@ -53205,7 +53205,7 @@
               "name": "Script"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "terms",
@@ -53219,7 +53219,7 @@
               }
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceWriteFormatter`1"
           }
@@ -53250,7 +53250,7 @@
               "name": "MultiTermQueryRewrite"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
