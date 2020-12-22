@@ -312,7 +312,7 @@ export function loadModel(spec: Specification): Model {
     return {
       name: prop.name,
       type: makeInstanceOf(prop.type, openGenerics),
-      required: !prop.nullable,
+      required: prop.required,
       description: nonEmpty(prop.generatorHints && prop.generatorHints.description),
       annotations: nonEmptyObj(prop.generatorHints && prop.generatorHints.annotations)
     };

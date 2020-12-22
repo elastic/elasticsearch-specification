@@ -96,7 +96,7 @@ namespace Domain {
   export class InterfaceProperty {
     name: string
     type: InstanceOf
-    nullable: boolean
+    required: boolean
     isRequestParameter: boolean
     /** generator hinting, never null */
     generatorHints: GeneratorDocumentation;
@@ -104,11 +104,11 @@ namespace Domain {
       name: string,
       type: InstanceOf,
       isRequestParameter: boolean,
-      nullable: boolean = false
+      required: boolean = false
     ) {
       this.name = name
       this.type = type
-      this.nullable = nullable
+      this.required = required
       this.isRequestParameter = isRequestParameter
     }
   }
