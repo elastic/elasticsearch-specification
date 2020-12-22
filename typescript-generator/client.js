@@ -214,7 +214,18 @@ function createClientTypes (kibana = false) {
     }
 
     function isParamsRequired () {
-      return Array.isArray(requestType.generics)
+      return Array.isArray(requestType.generics) ||
+             hasRequiredProps(requestType.path) ||
+             hasRequiredProps(requestType.query) ||
+             hasRequiredProps(requestType.body)
+
+      function hasRequiredProps (props) {
+        if (!Array.isArray(props)) return false
+        for (const prop of props) {
+          if (prop.required) return true
+        }
+        return false
+      }
     }
 
     function avoidCollisions (generic) {
