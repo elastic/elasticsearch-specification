@@ -1,7 +1,7 @@
 @rest_spec_name("enrich.stats")
 class EnrichStatsRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
+  body?: {
   }
 }

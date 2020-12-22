@@ -1,12 +1,12 @@
 @rest_spec_name("ml.start_datafeed")
 class StartDatafeedRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
+  body?: {
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end: Date;
+    end?: Date;
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start: Date;
-    timeout: Time;
+    start?: Date;
+    timeout?: Time;
   }
 }

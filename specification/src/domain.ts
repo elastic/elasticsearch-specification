@@ -104,7 +104,7 @@ namespace Domain {
       name: string,
       type: InstanceOf,
       isRequestParameter: boolean,
-      nullable: boolean = true
+      nullable: boolean = false
     ) {
       this.name = name
       this.type = type

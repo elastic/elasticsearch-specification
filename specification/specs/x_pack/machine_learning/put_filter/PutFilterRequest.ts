@@ -1,9 +1,9 @@
 @rest_spec_name("ml.put_filter")
 class PutFilterRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
-    description: string;
-    items: string[];
+  body?: {
+    description?: string;
+    items?: string[];
   }
 }

@@ -1,12 +1,12 @@
 class PercolateQuery extends QueryBase {
   /** @prop_serializer SourceFormatter`1 */
-  document: any;
+  document?: any;
   /** @prop_serializer SourceFormatter`1 */
-  documents: any[];
-  field: Field;
-  id: Id;
-  index: IndexName;
-  preference: string;
-  routing: Routing;
-  version: long;
+  documents?: any[];
+  field?: Field;
+  id?: Id;
+  index?: IndexName;
+  preference?: string;
+  routing?: Routing;
+  version?: long;
 }

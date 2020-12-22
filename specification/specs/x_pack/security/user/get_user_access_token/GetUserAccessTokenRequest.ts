@@ -1,9 +1,9 @@
 @rest_spec_name("security.get_token")
 class GetUserAccessTokenRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
-    grant_type: AccessTokenGrantType;
-    scope: string;
+  body?: {
+    grant_type?: AccessTokenGrantType;
+    scope?: string;
   }
 }

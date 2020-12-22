@@ -1,3 +1,3 @@
 class MatrixStatsAggregation {
-  mode: MatrixStatsMode;
+  mode?: MatrixStatsMode;
 }

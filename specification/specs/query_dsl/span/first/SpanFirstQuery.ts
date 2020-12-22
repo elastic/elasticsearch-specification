@@ -1,4 +1,4 @@
 class SpanFirstQuery {
-  end: integer;
-  match: SpanQuery;
+  end?: integer;
+  match?: SpanQuery;
 }

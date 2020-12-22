@@ -1,3 +1,3 @@
 class NestedAggregation {
-  path: Field;
+  path?: Field;
 }
