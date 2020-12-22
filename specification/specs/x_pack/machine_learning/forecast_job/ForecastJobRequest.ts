@@ -1,9 +1,9 @@
 @rest_spec_name("ml.forecast")
 class ForecastJobRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
-    duration: Time;
-    expires_in: Time;
+  body?: {
+    duration?: Time;
+    expires_in?: Time;
   }
 }

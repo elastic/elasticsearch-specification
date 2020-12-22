@@ -1,8 +1,8 @@
 @rest_spec_name("security.delete_role_mapping")
 class DeleteRoleMappingRequest extends RequestBase {
-  query_parameters: {
-    refresh: Refresh;
+  query_parameters?: {
+    refresh?: Refresh;
   }
-  body: {
+  body?: {
   }
 }

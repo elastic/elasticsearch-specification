@@ -1,7 +1,7 @@
 @rest_spec_name("ccr.follow_info")
 class FollowInfoRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
+  body?: {
   }
 }

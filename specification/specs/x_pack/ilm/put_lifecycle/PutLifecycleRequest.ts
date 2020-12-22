@@ -1,8 +1,8 @@
 @rest_spec_name("ilm.put_lifecycle")
 class PutLifecycleRequest extends RequestBase {
-  query_parameters: {
+  query_parameters?: {
   }
-  body: {
-    policy: Policy;
+  body?: {
+    policy?: Policy;
   }
 }
