@@ -21,7 +21,9 @@ let definitions = `/*
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- */\n\n`
+ */
+
+import { Readable as ReadableStream } from 'stream'\n\n`
 for (const type of types) {
   definitions += buildType(type) + '\n'
 }
@@ -119,9 +121,9 @@ function createRequest (type) {
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
     }
-    code += '  }\n'
+    code += '  } | string | Buffer | ReadableStream\n'
   } else if (type.body != null) {
-    code += `  body${isBodyRequired() ? '' : '?'}: ${buildType(type.body)}\n`
+    code += `  body${isBodyRequired() ? '' : '?'}: ${buildType(type.body)} | string | Buffer | ReadableStream\n`
   }
   code += '}\n'
   return code
@@ -159,7 +161,7 @@ function buildGenerics (type) {
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    return typeof type === 'string' ? type : buildType(type)
+    return typeof type === 'string' ? `${type} = unknown` : buildType(type)
   }
 }
 

@@ -177,7 +177,7 @@ function createClientTypes (kibana = false) {
 
     if (Array.isArray(requestType.generics)) {
       requestDefinition = `T.${requestType.name.name}<${requestType.generics.join(', ')}>`
-      requestGenerics = requestType.generics.join(', ') + ', '
+      requestGenerics = requestType.generics.map(unknownify).join(', ') + ', '
     } else if (requestType === null) {
       requestDefinition = 'TODO'
     } else {
@@ -189,7 +189,7 @@ function createClientTypes (kibana = false) {
 
     if (Array.isArray(responseType.generics)) {
       responseDefinition = `T.${responseType.name.name}<${responseType.generics.map(avoidCollisions).join(', ')}>`
-      responseGenerics = responseType.generics.map(avoidCollisions).join(', ') + ', '
+      responseGenerics = responseType.generics.map(avoidCollisions).map(unknownify).join(', ') + ', '
     } else if (responseType === null) {
       responseDefinition = 'TODO'
     } else {
@@ -225,6 +225,10 @@ function createClientTypes (kibana = false) {
       } else {
         return generic
       }
+    }
+
+    function unknownify (generic) {
+      return `${generic} = unknown`
     }
   }
 
