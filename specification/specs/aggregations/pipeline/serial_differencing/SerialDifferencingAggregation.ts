@@ -1,3 +1,3 @@
 class SerialDifferencingAggregation {
-  lag: integer;
+  lag?: integer;
 }
