@@ -1,3 +1,3 @@
 class ExistsQuery extends QueryBase {
-  field: Field;
+  field?: Field;
 }
