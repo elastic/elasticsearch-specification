@@ -1,4 +1,4 @@
-class Bucket {
+class ResultBucket {
   anomaly_score: double;
   bucket_influencers: BucketInfluencer[];
   bucket_span: Time;

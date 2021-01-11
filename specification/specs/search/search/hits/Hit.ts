@@ -6,7 +6,6 @@ class Hit<TDocument> {
   inner_hits: Dictionary<string, InnerHitsResult>;
   matched_queries: string[];
   _nested: NestedIdentity;
-  sort: Array<number | string>;
   _ignored: string[];
 
   _index: IndexName;
@@ -18,4 +17,5 @@ class Hit<TDocument> {
   _primary_term: long;
   _score: double;
   _version: long;
+  sort: Array<number | string>;
 }

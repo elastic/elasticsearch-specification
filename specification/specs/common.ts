@@ -87,3 +87,9 @@ class DateField {
 }
 
 class UserDefinedValue {}
+
+class LatLon {
+  lat: double
+  lon: double
+}
+
