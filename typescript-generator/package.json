@@ -1,42 +1,13 @@
 {
   "name": "typescript-generator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:fix": "standardx --fix **/*.ts",
-    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% index.js",
-    "compile": "tsc",
-    "start": "ts-node index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Elastic",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/lodash": "^4.14.149",
-    "@types/node": "^13.7.7",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
-    "standardx": "^5.0.0",
-    "ts-node": "^8.10.2",
-    "tslint": "^6.1.2",
-    "typescript": "^3.9.2"
-  },
-  "dependencies": {
-    "lodash": "^4.17.15",
-    "json-stable-stringify": "^1.0.1"
-  },
-  "eslintConfig": {
-    "rules": {
-      "no-unused-vars": "off",
-      "camelcase": "off",
-      "@typescript-eslint/no-unused-vars": "error"
-    }
-  },
-  "standardx": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint/eslint-plugin"
-    ]
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
