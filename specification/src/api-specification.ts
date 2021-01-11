@@ -64,7 +64,7 @@ export class Specification {
           routePart.name,
           new Domain.Type(routePart.type),
           true,
-          !routePart.required
+          routePart.required
         )
         requestInterface.path.push(property)
       }
