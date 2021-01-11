@@ -163,7 +163,7 @@ class InterfaceVisitor extends Visitor {
     const name = this.symbolName(p.name)
     const returnType = this.visitTypeNode(p.type)
 
-    const prop = new Domain.InterfaceProperty(name, returnType, isQueryParam, !!p.questionToken)
+    const prop = new Domain.InterfaceProperty(name, returnType, isQueryParam, !p.questionToken)
     prop.type = returnType
     prop.generatorHints = InterfaceVisitor.createGeneratorHints(p.jsDoc || [])
 
