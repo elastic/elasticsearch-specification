@@ -1,4 +1,4 @@
-class ReindexOnServerResponse extends ResponseBase {
+class ReindexResponse extends ResponseBase {
   batches: long;
   created: long;
   failures: BulkIndexByScrollFailure[];

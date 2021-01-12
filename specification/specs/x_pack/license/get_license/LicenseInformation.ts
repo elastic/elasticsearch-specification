@@ -10,4 +10,6 @@ class LicenseInformation {
   status: LicenseStatus;
   type: LicenseType;
   uid: string;
+  expirty_date_in_millis: long;
+  start_date_in_millis: long;
 }

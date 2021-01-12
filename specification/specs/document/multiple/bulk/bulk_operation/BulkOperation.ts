@@ -8,10 +8,10 @@ class BulkOperation {
 }
 
 class BulkOperationContainer {
-  index: BulkIndexOperation
-  create: BulkCreateOperation
-  update: BulkUpdateOperation
-  delete: BulkDeleteOperation
+  index?: BulkIndexOperation
+  create?: BulkCreateOperation
+  update?: BulkUpdateOperation
+  delete?: BulkDeleteOperation
 }
 
 class BulkIndexOperation extends BulkOperation {

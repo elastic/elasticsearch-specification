@@ -54,7 +54,7 @@ class SearchRequest extends RequestBase {
     track_total_hits?: boolean | integer;
     /** @prop_serializer IndicesBoostFormatter */
     indices_boost?: Array<Dictionary<IndexName, double>>;
-    docvalue_fields?: Array<Field | DocValueField>;
+    docvalue_fields?: DocValueField | Array<Field | DocValueField>;
     min_score?: double;
     post_filter?: QueryContainer;
     profile?: boolean;

@@ -4,4 +4,5 @@ class NodeUsageInformation {
   since: Date;
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
   timestamp: Date;
+  aggregations: UserDefinedValue;
 }
