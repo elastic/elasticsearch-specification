@@ -7,7 +7,7 @@ class TypeMapping {
   dynamic_templates: Dictionary<string, DynamicTemplate>;
   _field_names: FieldNamesField;
   index_field: IndexField;
-  _meta: Dictionary<string, any>;
+  _meta: Dictionary<string, UserDefinedValue>;
   numeric_detection: boolean;
   properties: Dictionary<PropertyName, IProperty>;
   _routing: RoutingField;

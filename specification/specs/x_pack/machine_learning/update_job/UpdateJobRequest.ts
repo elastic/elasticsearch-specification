@@ -6,7 +6,7 @@ class UpdateJobRequest extends RequestBase {
     allow_lazy_open?: boolean;
     analysis_limits?: AnalysisMemoryLimit;
     background_persist_interval?: Time;
-    custom_settings?: Dictionary<string, any>;
+    custom_settings?: Dictionary<string, UserDefinedValue>;
     description?: string;
     model_plot_config?: ModelPlotConfigEnabled;
     model_snapshot_retention_days?: long;

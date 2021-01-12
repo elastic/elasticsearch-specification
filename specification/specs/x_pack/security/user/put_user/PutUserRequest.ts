@@ -6,7 +6,7 @@ class PutUserRequest extends RequestBase {
   body?: {
     email?: string;
     full_name?: string;
-    metadata?: Dictionary<string, any>;
+    metadata?: Dictionary<string, UserDefinedValue>;
     password?: string;
     password_hash?: string;
     roles?: string[];

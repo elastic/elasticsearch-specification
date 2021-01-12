@@ -3,7 +3,7 @@ class ShardStore {
   allocation: ShardStoreAllocation;
   allocation_id: string;
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  attributes: Dictionary<string, any>;
+  attributes: Dictionary<string, UserDefinedValue>;
   id: string;
   legacy_version: long;
   name: string;

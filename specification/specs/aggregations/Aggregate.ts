@@ -46,7 +46,7 @@ type Aggregate  = ValueAggregate
   | HdrPercentilesAggregate
 
 class AggregateBase {
-  meta: Dictionary<string, any>;
+  meta: Dictionary<string, UserDefinedValue>;
 }
 
 class MultiBucketAggregate<TBucket> extends AggregateBase {

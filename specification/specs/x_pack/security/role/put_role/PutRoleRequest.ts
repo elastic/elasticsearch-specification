@@ -6,9 +6,9 @@ class PutRoleRequest extends RequestBase {
   body?: {
     applications?: ApplicationPrivileges[];
     cluster?: string[];
-    global?: Dictionary<string, any>;
+    global?: Dictionary<string, UserDefinedValue>;
     indices?: IndicesPrivileges[];
-    metadata?: Dictionary<string, any>;
+    metadata?: Dictionary<string, UserDefinedValue>;
     run_as?: string[];
   }
 }

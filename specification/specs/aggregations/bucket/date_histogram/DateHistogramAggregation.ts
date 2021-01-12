@@ -10,7 +10,7 @@ class DateHistogramAggregation {
   missing?: Date;
   offset?: Time;
   order?: HistogramOrder;
-  params?: Dictionary<string, any>;
+  params?: Dictionary<string, UserDefinedValue>;
   script?: Script;
   time_zone?: string;
 }

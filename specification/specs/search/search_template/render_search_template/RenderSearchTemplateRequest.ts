@@ -4,7 +4,7 @@ class RenderSearchTemplateRequest extends RequestBase {
   }
   body?: {
     file?: string;
-    params?: Dictionary<string, any>;
+    params?: Dictionary<string, UserDefinedValue>;
     source?: string;
   }
 }

@@ -4,7 +4,7 @@ class SnapshotInfo {
   end_time_in_millis: long;
   failures: SnapshotShardFailure[];
   indices: IndexName[];
-  metadata: Dictionary<string, any>;
+  metadata: Dictionary<string, UserDefinedValue>;
   snapshot: string;
   shards: ShardStatistics;
   start_time: Date;

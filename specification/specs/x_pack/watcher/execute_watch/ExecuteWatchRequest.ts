@@ -5,7 +5,7 @@ class ExecuteWatchRequest extends RequestBase {
   }
   body?: {
     action_modes?: Dictionary<string, ActionExecutionMode>;
-    alternative_input?: Dictionary<string, any>;
+    alternative_input?: Dictionary<string, UserDefinedValue>;
     ignore_condition?: boolean;
     record_execution?: boolean;
     simulated_actions?: SimulatedActions;

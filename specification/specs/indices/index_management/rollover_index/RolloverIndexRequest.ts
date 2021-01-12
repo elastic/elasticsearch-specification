@@ -11,6 +11,6 @@ class RolloverIndexRequest extends RequestBase {
     aliases?: Dictionary<IndexName, Alias>;
     conditions?: RolloverConditions;
     mappings?: TypeMapping;
-    settings?: Dictionary<string, any>;
+    settings?: Dictionary<string, UserDefinedValue>;
   }
 }

@@ -6,6 +6,6 @@ class PostJobDataRequest extends RequestBase {
     reset_start?: Date;
   }
   body?: {
-    data?: any[];
+    data?: UserDefinedValue[];
   }
 }

@@ -9,7 +9,7 @@ class SnapshotRequest extends RequestBase {
     include_global_state?: boolean;
     /** @prop_serializer IndicesMultiSyntaxFormatter */
     indices?: Indices;
-    metadata?: Dictionary<string, any>;
+    metadata?: Dictionary<string, UserDefinedValue>;
     partial?: boolean;
   }
 }

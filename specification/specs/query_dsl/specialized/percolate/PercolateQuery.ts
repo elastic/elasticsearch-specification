@@ -1,8 +1,8 @@
 class PercolateQuery extends QueryBase {
   /** @prop_serializer SourceFormatter`1 */
-  document?: any;
+  document?: UserDefinedValue;
   /** @prop_serializer SourceFormatter`1 */
-  documents?: any[];
+  documents?: UserDefinedValue[];
   field?: Field;
   id?: Id;
   index?: IndexName;

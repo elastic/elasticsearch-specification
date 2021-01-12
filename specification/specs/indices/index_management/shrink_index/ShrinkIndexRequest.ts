@@ -7,6 +7,6 @@ class ShrinkIndexRequest extends RequestBase {
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>;
-    settings?: Dictionary<string, any>;
+    settings?: Dictionary<string, UserDefinedValue>;
   }
 }

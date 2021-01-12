@@ -1,5 +1,5 @@
 class PainlessContextSetup {
-  document: any;
+  document: UserDefinedValue;
   index: IndexName;
   query: QueryContainer;
 }
