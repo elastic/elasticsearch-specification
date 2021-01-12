@@ -6,7 +6,7 @@ class ClusterPutSettingsRequest extends RequestBase {
     timeout?: Time;
   }
   body?: {
-    persistent?: Dictionary<string, any>;
-    transient?: Dictionary<string, any>;
+    persistent?: Dictionary<string, UserDefinedValue>;
+    transient?: Dictionary<string, UserDefinedValue>;
   }
 }

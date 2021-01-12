@@ -1,4 +1,4 @@
 @class_serializer("MultiSearchResponseFormatter")
 class MultiSearchResponse extends ResponseBase {
-  responses: SearchResponse<any>[];
+  responses: SearchResponse<UserDefinedValue>[];
 }

@@ -35,7 +35,7 @@ class AsyncSearchSubmitRequest extends RequestBase {
     rescore?: Rescore[];
     routing?: Routing;
     script_fields?: Dictionary<string, ScriptField>;
-    search_after?: any[];
+    search_after?: UserDefinedValue[];
     search_type?: SearchType;
     sequence_number_primary_term?: boolean;
     size?: integer;

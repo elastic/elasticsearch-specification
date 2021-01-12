@@ -1,5 +1,5 @@
 @rest_spec_name("reindex")
-class ReindexOnServerRequest extends RequestBase {
+class ReindexRequest extends RequestBase {
   query_parameters?: {
     refresh?: boolean;
     requests_per_second?: long;

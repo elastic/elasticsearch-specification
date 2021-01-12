@@ -1,6 +1,6 @@
 class LikeDocument {
   /** @prop_serializer SourceFormatter`1 */
-  doc?: any;
+  doc?: UserDefinedValue;
   fields?: Field[];
   _id?: Id;
   _index?: IndexName;

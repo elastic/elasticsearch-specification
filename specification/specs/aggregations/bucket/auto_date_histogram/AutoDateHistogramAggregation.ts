@@ -5,7 +5,7 @@ class AutoDateHistogramAggregation {
   minimum_interval?: MinimumInterval;
   missing?: Date;
   offset?: string;
-  params?: Dictionary<string, any>;
+  params?: Dictionary<string, UserDefinedValue>;
   script?: Script;
   time_zone?: string;
 }

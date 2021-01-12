@@ -1,5 +1,5 @@
 class ExecutionResultInput {
-  payload: Dictionary<string, any>;
+  payload: Dictionary<string, UserDefinedValue>;
   status: Status;
   type: InputType;
 }

@@ -16,7 +16,7 @@ class PutMappingRequest extends RequestBase {
     dynamic_templates?: Dictionary<string, DynamicTemplate>;
     field_names_field?: FieldNamesField;
     index_field?: IndexField;
-    meta?: Dictionary<string, any>;
+    meta?: Dictionary<string, UserDefinedValue>;
     numeric_detection?: boolean;
     properties?: Dictionary<PropertyName, IProperty>;
     routing_field?: RoutingField;

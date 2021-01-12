@@ -9,6 +9,6 @@ class CreateIndexRequest extends RequestBase {
   body?: {
     aliases?: Dictionary<IndexName, Alias>;
     mappings?: TypeMapping;
-    settings?: Dictionary<string, any>;
+    settings?: Dictionary<string, UserDefinedValue>;
   }
 }

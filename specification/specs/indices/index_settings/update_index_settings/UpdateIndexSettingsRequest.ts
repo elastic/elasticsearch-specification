@@ -11,6 +11,6 @@ class UpdateIndexSettingsRequest extends RequestBase {
     timeout?: Time;
   }
   body?: {
-    index_settings?: Dictionary<string, any>;
+    index?: Dictionary<string, UserDefinedValue>;
   }
 }

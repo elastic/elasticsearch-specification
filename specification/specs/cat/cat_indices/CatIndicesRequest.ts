@@ -7,6 +7,7 @@ class CatIndicesRequest extends RequestBase {
     headers?: string[];
     health?: Health;
     help?: boolean;
+    h?: string;
     include_unloaded_segments?: boolean;
     local?: boolean;
     master_timeout?: Time;

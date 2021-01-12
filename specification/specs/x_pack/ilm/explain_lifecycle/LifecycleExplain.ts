@@ -15,7 +15,7 @@ class LifecycleExplain {
   phase_time_millis: Date;
   policy: string;
   step: string;
-  step_info: Dictionary<string, any>;
+  step_info: Dictionary<string, UserDefinedValue>;
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
   step_time_millis: Date;
 }

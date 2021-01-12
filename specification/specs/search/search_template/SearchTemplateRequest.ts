@@ -17,7 +17,7 @@ class SearchTemplateRequest extends RequestBase {
   }
   body?: {
     id?: string;
-    params?: Dictionary<string, any>;
+    params?: Dictionary<string, UserDefinedValue>;
     source?: string;
   }
 }

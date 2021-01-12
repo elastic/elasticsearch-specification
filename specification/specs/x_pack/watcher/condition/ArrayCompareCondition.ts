@@ -4,5 +4,5 @@ class ArrayCompareCondition {
   comparison: string;
   path: string;
   quantifier: Quantifier;
-  value: any;
+  value: UserDefinedValue;
 }

@@ -10,7 +10,7 @@ class PutWatchRequest extends RequestBase {
     actions?: Dictionary<string, Action>;
     condition?: ConditionContainer;
     input?: InputContainer;
-    metadata?: Dictionary<string, any>;
+    metadata?: Dictionary<string, UserDefinedValue>;
     throttle_period?: string;
     transform?: TransformContainer;
     trigger?: TriggerContainer;

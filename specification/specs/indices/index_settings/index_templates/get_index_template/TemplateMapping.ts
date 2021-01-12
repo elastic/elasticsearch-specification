@@ -3,6 +3,6 @@ class TemplateMapping {
   index_patterns: string[];
   mappings: TypeMapping;
   order: integer;
-  settings: Dictionary<string, any>;
+  settings: Dictionary<string, UserDefinedValue>;
   version: integer;
 }

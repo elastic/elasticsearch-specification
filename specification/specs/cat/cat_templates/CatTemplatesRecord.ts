@@ -5,4 +5,5 @@ class CatTemplatesRecord {
   order: long;
   /** @prop_serializer NullableStringLongFormatter */
   version: long;
+  composed_of: string;
 }

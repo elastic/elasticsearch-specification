@@ -5,7 +5,7 @@ class PutRoleMappingRequest extends RequestBase {
   }
   body?: {
     enabled?: boolean;
-    metadata?: Dictionary<string, any>;
+    metadata?: Dictionary<string, UserDefinedValue>;
     roles?: string[];
     rules?: RoleMappingRuleBase;
     run_as?: string[];

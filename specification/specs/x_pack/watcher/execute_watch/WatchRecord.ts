@@ -2,7 +2,7 @@ class WatchRecord {
   condition: ConditionContainer;
   input: InputContainer;
   messages: string[];
-  metadata: Dictionary<string, any>;
+  metadata: Dictionary<string, UserDefinedValue>;
   node: string;
   result: ExecutionResult;
   state: ActionExecutionState;

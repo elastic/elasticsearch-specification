@@ -89,11 +89,14 @@ function createNamedValue (type) {
   return `Record<string, ${buildType(type.value)}>`
 }
 
-function createUserDefinedValue (type) {
+function createUserDefinedValue () {
   return 'any'
 }
 
 function createInterface (type) {
+  if (isSpecialInterface(type)) {
+    return serializeSpecialInterface(type)
+  }
   const isResponse = type.name.name.endsWith('Response')
   let code = `export interface ${type.name.name}${buildGenerics(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
@@ -169,4 +172,24 @@ function cleanPropertyName (name) {
   return name.includes('.') || name.includes('-') || name.match(/^(\d|\W)/)
     ? `'${name}'`
     : name
+}
+
+function isSpecialInterface (type) {
+  switch (type.name.name) {
+    case 'DictionaryResponseBase':
+      return true
+    default:
+      return false
+  }
+}
+
+function serializeSpecialInterface (type) {
+  switch (type.name.name) {
+    case 'DictionaryResponseBase':
+      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
+  [key: string]: TValue
+}\n`
+    default:
+      throw new Error(`Unknown interface ${type.name.name}`)
+  }
 }

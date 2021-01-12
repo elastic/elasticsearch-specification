@@ -41,6 +41,8 @@ class SearchRequest extends RequestBase {
     seq_no_primary_term?: boolean;
     q?: string;
     size?: integer;
+    from?: integer;
+    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>;
   }
   body?: {
     aggs?: Dictionary<string, AggregationContainer>;
@@ -52,7 +54,7 @@ class SearchRequest extends RequestBase {
     track_total_hits?: boolean | integer;
     /** @prop_serializer IndicesBoostFormatter */
     indices_boost?: Array<Dictionary<IndexName, double>>;
-    docvalue_fields?: Array<Field | DocValueField>;
+    docvalue_fields?: DocValueField | Array<Field | DocValueField>;
     min_score?: double;
     post_filter?: QueryContainer;
     profile?: boolean;

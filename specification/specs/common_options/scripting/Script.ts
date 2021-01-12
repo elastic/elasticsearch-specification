@@ -1,6 +1,6 @@
 class ScriptBase {
   lang: string;
-  params: Dictionary<string, UserDefinedValue>;
+  params?: Dictionary<string, UserDefinedValue>;
 }
 
 class InlineScript extends ScriptBase {
