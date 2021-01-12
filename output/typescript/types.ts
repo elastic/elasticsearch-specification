@@ -19,7 +19,8 @@
 
 import { Readable as ReadableStream } from 'stream'
 
-export interface Aggregate {
+export type Aggregate = ValueAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+export interface AggregateBase {
   meta: Record<string, object>
 }
 
@@ -90,7 +91,187 @@ export interface AggregationContainer {
   variable_width_histogram: VariableWidthHistogramAggregation
 }
 
+export interface AutoDateHistogramAggregate extends AggregateBase {
+  interval: DateMathTime
+}
+
+export interface BoxPlotAggregate extends AggregateBase {
+  min: double
+  max: double
+  q1: double
+  q2: double
+  q3: double
+}
+
+export type Bucket = CompositeBucket | DateHistogramBucket | FiltersBucketItem | IpRangeBucket | RangeBucket | RareTermsBucket<object> | SignificantTermsBucket<object> | KeyedBucket<object>
+export interface BucketAggregate extends AggregateBase {
+  after_key: Record<string, any>
+  bg_count: long
+  doc_count: long
+  doc_count_error_upper_bound: long
+  sum_other_doc_count: long
+  interval: DateMathTime
+  items: Bucket
+}
+
+export interface BucketBase {
+}
+
+export interface CompositeBucket extends BucketBase {
+}
+
+export interface CompositeBucketAggregate extends MultiBucketAggregate<Record<string, any>> {
+  after_key: Record<string, any>
+}
+
+export interface DateHistogramBucket extends BucketBase {
+}
+
+export interface ExtendedStatsAggregate extends StatsAggregate {
+  sum_of_squares: double
+  variance: double
+  variance_population: double
+  variance_sampling: double
+  std_deviation: double
+  std_deviation_population: double
+  std_deviation_sampling: double
+  std_deviation_bounds: StandardDeviationBounds
+}
+
+export interface FiltersAggregate extends AggregateBase {
+  buckets: Array<FiltersBucketItem>
+}
+
+export interface FiltersBucketItem extends BucketBase {
+  doc_count: long
+}
+
+export interface GeoBounds {
+  bottom_right: LatLon
+  top_left: LatLon
+}
+
+export interface GeoBoundsAggregate extends AggregateBase {
+  bounds: GeoBounds
+}
+
+export interface GeoCentroidAggregate extends AggregateBase {
+  count: long
+  location: GeoLocation
+}
+
+export interface HdrPercentileItem {
+  key: double
+  value: double
+}
+
+export interface HdrPercentilesAggregate extends AggregateBase {
+  values: Array<HdrPercentileItem>
+}
+
+export interface IpRangeBucket extends BucketBase {
+}
+
+export interface KeyedBucket<TKey = unknown> extends BucketBase {
+}
+
+export interface KeyedValueAggregate extends ValueAggregate {
+  keys: Array<string>
+}
+
+export interface MatrixStatsAggregate extends AggregateBase {
+  correlation: Record<string, double>
+  covariance: Record<string, double>
+  count: integer
+  kurtosis: double
+  mean: double
+  skewness: double
+  variance: double
+  name: string
+}
+
 export type Missing = string | integer | boolean
+export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
+  buckets: Array<TBucket>
+}
+
+export interface PercentileItem {
+  percentile: double
+  value: double
+}
+
+export interface PercentilesAggregate extends AggregateBase {
+  items: Array<PercentileItem>
+}
+
+export interface RangeBucket extends BucketBase {
+}
+
+export interface RareTermsBucket<TKey = unknown> extends BucketBase {
+}
+
+export interface ScriptedMetricAggregate extends AggregateBase {
+}
+
+export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKey> {
+  bg_count: long
+  doc_count: long
+}
+
+export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
+}
+
+export interface SingleBucketAggregate extends AggregateBase {
+}
+
+export interface StandardDeviationBounds {
+  lower: double
+  upper: double
+  lower_population: double
+  upper_population: double
+  lower_sampling: double
+  upper_sampling: double
+}
+
+export interface StatsAggregate extends AggregateBase {
+  avg: double
+  count: double
+  max: double
+  min: double
+  sum: double
+}
+
+export interface StringStatsAggregate extends AggregateBase {
+  count: long
+  min_length: integer
+  max_length: integer
+  avg_length: double
+  entropy: long
+  distribution: Record<string, double>
+}
+
+export interface TDigestPercentilesAggregate extends AggregateBase {
+  values: Record<string, double>
+}
+
+export interface TermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKey> {
+  doc_count_error_upper_bound: long
+  sum_other_doc_count: long
+}
+
+export interface TopHitsAggregate extends AggregateBase {
+}
+
+export interface TopMetricsAggregate extends AggregateBase {
+  sort: Array<double>
+  metrics: Array<double>
+}
+
+export interface ValueAggregate extends AggregateBase {
+  value: double
+  value_as_string: string
+}
+
 export interface AdjacencyMatrixAggregation {
   filters?: Record<string, QueryContainer>
 }
@@ -2444,6 +2625,7 @@ export interface AcknowledgedResponseBase extends ResponseBase {
 }
 
 export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
+  [key: string]: TValue
 }
 
 export interface ElasticsearchVersionInfo {
@@ -2470,6 +2652,13 @@ export interface ShardsOperationResponseBase extends ResponseBase {
 }
 
 export type DateMath = string
+
+export interface DateMathTime {
+  factor: integer
+  interval: DateMathTimeUnit
+}
+
+export type DateMathTimeUnit = 'Second' | 'Minute' | 'Hour' | 'Day' | 'Week' | 'Month' | 'Year'
 
 export interface Distance {
   precision: double
@@ -2860,14 +3049,14 @@ export interface DeleteByQueryRethrottleResponse extends ListTasksResponse {
 }
 
 export interface MultiGetOperation {
-  can_be_flattened: boolean
+  can_be_flattened?: boolean
   _id: Id
   _index: IndexName
-  routing: string
-  _source: boolean | SourceFilter
-  stored_fields: Array<Field>
-  version: long
-  version_type: VersionType
+  routing?: string
+  _source?: boolean | SourceFilter
+  stored_fields?: Array<Field>
+  version?: long
+  version_type?: VersionType
 }
 
 export interface MultiGetRequest extends RequestBase {
@@ -3348,6 +3537,8 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   timeout?: Time
   wait_for_active_shards?: string
   _source?: boolean | string | Array<string>
+  _source_excludes?: Array<Field>
+  _source_includes?: Array<Field>
   body: {
     detect_noop?: boolean
     doc?: TPartialDocument
@@ -4778,6 +4969,11 @@ export type IndexName = string
 export type Indices = string | Array<string>
 export type integer = number
 
+export interface LatLon {
+  lat: double
+  lon: double
+}
+
 export type long = number
 
 export interface MainError extends ErrorCause {
@@ -4800,6 +4996,8 @@ export type PropertyName = string
 export type RelationName = string
 
 export type Routing = string | number
+export type ScrollId = string
+
 export type ScrollIds = string
 
 export type TaskId = string
@@ -5877,6 +6075,18 @@ export interface ClearScrollRequest extends RequestBase {
 export interface ClearScrollResponse extends ResponseBase {
 }
 
+export interface ScrollRequest extends RequestBase {
+  scroll_id?: ScrollId
+  total_hits_as_integer?: boolean
+  body?: {
+    scroll?: Time
+    scroll_id?: string
+  } | string | Buffer | ReadableStream
+}
+
+export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+}
+
 export interface SlicedScroll {
   field: Field
   id: integer
@@ -5923,6 +6133,8 @@ export interface SearchRequest extends RequestBase {
   seq_no_primary_term?: boolean
   q?: string
   size?: integer
+  from?: integer
+  sort?: Array<Field | Record<string, Sort | SortOrder>>
   body?: {
     aggs?: Record<string, AggregationContainer>
     aggregations?: Record<string, AggregationContainer>
@@ -6110,7 +6322,6 @@ export interface Hit<TDocument = unknown> {
   inner_hits: Record<string, InnerHitsResult>
   matched_queries: Array<string>
   _nested: NestedIdentity
-  sort: Array<number | string>
   _ignored: Array<string>
   _index: IndexName
   _id: Id
@@ -6121,6 +6332,7 @@ export interface Hit<TDocument = unknown> {
   _primary_term: long
   _score: double
   _version: long
+  sort: Array<number | string>
 }
 
 export interface HitsMetadata<T = unknown> {
@@ -6177,10 +6389,12 @@ export interface PointInTimeReference {
 export interface AggregationBreakdown {
   build_aggregation: long
   build_aggregation_count: long
+  build_leaf_collector: long
+  build_leaf_collector_count: long
   collect: long
   collect_count: long
   initialize: long
-  intialize_count: long
+  initialize_count: long
   reduce: long
   reduce_count: long
 }
@@ -6190,6 +6404,11 @@ export interface AggregationProfile {
   description: string
   time_in_nanos: long
   type: string
+  debug: AggregationProfileDebug
+  children: Array<AggregationProfileDebug>
+}
+
+export interface AggregationProfileDebug {
 }
 
 export interface Collector {
@@ -6205,11 +6424,23 @@ export interface Profile {
 
 export interface QueryBreakdown {
   advance: long
+  advance_count: long
   build_scorer: long
+  build_scorer_count: long
   create_weight: long
+  create_weight_count: long
   match: long
+  match_count: long
+  shallow_advance: long
+  shallow_advance_count: long
   next_doc: long
+  next_doc_count: long
   score: long
+  score_count: long
+  compute_max_score: long
+  compute_max_score_count: long
+  set_min_competitive_score: long
+  set_min_competitive_score_count: long
 }
 
 export interface QueryProfile {
@@ -6259,10 +6490,11 @@ export interface NestedSortValue {
 export type NumericType = 'long' | 'double' | 'date' | 'date_nanos'
 
 export interface Sort {
-  missing: Missing
-  mode: SortMode
-  nested: NestedSort
-  numeric_type: NumericType
+  missing?: Missing
+  mode?: SortMode
+  nested?: NestedSort
+  numeric_type?: NumericType
+  unmapped_type?: string
   order: SortOrder
 }
 
@@ -7624,7 +7856,7 @@ export interface GetBucketsRequest extends RequestBase {
 }
 
 export interface GetBucketsResponse extends ResponseBase {
-  buckets: Array<Bucket>
+  buckets: Array<ResultBucket>
   count: long
 }
 
@@ -7979,20 +8211,6 @@ export interface AnomalyRecord {
   typical: Array<double>
 }
 
-export interface Bucket {
-  anomaly_score: double
-  bucket_influencers: Array<BucketInfluencer>
-  bucket_span: Time
-  event_count: long
-  initial_anomaly_score: double
-  is_interim: boolean
-  job_id: string
-  partition_scores: Array<PartitionScore>
-  processing_time_ms: double
-  result_type: string
-  timestamp: Date
-}
-
 export interface BucketInfluencer {
   bucket_span: long
   influencer_field_name: string
@@ -8040,6 +8258,20 @@ export interface PartitionScore {
   partition_field_value: string
   probability: double
   record_score: double
+}
+
+export interface ResultBucket {
+  anomaly_score: double
+  bucket_influencers: Array<BucketInfluencer>
+  bucket_span: Time
+  event_count: long
+  initial_anomaly_score: double
+  is_interim: boolean
+  job_id: string
+  partition_scores: Array<PartitionScore>
+  processing_time_ms: double
+  result_type: string
+  timestamp: Date
 }
 
 export interface AnomalyDetectors {
