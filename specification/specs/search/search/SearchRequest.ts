@@ -41,6 +41,8 @@ class SearchRequest extends RequestBase {
     seq_no_primary_term?: boolean;
     q?: string;
     size?: integer;
+    from?: integer;
+    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>;
   }
   body?: {
     aggs?: Dictionary<string, AggregationContainer>;

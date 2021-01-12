@@ -15,6 +15,8 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     timeout?: Time;
     wait_for_active_shards?: string;
     _source?: Union<boolean, Union<string, string[]>>;
+    _source_excludes?: Field[];
+    _source_includes?: Field[];
   }
   body?: {
     detect_noop?: boolean;
