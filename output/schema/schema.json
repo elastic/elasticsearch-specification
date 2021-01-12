@@ -216,11 +216,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -2692,11 +2688,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -3102,11 +3094,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -5532,11 +5520,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -8477,7 +8461,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "long"
             }
           },
           "required": true
@@ -8488,7 +8472,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "long"
             }
           },
           "required": true
@@ -8532,7 +8516,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "long"
             }
           },
           "required": true
@@ -8565,7 +8549,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "long"
             }
           },
           "required": true
@@ -8696,6 +8680,18 @@
           },
           "required": false,
           "description": "Return help information"
+        },
+        {
+          "name": "h",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false,
+          "description": "Comma-separated list of column names to display"
         },
         {
           "name": "include_unloaded_segments",
@@ -13727,6 +13723,17 @@
           "annotations": {
             "prop_serializer": "NullableStringLongFormatter"
           }
+        },
+        {
+          "name": "composed_of",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
         }
       ]
     },
@@ -17201,11 +17208,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -17222,11 +17225,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -17302,11 +17301,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -17323,11 +17318,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -17373,11 +17364,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -17394,11 +17381,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -22362,6 +22345,13 @@
           "annotations": {
             "prop_serializer": "DateTimeOffsetEpochMillisecondsFormatter"
           }
+        },
+        {
+          "name": "aggregations",
+          "type": {
+            "kind": "user_defined_value"
+          },
+          "required": true
         }
       ]
     },
@@ -24838,7 +24828,7 @@
               "kind": "user_defined_value"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -26923,7 +26913,7 @@
               "name": "BulkIndexOperation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "create",
@@ -26934,7 +26924,7 @@
               "name": "BulkCreateOperation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "update",
@@ -26945,7 +26935,7 @@
               "name": "BulkUpdateOperation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "delete",
@@ -26956,7 +26946,7 @@
               "name": "BulkDeleteOperation"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -28377,7 +28367,7 @@
       ],
       "properties": [
         {
-          "name": "hits",
+          "name": "docs",
           "type": {
             "kind": "array_of",
             "value": {
@@ -28805,7 +28795,7 @@
     {
       "kind": "interface",
       "name": {
-        "namespace": "document.multiple.reindex_on_server",
+        "namespace": "document.multiple.reindex",
         "name": "ReindexDestination"
       },
       "properties": [
@@ -28829,7 +28819,7 @@
               "name": "OpType"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pipeline",
@@ -28840,18 +28830,18 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "document.multiple.reindex_on_server",
+              "namespace": "document.multiple.reindex",
               "name": "ReindexRouting"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "version_type",
@@ -28862,15 +28852,15 @@
               "name": "VersionType"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
     {
       "kind": "request",
       "name": {
-        "namespace": "document.multiple.reindex_on_server",
-        "name": "ReindexOnServerRequest"
+        "namespace": "document.multiple.reindex",
+        "name": "ReindexRequest"
       },
       "description": "The search definition using the Query DSL and the prototype for the index request.",
       "inherits": [
@@ -28987,7 +28977,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "namespace": "document.multiple.reindex_on_server",
+                "namespace": "document.multiple.reindex",
                 "name": "ReindexDestination"
               }
             },
@@ -29031,7 +29021,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "namespace": "document.multiple.reindex_on_server",
+                "namespace": "document.multiple.reindex",
                 "name": "ReindexSource"
               }
             },
@@ -29043,8 +29033,8 @@
     {
       "kind": "interface",
       "name": {
-        "namespace": "document.multiple.reindex_on_server",
-        "name": "ReindexOnServerResponse"
+        "namespace": "document.multiple.reindex",
+        "name": "ReindexResponse"
       },
       "inherits": [
         {
@@ -29195,7 +29185,7 @@
     {
       "kind": "interface",
       "name": {
-        "namespace": "document.multiple.reindex_on_server",
+        "namespace": "document.multiple.reindex",
         "name": "ReindexRouting"
       },
       "properties": []
@@ -29203,7 +29193,7 @@
     {
       "kind": "interface",
       "name": {
-        "namespace": "document.multiple.reindex_on_server",
+        "namespace": "document.multiple.reindex",
         "name": "ReindexSource"
       },
       "properties": [
@@ -29227,18 +29217,18 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "remote",
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "document.multiple.reindex_on_server",
+              "namespace": "document.multiple.reindex",
               "name": "RemoteSource"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "size",
@@ -29260,7 +29250,7 @@
               "name": "SlicedScroll"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "sort",
@@ -29274,7 +29264,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_source",
@@ -29288,14 +29278,14 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
     {
       "kind": "interface",
       "name": {
-        "namespace": "document.multiple.reindex_on_server",
+        "namespace": "document.multiple.reindex",
         "name": "RemoteSource"
       },
       "properties": [
@@ -33199,11 +33189,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -33226,7 +33212,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "index_routing",
@@ -33237,7 +33223,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_hidden",
@@ -33248,7 +33234,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_write_index",
@@ -33259,7 +33245,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -33270,7 +33256,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "search_routing",
@@ -33281,7 +33267,7 @@
               "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -34556,11 +34542,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -34733,11 +34715,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -35850,11 +35828,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -36070,11 +36044,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -36225,11 +36195,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -36904,11 +36870,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -37154,11 +37116,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -37312,7 +37270,7 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "index_settings",
+            "name": "index",
             "type": {
               "kind": "dictionary_of",
               "key": {
@@ -37323,11 +37281,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -37953,11 +37907,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -39339,11 +39289,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true,
@@ -42921,11 +42867,7 @@
           "type": {
             "kind": "array_of",
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -43163,11 +43105,7 @@
         {
           "name": "empty_value",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": true
         },
@@ -44352,11 +44290,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -44414,11 +44348,7 @@
         {
           "name": "value",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": true,
           "annotations": {
@@ -45341,11 +45271,7 @@
         {
           "name": "_source",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": true,
           "annotations": {
@@ -46419,7 +46345,7 @@
               "name": "AllField"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "date_detection",
@@ -46430,7 +46356,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "dynamic",
@@ -46453,7 +46379,7 @@
               }
             ]
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "DynamicMappingFormatter"
           }
@@ -46470,7 +46396,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "dynamic_templates",
@@ -46491,7 +46417,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_field_names",
@@ -46513,7 +46439,7 @@
               "name": "IndexField"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_meta",
@@ -46527,11 +46453,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -46545,7 +46467,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "properties",
@@ -47000,14 +46922,10 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "meta",
@@ -47028,7 +46946,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "name",
@@ -47039,7 +46957,7 @@
               "name": "PropertyName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -47253,11 +47171,7 @@
         {
           "name": "document",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": true
         },
@@ -48298,11 +48212,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -48730,11 +48640,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -54149,11 +54055,7 @@
         {
           "name": "doc",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": false,
           "annotations": {
@@ -54248,11 +54150,7 @@
         {
           "name": "document",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": false,
           "annotations": {
@@ -54264,11 +54162,7 @@
           "type": {
             "kind": "array_of",
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false,
@@ -56024,14 +55918,26 @@
         {
           "name": "fields",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "Field"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "Field"
+                  }
+                }
               }
-            }
+            ]
           },
           "required": false,
           "description": "A comma-separated list of field names"
@@ -56290,11 +56196,7 @@
               },
               "generics": [
                 {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "object"
-                  }
+                  "kind": "user_defined_value"
                 }
               ]
             }
@@ -57255,28 +57157,40 @@
           {
             "name": "docvalue_fields",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Array"
-              },
-              "generics": [
+              "kind": "union_of",
+              "items": [
                 {
-                  "kind": "union_of",
-                  "items": [
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.source_filtering",
+                    "name": "DocValueField"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "Array"
+                  },
+                  "generics": [
                     {
-                      "kind": "instance_of",
-                      "type": {
-                        "namespace": "internal",
-                        "name": "Field"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "namespace": "search.search.source_filtering",
-                        "name": "DocValueField"
-                      }
+                      "kind": "union_of",
+                      "items": [
+                        {
+                          "kind": "instance_of",
+                          "type": {
+                            "namespace": "internal",
+                            "name": "Field"
+                          }
+                        },
+                        {
+                          "kind": "instance_of",
+                          "type": {
+                            "namespace": "search.search.source_filtering",
+                            "name": "DocValueField"
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
@@ -58364,11 +58278,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -58443,11 +58353,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -61692,11 +61598,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -63106,11 +63008,7 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -67032,11 +66930,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -70145,6 +70039,28 @@
             "type": {
               "namespace": "internal",
               "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "expirty_date_in_millis",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "start_date_in_millis",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
             }
           },
           "required": true
@@ -76429,11 +76345,7 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -78645,11 +78557,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -79445,11 +79353,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             }
           },
@@ -80013,11 +79917,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -81216,11 +81116,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -82333,11 +82229,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -82673,11 +82565,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -82778,11 +82666,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -83155,11 +83039,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -83373,11 +83253,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -83408,11 +83284,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -83850,11 +83722,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -84166,11 +84034,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -87380,11 +87244,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -88612,11 +88472,7 @@
         {
           "name": "value",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": true
         }
@@ -88654,11 +88510,7 @@
         {
           "name": "value",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "object"
-            }
+            "kind": "user_defined_value"
           },
           "required": true
         }
@@ -88805,11 +88657,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -89066,11 +88914,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -89419,11 +89263,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -89549,11 +89389,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -91009,11 +90845,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -91156,11 +90988,7 @@
                 }
               },
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "object"
-                }
+                "kind": "user_defined_value"
               }
             },
             "required": false
@@ -91945,11 +91773,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -97734,13 +97558,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
       "stability": "stable",
       "request": {
-        "namespace": "document.multiple.reindex_on_server",
-        "name": "ReindexOnServerRequest"
+        "namespace": "document.multiple.reindex",
+        "name": "ReindexRequest"
       },
       "requestBodyRequired": true,
       "response": {
-        "namespace": "document.multiple.reindex_on_server",
-        "name": "ReindexOnServerResponse"
+        "namespace": "document.multiple.reindex",
+        "name": "ReindexResponse"
       },
       "urls": [
         {

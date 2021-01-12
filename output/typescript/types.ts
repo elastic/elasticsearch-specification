@@ -21,7 +21,7 @@ import { Readable as ReadableStream } from 'stream'
 
 export type Aggregate = ValueAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
 export interface AggregateBase {
-  meta: Record<string, object>
+  meta: Record<string, any>
 }
 
 export interface AggregationContainer {
@@ -283,7 +283,7 @@ export interface AutoDateHistogramAggregation {
   minimum_interval?: MinimumInterval
   missing?: Date
   offset?: string
-  params?: Record<string, object>
+  params?: Record<string, any>
   script?: Script
   time_zone?: string
 }
@@ -319,7 +319,7 @@ export interface DateHistogramAggregation {
   missing?: Date
   offset?: Time
   order?: HistogramOrder
-  params?: Record<string, object>
+  params?: Record<string, any>
   script?: Script
   time_zone?: string
 }
@@ -613,7 +613,7 @@ export interface ScriptedMetricAggregation {
   combine_script?: Script
   init_script?: Script
   map_script?: Script
-  params?: Record<string, object>
+  params?: Record<string, any>
   reduce_script?: Script
 }
 
@@ -965,15 +965,15 @@ export interface CatHelpResponse extends ResponseBase {
 }
 
 export interface CatIndicesRecord {
-  'docs.count': string
-  'docs.deleted': string
+  'docs.count': long
+  'docs.deleted': long
   health: string
   index: string
   pri: string
-  'pri.store.size': string
+  'pri.store.size': long
   rep: string
   status: string
-  'store.size': string
+  'store.size': long
   tm: string
   uuid: string
 }
@@ -986,6 +986,7 @@ export interface CatIndicesRequest extends RequestBase {
   headers?: Array<string>
   health?: Health
   help?: boolean
+  h?: string
   include_unloaded_segments?: boolean
   local?: boolean
   master_timeout?: Time
@@ -1488,6 +1489,7 @@ export interface CatTemplatesRecord {
   name: string
   order: long
   version: long
+  composed_of: string
 }
 
 export interface CatTemplatesRequest extends RequestBase {
@@ -1845,8 +1847,8 @@ export interface ClusterGetSettingsRequest extends RequestBase {
 }
 
 export interface ClusterGetSettingsResponse extends ResponseBase {
-  persistent: Record<string, object>
-  transient: Record<string, object>
+  persistent: Record<string, any>
+  transient: Record<string, any>
 }
 
 export interface ClusterPutSettingsRequest extends RequestBase {
@@ -1854,15 +1856,15 @@ export interface ClusterPutSettingsRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   body: {
-    persistent?: Record<string, object>
-    transient?: Record<string, object>
+    persistent?: Record<string, any>
+    transient?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
 export interface ClusterPutSettingsResponse extends ResponseBase {
   acknowledged: boolean
-  persistent: Record<string, object>
-  transient: Record<string, object>
+  persistent: Record<string, any>
+  transient: Record<string, any>
 }
 
 export interface ClusterStateRequest extends RequestBase {
@@ -2429,6 +2431,7 @@ export interface NodeUsageInformation {
   rest_actions: Record<string, integer>
   since: Date
   timestamp: Date
+  aggregations: any
 }
 
 export interface PingRequest extends RequestBase {
@@ -2703,7 +2706,7 @@ export interface InlineScript extends ScriptBase {
 export type Script = InlineScript | IndexedScript | string
 export interface ScriptBase {
   lang: string
-  params: Record<string, any>
+  params?: Record<string, any>
 }
 
 export interface ScriptField {
@@ -2938,10 +2941,10 @@ export interface BulkOperation {
 }
 
 export interface BulkOperationContainer {
-  index: BulkIndexOperation
-  create: BulkCreateOperation
-  update: BulkUpdateOperation
-  delete: BulkDeleteOperation
+  index?: BulkIndexOperation
+  create?: BulkCreateOperation
+  update?: BulkUpdateOperation
+  delete?: BulkDeleteOperation
 }
 
 export interface BulkUpdateOperation extends BulkOperation {
@@ -3089,7 +3092,7 @@ export interface MultiGetHit<TDocument = unknown> {
 }
 
 export interface MultiGetResponse extends ResponseBase {
-  hits: Array<MultiGetHit<object>>
+  docs: Array<MultiGetHit<object>>
 }
 
 export interface MultiTermVectorOperation {
@@ -3134,13 +3137,13 @@ export interface MultiTermVectorsResponse extends ResponseBase {
 
 export interface ReindexDestination {
   index: IndexName
-  op_type: OpType
-  pipeline: string
-  routing: ReindexRouting
-  version_type: VersionType
+  op_type?: OpType
+  pipeline?: string
+  routing?: ReindexRouting
+  version_type?: VersionType
 }
 
-export interface ReindexOnServerRequest extends RequestBase {
+export interface ReindexRequest extends RequestBase {
   refresh?: boolean
   requests_per_second?: long
   scroll?: Time
@@ -3158,7 +3161,7 @@ export interface ReindexOnServerRequest extends RequestBase {
   } | string | Buffer | ReadableStream
 }
 
-export interface ReindexOnServerResponse extends ResponseBase {
+export interface ReindexResponse extends ResponseBase {
   batches: long
   created: long
   failures: Array<BulkIndexByScrollFailure>
@@ -3178,12 +3181,12 @@ export interface ReindexRouting {
 
 export interface ReindexSource {
   index: Indices
-  query: QueryContainer
-  remote: RemoteSource
+  query?: QueryContainer
+  remote?: RemoteSource
   size: integer
-  slice: SlicedScroll
-  sort: Array<Sort>
-  _source: Array<Field>
+  slice?: SlicedScroll
+  sort?: Array<Sort>
+  _source?: Array<Field>
 }
 
 export interface RemoteSource {
@@ -3557,16 +3560,16 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 export interface IndexState {
   aliases: Record<IndexName, Alias>
   mappings: TypeMapping
-  settings: Record<string, object>
+  settings: Record<string, any>
 }
 
 export interface Alias {
-  filter: QueryContainer
-  index_routing: Routing
-  is_hidden: boolean
-  is_write_index: boolean
-  routing: Routing
-  search_routing: Routing
+  filter?: QueryContainer
+  index_routing?: Routing
+  is_hidden?: boolean
+  is_write_index?: boolean
+  routing?: Routing
+  search_routing?: Routing
 }
 
 export interface AliasDefinition {
@@ -3709,7 +3712,7 @@ export interface CloneIndexRequest extends RequestBase {
   wait_for_active_shards?: string
   body?: {
     aliases?: Record<IndexName, Alias>
-    settings?: Record<string, object>
+    settings?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
@@ -3727,7 +3730,7 @@ export interface CreateIndexRequest extends RequestBase {
   body?: {
     aliases?: Record<IndexName, Alias>
     mappings?: TypeMapping
-    settings?: Record<string, object>
+    settings?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
@@ -3846,7 +3849,7 @@ export interface RolloverIndexRequest extends RequestBase {
     aliases?: Record<IndexName, Alias>
     conditions?: RolloverConditions
     mappings?: TypeMapping
-    settings?: Record<string, object>
+    settings?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
@@ -3867,7 +3870,7 @@ export interface ShrinkIndexRequest extends RequestBase {
   wait_for_active_shards?: string
   body?: {
     aliases?: Record<IndexName, Alias>
-    settings?: Record<string, object>
+    settings?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
@@ -3883,7 +3886,7 @@ export interface SplitIndexRequest extends RequestBase {
   wait_for_active_shards?: string
   body?: {
     aliases?: Record<IndexName, Alias>
-    settings?: Record<string, object>
+    settings?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
@@ -3954,7 +3957,7 @@ export interface TemplateMapping {
   index_patterns: Array<string>
   mappings: TypeMapping
   order: integer
-  settings: Record<string, object>
+  settings: Record<string, any>
   version: integer
 }
 
@@ -3977,7 +3980,7 @@ export interface PutIndexTemplateRequest extends RequestBase {
     index_patterns?: Array<string>
     mappings?: TypeMapping
     order?: integer
-    settings?: Record<string, object>
+    settings?: Record<string, any>
     version?: integer
   } | string | Buffer | ReadableStream
 }
@@ -3995,7 +3998,7 @@ export interface UpdateIndexSettingsRequest extends RequestBase {
   preserve_existing?: boolean
   timeout?: Time
   body: {
-    index_settings?: Record<string, object>
+    index?: Record<string, any>
   } | string | Buffer | ReadableStream
 }
 
@@ -4057,7 +4060,7 @@ export interface PutMappingRequest extends RequestBase {
     dynamic_templates?: Record<string, DynamicTemplate>
     field_names_field?: FieldNamesField
     index_field?: IndexField
-    meta?: Record<string, object>
+    meta?: Record<string, any>
     numeric_detection?: boolean
     properties?: Record<PropertyName, IProperty>
     routing_field?: RoutingField
@@ -4216,7 +4219,7 @@ export interface IndicesShardStoresResponse extends ResponseBase {
 export interface ShardStore {
   allocation: ShardStoreAllocation
   allocation_id: string
-  attributes: Record<string, object>
+  attributes: Record<string, any>
   id: string
   legacy_version: long
   name: string
@@ -4622,7 +4625,7 @@ export interface GrokProcessorPatternsResponse extends ResponseBase {
 
 export interface AppendProcessor extends ProcessorBase {
   field: Field
-  value: Array<object>
+  value: Array<any>
 }
 
 export interface BytesProcessor extends ProcessorBase {
@@ -4649,7 +4652,7 @@ export interface ConvertProcessor extends ProcessorBase {
 export type ConvertProcessorType = 'integer' | 'long' | 'float' | 'double' | 'string' | 'boolean' | 'auto'
 
 export interface CsvProcessor extends ProcessorBase {
-  empty_value: object
+  empty_value: any
   field: Field
   ignore_missing: boolean
   quote: string
@@ -4779,14 +4782,14 @@ export interface RenameProcessor extends ProcessorBase {
 export interface ScriptProcessor extends ProcessorBase {
   id: string
   lang: string
-  params: Record<string, object>
+  params: Record<string, any>
   source: string
 }
 
 export interface SetProcessor extends ProcessorBase {
   field: Field
   override: boolean
-  value: object
+  value: any
 }
 
 export interface SetSecurityUserProcessor extends ProcessorBase {
@@ -4893,7 +4896,7 @@ export interface PipelineSimulation {
 export interface SimulatePipelineDocument {
   _id: Id
   _index: IndexName
-  _source: object
+  _source: any
 }
 
 export interface SimulatePipelineRequest extends RequestBase {
@@ -5012,15 +5015,15 @@ export type Uri = string
 export type DynamicMapping = 'strict'
 
 export interface TypeMapping {
-  all_field: AllField
-  date_detection: boolean
-  dynamic: boolean | DynamicMapping
-  dynamic_date_formats: Array<string>
-  dynamic_templates: Record<string, DynamicTemplate>
+  all_field?: AllField
+  date_detection?: boolean
+  dynamic?: boolean | DynamicMapping
+  dynamic_date_formats?: Array<string>
+  dynamic_templates?: Record<string, DynamicTemplate>
   _field_names: FieldNamesField
-  index_field: IndexField
-  _meta: Record<string, object>
-  numeric_detection: boolean
+  index_field?: IndexField
+  _meta: Record<string, any>
+  numeric_detection?: boolean
   properties: Record<PropertyName, IProperty>
   _routing: RoutingField
   _size: SizeField
@@ -5080,9 +5083,9 @@ export interface SourceField {
 }
 
 export interface IProperty {
-  local_metadata: Record<string, object>
-  meta: Record<string, string>
-  name: PropertyName
+  local_metadata?: Record<string, any>
+  meta?: Record<string, string>
+  name?: PropertyName
   type: string
 }
 
@@ -5113,7 +5116,7 @@ export interface ExecutePainlessScriptResponse<TResult = unknown> extends Respon
 }
 
 export interface PainlessContextSetup {
-  document: object
+  document: any
   index: IndexName
   query: QueryContainer
 }
@@ -5239,7 +5242,7 @@ export interface SnapshotInfo {
   end_time_in_millis: long
   failures: Array<SnapshotShardFailure>
   indices: Array<IndexName>
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   snapshot: string
   shards: ShardStatistics
   start_time: Date
@@ -5285,7 +5288,7 @@ export interface SnapshotRequest extends RequestBase {
     ignore_unavailable?: boolean
     include_global_state?: boolean
     indices?: Indices
-    metadata?: Record<string, object>
+    metadata?: Record<string, any>
     partial?: boolean
   } | string | Buffer | ReadableStream
 }
@@ -5843,7 +5846,7 @@ export interface MoreLikeThisQuery extends QueryBase {
 
 export type Like = string | LikeDocument
 export interface LikeDocument {
-  doc?: object
+  doc?: any
   fields?: Array<Field>
   _id?: Id
   _index?: IndexName
@@ -5852,8 +5855,8 @@ export interface LikeDocument {
 }
 
 export interface PercolateQuery extends QueryBase {
-  document?: object
-  documents?: Array<object>
+  document?: any
+  documents?: Array<any>
   field?: Field
   id?: Id
   index?: IndexName
@@ -6037,7 +6040,7 @@ export interface FieldCapabilitiesRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
-  fields?: Array<Field>
+  fields?: Field | Array<Field>
   ignore_unavailable?: boolean
   include_unmapped?: boolean
 }
@@ -6062,7 +6065,7 @@ export interface MultiSearchRequest extends RequestBase {
 }
 
 export interface MultiSearchResponse extends ResponseBase {
-  responses: Array<SearchResponse<object>>
+  responses: Array<SearchResponse<any>>
 }
 
 export interface ClearScrollRequest extends RequestBase {
@@ -6144,7 +6147,7 @@ export interface SearchRequest extends RequestBase {
     highlight?: Highlight
     track_total_hits?: boolean | integer
     indices_boost?: Array<Record<IndexName, double>>
-    docvalue_fields?: Array<Field | DocValueField>
+    docvalue_fields?: DocValueField | Array<Field | DocValueField>
     min_score?: double
     post_filter?: QueryContainer
     profile?: boolean
@@ -6234,7 +6237,7 @@ export interface SearchTemplateRequest extends RequestBase {
   typed_keys?: boolean
   body?: {
     id?: string
-    params?: Record<string, object>
+    params?: Record<string, any>
     source?: string
   } | string | Buffer | ReadableStream
 }
@@ -6243,7 +6246,7 @@ export interface RenderSearchTemplateRequest extends RequestBase {
   id?: Id
   body?: {
     file?: string
-    params?: Record<string, object>
+    params?: Record<string, any>
     source?: string
   } | string | Buffer | ReadableStream
 }
@@ -6588,7 +6591,7 @@ export interface DirectGenerator {
 }
 
 export interface PhraseSuggestCollate {
-  params: Record<string, object>
+  params: Record<string, any>
   prune: boolean
   query: PhraseSuggestCollateQuery
 }
@@ -6744,7 +6747,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     rescore?: Array<Rescore>
     routing?: Routing
     script_fields?: Record<string, ScriptField>
-    search_after?: Array<object>
+    search_after?: Array<any>
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
@@ -7217,7 +7220,7 @@ export interface LifecycleExplain {
   phase_time_millis: Date
   policy: string
   step: string
-  step_info: Record<string, object>
+  step_info: Record<string, any>
   step_time_millis: Date
 }
 
@@ -7599,6 +7602,8 @@ export interface LicenseInformation {
   status: LicenseStatus
   type: LicenseType
   uid: string
+  expirty_date_in_millis: long
+  start_date_in_millis: long
 }
 
 export type LicenseStatus = 'active' | 'valid' | 'invalid' | 'expired'
@@ -8343,7 +8348,7 @@ export interface PostJobDataRequest extends RequestBase {
   reset_end?: Date
   reset_start?: Date
   body: {
-    data?: Array<object>
+    data?: Array<any>
   } | string | Buffer | ReadableStream
 }
 
@@ -8580,7 +8585,7 @@ export interface UpdateJobRequest extends RequestBase {
     allow_lazy_open?: boolean
     analysis_limits?: AnalysisMemoryLimit
     background_persist_interval?: Time
-    custom_settings?: Record<string, object>
+    custom_settings?: Record<string, any>
     description?: string
     model_plot_config?: ModelPlotConfigEnabled
     model_snapshot_retention_days?: long
@@ -8682,7 +8687,7 @@ export interface RollupCapabilities {
 }
 
 export interface RollupCapabilitiesJob {
-  fields: Record<Field, Record<string, object>>
+  fields: Record<Field, Record<string, any>>
   index_pattern: string
   job_id: string
   rollup_index: string
@@ -8747,7 +8752,7 @@ export interface RollupJobStats {
 }
 
 export interface RollupJobStatus {
-  current_position: Record<string, object>
+  current_position: Record<string, any>
   job_state: IndexingJobState
   upgraded_doc_id: boolean
 }
@@ -8892,7 +8897,7 @@ export interface AuthenticateResponse extends ResponseBase {
   email: string
   full_name: string
   lookup_realm: RealmInfo
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   roles: Array<string>
   username: string
 }
@@ -9025,7 +9030,7 @@ export interface ResourcePrivileges {
 
 export interface PrivilegesActions {
   actions: Array<string>
-  metadata: Record<string, object>
+  metadata: Record<string, any>
 }
 
 export interface PutPrivilegesRequest extends RequestBase {
@@ -9065,7 +9070,7 @@ export interface GetRoleMappingResponse extends DictionaryResponseBase<string, X
 
 export interface XPackRoleMapping {
   enabled: boolean
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   roles: Array<string>
   rules: RoleMappingRuleBase
 }
@@ -9075,7 +9080,7 @@ export interface PutRoleMappingRequest extends RequestBase {
   refresh?: Refresh
   body: {
     enabled?: boolean
-    metadata?: Record<string, object>
+    metadata?: Record<string, any>
     roles?: Array<string>
     rules?: RoleMappingRuleBase
     run_as?: Array<string>
@@ -9122,7 +9127,7 @@ export interface GetRoleResponse extends DictionaryResponseBase<string, XPackRol
 export interface XPackRole {
   cluster: Array<string>
   indices: Array<IndicesPrivileges>
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   run_as: Array<string>
 }
 
@@ -9145,9 +9150,9 @@ export interface PutRoleRequest extends RequestBase {
   body: {
     applications?: Array<ApplicationPrivileges>
     cluster?: Array<string>
-    global?: Record<string, object>
+    global?: Record<string, any>
     indices?: Array<IndicesPrivileges>
-    metadata?: Record<string, object>
+    metadata?: Record<string, any>
     run_as?: Array<string>
   } | string | Buffer | ReadableStream
 }
@@ -9206,7 +9211,7 @@ export interface GetUserResponse extends DictionaryResponseBase<string, XPackUse
 export interface XPackUser {
   email: string
   full_name: string
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   roles: Array<string>
   username: string
 }
@@ -9243,7 +9248,7 @@ export interface PutUserRequest extends RequestBase {
   body: {
     email?: string
     full_name?: string
-    metadata?: Record<string, object>
+    metadata?: Record<string, any>
     password?: string
     password_hash?: string
     roles?: Array<string>
@@ -9642,7 +9647,7 @@ export interface Watch {
   actions: Record<string, Action>
   condition: ConditionContainer
   input: InputContainer
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   status: WatchStatus
   throttle_period: string
   transform: TransformContainer
@@ -9794,13 +9799,13 @@ export interface ArrayCompareCondition {
   comparison: string
   path: string
   quantifier: Quantifier
-  value: object
+  value: any
 }
 
 export interface CompareCondition {
   comparison: string
   path: string
-  value: object
+  value: any
 }
 
 export interface ConditionContainer {
@@ -9820,7 +9825,7 @@ export type Quantifier = 'some' | 'all'
 
 export interface ScriptCondition {
   lang: string
-  params: Record<string, object>
+  params: Record<string, any>
 }
 
 export interface DeactivateWatchRequest extends RequestBase {
@@ -9848,7 +9853,7 @@ export interface ExecuteWatchRequest extends RequestBase {
   debug?: boolean
   body?: {
     action_modes?: Record<string, ActionExecutionMode>
-    alternative_input?: Record<string, object>
+    alternative_input?: Record<string, any>
     ignore_condition?: boolean
     record_execution?: boolean
     simulated_actions?: SimulatedActions
@@ -9890,7 +9895,7 @@ export interface ExecutionResultCondition {
 }
 
 export interface ExecutionResultInput {
-  payload: Record<string, object>
+  payload: Record<string, any>
   status: Status
   type: InputType
 }
@@ -9905,7 +9910,7 @@ export interface WatchRecord {
   condition: ConditionContainer
   input: InputContainer
   messages: Array<string>
-  metadata: Record<string, object>
+  metadata: Record<string, any>
   node: string
   result: ExecutionResult
   state: ActionExecutionState
@@ -10086,7 +10091,7 @@ export interface SearchInputRequest {
 }
 
 export interface SimpleInput {
-  payload: Record<string, object>
+  payload: Record<string, any>
 }
 
 export interface PutWatchRequest extends RequestBase {
@@ -10099,7 +10104,7 @@ export interface PutWatchRequest extends RequestBase {
     actions?: Record<string, Action>
     condition?: ConditionContainer
     input?: InputContainer
-    metadata?: Record<string, object>
+    metadata?: Record<string, any>
     throttle_period?: string
     transform?: TransformContainer
     trigger?: TriggerContainer
@@ -10193,7 +10198,7 @@ export interface ChainTransform {
 
 export interface ScriptTransform {
   lang: string
-  params: Record<string, object>
+  params: Record<string, any>
 }
 
 export interface SearchTransform {
