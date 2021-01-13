@@ -1,5 +1,10 @@
 @rest_spec_name("get_source")
 class SourceRequest extends RequestBase {
+  pathParts?: {
+    id: string;
+    index: string;
+    type?: string;
+  }
   query_parameters?: {
     preference?: string;
     realtime?: boolean;

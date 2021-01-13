@@ -1,5 +1,8 @@
 @rest_spec_name("transform.stop_transform")
 class StopTransformRequest extends RequestBase {
+  pathParts?: {
+    transform_id: string;
+  }
   query_parameters?: {
     allow_no_match?: boolean;
     force?: boolean;

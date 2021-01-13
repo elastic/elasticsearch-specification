@@ -1,5 +1,9 @@
 @rest_spec_name("delete_by_query")
 class DeleteByQueryRequest extends RequestBase {
+  pathParts?: {
+    index: string | string[];
+    type?: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     analyzer?: string;

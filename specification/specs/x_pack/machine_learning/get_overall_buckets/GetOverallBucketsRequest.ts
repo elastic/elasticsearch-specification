@@ -1,5 +1,8 @@
 @rest_spec_name("ml.get_overall_buckets")
 class GetOverallBucketsRequest extends RequestBase {
+  pathParts?: {
+    job_id: string;
+  }
   query_parameters?: {
   }
   body?: {

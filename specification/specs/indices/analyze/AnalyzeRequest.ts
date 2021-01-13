@@ -1,5 +1,8 @@
 @rest_spec_name("indices.analyze")
 class AnalyzeRequest extends RequestBase {
+  pathParts?: {
+    index?: string;
+  }
   query_parameters?: {
   }
   body?: {

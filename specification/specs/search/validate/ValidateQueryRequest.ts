@@ -1,5 +1,9 @@
 @rest_spec_name("indices.validate_query")
 class ValidateQueryRequest extends RequestBase {
+  pathParts?: {
+    index?: string | string[];
+    type?: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     all_shards?: boolean;

@@ -1,5 +1,8 @@
 @rest_spec_name("indices.put_template")
 class PutIndexTemplateRequest extends RequestBase {
+  pathParts?: {
+    name: string;
+  }
   query_parameters?: {
     create?: boolean;
     flat_settings?: boolean;

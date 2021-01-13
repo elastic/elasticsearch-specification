@@ -1,5 +1,8 @@
 @rest_spec_name("indices.close")
 class CloseIndexRequest extends RequestBase {
+  pathParts?: {
+    index: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     expand_wildcards?: ExpandWildcards;

@@ -1,5 +1,8 @@
 @rest_spec_name("cluster.health")
 class ClusterHealthRequest extends RequestBase {
+  pathParts?: {
+    index?: string | string[];
+  }
   query_parameters?: {
     expand_wildcards?: ExpandWildcards;
     level?: Level;

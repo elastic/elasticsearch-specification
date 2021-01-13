@@ -1,6 +1,10 @@
 @rest_spec_name("msearch_template")
 @class_serializer("MultiSearchTemplateFormatter")
 class MultiSearchTemplateRequest extends RequestBase {
+  pathParts?: {
+    index?: string | string[];
+    type?: string | string[];
+  }
   query_parameters?: {
     ccs_minimize_roundtrips?: boolean;
     max_concurrent_searches?: long;

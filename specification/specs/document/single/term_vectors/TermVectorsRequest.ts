@@ -1,5 +1,10 @@
 @rest_spec_name("termvectors")
 class TermVectorsRequest<TDocument> extends RequestBase {
+  pathParts?: {
+    index: string;
+    id?: string;
+    type?: string;
+  }
   query_parameters?: {
     fields?: Field[];
     field_statistics?: boolean;

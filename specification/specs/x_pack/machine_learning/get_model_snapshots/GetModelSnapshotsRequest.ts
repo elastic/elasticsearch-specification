@@ -1,5 +1,9 @@
 @rest_spec_name("ml.get_model_snapshots")
 class GetModelSnapshotsRequest extends RequestBase {
+  pathParts?: {
+    job_id: string;
+    snapshot_id?: string;
+  }
   query_parameters?: {
   }
   body?: {

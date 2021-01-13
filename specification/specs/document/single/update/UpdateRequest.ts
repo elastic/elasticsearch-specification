@@ -3,6 +3,11 @@
  */
 @rest_spec_name("update")
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
+  pathParts?: {
+    id: string;
+    index: string;
+    type?: string;
+  }
   query_parameters?: {
     if_primary_term?: long;
     if_seq_no?: long;

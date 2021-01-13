@@ -1,5 +1,9 @@
 @rest_spec_name("indices.stats")
 class IndicesStatsRequest extends RequestBase {
+  pathParts?: {
+    metric?: string | string[];
+    index?: string | string[];
+  }
   query_parameters?: {
     completion_fields?: Field[];
     expand_wildcards?: ExpandWildcards;

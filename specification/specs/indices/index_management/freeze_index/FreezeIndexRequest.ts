@@ -1,5 +1,8 @@
 @rest_spec_name("indices.freeze")
 class FreezeIndexRequest extends RequestBase {
+  pathParts?: {
+    index: string;
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     expand_wildcards?: ExpandWildcards;

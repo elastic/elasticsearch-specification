@@ -1,5 +1,8 @@
 @rest_spec_name("indices.get")
 class GetIndexRequest extends RequestBase {
+  pathParts?: {
+    index: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     expand_wildcards?: ExpandWildcards;

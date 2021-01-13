@@ -1,5 +1,8 @@
 @rest_spec_name("async_search.get")
 class AsyncSearchGetRequest extends RequestBase {
+  pathParts?: {
+    id: string;
+  }
   query_parameters?: {
   }
   body?: {

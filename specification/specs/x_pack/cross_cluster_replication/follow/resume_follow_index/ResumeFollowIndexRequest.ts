@@ -1,5 +1,8 @@
 @rest_spec_name("ccr.resume_follow")
 class ResumeFollowIndexRequest extends RequestBase {
+  pathParts?: {
+    index: string;
+  }
   query_parameters?: {
   }
   body?: {

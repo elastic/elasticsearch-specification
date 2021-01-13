@@ -1,5 +1,8 @@
 @rest_spec_name("slm.put_lifecycle")
 class PutSnapshotLifecycleRequest extends RequestBase {
+  pathParts?: {
+    policy_id: string;
+  }
   query_parameters?: {
   }
   body?: {

@@ -1,5 +1,9 @@
 @rest_spec_name("indices.put_alias")
 class PutAliasRequest extends RequestBase {
+  pathParts?: {
+    index: string | string[];
+    name: string;
+  }
   query_parameters?: {
     master_timeout?: Time;
     timeout?: Time;

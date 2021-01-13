@@ -1,5 +1,9 @@
 @rest_spec_name("count")
 class CountRequest extends RequestBase {
+  pathParts?: {
+    index?: string | string[];
+    type?: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     analyzer?: string;

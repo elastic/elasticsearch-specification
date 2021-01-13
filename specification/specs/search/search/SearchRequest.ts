@@ -3,6 +3,10 @@
  */
 @rest_spec_name("search")
 class SearchRequest extends RequestBase {
+  pathParts?: {
+    index?: string | string[];
+    type?: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     allow_partial_search_results?: boolean;

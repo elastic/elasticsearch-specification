@@ -1,5 +1,9 @@
 @rest_spec_name("indices.split")
 class SplitIndexRequest extends RequestBase {
+  pathParts?: {
+    index: string;
+    target: string;
+  }
   query_parameters?: {
     master_timeout?: Time;
     timeout?: Time;

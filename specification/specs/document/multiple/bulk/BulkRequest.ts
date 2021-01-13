@@ -4,6 +4,10 @@
 @rest_spec_name("bulk")
 @class_serializer("BulkRequestFormatter")
 class BulkRequest<TSource> extends RequestBase {
+  pathParts?: {
+    index?: string;
+    type?: string;
+  }
   query_parameters?: {
     pipeline?: string;
     refresh?: Refresh;

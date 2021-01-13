@@ -1,5 +1,8 @@
 @rest_spec_name("ml.update_job")
 class UpdateJobRequest extends RequestBase {
+  pathParts?: {
+    job_id: string;
+  }
   query_parameters?: {
   }
   body?: {
