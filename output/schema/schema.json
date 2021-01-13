@@ -24290,6 +24290,37 @@
       "kind": "interface",
       "name": {
         "namespace": "common_abstractions.response",
+        "name": "ErrorResponse"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "MainError"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "common_abstractions.response",
         "name": "IndicesResponseBase"
       },
       "inherits": [

@@ -25,6 +25,7 @@ export function loadModel(spec: Specification): Model {
 
   const allTypeDefinitions = new Map<string, TypeDefinition>();
   const allTypeNames = new Map<string, TypeName>();
+  const autoFixedGenerics = new Set<string>();
 
   allTypeNames.set("boolean", { namespace: "internal", name:"boolean" });
   allTypeNames.set("string", { namespace: "internal", name:"string" });
@@ -32,12 +33,14 @@ export function loadModel(spec: Specification): Model {
   allTypeNames.set("null", { namespace: "internal", name:"null" });
   allTypeNames.set("Array", { namespace: "internal", name:"Array" });
 
+  //makeTypeDefinition is viral and updates allTypeDefinitions
+  // here we forcefully include certain types that are orphaned and not linked directly 
+  // through any of the endpoints
+  makeTypeDefinition("ErrorResponse");
+
   // 'any' is translated to 'object'
   const objectType: TypeName = { namespace: "internal", name:"object" };
   allTypeNames.set("object", objectType);
-
-  // See makeImplements()
-  const autoFixedGenerics = new Set<string>();
 
   // Make endpoints, this will pull all needed types transitively
   model.endpoints = spec.endpoints.map(ep => makeEndpoint(ep)).filter(ep => ep);

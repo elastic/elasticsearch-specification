@@ -2643,6 +2643,11 @@ export interface ElasticsearchVersionInfo {
   number: string
 }
 
+export interface ErrorResponse {
+  error: MainError
+  status: integer
+}
+
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards: ShardStatistics
 }
