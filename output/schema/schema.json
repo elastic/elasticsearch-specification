@@ -6531,6 +6531,140 @@
     {
       "kind": "interface",
       "name": {
+        "namespace": "cat",
+        "name": "CatRequestBase"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.request",
+            "name": "RequestBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "format",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "h",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "help",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "local",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "master_timeout",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.time_unit",
+              "name": "Time"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "s",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "v",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "cat",
+        "name": "CatResponseBase"
+      },
+      "generics": [
+        "TCatRecord"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "records",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "generic",
+                "name": "TCatRecord"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "namespace": "cat.cat_aliases",
         "name": "CatAliasesRecord"
       },
@@ -6601,8 +6735,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -6632,92 +6766,6 @@
           },
           "required": false,
           "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both."
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -6730,27 +6778,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_aliases",
                 "name": "CatAliasesRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -6880,8 +6922,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -6911,93 +6953,6 @@
           },
           "required": false,
           "description": "The unit in which to display byte values"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -7010,27 +6965,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_allocation",
                 "name": "CatAllocationRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -7083,8 +7032,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -7102,93 +7051,7 @@
           "description": "A comma-separated list of index names to limit the returned information"
         }
       ],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -7199,27 +7062,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_count",
                 "name": "CatCountRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -7415,8 +7272,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -7458,69 +7315,6 @@
           },
           "required": false,
           "description": "The unit in which to display byte values"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -7533,27 +7327,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_data_frame_analytics",
                 "name": "CatDataFrameAnalyticsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -7705,8 +7493,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -7736,69 +7524,6 @@
           },
           "required": false,
           "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -7811,27 +7536,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_datafeeds",
                 "name": "CatDatafeedsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -7917,8 +7636,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -7948,91 +7667,6 @@
           },
           "required": false,
           "description": "The unit in which to display byte values"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -8045,27 +7679,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_fielddata",
                 "name": "CatFielddataRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -8217,100 +7845,15 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
       "query": [
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
           "name": "include_timestamp",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -8331,27 +7874,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_health",
                 "name": "CatHealthRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -8382,40 +7919,13 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
-      "query": [
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -8426,27 +7936,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_help",
                 "name": "CatHelpRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -8587,8 +8091,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -8632,32 +8136,6 @@
           "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both."
         },
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
           "name": "health",
           "type": {
             "kind": "instance_of",
@@ -8668,30 +8146,6 @@
           },
           "required": false,
           "description": "A health status (\"green\", \"yellow\", or \"red\" to filter only indices matching the specified health status"
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "h",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "Comma-separated list of column names to display"
         },
         {
           "name": "include_unloaded_segments",
@@ -8706,30 +8160,6 @@
           "description": "If set to true segment stats will include stats for segments that are not currently loaded into memory"
         },
         {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
           "name": "pri",
           "type": {
             "kind": "instance_of",
@@ -8740,31 +8170,6 @@
           },
           "required": false,
           "description": "Set to true to return stats only for primary shards"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -8777,27 +8182,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_indices",
                 "name": "CatIndicesRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -9422,8 +8821,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -9465,69 +8864,6 @@
           },
           "required": false,
           "description": "The unit in which to display byte values"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -9540,27 +8876,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_jobs",
                 "name": "CatJobsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "enum",
@@ -9646,101 +8976,13 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -9751,27 +8993,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_master",
                 "name": "CatMasterRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -9879,101 +9115,13 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -9984,27 +9132,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_node_attributes",
                 "name": "CatNodeAttributesRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -10805,8 +9947,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -10825,18 +9967,6 @@
           "description": "The unit in which to display byte values"
         },
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
           "name": "full_id",
           "type": {
             "kind": "instance_of",
@@ -10847,81 +9977,6 @@
           },
           "required": false,
           "description": "Return the full node ID instead of the shortened version (default: false)"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Calculate the selected nodes using the local cluster state rather than the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -10934,27 +9989,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_nodes",
                 "name": "CatNodesRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -11021,101 +10070,13 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -11126,27 +10087,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_pending_tasks",
                 "name": "CatPendingTasksRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -11254,101 +10209,13 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -11359,27 +10226,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_plugins",
                 "name": "CatPluginsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -11647,8 +10508,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -11702,80 +10563,6 @@
           },
           "required": false,
           "description": "If `true`, the response includes detailed information about shard recoveries"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -11788,27 +10575,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_recovery",
                 "name": "CatRecoveryRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -11850,101 +10631,13 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
       "path": [],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -11955,27 +10648,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_repositories",
                 "name": "CatRepositoriesRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -12160,8 +10847,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -12191,69 +10878,6 @@
           },
           "required": false,
           "description": "The unit in which to display byte values"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -12266,27 +10890,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_segments",
                 "name": "CatSegmentsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -12944,8 +11562,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -12975,93 +11593,6 @@
           },
           "required": false,
           "description": "The unit in which to display byte values"
-        },
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -13074,27 +11605,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_shards",
                 "name": "CatShardsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -13253,8 +11778,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -13274,44 +11799,6 @@
       ],
       "query": [
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
           "name": "ignore_unavailable",
           "type": {
             "kind": "instance_of",
@@ -13322,43 +11809,6 @@
           },
           "required": false,
           "description": "Set to true to ignore unavailable snapshots"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -13371,27 +11821,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_snapshots",
                 "name": "CatSnapshotsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -13510,8 +11954,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -13545,44 +11989,6 @@
           "description": "Return detailed task information (default: false)"
         },
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
           "name": "node_id",
           "type": {
             "kind": "array_of",
@@ -13608,31 +12014,6 @@
           },
           "required": false,
           "description": "Return tasks with specified parent task id. Set to -1 to return all."
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -13645,27 +12026,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_tasks",
                 "name": "CatTasksRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -13746,8 +12121,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -13765,95 +12140,7 @@
           "description": "A pattern that returned template names must match"
         }
       ],
-      "query": [
-        {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        }
-      ]
+      "query": []
     },
     {
       "kind": "interface",
@@ -13864,27 +12151,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_templates",
                 "name": "CatTemplatesRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -14160,8 +12441,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -14181,68 +12462,6 @@
       ],
       "query": [
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
-          "name": "local",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return local information, do not retrieve the state from master node (default: false)"
-        },
-        {
-          "name": "master_timeout",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.time_unit",
-              "name": "Time"
-            }
-          },
-          "required": false,
-          "description": "Explicit operation timeout for connection to master node"
-        },
-        {
           "name": "size",
           "type": {
             "kind": "instance_of",
@@ -14253,31 +12472,6 @@
           },
           "required": false,
           "description": "The multiplier in which to display values"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -14290,27 +12484,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_thread_pool",
                 "name": "CatThreadPoolRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -14484,8 +12672,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -14529,18 +12717,6 @@
           "description": "The unit in which to display byte values"
         },
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
           "name": "from",
           "type": {
             "kind": "instance_of",
@@ -14553,32 +12729,6 @@
           "description": "skips a number of trained models"
         },
         {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
           "name": "size",
           "type": {
             "kind": "instance_of",
@@ -14589,31 +12739,6 @@
           },
           "required": false,
           "description": "specifies a max number of trained models to get"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -14626,27 +12751,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_trained_models",
                 "name": "CatTrainedModelsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -14966,8 +13085,8 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.request",
-            "name": "RequestBase"
+            "namespace": "cat",
+            "name": "CatRequestBase"
           }
         }
       ],
@@ -14999,18 +13118,6 @@
           "description": "Whether to ignore if a wildcard expression matches no transforms. (This includes `_all` string or when no transforms have been specified)"
         },
         {
-          "name": "format",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false,
-          "description": "a short version of the Accept header, e.g. json, yaml"
-        },
-        {
           "name": "from",
           "type": {
             "kind": "instance_of",
@@ -15023,32 +13130,6 @@
           "description": "skips a number of transform configs, defaults to 0"
         },
         {
-          "name": "headers",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "help",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false,
-          "description": "Return help information"
-        },
-        {
           "name": "size",
           "type": {
             "kind": "instance_of",
@@ -15059,31 +13140,6 @@
           },
           "required": false,
           "description": "specifies a max number of transforms to get, defaults to 100"
-        },
-        {
-          "name": "sort_by_columns",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "verbose",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -15096,27 +13152,21 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
+            "namespace": "cat",
+            "name": "CatResponseBase"
+          },
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "namespace": "cat.cat_transforms",
                 "name": "CatTransformsRecord"
               }
             }
-          },
-          "required": true
+          ]
         }
-      ]
+      ],
+      "properties": []
     },
     {
       "kind": "enum",

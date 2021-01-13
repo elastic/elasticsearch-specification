@@ -1,3 +1,1 @@
-class CatThreadPoolResponse extends ResponseBase {
-  records: CatThreadPoolRecord[];
-}
+class CatThreadPoolResponse extends CatResponseBase<CatThreadPoolRecord> {}

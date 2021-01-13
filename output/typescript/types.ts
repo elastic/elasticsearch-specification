@@ -759,6 +759,16 @@ export interface ITokenizer {
   version: string
 }
 
+export interface CatRequestBase extends RequestBase {
+  format?: string
+  h?: Array<string>
+  help?: boolean
+  local?: boolean
+  master_timeout?: Time
+  s?: Array<string>
+  v?: boolean
+}
+
 export interface CatAliasesRecord {
   alias: string
   filter: string
@@ -767,21 +777,12 @@ export interface CatAliasesRecord {
   searchRouting: string
 }
 
-export interface CatAliasesRequest extends RequestBase {
+export interface CatAliasesRequest extends CatRequestBase {
   name?: Names
   expand_wildcards?: ExpandWildcards
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatAliasesResponse extends ResponseBase {
-  records: Array<CatAliasesRecord>
-}
+export type CatAliasesResponse = CatAliasesRecord[]
 
 export interface CatAllocationRecord {
   'disk.avail': string
@@ -796,21 +797,12 @@ export interface CatAllocationRecord {
   shards: string
 }
 
-export interface CatAllocationRequest extends RequestBase {
+export interface CatAllocationRequest extends CatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatAllocationResponse extends ResponseBase {
-  records: Array<CatAllocationRecord>
-}
+export type CatAllocationResponse = CatAllocationRecord[]
 
 export interface CatCountRecord {
   count: string
@@ -818,20 +810,11 @@ export interface CatCountRecord {
   timestamp: string
 }
 
-export interface CatCountRequest extends RequestBase {
+export interface CatCountRequest extends CatRequestBase {
   index?: Indices
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatCountResponse extends ResponseBase {
-  records: Array<CatCountRecord>
-}
+export type CatCountResponse = CatCountRecord[]
 
 export interface CatDataFrameAnalyticsRecord {
   assignment_explanation: string
@@ -852,20 +835,13 @@ export interface CatDataFrameAnalyticsRecord {
   version: string
 }
 
-export interface CatDataFrameAnalyticsRequest extends RequestBase {
+export interface CatDataFrameAnalyticsRequest extends CatRequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatDataFrameAnalyticsResponse extends ResponseBase {
-  records: Array<CatDataFrameAnalyticsRecord>
-}
+export type CatDataFrameAnalyticsResponse = CatDataFrameAnalyticsRecord[]
 
 export interface CatDatafeedsRecord {
   assignment_explanation: string
@@ -882,19 +858,12 @@ export interface CatDatafeedsRecord {
   state: DatafeedState
 }
 
-export interface CatDatafeedsRequest extends RequestBase {
+export interface CatDatafeedsRequest extends CatRequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatDatafeedsResponse extends ResponseBase {
-  records: Array<CatDatafeedsRecord>
-}
+export type CatDatafeedsResponse = CatDatafeedsRecord[]
 
 export interface CatFielddataRecord {
   field: string
@@ -905,21 +874,12 @@ export interface CatFielddataRecord {
   size: string
 }
 
-export interface CatFielddataRequest extends RequestBase {
+export interface CatFielddataRequest extends CatRequestBase {
   fields?: Fields
   bytes?: Bytes
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatFielddataResponse extends ResponseBase {
-  records: Array<CatFielddataRecord>
-}
+export type CatFielddataResponse = CatFielddataRecord[]
 
 export interface CatHealthRecord {
   cluster: string
@@ -936,33 +896,20 @@ export interface CatHealthRecord {
   unassign: string
 }
 
-export interface CatHealthRequest extends RequestBase {
-  format?: string
-  headers?: Array<string>
-  help?: boolean
+export interface CatHealthRequest extends CatRequestBase {
   include_timestamp?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatHealthResponse extends ResponseBase {
-  records: Array<CatHealthRecord>
-}
+export type CatHealthResponse = CatHealthRecord[]
 
 export interface CatHelpRecord {
   endpoint: string
 }
 
-export interface CatHelpRequest extends RequestBase {
-  help?: boolean
-  sort_by_columns?: Array<string>
+export interface CatHelpRequest extends CatRequestBase {
 }
 
-export interface CatHelpResponse extends ResponseBase {
-  records: Array<CatHelpRecord>
-}
+export type CatHelpResponse = CatHelpRecord[]
 
 export interface CatIndicesRecord {
   'docs.count': long
@@ -978,26 +925,16 @@ export interface CatIndicesRecord {
   uuid: string
 }
 
-export interface CatIndicesRequest extends RequestBase {
+export interface CatIndicesRequest extends CatRequestBase {
   index?: Indices
   bytes?: Bytes
   expand_wildcards?: ExpandWildcards
-  format?: string
-  headers?: Array<string>
   health?: Health
-  help?: boolean
-  h?: string
   include_unloaded_segments?: boolean
-  local?: boolean
-  master_timeout?: Time
   pri?: boolean
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatIndicesResponse extends ResponseBase {
-  records: Array<CatIndicesRecord>
-}
+export type CatIndicesResponse = CatIndicesRecord[]
 
 export interface CatJobsRecord {
   assignment_explanation: string
@@ -1057,20 +994,13 @@ export interface CatJobsRecord {
   state: JobState
 }
 
-export interface CatJobsRequest extends RequestBase {
+export interface CatJobsRequest extends CatRequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
   bytes?: Bytes
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatJobsResponse extends ResponseBase {
-  records: Array<CatJobsRecord>
-}
+export type CatJobsResponse = CatJobsRecord[]
 
 export type ModelCategorizationStatus = 'ok' | 'warn'
 
@@ -1082,19 +1012,10 @@ export interface CatMasterRecord {
   node: string
 }
 
-export interface CatMasterRequest extends RequestBase {
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
+export interface CatMasterRequest extends CatRequestBase {
 }
 
-export interface CatMasterResponse extends ResponseBase {
-  records: Array<CatMasterRecord>
-}
+export type CatMasterResponse = CatMasterRecord[]
 
 export interface CatNodeAttributesRecord {
   attr: string
@@ -1107,19 +1028,10 @@ export interface CatNodeAttributesRecord {
   value: string
 }
 
-export interface CatNodeAttributesRequest extends RequestBase {
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
+export interface CatNodeAttributesRequest extends CatRequestBase {
 }
 
-export interface CatNodeAttributesResponse extends ResponseBase {
-  records: Array<CatNodeAttributesRecord>
-}
+export type CatNodeAttributesResponse = CatNodeAttributesRecord[]
 
 export interface CatNodesRecord {
   build: string
@@ -1195,21 +1107,12 @@ export interface CatNodesRecord {
   version: string
 }
 
-export interface CatNodesRequest extends RequestBase {
+export interface CatNodesRequest extends CatRequestBase {
   bytes?: Bytes
-  format?: string
   full_id?: boolean
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatNodesResponse extends ResponseBase {
-  records: Array<CatNodesRecord>
-}
+export type CatNodesResponse = CatNodesRecord[]
 
 export interface CatPendingTasksRecord {
   insertOrder: integer
@@ -1218,19 +1121,10 @@ export interface CatPendingTasksRecord {
   timeInQueue: string
 }
 
-export interface CatPendingTasksRequest extends RequestBase {
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
+export interface CatPendingTasksRequest extends CatRequestBase {
 }
 
-export interface CatPendingTasksResponse extends ResponseBase {
-  records: Array<CatPendingTasksRecord>
-}
+export type CatPendingTasksResponse = CatPendingTasksRecord[]
 
 export interface CatPluginsRecord {
   component: string
@@ -1243,19 +1137,10 @@ export interface CatPluginsRecord {
   version: string
 }
 
-export interface CatPluginsRequest extends RequestBase {
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
+export interface CatPluginsRequest extends CatRequestBase {
 }
 
-export interface CatPluginsResponse extends ResponseBase {
-  records: Array<CatPluginsRecord>
-}
+export type CatPluginsResponse = CatPluginsRecord[]
 
 export interface CatRecoveryRecord {
   bytes: string
@@ -1282,41 +1167,24 @@ export interface CatRecoveryRecord {
   type: string
 }
 
-export interface CatRecoveryRequest extends RequestBase {
+export interface CatRecoveryRequest extends CatRequestBase {
   index?: Indices
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatRecoveryResponse extends ResponseBase {
-  records: Array<CatRecoveryRecord>
-}
+export type CatRecoveryResponse = CatRecoveryRecord[]
 
 export interface CatRepositoriesRecord {
   id: string
   type: string
 }
 
-export interface CatRepositoriesRequest extends RequestBase {
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
+export interface CatRepositoriesRequest extends CatRequestBase {
 }
 
-export interface CatRepositoriesResponse extends ResponseBase {
-  records: Array<CatRepositoriesRecord>
-}
+export type CatRepositoriesResponse = CatRepositoriesRecord[]
 
 export interface CatSegmentsRecord {
   committed: string
@@ -1336,19 +1204,12 @@ export interface CatSegmentsRecord {
   version: string
 }
 
-export interface CatSegmentsRequest extends RequestBase {
+export interface CatSegmentsRequest extends CatRequestBase {
   index?: Indices
   bytes?: Bytes
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatSegmentsResponse extends ResponseBase {
-  records: Array<CatSegmentsRecord>
-}
+export type CatSegmentsResponse = CatSegmentsRecord[]
 
 export interface CatShardsRecord {
   'completion.size': string
@@ -1411,21 +1272,12 @@ export interface CatShardsRecord {
   'warmer.total_time': string
 }
 
-export interface CatShardsRequest extends RequestBase {
+export interface CatShardsRequest extends CatRequestBase {
   index?: Indices
   bytes?: Bytes
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatShardsResponse extends ResponseBase {
-  records: Array<CatShardsRecord>
-}
+export type CatShardsResponse = CatShardsRecord[]
 
 export interface CatSnapshotsRecord {
   duration: Time
@@ -1441,20 +1293,12 @@ export interface CatSnapshotsRecord {
   total_shards: long
 }
 
-export interface CatSnapshotsRequest extends RequestBase {
+export interface CatSnapshotsRequest extends CatRequestBase {
   repository?: Names
-  format?: string
-  headers?: Array<string>
-  help?: boolean
   ignore_unavailable?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatSnapshotsResponse extends ResponseBase {
-  records: Array<CatSnapshotsRecord>
-}
+export type CatSnapshotsResponse = CatSnapshotsRecord[]
 
 export interface CatTasksRecord {
   action: string
@@ -1468,21 +1312,14 @@ export interface CatTasksRecord {
   type: string
 }
 
-export interface CatTasksRequest extends RequestBase {
+export interface CatTasksRequest extends CatRequestBase {
   actions?: Array<string>
   detailed?: boolean
-  format?: string
-  headers?: Array<string>
-  help?: boolean
   node_id?: Array<string>
   parent_task?: long
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatTasksResponse extends ResponseBase {
-  records: Array<CatTasksRecord>
-}
+export type CatTasksResponse = CatTasksRecord[]
 
 export interface CatTemplatesRecord {
   index_patterns: string
@@ -1492,20 +1329,11 @@ export interface CatTemplatesRecord {
   composed_of: string
 }
 
-export interface CatTemplatesRequest extends RequestBase {
+export interface CatTemplatesRequest extends CatRequestBase {
   name?: Name
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatTemplatesResponse extends ResponseBase {
-  records: Array<CatTemplatesRecord>
-}
+export type CatTemplatesResponse = CatTemplatesRecord[]
 
 export interface CatThreadPoolRecord {
   active: integer
@@ -1530,21 +1358,12 @@ export interface CatThreadPoolRecord {
   type: string
 }
 
-export interface CatThreadPoolRequest extends RequestBase {
+export interface CatThreadPoolRequest extends CatRequestBase {
   thread_pool_patterns?: Names
-  format?: string
-  headers?: Array<string>
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
   size?: Size
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatThreadPoolResponse extends ResponseBase {
-  records: Array<CatThreadPoolRecord>
-}
+export type CatThreadPoolResponse = CatThreadPoolRecord[]
 
 export interface CatTrainedModelsRecord {
   created_by: string
@@ -1563,22 +1382,15 @@ export interface CatTrainedModelsRecord {
   version: string
 }
 
-export interface CatTrainedModelsRequest extends RequestBase {
+export interface CatTrainedModelsRequest extends CatRequestBase {
   model_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
-  format?: string
   from?: integer
-  headers?: Array<string>
-  help?: boolean
   size?: integer
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatTrainedModelsResponse extends ResponseBase {
-  records: Array<CatTrainedModelsRecord>
-}
+export type CatTrainedModelsResponse = CatTrainedModelsRecord[]
 
 export interface CatTransformsRecord {
   changes_last_detection_time: string
@@ -1610,21 +1422,14 @@ export interface CatTransformsRecord {
   version: string
 }
 
-export interface CatTransformsRequest extends RequestBase {
+export interface CatTransformsRequest extends CatRequestBase {
   transform_id?: Id
   allow_no_match?: boolean
-  format?: string
   from?: integer
-  headers?: Array<string>
-  help?: boolean
   size?: integer
-  sort_by_columns?: Array<string>
-  verbose?: boolean
 }
 
-export interface CatTransformsResponse extends ResponseBase {
-  records: Array<CatTransformsRecord>
-}
+export type CatTransformsResponse = CatTransformsRecord[]
 
 export type TransformState = 'STARTED' | 'INDEXING' | 'ABORTING' | 'STOPPING' | 'STOPPED' | 'FAILED'
 

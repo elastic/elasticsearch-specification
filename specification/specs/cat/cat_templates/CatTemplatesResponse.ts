@@ -1,3 +1,1 @@
-class CatTemplatesResponse extends ResponseBase {
-  records: CatTemplatesRecord[];
-}
+class CatTemplatesResponse extends CatResponseBase<CatTemplatesRecord> {}

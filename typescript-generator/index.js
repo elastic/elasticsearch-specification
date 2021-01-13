@@ -24,7 +24,15 @@ let definitions = `/*
  */
 
 import { Readable as ReadableStream } from 'stream'\n\n`
+
+const skip = [
+  'CatResponseBase'
+]
+
 for (const type of types) {
+  if (type.kind === 'interface' && skip.includes(type.name.name)) {
+    continue
+  }
   definitions += buildType(type) + '\n'
 }
 
@@ -175,6 +183,9 @@ function cleanPropertyName (name) {
 }
 
 function isSpecialInterface (type) {
+  if (/^Cat.*Response$/g.test(type.name.name)) {
+    return true
+  }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
       return true
@@ -184,6 +195,9 @@ function isSpecialInterface (type) {
 }
 
 function serializeSpecialInterface (type) {
+  if (/^Cat.*Response$/g.test(type.name.name)) {
+    return buildCatResponse(type)
+  }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
       return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
@@ -192,4 +206,11 @@ function serializeSpecialInterface (type) {
     default:
       throw new Error(`Unknown interface ${type.name.name}`)
   }
+}
+
+// In the input spec the Cat* responses are represented as an object
+// that contains a `records` key, which is an array of the inherited generic.
+// What ES actually sends back, is an array of the inherited generic.
+function buildCatResponse (type) {
+  return `export type ${type.name.name} = ${type.inherits[0].generics[0].type.name}[]\n`
 }

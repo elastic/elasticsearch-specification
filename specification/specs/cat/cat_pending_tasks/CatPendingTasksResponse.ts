@@ -1,3 +1,1 @@
-class CatPendingTasksResponse extends ResponseBase {
-  records: CatPendingTasksRecord[];
-}
+class CatPendingTasksResponse extends CatResponseBase<CatPendingTasksRecord> {}

@@ -1,8 +1,6 @@
 @rest_spec_name("cat.help")
-class CatHelpRequest extends RequestBase {
+class CatHelpRequest extends CatRequestBase {
   query_parameters?: {
-    help?: boolean;
-    sort_by_columns?: string[];
   }
   body?: {
   }
