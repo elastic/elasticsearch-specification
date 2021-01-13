@@ -1,3 +1,1 @@
-class CatDataFrameAnalyticsResponse extends ResponseBase {
-  records: CatDataFrameAnalyticsRecord[];
-}
+class CatDataFrameAnalyticsResponse extends CatResponseBase<CatDataFrameAnalyticsRecord> {}

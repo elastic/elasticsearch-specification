@@ -1,3 +1,1 @@
-class CatJobsResponse extends ResponseBase {
-  records: CatJobsRecord[];
-}
+class CatJobsResponse extends CatResponseBase<CatJobsRecord> {}
