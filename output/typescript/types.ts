@@ -2924,7 +2924,7 @@ export interface BulkResponse extends ResponseBase {
   errors: boolean
   items: Array<BulkResponseItemContainer>
   took: long
-  ingest_took: long
+  ingest_took?: long
 }
 
 export interface BulkCreateOperation extends BulkOperation {
@@ -2965,25 +2965,25 @@ export interface BulkIndexResponseItem extends BulkResponseItemBase {
 }
 
 export interface BulkResponseItemBase {
-  error: MainError
-  _id: string | null
+  _id?: string | null
   _index: string
-  _primary_term: long
-  result: string
-  _seq_no: long
-  _shards: ShardStatistics
   status: integer
-  _type: string
-  _version: long
-  forced_refresh: boolean
-  get: GetResponse<LazyDocument>
+  error?: ErrorCause
+  _primary_term?: long
+  result?: string
+  _seq_no?: long
+  _shards?: ShardStatistics
+  _type?: string
+  _version?: long
+  forced_refresh?: boolean
+  get?: InlineGet<LazyDocument>
 }
 
 export interface BulkResponseItemContainer {
-  index: BulkIndexResponseItem
-  create: BulkCreateResponseItem
-  update: BulkUpdateResponseItem
-  delete: BulkDeleteResponseItem
+  index?: BulkIndexResponseItem
+  create?: BulkCreateResponseItem
+  update?: BulkUpdateResponseItem
+  delete?: BulkDeleteResponseItem
 }
 
 export interface BulkUpdateResponseItem extends BulkResponseItemBase {
@@ -3386,10 +3386,10 @@ export interface GetRequest extends RequestBase {
 }
 
 export interface GetResponse<TDocument = unknown> extends ResponseBase {
-  fields: Record<string, LazyDocument>
+  _index: string
+  fields?: Record<string, LazyDocument>
   found: boolean
   _id: string
-  _index: string
   _primary_term: long
   _routing: string
   _seq_no: long
@@ -3559,7 +3559,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get: InlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface IndexState {
@@ -6025,7 +6025,7 @@ export interface ExplanationDetail {
 }
 
 export interface InlineGet<TDocument = unknown> {
-  fields: Record<string, LazyDocument>
+  fields?: Record<string, LazyDocument>
   found: boolean
   _seq_no: long
   _primary_term: long
