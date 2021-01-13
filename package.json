@@ -8,6 +8,7 @@
     "lint:fix": "standardx --fix **/*.ts **/**/*.ts",
     "compile:brain": "tsc --project specification/specs/tsconfig.json --noEmit",
     "compile:specs": "tsc --project specification/tsconfig.json",
+    "compile:canonical-json": "npm run generate-schema --prefix specification",
     "compile:ts-validation": "npm run start --prefix typescript-generator",
     "copy:specs": "cpy 'specs' ./lib --cwd=specification --no-overwrite --parents",
     "prepare": "npm run compile:specs && npm run copy:specs"
