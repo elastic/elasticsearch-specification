@@ -2687,10 +2687,10 @@ export interface ClusterStatistics {
 
 export interface ShardStatistics {
   failed: integer
-  failures: Array<ShardFailure>
   successful: integer
   total: integer
-  skipped: integer
+  failures?: Array<ShardFailure>
+  skipped?: integer
 }
 
 export type MinimumShouldMatch = integer | string
@@ -3313,9 +3313,9 @@ export interface WriteResponseBase extends ResponseBase {
   result: Result
   _seq_no: long
   _shards: ShardStatistics
-  _type: string
+  _type?: string
   _version: long
-  forced_refresh: boolean
+  forced_refresh?: boolean
 }
 
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
@@ -4932,30 +4932,30 @@ export interface DateField {
 export type double = number
 
 export interface ErrorCause {
-  shard: integer | string
-  stack_trace: string
   type: string
-  bytes_limit: long
-  bytes_wanted: long
-  caused_by: ErrorCause
-  column: integer
-  col: integer
-  failed_shards: Array<ShardFailure>
-  grouped: boolean
-  index: string
-  index_uuid: string
-  language: string
-  licensed_expired_feature: string
-  line: integer
-  max_buckets: integer
-  phase: string
   reason: string
-  resource_id: Array<string>
-  'resource.id': string
-  resource_type: string
-  'resource.type': string
-  script: string
-  script_stack: Array<string>
+  caused_by?: ErrorCause
+  shard?: integer | string
+  stack_trace?: string
+  bytes_limit?: long
+  bytes_wanted?: long
+  column?: integer
+  col?: integer
+  failed_shards?: Array<ShardFailure>
+  grouped?: boolean
+  index?: string
+  index_uuid?: string
+  language?: string
+  licensed_expired_feature?: string
+  line?: integer
+  max_buckets?: integer
+  phase?: string
+  resource_id?: Array<string>
+  'resource.id'?: string
+  resource_type?: string
+  'resource.type'?: string
+  script?: string
+  script_stack?: Array<string>
 }
 
 export type Field = string
@@ -4985,7 +4985,7 @@ export interface LatLon {
 export type long = number
 
 export interface MainError extends ErrorCause {
-  headers: Record<string, string>
+  headers?: Record<string, string>
   root_cause: Array<ErrorCause>
 }
 

@@ -24627,20 +24627,6 @@
           "required": true
         },
         {
-          "name": "failures",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common",
-                "name": "ShardFailure"
-              }
-            }
-          },
-          "required": true
-        },
-        {
           "name": "successful",
           "type": {
             "kind": "instance_of",
@@ -24663,6 +24649,20 @@
           "required": true
         },
         {
+          "name": "failures",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common",
+                "name": "ShardFailure"
+              }
+            }
+          },
+          "required": false
+        },
+        {
           "name": "skipped",
           "type": {
             "kind": "instance_of",
@@ -24671,7 +24671,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -30554,7 +30554,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_version",
@@ -30576,7 +30576,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -45505,198 +45505,7 @@
       },
       "properties": [
         {
-          "name": "shard",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "integer"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              }
-            ]
-          },
-          "required": true
-        },
-        {
-          "name": "stack_trace",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "type",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "bytes_limit",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "bytes_wanted",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "caused_by",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "ErrorCause"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "column",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "col",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "failed_shards",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common",
-                "name": "ShardFailure"
-              }
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "grouped",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "index",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "index_uuid",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "language",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "licensed_expired_feature",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "line",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "max_buckets",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "phase",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45718,6 +45527,197 @@
           "required": true
         },
         {
+          "name": "caused_by",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "ErrorCause"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "shard",
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "integer"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "stack_trace",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "bytes_limit",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "bytes_wanted",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "column",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "col",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "failed_shards",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common",
+                "name": "ShardFailure"
+              }
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "grouped",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "index",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "index_uuid",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "language",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "licensed_expired_feature",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "line",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "max_buckets",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "phase",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "resource_id",
           "type": {
             "kind": "array_of",
@@ -45729,7 +45729,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "resource.id",
@@ -45740,7 +45740,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "resource_type",
@@ -45751,7 +45751,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "resource.type",
@@ -45762,7 +45762,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script",
@@ -45773,7 +45773,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script_stack",
@@ -45787,7 +45787,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -46099,7 +46099,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "root_cause",
