@@ -114,7 +114,8 @@ function createInterface (type) {
   return code
 
   function required (property) {
-    if (isResponse) return ''
+    // response default to required, unless explicitly marked as optional
+    if (isResponse) return property.required === false ? '?' : ''
     return property.required ? '' : '?'
   }
 }

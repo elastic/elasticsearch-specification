@@ -2492,10 +2492,10 @@ export interface ClusterStatistics {
 
 export interface ShardStatistics {
   failed: integer
-  failures: Array<ShardFailure>
   successful: integer
   total: integer
-  skipped: integer
+  failures?: Array<ShardFailure>
+  skipped?: integer
 }
 
 export type MinimumShouldMatch = integer | string
@@ -2729,7 +2729,7 @@ export interface BulkResponse extends ResponseBase {
   errors: boolean
   items: Array<BulkResponseItemContainer>
   took: long
-  ingest_took: long
+  ingest_took?: long
 }
 
 export interface BulkCreateOperation extends BulkOperation {
@@ -2770,25 +2770,25 @@ export interface BulkIndexResponseItem extends BulkResponseItemBase {
 }
 
 export interface BulkResponseItemBase {
-  error: MainError
-  _id: string | null
+  _id?: string | null
   _index: string
-  _primary_term: long
-  result: string
-  _seq_no: long
-  _shards: ShardStatistics
   status: integer
-  _type: string
-  _version: long
-  forced_refresh: boolean
-  get: GetResponse<LazyDocument>
+  error?: ErrorCause
+  _primary_term?: long
+  result?: string
+  _seq_no?: long
+  _shards?: ShardStatistics
+  _type?: string
+  _version?: long
+  forced_refresh?: boolean
+  get?: InlineGet<LazyDocument>
 }
 
 export interface BulkResponseItemContainer {
-  index: BulkIndexResponseItem
-  create: BulkCreateResponseItem
-  update: BulkUpdateResponseItem
-  delete: BulkDeleteResponseItem
+  index?: BulkIndexResponseItem
+  create?: BulkCreateResponseItem
+  update?: BulkUpdateResponseItem
+  delete?: BulkDeleteResponseItem
 }
 
 export interface BulkUpdateResponseItem extends BulkResponseItemBase {
@@ -3118,9 +3118,9 @@ export interface WriteResponseBase extends ResponseBase {
   result: Result
   _seq_no: long
   _shards: ShardStatistics
-  _type: string
+  _type?: string
   _version: long
-  forced_refresh: boolean
+  forced_refresh?: boolean
 }
 
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
@@ -3191,10 +3191,10 @@ export interface GetRequest extends RequestBase {
 }
 
 export interface GetResponse<TDocument = unknown> extends ResponseBase {
-  fields: Record<string, LazyDocument>
+  _index: string
+  fields?: Record<string, LazyDocument>
   found: boolean
   _id: string
-  _index: string
   _primary_term: long
   _routing: string
   _seq_no: long
@@ -3364,7 +3364,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get: InlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface IndexState {
@@ -4737,30 +4737,30 @@ export interface DateField {
 export type double = number
 
 export interface ErrorCause {
-  shard: integer | string
-  stack_trace: string
   type: string
-  bytes_limit: long
-  bytes_wanted: long
-  caused_by: ErrorCause
-  column: integer
-  col: integer
-  failed_shards: Array<ShardFailure>
-  grouped: boolean
-  index: string
-  index_uuid: string
-  language: string
-  licensed_expired_feature: string
-  line: integer
-  max_buckets: integer
-  phase: string
   reason: string
-  resource_id: Array<string>
-  'resource.id': string
-  resource_type: string
-  'resource.type': string
-  script: string
-  script_stack: Array<string>
+  caused_by?: ErrorCause
+  shard?: integer | string
+  stack_trace?: string
+  bytes_limit?: long
+  bytes_wanted?: long
+  column?: integer
+  col?: integer
+  failed_shards?: Array<ShardFailure>
+  grouped?: boolean
+  index?: string
+  index_uuid?: string
+  language?: string
+  licensed_expired_feature?: string
+  line?: integer
+  max_buckets?: integer
+  phase?: string
+  resource_id?: Array<string>
+  'resource.id'?: string
+  resource_type?: string
+  'resource.type'?: string
+  script?: string
+  script_stack?: Array<string>
 }
 
 export type Field = string
@@ -4790,7 +4790,7 @@ export interface LatLon {
 export type long = number
 
 export interface MainError extends ErrorCause {
-  headers: Record<string, string>
+  headers?: Record<string, string>
   root_cause: Array<ErrorCause>
 }
 
@@ -5830,7 +5830,7 @@ export interface ExplanationDetail {
 }
 
 export interface InlineGet<TDocument = unknown> {
-  fields: Record<string, LazyDocument>
+  fields?: Record<string, LazyDocument>
   found: boolean
   _seq_no: long
   _primary_term: long

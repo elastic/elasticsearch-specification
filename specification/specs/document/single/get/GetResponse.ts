@@ -2,10 +2,10 @@
  * @type_stability stable
  */
 class GetResponse<TDocument> extends ResponseBase {
-  fields: Dictionary<string, LazyDocument>;
+  _index: string;
+  fields?: Dictionary<string, LazyDocument>;
   found: boolean;
   _id: string;
-  _index: string;
   _primary_term: long;
   _routing: string;
   _seq_no: long;
