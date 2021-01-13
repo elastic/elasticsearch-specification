@@ -58,4 +58,10 @@ class QueryContainer {
   terms?: SingleKeyDictionary<Union<TermsQuery, string[]>>;
   terms_set?: SingleKeyDictionary<Union<TermsSetQuery, string>>;
   wildcard?: SingleKeyDictionary<Union<WildcardQuery, string>>;
+
+  /**
+  * @obsolete 7.0.0
+  * @obsolete_description https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
+  */
+  type?: TypeQuery;
 }

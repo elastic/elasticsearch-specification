@@ -84,7 +84,8 @@ type Fields = Field | Field[]
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {
   field: Field;
-  format: string;
+  format?: string;
+  include_unmapped?: boolean;
 }
 
 class UserDefinedValue {}
