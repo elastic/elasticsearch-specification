@@ -1,5 +1,10 @@
 @rest_spec_name("explain")
 class ExplainRequest extends RequestBase {
+  path_parts?: {
+    id: string;
+    index: string;
+    type?: string;
+  }
   query_parameters?: {
     analyzer?: string;
     analyze_wildcard?: boolean;

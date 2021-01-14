@@ -1,5 +1,8 @@
 @rest_spec_name("security.put_user")
 class PutUserRequest extends RequestBase {
+  path_parts?: {
+    username: string;
+  }
   query_parameters?: {
     refresh?: Refresh;
   }

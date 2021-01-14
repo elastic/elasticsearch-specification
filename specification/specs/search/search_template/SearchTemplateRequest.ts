@@ -1,5 +1,9 @@
 @rest_spec_name("search_template")
 class SearchTemplateRequest extends RequestBase {
+  path_parts?: {
+    index?: string | string[];
+    type?: string | string[];
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     ccs_minimize_roundtrips?: boolean;

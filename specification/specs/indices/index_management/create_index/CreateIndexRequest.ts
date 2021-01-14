@@ -1,5 +1,8 @@
 @rest_spec_name("indices.create")
 class CreateIndexRequest extends RequestBase {
+  path_parts?: {
+    index: string;
+  }
   query_parameters?: {
     include_type_name?: boolean;
     master_timeout?: Time;

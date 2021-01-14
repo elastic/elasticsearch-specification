@@ -1,5 +1,8 @@
 @rest_spec_name("watcher.put_watch")
 class PutWatchRequest extends RequestBase {
+  path_parts?: {
+    id: string;
+  }
   query_parameters?: {
     active?: boolean;
     if_primary_term?: long;

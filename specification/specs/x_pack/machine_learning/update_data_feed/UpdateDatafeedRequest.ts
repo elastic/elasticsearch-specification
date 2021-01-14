@@ -1,5 +1,8 @@
 @rest_spec_name("ml.update_datafeed")
 class UpdateDatafeedRequest extends RequestBase {
+  path_parts?: {
+    datafeed_id: string;
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     expand_wildcards?: ExpandWildcards;

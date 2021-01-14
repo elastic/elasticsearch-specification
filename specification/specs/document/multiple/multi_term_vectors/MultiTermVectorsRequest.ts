@@ -1,5 +1,9 @@
 @rest_spec_name("mtermvectors")
 class MultiTermVectorsRequest extends RequestBase {
+  path_parts?: {
+    index?: string;
+    type?: string;
+  }
   query_parameters?: {
     fields?: Field[];
     field_statistics?: boolean;

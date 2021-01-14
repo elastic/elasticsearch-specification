@@ -1,5 +1,8 @@
 @rest_spec_name("ml.put_datafeed")
 class PutDatafeedRequest extends RequestBase {
+  path_parts?: {
+    datafeed_id: string;
+  }
   query_parameters?: {
     allow_no_indices?: boolean;
     expand_wildcards?: ExpandWildcards;

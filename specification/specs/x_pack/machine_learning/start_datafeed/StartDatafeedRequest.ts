@@ -1,5 +1,8 @@
 @rest_spec_name("ml.start_datafeed")
 class StartDatafeedRequest extends RequestBase {
+  path_parts?: {
+    datafeed_id: string;
+  }
   query_parameters?: {
   }
   body?: {

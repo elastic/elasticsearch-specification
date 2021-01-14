@@ -97,19 +97,19 @@ namespace Domain {
     name: string
     type: InstanceOf
     required: boolean
-    isRequestParameter: boolean
+    kind: string
     /** generator hinting, never null */
     generatorHints: GeneratorDocumentation;
     constructor (
       name: string,
       type: InstanceOf,
-      isRequestParameter: boolean,
+      kind: 'path_parts' | 'query_parameters' | 'body',
       required: boolean = false
     ) {
       this.name = name
       this.type = type
       this.required = required
-      this.isRequestParameter = isRequestParameter
+      this.kind = kind
     }
   }
 

@@ -1,5 +1,9 @@
 @rest_spec_name("indices.rollover")
 class RolloverIndexRequest extends RequestBase {
+  path_parts?: {
+    alias: string;
+    new_index?: string;
+  }
   query_parameters?: {
     dry_run?: boolean;
     include_type_name?: boolean;

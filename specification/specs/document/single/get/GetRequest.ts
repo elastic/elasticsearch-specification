@@ -3,6 +3,11 @@
  */
 @rest_spec_name("get")
 class GetRequest extends RequestBase {
+  path_parts?: {
+    id: string;
+    index: string;
+    type?: string;
+  }
   query_parameters?: {
     preference?: string;
     realtime?: boolean;

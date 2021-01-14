@@ -1,5 +1,8 @@
 @rest_spec_name("ml.put_job")
 class PutJobRequest extends RequestBase {
+  path_parts?: {
+    job_id: string;
+  }
   query_parameters?: {
   }
   body?: {

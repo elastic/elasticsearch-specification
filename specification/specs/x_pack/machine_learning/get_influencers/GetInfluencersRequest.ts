@@ -1,5 +1,8 @@
 @rest_spec_name("ml.get_influencers")
 class GetInfluencersRequest extends RequestBase {
+  path_parts?: {
+    job_id: string;
+  }
   query_parameters?: {
   }
   body?: {

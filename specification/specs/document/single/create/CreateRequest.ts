@@ -4,6 +4,11 @@
 @rest_spec_name("create")
 @class_serializer("CreateRequestFormatter`1")
 class CreateRequest<TDocument> extends RequestBase {
+  path_parts?: {
+    id: string;
+    index: string;
+    type?: string;
+  }
   query_parameters?: {
     pipeline?: string;
     refresh?: Refresh;
