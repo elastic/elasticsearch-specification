@@ -22,6 +22,7 @@ class SignificantTermsBucket<TKey> extends BucketBase {}
 class KeyedBucket<TKey> extends BucketBase {}
 
 type Aggregate  = ValueAggregate
+  | DocCountAggregate
   | AutoDateHistogramAggregate
   | FiltersAggregate
   | SignificantTermsAggregate<any>
@@ -46,7 +47,7 @@ type Aggregate  = ValueAggregate
   | HdrPercentilesAggregate
 
 class AggregateBase {
-  meta: Dictionary<string, UserDefinedValue>;
+  meta?: Dictionary<string, UserDefinedValue>;
 }
 
 class MultiBucketAggregate<TBucket> extends AggregateBase {
@@ -54,8 +55,12 @@ class MultiBucketAggregate<TBucket> extends AggregateBase {
 }
 
 class ValueAggregate extends AggregateBase {
-  value: double
-  value_as_string: string
+  value: double;
+  value_as_string?: string;
+}
+
+class DocCountAggregate extends AggregateBase {
+  doc_count: double;
 }
 class KeyedValueAggregate extends ValueAggregate {
   keys:string[]
@@ -67,7 +72,7 @@ class AutoDateHistogramAggregate extends AggregateBase {
 }
 
 class FiltersAggregate extends AggregateBase {
-  buckets:FiltersBucketItem[];
+  buckets: FiltersBucketItem[] | Dictionary<string, FiltersBucketItem>;
 }
 
 class SignificantTermsAggregate<TKey> extends MultiBucketAggregate<TKey> {
@@ -196,4 +201,3 @@ class TopMetricsAggregate extends AggregateBase {
   sort: double[];
   metrics: double[];
 }
-

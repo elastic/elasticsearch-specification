@@ -19,9 +19,9 @@
 
 import { Readable as ReadableStream } from 'stream'
 
-export type Aggregate = ValueAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+export type Aggregate = ValueAggregate | DocCountAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
 export interface AggregateBase {
-  meta: Record<string, any>
+  meta?: Record<string, any>
 }
 
 export interface AggregationContainer {
@@ -127,6 +127,10 @@ export interface CompositeBucketAggregate extends MultiBucketAggregate<Record<st
 export interface DateHistogramBucket extends BucketBase {
 }
 
+export interface DocCountAggregate extends AggregateBase {
+  doc_count: double
+}
+
 export interface ExtendedStatsAggregate extends StatsAggregate {
   sum_of_squares: double
   variance: double
@@ -139,7 +143,7 @@ export interface ExtendedStatsAggregate extends StatsAggregate {
 }
 
 export interface FiltersAggregate extends AggregateBase {
-  buckets: Array<FiltersBucketItem>
+  buckets: Array<FiltersBucketItem> | Record<string, FiltersBucketItem>
 }
 
 export interface FiltersBucketItem extends BucketBase {
@@ -269,7 +273,7 @@ export interface TopMetricsAggregate extends AggregateBase {
 
 export interface ValueAggregate extends AggregateBase {
   value: double
-  value_as_string: string
+  value_as_string?: string
 }
 
 export interface AdjacencyMatrixAggregation {
@@ -2402,7 +2406,7 @@ export interface ShardFailure {
   node: string
   reason: ErrorCause
   shard: integer
-  status: string
+  status?: string
 }
 
 export type Size = 'Raw' | 'k' | 'm' | 'g' | 't' | 'p'
@@ -5964,22 +5968,21 @@ export interface SearchRequest extends RequestBase {
 }
 
 export interface SearchResponse<TDocument = unknown> extends ResponseBase {
-  aggregations: Record<string, Aggregate>
-  _clusters: ClusterStatistics
-  documents: Array<TDocument>
-  fields: Record<string, LazyDocument>
-  hits: HitsMetadata<TDocument>
-  max_score: double
-  num_reduce_phases: long
-  profile: Profile
-  pit_id: string
-  _scroll_id: string
-  _shards: ShardStatistics
-  suggest: SuggestDictionary<TDocument>
-  terminated_early: boolean
-  timed_out: boolean
   took: long
-  total: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: HitsMetadata<TDocument>
+  aggregations?: Record<string, Aggregate>
+  _clusters?: ClusterStatistics
+  documents?: Array<TDocument>
+  fields?: Record<string, LazyDocument>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: Profile
+  pit_id?: string
+  _scroll_id?: string
+  suggest?: SuggestDictionary<TDocument>
+  terminated_early?: boolean
 }
 
 export interface SearchNode {
@@ -6110,35 +6113,37 @@ export interface HighlightField {
 }
 
 export interface Hit<TDocument = unknown> {
-  _explanation: Explanation
-  fields: Record<string, LazyDocument>
-  highlight: Record<string, Array<string>>
-  inner_hits: Record<string, InnerHitsResult>
-  matched_queries: Array<string>
-  _nested: NestedIdentity
-  _ignored: Array<string>
   _index: IndexName
   _id: Id
-  _shard: string
-  _node: string
-  _source: TDocument
-  _seq_no: long
-  _primary_term: long
-  _score: double
-  _version: long
-  sort: Array<number | string>
+  _score?: double
+  _type?: TypeName
+  _explanation?: Explanation
+  fields?: Record<string, LazyDocument>
+  highlight?: Record<string, Array<string>>
+  inner_hits?: Record<string, InnerHitsResult>
+  matched_queries?: Array<string>
+  _nested?: NestedIdentity
+  _ignored?: Array<string>
+  _shard?: string
+  _node?: string
+  _routing?: string
+  _source?: TDocument
+  _seq_no?: long
+  _primary_term?: long
+  _version?: long
+  sort?: Array<long | double | string>
 }
 
 export interface HitsMetadata<T = unknown> {
-  hits: Array<Hit<T>>
-  max_score: double
   total: TotalHits | long
+  hits: Array<Hit<T>>
+  max_score?: double
 }
 
 export interface InnerHitsMetadata {
-  hits: Array<Hit<LazyDocument>>
-  max_score: double
   total: TotalHits | long
+  hits: Array<Hit<LazyDocument>>
+  max_score?: double
 }
 
 export interface InnerHitsResult {
@@ -6147,8 +6152,8 @@ export interface InnerHitsResult {
 
 export interface NestedIdentity {
   field: Field
-  _nested: NestedIdentity
   offset: integer
+  _nested?: NestedIdentity
 }
 
 export interface TotalHits {
@@ -6199,17 +6204,17 @@ export interface AggregationProfile {
   time_in_nanos: long
   type: string
   debug: AggregationProfileDebug
-  children: Array<AggregationProfileDebug>
+  children?: Array<AggregationProfileDebug>
 }
 
 export interface AggregationProfileDebug {
 }
 
 export interface Collector {
-  children: Array<Collector>
   name: string
   reason: string
   time_in_nanos: long
+  children?: Array<Collector>
 }
 
 export interface Profile {
@@ -6239,10 +6244,10 @@ export interface QueryBreakdown {
 
 export interface QueryProfile {
   breakdown: QueryBreakdown
-  children: Array<QueryProfile>
   description: string
   time_in_nanos: long
   type: string
+  children?: Array<QueryProfile>
 }
 
 export interface SearchProfile {

@@ -3,5 +3,5 @@ class ShardFailure {
   node: string;
   reason: ErrorCause;
   shard: integer;
-  status: string;
+  status?: string;
 }
