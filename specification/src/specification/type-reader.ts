@@ -149,21 +149,28 @@ class InterfaceVisitor extends Visitor {
     const name = this.symbolName(p.name)
 
     const returnType = this.visitTypeNode(p.type)
-    ts.forEachChild(p.type, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent, name === 'query_parameters'))
+    ts.forEachChild(p.type, c => this.visitInterfaceProperty(c as ts.PropertySignature, parent, name))
 
-    if (name === 'query_parameters') { parent.queryParameters = parent.properties.filter(prop => prop.isRequestParameter) } else if (name === 'body') {
-      const bodyProps = parent.properties.filter(prop => !prop.isRequestParameter)
+    if (name === 'path_parts') {
+      parent.path = parent.properties.filter(prop => prop.kind === 'path_parts')
+    } else if (name === 'query_parameters') {
+      parent.queryParameters = parent.properties.filter(prop => prop.kind === 'query_parameters')
+    } else if (name === 'body') {
+      const bodyProps = parent.properties.filter(prop => prop.kind === 'body')
       parent.body = bodyProps.length > 0 ? bodyProps : returnType
     }
   }
 
-  private visitInterfaceProperty (p: ts.PropertySignature, parent: Domain.Interface, isQueryParam: boolean = false) {
+  private visitInterfaceProperty (p: ts.PropertySignature, parent: Domain.Interface, parentName?: string) {
     if (!this.isPropertySignature(p, parent)) return
 
     const name = this.symbolName(p.name)
     const returnType = this.visitTypeNode(p.type)
 
-    const prop = new Domain.InterfaceProperty(name, returnType, isQueryParam, !p.questionToken)
+    const prop = parentName && ['path_parts', 'query_parameters', 'body'].includes(parentName)
+      // @ts-ignore
+      ? new Domain.InterfaceProperty(name, returnType, parentName, !p.questionToken)
+      : new Domain.InterfaceProperty(name, returnType, 'body', !p.questionToken)
     prop.type = returnType
     prop.generatorHints = InterfaceVisitor.createGeneratorHints(p.jsDoc || [])
 

@@ -55,20 +55,6 @@ export class Specification {
 
     const endpointReader = new EndpointReader(specVisitor.interfaces, specVisitor.restSpecMapping)
     this.endpoints = endpointReader.endpoints
-
-    // Add the path properties to the respective RequestInterface
-    for (const endpoint of this.endpoints) {
-      const requestInterface = this.typeLookup[endpoint.typeMapping.request] as Domain.RequestInterface
-      for (const routePart of endpoint.routeParts) {
-        const property = new Domain.InterfaceProperty(
-          routePart.name,
-          new Domain.Type(routePart.type),
-          true,
-          routePart.required
-        )
-        requestInterface.path.push(property)
-      }
-    }
   }
 
   static load = () => new Specification(false);
