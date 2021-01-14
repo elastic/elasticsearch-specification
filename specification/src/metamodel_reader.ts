@@ -34,7 +34,7 @@ export function loadModel(spec: Specification): Model {
   allTypeNames.set("Array", { namespace: "internal", name:"Array" });
 
   //makeTypeDefinition is viral and updates allTypeDefinitions
-  // here we forcefully include certain types that are orphaned and not linked directly 
+  // here we forcefully include certain types that are orphaned and not linked directly
   // through any of the endpoints
   makeTypeDefinition("ErrorResponse");
 
@@ -57,43 +57,49 @@ export function loadModel(spec: Specification): Model {
   console.log("Model: " + model.endpoints.length + " endpoints (" + spec.endpoints.length + " in spec)");
 
   function makeEndpoint(api: Domain.Endpoint): Endpoint {
-    if (!spec.typeLookup[api.typeMapping.request]) {
-      console.log("Endpoint " + api.name + " skipped: request type not found");
-      return undefined;
-    }
+    let request = null
+    let response = null
 
-    if (!spec.typeLookup[api.typeMapping.response]) {
-      console.log("Endpoint " + api.name + " skipped: response type not found");
-      return undefined;
-    }
+    if (api.typeMapping && spec.typeLookup[api.typeMapping.request]) {
+      // Move endpoint docs to the request definition
+      request = makeTypeDefinition(api.typeMapping.request) as Request;
+      if (!request.description || request.description.length === 0) {
+        request.description = nonEmpty(api.body && api.body.description);
+      }
 
-    // Move endpoint docs to the request definition
-    const request = makeTypeDefinition(api.typeMapping.request) as Request;
-    if (!request.description || request.description.length === 0) {
-      request.description = nonEmpty(api.body && api.body.description);
-    }
-
-    request.path.forEach(prop => {
-      if (prop.description && prop.description.length > 0) return; // already has some docs
-      outer: for (const path of api.url.paths) {
-        for (const part of path.parts) {
-          if (part.name === prop.name) {
-            prop.description = nonEmpty(part.description);
-            break outer;
+      request.path.forEach(prop => {
+        if (prop.description && prop.description.length > 0) return; // already has some docs
+        outer: for (const path of api.url.paths) {
+          for (const part of path.parts) {
+            if (part.name === prop.name) {
+              prop.description = nonEmpty(part.description);
+              break outer;
+            }
           }
         }
-      }
-    });
+      });
 
-    request.query.forEach(prop => {
-      if (prop.description && prop.description.length > 0) return; // already has some docs
-      for (const param of api.queryStringParameters) {
-        if (param.name === prop.name) {
-          prop.description = nonEmpty(param.description);
-          break;
+      request.query.forEach(prop => {
+        if (prop.description && prop.description.length > 0) return; // already has some docs
+        for (const param of api.queryStringParameters) {
+          if (param.name === prop.name) {
+            prop.description = nonEmpty(param.description);
+            break;
+          }
         }
-      }
-    });
+      });
+
+      request = request.name
+    } else {
+      console.log(`Request type for endpoint ${api.name} not found`)
+    }
+
+    if (api.typeMapping && spec.typeLookup[api.typeMapping.response]) {
+      response = makeTypeDefinition(api.typeMapping.response).name
+    } else {
+      console.log(`Response type for endpoint ${api.name} not found`)
+    }
+
 
     return {
       name: api.name,
@@ -102,10 +108,10 @@ export function loadModel(spec: Specification): Model {
       stability: makeStability(api.stability),
       deprecation: api.deprecated,
 
-      request: request.name,
+      request,
       requestBodyRequired: !!api.body && api.body.required,
 
-      response: makeTypeDefinition(api.typeMapping.response).name,
+      response,
 
       urls: makeUrlTemplates(api.url)
     }
