@@ -72,7 +72,7 @@ class AutoDateHistogramAggregate extends AggregateBase {
 }
 
 class FiltersAggregate extends AggregateBase {
-  buckets:FiltersBucketItem[] | Dictionary<string, FiltersBucketItem>;
+  buckets: FiltersBucketItem[] | Dictionary<string, FiltersBucketItem>;
 }
 
 class SignificantTermsAggregate<TKey> extends MultiBucketAggregate<TKey> {
@@ -201,4 +201,3 @@ class TopMetricsAggregate extends AggregateBase {
   sort: double[];
   metrics: double[];
 }
-
