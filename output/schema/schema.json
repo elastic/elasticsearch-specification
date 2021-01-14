@@ -57478,7 +57478,14 @@
                     "kind": "instance_of",
                     "type": {
                       "namespace": "internal",
-                      "name": "number"
+                      "name": "long"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "double"
                     }
                   },
                   {

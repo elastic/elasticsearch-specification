@@ -6156,7 +6156,7 @@ export interface Hit<TDocument = unknown> {
   _seq_no?: long
   _primary_term?: long
   _version?: long
-  sort?: Array<number | string>
+  sort?: Array<long | double | string>
 }
 
 export interface HitsMetadata<T = unknown> {
