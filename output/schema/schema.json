@@ -18,6 +18,13 @@
           "kind": "instance_of",
           "type": {
             "namespace": "aggregations",
+            "name": "DocCountAggregate"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "aggregations",
             "name": "AutoDateHistogramAggregate"
           }
         },
@@ -219,7 +226,7 @@
               "kind": "user_defined_value"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -1370,6 +1377,34 @@
       "kind": "interface",
       "name": {
         "namespace": "aggregations",
+        "name": "DocCountAggregate"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "aggregations",
+            "name": "AggregateBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "doc_count",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "double"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "aggregations",
         "name": "ExtendedStatsAggregate"
       },
       "inherits": [
@@ -1489,14 +1524,36 @@
         {
           "name": "buckets",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "FiltersBucketItem"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "aggregations",
+                    "name": "FiltersBucketItem"
+                  }
+                }
+              },
+              {
+                "kind": "dictionary_of",
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "aggregations",
+                    "name": "FiltersBucketItem"
+                  }
+                }
               }
-            }
+            ]
           },
           "required": true
         }
@@ -2569,7 +2626,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -21960,7 +22017,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -55722,68 +55779,34 @@
       ],
       "properties": [
         {
-          "name": "aggregations",
+          "name": "took",
           "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
             }
           },
           "required": true
         },
         {
-          "name": "_clusters",
+          "name": "timed_out",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "_shards",
           "type": {
             "kind": "instance_of",
             "type": {
               "namespace": "common_options.hit",
-              "name": "ClusterStatistics"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "documents",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "generic",
-                "name": "TDocument"
-              }
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "fields",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common_abstractions.lazy_document",
-                "name": "LazyDocument"
-              }
+              "name": "ShardStatistics"
             }
           },
           "required": true
@@ -55809,6 +55832,73 @@
           "required": true
         },
         {
+          "name": "aggregations",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "_clusters",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.hit",
+              "name": "ClusterStatistics"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "documents",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "generic",
+                "name": "TDocument"
+              }
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "fields",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common_abstractions.lazy_document",
+                "name": "LazyDocument"
+              }
+            }
+          },
+          "required": false
+        },
+        {
           "name": "max_score",
           "type": {
             "kind": "instance_of",
@@ -55817,7 +55907,7 @@
               "name": "double"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "num_reduce_phases",
@@ -55828,7 +55918,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "profile",
@@ -55839,7 +55929,7 @@
               "name": "Profile"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pit_id",
@@ -55850,7 +55940,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_scroll_id",
@@ -55861,18 +55951,7 @@
               "name": "string"
             }
           },
-          "required": true
-        },
-        {
-          "name": "_shards",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.hit",
-              "name": "ShardStatistics"
-            }
-          },
-          "required": true
+          "required": false
         },
         {
           "name": "suggest",
@@ -55892,7 +55971,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "terminated_early",
@@ -55903,40 +55982,7 @@
               "name": "boolean"
             }
           },
-          "required": true
-        },
-        {
-          "name": "timed_out",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "took",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "total",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -57177,6 +57223,50 @@
       ],
       "properties": [
         {
+          "name": "_index",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "IndexName"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "_id",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Id"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "_score",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "double"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "_type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeName"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "_explanation",
           "type": {
             "kind": "instance_of",
@@ -57185,7 +57275,7 @@
               "name": "Explanation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fields",
@@ -57206,7 +57296,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "highlight",
@@ -57230,7 +57320,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "inner_hits",
@@ -57251,7 +57341,7 @@
               }
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
           }
@@ -57268,7 +57358,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_nested",
@@ -57279,7 +57369,7 @@
               "name": "NestedIdentity"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_ignored",
@@ -57293,29 +57383,7 @@
               }
             }
           },
-          "required": true
-        },
-        {
-          "name": "_index",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "IndexName"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "_id",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Id"
-            }
-          },
-          "required": true
+          "required": false
         },
         {
           "name": "_shard",
@@ -57326,7 +57394,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_node",
@@ -57337,7 +57405,18 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "_routing",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
         },
         {
           "name": "_source",
@@ -57348,7 +57427,7 @@
               "name": "TDocument"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_seq_no",
@@ -57359,7 +57438,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_primary_term",
@@ -57370,18 +57449,7 @@
               "name": "long"
             }
           },
-          "required": true
-        },
-        {
-          "name": "_score",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "double"
-            }
-          },
-          "required": true
+          "required": false
         },
         {
           "name": "_version",
@@ -57392,7 +57460,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "sort",
@@ -57424,7 +57492,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -57438,6 +57506,29 @@
         "T"
       ],
       "properties": [
+        {
+          "name": "total",
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "search.search.hits",
+                  "name": "TotalHits"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "long"
+                }
+              }
+            ]
+          },
+          "required": true
+        },
         {
           "name": "hits",
           "type": {
@@ -57470,8 +57561,17 @@
               "name": "double"
             }
           },
-          "required": true
-        },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "search.search.hits",
+        "name": "InnerHitsMetadata"
+      },
+      "properties": [
         {
           "name": "total",
           "type": {
@@ -57494,16 +57594,7 @@
             ]
           },
           "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "search.search.hits",
-        "name": "InnerHitsMetadata"
-      },
-      "properties": [
+        },
         {
           "name": "hits",
           "type": {
@@ -57536,30 +57627,7 @@
               "name": "double"
             }
           },
-          "required": true
-        },
-        {
-          "name": "total",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "search.search.hits",
-                  "name": "TotalHits"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "long"
-                }
-              }
-            ]
-          },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -57602,17 +57670,6 @@
           "required": true
         },
         {
-          "name": "_nested",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.search.hits",
-              "name": "NestedIdentity"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "offset",
           "type": {
             "kind": "instance_of",
@@ -57622,6 +57679,17 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "_nested",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.search.hits",
+              "name": "NestedIdentity"
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -58110,7 +58178,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -58129,20 +58197,6 @@
         "name": "Collector"
       },
       "properties": [
-        {
-          "name": "children",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "search.search.profile",
-                "name": "Collector"
-              }
-            }
-          },
-          "required": true
-        },
         {
           "name": "name",
           "type": {
@@ -58175,6 +58229,20 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "children",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.search.profile",
+                "name": "Collector"
+              }
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -58427,20 +58495,6 @@
           "required": true
         },
         {
-          "name": "children",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "search.search.profile",
-                "name": "QueryProfile"
-              }
-            }
-          },
-          "required": true
-        },
-        {
           "name": "description",
           "type": {
             "kind": "instance_of",
@@ -58472,6 +58526,20 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "children",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.search.profile",
+                "name": "QueryProfile"
+              }
+            }
+          },
+          "required": false
         }
       ]
     },

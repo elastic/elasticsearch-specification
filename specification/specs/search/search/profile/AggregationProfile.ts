@@ -7,6 +7,6 @@ class AggregationProfile {
   time_in_nanos: long;
   type: string;
   debug: AggregationProfileDebug;
-  children: AggregationProfileDebug[];
+  children?: AggregationProfileDebug[];
 }
 
