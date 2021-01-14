@@ -239,7 +239,7 @@
               "name": "AdjacencyMatrixAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "aggs",
@@ -260,7 +260,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "aggregations",
@@ -281,7 +281,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "auto_date_histogram",
@@ -292,7 +292,7 @@
               "name": "AutoDateHistogramAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "avg",
@@ -303,7 +303,7 @@
               "name": "AverageAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "avg_bucket",
@@ -314,7 +314,7 @@
               "name": "AverageBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boxplot",
@@ -325,7 +325,7 @@
               "name": "BoxplotAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "bucket_script",
@@ -336,7 +336,7 @@
               "name": "BucketScriptAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "bucket_selector",
@@ -347,7 +347,7 @@
               "name": "BucketSelectorAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "bucket_sort",
@@ -358,7 +358,7 @@
               "name": "BucketSortAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "cardinality",
@@ -369,7 +369,7 @@
               "name": "CardinalityAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "children",
@@ -380,7 +380,7 @@
               "name": "ChildrenAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "composite",
@@ -391,7 +391,7 @@
               "name": "CompositeAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "cumulative_cardinality",
@@ -402,7 +402,7 @@
               "name": "CumulativeCardinalityAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "cumulative_sum",
@@ -413,7 +413,7 @@
               "name": "CumulativeSumAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "date_histogram",
@@ -424,7 +424,7 @@
               "name": "DateHistogramAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "date_range",
@@ -435,7 +435,7 @@
               "name": "DateRangeAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "derivative",
@@ -446,7 +446,7 @@
               "name": "DerivativeAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "extended_stats",
@@ -457,7 +457,7 @@
               "name": "ExtendedStatsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "extended_stats_bucket",
@@ -468,7 +468,7 @@
               "name": "ExtendedStatsBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "filter",
@@ -479,7 +479,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "filters",
@@ -490,7 +490,7 @@
               "name": "FiltersAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_bounds",
@@ -501,7 +501,7 @@
               "name": "GeoBoundsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_centroid",
@@ -512,7 +512,7 @@
               "name": "GeoCentroidAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geo_distance",
@@ -523,7 +523,7 @@
               "name": "GeoDistanceAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geohash_grid",
@@ -534,7 +534,7 @@
               "name": "GeoHashGridAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geotile_grid",
@@ -545,7 +545,7 @@
               "name": "GeoTileGridAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "global",
@@ -556,7 +556,7 @@
               "name": "GlobalAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "histogram",
@@ -567,7 +567,7 @@
               "name": "HistogramAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "ip_range",
@@ -578,7 +578,7 @@
               "name": "IpRangeAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "matrix_stats",
@@ -589,7 +589,7 @@
               "name": "MatrixStatsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max",
@@ -600,7 +600,7 @@
               "name": "MaxAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_bucket",
@@ -611,7 +611,7 @@
               "name": "MaxBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "median_absolute_deviation",
@@ -622,7 +622,7 @@
               "name": "MedianAbsoluteDeviationAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "meta",
@@ -662,7 +662,7 @@
               ]
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min",
@@ -673,7 +673,7 @@
               "name": "MinAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "min_bucket",
@@ -684,7 +684,7 @@
               "name": "MinBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "missing",
@@ -695,7 +695,7 @@
               "name": "MissingAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "moving_avg",
@@ -706,7 +706,7 @@
               "name": "MovingAverageAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "moving_fn",
@@ -717,7 +717,7 @@
               "name": "MovingFunctionAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "nested",
@@ -728,7 +728,7 @@
               "name": "NestedAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "parent",
@@ -739,7 +739,7 @@
               "name": "ParentAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "percentile_ranks",
@@ -750,7 +750,7 @@
               "name": "PercentileRanksAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "percentiles",
@@ -761,7 +761,7 @@
               "name": "PercentilesAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "percentiles_bucket",
@@ -772,7 +772,7 @@
               "name": "PercentilesBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "range",
@@ -783,7 +783,7 @@
               "name": "RangeAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "rare_terms",
@@ -794,7 +794,7 @@
               "name": "RareTermsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "reverse_nested",
@@ -805,7 +805,7 @@
               "name": "ReverseNestedAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "sampler",
@@ -816,7 +816,7 @@
               "name": "SamplerAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "scripted_metric",
@@ -827,7 +827,7 @@
               "name": "ScriptedMetricAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "serial_diff",
@@ -838,7 +838,7 @@
               "name": "SerialDifferencingAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "significant_terms",
@@ -849,7 +849,7 @@
               "name": "SignificantTermsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "significant_text",
@@ -860,7 +860,7 @@
               "name": "SignificantTextAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stats",
@@ -871,7 +871,7 @@
               "name": "StatsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "stats_bucket",
@@ -882,7 +882,7 @@
               "name": "StatsBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "string_stats",
@@ -893,7 +893,7 @@
               "name": "StringStatsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "sum",
@@ -904,7 +904,7 @@
               "name": "SumAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "sum_bucket",
@@ -915,7 +915,7 @@
               "name": "SumBucketAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "terms",
@@ -926,7 +926,7 @@
               "name": "TermsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "top_hits",
@@ -937,7 +937,7 @@
               "name": "TopHitsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "top_metrics",
@@ -948,7 +948,7 @@
               "name": "TopMetricsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "value_count",
@@ -959,7 +959,7 @@
               "name": "ValueCountAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "weighted_avg",
@@ -970,7 +970,7 @@
               "name": "WeightedAverageAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "variable_width_histogram",
@@ -981,7 +981,7 @@
               "name": "VariableWidthHistogramAggregation"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -2863,7 +2863,7 @@
               "name": "TermsAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "histogram",
@@ -2874,7 +2874,7 @@
               "name": "HistogramAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "date_histogram",
@@ -2885,7 +2885,7 @@
               "name": "DateHistogramAggregation"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "geotile_grid",
@@ -2896,7 +2896,7 @@
               "name": "GeoTileGridAggregation"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -3251,7 +3251,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "key",
@@ -3262,7 +3262,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "to",
@@ -3285,7 +3285,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -22677,20 +22677,6 @@
           "required": true
         },
         {
-          "name": "failures",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common",
-                "name": "ShardFailure"
-              }
-            }
-          },
-          "required": true
-        },
-        {
           "name": "successful",
           "type": {
             "kind": "instance_of",
@@ -22713,6 +22699,20 @@
           "required": true
         },
         {
+          "name": "failures",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common",
+                "name": "ShardFailure"
+              }
+            }
+          },
+          "required": false
+        },
+        {
           "name": "skipped",
           "type": {
             "kind": "instance_of",
@@ -22721,7 +22721,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -24851,7 +24851,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -25103,17 +25103,6 @@
       },
       "properties": [
         {
-          "name": "error",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "MainError"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "_id",
           "type": {
             "kind": "union_of",
@@ -25134,7 +25123,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_index",
@@ -25143,50 +25132,6 @@
             "type": {
               "namespace": "internal",
               "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "_primary_term",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "result",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "_seq_no",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "_shards",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "common_options.hit",
-              "name": "ShardStatistics"
             }
           },
           "required": true
@@ -25203,6 +25148,61 @@
           "required": true
         },
         {
+          "name": "error",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "ErrorCause"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "_primary_term",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "result",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "_seq_no",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "_shards",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.hit",
+              "name": "ShardStatistics"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "_type",
           "type": {
             "kind": "instance_of",
@@ -25211,7 +25211,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_version",
@@ -25222,7 +25222,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "forced_refresh",
@@ -25233,15 +25233,15 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "get",
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "document.single.get",
-              "name": "GetResponse"
+              "namespace": "search.explain",
+              "name": "InlineGet"
             },
             "generics": [
               {
@@ -25253,7 +25253,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -25273,7 +25273,7 @@
               "name": "BulkIndexResponseItem"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "create",
@@ -25284,7 +25284,7 @@
               "name": "BulkCreateResponseItem"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "update",
@@ -25295,7 +25295,7 @@
               "name": "BulkUpdateResponseItem"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "delete",
@@ -25306,7 +25306,7 @@
               "name": "BulkDeleteResponseItem"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -28604,7 +28604,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_version",
@@ -28626,7 +28626,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -29397,6 +29397,17 @@
       ],
       "properties": [
         {
+          "name": "_index",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
           "name": "fields",
           "type": {
             "kind": "dictionary_of",
@@ -29415,7 +29426,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "found",
@@ -29430,17 +29441,6 @@
         },
         {
           "name": "_id",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "_index",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -31215,7 +31215,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -43529,7 +43529,18 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "include_unmapped",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -43555,198 +43566,7 @@
       },
       "properties": [
         {
-          "name": "shard",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "integer"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              }
-            ]
-          },
-          "required": true
-        },
-        {
-          "name": "stack_trace",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "type",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "bytes_limit",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "bytes_wanted",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "caused_by",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "ErrorCause"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "column",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "col",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "failed_shards",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common",
-                "name": "ShardFailure"
-              }
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "grouped",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "index",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "index_uuid",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "language",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "licensed_expired_feature",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "line",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "max_buckets",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "phase",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -43768,6 +43588,197 @@
           "required": true
         },
         {
+          "name": "caused_by",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "ErrorCause"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "shard",
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "integer"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "stack_trace",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "bytes_limit",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "bytes_wanted",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "column",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "col",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "failed_shards",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common",
+                "name": "ShardFailure"
+              }
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "grouped",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "index",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "index_uuid",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "language",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "licensed_expired_feature",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "line",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "max_buckets",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "phase",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "resource_id",
           "type": {
             "kind": "array_of",
@@ -43779,7 +43790,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "resource.id",
@@ -43790,7 +43801,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "resource_type",
@@ -43801,7 +43812,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "resource.type",
@@ -43812,7 +43823,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script",
@@ -43823,7 +43834,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "script_stack",
@@ -43837,7 +43848,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -44149,7 +44160,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "root_cause",
@@ -48243,6 +48254,21 @@
             }
           },
           "required": false
+        },
+        {
+          "name": "type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "query_dsl.term_level.type",
+              "name": "TypeQuery"
+            }
+          },
+          "required": false,
+          "annotations": {
+            "obsolete": "7.0.0",
+            "obsolete_description": "https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html"
+          }
         }
       ]
     },
@@ -53102,6 +53128,34 @@
     {
       "kind": "interface",
       "name": {
+        "namespace": "query_dsl.term_level.type",
+        "name": "TypeQuery"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "query_dsl.abstractions.query",
+            "name": "QueryBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "namespace": "query_dsl.term_level.wildcard",
         "name": "WildcardQuery"
       },
@@ -53795,7 +53849,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "found",
@@ -56523,7 +56577,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_concurrent_group_searches",
@@ -56534,7 +56588,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -56564,61 +56618,6 @@
       },
       "properties": [
         {
-          "name": "boundary_chars",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "boundary_max_scan",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "boundary_scanner",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.search.highlighting",
-              "name": "BoundaryScanner"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "boundary_scanner_locale",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "encoder",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.search.highlighting",
-              "name": "HighlighterEncoder"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "fields",
           "type": {
             "kind": "dictionary_of",
@@ -56640,6 +56639,72 @@
           "required": true
         },
         {
+          "name": "type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.search.highlighting",
+              "name": "HighlighterType"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "boundary_chars",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "boundary_max_scan",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "boundary_scanner",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.search.highlighting",
+              "name": "BoundaryScanner"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "boundary_scanner_locale",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "encoder",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.search.highlighting",
+              "name": "HighlighterEncoder"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "fragmenter",
           "type": {
             "kind": "instance_of",
@@ -56648,7 +56713,7 @@
               "name": "HighlighterFragmenter"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fragment_offset",
@@ -56659,7 +56724,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fragment_size",
@@ -56670,7 +56735,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_fragment_length",
@@ -56681,7 +56746,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "no_match_size",
@@ -56692,7 +56757,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "number_of_fragments",
@@ -56703,7 +56768,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "order",
@@ -56714,7 +56779,7 @@
               "name": "HighlighterOrder"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "post_tags",
@@ -56728,7 +56793,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pre_tags",
@@ -56742,7 +56807,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "require_field_match",
@@ -56753,7 +56818,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tags_schema",
@@ -56764,18 +56829,7 @@
               "name": "HighlighterTagsSchema"
             }
           },
-          "required": true
-        },
-        {
-          "name": "type",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.search.highlighting",
-              "name": "HighlighterType"
-            }
-          },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -56867,7 +56921,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boundary_max_scan",
@@ -56878,7 +56932,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boundary_scanner",
@@ -56889,7 +56943,7 @@
               "name": "BoundaryScanner"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "boundary_scanner_locale",
@@ -56900,7 +56954,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "field",
@@ -56911,7 +56965,7 @@
               "name": "Field"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "force_source",
@@ -56922,7 +56976,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fragmenter",
@@ -56933,7 +56987,7 @@
               "name": "HighlighterFragmenter"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fragment_offset",
@@ -56944,7 +56998,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fragment_size",
@@ -56955,7 +57009,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "highlight_query",
@@ -56966,7 +57020,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "matched_fields",
@@ -56980,7 +57034,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "max_fragment_length",
@@ -56991,7 +57045,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "no_match_size",
@@ -57002,7 +57056,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "number_of_fragments",
@@ -57013,7 +57067,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "order",
@@ -57024,7 +57078,7 @@
               "name": "HighlighterOrder"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "phrase_limit",
@@ -57035,7 +57089,7 @@
               "name": "integer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "post_tags",
@@ -57049,7 +57103,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "pre_tags",
@@ -57063,7 +57117,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "require_field_match",
@@ -57074,7 +57128,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tags_schema",
@@ -57085,7 +57139,7 @@
               "name": "HighlighterTagsSchema"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -57108,7 +57162,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -57625,6 +57679,39 @@
       },
       "properties": [
         {
+          "name": "name",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "from",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "collapse",
           "type": {
             "kind": "instance_of",
@@ -57633,7 +57720,7 @@
               "name": "FieldCollapse"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "docvalue_fields",
@@ -57647,7 +57734,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "explain",
@@ -57658,18 +57745,7 @@
               "name": "boolean"
             }
           },
-          "required": true
-        },
-        {
-          "name": "from",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
+          "required": false
         },
         {
           "name": "highlight",
@@ -57680,7 +57756,7 @@
               "name": "Highlight"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "ignore_unmapped",
@@ -57691,18 +57767,7 @@
               "name": "boolean"
             }
           },
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
+          "required": false
         },
         {
           "name": "script_fields",
@@ -57723,7 +57788,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "seq_no_primary_term",
@@ -57734,7 +57799,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "fields",
@@ -57748,18 +57813,7 @@
               }
             }
           },
-          "required": true
-        },
-        {
-          "name": "size",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": true
+          "required": false
         },
         {
           "name": "sort",
@@ -57794,7 +57848,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_source",
@@ -57817,7 +57871,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "version",
@@ -57828,7 +57882,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -57859,7 +57913,7 @@
               "name": "Time"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -58600,7 +58654,7 @@
               "name": "ScoreMode"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -58872,7 +58926,7 @@
               "name": "Fields"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "includes",
@@ -58883,7 +58937,7 @@
               "name": "Fields"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },

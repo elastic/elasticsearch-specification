@@ -5,8 +5,8 @@ class CompositeAggregationSource {
   // name: string;
   // order: SortOrder;
   // source_type: string;
-  terms: TermsAggregation;
-  histogram: HistogramAggregation;
-  date_histogram: DateHistogramAggregation;
-  geotile_grid: GeoTileGridAggregation;
+  terms?: TermsAggregation;
+  histogram?: HistogramAggregation;
+  date_histogram?: DateHistogramAggregation;
+  geotile_grid?: GeoTileGridAggregation;
 }

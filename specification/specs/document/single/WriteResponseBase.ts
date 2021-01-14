@@ -5,7 +5,7 @@ class WriteResponseBase extends ResponseBase {
   result: Result;
   _seq_no: long;
   _shards: ShardStatistics;
-  _type: string;
+  _type?: string;
   _version: long;
-  forced_refresh: boolean;
+  forced_refresh?: boolean;
 }

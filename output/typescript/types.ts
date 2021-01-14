@@ -25,70 +25,70 @@ export interface AggregateBase {
 }
 
 export interface AggregationContainer {
-  adjacency_matrix: AdjacencyMatrixAggregation
-  aggs: Record<string, AggregationContainer>
-  aggregations: Record<string, AggregationContainer>
-  auto_date_histogram: AutoDateHistogramAggregation
-  avg: AverageAggregation
-  avg_bucket: AverageBucketAggregation
-  boxplot: BoxplotAggregation
-  bucket_script: BucketScriptAggregation
-  bucket_selector: BucketSelectorAggregation
-  bucket_sort: BucketSortAggregation
-  cardinality: CardinalityAggregation
-  children: ChildrenAggregation
-  composite: CompositeAggregation
-  cumulative_cardinality: CumulativeCardinalityAggregation
-  cumulative_sum: CumulativeSumAggregation
-  date_histogram: DateHistogramAggregation
-  date_range: DateRangeAggregation
-  derivative: DerivativeAggregation
-  extended_stats: ExtendedStatsAggregation
-  extended_stats_bucket: ExtendedStatsBucketAggregation
-  filter: QueryContainer
-  filters: FiltersAggregation
-  geo_bounds: GeoBoundsAggregation
-  geo_centroid: GeoCentroidAggregation
-  geo_distance: GeoDistanceAggregation
-  geohash_grid: GeoHashGridAggregation
-  geotile_grid: GeoTileGridAggregation
-  global: GlobalAggregation
-  histogram: HistogramAggregation
-  ip_range: IpRangeAggregation
-  matrix_stats: MatrixStatsAggregation
-  max: MaxAggregation
-  max_bucket: MaxBucketAggregation
-  median_absolute_deviation: MedianAbsoluteDeviationAggregation
-  meta: Record<string, string | number | boolean>
-  min: MinAggregation
-  min_bucket: MinBucketAggregation
-  missing: MissingAggregation
-  moving_avg: MovingAverageAggregation
-  moving_fn: MovingFunctionAggregation
-  nested: NestedAggregation
-  parent: ParentAggregation
-  percentile_ranks: PercentileRanksAggregation
-  percentiles: PercentilesAggregation
-  percentiles_bucket: PercentilesBucketAggregation
-  range: RangeAggregation
-  rare_terms: RareTermsAggregation
-  reverse_nested: ReverseNestedAggregation
-  sampler: SamplerAggregation
-  scripted_metric: ScriptedMetricAggregation
-  serial_diff: SerialDifferencingAggregation
-  significant_terms: SignificantTermsAggregation
-  significant_text: SignificantTextAggregation
-  stats: StatsAggregation
-  stats_bucket: StatsBucketAggregation
-  string_stats: StringStatsAggregation
-  sum: SumAggregation
-  sum_bucket: SumBucketAggregation
-  terms: TermsAggregation
-  top_hits: TopHitsAggregation
-  top_metrics: TopMetricsAggregation
-  value_count: ValueCountAggregation
-  weighted_avg: WeightedAverageAggregation
-  variable_width_histogram: VariableWidthHistogramAggregation
+  adjacency_matrix?: AdjacencyMatrixAggregation
+  aggs?: Record<string, AggregationContainer>
+  aggregations?: Record<string, AggregationContainer>
+  auto_date_histogram?: AutoDateHistogramAggregation
+  avg?: AverageAggregation
+  avg_bucket?: AverageBucketAggregation
+  boxplot?: BoxplotAggregation
+  bucket_script?: BucketScriptAggregation
+  bucket_selector?: BucketSelectorAggregation
+  bucket_sort?: BucketSortAggregation
+  cardinality?: CardinalityAggregation
+  children?: ChildrenAggregation
+  composite?: CompositeAggregation
+  cumulative_cardinality?: CumulativeCardinalityAggregation
+  cumulative_sum?: CumulativeSumAggregation
+  date_histogram?: DateHistogramAggregation
+  date_range?: DateRangeAggregation
+  derivative?: DerivativeAggregation
+  extended_stats?: ExtendedStatsAggregation
+  extended_stats_bucket?: ExtendedStatsBucketAggregation
+  filter?: QueryContainer
+  filters?: FiltersAggregation
+  geo_bounds?: GeoBoundsAggregation
+  geo_centroid?: GeoCentroidAggregation
+  geo_distance?: GeoDistanceAggregation
+  geohash_grid?: GeoHashGridAggregation
+  geotile_grid?: GeoTileGridAggregation
+  global?: GlobalAggregation
+  histogram?: HistogramAggregation
+  ip_range?: IpRangeAggregation
+  matrix_stats?: MatrixStatsAggregation
+  max?: MaxAggregation
+  max_bucket?: MaxBucketAggregation
+  median_absolute_deviation?: MedianAbsoluteDeviationAggregation
+  meta?: Record<string, string | number | boolean>
+  min?: MinAggregation
+  min_bucket?: MinBucketAggregation
+  missing?: MissingAggregation
+  moving_avg?: MovingAverageAggregation
+  moving_fn?: MovingFunctionAggregation
+  nested?: NestedAggregation
+  parent?: ParentAggregation
+  percentile_ranks?: PercentileRanksAggregation
+  percentiles?: PercentilesAggregation
+  percentiles_bucket?: PercentilesBucketAggregation
+  range?: RangeAggregation
+  rare_terms?: RareTermsAggregation
+  reverse_nested?: ReverseNestedAggregation
+  sampler?: SamplerAggregation
+  scripted_metric?: ScriptedMetricAggregation
+  serial_diff?: SerialDifferencingAggregation
+  significant_terms?: SignificantTermsAggregation
+  significant_text?: SignificantTextAggregation
+  stats?: StatsAggregation
+  stats_bucket?: StatsBucketAggregation
+  string_stats?: StringStatsAggregation
+  sum?: SumAggregation
+  sum_bucket?: SumBucketAggregation
+  terms?: TermsAggregation
+  top_hits?: TopHitsAggregation
+  top_metrics?: TopMetricsAggregation
+  value_count?: ValueCountAggregation
+  weighted_avg?: WeightedAverageAggregation
+  variable_width_histogram?: VariableWidthHistogramAggregation
 }
 
 export interface AutoDateHistogramAggregate extends AggregateBase {
@@ -301,10 +301,10 @@ export interface CompositeAggregation {
 }
 
 export interface CompositeAggregationSource {
-  terms: TermsAggregation
-  histogram: HistogramAggregation
-  date_histogram: DateHistogramAggregation
-  geotile_grid: GeoTileGridAggregation
+  terms?: TermsAggregation
+  histogram?: HistogramAggregation
+  date_histogram?: DateHistogramAggregation
+  geotile_grid?: GeoTileGridAggregation
 }
 
 export interface DateHistogramAggregation {
@@ -335,9 +335,9 @@ export interface DateRangeAggregation {
 }
 
 export interface DateRangeExpression {
-  from: DateMath | float
-  key: string
-  to: DateMath | float
+  from?: DateMath | float
+  key?: string
+  to?: DateMath | float
 }
 
 export interface FiltersAggregation {
@@ -2492,10 +2492,10 @@ export interface ClusterStatistics {
 
 export interface ShardStatistics {
   failed: integer
-  failures: Array<ShardFailure>
   successful: integer
   total: integer
-  skipped: integer
+  failures?: Array<ShardFailure>
+  skipped?: integer
 }
 
 export type MinimumShouldMatch = integer | string
@@ -2729,7 +2729,7 @@ export interface BulkResponse extends ResponseBase {
   errors: boolean
   items: Array<BulkResponseItemContainer>
   took: long
-  ingest_took: long
+  ingest_took?: long
 }
 
 export interface BulkCreateOperation extends BulkOperation {
@@ -2770,25 +2770,25 @@ export interface BulkIndexResponseItem extends BulkResponseItemBase {
 }
 
 export interface BulkResponseItemBase {
-  error: MainError
-  _id: string | null
+  _id?: string | null
   _index: string
-  _primary_term: long
-  result: string
-  _seq_no: long
-  _shards: ShardStatistics
   status: integer
-  _type: string
-  _version: long
-  forced_refresh: boolean
-  get: GetResponse<LazyDocument>
+  error?: ErrorCause
+  _primary_term?: long
+  result?: string
+  _seq_no?: long
+  _shards?: ShardStatistics
+  _type?: string
+  _version?: long
+  forced_refresh?: boolean
+  get?: InlineGet<LazyDocument>
 }
 
 export interface BulkResponseItemContainer {
-  index: BulkIndexResponseItem
-  create: BulkCreateResponseItem
-  update: BulkUpdateResponseItem
-  delete: BulkDeleteResponseItem
+  index?: BulkIndexResponseItem
+  create?: BulkCreateResponseItem
+  update?: BulkUpdateResponseItem
+  delete?: BulkDeleteResponseItem
 }
 
 export interface BulkUpdateResponseItem extends BulkResponseItemBase {
@@ -3118,9 +3118,9 @@ export interface WriteResponseBase extends ResponseBase {
   result: Result
   _seq_no: long
   _shards: ShardStatistics
-  _type: string
+  _type?: string
   _version: long
-  forced_refresh: boolean
+  forced_refresh?: boolean
 }
 
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
@@ -3191,10 +3191,10 @@ export interface GetRequest extends RequestBase {
 }
 
 export interface GetResponse<TDocument = unknown> extends ResponseBase {
-  fields: Record<string, LazyDocument>
+  _index: string
+  fields?: Record<string, LazyDocument>
   found: boolean
   _id: string
-  _index: string
   _primary_term: long
   _routing: string
   _seq_no: long
@@ -3364,7 +3364,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get: InlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface IndexState {
@@ -4731,36 +4731,37 @@ export interface Date {
 
 export interface DateField {
   field: Field
-  format: string
+  format?: string
+  include_unmapped?: boolean
 }
 
 export type double = number
 
 export interface ErrorCause {
-  shard: integer | string
-  stack_trace: string
   type: string
-  bytes_limit: long
-  bytes_wanted: long
-  caused_by: ErrorCause
-  column: integer
-  col: integer
-  failed_shards: Array<ShardFailure>
-  grouped: boolean
-  index: string
-  index_uuid: string
-  language: string
-  licensed_expired_feature: string
-  line: integer
-  max_buckets: integer
-  phase: string
   reason: string
-  resource_id: Array<string>
-  'resource.id': string
-  resource_type: string
-  'resource.type': string
-  script: string
-  script_stack: Array<string>
+  caused_by?: ErrorCause
+  shard?: integer | string
+  stack_trace?: string
+  bytes_limit?: long
+  bytes_wanted?: long
+  column?: integer
+  col?: integer
+  failed_shards?: Array<ShardFailure>
+  grouped?: boolean
+  index?: string
+  index_uuid?: string
+  language?: string
+  licensed_expired_feature?: string
+  line?: integer
+  max_buckets?: integer
+  phase?: string
+  resource_id?: Array<string>
+  'resource.id'?: string
+  resource_type?: string
+  'resource.type'?: string
+  script?: string
+  script_stack?: Array<string>
 }
 
 export type Field = string
@@ -4790,7 +4791,7 @@ export interface LatLon {
 export type long = number
 
 export interface MainError extends ErrorCause {
-  headers: Record<string, string>
+  headers?: Record<string, string>
   root_cause: Array<ErrorCause>
 }
 
@@ -5223,6 +5224,7 @@ export interface QueryContainer {
   terms?: Record<string, TermsQuery | Array<string>>
   terms_set?: Record<string, TermsSetQuery | string>
   wildcard?: Record<string, WildcardQuery | string>
+  type?: TypeQuery
 }
 
 export interface FieldLookup {
@@ -5759,6 +5761,10 @@ export interface TermsSetQuery extends QueryBase {
   terms?: Array<string>
 }
 
+export interface TypeQuery extends QueryBase {
+  value: string
+}
+
 export interface WildcardQuery extends QueryBase {
   rewrite?: MultiTermQueryRewrite
 }
@@ -5830,7 +5836,7 @@ export interface ExplanationDetail {
 }
 
 export interface InlineGet<TDocument = unknown> {
-  fields: Record<string, LazyDocument>
+  fields?: Record<string, LazyDocument>
   found: boolean
   _seq_no: long
   _primary_term: long
@@ -6067,31 +6073,31 @@ export interface RenderSearchTemplateResponse extends ResponseBase {
 
 export interface FieldCollapse {
   field: Field
-  inner_hits: InnerHits | Array<InnerHits>
-  max_concurrent_group_searches: integer
+  inner_hits?: InnerHits | Array<InnerHits>
+  max_concurrent_group_searches?: integer
 }
 
 export type BoundaryScanner = 'chars' | 'sentence' | 'word'
 
 export interface Highlight {
-  boundary_chars: string
-  boundary_max_scan: integer
-  boundary_scanner: BoundaryScanner
-  boundary_scanner_locale: string
-  encoder: HighlighterEncoder
   fields: Record<Field, HighlightField>
-  fragmenter: HighlighterFragmenter
-  fragment_offset: integer
-  fragment_size: integer
-  max_fragment_length: integer
-  no_match_size: integer
-  number_of_fragments: integer
-  order: HighlighterOrder
-  post_tags: Array<string>
-  pre_tags: Array<string>
-  require_field_match: boolean
-  tags_schema: HighlighterTagsSchema
-  type: HighlighterType
+  type?: HighlighterType
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: BoundaryScanner
+  boundary_scanner_locale?: string
+  encoder?: HighlighterEncoder
+  fragmenter?: HighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: HighlighterOrder
+  post_tags?: Array<string>
+  pre_tags?: Array<string>
+  require_field_match?: boolean
+  tags_schema?: HighlighterTagsSchema
 }
 
 export type HighlighterEncoder = 'default' | 'html'
@@ -6105,27 +6111,27 @@ export type HighlighterTagsSchema = 'styled'
 export type HighlighterType = 'plain' | 'fvh' | 'unified'
 
 export interface HighlightField {
-  boundary_chars: string
-  boundary_max_scan: integer
-  boundary_scanner: BoundaryScanner
-  boundary_scanner_locale: string
-  field: Field
-  force_source: boolean
-  fragmenter: HighlighterFragmenter
-  fragment_offset: integer
-  fragment_size: integer
-  highlight_query: QueryContainer
-  matched_fields: Array<Field>
-  max_fragment_length: integer
-  no_match_size: integer
-  number_of_fragments: integer
-  order: HighlighterOrder
-  phrase_limit: integer
-  post_tags: Array<string>
-  pre_tags: Array<string>
-  require_field_match: boolean
-  tags_schema: HighlighterTagsSchema
-  type: HighlighterType | string
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: BoundaryScanner
+  boundary_scanner_locale?: string
+  field?: Field
+  force_source?: boolean
+  fragmenter?: HighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  highlight_query?: QueryContainer
+  matched_fields?: Array<Field>
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: HighlighterOrder
+  phrase_limit?: integer
+  post_tags?: Array<string>
+  pre_tags?: Array<string>
+  require_field_match?: boolean
+  tags_schema?: HighlighterTagsSchema
+  type?: HighlighterType | string
 }
 
 export interface Hit<TDocument = unknown> {
@@ -6178,25 +6184,25 @@ export interface TotalHits {
 export type TotalHitsRelation = 'eq' | 'gte'
 
 export interface InnerHits {
-  collapse: FieldCollapse
-  docvalue_fields: Array<Field>
-  explain: boolean
-  from: integer
-  highlight: Highlight
-  ignore_unmapped: boolean
-  name: string
-  script_fields: Record<string, ScriptField>
-  seq_no_primary_term: boolean
-  fields: Array<Field>
-  size: integer
-  sort: Array<Record<string, Sort | SortOrder>>
-  _source: boolean | SourceFilter
-  version: boolean
+  name?: string
+  size?: integer
+  from?: integer
+  collapse?: FieldCollapse
+  docvalue_fields?: Array<Field>
+  explain?: boolean
+  highlight?: Highlight
+  ignore_unmapped?: boolean
+  script_fields?: Record<string, ScriptField>
+  seq_no_primary_term?: boolean
+  fields?: Array<Field>
+  sort?: Array<Record<string, Sort | SortOrder>>
+  _source?: boolean | SourceFilter
+  version?: boolean
 }
 
 export interface PointInTimeReference {
   id: string
-  keep_alive: Time
+  keep_alive?: Time
 }
 
 export interface AggregationBreakdown {
@@ -6285,7 +6291,7 @@ export interface RescoreQuery {
   rescore_query: QueryContainer
   query_weight: double
   rescore_query_weight: double
-  score_mode: ScoreMode
+  score_mode?: ScoreMode
 }
 
 export type ScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
@@ -6321,8 +6327,8 @@ export interface DocValueField {
 }
 
 export interface SourceFilter {
-  excludes: Fields
-  includes: Fields
+  excludes?: Fields
+  includes?: Fields
 }
 
 export interface Suggest<T = unknown> {
