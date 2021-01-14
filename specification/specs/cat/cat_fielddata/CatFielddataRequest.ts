@@ -1,6 +1,6 @@
 @rest_spec_name("cat.fielddata")
 class CatFielddataRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     fields?: string | string[];
   }
   query_parameters?: {

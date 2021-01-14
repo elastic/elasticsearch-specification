@@ -1,6 +1,6 @@
 @rest_spec_name("ccr.put_auto_follow_pattern")
 class CreateAutoFollowPatternRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     name: string;
   }
   query_parameters?: {

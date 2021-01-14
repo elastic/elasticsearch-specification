@@ -1,6 +1,6 @@
 @rest_spec_name("snapshot.delete_repository")
 class DeleteRepositoryRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     repository: string | string[];
   }
   query_parameters?: {

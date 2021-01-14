@@ -1,6 +1,6 @@
 @rest_spec_name("ml.delete_job")
 class DeleteJobRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id: string;
   }
   query_parameters?: {

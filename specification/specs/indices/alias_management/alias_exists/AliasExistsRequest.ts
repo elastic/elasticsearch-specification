@@ -1,6 +1,6 @@
 @rest_spec_name("indices.exists_alias")
 class AliasExistsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     name: string | string[];
     index?: string | string[];
   }

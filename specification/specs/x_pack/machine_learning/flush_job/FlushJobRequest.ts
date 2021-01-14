@@ -1,6 +1,6 @@
 @rest_spec_name("ml.flush_job")
 class FlushJobRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id: string;
   }
   query_parameters?: {

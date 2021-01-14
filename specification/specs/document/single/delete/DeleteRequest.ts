@@ -3,7 +3,7 @@
  */
 @rest_spec_name("delete")
 class DeleteRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
     index: string;
     type?: string;

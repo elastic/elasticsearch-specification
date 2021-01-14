@@ -1,6 +1,6 @@
 @rest_spec_name("rollup.rollup_search")
 class RollupSearchRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
     type?: string;
   }

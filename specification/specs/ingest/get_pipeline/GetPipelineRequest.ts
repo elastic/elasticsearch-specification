@@ -1,6 +1,6 @@
 @rest_spec_name("ingest.get_pipeline")
 class GetPipelineRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id?: string;
   }
   query_parameters?: {

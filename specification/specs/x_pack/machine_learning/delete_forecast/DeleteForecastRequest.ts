@@ -1,6 +1,6 @@
 @rest_spec_name("ml.delete_forecast")
 class DeleteForecastRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id: string;
     forecast_id?: string;
   }

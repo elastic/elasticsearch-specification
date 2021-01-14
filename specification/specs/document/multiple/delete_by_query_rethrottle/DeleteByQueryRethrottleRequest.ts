@@ -1,6 +1,6 @@
 @rest_spec_name("delete_by_query_rethrottle")
 class DeleteByQueryRethrottleRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     task_id: string;
   }
   query_parameters?: {

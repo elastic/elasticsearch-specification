@@ -1,6 +1,6 @@
 @rest_spec_name("field_caps")
 class FieldCapabilitiesRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

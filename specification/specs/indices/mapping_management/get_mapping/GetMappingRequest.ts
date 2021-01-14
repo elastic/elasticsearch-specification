@@ -1,6 +1,6 @@
 @rest_spec_name("indices.get_mapping")
 class GetMappingRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string | string[];
   }

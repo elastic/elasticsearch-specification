@@ -1,6 +1,6 @@
 @rest_spec_name("snapshot.delete")
 class DeleteSnapshotRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     repository: string;
     snapshot: string;
   }

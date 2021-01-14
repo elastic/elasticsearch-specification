@@ -1,7 +1,7 @@
 @rest_spec_name("snapshot.create_repository")
 @class_serializer("CreateRepositoryFormatter")
 class CreateRepositoryRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     repository: string;
   }
   query_parameters?: {

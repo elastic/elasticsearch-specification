@@ -1,6 +1,6 @@
 @rest_spec_name("indices.rollover")
 class RolloverIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     alias: string;
     new_index?: string;
   }

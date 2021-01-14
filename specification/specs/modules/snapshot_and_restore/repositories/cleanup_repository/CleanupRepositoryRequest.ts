@@ -1,6 +1,6 @@
 @rest_spec_name("snapshot.cleanup_repository")
 class CleanupRepositoryRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     repository: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("cluster.state")
 class ClusterStateRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     metric?: string | string[];
     index?: string | string[];
   }

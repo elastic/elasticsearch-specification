@@ -1,6 +1,6 @@
 @rest_spec_name("cat.recovery")
 class CatRecoveryRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

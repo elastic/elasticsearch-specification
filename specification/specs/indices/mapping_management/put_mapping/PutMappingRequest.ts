@@ -1,6 +1,6 @@
 @rest_spec_name("indices.put_mapping")
 class PutMappingRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string;
   }

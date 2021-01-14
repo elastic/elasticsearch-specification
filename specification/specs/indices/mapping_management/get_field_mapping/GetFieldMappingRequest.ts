@@ -1,6 +1,6 @@
 @rest_spec_name("indices.get_field_mapping")
 class GetFieldMappingRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     fields: string | string[];
     index?: string | string[];
     type?: string | string[];

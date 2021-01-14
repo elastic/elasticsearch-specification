@@ -1,6 +1,6 @@
 @rest_spec_name("rollup.stop_job")
 class StopRollupJobRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
   }
   query_parameters?: {

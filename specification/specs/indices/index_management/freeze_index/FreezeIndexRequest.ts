@@ -1,6 +1,6 @@
 @rest_spec_name("indices.freeze")
 class FreezeIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
   }
   query_parameters?: {

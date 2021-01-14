@@ -1,6 +1,6 @@
 @rest_spec_name("watcher.stats")
 class WatcherStatsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     metric?: string | string[];
   }
   query_parameters?: {

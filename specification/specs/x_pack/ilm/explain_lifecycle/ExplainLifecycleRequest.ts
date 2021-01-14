@@ -1,6 +1,6 @@
 @rest_spec_name("ilm.explain_lifecycle")
 class ExplainLifecycleRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
   }
   query_parameters?: {

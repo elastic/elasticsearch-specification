@@ -1,6 +1,6 @@
 @rest_spec_name("cat.ml_jobs")
 class CatJobsRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id?: string;
   }
   query_parameters?: {

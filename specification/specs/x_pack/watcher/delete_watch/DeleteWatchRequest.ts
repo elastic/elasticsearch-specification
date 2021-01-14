@@ -1,6 +1,6 @@
 @rest_spec_name("watcher.delete_watch")
 class DeleteWatchRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
   }
   query_parameters?: {

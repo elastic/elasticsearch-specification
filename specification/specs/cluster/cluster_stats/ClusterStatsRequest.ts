@@ -1,6 +1,6 @@
 @rest_spec_name("cluster.stats")
 class ClusterStatsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     node_id?: string | string[];
   }
   query_parameters?: {

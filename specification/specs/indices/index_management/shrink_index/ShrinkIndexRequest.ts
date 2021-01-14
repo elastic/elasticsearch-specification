@@ -1,6 +1,6 @@
 @rest_spec_name("indices.shrink")
 class ShrinkIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
     target: string;
   }

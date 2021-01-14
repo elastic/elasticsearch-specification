@@ -1,6 +1,6 @@
 @rest_spec_name("explain")
 class ExplainRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
     index: string;
     type?: string;

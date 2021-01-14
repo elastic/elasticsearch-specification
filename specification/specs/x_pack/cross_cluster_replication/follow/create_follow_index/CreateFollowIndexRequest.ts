@@ -1,6 +1,6 @@
 @rest_spec_name("ccr.follow")
 class CreateFollowIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("async_search.delete")
 class AsyncSearchDeleteRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("update_by_query")
 class UpdateByQueryRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
     type?: string | string[];
   }

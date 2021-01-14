@@ -1,6 +1,6 @@
 @rest_spec_name("security.has_privileges")
 class HasPrivilegesRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     user?: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("graph.explore")
 class GraphExploreRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
     type?: string | string[];
   }

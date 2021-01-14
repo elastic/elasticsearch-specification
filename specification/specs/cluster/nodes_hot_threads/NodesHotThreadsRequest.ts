@@ -1,6 +1,6 @@
 @rest_spec_name("nodes.hot_threads")
 class NodesHotThreadsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     node_id?: string | string[];
   }
   query_parameters?: {

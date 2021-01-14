@@ -1,6 +1,6 @@
 @rest_spec_name("security.change_password")
 class ChangePasswordRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     username?: string;
   }
   query_parameters?: {

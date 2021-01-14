@@ -1,6 +1,6 @@
 @rest_spec_name("transform.get_transform_stats")
 class GetTransformStatsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     transform_id: string;
   }
   query_parameters?: {

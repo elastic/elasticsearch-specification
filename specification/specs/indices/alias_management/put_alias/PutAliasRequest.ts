@@ -1,6 +1,6 @@
 @rest_spec_name("indices.put_alias")
 class PutAliasRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
     name: string;
   }

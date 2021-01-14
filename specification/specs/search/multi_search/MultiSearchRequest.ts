@@ -1,7 +1,7 @@
 @rest_spec_name("msearch")
 @class_serializer("MultiSearchFormatter")
 class MultiSearchRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string | string[];
   }

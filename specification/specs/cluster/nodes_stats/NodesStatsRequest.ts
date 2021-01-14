@@ -1,6 +1,6 @@
 @rest_spec_name("nodes.stats")
 class NodesStatsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     node_id?: string | string[];
     metric?: string | string[];
     index_metric?: string | string[];

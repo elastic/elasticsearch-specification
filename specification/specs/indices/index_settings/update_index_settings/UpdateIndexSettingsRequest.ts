@@ -1,7 +1,7 @@
 @rest_spec_name("indices.put_settings")
 @class_serializer("UpdateIndexSettingsRequestFormatter")
 class UpdateIndexSettingsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

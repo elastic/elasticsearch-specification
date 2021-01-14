@@ -4,7 +4,7 @@
 @rest_spec_name("bulk")
 @class_serializer("BulkRequestFormatter")
 class BulkRequest<TSource> extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string;
     type?: string;
   }

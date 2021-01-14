@@ -1,6 +1,6 @@
 @rest_spec_name("ml.delete_datafeed")
 class DeleteDatafeedRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     datafeed_id: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("tasks.cancel")
 class CancelTasksRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     task_id?: string;
   }
   query_parameters?: {

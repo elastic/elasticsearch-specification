@@ -1,6 +1,6 @@
 @rest_spec_name("indices.get")
 class GetIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
   }
   query_parameters?: {

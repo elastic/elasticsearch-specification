@@ -1,6 +1,6 @@
 @rest_spec_name("ingest.delete_pipeline")
 class DeletePipelineRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
   }
   query_parameters?: {

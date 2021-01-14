@@ -4,7 +4,7 @@
 @rest_spec_name("create")
 @class_serializer("CreateRequestFormatter`1")
 class CreateRequest<TDocument> extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
     index: string;
     type?: string;

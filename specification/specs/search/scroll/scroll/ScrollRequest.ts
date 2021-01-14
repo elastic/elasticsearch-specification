@@ -1,6 +1,6 @@
 @rest_spec_name("scroll")
 class ScrollRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     scroll_id?: string;
   }
   query_parameters?: {

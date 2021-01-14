@@ -1,6 +1,6 @@
 @rest_spec_name("cat.ml_datafeeds")
 class CatDatafeedsRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     datafeed_id?: string;
   }
   query_parameters?: {

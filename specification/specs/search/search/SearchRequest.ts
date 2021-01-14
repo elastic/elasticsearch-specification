@@ -3,7 +3,7 @@
  */
 @rest_spec_name("search")
 class SearchRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string | string[];
   }

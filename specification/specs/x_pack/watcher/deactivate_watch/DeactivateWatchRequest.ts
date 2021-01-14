@@ -1,6 +1,6 @@
 @rest_spec_name("watcher.deactivate_watch")
 class DeactivateWatchRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     watch_id: string;
   }
   query_parameters?: {

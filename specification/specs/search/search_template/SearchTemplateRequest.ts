@@ -1,6 +1,6 @@
 @rest_spec_name("search_template")
 class SearchTemplateRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string | string[];
   }

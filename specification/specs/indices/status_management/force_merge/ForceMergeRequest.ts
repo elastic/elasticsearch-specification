@@ -1,6 +1,6 @@
 @rest_spec_name("indices.forcemerge")
 class ForceMergeRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

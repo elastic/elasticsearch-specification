@@ -1,6 +1,6 @@
 @rest_spec_name("indices.delete_template")
 class DeleteIndexTemplateRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     name: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("watcher.execute_watch")
 class ExecuteWatchRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id?: string;
   }
   query_parameters?: {

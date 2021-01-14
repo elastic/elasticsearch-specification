@@ -1,6 +1,6 @@
 @rest_spec_name("ml.put_datafeed")
 class PutDatafeedRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     datafeed_id: string;
   }
   query_parameters?: {

@@ -1,7 +1,7 @@
 @rest_spec_name("mget")
 @class_serializer("MultiGetRequestFormatter")
 class MultiGetRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string;
     type?: string;
   }

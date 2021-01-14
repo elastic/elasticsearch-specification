@@ -1,6 +1,6 @@
 @rest_spec_name("ml.stop_datafeed")
 class StopDatafeedRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     datafeed_id: string;
   }
   query_parameters?: {

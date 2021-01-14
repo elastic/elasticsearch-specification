@@ -1,6 +1,6 @@
 @rest_spec_name("enrich.execute_policy")
 class ExecuteEnrichPolicyRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     name: string;
   }
   query_parameters?: {

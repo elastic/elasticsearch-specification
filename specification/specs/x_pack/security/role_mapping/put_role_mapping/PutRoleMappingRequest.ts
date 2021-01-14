@@ -1,6 +1,6 @@
 @rest_spec_name("security.put_role_mapping")
 class PutRoleMappingRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     name: string;
   }
   query_parameters?: {

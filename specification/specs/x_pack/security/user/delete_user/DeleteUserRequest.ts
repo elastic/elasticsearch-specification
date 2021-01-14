@@ -1,6 +1,6 @@
 @rest_spec_name("security.delete_user")
 class DeleteUserRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     username: string;
   }
   query_parameters?: {

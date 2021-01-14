@@ -1,6 +1,6 @@
 @rest_spec_name("ml.put_calendar")
 class PutCalendarRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     calendar_id: string;
   }
   query_parameters?: {

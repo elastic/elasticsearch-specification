@@ -1,6 +1,6 @@
 @rest_spec_name("security.enable_user")
 class EnableUserRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     username: string;
   }
   query_parameters?: {

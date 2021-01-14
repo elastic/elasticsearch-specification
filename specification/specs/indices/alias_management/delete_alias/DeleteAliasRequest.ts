@@ -1,6 +1,6 @@
 @rest_spec_name("indices.delete_alias")
 class DeleteAliasRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
     name: string | string[];
   }

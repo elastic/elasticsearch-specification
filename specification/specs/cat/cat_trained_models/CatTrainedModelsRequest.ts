@@ -1,6 +1,6 @@
 @rest_spec_name("cat.ml_trained_models")
 class CatTrainedModelsRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     model_id?: string;
   }
   query_parameters?: {

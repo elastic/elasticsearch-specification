@@ -1,6 +1,6 @@
 @rest_spec_name("indices.clone")
 class CloneIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
     target: string;
   }

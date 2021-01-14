@@ -1,6 +1,6 @@
 @rest_spec_name("snapshot.restore")
 class RestoreRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     repository: string;
     snapshot: string;
   }

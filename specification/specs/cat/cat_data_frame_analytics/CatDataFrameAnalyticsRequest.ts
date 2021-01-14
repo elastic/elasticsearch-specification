@@ -1,6 +1,6 @@
 @rest_spec_name("cat.ml_data_frame_analytics")
 class CatDataFrameAnalyticsRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     id?: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("indices.create")
 class CreateIndexRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
   }
   query_parameters?: {

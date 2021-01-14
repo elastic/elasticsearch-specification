@@ -1,6 +1,6 @@
 @rest_spec_name("put_script")
 class PutScriptRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
     context?: string;
   }

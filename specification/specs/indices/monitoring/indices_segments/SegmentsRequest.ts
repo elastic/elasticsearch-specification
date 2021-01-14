@@ -1,6 +1,6 @@
 @rest_spec_name("indices.segments")
 class SegmentsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

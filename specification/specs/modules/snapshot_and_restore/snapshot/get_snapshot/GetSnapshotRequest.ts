@@ -1,6 +1,6 @@
 @rest_spec_name("snapshot.get")
 class GetSnapshotRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     repository: string;
     snapshot: string | string[];
   }

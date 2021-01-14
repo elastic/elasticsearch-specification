@@ -1,6 +1,6 @@
 @rest_spec_name("mtermvectors")
 class MultiTermVectorsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string;
     type?: string;
   }

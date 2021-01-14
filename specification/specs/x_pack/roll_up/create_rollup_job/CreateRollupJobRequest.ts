@@ -1,6 +1,6 @@
 @rest_spec_name("rollup.put_job")
 class CreateRollupJobRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
   }
   query_parameters?: {

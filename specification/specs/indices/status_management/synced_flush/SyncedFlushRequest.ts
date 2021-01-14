@@ -1,6 +1,6 @@
 @rest_spec_name("indices.flush_synced")
 class SyncedFlushRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

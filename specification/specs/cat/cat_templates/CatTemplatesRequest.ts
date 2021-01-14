@@ -1,6 +1,6 @@
 @rest_spec_name("cat.templates")
 class CatTemplatesRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     name?: string;
   }
   query_parameters?: {

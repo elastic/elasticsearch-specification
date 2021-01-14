@@ -1,6 +1,6 @@
 @rest_spec_name("ml.get_jobs")
 class GetJobsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id?: string;
   }
   query_parameters?: {

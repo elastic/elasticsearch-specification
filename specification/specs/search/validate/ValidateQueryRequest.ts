@@ -1,6 +1,6 @@
 @rest_spec_name("indices.validate_query")
 class ValidateQueryRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string | string[];
   }

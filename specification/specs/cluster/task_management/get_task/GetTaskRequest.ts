@@ -1,6 +1,6 @@
 @rest_spec_name("tasks.get")
 class GetTaskRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     task_id: string;
   }
   query_parameters?: {

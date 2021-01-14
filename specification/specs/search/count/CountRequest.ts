@@ -1,6 +1,6 @@
 @rest_spec_name("count")
 class CountRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     type?: string | string[];
   }

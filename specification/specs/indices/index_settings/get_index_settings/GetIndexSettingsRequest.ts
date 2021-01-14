@@ -1,6 +1,6 @@
 @rest_spec_name("indices.get_settings")
 class GetIndexSettingsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
     name?: string | string[];
   }

@@ -1,6 +1,6 @@
 @rest_spec_name("transform.put_transform")
 class PutTransformRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     transform_id: string;
   }
   query_parameters?: {

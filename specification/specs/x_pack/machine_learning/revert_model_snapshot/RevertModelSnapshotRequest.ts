@@ -1,6 +1,6 @@
 @rest_spec_name("ml.revert_model_snapshot")
 class RevertModelSnapshotRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id: string;
     snapshot_id: string;
   }

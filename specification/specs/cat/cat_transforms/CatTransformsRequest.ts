@@ -1,6 +1,6 @@
 @rest_spec_name("cat.transforms")
 class CatTransformsRequest extends CatRequestBase {
-  pathParts?: {
+  path_parts?: {
     transform_id?: string;
   }
   query_parameters?: {

@@ -1,6 +1,6 @@
 @rest_spec_name("ingest.simulate")
 class SimulatePipelineRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id?: string;
   }
   query_parameters?: {

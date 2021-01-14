@@ -1,6 +1,6 @@
 @rest_spec_name("indices.exists_type")
 class TypeExistsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
     type: string | string[];
   }

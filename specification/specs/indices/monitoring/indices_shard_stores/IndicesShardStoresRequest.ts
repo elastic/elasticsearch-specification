@@ -1,6 +1,6 @@
 @rest_spec_name("indices.shard_stores")
 class IndicesShardStoresRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index?: string | string[];
   }
   query_parameters?: {

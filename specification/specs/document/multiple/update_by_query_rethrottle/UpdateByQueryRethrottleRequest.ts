@@ -1,6 +1,6 @@
 @rest_spec_name("update_by_query_rethrottle")
 class UpdateByQueryRethrottleRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     task_id: string;
   }
   query_parameters?: {

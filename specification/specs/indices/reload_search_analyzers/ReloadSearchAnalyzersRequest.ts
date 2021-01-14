@@ -1,6 +1,6 @@
 @rest_spec_name("indices.reload_search_analyzers")
 class ReloadSearchAnalyzersRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string | string[];
   }
   query_parameters?: {

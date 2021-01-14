@@ -1,6 +1,6 @@
 @rest_spec_name("indices.stats")
 class IndicesStatsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     metric?: string | string[];
     index?: string | string[];
   }

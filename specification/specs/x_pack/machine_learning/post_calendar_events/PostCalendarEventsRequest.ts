@@ -1,6 +1,6 @@
 @rest_spec_name("ml.post_calendar_events")
 class PostCalendarEventsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     calendar_id: string;
   }
   query_parameters?: {

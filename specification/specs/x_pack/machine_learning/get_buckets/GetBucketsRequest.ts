@@ -1,6 +1,6 @@
 @rest_spec_name("ml.get_buckets")
 class GetBucketsRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     job_id: string;
     timestamp?: string;
   }

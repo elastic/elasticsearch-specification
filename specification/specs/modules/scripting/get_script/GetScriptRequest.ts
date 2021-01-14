@@ -1,6 +1,6 @@
 @rest_spec_name("get_script")
 class GetScriptRequest extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     id: string;
   }
   query_parameters?: {

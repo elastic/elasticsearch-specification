@@ -1,6 +1,6 @@
 @rest_spec_name("termvectors")
 class TermVectorsRequest<TDocument> extends RequestBase {
-  pathParts?: {
+  path_parts?: {
     index: string;
     id?: string;
     type?: string;
