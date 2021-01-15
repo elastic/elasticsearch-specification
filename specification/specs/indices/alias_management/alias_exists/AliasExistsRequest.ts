@@ -1,8 +1,8 @@
 @rest_spec_name("indices.exists_alias")
 class AliasExistsRequest extends RequestBase {
   path_parts?: {
-    name: string | string[];
-    index?: string | string[];
+    name: Names;
+    index?: Indices;
   }
   query_parameters?: {
     allow_no_indices?: boolean;

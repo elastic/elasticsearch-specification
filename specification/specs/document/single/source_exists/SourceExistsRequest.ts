@@ -1,9 +1,9 @@
 @rest_spec_name("exists_source")
 class SourceExistsRequest extends RequestBase {
   path_parts?: {
-    id: string;
-    index: string;
-    type?: string;
+    id: Id;
+    index: IndexName;
+    type?: TypeName;
   }
   query_parameters?: {
     preference?: string;

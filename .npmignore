@@ -12,3 +12,7 @@ specification/src/*
 specification/specs/*
 specification/tslint.json
 specification/tsconfig.json
+
+*
+!output/schema
+!output/typescript

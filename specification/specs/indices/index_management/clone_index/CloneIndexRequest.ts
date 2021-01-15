@@ -1,8 +1,8 @@
 @rest_spec_name("indices.clone")
 class CloneIndexRequest extends RequestBase {
   path_parts?: {
-    index: string;
-    target: string;
+    index: IndexName;
+    target: Name;
   }
   query_parameters?: {
     master_timeout?: Time;

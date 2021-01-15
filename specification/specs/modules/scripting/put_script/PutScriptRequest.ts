@@ -1,8 +1,8 @@
 @rest_spec_name("put_script")
 class PutScriptRequest extends RequestBase {
   path_parts?: {
-    id: string;
-    context?: string;
+    id: Id;
+    context?: Name;
   }
   query_parameters?: {
     master_timeout?: Time;

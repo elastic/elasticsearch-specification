@@ -1,9 +1,9 @@
 @rest_spec_name("indices.get_field_mapping")
 class GetFieldMappingRequest extends RequestBase {
   path_parts?: {
-    fields: string | string[];
-    index?: string | string[];
-    type?: string | string[];
+    fields: Fields;
+    index?: Indices;
+    type?: TypeNames;
   }
   query_parameters?: {
     allow_no_indices?: boolean;

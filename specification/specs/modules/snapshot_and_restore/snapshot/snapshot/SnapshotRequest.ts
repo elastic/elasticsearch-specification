@@ -1,8 +1,8 @@
 @rest_spec_name("snapshot.create")
 class SnapshotRequest extends RequestBase {
   path_parts?: {
-    repository: string;
-    snapshot: string;
+    repository: Name;
+    snapshot: Name;
   }
   query_parameters?: {
     master_timeout?: Time;

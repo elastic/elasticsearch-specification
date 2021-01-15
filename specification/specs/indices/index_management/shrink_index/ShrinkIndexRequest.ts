@@ -1,8 +1,8 @@
 @rest_spec_name("indices.shrink")
 class ShrinkIndexRequest extends RequestBase {
   path_parts?: {
-    index: string;
-    target: string;
+    index: IndexName;
+    target: IndexName;
   }
   query_parameters?: {
     master_timeout?: Time;

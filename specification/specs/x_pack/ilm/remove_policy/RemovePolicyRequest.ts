@@ -1,7 +1,7 @@
 @rest_spec_name("ilm.remove_policy")
 class RemovePolicyRequest extends RequestBase {
   path_parts?: {
-    index: string;
+    index: IndexName;
   }
   query_parameters?: {
   }
