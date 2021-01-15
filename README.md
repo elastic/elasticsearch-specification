@@ -159,6 +159,13 @@ class IndexRequest<TDocument> extends RequestBase { ... }
 
 And finally open a pull request with your changes.
 
+### Where do I see the test?
+
+Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
+You can find them in `clients-flight-recorder/scripts/types-validator/workbench`.
+The content of this folder is a series of recorded responses from Elasticsearch wrapped inside an helper
+that verifies if the type definiton is correct.
+
 ## Custom types
 
 The goal of the specification is to be used by different languages, from dynamically typed to statically typed.
@@ -176,12 +183,29 @@ Represents a dynamic key value map:
 property: Dictionary<string, TypeDefinition>
 ```
 
+For example:
+
+```json
+{
+  "property1:" "type",
+  "property2:" "other-type",
+}
+```
+
 ### SingleKeyDictionary
 
 Represents a dynamic key value map with a single top level key:
 
 ```ts
 property: SingleKeyDictionary<string, TypeDefinition>
+```
+
+For example:
+
+```json
+{
+  "onlyKey:" "type"
+}
 ```
 
 ### Array
@@ -316,6 +340,25 @@ You should copy from there the missing endpoint and add it here.
 All the endpoint definitons are inside `specifications/specs/json` folder, which contains a series of
 JSON files taken directly from the Elasticsearch rest-api-spec.
 You should copy from there the updated endpoint defintion and change it here.
+
+### The validation in broken on GitHub but works on my machine!
+
+Very likely thew recordings in our machine are stale, you can regenerate them
+by executing the following command (it will take a while).
+
+```sh
+`PULL_LATEST=true ./run-validations`
+```
+
+### Which editor should I use?
+
+Any editor is fine, but to have a better development experience it should be configured
+to work with TypeScript. If you don't have it, [Visual Studio Code](https://code.visualstudio.com/)
+comes with TypeScript support out of the box.
+
+### Is there a complete example of the process?
+
+Yes, take a look [here](./validation-example.md).
 
 ## BirdsEye overview
 
