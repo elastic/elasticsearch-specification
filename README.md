@@ -355,8 +355,8 @@ PULL_LATEST=true ./run-validations
 ### Which editor should I use?
 
 Any editor is fine, but to have a better development experience it should be configured
-to work with TypeScript. If you don't have it, [Visual Studio Code](https://code.visualstudio.com/)
-comes with TypeScript support out of the box.
+to work with TypeScript. [Visual Studio Code](https://code.visualstudio.com/) and
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) come with TypeScript support out of the box.
 
 ### Is there a complete example of the process?
 
