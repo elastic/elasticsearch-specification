@@ -278,7 +278,7 @@ type double = number
 ### Strings
 
 The string type in TypeScript is `string`. It's ok to use it in the spec, but to offer a more developer
-friendly specification, we do offer a set of aliases based on which string we do expect, for exmaple:
+friendly specification, we do offer a set of aliases based on which string we do expect, for example:
 
 ```ts
 type ScrollId = string
