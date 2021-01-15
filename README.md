@@ -320,7 +320,7 @@ propertyRequired: string
 propertyOptional?: string
 ```
 
-### A defintion is missing, how do I add it?
+### A definition is missing, how do I add it?
 
 All the definitons are inside `specifications/specs` folder, you should explore its content and find the
 most approriate place where to add the new defintion. You can either create a new file or update an existing one.
