@@ -187,8 +187,8 @@ For example:
 
 ```json
 {
-  "property1:" "type",
-  "property2:" "other-type",
+  "property1": "type",
+  "property2": "other-type",
 }
 ```
 
@@ -204,7 +204,7 @@ For example:
 
 ```json
 {
-  "onlyKey:" "type"
+  "onlyKey": "type"
 }
 ```
 
@@ -347,7 +347,7 @@ Very likely thew recordings in our machine are stale, you can regenerate them
 by executing the following command (it will take a while).
 
 ```sh
-`PULL_LATEST=true ./run-validations`
+PULL_LATEST=true ./run-validations
 ```
 
 ### Which editor should I use?
