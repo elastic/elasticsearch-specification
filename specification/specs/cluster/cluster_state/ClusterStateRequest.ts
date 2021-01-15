@@ -1,8 +1,8 @@
 @rest_spec_name("cluster.state")
 class ClusterStateRequest extends RequestBase {
   path_parts?: {
-    metric?: string | string[];
-    index?: string | string[];
+    metric?: Metrics;
+    index?: Indices;
   }
   query_parameters?: {
     allow_no_indices?: boolean;

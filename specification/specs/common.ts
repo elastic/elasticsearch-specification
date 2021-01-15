@@ -52,6 +52,12 @@ type long = number
 type float = number
 type double = number
 
+//strongly typed path parameters these are aliases so we can expose documentation
+//Some languages that support type alias or typed value types might want to keep these types
+//others might rewrite to the underlying valuetypes
+
+// TODO clean up Id and Name variants and make sure all API's use one purposefully
+// Id includes numeric support, Name does not
 type ScrollId = string
 type ScrollIds = string
 type CategoryId = string
@@ -62,11 +68,13 @@ type Ids = string | number | string[]
 type IndexName = string
 type Indices = string | string[]
 type TypeName = string
+type TypeNames = string | string[]
 type Types = string | string[]
 type Routing = string | number
 type LongId = string
+//TODO encode metrics as API specific enums
 type IndexMetrics = string
-type Metrics = string
+type Metrics = string | string[]
 type Name = string
 type Names = string
 type NodeIds = string

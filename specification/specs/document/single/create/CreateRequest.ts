@@ -5,9 +5,9 @@
 @class_serializer("CreateRequestFormatter`1")
 class CreateRequest<TDocument> extends RequestBase {
   path_parts?: {
-    id: string;
-    index: string;
-    type?: string;
+    id: Id;
+    index: IndexName;
+    type?: TypeName;
   }
   query_parameters?: {
     pipeline?: string;

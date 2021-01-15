@@ -1,8 +1,8 @@
 @rest_spec_name("indices.get_mapping")
 class GetMappingRequest extends RequestBase {
   path_parts?: {
-    index?: string | string[];
-    type?: string | string[];
+    index?: Indices;
+    type?: TypeNames;
   }
   query_parameters?: {
     allow_no_indices?: boolean;

@@ -1,8 +1,8 @@
 @rest_spec_name("security.delete_privileges")
 class DeletePrivilegesRequest extends RequestBase {
   path_parts?: {
-    application: string;
-    name: string;
+    application: Name;
+    name: Name;
   }
   query_parameters?: {
     refresh?: Refresh;

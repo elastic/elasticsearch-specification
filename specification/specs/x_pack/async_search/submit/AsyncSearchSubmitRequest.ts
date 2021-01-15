@@ -1,7 +1,7 @@
 @rest_spec_name("async_search.submit")
 class AsyncSearchSubmitRequest extends RequestBase {
   path_parts?: {
-    index?: string | string[];
+    index?: Indices;
   }
   query_parameters?: {
   }
