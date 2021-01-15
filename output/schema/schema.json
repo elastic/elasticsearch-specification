@@ -28591,7 +28591,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -44413,8 +44413,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
       "kind": "union",
       "name": {
         "namespace": "internal",
@@ -44441,7 +44439,6 @@
       ]
     },
     {
->>>>>>> master
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -54406,26 +54403,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to use as default"
@@ -54433,26 +54415,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to use as default"

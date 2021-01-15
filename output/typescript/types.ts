@@ -3115,6 +3115,11 @@ export interface UpdateByQueryResponse extends ResponseBase {
   version_conflicts: long
 }
 
+export interface UpdateByQueryRethrottleRequest extends RequestBase {
+  task_id: Id
+  requests_per_second?: long
+}
+
 export interface WriteResponseBase extends ResponseBase {
   _id: string
   _index: string
@@ -5877,6 +5882,19 @@ export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
+export interface MultiSearchTemplateRequest extends RequestBase {
+  index?: Indices
+  type?: TypeNames
+  ccs_minimize_roundtrips?: boolean
+  max_concurrent_searches?: long
+  search_type?: SearchType
+  total_hits_as_integer?: boolean
+  typed_keys?: boolean
+  body: {
+    operations?: Record<string, SearchTemplateRequest>
+  } | string | Buffer | ReadableStream
+}
+
 export interface ClearScrollRequest extends RequestBase {
   scroll_id?: Ids
   body?: {
@@ -6043,7 +6061,7 @@ export interface SearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   total_hits_as_integer?: boolean
   typed_keys?: boolean
-  body?: {
+  body: {
     id?: string
     params?: Record<string, any>
     source?: string
