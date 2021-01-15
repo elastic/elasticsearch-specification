@@ -1,7 +1,7 @@
 # elastic client generator
 
 This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside `/specification/specs`.
+you can find them inside [`/specification/specs`](specification/specs).
 The `specification` folder contains a TypeScript program that compiles the entire definition
 in a custom JSON representation that can be used for generating other language clients.
 
