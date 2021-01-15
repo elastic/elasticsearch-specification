@@ -27,7 +27,7 @@ $ cat output/schema/schema.json
 
 The representation is a JSON object with two top level keys:
 
-```json
+```jsonc
 {
   "types": [...],
   "endpoints": [...]
