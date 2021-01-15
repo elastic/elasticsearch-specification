@@ -25,7 +25,7 @@ $ cat output/schema/schema.json
 
 ### Structure of the JSON representation
 
-The representation is a JSON object with two top level keys:
+The JSON representation is [formally defined as TypeScript definitions](specification/src/metamodel.ts). Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
 {
