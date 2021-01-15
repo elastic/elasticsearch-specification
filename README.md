@@ -7,6 +7,23 @@ in a JSON representation that can be used for generating language clients.
 
 This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](specification/src/metamodel.ts) that also explains the various properties and their values.
 
+## Prepare the environment
+
+For generating the JSON representation and running the validation code you need
+to install and configure Node.js in your development environment.
+
+You can install Node.js with [`nvm`](https://github.com/nvm-sh/nvm):
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+```
+
+Once the installation is completed, install Node.js v14:
+
+```sh
+nvm install 14
+```
+
 ## How to generate the JSON representation
 
 ```

@@ -28,6 +28,9 @@
     "glob": "^7.1.6",
     "lodash": "^4.17.15"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "eslintConfig": {
     "rules": {
       "no-unused-vars": "off",
