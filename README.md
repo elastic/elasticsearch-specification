@@ -345,7 +345,7 @@ You should copy from there the updated endpoint defintion and change it here.
 
 ### The validation in broken on GitHub but works on my machine!
 
-Very likely thew recordings in our machine are stale, you can regenerate them
+Very likely the recordings on your machine are stale, you can regenerate them
 by executing the following command (it will take a while).
 
 ```sh
