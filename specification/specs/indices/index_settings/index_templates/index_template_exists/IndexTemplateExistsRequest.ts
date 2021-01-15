@@ -1,7 +1,7 @@
 @rest_spec_name("indices.exists_template")
 class IndexTemplateExistsRequest extends RequestBase {
   path_parts?: {
-    name: string | string[];
+    name: Names;
   }
   query_parameters?: {
     flat_settings?: boolean;

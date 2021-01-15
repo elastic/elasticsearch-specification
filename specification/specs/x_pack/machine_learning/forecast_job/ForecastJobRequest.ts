@@ -1,7 +1,7 @@
 @rest_spec_name("ml.forecast")
 class ForecastJobRequest extends RequestBase {
   path_parts?: {
-    job_id: string;
+    job_id: Id;
   }
   query_parameters?: {
   }

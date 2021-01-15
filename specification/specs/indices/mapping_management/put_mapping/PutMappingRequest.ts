@@ -1,8 +1,8 @@
 @rest_spec_name("indices.put_mapping")
 class PutMappingRequest extends RequestBase {
   path_parts?: {
-    index?: string | string[];
-    type?: string;
+    index?: Indices;
+    type?: TypeName;
   }
   query_parameters?: {
     allow_no_indices?: boolean;

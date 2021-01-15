@@ -1,9 +1,9 @@
 @rest_spec_name("exists")
 class DocumentExistsRequest extends RequestBase {
   path_parts?: {
-    id: string;
-    index: string;
-    type?: string;
+    id: Id;
+    index: IndexName;
+    type?: TypeName;
   }
   query_parameters?: {
     preference?: string;

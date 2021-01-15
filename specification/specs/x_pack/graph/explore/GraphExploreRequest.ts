@@ -1,8 +1,8 @@
 @rest_spec_name("graph.explore")
 class GraphExploreRequest extends RequestBase {
   path_parts?: {
-    index: string | string[];
-    type?: string | string[];
+    index: Indices;
+    type?: TypeNames;
   }
   query_parameters?: {
     routing?: Routing;

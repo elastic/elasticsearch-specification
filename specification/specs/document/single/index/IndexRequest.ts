@@ -5,9 +5,9 @@
 @class_serializer("IndexRequestFormatter`1")
 class IndexRequest<TDocument> extends RequestBase {
   path_parts?: {
-    id?: string;
-    index: string;
-    type?: string;
+    id?: Id;
+    index: IndexName;
+    type?: TypeName;
   }
   query_parameters?: {
     if_primary_term?: long;

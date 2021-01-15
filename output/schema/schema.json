@@ -6801,26 +6801,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of alias names to return"
@@ -7003,26 +6988,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs or names to limit the returned information"
@@ -7128,26 +7098,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to limit the returned information"
@@ -7386,7 +7341,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -7607,7 +7562,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -7747,26 +7702,11 @@
         {
           "name": "fields",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
           },
           "required": false,
           "description": "A comma-separated list of fields to return the fielddata size"
@@ -8217,26 +8157,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to limit the returned information"
@@ -8965,7 +8890,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -10649,26 +10574,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "Comma-separated list or wildcard expression of index names to limit the returned information"
@@ -11003,26 +10913,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to limit the returned information"
@@ -11733,26 +11628,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to limit the returned information"
@@ -11964,26 +11844,11 @@
         {
           "name": "repository",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "Name of repository from which to fetch the snapshot information"
@@ -12323,7 +12188,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -12640,26 +12505,11 @@
         {
           "name": "thread_pool_patterns",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of regular-expressions to filter the thread pools in the output"
@@ -12889,7 +12739,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -13302,7 +13152,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -14346,26 +14196,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "Limit the information returned to a specific index"
@@ -15676,26 +15511,11 @@
         {
           "name": "metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "Limit the information returned to the specified metrics"
@@ -15703,26 +15523,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -16943,26 +16748,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes"
@@ -17261,26 +17051,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes"
@@ -18411,26 +18186,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes"
@@ -18438,26 +18198,11 @@
         {
           "name": "metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "A comma-separated list of metrics you wish returned. Leave empty to return all."
@@ -19548,26 +19293,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes"
@@ -19575,26 +19305,11 @@
         {
           "name": "metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "Limit the information returned to the specified metrics"
@@ -19602,26 +19317,11 @@
         {
           "name": "index_metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "Limit the information returned for `indices` metric to the specific index metrics. Isn't used if `indices` (or `all`) metric isn't specified."
@@ -20609,26 +20309,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes"
@@ -20636,26 +20321,11 @@
         {
           "name": "metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "Limit the information returned to the specified metrics"
@@ -20842,26 +20512,11 @@
         {
           "name": "node_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "NodeIds"
+            }
           },
           "required": false,
           "description": "A comma-separated list of node IDs to span the reload/reinit call. Should stay empty because reloading usually involves all cluster nodes."
@@ -21171,7 +20826,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TaskId"
             }
           },
           "required": false,
@@ -21296,7 +20951,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -24990,7 +24645,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": false,
@@ -25002,7 +24657,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -25746,26 +25401,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -25773,26 +25413,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types"
@@ -26426,7 +26051,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -26598,7 +26223,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": false,
@@ -26610,7 +26235,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -27083,7 +26708,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": false,
@@ -27095,7 +26720,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -27994,7 +27619,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -28314,26 +27939,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -28341,26 +27951,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types"
@@ -29162,7 +28757,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -29174,7 +28769,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -29186,7 +28781,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -29330,7 +28925,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -29342,7 +28937,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -29354,7 +28949,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -29497,7 +29092,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -29509,7 +29104,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -29521,7 +29116,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -29681,7 +29276,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -29693,7 +29288,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -29705,7 +29300,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -30053,7 +29648,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -30065,7 +29660,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -30077,7 +29672,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -30266,7 +29861,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -30278,7 +29873,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -30290,7 +29885,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -30463,7 +30058,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -30475,7 +30070,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -30487,7 +30082,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -30802,7 +30397,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -30814,7 +30409,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -30826,7 +30421,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -31363,7 +30958,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -31375,7 +30970,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -31387,7 +30982,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -32018,26 +31613,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "A comma-separated list of alias names to return"
@@ -32045,26 +31625,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to filter aliases"
@@ -32147,26 +31712,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names (supports wildcards); use `_all` for all indices"
@@ -32174,26 +31724,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "A comma-separated list of aliases to delete (supports wildcards); use `_all` to delete all aliases for the specified indices."
@@ -32260,26 +31795,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of alias names to return"
@@ -32287,26 +31807,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to filter aliases"
@@ -32444,26 +31949,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names the alias should point to (supports wildcards); use `_all` to perform the operation on all indices."
@@ -32474,7 +31964,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -32665,7 +32155,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": false,
@@ -33141,7 +32631,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -33153,7 +32643,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -33303,7 +32793,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -33472,26 +32962,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of indices to delete; use `_all` or `*` string to delete all indices"
@@ -33597,7 +33072,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -33725,26 +33200,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names"
@@ -33927,26 +33387,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names"
@@ -34045,26 +33490,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma separated list of indices to close"
@@ -34276,26 +33706,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma separated list of indices to open"
@@ -34455,8 +33870,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "internal",
-              "name": "string"
+              "namespace": "indices.alias_management",
+              "name": "Alias"
             }
           },
           "required": true,
@@ -34468,7 +33883,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": false,
@@ -34718,7 +34133,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -34730,7 +34145,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -34869,7 +34284,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -34881,7 +34296,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -35016,26 +34431,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names; use `_all` to check the types across all indices"
@@ -35043,26 +34443,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": true,
           "description": "A comma-separated list of document types to check"
@@ -35140,7 +34525,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -35268,26 +34653,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -35295,26 +34665,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "The name of the settings that should be included"
@@ -35460,7 +34815,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -35528,26 +34883,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "The comma separated names of the index templates"
@@ -35748,26 +35088,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "The comma separated names of the index templates"
@@ -35834,7 +35159,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -36027,26 +35352,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -36195,26 +35505,11 @@
         {
           "name": "fields",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
           },
           "required": true,
           "description": "A comma-separated list of fields"
@@ -36222,26 +35517,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names"
@@ -36249,26 +35529,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types"
@@ -36432,26 +35697,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names"
@@ -36459,26 +35709,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types"
@@ -36641,26 +35876,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices."
@@ -36671,7 +35891,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -37320,26 +36540,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -37848,26 +37053,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -38135,26 +37325,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -38705,26 +37880,11 @@
         {
           "name": "metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "Limit the information returned the specific metrics."
@@ -38732,26 +37892,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -40579,26 +39724,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names to reload analyzers for"
@@ -40703,26 +39833,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index name to limit the operation"
@@ -40852,26 +39967,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string for all indices"
@@ -40974,26 +40074,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -41108,26 +40193,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -41206,26 +40276,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string for all indices"
@@ -41783,7 +40838,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -41854,7 +40909,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -44121,7 +43176,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -44429,7 +43484,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -44511,6 +43566,20 @@
           "required": true
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "internal",
+        "name": "CategoryId"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "internal",
+          "name": "string"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -44999,6 +44068,39 @@
       ]
     },
     {
+      "kind": "union",
+      "name": {
+        "namespace": "internal",
+        "name": "Ids"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "string"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "number"
+          }
+        },
+        {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -45150,10 +44252,78 @@
       ]
     },
     {
+      "kind": "union",
+      "name": {
+        "namespace": "internal",
+        "name": "Metrics"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "string"
+          }
+        },
+        {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
         "name": "MultiTermQueryRewrite"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "internal",
+          "name": "string"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "internal",
+        "name": "Name"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "internal",
+          "name": "string"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "internal",
+        "name": "Names"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "internal",
+          "name": "string"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "internal",
+        "name": "NodeIds"
       },
       "type": {
         "kind": "instance_of",
@@ -45243,6 +44413,35 @@
       }
     },
     {
+<<<<<<< HEAD
+=======
+      "kind": "union",
+      "name": {
+        "namespace": "internal",
+        "name": "TypeNames"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "string"
+          }
+        },
+        {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          }
+        }
+      ]
+    },
+    {
+>>>>>>> master
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -45963,7 +45162,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -46159,7 +45358,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -46231,7 +45430,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -46243,7 +45442,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -46350,7 +45549,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -46465,7 +45664,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -46561,26 +45760,11 @@
         {
           "name": "repository",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "Name of the snapshot repository to unregister. Wildcard (`*`) patterns are supported."
@@ -46647,26 +45831,11 @@
         {
           "name": "repository",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of repository names"
@@ -46778,7 +45947,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -46875,7 +46044,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -46887,7 +46056,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -47331,7 +46500,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -47343,7 +46512,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -47402,7 +46571,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -47411,26 +46580,11 @@
         {
           "name": "snapshot",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "A comma-separated list of snapshot names"
@@ -47528,7 +46682,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -47540,7 +46694,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -48021,7 +47175,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -48030,26 +47184,11 @@
         {
           "name": "snapshot",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of snapshot names"
@@ -54107,26 +53246,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of indices to restrict the results"
@@ -54134,26 +53258,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of types to restrict the results"
@@ -54406,7 +53515,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -54418,7 +53527,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -54430,7 +53539,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -54953,26 +54062,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices"
@@ -55123,26 +54217,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to use as default"
@@ -55150,26 +54229,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to use as default"
@@ -55501,26 +54565,11 @@
         {
           "name": "scroll_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Ids"
+            }
           },
           "required": false,
           "description": "A comma-separated list of scroll IDs to clear"
@@ -55585,7 +54634,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -55725,26 +54774,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -55752,26 +54786,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types"
@@ -57240,26 +56259,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -57414,26 +56418,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -57441,26 +56430,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types"
@@ -61554,26 +60528,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to restrict the operation; use `_all` or empty string to perform the operation on all indices"
@@ -61581,26 +60540,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to restrict the operation; leave empty to perform the operation on all types"
@@ -61895,7 +60839,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -61941,7 +60885,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -62026,26 +60970,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": false,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -62729,7 +61658,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -62926,7 +61855,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -63127,7 +62056,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -63198,7 +62127,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -63244,7 +62173,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -63291,7 +62220,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -63925,26 +62854,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices"
@@ -64199,26 +63113,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices"
@@ -64279,7 +63178,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -64386,7 +63285,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -64433,7 +63332,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -64594,7 +63493,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -64972,7 +63871,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -65039,7 +63938,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -65138,26 +64037,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of enrich policy names"
@@ -65218,7 +64102,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -65446,26 +64330,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices"
@@ -65473,26 +64342,11 @@
         {
           "name": "type",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeNames"
+            }
           },
           "required": false,
           "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types"
@@ -66148,7 +65002,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -66194,7 +65048,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -66479,7 +65333,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -66650,7 +65504,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -66766,7 +65620,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -66828,7 +65682,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -66900,7 +65754,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": true,
@@ -70002,7 +68856,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70525,7 +69379,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70571,7 +69425,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70583,7 +69437,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70629,7 +69483,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70641,7 +69495,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70724,7 +69578,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70829,7 +69683,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70875,7 +69729,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -70887,7 +69741,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -70958,7 +69812,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71029,7 +69883,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71041,7 +69895,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71192,7 +70046,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71312,7 +70166,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71398,7 +70252,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71559,7 +70413,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71571,7 +70425,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -71736,7 +70590,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -71918,7 +70772,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72007,7 +70861,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -72019,7 +70873,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "long"
+              "name": "CategoryId"
             }
           },
           "required": false,
@@ -72107,7 +70961,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72192,7 +71046,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72322,7 +71176,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72420,7 +71274,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -72580,7 +71434,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72665,7 +71519,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72751,7 +71605,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -72763,7 +71617,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -72902,7 +71756,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -75585,7 +74439,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -75660,7 +74514,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -75811,7 +74665,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76072,7 +74926,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76137,7 +74991,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76236,7 +75090,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76248,7 +75102,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76332,7 +75186,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76711,7 +75565,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -76846,7 +75700,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -77155,7 +76009,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -77167,7 +76021,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -77300,7 +76154,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -77403,7 +76257,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -77502,7 +76356,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -77881,7 +76735,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -78009,7 +76863,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -78166,7 +77020,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -78178,7 +77032,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -78482,7 +77336,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "IndexName"
             }
           },
           "required": false,
@@ -78603,7 +77457,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -78723,7 +77577,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -78769,7 +77623,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -78923,7 +77777,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -79081,7 +77935,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": false,
@@ -79694,26 +78548,11 @@
         {
           "name": "index",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
           },
           "required": true,
           "description": "The indices or index-pattern(s) (containing rollup or regular data) that should be searched"
@@ -79724,7 +78563,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
           "required": false,
@@ -79845,7 +78684,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -79903,7 +78742,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Id"
             }
           },
           "required": true,
@@ -80720,26 +79559,11 @@
         {
           "name": "realms",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "Comma-separated list of realms to clear"
@@ -80833,7 +79657,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -80845,7 +79669,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -81012,7 +79836,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -81024,7 +79848,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -81496,7 +80320,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -81961,7 +80785,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -82032,7 +80856,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -82157,7 +80981,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -82336,26 +81160,11 @@
         {
           "name": "name",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": true,
           "description": "Role name"
@@ -82433,7 +81242,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -82504,7 +81313,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -82742,7 +81551,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -82929,7 +81738,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -83004,7 +81813,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -83075,7 +81884,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -83134,7 +81943,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -83190,26 +81999,11 @@
         {
           "name": "username",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of usernames"
@@ -83544,7 +82338,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -84028,7 +82822,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -84074,7 +82868,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -84162,26 +82956,11 @@
         {
           "name": "policy_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "Comma-separated list of snapshot lifecycle policies to retrieve"
@@ -84421,7 +83200,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -85225,7 +84004,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -85284,7 +84063,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -85393,7 +84172,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -86259,7 +85038,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -86389,7 +85168,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -86448,7 +85227,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -86556,7 +85335,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -86948,7 +85727,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -86957,26 +85736,11 @@
         {
           "name": "action_id",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
+            }
           },
           "required": false,
           "description": "A comma-separated list of the action ids to be acked"
@@ -87930,7 +86694,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -88283,7 +87047,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -88341,7 +87105,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -88455,7 +87219,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": false,
@@ -89743,7 +88507,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -90472,7 +89236,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Name"
             }
           },
           "required": true,
@@ -91672,26 +90436,11 @@
         {
           "name": "metric",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Metrics"
+            }
           },
           "required": false,
           "description": "Controls what additional stat metrics should be include in the response"

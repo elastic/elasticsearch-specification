@@ -4,9 +4,9 @@
 @rest_spec_name("update")
 class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
   path_parts?: {
-    id: string;
-    index: string;
-    type?: string;
+    id: Id;
+    index: IndexName;
+    type?: TypeName;
   }
   query_parameters?: {
     if_primary_term?: long;

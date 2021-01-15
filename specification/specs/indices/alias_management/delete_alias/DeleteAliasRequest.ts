@@ -1,8 +1,8 @@
 @rest_spec_name("indices.delete_alias")
 class DeleteAliasRequest extends RequestBase {
   path_parts?: {
-    index: string | string[];
-    name: string | string[];
+    index: Indices;
+    name: Names;
   }
   query_parameters?: {
     master_timeout?: Time;
