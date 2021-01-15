@@ -38,7 +38,7 @@ The first one, `types`, contains all the type definitions from the specification
 `IndexRequest` or `MainError`, while the second one, `endpoints`, contains every
 endpoint of Elasticsearch and the respective type mapping. For example:
 
-```json
+```jsonc
 {
   "types": [{
     "kind": "request",
