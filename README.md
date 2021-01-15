@@ -312,8 +312,8 @@ interface Date {}
 ### A specific property is not always present, how do I define it?
 
 When you define a property the syntax is `propertyName: propertyType`.
-By default a property is required to exists. If you know that a property will not
-always be there, you can add a question mark juist before the column:
+By default a property is required to exist. If you know that a property will not
+always be there, you can add a question mark just before the column:
 
 ```ts
 propertyRequired: string
