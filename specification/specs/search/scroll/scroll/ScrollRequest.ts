@@ -5,6 +5,7 @@ class ScrollRequest extends RequestBase {
   }
   query_parameters?: {
     total_hits_as_integer?: boolean;
+    scroll?: Time;
   }
   body?: {
     scroll?: Time;

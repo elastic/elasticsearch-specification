@@ -1,13 +1,13 @@
 class CatIndicesRecord {
-  'docs.count': long;
-  'docs.deleted': long;
+  'docs.count': string;
+  'docs.deleted': string;
   health: string;
   index: string;
   pri: string;
-  'pri.store.size': long;
+  'pri.store.size': string;
   rep: string;
   status: string;
-  'store.size': long;
+  'store.size': string;
   tm: string;
   uuid: string;
 }
