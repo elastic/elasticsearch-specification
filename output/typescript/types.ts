@@ -5891,7 +5891,7 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   typed_keys?: boolean
   body: {
     operations?: Record<string, SearchTemplateRequest>
-  } | string | Buffer | ReadableStream
+  }
 }
 
 export interface ClearScrollRequest extends RequestBase {
