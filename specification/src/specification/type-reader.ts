@@ -102,32 +102,57 @@ class InterfaceVisitor extends Visitor {
 
       const s = this.interfaceNode.symbol
       const x: any = s.valueDeclaration
-      const heritageClauses: ts.Node[] = (x ? x.heritageClauses : []) || []
+      const heritageClauses: ts.HeritageClause[] = (x ? x.heritageClauses : []) || []
+
+      // the specification only uses interfaces as a signal to type reader
+      // its up to generators to choose to implement base classes as interfaces or not
+      const unknownImplementsClauses = heritageClauses
+        .filter(c => c.token === ts.SyntaxKind.ImplementsKeyword)
+        .flatMap(c => ((c as any).types || []) as ts.Node[])
+        .map(t=> {
+          const expression = ((t as any).expression as ts.Identifier)
+          return expression.text
+        })
+        .filter(name => {
+          if (name.startsWith("IDictionary")) return false;
+          return true;
+        })
+      if (unknownImplementsClauses.length > 0)
+        throw new Error(`${s.name} uses unknown implements on ${unknownImplementsClauses.join(", ")}`)
 
       domainInterface.inheritsFromUnresolved = heritageClauses
+        .filter((c:ts.HeritageClause) => c.token === ts.SyntaxKind.ExtendsKeyword)
         .flatMap(c => ((c as any).types || []) as ts.Node[])
-        .reduce((c, node) => {
-          const expression = ((node as any).expression as ts.Identifier)
-          const name = expression.text
-          // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
-          const typeRef = node as ts.TypeReferenceNode
-          if (!typeRef.typeArguments) {
-            const type = !typeRef.typeName
-              ? this.visitTypeNode(node)
-              : this.visitTypeReference(typeRef)
-            c[name] = [type]
-          } else {
-            c[name] = (typeRef.typeArguments).map(g => {
-              const typeArgRef = g as ts.TypeReferenceNode
-              return !typeArgRef.typeName
-                ? this.visitTypeNode(g)
-                : this.visitTypeReference(typeArgRef)
-            })
-          }
-          return c
-        }, {})
+        .reduce((c, node) => this.visitTypeReferenceOrTypeNode(node, c, nn=>nn), {})
+
+      domainInterface.implementsFromUnresolved = this.getAllImplements(this.interfaceNode)
+        .flatMap(c => (((c.clause as any).types || []) as ts.Node[]).map(tn=> ({depth: c.depth, node: tn})))
+        .reduce((c, node) => this.visitTypeReferenceOrTypeNode(node.node, c, nn=> ({depth: node.depth, instanceOf: nn})), {})
+
       return domainInterface
     }
+  }
+
+  private visitTypeReferenceOrTypeNode<TReturn>(node: ts.Node, c: {}, map: (instanceOf:Domain.InstanceOf[]) => TReturn) {
+    const expression = ((node as any).expression as ts.Identifier)
+    const name = expression.text
+    // const typeRef = this.checker.getTypeFromTypeNode(node as ts.TypeNode) as ts.TypeReference;
+    const typeRef = node as ts.TypeReferenceNode
+    if (!typeRef.typeArguments) {
+      const type = !typeRef.typeName
+        ? this.visitTypeNode(node)
+        : this.visitTypeReference(typeRef)
+      c[name] = map([type])
+    } else {
+      c[name] = map((typeRef.typeArguments).map(g => {
+        const typeArgRef = g as ts.TypeReferenceNode
+        const type = !typeArgRef.typeName
+          ? this.visitTypeNode(g)
+          : this.visitTypeReference(typeArgRef)
+        return type
+      }))
+    }
+    return c
   }
 
   static createGeneratorHints (jsDocs: ts.JSDoc[]): Domain.GeneratorDocumentation {
@@ -182,7 +207,8 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.ArrayType : return this.visitArrayType(t as ts.ArrayTypeNode)
       case ts.SyntaxKind.ExpressionWithTypeArguments:
         const lit = t as ts.TypeLiteralNode
-        return new Domain.Type(lit.getText())
+        const typeName = lit.getText();
+        return new Domain.Type(typeName)
       case ts.SyntaxKind.TypeLiteral: return undefined
       case ts.SyntaxKind.TypeReference : return this.visitTypeReference(t as ts.TypeReferenceNode)
       case ts.SyntaxKind.StringKeyword : return new Domain.Type('string')
@@ -220,12 +246,25 @@ class InterfaceVisitor extends Visitor {
     return array
   }
 
+  private getAllImplements(t: ts.Node) : {depth:number, clause:ts.HeritageClause}[] {
+    const getClauses : (n: ts.Node, d: number) => {depth:number, clause:ts.HeritageClause}[] = (node, depth) => {
+      const symbol = this.checker.getTypeAtLocation(node).getSymbol();
+      const valueDeclaration: any = symbol?.valueDeclaration
+      const findClauses = ((valueDeclaration ? valueDeclaration.heritageClauses : []) || [])
+        .map(clause => ({depth, clause}))
+      return findClauses.concat(findClauses.flatMap(c => c.clause.types.flatMap(tt => getClauses(tt, ++depth))))
+    }
+    return getClauses(t, 0)
+      .filter(c => c.clause.token === ts.SyntaxKind.ImplementsKeyword);
+  }
+
   private visitTypeReference (t: ts.TypeReferenceNode): Domain.InstanceOf {
-    const typeName = t.typeName.getText()
-    if (typeName.startsWith('Dictionary')) return this.createDictionary(t, typeName)
+    const typeName = t.typeName?.getText() ?? (t as any).expression?.text
+    if (typeName.startsWith('Dictionary') || typeName.startsWith('IDictionary')) return this.createDictionary(t, typeName)
     if (typeName.startsWith('Union')) return this.createUnion(t, typeName)
     if (typeName.startsWith('SingleKeyDictionary')) return this.createSingleKeyDictionary(t, typeName)
     if (typeName.startsWith('UserDefinedValue')) return this.createUserDefinedValue(t, typeName)
+
     const typed = new Domain.Type(typeName)
     if (!t.typeArguments || t.typeArguments.length === 0) { return typed }
     typed.closedGenerics = t.typeArguments.map(gt => this.visitTypeNode(gt))

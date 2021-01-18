@@ -8,12 +8,12 @@ class AnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string;
     attributes?: string[];
-    char_filter?: Union<string, ICharFilter>[];
+    char_filter?: Union<string, CharFilterBase>[];
     explain?: boolean;
     field?: Field;
-    filter?: Union<string, ITokenFilter>[];
+    filter?: Union<string, TokenFilterBase>[];
     normalizer?: string;
     text?: string | Array<string>;
-    tokenizer?: Union<string, ITokenizer>;
+    tokenizer?: Union<string, TokenizerBase>;
   }
 }

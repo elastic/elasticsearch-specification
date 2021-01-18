@@ -5,6 +5,7 @@ import {
   Endpoint,
   EnumMember,
   Inherits,
+  Implements,
   Model,
   PropertiesBody,
   Property,
@@ -188,7 +189,7 @@ export function loadModel(spec: Specification): Model {
         description: makeDescription(specType),
         annotations: makeAnnotations(specType),
         generics: nonEmptyArr(specType.openGenerics),
-        inherits: nonEmptyArr(specType.inherits.map(i => makeImplements(i, specType.openGenerics))),
+        inherits: nonEmptyArr(specType.inherits.map(i => makeInherits(i, specType.openGenerics))),
         path: specType.path.map(prop => makeProperty(prop, specType.openGenerics)),
         query: specType.queryParameters.map(prop => makeProperty(prop, specType.openGenerics)),
         body: body
@@ -238,7 +239,8 @@ export function loadModel(spec: Specification): Model {
         kind: "interface",
         name: fullName,
         generics: nonEmptyArr(specType.openGenerics),
-        inherits: nonEmptyArr(specType.inherits.map(impl => makeImplements(impl, specType.openGenerics))),
+        inherits: nonEmptyArr(specType.inherits.map(impl => makeInherits(impl, specType.openGenerics))),
+        implements: nonEmptyArr(specType.implements.map(impl => makeImplements(impl, specType.openGenerics))),
         properties: specType.properties.map(prop => makeProperty(prop, specType.openGenerics))
       });
     }
@@ -248,7 +250,18 @@ export function loadModel(spec: Specification): Model {
     }
   }
 
-  function makeImplements(impl: Domain.ImplementsReference, openGenerics: string[]): Inherits {
+  function makeImplements(impl: Domain.ImplementsReference, openGenerics: string[]): Implements {
+
+    const type = makeTypeName(impl.type.name, openGenerics);
+
+    return {
+      depth: impl.depth,
+      type: type,
+      generics: nonEmptyArr(impl.closedGenerics.map(i => makeInstanceOf(i, openGenerics)))
+    };
+  }
+
+  function makeInherits(impl: Domain.InheritsReference, openGenerics: string[]): Inherits {
 
     // Autofix requests and responses that have self-reference generic parameters
     if (impl.closedGenerics.length > 0 && impl.type.openGenerics.length === 0) {

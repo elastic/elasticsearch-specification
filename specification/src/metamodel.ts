@@ -126,6 +126,11 @@ export class Inherits {
   type: TypeName;
   generics?: ValueOf[];
 }
+export class Implements {
+  type: TypeName;
+  generics?: ValueOf[];
+  depth:number
+}
 
 /**
  * An interface type
@@ -134,6 +139,7 @@ export class Interface extends BaseType {
   kind: "interface";
   generics?: string[];
   inherits?: Inherits[];
+  implements?: Implements[];
   properties: Property[];
 }
 

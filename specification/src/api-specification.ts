@@ -43,11 +43,19 @@ export class Specification {
     types.forEach(t => {
       if (!(t instanceof Domain.Interface)) return
       t.inherits = []
+      t.implements = []
       for (const key of Object.keys(t.inheritsFromUnresolved)) {
         const refType = lookup(key)
-        const ref = new Domain.ImplementsReference(refType)
+        const ref = new Domain.InheritsReference(refType)
         ref.closedGenerics = t.inheritsFromUnresolved[key]
         t.inherits.push(ref)
+      }
+      for (const key of Object.keys(t.implementsFromUnresolved)) {
+        const refType = lookup(key)
+        const unresolved = t.implementsFromUnresolved[key]
+        const ref = new Domain.ImplementsReference(refType, unresolved.depth)
+        ref.closedGenerics = unresolved.instanceOf;
+        t.implements.push(ref)
       }
     })
     this.types = types

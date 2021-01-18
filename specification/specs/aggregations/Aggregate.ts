@@ -9,7 +9,7 @@ type Bucket =
   | SignificantTermsBucket<any>
   | KeyedBucket<any>
 
-class BucketBase {}
+class BucketBase implements IDictionary<AggregateName, Aggregate> {}
 class CompositeBucket extends BucketBase {}
 class DateHistogramBucket extends BucketBase {}
 class FiltersBucketItem extends BucketBase {
@@ -21,8 +21,8 @@ class RareTermsBucket<TKey> extends BucketBase {}
 class SignificantTermsBucket<TKey> extends BucketBase {}
 class KeyedBucket<TKey> extends BucketBase {}
 
-type Aggregate  = ValueAggregate
-  | DocCountAggregate
+type Aggregate  =
+  | SingleBucketAggregate
   | AutoDateHistogramAggregate
   | FiltersAggregate
   | SignificantTermsAggregate<any>
@@ -30,10 +30,13 @@ type Aggregate  = ValueAggregate
   | BucketAggregate
   | CompositeBucketAggregate
   | MultiBucketAggregate<any>
-  | SingleBucketAggregate
   | MatrixStatsAggregate
+  | KeyedValueAggregate
+  | MetricAggregate
+
+type MetricAggregate =
+  | ValueAggregate
   | BoxPlotAggregate
-  | ExtendedStatsAggregate
   | GeoBoundsAggregate
   | GeoCentroidAggregate
   | PercentilesAggregate
@@ -42,7 +45,7 @@ type Aggregate  = ValueAggregate
   | StringStatsAggregate
   | TopHitsAggregate
   | TopMetricsAggregate
-  | KeyedValueAggregate
+  | ExtendedStatsAggregate
   | TDigestPercentilesAggregate
   | HdrPercentilesAggregate
 
@@ -59,7 +62,7 @@ class ValueAggregate extends AggregateBase {
   value_as_string?: string;
 }
 
-class DocCountAggregate extends AggregateBase {
+class SingleBucketAggregate extends AggregateBase implements IDictionary<AggregateName, Aggregate> {
   doc_count: double;
 }
 class KeyedValueAggregate extends ValueAggregate {
@@ -85,6 +88,7 @@ class TermsAggregate<TKey> extends MultiBucketAggregate<TKey> {
   sum_other_doc_count: long;
 }
 
+// TODO this is an intermediate type in NEST
 class BucketAggregate extends AggregateBase {
   after_key:Dictionary<string, UserDefinedValue>;
   bg_count:long;
@@ -98,9 +102,6 @@ class BucketAggregate extends AggregateBase {
 class CompositeBucketAggregate extends MultiBucketAggregate<Dictionary<string, UserDefinedValue>> {
   after_key:Dictionary<string, UserDefinedValue>;
 }
-
-//TODO Hard
-class SingleBucketAggregate extends AggregateBase {}
 
 class MatrixStatsAggregate extends AggregateBase {
   correlation: Dictionary<string, double>;

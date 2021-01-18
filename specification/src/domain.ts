@@ -21,6 +21,7 @@ namespace Domain {
     key: InstanceOf;
     value: InstanceOf;
   }
+
   export class SingleKeyDictionary {
     type = new Type('singlekeydictionary');
     value: InstanceOf;
@@ -68,7 +69,9 @@ namespace Domain {
   export class Interface extends TypeDeclaration {
     properties: InterfaceProperty[] = [];
     inheritsFromUnresolved: Record<string, InstanceOf[]> = {};
-    inherits: Domain.ImplementsReference[] = [];
+    implementsFromUnresolved: Record<string, { depth: number, instanceOf: InstanceOf[]}> = {};
+    inherits: Domain.InheritsReference[] = [];
+    implements: Domain.ImplementsReference[] = [];
     openGenerics: string[];
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
   }
@@ -88,8 +91,14 @@ namespace Domain {
     path: InterfaceProperty[] = [];
   }
 
-  export class ImplementsReference {
+  export class InheritsReference {
     constructor (public type: Domain.Interface) {}
+    closedGenerics: Domain.InstanceOf[];
+  }
+  export class ImplementsReference extends InheritsReference {
+    constructor (public type: Domain.Interface, public depth:number = 0) {
+      super(type)
+    }
     closedGenerics: Domain.InstanceOf[];
   }
 

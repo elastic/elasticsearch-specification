@@ -1,4 +1,4 @@
-class CharFilterBase implements ICharFilter {
+class CharFilterBase {
   type: string;
   version: string;
 }

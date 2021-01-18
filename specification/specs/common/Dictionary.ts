@@ -1,8 +1,6 @@
-class Dictionary<TKey, TValue> {
-  key: TKey;
-  value: TValue;
-}
 
-class SingleKeyDictionary<TValue> {
-  value: TValue
-}
+interface IDictionary<TKey, TValue> {}
+
+class Dictionary<TKey, TValue> {}
+
+class SingleKeyDictionary<TValue> {}

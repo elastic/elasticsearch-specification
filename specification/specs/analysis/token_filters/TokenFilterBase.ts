@@ -1,4 +1,5 @@
-class TokenFilterBase implements ITokenFilter {
+class TokenFilterBase {
   type: string;
   version: string;
+  stopwords?: Array<string>;
 }

@@ -17,7 +17,9 @@
  * under the License.
  */
 
-export type Aggregate = ValueAggregate | DocCountAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+import { Readable as ReadableStream } from 'stream'
+
+export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
 export interface AggregateBase {
   meta?: Record<string, any>
 }
@@ -112,7 +114,7 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketBase {
+export interface BucketBase extends IDictionary<AggregateName, Aggregate> {
 }
 
 export interface CompositeBucket extends BucketBase {
@@ -123,10 +125,6 @@ export interface CompositeBucketAggregate extends MultiBucketAggregate<Record<st
 }
 
 export interface DateHistogramBucket extends BucketBase {
-}
-
-export interface DocCountAggregate extends AggregateBase {
-  doc_count: double
 }
 
 export interface ExtendedStatsAggregate extends StatsAggregate {
@@ -192,6 +190,7 @@ export interface MatrixStatsAggregate extends AggregateBase {
   name: string
 }
 
+export type MetricAggregate = ValueAggregate | BoxPlotAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | ExtendedStatsAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
 export type Missing = string | integer | boolean
 export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
   buckets: Array<TBucket>
@@ -223,7 +222,8 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
 export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
 }
 
-export interface SingleBucketAggregate extends AggregateBase {
+export interface SingleBucketAggregate extends AggregateBase, IDictionary<AggregateName, Aggregate> {
+  doc_count: double
 }
 
 export interface StandardDeviationBounds {
@@ -2424,6 +2424,9 @@ export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOption
 export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export type Health = 'green' | 'yellow' | 'red'
+
+export interface IDictionary<TKey = unknown, TValue = unknown> {
+}
 
 export type Level = 'cluster' | 'indices' | 'shards'
 
@@ -4796,6 +4799,8 @@ export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
+export type AggregateName = string
+
 export type CategoryId = string
 
 export interface Date {
@@ -6070,7 +6075,7 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   timed_out: boolean
   _shards: ShardStatistics
   hits: HitsMetadata<TDocument>
-  aggregations?: Record<string, Aggregate>
+  aggregations?: Record<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   documents?: Array<TDocument>
   fields?: Record<string, LazyDocument>

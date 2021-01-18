@@ -89,6 +89,13 @@ type GeoHashPrecision = number
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
 type Fields = Field | Field[]
 
+
+/**
+ * The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back
+ * in the form of `name#type` instead of simply `name`
+ */
+type AggregateName = string
+
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {
   field: Field;

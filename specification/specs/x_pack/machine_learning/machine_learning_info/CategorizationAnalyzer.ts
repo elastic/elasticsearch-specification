@@ -1,4 +1,4 @@
 class CategorizationAnalyzer {
-  filter: ITokenFilter[];
+  filter: TokenFilterBase[];
   tokenizer: string;
 }
