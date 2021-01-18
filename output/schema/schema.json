@@ -55180,577 +55180,563 @@
         }
       ],
       "body": {
-        "kind": "value",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "namespace": "search.search",
-            "name": "SearchRequestBody"
-          }
-        }
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "search.search",
-        "name": "SearchRequestBody"
-      },
-      "properties": [
-        {
-          "name": "aggs",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "AggregationContainer"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "aggregations",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "AggregationContainer"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "collapse",
-          "type": {
-            "kind": "instance_of",
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "aggs",
             "type": {
-              "namespace": "search.search.collapsing",
-              "name": "FieldCollapse"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "explain",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "from",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "highlight",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.search.highlighting",
-              "name": "Highlight"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "track_total_hits",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
+              "kind": "dictionary_of",
+              "key": {
                 "kind": "instance_of",
                 "type": {
                   "namespace": "internal",
-                  "name": "boolean"
+                  "name": "string"
                 }
               },
-              {
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "aggregations",
+                  "name": "AggregationContainer"
+                }
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "aggregations",
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
                 "kind": "instance_of",
                 "type": {
                   "namespace": "internal",
-                  "name": "integer"
+                  "name": "string"
+                }
+              },
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "aggregations",
+                  "name": "AggregationContainer"
                 }
               }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "indices_boost",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
             },
-            "generics": [
-              {
-                "kind": "dictionary_of",
-                "key": {
+            "required": false
+          },
+          {
+            "name": "collapse",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.search.collapsing",
+                "name": "FieldCollapse"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "explain",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "boolean"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "from",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "integer"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "highlight",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.search.highlighting",
+                "name": "Highlight"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "track_total_hits",
+            "type": {
+              "kind": "union_of",
+              "items": [
+                {
                   "kind": "instance_of",
                   "type": {
                     "namespace": "internal",
-                    "name": "IndexName"
+                    "name": "boolean"
                   }
                 },
-                "value": {
+                {
                   "kind": "instance_of",
                   "type": {
                     "namespace": "internal",
-                    "name": "double"
+                    "name": "integer"
                   }
                 }
-              }
-            ]
+              ]
+            },
+            "required": false
           },
-          "required": false,
-          "annotations": {
-            "prop_serializer": "IndicesBoostFormatter"
-          }
-        },
-        {
-          "name": "docvalue_fields",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "search.search.source_filtering",
-                  "name": "DocValueField"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "Array"
-                },
-                "generics": [
-                  {
-                    "kind": "union_of",
-                    "items": [
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "namespace": "internal",
-                          "name": "Field"
-                        }
-                      },
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "namespace": "search.search.source_filtering",
-                          "name": "DocValueField"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "min_score",
-          "type": {
-            "kind": "instance_of",
+          {
+            "name": "indices_boost",
             "type": {
-              "namespace": "internal",
-              "name": "double"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "post_filter",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "query_dsl.abstractions.container",
-              "name": "QueryContainer"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "profile",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "query",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "query_dsl.abstractions.container",
-              "name": "QueryContainer"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "rescore",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "search.search.rescoring",
-                  "name": "Rescore"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "search.search.rescoring",
-                    "name": "Rescore"
-                  }
-                }
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "script_fields",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
               "kind": "instance_of",
               "type": {
                 "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common_options.scripting",
-                "name": "ScriptField"
-              }
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "search_after",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
-            },
-            "generics": [
-              {
-                "kind": "union_of",
-                "items": [
-                  {
+                "name": "Array"
+              },
+              "generics": [
+                {
+                  "kind": "dictionary_of",
+                  "key": {
                     "kind": "instance_of",
                     "type": {
                       "namespace": "internal",
-                      "name": "integer"
+                      "name": "IndexName"
                     }
                   },
-                  {
+                  "value": {
                     "kind": "instance_of",
                     "type": {
                       "namespace": "internal",
-                      "name": "string"
+                      "name": "double"
                     }
                   }
-                ]
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "size",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "slice",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.scroll.scroll",
-              "name": "SlicedScroll"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "sort",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
+                }
+              ]
             },
-            "generics": [
-              {
-                "kind": "union_of",
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "namespace": "internal",
-                      "name": "Field"
-                    }
+            "required": false,
+            "annotations": {
+              "prop_serializer": "IndicesBoostFormatter"
+            }
+          },
+          {
+            "name": "docvalue_fields",
+            "type": {
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.source_filtering",
+                    "name": "DocValueField"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "Array"
                   },
-                  {
-                    "kind": "named_value_of",
-                    "value": {
+                  "generics": [
+                    {
                       "kind": "union_of",
                       "items": [
                         {
                           "kind": "instance_of",
                           "type": {
-                            "namespace": "search.search.sort",
-                            "name": "Sort"
+                            "namespace": "internal",
+                            "name": "Field"
                           }
                         },
                         {
                           "kind": "instance_of",
                           "type": {
-                            "namespace": "search.search.sort",
-                            "name": "SortOrder"
+                            "namespace": "search.search.source_filtering",
+                            "name": "DocValueField"
                           }
                         }
                       ]
                     }
-                  }
-                ]
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "_source",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "boolean"
+                  ]
                 }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "Fields"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "search.search.source_filtering",
-                  "name": "SourceFilter"
-                }
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "fields",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
+              ]
             },
-            "generics": [
-              {
-                "kind": "union_of",
-                "items": [
-                  {
+            "required": false
+          },
+          {
+            "name": "min_score",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "double"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "post_filter",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "query_dsl.abstractions.container",
+                "name": "QueryContainer"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "profile",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "boolean"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "query",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "query_dsl.abstractions.container",
+                "name": "QueryContainer"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "rescore",
+            "type": {
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.rescoring",
+                    "name": "Rescore"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
                     "kind": "instance_of",
                     "type": {
-                      "namespace": "internal",
-                      "name": "Field"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "namespace": "internal",
-                      "name": "DateField"
+                      "namespace": "search.search.rescoring",
+                      "name": "Rescore"
                     }
                   }
-                ]
-              }
-            ]
+                }
+              ]
+            },
+            "required": false
           },
-          "required": false
-        },
-        {
-          "name": "suggest",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
+          {
+            "name": "script_fields",
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "common_options.scripting",
+                  "name": "ScriptField"
+                }
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "search_after",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Array"
+              },
+              "generics": [
+                {
+                  "kind": "union_of",
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "integer"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "string"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "name": "size",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "integer"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "slice",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.scroll.scroll",
+                "name": "SlicedScroll"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "sort",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Array"
+              },
+              "generics": [
+                {
+                  "kind": "union_of",
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "Field"
+                      }
+                    },
+                    {
+                      "kind": "named_value_of",
+                      "value": {
+                        "kind": "union_of",
+                        "items": [
+                          {
+                            "kind": "instance_of",
+                            "type": {
+                              "namespace": "search.search.sort",
+                              "name": "Sort"
+                            }
+                          },
+                          {
+                            "kind": "instance_of",
+                            "type": {
+                              "namespace": "search.search.sort",
+                              "name": "SortOrder"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "name": "_source",
+            "type": {
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "boolean"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "Fields"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.source_filtering",
+                    "name": "SourceFilter"
+                  }
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "name": "fields",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Array"
+              },
+              "generics": [
+                {
+                  "kind": "union_of",
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "Field"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "DateField"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "name": "suggest",
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "search.suggesters",
+                  "name": "SuggestBucket"
+                }
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "terminate_after",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "long"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "timeout",
+            "type": {
               "kind": "instance_of",
               "type": {
                 "namespace": "internal",
                 "name": "string"
               }
             },
-            "value": {
+            "required": false
+          },
+          {
+            "name": "track_scores",
+            "type": {
               "kind": "instance_of",
               "type": {
-                "namespace": "search.suggesters",
-                "name": "SuggestBucket"
+                "namespace": "internal",
+                "name": "boolean"
               }
-            }
+            },
+            "required": false
           },
-          "required": false
-        },
-        {
-          "name": "terminate_after",
-          "type": {
-            "kind": "instance_of",
+          {
+            "name": "version",
             "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "boolean"
+              }
+            },
+            "required": false
           },
-          "required": false
-        },
-        {
-          "name": "timeout",
-          "type": {
-            "kind": "instance_of",
+          {
+            "name": "seq_no_primary_term",
             "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "boolean"
+              }
+            },
+            "required": false
           },
-          "required": false
-        },
-        {
-          "name": "track_scores",
-          "type": {
-            "kind": "instance_of",
+          {
+            "name": "stored_fields",
             "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "version",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "seq_no_primary_term",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "stored_fields",
-          "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "Field"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
+              "kind": "union_of",
+              "items": [
+                {
                   "kind": "instance_of",
                   "type": {
                     "namespace": "internal",
                     "name": "Field"
                   }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "Field"
+                    }
+                  }
                 }
-              }
-            ]
+              ]
+            },
+            "required": false
           },
-          "required": false
-        },
-        {
-          "name": "pit",
-          "type": {
-            "kind": "instance_of",
+          {
+            "name": "pit",
             "type": {
-              "namespace": "search.search.point_in_time",
-              "name": "PointInTimeReference"
-            }
-          },
-          "required": false
-        }
-      ]
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.search.point_in_time",
+                "name": "PointInTimeReference"
+              }
+            },
+            "required": false
+          }
+        ]
+      }
     },
     {
       "kind": "interface",

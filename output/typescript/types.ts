@@ -5949,39 +5949,37 @@ export interface SearchRequest extends RequestBase {
   size?: integer
   from?: integer
   sort?: Array<Field | Record<string, Sort | SortOrder>>
-  body?: SearchRequestBody | string | Buffer | ReadableStream
-}
-
-export interface SearchRequestBody {
-  aggs?: Record<string, AggregationContainer>
-  aggregations?: Record<string, AggregationContainer>
-  collapse?: FieldCollapse
-  explain?: boolean
-  from?: integer
-  highlight?: Highlight
-  track_total_hits?: boolean | integer
-  indices_boost?: Array<Record<IndexName, double>>
-  docvalue_fields?: DocValueField | Array<Field | DocValueField>
-  min_score?: double
-  post_filter?: QueryContainer
-  profile?: boolean
-  query?: QueryContainer
-  rescore?: Rescore | Array<Rescore>
-  script_fields?: Record<string, ScriptField>
-  search_after?: Array<integer | string>
-  size?: integer
-  slice?: SlicedScroll
-  sort?: Array<Field | Record<string, Sort | SortOrder>>
-  _source?: boolean | Fields | SourceFilter
-  fields?: Array<Field | DateField>
-  suggest?: Record<string, SuggestBucket>
-  terminate_after?: long
-  timeout?: string
-  track_scores?: boolean
-  version?: boolean
-  seq_no_primary_term?: boolean
-  stored_fields?: Field | Array<Field>
-  pit?: PointInTimeReference
+  body?: {
+    aggs?: Record<string, AggregationContainer>
+    aggregations?: Record<string, AggregationContainer>
+    collapse?: FieldCollapse
+    explain?: boolean
+    from?: integer
+    highlight?: Highlight
+    track_total_hits?: boolean | integer
+    indices_boost?: Array<Record<IndexName, double>>
+    docvalue_fields?: DocValueField | Array<Field | DocValueField>
+    min_score?: double
+    post_filter?: QueryContainer
+    profile?: boolean
+    query?: QueryContainer
+    rescore?: Rescore | Array<Rescore>
+    script_fields?: Record<string, ScriptField>
+    search_after?: Array<integer | string>
+    size?: integer
+    slice?: SlicedScroll
+    sort?: Array<Field | Record<string, Sort | SortOrder>>
+    _source?: boolean | Fields | SourceFilter
+    fields?: Array<Field | DateField>
+    suggest?: Record<string, SuggestBucket>
+    terminate_after?: long
+    timeout?: string
+    track_scores?: boolean
+    version?: boolean
+    seq_no_primary_term?: boolean
+    stored_fields?: Field | Array<Field>
+    pit?: PointInTimeReference
+  } | string | Buffer | ReadableStream
 }
 
 export interface SearchResponse<TDocument = unknown> extends ResponseBase {
