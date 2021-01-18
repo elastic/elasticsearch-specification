@@ -379,6 +379,15 @@ to work with TypeScript. [Visual Studio Code](https://code.visualstudio.com/) an
 
 Yes, take a look [here](./validation-example.md).
 
+### realpath: command not found
+
+The validation script uses realpath which may be not present in your system.
+If you are using MacOS, run the following command to fix the issue:
+
+```sh
+brew install coreutils
+```
+
 ## BirdsEye overview
 
 The work of several repositories come together in this repository.
