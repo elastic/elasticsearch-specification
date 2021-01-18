@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Readable as ReadableStream } from 'stream'
+
 export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
 export interface AggregateBase {
   meta?: Record<string, any>
@@ -112,7 +114,7 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketBase {
+export interface BucketBase extends IDictionary<AggregateName, Aggregate> {
 }
 
 export interface CompositeBucket extends BucketBase {
@@ -220,7 +222,7 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
 export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
 }
 
-export interface SingleBucketAggregate extends AggregateBase {
+export interface SingleBucketAggregate extends AggregateBase, IDictionary<AggregateName, Aggregate> {
   doc_count: double
 }
 
@@ -744,17 +746,17 @@ export interface SumBucketAggregation {
 }
 
 export type StopWords = string | Array<string>
-export interface CharFilterBase {
+export interface ICharFilter {
   type: string
   version: string
 }
 
-export interface TokenFilterBase {
+export interface ITokenFilter {
   type: string
   version: string
 }
 
-export interface TokenizerBase {
+export interface ITokenizer {
   type: string
   version: string
 }
@@ -1477,37 +1479,29 @@ export interface ClusterAllocationExplainRequest extends RequestBase {
 }
 
 export interface ClusterAllocationExplainResponse extends ResponseBase {
-  allocate_explanation?: string
-  allocation_delay?: string
-  allocation_delay_in_millis?: long
-  can_allocate?: Decision
-  can_move_to_other_node?: Decision
-  can_rebalance_cluster?: Decision
-  can_rebalance_cluster_decisions?: Array<AllocationDecision>
-  can_rebalance_to_other_node?: Decision
-  can_remain_decisions?: Array<AllocationDecision>
-  can_remain_on_current_node?: Decision
-  cluster_info?: ClusterInfo
-  configured_delay?: string
-  configured_delay_in_mills?: long
-  current_node?: CurrentNode
+  allocate_explanation: string
+  allocation_delay: string
+  allocation_delay_in_millis: long
+  can_allocate: Decision
+  can_move_to_other_node: Decision
+  can_rebalance_cluster: Decision
+  can_rebalance_cluster_decisions: Array<AllocationDecision>
+  can_rebalance_to_other_node: Decision
+  can_remain_decisions: Array<AllocationDecision>
+  can_remain_on_current_node: Decision
+  configured_delay: string
+  configured_delay_in_mills: long
+  current_node: CurrentNode
   current_state: string
   index: string
-  move_explanation?: string
-  node_allocation_decisions?: Array<NodeAllocationExplanation>
+  move_explanation: string
+  node_allocation_decisions: Array<NodeAllocationExplanation>
   primary: boolean
-  rebalance_explanation?: string
-  remaining_delay?: string
-  remaining_delay_in_millis?: long
+  rebalance_explanation: string
+  remaining_delay: string
+  remaining_delay_in_millis: long
   shard: integer
-  unassigned_info?: UnassignedInformation
-}
-
-export interface ClusterInfo {
-  nodes: Record<string, NodeDiskUsage>
-  shard_sizes: Record<string, long>
-  shard_paths: Record<string, string>
-  reserved_sizes: Array<ReservedSize>
+  unassigned_info: UnassignedInformation
 }
 
 export interface CurrentNode {
@@ -1520,45 +1514,21 @@ export interface CurrentNode {
 
 export type Decision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
 
-export interface DiskUsage {
-  path: string
-  total_bytes: long
-  used_bytes: long
-  free_bytes: long
-  free_disk_percent: double
-  used_disk_percent: double
-}
-
 export interface NodeAllocationExplanation {
   deciders: Array<AllocationDecision>
   node_attributes: Record<string, string>
   node_decision: Decision
   node_id: string
   node_name: string
-  store?: AllocationStore
+  store: AllocationStore
   transport_address: string
   weight_ranking: integer
-}
-
-export interface NodeDiskUsage {
-  node_name: string
-  least_available: DiskUsage
-  most_available: DiskUsage
-}
-
-export interface ReservedSize {
-  node_id: string
-  path: string
-  total: long
-  shards: Array<string>
 }
 
 export interface UnassignedInformation {
   at: Date
   last_allocation_status: string
   reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
 }
 
 export type UnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
@@ -2422,6 +2392,9 @@ export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export type Health = 'green' | 'yellow' | 'red'
 
+export interface IDictionary<TKey = unknown, TValue = unknown> {
+}
+
 export type Level = 'cluster' | 'indices' | 'shards'
 
 export type OpType = 'index' | 'create'
@@ -2561,7 +2534,6 @@ export type ShapeRelation = 'intersects' | 'disjoint' | 'within'
 
 export interface CompletionStats {
   size_in_bytes: long
-  fields?: Record<Field, CompletionStats>
 }
 
 export interface DocStats {
@@ -2570,27 +2542,26 @@ export interface DocStats {
 }
 
 export interface FielddataStats {
-  evictions?: long
+  evictions: long
   memory_size_in_bytes: long
-  fields?: Record<Field, FielddataStats>
 }
 
 export interface FlushStats {
   periodic: long
   total: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
 export interface GetStats {
   current: long
-  exists_time?: string
+  exists_time: string
   exists_time_in_millis: long
   exists_total: long
-  missing_time?: string
+  missing_time: string
   missing_time_in_millis: long
   missing_total: long
-  time?: string
+  time: string
   time_in_millis: long
   total: long
 }
@@ -2598,36 +2569,35 @@ export interface GetStats {
 export interface IndexingStats {
   index_current: long
   delete_current: long
-  delete_time?: string
+  delete_time: string
   delete_time_in_millis: long
   delete_total: long
   is_throttled: boolean
   noop_update_total: long
-  throttle_time?: string
+  throttle_time: string
   throttle_time_in_millis: long
-  index_time?: string
+  index_time: string
   index_time_in_millis: long
   index_total: long
-  index_failed: long
-  types?: Record<string, IndexingStats>
+  types: Record<string, IndexingStats>
 }
 
 export interface MergesStats {
   current: long
   current_docs: long
-  current_size?: string
+  current_size: string
   current_size_in_bytes: long
   total: long
-  total_auto_throttle?: string
+  total_auto_throttle: string
   total_auto_throttle_in_bytes: long
   total_docs: long
-  total_size?: string
+  total_size: string
   total_size_in_bytes: long
-  total_stopped_time?: string
-  total_stopped_time_in_millis: long
-  total_throttled_time?: string
+  total_stopped_time: string
+  total__stopped_time_in_millis: long
+  total_throttled_time: string
   total_throttled_time_in_millis: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
@@ -2655,23 +2625,22 @@ export interface QueryCacheStats {
 export interface RecoveryStats {
   current_as_source: long
   current_as_target: long
-  throttle_time?: string
+  throttle_time: string
   throttle_time_in_millis: long
 }
 
 export interface RefreshStats {
   external_total: long
   external_total_time_in_millis: long
-  listeners: long
   total: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
 export interface RequestCacheStats {
   evictions: long
   hit_count: long
-  memory_size?: string
+  memory_size: string
   memory_size_in_bytes: long
   miss_count: long
 }
@@ -2680,7 +2649,7 @@ export interface SearchStats {
   fetch_current: long
   fetch_time_in_millis: long
   fetch_total: long
-  open_contexts?: long
+  open_contexts: long
   query_current: long
   query_time_in_millis: long
   query_total: long
@@ -2690,7 +2659,6 @@ export interface SearchStats {
   suggest_current: long
   suggest_time_in_millis: long
   suggest_total: long
-  groups?: Record<string, SearchStats>
 }
 
 export interface SegmentsStats {
@@ -2698,7 +2666,7 @@ export interface SegmentsStats {
   doc_values_memory_in_bytes: long
   file_sizes: Record<string, ShardFileSizeInfo>
   fixed_bit_set_memory_in_bytes: long
-  index_writer_max_memory_in_bytes?: long
+  index_writer_max_memory_in_bytes: long
   index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory_in_bytes: long
@@ -2711,25 +2679,24 @@ export interface SegmentsStats {
 }
 
 export interface StoreStats {
-  size?: string
+  size: string
   size_in_bytes: double
-  reserved_in_bytes: double
 }
 
 export interface TranslogStats {
   earliest_last_modified_age: long
   operations: long
-  size?: string
+  size: string
   size_in_bytes: long
   uncommitted_operations: integer
-  uncommitted_size?: string
+  uncommitted_size: string
   uncommitted_size_in_bytes: long
 }
 
 export interface WarmerStats {
   current: long
   total: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
@@ -3413,8 +3380,8 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 }
 
 export interface IndexState {
-  aliases?: Record<IndexName, Alias>
-  mappings?: TypeMapping
+  aliases: Record<IndexName, Alias>
+  mappings: TypeMapping
   settings: Record<string, any>
 }
 
@@ -3502,16 +3469,10 @@ export interface PutAliasResponse extends ResponseBase {
 }
 
 export interface AnalyzeDetail {
-  analyzer?: AnalyzerDetail
-  charfilters?: Array<CharFilterDetail>
+  charfilters: Array<CharFilterDetail>
   custom_analyzer: boolean
-  tokenfilters?: Array<TokenDetail>
-  tokenizer?: TokenDetail
-}
-
-export interface AnalyzerDetail {
-  name: string
-  tokens: Array<ExplainAnalyzeToken>
+  tokenfilters: Array<TokenDetail>
+  tokenizer: TokenDetail
 }
 
 export interface AnalyzeRequest extends RequestBase {
@@ -3519,25 +3480,25 @@ export interface AnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: Array<string>
-    char_filter?: Array<string | CharFilterBase>
+    char_filter?: Array<string | ICharFilter>
     explain?: boolean
     field?: Field
-    filter?: Array<string | TokenFilterBase>
+    filter?: Array<string | ITokenFilter>
     normalizer?: string
-    text?: string | Array<string>
-    tokenizer?: string | TokenizerBase
+    text?: Array<string>
+    tokenizer?: string | ITokenizer
   }
 }
 
 export interface AnalyzeResponse extends ResponseBase {
-  detail?: AnalyzeDetail
-  tokens?: Array<AnalyzeToken>
+  detail: AnalyzeDetail
+  tokens: Array<AnalyzeToken>
 }
 
 export interface AnalyzeToken {
   end_offset: long
   position: long
-  position_length?: long
+  position_length: long
   start_offset: long
   token: string
   type: string
@@ -3551,7 +3512,7 @@ export interface CharFilterDetail {
 export interface ExplainAnalyzeToken {
   bytes: string
   end_offset: long
-  keyword?: boolean
+  keyword: boolean
   position: long
   positionLength: long
   start_offset: long
@@ -3570,7 +3531,7 @@ export interface CloneIndexRequest extends RequestBase {
   target: Name
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string | number
+  wait_for_active_shards?: string
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
@@ -3923,7 +3884,7 @@ export interface PutMappingRequest extends RequestBase {
     index_field?: IndexField
     meta?: Record<string, any>
     numeric_detection?: boolean
-    properties?: Record<PropertyName, PropertyBase>
+    properties?: Record<PropertyName, IProperty>
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
@@ -4100,48 +4061,47 @@ export interface ShardStoreWrapper {
 }
 
 export interface IndexStats {
-  completion?: CompletionStats
-  docs?: DocStats
-  fielddata?: FielddataStats
-  flush?: FlushStats
-  get?: GetStats
-  indexing?: IndexingStats
-  merges?: MergesStats
-  query_cache?: QueryCacheStats
-  recovery?: RecoveryStats
-  refresh?: RefreshStats
-  request_cache?: RequestCacheStats
-  search?: SearchStats
-  segments?: SegmentsStats
-  store?: StoreStats
-  translog?: TranslogStats
-  warmer?: WarmerStats
+  completion: CompletionStats
+  docs: DocStats
+  fielddata: FielddataStats
+  flush: FlushStats
+  get: GetStats
+  indexing: IndexingStats
+  merges: MergesStats
+  query_cache: QueryCacheStats
+  recovery: RecoveryStats
+  refresh: RefreshStats
+  request_cache: RequestCacheStats
+  search: SearchStats
+  segments: SegmentsStats
+  store: StoreStats
+  translog: TranslogStats
+  warmer: WarmerStats
 }
 
 export interface IndicesStats {
   primaries: IndexStats
-  shards?: Record<string, Array<ShardStats>>
+  shards: Record<string, Array<ShardStats>>
   total: IndexStats
-  uuid?: string
+  uuid: string
 }
 
 export interface IndicesStatsRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
-  completion_fields?: Fields
+  completion_fields?: Array<Field>
   expand_wildcards?: ExpandWildcards
-  fielddata_fields?: Fields
-  fields?: Fields
+  fielddata_fields?: Array<Field>
+  fields?: Array<Field>
   forbid_closed_indices?: boolean
-  groups?: string | Array<string>
+  groups?: Array<string>
   include_segment_file_sizes?: boolean
   include_unloaded_segments?: boolean
   level?: Level
-  types?: TypeNames
 }
 
 export interface IndicesStatsResponse extends ResponseBase {
-  indices?: Record<string, IndicesStats>
+  indices: Record<string, IndicesStats>
   _shards: ShardStatistics
   _all: IndicesStats
 }
@@ -4174,7 +4134,6 @@ export interface ShardFileSizeInfo {
 
 export interface ShardFlush {
   total: long
-  periodic: long
   total_time_in_millis: long
 }
 
@@ -4199,13 +4158,6 @@ export interface ShardIndexing {
   is_throttled: boolean
   noop_update_total: long
   throttle_time_in_millis: long
-}
-
-export interface ShardLease {
-  id: string
-  retaining_seq_no: long
-  timestamp: long
-  source: string
 }
 
 export interface ShardMerges {
@@ -4241,8 +4193,6 @@ export interface ShardRefresh {
   listeners: long
   total: long
   total_time_in_millis: long
-  external_total: long
-  external_total_time_in_millis: long
 }
 
 export interface ShardRequestCache {
@@ -4252,16 +4202,10 @@ export interface ShardRequestCache {
   miss_count: long
 }
 
-export interface ShardRetentionLeases {
-  primary_term: long
-  version: long
-  leases: Array<ShardLease>
-}
-
 export interface ShardRouting {
   node: string
   primary: boolean
-  relocating_node?: string
+  relocating_node: string
   state: ShardRoutingState
 }
 
@@ -4319,7 +4263,6 @@ export interface ShardStats {
   recovery: ShardStatsRecovery
   refresh: ShardRefresh
   request_cache: ShardRequestCache
-  retention_leases: ShardRetentionLeases
   routing: ShardRouting
   search: ShardSearch
   segments: ShardSegments
@@ -4336,12 +4279,10 @@ export interface ShardStatsRecovery {
 }
 
 export interface ShardStatsStore {
-  reserved_in_bytes: long
   size_in_bytes: long
 }
 
 export interface ShardTransactionLog {
-  earliest_last_modified_age: long
   operations: long
   size_in_bytes: long
   uncommitted_operations: long
@@ -4793,9 +4734,6 @@ export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
-export interface AdditionalProperties<TKey = unknown, TValue = unknown> {
-}
-
 export type AggregateName = string
 
 export type CategoryId = string
@@ -4900,14 +4838,14 @@ export interface TypeMapping {
   index_field?: IndexField
   _meta?: Record<string, any>
   numeric_detection?: boolean
-  properties: Record<PropertyName, PropertyBase>
+  properties: Record<PropertyName, IProperty>
   _routing?: RoutingField
   _size?: SizeField
   _source?: SourceField
 }
 
 export interface DynamicTemplate {
-  mapping: PropertyBase
+  mapping: IProperty
   match: string
   match_mapping_type: string
   match_pattern: MatchType
@@ -4958,11 +4896,12 @@ export interface SourceField {
   includes: Array<string>
 }
 
-export interface PropertyBase {
-  local_metadata: Record<string, any>
-  meta: Record<string, string>
-  name: PropertyName
+export interface IProperty {
+  local_metadata?: Record<string, any>
+  meta?: Record<string, string>
+  name?: PropertyName
   type: string
+  properties?: Record<PropertyName, IProperty>
 }
 
 export interface StoredScript {
@@ -8182,7 +8121,7 @@ export interface AnomalyDetectors {
 }
 
 export interface CategorizationAnalyzer {
-  filter: Array<TokenFilterBase>
+  filter: Array<ITokenFilter>
   tokenizer: string
 }
 

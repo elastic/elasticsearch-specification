@@ -1199,11 +1199,12 @@
         "namespace": "aggregations",
         "name": "BucketBase"
       },
-      "behaviors": [
+      "implements": [
         {
+          "depth": 0,
           "type": {
-            "namespace": "internal",
-            "name": "AdditionalProperties"
+            "namespace": "common",
+            "name": "IDictionary"
           },
           "generics": [
             {
@@ -1223,9 +1224,6 @@
           ]
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
       "properties": []
     },
     {
@@ -1242,8 +1240,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -1310,8 +1330,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -1487,8 +1529,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": [
         {
@@ -1678,8 +1742,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -1700,8 +1786,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -2101,8 +2209,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -2123,8 +2253,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -2212,30 +2364,12 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "aggregations",
-        "name": "SingleBucketAggregate"
-      },
-      "inherits": [
+      "implements": [
         {
+          "depth": 1,
           "type": {
-            "namespace": "aggregations",
-            "name": "AggregateBase"
-          }
-        }
-      ],
-      "behaviors": [
-        {
-          "type": {
-            "namespace": "internal",
-            "name": "AdditionalProperties"
+            "namespace": "common",
+            "name": "IDictionary"
           },
           "generics": [
             {
@@ -2255,8 +2389,46 @@
           ]
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "aggregations",
+        "name": "SingleBucketAggregate"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "aggregations",
+            "name": "AggregateBase"
+          }
+        }
+      ],
+      "implements": [
+        {
+          "depth": 0,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": [
         {
@@ -13692,7 +13864,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "allocation_delay",
@@ -13703,7 +13875,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "allocation_delay_in_millis",
@@ -13714,7 +13886,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_allocate",
@@ -13725,7 +13897,7 @@
               "name": "Decision"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_move_to_other_node",
@@ -13736,7 +13908,7 @@
               "name": "Decision"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_rebalance_cluster",
@@ -13747,7 +13919,7 @@
               "name": "Decision"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_rebalance_cluster_decisions",
@@ -13761,7 +13933,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_rebalance_to_other_node",
@@ -13772,7 +13944,7 @@
               "name": "Decision"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_remain_decisions",
@@ -13786,7 +13958,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "can_remain_on_current_node",
@@ -13797,18 +13969,7 @@
               "name": "Decision"
             }
           },
-          "required": false
-        },
-        {
-          "name": "cluster_info",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "cluster.cluster_allocation_explain",
-              "name": "ClusterInfo"
-            }
-          },
-          "required": false
+          "required": true
         },
         {
           "name": "configured_delay",
@@ -13819,7 +13980,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "configured_delay_in_mills",
@@ -13830,7 +13991,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "current_node",
@@ -13841,7 +14002,7 @@
               "name": "CurrentNode"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "current_state",
@@ -13874,7 +14035,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "node_allocation_decisions",
@@ -13888,7 +14049,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "primary",
@@ -13910,7 +14071,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "remaining_delay",
@@ -13921,7 +14082,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "remaining_delay_in_millis",
@@ -13932,7 +14093,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "shard",
@@ -13952,92 +14113,6 @@
             "type": {
               "namespace": "cluster.cluster_allocation_explain",
               "name": "UnassignedInformation"
-            }
-          },
-          "required": false
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "cluster.cluster_allocation_explain",
-        "name": "ClusterInfo"
-      },
-      "properties": [
-        {
-          "name": "nodes",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "cluster.cluster_allocation_explain",
-                "name": "NodeDiskUsage"
-              }
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "shard_sizes",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "long"
-              }
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "shard_paths",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "reserved_sizes",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "cluster.cluster_allocation_explain",
-                "name": "ReservedSize"
-              }
             }
           },
           "required": true
@@ -14155,81 +14230,6 @@
       "kind": "interface",
       "name": {
         "namespace": "cluster.cluster_allocation_explain",
-        "name": "DiskUsage"
-      },
-      "properties": [
-        {
-          "name": "path",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "total_bytes",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "used_bytes",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "free_bytes",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "free_disk_percent",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "double"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "used_disk_percent",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "double"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "cluster.cluster_allocation_explain",
         "name": "NodeAllocationExplanation"
       },
       "properties": [
@@ -14310,7 +14310,7 @@
               "name": "AllocationStore"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "transport_address",
@@ -14330,104 +14330,6 @@
             "type": {
               "namespace": "internal",
               "name": "integer"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "cluster.cluster_allocation_explain",
-        "name": "NodeDiskUsage"
-      },
-      "properties": [
-        {
-          "name": "node_name",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "least_available",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "cluster.cluster_allocation_explain",
-              "name": "DiskUsage"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "most_available",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "cluster.cluster_allocation_explain",
-              "name": "DiskUsage"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "cluster.cluster_allocation_explain",
-        "name": "ReservedSize"
-      },
-      "properties": [
-        {
-          "name": "node_id",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "path",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "total",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "shards",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
             }
           },
           "required": true
@@ -14473,28 +14375,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "details",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": false
-        },
-        {
-          "name": "failed_allocation_attempts",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "integer"
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -22243,6 +22123,18 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "namespace": "common",
+        "name": "IDictionary"
+      },
+      "generics": [
+        "TKey",
+        "TValue"
+      ],
+      "properties": []
+    },
+    {
       "kind": "enum",
       "name": {
         "namespace": "common",
@@ -23429,30 +23321,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "fields",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common_options.stats",
-                "name": "CompletionStats"
-              }
-            }
-          },
-          "required": false,
-          "annotations": {
-            "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
-          }
         }
       ]
     },
@@ -23503,7 +23371,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "memory_size_in_bytes",
@@ -23515,30 +23383,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "fields",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common_options.stats",
-                "name": "FielddataStats"
-              }
-            }
-          },
-          "required": false,
-          "annotations": {
-            "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
-          }
         }
       ]
     },
@@ -23580,7 +23424,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_time_in_millis",
@@ -23622,7 +23466,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "exists_time_in_millis",
@@ -23655,7 +23499,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "missing_time_in_millis",
@@ -23688,7 +23532,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "time_in_millis",
@@ -23752,7 +23596,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "delete_time_in_millis",
@@ -23807,7 +23651,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "throttle_time_in_millis",
@@ -23829,7 +23673,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "index_time_in_millis",
@@ -23844,17 +23688,6 @@
         },
         {
           "name": "index_total",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "index_failed",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23883,7 +23716,7 @@
               }
             }
           },
-          "required": false,
+          "required": true,
           "annotations": {
             "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
           }
@@ -23928,7 +23761,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "current_size_in_bytes",
@@ -23961,7 +23794,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_auto_throttle_in_bytes",
@@ -23994,7 +23827,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_size_in_bytes",
@@ -24016,10 +23849,10 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
-          "name": "total_stopped_time_in_millis",
+          "name": "total__stopped_time_in_millis",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -24038,7 +23871,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_throttled_time_in_millis",
@@ -24060,7 +23893,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_time_in_millis",
@@ -24299,7 +24132,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "throttle_time_in_millis",
@@ -24344,17 +24177,6 @@
           "required": true
         },
         {
-          "name": "listeners",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "total",
           "type": {
             "kind": "instance_of",
@@ -24374,7 +24196,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_time_in_millis",
@@ -24427,7 +24249,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "memory_size_in_bytes",
@@ -24502,7 +24324,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "query_current",
@@ -24602,30 +24424,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "groups",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "common_options.stats",
-                "name": "SearchStats"
-              }
-            }
-          },
-          "required": false,
-          "annotations": {
-            "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
-          }
         }
       ]
     },
@@ -24699,7 +24497,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "index_writer_memory_in_bytes",
@@ -24818,21 +24616,10 @@
               "name": "string"
             }
           },
-          "required": false
-        },
-        {
-          "name": "size_in_bytes",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "double"
-            }
-          },
           "required": true
         },
         {
-          "name": "reserved_in_bytes",
+          "name": "size_in_bytes",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -24882,7 +24669,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "size_in_bytes",
@@ -24915,7 +24702,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "uncommitted_size_in_bytes",
@@ -24968,7 +24755,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "total_time_in_millis",
@@ -31860,7 +31647,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "mappings",
@@ -31871,7 +31658,7 @@
               "name": "TypeMapping"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "settings",
@@ -32596,17 +32383,6 @@
       },
       "properties": [
         {
-          "name": "analyzer",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "indices.analyze",
-              "name": "AnalyzerDetail"
-            }
-          },
-          "required": false
-        },
-        {
           "name": "charfilters",
           "type": {
             "kind": "array_of",
@@ -32618,7 +32394,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "custom_analyzer",
@@ -32643,7 +32419,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "tokenizer",
@@ -32653,46 +32429,6 @@
               "namespace": "indices.analyze",
               "name": "TokenDetail"
             }
-          },
-          "required": false
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "indices.analyze",
-        "name": "AnalyzerDetail"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "tokens",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
-            },
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "indices.analyze",
-                  "name": "ExplainAnalyzeToken"
-                }
-              }
-            ]
           },
           "required": true
         }
@@ -32844,32 +32580,14 @@
           {
             "name": "text",
             "type": {
-              "kind": "union_of",
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "Array"
-                  },
-                  "generics": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "namespace": "internal",
-                        "name": "string"
-                      }
-                    }
-                  ]
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
                 }
-              ]
+              }
             },
             "required": false
           },
@@ -32923,7 +32641,7 @@
               "name": "AnalyzeDetail"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "tokens",
@@ -32937,7 +32655,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         }
       ]
     },
@@ -32979,7 +32697,7 @@
               "name": "long"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "start_offset",
@@ -33088,7 +32806,7 @@
               "name": "boolean"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "position",
@@ -33199,9 +32917,6 @@
         "name": "CloneIndexRequest"
       },
       "description": "The configuration for the target index (`settings` and `aliases`)",
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -33264,23 +32979,11 @@
         {
           "name": "wait_for_active_shards",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "number"
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
           },
           "required": false,
           "description": "Set the number of active shards to wait for on the cloned index before the operation returns."
@@ -38237,7 +37940,7 @@
               "name": "CompletionStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "docs",
@@ -38248,7 +37951,7 @@
               "name": "DocStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "fielddata",
@@ -38259,7 +37962,7 @@
               "name": "FielddataStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "flush",
@@ -38270,7 +37973,7 @@
               "name": "FlushStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "get",
@@ -38281,7 +37984,7 @@
               "name": "GetStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "indexing",
@@ -38292,7 +37995,7 @@
               "name": "IndexingStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "merges",
@@ -38303,7 +38006,7 @@
               "name": "MergesStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "query_cache",
@@ -38314,7 +38017,7 @@
               "name": "QueryCacheStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "recovery",
@@ -38325,7 +38028,7 @@
               "name": "RecoveryStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "refresh",
@@ -38336,7 +38039,7 @@
               "name": "RefreshStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "request_cache",
@@ -38347,7 +38050,7 @@
               "name": "RequestCacheStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "search",
@@ -38358,7 +38061,7 @@
               "name": "SearchStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "segments",
@@ -38369,7 +38072,7 @@
               "name": "SegmentsStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "store",
@@ -38380,7 +38083,7 @@
               "name": "StoreStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "translog",
@@ -38391,7 +38094,7 @@
               "name": "TranslogStats"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "warmer",
@@ -38402,7 +38105,7 @@
               "name": "WarmerStats"
             }
           },
-          "required": false
+          "required": true
         }
       ]
     },
@@ -38446,7 +38149,7 @@
               }
             }
           },
-          "required": false,
+          "required": true,
           "annotations": {
             "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
           }
@@ -38471,7 +38174,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         }
       ]
     },
@@ -38480,9 +38183,6 @@
       "name": {
         "namespace": "indices.monitoring.indices_stats",
         "name": "IndicesStatsRequest"
-      },
-      "annotations": {
-        "type_stability": "stable"
       },
       "inherits": [
         {
@@ -38522,10 +38222,13 @@
         {
           "name": "completion_fields",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Fields"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Field"
+              }
             }
           },
           "required": false,
@@ -38546,10 +38249,13 @@
         {
           "name": "fielddata_fields",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Fields"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Field"
+              }
             }
           },
           "required": false,
@@ -38558,10 +38264,13 @@
         {
           "name": "fields",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Fields"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Field"
+              }
             }
           },
           "required": false,
@@ -38582,26 +38291,14 @@
         {
           "name": "groups",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
               }
-            ]
+            }
           },
           "required": false,
           "description": "A comma-separated list of search groups for `search` index metric"
@@ -38641,18 +38338,6 @@
           },
           "required": false,
           "description": "Return stats aggregated at cluster, index or shard level"
-        },
-        {
-          "name": "types",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "TypeNames"
-            }
-          },
-          "required": false,
-          "description": "A comma-separated list of document types for the `indexing` index metric"
         }
       ]
     },
@@ -38690,7 +38375,7 @@
               }
             }
           },
-          "required": false,
+          "required": true,
           "annotations": {
             "prop_serializer": "VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2"
           }
@@ -38914,17 +38599,6 @@
           "required": true
         },
         {
-          "name": "periodic",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "total_time_in_millis",
           "type": {
             "kind": "instance_of",
@@ -39136,59 +38810,6 @@
             "type": {
               "namespace": "internal",
               "name": "long"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "indices.monitoring.indices_stats",
-        "name": "ShardLease"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "retaining_seq_no",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "timestamp",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "source",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
             }
           },
           "required": true
@@ -39481,28 +39102,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "external_total",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "external_total_time_in_millis",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
         }
       ]
     },
@@ -39563,51 +39162,6 @@
       "kind": "interface",
       "name": {
         "namespace": "indices.monitoring.indices_stats",
-        "name": "ShardRetentionLeases"
-      },
-      "properties": [
-        {
-          "name": "primary_term",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "version",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
-          "name": "leases",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "indices.monitoring.indices_stats",
-                "name": "ShardLease"
-              }
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "indices.monitoring.indices_stats",
         "name": "ShardRouting"
       },
       "properties": [
@@ -39642,7 +39196,7 @@
               "name": "string"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "state",
@@ -40185,17 +39739,6 @@
           "required": true
         },
         {
-          "name": "retention_leases",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "indices.monitoring.indices_stats",
-              "name": "ShardRetentionLeases"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "routing",
           "type": {
             "kind": "instance_of",
@@ -40324,17 +39867,6 @@
       },
       "properties": [
         {
-          "name": "reserved_in_bytes",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "size_in_bytes",
           "type": {
             "kind": "instance_of",
@@ -40354,17 +39886,6 @@
         "name": "ShardTransactionLog"
       },
       "properties": [
-        {
-          "name": "earliest_last_modified_age",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "long"
-            }
-          },
-          "required": true
-        },
         {
           "name": "operations",
           "type": {
@@ -44363,18 +43884,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "namespace": "internal",
-        "name": "AdditionalProperties"
-      },
-      "generics": [
-        "TKey",
-        "TValue"
-      ],
-      "properties": []
-    },
-    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -45925,6 +45434,27 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "properties",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "PropertyName"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "mapping.types",
+                "name": "IProperty"
+              }
+            }
+          },
+          "required": false
         }
       ]
     },
