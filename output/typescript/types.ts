@@ -4891,7 +4891,7 @@ export interface IProperty {
   meta?: Record<string, string>
   name?: PropertyName
   type: string
-  properties: Record<PropertyName, IProperty>
+  properties?: Record<PropertyName, IProperty>
 }
 
 export interface StoredScript {
