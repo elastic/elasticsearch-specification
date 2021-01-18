@@ -140,7 +140,7 @@ function createRequest (type) {
 
   function isBodyRequired () {
     for (const endpoint of endpoints) {
-      if (endpoint.request.name === type.name.name) {
+      if (endpoint.request && endpoint.request.name === type.name.name) {
         return endpoint.requestBodyRequired
       }
     }

@@ -65,7 +65,7 @@ export class EndpointReader {
   endpoints: Domain.Endpoint[];
 
   constructor (types: Domain.TypeDeclaration[], restSpecMapping: { [p: string]: RestSpecMapping }) {
-    this.endpoints = _(glob.sync(path.join(__dirname, '..', 'specs', '**', '*.json')))
+    this.endpoints = _(glob.sync(path.join(__dirname, '..', 'specs', '_json_spec', '*.json')))
       .filter(f => !f.match(/tsconfig/))
       .filter(f => !f.match(/tslint/))
       .map(f => new Domain.Endpoint(f, restSpecMapping))
