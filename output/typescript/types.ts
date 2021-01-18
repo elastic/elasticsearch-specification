@@ -114,7 +114,7 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketBase {
+export interface BucketBase extends IDictionary<AggregateName, Aggregate> {
 }
 
 export interface CompositeBucket extends BucketBase {
@@ -222,7 +222,7 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
 export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
 }
 
-export interface SingleBucketAggregate extends AggregateBase {
+export interface SingleBucketAggregate extends AggregateBase, IDictionary<AggregateName, Aggregate> {
   doc_count: double
 }
 
@@ -746,17 +746,17 @@ export interface SumBucketAggregation {
 }
 
 export type StopWords = string | Array<string>
-export interface CharFilterBase {
+export interface ICharFilter {
   type: string
   version: string
 }
 
-export interface TokenFilterBase {
+export interface ITokenFilter {
   type: string
   version: string
 }
 
-export interface TokenizerBase {
+export interface ITokenizer {
   type: string
   version: string
 }
@@ -2392,9 +2392,6 @@ export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export type Health = 'green' | 'yellow' | 'red'
 
-export interface IDictionary<TKey = unknown, TValue = unknown> {
-}
-
 export type Level = 'cluster' | 'indices' | 'shards'
 
 export type OpType = 'index' | 'create'
@@ -3475,13 +3472,13 @@ export interface AnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: Array<string>
-    char_filter?: Array<string | CharFilterBase>
+    char_filter?: Array<string | ICharFilter>
     explain?: boolean
     field?: Field
-    filter?: Array<string | TokenFilterBase>
+    filter?: Array<string | ITokenFilter>
     normalizer?: string
     text?: Array<string>
-    tokenizer?: string | TokenizerBase
+    tokenizer?: string | ITokenizer
   } | string | Buffer | ReadableStream
 }
 
@@ -3879,7 +3876,7 @@ export interface PutMappingRequest extends RequestBase {
     index_field?: IndexField
     meta?: Record<string, any>
     numeric_detection?: boolean
-    properties?: Record<PropertyName, PropertyBase>
+    properties?: Record<PropertyName, IProperty>
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
@@ -4729,6 +4726,9 @@ export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
+export interface AdditionalProperties<TKey = unknown, TValue = unknown> {
+}
+
 export type AggregateName = string
 
 export type CategoryId = string
@@ -4833,14 +4833,14 @@ export interface TypeMapping {
   index_field?: IndexField
   _meta: Record<string, any>
   numeric_detection?: boolean
-  properties: Record<PropertyName, PropertyBase>
+  properties: Record<PropertyName, IProperty>
   _routing: RoutingField
   _size: SizeField
   _source: SourceField
 }
 
 export interface DynamicTemplate {
-  mapping: PropertyBase
+  mapping: IProperty
   match: string
   match_mapping_type: string
   match_pattern: MatchType
@@ -4891,10 +4891,10 @@ export interface SourceField {
   includes: Array<string>
 }
 
-export interface PropertyBase {
-  local_metadata: Record<string, any>
-  meta: Record<string, string>
-  name: PropertyName
+export interface IProperty {
+  local_metadata?: Record<string, any>
+  meta?: Record<string, string>
+  name?: PropertyName
   type: string
 }
 
@@ -8101,7 +8101,7 @@ export interface AnomalyDetectors {
 }
 
 export interface CategorizationAnalyzer {
-  filter: Array<TokenFilterBase>
+  filter: Array<ITokenFilter>
   tokenizer: string
 }
 
