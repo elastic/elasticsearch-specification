@@ -1,8 +1,8 @@
 @rest_spec_name("rollup.rollup_search")
 class RollupSearchRequest extends RequestBase {
   path_parts?: {
-    index: string | string[];
-    type?: string;
+    index: Indices;
+    type?: TypeName;
   }
   query_parameters?: {
     total_hits_as_integer?: boolean;

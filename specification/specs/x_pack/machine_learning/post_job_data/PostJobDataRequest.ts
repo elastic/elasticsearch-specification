@@ -2,7 +2,7 @@
 @class_serializer("PostJobDataFormatter")
 class PostJobDataRequest extends RequestBase {
   path_parts?: {
-    job_id: string;
+    job_id: Id;
   }
   query_parameters?: {
     reset_end?: Date;

@@ -2,10 +2,7 @@ README.md
 csharp-generator
 java-generator
 swagger-generator
-barebones-example
-flight-recorder-generator
 output/java
-output/csharp
 typescript-generator
 specification/node_modules
 specification/src/*

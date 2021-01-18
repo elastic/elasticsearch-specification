@@ -1,7 +1,7 @@
 @rest_spec_name("ilm.move_to_step")
 class MoveToStepRequest extends RequestBase {
   path_parts?: {
-    index: string;
+    index: IndexName;
   }
   query_parameters?: {
   }

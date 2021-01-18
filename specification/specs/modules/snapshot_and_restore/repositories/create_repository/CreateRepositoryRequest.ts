@@ -2,7 +2,7 @@
 @class_serializer("CreateRepositoryFormatter")
 class CreateRepositoryRequest extends RequestBase {
   path_parts?: {
-    repository: string;
+    repository: Name;
   }
   query_parameters?: {
     master_timeout?: Time;

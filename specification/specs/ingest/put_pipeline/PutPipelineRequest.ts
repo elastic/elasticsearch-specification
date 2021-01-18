@@ -1,7 +1,7 @@
 @rest_spec_name("ingest.put_pipeline")
 class PutPipelineRequest extends RequestBase {
   path_parts?: {
-    id: string;
+    id: Id;
   }
   query_parameters?: {
     master_timeout?: Time;

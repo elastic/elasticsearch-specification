@@ -1,7 +1,7 @@
 @rest_spec_name("indices.recovery")
 class RecoveryStatusRequest extends RequestBase {
   path_parts?: {
-    index?: string | string[];
+    index?: Indices;
   }
   query_parameters?: {
     active_only?: boolean;

@@ -1,7 +1,7 @@
 @rest_spec_name("ccr.forget_follower")
 class ForgetFollowerIndexRequest extends RequestBase {
   path_parts?: {
-    index: string;
+    index: IndexName;
   }
   query_parameters?: {
   }

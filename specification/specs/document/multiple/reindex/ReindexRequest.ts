@@ -8,6 +8,7 @@ class ReindexRequest extends RequestBase {
     timeout?: Time;
     wait_for_active_shards?: string;
     wait_for_completion?: boolean;
+    require_alias?: boolean;
   }
   body?: {
     conflicts?: Conflicts;

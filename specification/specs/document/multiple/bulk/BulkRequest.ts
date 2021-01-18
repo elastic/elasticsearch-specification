@@ -5,8 +5,8 @@
 @class_serializer("BulkRequestFormatter")
 class BulkRequest<TSource> extends RequestBase {
   path_parts?: {
-    index?: string;
-    type?: string;
+    index?: IndexName;
+    type?: TypeName;
   }
   query_parameters?: {
     pipeline?: string;

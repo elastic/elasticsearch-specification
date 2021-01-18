@@ -169,6 +169,20 @@ function createClientTypes (kibana = false) {
     const name = isNested(endpoint.name)
       ? endpoint.name.split('.')[1]
       : endpoint.name
+
+    if (!endpoint.request || !endpoint.response) {
+      let definition = `${camelify(name)}<TContext = unknown>(params?: TODO, options?: TransportRequestOptions): TransportRequestPromise<ApiResponse<TODO, TContext>>`
+      if (kibana) {
+        return definition
+      }
+
+      definition += `\n${indent()}${camelify(name)}<TContext = unknown>(callback: callbackFn<TODO, TContext>): TransportRequestCallback`
+      definition += `\n${indent()}${camelify(name)}<TContext = unknown>(params: TODO, callback: callbackFn<TODO, TContext>): TransportRequestCallback`
+      definition += `\n${indent()}${camelify(name)}<TContext = unknown>(params: TODO, options: TransportRequestOptions, callback: callbackFn<TODO, TContext>): TransportRequestCallback`
+
+      return definition
+    }
+
     const requestType = getType(endpoint.request.name)
     const responseType = getType(endpoint.response.name)
 

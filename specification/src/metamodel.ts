@@ -242,10 +242,18 @@ export class Endpoint {
   since?: string;
   deprecation: Deprecation
 
-  request: TypeName;
+  /**
+   * If the request value is `null` it means that there is not yet a
+   * request type definition for this endpoint.
+   */
+  request: TypeName | null;
   requestBodyRequired: boolean; // Not sure this is useful
 
-  response: TypeName;
+  /**
+   * If the response value is `null` it means that there is not yet a
+   * response type definition for this endpoint.
+   */
+  response: TypeName | null;
 
   urls: UrlTemplate[];
 }

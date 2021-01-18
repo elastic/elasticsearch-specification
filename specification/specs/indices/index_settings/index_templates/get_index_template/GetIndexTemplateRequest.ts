@@ -1,7 +1,7 @@
 @rest_spec_name("indices.get_template")
 class GetIndexTemplateRequest extends RequestBase {
   path_parts?: {
-    name?: string | string[];
+    name?: Names;
   }
   query_parameters?: {
     flat_settings?: boolean;

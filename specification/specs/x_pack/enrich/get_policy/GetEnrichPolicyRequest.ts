@@ -1,7 +1,7 @@
 @rest_spec_name("enrich.get_policy")
 class GetEnrichPolicyRequest extends RequestBase {
   path_parts?: {
-    name?: string | string[];
+    name?: Names;
   }
   query_parameters?: {
   }

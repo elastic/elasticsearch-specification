@@ -21,9 +21,7 @@ let definitions = `/*
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- */
-
-import { Readable as ReadableStream } from 'stream'\n\n`
+ */\n\n`
 
 const skip = [
   'CatResponseBase'
@@ -133,16 +131,16 @@ function createRequest (type) {
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
     }
-    code += '  } | string | Buffer | ReadableStream\n'
+    code += '  }\n'
   } else if (type.body != null) {
-    code += `  body${isBodyRequired() ? '' : '?'}: ${buildType(type.body)} | string | Buffer | ReadableStream\n`
+    code += `  body${isBodyRequired() ? '' : '?'}: ${buildType(type.body)}\n`
   }
   code += '}\n'
   return code
 
   function isBodyRequired () {
     for (const endpoint of endpoints) {
-      if (endpoint.request.name === type.name.name) {
+      if (endpoint.request && endpoint.request.name === type.name.name) {
         return endpoint.requestBodyRequired
       }
     }
