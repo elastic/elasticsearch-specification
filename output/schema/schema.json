@@ -8022,7 +8022,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "long"
+              "name": "string"
             }
           },
           "required": true
@@ -8033,7 +8033,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "long"
+              "name": "string"
             }
           },
           "required": true
@@ -8077,7 +8077,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "long"
+              "name": "string"
             }
           },
           "required": true
@@ -8110,7 +8110,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "long"
+              "name": "string"
             }
           },
           "required": true
@@ -26378,17 +26378,6 @@
       ],
       "properties": [
         {
-          "name": "error",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "MainError"
-            }
-          },
-          "required": true
-        },
-        {
           "name": "found",
           "type": {
             "kind": "instance_of",
@@ -26400,7 +26389,7 @@
           "required": true
         },
         {
-          "name": "id",
+          "name": "_id",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26411,7 +26400,7 @@
           "required": true
         },
         {
-          "name": "index",
+          "name": "_index",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26422,7 +26411,7 @@
           "required": true
         },
         {
-          "name": "primary_term",
+          "name": "_primary_term",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26433,7 +26422,7 @@
           "required": true
         },
         {
-          "name": "routing",
+          "name": "_routing",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26444,7 +26433,7 @@
           "required": true
         },
         {
-          "name": "sequence_number",
+          "name": "_seq_no",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26455,7 +26444,7 @@
           "required": true
         },
         {
-          "name": "source",
+          "name": "_source",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26466,7 +26455,7 @@
           "required": true
         },
         {
-          "name": "type",
+          "name": "_type",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26477,7 +26466,7 @@
           "required": true
         },
         {
-          "name": "version",
+          "name": "_version",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26495,6 +26484,9 @@
         "namespace": "document.multiple.multi_get.response",
         "name": "MultiGetResponse"
       },
+      "generics": [
+        "TDocument"
+      ],
       "inherits": [
         {
           "type": {
@@ -26518,8 +26510,8 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "namespace": "internal",
-                    "name": "object"
+                    "namespace": "generic",
+                    "name": "TDocument"
                   }
                 }
               ]
@@ -27094,6 +27086,17 @@
           },
           "required": false,
           "description": "Should the request should block until the reindex is complete."
+        },
+        {
+          "name": "require_alias",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
         }
       ],
       "body": {
@@ -31425,7 +31428,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "index_routing",
@@ -31436,7 +31439,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "is_write_index",
@@ -31447,7 +31450,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -31458,7 +31461,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "search_routing",
@@ -31469,7 +31472,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -44519,7 +44522,7 @@
               "name": "FieldNamesField"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "index_field",
@@ -44547,7 +44550,7 @@
               "kind": "user_defined_value"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "numeric_detection",
@@ -44590,7 +44593,7 @@
               "name": "RoutingField"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_size",
@@ -44601,7 +44604,7 @@
               "name": "SizeField"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_source",
@@ -44612,7 +44615,7 @@
               "name": "SourceField"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -45060,6 +45063,27 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "properties",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "PropertyName"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "mapping.types",
+                "name": "IProperty"
+              }
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -54445,6 +54469,18 @@
             }
           },
           "required": false
+        },
+        {
+          "name": "scroll",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.time_unit",
+              "name": "Time"
+            }
+          },
+          "required": false,
+          "description": "Specify how long a consistent view of the index should be maintained for scrolled search"
         }
       ],
       "body": {
@@ -57356,7 +57392,7 @@
               "name": "TDocument"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "_seq_no",
