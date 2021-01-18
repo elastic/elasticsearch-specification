@@ -916,15 +916,15 @@ export interface CatHelpRequest extends CatRequestBase {
 export type CatHelpResponse = CatHelpRecord[]
 
 export interface CatIndicesRecord {
-  'docs.count': long
-  'docs.deleted': long
+  'docs.count': string
+  'docs.deleted': string
   health: string
   index: string
   pri: string
-  'pri.store.size': long
+  'pri.store.size': string
   rep: string
   status: string
-  'store.size': long
+  'store.size': string
   tm: string
   uuid: string
 }
@@ -2893,20 +2893,19 @@ export interface MultiGetRequest extends RequestBase {
 }
 
 export interface MultiGetHit<TDocument = unknown> {
-  error: MainError
   found: boolean
-  id: string
-  index: string
-  primary_term: long
-  routing: string
-  sequence_number: long
-  source: TDocument
-  type: string
-  version: long
+  _id: string
+  _index: string
+  _primary_term: long
+  _routing: string
+  _seq_no: long
+  _source: TDocument
+  _type: string
+  _version: long
 }
 
-export interface MultiGetResponse extends ResponseBase {
-  docs: Array<MultiGetHit<object>>
+export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
+  docs: Array<MultiGetHit<TDocument>>
 }
 
 export interface MultiTermVectorOperation {
@@ -2965,6 +2964,7 @@ export interface ReindexRequest extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: string
   wait_for_completion?: boolean
+  require_alias?: boolean
   body: {
     conflicts?: Conflicts
     dest?: ReindexDestination
@@ -3387,11 +3387,11 @@ export interface Alias {
 }
 
 export interface AliasDefinition {
-  filter: QueryContainer
-  index_routing: string
-  is_write_index: boolean
-  routing: string
-  search_routing: string
+  filter?: QueryContainer
+  index_routing?: string
+  is_write_index?: boolean
+  routing?: string
+  search_routing?: string
 }
 
 export interface BulkAliasRequest extends RequestBase {
@@ -4824,14 +4824,14 @@ export interface TypeMapping {
   dynamic?: boolean | DynamicMapping
   dynamic_date_formats?: Array<string>
   dynamic_templates?: Record<string, DynamicTemplate>
-  _field_names: FieldNamesField
+  _field_names?: FieldNamesField
   index_field?: IndexField
-  _meta: Record<string, any>
+  _meta?: Record<string, any>
   numeric_detection?: boolean
   properties: Record<PropertyName, IProperty>
-  _routing: RoutingField
-  _size: SizeField
-  _source: SourceField
+  _routing?: RoutingField
+  _size?: SizeField
+  _source?: SourceField
 }
 
 export interface DynamicTemplate {
@@ -4891,6 +4891,7 @@ export interface IProperty {
   meta?: Record<string, string>
   name?: PropertyName
   type: string
+  properties: Record<PropertyName, IProperty>
 }
 
 export interface StoredScript {
@@ -5890,6 +5891,7 @@ export interface ClearScrollResponse extends ResponseBase {
 export interface ScrollRequest extends RequestBase {
   scroll_id?: Id
   total_hits_as_integer?: boolean
+  scroll?: Time
   body?: {
     scroll?: Time
     scroll_id?: string
@@ -5947,37 +5949,39 @@ export interface SearchRequest extends RequestBase {
   size?: integer
   from?: integer
   sort?: Array<Field | Record<string, Sort | SortOrder>>
-  body?: {
-    aggs?: Record<string, AggregationContainer>
-    aggregations?: Record<string, AggregationContainer>
-    collapse?: FieldCollapse
-    explain?: boolean
-    from?: integer
-    highlight?: Highlight
-    track_total_hits?: boolean | integer
-    indices_boost?: Array<Record<IndexName, double>>
-    docvalue_fields?: DocValueField | Array<Field | DocValueField>
-    min_score?: double
-    post_filter?: QueryContainer
-    profile?: boolean
-    query?: QueryContainer
-    rescore?: Rescore | Array<Rescore>
-    script_fields?: Record<string, ScriptField>
-    search_after?: Array<integer | string>
-    size?: integer
-    slice?: SlicedScroll
-    sort?: Array<Field | Record<string, Sort | SortOrder>>
-    _source?: boolean | Fields | SourceFilter
-    fields?: Array<Field | DateField>
-    suggest?: Record<string, SuggestBucket>
-    terminate_after?: long
-    timeout?: string
-    track_scores?: boolean
-    version?: boolean
-    seq_no_primary_term?: boolean
-    stored_fields?: Field | Array<Field>
-    pit?: PointInTimeReference
-  } | string | Buffer | ReadableStream
+  body?: SearchRequestBody | string | Buffer | ReadableStream
+}
+
+export interface SearchRequestBody {
+  aggs?: Record<string, AggregationContainer>
+  aggregations?: Record<string, AggregationContainer>
+  collapse?: FieldCollapse
+  explain?: boolean
+  from?: integer
+  highlight?: Highlight
+  track_total_hits?: boolean | integer
+  indices_boost?: Array<Record<IndexName, double>>
+  docvalue_fields?: DocValueField | Array<Field | DocValueField>
+  min_score?: double
+  post_filter?: QueryContainer
+  profile?: boolean
+  query?: QueryContainer
+  rescore?: Rescore | Array<Rescore>
+  script_fields?: Record<string, ScriptField>
+  search_after?: Array<integer | string>
+  size?: integer
+  slice?: SlicedScroll
+  sort?: Array<Field | Record<string, Sort | SortOrder>>
+  _source?: boolean | Fields | SourceFilter
+  fields?: Array<Field | DateField>
+  suggest?: Record<string, SuggestBucket>
+  terminate_after?: long
+  timeout?: string
+  track_scores?: boolean
+  version?: boolean
+  seq_no_primary_term?: boolean
+  stored_fields?: Field | Array<Field>
+  pit?: PointInTimeReference
 }
 
 export interface SearchResponse<TDocument = unknown> extends ResponseBase {
@@ -6140,7 +6144,7 @@ export interface Hit<TDocument = unknown> {
   _shard?: string
   _node?: string
   _routing?: string
-  _source?: TDocument
+  _source: TDocument
   _seq_no?: long
   _primary_term?: long
   _version?: long
