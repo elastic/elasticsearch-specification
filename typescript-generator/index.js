@@ -1,5 +1,4 @@
 'use strict'
-
 const { writeFileSync } = require('fs')
 const { join } = require('path')
 const { types, endpoints } = require('../output/schema/schema.json')
@@ -165,13 +164,15 @@ function buildInherits (type) {
   }
 }
 
-function buildGenerics (type) {
+function buildGenerics (type, noDefault = false) {
   if (!Array.isArray(type.generics)) return ''
   return `<${type.generics.map(buildGeneric).join(', ')}>`
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    return typeof type === 'string' ? `${type} = unknown` : buildType(type)
+    return typeof type === 'string'  ?
+      (noDefault ? type : `${type} = unknown`)
+      : buildType(type)
   }
 }
 
@@ -185,6 +186,9 @@ function isSpecialInterface (type) {
   if (/^Cat.*Response$/g.test(type.name.name)) {
     return true
   }
+  if (Array.isArray(type.implements)) {
+    return !!type.implements.find(i=>i.type.name === 'IDictionary');
+  }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
       return true
@@ -196,6 +200,22 @@ function isSpecialInterface (type) {
 function serializeSpecialInterface (type) {
   if (/^Cat.*Response$/g.test(type.name.name)) {
     return buildCatResponse(type)
+  }
+  if (Array.isArray(type.implements)) {
+    const dictionaryOf = type.implements.find(i=>i.type.name === 'IDictionary');
+    if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
+    //export type SingleBucketAggregate = { doc_count: double } & Record<string, Aggregate>
+    let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
+    function required (property) {
+      return property.required ? '' : '?'
+    }
+    for (const property of type.properties) {
+      code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildType(property.type)}\n`
+    }
+    code += '}\n'
+    code += `export type ${type.name.name}${buildGenerics(type)} = ${type.name.name}Keys${buildGenerics(type, true)} &\n`
+    code += `    Record${buildGenerics(dictionaryOf)}\n`
+    return code
   }
   switch (type.name.name) {
     case 'DictionaryResponseBase':

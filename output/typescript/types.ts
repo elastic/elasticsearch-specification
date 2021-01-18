@@ -114,18 +114,24 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketBase {
+export interface BucketBaseKeys {
 }
+export type BucketBase = BucketBaseKeys &
+    Record<AggregateName, Aggregate>
 
-export interface CompositeBucket extends BucketBase {
+export interface CompositeBucketKeys extends BucketBase {
 }
+export type CompositeBucket = CompositeBucketKeys &
+    Record<AggregateName, Aggregate>
 
 export interface CompositeBucketAggregate extends MultiBucketAggregate<Record<string, any>> {
   after_key: Record<string, any>
 }
 
-export interface DateHistogramBucket extends BucketBase {
+export interface DateHistogramBucketKeys extends BucketBase {
 }
+export type DateHistogramBucket = DateHistogramBucketKeys &
+    Record<AggregateName, Aggregate>
 
 export interface ExtendedStatsAggregate extends StatsAggregate {
   sum_of_squares: double
@@ -142,9 +148,11 @@ export interface FiltersAggregate extends AggregateBase {
   buckets: Array<FiltersBucketItem> | Record<string, FiltersBucketItem>
 }
 
-export interface FiltersBucketItem extends BucketBase {
+export interface FiltersBucketItemKeys extends BucketBase {
   doc_count: long
 }
+export type FiltersBucketItem = FiltersBucketItemKeys &
+    Record<AggregateName, Aggregate>
 
 export interface GeoBounds {
   bottom_right: LatLon
@@ -169,11 +177,15 @@ export interface HdrPercentilesAggregate extends AggregateBase {
   values: Array<HdrPercentileItem>
 }
 
-export interface IpRangeBucket extends BucketBase {
+export interface IpRangeBucketKeys extends BucketBase {
 }
+export type IpRangeBucket = IpRangeBucketKeys &
+    Record<AggregateName, Aggregate>
 
-export interface KeyedBucket<TKey = unknown> extends BucketBase {
+export interface KeyedBucketKeys<TKey = unknown> extends BucketBase {
 }
+export type KeyedBucket<TKey = unknown> = KeyedBucketKeys<TKey> &
+    Record<AggregateName, Aggregate>
 
 export interface KeyedValueAggregate extends ValueAggregate {
   keys: Array<string>
@@ -205,11 +217,15 @@ export interface PercentilesAggregate extends AggregateBase {
   items: Array<PercentileItem>
 }
 
-export interface RangeBucket extends BucketBase {
+export interface RangeBucketKeys extends BucketBase {
 }
+export type RangeBucket = RangeBucketKeys &
+    Record<AggregateName, Aggregate>
 
-export interface RareTermsBucket<TKey = unknown> extends BucketBase {
+export interface RareTermsBucketKeys<TKey = unknown> extends BucketBase {
 }
+export type RareTermsBucket<TKey = unknown> = RareTermsBucketKeys<TKey> &
+    Record<AggregateName, Aggregate>
 
 export interface ScriptedMetricAggregate extends AggregateBase {
 }
@@ -219,12 +235,16 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
   doc_count: long
 }
 
-export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
+export interface SignificantTermsBucketKeys<TKey = unknown> extends BucketBase {
 }
+export type SignificantTermsBucket<TKey = unknown> = SignificantTermsBucketKeys<TKey> &
+    Record<AggregateName, Aggregate>
 
-export interface SingleBucketAggregate extends AggregateBase {
+export interface SingleBucketAggregateKeys extends AggregateBase {
   doc_count: double
 }
+export type SingleBucketAggregate = SingleBucketAggregateKeys &
+    Record<AggregateName, Aggregate>
 
 export interface StandardDeviationBounds {
   lower: double
@@ -6153,7 +6173,7 @@ export interface Hit<TDocument = unknown> {
 }
 
 export interface HitsMetadata<T = unknown> {
-  total: TotalHits | long
+  total?: TotalHits | long
   hits: Array<Hit<T>>
   max_score?: double
 }

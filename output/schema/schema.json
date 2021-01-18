@@ -57843,7 +57843,7 @@
               }
             ]
           },
-          "required": true
+          "required": false
         },
         {
           "name": "hits",
