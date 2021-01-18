@@ -48,36 +48,38 @@ class SearchRequest extends RequestBase {
     from?: integer;
     sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>;
   }
-  body?: {
-    aggs?: Dictionary<string, AggregationContainer>;
-    aggregations?: Dictionary<string, AggregationContainer>;
-    collapse?: FieldCollapse;
-    explain?: boolean;
-    from?: integer;
-    highlight?: Highlight;
-    track_total_hits?: boolean | integer;
-    /** @prop_serializer IndicesBoostFormatter */
-    indices_boost?: Array<Dictionary<IndexName, double>>;
-    docvalue_fields?: DocValueField | Array<Field | DocValueField>;
-    min_score?: double;
-    post_filter?: QueryContainer;
-    profile?: boolean;
-    query?: QueryContainer;
-    rescore?: Rescore | Rescore[];
-    script_fields?: Dictionary<string, ScriptField>;
-    search_after?: Array<integer | string>;
-    size?: integer;
-    slice?: SlicedScroll;
-    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>;
-    _source?: boolean | Fields | SourceFilter;
-    fields?: Array<Field | DateField>;
-    suggest?: Dictionary<string, SuggestBucket>;
-    terminate_after?: long;
-    timeout?: string;
-    track_scores?: boolean;
-    version?: boolean;
-    seq_no_primary_term?: boolean;
-    stored_fields?: Field | Field[];
-    pit?: PointInTimeReference
-  }
+  body?: SearchRequestBody
+}
+
+class SearchRequestBody {
+  aggs?: Dictionary<string, AggregationContainer>;
+  aggregations?: Dictionary<string, AggregationContainer>;
+  collapse?: FieldCollapse;
+  explain?: boolean;
+  from?: integer;
+  highlight?: Highlight;
+  track_total_hits?: boolean | integer;
+  /** @prop_serializer IndicesBoostFormatter */
+  indices_boost?: Array<Dictionary<IndexName, double>>;
+  docvalue_fields?: DocValueField | Array<Field | DocValueField>;
+  min_score?: double;
+  post_filter?: QueryContainer;
+  profile?: boolean;
+  query?: QueryContainer;
+  rescore?: Rescore | Rescore[];
+  script_fields?: Dictionary<string, ScriptField>;
+  search_after?: Array<integer | string>;
+  size?: integer;
+  slice?: SlicedScroll;
+  sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>;
+  _source?: boolean | Fields | SourceFilter;
+  fields?: Array<Field | DateField>;
+  suggest?: Dictionary<string, SuggestBucket>;
+  terminate_after?: long;
+  timeout?: string;
+  track_scores?: boolean;
+  version?: boolean;
+  seq_no_primary_term?: boolean;
+  stored_fields?: Field | Field[];
+  pit?: PointInTimeReference
 }

@@ -3,4 +3,5 @@ interface IProperty {
   meta?: Dictionary<string, string>;
   name?: PropertyName;
   type: string;
+  properties: Dictionary<PropertyName, IProperty>;
 }
