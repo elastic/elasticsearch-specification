@@ -1,7 +1,7 @@
 # elastic client generator
 
 This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside [`/specification/specs`](specification/specs).
+you can find them inside [`/specification/specs`](./specification/specs).
 The [`specification`](specification) folder contains a TypeScript program that compiles the entire definition
 in a JSON representation that can be used for generating language clients.
 
@@ -42,7 +42,7 @@ $ cat output/schema/schema.json
 
 ### Structure of the JSON representation
 
-The JSON representation is [formally defined as TypeScript definitions](specification/src/metamodel.ts). Refer to them for the full details. It is an object with two top level keys:
+The JSON representation is [formally defined as TypeScript definitions](./specification/src/metamodel.ts). Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
 {
@@ -339,7 +339,7 @@ propertyOptional?: string
 
 ### A definition is missing, how do I add it?
 
-All the definitons are in the [`specifications/specs`](specifications/specs) folder, you should explore its content and find the
+All the definitons are in the [`specifications/specs`](./specifications/specs) folder, you should explore its content and find the
 most approriate place where to add the new defintion. You can either create a new file or update an existing one.
 If possible, try to reuse existing type definitions (eg `Indices` instead of `string`).
 
@@ -350,13 +350,13 @@ you can find above how to run the validation of the spec.
 
 ### An endpoint is missing, how do I add it?
 
-All the endpoint definitons are inside `specifications/specs/json` folder, which contains a series of
+All the endpoint definitons are inside `specifications/specs/_json_spec` folder, which contains a series of
 JSON files taken directly from the Elasticsearch rest-api-spec.
 You should copy from there the missing endpoint and add it here.
 
 ### An endpoint definition is not correct, how do I fix it?
 
-All the endpoint definitons are inside `specifications/specs/json` folder, which contains a series of
+All the endpoint definitons are inside `specifications/specs/_json_spec` folder, which contains a series of
 JSON files taken directly from the Elasticsearch rest-api-spec.
 You should copy from there the updated endpoint defintion and change it here.
 
