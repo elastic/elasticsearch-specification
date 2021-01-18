@@ -1,3 +1,17 @@
+<<<<<<< Updated upstream
 *
 !output/schema
 !output/typescript
+=======
+README.md
+csharp-generator
+java-generator
+swagger-generator
+output/java
+typescript-generator
+specification/node_modules
+specification/src/*
+specification/specs/*
+specification/tslint.json
+specification/tsconfig.json
+>>>>>>> Stashed changes
