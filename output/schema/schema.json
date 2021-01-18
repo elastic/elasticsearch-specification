@@ -1199,11 +1199,12 @@
         "namespace": "aggregations",
         "name": "BucketBase"
       },
-      "behaviors": [
+      "implements": [
         {
+          "depth": 0,
           "type": {
-            "namespace": "internal",
-            "name": "AdditionalProperties"
+            "namespace": "common",
+            "name": "IDictionary"
           },
           "generics": [
             {
@@ -1223,9 +1224,6 @@
           ]
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
       "properties": []
     },
     {
@@ -1242,8 +1240,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -1310,8 +1330,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -1487,8 +1529,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": [
         {
@@ -1678,8 +1742,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -1700,8 +1786,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -2101,8 +2209,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -2123,8 +2253,30 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "implements": [
+        {
+          "depth": 1,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": []
     },
@@ -2212,30 +2364,12 @@
           }
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "aggregations",
-        "name": "SingleBucketAggregate"
-      },
-      "inherits": [
+      "implements": [
         {
+          "depth": 1,
           "type": {
-            "namespace": "aggregations",
-            "name": "AggregateBase"
-          }
-        }
-      ],
-      "behaviors": [
-        {
-          "type": {
-            "namespace": "internal",
-            "name": "AdditionalProperties"
+            "namespace": "common",
+            "name": "IDictionary"
           },
           "generics": [
             {
@@ -2255,8 +2389,46 @@
           ]
         }
       ],
-      "attachedBehaviors": [
-        "AdditionalProperties"
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "aggregations",
+        "name": "SingleBucketAggregate"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "aggregations",
+            "name": "AggregateBase"
+          }
+        }
+      ],
+      "implements": [
+        {
+          "depth": 0,
+          "type": {
+            "namespace": "common",
+            "name": "IDictionary"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
       ],
       "properties": [
         {
@@ -6621,7 +6793,27 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "stopwords",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Array"
+            },
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              }
+            ]
+          },
+          "required": false
         }
       ]
     },
@@ -22241,6 +22433,18 @@
           ]
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "common",
+        "name": "IDictionary"
+      },
+      "generics": [
+        "TKey",
+        "TValue"
+      ],
+      "properties": []
     },
     {
       "kind": "enum",
@@ -44363,18 +44567,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "namespace": "internal",
-        "name": "AdditionalProperties"
-      },
-      "generics": [
-        "TKey",
-        "TValue"
-      ],
-      "properties": []
-    },
-    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -45925,6 +46117,27 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "properties",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "PropertyName"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "mapping.types",
+                "name": "IProperty"
+              }
+            }
+          },
+          "required": false
         }
       ]
     },
