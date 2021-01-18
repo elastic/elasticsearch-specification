@@ -6173,7 +6173,7 @@ export interface Hit<TDocument = unknown> {
 }
 
 export interface HitsMetadata<T = unknown> {
-  total?: TotalHits | long
+  total: TotalHits | long
   hits: Array<Hit<T>>
   max_score?: double
 }
