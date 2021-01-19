@@ -1201,7 +1201,6 @@
       },
       "implements": [
         {
-          "depth": 0,
           "type": {
             "namespace": "common",
             "name": "IDictionary"
@@ -1223,6 +1222,9 @@
             }
           ]
         }
+      ],
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -1240,30 +1242,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -1330,30 +1310,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -1529,30 +1487,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": [
         {
@@ -1742,30 +1678,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -1786,30 +1700,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -2209,30 +2101,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -2253,30 +2123,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -2364,30 +2212,8 @@
           }
         }
       ],
-      "implements": [
-        {
-          "depth": 1,
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
-          },
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "AggregateName"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "aggregations",
-                "name": "Aggregate"
-              }
-            }
-          ]
-        }
+      "traits": [
+        "IDictionary"
       ],
       "properties": []
     },
@@ -2407,7 +2233,6 @@
       ],
       "implements": [
         {
-          "depth": 0,
           "type": {
             "namespace": "common",
             "name": "IDictionary"
@@ -2429,6 +2254,9 @@
             }
           ]
         }
+      ],
+      "traits": [
+        "IDictionary"
       ],
       "properties": [
         {
