@@ -178,6 +178,12 @@ class IndexRequest<TDocument> extends RequestBase { ... }
 
 And finally open a pull request with your changes.
 
+Namespaced APIs can be validated in the same way, for example:
+
+```js
+./run-validations.sh --api cat.health --request
+```
+
 ### Where do I see the test?
 
 Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
