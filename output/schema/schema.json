@@ -45945,27 +45945,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "properties",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "PropertyName"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "mapping.types",
-                "name": "IProperty"
-              }
-            }
-          },
-          "required": false
         }
       ]
     },
