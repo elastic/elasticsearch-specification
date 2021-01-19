@@ -114,7 +114,7 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketBase extends IDictionary<AggregateName, Aggregate> {
+export interface BucketBase {
 }
 
 export interface CompositeBucket extends BucketBase {
@@ -222,7 +222,7 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
 export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
 }
 
-export interface SingleBucketAggregate extends AggregateBase, IDictionary<AggregateName, Aggregate> {
+export interface SingleBucketAggregate extends AggregateBase {
   doc_count: double
 }
 
@@ -746,18 +746,17 @@ export interface SumBucketAggregation {
 }
 
 export type StopWords = string | Array<string>
-export interface ICharFilter {
+export interface CharFilterBase {
   type: string
   version: string
 }
 
-export interface ITokenFilter {
+export interface TokenFilterBase {
   type: string
-  version?: string
-  stopwords?: Array<string>
+  version: string
 }
 
-export interface ITokenizer {
+export interface TokenizerBase {
   type: string
   version: string
 }
@@ -916,15 +915,15 @@ export interface CatHelpRequest extends CatRequestBase {
 export type CatHelpResponse = CatHelpRecord[]
 
 export interface CatIndicesRecord {
-  'docs.count': string
-  'docs.deleted': string
+  'docs.count': long
+  'docs.deleted': long
   health: string
   index: string
   pri: string
-  'pri.store.size': string
+  'pri.store.size': long
   rep: string
   status: string
-  'store.size': string
+  'store.size': long
   tm: string
   uuid: string
 }
@@ -1476,41 +1475,33 @@ export interface ClusterAllocationExplainRequest extends RequestBase {
     index?: IndexName
     primary?: boolean
     shard?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ClusterAllocationExplainResponse extends ResponseBase {
-  allocate_explanation?: string
-  allocation_delay?: string
-  allocation_delay_in_millis?: long
-  can_allocate?: Decision
-  can_move_to_other_node?: Decision
-  can_rebalance_cluster?: Decision
-  can_rebalance_cluster_decisions?: Array<AllocationDecision>
-  can_rebalance_to_other_node?: Decision
-  can_remain_decisions?: Array<AllocationDecision>
-  can_remain_on_current_node?: Decision
-  cluster_info?: ClusterInfo
-  configured_delay?: string
-  configured_delay_in_mills?: long
-  current_node?: CurrentNode
+  allocate_explanation: string
+  allocation_delay: string
+  allocation_delay_in_millis: long
+  can_allocate: Decision
+  can_move_to_other_node: Decision
+  can_rebalance_cluster: Decision
+  can_rebalance_cluster_decisions: Array<AllocationDecision>
+  can_rebalance_to_other_node: Decision
+  can_remain_decisions: Array<AllocationDecision>
+  can_remain_on_current_node: Decision
+  configured_delay: string
+  configured_delay_in_mills: long
+  current_node: CurrentNode
   current_state: string
   index: string
-  move_explanation?: string
-  node_allocation_decisions?: Array<NodeAllocationExplanation>
+  move_explanation: string
+  node_allocation_decisions: Array<NodeAllocationExplanation>
   primary: boolean
-  rebalance_explanation?: string
-  remaining_delay?: string
-  remaining_delay_in_millis?: long
+  rebalance_explanation: string
+  remaining_delay: string
+  remaining_delay_in_millis: long
   shard: integer
-  unassigned_info?: UnassignedInformation
-}
-
-export interface ClusterInfo {
-  nodes: Record<string, NodeDiskUsage>
-  shard_sizes: Record<string, long>
-  shard_paths: Record<string, string>
-  reserved_sizes: Array<ReservedSize>
+  unassigned_info: UnassignedInformation
 }
 
 export interface CurrentNode {
@@ -1523,45 +1514,21 @@ export interface CurrentNode {
 
 export type Decision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
 
-export interface DiskUsage {
-  path: string
-  total_bytes: long
-  used_bytes: long
-  free_bytes: long
-  free_disk_percent: double
-  used_disk_percent: double
-}
-
 export interface NodeAllocationExplanation {
   deciders: Array<AllocationDecision>
   node_attributes: Record<string, string>
   node_decision: Decision
   node_id: string
   node_name: string
-  store?: AllocationStore
+  store: AllocationStore
   transport_address: string
   weight_ranking: integer
-}
-
-export interface NodeDiskUsage {
-  node_name: string
-  least_available: DiskUsage
-  most_available: DiskUsage
-}
-
-export interface ReservedSize {
-  node_id: string
-  path: string
-  total: long
-  shards: Array<string>
 }
 
 export interface UnassignedInformation {
   at: Date
   last_allocation_status: string
   reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
 }
 
 export type UnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
@@ -1668,7 +1635,7 @@ export interface ClusterRerouteRequest extends RequestBase {
   timeout?: Time
   body?: {
     commands?: Array<ClusterRerouteCommand>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ClusterRerouteResponse extends ResponseBase {
@@ -1699,7 +1666,7 @@ export interface ClusterPutSettingsRequest extends RequestBase {
   body: {
     persistent?: Record<string, any>
     transient?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ClusterPutSettingsResponse extends ResponseBase {
@@ -2567,7 +2534,6 @@ export type ShapeRelation = 'intersects' | 'disjoint' | 'within'
 
 export interface CompletionStats {
   size_in_bytes: long
-  fields?: Record<Field, CompletionStats>
 }
 
 export interface DocStats {
@@ -2576,27 +2542,26 @@ export interface DocStats {
 }
 
 export interface FielddataStats {
-  evictions?: long
+  evictions: long
   memory_size_in_bytes: long
-  fields?: Record<Field, FielddataStats>
 }
 
 export interface FlushStats {
   periodic: long
   total: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
 export interface GetStats {
   current: long
-  exists_time?: string
+  exists_time: string
   exists_time_in_millis: long
   exists_total: long
-  missing_time?: string
+  missing_time: string
   missing_time_in_millis: long
   missing_total: long
-  time?: string
+  time: string
   time_in_millis: long
   total: long
 }
@@ -2604,36 +2569,35 @@ export interface GetStats {
 export interface IndexingStats {
   index_current: long
   delete_current: long
-  delete_time?: string
+  delete_time: string
   delete_time_in_millis: long
   delete_total: long
   is_throttled: boolean
   noop_update_total: long
-  throttle_time?: string
+  throttle_time: string
   throttle_time_in_millis: long
-  index_time?: string
+  index_time: string
   index_time_in_millis: long
   index_total: long
-  index_failed: long
-  types?: Record<string, IndexingStats>
+  types: Record<string, IndexingStats>
 }
 
 export interface MergesStats {
   current: long
   current_docs: long
-  current_size?: string
+  current_size: string
   current_size_in_bytes: long
   total: long
-  total_auto_throttle?: string
+  total_auto_throttle: string
   total_auto_throttle_in_bytes: long
   total_docs: long
-  total_size?: string
+  total_size: string
   total_size_in_bytes: long
-  total_stopped_time?: string
-  total_stopped_time_in_millis: long
-  total_throttled_time?: string
+  total_stopped_time: string
+  total__stopped_time_in_millis: long
+  total_throttled_time: string
   total_throttled_time_in_millis: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
@@ -2661,23 +2625,22 @@ export interface QueryCacheStats {
 export interface RecoveryStats {
   current_as_source: long
   current_as_target: long
-  throttle_time?: string
+  throttle_time: string
   throttle_time_in_millis: long
 }
 
 export interface RefreshStats {
   external_total: long
   external_total_time_in_millis: long
-  listeners: long
   total: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
 export interface RequestCacheStats {
   evictions: long
   hit_count: long
-  memory_size?: string
+  memory_size: string
   memory_size_in_bytes: long
   miss_count: long
 }
@@ -2686,7 +2649,7 @@ export interface SearchStats {
   fetch_current: long
   fetch_time_in_millis: long
   fetch_total: long
-  open_contexts?: long
+  open_contexts: long
   query_current: long
   query_time_in_millis: long
   query_total: long
@@ -2696,7 +2659,6 @@ export interface SearchStats {
   suggest_current: long
   suggest_time_in_millis: long
   suggest_total: long
-  groups?: Record<string, SearchStats>
 }
 
 export interface SegmentsStats {
@@ -2704,7 +2666,7 @@ export interface SegmentsStats {
   doc_values_memory_in_bytes: long
   file_sizes: Record<string, ShardFileSizeInfo>
   fixed_bit_set_memory_in_bytes: long
-  index_writer_max_memory_in_bytes?: long
+  index_writer_max_memory_in_bytes: long
   index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory_in_bytes: long
@@ -2717,25 +2679,24 @@ export interface SegmentsStats {
 }
 
 export interface StoreStats {
-  size?: string
+  size: string
   size_in_bytes: double
-  reserved_in_bytes: double
 }
 
 export interface TranslogStats {
   earliest_last_modified_age: long
   operations: long
-  size?: string
+  size: string
   size_in_bytes: long
   uncommitted_operations: integer
-  uncommitted_size?: string
+  uncommitted_size: string
   uncommitted_size_in_bytes: long
 }
 
 export interface WarmerStats {
   current: long
   total: long
-  total_time?: string
+  total_time: string
   total_time_in_millis: long
 }
 
@@ -2768,7 +2729,7 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
   type_query_string?: string
   wait_for_active_shards?: string
   require_alias?: boolean
-  body: Array<BulkOperationContainer | TSource>
+  body: Array<BulkOperationContainer | TSource> | string | Buffer | ReadableStream
 }
 
 export interface BulkResponse extends ResponseBase {
@@ -2879,7 +2840,7 @@ export interface DeleteByQueryRequest extends RequestBase {
     max_docs?: long
     query?: QueryContainer
     slice?: SlicedScroll
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface DeleteByQueryResponse extends ResponseBase {
@@ -2931,23 +2892,24 @@ export interface MultiGetRequest extends RequestBase {
   stored_fields?: Array<Field>
   body: {
     docs?: Array<MultiGetOperation>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface MultiGetHit<TDocument = unknown> {
+  error: MainError
   found: boolean
-  _id: string
-  _index: string
-  _primary_term: long
-  _routing: string
-  _seq_no: long
-  _source: TDocument
-  _type: string
-  _version: long
+  id: string
+  index: string
+  primary_term: long
+  routing: string
+  sequence_number: long
+  source: TDocument
+  type: string
+  version: long
 }
 
-export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
-  docs: Array<MultiGetHit<TDocument>>
+export interface MultiGetResponse extends ResponseBase {
+  docs: Array<MultiGetHit<object>>
 }
 
 export interface MultiTermVectorOperation {
@@ -2983,7 +2945,7 @@ export interface MultiTermVectorsRequest extends RequestBase {
   body?: {
     docs?: Array<MultiTermVectorOperation>
     ids?: Array<Id>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface MultiTermVectorsResponse extends ResponseBase {
@@ -3006,7 +2968,6 @@ export interface ReindexRequest extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: string
   wait_for_completion?: boolean
-  require_alias?: boolean
   body: {
     conflicts?: Conflicts
     dest?: ReindexDestination
@@ -3014,7 +2975,7 @@ export interface ReindexRequest extends RequestBase {
     script?: Script
     size?: long
     source?: ReindexSource
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ReindexResponse extends ResponseBase {
@@ -3140,7 +3101,7 @@ export interface UpdateByQueryRequest extends RequestBase {
     query?: QueryContainer
     script?: Script
     slice?: SlicedScroll
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateByQueryResponse extends ResponseBase {
@@ -3155,11 +3116,6 @@ export interface UpdateByQueryResponse extends ResponseBase {
   total: long
   updated: long
   version_conflicts: long
-}
-
-export interface UpdateByQueryRethrottleRequest extends RequestBase {
-  task_id: Id
-  requests_per_second?: long
 }
 
 export interface WriteResponseBase extends ResponseBase {
@@ -3185,7 +3141,7 @@ export interface CreateRequest<TDocument = unknown> extends RequestBase {
   version?: long
   version_type?: VersionType
   wait_for_active_shards?: string
-  body: TDocument
+  body: TDocument | string | Buffer | ReadableStream
 }
 
 export interface CreateResponse extends WriteResponseBase {
@@ -3269,7 +3225,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   version_type?: VersionType
   wait_for_active_shards?: string
   require_alias?: boolean
-  body: TDocument
+  body: TDocument | string | Buffer | ReadableStream
 }
 
 export interface IndexResponse extends WriteResponseBase {
@@ -3349,7 +3305,7 @@ export interface TermVectorsRequest<TDocument = unknown> extends RequestBase {
     doc?: TDocument
     filter?: TermVectorFilter
     per_field_analyzer?: Record<Field, string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface TermVectorsResponse extends ResponseBase {
@@ -3411,7 +3367,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
     scripted_upsert?: boolean
     _source?: boolean | SourceFilter
     upsert?: TDocument
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
@@ -3419,8 +3375,8 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 }
 
 export interface IndexState {
-  aliases?: Record<IndexName, Alias>
-  mappings?: TypeMapping
+  aliases: Record<IndexName, Alias>
+  mappings: TypeMapping
   settings: Record<string, any>
 }
 
@@ -3434,11 +3390,11 @@ export interface Alias {
 }
 
 export interface AliasDefinition {
-  filter?: QueryContainer
-  index_routing?: string
-  is_write_index?: boolean
-  routing?: string
-  search_routing?: string
+  filter: QueryContainer
+  index_routing: string
+  is_write_index: boolean
+  routing: string
+  search_routing: string
 }
 
 export interface BulkAliasRequest extends RequestBase {
@@ -3446,7 +3402,7 @@ export interface BulkAliasRequest extends RequestBase {
   timeout?: Time
   body: {
     actions?: Array<AliasAction>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface BulkAliasResponse extends AcknowledgedResponseBase {
@@ -3501,23 +3457,17 @@ export interface PutAliasRequest extends RequestBase {
     is_write_index?: boolean
     routing?: Routing
     search_routing?: Routing
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutAliasResponse extends ResponseBase {
 }
 
 export interface AnalyzeDetail {
-  analyzer?: AnalyzerDetail
-  charfilters?: Array<CharFilterDetail>
+  charfilters: Array<CharFilterDetail>
   custom_analyzer: boolean
-  tokenfilters?: Array<TokenDetail>
-  tokenizer?: TokenDetail
-}
-
-export interface AnalyzerDetail {
-  name: string
-  tokens: Array<ExplainAnalyzeToken>
+  tokenfilters: Array<TokenDetail>
+  tokenizer: TokenDetail
 }
 
 export interface AnalyzeRequest extends RequestBase {
@@ -3525,25 +3475,25 @@ export interface AnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: Array<string>
-    char_filter?: Array<string | ICharFilter>
+    char_filter?: Array<string | CharFilterBase>
     explain?: boolean
     field?: Field
-    filter?: Array<string | ITokenFilter>
+    filter?: Array<string | TokenFilterBase>
     normalizer?: string
-    text?: string | Array<string>
-    tokenizer?: string | ITokenizer
-  }
+    text?: Array<string>
+    tokenizer?: string | TokenizerBase
+  } | string | Buffer | ReadableStream
 }
 
 export interface AnalyzeResponse extends ResponseBase {
-  detail?: AnalyzeDetail
-  tokens?: Array<AnalyzeToken>
+  detail: AnalyzeDetail
+  tokens: Array<AnalyzeToken>
 }
 
 export interface AnalyzeToken {
   end_offset: long
   position: long
-  position_length?: long
+  position_length: long
   start_offset: long
   token: string
   type: string
@@ -3557,7 +3507,7 @@ export interface CharFilterDetail {
 export interface ExplainAnalyzeToken {
   bytes: string
   end_offset: long
-  keyword?: boolean
+  keyword: boolean
   position: long
   positionLength: long
   start_offset: long
@@ -3576,11 +3526,11 @@ export interface CloneIndexRequest extends RequestBase {
   target: Name
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string | number
+  wait_for_active_shards?: string
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CloneIndexResponse extends AcknowledgedResponseBase {
@@ -3598,7 +3548,7 @@ export interface CreateIndexRequest extends RequestBase {
     aliases?: Record<IndexName, Alias>
     mappings?: TypeMapping
     settings?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CreateIndexResponse extends AcknowledgedResponseBase {
@@ -3717,7 +3667,7 @@ export interface RolloverIndexRequest extends RequestBase {
     conditions?: RolloverConditions
     mappings?: TypeMapping
     settings?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface RolloverIndexResponse extends AcknowledgedResponseBase {
@@ -3738,7 +3688,7 @@ export interface ShrinkIndexRequest extends RequestBase {
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ShrinkIndexResponse extends AcknowledgedResponseBase {
@@ -3754,7 +3704,7 @@ export interface SplitIndexRequest extends RequestBase {
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface SplitIndexResponse extends AcknowledgedResponseBase {
@@ -3849,7 +3799,7 @@ export interface PutIndexTemplateRequest extends RequestBase {
     order?: integer
     settings?: Record<string, any>
     version?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutIndexTemplateResponse extends AcknowledgedResponseBase {
@@ -3866,7 +3816,7 @@ export interface UpdateIndexSettingsRequest extends RequestBase {
   timeout?: Time
   body: {
     index?: Record<string, any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
@@ -3929,11 +3879,11 @@ export interface PutMappingRequest extends RequestBase {
     index_field?: IndexField
     meta?: Record<string, any>
     numeric_detection?: boolean
-    properties?: Record<PropertyName, IProperty>
+    properties?: Record<PropertyName, PropertyBase>
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutMappingResponse extends IndicesResponseBase {
@@ -4106,48 +4056,47 @@ export interface ShardStoreWrapper {
 }
 
 export interface IndexStats {
-  completion?: CompletionStats
-  docs?: DocStats
-  fielddata?: FielddataStats
-  flush?: FlushStats
-  get?: GetStats
-  indexing?: IndexingStats
-  merges?: MergesStats
-  query_cache?: QueryCacheStats
-  recovery?: RecoveryStats
-  refresh?: RefreshStats
-  request_cache?: RequestCacheStats
-  search?: SearchStats
-  segments?: SegmentsStats
-  store?: StoreStats
-  translog?: TranslogStats
-  warmer?: WarmerStats
+  completion: CompletionStats
+  docs: DocStats
+  fielddata: FielddataStats
+  flush: FlushStats
+  get: GetStats
+  indexing: IndexingStats
+  merges: MergesStats
+  query_cache: QueryCacheStats
+  recovery: RecoveryStats
+  refresh: RefreshStats
+  request_cache: RequestCacheStats
+  search: SearchStats
+  segments: SegmentsStats
+  store: StoreStats
+  translog: TranslogStats
+  warmer: WarmerStats
 }
 
 export interface IndicesStats {
   primaries: IndexStats
-  shards?: Record<string, Array<ShardStats>>
+  shards: Record<string, Array<ShardStats>>
   total: IndexStats
-  uuid?: string
+  uuid: string
 }
 
 export interface IndicesStatsRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
-  completion_fields?: Fields
+  completion_fields?: Array<Field>
   expand_wildcards?: ExpandWildcards
-  fielddata_fields?: Fields
-  fields?: Fields
+  fielddata_fields?: Array<Field>
+  fields?: Array<Field>
   forbid_closed_indices?: boolean
-  groups?: string | Array<string>
+  groups?: Array<string>
   include_segment_file_sizes?: boolean
   include_unloaded_segments?: boolean
   level?: Level
-  types?: TypeNames
 }
 
 export interface IndicesStatsResponse extends ResponseBase {
-  indices?: Record<string, IndicesStats>
+  indices: Record<string, IndicesStats>
   _shards: ShardStatistics
   _all: IndicesStats
 }
@@ -4180,7 +4129,6 @@ export interface ShardFileSizeInfo {
 
 export interface ShardFlush {
   total: long
-  periodic: long
   total_time_in_millis: long
 }
 
@@ -4205,13 +4153,6 @@ export interface ShardIndexing {
   is_throttled: boolean
   noop_update_total: long
   throttle_time_in_millis: long
-}
-
-export interface ShardLease {
-  id: string
-  retaining_seq_no: long
-  timestamp: long
-  source: string
 }
 
 export interface ShardMerges {
@@ -4247,8 +4188,6 @@ export interface ShardRefresh {
   listeners: long
   total: long
   total_time_in_millis: long
-  external_total: long
-  external_total_time_in_millis: long
 }
 
 export interface ShardRequestCache {
@@ -4258,16 +4197,10 @@ export interface ShardRequestCache {
   miss_count: long
 }
 
-export interface ShardRetentionLeases {
-  primary_term: long
-  version: long
-  leases: Array<ShardLease>
-}
-
 export interface ShardRouting {
   node: string
   primary: boolean
-  relocating_node?: string
+  relocating_node: string
   state: ShardRoutingState
 }
 
@@ -4325,7 +4258,6 @@ export interface ShardStats {
   recovery: ShardStatsRecovery
   refresh: ShardRefresh
   request_cache: ShardRequestCache
-  retention_leases: ShardRetentionLeases
   routing: ShardRouting
   search: ShardSearch
   segments: ShardSegments
@@ -4342,12 +4274,10 @@ export interface ShardStatsRecovery {
 }
 
 export interface ShardStatsStore {
-  reserved_in_bytes: long
   size_in_bytes: long
 }
 
 export interface ShardTransactionLog {
-  earliest_last_modified_age: long
   operations: long
   size_in_bytes: long
   uncommitted_operations: long
@@ -4754,7 +4684,7 @@ export interface PutPipelineRequest extends RequestBase {
     description?: string
     on_failure?: Array<ProcessorContainer>
     processors?: Array<ProcessorContainer>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutPipelineResponse extends AcknowledgedResponseBase {
@@ -4792,7 +4722,7 @@ export interface SimulatePipelineRequest extends RequestBase {
   body: {
     docs?: Array<SimulatePipelineDocument>
     pipeline?: Pipeline
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface SimulatePipelineResponse extends ResponseBase {
@@ -4899,18 +4829,18 @@ export interface TypeMapping {
   dynamic?: boolean | DynamicMapping
   dynamic_date_formats?: Array<string>
   dynamic_templates?: Record<string, DynamicTemplate>
-  _field_names?: FieldNamesField
+  _field_names: FieldNamesField
   index_field?: IndexField
-  _meta?: Record<string, any>
+  _meta: Record<string, any>
   numeric_detection?: boolean
-  properties: Record<PropertyName, IProperty>
-  _routing?: RoutingField
-  _size?: SizeField
-  _source?: SourceField
+  properties: Record<PropertyName, PropertyBase>
+  _routing: RoutingField
+  _size: SizeField
+  _source: SourceField
 }
 
 export interface DynamicTemplate {
-  mapping: IProperty
+  mapping: PropertyBase
   match: string
   match_mapping_type: string
   match_pattern: MatchType
@@ -4961,12 +4891,11 @@ export interface SourceField {
   includes: Array<string>
 }
 
-export interface IProperty {
-  local_metadata?: Record<string, any>
-  meta?: Record<string, string>
-  name?: PropertyName
+export interface PropertyBase {
+  local_metadata: Record<string, any>
+  meta: Record<string, string>
+  name: PropertyName
   type: string
-  properties?: Record<PropertyName, IProperty>
 }
 
 export interface StoredScript {
@@ -4988,7 +4917,7 @@ export interface ExecutePainlessScriptRequest extends RequestBase {
     context?: string
     context_setup?: PainlessContextSetup
     script?: InlineScript
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ExecutePainlessScriptResponse<TResult = unknown> extends ResponseBase {
@@ -5017,7 +4946,7 @@ export interface PutScriptRequest extends RequestBase {
   timeout?: Time
   body: {
     script?: StoredScript
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutScriptResponse extends AcknowledgedResponseBase {
@@ -5049,7 +4978,7 @@ export interface CreateRepositoryRequest extends RequestBase {
   verify?: boolean
   body: {
     repository?: SnapshotRepository
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CreateRepositoryResponse extends AcknowledgedResponseBase {
@@ -5103,7 +5032,7 @@ export interface RestoreRequest extends RequestBase {
     partial?: boolean
     rename_pattern?: string
     rename_replacement?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface RestoreResponse extends ResponseBase {
@@ -5170,7 +5099,7 @@ export interface SnapshotRequest extends RequestBase {
     indices?: Indices
     metadata?: Record<string, any>
     partial?: boolean
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface SnapshotResponse extends ResponseBase {
@@ -5857,7 +5786,7 @@ export interface CountRequest extends RequestBase {
   terminate_after?: long
   body?: {
     query?: QueryContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CountResponse extends ResponseBase {
@@ -5883,7 +5812,7 @@ export interface ExplainRequest extends RequestBase {
   stored_fields?: Array<Field>
   body?: {
     query?: QueryContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ExplainResponse<TDocument = unknown> extends ResponseBase {
@@ -5946,31 +5875,18 @@ export interface MultiSearchRequest extends RequestBase {
   typed_keys?: boolean
   body: {
     operations?: Record<string, SearchRequest>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
-export interface MultiSearchTemplateRequest extends RequestBase {
-  index?: Indices
-  type?: TypeNames
-  ccs_minimize_roundtrips?: boolean
-  max_concurrent_searches?: long
-  search_type?: SearchType
-  total_hits_as_integer?: boolean
-  typed_keys?: boolean
-  body: {
-    operations?: Record<string, SearchTemplateRequest>
-  }
-}
-
 export interface ClearScrollRequest extends RequestBase {
   scroll_id?: Ids
   body?: {
     scroll_id?: Array<string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ClearScrollResponse extends ResponseBase {
@@ -5979,11 +5895,10 @@ export interface ClearScrollResponse extends ResponseBase {
 export interface ScrollRequest extends RequestBase {
   scroll_id?: Id
   total_hits_as_integer?: boolean
-  scroll?: Time
   body?: {
     scroll?: Time
     scroll_id?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
@@ -6067,7 +5982,7 @@ export interface SearchRequest extends RequestBase {
     seq_no_primary_term?: boolean
     stored_fields?: Field | Array<Field>
     pit?: PointInTimeReference
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface SearchResponse<TDocument = unknown> extends ResponseBase {
@@ -6133,11 +6048,11 @@ export interface SearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   total_hits_as_integer?: boolean
   typed_keys?: boolean
-  body: {
+  body?: {
     id?: string
     params?: Record<string, any>
     source?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface RenderSearchTemplateRequest extends RequestBase {
@@ -6145,7 +6060,7 @@ export interface RenderSearchTemplateRequest extends RequestBase {
     file?: string
     params?: Record<string, any>
     source?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface RenderSearchTemplateResponse extends ResponseBase {
@@ -6230,7 +6145,7 @@ export interface Hit<TDocument = unknown> {
   _shard?: string
   _node?: string
   _routing?: string
-  _source: TDocument
+  _source?: TDocument
   _seq_no?: long
   _primary_term?: long
   _version?: long
@@ -6577,7 +6492,7 @@ export interface ValidateQueryRequest extends RequestBase {
   rewrite?: boolean
   body?: {
     query?: QueryContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ValidateQueryResponse extends ResponseBase {
@@ -6606,7 +6521,7 @@ export interface AsyncSearchGetRequest extends RequestBase {
     keep_alive?: Time
     typed_keys?: boolean
     wait_for_completion_timeout?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface AsyncSearchGetResponse<TDocument = unknown> extends ResponseBase {
@@ -6666,7 +6581,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     typed_keys?: boolean
     version?: boolean
     wait_for_completion_timeout?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface AsyncSearchSubmitResponse<TDocument = unknown> extends ResponseBase {
@@ -6688,7 +6603,7 @@ export interface CreateAutoFollowPatternRequest extends RequestBase {
     max_write_request_operation_count?: integer
     max_write_request_size?: string
     remote_cluster?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
@@ -6755,7 +6670,7 @@ export interface CreateFollowIndexRequest extends RequestBase {
     max_write_request_size?: string
     read_poll_timeout?: Time
     remote_cluster?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CreateFollowIndexResponse extends ResponseBase {
@@ -6853,7 +6768,7 @@ export interface ForgetFollowerIndexRequest extends RequestBase {
     follower_index?: IndexName
     follower_index_uuid?: string
     leader_remote_cluster?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ForgetFollowerIndexResponse extends ResponseBase {
@@ -6880,7 +6795,7 @@ export interface ResumeFollowIndexRequest extends RequestBase {
     max_write_request_operation_count?: long
     max_write_request_size?: string
     read_poll_timeout?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ResumeFollowIndexResponse extends AcknowledgedResponseBase {
@@ -6975,7 +6890,7 @@ export interface PutEnrichPolicyRequest extends RequestBase {
   body: {
     geo_match?: EnrichPolicy
     match?: EnrichPolicy
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutEnrichPolicyResponse extends AcknowledgedResponseBase {
@@ -7012,7 +6927,7 @@ export interface GraphExploreRequest extends RequestBase {
     controls?: GraphExploreControls
     query?: QueryContainer
     vertices?: Array<GraphVertexDefinition>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GraphExploreResponse extends ResponseBase {
@@ -7150,7 +7065,7 @@ export interface MoveToStepRequest extends RequestBase {
   body?: {
     current_step?: StepKey
     next_step?: StepKey
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface MoveToStepResponse extends AcknowledgedResponseBase {
@@ -7166,7 +7081,7 @@ export interface PutLifecycleRequest extends RequestBase {
   policy: Name
   body?: {
     policy?: Policy
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutLifecycleResponse extends AcknowledgedResponseBase {
@@ -7525,7 +7440,7 @@ export interface PostLicenseRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: License
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PostLicenseResponse extends ResponseBase {
@@ -7692,7 +7607,7 @@ export interface EstimateModelMemoryRequest extends RequestBase {
     analysis_config?: AnalysisConfig
     max_bucket_cardinality?: Record<Field, long>
     overall_cardinality?: Record<Field, long>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface EstimateModelMemoryResponse extends ResponseBase {
@@ -7707,7 +7622,7 @@ export interface FlushJobRequest extends RequestBase {
     calc_interim?: boolean
     end?: Date
     start?: Date
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface FlushJobResponse extends ResponseBase {
@@ -7719,7 +7634,7 @@ export interface ForecastJobRequest extends RequestBase {
   body?: {
     duration?: Time
     expires_in?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ForecastJobResponse extends AcknowledgedResponseBase {
@@ -7736,7 +7651,7 @@ export interface GetAnomalyRecordsRequest extends RequestBase {
     record_score?: double
     sort?: Field
     start?: Date
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetAnomalyRecordsResponse extends ResponseBase {
@@ -7756,7 +7671,7 @@ export interface GetBucketsRequest extends RequestBase {
     page?: Page
     sort?: Field
     start?: Date
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetBucketsResponse extends ResponseBase {
@@ -7772,7 +7687,7 @@ export interface GetCalendarEventsRequest extends RequestBase {
   body?: {
     from?: integer
     size?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetCalendarEventsResponse extends ResponseBase {
@@ -7790,7 +7705,7 @@ export interface GetCalendarsRequest extends RequestBase {
   calendar_id?: Id
   body?: {
     page?: Page
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetCalendarsResponse extends ResponseBase {
@@ -7803,7 +7718,7 @@ export interface GetCategoriesRequest extends RequestBase {
   category_id?: CategoryId
   body?: {
     page?: Page
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetCategoriesResponse extends ResponseBase {
@@ -7858,7 +7773,7 @@ export interface GetInfluencersRequest extends RequestBase {
     page?: Page
     sort?: Field
     start?: Date
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetInfluencersResponse extends ResponseBase {
@@ -7895,7 +7810,7 @@ export interface GetModelSnapshotsRequest extends RequestBase {
     page?: Page
     sort?: Field
     start?: Date
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetModelSnapshotsResponse extends ResponseBase {
@@ -7913,7 +7828,7 @@ export interface GetOverallBucketsRequest extends RequestBase {
     overall_score?: double
     start?: Date
     top_n?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetOverallBucketsResponse extends ResponseBase {
@@ -8186,7 +8101,7 @@ export interface AnomalyDetectors {
 }
 
 export interface CategorizationAnalyzer {
-  filter: Array<ITokenFilter>
+  filter: Array<TokenFilterBase>
   tokenizer: string
 }
 
@@ -8216,7 +8131,7 @@ export interface OpenJobRequest extends RequestBase {
   job_id: Id
   body?: {
     timeout?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface OpenJobResponse extends ResponseBase {
@@ -8227,7 +8142,7 @@ export interface PostCalendarEventsRequest extends RequestBase {
   calendar_id: Id
   body: {
     events?: Array<ScheduledEvent>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PostCalendarEventsResponse extends ResponseBase {
@@ -8248,7 +8163,7 @@ export interface PostJobDataRequest extends RequestBase {
   reset_start?: Date
   body: {
     data?: Array<any>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PostJobDataResponse extends ResponseBase {
@@ -8281,7 +8196,7 @@ export interface PutCalendarRequest extends RequestBase {
   calendar_id: Id
   body?: {
     description?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutCalendarResponse extends ResponseBase {
@@ -8318,7 +8233,7 @@ export interface PutDatafeedRequest extends RequestBase {
     query_delay?: Time
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutDatafeedResponse extends ResponseBase {
@@ -8340,7 +8255,7 @@ export interface PutFilterRequest extends RequestBase {
   body: {
     description?: string
     items?: Array<string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutFilterResponse extends ResponseBase {
@@ -8362,7 +8277,7 @@ export interface PutJobRequest extends RequestBase {
     model_plot?: ModelPlotConfig
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutJobResponse extends ResponseBase {
@@ -8388,7 +8303,7 @@ export interface RevertModelSnapshotRequest extends RequestBase {
   snapshot_id: Id
   body?: {
     delete_intervening_results?: boolean
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface RevertModelSnapshotResponse extends ResponseBase {
@@ -8409,7 +8324,7 @@ export interface StartDatafeedRequest extends RequestBase {
     end?: Date
     start?: Date
     timeout?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface StartDatafeedResponse extends ResponseBase {
@@ -8422,7 +8337,7 @@ export interface StopDatafeedRequest extends RequestBase {
   body?: {
     force?: boolean
     timeout?: Time
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface StopDatafeedResponse extends ResponseBase {
@@ -8446,7 +8361,7 @@ export interface UpdateDatafeedRequest extends RequestBase {
     query_delay?: Time
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateDatafeedResponse extends ResponseBase {
@@ -8469,7 +8384,7 @@ export interface UpdateFilterRequest extends RequestBase {
     add_items?: Array<string>
     description?: string
     remove_items?: Array<string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateFilterResponse extends ResponseBase {
@@ -8490,7 +8405,7 @@ export interface UpdateJobRequest extends RequestBase {
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateJobResponse extends ResponseBase {
@@ -8502,7 +8417,7 @@ export interface UpdateModelSnapshotRequest extends RequestBase {
   body: {
     description?: string
     retain?: boolean
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
@@ -8512,7 +8427,7 @@ export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
 export interface ValidateDetectorRequest extends RequestBase {
   body: {
     detector?: Detector
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ValidateDetectorResponse extends AcknowledgedResponseBase {
@@ -8527,7 +8442,7 @@ export interface ValidateJobRequest extends RequestBase {
     model_plot?: ModelPlotConfig
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ValidateJobResponse extends AcknowledgedResponseBase {
@@ -8561,7 +8476,7 @@ export interface CreateRollupJobRequest extends RequestBase {
     metrics?: Array<RollupFieldMetric>
     page_size?: long
     rollup_index?: IndexName
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CreateRollupJobResponse extends AcknowledgedResponseBase {
@@ -8695,7 +8610,7 @@ export interface RollupSearchRequest extends RequestBase {
     aggs?: Record<string, AggregationContainer>
     query?: QueryContainer
     size?: integer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface RollupSearchResponse<TDocument = unknown> extends ResponseBase {
@@ -8739,7 +8654,7 @@ export interface CreateApiKeyRequest extends RequestBase {
     expiration?: Time
     name?: string
     role_descriptors?: Record<string, ApiKeyRole>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface CreateApiKeyResponse extends ResponseBase {
@@ -8778,7 +8693,7 @@ export interface InvalidateApiKeyRequest extends RequestBase {
     owner?: boolean
     realm_name?: string
     username?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface InvalidateApiKeyResponse extends ResponseBase {
@@ -8906,7 +8821,7 @@ export interface HasPrivilegesRequest extends RequestBase {
     application?: Array<ApplicationPrivilegesCheck>
     cluster?: Array<string>
     index?: Array<IndexPrivilegesCheck>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface HasPrivilegesResponse extends ResponseBase {
@@ -8936,7 +8851,7 @@ export interface PutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
   body: {
     applications?: Record<string, Record<string, PrivilegesActions>>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, PutPrivilegesStatus>> {
@@ -8983,7 +8898,7 @@ export interface PutRoleMappingRequest extends RequestBase {
     roles?: Array<string>
     rules?: RoleMappingRuleBase
     run_as?: Array<string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutRoleMappingResponse extends ResponseBase {
@@ -9053,7 +8968,7 @@ export interface PutRoleRequest extends RequestBase {
     indices?: Array<IndicesPrivileges>
     metadata?: Record<string, any>
     run_as?: Array<string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutRoleResponse extends ResponseBase {
@@ -9069,7 +8984,7 @@ export interface ChangePasswordRequest extends RequestBase {
   refresh?: Refresh
   body: {
     password?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ChangePasswordResponse extends ResponseBase {
@@ -9121,7 +9036,7 @@ export interface GetUserAccessTokenRequest extends RequestBase {
   body: {
     grant_type?: AccessTokenGrantType
     scope?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface GetUserAccessTokenResponse extends ResponseBase {
@@ -9151,7 +9066,7 @@ export interface PutUserRequest extends RequestBase {
     password?: string
     password_hash?: string
     roles?: Array<string>
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutUserResponse extends ResponseBase {
@@ -9258,7 +9173,7 @@ export interface PutSnapshotLifecycleRequest extends RequestBase {
     repository?: string
     retention?: SnapshotRetentionConfiguration
     schedule?: CronExpression
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutSnapshotLifecycleResponse extends AcknowledgedResponseBase {
@@ -9279,7 +9194,7 @@ export interface StopSnapshotLifecycleManagementResponse extends AcknowledgedRes
 export interface ClearSqlCursorRequest extends RequestBase {
   body: {
     cursor?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ClearSqlCursorResponse extends ResponseBase {
@@ -9295,7 +9210,7 @@ export interface QuerySqlRequest extends RequestBase {
     filter?: QueryContainer
     query?: string
     time_zone?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface QuerySqlResponse extends ResponseBase {
@@ -9319,7 +9234,7 @@ export interface TranslateSqlRequest extends RequestBase {
     filter?: QueryContainer
     query?: string
     time_zone?: string
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface TranslateSqlResponse extends ResponseBase {
@@ -9473,7 +9388,7 @@ export interface PreviewTransformRequest extends RequestBase {
     pivot?: TransformPivot
     source?: TransformSource
     sync?: TransformSyncContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PreviewTransformResponse<TTransform = unknown> extends ResponseBase {
@@ -9491,7 +9406,7 @@ export interface PutTransformRequest extends RequestBase {
     pivot?: TransformPivot
     source?: TransformSource
     sync?: TransformSyncContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutTransformResponse extends AcknowledgedResponseBase {
@@ -9526,7 +9441,7 @@ export interface UpdateTransformRequest extends RequestBase {
     frequency?: Time
     source?: TransformSource
     sync?: TransformSyncContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface UpdateTransformResponse extends ResponseBase {
@@ -9758,7 +9673,7 @@ export interface ExecuteWatchRequest extends RequestBase {
     simulated_actions?: SimulatedActions
     trigger_data?: ScheduleTriggerEvent
     watch?: Watch
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface ExecuteWatchResponse extends ResponseBase {
@@ -10007,7 +9922,7 @@ export interface PutWatchRequest extends RequestBase {
     throttle_period?: string
     transform?: TransformContainer
     trigger?: TriggerContainer
-  }
+  } | string | Buffer | ReadableStream
 }
 
 export interface PutWatchResponse extends ResponseBase {

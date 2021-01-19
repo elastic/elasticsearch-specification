@@ -42,6 +42,7 @@ namespace Domain {
 
       this.alternateName = this.annotations.alternate_name
       this.customSerializationRoutine = this.annotations.prop_serializer
+      this.trait = this.annotations.trait
     }
 
     annotations: Record<string, string>;
@@ -52,10 +53,13 @@ namespace Domain {
     /** presents a suggestion for an alternate name in case of conflicts */
     alternateName: string;
 
+    /** marks an interface as a trait, holds a description to its purpose */
+    trait: string;
+
     /**
-    * The name of the custom serialization routine, in some cases the spec knows there is no 1-1 mapping.
-    * This property can be used to generate stubs for manual serialization work
-    */
+     * The name of the custom serialization routine, in some cases the spec knows there is no 1-1 mapping.
+     * This property can be used to generate stubs for manual serialization work
+     */
     customSerializationRoutine: string;
   }
 
@@ -72,6 +76,7 @@ namespace Domain {
     implementsFromUnresolved: Record<string, { depth: number, instanceOf: InstanceOf[]}> = {};
     inherits: Domain.InheritsReference[] = [];
     implements: Domain.ImplementsReference[] = [];
+    traits: string[];
     openGenerics: string[];
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
   }

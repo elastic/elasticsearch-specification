@@ -44,6 +44,7 @@ export class Specification {
       if (!(t instanceof Domain.Interface)) return
       t.inherits = []
       t.implements = []
+      t.traits = []
       for (const key of Object.keys(t.inheritsFromUnresolved)) {
         const refType = lookup(key)
         const ref = new Domain.InheritsReference(refType)
@@ -55,7 +56,8 @@ export class Specification {
         const unresolved = t.implementsFromUnresolved[key]
         const ref = new Domain.ImplementsReference(refType, unresolved.depth)
         ref.closedGenerics = unresolved.instanceOf;
-        t.implements.push(ref)
+        if (ref.depth === 0) t.implements.push(ref)
+        if (ref.type.generatorHints.trait) t.traits.push(ref.type.name)
       }
     })
     this.types = types

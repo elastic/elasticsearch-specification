@@ -241,6 +241,7 @@ export function loadModel(spec: Specification): Model {
         generics: nonEmptyArr(specType.openGenerics),
         inherits: nonEmptyArr(specType.inherits.map(impl => makeInherits(impl, specType.openGenerics))),
         implements: nonEmptyArr(specType.implements.map(impl => makeImplements(impl, specType.openGenerics))),
+        traits: nonEmptyArr(specType.traits),
         properties: specType.properties.map(prop => makeProperty(prop, specType.openGenerics))
       });
     }
@@ -255,7 +256,6 @@ export function loadModel(spec: Specification): Model {
     const type = makeTypeName(impl.type.name, openGenerics);
 
     return {
-      depth: impl.depth,
       type: type,
       generics: nonEmptyArr(impl.closedGenerics.map(i => makeInstanceOf(i, openGenerics)))
     };
