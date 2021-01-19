@@ -191,6 +191,10 @@ class InterfaceVisitor extends Visitor {
       case ts.SyntaxKind.NullKeyword : return new Domain.Type('null')
       case ts.SyntaxKind.AnyKeyword : return new Domain.Type('object')
       case ts.SyntaxKind.UnionType: return this.visitUnionType(t as ts.TypeLiteralNode)
+      // TODO: the types here might need to be updated
+      //       `.literal` exist on `t` but TypeScript disagrees
+      // @ts-expect-error
+      case ts.SyntaxKind.LiteralType: return this.visitTypeNode(t.literal)
       default:
         console.log(t.kind)
     }
