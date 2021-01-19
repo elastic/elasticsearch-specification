@@ -388,6 +388,15 @@ If you are using MacOS, run the following command to fix the issue:
 brew install coreutils
 ```
 
+### I need to modify che compiler, help!
+
+The compiler is a fairly complex machine, and could help some refactoring.
+Some useful tools for understanding how TypeScript interprets the input specification are:
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/)
+- [TypeScript Playground](https://www.typescriptlang.org/play)
+- [ts-ast-viewer.com](https://ts-ast-viewer.com/)
+
 ## BirdsEye overview
 
 The work of several repositories come together in this repository.
