@@ -277,7 +277,7 @@ export interface TermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKe
 }
 
 export interface TopHitsAggregate extends AggregateBase {
-  hits: HitsMetadata<any>
+  hits: HitsMetadata<LazyDocument>
 }
 
 export interface TopMetricsAggregate extends AggregateBase {
@@ -2436,9 +2436,6 @@ export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 export type WaitForEvents = 'immediate' | 'urgent' | 'high' | 'normal' | 'low' | 'languid'
 
 export type WaitForStatus = 'green' | 'yellow' | 'red'
-
-export interface LazyDocument {
-}
 
 export interface RequestBase {
   error_trace?: boolean
@@ -4807,6 +4804,9 @@ export type integer = number
 export interface LatLon {
   lat: double
   lon: double
+}
+
+export interface LazyDocument {
 }
 
 export type long = number
