@@ -9,7 +9,8 @@
     "format": "ts-node src/format.ts",
     "generate-schema": "ts-node src/metamodel_generate.ts",
     "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
-    "compile": "tsc"
+    "compile:specs": "tsc",
+    "compile:brain": "tsc --project specs/tsconfig.json --noEmit"
   },
   "author": "Elastic",
   "license": "MIT",
