@@ -136,28 +136,28 @@ git clone https://github.com/elastic/elastic-client-generator.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
 cd elastic-client-generator
-./run-validations
+./run-validations.sh
 ```
 
 The last command above will boot an Elasticsearch instance and start the fligh recorder
 recording process, once that is finished, it will not be executed
-again unless you run again the command like this: `PULL_LATEST=true ./run-validations`.
+again unless you run again the command like this: `PULL_LATEST=true ./run-validations.sh`.
 
 You can validate a specific API with the `--api` option, same goes for `--request` and `--response`.
 For example, the following command validates the index request api:
 
 ```js
-./run-validations --api index --request
+./run-validations.sh --api index --request
 ```
 The following command validates the index response api:
 
 ```js
-./run-validations --api index --response
+./run-validations.sh --api index --response
 ```
 The following command validates the index request and response api:
 
 ```js
-./run-validations --api index --request --response
+./run-validations.sh --api index --request --response
 ```
 
 Once you see the errors, you can fix the original definition in `/specification/specs`
@@ -366,7 +366,7 @@ Very likely the recordings on your machine are stale, you can regenerate them
 by executing the following command (it will take a while).
 
 ```sh
-PULL_LATEST=true ./run-validations
+PULL_LATEST=true ./run-validations.sh
 ```
 
 ### Which editor should I use?
