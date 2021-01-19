@@ -104,22 +104,6 @@ class InterfaceVisitor extends Visitor {
       const x: any = s.valueDeclaration
       const heritageClauses: ts.HeritageClause[] = (x ? x.heritageClauses : []) || []
 
-      // the specification only uses interfaces as a signal to type reader
-      // its up to generators to choose to implement base classes as interfaces or not
-      const unknownImplementsClauses = heritageClauses
-        .filter(c => c.token === ts.SyntaxKind.ImplementsKeyword)
-        .flatMap(c => ((c as any).types || []) as ts.Node[])
-        .map(t=> {
-          const expression = ((t as any).expression as ts.Identifier)
-          return expression.text
-        })
-        .filter(name => {
-          if (name.startsWith("IDictionary")) return false;
-          return true;
-        })
-      if (unknownImplementsClauses.length > 0)
-        throw new Error(`${s.name} uses unknown implements on ${unknownImplementsClauses.join(", ")}`)
-
       domainInterface.inheritsFromUnresolved = heritageClauses
         .filter((c:ts.HeritageClause) => c.token === ts.SyntaxKind.ExtendsKeyword)
         .flatMap(c => ((c as any).types || []) as ts.Node[])

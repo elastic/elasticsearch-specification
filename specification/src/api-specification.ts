@@ -34,6 +34,7 @@ export class Specification {
       }
     }
 
+    const supportedTraits = ["IDictionary"]
     const specVisitor = new TypeReader(this.program)
     const types = [].concat(specVisitor.interfaces).concat(specVisitor.enums)
     // resolve inherits by creating the proper pointers to instances, pretty hairy but it works
@@ -57,7 +58,12 @@ export class Specification {
         const ref = new Domain.ImplementsReference(refType, unresolved.depth)
         ref.closedGenerics = unresolved.instanceOf;
         if (ref.depth === 0) t.implements.push(ref)
-        if (ref.type.generatorHints.trait) t.traits.push(ref.type.name)
+        if (ref.type.generatorHints.trait) {
+          if (!supportedTraits.includes(ref.type.name)) {
+            throw new Error(`${ref.type.name} is not a known trait, please include it here`)
+          }
+          else t.traits.push(ref.type.name)
+        }
       }
     })
     this.types = types
