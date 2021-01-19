@@ -126,11 +126,6 @@ export class Inherits {
   type: TypeName;
   generics?: ValueOf[];
 }
-export class Implements {
-  type: TypeName;
-  generics?: ValueOf[];
-  depth:number
-}
 
 export class Implements {
   type: TypeName;
