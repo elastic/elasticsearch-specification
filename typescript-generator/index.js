@@ -213,8 +213,8 @@ function serializeSpecialInterface (type) {
       code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildType(property.type)}\n`
     }
     code += '}\n'
-    code += `export type ${type.name.name}${buildGenerics(type)} = ${type.name.name}Keys${buildGenerics(type, true)} &\n`
-    code += `    Record${buildGenerics(dictionaryOf)}\n`
+    code += `export type ${type.name.name}${buildGenerics(type)} = ${type.name.name}Keys${buildGenerics(type, true)} |\n`
+    code += `    { ${buildIndexer(dictionaryOf)} }\n`
     return code
   }
   switch (type.name.name) {
@@ -226,6 +226,19 @@ function serializeSpecialInterface (type) {
       throw new Error(`Unknown interface ${type.name.name}`)
   }
 }
+function buildIndexer (type) {
+  if (!Array.isArray(type.generics)) return ''
+  return `[property: ${type.generics.map(buildGeneric).join(']: ')}`
+
+  // generics can either be a value/instance_of or a named generics
+  function buildGeneric (type) {
+    const t = typeof type === 'string'  ? type : buildType(type)
+    // indexers do not allow type aliases so here we translate known
+    // type aliases back to string
+    return t === "AggregateName" ? "string" : t;
+  }
+}
+
 
 // In the input spec the Cat* responses are represented as an object
 // that contains a `records` key, which is an array of the inherited generic.
