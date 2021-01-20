@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("indices.freeze")
 class FreezeIndexRequest extends RequestBase {
   path_parts?: {
@@ -9,7 +12,7 @@ class FreezeIndexRequest extends RequestBase {
     ignore_unavailable?: boolean;
     master_timeout?: Time;
     timeout?: Time;
-    wait_for_active_shards?: string;
+    wait_for_active_shards?: string | number;
   }
   body?: {
   }
