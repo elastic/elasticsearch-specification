@@ -375,6 +375,13 @@ by executing the following command (it will take a while).
 PULL_LATEST=true ./run-validations.sh
 ```
 
+You should pull the latest change from the `client-flight-recorder` as well.
+
+```sh
+cd client-flight-recorder
+git pull
+```
+
 ### Which editor should I use?
 
 Any editor is fine, but to have a better development experience it should be configured
