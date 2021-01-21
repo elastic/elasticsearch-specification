@@ -3528,7 +3528,7 @@ export interface CloneIndexRequest extends RequestBase {
   target: Name
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: string | number
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
