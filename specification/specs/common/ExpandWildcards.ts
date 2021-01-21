@@ -1,4 +1,4 @@
-export enum ExpandWildcardsOptions {
+enum ExpandWildcardOptions {
   open = 0,
   closed = 1,
   hidden = 2,
@@ -6,5 +6,5 @@ export enum ExpandWildcardsOptions {
   all = 4
 }
 
-export type ExpandWildcards =
-    ExpandWildcardsOptions | Array<ExpandWildcardsOptions>
+type ExpandWildcards =
+    ExpandWildcardOptions | Array<ExpandWildcardOptions>
