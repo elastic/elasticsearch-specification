@@ -775,9 +775,8 @@ export interface CatAliasesRecord {
   alias: string
   filter: string
   index: string
-  'routing.index': string
-  'routing.search': string
-  is_write_index: string
+  indexRouting: string
+  searchRouting: string
 }
 
 export interface CatAliasesRequest extends CatRequestBase {
@@ -2385,9 +2384,8 @@ export type Conflicts = 'abort' | 'proceed'
 
 export type DefaultOperator = 'AND' | 'OR'
 
-export type ExpandWildcardOptions = 'open' | 'closed' | 'hidden' | 'none' | 'all'
+export type ExpandWildcards = 'open' | 'closed' | 'hidden' | 'none' | 'all'
 
-export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions>
 export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export type Health = 'green' | 'yellow' | 'red'
@@ -3577,7 +3575,7 @@ export interface FreezeIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string | number
+  wait_for_active_shards?: string
 }
 
 export interface FreezeIndexResponse extends AcknowledgedResponseBase {
