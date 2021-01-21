@@ -4,7 +4,7 @@ class CatAliasesRequest extends CatRequestBase {
     name?: Names;
   }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcards | Array<ExpandWildcards>;
+    expand_wildcards?: ExpandWildcards;
   }
   body?: {
   }
