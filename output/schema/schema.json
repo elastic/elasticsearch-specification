@@ -6760,7 +6760,7 @@
           "required": true
         },
         {
-          "name": "indexRouting",
+          "name": "routing.index",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -6771,7 +6771,18 @@
           "required": true
         },
         {
-          "name": "searchRouting",
+          "name": "routing.search",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "is_write_index",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21816,7 +21827,7 @@
       "kind": "enum",
       "name": {
         "namespace": "common",
-        "name": "ExpandWildcards"
+        "name": "ExpandWildcardOptions"
       },
       "members": [
         {
@@ -21833,6 +21844,38 @@
         },
         {
           "name": "all"
+        }
+      ]
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "common",
+        "name": "ExpandWildcards"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "common",
+            "name": "ExpandWildcardOptions"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "Array"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common",
+                "name": "ExpandWildcardOptions"
+              }
+            }
+          ]
         }
       ]
     },
@@ -33060,6 +33103,9 @@
         "namespace": "indices.index_management.freeze_index",
         "name": "FreezeIndexRequest"
       },
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {
@@ -33146,11 +33192,23 @@
         {
           "name": "wait_for_active_shards",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "number"
+                }
+              }
+            ]
           },
           "required": false,
           "description": "Sets the number of active shards to wait for before the operation returns."
