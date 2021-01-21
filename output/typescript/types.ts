@@ -2531,6 +2531,7 @@ export type ShapeRelation = 'intersects' | 'disjoint' | 'within'
 
 export interface CompletionStats {
   size_in_bytes: long
+  fields?: Record<Field, CompletionStats>
 }
 
 export interface DocStats {
@@ -2539,26 +2540,27 @@ export interface DocStats {
 }
 
 export interface FielddataStats {
-  evictions: long
+  evictions?: long
   memory_size_in_bytes: long
+  fields?: Record<Field, FielddataStats>
 }
 
 export interface FlushStats {
   periodic: long
   total: long
-  total_time: string
+  total_time?: string
   total_time_in_millis: long
 }
 
 export interface GetStats {
   current: long
-  exists_time: string
+  exists_time?: string
   exists_time_in_millis: long
   exists_total: long
-  missing_time: string
+  missing_time?: string
   missing_time_in_millis: long
   missing_total: long
-  time: string
+  time?: string
   time_in_millis: long
   total: long
 }
@@ -2566,35 +2568,36 @@ export interface GetStats {
 export interface IndexingStats {
   index_current: long
   delete_current: long
-  delete_time: string
+  delete_time?: string
   delete_time_in_millis: long
   delete_total: long
   is_throttled: boolean
   noop_update_total: long
-  throttle_time: string
+  throttle_time?: string
   throttle_time_in_millis: long
-  index_time: string
+  index_time?: string
   index_time_in_millis: long
   index_total: long
-  types: Record<string, IndexingStats>
+  index_failed: long
+  types?: Record<string, IndexingStats>
 }
 
 export interface MergesStats {
   current: long
   current_docs: long
-  current_size: string
+  current_size?: string
   current_size_in_bytes: long
   total: long
-  total_auto_throttle: string
+  total_auto_throttle?: string
   total_auto_throttle_in_bytes: long
   total_docs: long
-  total_size: string
+  total_size?: string
   total_size_in_bytes: long
-  total_stopped_time: string
-  total__stopped_time_in_millis: long
-  total_throttled_time: string
+  total_stopped_time?: string
+  total_stopped_time_in_millis: long
+  total_throttled_time?: string
   total_throttled_time_in_millis: long
-  total_time: string
+  total_time?: string
   total_time_in_millis: long
 }
 
@@ -2622,22 +2625,23 @@ export interface QueryCacheStats {
 export interface RecoveryStats {
   current_as_source: long
   current_as_target: long
-  throttle_time: string
+  throttle_time?: string
   throttle_time_in_millis: long
 }
 
 export interface RefreshStats {
   external_total: long
   external_total_time_in_millis: long
+  listeners: long
   total: long
-  total_time: string
+  total_time?: string
   total_time_in_millis: long
 }
 
 export interface RequestCacheStats {
   evictions: long
   hit_count: long
-  memory_size: string
+  memory_size?: string
   memory_size_in_bytes: long
   miss_count: long
 }
@@ -2646,7 +2650,7 @@ export interface SearchStats {
   fetch_current: long
   fetch_time_in_millis: long
   fetch_total: long
-  open_contexts: long
+  open_contexts?: long
   query_current: long
   query_time_in_millis: long
   query_total: long
@@ -2656,6 +2660,7 @@ export interface SearchStats {
   suggest_current: long
   suggest_time_in_millis: long
   suggest_total: long
+  groups?: Record<string, SearchStats>
 }
 
 export interface SegmentsStats {
@@ -2663,7 +2668,7 @@ export interface SegmentsStats {
   doc_values_memory_in_bytes: long
   file_sizes: Record<string, ShardFileSizeInfo>
   fixed_bit_set_memory_in_bytes: long
-  index_writer_max_memory_in_bytes: long
+  index_writer_max_memory_in_bytes?: long
   index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory_in_bytes: long
@@ -2676,24 +2681,25 @@ export interface SegmentsStats {
 }
 
 export interface StoreStats {
-  size: string
+  size?: string
   size_in_bytes: double
+  reserved_in_bytes: double
 }
 
 export interface TranslogStats {
   earliest_last_modified_age: long
   operations: long
-  size: string
+  size?: string
   size_in_bytes: long
   uncommitted_operations: integer
-  uncommitted_size: string
+  uncommitted_size?: string
   uncommitted_size_in_bytes: long
 }
 
 export interface WarmerStats {
   current: long
   total: long
-  total_time: string
+  total_time?: string
   total_time_in_millis: long
 }
 
@@ -4058,47 +4064,48 @@ export interface ShardStoreWrapper {
 }
 
 export interface IndexStats {
-  completion: CompletionStats
-  docs: DocStats
-  fielddata: FielddataStats
-  flush: FlushStats
-  get: GetStats
-  indexing: IndexingStats
-  merges: MergesStats
-  query_cache: QueryCacheStats
-  recovery: RecoveryStats
-  refresh: RefreshStats
-  request_cache: RequestCacheStats
-  search: SearchStats
-  segments: SegmentsStats
-  store: StoreStats
-  translog: TranslogStats
-  warmer: WarmerStats
+  completion?: CompletionStats
+  docs?: DocStats
+  fielddata?: FielddataStats
+  flush?: FlushStats
+  get?: GetStats
+  indexing?: IndexingStats
+  merges?: MergesStats
+  query_cache?: QueryCacheStats
+  recovery?: RecoveryStats
+  refresh?: RefreshStats
+  request_cache?: RequestCacheStats
+  search?: SearchStats
+  segments?: SegmentsStats
+  store?: StoreStats
+  translog?: TranslogStats
+  warmer?: WarmerStats
 }
 
 export interface IndicesStats {
   primaries: IndexStats
-  shards: Record<string, Array<ShardStats>>
+  shards?: Record<string, Array<ShardStats>>
   total: IndexStats
-  uuid: string
+  uuid?: string
 }
 
 export interface IndicesStatsRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
-  completion_fields?: Array<Field>
+  completion_fields?: Fields
   expand_wildcards?: ExpandWildcards
-  fielddata_fields?: Array<Field>
-  fields?: Array<Field>
+  fielddata_fields?: Fields
+  fields?: Fields
   forbid_closed_indices?: boolean
-  groups?: Array<string>
+  groups?: string | Array<string>
   include_segment_file_sizes?: boolean
   include_unloaded_segments?: boolean
   level?: Level
+  types?: TypeNames
 }
 
 export interface IndicesStatsResponse extends ResponseBase {
-  indices: Record<string, IndicesStats>
+  indices?: Record<string, IndicesStats>
   _shards: ShardStatistics
   _all: IndicesStats
 }
@@ -4131,6 +4138,7 @@ export interface ShardFileSizeInfo {
 
 export interface ShardFlush {
   total: long
+  periodic: long
   total_time_in_millis: long
 }
 
@@ -4155,6 +4163,13 @@ export interface ShardIndexing {
   is_throttled: boolean
   noop_update_total: long
   throttle_time_in_millis: long
+}
+
+export interface ShardLease {
+  id: string
+  retaining_seq_no: long
+  timestamp: long
+  source: string
 }
 
 export interface ShardMerges {
@@ -4190,6 +4205,8 @@ export interface ShardRefresh {
   listeners: long
   total: long
   total_time_in_millis: long
+  external_total: long
+  external_total_time_in_millis: long
 }
 
 export interface ShardRequestCache {
@@ -4199,10 +4216,16 @@ export interface ShardRequestCache {
   miss_count: long
 }
 
+export interface ShardRetentionLeases {
+  primary_term: long
+  version: long
+  leases: Array<ShardLease>
+}
+
 export interface ShardRouting {
   node: string
   primary: boolean
-  relocating_node: string
+  relocating_node?: string
   state: ShardRoutingState
 }
 
@@ -4260,6 +4283,7 @@ export interface ShardStats {
   recovery: ShardStatsRecovery
   refresh: ShardRefresh
   request_cache: ShardRequestCache
+  retention_leases: ShardRetentionLeases
   routing: ShardRouting
   search: ShardSearch
   segments: ShardSegments
@@ -4276,10 +4300,12 @@ export interface ShardStatsRecovery {
 }
 
 export interface ShardStatsStore {
+  reserved_in_bytes: long
   size_in_bytes: long
 }
 
 export interface ShardTransactionLog {
+  earliest_last_modified_age: long
   operations: long
   size_in_bytes: long
   uncommitted_operations: long
