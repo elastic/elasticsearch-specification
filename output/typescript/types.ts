@@ -3375,8 +3375,8 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 }
 
 export interface IndexState {
-  aliases: Record<IndexName, Alias>
-  mappings: TypeMapping
+  aliases?: Record<IndexName, Alias>
+  mappings?: TypeMapping
   settings: Record<string, any>
 }
 
@@ -3575,7 +3575,7 @@ export interface FreezeIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: string | number
 }
 
 export interface FreezeIndexResponse extends AcknowledgedResponseBase {
