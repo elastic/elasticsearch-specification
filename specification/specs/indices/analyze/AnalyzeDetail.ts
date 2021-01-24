@@ -1,6 +1,7 @@
 class AnalyzeDetail {
-  charfilters: CharFilterDetail[];
+  analyzer? : AnalyzerDetail;
+  charfilters?: CharFilterDetail[];
   custom_analyzer: boolean;
-  tokenfilters: TokenDetail[];
-  tokenizer: TokenDetail;
+  tokenfilters?: TokenDetail[];
+  tokenizer?: TokenDetail;
 }

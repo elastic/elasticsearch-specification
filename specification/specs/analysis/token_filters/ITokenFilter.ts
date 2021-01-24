@@ -1,4 +1,5 @@
 interface ITokenFilter {
   type: string;
-  version: string;
+  version?: string;
+  stopwords?: Array<string>;
 }

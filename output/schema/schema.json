@@ -6550,7 +6550,27 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "stopwords",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Array"
+            },
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              }
+            ]
+          },
+          "required": false
         }
       ]
     },
@@ -32085,6 +32105,17 @@
       },
       "properties": [
         {
+          "name": "analyzer",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "indices.analyze",
+              "name": "AnalyzerDetail"
+            }
+          },
+          "required": false
+        },
+        {
           "name": "charfilters",
           "type": {
             "kind": "array_of",
@@ -32096,7 +32127,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "custom_analyzer",
@@ -32121,7 +32152,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tokenizer",
@@ -32131,6 +32162,46 @@
               "namespace": "indices.analyze",
               "name": "TokenDetail"
             }
+          },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "indices.analyze",
+        "name": "AnalyzerDetail"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "tokens",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Array"
+            },
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "indices.analyze",
+                  "name": "ExplainAnalyzeToken"
+                }
+              }
+            ]
           },
           "required": true
         }
@@ -32282,14 +32353,32 @@
           {
             "name": "text",
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "Array"
+                  },
+                  "generics": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "string"
+                      }
+                    }
+                  ]
                 }
-              }
+              ]
             },
             "required": false
           },
@@ -32343,7 +32432,7 @@
               "name": "AnalyzeDetail"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "tokens",
@@ -32357,7 +32446,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -32399,7 +32488,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "start_offset",
@@ -32508,7 +32597,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "position",
@@ -33060,6 +33149,9 @@
         "namespace": "indices.index_management.freeze_index",
         "name": "FreezeIndexRequest"
       },
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {
@@ -33146,11 +33238,23 @@
         {
           "name": "wait_for_active_shards",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "number"
+                }
+              }
+            ]
           },
           "required": false,
           "description": "Sets the number of active shards to wait for before the operation returns."

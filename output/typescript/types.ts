@@ -753,7 +753,8 @@ export interface ICharFilter {
 
 export interface ITokenFilter {
   type: string
-  version: string
+  version?: string
+  stopwords?: Array<string>
 }
 
 export interface ITokenizer {
@@ -3464,10 +3465,16 @@ export interface PutAliasResponse extends ResponseBase {
 }
 
 export interface AnalyzeDetail {
-  charfilters: Array<CharFilterDetail>
+  analyzer?: AnalyzerDetail
+  charfilters?: Array<CharFilterDetail>
   custom_analyzer: boolean
-  tokenfilters: Array<TokenDetail>
-  tokenizer: TokenDetail
+  tokenfilters?: Array<TokenDetail>
+  tokenizer?: TokenDetail
+}
+
+export interface AnalyzerDetail {
+  name: string
+  tokens: Array<ExplainAnalyzeToken>
 }
 
 export interface AnalyzeRequest extends RequestBase {
@@ -3480,20 +3487,20 @@ export interface AnalyzeRequest extends RequestBase {
     field?: Field
     filter?: Array<string | ITokenFilter>
     normalizer?: string
-    text?: Array<string>
+    text?: string | Array<string>
     tokenizer?: string | ITokenizer
   }
 }
 
 export interface AnalyzeResponse extends ResponseBase {
-  detail: AnalyzeDetail
-  tokens: Array<AnalyzeToken>
+  detail?: AnalyzeDetail
+  tokens?: Array<AnalyzeToken>
 }
 
 export interface AnalyzeToken {
   end_offset: long
   position: long
-  position_length: long
+  position_length?: long
   start_offset: long
   token: string
   type: string
@@ -3507,7 +3514,7 @@ export interface CharFilterDetail {
 export interface ExplainAnalyzeToken {
   bytes: string
   end_offset: long
-  keyword: boolean
+  keyword?: boolean
   position: long
   positionLength: long
   start_offset: long
@@ -3575,7 +3582,7 @@ export interface FreezeIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: string | number
 }
 
 export interface FreezeIndexResponse extends AcknowledgedResponseBase {
