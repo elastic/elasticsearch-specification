@@ -13610,7 +13610,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "allocation_delay",
@@ -13621,7 +13621,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "allocation_delay_in_millis",
@@ -13632,7 +13632,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_allocate",
@@ -13643,7 +13643,7 @@
               "name": "Decision"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_move_to_other_node",
@@ -13654,7 +13654,7 @@
               "name": "Decision"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_rebalance_cluster",
@@ -13665,7 +13665,7 @@
               "name": "Decision"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_rebalance_cluster_decisions",
@@ -13679,7 +13679,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_rebalance_to_other_node",
@@ -13690,7 +13690,7 @@
               "name": "Decision"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_remain_decisions",
@@ -13704,7 +13704,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "can_remain_on_current_node",
@@ -13715,7 +13715,18 @@
               "name": "Decision"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "cluster_info",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "cluster.cluster_allocation_explain",
+              "name": "ClusterInfo"
+            }
+          },
+          "required": false
         },
         {
           "name": "configured_delay",
@@ -13726,7 +13737,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "configured_delay_in_mills",
@@ -13737,7 +13748,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "current_node",
@@ -13748,7 +13759,7 @@
               "name": "CurrentNode"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "current_state",
@@ -13781,7 +13792,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "node_allocation_decisions",
@@ -13795,7 +13806,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "primary",
@@ -13817,7 +13828,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "remaining_delay",
@@ -13828,7 +13839,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "remaining_delay_in_millis",
@@ -13839,7 +13850,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "shard",
@@ -13859,6 +13870,92 @@
             "type": {
               "namespace": "cluster.cluster_allocation_explain",
               "name": "UnassignedInformation"
+            }
+          },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "cluster.cluster_allocation_explain",
+        "name": "ClusterInfo"
+      },
+      "properties": [
+        {
+          "name": "nodes",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "cluster.cluster_allocation_explain",
+                "name": "NodeDiskUsage"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "shard_sizes",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "long"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "shard_paths",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "reserved_sizes",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "cluster.cluster_allocation_explain",
+                "name": "ReservedSize"
+              }
             }
           },
           "required": true
@@ -13976,6 +14073,81 @@
       "kind": "interface",
       "name": {
         "namespace": "cluster.cluster_allocation_explain",
+        "name": "DiskUsage"
+      },
+      "properties": [
+        {
+          "name": "path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "total_bytes",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "used_bytes",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "free_bytes",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "free_disk_percent",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "double"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "used_disk_percent",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "double"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "cluster.cluster_allocation_explain",
         "name": "NodeAllocationExplanation"
       },
       "properties": [
@@ -14056,7 +14228,7 @@
               "name": "AllocationStore"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "transport_address",
@@ -14076,6 +14248,104 @@
             "type": {
               "namespace": "internal",
               "name": "integer"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "cluster.cluster_allocation_explain",
+        "name": "NodeDiskUsage"
+      },
+      "properties": [
+        {
+          "name": "node_name",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "least_available",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "cluster.cluster_allocation_explain",
+              "name": "DiskUsage"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "most_available",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "cluster.cluster_allocation_explain",
+              "name": "DiskUsage"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "cluster.cluster_allocation_explain",
+        "name": "ReservedSize"
+      },
+      "properties": [
+        {
+          "name": "node_id",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "total",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "long"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "shards",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
             }
           },
           "required": true
@@ -14121,6 +14391,28 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "details",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "failed_allocation_attempts",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -33060,6 +33352,9 @@
         "namespace": "indices.index_management.freeze_index",
         "name": "FreezeIndexRequest"
       },
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {
@@ -33146,11 +33441,23 @@
         {
           "name": "wait_for_active_shards",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "number"
+                }
+              }
+            ]
           },
           "required": false,
           "description": "Sets the number of active shards to wait for before the operation returns."
