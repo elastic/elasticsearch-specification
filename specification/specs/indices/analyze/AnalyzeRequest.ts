@@ -13,7 +13,7 @@ class AnalyzeRequest extends RequestBase {
     field?: Field;
     filter?: Union<string, ITokenFilter>[];
     normalizer?: string;
-    text?: string[];
+    text?: string | Array<string>;
     tokenizer?: Union<string, ITokenizer>;
   }
 }
