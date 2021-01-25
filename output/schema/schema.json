@@ -6621,27 +6621,7 @@
               "name": "string"
             }
           },
-          "required": false
-        },
-        {
-          "name": "stopwords",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
-            },
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
-                }
-              }
-            ]
-          },
-          "required": false
+          "required": true
         }
       ]
     },
