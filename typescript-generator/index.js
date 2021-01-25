@@ -1,5 +1,4 @@
 'use strict'
-
 const { writeFileSync } = require('fs')
 const { join } = require('path')
 const { types, endpoints } = require('../output/schema/schema.json')
@@ -24,7 +23,8 @@ let definitions = `/*
  */\n\n`
 
 const skip = [
-  'CatResponseBase'
+  'CatResponseBase',
+  'AdditionalProperties'
 ]
 
 for (const type of types) {
@@ -165,13 +165,15 @@ function buildInherits (type) {
   }
 }
 
-function buildGenerics (type) {
+function buildGenerics (type, noDefault = false) {
   if (!Array.isArray(type.generics)) return ''
   return `<${type.generics.map(buildGeneric).join(', ')}>`
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    return typeof type === 'string' ? `${type} = unknown` : buildType(type)
+    return typeof type === 'string'  ?
+      (noDefault ? type : `${type} = unknown`)
+      : buildType(type)
   }
 }
 
@@ -185,6 +187,9 @@ function isSpecialInterface (type) {
   if (/^Cat.*Response$/g.test(type.name.name)) {
     return true
   }
+  if (Array.isArray(type.attachedBehaviors)) {
+    return type.attachedBehaviors.length > 0
+  }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
       return true
@@ -193,9 +198,41 @@ function isSpecialInterface (type) {
   }
 }
 
+function lookupBehaviorImplements(type, name) {
+  const dictionaryOf = type.behaviors.find(i => i.type.name === name);
+  if (dictionaryOf) return dictionaryOf;
+  //find inherits on parent if current type has parent
+  //TODO fix spec so that inherits is no longer an array
+  if (Array.isArray(type.inherits)) return lookupBehaviorImplements(type.inherits[0], name)
+  return null;
+}
+
+function serializeAdditionalPropertiesType(type) {
+  const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties');
+  if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
+  let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
+
+  function required(property) {
+    return property.required ? '' : '?'
+  }
+
+  for (const property of type.properties) {
+    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildType(property.type)}\n`
+  }
+  code += '}\n'
+  code += `export type ${type.name.name}${buildGenerics(type)} = ${type.name.name}Keys${buildGenerics(type, true)} |\n`
+  code += `    { ${buildIndexer(dictionaryOf)} }\n`
+  return code
+}
+
 function serializeSpecialInterface (type) {
   if (/^Cat.*Response$/g.test(type.name.name)) {
     return buildCatResponse(type)
+  }
+  if (Array.isArray(type.attachedBehaviors)) {
+    if (type.attachedBehaviors.includes('AdditionalProperties')) {
+      return serializeAdditionalPropertiesType(type);
+    }
   }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
@@ -206,6 +243,19 @@ function serializeSpecialInterface (type) {
       throw new Error(`Unknown interface ${type.name.name}`)
   }
 }
+function buildIndexer (type) {
+  if (!Array.isArray(type.generics)) return ''
+  return `[property: ${type.generics.map(buildGeneric).join(']: ')}`
+
+  // generics can either be a value/instance_of or a named generics
+  function buildGeneric (type) {
+    const t = typeof type === 'string'  ? type : buildType(type)
+    // indexers do not allow type aliases so here we translate known
+    // type aliases back to string
+    return t === "AggregateName" ? "string" : t;
+  }
+}
+
 
 // In the input spec the Cat* responses are represented as an object
 // that contains a `records` key, which is an array of the inherited generic.

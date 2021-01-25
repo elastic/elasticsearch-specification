@@ -1,25 +1,25 @@
 //@class_serializer("AggregateFormatter")
+
 type Bucket =
   CompositeBucket
   | DateHistogramBucket
   | FiltersBucketItem
   | IpRangeBucket
   | RangeBucket
-  | RareTermsBucket<any>
-  | SignificantTermsBucket<any>
-  | KeyedBucket<any>
+  | RareTermsBucket<UserDefinedValue>
+  | SignificantTermsBucket<UserDefinedValue>
+  | KeyedBucket<UserDefinedValue>
 
-class BucketBase implements AdditionalProperties<AggregateName, Aggregate> {}
-class CompositeBucket extends BucketBase {}
-class DateHistogramBucket extends BucketBase {}
-class FiltersBucketItem extends BucketBase {
+class CompositeBucket implements AdditionalProperties<AggregateName, Aggregate>{}
+class DateHistogramBucket implements AdditionalProperties<AggregateName, Aggregate> {}
+class FiltersBucketItem implements AdditionalProperties<AggregateName, Aggregate> {
   doc_count: long;
 }
-class IpRangeBucket extends BucketBase {}
-class RangeBucket extends BucketBase {}
-class RareTermsBucket<TKey> extends BucketBase {}
-class SignificantTermsBucket<TKey> extends BucketBase {}
-class KeyedBucket<TKey> extends BucketBase {}
+class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
+class RangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
+class RareTermsBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {}
+class SignificantTermsBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {}
+class KeyedBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {}
 
 type Aggregate  =
   | SingleBucketAggregate
@@ -195,6 +195,7 @@ class StringStatsAggregate extends AggregateBase {
 
 //hard
 class TopHitsAggregate extends AggregateBase {
+  hits: HitsMetadata<LazyDocument>
 }
 
 //TODO wrong on purpose

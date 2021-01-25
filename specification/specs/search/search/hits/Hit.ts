@@ -17,7 +17,7 @@ class Hit<TDocument> {
   _shard?: string;
   _node?: string;
   _routing?: string;
-  _source: TDocument;
+  _source?: TDocument;
   _seq_no?: long;
   _primary_term?: long;
   _version?: long;

@@ -101,7 +101,7 @@ export interface BoxPlotAggregate extends AggregateBase {
   q3: double
 }
 
-export type Bucket = CompositeBucket | DateHistogramBucket | FiltersBucketItem | IpRangeBucket | RangeBucket | RareTermsBucket<object> | SignificantTermsBucket<object> | KeyedBucket<object>
+export type Bucket = CompositeBucket | DateHistogramBucket | FiltersBucketItem | IpRangeBucket | RangeBucket | RareTermsBucket<any> | SignificantTermsBucket<any> | KeyedBucket<any>
 export interface BucketAggregate extends AggregateBase {
   after_key: Record<string, any>
   bg_count: long
@@ -112,18 +112,19 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketBase {
+export interface CompositeBucketKeys {
 }
-
-export interface CompositeBucket extends BucketBase {
-}
+export type CompositeBucket = CompositeBucketKeys |
+    { [property: string]: Aggregate }
 
 export interface CompositeBucketAggregate extends MultiBucketAggregate<Record<string, any>> {
   after_key: Record<string, any>
 }
 
-export interface DateHistogramBucket extends BucketBase {
+export interface DateHistogramBucketKeys {
 }
+export type DateHistogramBucket = DateHistogramBucketKeys |
+    { [property: string]: Aggregate }
 
 export interface ExtendedStatsAggregate extends StatsAggregate {
   sum_of_squares: double
@@ -140,9 +141,11 @@ export interface FiltersAggregate extends AggregateBase {
   buckets: Array<FiltersBucketItem> | Record<string, FiltersBucketItem>
 }
 
-export interface FiltersBucketItem extends BucketBase {
+export interface FiltersBucketItemKeys {
   doc_count: long
 }
+export type FiltersBucketItem = FiltersBucketItemKeys |
+    { [property: string]: Aggregate }
 
 export interface GeoBounds {
   bottom_right: LatLon
@@ -167,11 +170,15 @@ export interface HdrPercentilesAggregate extends AggregateBase {
   values: Array<HdrPercentileItem>
 }
 
-export interface IpRangeBucket extends BucketBase {
+export interface IpRangeBucketKeys {
 }
+export type IpRangeBucket = IpRangeBucketKeys |
+    { [property: string]: Aggregate }
 
-export interface KeyedBucket<TKey = unknown> extends BucketBase {
+export interface KeyedBucketKeys<TKey = unknown> {
 }
+export type KeyedBucket<TKey = unknown> = KeyedBucketKeys<TKey> |
+    { [property: string]: Aggregate }
 
 export interface KeyedValueAggregate extends ValueAggregate {
   keys: Array<string>
@@ -203,11 +210,15 @@ export interface PercentilesAggregate extends AggregateBase {
   items: Array<PercentileItem>
 }
 
-export interface RangeBucket extends BucketBase {
+export interface RangeBucketKeys {
 }
+export type RangeBucket = RangeBucketKeys |
+    { [property: string]: Aggregate }
 
-export interface RareTermsBucket<TKey = unknown> extends BucketBase {
+export interface RareTermsBucketKeys<TKey = unknown> {
 }
+export type RareTermsBucket<TKey = unknown> = RareTermsBucketKeys<TKey> |
+    { [property: string]: Aggregate }
 
 export interface ScriptedMetricAggregate extends AggregateBase {
 }
@@ -217,12 +228,16 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
   doc_count: long
 }
 
-export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
+export interface SignificantTermsBucketKeys<TKey = unknown> {
 }
+export type SignificantTermsBucket<TKey = unknown> = SignificantTermsBucketKeys<TKey> |
+    { [property: string]: Aggregate }
 
-export interface SingleBucketAggregate extends AggregateBase {
+export interface SingleBucketAggregateKeys extends AggregateBase {
   doc_count: double
 }
+export type SingleBucketAggregate = SingleBucketAggregateKeys |
+    { [property: string]: Aggregate }
 
 export interface StandardDeviationBounds {
   lower: double
@@ -260,6 +275,7 @@ export interface TermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKe
 }
 
 export interface TopHitsAggregate extends AggregateBase {
+  hits: HitsMetadata<LazyDocument>
 }
 
 export interface TopMetricsAggregate extends AggregateBase {
@@ -2450,9 +2466,6 @@ export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 export type WaitForEvents = 'immediate' | 'urgent' | 'high' | 'normal' | 'low' | 'languid'
 
 export type WaitForStatus = 'green' | 'yellow' | 'red'
-
-export interface LazyDocument {
-}
 
 export interface RequestBase {
   error_trace?: boolean
@@ -4793,9 +4806,6 @@ export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
-export interface AdditionalProperties<TKey = unknown, TValue = unknown> {
-}
-
 export type AggregateName = string
 
 export type CategoryId = string
@@ -4858,6 +4868,9 @@ export type integer = number
 export interface LatLon {
   lat: double
   lon: double
+}
+
+export interface LazyDocument {
 }
 
 export type long = number
@@ -6226,7 +6239,7 @@ export interface Hit<TDocument = unknown> {
   _shard?: string
   _node?: string
   _routing?: string
-  _source: TDocument
+  _source?: TDocument
   _seq_no?: long
   _primary_term?: long
   _version?: long

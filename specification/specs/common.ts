@@ -103,7 +103,12 @@ class DateField {
   include_unmapped?: boolean;
 }
 
+/** Rather then documenting `object` this specifies places in the response that depend on the mapping and or request
+ * e.g the result of a script can be anything from value types to objects  */
 class UserDefinedValue {}
+
+/** Documents a place that can return ANY document from ANY index that can not be directly related back to a generic */
+class LazyDocument {}
 
 class LatLon {
   lat: double
