@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("indices.clone")
 class CloneIndexRequest extends RequestBase {
   path_parts?: {
@@ -7,7 +10,7 @@ class CloneIndexRequest extends RequestBase {
   query_parameters?: {
     master_timeout?: Time;
     timeout?: Time;
-    wait_for_active_shards?: string;
+    wait_for_active_shards?: string | number;
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>;

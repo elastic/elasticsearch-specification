@@ -33148,6 +33148,9 @@
         "name": "CloneIndexRequest"
       },
       "description": "The configuration for the target index (`settings` and `aliases`)",
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {
@@ -33210,11 +33213,23 @@
         {
           "name": "wait_for_active_shards",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "string"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "number"
+                }
+              }
+            ]
           },
           "required": false,
           "description": "Set the number of active shards to wait for on the cloned index before the operation returns."
