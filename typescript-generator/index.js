@@ -210,7 +210,6 @@ function lookupBehaviorImplements(type, name) {
 function serializeAdditionalPropertiesType(type) {
   const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties');
   if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
-  //export type SingleBucketAggregate = { doc_count: double } & Record<string, Aggregate>
   let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
 
   function required(property) {
