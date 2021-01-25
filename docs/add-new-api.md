@@ -5,14 +5,16 @@ in this repository, or we do have an endpoint definition in [`/specification/spe
 but we don't have a type definition for it.
 In this document you will see how to add a new endpopint and how to add a new endpoint definition.
 
+**NOTE:** Currenlty we are following the work on the `7.x` release line.
+
 ## How to add a new endpoint
 
 Add a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec defintion
 from the Elasticsearch repository inside [`/specification/specs/_json_spec`](../specification/specs/_json_spec)
 and you are good to go.
 
-You can find the rest-api-spec definitions [here](https://github.com/elastic/elasticsearch/tree/master/rest-api-spec/src/main/resources/rest-api-spec/api)
-or [here](https://github.com/elastic/elasticsearch/tree/master/x-pack/plugin/src/test/resources/rest-api-spec/api).
+You can find the rest-api-spec definitions [here](https://github.com/elastic/elasticsearch/tree/7.x/rest-api-spec/src/main/resources/rest-api-spec/api)
+or [here](https://github.com/elastic/elasticsearch/tree/7.x/x-pack/plugin/src/test/resources/rest-api-spec/api).
 
 ## How to add the definition of an endpoint
 
