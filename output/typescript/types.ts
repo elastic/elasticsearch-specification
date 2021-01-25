@@ -1480,29 +1480,37 @@ export interface ClusterAllocationExplainRequest extends RequestBase {
 }
 
 export interface ClusterAllocationExplainResponse extends ResponseBase {
-  allocate_explanation: string
-  allocation_delay: string
-  allocation_delay_in_millis: long
-  can_allocate: Decision
-  can_move_to_other_node: Decision
-  can_rebalance_cluster: Decision
-  can_rebalance_cluster_decisions: Array<AllocationDecision>
-  can_rebalance_to_other_node: Decision
-  can_remain_decisions: Array<AllocationDecision>
-  can_remain_on_current_node: Decision
-  configured_delay: string
-  configured_delay_in_mills: long
-  current_node: CurrentNode
+  allocate_explanation?: string
+  allocation_delay?: string
+  allocation_delay_in_millis?: long
+  can_allocate?: Decision
+  can_move_to_other_node?: Decision
+  can_rebalance_cluster?: Decision
+  can_rebalance_cluster_decisions?: Array<AllocationDecision>
+  can_rebalance_to_other_node?: Decision
+  can_remain_decisions?: Array<AllocationDecision>
+  can_remain_on_current_node?: Decision
+  cluster_info?: ClusterInfo
+  configured_delay?: string
+  configured_delay_in_mills?: long
+  current_node?: CurrentNode
   current_state: string
   index: string
-  move_explanation: string
-  node_allocation_decisions: Array<NodeAllocationExplanation>
+  move_explanation?: string
+  node_allocation_decisions?: Array<NodeAllocationExplanation>
   primary: boolean
-  rebalance_explanation: string
-  remaining_delay: string
-  remaining_delay_in_millis: long
+  rebalance_explanation?: string
+  remaining_delay?: string
+  remaining_delay_in_millis?: long
   shard: integer
-  unassigned_info: UnassignedInformation
+  unassigned_info?: UnassignedInformation
+}
+
+export interface ClusterInfo {
+  nodes: Record<string, NodeDiskUsage>
+  shard_sizes: Record<string, long>
+  shard_paths: Record<string, string>
+  reserved_sizes: Array<ReservedSize>
 }
 
 export interface CurrentNode {
@@ -1515,21 +1523,45 @@ export interface CurrentNode {
 
 export type Decision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
 
+export interface DiskUsage {
+  path: string
+  total_bytes: long
+  used_bytes: long
+  free_bytes: long
+  free_disk_percent: double
+  used_disk_percent: double
+}
+
 export interface NodeAllocationExplanation {
   deciders: Array<AllocationDecision>
   node_attributes: Record<string, string>
   node_decision: Decision
   node_id: string
   node_name: string
-  store: AllocationStore
+  store?: AllocationStore
   transport_address: string
   weight_ranking: integer
+}
+
+export interface NodeDiskUsage {
+  node_name: string
+  least_available: DiskUsage
+  most_available: DiskUsage
+}
+
+export interface ReservedSize {
+  node_id: string
+  path: string
+  total: long
+  shards: Array<string>
 }
 
 export interface UnassignedInformation {
   at: Date
   last_allocation_status: string
   reason: UnassignedInformationReason
+  details?: string
+  failed_allocation_attempts?: integer
 }
 
 export type UnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
