@@ -3410,8 +3410,8 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 }
 
 export interface IndexState {
-  aliases: Record<IndexName, Alias>
-  mappings: TypeMapping
+  aliases?: Record<IndexName, Alias>
+  mappings?: TypeMapping
   settings: Record<string, any>
 }
 

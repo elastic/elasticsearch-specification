@@ -31704,7 +31704,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "mappings",
@@ -31715,7 +31715,7 @@
               "name": "TypeMapping"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "settings",
