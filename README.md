@@ -184,13 +184,6 @@ Namespaced APIs can be validated in the same way, for example:
 ./run-validations.sh --api cat.health --request
 ```
 
-### Where do I see the test?
-
-Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
-You can find them in `clients-flight-recorder/scripts/types-validator/workbench`.
-The content of this folder is a series of recorded responses from Elasticsearch wrapped inside an helper
-that verifies if the type definiton is correct.
-
 ## Custom types
 
 The goal of the specification is to be used by different languages, from dynamically typed to statically typed.
@@ -345,9 +338,7 @@ propertyOptional?: string
 
 ### A definition is missing, how do I add it?
 
-All the definitons are in the [`specifications/specs`](./specifications/specs) folder, you should explore its content and find the
-most approriate place where to add the new defintion. You can either create a new file or update an existing one.
-If possible, try to reuse existing type definitions (eg `Indices` instead of `string`).
+See [here](./docs/add-new-api.md).
 
 ### A definition is not correct, how do I fix it?
 
@@ -356,9 +347,7 @@ you can find above how to run the validation of the spec.
 
 ### An endpoint is missing, how do I add it?
 
-All the endpoint definitons are inside `specifications/specs/_json_spec` folder, which contains a series of
-JSON files taken directly from the Elasticsearch rest-api-spec.
-You should copy from there the missing endpoint and add it here.
+See [here](./docs/add-new-api.md).
 
 ### An endpoint definition is not correct, how do I fix it?
 
@@ -382,6 +371,13 @@ cd client-flight-recorder
 git pull
 ```
 
+### Where do I find the generated test?
+
+Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
+You can find them in `clients-flight-recorder/scripts/types-validator/workbench`.
+The content of this folder is a series of recorded responses from Elasticsearch wrapped inside an helper
+that verifies if the type definiton is correct.
+
 ### Which editor should I use?
 
 Any editor is fine, but to have a better development experience it should be configured
@@ -390,7 +386,7 @@ to work with TypeScript. [Visual Studio Code](https://code.visualstudio.com/) an
 
 ### Is there a complete example of the process?
 
-Yes, take a look [here](./validation-example.md).
+Yes, take a look [here](./docs/validation-example.md).
 
 ### realpath: command not found
 
