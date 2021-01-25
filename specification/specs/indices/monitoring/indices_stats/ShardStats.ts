@@ -12,6 +12,7 @@ class ShardStats {
   recovery: ShardStatsRecovery;
   refresh: ShardRefresh;
   request_cache: ShardRequestCache;
+  retention_leases: ShardRetentionLeases;
   routing: ShardRouting;
   search: ShardSearch;
   segments: ShardSegments;
