@@ -23,7 +23,8 @@ let definitions = `/*
  */\n\n`
 
 const skip = [
-  'CatResponseBase'
+  'CatResponseBase',
+  'AdditionalProperties'
 ]
 
 for (const type of types) {

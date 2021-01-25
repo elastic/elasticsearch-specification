@@ -4806,9 +4806,6 @@ export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
-export interface AdditionalProperties<TKey = unknown, TValue = unknown> {
-}
-
 export type AggregateName = string
 
 export type CategoryId = string
