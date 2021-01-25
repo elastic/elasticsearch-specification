@@ -29978,13 +29978,10 @@
         {
           "name": "_source_excludes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -29993,13 +29990,10 @@
         {
           "name": "_source_includes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -30008,13 +30002,10 @@
         {
           "name": "stored_fields",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -30166,7 +30157,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_routing",
@@ -30177,7 +30168,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_seq_no",
@@ -30188,7 +30179,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_source",
@@ -30199,7 +30190,7 @@
               "name": "TDocument"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceFormatter`1"
           }
@@ -30224,7 +30215,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
