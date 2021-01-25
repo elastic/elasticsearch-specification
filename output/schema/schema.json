@@ -38034,6 +38034,9 @@
         "namespace": "indices.monitoring.indices_stats",
         "name": "IndicesStatsRequest"
       },
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {

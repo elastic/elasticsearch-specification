@@ -1,3 +1,6 @@
+/**
+ * @type_stability stable
+ */
 @rest_spec_name("indices.stats")
 class IndicesStatsRequest extends RequestBase {
   path_parts?: {
