@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "documentation": ["README.md", "/docs"],
+    "specification": "/specification/specs"
+  }
+}
