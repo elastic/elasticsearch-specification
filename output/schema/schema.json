@@ -32662,6 +32662,9 @@
         "name": "CloneIndexRequest"
       },
       "description": "The configuration for the target index (`settings` and `aliases`)",
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {
