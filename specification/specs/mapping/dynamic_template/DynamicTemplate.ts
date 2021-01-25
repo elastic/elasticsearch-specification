@@ -1,5 +1,5 @@
 class DynamicTemplate {
-  mapping: IProperty;
+  mapping: PropertyBase;
   match: string;
   match_mapping_type: string;
   match_pattern: MatchType;

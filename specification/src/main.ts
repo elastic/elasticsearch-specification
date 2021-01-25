@@ -21,7 +21,7 @@ for (const e of specification.endpoints) {
   //  console.log(type);
 }
 for (const t of specification.types) {
-  if (['StopWords'].includes(t.name)) { console.log(t) }
+  if (['CompositeBucket'].includes(t.name)) { console.dir(t, {depth: 20} ) }
 }
 
 console.log('Done!')

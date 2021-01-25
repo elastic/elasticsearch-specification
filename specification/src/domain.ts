@@ -21,6 +21,7 @@ namespace Domain {
     key: InstanceOf;
     value: InstanceOf;
   }
+
   export class SingleKeyDictionary {
     type = new Type('singlekeydictionary');
     value: InstanceOf;
@@ -41,6 +42,7 @@ namespace Domain {
 
       this.alternateName = this.annotations.alternate_name
       this.customSerializationRoutine = this.annotations.prop_serializer
+      this.behavior = this.annotations.behavior
     }
 
     annotations: Record<string, string>;
@@ -51,10 +53,13 @@ namespace Domain {
     /** presents a suggestion for an alternate name in case of conflicts */
     alternateName: string;
 
+    /** marks an interface as a trait, holds a description to its purpose */
+    behavior: string;
+
     /**
-    * The name of the custom serialization routine, in some cases the spec knows there is no 1-1 mapping.
-    * This property can be used to generate stubs for manual serialization work
-    */
+     * The name of the custom serialization routine, in some cases the spec knows there is no 1-1 mapping.
+     * This property can be used to generate stubs for manual serialization work
+     */
     customSerializationRoutine: string;
   }
 
@@ -68,7 +73,11 @@ namespace Domain {
   export class Interface extends TypeDeclaration {
     properties: InterfaceProperty[] = [];
     inheritsFromUnresolved: Record<string, InstanceOf[]> = {};
-    inherits: Domain.ImplementsReference[] = [];
+    implementsFromUnresolved: Record<string, { depth: number, instanceOf: InstanceOf[]}> = {};
+    inherits: Domain.InheritsReference[] = [];
+    implements: Domain.ImplementsReference[] = [];
+    behaviors: Domain.ImplementsReference[] = [];
+    attachedBehaviors: string[];
     openGenerics: string[];
     implementsUnion = (): boolean => Object.keys(this.inheritsFromUnresolved).includes('Union');
   }
@@ -88,8 +97,14 @@ namespace Domain {
     path: InterfaceProperty[] = [];
   }
 
-  export class ImplementsReference {
+  export class InheritsReference {
     constructor (public type: Domain.Interface) {}
+    closedGenerics: Domain.InstanceOf[];
+  }
+  export class ImplementsReference extends InheritsReference {
+    constructor (public type: Domain.Interface, public depth:number = 0) {
+      super(type)
+    }
     closedGenerics: Domain.InstanceOf[];
   }
 

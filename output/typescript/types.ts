@@ -17,7 +17,7 @@
  * under the License.
  */
 
-export type Aggregate = ValueAggregate | DocCountAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | SingleBucketAggregate | MatrixStatsAggregate | BoxPlotAggregate | ExtendedStatsAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | KeyedValueAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
 export interface AggregateBase {
   meta?: Record<string, any>
 }
@@ -125,10 +125,6 @@ export interface CompositeBucketAggregate extends MultiBucketAggregate<Record<st
 export interface DateHistogramBucket extends BucketBase {
 }
 
-export interface DocCountAggregate extends AggregateBase {
-  doc_count: double
-}
-
 export interface ExtendedStatsAggregate extends StatsAggregate {
   sum_of_squares: double
   variance: double
@@ -192,6 +188,7 @@ export interface MatrixStatsAggregate extends AggregateBase {
   name: string
 }
 
+export type MetricAggregate = ValueAggregate | BoxPlotAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | ExtendedStatsAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
 export type Missing = string | integer | boolean
 export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
   buckets: Array<TBucket>
@@ -224,6 +221,7 @@ export interface SignificantTermsBucket<TKey = unknown> extends BucketBase {
 }
 
 export interface SingleBucketAggregate extends AggregateBase {
+  doc_count: double
 }
 
 export interface StandardDeviationBounds {
@@ -746,18 +744,17 @@ export interface SumBucketAggregation {
 }
 
 export type StopWords = string | Array<string>
-export interface ICharFilter {
+export interface CharFilterBase {
   type: string
   version: string
 }
 
-export interface ITokenFilter {
+export interface TokenFilterBase {
   type: string
-  version?: string
-  stopwords?: Array<string>
+  version: string
 }
 
-export interface ITokenizer {
+export interface TokenizerBase {
   type: string
   version: string
 }
@@ -3522,13 +3519,13 @@ export interface AnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: Array<string>
-    char_filter?: Array<string | ICharFilter>
+    char_filter?: Array<string | CharFilterBase>
     explain?: boolean
     field?: Field
-    filter?: Array<string | ITokenFilter>
+    filter?: Array<string | TokenFilterBase>
     normalizer?: string
     text?: string | Array<string>
-    tokenizer?: string | ITokenizer
+    tokenizer?: string | TokenizerBase
   }
 }
 
@@ -3926,7 +3923,7 @@ export interface PutMappingRequest extends RequestBase {
     index_field?: IndexField
     meta?: Record<string, any>
     numeric_detection?: boolean
-    properties?: Record<PropertyName, IProperty>
+    properties?: Record<PropertyName, PropertyBase>
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
@@ -4796,6 +4793,11 @@ export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
+export interface AdditionalProperties<TKey = unknown, TValue = unknown> {
+}
+
+export type AggregateName = string
+
 export type CategoryId = string
 
 export interface Date {
@@ -4898,14 +4900,14 @@ export interface TypeMapping {
   index_field?: IndexField
   _meta?: Record<string, any>
   numeric_detection?: boolean
-  properties: Record<PropertyName, IProperty>
+  properties: Record<PropertyName, PropertyBase>
   _routing?: RoutingField
   _size?: SizeField
   _source?: SourceField
 }
 
 export interface DynamicTemplate {
-  mapping: IProperty
+  mapping: PropertyBase
   match: string
   match_mapping_type: string
   match_pattern: MatchType
@@ -4956,12 +4958,11 @@ export interface SourceField {
   includes: Array<string>
 }
 
-export interface IProperty {
-  local_metadata?: Record<string, any>
-  meta?: Record<string, string>
-  name?: PropertyName
+export interface PropertyBase {
+  local_metadata: Record<string, any>
+  meta: Record<string, string>
+  name: PropertyName
   type: string
-  properties?: Record<PropertyName, IProperty>
 }
 
 export interface StoredScript {
@@ -6070,7 +6071,7 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   timed_out: boolean
   _shards: ShardStatistics
   hits: HitsMetadata<TDocument>
-  aggregations?: Record<string, Aggregate>
+  aggregations?: Record<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   documents?: Array<TDocument>
   fields?: Record<string, LazyDocument>
@@ -8181,7 +8182,7 @@ export interface AnomalyDetectors {
 }
 
 export interface CategorizationAnalyzer {
-  filter: Array<ITokenFilter>
+  filter: Array<TokenFilterBase>
   tokenizer: string
 }
 

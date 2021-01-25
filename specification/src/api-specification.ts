@@ -34,6 +34,7 @@ export class Specification {
       }
     }
 
+    const knownBehaviors = ["AdditionalProperties"]
     const specVisitor = new TypeReader(this.program)
     const types = [].concat(specVisitor.interfaces).concat(specVisitor.enums)
     // resolve inherits by creating the proper pointers to instances, pretty hairy but it works
@@ -43,11 +44,29 @@ export class Specification {
     types.forEach(t => {
       if (!(t instanceof Domain.Interface)) return
       t.inherits = []
+      t.implements = []
+      t.attachedBehaviors = []
+      t.behaviors = []
       for (const key of Object.keys(t.inheritsFromUnresolved)) {
         const refType = lookup(key)
-        const ref = new Domain.ImplementsReference(refType)
+        const ref = new Domain.InheritsReference(refType)
         ref.closedGenerics = t.inheritsFromUnresolved[key]
         t.inherits.push(ref)
+      }
+      for (const key of Object.keys(t.implementsFromUnresolved)) {
+        const refType = lookup(key)
+        const unresolved = t.implementsFromUnresolved[key]
+        const ref = new Domain.ImplementsReference(refType, unresolved.depth)
+        ref.closedGenerics = unresolved.instanceOf;
+        const isBehavior = !!ref.type.generatorHints.behavior;
+        if (ref.depth === 0 && !isBehavior) t.implements.push(ref)
+        else if (ref.depth === 0 && isBehavior) t.behaviors.push(ref)
+        if (isBehavior) {
+          if (!knownBehaviors.includes(ref.type.name)) {
+            throw new Error(`${ref.type.name} is not a known behavior, please include it here`)
+          }
+          else t.attachedBehaviors.push(ref.type.name)
+        }
       }
     })
     this.types = types

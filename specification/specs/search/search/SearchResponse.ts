@@ -4,7 +4,7 @@ class SearchResponse<TDocument> extends ResponseBase {
   _shards: ShardStatistics;
   hits: HitsMetadata<TDocument>;
 
-  aggregations?: Dictionary<string, Aggregate>;
+  aggregations?: Dictionary<AggregateName, Aggregate>;
   _clusters?: ClusterStatistics;
   documents?: TDocument[];
   fields?: Dictionary<string, LazyDocument>;
