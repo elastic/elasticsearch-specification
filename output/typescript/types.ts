@@ -2390,9 +2390,6 @@ export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export type Health = 'green' | 'yellow' | 'red'
 
-export interface IDictionary<TKey = unknown, TValue = unknown> {
-}
-
 export type Level = 'cluster' | 'indices' | 'shards'
 
 export type OpType = 'index' | 'create'
@@ -4730,6 +4727,9 @@ export interface SimulatePipelineRequest extends RequestBase {
 
 export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
+}
+
+export interface AdditionalProperties<TKey = unknown, TValue = unknown> {
 }
 
 export type AggregateName = string

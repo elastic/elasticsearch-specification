@@ -1199,11 +1199,11 @@
         "namespace": "aggregations",
         "name": "BucketBase"
       },
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common",
-            "name": "IDictionary"
+            "namespace": "internal",
+            "name": "AdditionalProperties"
           },
           "generics": [
             {
@@ -1223,8 +1223,8 @@
           ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1242,8 +1242,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1310,8 +1310,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1487,8 +1487,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": [
         {
@@ -1678,8 +1678,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1700,8 +1700,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2101,8 +2101,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2123,8 +2123,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2212,8 +2212,8 @@
           }
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2231,11 +2231,11 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common",
-            "name": "IDictionary"
+            "namespace": "internal",
+            "name": "AdditionalProperties"
           },
           "generics": [
             {
@@ -2255,8 +2255,8 @@
           ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": [
         {
@@ -22261,18 +22261,6 @@
           ]
         }
       ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "common",
-        "name": "IDictionary"
-      },
-      "generics": [
-        "TKey",
-        "TValue"
-      ],
-      "properties": []
     },
     {
       "kind": "enum",
@@ -44393,6 +44381,18 @@
           "required": true
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "AdditionalProperties"
+      },
+      "generics": [
+        "TKey",
+        "TValue"
+      ],
+      "properties": []
     },
     {
       "kind": "type_alias",

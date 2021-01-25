@@ -244,7 +244,7 @@ class InterfaceVisitor extends Visitor {
 
   private visitTypeReference (t: ts.TypeReferenceNode): Domain.InstanceOf {
     const typeName = t.typeName?.getText() ?? (t as any).expression?.text
-    if (typeName.startsWith('Dictionary') || typeName.startsWith('IDictionary')) return this.createDictionary(t, typeName)
+    if (typeName.startsWith('Dictionary') || typeName.startsWith('AdditionalProperties')) return this.createDictionary(t, typeName)
     if (typeName.startsWith('Union')) return this.createUnion(t, typeName)
     if (typeName.startsWith('SingleKeyDictionary')) return this.createSingleKeyDictionary(t, typeName)
     if (typeName.startsWith('UserDefinedValue')) return this.createUserDefinedValue(t, typeName)

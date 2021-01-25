@@ -9,7 +9,7 @@ type Bucket =
   | SignificantTermsBucket<any>
   | KeyedBucket<any>
 
-class BucketBase implements IDictionary<AggregateName, Aggregate> {}
+class BucketBase implements AdditionalProperties<AggregateName, Aggregate> {}
 class CompositeBucket extends BucketBase {}
 class DateHistogramBucket extends BucketBase {}
 class FiltersBucketItem extends BucketBase {
@@ -62,7 +62,7 @@ class ValueAggregate extends AggregateBase {
   value_as_string?: string;
 }
 
-class SingleBucketAggregate extends AggregateBase implements IDictionary<AggregateName, Aggregate> {
+class SingleBucketAggregate extends AggregateBase implements AdditionalProperties<AggregateName, Aggregate> {
   doc_count: double;
 }
 class KeyedValueAggregate extends ValueAggregate {

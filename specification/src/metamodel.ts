@@ -140,7 +140,8 @@ export class Interface extends BaseType {
   generics?: string[];
   inherits?: Inherits[];
   implements?: Implements[];
-  traits?: string[];
+  behaviors?: Implements[];
+  attachedBehaviors?: string[];
   properties: Property[];
 }
 

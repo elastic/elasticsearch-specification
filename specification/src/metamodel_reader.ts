@@ -241,7 +241,8 @@ export function loadModel(spec: Specification): Model {
         generics: nonEmptyArr(specType.openGenerics),
         inherits: nonEmptyArr(specType.inherits.map(impl => makeInherits(impl, specType.openGenerics))),
         implements: nonEmptyArr(specType.implements.map(impl => makeImplements(impl, specType.openGenerics))),
-        traits: nonEmptyArr(specType.traits),
+        behaviors: nonEmptyArr(specType.behaviors.map(impl => makeImplements(impl, specType.openGenerics))),
+        attachedBehaviors: nonEmptyArr(specType.attachedBehaviors),
         properties: specType.properties.map(prop => makeProperty(prop, specType.openGenerics))
       });
     }
