@@ -1051,11 +1051,7 @@
           },
           "generics": [
             {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           ]
         },
@@ -1067,11 +1063,7 @@
           },
           "generics": [
             {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           ]
         },
@@ -1083,11 +1075,7 @@
           },
           "generics": [
             {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "object"
-              }
+              "kind": "user_defined_value"
             }
           ]
         }
@@ -1197,13 +1185,13 @@
       "kind": "interface",
       "name": {
         "namespace": "aggregations",
-        "name": "BucketBase"
+        "name": "CompositeBucket"
       },
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common",
-            "name": "IDictionary"
+            "namespace": "internal",
+            "name": "AdditionalProperties"
           },
           "generics": [
             {
@@ -1223,27 +1211,8 @@
           ]
         }
       ],
-      "traits": [
-        "IDictionary"
-      ],
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "aggregations",
-        "name": "CompositeBucket"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
-        }
-      ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1302,16 +1271,32 @@
         "namespace": "aggregations",
         "name": "DateHistogramBucket"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1479,16 +1464,32 @@
         "namespace": "aggregations",
         "name": "FiltersBucketItem"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": [
         {
@@ -1670,16 +1671,32 @@
         "namespace": "aggregations",
         "name": "IpRangeBucket"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -1692,16 +1709,32 @@
       "generics": [
         "TKey"
       ],
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2093,16 +2126,32 @@
         "namespace": "aggregations",
         "name": "RangeBucket"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2115,16 +2164,32 @@
       "generics": [
         "TKey"
       ],
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": []
     },
@@ -2204,38 +2269,11 @@
       "generics": [
         "TKey"
       ],
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "aggregations",
-            "name": "BucketBase"
-          }
-        }
-      ],
-      "traits": [
-        "IDictionary"
-      ],
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "aggregations",
-        "name": "SingleBucketAggregate"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "aggregations",
-            "name": "AggregateBase"
-          }
-        }
-      ],
-      "implements": [
-        {
-          "type": {
-            "namespace": "common",
-            "name": "IDictionary"
+            "namespace": "internal",
+            "name": "AdditionalProperties"
           },
           "generics": [
             {
@@ -2255,8 +2293,51 @@
           ]
         }
       ],
-      "traits": [
-        "IDictionary"
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "aggregations",
+        "name": "SingleBucketAggregate"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "aggregations",
+            "name": "AggregateBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "AdditionalProperties"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "AggregateName"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "aggregations",
+                "name": "Aggregate"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "AdditionalProperties"
       ],
       "properties": [
         {
@@ -2615,7 +2696,28 @@
           }
         }
       ],
-      "properties": []
+      "properties": [
+        {
+          "name": "hits",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.search.hits",
+              "name": "HitsMetadata"
+            },
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "LazyDocument"
+                }
+              }
+            ]
+          },
+          "required": true
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -21951,18 +22053,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "namespace": "common",
-        "name": "IDictionary"
-      },
-      "generics": [
-        "TKey",
-        "TValue"
-      ],
-      "properties": []
-    },
-    {
       "kind": "enum",
       "name": {
         "namespace": "common",
@@ -22273,14 +22363,6 @@
           "name": "red"
         }
       ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "common_abstractions.lazy_document",
-        "name": "LazyDocument"
-      },
-      "properties": []
     },
     {
       "kind": "interface",
@@ -25429,7 +25511,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "namespace": "common_abstractions.lazy_document",
+                  "namespace": "internal",
                   "name": "LazyDocument"
                 }
               }
@@ -29649,7 +29731,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "namespace": "common_abstractions.lazy_document",
+                "namespace": "internal",
                 "name": "LazyDocument"
               }
             }
@@ -43481,7 +43563,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "common_abstractions.lazy_document",
+              "namespace": "internal",
               "name": "LazyDocument"
             }
           },
@@ -43710,6 +43792,18 @@
           "required": true
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "AdditionalProperties"
+      },
+      "generics": [
+        "TKey",
+        "TValue"
+      ],
+      "properties": []
     },
     {
       "kind": "type_alias",
@@ -44342,6 +44436,14 @@
           "required": true
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "LazyDocument"
+      },
+      "properties": []
     },
     {
       "kind": "type_alias",
@@ -45262,27 +45364,6 @@
             }
           },
           "required": true
-        },
-        {
-          "name": "properties",
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "PropertyName"
-              }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "mapping.types",
-                "name": "IProperty"
-              }
-            }
-          },
-          "required": false
         }
       ]
     },
@@ -54066,7 +54147,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "namespace": "common_abstractions.lazy_document",
+                "namespace": "internal",
                 "name": "LazyDocument"
               }
             }
@@ -56198,7 +56279,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "namespace": "common_abstractions.lazy_document",
+                "namespace": "internal",
                 "name": "LazyDocument"
               }
             }
@@ -56882,7 +56963,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "common_abstractions.lazy_document",
+              "namespace": "internal",
               "name": "LazyDocument"
             }
           },
@@ -57600,7 +57681,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "namespace": "common_abstractions.lazy_document",
+                "namespace": "internal",
                 "name": "LazyDocument"
               }
             }
@@ -57736,7 +57817,7 @@
               "name": "TDocument"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_seq_no",
@@ -57925,7 +58006,7 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "namespace": "common_abstractions.lazy_document",
+                    "namespace": "internal",
                     "name": "LazyDocument"
                   }
                 }
@@ -59602,7 +59683,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "namespace": "common_abstractions.lazy_document",
+                "namespace": "internal",
                 "name": "LazyDocument"
               }
             }
@@ -83789,7 +83870,7 @@
       "inherits": [
         {
           "type": {
-            "namespace": "common_abstractions.lazy_document",
+            "namespace": "internal",
             "name": "LazyDocument"
           }
         }

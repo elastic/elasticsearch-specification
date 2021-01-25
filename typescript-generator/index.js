@@ -186,8 +186,8 @@ function isSpecialInterface (type) {
   if (/^Cat.*Response$/g.test(type.name.name)) {
     return true
   }
-  if (Array.isArray(type.traits)) {
-    return type.traits.length > 0
+  if (Array.isArray(type.attachedBehaviors)) {
+    return type.attachedBehaviors.length > 0
   }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
@@ -197,15 +197,17 @@ function isSpecialInterface (type) {
   }
 }
 
-function lookupTraitInterface(type, name) {
-  const dictionaryOf = type.implements.find(i => i.type.name === name);
+function lookupBehaviorImplements(type, name) {
+  const dictionaryOf = type.behaviors.find(i => i.type.name === name);
   if (dictionaryOf) return dictionaryOf;
-  if (Array.isArray(t.inherits)) return lookupTraitInterface(t.inherits[0], name)
+  //find inherits on parent if current type has parent
+  //TODO fix spec so that inherits is no longer an array
+  if (Array.isArray(type.inherits)) return lookupBehaviorImplements(type.inherits[0], name)
   return null;
 }
 
-function serializeDictionaryTraitType(type) {
-  const dictionaryOf = lookupTraitInterface(type, 'IDictionary');
+function serializeAdditionalPropertiesType(type) {
+  const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties');
   if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
   //export type SingleBucketAggregate = { doc_count: double } & Record<string, Aggregate>
   let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
@@ -227,9 +229,9 @@ function serializeSpecialInterface (type) {
   if (/^Cat.*Response$/g.test(type.name.name)) {
     return buildCatResponse(type)
   }
-  if (Array.isArray(type.traits)) {
-    if (type.traits.includes('IDictionary')) {
-      return serializeDictionaryTraitType(type);
+  if (Array.isArray(type.attachedBehaviors)) {
+    if (type.attachedBehaviors.includes('AdditionalProperties')) {
+      return serializeAdditionalPropertiesType(type);
     }
   }
   switch (type.name.name) {
