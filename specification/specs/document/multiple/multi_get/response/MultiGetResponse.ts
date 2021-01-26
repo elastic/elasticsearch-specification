@@ -17,19 +17,24 @@
  * under the License.
  */
 
+/**
+ * @type_stability stable
+ */
 @class_serializer('MultiGetResponseFormatter')
 class MultiGetResponse<TDocument> extends ResponseBase {
   docs: MultiGetHit<TDocument>[]
 }
 
 class MultiGetHit<TDocument> {
-  found: boolean
+  error?: MainError
+  fields?: Dictionary<string, LazyDocument>
+  found?: boolean
   _id: string
   _index: string
-  _primary_term: long
-  _routing: string
-  _seq_no: long
-  _source: TDocument
-  _type: string
-  _version: long
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: long
+  _source?: TDocument
+  _type?: TypeName
+  _version?: long
 }
