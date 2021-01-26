@@ -1,2 +1,1 @@
-class PercentageScoreHeuristic {
-}
+class PercentageScoreHeuristic {}

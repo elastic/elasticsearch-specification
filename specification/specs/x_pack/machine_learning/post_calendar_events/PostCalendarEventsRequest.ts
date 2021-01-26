@@ -1,11 +1,10 @@
-@rest_spec_name("ml.post_calendar_events")
+@rest_spec_name('ml.post_calendar_events')
 class PostCalendarEventsRequest extends RequestBase {
   path_parts?: {
-    calendar_id: Id;
+    calendar_id: Id
   }
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    events?: ScheduledEvent[];
+    events?: ScheduledEvent[]
   }
 }

@@ -1,2 +1,1 @@
-class AverageAggregation {
-}
+class AverageAggregation {}

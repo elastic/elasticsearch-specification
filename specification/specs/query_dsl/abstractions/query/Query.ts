@@ -1,4 +1,4 @@
 class QueryBase {
-  boost?: float;
-  _name?: string;
+  boost?: float
+  _name?: string
 }

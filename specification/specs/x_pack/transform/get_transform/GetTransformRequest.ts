@@ -1,13 +1,12 @@
-@rest_spec_name("transform.get_transform")
+@rest_spec_name('transform.get_transform')
 class GetTransformRequest extends RequestBase {
   path_parts?: {
-    transform_id?: Name;
+    transform_id?: Name
   }
   query_parameters?: {
-    allow_no_match?: boolean;
-    from?: integer;
-    size?: integer;
+    allow_no_match?: boolean
+    from?: integer
+    size?: integer
   }
-  body?: {
-  }
+  body?: {}
 }

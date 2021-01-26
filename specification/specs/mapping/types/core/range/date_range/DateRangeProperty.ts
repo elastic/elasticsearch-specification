@@ -1,3 +1,3 @@
 class DateRangeProperty extends RangePropertyBase {
-  format: string;
+  format: string
 }

@@ -1,2 +1,1 @@
-class DeleteByQueryRethrottleResponse extends ListTasksResponse {
-}
+class DeleteByQueryRethrottleResponse extends ListTasksResponse {}

@@ -1,3 +1,3 @@
 class RecoveryStatus {
-  shards: ShardRecovery[];
+  shards: ShardRecovery[]
 }

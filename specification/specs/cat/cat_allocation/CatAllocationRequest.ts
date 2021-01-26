@@ -1,11 +1,10 @@
-@rest_spec_name("cat.allocation")
+@rest_spec_name('cat.allocation')
 class CatAllocationRequest extends CatRequestBase {
   path_parts?: {
-    node_id?: NodeIds;
+    node_id?: NodeIds
   }
   query_parameters?: {
-    bytes?: Bytes;
+    bytes?: Bytes
   }
-  body?: {
-  }
+  body?: {}
 }

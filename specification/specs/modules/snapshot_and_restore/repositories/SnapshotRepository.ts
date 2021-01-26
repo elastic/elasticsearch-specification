@@ -1,3 +1,3 @@
 class SnapshotRepository {
-  type: string;
+  type: string
 }

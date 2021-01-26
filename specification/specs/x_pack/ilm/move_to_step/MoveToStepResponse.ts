@@ -1,2 +1,1 @@
-class MoveToStepResponse extends AcknowledgedResponseBase {
-}
+class MoveToStepResponse extends AcknowledgedResponseBase {}

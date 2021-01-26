@@ -1,3 +1,3 @@
 class MultiTermVectorsResponse extends ResponseBase {
-  docs: TermVectorsResult[];
+  docs: TermVectorsResult[]
 }

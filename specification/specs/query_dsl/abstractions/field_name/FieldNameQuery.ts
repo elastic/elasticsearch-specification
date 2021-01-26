@@ -1,3 +1,3 @@
 class FieldNameQuery {
-  field?: Field;
+  field?: Field
 }

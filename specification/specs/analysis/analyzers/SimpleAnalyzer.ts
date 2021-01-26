@@ -1,2 +1,1 @@
-class SimpleAnalyzer extends AnalyzerBase {
-}
+class SimpleAnalyzer extends AnalyzerBase {}

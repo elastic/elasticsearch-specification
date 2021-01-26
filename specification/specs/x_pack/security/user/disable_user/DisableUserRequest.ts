@@ -1,11 +1,10 @@
-@rest_spec_name("security.disable_user")
+@rest_spec_name('security.disable_user')
 class DisableUserRequest extends RequestBase {
   path_parts?: {
-    username: Name;
+    username: Name
   }
   query_parameters?: {
-    refresh?: Refresh;
+    refresh?: Refresh
   }
-  body?: {
-  }
+  body?: {}
 }

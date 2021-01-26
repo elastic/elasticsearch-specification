@@ -1,2 +1,1 @@
-class CreateRepositoryResponse extends AcknowledgedResponseBase {
-}
+class CreateRepositoryResponse extends AcknowledgedResponseBase {}

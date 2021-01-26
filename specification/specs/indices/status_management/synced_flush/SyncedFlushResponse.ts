@@ -1,2 +1,1 @@
-class SyncedFlushResponse extends ShardsOperationResponseBase {
-}
+class SyncedFlushResponse extends ShardsOperationResponseBase {}

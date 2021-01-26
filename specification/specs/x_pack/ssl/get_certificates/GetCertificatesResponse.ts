@@ -1,4 +1,4 @@
-@class_serializer("GetCertificatesResponseFormatter")
+@class_serializer('GetCertificatesResponseFormatter')
 class GetCertificatesResponse extends ResponseBase {
-  certificates: ClusterCertificateInformation[];
+  certificates: ClusterCertificateInformation[]
 }

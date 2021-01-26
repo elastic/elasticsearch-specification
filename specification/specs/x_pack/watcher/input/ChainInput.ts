@@ -1,4 +1,4 @@
-@class_serializer("ChainInputFormatter")
+@class_serializer('ChainInputFormatter')
 class ChainInput {
-  inputs: Dictionary<string, InputContainer>;
+  inputs: Dictionary<string, InputContainer>
 }

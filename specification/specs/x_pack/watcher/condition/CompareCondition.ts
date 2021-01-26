@@ -1,6 +1,6 @@
-@class_serializer("CompareConditionFormatter")
+@class_serializer('CompareConditionFormatter')
 class CompareCondition {
-  comparison: string;
-  path: string;
-  value: UserDefinedValue;
+  comparison: string
+  path: string
+  value: UserDefinedValue
 }

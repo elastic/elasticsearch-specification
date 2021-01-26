@@ -1,2 +1,1 @@
-class MaxBucketAggregation {
-}
+class MaxBucketAggregation {}

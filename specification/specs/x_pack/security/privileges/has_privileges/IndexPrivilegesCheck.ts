@@ -1,4 +1,4 @@
 class IndexPrivilegesCheck {
-  names: string[];
-  privileges: string[];
+  names: string[]
+  privileges: string[]
 }

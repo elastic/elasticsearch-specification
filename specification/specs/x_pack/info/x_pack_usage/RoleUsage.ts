@@ -1,5 +1,5 @@
 class RoleUsage {
-  dls: boolean;
-  fls: boolean;
-  size: long;
+  dls: boolean
+  fls: boolean
+  size: long
 }

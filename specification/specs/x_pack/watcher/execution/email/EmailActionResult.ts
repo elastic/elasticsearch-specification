@@ -1,5 +1,5 @@
 class EmailActionResult {
-  account: string;
-  message: EmailResult;
-  reason: string;
+  account: string
+  message: EmailResult
+  reason: string
 }

@@ -1,9 +1,18 @@
-
-function class_serializer(ns: string) {return function (ns: any){}}
-function rest_spec_name(ns: string) {return function (ns: any){}}
-function prop_serializer(ns: string) {return function (ns: any, x:any){}}
-function request_parameter() {return function (ns: any, x:any){}}
-function namespace(ns: string) {return function (ns: any){}}
+function class_serializer(ns: string) {
+  return function (ns: any) {}
+}
+function rest_spec_name(ns: string) {
+  return function (ns: any) {}
+}
+function prop_serializer(ns: string) {
+  return function (ns: any, x: any) {}
+}
+function request_parameter() {
+  return function (ns: any, x: any) {}
+}
+function namespace(ns: string) {
+  return function (ns: any) {}
+}
 
 type Uri = string
 // this should be `type Date = string`, but `Date` is already defined by TS
@@ -11,39 +20,39 @@ type Uri = string
 interface Date {}
 type TimeSpan = string
 interface SourceDocument {}
-@class_serializer("ErrorCauseFormatter")
+@class_serializer('ErrorCauseFormatter')
 class ErrorCause {
-  type: string;
-  reason: string;
+  type: string
+  reason: string
 
-  caused_by?: ErrorCause;
-  shard?: Union<integer, string>;
-  stack_trace?: string;
+  caused_by?: ErrorCause
+  shard?: Union<integer, string>
+  stack_trace?: string
 
-  bytes_limit?: long;
-  bytes_wanted?: long;
-  column?: integer;
-  col?: integer;
-  failed_shards?: ShardFailure[];
-  grouped?: boolean;
-  index?: string;
-  index_uuid?: string;
-  language?: string;
-  licensed_expired_feature?: string;
-  line?: integer;
-  max_buckets?: integer;
-  phase?: string;
-  resource_id?: string[];
-  'resource.id'?: string;
-  resource_type?: string;
-  'resource.type'?: string;
-  script?: string;
-  script_stack?: string[];
+  bytes_limit?: long
+  bytes_wanted?: long
+  column?: integer
+  col?: integer
+  failed_shards?: ShardFailure[]
+  grouped?: boolean
+  index?: string
+  index_uuid?: string
+  language?: string
+  licensed_expired_feature?: string
+  line?: integer
+  max_buckets?: integer
+  phase?: string
+  resource_id?: string[]
+  'resource.id'?: string
+  resource_type?: string
+  'resource.type'?: string
+  script?: string
+  script_stack?: string[]
 }
-@class_serializer("ErrorFormatter")
+@class_serializer('ErrorFormatter')
 class MainError extends ErrorCause {
-  headers?: Dictionary<string, string>;
-  root_cause: ErrorCause[];
+  headers?: Dictionary<string, string>
+  root_cause: ErrorCause[]
 }
 type short = number
 type byte = number
@@ -89,7 +98,6 @@ type GeoHashPrecision = number
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
 type Fields = Field | Field[]
 
-
 /**
  * The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back
  * in the form of `name#type` instead of simply `name`
@@ -98,9 +106,9 @@ type AggregateName = string
 
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {
-  field: Field;
-  format?: string;
-  include_unmapped?: boolean;
+  field: Field
+  format?: string
+  include_unmapped?: boolean
 }
 
 /** Rather then documenting `object` this specifies places in the response that depend on the mapping and or request
@@ -114,4 +122,3 @@ class LatLon {
   lat: double
   lon: double
 }
-

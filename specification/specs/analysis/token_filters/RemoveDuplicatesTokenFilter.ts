@@ -1,2 +1,1 @@
-class RemoveDuplicatesTokenFilter extends TokenFilterBase {
-}
+class RemoveDuplicatesTokenFilter extends TokenFilterBase {}

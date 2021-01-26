@@ -1,14 +1,14 @@
-@rest_spec_name("ml.post_data")
-@class_serializer("PostJobDataFormatter")
+@rest_spec_name('ml.post_data')
+@class_serializer('PostJobDataFormatter')
 class PostJobDataRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
+    job_id: Id
   }
   query_parameters?: {
-    reset_end?: Date;
-    reset_start?: Date;
+    reset_end?: Date
+    reset_start?: Date
   }
   body?: {
-    data?: UserDefinedValue[];
+    data?: UserDefinedValue[]
   }
 }

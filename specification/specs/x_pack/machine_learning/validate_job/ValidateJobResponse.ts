@@ -1,2 +1,1 @@
-class ValidateJobResponse extends AcknowledgedResponseBase {
-}
+class ValidateJobResponse extends AcknowledgedResponseBase {}

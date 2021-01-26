@@ -1,10 +1,8 @@
-@rest_spec_name("rollup.start_job")
+@rest_spec_name('rollup.start_job')
 class StartRollupJobRequest extends RequestBase {
   path_parts?: {
-    id: Id;
+    id: Id
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

@@ -1,1 +1,4 @@
-class RecoveryStatusResponse extends DictionaryResponseBase<IndexName, RecoveryStatus> {}
+class RecoveryStatusResponse extends DictionaryResponseBase<
+  IndexName,
+  RecoveryStatus
+> {}

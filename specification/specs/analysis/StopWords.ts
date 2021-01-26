@@ -4,4 +4,4 @@
  * Also accepts an array of stop words.
  * @class_serializer: StopWordsFormatter
  */
-type StopWords = string | string []
+type StopWords = string | string[]

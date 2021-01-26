@@ -1,2 +1,1 @@
-class CumulativeSumAggregation {
-}
+class CumulativeSumAggregation {}

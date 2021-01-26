@@ -1,4 +1,4 @@
 class IpFilterUsage {
-  http: boolean;
-  transport: boolean;
+  http: boolean
+  transport: boolean
 }

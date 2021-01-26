@@ -1,2 +1,1 @@
-class HttpInputRequestResult extends HttpInputRequest {
-}
+class HttpInputRequestResult extends HttpInputRequest {}

@@ -1,2 +1,1 @@
-class DictionaryResponseBase<TKey, TValue> extends ResponseBase {
-}
+class DictionaryResponseBase<TKey, TValue> extends ResponseBase {}

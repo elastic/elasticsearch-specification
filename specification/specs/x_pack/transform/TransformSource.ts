@@ -1,5 +1,5 @@
 class TransformSource {
   /** @prop_serializer IndicesFormatter */
-  index: Indices;
-  query: QueryContainer;
+  index: Indices
+  query: QueryContainer
 }

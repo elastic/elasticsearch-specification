@@ -1,1 +1,4 @@
-class GetFieldMappingResponse extends DictionaryResponseBase<IndexName, TypeFieldMappings> {}
+class GetFieldMappingResponse extends DictionaryResponseBase<
+  IndexName,
+  TypeFieldMappings
+> {}

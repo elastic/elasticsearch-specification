@@ -1,3 +1,3 @@
 class TermsRollupGrouping {
-  fields: Field[];
+  fields: Field[]
 }

@@ -1,4 +1,4 @@
 class FollowIndexStats {
-  index: string;
-  shards: FollowIndexShardStats[];
+  index: string
+  shards: FollowIndexShardStats[]
 }

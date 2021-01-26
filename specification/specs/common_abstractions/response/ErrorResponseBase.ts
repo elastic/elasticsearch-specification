@@ -1,4 +1,4 @@
 class ErrorResponse {
-  error: MainError;
-  status: integer;
+  error: MainError
+  status: integer
 }

@@ -1,2 +1,1 @@
-class RollupSearchResponse<TDocument> extends ResponseBase {
-}
+class RollupSearchResponse<TDocument> extends ResponseBase {}

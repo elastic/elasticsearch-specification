@@ -1,8 +1,7 @@
-@rest_spec_name("xpack.info")
+@rest_spec_name('xpack.info')
 class XPackInfoRequest extends RequestBase {
   query_parameters?: {
-    categories?: string[];
+    categories?: string[]
   }
-  body?: {
-  }
+  body?: {}
 }

@@ -1,1 +1,4 @@
-class GetRoleMappingResponse extends DictionaryResponseBase<string, XPackRoleMapping> {}
+class GetRoleMappingResponse extends DictionaryResponseBase<
+  string,
+  XPackRoleMapping
+> {}

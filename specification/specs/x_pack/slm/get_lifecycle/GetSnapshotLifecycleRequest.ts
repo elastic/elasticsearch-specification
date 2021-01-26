@@ -1,10 +1,8 @@
-@rest_spec_name("slm.get_lifecycle")
+@rest_spec_name('slm.get_lifecycle')
 class GetSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy_id?: Names;
+    policy_id?: Names
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

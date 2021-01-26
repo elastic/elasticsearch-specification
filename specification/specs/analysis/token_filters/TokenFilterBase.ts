@@ -1,4 +1,4 @@
 class TokenFilterBase {
-  type: string;
-  version: string;
+  type: string
+  version: string
 }

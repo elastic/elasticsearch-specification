@@ -1,2 +1,1 @@
-class GeoCentroidAggregation {
-}
+class GeoCentroidAggregation {}

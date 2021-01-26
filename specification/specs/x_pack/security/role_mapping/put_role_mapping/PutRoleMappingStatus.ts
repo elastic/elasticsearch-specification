@@ -1,3 +1,3 @@
 class PutRoleMappingStatus {
-  created: boolean;
+  created: boolean
 }

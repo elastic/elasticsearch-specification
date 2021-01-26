@@ -1,2 +1,1 @@
-class KeywordAnalyzer extends AnalyzerBase {
-}
+class KeywordAnalyzer extends AnalyzerBase {}

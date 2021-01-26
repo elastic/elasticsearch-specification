@@ -1,4 +1,4 @@
 class PointInTimeReference {
-  id: string;
-  keep_alive?: Time;
+  id: string
+  keep_alive?: Time
 }

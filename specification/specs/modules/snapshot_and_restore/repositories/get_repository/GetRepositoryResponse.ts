@@ -1,4 +1,4 @@
-@class_serializer("GetRepositoryResponseFormatter")
+@class_serializer('GetRepositoryResponseFormatter')
 class GetRepositoryResponse extends ResponseBase {
-  repositories: Dictionary<string, SnapshotRepository>;
+  repositories: Dictionary<string, SnapshotRepository>
 }

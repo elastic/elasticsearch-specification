@@ -1,2 +1,1 @@
-class PropertyWithClrOrigin {
-}
+class PropertyWithClrOrigin {}

@@ -1,2 +1,1 @@
-class FieldMapping {
-}
+class FieldMapping {}

@@ -1,3 +1,2 @@
-@class_serializer("AliasActionFormatter")
-class AliasAction {
-}
+@class_serializer('AliasActionFormatter')
+class AliasAction {}

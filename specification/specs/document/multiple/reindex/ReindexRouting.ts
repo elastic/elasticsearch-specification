@@ -1,3 +1,2 @@
-@class_serializer("ReindexRoutingFormatter")
-class ReindexRouting {
-}
+@class_serializer('ReindexRoutingFormatter')
+class ReindexRouting {}

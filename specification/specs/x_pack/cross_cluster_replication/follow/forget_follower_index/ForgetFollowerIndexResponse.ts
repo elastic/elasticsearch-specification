@@ -1,3 +1,3 @@
 class ForgetFollowerIndexResponse extends ResponseBase {
-  _shards: ShardStatistics;
+  _shards: ShardStatistics
 }

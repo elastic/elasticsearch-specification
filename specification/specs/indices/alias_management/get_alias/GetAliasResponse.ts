@@ -1,1 +1,4 @@
-class GetAliasResponse extends DictionaryResponseBase<IndexName, IndexAliases> {}
+class GetAliasResponse extends DictionaryResponseBase<
+  IndexName,
+  IndexAliases
+> {}

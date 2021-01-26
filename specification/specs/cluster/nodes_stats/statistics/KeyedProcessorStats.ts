@@ -1,5 +1,5 @@
-@class_serializer("KeyedProcessorStatsFormatter")
+@class_serializer('KeyedProcessorStatsFormatter')
 class KeyedProcessorStats {
-  statistics: ProcessStats;
-  type: string;
+  statistics: ProcessStats
+  type: string
 }

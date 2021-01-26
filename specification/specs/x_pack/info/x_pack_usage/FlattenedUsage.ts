@@ -1,3 +1,3 @@
 class FlattenedUsage extends XPackUsage {
-  field_count: integer;
+  field_count: integer
 }

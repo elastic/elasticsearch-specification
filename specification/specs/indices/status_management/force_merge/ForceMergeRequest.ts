@@ -1,16 +1,15 @@
-@rest_spec_name("indices.forcemerge")
+@rest_spec_name('indices.forcemerge')
 class ForceMergeRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
+    index?: Indices
   }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    flush?: boolean;
-    ignore_unavailable?: boolean;
-    max_num_segments?: long;
-    only_expunge_deletes?: boolean;
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    flush?: boolean
+    ignore_unavailable?: boolean
+    max_num_segments?: long
+    only_expunge_deletes?: boolean
   }
-  body?: {
-  }
+  body?: {}
 }

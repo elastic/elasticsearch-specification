@@ -1,2 +1,1 @@
-class ValidateDetectorResponse extends AcknowledgedResponseBase {
-}
+class ValidateDetectorResponse extends AcknowledgedResponseBase {}

@@ -1,4 +1,4 @@
 class SearchTransform {
-  request: SearchInputRequest;
-  timeout: Time;
+  request: SearchInputRequest
+  timeout: Time
 }

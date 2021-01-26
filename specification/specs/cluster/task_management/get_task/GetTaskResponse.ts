@@ -1,4 +1,4 @@
 class GetTaskResponse extends ResponseBase {
-  completed: boolean;
-  task: TaskInfo;
+  completed: boolean
+  task: TaskInfo
 }

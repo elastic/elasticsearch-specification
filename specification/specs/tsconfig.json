@@ -1,5 +1,5 @@
 {
-  "compileOnSave" : false,
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -13,7 +13,7 @@
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noEmit" : true
+    "noEmit": true
   },
-  "exclude": [ "node_modules", "build", "src", "typings" ]
+  "exclude": ["node_modules", "build", "src", "typings"]
 }

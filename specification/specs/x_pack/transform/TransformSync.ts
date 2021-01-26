@@ -1,2 +1,1 @@
-class TransformSync {
-}
+class TransformSync {}

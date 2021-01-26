@@ -1,2 +1,1 @@
-class FloatRangeProperty extends RangePropertyBase {
-}
+class FloatRangeProperty extends RangePropertyBase {}

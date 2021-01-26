@@ -1,10 +1,8 @@
-@rest_spec_name("migration.deprecations")
+@rest_spec_name('migration.deprecations')
 class DeprecationInfoRequest extends RequestBase {
   path_parts?: {
-    index?: IndexName;
+    index?: IndexName
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

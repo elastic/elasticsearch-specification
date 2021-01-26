@@ -1,1 +1,4 @@
-class GetLifecycleResponse extends DictionaryResponseBase<string, LifecyclePolicy> {}
+class GetLifecycleResponse extends DictionaryResponseBase<
+  string,
+  LifecyclePolicy
+> {}

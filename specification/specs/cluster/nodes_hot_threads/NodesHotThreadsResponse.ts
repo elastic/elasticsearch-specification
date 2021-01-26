@@ -1,3 +1,3 @@
 class NodesHotThreadsResponse extends ResponseBase {
-  hot_threads: HotThreadInformation[];
+  hot_threads: HotThreadInformation[]
 }

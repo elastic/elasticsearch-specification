@@ -1,2 +1,1 @@
-class StartTransformResponse extends AcknowledgedResponseBase {
-}
+class StartTransformResponse extends AcknowledgedResponseBase {}

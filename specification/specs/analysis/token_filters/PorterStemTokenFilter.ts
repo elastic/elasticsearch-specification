@@ -1,2 +1,1 @@
-class PorterStemTokenFilter extends TokenFilterBase {
-}
+class PorterStemTokenFilter extends TokenFilterBase {}

@@ -1,1 +1,4 @@
-class GetPrivilegesResponse extends DictionaryResponseBase<string, Dictionary<string, PrivilegesActions>> {}
+class GetPrivilegesResponse extends DictionaryResponseBase<
+  string,
+  Dictionary<string, PrivilegesActions>
+> {}

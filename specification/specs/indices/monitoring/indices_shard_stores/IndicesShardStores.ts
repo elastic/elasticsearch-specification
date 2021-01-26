@@ -1,4 +1,4 @@
 class IndicesShardStores {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  shards: Dictionary<string, ShardStoreWrapper>;
+  shards: Dictionary<string, ShardStoreWrapper>
 }

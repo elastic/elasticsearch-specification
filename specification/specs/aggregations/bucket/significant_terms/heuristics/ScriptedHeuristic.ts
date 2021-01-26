@@ -1,3 +1,3 @@
 class ScriptedHeuristic {
-  script: Script;
+  script: Script
 }

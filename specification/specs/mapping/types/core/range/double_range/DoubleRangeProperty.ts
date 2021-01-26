@@ -1,2 +1,1 @@
-class DoubleRangeProperty extends RangePropertyBase {
-}
+class DoubleRangeProperty extends RangePropertyBase {}

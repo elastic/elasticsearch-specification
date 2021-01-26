@@ -1,2 +1,1 @@
-class DeleteCalendarEventResponse extends AcknowledgedResponseBase {
-}
+class DeleteCalendarEventResponse extends AcknowledgedResponseBase {}

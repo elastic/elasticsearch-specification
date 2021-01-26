@@ -1,2 +1,1 @@
-class AverageBucketAggregation {
-}
+class AverageBucketAggregation {}

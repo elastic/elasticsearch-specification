@@ -1,3 +1,3 @@
 class CompactNodeInfo {
-  name: string;
+  name: string
 }

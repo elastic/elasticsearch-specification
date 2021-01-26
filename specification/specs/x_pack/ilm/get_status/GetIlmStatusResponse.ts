@@ -1,3 +1,3 @@
 class GetIlmStatusResponse extends ResponseBase {
-  operation_mode: LifecycleOperationMode;
+  operation_mode: LifecycleOperationMode
 }

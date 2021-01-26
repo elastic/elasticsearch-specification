@@ -1,11 +1,10 @@
-@rest_spec_name("get_script")
+@rest_spec_name('get_script')
 class GetScriptRequest extends RequestBase {
   path_parts?: {
-    id: Id;
+    id: Id
   }
   query_parameters?: {
-    master_timeout?: Time;
+    master_timeout?: Time
   }
-  body?: {
-  }
+  body?: {}
 }

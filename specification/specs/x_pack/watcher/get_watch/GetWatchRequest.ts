@@ -1,10 +1,8 @@
-@rest_spec_name("watcher.get_watch")
+@rest_spec_name('watcher.get_watch')
 class GetWatchRequest extends RequestBase {
   path_parts?: {
-    id: Name;
+    id: Name
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

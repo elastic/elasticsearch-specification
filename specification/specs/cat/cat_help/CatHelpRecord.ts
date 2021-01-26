@@ -1,3 +1,3 @@
 class CatHelpRecord {
-  endpoint: string;
+  endpoint: string
 }

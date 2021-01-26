@@ -1,2 +1,1 @@
-class DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
-}
+class DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {}

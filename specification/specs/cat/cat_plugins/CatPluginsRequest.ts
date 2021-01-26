@@ -1,7 +1,5 @@
-@rest_spec_name("cat.plugins")
+@rest_spec_name('cat.plugins')
 class CatPluginsRequest extends CatRequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

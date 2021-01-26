@@ -1,2 +1,1 @@
-class DerivativeAggregation {
-}
+class DerivativeAggregation {}

@@ -1,2 +1,1 @@
-class SumBucketAggregation {
-}
+class SumBucketAggregation {}

@@ -1,2 +1,1 @@
-class PutTransformResponse extends AcknowledgedResponseBase {
-}
+class PutTransformResponse extends AcknowledgedResponseBase {}

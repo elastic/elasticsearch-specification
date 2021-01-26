@@ -1,3 +1,3 @@
 class GetRollupJobResponse extends ResponseBase {
-  jobs: RollupJobInformation[];
+  jobs: RollupJobInformation[]
 }

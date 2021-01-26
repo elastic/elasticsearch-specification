@@ -1,9 +1,9 @@
 class CatTemplatesRecord {
-  index_patterns: string;
-  name: string;
+  index_patterns: string
+  name: string
   /** @prop_serializer StringLongFormatter */
-  order: long;
+  order: long
   /** @prop_serializer NullableStringLongFormatter */
-  version: long;
-  composed_of: string;
+  version: long
+  composed_of: string
 }

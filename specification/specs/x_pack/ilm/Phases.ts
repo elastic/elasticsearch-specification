@@ -1,6 +1,6 @@
 class Phases {
-  cold: Phase;
-  delete: Phase;
-  hot: Phase;
-  warm: Phase;
+  cold: Phase
+  delete: Phase
+  hot: Phase
+  warm: Phase
 }

@@ -1,2 +1,1 @@
-class KStemTokenFilter extends TokenFilterBase {
-}
+class KStemTokenFilter extends TokenFilterBase {}

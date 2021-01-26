@@ -1,2 +1,1 @@
-class DeleteSnapshotLifecycleResponse extends AcknowledgedResponseBase {
-}
+class DeleteSnapshotLifecycleResponse extends AcknowledgedResponseBase {}

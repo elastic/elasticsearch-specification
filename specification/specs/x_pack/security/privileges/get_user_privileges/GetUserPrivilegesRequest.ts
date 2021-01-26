@@ -1,7 +1,5 @@
-@rest_spec_name("security.get_user_privileges")
+@rest_spec_name('security.get_user_privileges')
 class GetUserPrivilegesRequest extends RequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

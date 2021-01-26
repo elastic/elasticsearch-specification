@@ -1,2 +1,1 @@
-class RestartWatcherResponse extends AcknowledgedResponseBase {
-}
+class RestartWatcherResponse extends AcknowledgedResponseBase {}

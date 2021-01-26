@@ -1,7 +1,5 @@
-@rest_spec_name("security.authenticate")
+@rest_spec_name('security.authenticate')
 class AuthenticateRequest extends RequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

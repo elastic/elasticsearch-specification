@@ -1,4 +1,4 @@
 class AnalyzerDetail {
-  name: string;
-  tokens: Array<ExplainAnalyzeToken>;
+  name: string
+  tokens: Array<ExplainAnalyzeToken>
 }

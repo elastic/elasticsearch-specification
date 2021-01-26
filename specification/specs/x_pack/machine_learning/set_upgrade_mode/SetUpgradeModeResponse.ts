@@ -1,2 +1,1 @@
-class SetUpgradeModeResponse extends AcknowledgedResponseBase {
-}
+class SetUpgradeModeResponse extends AcknowledgedResponseBase {}

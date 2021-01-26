@@ -1,10 +1,8 @@
-@rest_spec_name("ccr.follow_stats")
+@rest_spec_name('ccr.follow_stats')
 class FollowIndexStatsRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
+    index: Indices
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

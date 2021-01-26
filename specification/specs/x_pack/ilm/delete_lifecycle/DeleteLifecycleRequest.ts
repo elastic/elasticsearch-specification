@@ -1,10 +1,8 @@
-@rest_spec_name("ilm.delete_lifecycle")
+@rest_spec_name('ilm.delete_lifecycle')
 class DeleteLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy: Name;
+    policy: Name
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

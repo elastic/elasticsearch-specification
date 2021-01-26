@@ -1,2 +1,1 @@
-class PercolatorProperty extends PropertyBase {
-}
+class PercolatorProperty extends PropertyBase {}

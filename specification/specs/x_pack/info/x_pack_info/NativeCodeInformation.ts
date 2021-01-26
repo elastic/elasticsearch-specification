@@ -1,4 +1,4 @@
 class NativeCodeInformation {
-  build_hash: string;
-  version: string;
+  build_hash: string
+  version: string
 }

@@ -1,3 +1,3 @@
 class StartDatafeedResponse extends ResponseBase {
-  started: boolean;
+  started: boolean
 }

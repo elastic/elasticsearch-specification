@@ -1,2 +1,1 @@
-class RankFeatureFunction {
-}
+class RankFeatureFunction {}

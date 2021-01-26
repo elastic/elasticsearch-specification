@@ -1,3 +1,3 @@
 class TopMetricsValue {
-  field: Field;
+  field: Field
 }

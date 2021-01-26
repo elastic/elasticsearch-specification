@@ -1,5 +1,5 @@
-@class_serializer("SingleGroupSourceFormatter")
+@class_serializer('SingleGroupSourceFormatter')
 class SingleGroupSource {
-  field: Field;
-  script: Script;
+  field: Field
+  script: Script
 }

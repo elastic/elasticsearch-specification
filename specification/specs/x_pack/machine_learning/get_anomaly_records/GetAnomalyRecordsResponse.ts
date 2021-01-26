@@ -1,4 +1,4 @@
 class GetAnomalyRecordsResponse extends ResponseBase {
-  count: long;
-  records: AnomalyRecord[];
+  count: long
+  records: AnomalyRecord[]
 }

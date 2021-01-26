@@ -1,3 +1,3 @@
 class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
-  stoptags: string[];
+  stoptags: string[]
 }

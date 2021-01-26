@@ -1,2 +1,1 @@
-class PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
-}
+class PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {}

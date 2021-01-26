@@ -1,2 +1,1 @@
-class HtmlStripCharFilter extends CharFilterBase {
-}
+class HtmlStripCharFilter extends CharFilterBase {}

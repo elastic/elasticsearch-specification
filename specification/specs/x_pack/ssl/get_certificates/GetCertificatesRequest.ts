@@ -1,7 +1,5 @@
-@rest_spec_name("ssl.certificates")
+@rest_spec_name('ssl.certificates')
 class GetCertificatesRequest extends RequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

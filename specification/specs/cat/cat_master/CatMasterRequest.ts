@@ -1,7 +1,5 @@
-@rest_spec_name("cat.master")
+@rest_spec_name('cat.master')
 class CatMasterRequest extends CatRequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

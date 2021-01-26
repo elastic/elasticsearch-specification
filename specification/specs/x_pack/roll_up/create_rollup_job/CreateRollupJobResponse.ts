@@ -1,2 +1,1 @@
-class CreateRollupJobResponse extends AcknowledgedResponseBase {
-}
+class CreateRollupJobResponse extends AcknowledgedResponseBase {}

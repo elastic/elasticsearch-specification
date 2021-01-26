@@ -1,3 +1,3 @@
 class PercentilesBucketAggregation {
-  percents?: double[];
+  percents?: double[]
 }

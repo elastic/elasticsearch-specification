@@ -1,2 +1,1 @@
-class SpanSubQuery {
-}
+class SpanSubQuery {}

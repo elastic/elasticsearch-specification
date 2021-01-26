@@ -1,2 +1,1 @@
-class StopIlmResponse extends AcknowledgedResponseBase {
-}
+class StopIlmResponse extends AcknowledgedResponseBase {}

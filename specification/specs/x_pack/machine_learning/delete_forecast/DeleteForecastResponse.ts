@@ -1,2 +1,1 @@
-class DeleteForecastResponse extends AcknowledgedResponseBase {
-}
+class DeleteForecastResponse extends AcknowledgedResponseBase {}

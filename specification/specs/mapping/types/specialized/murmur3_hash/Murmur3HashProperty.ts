@@ -1,2 +1,1 @@
-class Murmur3HashProperty extends DocValuesPropertyBase {
-}
+class Murmur3HashProperty extends DocValuesPropertyBase {}

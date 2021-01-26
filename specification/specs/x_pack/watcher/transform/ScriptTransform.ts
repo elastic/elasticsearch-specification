@@ -1,5 +1,5 @@
-@class_serializer("ScriptTransformFormatter")
+@class_serializer('ScriptTransformFormatter')
 class ScriptTransform {
-  lang: string;
-  params: Dictionary<string, UserDefinedValue>;
+  lang: string
+  params: Dictionary<string, UserDefinedValue>
 }

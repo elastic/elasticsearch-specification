@@ -1,5 +1,5 @@
 class ClusterRerouteDecision {
-  decider: string;
-  decision: string;
-  explanation: string;
+  decider: string
+  decision: string
+  explanation: string
 }

@@ -1,2 +1,1 @@
-class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
-}
+class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {}

@@ -1,5 +1,5 @@
 class SmoothingModelContainer {
-  laplace: LaplaceSmoothingModel;
-  linear_interpolation: LinearInterpolationSmoothingModel;
-  stupid_backoff: StupidBackoffSmoothingModel;
+  laplace: LaplaceSmoothingModel
+  linear_interpolation: LinearInterpolationSmoothingModel
+  stupid_backoff: StupidBackoffSmoothingModel
 }

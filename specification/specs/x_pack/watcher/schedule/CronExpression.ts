@@ -1,3 +1,2 @@
-@class_serializer("CronExpressionFormatter")
-class CronExpression extends ScheduleBase {
-}
+@class_serializer('CronExpressionFormatter')
+class CronExpression extends ScheduleBase {}

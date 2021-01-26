@@ -1,4 +1,4 @@
 class OverallBucketJobInfo {
-  job_id: string;
-  max_anomaly_score: double;
+  job_id: string
+  max_anomaly_score: double
 }

@@ -1,6 +1,6 @@
 class PatternTokenizer extends TokenizerBase {
-  flags: string;
+  flags: string
   /** @prop_serializer NullableStringIntFormatter */
-  group: integer;
-  pattern: string;
+  group: integer
+  pattern: string
 }

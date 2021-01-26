@@ -1,3 +1,3 @@
 class SplitIndexResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean;
+  shards_acknowledged: boolean
 }

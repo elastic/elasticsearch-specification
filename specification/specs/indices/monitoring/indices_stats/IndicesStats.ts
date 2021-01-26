@@ -1,7 +1,7 @@
 class IndicesStats {
-  primaries: IndexStats;
+  primaries: IndexStats
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  shards?: Dictionary<string, ShardStats[]>;
-  total: IndexStats;
-  uuid?: string;
+  shards?: Dictionary<string, ShardStats[]>
+  total: IndexStats
+  uuid?: string
 }

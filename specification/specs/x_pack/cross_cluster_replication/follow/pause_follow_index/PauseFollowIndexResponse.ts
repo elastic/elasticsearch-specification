@@ -1,2 +1,1 @@
-class PauseFollowIndexResponse extends AcknowledgedResponseBase {
-}
+class PauseFollowIndexResponse extends AcknowledgedResponseBase {}

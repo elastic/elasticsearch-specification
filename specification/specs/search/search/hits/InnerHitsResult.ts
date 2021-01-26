@@ -1,3 +1,3 @@
 class InnerHitsResult {
-  hits: InnerHitsMetadata;
+  hits: InnerHitsMetadata
 }

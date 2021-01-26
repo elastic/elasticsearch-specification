@@ -1,2 +1,1 @@
-class FlushResponse extends ShardsOperationResponseBase {
-}
+class FlushResponse extends ShardsOperationResponseBase {}
