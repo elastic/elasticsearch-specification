@@ -14,6 +14,6 @@ class AnalyzeRequest extends RequestBase {
     filter?: Union<string, TokenFilter>[];
     normalizer?: string;
     text?: string | Array<string>;
-    tokenizer?: Union<string, TokenizerBase>;
+    tokenizer?: Union<string, Tokenizer>;
   }
 }
