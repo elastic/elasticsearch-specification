@@ -20963,7 +20963,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -22895,6 +22895,34 @@
       "kind": "interface",
       "name": {
         "namespace": "common_abstractions.response",
+        "name": "EmptyResponseBase"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "exists",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "common_abstractions.response",
         "name": "ErrorResponse"
       },
       "properties": [
@@ -22916,34 +22944,6 @@
             "type": {
               "namespace": "internal",
               "name": "integer"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "common_abstractions.response",
-        "name": "HeadResponseBase"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "exists",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
             }
           },
           "required": true
@@ -29898,7 +29898,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -30865,7 +30865,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -32364,7 +32364,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -34237,7 +34237,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -35285,7 +35285,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -35934,7 +35934,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "HeadResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],

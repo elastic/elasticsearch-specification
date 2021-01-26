@@ -1,1 +1,1 @@
-class IndexExistsResponse extends HeadResponseBase {}
+class IndexExistsResponse extends EmptyResponseBase {}

@@ -1,3 +1,3 @@
-class HeadResponseBase extends ResponseBase {
+class EmptyResponseBase extends ResponseBase {
   exists: boolean
 }

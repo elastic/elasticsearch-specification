@@ -1,1 +1,1 @@
-class PingResponse extends HeadResponseBase {}
+class PingResponse extends EmptyResponseBase {}

@@ -1,1 +1,1 @@
-class DocumentExistsResponse extends HeadResponseBase {}
+class DocumentExistsResponse extends EmptyResponseBase {}

@@ -1,1 +1,1 @@
-class IndexTemplateExistsResponse extends HeadResponseBase {}
+class IndexTemplateExistsResponse extends EmptyResponseBase {}

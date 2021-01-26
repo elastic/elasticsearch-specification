@@ -24,7 +24,7 @@ let definitions = `/*
 
 const skip = [
   'CatResponseBase',
-  'HeadResponseBase',
+  'EmptyResponseBase',
   'AdditionalProperties'
 ]
 
@@ -191,7 +191,7 @@ function isSpecialInterface (type) {
   if (Array.isArray(type.attachedBehaviors)) {
     return type.attachedBehaviors.length > 0
   }
-  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'HeadResponseBase') {
+  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'EmptyResponseBase') {
     return true
   }
   switch (type.name.name) {
@@ -238,7 +238,7 @@ function serializeSpecialInterface (type) {
       return serializeAdditionalPropertiesType(type)
     }
   }
-  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'HeadResponseBase') {
+  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'EmptyResponseBase') {
     return `export type ${type.name.name} = boolean\n`
   }
 
