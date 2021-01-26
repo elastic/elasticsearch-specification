@@ -34,7 +34,7 @@ export class Specification {
       }
     }
 
-    const knownBehaviors = ["AdditionalProperties"]
+    const knownBehaviors = ["AdditionalProperties", 'CatResponseBase', 'EmptyResponseBase']
     const specVisitor = new TypeReader(this.program)
     const types = [].concat(specVisitor.interfaces).concat(specVisitor.enums)
     // resolve inherits by creating the proper pointers to instances, pretty hairy but it works

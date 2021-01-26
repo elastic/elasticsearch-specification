@@ -1,1 +1,1 @@
-class CatAllocationResponse extends CatResponseBase<CatAllocationRecord> {}
+class CatAllocationResponse implements CatResponseBase<CatAllocationRecord> {}

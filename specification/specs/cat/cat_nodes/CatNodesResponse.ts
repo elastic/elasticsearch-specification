@@ -1,1 +1,1 @@
-class CatNodesResponse extends CatResponseBase<CatNodesRecord> {}
+class CatNodesResponse implements CatResponseBase<CatNodesRecord> {}

@@ -1,1 +1,1 @@
-class AliasExistsResponse extends EmptyResponseBase {}
+class AliasExistsResponse implements EmptyResponseBase {}
