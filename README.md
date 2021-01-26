@@ -191,7 +191,9 @@ To achieve this goal the specification contains a series of custom types that do
 for the target language, but they should be translated to the most approriate construct.
 
 The specification is written in [TypeScript](https://www.typescriptlang.org/), you can find all
-the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.html).
+the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.html), while
+in [`docs/special-classes.md`](./docs/special-classes.md) you can find custom classes for
+defining set of APIs.
 
 ### Dictionary
 

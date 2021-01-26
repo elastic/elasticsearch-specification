@@ -63,7 +63,6 @@ class InterfaceVisitor extends Visitor {
     const restSpec = decorator ? decorator.split('"')[1] : null
     if (restSpec) {
       let responseName = n.replace('Request', 'Response')
-      if (responseName.endsWith('ExistsResponse')) responseName = 'ExistsResponse'
       this.specMapping = new RestSpecMapping(restSpec, n, responseName)
     }
 
