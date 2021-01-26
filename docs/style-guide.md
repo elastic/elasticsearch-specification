@@ -2,6 +2,26 @@
 
 This document contains all conventions to follow when implementing or updating an API definition.
 
+## Code style
+
+Following you can find the rules enforced inside [`/specification/specs`](../specification/specs):
+
+```json
+{
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "bracketSpacing": true,
+  "endOfLine": "lf"
+}
+```
+
+You can automatically apply them by running `npm run lint:fix --prefix specification`.
+Those rules are enforced in CI, if you don't follow them, the build will fail.
+
 ## Merge definitions
 
 When possible, it's better to merge multiple definitions in a single file.
