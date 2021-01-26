@@ -24,6 +24,7 @@ let definitions = `/*
 
 const skip = [
   'CatResponseBase',
+  'HeadResponseBase',
   'AdditionalProperties'
 ]
 
@@ -171,8 +172,8 @@ function buildGenerics (type, noDefault = false) {
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    return typeof type === 'string'  ?
-      (noDefault ? type : `${type} = unknown`)
+    return typeof type === 'string'
+      ? (noDefault ? type : `${type} = unknown`)
       : buildType(type)
   }
 }
@@ -190,6 +191,9 @@ function isSpecialInterface (type) {
   if (Array.isArray(type.attachedBehaviors)) {
     return type.attachedBehaviors.length > 0
   }
+  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'HeadResponseBase') {
+    return true
+  }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
       return true
@@ -198,21 +202,21 @@ function isSpecialInterface (type) {
   }
 }
 
-function lookupBehaviorImplements(type, name) {
-  const dictionaryOf = type.behaviors.find(i => i.type.name === name);
-  if (dictionaryOf) return dictionaryOf;
-  //find inherits on parent if current type has parent
-  //TODO fix spec so that inherits is no longer an array
+function lookupBehaviorImplements (type, name) {
+  const dictionaryOf = type.behaviors.find(i => i.type.name === name)
+  if (dictionaryOf) return dictionaryOf
+  // find inherits on parent if current type has parent
+  // TODO fix spec so that inherits is no longer an array
   if (Array.isArray(type.inherits)) return lookupBehaviorImplements(type.inherits[0], name)
-  return null;
+  return null
 }
 
-function serializeAdditionalPropertiesType(type) {
-  const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties');
+function serializeAdditionalPropertiesType (type) {
+  const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties')
   if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
   let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
 
-  function required(property) {
+  function required (property) {
     return property.required ? '' : '?'
   }
 
@@ -231,9 +235,13 @@ function serializeSpecialInterface (type) {
   }
   if (Array.isArray(type.attachedBehaviors)) {
     if (type.attachedBehaviors.includes('AdditionalProperties')) {
-      return serializeAdditionalPropertiesType(type);
+      return serializeAdditionalPropertiesType(type)
     }
   }
+  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'HeadResponseBase') {
+    return `export type ${type.name.name} = boolean\n`
+  }
+
   switch (type.name.name) {
     case 'DictionaryResponseBase':
       return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
@@ -249,13 +257,12 @@ function buildIndexer (type) {
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    const t = typeof type === 'string'  ? type : buildType(type)
+    const t = typeof type === 'string' ? type : buildType(type)
     // indexers do not allow type aliases so here we translate known
     // type aliases back to string
-    return t === "AggregateName" ? "string" : t;
+    return t === 'AggregateName' ? 'string' : t
   }
 }
-
 
 // In the input spec the Cat* responses are represented as an object
 // that contains a `records` key, which is an array of the inherited generic.
