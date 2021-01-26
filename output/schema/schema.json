@@ -6700,6 +6700,71 @@
       "kind": "interface",
       "name": {
         "namespace": "analysis.token_filters",
+        "name": "ConditionTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "filter",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "script",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.scripting",
+              "name": "Script"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "TokenFilter"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.stop",
+            "name": "StopTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "ConditionTokenFilter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
         "name": "TokenFilterBase"
       },
       "properties": [
@@ -6723,7 +6788,74 @@
               "name": "string"
             }
           },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.stop",
+        "name": "StopTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ignore_case",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "remove_trailing",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "stopwords",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis",
+              "name": "StopWords"
+            }
+          },
           "required": true
+        },
+        {
+          "name": "stopwords_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -32916,7 +33048,7 @@
                     "kind": "instance_of",
                     "type": {
                       "namespace": "analysis.token_filters",
-                      "name": "TokenFilterBase"
+                      "name": "TokenFilter"
                     }
                   }
                 ]

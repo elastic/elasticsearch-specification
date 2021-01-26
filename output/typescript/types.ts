@@ -765,9 +765,22 @@ export interface CharFilterBase {
   version: string
 }
 
+export interface ConditionTokenFilter extends TokenFilterBase {
+  filter: Array<string>
+  script: Script
+}
+
+export type TokenFilter = StopTokenFilter | ConditionTokenFilter
 export interface TokenFilterBase {
   type: string
-  version: string
+  version?: string
+}
+
+export interface StopTokenFilter extends TokenFilterBase {
+  ignore_case?: boolean
+  remove_trailing?: boolean
+  stopwords: StopWords
+  stopwords_path?: string
 }
 
 export interface TokenizerBase {
@@ -3535,7 +3548,7 @@ export interface AnalyzeRequest extends RequestBase {
     char_filter?: Array<string | CharFilterBase>
     explain?: boolean
     field?: Field
-    filter?: Array<string | TokenFilterBase>
+    filter?: Array<string | TokenFilter>
     normalizer?: string
     text?: string | Array<string>
     tokenizer?: string | TokenizerBase

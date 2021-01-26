@@ -11,7 +11,7 @@ class AnalyzeRequest extends RequestBase {
     char_filter?: Union<string, CharFilterBase>[];
     explain?: boolean;
     field?: Field;
-    filter?: Union<string, TokenFilterBase>[];
+    filter?: Union<string, TokenFilter>[];
     normalizer?: string;
     text?: string | Array<string>;
     tokenizer?: Union<string, TokenizerBase>;
