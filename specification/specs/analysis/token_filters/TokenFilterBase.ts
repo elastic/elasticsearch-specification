@@ -3,12 +3,11 @@ class TokenFilterBase {
   version?: string;
 }
 
-type TokenFilter = 
-  AsciiFoldingTokenFilter |
+type TokenFilter = AsciiFoldingTokenFilter |
   CommonGramsTokenFilter |
   ConditionTokenFilter |
   DelimitedPayloadTokenFilter |
-  DictionaryDecompounderTokenFilter |
+  //DictionaryDecompounderTokenFilter |
   EdgeNGramTokenFilter |
   ElisionTokenFilter |
   FingerprintTokenFilter |

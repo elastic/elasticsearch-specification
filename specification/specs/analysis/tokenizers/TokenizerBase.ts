@@ -1,10 +1,9 @@
 class TokenizerBase {
   type: string;
-  version: string;
+  version?: string;
 }
 
-type Tokenizer = 
-  CharGroupTokenizer |
+type Tokenizer = CharGroupTokenizer |
   EdgeNGramTokenizer |
   KeywordTokenizer |
   LetterTokenizer |
