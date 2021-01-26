@@ -3241,9 +3241,9 @@ export interface GetRequest extends RequestBase {
   refresh?: boolean
   routing?: Routing
   source_enabled?: boolean
-  _source_excludes?: Array<Field>
-  _source_includes?: Array<Field>
-  stored_fields?: Array<Field>
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  stored_fields?: Fields
   version?: long
   version_type?: VersionType
   _source?: boolean | string | Array<string>
@@ -3254,12 +3254,12 @@ export interface GetResponse<TDocument = unknown> extends ResponseBase {
   fields?: Record<string, LazyDocument>
   found: boolean
   _id: string
-  _primary_term: long
-  _routing: string
-  _seq_no: long
-  _source: TDocument
+  _primary_term?: long
+  _routing?: string
+  _seq_no?: long
+  _source?: TDocument
   _type: string
-  _version: long
+  _version?: long
 }
 
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
