@@ -19,7 +19,7 @@ Following you can find the rules enforced inside [`/specification/specs`](../spe
 }
 ```
 
-You can automatically apply them by running `npm run lint:fix --prefix specification`.
+You can automatically apply them by running `make format-code`.
 Those rules are enforced in CI, if you don't follow them, the build will fail.
 
 ## Merge definitions

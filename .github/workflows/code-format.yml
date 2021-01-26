@@ -1,4 +1,4 @@
-name: Linter
+name: Code style
 
 on: [pull_request]
 
@@ -19,7 +19,7 @@ jobs:
       run: |
         npm install --prefix specification
 
-    - name: Lint
+    - name: Code style check
       run: |
-        npm run lint --prefix specification
+        npm run format:check --prefix specification
 
