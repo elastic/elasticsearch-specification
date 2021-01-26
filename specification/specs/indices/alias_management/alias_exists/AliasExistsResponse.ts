@@ -1,0 +1,1 @@
+class AliasExistsResponse extends HeadResponseBase {}
