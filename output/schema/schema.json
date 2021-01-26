@@ -6861,40 +6861,6 @@
     {
       "kind": "interface",
       "name": {
-        "namespace": "cat",
-        "name": "CatResponseBase"
-      },
-      "generics": [
-        "TCatRecord"
-      ],
-      "inherits": [
-        {
-          "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "generic",
-                "name": "TCatRecord"
-              }
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "namespace": "cat.cat_aliases",
         "name": "CatAliasesRecord"
       },
@@ -7016,10 +6982,10 @@
         "namespace": "cat.cat_aliases",
         "name": "CatAliasesResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -7032,6 +6998,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -7203,10 +7172,10 @@
         "namespace": "cat.cat_allocation",
         "name": "CatAllocationResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -7219,6 +7188,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -7300,10 +7272,10 @@
         "namespace": "cat.cat_count",
         "name": "CatCountResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -7316,6 +7288,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -7565,10 +7540,10 @@
         "namespace": "cat.cat_data_frame_analytics",
         "name": "CatDataFrameAnalyticsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -7581,6 +7556,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -7774,10 +7752,10 @@
         "namespace": "cat.cat_datafeeds",
         "name": "CatDatafeedsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -7790,6 +7768,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -7917,10 +7898,10 @@
         "namespace": "cat.cat_fielddata",
         "name": "CatFielddataResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -7933,6 +7914,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -8112,10 +8096,10 @@
         "namespace": "cat.cat_health",
         "name": "CatHealthResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -8128,6 +8112,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -8174,10 +8161,10 @@
         "namespace": "cat.cat_help",
         "name": "CatHelpResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -8190,6 +8177,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -8420,10 +8410,10 @@
         "namespace": "cat.cat_indices",
         "name": "CatIndicesResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -8436,6 +8426,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -9114,10 +9107,10 @@
         "namespace": "cat.cat_jobs",
         "name": "CatJobsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -9130,6 +9123,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -9231,10 +9227,10 @@
         "namespace": "cat.cat_master",
         "name": "CatMasterResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -9247,6 +9243,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -9370,10 +9369,10 @@
         "namespace": "cat.cat_node_attributes",
         "name": "CatNodeAttributesResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -9386,6 +9385,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -10227,10 +10229,10 @@
         "namespace": "cat.cat_nodes",
         "name": "CatNodesResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -10243,6 +10245,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -10325,10 +10330,10 @@
         "namespace": "cat.cat_pending_tasks",
         "name": "CatPendingTasksResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -10341,6 +10346,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -10464,10 +10472,10 @@
         "namespace": "cat.cat_plugins",
         "name": "CatPluginsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -10480,6 +10488,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -10813,10 +10824,10 @@
         "namespace": "cat.cat_recovery",
         "name": "CatRecoveryResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -10829,6 +10840,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -10886,10 +10900,10 @@
         "namespace": "cat.cat_repositories",
         "name": "CatRepositoriesResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -10902,6 +10916,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -11128,10 +11145,10 @@
         "namespace": "cat.cat_segments",
         "name": "CatSegmentsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -11144,6 +11161,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -11843,10 +11863,10 @@
         "namespace": "cat.cat_shards",
         "name": "CatShardsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -11859,6 +11879,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -12059,10 +12082,10 @@
         "namespace": "cat.cat_snapshots",
         "name": "CatSnapshotsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -12075,6 +12098,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -12262,10 +12288,10 @@
         "namespace": "cat.cat_tasks",
         "name": "CatTasksResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -12278,6 +12304,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -12387,10 +12416,10 @@
         "namespace": "cat.cat_templates",
         "name": "CatTemplatesResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -12403,6 +12432,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -12720,10 +12752,10 @@
         "namespace": "cat.cat_thread_pool",
         "name": "CatThreadPoolResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -12736,6 +12768,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -12987,10 +13022,10 @@
         "namespace": "cat.cat_trained_models",
         "name": "CatTrainedModelsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -13003,6 +13038,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -13388,10 +13426,10 @@
         "namespace": "cat.cat_transforms",
         "name": "CatTransformsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "cat",
+            "namespace": "internal",
             "name": "CatResponseBase"
           },
           "generics": [
@@ -13404,6 +13442,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "CatResponseBase"
       ],
       "properties": []
     },
@@ -20959,13 +21000,25 @@
         "namespace": "cluster.ping",
         "name": "PingResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -22885,34 +22938,6 @@
             "type": {
               "namespace": "internal",
               "name": "string"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "common_abstractions.response",
-        "name": "EmptyResponseBase"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "exists",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
             }
           },
           "required": true
@@ -29894,13 +29919,25 @@
         "namespace": "document.single.exists",
         "name": "DocumentExistsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -30861,13 +30898,25 @@
         "namespace": "document.single.source_exists",
         "name": "SourceExistsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -32360,13 +32409,25 @@
         "namespace": "indices.alias_management.alias_exists",
         "name": "AliasExistsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -34233,13 +34294,25 @@
         "namespace": "indices.index_management.indices_exists",
         "name": "IndexExistsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -35281,13 +35354,25 @@
         "namespace": "indices.index_management.types_exists",
         "name": "TypeExistsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -35930,13 +36015,25 @@
         "namespace": "indices.index_settings.index_templates.index_template_exists",
         "name": "IndexTemplateExistsResponse"
       },
-      "inherits": [
+      "behaviors": [
         {
           "type": {
-            "namespace": "common_abstractions.response",
+            "namespace": "internal",
             "name": "EmptyResponseBase"
-          }
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
         }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -44596,6 +44693,17 @@
       "kind": "interface",
       "name": {
         "namespace": "internal",
+        "name": "CatResponseBase"
+      },
+      "generics": [
+        "TCatRecord"
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
         "name": "Date"
       },
       "properties": []
@@ -44655,6 +44763,14 @@
           "name": "number"
         }
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "EmptyResponseBase"
+      },
+      "properties": []
     },
     {
       "kind": "interface",
