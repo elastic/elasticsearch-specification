@@ -9,17 +9,18 @@ class GetRequest extends RequestBase {
     type?: TypeName
   }
   query_parameters?: {
-    preference?: string
-    realtime?: boolean
-    refresh?: boolean
-    routing?: Routing
-    source_enabled?: boolean
-    _source_excludes?: Field[]
-    _source_includes?: Field[]
-    stored_fields?: Field[]
-    version?: long
-    version_type?: VersionType
-    _source?: Union<boolean, Union<string, string[]>>
+    preference?: string;
+    realtime?: boolean;
+    refresh?: boolean;
+    routing?: Routing;
+    source_enabled?: boolean;
+    _source_excludes?: Fields;
+    _source_includes?: Fields;
+    stored_fields?: Fields;
+    version?: long;
+    version_type?: VersionType;
+    _source?: Union<boolean, Union<string, string[]>>;
   }
-  body?: {}
+  body?: {
+  }
 }

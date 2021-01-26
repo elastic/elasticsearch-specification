@@ -20963,7 +20963,7 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
+            "name": "EmptyResponseBase"
           }
         }
       ],
@@ -22885,6 +22885,34 @@
             "type": {
               "namespace": "internal",
               "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "common_abstractions.response",
+        "name": "EmptyResponseBase"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "exists",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
             }
           },
           "required": true
@@ -29861,6 +29889,22 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "namespace": "document.single.exists",
+        "name": "DocumentExistsResponse"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "EmptyResponseBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
       "kind": "request",
       "name": {
         "namespace": "document.single.get",
@@ -29978,13 +30022,10 @@
         {
           "name": "_source_excludes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -29993,13 +30034,10 @@
         {
           "name": "_source_includes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -30008,13 +30046,10 @@
         {
           "name": "stored_fields",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -30166,7 +30201,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_routing",
@@ -30177,7 +30212,7 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_seq_no",
@@ -30188,7 +30223,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_source",
@@ -30199,7 +30234,7 @@
               "name": "TDocument"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "SourceFormatter`1"
           }
@@ -30224,7 +30259,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -30810,6 +30845,22 @@
           "description": "Specific version type"
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "document.single.source_exists",
+        "name": "SourceExistsResponse"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "EmptyResponseBase"
+          }
+        }
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -32293,6 +32344,22 @@
           "description": "Return local information, do not retrieve the state from master node (default: false)"
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "indices.alias_management.alias_exists",
+        "name": "AliasExistsResponse"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "EmptyResponseBase"
+          }
+        }
+      ],
+      "properties": []
     },
     {
       "kind": "interface",
@@ -34049,34 +34116,6 @@
       "properties": []
     },
     {
-      "kind": "interface",
-      "name": {
-        "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "exists",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
       "kind": "request",
       "name": {
         "namespace": "indices.index_management.indices_exists",
@@ -34178,6 +34217,22 @@
           "description": "Return local information, do not retrieve the state from master node (default: false)"
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "indices.index_management.indices_exists",
+        "name": "IndexExistsResponse"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "EmptyResponseBase"
+          }
+        }
+      ],
+      "properties": []
     },
     {
       "kind": "request",
@@ -35212,6 +35267,22 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "namespace": "indices.index_management.types_exists",
+        "name": "TypeExistsResponse"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "EmptyResponseBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
       "kind": "request",
       "name": {
         "namespace": "indices.index_management.unfreeze_index",
@@ -35843,6 +35914,22 @@
           "description": "Explicit operation timeout for connection to master node"
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "indices.index_settings.index_templates.index_template_exists",
+        "name": "IndexTemplateExistsResponse"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "EmptyResponseBase"
+          }
+        }
+      ],
+      "properties": []
     },
     {
       "kind": "request",
@@ -93649,8 +93736,8 @@
       },
       "requestBodyRequired": false,
       "response": {
-        "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
+        "namespace": "document.single.exists",
+        "name": "DocumentExistsResponse"
       },
       "urls": [
         {
@@ -93682,8 +93769,8 @@
       },
       "requestBodyRequired": false,
       "response": {
-        "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
+        "namespace": "document.single.source_exists",
+        "name": "SourceExistsResponse"
       },
       "urls": [
         {
@@ -94523,7 +94610,7 @@
       "requestBodyRequired": false,
       "response": {
         "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
+        "name": "IndexExistsResponse"
       },
       "urls": [
         {
@@ -94545,8 +94632,8 @@
       },
       "requestBodyRequired": false,
       "response": {
-        "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
+        "namespace": "indices.alias_management.alias_exists",
+        "name": "AliasExistsResponse"
       },
       "urls": [
         {
@@ -94591,8 +94678,8 @@
       },
       "requestBodyRequired": false,
       "response": {
-        "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
+        "namespace": "indices.index_settings.index_templates.index_template_exists",
+        "name": "IndexTemplateExistsResponse"
       },
       "urls": [
         {
@@ -94614,8 +94701,8 @@
       },
       "requestBodyRequired": false,
       "response": {
-        "namespace": "indices.index_management.indices_exists",
-        "name": "ExistsResponse"
+        "namespace": "indices.index_management.types_exists",
+        "name": "TypeExistsResponse"
       },
       "urls": [
         {
