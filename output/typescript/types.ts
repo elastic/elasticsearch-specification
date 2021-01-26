@@ -2291,8 +2291,7 @@ export interface NodeUsageInformation {
 export interface PingRequest extends RequestBase {
 }
 
-export interface PingResponse extends ResponseBase {
-}
+export type PingResponse = boolean
 
 export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
@@ -3231,6 +3230,8 @@ export interface DocumentExistsRequest extends RequestBase {
   version_type?: VersionType
 }
 
+export type DocumentExistsResponse = boolean
+
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
@@ -3315,6 +3316,8 @@ export interface SourceExistsRequest extends RequestBase {
   version?: long
   version_type?: VersionType
 }
+
+export type SourceExistsResponse = boolean
 
 export interface FieldStatistics {
   doc_count: integer
@@ -3467,6 +3470,8 @@ export interface AliasExistsRequest extends RequestBase {
   ignore_unavailable?: boolean
   local?: boolean
 }
+
+export type AliasExistsResponse = boolean
 
 export interface AliasAction {
 }
@@ -3654,10 +3659,6 @@ export interface GetIndexRequest extends RequestBase {
 export interface GetIndexResponse extends DictionaryResponseBase<IndexName, IndexState> {
 }
 
-export interface ExistsResponse extends ResponseBase {
-  exists: boolean
-}
-
 export interface IndexExistsRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -3667,6 +3668,8 @@ export interface IndexExistsRequest extends RequestBase {
   include_defaults?: boolean
   local?: boolean
 }
+
+export type IndexExistsResponse = boolean
 
 export interface CloseIndexRequest extends RequestBase {
   index: Indices
@@ -3777,6 +3780,8 @@ export interface TypeExistsRequest extends RequestBase {
   local?: boolean
 }
 
+export type TypeExistsResponse = boolean
+
 export interface UnfreezeIndexRequest extends RequestBase {
   index: IndexName
   allow_no_indices?: boolean
@@ -3841,6 +3846,8 @@ export interface IndexTemplateExistsRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
 }
+
+export type IndexTemplateExistsResponse = boolean
 
 export interface PutIndexTemplateRequest extends RequestBase {
   name: Name
