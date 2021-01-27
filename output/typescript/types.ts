@@ -2784,7 +2784,7 @@ export interface AcknowledgedResponseBase {
   acknowledged: boolean
 }
 
-export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
+export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
   [key: string]: TValue
 }
 
