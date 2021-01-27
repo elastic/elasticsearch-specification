@@ -23,7 +23,8 @@ let definitions = `/*
  */\n\n`
 
 const skip = [
-  'CatResponseBase',
+  'ResponseBase',
+  'ArrayResponse',
   'EmptyResponseBase',
   'AdditionalProperties'
 ]
@@ -159,6 +160,8 @@ function createAlias (type) {
 
 function buildInherits (type) {
   if (!Array.isArray(type.inherits)) return ''
+  // ResponseBase will always be empty
+  if (type.inherits[0].type.name === 'ResponseBase') return ''
   return ` extends ${type.inherits.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type) {
@@ -228,7 +231,7 @@ function serializeSpecialInterface (type) {
     if (type.attachedBehaviors.includes('AdditionalProperties')) {
       return serializeAdditionalPropertiesType(type)
     }
-    if (type.attachedBehaviors.includes('CatResponseBase')) {
+    if (type.attachedBehaviors.includes('ArrayResponse')) {
       // In the input spec the Cat* responses are represented as an object
       // that contains a `records` key, which is an array of the inherited generic.
       // What ES actually sends back, is an array of the inherited generic.
