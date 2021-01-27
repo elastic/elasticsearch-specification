@@ -6666,6 +6666,36 @@
       ]
     },
     {
+      "kind": "union",
+      "name": {
+        "namespace": "analysis.char_filters",
+        "name": "CharFilter"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.char_filters",
+            "name": "HtmlStripCharFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.char_filters",
+            "name": "MappingCharFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "PatternReplaceTokenFilter"
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "namespace": "analysis.char_filters",
@@ -6692,7 +6722,1419 @@
               "name": "string"
             }
           },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.char_filters",
+        "name": "HtmlStripCharFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.char_filters",
+            "name": "CharFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.char_filters",
+        "name": "MappingCharFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.char_filters",
+            "name": "CharFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "mappings",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
           "required": true
+        },
+        {
+          "name": "mappings_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.languages",
+        "name": "SnowballLanguage"
+      },
+      "members": [
+        {
+          "name": "Armenian"
+        },
+        {
+          "name": "Basque"
+        },
+        {
+          "name": "Catalan"
+        },
+        {
+          "name": "Danish"
+        },
+        {
+          "name": "Dutch"
+        },
+        {
+          "name": "English"
+        },
+        {
+          "name": "Finnish"
+        },
+        {
+          "name": "French"
+        },
+        {
+          "name": "German"
+        },
+        {
+          "name": "German2"
+        },
+        {
+          "name": "Hungarian"
+        },
+        {
+          "name": "Italian"
+        },
+        {
+          "name": "Kp"
+        },
+        {
+          "name": "Lovins"
+        },
+        {
+          "name": "Norwegian"
+        },
+        {
+          "name": "Porter"
+        },
+        {
+          "name": "Portuguese"
+        },
+        {
+          "name": "Romanian"
+        },
+        {
+          "name": "Russian"
+        },
+        {
+          "name": "Spanish"
+        },
+        {
+          "name": "Swedish"
+        },
+        {
+          "name": "Turkish"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "AsciiFoldingTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "preserve_original",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "CommonGramsTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "common_words",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "SingleOrEnumerableFormatter`1"
+          }
+        },
+        {
+          "name": "common_words_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "ignore_case",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "query_mode",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "ConditionTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "filter",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "script",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.scripting",
+              "name": "Script"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "ElisionTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "articles",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "articles_case",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "FingerprintTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max_output_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "separator",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "HunspellTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "dedup",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "dictionary",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "locale",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "longest_only",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "KeepTypesMode"
+      },
+      "members": [
+        {
+          "name": "include"
+        },
+        {
+          "name": "exclude"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "KeepTypesTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "mode",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.token_filters",
+              "name": "KeepTypesMode"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "types",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "KeepWordsTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "keep_words",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "keep_words_case",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "keep_words_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "KeywordMarkerTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ignore_case",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "keywords",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "keywords_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "keywords_pattern",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "KStemTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "LengthTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "min",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "LimitTokenCountTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "consume_all_tokens",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "max_token_count",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "LowercaseTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "MultiplexerTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "filters",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "preserve_original",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "NGramTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "min_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "NoriPartOfSpeechTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "stoptags",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "PatternCaptureTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "patterns",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "preserve_original",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "PatternReplaceTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "flags",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "pattern",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "replacement",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "PorterStemTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "PredicateTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "script",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "common_options.scripting",
+              "name": "Script"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "RemoveDuplicatesTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "ReverseTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "SnowballTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.languages",
+              "name": "SnowballLanguage"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "StemmerOverrideTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "rules",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "rules_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "StemmerTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "TokenFilter"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "AsciiFoldingTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "CommonGramsTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "ConditionTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.delimited_payload",
+            "name": "DelimitedPayloadTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.edge_n_gram",
+            "name": "EdgeNGramTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "ElisionTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "FingerprintTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "HunspellTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.compound_word",
+            "name": "HyphenationDecompounderTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "KeepTypesTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "KeepWordsTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "KeywordMarkerTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "KStemTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "LengthTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "LimitTokenCountTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "LowercaseTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "MultiplexerTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "NGramTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "NoriPartOfSpeechTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "PatternCaptureTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "PatternReplaceTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "PorterStemTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "PredicateTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "RemoveDuplicatesTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "ReverseTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.shingle",
+            "name": "ShingleTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "SnowballTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "StemmerOverrideTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "StemmerTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.stop",
+            "name": "StopTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.synonym",
+            "name": "SynonymGraphTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.synonym",
+            "name": "SynonymTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TrimTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TruncateTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "UniqueTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "UppercaseTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.word_delimiter_graph",
+            "name": "WordDelimiterGraphTokenFilter"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.token_filters.word_delimiter",
+            "name": "WordDelimiterTokenFilter"
+          }
         }
       ]
     },
@@ -6723,7 +8165,1502 @@
               "name": "string"
             }
           },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "TrimTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "TruncateTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "length",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "UniqueTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "only_on_same_position",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters",
+        "name": "UppercaseTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.compound_word",
+        "name": "CompoundWordTokenFilterBase"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "hyphenation_patterns_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
           "required": true
+        },
+        {
+          "name": "max_subword_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "min_subword_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "min_word_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "only_longest_match",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "word_list",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "word_list_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.compound_word",
+        "name": "HyphenationDecompounderTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters.compound_word",
+            "name": "CompoundWordTokenFilterBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.token_filters.delimited_payload",
+        "name": "DelimitedPayloadEncoding"
+      },
+      "members": [
+        {
+          "name": "int"
+        },
+        {
+          "name": "float"
+        },
+        {
+          "name": "identity"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.delimited_payload",
+        "name": "DelimitedPayloadTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "delimiter",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "encoding",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.token_filters.delimited_payload",
+              "name": "DelimitedPayloadEncoding"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.token_filters.edge_n_gram",
+        "name": "EdgeNGramSide"
+      },
+      "members": [
+        {
+          "name": "front"
+        },
+        {
+          "name": "back"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.edge_n_gram",
+        "name": "EdgeNGramTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "min_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "side",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.token_filters.edge_n_gram",
+              "name": "EdgeNGramSide"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.shingle",
+        "name": "ShingleTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "filler_token",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "max_shingle_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "min_shingle_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "output_unigrams",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "output_unigrams_if_no_shingles",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "token_separator",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.stop",
+        "name": "StopTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "ignore_case",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "remove_trailing",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "stopwords",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis",
+              "name": "StopWords"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "stopwords_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.token_filters.synonym",
+        "name": "SynonymFormat"
+      },
+      "members": [
+        {
+          "name": "solr"
+        },
+        {
+          "name": "wordnet"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.synonym",
+        "name": "SynonymGraphTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "expand",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "format",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.token_filters.synonym",
+              "name": "SynonymFormat"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "lenient",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "synonyms",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "synonyms_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "tokenizer",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "updateable",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.synonym",
+        "name": "SynonymTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "expand",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "format",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.token_filters.synonym",
+              "name": "SynonymFormat"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "lenient",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "synonyms",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "synonyms_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "tokenizer",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "updateable",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.word_delimiter",
+        "name": "WordDelimiterTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "catenate_all",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "catenate_numbers",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "catenate_words",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "generate_number_parts",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "generate_word_parts",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "preserve_original",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "protected_words",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "protected_words_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "split_on_case_change",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "split_on_numerics",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "stem_english_possessive",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "type_table",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "type_table_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.token_filters.word_delimiter_graph",
+        "name": "WordDelimiterGraphTokenFilter"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.token_filters",
+            "name": "TokenFilterBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "adjust_offsets",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "catenate_all",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "catenate_numbers",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "catenate_words",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "generate_number_parts",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "generate_word_parts",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "preserve_original",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "protected_words",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "protected_words_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "split_on_case_change",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "split_on_numerics",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "stem_english_possessive",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "type_table",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "type_table_path",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "CharGroupTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "tokenize_on_chars",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "KeywordTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "buffer_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "LetterTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "LowercaseTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": []
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "NoriDecompoundMode"
+      },
+      "members": [
+        {
+          "name": "discard"
+        },
+        {
+          "name": "none"
+        },
+        {
+          "name": "mixed"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "NoriTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "decompound_mode",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "analysis.tokenizers",
+              "name": "NoriDecompoundMode"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "discard_punctuation",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "user_dictionary_rules",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "PathHierarchyTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "buffer_size",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "delimiter",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "replacement",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "reverse",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringBooleanFormatter"
+          }
+        },
+        {
+          "name": "skip",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "StandardTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max_token_length",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "Tokenizer"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "CharGroupTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers.n_gram",
+            "name": "EdgeNGramTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "KeywordTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "LetterTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "LowercaseTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers.n_gram",
+            "name": "NGramTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "NoriTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "PathHierarchyTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "StandardTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "UaxEmailUrlTokenizer"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "WhitespaceTokenizer"
+          }
         }
       ]
     },
@@ -6754,7 +9691,236 @@
               "name": "string"
             }
           },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "UaxEmailUrlTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max_token_length",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers",
+        "name": "WhitespaceTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "max_token_length",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers.n_gram",
+        "name": "EdgeNGramTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "custom_token_chars",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
           "required": true
+        },
+        {
+          "name": "max_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "min_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "token_chars",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "analysis.tokenizers.n_gram",
+                "name": "TokenChar"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "analysis.tokenizers.n_gram",
+        "name": "NGramTokenizer"
+      },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "analysis.tokenizers",
+            "name": "TokenizerBase"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "custom_token_chars",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "max_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "min_gram",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": true,
+          "annotations": {
+            "prop_serializer": "NullableStringIntFormatter"
+          }
+        },
+        {
+          "name": "token_chars",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "analysis.tokenizers.n_gram",
+                "name": "TokenChar"
+              }
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "analysis.tokenizers.n_gram",
+        "name": "TokenChar"
+      },
+      "members": [
+        {
+          "name": "letter"
+        },
+        {
+          "name": "digit"
+        },
+        {
+          "name": "whitespace"
+        },
+        {
+          "name": "punctuation"
+        },
+        {
+          "name": "symbol"
+        },
+        {
+          "name": "custom"
         }
       ]
     },
@@ -33228,7 +36394,7 @@
                     "kind": "instance_of",
                     "type": {
                       "namespace": "analysis.char_filters",
-                      "name": "CharFilterBase"
+                      "name": "CharFilter"
                     }
                   }
                 ]
@@ -33276,7 +36442,7 @@
                     "kind": "instance_of",
                     "type": {
                       "namespace": "analysis.token_filters",
-                      "name": "TokenFilterBase"
+                      "name": "TokenFilter"
                     }
                   }
                 ]
@@ -33298,32 +36464,11 @@
           {
             "name": "text",
             "type": {
-              "kind": "union_of",
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "string"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "Array"
-                  },
-                  "generics": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "namespace": "internal",
-                        "name": "string"
-                      }
-                    }
-                  ]
-                }
-              ]
+              "kind": "instance_of",
+              "type": {
+                "namespace": "indices.analyze",
+                "name": "TextToAnalyze"
+              }
             },
             "required": false
           },
@@ -33343,7 +36488,7 @@
                   "kind": "instance_of",
                   "type": {
                     "namespace": "analysis.tokenizers",
-                    "name": "TokenizerBase"
+                    "name": "Tokenizer"
                   }
                 }
               ]
@@ -33609,6 +36754,38 @@
             }
           },
           "required": true
+        }
+      ]
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "indices.analyze",
+        "name": "TextToAnalyze"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "string"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "Array"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            }
+          ]
         }
       ]
     },

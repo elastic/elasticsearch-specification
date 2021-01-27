@@ -5,14 +5,16 @@ class AnalyzeRequest extends RequestBase {
   }
   query_parameters?: {}
   body?: {
-    analyzer?: string
-    attributes?: string[]
-    char_filter?: Union<string, CharFilterBase>[]
-    explain?: boolean
-    field?: Field
-    filter?: Union<string, TokenFilterBase>[]
-    normalizer?: string
-    text?: string | Array<string>
-    tokenizer?: Union<string, TokenizerBase>
+    analyzer?: string;
+    attributes?: string[];
+    char_filter?: Union<string, CharFilter>[];
+    explain?: boolean;
+    field?: Field;
+    filter?: Union<string, TokenFilter>[];
+    normalizer?: string;
+    text?: TextToAnalyze;
+    tokenizer?: Union<string, Tokenizer>;
   }
 }
+
+type TextToAnalyze = string | Array<string>
