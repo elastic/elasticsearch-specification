@@ -1,1 +1,1 @@
-class PingResponse implements EmptyResponseBase {}
+class PingResponse extends ResponseBase implements EmptyResponseBase {}

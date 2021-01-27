@@ -1,1 +1,1 @@
-class IndexExistsResponse implements EmptyResponseBase {}
+class IndexExistsResponse extends ResponseBase implements EmptyResponseBase {}
