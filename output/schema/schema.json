@@ -50834,6 +50834,26 @@
       },
       "properties": [
         {
+          "name": "data_streams",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Array"
+            },
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              }
+            ]
+          },
+          "required": true
+        },
+        {
           "name": "duration_in_millis",
           "type": {
             "kind": "instance_of",
@@ -50853,7 +50873,7 @@
               "name": "Date"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "end_time_in_millis",
@@ -50864,7 +50884,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "failures",
@@ -50878,7 +50898,18 @@
               }
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "include_global_state",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": false
         },
         {
           "name": "indices",
@@ -50909,7 +50940,18 @@
               "kind": "user_defined_value"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "reason",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
         },
         {
           "name": "snapshot",
@@ -50931,7 +50973,7 @@
               "name": "ShardStatistics"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "start_time",
@@ -50942,7 +50984,7 @@
               "name": "Date"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "start_time_in_millis",
@@ -50953,7 +50995,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "state",
@@ -50964,7 +51006,40 @@
               "name": "string"
             }
           },
+          "required": false
+        },
+        {
+          "name": "uuid",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
           "required": true
+        },
+        {
+          "name": "version",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "version_id",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -51377,7 +51452,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "snapshot",
@@ -51388,7 +51463,7 @@
               "name": "SnapshotInfo"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },

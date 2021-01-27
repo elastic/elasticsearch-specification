@@ -5437,17 +5437,23 @@ export interface SnapshotRestore {
 }
 
 export interface SnapshotInfo {
+  data_streams: Array<string>
   duration_in_millis: long
-  end_time: Date
-  end_time_in_millis: long
-  failures: Array<SnapshotShardFailure>
+  end_time?: Date
+  end_time_in_millis?: long
+  failures?: Array<SnapshotShardFailure>
+  include_global_state?: boolean
   indices: Array<IndexName>
-  metadata: Record<string, any>
+  metadata?: Record<string, any>
+  reason?: string
   snapshot: string
-  shards: ShardStatistics
-  start_time: Date
-  start_time_in_millis: long
-  state: string
+  shards?: ShardStatistics
+  start_time?: Date
+  start_time_in_millis?: long
+  state?: string
+  uuid: string
+  version?: string
+  version_id?: integer
 }
 
 export interface SnapshotShardFailure {
@@ -5494,8 +5500,8 @@ export interface SnapshotRequest extends RequestBase {
 }
 
 export interface SnapshotResponse {
-  accepted: boolean
-  snapshot: SnapshotInfo
+  accepted?: boolean
+  snapshot?: SnapshotInfo
 }
 
 export interface FileCountSnapshotStats {
