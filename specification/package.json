@@ -4,6 +4,8 @@
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
   "main": "src/api-specification.js",
   "scripts": {
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
     "format:check": "prettier --check specs/",
     "format:fix": "prettier --write specs/",
     "start": "ts-node src/main.ts",
@@ -21,6 +23,7 @@
     "@typescript-eslint/parser": "^4.14.0",
     "prettier": "2.2.1",
     "ts-node": "^9.1.1",
+    "ts-standard": "^10.0.0",
     "tslint": "^6.1.2",
     "typescript": "^4.1.3"
   },
@@ -31,5 +34,12 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "ts-standard": {
+    "ignore": [
+      "lib/",
+      "build/",
+      "specs/"
+    ]
   }
 }
