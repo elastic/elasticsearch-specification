@@ -8,14 +8,14 @@ const response = specification.typeLookup[api.typeMapping.response]
 // const searchResponse = specification.typeLookup[searchAPI.typeMapping.responseQuery];
 // const searchResponse = specification.typeLookup[searchAPI.typeMapping.responsePath];
 // console.log(searchAPI)
-// @ts-ignore
+// @ts-expect-error
 console.log(response)
 // console.log(specification.typeLookup)
 /* console.log()
 console.log(searchRequest)
 console.log()
 console.log(searchResponse) */
-// @ts-ignore
+// @ts-expect-error
 /* for (const prop of searchRequest.properties) {
   console.log(prop)
 } */

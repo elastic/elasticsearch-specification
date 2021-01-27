@@ -9,6 +9,7 @@
     "outDir": "lib/src",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-extraneous-class */
+
 import * as ts from 'byots'
 
 export class SpecValidator {
@@ -9,11 +11,11 @@ export class SpecValidator {
     for (const d of allDiagnostics) {
       const message = ts.flattenDiagnosticMessageText(d.messageText, '\n')
       if (d.file == null) {
-        errors.push('<global> ' + message)
+        errors.push(`<global> ${message}`)
         continue
       }
-      const { line, character } = d.file.getLineAndCharacterOfPosition(d.start)
-      const error = d.file.fileName + ' ' + line + 1 + ',' + character + 1 + ':' + message
+      const { line, character } = d.file.getLineAndCharacterOfPosition(d.start as number)
+      const error = `${d.file.fileName} ${line + 1},${character + 1}:${message}`
       errors.push(error)
     }
     return errors
