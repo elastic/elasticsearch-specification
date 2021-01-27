@@ -6982,6 +6982,14 @@
         "namespace": "cat.cat_aliases",
         "name": "CatAliasesResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -7172,6 +7180,14 @@
         "namespace": "cat.cat_allocation",
         "name": "CatAllocationResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -7272,6 +7288,14 @@
         "namespace": "cat.cat_count",
         "name": "CatCountResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -7540,6 +7564,14 @@
         "namespace": "cat.cat_data_frame_analytics",
         "name": "CatDataFrameAnalyticsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -7752,6 +7784,14 @@
         "namespace": "cat.cat_datafeeds",
         "name": "CatDatafeedsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -7898,6 +7938,14 @@
         "namespace": "cat.cat_fielddata",
         "name": "CatFielddataResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -8096,6 +8144,14 @@
         "namespace": "cat.cat_health",
         "name": "CatHealthResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -8161,6 +8217,14 @@
         "namespace": "cat.cat_help",
         "name": "CatHelpResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -8410,6 +8474,14 @@
         "namespace": "cat.cat_indices",
         "name": "CatIndicesResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -9107,6 +9179,14 @@
         "namespace": "cat.cat_jobs",
         "name": "CatJobsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -9227,6 +9307,14 @@
         "namespace": "cat.cat_master",
         "name": "CatMasterResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -9369,6 +9457,14 @@
         "namespace": "cat.cat_node_attributes",
         "name": "CatNodeAttributesResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -10229,6 +10325,14 @@
         "namespace": "cat.cat_nodes",
         "name": "CatNodesResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -10330,6 +10434,14 @@
         "namespace": "cat.cat_pending_tasks",
         "name": "CatPendingTasksResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -10472,6 +10584,14 @@
         "namespace": "cat.cat_plugins",
         "name": "CatPluginsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -10824,6 +10944,14 @@
         "namespace": "cat.cat_recovery",
         "name": "CatRecoveryResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -10900,6 +11028,14 @@
         "namespace": "cat.cat_repositories",
         "name": "CatRepositoriesResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -11145,6 +11281,14 @@
         "namespace": "cat.cat_segments",
         "name": "CatSegmentsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -11863,6 +12007,14 @@
         "namespace": "cat.cat_shards",
         "name": "CatShardsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -12082,6 +12234,14 @@
         "namespace": "cat.cat_snapshots",
         "name": "CatSnapshotsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -12288,6 +12448,14 @@
         "namespace": "cat.cat_tasks",
         "name": "CatTasksResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -12416,6 +12584,14 @@
         "namespace": "cat.cat_templates",
         "name": "CatTemplatesResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -12752,6 +12928,14 @@
         "namespace": "cat.cat_thread_pool",
         "name": "CatThreadPoolResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -13022,6 +13206,14 @@
         "namespace": "cat.cat_trained_models",
         "name": "CatTrainedModelsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -13426,6 +13618,14 @@
         "namespace": "cat.cat_transforms",
         "name": "CatTransformsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
