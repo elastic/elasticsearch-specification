@@ -1,0 +1,30 @@
+name: Linter
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+
+    - name: Install
+      run: |
+        npm install --prefix specification
+        npm install --prefix typescript-generator
+
+    - name: Lint specification
+      run: |
+        npm run lint --prefix specification
+
+    - name: Lint typescript-generator
+      run: |
+        npm run lint --prefix typescript-generator
+

@@ -5,19 +5,19 @@ import { RestSpecMapping } from './specification/rest-spec-mapping'
 import _ from 'lodash'
 import * as glob from 'glob'
 import * as ts from 'byots'
-import Domain = require('./domain');
+import Domain = require('./domain')
 
-export type TypeDictionary = { [p: string]: Domain.TypeDeclaration };
+export interface TypeDictionary { [p: string]: Domain.TypeDeclaration }
 export class Specification {
-  private specsFolder = path.join(__dirname, '..', 'specs');
-  private configPath = path.join(this.specsFolder, 'tsconfig.json');
-  private readonly program: ts.Program;
+  private readonly specsFolder = path.join(__dirname, '..', 'specs')
+  private readonly configPath = path.join(this.specsFolder, 'tsconfig.json')
+  private readonly program: ts.Program
 
-  types: Domain.TypeDeclaration[] = [];
-  typeLookup: TypeDictionary = {};
-  domain_errors: string[] = [];
-  endpoints: Domain.Endpoint[] = [];
-  endpoint_errors: string[] = [];
+  types: Domain.TypeDeclaration[] = []
+  typeLookup: TypeDictionary = {}
+  domain_errors: string[] = []
+  endpoints: Domain.Endpoint[] = []
+  endpoint_errors: string[] = []
 
   private constructor (validate: boolean) {
     const config = ts.readConfigFile(this.configPath, file => ts.sys.readFile(file))
@@ -34,13 +34,13 @@ export class Specification {
       }
     }
 
-    const knownBehaviors = ["AdditionalProperties", 'ArrayResponse', 'EmptyResponseBase']
+    const knownBehaviors = ['AdditionalProperties', 'ArrayResponse', 'EmptyResponseBase']
     const specVisitor = new TypeReader(this.program)
-    const types = [].concat(specVisitor.interfaces).concat(specVisitor.enums)
+    const types = specVisitor.interfaces.concat(specVisitor.enums)
     // resolve inherits by creating the proper pointers to instances, pretty hairy but it works
     const dictTypes = types.reduce((o, p) => ({ ...o, [p.name]: p }), {}) as TypeDictionary
     const stringType = new Domain.Interface('string', 'internal')
-    const lookup = (key: string) => key === 'string' ? stringType : (dictTypes[key] as Domain.Interface)
+    const lookup = (key: string): Domain.Interface => key === 'string' ? stringType : (dictTypes[key] as Domain.Interface)
     types.forEach(t => {
       if (!(t instanceof Domain.Interface)) return
       t.inherits = []
@@ -57,18 +57,18 @@ export class Specification {
         const refType = lookup(key)
         const unresolved = t.implementsFromUnresolved[key]
         const ref = new Domain.ImplementsReference(refType, unresolved.depth)
-        ref.closedGenerics = unresolved.instanceOf;
-        const isBehavior = !!ref.type.generatorHints.behavior;
+        ref.closedGenerics = unresolved.instanceOf
+        const isBehavior = Boolean(ref.type.generatorHints.behavior)
         if (ref.depth === 0 && !isBehavior) t.implements.push(ref)
         else if (ref.depth === 0 && isBehavior) t.behaviors.push(ref)
         if (isBehavior) {
           if (!knownBehaviors.includes(ref.type.name)) {
             throw new Error(`${ref.type.name} is not a known behavior, please include it here`)
-          }
-          else t.attachedBehaviors.push(ref.type.name)
+          } else t.attachedBehaviors.push(ref.type.name)
         }
       }
     })
+
     this.types = types
     this.typeLookup = dictTypes
 
@@ -76,19 +76,18 @@ export class Specification {
     this.endpoints = endpointReader.endpoints
   }
 
-  static load = () => new Specification(false);
-  static loadWithValidation = () => new Specification(true);
+  static load = (): Specification => new Specification(false)
+  static loadWithValidation = (): Specification => new Specification(true)
 }
 
 export class EndpointReader {
-  endpoints: Domain.Endpoint[];
+  endpoints: Domain.Endpoint[]
 
   constructor (types: Domain.TypeDeclaration[], restSpecMapping: { [p: string]: RestSpecMapping }) {
     this.endpoints = _(glob.sync(path.join(__dirname, '..', 'specs', '_json_spec', '*.json')))
-      .filter(f => !f.match(/tsconfig/))
-      .filter(f => !f.match(/tslint/))
+      .filter(f => f.match(/tsconfig/) == null)
+      .filter(f => f.match(/tslint/) == null)
       .map(f => new Domain.Endpoint(f, restSpecMapping))
-      // @ts-ignore
       .value()
   }
 }
