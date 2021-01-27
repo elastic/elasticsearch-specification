@@ -1,1 +1,1 @@
-class CatTransformsResponse extends CatResponseBase<CatTransformsRecord> {}
+class CatTransformsResponse extends ResponseBase implements ArrayResponse<CatTransformsRecord> {}

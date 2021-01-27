@@ -15,3 +15,19 @@
  * @behavior Defines a trait that any unknown property for the class should be typed to TValue
  */
 interface AdditionalProperties<TKey, TValue> {}
+
+/**
+ * A response formatted as an array of records.
+ * Some languages can't represent this easily and need to wrap the
+ * array inside an object.
+ * @behavior Defines a trait that the response should be an array of records typed to TRecord
+ */
+interface ArrayResponse<TRecord> {}
+
+/**
+ * HEAD APIs can have a different behavior based on the language,
+ * the response body is always empty to it's up to language generators
+ * to define how those should be represented.
+ * @behavior Defines a trait that the response is empty
+ */
+interface EmptyResponseBase {}
