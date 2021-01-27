@@ -1,1 +1,1 @@
-class CatCountResponse implements CatResponseBase<CatCountRecord> {}
+class CatCountResponse extends ResponseBase implements ArrayResponse<CatCountRecord> {}

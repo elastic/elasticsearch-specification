@@ -17,12 +17,12 @@
 interface AdditionalProperties<TKey, TValue> {}
 
 /**
- * A cat response formatted in JSON will be an array of records.
+ * A response formatted as an array of records.
  * Some languages can't represent this easily and need to wrap the
  * array inside an object.
- * @behavior Defines a trait that the response should be an array of records typed to TCatRecord
+ * @behavior Defines a trait that the response should be an array of records typed to TRecord
  */
-interface CatResponseBase<TCatRecord> {}
+interface ArrayResponse<TRecord> {}
 
 /**
  * HEAD APIs can have a different behavior based on the language,

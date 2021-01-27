@@ -1,1 +1,1 @@
-class CatHealthResponse implements CatResponseBase<CatHealthRecord> {}
+class CatHealthResponse extends ResponseBase implements ArrayResponse<CatHealthRecord> {}

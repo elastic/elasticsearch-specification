@@ -1,1 +1,1 @@
-class CatIndicesResponse implements CatResponseBase<CatIndicesRecord> {}
+class CatIndicesResponse extends ResponseBase implements ArrayResponse<CatIndicesRecord> {}

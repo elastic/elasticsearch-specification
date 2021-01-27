@@ -1,1 +1,1 @@
-class CatPendingTasksResponse implements CatResponseBase<CatPendingTasksRecord> {}
+class CatPendingTasksResponse extends ResponseBase implements ArrayResponse<CatPendingTasksRecord> {}
