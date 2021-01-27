@@ -51,7 +51,9 @@ Where applicable, try to reuse those definitions, or if you see a pattern that
 has not been defined yet, feel free to add a new alias or abstraction.
 
 You can find a not comprehensive list of the most commonly used abstractions
-in the [modeling guide](./modeling-guide.md).
+in the [modeling guide](./modeling-guide.md), while in [behaviors](./behaviors.md)
+you can find the list of special interfaces used for describing APIs that can't be
+represented in the specification.
 
 ## Where to store files
 
