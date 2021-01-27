@@ -21200,6 +21200,14 @@
         "namespace": "cluster.ping",
         "name": "PingResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -30119,6 +30127,14 @@
         "namespace": "document.single.exists",
         "name": "DocumentExistsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -31098,6 +31114,14 @@
         "namespace": "document.single.source_exists",
         "name": "SourceExistsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -32609,6 +32633,14 @@
         "namespace": "indices.alias_management.alias_exists",
         "name": "AliasExistsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -34494,6 +34526,14 @@
         "namespace": "indices.index_management.indices_exists",
         "name": "IndexExistsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -35554,6 +35594,14 @@
         "namespace": "indices.index_management.types_exists",
         "name": "TypeExistsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
@@ -36215,6 +36263,14 @@
         "namespace": "indices.index_settings.index_templates.index_template_exists",
         "name": "IndexTemplateExistsResponse"
       },
+      "inherits": [
+        {
+          "type": {
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
       "behaviors": [
         {
           "type": {
