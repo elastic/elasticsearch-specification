@@ -7,7 +7,3 @@ class CatRequestBase extends RequestBase {
   s?: string[]
   v?: boolean
 }
-
-class CatResponseBase<TCatRecord> extends ResponseBase {
-  records: TCatRecord[]
-}

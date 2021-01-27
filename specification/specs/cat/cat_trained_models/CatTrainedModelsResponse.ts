@@ -1,1 +1,1 @@
-class CatTrainedModelsResponse extends CatResponseBase<CatTrainedModelsRecord> {}
+class CatTrainedModelsResponse extends ResponseBase implements ArrayResponse<CatTrainedModelsRecord> {}

@@ -23,7 +23,8 @@ let definitions = `/*
  */\n\n`
 
 const skip = [
-  'CatResponseBase',
+  'ResponseBase',
+  'ArrayResponse',
   'EmptyResponseBase',
   'AdditionalProperties'
 ]
@@ -159,6 +160,8 @@ function createAlias (type) {
 
 function buildInherits (type) {
   if (!Array.isArray(type.inherits)) return ''
+  // ResponseBase will always be empty
+  if (type.inherits[0].type.name === 'ResponseBase') return ''
   return ` extends ${type.inherits.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type) {
@@ -185,14 +188,8 @@ function cleanPropertyName (name) {
 }
 
 function isSpecialInterface (type) {
-  if (/^Cat.*Response$/g.test(type.name.name)) {
-    return true
-  }
   if (Array.isArray(type.attachedBehaviors)) {
     return type.attachedBehaviors.length > 0
-  }
-  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'EmptyResponseBase') {
-    return true
   }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
@@ -230,16 +227,19 @@ function serializeAdditionalPropertiesType (type) {
 }
 
 function serializeSpecialInterface (type) {
-  if (/^Cat.*Response$/g.test(type.name.name)) {
-    return buildCatResponse(type)
-  }
   if (Array.isArray(type.attachedBehaviors)) {
     if (type.attachedBehaviors.includes('AdditionalProperties')) {
       return serializeAdditionalPropertiesType(type)
     }
-  }
-  if (Array.isArray(type.inherits) && type.inherits[0].type.name === 'EmptyResponseBase') {
-    return `export type ${type.name.name} = boolean\n`
+    if (type.attachedBehaviors.includes('ArrayResponse')) {
+      // In the input spec the Cat* responses are represented as an object
+      // that contains a `records` key, which is an array of the inherited generic.
+      // What ES actually sends back, is an array of the inherited generic.
+      return `export type ${type.name.name} = ${type.behaviors[0].generics[0].type.name}[]\n`
+    }
+    if (type.attachedBehaviors.includes('EmptyResponseBase')) {
+      return `export type ${type.name.name} = boolean\n`
+    }
   }
 
   switch (type.name.name) {
@@ -262,11 +262,4 @@ function buildIndexer (type) {
     // type aliases back to string
     return t === 'AggregateName' ? 'string' : t
   }
-}
-
-// In the input spec the Cat* responses are represented as an object
-// that contains a `records` key, which is an array of the inherited generic.
-// What ES actually sends back, is an array of the inherited generic.
-function buildCatResponse (type) {
-  return `export type ${type.name.name} = ${type.inherits[0].generics[0].type.name}[]\n`
 }

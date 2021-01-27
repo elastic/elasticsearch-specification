@@ -1,4 +1,3 @@
 class ResponseBase {
-  // error: MainError;
-  // status: integer;
+  // Do not add properties to this base class.
 }

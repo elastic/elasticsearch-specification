@@ -1,1 +1,1 @@
-class SourceExistsResponse extends EmptyResponseBase {}
+class SourceExistsResponse extends ResponseBase implements EmptyResponseBase {}

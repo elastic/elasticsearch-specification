@@ -6861,40 +6861,6 @@
     {
       "kind": "interface",
       "name": {
-        "namespace": "cat",
-        "name": "CatResponseBase"
-      },
-      "generics": [
-        "TCatRecord"
-      ],
-      "inherits": [
-        {
-          "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "records",
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "generic",
-                "name": "TCatRecord"
-              }
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "namespace": "cat.cat_aliases",
         "name": "CatAliasesRecord"
       },
@@ -7019,8 +6985,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7032,6 +7006,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7206,8 +7183,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7219,6 +7204,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7303,8 +7291,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7316,6 +7312,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7568,8 +7567,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7581,6 +7588,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7777,8 +7787,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7790,6 +7808,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7920,8 +7941,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7933,6 +7962,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -8115,8 +8147,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -8128,6 +8168,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -8177,8 +8220,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -8190,6 +8241,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -8423,8 +8477,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -8436,6 +8498,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -9117,8 +9182,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -9130,6 +9203,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -9234,8 +9310,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -9247,6 +9331,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -9373,8 +9460,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -9386,6 +9481,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10230,8 +10328,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10243,6 +10349,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10328,8 +10437,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10341,6 +10458,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10467,8 +10587,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10480,6 +10608,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10816,8 +10947,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10829,6 +10968,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10889,8 +11031,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10902,6 +11052,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -11131,8 +11284,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -11144,6 +11305,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -11846,8 +12010,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -11859,6 +12031,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12062,8 +12237,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12075,6 +12258,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12265,8 +12451,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12278,6 +12472,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12390,8 +12587,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12403,6 +12608,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12723,8 +12931,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12736,6 +12952,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12990,8 +13209,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -13003,6 +13230,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -13391,8 +13621,16 @@
       "inherits": [
         {
           "type": {
-            "namespace": "cat",
-            "name": "CatResponseBase"
+            "namespace": "common_abstractions.response",
+            "name": "ResponseBase"
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -13404,6 +13642,9 @@
             }
           ]
         }
+      ],
+      "attachedBehaviors": [
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -20963,9 +21204,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -22885,34 +23146,6 @@
             "type": {
               "namespace": "internal",
               "name": "string"
-            }
-          },
-          "required": true
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "common_abstractions.response",
-        "name": "EmptyResponseBase"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "common_abstractions.response",
-            "name": "ResponseBase"
-          }
-        }
-      ],
-      "properties": [
-        {
-          "name": "exists",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "boolean"
             }
           },
           "required": true
@@ -29898,9 +30131,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -30856,9 +31109,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -32355,9 +32628,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -34228,9 +34521,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -35276,9 +35589,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -35925,9 +36258,29 @@
         {
           "type": {
             "namespace": "common_abstractions.response",
-            "name": "EmptyResponseBase"
+            "name": "ResponseBase"
           }
         }
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "namespace": "internal",
+            "name": "EmptyResponseBase"
+          },
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "EmptyResponseBase"
+              }
+            }
+          ]
+        }
+      ],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
       ],
       "properties": []
     },
@@ -44570,6 +44923,17 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "ArrayResponse"
+      },
+      "generics": [
+        "TRecord"
+      ],
+      "properties": []
+    },
+    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -44646,6 +45010,14 @@
           "name": "number"
         }
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "EmptyResponseBase"
+      },
+      "properties": []
     },
     {
       "kind": "interface",

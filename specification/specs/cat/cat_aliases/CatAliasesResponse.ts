@@ -1,1 +1,1 @@
-class CatAliasesResponse extends CatResponseBase<CatAliasesRecord> {}
+class CatAliasesResponse extends ResponseBase implements ArrayResponse<CatAliasesRecord> {}
