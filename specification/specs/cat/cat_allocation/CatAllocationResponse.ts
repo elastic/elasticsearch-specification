@@ -1,1 +1,3 @@
-class CatAllocationResponse extends ResponseBase implements ArrayResponse<CatAllocationRecord> {}
+class CatAllocationResponse
+  extends ResponseBase
+  implements ArrayResponse<CatAllocationRecord> {}

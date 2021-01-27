@@ -1,1 +1,3 @@
-class CatJobsResponse extends ResponseBase implements ArrayResponse<CatJobsRecord> {}
+class CatJobsResponse
+  extends ResponseBase
+  implements ArrayResponse<CatJobsRecord> {}

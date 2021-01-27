@@ -1,1 +1,3 @@
-class CatTemplatesResponse extends ResponseBase implements ArrayResponse<CatTemplatesRecord> {}
+class CatTemplatesResponse
+  extends ResponseBase
+  implements ArrayResponse<CatTemplatesRecord> {}

@@ -1,1 +1,3 @@
-class CatPluginsResponse extends ResponseBase implements ArrayResponse<CatPluginsRecord> {}
+class CatPluginsResponse
+  extends ResponseBase
+  implements ArrayResponse<CatPluginsRecord> {}
