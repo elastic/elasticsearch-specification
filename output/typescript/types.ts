@@ -760,20 +760,326 @@ export interface SumBucketAggregation {
 }
 
 export type StopWords = string | Array<string>
+export type CharFilter = HtmlStripCharFilter | MappingCharFilter | PatternReplaceTokenFilter
 export interface CharFilterBase {
   type: string
-  version: string
+  version?: string
 }
 
+export interface HtmlStripCharFilter extends CharFilterBase {
+}
+
+export interface MappingCharFilter extends CharFilterBase {
+  mappings: Array<string>
+  mappings_path: string
+}
+
+export type SnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Danish' | 'Dutch' | 'English' | 'Finnish' | 'French' | 'German' | 'German2' | 'Hungarian' | 'Italian' | 'Kp' | 'Lovins' | 'Norwegian' | 'Porter' | 'Portuguese' | 'Romanian' | 'Russian' | 'Spanish' | 'Swedish' | 'Turkish'
+
+export interface AsciiFoldingTokenFilter extends TokenFilterBase {
+  preserve_original: boolean
+}
+
+export interface CommonGramsTokenFilter extends TokenFilterBase {
+  common_words: Array<string>
+  common_words_path: string
+  ignore_case: boolean
+  query_mode: boolean
+}
+
+export interface ConditionTokenFilter extends TokenFilterBase {
+  filter: Array<string>
+  script: Script
+}
+
+export interface ElisionTokenFilter extends TokenFilterBase {
+  articles: Array<string>
+  articles_case: boolean
+}
+
+export interface FingerprintTokenFilter extends TokenFilterBase {
+  max_output_size: integer
+  separator: string
+}
+
+export interface HunspellTokenFilter extends TokenFilterBase {
+  dedup: boolean
+  dictionary: string
+  locale: string
+  longest_only: boolean
+}
+
+export type KeepTypesMode = 'include' | 'exclude'
+
+export interface KeepTypesTokenFilter extends TokenFilterBase {
+  mode: KeepTypesMode
+  types: Array<string>
+}
+
+export interface KeepWordsTokenFilter extends TokenFilterBase {
+  keep_words: Array<string>
+  keep_words_case: boolean
+  keep_words_path: string
+}
+
+export interface KeywordMarkerTokenFilter extends TokenFilterBase {
+  ignore_case: boolean
+  keywords: Array<string>
+  keywords_path: string
+  keywords_pattern: string
+}
+
+export interface KStemTokenFilter extends TokenFilterBase {
+}
+
+export interface LengthTokenFilter extends TokenFilterBase {
+  max: integer
+  min: integer
+}
+
+export interface LimitTokenCountTokenFilter extends TokenFilterBase {
+  consume_all_tokens: boolean
+  max_token_count: integer
+}
+
+export interface LowercaseTokenFilter extends TokenFilterBase {
+  language: string
+}
+
+export interface MultiplexerTokenFilter extends TokenFilterBase {
+  filters: Array<string>
+  preserve_original: boolean
+}
+
+export interface NGramTokenFilter extends TokenFilterBase {
+  max_gram: integer
+  min_gram: integer
+}
+
+export interface NoriPartOfSpeechTokenFilter extends TokenFilterBase {
+  stoptags: Array<string>
+}
+
+export interface PatternCaptureTokenFilter extends TokenFilterBase {
+  patterns: Array<string>
+  preserve_original: boolean
+}
+
+export interface PatternReplaceTokenFilter extends TokenFilterBase {
+  flags: string
+  pattern: string
+  replacement: string
+}
+
+export interface PorterStemTokenFilter extends TokenFilterBase {
+}
+
+export interface PredicateTokenFilter extends TokenFilterBase {
+  script: Script
+}
+
+export interface RemoveDuplicatesTokenFilter extends TokenFilterBase {
+}
+
+export interface ReverseTokenFilter extends TokenFilterBase {
+}
+
+export interface SnowballTokenFilter extends TokenFilterBase {
+  language: SnowballLanguage
+}
+
+export interface StemmerOverrideTokenFilter extends TokenFilterBase {
+  rules: Array<string>
+  rules_path: string
+}
+
+export interface StemmerTokenFilter extends TokenFilterBase {
+  language: string
+}
+
+export type TokenFilter = AsciiFoldingTokenFilter | CommonGramsTokenFilter | ConditionTokenFilter | DelimitedPayloadTokenFilter | EdgeNGramTokenFilter | ElisionTokenFilter | FingerprintTokenFilter | HunspellTokenFilter | HyphenationDecompounderTokenFilter | KeepTypesTokenFilter | KeepWordsTokenFilter | KeywordMarkerTokenFilter | KStemTokenFilter | LengthTokenFilter | LimitTokenCountTokenFilter | LowercaseTokenFilter | MultiplexerTokenFilter | NGramTokenFilter | NoriPartOfSpeechTokenFilter | PatternCaptureTokenFilter | PatternReplaceTokenFilter | PorterStemTokenFilter | PredicateTokenFilter | RemoveDuplicatesTokenFilter | ReverseTokenFilter | ShingleTokenFilter | SnowballTokenFilter | StemmerOverrideTokenFilter | StemmerTokenFilter | StopTokenFilter | SynonymGraphTokenFilter | SynonymTokenFilter | TrimTokenFilter | TruncateTokenFilter | UniqueTokenFilter | UppercaseTokenFilter | WordDelimiterGraphTokenFilter | WordDelimiterTokenFilter
 export interface TokenFilterBase {
   type: string
-  version: string
+  version?: string
 }
 
+export interface TrimTokenFilter extends TokenFilterBase {
+}
+
+export interface TruncateTokenFilter extends TokenFilterBase {
+  length: integer
+}
+
+export interface UniqueTokenFilter extends TokenFilterBase {
+  only_on_same_position: boolean
+}
+
+export interface UppercaseTokenFilter extends TokenFilterBase {
+}
+
+export interface CompoundWordTokenFilterBase extends TokenFilterBase {
+  hyphenation_patterns_path: string
+  max_subword_size: integer
+  min_subword_size: integer
+  min_word_size: integer
+  only_longest_match: boolean
+  word_list: Array<string>
+  word_list_path: string
+}
+
+export interface HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
+}
+
+export type DelimitedPayloadEncoding = 'int' | 'float' | 'identity'
+
+export interface DelimitedPayloadTokenFilter extends TokenFilterBase {
+  delimiter: string
+  encoding: DelimitedPayloadEncoding
+}
+
+export type EdgeNGramSide = 'front' | 'back'
+
+export interface EdgeNGramTokenFilter extends TokenFilterBase {
+  max_gram: integer
+  min_gram: integer
+  side: EdgeNGramSide
+}
+
+export interface ShingleTokenFilter extends TokenFilterBase {
+  filler_token: string
+  max_shingle_size: integer
+  min_shingle_size: integer
+  output_unigrams: boolean
+  output_unigrams_if_no_shingles: boolean
+  token_separator: string
+}
+
+export interface StopTokenFilter extends TokenFilterBase {
+  ignore_case?: boolean
+  remove_trailing?: boolean
+  stopwords: StopWords
+  stopwords_path?: string
+}
+
+export type SynonymFormat = 'solr' | 'wordnet'
+
+export interface SynonymGraphTokenFilter extends TokenFilterBase {
+  expand: boolean
+  format: SynonymFormat
+  lenient: boolean
+  synonyms: Array<string>
+  synonyms_path: string
+  tokenizer: string
+  updateable: boolean
+}
+
+export interface SynonymTokenFilter extends TokenFilterBase {
+  expand: boolean
+  format: SynonymFormat
+  lenient: boolean
+  synonyms: Array<string>
+  synonyms_path: string
+  tokenizer: string
+  updateable: boolean
+}
+
+export interface WordDelimiterTokenFilter extends TokenFilterBase {
+  catenate_all: boolean
+  catenate_numbers: boolean
+  catenate_words: boolean
+  generate_number_parts: boolean
+  generate_word_parts: boolean
+  preserve_original: boolean
+  protected_words: Array<string>
+  protected_words_path: string
+  split_on_case_change: boolean
+  split_on_numerics: boolean
+  stem_english_possessive: boolean
+  type_table: Array<string>
+  type_table_path: string
+}
+
+export interface WordDelimiterGraphTokenFilter extends TokenFilterBase {
+  adjust_offsets: boolean
+  catenate_all: boolean
+  catenate_numbers: boolean
+  catenate_words: boolean
+  generate_number_parts: boolean
+  generate_word_parts: boolean
+  preserve_original: boolean
+  protected_words: Array<string>
+  protected_words_path: string
+  split_on_case_change: boolean
+  split_on_numerics: boolean
+  stem_english_possessive: boolean
+  type_table: Array<string>
+  type_table_path: string
+}
+
+export interface CharGroupTokenizer extends TokenizerBase {
+  tokenize_on_chars: Array<string>
+}
+
+export interface KeywordTokenizer extends TokenizerBase {
+  buffer_size: integer
+}
+
+export interface LetterTokenizer extends TokenizerBase {
+}
+
+export interface LowercaseTokenizer extends TokenizerBase {
+}
+
+export type NoriDecompoundMode = 'discard' | 'none' | 'mixed'
+
+export interface NoriTokenizer extends TokenizerBase {
+  decompound_mode: NoriDecompoundMode
+  discard_punctuation: boolean
+  user_dictionary: string
+  user_dictionary_rules: Array<string>
+}
+
+export interface PathHierarchyTokenizer extends TokenizerBase {
+  buffer_size: integer
+  delimiter: string
+  replacement: string
+  reverse: boolean
+  skip: integer
+}
+
+export interface StandardTokenizer extends TokenizerBase {
+  max_token_length: integer
+}
+
+export type Tokenizer = CharGroupTokenizer | EdgeNGramTokenizer | KeywordTokenizer | LetterTokenizer | LowercaseTokenizer | NGramTokenizer | NoriTokenizer | PathHierarchyTokenizer | StandardTokenizer | UaxEmailUrlTokenizer | WhitespaceTokenizer
 export interface TokenizerBase {
   type: string
-  version: string
+  version?: string
 }
+
+export interface UaxEmailUrlTokenizer extends TokenizerBase {
+  max_token_length: integer
+}
+
+export interface WhitespaceTokenizer extends TokenizerBase {
+  max_token_length: integer
+}
+
+export interface EdgeNGramTokenizer extends TokenizerBase {
+  custom_token_chars: string
+  max_gram: integer
+  min_gram: integer
+  token_chars: Array<TokenChar>
+}
+
+export interface NGramTokenizer extends TokenizerBase {
+  custom_token_chars: string
+  max_gram: integer
+  min_gram: integer
+  token_chars: Array<TokenChar>
+}
+
+export type TokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
 
 export interface CatRequestBase extends RequestBase {
   format?: string
@@ -3534,13 +3840,13 @@ export interface AnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: Array<string>
-    char_filter?: Array<string | CharFilterBase>
+    char_filter?: Array<string | CharFilter>
     explain?: boolean
     field?: Field
-    filter?: Array<string | TokenFilterBase>
+    filter?: Array<string | TokenFilter>
     normalizer?: string
-    text?: string | Array<string>
-    tokenizer?: string | TokenizerBase
+    text?: TextToAnalyze
+    tokenizer?: string | Tokenizer
   }
 }
 
@@ -3575,6 +3881,7 @@ export interface ExplainAnalyzeToken {
   type: string
 }
 
+export type TextToAnalyze = string | Array<string>
 export interface TokenDetail {
   name: string
   tokens: Array<ExplainAnalyzeToken>
