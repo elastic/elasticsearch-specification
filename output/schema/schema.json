@@ -6986,7 +6986,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7000,7 +7000,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7176,7 +7176,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7190,7 +7190,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7276,7 +7276,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7290,7 +7290,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7544,7 +7544,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7558,7 +7558,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7756,7 +7756,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7770,7 +7770,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -7902,7 +7902,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -7916,7 +7916,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -8100,7 +8100,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -8114,7 +8114,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -8165,7 +8165,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -8179,7 +8179,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -8414,7 +8414,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -8428,7 +8428,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -9111,7 +9111,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -9125,7 +9125,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -9231,7 +9231,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -9245,7 +9245,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -9373,7 +9373,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -9387,7 +9387,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10233,7 +10233,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10247,7 +10247,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10334,7 +10334,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10348,7 +10348,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10476,7 +10476,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10490,7 +10490,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10828,7 +10828,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10842,7 +10842,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -10904,7 +10904,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -10918,7 +10918,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -11149,7 +11149,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -11163,7 +11163,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -11867,7 +11867,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -11881,7 +11881,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12086,7 +12086,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12100,7 +12100,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12292,7 +12292,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12306,7 +12306,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12420,7 +12420,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12434,7 +12434,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -12756,7 +12756,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -12770,7 +12770,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -13026,7 +13026,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -13040,7 +13040,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -13430,7 +13430,7 @@
         {
           "type": {
             "namespace": "internal",
-            "name": "CatResponseBase"
+            "name": "ArrayResponse"
           },
           "generics": [
             {
@@ -13444,7 +13444,7 @@
         }
       ],
       "attachedBehaviors": [
-        "CatResponseBase"
+        "ArrayResponse"
       ],
       "properties": []
     },
@@ -44676,6 +44676,17 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
+        "name": "ArrayResponse"
+      },
+      "generics": [
+        "TRecord"
+      ],
+      "properties": []
+    },
+    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -44688,17 +44699,6 @@
           "name": "string"
         }
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "internal",
-        "name": "CatResponseBase"
-      },
-      "generics": [
-        "TCatRecord"
-      ],
-      "properties": []
     },
     {
       "kind": "interface",
