@@ -1,8 +1,9 @@
 class CharFilterBase {
-  type: string;
-  version?: string;
+  type: string
+  version?: string
 }
 
-type CharFilter = HtmlStripCharFilter |
-  MappingCharFilter |
-  PatternReplaceTokenFilter
+type CharFilter =
+  | HtmlStripCharFilter
+  | MappingCharFilter
+  | PatternReplaceTokenFilter
