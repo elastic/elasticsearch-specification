@@ -1,2 +1,1 @@
-class ReverseTokenFilter extends TokenFilterBase {
-}
+class ReverseTokenFilter extends TokenFilterBase {}

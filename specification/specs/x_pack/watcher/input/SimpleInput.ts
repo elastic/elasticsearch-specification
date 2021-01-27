@@ -1,4 +1,4 @@
-@class_serializer("SimpleInputFormatter")
+@class_serializer('SimpleInputFormatter')
 class SimpleInput {
-  payload: Dictionary<string, UserDefinedValue>;
+  payload: Dictionary<string, UserDefinedValue>
 }

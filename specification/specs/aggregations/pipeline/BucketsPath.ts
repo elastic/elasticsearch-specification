@@ -1,3 +1,2 @@
-@class_serializer("BucketsPathFormatter")
-class BucketsPath {
-}
+@class_serializer('BucketsPathFormatter')
+class BucketsPath {}

@@ -1,1 +1,3 @@
-class CatRecoveryResponse extends ResponseBase implements ArrayResponse<CatRecoveryRecord> {}
+class CatRecoveryResponse
+  extends ResponseBase
+  implements ArrayResponse<CatRecoveryRecord> {}

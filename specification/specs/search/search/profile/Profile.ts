@@ -1,3 +1,3 @@
 class Profile {
-  shards: ShardProfile[];
+  shards: ShardProfile[]
 }

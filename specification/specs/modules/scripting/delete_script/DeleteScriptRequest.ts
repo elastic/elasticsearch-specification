@@ -1,12 +1,11 @@
-@rest_spec_name("delete_script")
+@rest_spec_name('delete_script')
 class DeleteScriptRequest extends RequestBase {
   path_parts?: {
-    id: Id;
+    id: Id
   }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
+    master_timeout?: Time
+    timeout?: Time
   }
-  body?: {
-  }
+  body?: {}
 }

@@ -1,4 +1,4 @@
 class AsciiFoldingTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */
-  preserve_original: boolean;
+  preserve_original: boolean
 }

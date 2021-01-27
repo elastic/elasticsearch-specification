@@ -1,10 +1,9 @@
-@rest_spec_name("render_search_template")
+@rest_spec_name('render_search_template')
 class RenderSearchTemplateRequest extends RequestBase {
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    file?: string;
-    params?: Dictionary<string, UserDefinedValue>;
-    source?: string;
+    file?: string
+    params?: Dictionary<string, UserDefinedValue>
+    source?: string
   }
 }

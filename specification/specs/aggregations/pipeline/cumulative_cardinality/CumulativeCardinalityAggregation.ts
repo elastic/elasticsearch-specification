@@ -1,2 +1,1 @@
-class CumulativeCardinalityAggregation {
-}
+class CumulativeCardinalityAggregation {}

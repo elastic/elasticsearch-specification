@@ -1,7 +1,5 @@
-@rest_spec_name("cluster.remote_info")
+@rest_spec_name('cluster.remote_info')
 class RemoteInfoRequest extends RequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

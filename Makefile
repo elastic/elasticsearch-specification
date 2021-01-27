@@ -20,6 +20,10 @@ validation-api-response:  ## Validate response of Endpoint with param: api=<api-
 	@echo ">> validating response of Endpoint: $(api)"
 	./run-validations.sh --api $(api) --response
 
+format-code:  ## Format the spec according to the style guide
+	@echo ">> validating formatting code"
+	@npm run format:fix --prefix specification
+
 generate-spec:	  ## Generate the output spec
 	@echo ">> generating the spec .."
 	@npm run compile:canonical-json

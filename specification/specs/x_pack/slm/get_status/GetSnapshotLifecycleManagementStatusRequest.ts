@@ -1,7 +1,5 @@
-@rest_spec_name("slm.get_status")
+@rest_spec_name('slm.get_status')
 class GetSnapshotLifecycleManagementStatusRequest extends RequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

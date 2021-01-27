@@ -1,2 +1,1 @@
-class MinBucketAggregation {
-}
+class MinBucketAggregation {}

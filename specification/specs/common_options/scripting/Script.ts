@@ -1,14 +1,14 @@
 class ScriptBase {
-  lang: string;
-  params?: Dictionary<string, UserDefinedValue>;
+  lang: string
+  params?: Dictionary<string, UserDefinedValue>
 }
 
 class InlineScript extends ScriptBase {
-  source: string;
+  source: string
 }
 
 class IndexedScript extends ScriptBase {
-  id: string;
+  id: string
 }
 
-type Script = InlineScript | IndexedScript | string;
+type Script = InlineScript | IndexedScript | string

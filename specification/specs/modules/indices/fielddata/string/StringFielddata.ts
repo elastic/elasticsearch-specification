@@ -1,3 +1,3 @@
 class StringFielddata {
-  format: StringFielddataFormat;
+  format: StringFielddataFormat
 }

@@ -1,4 +1,4 @@
 class WebhookActionResult {
-  request: HttpInputRequestResult;
-  response: HttpInputResponseResult;
+  request: HttpInputRequestResult
+  response: HttpInputResponseResult
 }

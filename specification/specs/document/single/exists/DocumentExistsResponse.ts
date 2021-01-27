@@ -1,1 +1,3 @@
-class DocumentExistsResponse extends ResponseBase implements EmptyResponseBase {}
+class DocumentExistsResponse
+  extends ResponseBase
+  implements EmptyResponseBase {}

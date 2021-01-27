@@ -1,11 +1,10 @@
-@rest_spec_name("ml.get_calendars")
+@rest_spec_name('ml.get_calendars')
 class GetCalendarsRequest extends RequestBase {
   path_parts?: {
-    calendar_id?: Id;
+    calendar_id?: Id
   }
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    page?: Page;
+    page?: Page
   }
 }

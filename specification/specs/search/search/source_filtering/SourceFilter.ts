@@ -1,10 +1,10 @@
-@class_serializer("SourceFilterFormatter")
+@class_serializer('SourceFilterFormatter')
 class SourceFilter {
-  excludes?: Fields;
-  includes?: Fields;
+  excludes?: Fields
+  includes?: Fields
 }
 
 class DocValueField {
-  field: Field;
-  format?: string;
+  field: Field
+  format?: string
 }

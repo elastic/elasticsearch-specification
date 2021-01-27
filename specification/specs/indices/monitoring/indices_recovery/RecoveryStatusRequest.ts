@@ -1,12 +1,11 @@
-@rest_spec_name("indices.recovery")
+@rest_spec_name('indices.recovery')
 class RecoveryStatusRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
+    index?: Indices
   }
   query_parameters?: {
-    active_only?: boolean;
-    detailed?: boolean;
+    active_only?: boolean
+    detailed?: boolean
   }
-  body?: {
-  }
+  body?: {}
 }

@@ -1,7 +1,7 @@
 //@class_serializer("AggregateFormatter")
 
 type Bucket =
-  CompositeBucket
+  | CompositeBucket
   | DateHistogramBucket
   | FiltersBucketItem
   | IpRangeBucket
@@ -10,18 +10,24 @@ type Bucket =
   | SignificantTermsBucket<UserDefinedValue>
   | KeyedBucket<UserDefinedValue>
 
-class CompositeBucket implements AdditionalProperties<AggregateName, Aggregate>{}
-class DateHistogramBucket implements AdditionalProperties<AggregateName, Aggregate> {}
-class FiltersBucketItem implements AdditionalProperties<AggregateName, Aggregate> {
-  doc_count: long;
+class CompositeBucket
+  implements AdditionalProperties<AggregateName, Aggregate> {}
+class DateHistogramBucket
+  implements AdditionalProperties<AggregateName, Aggregate> {}
+class FiltersBucketItem
+  implements AdditionalProperties<AggregateName, Aggregate> {
+  doc_count: long
 }
 class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
 class RangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
-class RareTermsBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {}
-class SignificantTermsBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {}
-class KeyedBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {}
+class RareTermsBucket<TKey>
+  implements AdditionalProperties<AggregateName, Aggregate> {}
+class SignificantTermsBucket<TKey>
+  implements AdditionalProperties<AggregateName, Aggregate> {}
+class KeyedBucket<TKey>
+  implements AdditionalProperties<AggregateName, Aggregate> {}
 
-type Aggregate  =
+type Aggregate =
   | SingleBucketAggregate
   | AutoDateHistogramAggregate
   | FiltersAggregate
@@ -50,147 +56,150 @@ type MetricAggregate =
   | HdrPercentilesAggregate
 
 class AggregateBase {
-  meta?: Dictionary<string, UserDefinedValue>;
+  meta?: Dictionary<string, UserDefinedValue>
 }
 
 class MultiBucketAggregate<TBucket> extends AggregateBase {
-  buckets: TBucket[];
+  buckets: TBucket[]
 }
 
 class ValueAggregate extends AggregateBase {
-  value: double;
-  value_as_string?: string;
+  value: double
+  value_as_string?: string
 }
 
-class SingleBucketAggregate extends AggregateBase implements AdditionalProperties<AggregateName, Aggregate> {
-  doc_count: double;
+class SingleBucketAggregate
+  extends AggregateBase
+  implements AdditionalProperties<AggregateName, Aggregate> {
+  doc_count: double
 }
 class KeyedValueAggregate extends ValueAggregate {
-  keys:string[]
+  keys: string[]
 }
 
-
 class AutoDateHistogramAggregate extends AggregateBase {
-  interval:DateMathTime
+  interval: DateMathTime
 }
 
 class FiltersAggregate extends AggregateBase {
-  buckets: FiltersBucketItem[] | Dictionary<string, FiltersBucketItem>;
+  buckets: FiltersBucketItem[] | Dictionary<string, FiltersBucketItem>
 }
 
 class SignificantTermsAggregate<TKey> extends MultiBucketAggregate<TKey> {
-  bg_count:long;
-  doc_count:long;
+  bg_count: long
+  doc_count: long
 }
 
 class TermsAggregate<TKey> extends MultiBucketAggregate<TKey> {
-  doc_count_error_upper_bound: long;
-  sum_other_doc_count: long;
+  doc_count_error_upper_bound: long
+  sum_other_doc_count: long
 }
 
 // TODO this is an intermediate type in NEST
 class BucketAggregate extends AggregateBase {
-  after_key:Dictionary<string, UserDefinedValue>;
-  bg_count:long;
-  doc_count:long;
-  doc_count_error_upper_bound: long;
-  sum_other_doc_count: long;
-  interval:DateMathTime;
-  items: Bucket;
+  after_key: Dictionary<string, UserDefinedValue>
+  bg_count: long
+  doc_count: long
+  doc_count_error_upper_bound: long
+  sum_other_doc_count: long
+  interval: DateMathTime
+  items: Bucket
 }
 
-class CompositeBucketAggregate extends MultiBucketAggregate<Dictionary<string, UserDefinedValue>> {
-  after_key:Dictionary<string, UserDefinedValue>;
+class CompositeBucketAggregate extends MultiBucketAggregate<
+  Dictionary<string, UserDefinedValue>
+> {
+  after_key: Dictionary<string, UserDefinedValue>
 }
 
 class MatrixStatsAggregate extends AggregateBase {
-  correlation: Dictionary<string, double>;
-  covariance: Dictionary<string, double>;
-  count: integer;
-  kurtosis: double;
-  mean: double;
-  skewness: double;
-  variance: double;
-  name: string;
+  correlation: Dictionary<string, double>
+  covariance: Dictionary<string, double>
+  count: integer
+  kurtosis: double
+  mean: double
+  skewness: double
+  variance: double
+  name: string
 }
 
 class BoxPlotAggregate extends AggregateBase {
-  min:double;
-  max:double;
-  q1:double;
-  q2:double;
-  q3:double;
+  min: double
+  max: double
+  q1: double
+  q2: double
+  q3: double
 }
 
 class StatsAggregate extends AggregateBase {
-  avg: double;
-  count: double;
-  max: double;
-  min: double;
-  sum: double;
+  avg: double
+  count: double
+  max: double
+  min: double
+  sum: double
 }
 
 class StandardDeviationBounds {
-  lower:double;
-  upper:double;
-  lower_population:double;
-  upper_population:double;
-  lower_sampling:double;
-  upper_sampling:double;
+  lower: double
+  upper: double
+  lower_population: double
+  upper_population: double
+  lower_sampling: double
+  upper_sampling: double
 }
 
 class ExtendedStatsAggregate extends StatsAggregate {
-  sum_of_squares:double;
-  variance:double;
-  variance_population:double;
-  variance_sampling:double;
-  std_deviation:double;
-  std_deviation_population:double;
-  std_deviation_sampling:double;
-  std_deviation_bounds:StandardDeviationBounds;
+  sum_of_squares: double
+  variance: double
+  variance_population: double
+  variance_sampling: double
+  std_deviation: double
+  std_deviation_population: double
+  std_deviation_sampling: double
+  std_deviation_bounds: StandardDeviationBounds
 }
 class GeoBounds {
-  bottom_right: LatLon;
-  top_left: LatLon;
+  bottom_right: LatLon
+  top_left: LatLon
 }
 class GeoBoundsAggregate extends AggregateBase {
-  bounds:GeoBounds;
+  bounds: GeoBounds
 }
 
 class GeoCentroidAggregate extends AggregateBase {
-  count:long;
-  location: GeoLocation;
+  count: long
+  location: GeoLocation
 }
 
 class PercentileItem {
-  percentile:double;
-  value:double;
+  percentile: double
+  value: double
 }
 
 class PercentilesAggregate extends AggregateBase {
-  items:PercentileItem[];
+  items: PercentileItem[]
 }
 class TDigestPercentilesAggregate extends AggregateBase {
-  values:Dictionary<string, double>
+  values: Dictionary<string, double>
 }
 class HdrPercentileItem {
-  key:double;
-  value:double;
+  key: double
+  value: double
 }
 class HdrPercentilesAggregate extends AggregateBase {
-  values:HdrPercentileItem[]
+  values: HdrPercentileItem[]
 }
 
 //hard
 class ScriptedMetricAggregate extends AggregateBase {}
 
 class StringStatsAggregate extends AggregateBase {
-  count:long;
-  min_length:integer;
-  max_length:integer;
-  avg_length:double;
-  entropy:long;
-  distribution:Dictionary<string, double>;
+  count: long
+  min_length: integer
+  max_length: integer
+  avg_length: double
+  entropy: long
+  distribution: Dictionary<string, double>
 }
 
 //hard
@@ -200,6 +209,6 @@ class TopHitsAggregate extends AggregateBase {
 
 //TODO wrong on purpose
 class TopMetricsAggregate extends AggregateBase {
-  sort: double[];
-  metrics: double[];
+  sort: double[]
+  metrics: double[]
 }

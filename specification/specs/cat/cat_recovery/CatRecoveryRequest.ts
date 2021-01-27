@@ -1,13 +1,12 @@
-@rest_spec_name("cat.recovery")
+@rest_spec_name('cat.recovery')
 class CatRecoveryRequest extends CatRequestBase {
   path_parts?: {
-    index?: Indices;
+    index?: Indices
   }
   query_parameters?: {
-    active_only?: boolean;
-    bytes?: Bytes;
-    detailed?: boolean;
+    active_only?: boolean
+    bytes?: Bytes
+    detailed?: boolean
   }
-  body?: {
-  }
+  body?: {}
 }

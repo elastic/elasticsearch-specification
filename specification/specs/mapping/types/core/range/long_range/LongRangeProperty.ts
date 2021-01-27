@@ -1,2 +1,1 @@
-class LongRangeProperty extends RangePropertyBase {
-}
+class LongRangeProperty extends RangePropertyBase {}

@@ -5,7 +5,6 @@
  * These are problem sets that need a custom client solution.
  */
 
-
 /**
  * In some places in the specification an object consists of the union of a set of known properties
  * and a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose

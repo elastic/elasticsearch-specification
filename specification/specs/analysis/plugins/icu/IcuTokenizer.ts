@@ -1,3 +1,3 @@
 class IcuTokenizer extends TokenizerBase {
-  rule_files: string;
+  rule_files: string
 }

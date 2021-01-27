@@ -1,3 +1,3 @@
 class GetSnapshotResponse extends ResponseBase {
-  snapshots: SnapshotInfo[];
+  snapshots: SnapshotInfo[]
 }

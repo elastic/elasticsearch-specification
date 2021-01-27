@@ -1,10 +1,8 @@
-@rest_spec_name("rollup.get_rollup_caps")
+@rest_spec_name('rollup.get_rollup_caps')
 class GetRollupCapabilitiesRequest extends RequestBase {
   path_parts?: {
-    id?: Id;
+    id?: Id
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

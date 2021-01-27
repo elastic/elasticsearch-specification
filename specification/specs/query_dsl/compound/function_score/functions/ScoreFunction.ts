@@ -1,5 +1,5 @@
-@class_serializer("ScoreFunctionJsonFormatter")
+@class_serializer('ScoreFunctionJsonFormatter')
 class ScoreFunction {
-  filter?: QueryContainer;
-  weight?: double;
+  filter?: QueryContainer
+  weight?: double
 }

@@ -1,2 +1,1 @@
-class AsyncSearchGetResponse<TDocument> extends ResponseBase {
-}
+class AsyncSearchGetResponse<TDocument> extends ResponseBase {}

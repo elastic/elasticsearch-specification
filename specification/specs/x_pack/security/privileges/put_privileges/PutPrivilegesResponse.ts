@@ -1,1 +1,4 @@
-class PutPrivilegesResponse extends DictionaryResponseBase<string, Dictionary<string, PutPrivilegesStatus>> {}
+class PutPrivilegesResponse extends DictionaryResponseBase<
+  string,
+  Dictionary<string, PutPrivilegesStatus>
+> {}

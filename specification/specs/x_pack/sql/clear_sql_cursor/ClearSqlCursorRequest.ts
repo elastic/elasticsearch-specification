@@ -1,8 +1,7 @@
-@rest_spec_name("sql.clear_cursor")
+@rest_spec_name('sql.clear_cursor')
 class ClearSqlCursorRequest extends RequestBase {
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    cursor?: string;
+    cursor?: string
   }
 }

@@ -1,4 +1,4 @@
 class GetJobsResponse extends ResponseBase {
-  count: long;
-  jobs: Job[];
+  count: long
+  jobs: Job[]
 }

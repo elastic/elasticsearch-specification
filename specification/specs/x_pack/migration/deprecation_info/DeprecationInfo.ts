@@ -1,6 +1,6 @@
 class DeprecationInfo {
-  details: string;
-  level: DeprecationWarningLevel;
-  message: string;
-  url: string;
+  details: string
+  level: DeprecationWarningLevel
+  message: string
+  url: string
 }

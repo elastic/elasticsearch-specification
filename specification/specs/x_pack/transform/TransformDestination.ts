@@ -1,4 +1,4 @@
 class TransformDestination {
-  index: IndexName;
-  pipeline: string;
+  index: IndexName
+  pipeline: string
 }

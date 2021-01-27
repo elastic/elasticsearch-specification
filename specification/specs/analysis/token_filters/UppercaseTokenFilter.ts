@@ -1,2 +1,1 @@
-class UppercaseTokenFilter extends TokenFilterBase {
-}
+class UppercaseTokenFilter extends TokenFilterBase {}

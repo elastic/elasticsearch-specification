@@ -1,7 +1,7 @@
-@class_serializer("MovingAverageAggregationFormatter")
+@class_serializer('MovingAverageAggregationFormatter')
 class MovingAverageAggregation {
-  minimize?: boolean;
-  model?: MovingAverageModel;
-  predict?: integer;
-  window?: integer;
+  minimize?: boolean
+  model?: MovingAverageModel
+  predict?: integer
+  window?: integer
 }

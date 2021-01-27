@@ -1,24 +1,24 @@
 class WordDelimiterTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */
-  catenate_all: boolean;
+  catenate_all: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  catenate_numbers: boolean;
+  catenate_numbers: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  catenate_words: boolean;
+  catenate_words: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  generate_number_parts: boolean;
+  generate_number_parts: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  generate_word_parts: boolean;
+  generate_word_parts: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  preserve_original: boolean;
-  protected_words: string[];
-  protected_words_path : string;
+  preserve_original: boolean
+  protected_words: string[]
+  protected_words_path: string
   /** @prop_serializer NullableStringBooleanFormatter */
-  split_on_case_change: boolean;
+  split_on_case_change: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  split_on_numerics: boolean;
+  split_on_numerics: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  stem_english_possessive: boolean;
-  type_table: string[];
-  type_table_path: string;
+  stem_english_possessive: boolean
+  type_table: string[]
+  type_table_path: string
 }

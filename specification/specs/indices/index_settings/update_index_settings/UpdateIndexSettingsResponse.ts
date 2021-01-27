@@ -1,2 +1,1 @@
-class UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
-}
+class UpdateIndexSettingsResponse extends AcknowledgedResponseBase {}

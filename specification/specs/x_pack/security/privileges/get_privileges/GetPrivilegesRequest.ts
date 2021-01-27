@@ -1,11 +1,9 @@
-@rest_spec_name("security.get_privileges")
+@rest_spec_name('security.get_privileges')
 class GetPrivilegesRequest extends RequestBase {
   path_parts?: {
-    application?: Name;
-    name?: Name;
+    application?: Name
+    name?: Name
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

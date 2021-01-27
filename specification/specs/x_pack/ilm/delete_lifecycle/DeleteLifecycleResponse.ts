@@ -1,2 +1,1 @@
-class DeleteLifecycleResponse extends AcknowledgedResponseBase {
-}
+class DeleteLifecycleResponse extends AcknowledgedResponseBase {}

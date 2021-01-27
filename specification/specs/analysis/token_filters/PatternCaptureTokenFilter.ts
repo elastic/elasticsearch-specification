@@ -1,5 +1,5 @@
 class PatternCaptureTokenFilter extends TokenFilterBase {
-  patterns: string[];
+  patterns: string[]
   /** @prop_serializer NullableStringBooleanFormatter */
-  preserve_original: boolean;
+  preserve_original: boolean
 }

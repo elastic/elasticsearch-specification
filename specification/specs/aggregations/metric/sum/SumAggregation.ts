@@ -1,2 +1,1 @@
-class SumAggregation {
-}
+class SumAggregation {}

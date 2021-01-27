@@ -1,4 +1,4 @@
 class TokenDetail {
-  name: string;
-  tokens: ExplainAnalyzeToken[];
+  name: string
+  tokens: ExplainAnalyzeToken[]
 }

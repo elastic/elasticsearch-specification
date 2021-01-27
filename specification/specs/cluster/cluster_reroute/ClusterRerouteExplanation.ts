@@ -1,5 +1,5 @@
 class ClusterRerouteExplanation {
-  command: string;
-  decisions: ClusterRerouteDecision[];
-  parameters: ClusterRerouteParameters;
+  command: string
+  decisions: ClusterRerouteDecision[]
+  parameters: ClusterRerouteParameters
 }

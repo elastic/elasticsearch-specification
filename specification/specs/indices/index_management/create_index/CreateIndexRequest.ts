@@ -1,17 +1,17 @@
-@rest_spec_name("indices.create")
+@rest_spec_name('indices.create')
 class CreateIndexRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
+    index: IndexName
   }
   query_parameters?: {
-    include_type_name?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-    wait_for_active_shards?: string;
+    include_type_name?: boolean
+    master_timeout?: Time
+    timeout?: Time
+    wait_for_active_shards?: string
   }
   body?: {
-    aliases?: Dictionary<IndexName, Alias>;
-    mappings?: TypeMapping;
-    settings?: Dictionary<string, UserDefinedValue>;
+    aliases?: Dictionary<IndexName, Alias>
+    mappings?: TypeMapping
+    settings?: Dictionary<string, UserDefinedValue>
   }
 }

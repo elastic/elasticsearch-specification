@@ -1,11 +1,10 @@
-@rest_spec_name("watcher.stats")
+@rest_spec_name('watcher.stats')
 class WatcherStatsRequest extends RequestBase {
   path_parts?: {
-    metric?: Metrics;
+    metric?: Metrics
   }
   query_parameters?: {
-    emit_stacktraces?: boolean;
+    emit_stacktraces?: boolean
   }
-  body?: {
-  }
+  body?: {}
 }

@@ -1,11 +1,10 @@
-@rest_spec_name("cat.aliases")
+@rest_spec_name('cat.aliases')
 class CatAliasesRequest extends CatRequestBase {
   path_parts?: {
-    name?: Names;
+    name?: Names
   }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcards;
+    expand_wildcards?: ExpandWildcards
   }
-  body?: {
-  }
+  body?: {}
 }

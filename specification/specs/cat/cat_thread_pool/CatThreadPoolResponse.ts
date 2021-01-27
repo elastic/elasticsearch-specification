@@ -1,1 +1,3 @@
-class CatThreadPoolResponse extends ResponseBase implements ArrayResponse<CatThreadPoolRecord> {}
+class CatThreadPoolResponse
+  extends ResponseBase
+  implements ArrayResponse<CatThreadPoolRecord> {}

@@ -1,4 +1,4 @@
 class CatRepositoriesRecord {
-  id: string;
-  type: string;
+  id: string
+  type: string
 }

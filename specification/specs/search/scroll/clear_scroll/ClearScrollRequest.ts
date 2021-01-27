@@ -1,11 +1,10 @@
-@rest_spec_name("clear_scroll")
+@rest_spec_name('clear_scroll')
 class ClearScrollRequest extends RequestBase {
   path_parts?: {
-    scroll_id?: Ids;
+    scroll_id?: Ids
   }
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    scroll_id?: string[];
+    scroll_id?: string[]
   }
 }

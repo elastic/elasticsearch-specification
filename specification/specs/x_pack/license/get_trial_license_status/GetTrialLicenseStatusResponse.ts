@@ -1,3 +1,3 @@
 class GetTrialLicenseStatusResponse extends ResponseBase {
-  eligible_to_start_trial: boolean;
+  eligible_to_start_trial: boolean
 }

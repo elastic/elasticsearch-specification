@@ -1,1 +1,4 @@
-class GetIndexTemplateResponse extends DictionaryResponseBase<string, TemplateMapping> {}
+class GetIndexTemplateResponse extends DictionaryResponseBase<
+  string,
+  TemplateMapping
+> {}

@@ -1,2 +1,1 @@
-class LifecycleAction {
-}
+class LifecycleAction {}

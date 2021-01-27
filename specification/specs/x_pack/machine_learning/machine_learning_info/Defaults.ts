@@ -1,4 +1,4 @@
 class Defaults {
-  anomaly_detectors: AnomalyDetectors;
-  datafeeds: Datafeeds;
+  anomaly_detectors: AnomalyDetectors
+  datafeeds: Datafeeds
 }

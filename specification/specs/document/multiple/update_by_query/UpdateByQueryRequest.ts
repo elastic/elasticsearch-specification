@@ -1,49 +1,49 @@
-@rest_spec_name("update_by_query")
+@rest_spec_name('update_by_query')
 class UpdateByQueryRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-    type?: TypeNames;
+    index: Indices
+    type?: TypeNames
   }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    analyzer?: string;
-    analyze_wildcard?: boolean;
-    conflicts?: Conflicts;
-    default_operator?: DefaultOperator;
-    df?: string;
-    expand_wildcards?: ExpandWildcards;
-    from?: long;
-    ignore_unavailable?: boolean;
-    lenient?: boolean;
-    pipeline?: string;
-    preference?: string;
-    query_on_query_string?: string;
-    refresh?: boolean;
-    request_cache?: boolean;
-    requests_per_second?: long;
-    routing?: Routing;
-    scroll?: Time;
-    scroll_size?: long;
-    search_timeout?: Time;
-    search_type?: SearchType;
-    size?: long;
-    slices?: long;
-    sort?: string[];
-    source_enabled?: boolean;
-    source_excludes?: Field[];
-    source_includes?: Field[];
-    stats?: string[];
-    terminate_after?: long;
-    timeout?: Time;
-    version?: boolean;
-    version_type?: boolean;
-    wait_for_active_shards?: string;
-    wait_for_completion?: boolean;
+    allow_no_indices?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    conflicts?: Conflicts
+    default_operator?: DefaultOperator
+    df?: string
+    expand_wildcards?: ExpandWildcards
+    from?: long
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    pipeline?: string
+    preference?: string
+    query_on_query_string?: string
+    refresh?: boolean
+    request_cache?: boolean
+    requests_per_second?: long
+    routing?: Routing
+    scroll?: Time
+    scroll_size?: long
+    search_timeout?: Time
+    search_type?: SearchType
+    size?: long
+    slices?: long
+    sort?: string[]
+    source_enabled?: boolean
+    source_excludes?: Field[]
+    source_includes?: Field[]
+    stats?: string[]
+    terminate_after?: long
+    timeout?: Time
+    version?: boolean
+    version_type?: boolean
+    wait_for_active_shards?: string
+    wait_for_completion?: boolean
   }
   body?: {
-    max_docs?: long;
-    query?: QueryContainer;
-    script?: Script;
-    slice?: SlicedScroll;
+    max_docs?: long
+    query?: QueryContainer
+    script?: Script
+    slice?: SlicedScroll
   }
 }

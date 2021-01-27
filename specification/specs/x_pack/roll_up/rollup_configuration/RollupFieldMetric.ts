@@ -1,4 +1,4 @@
 class RollupFieldMetric {
-  field: Field;
-  metrics: RollupMetric[];
+  field: Field
+  metrics: RollupMetric[]
 }

@@ -1,4 +1,4 @@
 class AppendProcessor extends ProcessorBase {
-  field: Field;
-  value: UserDefinedValue[];
+  field: Field
+  value: UserDefinedValue[]
 }

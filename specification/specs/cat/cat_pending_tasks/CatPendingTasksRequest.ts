@@ -1,7 +1,5 @@
-@rest_spec_name("cat.pending_tasks")
+@rest_spec_name('cat.pending_tasks')
 class CatPendingTasksRequest extends CatRequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

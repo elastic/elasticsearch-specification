@@ -1,2 +1,1 @@
-class MaxAggregation {
-}
+class MaxAggregation {}

@@ -1,8 +1,8 @@
 class TimeOfYear {
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  at: string[];
+  at: string[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  int: Month[];
+  int: Month[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  on: integer[];
+  on: integer[]
 }

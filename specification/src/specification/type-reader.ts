@@ -60,7 +60,7 @@ class InterfaceVisitor extends Visitor {
       .find(t => t.startsWith('rest_spec_name'))
 
     // only exists on requests
-    const restSpec = decorator ? decorator.split('"')[1] : null
+    const restSpec = decorator ? decorator.split("'")[1] : null
     if (restSpec) {
       let responseName = n.replace('Request', 'Response')
       this.specMapping = new RestSpecMapping(restSpec, n, responseName)

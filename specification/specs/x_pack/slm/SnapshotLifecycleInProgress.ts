@@ -1,7 +1,7 @@
 class SnapshotLifecycleInProgress {
-  name: string;
+  name: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  start_time_millis: Date;
-  state: string;
-  uuid: string;
+  start_time_millis: Date
+  state: string
+  uuid: string
 }

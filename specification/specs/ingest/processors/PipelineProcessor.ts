@@ -1,3 +1,3 @@
 class PipelineProcessor extends ProcessorBase {
-  name: string;
+  name: string
 }

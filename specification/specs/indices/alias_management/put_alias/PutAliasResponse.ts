@@ -1,2 +1,1 @@
-class PutAliasResponse extends ResponseBase {
-}
+class PutAliasResponse extends ResponseBase {}

@@ -1,2 +1,1 @@
-class AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
-}
+class AsyncSearchDeleteResponse extends AcknowledgedResponseBase {}

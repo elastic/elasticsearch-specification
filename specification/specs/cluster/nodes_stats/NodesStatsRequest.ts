@@ -1,20 +1,19 @@
-@rest_spec_name("nodes.stats")
+@rest_spec_name('nodes.stats')
 class NodesStatsRequest extends RequestBase {
   path_parts?: {
-    node_id?: NodeIds;
-    metric?: Metrics;
-    index_metric?: Metrics;
+    node_id?: NodeIds
+    metric?: Metrics
+    index_metric?: Metrics
   }
   query_parameters?: {
-    completion_fields?: Field[];
-    fielddata_fields?: Field[];
-    fields?: Field[];
-    groups?: boolean;
-    include_segment_file_sizes?: boolean;
-    level?: Level;
-    timeout?: Time;
-    types?: string[];
+    completion_fields?: Field[]
+    fielddata_fields?: Field[]
+    fields?: Field[]
+    groups?: boolean
+    include_segment_file_sizes?: boolean
+    level?: Level
+    timeout?: Time
+    types?: string[]
   }
-  body?: {
-  }
+  body?: {}
 }

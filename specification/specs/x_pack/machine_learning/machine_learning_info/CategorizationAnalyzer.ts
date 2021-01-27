@@ -1,4 +1,4 @@
 class CategorizationAnalyzer {
-  filter: TokenFilterBase[];
-  tokenizer: string;
+  filter: TokenFilterBase[]
+  tokenizer: string
 }

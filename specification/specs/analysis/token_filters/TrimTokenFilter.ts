@@ -1,2 +1,1 @@
-class TrimTokenFilter extends TokenFilterBase {
-}
+class TrimTokenFilter extends TokenFilterBase {}

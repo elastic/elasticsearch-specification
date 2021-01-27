@@ -1,3 +1,3 @@
 class DailySchedule {
-  at: Union<string[], TimeOfDay>;
+  at: Union<string[], TimeOfDay>
 }

@@ -1,4 +1,4 @@
 class PinnedQuery extends QueryBase {
-  ids?: Id[];
-  organic?: QueryContainer;
+  ids?: Id[]
+  organic?: QueryContainer
 }

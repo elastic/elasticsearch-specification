@@ -1,5 +1,5 @@
-@class_serializer("SpanGapQueryFormatter")
+@class_serializer('SpanGapQueryFormatter')
 class SpanGapQuery {
-  field?: Field;
-  width?: integer;
+  field?: Field
+  width?: integer
 }

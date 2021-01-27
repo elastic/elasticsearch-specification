@@ -1,5 +1,5 @@
 class SearchInput {
-  extract: string[];
-  request: SearchInputRequest;
-  timeout: Time;
+  extract: string[]
+  request: SearchInputRequest
+  timeout: Time
 }

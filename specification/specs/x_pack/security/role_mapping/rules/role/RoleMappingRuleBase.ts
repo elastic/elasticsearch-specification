@@ -1,3 +1,2 @@
-@class_serializer("RoleMappingRuleBaseFormatter")
-class RoleMappingRuleBase {
-}
+@class_serializer('RoleMappingRuleBaseFormatter')
+class RoleMappingRuleBase {}

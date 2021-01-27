@@ -1,2 +1,1 @@
-class DeleteDatafeedResponse extends AcknowledgedResponseBase {
-}
+class DeleteDatafeedResponse extends AcknowledgedResponseBase {}

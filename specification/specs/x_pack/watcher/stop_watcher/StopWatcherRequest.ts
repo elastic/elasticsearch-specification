@@ -1,7 +1,5 @@
-@rest_spec_name("watcher.stop")
+@rest_spec_name('watcher.stop')
 class StopWatcherRequest extends RequestBase {
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

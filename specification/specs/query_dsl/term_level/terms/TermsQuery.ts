@@ -1,8 +1,8 @@
-@class_serializer("TermsQueryFormatter")
+@class_serializer('TermsQueryFormatter')
 class TermsQuery extends QueryBase {
-  terms?: string[];
-  index?: IndexName;
-  id?: Id;
-  path?: string;
+  terms?: string[]
+  index?: IndexName
+  id?: Id
+  path?: string
   routing?: Routing
 }

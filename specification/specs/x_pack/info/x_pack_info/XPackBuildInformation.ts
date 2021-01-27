@@ -1,4 +1,4 @@
 class XPackBuildInformation {
-  date: Date;
-  hash: string;
+  date: Date
+  hash: string
 }

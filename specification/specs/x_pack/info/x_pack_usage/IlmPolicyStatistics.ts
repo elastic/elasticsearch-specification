@@ -1,4 +1,4 @@
 class IlmPolicyStatistics {
-  indices_managed: integer;
-  phases: Phases;
+  indices_managed: integer
+  phases: Phases
 }

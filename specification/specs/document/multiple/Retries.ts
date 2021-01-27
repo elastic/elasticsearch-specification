@@ -1,4 +1,4 @@
 class Retries {
-  bulk: long;
-  search: long;
+  bulk: long
+  search: long
 }

@@ -1,2 +1,1 @@
-class DeleteFilterResponse extends AcknowledgedResponseBase {
-}
+class DeleteFilterResponse extends AcknowledgedResponseBase {}

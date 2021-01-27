@@ -1,4 +1,4 @@
 class ExecutingPolicy {
-  name: string;
-  task: TaskInfo;
+  name: string
+  task: TaskInfo
 }

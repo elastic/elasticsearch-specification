@@ -1,5 +1,5 @@
 class ShardFlush {
-  total: long;
-  periodic: long;
-  total_time_in_millis: long;
+  total: long
+  periodic: long
+  total_time_in_millis: long
 }

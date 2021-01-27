@@ -1,2 +1,1 @@
-class DeleteJobResponse extends AcknowledgedResponseBase {
-}
+class DeleteJobResponse extends AcknowledgedResponseBase {}

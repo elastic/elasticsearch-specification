@@ -1,2 +1,1 @@
-class RetryIlmResponse extends AcknowledgedResponseBase {
-}
+class RetryIlmResponse extends AcknowledgedResponseBase {}

@@ -1,2 +1,1 @@
-class AlwaysCondition {
-}
+class AlwaysCondition {}

@@ -1,7 +1,7 @@
 class PercentileRanksAggregation {
-  keyed?: boolean;
-  values?: double[];
-  field?: Field;
-  hdr?: HdrMethod;
-  tdigest?: TDigest;
+  keyed?: boolean
+  values?: double[]
+  field?: Field
+  hdr?: HdrMethod
+  tdigest?: TDigest
 }

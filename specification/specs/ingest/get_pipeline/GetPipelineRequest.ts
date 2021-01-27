@@ -1,11 +1,10 @@
-@rest_spec_name("ingest.get_pipeline")
+@rest_spec_name('ingest.get_pipeline')
 class GetPipelineRequest extends RequestBase {
   path_parts?: {
-    id?: Id;
+    id?: Id
   }
   query_parameters?: {
-    master_timeout?: Time;
+    master_timeout?: Time
   }
-  body?: {
-  }
+  body?: {}
 }

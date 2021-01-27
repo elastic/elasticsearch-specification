@@ -1,1 +1,4 @@
-class DeletePrivilegesResponse extends DictionaryResponseBase<string, Dictionary<string, FoundUserPrivilege>> {}
+class DeletePrivilegesResponse extends DictionaryResponseBase<
+  string,
+  Dictionary<string, FoundUserPrivilege>
+> {}

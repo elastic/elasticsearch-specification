@@ -1,2 +1,1 @@
-class RankFeaturesProperty extends PropertyBase {
-}
+class RankFeaturesProperty extends PropertyBase {}

@@ -1,3 +1,3 @@
 class CleanupRepositoryResponse extends ResponseBase {
-  results: CleanupRepositoryResults;
+  results: CleanupRepositoryResults
 }

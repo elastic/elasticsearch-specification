@@ -1,2 +1,1 @@
-class TypedSearchRequest {
-}
+class TypedSearchRequest {}

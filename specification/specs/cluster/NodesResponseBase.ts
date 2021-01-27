@@ -1,3 +1,3 @@
 class NodesResponseBase extends ResponseBase {
-  _nodes: NodeStatistics;
+  _nodes: NodeStatistics
 }

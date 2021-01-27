@@ -1,4 +1,4 @@
 class GetTransformResponse extends ResponseBase {
-  count: long;
-  transforms: Transform[];
+  count: long
+  transforms: Transform[]
 }

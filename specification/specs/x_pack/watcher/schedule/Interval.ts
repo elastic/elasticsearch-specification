@@ -1,5 +1,5 @@
-@class_serializer("IntervalFormatter")
+@class_serializer('IntervalFormatter')
 class Interval extends ScheduleBase {
-  factor: long;
-  unit: IntervalUnit;
+  factor: long
+  unit: IntervalUnit
 }

@@ -1,2 +1,1 @@
-class LowercaseTokenizer extends TokenizerBase {
-}
+class LowercaseTokenizer extends TokenizerBase {}

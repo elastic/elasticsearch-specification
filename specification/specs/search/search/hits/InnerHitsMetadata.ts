@@ -1,6 +1,6 @@
 class InnerHitsMetadata {
-  total: TotalHits | long;
-  hits: Hit<LazyDocument>[];
+  total: TotalHits | long
+  hits: Hit<LazyDocument>[]
 
-  max_score?: double;
+  max_score?: double
 }

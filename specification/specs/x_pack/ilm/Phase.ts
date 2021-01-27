@@ -1,4 +1,4 @@
 class Phase {
-  actions: Dictionary<string, LifecycleAction>;
-  min_age: Time;
+  actions: Dictionary<string, LifecycleAction>
+  min_age: Time
 }

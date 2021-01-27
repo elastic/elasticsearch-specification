@@ -1,2 +1,1 @@
-class BinaryProperty extends DocValuesPropertyBase {
-}
+class BinaryProperty extends DocValuesPropertyBase {}

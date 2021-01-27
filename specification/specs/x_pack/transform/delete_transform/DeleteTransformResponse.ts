@@ -1,2 +1,1 @@
-class DeleteTransformResponse extends AcknowledgedResponseBase {
-}
+class DeleteTransformResponse extends AcknowledgedResponseBase {}

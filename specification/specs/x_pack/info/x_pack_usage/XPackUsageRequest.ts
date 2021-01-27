@@ -1,8 +1,7 @@
-@rest_spec_name("xpack.usage")
+@rest_spec_name('xpack.usage')
 class XPackUsageRequest extends RequestBase {
   query_parameters?: {
-    master_timeout?: Time;
+    master_timeout?: Time
   }
-  body?: {
-  }
+  body?: {}
 }

@@ -1,10 +1,8 @@
-@rest_spec_name("cat.count")
+@rest_spec_name('cat.count')
 class CatCountRequest extends CatRequestBase {
   path_parts?: {
-    index?: Indices;
+    index?: Indices
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

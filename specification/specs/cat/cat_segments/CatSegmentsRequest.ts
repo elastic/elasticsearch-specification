@@ -1,11 +1,10 @@
-@rest_spec_name("cat.segments")
+@rest_spec_name('cat.segments')
 class CatSegmentsRequest extends CatRequestBase {
   path_parts?: {
-    index?: Indices;
+    index?: Indices
   }
   query_parameters?: {
-    bytes?: Bytes;
+    bytes?: Bytes
   }
-  body?: {
-  }
+  body?: {}
 }

@@ -1,3 +1,3 @@
 class Datafeeds {
-  scroll_size: integer;
+  scroll_size: integer
 }

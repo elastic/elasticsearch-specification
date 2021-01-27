@@ -1,11 +1,10 @@
-@rest_spec_name("security.clear_cached_realms")
+@rest_spec_name('security.clear_cached_realms')
 class ClearCachedRealmsRequest extends RequestBase {
   path_parts?: {
-    realms: Names;
+    realms: Names
   }
   query_parameters?: {
-    usernames?: string[];
+    usernames?: string[]
   }
-  body?: {
-  }
+  body?: {}
 }

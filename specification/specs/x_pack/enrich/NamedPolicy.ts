@@ -1,3 +1,3 @@
 class NamedPolicy extends EnrichPolicy {
-  name: string;
+  name: string
 }

@@ -1,4 +1,4 @@
 class TransformTimeSync {
-  delay: Time;
-  field: Field;
+  delay: Time
+  field: Field
 }

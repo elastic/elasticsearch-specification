@@ -1,2 +1,1 @@
-class StopTransformResponse extends AcknowledgedResponseBase {
-}
+class StopTransformResponse extends AcknowledgedResponseBase {}

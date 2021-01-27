@@ -1,3 +1,3 @@
 class Ingest {
-  timestamp: Date;
+  timestamp: Date
 }

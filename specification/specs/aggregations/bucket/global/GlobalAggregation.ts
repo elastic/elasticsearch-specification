@@ -1,2 +1,1 @@
-class GlobalAggregation {
-}
+class GlobalAggregation {}

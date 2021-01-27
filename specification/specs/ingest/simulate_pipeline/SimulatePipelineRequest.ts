@@ -1,13 +1,13 @@
-@rest_spec_name("ingest.simulate")
+@rest_spec_name('ingest.simulate')
 class SimulatePipelineRequest extends RequestBase {
   path_parts?: {
-    id?: Id;
+    id?: Id
   }
   query_parameters?: {
-    verbose?: boolean;
+    verbose?: boolean
   }
   body?: {
-    docs?: SimulatePipelineDocument[];
-    pipeline?: Pipeline;
+    docs?: SimulatePipelineDocument[]
+    pipeline?: Pipeline
   }
 }

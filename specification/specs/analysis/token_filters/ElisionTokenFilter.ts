@@ -1,5 +1,5 @@
 class ElisionTokenFilter extends TokenFilterBase {
-  articles: string[];
+  articles: string[]
   /** @prop_serializer NullableStringBooleanFormatter */
-  articles_case: boolean;
+  articles_case: boolean
 }

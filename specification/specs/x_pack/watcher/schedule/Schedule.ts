@@ -1,2 +1,1 @@
-class Schedule {
-}
+class Schedule {}

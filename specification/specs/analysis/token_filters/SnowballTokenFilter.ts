@@ -1,3 +1,3 @@
 class SnowballTokenFilter extends TokenFilterBase {
-  language: SnowballLanguage;
+  language: SnowballLanguage
 }

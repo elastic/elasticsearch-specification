@@ -1,5 +1,5 @@
-@class_serializer("TermsIncludeFormatter")
+@class_serializer('TermsIncludeFormatter')
 class TermsInclude {
-  num_partitions: long;
-  partition: long;
+  num_partitions: long
+  partition: long
 }

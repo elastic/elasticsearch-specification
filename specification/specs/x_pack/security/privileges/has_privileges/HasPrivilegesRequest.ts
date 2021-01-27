@@ -1,13 +1,12 @@
-@rest_spec_name("security.has_privileges")
+@rest_spec_name('security.has_privileges')
 class HasPrivilegesRequest extends RequestBase {
   path_parts?: {
-    user?: Name;
+    user?: Name
   }
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    application?: ApplicationPrivilegesCheck[];
-    cluster?: string[];
-    index?: IndexPrivilegesCheck[];
+    application?: ApplicationPrivilegesCheck[]
+    cluster?: string[]
+    index?: IndexPrivilegesCheck[]
   }
 }

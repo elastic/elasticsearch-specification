@@ -1,4 +1,4 @@
 class SearchNode {
-  name: string;
-  transport_address: string;
+  name: string
+  transport_address: string
 }

@@ -1,1 +1,4 @@
-class GetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupIndexCapabilities> {}
+class GetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<
+  IndexName,
+  RollupIndexCapabilities
+> {}

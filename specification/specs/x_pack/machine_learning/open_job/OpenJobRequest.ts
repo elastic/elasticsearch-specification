@@ -1,11 +1,10 @@
-@rest_spec_name("ml.open_job")
+@rest_spec_name('ml.open_job')
 class OpenJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
+    job_id: Id
   }
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    timeout?: Time;
+    timeout?: Time
   }
 }

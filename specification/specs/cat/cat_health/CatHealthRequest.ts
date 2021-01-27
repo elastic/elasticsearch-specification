@@ -1,8 +1,7 @@
-@rest_spec_name("cat.health")
+@rest_spec_name('cat.health')
 class CatHealthRequest extends CatRequestBase {
   query_parameters?: {
-    include_timestamp?: boolean;
+    include_timestamp?: boolean
   }
-  body?: {
-  }
+  body?: {}
 }

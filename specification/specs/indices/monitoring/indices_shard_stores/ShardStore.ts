@@ -1,12 +1,12 @@
-@class_serializer("ShardStoreFormatter")
+@class_serializer('ShardStoreFormatter')
 class ShardStore {
-  allocation: ShardStoreAllocation;
-  allocation_id: string;
+  allocation: ShardStoreAllocation
+  allocation_id: string
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  attributes: Dictionary<string, UserDefinedValue>;
-  id: string;
-  legacy_version: long;
-  name: string;
-  store_exception: ShardStoreException;
-  transport_address: string;
+  attributes: Dictionary<string, UserDefinedValue>
+  id: string
+  legacy_version: long
+  name: string
+  store_exception: ShardStoreException
+  transport_address: string
 }

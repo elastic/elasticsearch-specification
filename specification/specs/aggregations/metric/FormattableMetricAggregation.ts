@@ -1,3 +1,3 @@
 class FormattableMetricAggregation {
-  format?: string;
+  format?: string
 }

@@ -1,3 +1,3 @@
 class HourlySchedule {
-  minute: integer[];
+  minute: integer[]
 }

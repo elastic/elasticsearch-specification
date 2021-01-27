@@ -1,2 +1,1 @@
-class ResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {
-}
+class ResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {}

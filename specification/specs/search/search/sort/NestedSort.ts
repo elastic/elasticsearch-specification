@@ -1,7 +1,7 @@
 class NestedSortValue {
-  filter: QueryContainer;
-  max_children: integer;
-  path: Field;
+  filter: QueryContainer
+  max_children: integer
+  path: Field
 }
 
 class NestedSort {
@@ -9,5 +9,3 @@ class NestedSort {
 }
 
 // type NestedSort = Dictionary<Field, NestedSortKey>
-
-

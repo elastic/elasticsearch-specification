@@ -1,2 +1,1 @@
-class UnfollowIndexResponse extends AcknowledgedResponseBase {
-}
+class UnfollowIndexResponse extends AcknowledgedResponseBase {}

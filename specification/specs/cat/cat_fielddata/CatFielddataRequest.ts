@@ -1,11 +1,10 @@
-@rest_spec_name("cat.fielddata")
+@rest_spec_name('cat.fielddata')
 class CatFielddataRequest extends CatRequestBase {
   path_parts?: {
-    fields?: Fields;
+    fields?: Fields
   }
   query_parameters?: {
-    bytes?: Bytes;
+    bytes?: Bytes
   }
-  body?: {
-  }
+  body?: {}
 }

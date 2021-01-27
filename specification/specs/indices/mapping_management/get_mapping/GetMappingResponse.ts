@@ -1,1 +1,4 @@
-class GetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappings> {}
+class GetMappingResponse extends DictionaryResponseBase<
+  IndexName,
+  IndexMappings
+> {}

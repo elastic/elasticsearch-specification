@@ -1,4 +1,4 @@
 class ExtendedStatsAggregation {
-  sigma?: double;
-  field?: Field;
+  sigma?: double
+  field?: Field
 }

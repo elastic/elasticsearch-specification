@@ -1,2 +1,1 @@
-class SmoothingModel {
-}
+class SmoothingModel {}

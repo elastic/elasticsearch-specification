@@ -1,2 +1,1 @@
-class StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
-}
+class StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {}

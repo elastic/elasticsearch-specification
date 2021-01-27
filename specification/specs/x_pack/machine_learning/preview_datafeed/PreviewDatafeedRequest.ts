@@ -1,10 +1,8 @@
-@rest_spec_name("ml.preview_datafeed")
+@rest_spec_name('ml.preview_datafeed')
 class PreviewDatafeedRequest extends RequestBase {
   path_parts?: {
-    datafeed_id: Id;
+    datafeed_id: Id
   }
-  query_parameters?: {
-  }
-  body?: {
-  }
+  query_parameters?: {}
+  body?: {}
 }

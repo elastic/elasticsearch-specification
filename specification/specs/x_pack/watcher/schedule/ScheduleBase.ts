@@ -1,2 +1,1 @@
-class ScheduleBase {
-}
+class ScheduleBase {}

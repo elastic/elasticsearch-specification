@@ -1,2 +1,1 @@
-class ExecuteRetentionResponse extends AcknowledgedResponseBase {
-}
+class ExecuteRetentionResponse extends AcknowledgedResponseBase {}

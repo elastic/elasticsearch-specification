@@ -1,9 +1,8 @@
-@rest_spec_name("ml.validate_detector")
-@class_serializer("ValidateDetectorRequestFormatter")
+@rest_spec_name('ml.validate_detector')
+@class_serializer('ValidateDetectorRequestFormatter')
 class ValidateDetectorRequest extends RequestBase {
-  query_parameters?: {
-  }
+  query_parameters?: {}
   body?: {
-    detector?: Detector;
+    detector?: Detector
   }
 }

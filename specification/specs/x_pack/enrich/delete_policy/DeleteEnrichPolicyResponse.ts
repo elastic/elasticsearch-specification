@@ -1,2 +1,1 @@
-class DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
-}
+class DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {}

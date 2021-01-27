@@ -1,4 +1,4 @@
 class Aggregation {
-  meta?: Dictionary<string, UserDefinedValue>;
-  name?: string;
+  meta?: Dictionary<string, UserDefinedValue>
+  name?: string
 }

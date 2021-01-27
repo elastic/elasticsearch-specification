@@ -1,5 +1,5 @@
 class SlackAttachmentField {
-  short: boolean;
-  title: string;
-  value: string;
+  short: boolean
+  title: string
+  value: string
 }

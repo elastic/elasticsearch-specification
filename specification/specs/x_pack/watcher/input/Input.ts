@@ -1,2 +1,1 @@
-class Input {
-}
+class Input {}

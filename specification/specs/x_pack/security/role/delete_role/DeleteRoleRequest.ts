@@ -1,11 +1,10 @@
-@rest_spec_name("security.delete_role")
+@rest_spec_name('security.delete_role')
 class DeleteRoleRequest extends RequestBase {
   path_parts?: {
-    name: Name;
+    name: Name
   }
   query_parameters?: {
-    refresh?: Refresh;
+    refresh?: Refresh
   }
-  body?: {
-  }
+  body?: {}
 }

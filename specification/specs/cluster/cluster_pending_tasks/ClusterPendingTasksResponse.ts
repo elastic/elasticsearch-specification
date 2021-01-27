@@ -1,3 +1,3 @@
 class ClusterPendingTasksResponse extends ResponseBase {
-  tasks: PendingTask[];
+  tasks: PendingTask[]
 }

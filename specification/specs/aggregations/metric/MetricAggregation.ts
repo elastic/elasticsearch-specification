@@ -1,5 +1,5 @@
 class MetricAggregation {
-  field?: Field;
-  missing?: double;
-  script?: Script;
+  field?: Field
+  missing?: double
+  script?: Script
 }

@@ -1,4 +1,4 @@
 class MissingAggregation {
-  field?: Field;
-  missing?: Missing;
+  field?: Field
+  missing?: Missing
 }
