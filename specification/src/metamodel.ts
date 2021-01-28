@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 /**
  * The name of a type, composed of a simple name and a namespace. Hierarchical namespace elements are separated by
  * a dot, e.g 'cat.cat_aliases'.
