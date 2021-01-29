@@ -16,8 +16,11 @@ import {
   modelProperty,
   isKnownBehavior,
   modelImplements,
-  getNameSpace
+  getNameSpace,
+  getAllBehaviors,
+  modelBehaviors
 } from './utils'
+import { at } from 'lodash'
 
 const debug = Debug('compiler')
 
@@ -212,17 +215,25 @@ function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | 
         // Implements will be catched here as well, they can be differentiated
         // by looking as `node.token`, which can either be
         // `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
-        case ts.SyntaxKind.HeritageClause:
+        // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
+        // if it's a normal implements or a behavior, in such case, the behaviors
+        // need to be collected and added to the type.
+        case ts.SyntaxKind.HeritageClause: {
           assert(ts.isHeritageClause(child))
+          // check if the current node or one of the ancestor
+          // has one or more behaviors attached
+          const attachedBehaviors = getAllBehaviors(declaration, checker)
+          if (attachedBehaviors.length > 0) {
+            type.attachedBehaviors = Array.from(
+              new Set((type.attachedBehaviors ?? []).concat(attachedBehaviors))
+            )
+          }
+
           if (child.token === ts.SyntaxKind.ExtendsKeyword) {
             type.inherits = (type.inherits ?? []).concat(modelInherits(child, checker))
           } else if (child.token === ts.SyntaxKind.ImplementsKeyword) {
             if (isKnownBehavior(child)) {
-              type.behaviors = (type.behaviors ?? []).concat(modelImplements(child, checker))
-              // attachedBehaviors must contain unique values
-              type.attachedBehaviors = Array.from(
-                new Set((type.attachedBehaviors ?? []).concat(type.behaviors.map(b => b.type.name)))
-              )
+              type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(child, checker))
             } else {
               type.implements = (type.implements ?? []).concat(modelImplements(child, checker))
             }
@@ -230,6 +241,7 @@ function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | 
             throw new Error(`Unhandled heritage token ${child.token} in class ${name}`)
           }
           break
+        }
 
         // The class accepts one or more generics
         case ts.SyntaxKind.TypeParameter:

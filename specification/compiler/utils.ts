@@ -4,6 +4,17 @@ import * as ts from 'byots'
 import * as model from './metamodel'
 
 /**
+ * Behaviors that the compiler recognized
+ * and can act on. If a behavior is not defined
+ * here, it will be handled as normal `implements`.
+ */
+const knownBehaviors =  [
+  'AdditionalProperties',
+  'ArrayResponse',
+  'EmptyResponseBase'
+]
+
+/**
  * Given a TypeScript Node element, it models it according to
  * our metamodel. It automatically models nested types as well.
  */
@@ -248,6 +259,26 @@ export function modelImplements (node: ts.HeritageClause, checker: ts.TypeChecke
     }
   })
 }
+
+/**
+ * Given a HeritageClause node returns an Implements structure.
+ * A class could have multiple behaviors from multiple classes,
+ * which are defined inside the node typeArguments.
+ */
+export function modelBehaviors (node: ts.HeritageClause, checker: ts.TypeChecker): model.Implements[] {
+  return node.types.map(node => {
+    assert(ts.isExpressionWithTypeArguments(node))
+    const generics = node.typeArguments?.map(node => modelType(node, checker))
+    return {
+      type: {
+        name: normalizeBehaviorName(node.getText()),
+        namespace: getNameSpace(node, checker)
+      },
+      ...(generics != null && { generics })
+    }
+  })
+}
+
 /**
  *  Generics are compiles as TypeParameterDeclarations by TypeScript,
  *  but all we really need is the name of the parameter, that we will
@@ -331,11 +362,13 @@ export function modelProperty (node: ts.PropertySignature | ts.PropertyDeclarati
  */
 export function isKnownBehavior (node: ts.HeritageClause): boolean {
   if (node.types.length !== 1) return false
-  return [
-    'AdditionalProperties',
-    'ArrayResponse',
-    'EmptyResponseBase'
-  ].includes(node.types[0].getText())
+
+  for (const knownBehavior of knownBehaviors) {
+    if (node.types[0].getText().startsWith(knownBehavior)) {
+      return true
+    }
+  }
+  return false
 }
 
 /**
@@ -357,3 +390,53 @@ export function getNameSpace (node: ts.Node, checker: ts.TypeChecker): string {
 
   return nameSpace
 }
+
+/**
+ * Given a node, it searches the node and its ancestors for behavior definitons.
+ * It then collects the normalized behavior names and returns an unique array of behaviors.
+ * A behavior can be found in the current node or in one of the ancestors.
+ */
+export function getAllBehaviors (node: ts.ClassDeclaration | ts.InterfaceDeclaration, checker: ts.TypeChecker): string[] {
+  assert(node.heritageClauses)
+  const behaviors = getBehaviors(node.heritageClauses).map(normalizeBehaviorName)
+  const extended = getExtended(node.heritageClauses).flatMap(clause => clause.types)
+
+  for (const extend of extended) {
+    const declaration = checker.getTypeAtLocation(extend).getSymbol()?.declarations[0]
+    assert(declaration, 'Can\'t find type declaration')
+
+    if (ts.isClassDeclaration(declaration) || ts.isInterfaceDeclaration(declaration)) {
+      if (declaration.heritageClauses) {
+        behaviors.push(...getAllBehaviors(declaration, checker).map(normalizeBehaviorName))
+      }
+    } else {
+      throw new Error(`Unhandled extended declaration ${declaration.getText()}`)
+    }
+  }
+
+  return Array.from(new Set(behaviors))
+
+  function getExtended (clauses: ts.NodeArray<ts.HeritageClause>): ts.HeritageClause[] {
+    return clauses.filter(clause => clause.token === ts.SyntaxKind.ExtendsKeyword)
+  }
+
+  function getBehaviors (clauses: ts.NodeArray<ts.HeritageClause>): string[] {
+    return clauses
+      .filter(isKnownBehavior)
+      .map(clause => clause.types[0].getText())
+  }
+}
+
+/**
+ * Given a behavior name, it removes all the unneccesary parts
+ * and keep only the normalized name (eg: AdditionalProperties<A, B> => AdditionalProperties)
+ */
+export function normalizeBehaviorName (name: string): string {
+  for (const knownBehavior of knownBehaviors) {
+    if (name.startsWith(knownBehavior)) {
+      return knownBehavior
+    }
+  }
+  throw new Error(`Unhandled behavior ${name}`)
+}
+

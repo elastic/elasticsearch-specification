@@ -1223,10 +1223,13 @@
         "namespace": "aggregations"
       },
       "properties": [],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1255,10 +1258,13 @@
         "namespace": "aggregations"
       },
       "properties": [],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1299,10 +1305,13 @@
           }
         }
       ],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1331,10 +1340,13 @@
         "namespace": "aggregations"
       },
       "properties": [],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1363,10 +1375,13 @@
         "namespace": "aggregations"
       },
       "properties": [],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1398,10 +1413,13 @@
       "generics": [
         "TKey"
       ],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1433,10 +1451,13 @@
       "generics": [
         "TKey"
       ],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1468,10 +1489,13 @@
       "generics": [
         "TKey"
       ],
-      "implements": [
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -1830,6 +1854,9 @@
           }
         }
       ],
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
       "inherits": [
         {
           "type": {
@@ -1838,10 +1865,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "AdditionalProperties<AggregateName, Aggregate>",
+            "name": "AdditionalProperties",
             "namespace": "internal"
           },
           "generics": [
@@ -13044,6 +13071,9 @@
         "namespace": "cat.cat_aliases"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -13052,10 +13082,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatAliasesRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -13241,6 +13271,9 @@
         "namespace": "cat.cat_allocation"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -13249,10 +13282,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatAllocationRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -13349,6 +13382,9 @@
         "namespace": "cat.cat_count"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -13357,10 +13393,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatCountRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -13623,6 +13659,9 @@
         "namespace": "cat.cat_data_frame_analytics"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -13631,10 +13670,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatDataFrameAnalyticsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -13842,6 +13881,9 @@
         "namespace": "cat.cat_datafeeds"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -13850,10 +13892,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatDatafeedsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -13995,6 +14037,9 @@
         "namespace": "cat.cat_fielddata"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -14003,10 +14048,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatFielddataRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -14202,6 +14247,9 @@
         "namespace": "cat.cat_health"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -14210,10 +14258,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatHealthRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -14276,6 +14324,9 @@
         "namespace": "cat.cat_help"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -14284,10 +14335,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatHelpRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -14528,6 +14579,9 @@
         "namespace": "cat.cat_indices"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -14536,10 +14590,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatIndicesRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -15231,6 +15285,9 @@
         "namespace": "cat.cat_jobs"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -15239,10 +15296,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatJobsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -15360,6 +15417,9 @@
         "namespace": "cat.cat_master"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -15368,10 +15428,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatMasterRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -15511,6 +15571,9 @@
         "namespace": "cat.cat_node_attributes"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -15519,10 +15582,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatNodeAttributesRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -16378,6 +16441,9 @@
         "namespace": "cat.cat_nodes"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -16386,10 +16452,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatNodesRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -16485,6 +16551,9 @@
         "namespace": "cat.cat_pending_tasks"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -16493,10 +16562,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatPendingTasksRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -16636,6 +16705,9 @@
         "namespace": "cat.cat_plugins"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -16644,10 +16716,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatPluginsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -16987,6 +17059,9 @@
         "namespace": "cat.cat_recovery"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -16995,10 +17070,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatRecoveryRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -17072,6 +17147,9 @@
         "namespace": "cat.cat_repositories"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -17080,10 +17158,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatRepositoriesRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -17324,6 +17402,9 @@
         "namespace": "cat.cat_segments"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -17332,10 +17413,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatSegmentsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -18049,6 +18130,9 @@
         "namespace": "cat.cat_shards"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -18057,10 +18141,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatShardsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -18257,6 +18341,9 @@
         "namespace": "cat.cat_snapshots"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -18265,10 +18352,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatSnapshotsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -18470,6 +18557,9 @@
         "namespace": "cat.cat_tasks"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -18478,10 +18568,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatTasksRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -18600,6 +18690,9 @@
         "namespace": "cat.cat_templates"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -18608,10 +18701,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatTemplatesRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -18907,6 +19000,9 @@
         "namespace": "cat.cat_thread_pool"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -18915,10 +19011,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatThreadPoolRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -19181,6 +19277,9 @@
         "namespace": "cat.cat_trained_models"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -19189,10 +19288,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatTrainedModelsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -19587,6 +19686,9 @@
         "namespace": "cat.cat_transforms"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "ArrayResponse"
+      ],
       "inherits": [
         {
           "type": {
@@ -19595,10 +19697,10 @@
           }
         }
       ],
-      "implements": [
+      "behaviors": [
         {
           "type": {
-            "name": "ArrayResponse<CatTransformsRecord>",
+            "name": "ArrayResponse",
             "namespace": "internal"
           },
           "generics": [
@@ -27261,6 +27363,9 @@
         "namespace": "cluster.ping"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -27276,9 +27381,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
@@ -36236,6 +36338,9 @@
         "namespace": "document.single.exists"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -36251,9 +36356,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
@@ -37162,6 +37264,9 @@
         "namespace": "document.single.source_exists"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -37177,9 +37282,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
@@ -38875,6 +38977,9 @@
         "namespace": "indices.alias_management.alias_exists"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -38890,9 +38995,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
@@ -40725,6 +40827,9 @@
         "namespace": "indices.index_management.indices_exists"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -40740,9 +40845,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
@@ -41756,6 +41858,9 @@
         "namespace": "indices.index_management.types_exists"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -41771,9 +41876,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
@@ -42408,6 +42510,9 @@
         "namespace": "indices.index_settings.index_templates.index_template_exists"
       },
       "properties": [],
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": [
         {
           "type": {
@@ -42423,9 +42528,6 @@
             "namespace": "internal"
           }
         }
-      ],
-      "attachedBehaviors": [
-        "EmptyResponseBase"
       ]
     },
     {
