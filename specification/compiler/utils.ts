@@ -8,7 +8,7 @@ import * as model from './metamodel'
  * and can act on. If a behavior is not defined
  * here, it will be handled as normal `implements`.
  */
-const knownBehaviors =  [
+const knownBehaviors = [
   'AdditionalProperties',
   'ArrayResponse',
   'EmptyResponseBase'
@@ -296,7 +296,7 @@ export function modelGenerics (node: ts.TypeParameterDeclaration): string {
  * name as well. An EnumDeclaration node has a members array which
  * only contains the member of the Enum.
  */
-export function modelEnumDeclaration (declaration: ts.EnumDeclaration,  checker: ts.TypeChecker): model.Enum {
+export function modelEnumDeclaration (declaration: ts.EnumDeclaration, checker: ts.TypeChecker): model.Enum {
   const name = declaration.name.escapedText as string
   const members: model.EnumMember[] = []
 
@@ -329,7 +329,7 @@ export function modelEnumDeclaration (declaration: ts.EnumDeclaration,  checker:
  * The first one is the alias name, the second one is the type that
  * still needs to be modeled.
  */
-export function modelTypeAlias (declaration: ts.TypeAliasDeclaration,  checker: ts.TypeChecker): model.TypeAlias {
+export function modelTypeAlias (declaration: ts.TypeAliasDeclaration, checker: ts.TypeChecker): model.TypeAlias {
   return {
     name: {
       name: declaration.name.escapedText as string,
@@ -346,7 +346,7 @@ export function modelTypeAlias (declaration: ts.TypeAliasDeclaration,  checker: 
  * The first one is the property name, the second one is the type that
  * still needs to be modeled.
  */
-export function modelProperty (node: ts.PropertySignature | ts.PropertyDeclaration,  checker: ts.TypeChecker): model.Property {
+export function modelProperty (node: ts.PropertySignature | ts.PropertyDeclaration, checker: ts.TypeChecker): model.Property {
   assert(node.type, 'Missing node type')
   const name = node.symbol.escapedName as string
   return {
@@ -406,7 +406,7 @@ export function getAllBehaviors (node: ts.ClassDeclaration | ts.InterfaceDeclara
     assert(declaration, 'Can\'t find type declaration')
 
     if (ts.isClassDeclaration(declaration) || ts.isInterfaceDeclaration(declaration)) {
-      if (declaration.heritageClauses) {
+      if (declaration.heritageClauses != null) {
         behaviors.push(...getAllBehaviors(declaration, checker).map(normalizeBehaviorName))
       }
     } else {
@@ -439,4 +439,3 @@ export function normalizeBehaviorName (name: string): string {
   }
   throw new Error(`Unhandled behavior ${name}`)
 }
-

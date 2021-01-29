@@ -1,6 +1,6 @@
 import assert from 'assert'
 import fs from 'fs'
-import { join, dirname } from 'path'
+import { join } from 'path'
 import * as ts from 'byots'
 import Debug from 'debug'
 import * as model from './metamodel'
@@ -20,9 +20,13 @@ import {
   getAllBehaviors,
   modelBehaviors
 } from './utils'
-import { at } from 'lodash'
 
 const debug = Debug('compiler')
+
+/**
+ * TODO:
+ *    - handle JsDoc comments
+ */
 
 const specsFolder = join(__dirname, '..', 'specs')
 const tsconfigPath = join(specsFolder, 'tsconfig.json')
@@ -31,7 +35,7 @@ const commandLine = ts.parseJsonConfigFileContent(config, ts.sys, specsFolder)
 const jsonSpec = buildJsonSpec()
 
 type MappingsType = Map<string, {
-  request: model.TypeName,
+  request: model.TypeName
   response: model.TypeName
 }>
 
@@ -77,7 +81,7 @@ export default function compileSpecification (): void {
         return {
           path: path.path,
           methods: path.method,
-          ...(path.deprecated && { deprecation: path.deprecated })
+          ...(path.deprecated != null && { deprecation: path.deprecated })
         }
       })
     }
@@ -94,7 +98,7 @@ export default function compileSpecification (): void {
   fs.writeFileSync(join(__dirname, 'dump.json'), JSON.stringify(model, null, 2), 'utf8')
 }
 
-function compileNode (node: ts.Node,  checker: ts.TypeChecker, mappings: MappingsType): model.TypeDefinition[] {
+function compileNode (node: ts.Node, checker: ts.TypeChecker, mappings: MappingsType): model.TypeDefinition[] {
   const declarations: model.TypeDefinition[] = []
 
   switch (node.kind) {
@@ -129,7 +133,7 @@ function compileNode (node: ts.Node,  checker: ts.TypeChecker, mappings: Mapping
   return declarations
 }
 
-function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | ts.InterfaceDeclaration,  checker: ts.TypeChecker, mappings: MappingsType): model.Request | model.Interface {
+function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | ts.InterfaceDeclaration, checker: ts.TypeChecker, mappings: MappingsType): model.Request | model.Interface {
   assert(declaration.name, 'Anonymous classes should not exists')
   const name = declaration.name.escapedText as string
 
@@ -238,7 +242,7 @@ function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | 
               type.implements = (type.implements ?? []).concat(modelImplements(child, checker))
             }
           } else {
-            throw new Error(`Unhandled heritage token ${child.token} in class ${name}`)
+            throw new Error(`Unhandled heritage token ${child.token as string} in class ${name}`)
           }
           break
         }
@@ -268,7 +272,7 @@ function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | 
  * differently as are described as nested objects, and the body could have two
  * different types, `model.Property[]` (a normal object) or `model.ValueOf` (eg: an array or generic)
  */
-function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclaration,  checker: ts.TypeChecker): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
+function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclaration, checker: ts.TypeChecker): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
   assert(node.type)
   const name = node.symbol.escapedName as string
   const properties: model.Property[] = []
