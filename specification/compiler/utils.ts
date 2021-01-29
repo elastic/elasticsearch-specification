@@ -1,4 +1,5 @@
 import assert from 'assert'
+import { dirname } from 'path'
 import * as ts from 'byots'
 import * as model from './metamodel'
 
@@ -6,7 +7,7 @@ import * as model from './metamodel'
  * Given a TypeScript Node element, it models it according to
  * our metamodel. It automatically models nested types as well.
  */
-export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
+export function modelType (node: ts.Node, checker: ts.TypeChecker): model.ValueOf {
   switch (node.kind) {
     case ts.SyntaxKind.BooleanKeyword: {
       const type: model.InstanceOf = {
@@ -80,7 +81,7 @@ export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
 
       const type: model.ArrayOf = {
         kind: 'array_of',
-        value: modelType(children[0], nameSpace)
+        value: modelType(children[0], checker)
       }
       return type
     }
@@ -89,14 +90,14 @@ export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
       assert(ts.isUnionTypeNode(node), `The node is not of type ${ts.SyntaxKind.UnionType} but ${node.kind} instead`)
       const type: model.UnionOf = {
         kind: 'union_of',
-        items: node.types.map(node => modelType(node, nameSpace))
+        items: node.types.map(node => modelType(node, checker))
       }
       return type
     }
 
     case ts.SyntaxKind.LiteralType: {
       assert(ts.isLiteralTypeNode(node), `The node is not of type ${ts.SyntaxKind.LiteralType} but ${node.kind} instead`)
-      return modelType(node.literal, nameSpace)
+      return modelType(node.literal, checker)
     }
 
     case ts.SyntaxKind.TypeReference: {
@@ -116,7 +117,7 @@ export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
         case 'Dictionary':
         case 'AdditionalProperties': {
           assert(node.typeArguments?.length === 2, 'A Dictionary must have two arguments')
-          const [key, value] = node.typeArguments.map(node => modelType(node, nameSpace))
+          const [key, value] = node.typeArguments.map(node => modelType(node, checker))
           const type: model.DictionaryOf = {
             kind: 'dictionary_of',
             key,
@@ -127,7 +128,7 @@ export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
 
         case 'SingleKeyDictionary': {
           assert(node.typeArguments?.length === 1, 'A SingleKeyDictionary must have one argument')
-          const [value] = node.typeArguments.map(node => modelType(node, nameSpace))
+          const [value] = node.typeArguments.map(node => modelType(node, checker))
           const type: model.NamedValueOf = {
             kind: 'named_value_of',
             value
@@ -142,7 +143,7 @@ export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
             node.typeArguments != null && node.typeArguments.length >= 2,
             'A Union must have at least two arguments'
           )
-          const items = node.typeArguments.map(node => modelType(node, nameSpace))
+          const items = node.typeArguments.map(node => modelType(node, checker))
           const type: model.UnionOf = {
             kind: 'union_of',
             items
@@ -158,13 +159,13 @@ export function modelType (node: ts.Node, nameSpace: string): model.ValueOf {
         }
 
         default: {
-          const generics = node.typeArguments?.map(node => modelType(node, nameSpace))
+          const generics = node.typeArguments?.map(node => modelType(node, checker))
           const type: model.InstanceOf = {
             kind: 'instance_of',
             ...(generics != null && { generics }),
             type: {
               name,
-              namespace: nameSpace
+              namespace: getNameSpace(node, checker)
             }
           }
           return type
@@ -195,24 +196,58 @@ export function isApi (node: ts.Node): boolean {
 }
 
 /**
+ * Given a TypeScript node, returns the api name
+ * stores in the rest_spec_name decorator.
+ */
+export function getApiName (node: ts.Node): string {
+  const decorators = node.decorators
+  assert(decorators, 'There are no decorators')
+
+  const decorator = decorators
+    .map(decorator => decorator.expression.getText())
+    .find(text => text.startsWith('rest_spec_name'))
+  assert(decorator, 'rest_spec_name decorator is missing')
+
+  return decorator.split("'")[1]
+}
+
+/**
  * Given a HeritageClause node returns an Inherits structure.
  * A class could extend from multiple classes, which are
  * defined inside the node typeArguments.
  */
-export function modelInherits (node: ts.HeritageClause, nameSpace: string): model.Inherits[] {
+export function modelInherits (node: ts.HeritageClause, checker: ts.TypeChecker): model.Inherits[] {
   return node.types.map(node => {
     assert(ts.isExpressionWithTypeArguments(node))
-    const generics = node.typeArguments?.map(node => modelType(node, nameSpace))
+    const generics = node.typeArguments?.map(node => modelType(node, checker))
     return {
       type: {
         name: node.getText(),
-        namespace: nameSpace
+        namespace: getNameSpace(node, checker)
       },
       ...(generics != null && { generics })
     }
   })
 }
 
+/**
+ * Given a HeritageClause node returns an Implements structure.
+ * A class could implement from multiple classes, which are
+ * defined inside the node typeArguments.
+ */
+export function modelImplements (node: ts.HeritageClause, checker: ts.TypeChecker): model.Implements[] {
+  return node.types.map(node => {
+    assert(ts.isExpressionWithTypeArguments(node))
+    const generics = node.typeArguments?.map(node => modelType(node, checker))
+    return {
+      type: {
+        name: node.getText(),
+        namespace: getNameSpace(node, checker)
+      },
+      ...(generics != null && { generics })
+    }
+  })
+}
 /**
  *  Generics are compiles as TypeParameterDeclarations by TypeScript,
  *  but all we really need is the name of the parameter, that we will
@@ -230,7 +265,7 @@ export function modelGenerics (node: ts.TypeParameterDeclaration): string {
  * name as well. An EnumDeclaration node has a members array which
  * only contains the member of the Enum.
  */
-export function modelEnumDeclaration (declaration: ts.EnumDeclaration, nameSpace: string): model.Enum {
+export function modelEnumDeclaration (declaration: ts.EnumDeclaration,  checker: ts.TypeChecker): model.Enum {
   const name = declaration.name.escapedText as string
   const members: model.EnumMember[] = []
 
@@ -250,7 +285,7 @@ export function modelEnumDeclaration (declaration: ts.EnumDeclaration, nameSpace
   return {
     name: {
       name,
-      namespace: nameSpace
+      namespace: getNameSpace(declaration, checker)
     },
     kind: 'enum',
     members
@@ -263,14 +298,14 @@ export function modelEnumDeclaration (declaration: ts.EnumDeclaration, nameSpace
  * The first one is the alias name, the second one is the type that
  * still needs to be modeled.
  */
-export function modelTypeAlias (declaration: ts.TypeAliasDeclaration, nameSpace: string): model.TypeAlias {
+export function modelTypeAlias (declaration: ts.TypeAliasDeclaration,  checker: ts.TypeChecker): model.TypeAlias {
   return {
     name: {
       name: declaration.name.escapedText as string,
-      namespace: nameSpace
+      namespace: getNameSpace(declaration, checker)
     },
     kind: 'type_alias',
-    type: modelType(declaration.type, nameSpace)
+    type: modelType(declaration.type, checker)
   }
 }
 
@@ -280,12 +315,45 @@ export function modelTypeAlias (declaration: ts.TypeAliasDeclaration, nameSpace:
  * The first one is the property name, the second one is the type that
  * still needs to be modeled.
  */
-export function modelProperty (node: ts.PropertySignature | ts.PropertyDeclaration, nameSpace: string): model.Property {
+export function modelProperty (node: ts.PropertySignature | ts.PropertyDeclaration,  checker: ts.TypeChecker): model.Property {
   assert(node.type, 'Missing node type')
   const name = node.symbol.escapedName as string
   return {
     name,
     required: node.questionToken == null,
-    type: modelType(node.type, nameSpace)
+    type: modelType(node.type, checker)
   }
+}
+
+/**
+ * Returns true if the passed HeritageClause node contains
+ * a single type that is a known behavior.
+ */
+export function isKnownBehavior (node: ts.HeritageClause): boolean {
+  if (node.types.length !== 1) return false
+  return [
+    'AdditionalProperties',
+    'ArrayResponse',
+    'EmptyResponseBase'
+  ].includes(node.types[0].getText())
+}
+
+/**
+ * Given a Node, it returns its namespace computed
+ * with the TypeChecker to find the file where it was defined.
+ * If it can't compute it, defaults to `internal`.
+ */
+export function getNameSpace (node: ts.Node, checker: ts.TypeChecker): string {
+  const declaration = checker.getTypeAtLocation(node).getSymbol()?.declarations[0]
+  if (declaration == null) {
+    return 'internal'
+  }
+
+  const { path } = declaration.getSourceFile()
+  let nameSpace = dirname(path)
+    .replace(/.*[/\\]specs[/\\]?/, '')
+    .replace(/[/\\]/g, '.')
+  if (nameSpace === '') nameSpace = 'internal'
+
+  return nameSpace
 }
