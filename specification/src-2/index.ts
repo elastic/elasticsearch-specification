@@ -1,8 +1,18 @@
 import assert from 'assert'
+import fs from 'fs'
 import { join, dirname } from 'path'
 import * as ts from 'byots'
-import * as model from './metamodel'
 import Debug from 'debug'
+import * as model from './metamodel'
+import {
+  modelType,
+  isApi,
+  modelInherits,
+  modelGenerics,
+  modelEnumDeclaration,
+  modelTypeAlias,
+  modelProperty
+} from './utils'
 
 const debug = Debug('compiler')
 
@@ -13,8 +23,12 @@ const commandLine = ts.parseJsonConfigFileContent(config, ts.sys, specsFolder)
 
 export default function compileSpecification (): void {
   const program = ts.createProgram(commandLine.fileNames, commandLine.options)
-  const checker = program.getTypeChecker()
 
+  // This needs to be executed, otherwise the TypeScript
+  // compiler will throw an error ¯\_(ツ)_/¯
+  program.getTypeChecker()
+
+  const dump: any[] = []
   for (const file of program.getSourceFiles()) {
     if (!file.path.includes('specs')) continue
 
@@ -25,30 +39,52 @@ export default function compileSpecification (): void {
     if (nameSpace === '') nameSpace = 'internal'
 
     for (const statement of file.statements) {
-      compileNode(statement, nameSpace)
+      dump.push(...compileNode(statement, nameSpace))
     }
   }
 
-  function compileNode (node: ts.Node, nameSpace: string): void {
+  fs.writeFileSync(join(__dirname, 'dump.json'), JSON.stringify(dump, null, 2), 'utf8')
+
+  function compileNode (node: ts.Node, nameSpace: string): model.TypeDefinition[] {
+    const declarations: any[] = []
     switch (node.kind) {
       case ts.SyntaxKind.ClassDeclaration:
-        compileClassDeclaration(node as ts.ClassDeclaration, nameSpace)
+        assert(ts.isClassDeclaration(node))
+        declarations.push(compileClassOrInterfaceDeclaration(node, nameSpace))
         break
+
       case ts.SyntaxKind.InterfaceDeclaration:
+        assert(ts.isInterfaceDeclaration(node))
+        declarations.push(compileClassOrInterfaceDeclaration(node, nameSpace))
         break
+
       case ts.SyntaxKind.EnumDeclaration:
+        assert(ts.isEnumDeclaration(node))
+        declarations.push(modelEnumDeclaration(node, nameSpace))
         break
+
       case ts.SyntaxKind.TypeAliasDeclaration:
+        assert(ts.isTypeAliasDeclaration(node))
+        declarations.push(modelTypeAlias(node, nameSpace))
         break
+
+      // nothing to do here
+      case ts.SyntaxKind.FunctionDeclaration:
+        break
+
       default:
-        // throw new Error(`Unhandled kind ${node.kind}`)
+        throw new Error(`Unhandled kind ${node.kind}`)
     }
+    return declarations
   }
 }
 
-function compileClassDeclaration (declaration: ts.ClassDeclaration, nameSpace: string): void {
+function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | ts.InterfaceDeclaration, nameSpace: string): model.Request | model.Interface {
   assert(declaration.name, 'Anonymous classes should not exists')
   const name = declaration.name.escapedText as string
+
+  // Request defintions neeeds to be handled
+  // differently from normal classes
   if (isApi(declaration) && name.endsWith('Request')) {
     const type: model.Request = {
       kind: 'request',
@@ -56,13 +92,14 @@ function compileClassDeclaration (declaration: ts.ClassDeclaration, nameSpace: s
       path: new Array<model.Property>(),
       query: new Array<model.Property>()
     }
+
     ts.forEachChild(declaration, child => {
       switch (child.kind) {
         // we are visiting `path_parts, `query_parameters` or `body`
         case ts.SyntaxKind.PropertySignature:
         case ts.SyntaxKind.PropertyDeclaration: {
           assert(ts.isPropertySignature(child) || ts.isPropertyDeclaration(child))
-          const property = visitRequestProperty(child)
+          const property = visitRequestProperty(child, nameSpace)
           if (property.name === 'path_parts') {
             type.path = property.properties
           } else if (property.name === 'query_parameters') {
@@ -73,19 +110,21 @@ function compileClassDeclaration (declaration: ts.ClassDeclaration, nameSpace: s
               ? { kind: 'value', value: property.valueOf }
               : { kind: 'properties', properties: property.properties }
           }
-        }
-
-        // The class is extended
-        case ts.SyntaxKind.HeritageClause: {
-          console.log('heritage clause')
           break
         }
+
+        // The class is extended, an extended class
+        // could accept generics as well
+        case ts.SyntaxKind.HeritageClause:
+          assert(ts.isHeritageClause(child))
+          type.inherits = (type.inherits ?? []).concat(modelInherits(child, nameSpace))
+          break
 
         // The class accepts one or more generics
-        case ts.SyntaxKind.TypeParameter: {
-          console.log('type parameter')
+        case ts.SyntaxKind.TypeParameter:
+          assert(ts.isTypeParameterDeclaration(child))
+          type.generics = (type.generics ?? []).concat(modelGenerics(child))
           break
-        }
 
         // Nothing to do
         case ts.SyntaxKind.Decorator:
@@ -96,12 +135,59 @@ function compileClassDeclaration (declaration: ts.ClassDeclaration, nameSpace: s
           throw new Error(`Unhandled kind ${child.kind} in class ${name}`)
       }
     })
+
+    return type
+
+  // Every other class or interface will be handled here
   } else {
-    // ts.forEachChild(declaration, visitProperty)
+    const type: model.Interface = {
+      kind: 'interface',
+      name: { name, namespace: nameSpace },
+      properties: new Array<model.Property>()
+    }
+
+    ts.forEachChild(declaration, child => {
+      switch (child.kind) {
+        // Any property definition
+        case ts.SyntaxKind.PropertySignature:
+        case ts.SyntaxKind.PropertyDeclaration:
+          assert(ts.isPropertySignature(child) || ts.isPropertyDeclaration(child))
+          type.properties.push(modelProperty(child, nameSpace))
+          break
+
+        // The class is extended, an extended class
+        // could accept generics as well
+        case ts.SyntaxKind.HeritageClause:
+          assert(ts.isHeritageClause(child))
+          type.inherits = (type.inherits ?? []).concat(modelInherits(child, nameSpace))
+          break
+
+        // The class accepts one or more generics
+        case ts.SyntaxKind.TypeParameter:
+          assert(ts.isTypeParameterDeclaration(child))
+          type.generics = (type.generics ?? []).concat(modelGenerics(child))
+          break
+
+        // Nothing to do
+        case ts.SyntaxKind.Decorator:
+        case ts.SyntaxKind.Identifier:
+          break
+
+        default:
+          throw new Error(`Unhandled kind ${child.kind} in class ${name}`)
+      }
+    })
+
+    return type
   }
 }
 
-function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclaration): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
+/**
+ * Utility wrapper around `modelProperty`, as Request classes needs to be handled
+ * differently as are described as nested objects, and the body could have two
+ * different types, `model.Property[]` (a normal object) or `model.ValueOf` (eg: an array or generic)
+ */
+function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclaration, nameSpace: string): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
   assert(node.type)
   const name = node.symbol.escapedName as string
   const properties: model.Property[] = []
@@ -116,216 +202,21 @@ function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclarati
   // but in some cases they can be a TypeReference eg (body: Array<string>)
   // PropertySignatures and PropertyDeclarations must be iterated via `ts.forEachChild`, as every
   // declaration is a child of the top level properties, while TypeReference should
-  // directly by "unwrapped" with `visitType` because if you navigate the children of a TypeReference
+  // directly by "unwrapped" with `modelType` because if you navigate the children of a TypeReference
   // you will lose the context and crafting the types becomes really hard.
   if (node.type.kind === ts.SyntaxKind.TypeReference) {
-    valueOf = visitType(node.type)
+    valueOf = modelType(node.type, nameSpace)
   } else {
     ts.forEachChild(node.type, child => {
       assert(
         ts.isPropertySignature(child) || ts.isPropertyDeclaration(child),
         `Children should be ${ts.SyntaxKind.PropertySignature} or ${ts.SyntaxKind.PropertyDeclaration}, instead got ${child.kind}`
       )
-      properties.push(visitProperty(child))
+      properties.push(modelProperty(child, nameSpace))
     })
   }
 
   return { name, properties, valueOf }
-}
-
-function visitProperty (node: ts.PropertySignature | ts.PropertyDeclaration): model.Property {
-  assert(node.type, 'Missing node type')
-  const name = node.symbol.escapedName as string
-  return {
-    name,
-    required: node.questionToken == null,
-    type: visitType(node.type)
-  }
-}
-
-function visitType (node: ts.Node): model.ValueOf {
-  switch (node.kind) {
-    case ts.SyntaxKind.BooleanKeyword: {
-      const type: model.InstanceOf = {
-        kind: 'instance_of',
-        type: {
-          name: 'boolean',
-          namespace: 'internal'
-        }
-      }
-      return type
-    }
-
-    case ts.SyntaxKind.StringKeyword: {
-      const type: model.InstanceOf = {
-        kind: 'instance_of',
-        type: {
-          name: 'string',
-          namespace: 'internal'
-        }
-      }
-      return type
-    }
-
-    case ts.SyntaxKind.NumberKeyword: {
-      const type: model.InstanceOf = {
-        kind: 'instance_of',
-        type: {
-          name: 'number',
-          namespace: 'internal'
-        }
-      }
-      return type
-    }
-
-    case ts.SyntaxKind.NullKeyword: {
-      const type: model.InstanceOf = {
-        kind: 'instance_of',
-        type: {
-          name: 'null',
-          namespace: 'internal'
-        }
-      }
-      return type
-    }
-
-    // TODO: this should not be used in the specification
-    //       we should throw an error
-    case ts.SyntaxKind.AnyKeyword: {
-      const type: model.InstanceOf = {
-        kind: 'instance_of',
-        type: {
-          name: 'object',
-          namespace: 'internal'
-        }
-      }
-      return type
-    }
-
-    case ts.SyntaxKind.ArrayType: {
-      const kinds: ts.SyntaxKind[] = [
-        ts.SyntaxKind.StringKeyword,
-        ts.SyntaxKind.BooleanKeyword,
-        ts.SyntaxKind.AnyKeyword,
-        ts.SyntaxKind.ArrayType,
-        ts.SyntaxKind.TypeReference
-      ]
-      let children: ts.Node[] = []
-      ts.forEachChild(node, child => children.push(child))
-      children = children.filter(child => kinds.some(kind => kind === child.kind))
-      assert(children.length === 1, `Expected array to have 1 usable child but saw ${children.length}`)
-
-      const type: model.ArrayOf = {
-        kind: 'array_of',
-        value: visitType(children[0])
-      }
-      return type
-    }
-
-    case ts.SyntaxKind.UnionType: {
-      assert(ts.isUnionTypeNode(node), `The node is not of type ${ts.SyntaxKind.UnionType} but ${node.kind} instead`)
-      const type: model.UnionOf = {
-        kind: 'union_of',
-        items: node.types.map(node => visitType(node))
-      }
-      return type
-    }
-
-    case ts.SyntaxKind.LiteralType: {
-      assert(ts.isLiteralTypeNode(node), `The node is not of type ${ts.SyntaxKind.LiteralType} but ${node.kind} instead`)
-      return visitType(node.literal)
-    }
-
-    case ts.SyntaxKind.TypeReference: {
-      // TypeReferences are fun types, it's basically how TypeScript defines
-      // everything that is not a basic type, an interface or a class will
-      // appear here when used for instance.
-      // For some reason also the `Array` type (the one defined with `Array<T>` and not `T[]`)
-      // is interpreted as TypeReference as well.
-      // The two most important fields of a TypeReference are `typeName` and `typeArguments`,
-      // the first one is the name of the type (eg: `Foo`), while the second is the
-      // possible generics (eg: Foo<T> => T will be in typeArguments).
-      assert(ts.isTypeReferenceNode(node), `The node is not of type ${ts.SyntaxKind.TypeReference} but ${node.kind} instead`)
-      assert(ts.isIdentifier(node.typeName))
-
-      const name = node.typeName.escapedText as string
-      switch (name) {
-        case 'Dictionary':
-        case 'AdditionalProperties': {
-          assert(node.typeArguments?.length === 2, 'A Dictionary must have two arguments')
-          const [key, value] = node.typeArguments.map(node => visitType(node))
-          const type: model.DictionaryOf = {
-            kind: 'dictionary_of',
-            key,
-            value
-          }
-          return type
-        }
-
-        case 'SingleKeyDictionary': {
-          assert(node.typeArguments?.length === 1, 'A SingleKeyDictionary must have one argument')
-          const [value] = node.typeArguments.map(node => visitType(node))
-          const type: model.NamedValueOf = {
-            kind: 'named_value_of',
-            value
-          }
-          return type
-        }
-
-        // TODO: the Union class should be removed from the spec
-        //       in favor of TypeScript unions
-        case 'Union': {
-          assert(
-            node.typeArguments != null && node.typeArguments.length >= 2,
-            'A Union must have at least two arguments'
-          )
-          const items = node.typeArguments.map(node => visitType(node))
-          const type: model.UnionOf = {
-            kind: 'union_of',
-            items
-          }
-          return type
-        }
-
-        case 'UserDefinedValue': {
-          const type: model.UserDefinedValue = {
-            kind: 'user_defined_value'
-          }
-          return type
-        }
-
-        default: {
-          const generics = node.typeArguments?.map(node => visitType(node))
-          const type: model.InstanceOf = {
-            kind: 'instance_of',
-            ...(generics != null && { generics }),
-            type: {
-              name,
-              namespace: 'internal'
-            }
-          }
-          return type
-        }
-      }
-    }
-
-    default:
-      // @ts-expect-error
-      return node.kind
-  }
-}
-
-function isApi (node: ts.Node): boolean {
-  const decorators = node.decorators
-  if (decorators == null) {
-    return false
-  }
-
-  const decorator = decorators
-    .map(decorator => decorator.expression.getText())
-    .find(text => text.startsWith('rest_spec_name'))
-
-  return decorator != null
 }
 
 compileSpecification()
