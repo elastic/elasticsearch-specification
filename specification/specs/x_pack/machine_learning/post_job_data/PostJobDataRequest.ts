@@ -24,8 +24,8 @@ class PostJobDataRequest extends RequestBase {
     job_id: Id
   }
   query_parameters?: {
-    reset_end?: Date
-    reset_start?: Date
+    reset_end?: DateString
+    reset_start?: DateString
   }
   body?: {
     data?: UserDefinedValue[]

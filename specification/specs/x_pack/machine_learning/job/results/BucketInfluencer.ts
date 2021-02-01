@@ -28,5 +28,5 @@ class BucketInfluencer {
   probability: double
   result_type: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: Date
+  timestamp: DateString
 }

@@ -19,5 +19,5 @@
 
 class AcknowledgeState {
   state: AcknowledgementState
-  timestamp: Date
+  timestamp: DateString
 }

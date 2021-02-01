@@ -27,11 +27,11 @@ class GetBucketsRequest extends RequestBase {
   body?: {
     anomaly_score?: double
     desc?: boolean
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     expand?: boolean
     page?: Page
     sort?: Field
-    start?: Date
+    start?: DateString
   }
 }

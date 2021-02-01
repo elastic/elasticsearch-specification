@@ -26,10 +26,10 @@ class GetOverallBucketsRequest extends RequestBase {
   body?: {
     allow_no_jobs?: boolean
     bucket_span?: Time
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     overall_score?: double
-    start?: Date
+    start?: DateString
     top_n?: integer
   }
 }

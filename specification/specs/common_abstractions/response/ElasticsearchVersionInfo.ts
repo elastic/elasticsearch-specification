@@ -18,7 +18,7 @@
  */
 
 class ElasticsearchVersionInfo {
-  build_date: Date
+  build_date: DateString
   build_flavor: string
   build_hash: string
   build_snapshot: boolean

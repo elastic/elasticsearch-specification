@@ -20,7 +20,7 @@
 class CatTransformsRecord {
   changes_last_detection_time: string
   checkpoint_duration_time_exp_avg: long
-  create_time: Date
+  create_time: DateString
   description: string
   dest_index: string
   documents_indexed: long

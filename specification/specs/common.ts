@@ -34,9 +34,7 @@ function namespace(ns: string) {
 }
 
 type Uri = string
-// this should be `type Date = string`, but `Date` is already defined by TS
-// so we shoukd figure out a different name
-interface Date {}
+type DateString = string
 type TimeSpan = string
 interface SourceDocument {}
 @class_serializer('ErrorCauseFormatter')

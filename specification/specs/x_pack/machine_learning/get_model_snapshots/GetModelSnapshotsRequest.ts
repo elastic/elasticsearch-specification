@@ -27,10 +27,10 @@ class GetModelSnapshotsRequest extends RequestBase {
   body?: {
     desc?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     page?: Page
     sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
   }
 }

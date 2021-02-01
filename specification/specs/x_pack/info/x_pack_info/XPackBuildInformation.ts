@@ -18,6 +18,6 @@
  */
 
 class XPackBuildInformation {
-  date: Date
+  date: DateString
   hash: string
 }

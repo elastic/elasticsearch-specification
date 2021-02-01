@@ -33,5 +33,5 @@ class SlackAttachment {
   title: string
   title_link: string
   /** @prop_serializer NullableDateTimeOffsetEpochSecondsFormatter */
-  ts: Date
+  ts: DateString
 }

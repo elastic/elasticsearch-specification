@@ -19,5 +19,5 @@
 
 class ActivationState {
   active: boolean
-  timestamp: Date
+  timestamp: DateString
 }
