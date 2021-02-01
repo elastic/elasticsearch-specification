@@ -21,7 +21,7 @@ export type AccessTokenGrantType = 'password'
 
 export interface AcknowledgeState {
   state: AcknowledgementState
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface AcknowledgeWatchRequest extends RequestBase {
@@ -72,7 +72,7 @@ export interface ActivateWatchResponse {
 
 export interface ActivationState {
   active: boolean
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface ActivationStatus {
@@ -95,6 +95,7 @@ export interface AdjacencyMatrixAggregation {
 }
 
 export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
+
 export interface AggregateBase {
   meta?: Record<string, any>
 }
@@ -340,6 +341,11 @@ export interface AnalyzeToken {
   type: string
 }
 
+export interface AnalyzerBase {
+  type: string
+  version: string
+}
+
 export interface AnalyzerDetail {
   name: string
   tokens: Array<ExplainAnalyzeToken>
@@ -390,7 +396,7 @@ export interface AnomalyRecord {
   probability: double
   record_score: double
   result_type: string
-  timestamp: Date
+  timestamp: DateString
   typical: Array<double>
 }
 
@@ -405,8 +411,8 @@ export interface ApiKeyRole {
 }
 
 export interface ApiKeys {
-  creation: Date
-  expiration: Date
+  creation: DateString
+  expiration: DateString
   id: string
   invalidated: boolean
   name: string
@@ -453,6 +459,23 @@ export interface ArrayCompareCondition {
 
 export interface AsciiFoldingTokenFilter extends TokenFilterBase {
   preserve_original: boolean
+}
+
+export interface AsyncSearch<TDocument = unknown> {
+  aggregations: Record<string, Aggregate>
+  _clusters: ClusterStatistics
+  documents: Array<TDocument>
+  fields: Record<string, LazyDocument>
+  hits: HitsMetadata<TDocument>
+  max_score: double
+  num_reduce_phases: long
+  profile: Profile
+  _scroll_id: string
+  _shards: ShardStatistics
+  suggest: SuggestDictionary<TDocument>
+  terminated_early: boolean
+  timed_out: boolean
+  took: long
 }
 
 export interface AsyncSearchDeleteRequest extends RequestBase {
@@ -569,7 +592,7 @@ export interface AutoDateHistogramAggregation {
   field?: Field
   format?: string
   minimum_interval?: MinimumInterval
-  missing?: Date
+  missing?: DateString
   offset?: string
   params?: Record<string, any>
   script?: Script
@@ -595,7 +618,7 @@ export interface AutoFollowPattern {
 export interface AutoFollowedCluster {
   cluster_name: string
   last_seen_metadata_version: long
-  time_since_last_check_millis: Date
+  time_since_last_check_millis: DateString
 }
 
 export interface AverageAggregation {
@@ -649,6 +672,7 @@ export interface BreakerStats {
 }
 
 export type Bucket = CompositeBucket | DateHistogramBucket | FiltersBucketItem | IpRangeBucket | RangeBucket | RareTermsBucket<any> | SignificantTermsBucket<any> | KeyedBucket<any>
+
 export interface BucketAggregate extends AggregateBase {
   after_key: Record<string, any>
   bg_count: long
@@ -669,7 +693,7 @@ export interface BucketInfluencer {
   job_id: string
   probability: double
   result_type: string
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface BucketScriptAggregation {
@@ -685,6 +709,9 @@ export interface BucketSortAggregation {
   gap_policy?: GapPolicy
   size?: integer
   sort?: Array<Sort>
+}
+
+export interface BucketsPath {
 }
 
 export interface BulkAliasRequest extends RequestBase {
@@ -1466,7 +1493,7 @@ export type CatTrainedModelsResponse = CatTrainedModelsRecord[]
 export interface CatTransformsRecord {
   changes_last_detection_time: string
   checkpoint_duration_time_exp_avg: long
-  create_time: Date
+  create_time: DateString
   description: string
   dest_index: string
   documents_indexed: long
@@ -1563,6 +1590,7 @@ export interface ChangePasswordResponse {
 }
 
 export type CharFilter = HtmlStripCharFilter | MappingCharFilter | PatternReplaceTokenFilter
+
 export interface CharFilterBase {
   type: string
   version?: string
@@ -1601,6 +1629,14 @@ export interface CircleProcessor extends ProcessorBase {
   ignore_missing: boolean
   shape_type: ShapeType
   target_field: Field
+}
+
+export interface CircuitBreakerSettings {
+  fielddata_limit: string
+  fielddata_overhead: float
+  request_limit: string
+  request_overhead: float
+  total_limit: string
 }
 
 export interface CleanupRepositoryRequest extends RequestBase {
@@ -1762,7 +1798,7 @@ export interface ClusterAllocationExplainResponse {
 
 export interface ClusterCertificateInformation {
   alias: string
-  expiry: Date
+  expiry: DateString
   format: string
   has_private_key: boolean
   path: string
@@ -2171,6 +2207,7 @@ export interface ConstantScoreQuery {
 }
 
 export type Context = string | GeoLocation
+
 export interface ConvertProcessor extends ProcessorBase {
   field: Field
   ignore_missing: boolean
@@ -2186,6 +2223,13 @@ export interface CoordinatorStats {
   queue_size: integer
   remote_requests_current: integer
   remote_requests_total: long
+}
+
+export interface CorePropertyBase extends PropertyBase {
+  copy_to: Array<Field>
+  fields: Record<PropertyName, PropertyBase>
+  similarity: string
+  store: boolean
 }
 
 export interface CountRequest extends RequestBase {
@@ -2226,7 +2270,7 @@ export interface CreateApiKeyRequest extends RequestBase {
 
 export interface CreateApiKeyResponse {
   api_key: string
-  expiration: Date
+  expiration: DateString
   id: string
   name: string
 }
@@ -2374,17 +2418,17 @@ export interface DailySchedule {
 
 export interface DataCounts {
   bucket_count: long
-  earliest_record_timestamp: Date
+  earliest_record_timestamp: DateString
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: string
-  last_data_time: Date
-  latest_empty_bucket_timestamp: Date
-  latest_record_timestamp: Date
-  latest_sparse_bucket_timestamp: Date
+  last_data_time: DateString
+  latest_empty_bucket_timestamp: DateString
+  latest_record_timestamp: DateString
+  latest_sparse_bucket_timestamp: DateString
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -2457,9 +2501,6 @@ export interface Datafeeds {
   scroll_size: integer
 }
 
-export interface Date {
-}
-
 export interface DateField {
   field: Field
   format?: string
@@ -2475,7 +2516,7 @@ export interface DateHistogramAggregation {
   format?: string
   interval?: DateInterval | Time
   min_doc_count?: integer
-  missing?: Date
+  missing?: DateString
   offset?: Time
   order?: HistogramOrder
   params?: Record<string, any>
@@ -2515,7 +2556,7 @@ export interface DateMathTime {
   interval: DateMathTimeUnit
 }
 
-export type DateMathTimeUnit = 'Second' | 'Minute' | 'Hour' | 'Day' | 'Week' | 'Month' | 'Year'
+export type DateMathTimeUnit = 's' | 'm' | 'h' | 'd' | 'w' | 'M' | 'y'
 
 export interface DateProcessor extends ProcessorBase {
   field: Field
@@ -2540,6 +2581,8 @@ export interface DateRangeExpression {
 }
 
 export type DateRounding = 's' | 'm' | 'h' | 'd' | 'w' | 'M' | 'y'
+
+export type DateString = string
 
 export type Day = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
@@ -3004,6 +3047,10 @@ export interface DocValueField {
   format?: string
 }
 
+export interface DocValuesPropertyBase extends CorePropertyBase {
+  doc_values: boolean
+}
+
 export interface DocumentExistsRequest extends RequestBase {
   id: Id
   index: IndexName
@@ -3067,8 +3114,11 @@ export interface EdgeNGramTokenizer extends TokenizerBase {
   token_chars: Array<TokenChar>
 }
 
+export interface ElasticsearchResponse {
+}
+
 export interface ElasticsearchVersionInfo {
-  build_date: Date
+  build_date: DateString
   build_flavor: string
   build_hash: string
   build_snapshot: boolean
@@ -3105,7 +3155,7 @@ export interface EmailResult {
   id: string
   priority: EmailPriority
   reply_to: Array<string>
-  sent_date: Date
+  sent_date: DateString
   subject: string
   to: Array<string>
 }
@@ -3266,7 +3316,7 @@ export interface ExecutionResult {
   actions: Array<ExecutionResultAction>
   condition: ExecutionResultCondition
   execution_duration: integer
-  execution_time: Date
+  execution_time: DateString
   input: ExecutionResultInput
 }
 
@@ -3297,7 +3347,7 @@ export interface ExecutionResultInput {
 
 export interface ExecutionState {
   successful: boolean
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface ExecutionThreadPool {
@@ -3312,6 +3362,7 @@ export interface ExistsQuery extends QueryBase {
 export type ExpandWildcardOptions = 'open' | 'closed' | 'hidden' | 'none' | 'all'
 
 export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions>
+
 export interface ExplainAnalyzeToken {
   bytes: string
   end_offset: long
@@ -3467,6 +3518,28 @@ export interface FieldStatistics {
   sum_ttf: long
 }
 
+export interface FielddataFilter {
+  frequency: FielddataFrequencyFilter
+  regex: FielddataRegexFilter
+}
+
+export interface FielddataFrequencyFilter {
+  max: double
+  min: double
+  min_segment_size: integer
+}
+
+export type FielddataLoading = 'eager' | 'eager_global_ordinals'
+
+export interface FielddataRegexFilter {
+  pattern: string
+}
+
+export interface FielddataSettings {
+  cache_expire: Time
+  cache_size: string
+}
+
 export interface FielddataStats {
   evictions?: long
   memory_size_in_bytes: long
@@ -3474,6 +3547,7 @@ export interface FielddataStats {
 }
 
 export type Fields = Field | Array<Field>
+
 export interface FileCountSnapshotStats {
   file_count: integer
   size_in_bytes: long
@@ -3525,10 +3599,10 @@ export interface FlushJobRequest extends RequestBase {
   job_id: Id
   skip_time?: string
   body?: {
-    advance_time?: Date
+    advance_time?: DateString
     calc_interim?: boolean
-    end?: Date
-    start?: Date
+    end?: DateString
+    start?: DateString
   }
 }
 
@@ -3715,6 +3789,7 @@ export interface FunctionScoreQuery {
 }
 
 export type Fuzziness = string | integer
+
 export interface FuzzyQuery extends QueryBase {
   max_expansions?: integer
   prefix_length?: integer
@@ -3808,6 +3883,8 @@ export interface GeoLocation {
   lon?: double
 }
 
+export type GeoOrientation = 'ClockWise' | 'CounterClockWise'
+
 export interface GeoPolygonQuery extends QueryBase {
   points?: Array<GeoLocation>
   validation_method?: GeoValidationMethod
@@ -3825,6 +3902,8 @@ export interface GeoShapeQuery extends QueryBase {
 }
 
 export type GeoShapeRelation = 'intersects' | 'disjoint' | 'within' | 'contains'
+
+export type GeoStrategy = 'recursive' | 'term'
 
 export interface GeoTileGridAggregation {
   field?: Field
@@ -3853,12 +3932,12 @@ export interface GetAnomalyRecordsRequest extends RequestBase {
   job_id: Id
   body?: {
     desc?: boolean
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     page?: Page
     record_score?: double
     sort?: Field
-    start?: Date
+    start?: DateString
   }
 }
 
@@ -3900,12 +3979,12 @@ export interface GetBucketsRequest extends RequestBase {
   body?: {
     anomaly_score?: double
     desc?: boolean
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     expand?: boolean
     page?: Page
     sort?: Field
-    start?: Date
+    start?: DateString
   }
 }
 
@@ -3924,7 +4003,7 @@ export interface GetBuiltinPrivilegesResponse {
 
 export interface GetCalendarEventsRequest extends RequestBase {
   calendar_id: Id
-  end?: Date
+  end?: DateString
   job_id?: string
   start?: string
   body?: {
@@ -4076,12 +4155,12 @@ export interface GetInfluencersRequest extends RequestBase {
   job_id: Id
   body?: {
     descending?: boolean
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     influencer_score?: double
     page?: Page
     sort?: Field
-    start?: Date
+    start?: DateString
   }
 }
 
@@ -4145,10 +4224,10 @@ export interface GetModelSnapshotsRequest extends RequestBase {
   snapshot_id?: Id
   body?: {
     desc?: boolean
-    end?: Date
+    end?: DateString
     page?: Page
     sort?: Field
-    start?: Date
+    start?: DateString
   }
 }
 
@@ -4162,10 +4241,10 @@ export interface GetOverallBucketsRequest extends RequestBase {
   body?: {
     allow_no_jobs?: boolean
     bucket_span?: Time
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     overall_score?: double
-    start?: Date
+    start?: DateString
     top_n?: integer
   }
 }
@@ -4749,8 +4828,24 @@ export interface HunspellTokenFilter extends TokenFilterBase {
 export interface HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
 }
 
+export type IcuCollationAlternate = 'shifted' | ''non-ignorable''
+
+export type IcuCollationCaseFirst = 'lower' | 'upper'
+
+export type IcuCollationDecomposition = 'no' | 'identical'
+
+export type IcuCollationStrength = 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'identical'
+
+export type IcuNormalizationMode = 'decompose' | 'compose'
+
+export type IcuNormalizationType = 'nfc' | 'nfkc' | 'nfkc_cf'
+
+export type IcuTransformDirection = 'forward' | 'reverse'
+
 export type Id = string | number
+
 export type Ids = string | number | Array<string>
+
 export interface IdsQuery extends QueryBase {
   values?: Array<Id>
 }
@@ -4816,6 +4911,8 @@ export interface IndexMappings {
 }
 
 export type IndexName = string
+
+export type IndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
 
 export interface IndexPrivilegesCheck {
   names: Array<string>
@@ -4905,6 +5002,7 @@ export interface IndexingStats {
 }
 
 export type Indices = string | Array<string>
+
 export interface IndicesOptions {
   allow_no_indices: boolean
   expand_wildcards: ExpandWildcards
@@ -4916,6 +5014,16 @@ export interface IndicesPrivileges {
   names: Indices
   privileges: Array<string>
   query: QueryContainer
+}
+
+export interface IndicesRecoverySettings {
+  compress: boolean
+  concurrent_small_file_streams: integer
+  concurrent_streams: integer
+  file_chunk_size: string
+  max_bytes_per_second: string
+  translog_operations: integer
+  translog_size: string
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
@@ -4972,7 +5080,7 @@ export interface Influence {
 }
 
 export interface Ingest {
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface IngestStats {
@@ -5163,10 +5271,10 @@ export interface Job {
   analysis_config: AnalysisConfig
   analysis_limits: AnalysisLimits
   background_persist_interval: Time
-  create_time: Date
+  create_time: DateString
   data_description: DataDescription
   description: string
-  finished_time: Date
+  finished_time: DateString
   job_id: string
   job_type: string
   model_plot: ModelPlotConfig
@@ -5279,6 +5387,10 @@ export interface KeywordTokenizer extends TokenizerBase {
   buffer_size: integer
 }
 
+export type KuromojiTokenizationMode = 'normal' | 'search' | 'extended'
+
+export type Language = 'Arabic' | 'Armenian' | 'Basque' | 'Brazilian' | 'Bulgarian' | 'Catalan' | 'Chinese' | 'Cjk' | 'Czech' | 'Danish' | 'Dutch' | 'English' | 'Estonian' | 'Finnish' | 'French' | 'Galician' | 'German' | 'Greek' | 'Hindi' | 'Hungarian' | 'Indonesian' | 'Irish' | 'Italian' | 'Latvian' | 'Norwegian' | 'Persian' | 'Portuguese' | 'Romanian' | 'Russian' | 'Sorani' | 'Spanish' | 'Swedish' | 'Turkish' | 'Thai'
+
 export interface LaplaceSmoothingModel {
   alpha: double
 }
@@ -5318,9 +5430,9 @@ export interface LicenseAcknowledgement {
 }
 
 export interface LicenseInformation {
-  expiry_date: Date
+  expiry_date: DateString
   expiry_date_in_millis: long
-  issue_date: Date
+  issue_date: DateString
   issue_date_in_millis: long
   issued_to: string
   issuer: string
@@ -5342,31 +5454,32 @@ export interface LifecycleAction {
 
 export interface LifecycleExplain {
   action: string
-  action_time_millis: Date
+  action_time_millis: DateString
   age: Time
   failed_step: string
   failed_step_retry_count: integer
   index: IndexName
   is_auto_retryable_error: boolean
-  lifecycle_date_millis: Date
+  lifecycle_date_millis: DateString
   managed: boolean
   phase: string
-  phase_time_millis: Date
+  phase_time_millis: DateString
   policy: string
   step: string
   step_info: Record<string, any>
-  step_time_millis: Date
+  step_time_millis: DateString
 }
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
 export interface LifecyclePolicy {
-  modified_date: Date
+  modified_date: DateString
   policy: Policy
   version: integer
 }
 
 export type Like = string | LikeDocument
+
 export interface LikeDocument {
   doc?: any
   fields?: Array<Field>
@@ -5563,7 +5676,9 @@ export interface MergesStats {
 }
 
 export type MetricAggregate = ValueAggregate | BoxPlotAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | ExtendedStatsAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+
 export type Metrics = string | Array<string>
+
 export interface MinAggregation {
 }
 
@@ -5581,7 +5696,9 @@ export interface MinimalLicenseInformation {
 export type MinimumInterval = 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
 
 export type MinimumShouldMatch = integer | string
+
 export type Missing = string | integer | boolean
+
 export interface MissingAggregation {
   field?: Field
   missing?: Missing
@@ -5602,11 +5719,11 @@ export interface ModelPlotConfigEnabled {
 export interface ModelSizeStats {
   bucket_allocation_failures_count: long
   job_id: string
-  log_time: Date
+  log_time: DateString
   memory_status: MemoryStatus
   model_bytes: long
   result_type: string
-  timestamp: Date
+  timestamp: DateString
   total_by_field_count: long
   total_over_field_count: long
   total_partition_field_count: long
@@ -5615,13 +5732,13 @@ export interface ModelSizeStats {
 export interface ModelSnapshot {
   description: string
   job_id: string
-  latest_record_time_stamp: Date
-  latest_result_time_stamp: Date
+  latest_record_time_stamp: DateString
+  latest_result_time_stamp: DateString
   model_size_stats: ModelSizeStats
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: string
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface MonitoringUsage extends XPackUsage {
@@ -6102,8 +6219,8 @@ export interface NodeThreadPoolInfo {
 
 export interface NodeUsageInformation {
   rest_actions: Record<string, integer>
-  since: Date
-  timestamp: Date
+  since: DateString
+  timestamp: DateString
   aggregations: any
 }
 
@@ -6180,7 +6297,19 @@ export interface NoriTokenizer extends TokenizerBase {
   user_dictionary_rules: Array<string>
 }
 
+export interface NumericFielddata {
+  format: NumericFielddataFormat
+}
+
+export type NumericFielddataFormat = 'array' | 'disabled'
+
 export type NumericType = 'long' | 'double' | 'date' | 'date_nanos'
+
+export interface ObjectProperty extends CorePropertyBase {
+  dynamic: boolean | DynamicMapping
+  enabled: boolean
+  properties: Record<PropertyName, PropertyBase>
+}
 
 export type OpType = 'index' | 'create'
 
@@ -6231,7 +6360,7 @@ export interface OverallBucket {
   jobs: Array<OverallBucketJobInfo>
   overall_score: double
   result_type: string
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface OverallBucketJobInfo {
@@ -6397,6 +6526,14 @@ export interface Phases {
   warm: Phase
 }
 
+export type PhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
+
+export type PhoneticLanguage = 'any' | 'comomon' | 'cyrillic' | 'english' | 'french' | 'german' | 'hebrew' | 'hungarian' | 'polish' | 'romanian' | 'russian' | 'spanish'
+
+export type PhoneticNameType = 'generic' | 'ashkenazi' | 'sephardic'
+
+export type PhoneticRuleType = 'approx' | 'exact'
+
 export interface PhraseSuggestCollate {
   params: Record<string, any>
   prune: boolean
@@ -6491,8 +6628,8 @@ export interface PostCalendarEventsResponse {
 
 export interface PostJobDataRequest extends RequestBase {
   job_id: Id
-  reset_end?: Date
-  reset_start?: Date
+  reset_end?: DateString
+  reset_start?: DateString
   body: {
     data?: Array<any>
   }
@@ -6500,15 +6637,15 @@ export interface PostJobDataRequest extends RequestBase {
 
 export interface PostJobDataResponse {
   bucket_count: long
-  earliest_record_timestamp: Date
+  earliest_record_timestamp: DateString
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: string
-  last_data_time: Date
-  latest_record_timestamp: Date
+  last_data_time: DateString
+  latest_record_timestamp: DateString
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -6768,7 +6905,7 @@ export interface PutJobResponse {
   analysis_config: AnalysisConfig
   analysis_limits: AnalysisLimits
   background_persist_interval: Time
-  create_time: Date
+  create_time: DateString
   data_description: DataDescription
   description: string
   job_id: string
@@ -7150,6 +7287,12 @@ export interface RangeBucketKeys {
 export type RangeBucket = RangeBucketKeys |
     { [property: string]: Aggregate }
 
+export interface RangePropertyBase extends DocValuesPropertyBase {
+  boost: double
+  coerce: boolean
+  index: boolean
+}
+
 export interface RangeQuery extends QueryBase {
   gt?: double | DateMath
   gte?: double | DateMath
@@ -7277,6 +7420,7 @@ export interface RecoveryVerifyIndex {
 }
 
 export type Refresh = boolean | RefreshOptions
+
 export type RefreshOptions = 'wait_for'
 
 export interface RefreshRequest extends RequestBase {
@@ -7534,6 +7678,9 @@ export interface ResourcePrivileges {
 
 export type ResponseContentType = 'json' | 'yaml' | 'text'
 
+export interface RestartWatcherResponse extends AcknowledgedResponseBase {
+}
+
 export interface RestoreRequest extends RequestBase {
   repository: Name
   snapshot: Name
@@ -7569,7 +7716,7 @@ export interface ResultBucket {
   partition_scores: Array<PartitionScore>
   processing_time_ms: double
   result_type: string
-  timestamp: Date
+  timestamp: DateString
 }
 
 export interface ResumeAutoFollowPatternRequest extends RequestBase {
@@ -7772,6 +7919,7 @@ export interface RootNodeInfoResponse {
 }
 
 export type Routing = string | number
+
 export interface RoutingField {
   required: boolean
 }
@@ -7814,16 +7962,16 @@ export interface ScheduleContainer {
 }
 
 export interface ScheduleTriggerEvent {
-  scheduled_time: Date | string
-  triggered_time: Date | string
+  scheduled_time: DateString | string
+  triggered_time: DateString | string
 }
 
 export interface ScheduledEvent {
   calendar_id: Id
   description: string
-  end_time: Date
+  end_time: DateString
   event_id: Id
-  start_time: Date
+  start_time: DateString
 }
 
 export interface ScoreFunction {
@@ -7834,6 +7982,7 @@ export interface ScoreFunction {
 export type ScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
 export type Script = InlineScript | IndexedScript | string
+
 export interface ScriptBase {
   lang: string
   params?: Record<string, any>
@@ -8176,6 +8325,8 @@ export interface SetUpgradeModeRequest extends RequestBase {
 export interface SetUpgradeModeResponse extends AcknowledgedResponseBase {
 }
 
+export type ShapeOrientation = 'ClockWise' | 'CounterClockWise'
+
 export interface ShapeQuery extends QueryBase {
   ignore_unmapped?: boolean
   indexed_shape?: FieldLookup
@@ -8308,8 +8459,8 @@ export interface ShardRecovery {
   source: RecoveryOrigin
   stage: string
   start: RecoveryStartStatus
-  start_time_in_millis: Date
-  stop_time_in_millis: Date
+  start_time_in_millis: DateString
+  stop_time_in_millis: DateString
   target: RecoveryOrigin
   total_time_in_millis: long
   translog: RecoveryTranslogStatus
@@ -8645,7 +8796,7 @@ export interface SlackAttachment {
   thumb_url: string
   title: string
   title_link: string
-  ts: Date
+  ts: DateString
 }
 
 export interface SlackAttachmentField {
@@ -8694,7 +8845,7 @@ export interface SnapshotIndexStats {
 export interface SnapshotInfo {
   data_streams: Array<string>
   duration_in_millis: long
-  end_time?: Date
+  end_time?: DateString
   end_time_in_millis?: long
   failures?: Array<SnapshotShardFailure>
   include_global_state?: boolean
@@ -8703,7 +8854,7 @@ export interface SnapshotInfo {
   reason?: string
   snapshot: string
   shards?: ShardStatistics
-  start_time?: Date
+  start_time?: DateString
   start_time_in_millis?: long
   state?: string
   uuid: string
@@ -8719,14 +8870,14 @@ export interface SnapshotLifecycleConfig {
 
 export interface SnapshotLifecycleInProgress {
   name: string
-  start_time_millis: Date
+  start_time_millis: DateString
   state: string
   uuid: string
 }
 
 export interface SnapshotLifecycleInvocationRecord {
   snapshot_name: string
-  time: Date
+  time: DateString
 }
 
 export interface SnapshotLifecyclePolicy {
@@ -8741,8 +8892,8 @@ export interface SnapshotLifecyclePolicyMetadata {
   in_progress: SnapshotLifecycleInProgress
   last_failure: SnapshotLifecycleInvocationRecord
   last_success: SnapshotLifecycleInvocationRecord
-  modified_date_millis: Date
-  next_execution_millis: Date
+  modified_date_millis: DateString
+  next_execution_millis: DateString
   policy: SnapshotLifecyclePolicy
   version: integer
 }
@@ -9006,6 +9157,13 @@ export interface SqlColumn {
   type: string
 }
 
+export interface SqlRequest {
+  fetch_size?: integer
+  filter?: QueryContainer
+  query?: string
+  time_zone?: string
+}
+
 export interface SqlUsage extends XPackUsage {
   features: Record<string, integer>
   queries: Record<string, QueryUsage>
@@ -9045,8 +9203,8 @@ export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
 export interface StartDatafeedRequest extends RequestBase {
   datafeed_id: Id
   body?: {
-    end?: Date
-    start?: Date
+    end?: DateString
+    start?: DateString
     timeout?: Time
   }
 }
@@ -9191,6 +9349,7 @@ export interface StopWatcherResponse extends AcknowledgedResponseBase {
 }
 
 export type StopWords = string | Array<string>
+
 export interface StoreStats {
   size?: string
   size_in_bytes: double
@@ -9203,6 +9362,12 @@ export interface StoredScript {
 }
 
 export type StringDistance = 'internal' | 'damerau_levenshtein' | 'levenshtein' | 'jaro_winkler' | 'ngram'
+
+export interface StringFielddata {
+  format: StringFielddataFormat
+}
+
+export type StringFielddataFormat = 'paged_bytes' | 'disabled'
 
 export interface StringStatsAggregate extends AggregateBase {
   count: long
@@ -9238,6 +9403,12 @@ export interface SuggestBucket {
   regex: string
   term: TermSuggester
   text: string
+}
+
+export interface SuggestContext {
+  name: string
+  path: Field
+  type: string
 }
 
 export interface SuggestContextQuery {
@@ -9432,6 +9603,8 @@ export interface TermVectorFilter {
   min_word_length: integer
 }
 
+export type TermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads'
+
 export interface TermVectorTerm {
   doc_freq: integer
   score: double
@@ -9529,9 +9702,15 @@ export interface TermsSetQuery extends QueryBase {
   terms?: Array<string>
 }
 
+export interface TextIndexPrefixes {
+  max_chars: integer
+  min_chars: integer
+}
+
 export type TextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
 
 export type TextToAnalyze = string | Array<string>
+
 export interface ThreadCountStats {
   active: long
   completed: long
@@ -9550,10 +9729,11 @@ export type ThreadType = 'cpu' | 'wait' | 'block'
 
 export interface ThrottleState {
   reason: string
-  timestamp: Date
+  timestamp: DateString
 }
 
 export type Time = string | integer
+
 export interface TimeOfDay {
   hour: Array<integer>
   minute: Array<integer>
@@ -9600,12 +9780,14 @@ export interface TokenDetail {
 }
 
 export type TokenFilter = AsciiFoldingTokenFilter | CommonGramsTokenFilter | ConditionTokenFilter | DelimitedPayloadTokenFilter | EdgeNGramTokenFilter | ElisionTokenFilter | FingerprintTokenFilter | HunspellTokenFilter | HyphenationDecompounderTokenFilter | KeepTypesTokenFilter | KeepWordsTokenFilter | KeywordMarkerTokenFilter | KStemTokenFilter | LengthTokenFilter | LimitTokenCountTokenFilter | LowercaseTokenFilter | MultiplexerTokenFilter | NGramTokenFilter | NoriPartOfSpeechTokenFilter | PatternCaptureTokenFilter | PatternReplaceTokenFilter | PorterStemTokenFilter | PredicateTokenFilter | RemoveDuplicatesTokenFilter | ReverseTokenFilter | ShingleTokenFilter | SnowballTokenFilter | StemmerOverrideTokenFilter | StemmerTokenFilter | StopTokenFilter | SynonymGraphTokenFilter | SynonymTokenFilter | TrimTokenFilter | TruncateTokenFilter | UniqueTokenFilter | UppercaseTokenFilter | WordDelimiterGraphTokenFilter | WordDelimiterTokenFilter
+
 export interface TokenFilterBase {
   type: string
   version?: string
 }
 
 export type Tokenizer = CharGroupTokenizer | EdgeNGramTokenizer | KeywordTokenizer | LetterTokenizer | LowercaseTokenizer | NGramTokenizer | NoriTokenizer | PathHierarchyTokenizer | StandardTokenizer | UaxEmailUrlTokenizer | WhitespaceTokenizer
+
 export interface TokenizerBase {
   type: string
   version?: string
@@ -9667,15 +9849,15 @@ export interface Transform {
 export interface TransformCheckpointStats {
   checkpoint: long
   checkpoint_progress: TransformProgress
-  timestamp: Date
+  timestamp: DateString
   timestamp_millis: long
-  time_upper_bound: Date
+  time_upper_bound: DateString
   time_upper_bound_millis: long
 }
 
 export interface TransformCheckpointingInfo {
   changes_last_detected_at: long
-  changes_last_detected_at_date_time: Date
+  changes_last_detected_at_date_time: DateString
   last: TransformCheckpointStats
   next: TransformCheckpointStats
   operations_behind: long
@@ -9794,7 +9976,7 @@ export interface TriggerEventContainer {
 
 export interface TriggerEventResult {
   manual: TriggerEventContainer
-  triggered_time: Date
+  triggered_time: DateString
   type: string
 }
 
@@ -9845,8 +10027,12 @@ export interface TypeMapping {
 export type TypeName = string
 
 export type TypeNames = string | Array<string>
+
 export interface TypeQuery extends QueryBase {
   value: string
+}
+
+export interface TypedSearchRequest {
 }
 
 export interface UaxEmailUrlTokenizer extends TokenizerBase {
@@ -9854,7 +10040,7 @@ export interface UaxEmailUrlTokenizer extends TokenizerBase {
 }
 
 export interface UnassignedInformation {
-  at: Date
+  at: DateString
   last_allocation_status: string
   reason: UnassignedInformationReason
   details?: string
@@ -10095,7 +10281,7 @@ export interface UpdateTransformRequest extends RequestBase {
 
 export interface UpdateTransformResponse {
   create_time: long
-  create_time_date_time: Date
+  create_time_date_time: DateString
   description: string
   dest: TransformDestination
   frequency: Time
@@ -10268,8 +10454,8 @@ export interface WatchRecord {
 }
 
 export interface WatchRecordQueuedStats {
-  execution_time: Date
-  triggered_time: Date
+  execution_time: DateString
+  triggered_time: DateString
   watch_id: string
   watch_record_id: string
 }
@@ -10280,8 +10466,8 @@ export interface WatchRecordStats extends WatchRecordQueuedStats {
 
 export interface WatchStatus {
   actions: Record<string, ActionStatus>
-  last_checked: Date
-  last_met_condition: Date
+  last_checked: DateString
+  last_met_condition: DateString
   state: ActivationState
   version: integer
 }
@@ -10379,7 +10565,7 @@ export interface WriteResponseBase {
 }
 
 export interface XPackBuildInformation {
-  date: Date
+  date: DateString
   hash: string
 }
 
