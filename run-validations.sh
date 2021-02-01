@@ -4,7 +4,6 @@ set -euo pipefail
 npm install --prefix specification
 npm install --prefix typescript-generator
 
-npm run compile:brain
 npm run compile:specs
 npm run compile:canonical-json
 npm run compile:ts-validation
