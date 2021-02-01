@@ -119,6 +119,7 @@ export default function compileSpecification (): void {
   for (const declaration of declarations.enums) {
     model.types.push(modelEnumDeclaration(declaration))
   }
+
   for (const declaration of declarations.typeAliases) {
     model.types.push(modelTypeAlias(declaration))
   }
@@ -130,7 +131,7 @@ export default function compileSpecification (): void {
       name: api,
       description: spec.documentation.description,
       docUrl: spec.documentation.url,
-      stability: spec.stability as model.Stability,
+      stability: spec.stability,
       request: null,
       requestBodyRequired: Boolean(spec.body?.required),
       response: null,

@@ -399,17 +399,41 @@ export function isKnownBehavior (node: HeritageClause | ExpressionWithTypeArgume
  * If it can't compute it, defaults to `internal`.
  */
 export function getNameSpace (node: Node): string {
+  // if the node we are checking is a TypeReferenceNode,
+  // then we can get the identifier and find where
+  // it has been defined and compute the namespace from that.
+  if (Node.isTypeReferenceNode(node)) {
+    const identifier = node.getTypeName()
+    if (Node.isIdentifier(identifier)) {
+      const name = identifier.compilerNode.escapedText as string
+      // the Array object is defined by TypeScript
+      if (name === 'Array') return 'internal'
+      const definition = identifier.getDefinitions()[0]
+      return cleanPath(definition.getSourceFile().getFilePath())
+    }
+  }
+
+  // if the node we are checking is a TypeAliasDeclaration
+  // then we can directly get the source file as we are visiting
+  // its definition, and from it compute the namespace.
+  if (Node.isTypeAliasDeclaration(node)) {
+    return cleanPath(node.getSourceFile().getFilePath())
+  }
+
   const declaration = node.getType().getSymbol()?.getDeclarations()[0]
   if (declaration == null) {
     return 'internal'
   }
 
-  let nameSpace = dirname(declaration.getSourceFile().getFilePath())
-    .replace(/.*[/\\]specs[/\\]?/, '')
-    .replace(/[/\\]/g, '.')
-  if (nameSpace === '') nameSpace = 'internal'
+  return cleanPath(declaration.getSourceFile().getFilePath())
 
-  return nameSpace
+  function cleanPath (path: string): string {
+    path = dirname(path)
+      .replace(/.*[/\\]specs[/\\]?/, '')
+      .replace(/[/\\]/g, '.')
+    if (path === '') path = 'internal'
+    return path
+  }
 }
 
 /**

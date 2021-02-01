@@ -21,6 +21,7 @@
 
 import { join } from 'path'
 import { readdirSync } from 'fs'
+import * as model from './metamodel'
 
 const jsonSpecPath = join(__dirname, '..', 'specs', '_json_spec')
 
@@ -29,7 +30,7 @@ interface JsonSpec {
     url: string
     description: string
   }
-  stability: 'stable' | 'beta' | 'experimental'
+  stability: model.Stability
   url: {
     paths: Array<{
       path: string
