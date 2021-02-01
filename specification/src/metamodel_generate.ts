@@ -20,11 +20,18 @@
 import { Specification } from './api-specification'
 import { loadModel } from './metamodel_reader'
 import fs from 'fs'
+import stringify from 'safe-stable-stringify'
 
 const spec = Specification.load()
 
 const model = loadModel(spec)
 
-fs.writeFileSync('../output/schema/schema.json', JSON.stringify(model, null, 2))
+model.types.sort((a, b) => {
+  if (a.name.name > b.name.name) return 1
+  if (a.name.name < b.name.name) return -1
+  return 0
+})
+
+fs.writeFileSync('../output/schema/schema.json', stringify(model, null, 2))
 
 console.log('Schema generated in ../output/schema/schema.json')
