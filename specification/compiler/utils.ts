@@ -47,6 +47,18 @@ export const knownBehaviors = [
 ]
 
 /**
+ * Custom types that we use in the compiler
+ * to help contributors shape the specification.
+ * This types should not go in the final output.
+ */
+export const customTypes = [
+  'SingleKeyDictionary',
+  'Dictionary',
+  'Union',
+  'UserDefinedValue'
+]
+
+/**
  * Given a ts-morph Node element, it models it according to
  * our metamodel. It automatically models nested types as well.
  */
@@ -252,7 +264,7 @@ export function modelInherits (node: HeritageClause): model.Inherits[] {
     const generics = node.getTypeArguments().map(node => modelType(node))
     return {
       type: {
-        name: node.getText(),
+        name: node.getExpression().getText(),
         namespace: getNameSpace(node)
       },
       ...(generics.length > 0 && { generics })
@@ -269,7 +281,7 @@ export function modelImplements (node: ExpressionWithTypeArguments): model.Imple
   const generics = node.getTypeArguments().map(node => modelType(node))
   return {
     type: {
-      name: node.getText(),
+      name: node.getExpression().getText(),
       namespace: getNameSpace(node)
     },
     ...(generics.length > 0 && { generics })
@@ -285,7 +297,7 @@ export function modelBehaviors (node: ExpressionWithTypeArguments): model.Implem
   const generics = node.getTypeArguments().map(node => modelType(node))
   return {
     type: {
-      name: normalizeBehaviorName(node.getText()),
+      name: normalizeBehaviorName(node.getExpression().getText()),
       namespace: getNameSpace(node)
     },
     ...(generics.length > 0 && { generics })
@@ -350,7 +362,8 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
   const type = declaration.getTypeNode()
   assert(type, 'Type alias without a referenced type')
 
-  const name = declaration.getName()
+  // names that contains `.` or `-` will be wrapped inside single quotes
+  const name = declaration.getName().replace(/'/g, '')
   return {
     name,
     required: !declaration.hasQuestionToken(),
@@ -373,7 +386,7 @@ export function isKnownBehavior (node: HeritageClause | ExpressionWithTypeArgume
     }
   } else {
     for (const knownBehavior of knownBehaviors) {
-      if (node.getText().startsWith(knownBehavior)) {
+      if (node.getExpression().getText().startsWith(knownBehavior)) {
         return true
       }
     }

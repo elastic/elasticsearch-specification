@@ -20,6 +20,7 @@
 import assert from 'assert'
 import fs from 'fs'
 import { join } from 'path'
+import stringify from 'safe-stable-stringify'
 import {
   Project,
   ts,
@@ -49,7 +50,8 @@ import {
   modelBehaviors,
   parseJsDocTags,
   knownBehaviors,
-  isDefinedButNeverUsed
+  isDefinedButNeverUsed,
+  customTypes
 } from './utils'
 
 const specsFolder = join(__dirname, '..', 'specs')
@@ -88,6 +90,7 @@ export default function compileSpecification (): void {
   for (const sourceFile of project.getSourceFiles()) {
     for (const declaration of sourceFile.getClasses()) {
       if (isDefinedButNeverUsed(declaration)) continue
+      if (customTypes.includes(declaration.getName() ?? '')) continue
       declarations.classes.push(declaration)
     }
     for (const declaration of sourceFile.getInterfaces()) {
@@ -134,7 +137,7 @@ export default function compileSpecification (): void {
       urls: spec.url.paths.map(path => {
         return {
           path: path.path,
-          methods: path.method,
+          methods: path.methods,
           ...(path.deprecated != null && { deprecation: path.deprecated })
         }
       })
@@ -149,7 +152,15 @@ export default function compileSpecification (): void {
     model.endpoints.push(endpoint)
   }
 
-  fs.writeFileSync(join(__dirname, 'dump.json'), JSON.stringify(model, null, 2), 'utf8')
+  // Sort the types in alphabetical order
+  model.types.sort((a, b) => {
+    if (a.name.name > b.name.name) return 1
+    if (a.name.name < b.name.name) return -1
+    return 0
+  })
+
+  // the keys will be serialized in alphabetical order
+  fs.writeFileSync(join(__dirname, 'dump.json'), stringify(model, null, 2), 'utf8')
 }
 
 function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType): model.Request | model.Interface {
@@ -198,9 +209,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         type.query = property.properties
       } else {
         // the body can either by a value (eg Array<string> or an object with properties)
-        type.body = property.valueOf != null
-          ? { kind: 'value', value: property.valueOf }
-          : { kind: 'properties', properties: property.properties }
+        if (property.valueOf != null) {
+          type.body = { kind: 'value', value: property.valueOf }
+        } else if (property.properties.length > 0) {
+          type.body = { kind: 'properties', properties: property.properties }
+        }
       }
     }
 

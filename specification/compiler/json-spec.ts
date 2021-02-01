@@ -33,7 +33,7 @@ interface JsonSpec {
   url: {
     paths: Array<{
       path: string
-      method: string[]
+      methods: string[]
       parts?: Record<string, {
         type: string
         description: string
