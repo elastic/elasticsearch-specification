@@ -1,8 +1,36 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 import assert from 'assert'
 import fs from 'fs'
 import { join } from 'path'
-import * as ts from 'byots'
-import Debug from 'debug'
+import {
+  Project,
+  ts,
+  Node,
+  ClassDeclaration,
+  InterfaceDeclaration,
+  EnumDeclaration,
+  TypeAliasDeclaration,
+  PropertyDeclaration,
+  PropertySignature
+} from 'ts-morph'
 import * as model from './metamodel'
 import buildJsonSpec from './json-spec'
 import {
@@ -18,20 +46,14 @@ import {
   modelImplements,
   getNameSpace,
   getAllBehaviors,
-  modelBehaviors
+  modelBehaviors,
+  parseJsDocTags,
+  knownBehaviors,
+  isDefinedButNeverUsed
 } from './utils'
 
-const debug = Debug('compiler')
-
-/**
- * TODO:
- *    - handle JsDoc comments
- */
-
 const specsFolder = join(__dirname, '..', 'specs')
-const tsconfigPath = join(specsFolder, 'tsconfig.json')
-const { config } = ts.readConfigFile(tsconfigPath, file => ts.sys.readFile(file))
-const commandLine = ts.parseJsonConfigFileContent(config, ts.sys, specsFolder)
+const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 const jsonSpec = buildJsonSpec()
 
 type MappingsType = Map<string, {
@@ -40,8 +62,7 @@ type MappingsType = Map<string, {
 }>
 
 export default function compileSpecification (): void {
-  const program = ts.createProgram(commandLine.fileNames, commandLine.options)
-  const checker = program.getTypeChecker()
+  const project = new Project({ tsConfigFilePath })
 
   // Currently the only way to map endpoints and the
   // respective Request and Response classes is by
@@ -58,12 +79,45 @@ export default function compileSpecification (): void {
   }
 
   // Read and compile source files
-  for (const file of program.getSourceFiles()) {
-    if (!file.path.includes('specs')) continue
-    debug(`Compiling file ${file.fileName}`)
-    for (const statement of file.statements) {
-      model.types.push(...compileNode(statement, checker, mappings))
+  const declarations = {
+    classes: new Array<ClassDeclaration>(),
+    interfaces: new Array<InterfaceDeclaration>(),
+    enums: new Array<EnumDeclaration>(),
+    typeAliases: new Array<TypeAliasDeclaration>()
+  }
+  for (const sourceFile of project.getSourceFiles()) {
+    for (const declaration of sourceFile.getClasses()) {
+      if (isDefinedButNeverUsed(declaration)) continue
+      declarations.classes.push(declaration)
     }
+    for (const declaration of sourceFile.getInterfaces()) {
+      if (isDefinedButNeverUsed(declaration)) continue
+      declarations.interfaces.push(declaration)
+    }
+    for (const declaration of sourceFile.getEnums()) {
+      if (isDefinedButNeverUsed(declaration)) continue
+      declarations.enums.push(declaration)
+    }
+    for (const declaration of sourceFile.getTypeAliases()) {
+      if (isDefinedButNeverUsed(declaration)) continue
+      declarations.typeAliases.push(declaration)
+    }
+  }
+
+  // Visit all class, interface, enum and type alias definitions
+  for (const declaration of declarations.classes) {
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings))
+  }
+
+  for (const declaration of declarations.interfaces) {
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings))
+  }
+
+  for (const declaration of declarations.enums) {
+    model.types.push(modelEnumDeclaration(declaration))
+  }
+  for (const declaration of declarations.typeAliases) {
+    model.types.push(modelTypeAlias(declaration))
   }
 
   // Create endpoints and merge them with
@@ -98,103 +152,68 @@ export default function compileSpecification (): void {
   fs.writeFileSync(join(__dirname, 'dump.json'), JSON.stringify(model, null, 2), 'utf8')
 }
 
-function compileNode (node: ts.Node, checker: ts.TypeChecker, mappings: MappingsType): model.TypeDefinition[] {
-  const declarations: model.TypeDefinition[] = []
-
-  switch (node.kind) {
-    case ts.SyntaxKind.ClassDeclaration:
-      assert(ts.isClassDeclaration(node))
-      declarations.push(compileClassOrInterfaceDeclaration(node, checker, mappings))
-      break
-
-    case ts.SyntaxKind.InterfaceDeclaration:
-      assert(ts.isInterfaceDeclaration(node))
-      declarations.push(compileClassOrInterfaceDeclaration(node, checker, mappings))
-      break
-
-    case ts.SyntaxKind.EnumDeclaration:
-      assert(ts.isEnumDeclaration(node))
-      declarations.push(modelEnumDeclaration(node, checker))
-      break
-
-    case ts.SyntaxKind.TypeAliasDeclaration:
-      assert(ts.isTypeAliasDeclaration(node))
-      declarations.push(modelTypeAlias(node, checker))
-      break
-
-    // nothing to do here
-    case ts.SyntaxKind.FunctionDeclaration:
-      break
-
-    default:
-      throw new Error(`Unhandled kind ${node.kind}`)
-  }
-
-  return declarations
-}
-
-function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | ts.InterfaceDeclaration, checker: ts.TypeChecker, mappings: MappingsType): model.Request | model.Interface {
-  assert(declaration.name, 'Anonymous classes should not exists')
-  const name = declaration.name.escapedText as string
+function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType): model.Request | model.Interface {
+  const name = declaration.getName()
+  assert(name, 'Anonymous classes should not exists')
 
   // Request defintions neeeds to be handled
   // differently from normal classes
-  if (isApi(declaration) && name.endsWith('Request')) {
+  if (Node.isClassDeclaration(declaration) && isApi(declaration)) {
+    // TODO: add support for implements and behaviors
+
     // Store the mappings for the current endpoint
     mappings.set(getApiName(declaration), {
-      request: { name, namespace: getNameSpace(declaration, checker) },
-      response: { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration, checker) }
+      request: { name, namespace: getNameSpace(declaration) },
+      response: { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
     })
 
     const type: model.Request = {
       kind: 'request',
-      name: { name, namespace: getNameSpace(declaration, checker) },
+      name: { name, namespace: getNameSpace(declaration) },
       path: new Array<model.Property>(),
       query: new Array<model.Property>()
     }
 
-    ts.forEachChild(declaration, child => {
-      switch (child.kind) {
-        // we are visiting `path_parts, `query_parameters` or `body`
-        case ts.SyntaxKind.PropertySignature:
-        case ts.SyntaxKind.PropertyDeclaration: {
-          assert(ts.isPropertySignature(child) || ts.isPropertyDeclaration(child))
-          const property = visitRequestProperty(child, checker)
-          if (property.name === 'path_parts') {
-            type.path = property.properties
-          } else if (property.name === 'query_parameters') {
-            type.query = property.properties
-          } else {
-            // the body can either by a value (eg Array<string> or an object with properties)
-            type.body = property.valueOf != null
-              ? { kind: 'value', value: property.valueOf }
-              : { kind: 'properties', properties: property.properties }
-          }
-          break
-        }
-
-        // The class is extended, an extended class
-        // could accept generics as well
-        case ts.SyntaxKind.HeritageClause:
-          assert(ts.isHeritageClause(child))
-          type.inherits = (type.inherits ?? []).concat(modelInherits(child, checker))
-          break
-
-        // The class accepts one or more generics
-        case ts.SyntaxKind.TypeParameter:
-          assert(ts.isTypeParameterDeclaration(child))
-          type.generics = (type.generics ?? []).concat(modelGenerics(child))
-          break
-
-        // Nothing to do
-        case ts.SyntaxKind.Decorator:
-        case ts.SyntaxKind.Identifier:
-          break
-
-        default:
-          throw new Error(`Unhandled kind ${child.kind} in class ${name}`)
+    if (declaration.getJsDocs().length > 0) {
+      const tags = parseJsDocTags(declaration.getJsDocs())
+        .filter(tag => tag.name !== 'behavior')
+      if (tags.length > 0) {
+        type.annotations = tags.reduce((acc, val) => {
+          acc[val.name] = val.value
+          return acc
+        }, {})
       }
-    })
+    }
+
+    for (const member of declaration.getMembers()) {
+      // we are visiting `path_parts, `query_parameters` or `body`
+      assert(
+        Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
+        'Class and interfaces can only have property declarations or signatures'
+      )
+      const property = visitRequestProperty(member)
+      if (property.name === 'path_parts') {
+        type.path = property.properties
+      } else if (property.name === 'query_parameters') {
+        type.query = property.properties
+      } else {
+        // the body can either by a value (eg Array<string> or an object with properties)
+        type.body = property.valueOf != null
+          ? { kind: 'value', value: property.valueOf }
+          : { kind: 'properties', properties: property.properties }
+      }
+    }
+
+    // The class is extended, an extended class
+    // could accept generics as well
+    for (const inherit of declaration.getHeritageClauses()) {
+      type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
+    }
+
+    // The class accepts one or more generics
+    for (const typeParameter of declaration.getTypeParameters()) {
+      type.generics = (type.generics ?? []).concat(modelGenerics(typeParameter))
+    }
 
     return type
 
@@ -202,66 +221,77 @@ function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | 
   } else {
     const type: model.Interface = {
       kind: 'interface',
-      name: { name, namespace: getNameSpace(declaration, checker) },
+      name: { name, namespace: getNameSpace(declaration) },
       properties: new Array<model.Property>()
     }
 
-    ts.forEachChild(declaration, child => {
-      switch (child.kind) {
-        // Any property definition
-        case ts.SyntaxKind.PropertySignature:
-        case ts.SyntaxKind.PropertyDeclaration:
-          assert(ts.isPropertySignature(child) || ts.isPropertyDeclaration(child))
-          type.properties.push(modelProperty(child, checker))
-          break
+    if (declaration.getJsDocs().length > 0) {
+      const tags = parseJsDocTags(declaration.getJsDocs())
 
-        // The class is extended, an extended class could accept generics as well,
-        // Implements will be catched here as well, they can be differentiated
-        // by looking as `node.token`, which can either be
-        // `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
-        // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
-        // if it's a normal implements or a behavior, in such case, the behaviors
-        // need to be collected and added to the type.
-        case ts.SyntaxKind.HeritageClause: {
-          assert(ts.isHeritageClause(child))
-          // check if the current node or one of the ancestor
-          // has one or more behaviors attached
-          const attachedBehaviors = getAllBehaviors(declaration, checker)
-          if (attachedBehaviors.length > 0) {
-            type.attachedBehaviors = Array.from(
-              new Set((type.attachedBehaviors ?? []).concat(attachedBehaviors))
-            )
-          }
-
-          if (child.token === ts.SyntaxKind.ExtendsKeyword) {
-            type.inherits = (type.inherits ?? []).concat(modelInherits(child, checker))
-          } else if (child.token === ts.SyntaxKind.ImplementsKeyword) {
-            if (isKnownBehavior(child)) {
-              type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(child, checker))
-            } else {
-              type.implements = (type.implements ?? []).concat(modelImplements(child, checker))
-            }
-          } else {
-            throw new Error(`Unhandled heritage token ${child.token as string} in class ${name}`)
-          }
-          break
-        }
-
-        // The class accepts one or more generics
-        case ts.SyntaxKind.TypeParameter:
-          assert(ts.isTypeParameterDeclaration(child))
-          type.generics = (type.generics ?? []).concat(modelGenerics(child))
-          break
-
-        // Nothing to do
-        case ts.SyntaxKind.Decorator:
-        case ts.SyntaxKind.Identifier:
-          break
-
-        default:
-          throw new Error(`Unhandled kind ${child.kind} in class ${name}`)
+      // Behaviors must be defined inside the compiler
+      // before start using them in the spec.
+      if (tags.some(tag => tag.name === 'behavior')) {
+        assert(knownBehaviors.includes(name), `Detected unknown behavior: ${name}`)
       }
-    })
+
+      // Any other jsdoc tag annotations should be added to the type annotations
+      const otherTags = tags.filter(tag => tag.name !== 'behavior')
+      if (otherTags.length > 0) {
+        type.annotations = otherTags.reduce((acc, val) => {
+          acc[val.name] = val.value
+          return acc
+        }, {})
+      }
+    }
+
+    for (const member of declaration.getMembers()) {
+      // Any property definition
+      assert(
+        Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
+        'Class and interfaces can only have property declarations or signatures'
+      )
+      type.properties.push(modelProperty(member))
+    }
+
+    // The class is extended, an extended class could accept generics as well,
+    // Implements will be catched here as well, they can be differentiated
+    // by looking as `node.token`, which can either be
+    // `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
+    // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
+    // if it's a normal implements or a behavior, in such case, the behaviors
+    // need to be collected and added to the type.
+    if (Node.isClassDeclaration(declaration) && declaration.getHeritageClauses().length > 0) {
+      // check if the current node or one of the ancestor
+      // has one or more behaviors attached
+      const attachedBehaviors = getAllBehaviors(declaration)
+      if (attachedBehaviors.length > 0) {
+        type.attachedBehaviors = Array.from(
+          new Set((type.attachedBehaviors ?? []).concat(attachedBehaviors))
+        )
+      }
+    }
+
+    for (const inherit of declaration.getHeritageClauses()) {
+      if (inherit.getToken() === ts.SyntaxKind.ExtendsKeyword) {
+        type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
+      }
+    }
+
+    // Only classes can implement interfaces
+    if (Node.isClassDeclaration(declaration)) {
+      for (const implement of declaration.getImplements()) {
+        if (isKnownBehavior(implement)) {
+          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement))
+        } else {
+          type.implements = (type.implements ?? []).concat(modelImplements(implement))
+        }
+      }
+    }
+
+    // The class accepts one or more generics
+    for (const typeParameter of declaration.getTypeParameters()) {
+      type.generics = (type.generics ?? []).concat(modelGenerics(typeParameter))
+    }
 
     return type
   }
@@ -272,11 +302,13 @@ function compileClassOrInterfaceDeclaration (declaration: ts.ClassDeclaration | 
  * differently as are described as nested objects, and the body could have two
  * different types, `model.Property[]` (a normal object) or `model.ValueOf` (eg: an array or generic)
  */
-function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclaration, checker: ts.TypeChecker): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
-  assert(node.type)
-  const name = node.symbol.escapedName as string
+function visitRequestProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
   const properties: model.Property[] = []
   let valueOf: model.ValueOf | null = null
+
+  const name = member.getName()
+  const value = member.getTypeNode()
+  assert(value, `The property ${name} is not defined`)
 
   // Request classes have three top level properties:
   // - path_parts
@@ -289,15 +321,15 @@ function visitRequestProperty (node: ts.PropertySignature | ts.PropertyDeclarati
   // declaration is a child of the top level properties, while TypeReference should
   // directly by "unwrapped" with `modelType` because if you navigate the children of a TypeReference
   // you will lose the context and crafting the types becomes really hard.
-  if (node.type.kind === ts.SyntaxKind.TypeReference) {
-    valueOf = modelType(node.type, checker)
+  if (Node.isTypeReferenceNode(value)) {
+    valueOf = modelType(value)
   } else {
-    ts.forEachChild(node.type, child => {
+    value.forEachChild(child => {
       assert(
-        ts.isPropertySignature(child) || ts.isPropertyDeclaration(child),
-        `Children should be ${ts.SyntaxKind.PropertySignature} or ${ts.SyntaxKind.PropertyDeclaration}, instead got ${child.kind}`
+        Node.isPropertySignature(child) || Node.isPropertyDeclaration(child),
+        `Children should be ${ts.SyntaxKind.PropertySignature} or ${ts.SyntaxKind.PropertyDeclaration} but ${child.getKind()} instead`
       )
-      properties.push(modelProperty(child, checker))
+      properties.push(modelProperty(child))
     })
   }
 
