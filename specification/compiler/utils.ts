@@ -297,7 +297,7 @@ export function modelBehaviors (node: ExpressionWithTypeArguments): model.Implem
   const generics = node.getTypeArguments().map(node => modelType(node))
   return {
     type: {
-      name: normalizeBehaviorName(node.getExpression().getText()),
+      name: node.getExpression().getText(),
       namespace: getNameSpace(node)
     },
     ...(generics.length > 0 && { generics })
@@ -380,13 +380,13 @@ export function isKnownBehavior (node: HeritageClause | ExpressionWithTypeArgume
     if (node.getTypeNodes().length !== 1) return false
 
     for (const knownBehavior of knownBehaviors) {
-      if (node.getTypeNodes()[0].getText().startsWith(knownBehavior)) {
+      if (node.getTypeNodes()[0].getExpression().getText() === knownBehavior) {
         return true
       }
     }
   } else {
     for (const knownBehavior of knownBehaviors) {
-      if (node.getExpression().getText().startsWith(knownBehavior)) {
+      if (node.getExpression().getText() === knownBehavior) {
         return true
       }
     }
@@ -414,11 +414,11 @@ export function getNameSpace (node: Node): string {
 
 /**
  * Given a node, it searches the node and its ancestors for behavior definitons.
- * It then collects the normalized behavior names and returns an unique array of behaviors.
+ * It then collects the behavior names and returns an unique array of behaviors.
  * A behavior can be found in the current node or in one of the ancestors.
  */
 export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration): string[] {
-  const behaviors = getBehaviors(node.getHeritageClauses()).map(normalizeBehaviorName)
+  const behaviors = getBehaviors(node.getHeritageClauses())
   const extended = getExtended(node.getHeritageClauses()).flatMap(clause => clause.getTypeNodes())
     .map(t => t.getExpression())
 
@@ -427,7 +427,7 @@ export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration):
     const declaration = extend.findReferences()[0].getDefinition().getDeclarationNode()
     if (Node.isClassDeclaration(declaration) || Node.isInterfaceDeclaration(declaration)) {
       if (declaration.getHeritageClauses().length > 0) {
-        behaviors.push(...getAllBehaviors(declaration).map(normalizeBehaviorName))
+        behaviors.push(...getAllBehaviors(declaration))
       }
     } else {
       throw new Error(`Unhandled extended declaration ${declaration?.getText() ?? ''}`)
@@ -443,24 +443,8 @@ export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration):
   function getBehaviors (clauses: HeritageClause[]): string[] {
     return clauses
       .filter(isKnownBehavior)
-      .map(clause => clause.getTypeNodes()[0].getText())
+      .map(clause => clause.getTypeNodes()[0].getExpression().getText())
   }
-}
-
-/**
- * Given a behavior name, it removes all the unneccesary parts
- * and keep only the normalized name (eg: AdditionalProperties<A, B> => AdditionalProperties)
- *
- * TODO: we should be able to get the behavior name
- *       without the generics somehow
- */
-export function normalizeBehaviorName (name: string): string {
-  for (const knownBehavior of knownBehaviors) {
-    if (name.startsWith(knownBehavior)) {
-      return knownBehavior
-    }
-  }
-  throw new Error(`Unhandled behavior ${name}`)
 }
 
 /**
