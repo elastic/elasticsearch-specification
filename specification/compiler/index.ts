@@ -161,7 +161,7 @@ export default function compileSpecification (): void {
   })
 
   // the keys will be serialized in alphabetical order
-  fs.writeFileSync(join(__dirname, 'dump.json'), stringify(model, null, 2), 'utf8')
+  fs.writeFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), stringify(model, null, 2), 'utf8')
 }
 
 function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType): model.Request | model.Interface {

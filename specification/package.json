@@ -2,17 +2,14 @@
   "name": "elasticsearch-client-specification",
   "version": "0.0.1",
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
-  "main": "src/api-specification.js",
+  "main": "compiler/index.ts",
   "scripts": {
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
     "format:check": "prettier --check specs/",
     "format:fix": "prettier --write specs/",
-    "start": "ts-node src/main.ts",
-    "generate-schema": "ts-node src/metamodel_generate.ts",
-    "debug-windows": "npm run compile && node %NODE_DEBUG_OPTION% src/main.js",
-    "compile:specs": "tsc",
-    "compile:brain": "tsc --project specs/tsconfig.json --noEmit"
+    "generate-schema": "ts-node compiler/index.ts",
+    "compile:specs": "tsc --project specs/tsconfig.json --noEmit"
   },
   "author": "Elastic",
   "license": "MIT",
@@ -41,8 +38,6 @@
   },
   "ts-standard": {
     "ignore": [
-      "lib/",
-      "build/",
       "specs/"
     ]
   }
