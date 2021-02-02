@@ -4828,7 +4828,7 @@ export interface HunspellTokenFilter extends TokenFilterBase {
 export interface HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
 }
 
-export type IcuCollationAlternate = 'shifted' | ''non-ignorable''
+export type IcuCollationAlternate = 'shifted' | 'non-ignorable'
 
 export type IcuCollationCaseFirst = 'lower' | 'upper'
 
