@@ -23,9 +23,9 @@ import { join } from 'path'
 import { readdirSync } from 'fs'
 import * as model from './metamodel'
 
-const jsonSpecPath = join(__dirname, '..', 'specs', '_json_spec')
+const jsonSpecPath = join(__dirname, '..', '..', 'specs', '_json_spec')
 
-interface JsonSpec {
+export interface JsonSpec {
   documentation: {
     url: string
     description: string
@@ -46,7 +46,7 @@ interface JsonSpec {
       }
     }>
   }
-  params: Record<string, {
+  params?: Record<string, {
     type: string
     description: string
     options?: string[]
