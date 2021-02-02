@@ -51,3 +51,10 @@ You can find the full definition of this types in the [modeling guide](./modelin
 Those types are also tracked in [`specification/compiler/utils.ts`](../specification/compiler/utils.ts),
 because they can't be added in the output JSON, as we only need them to let the compiler
 know how those structures should be represented in the output JSON.
+
+## Useful links
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/)
+- [TypeScript Playground](https://www.typescriptlang.org/play)
+- [ts-ast-viewer.com](https://ts-ast-viewer.com/)
+- [ts-morph.com](https://ts-morph.com/)
