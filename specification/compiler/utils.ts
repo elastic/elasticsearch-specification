@@ -329,7 +329,8 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
     },
     kind: 'enum',
     members: declaration.getMembers()
-      .map(member => ({ name: member.getName() }))
+      // names that contains `.` or `-` will be wrapped inside single quotes
+      .map(member => ({ name: member.getName().replace(/'/g, '') }))
   }
 }
 

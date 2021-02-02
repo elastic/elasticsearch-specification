@@ -12,7 +12,7 @@
     "compile:specs": "tsc --project specs/tsconfig.json --noEmit"
   },
   "author": "Elastic",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^14.14.21",
     "prettier": "2.2.1",
