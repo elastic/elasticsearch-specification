@@ -89,20 +89,16 @@ export default function compileSpecification (): void {
   }
   for (const sourceFile of project.getSourceFiles()) {
     for (const declaration of sourceFile.getClasses()) {
-      if (isDefinedButNeverUsed(declaration)) continue
       if (customTypes.includes(declaration.getName() ?? '')) continue
       declarations.classes.push(declaration)
     }
     for (const declaration of sourceFile.getInterfaces()) {
-      if (isDefinedButNeverUsed(declaration)) continue
       declarations.interfaces.push(declaration)
     }
     for (const declaration of sourceFile.getEnums()) {
-      if (isDefinedButNeverUsed(declaration)) continue
       declarations.enums.push(declaration)
     }
     for (const declaration of sourceFile.getTypeAliases()) {
-      if (isDefinedButNeverUsed(declaration)) continue
       declarations.typeAliases.push(declaration)
     }
   }

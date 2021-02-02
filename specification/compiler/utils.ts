@@ -329,8 +329,15 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
     },
     kind: 'enum',
     members: declaration.getMembers()
-      // names that contains `.` or `-` will be wrapped inside single quotes
-      .map(member => ({ name: member.getName().replace(/'/g, '') }))
+      .map(member => {
+        const alternateName = parseJsDocTags(member.getJsDocs())
+          .find(tag => tag.name === 'alternate_name')
+        return {
+          // names that contains `.` or `-` will be wrapped inside single quotes
+          name: member.getName().replace(/'/g, ''),
+          ...(alternateName != null && { stringValue: alternateName.value })
+        }
+      })
   }
 }
 
@@ -343,13 +350,20 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
 export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAlias {
   const type = declaration.getTypeNode()
   assert(type, 'Type alias without a referenced type')
+  const annotations = parseJsDocTags(declaration.getJsDocs())
+    .reduce((acc, val) => {
+      acc[val.name] = val.value
+      return acc
+    }, {})
+
   return {
     name: {
       name: declaration.getName(),
       namespace: getNameSpace(declaration)
     },
     kind: 'type_alias',
-    type: modelType(type)
+    type: modelType(type),
+    ...(Object.keys(annotations).length > 0 && { annotations })
   }
 }
 
