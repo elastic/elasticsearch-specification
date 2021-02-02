@@ -38,7 +38,7 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
         if (path.parts == null) return false
         return path.parts[property.name] != null
       })
-      if (definition != null && definition.parts != null) {
+      if (definition?.parts != null) {
         const { description } = definition.parts[property.name]
         property.description = description
       }

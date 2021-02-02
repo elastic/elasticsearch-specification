@@ -108,7 +108,7 @@ export default function compileSpecification (): model.Model {
       declarations.enums.push(declaration)
     }
     for (const declaration of sourceFile.getTypeAliases()) {
-     if (isDefinedButNeverUsed(declaration)) {
+      if (isDefinedButNeverUsed(declaration)) {
         definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
       }
       declarations.typeAliases.push(declaration)
