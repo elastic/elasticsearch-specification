@@ -18,6 +18,7 @@
  */
 
 import assert from 'assert'
+import { writeFileSync } from 'fs'
 import { join } from 'path'
 import {
   Project,
@@ -48,7 +49,8 @@ import {
   modelBehaviors,
   parseJsDocTags,
   knownBehaviors,
-  customTypes
+  customTypes,
+  isDefinedButNeverUsed
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
@@ -84,21 +86,40 @@ export default function compileSpecification (): model.Model {
     enums: new Array<EnumDeclaration>(),
     typeAliases: new Array<TypeAliasDeclaration>()
   }
+  const definedButNeverUsed: string[] = []
   for (const sourceFile of project.getSourceFiles()) {
     for (const declaration of sourceFile.getClasses()) {
       if (customTypes.includes(declaration.getName() ?? '')) continue
+      if (isDefinedButNeverUsed(declaration)) {
+        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
+      }
       declarations.classes.push(declaration)
     }
     for (const declaration of sourceFile.getInterfaces()) {
+      if (isDefinedButNeverUsed(declaration)) {
+        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
+      }
       declarations.interfaces.push(declaration)
     }
     for (const declaration of sourceFile.getEnums()) {
+      if (isDefinedButNeverUsed(declaration)) {
+        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
+      }
       declarations.enums.push(declaration)
     }
     for (const declaration of sourceFile.getTypeAliases()) {
+     if (isDefinedButNeverUsed(declaration)) {
+        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
+      }
       declarations.typeAliases.push(declaration)
     }
   }
+
+  writeFileSync(
+    join(__dirname, '..', '..', '..', 'output', 'dangling-types', 'dangling.csv'),
+    definedButNeverUsed.join('\n'),
+    'utf8'
+  )
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {
@@ -340,4 +361,8 @@ function visitRequestProperty (member: PropertyDeclaration | PropertySignature):
   }
 
   return { name, properties, valueOf }
+}
+
+function formatDanglingPath (path: string): string {
+  return path.replace(/.*[/\\]specs[/\\]?/, '')
 }
