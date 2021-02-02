@@ -9088,6 +9088,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "watch_id",
           "required": true,
           "type": {
@@ -9099,6 +9100,7 @@
           }
         },
         {
+          "description": "A comma-separated list of the action ids to be acked",
           "name": "action_id",
           "required": false,
           "type": {
@@ -9439,6 +9441,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "watch_id",
           "required": true,
           "type": {
@@ -11225,6 +11228,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of alias names to return",
           "name": "name",
           "required": true,
           "type": {
@@ -11236,6 +11240,7 @@
           }
         },
         {
+          "description": "A comma-separated list of index names to filter aliases",
           "name": "index",
           "required": false,
           "type": {
@@ -12017,6 +12022,7 @@
       },
       "path": [
         {
+          "description": "The name of the index to scope the operation",
           "name": "index",
           "required": false,
           "type": {
@@ -13411,6 +13417,7 @@
       },
       "path": [
         {
+          "description": "The async search ID",
           "name": "id",
           "required": true,
           "type": {
@@ -13494,6 +13501,7 @@
       },
       "path": [
         {
+          "description": "The async search ID",
           "name": "id",
           "required": true,
           "type": {
@@ -14291,6 +14299,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -16248,6 +16257,7 @@
       },
       "path": [
         {
+          "description": "Default index for items which don't provide one",
           "name": "index",
           "required": false,
           "type": {
@@ -16259,6 +16269,7 @@
           }
         },
         {
+          "description": "Default document type for items which don't provide one",
           "name": "type",
           "required": false,
           "type": {
@@ -16966,6 +16977,7 @@
       },
       "path": [
         {
+          "description": "Cancel the task with specified task id (node_id:task_number)",
           "name": "task_id",
           "required": false,
           "type": {
@@ -17204,6 +17216,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of alias names to return",
           "name": "name",
           "required": false,
           "type": {
@@ -17400,6 +17413,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs or names to limit the returned information",
           "name": "node_id",
           "required": false,
           "type": {
@@ -17519,6 +17533,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to limit the returned information",
           "name": "index",
           "required": false,
           "type": {
@@ -17769,6 +17784,7 @@
       },
       "path": [
         {
+          "description": "The ID of the data frame analytics to fetch",
           "name": "id",
           "required": false,
           "type": {
@@ -17998,6 +18014,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeeds stats to fetch",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -18150,6 +18167,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of fields to return the fielddata size",
           "name": "fields",
           "required": false,
           "type": {
@@ -18636,6 +18654,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to limit the returned information",
           "name": "index",
           "required": false,
           "type": {
@@ -19371,6 +19390,7 @@
       },
       "path": [
         {
+          "description": "The ID of the jobs stats to fetch",
           "name": "job_id",
           "required": false,
           "type": {
@@ -21077,6 +21097,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list or wildcard expression of index names to limit the returned information",
           "name": "index",
           "required": false,
           "type": {
@@ -21534,6 +21555,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to limit the returned information",
           "name": "index",
           "required": false,
           "type": {
@@ -22258,6 +22280,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to limit the returned information",
           "name": "index",
           "required": false,
           "type": {
@@ -22465,6 +22488,7 @@
       },
       "path": [
         {
+          "description": "Name of repository from which to fetch the snapshot information",
           "name": "repository",
           "required": false,
           "type": {
@@ -22818,6 +22842,7 @@
       },
       "path": [
         {
+          "description": "A pattern that returned template names must match",
           "name": "name",
           "required": false,
           "type": {
@@ -23112,6 +23137,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of regular-expressions to filter the thread pools in the output",
           "name": "thread_pool_patterns",
           "required": false,
           "type": {
@@ -23352,6 +23378,7 @@
       },
       "path": [
         {
+          "description": "The ID of the trained models stats to fetch",
           "name": "model_id",
           "required": false,
           "type": {
@@ -23768,6 +23795,7 @@
       },
       "path": [
         {
+          "description": "The id of the transform for which to get stats. '_all' or '*' implies all transforms",
           "name": "transform_id",
           "required": false,
           "type": {
@@ -24250,6 +24278,7 @@
       },
       "path": [
         {
+          "description": "The username of the user to change the password for",
           "name": "username",
           "required": false,
           "type": {
@@ -24714,6 +24743,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -24825,6 +24855,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index name to limit the operation",
           "name": "index",
           "required": false,
           "type": {
@@ -24951,6 +24982,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of realms to clear",
           "name": "realms",
           "required": true,
           "type": {
@@ -25044,6 +25076,7 @@
       },
       "path": [
         {
+          "description": "Role name",
           "name": "name",
           "required": true,
           "type": {
@@ -25141,6 +25174,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of scroll IDs to clear",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -25293,6 +25327,7 @@
       },
       "path": [
         {
+          "description": "The name of the source index to clone",
           "name": "index",
           "required": true,
           "type": {
@@ -25304,6 +25339,7 @@
           }
         },
         {
+          "description": "The name of the target index to clone into",
           "name": "target",
           "required": true,
           "type": {
@@ -25421,6 +25457,7 @@
       },
       "path": [
         {
+          "description": "A comma separated list of indices to close",
           "name": "index",
           "required": true,
           "type": {
@@ -25607,6 +25644,7 @@
       },
       "path": [
         {
+          "description": "The name of the job to close",
           "name": "job_id",
           "required": true,
           "type": {
@@ -26330,6 +26368,7 @@
       },
       "path": [
         {
+          "description": "Limit the information returned to a specific index",
           "name": "index",
           "required": false,
           "type": {
@@ -28327,6 +28366,7 @@
       },
       "path": [
         {
+          "description": "Limit the information returned to the specified metrics",
           "name": "metric",
           "required": false,
           "type": {
@@ -28338,6 +28378,7 @@
           }
         },
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -28584,6 +28625,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
           "name": "node_id",
           "required": false,
           "type": {
@@ -30060,6 +30102,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of indices to restrict the results",
           "name": "index",
           "required": false,
           "type": {
@@ -30071,6 +30114,7 @@
           }
         },
         {
+          "description": "A comma-separated list of types to restrict the results",
           "name": "type",
           "required": false,
           "type": {
@@ -30583,6 +30627,7 @@
       },
       "path": [
         {
+          "description": "The name of the auto follow pattern.",
           "name": "name",
           "required": true,
           "type": {
@@ -30765,6 +30810,7 @@
       },
       "path": [
         {
+          "description": "The name of the follower index",
           "name": "index",
           "required": true,
           "type": {
@@ -30910,6 +30956,7 @@
       },
       "path": [
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -31039,6 +31086,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -31134,6 +31182,7 @@
       },
       "path": [
         {
+          "description": "Document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -31145,6 +31194,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -31156,6 +31206,7 @@
           }
         },
         {
+          "description": "The type of the document",
           "name": "type",
           "required": false,
           "type": {
@@ -31356,6 +31407,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to create",
           "name": "id",
           "required": true,
           "type": {
@@ -33656,6 +33708,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "watch_id",
           "required": true,
           "type": {
@@ -33792,6 +33845,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names (supports wildcards); use `_all` for all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -33803,6 +33857,7 @@
           }
         },
         {
+          "description": "A comma-separated list of aliases to delete (supports wildcards); use `_all` to delete all aliases for the specified indices.",
           "name": "name",
           "required": true,
           "type": {
@@ -33871,6 +33926,7 @@
       },
       "path": [
         {
+          "description": "The name of the auto follow pattern.",
           "name": "name",
           "required": true,
           "type": {
@@ -33954,6 +34010,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -33965,6 +34022,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -34533,6 +34591,7 @@
       },
       "path": [
         {
+          "description": "The task id to rethrottle",
           "name": "task_id",
           "required": true,
           "type": {
@@ -34590,6 +34649,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to modify",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -34601,6 +34661,7 @@
           }
         },
         {
+          "description": "The ID of the event to remove from the calendar",
           "name": "event_id",
           "required": true,
           "type": {
@@ -34646,6 +34707,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to modify",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -34657,6 +34719,7 @@
           }
         },
         {
+          "description": "The ID of the job to remove from the calendar",
           "name": "job_id",
           "required": true,
           "type": {
@@ -34739,6 +34802,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to delete",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -34784,6 +34848,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeed to delete",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -34841,6 +34906,7 @@
       },
       "path": [
         {
+          "description": "The name of the enrich policy",
           "name": "name",
           "required": true,
           "type": {
@@ -34931,6 +34997,7 @@
       },
       "path": [
         {
+          "description": "The ID of the filter to delete",
           "name": "filter_id",
           "required": true,
           "type": {
@@ -34976,6 +35043,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job from which to delete forecasts",
           "name": "job_id",
           "required": true,
           "type": {
@@ -34987,6 +35055,7 @@
           }
         },
         {
+          "description": "The ID of the forecast to delete, can be comma delimited list. Leaving blank implies `_all`",
           "name": "forecast_id",
           "required": false,
           "type": {
@@ -35055,6 +35124,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of indices to delete; use `_all` or `*` string to delete all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -35156,6 +35226,7 @@
       },
       "path": [
         {
+          "description": "The name of the template",
           "name": "name",
           "required": true,
           "type": {
@@ -35224,6 +35295,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to delete",
           "name": "job_id",
           "required": true,
           "type": {
@@ -35325,6 +35397,7 @@
       },
       "path": [
         {
+          "description": "The name of the index lifecycle policy",
           "name": "policy",
           "required": true,
           "type": {
@@ -35370,6 +35443,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to fetch",
           "name": "job_id",
           "required": true,
           "type": {
@@ -35381,6 +35455,7 @@
           }
         },
         {
+          "description": "The ID of the snapshot to delete",
           "name": "snapshot_id",
           "required": true,
           "type": {
@@ -35426,6 +35501,7 @@
       },
       "path": [
         {
+          "description": "Pipeline ID",
           "name": "id",
           "required": true,
           "type": {
@@ -35494,6 +35570,7 @@
       },
       "path": [
         {
+          "description": "Application name",
           "name": "application",
           "required": true,
           "type": {
@@ -35505,6 +35582,7 @@
           }
         },
         {
+          "description": "Privilege name",
           "name": "name",
           "required": true,
           "type": {
@@ -35588,6 +35666,7 @@
       },
       "path": [
         {
+          "description": "Name of the snapshot repository to unregister. Wildcard (`*`) patterns are supported.",
           "name": "repository",
           "required": true,
           "type": {
@@ -35659,6 +35738,7 @@
       },
       "path": [
         {
+          "description": "The document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -35670,6 +35750,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -35681,6 +35762,7 @@
           }
         },
         {
+          "description": "The type of the document",
           "name": "type",
           "required": false,
           "type": {
@@ -35818,6 +35900,7 @@
       },
       "path": [
         {
+          "description": "Role-mapping name",
           "name": "name",
           "required": true,
           "type": {
@@ -35887,6 +35970,7 @@
       },
       "path": [
         {
+          "description": "Role name",
           "name": "name",
           "required": true,
           "type": {
@@ -35956,6 +36040,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to delete",
           "name": "id",
           "required": true,
           "type": {
@@ -36001,6 +36086,7 @@
       },
       "path": [
         {
+          "description": "Script ID",
           "name": "id",
           "required": true,
           "type": {
@@ -36069,6 +36155,7 @@
       },
       "path": [
         {
+          "description": "The id of the snapshot lifecycle policy to remove",
           "name": "policy_id",
           "required": true,
           "type": {
@@ -36114,6 +36201,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -36125,6 +36213,7 @@
           }
         },
         {
+          "description": "A snapshot name",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -36182,6 +36271,7 @@
       },
       "path": [
         {
+          "description": "The id of the transform to delete",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -36239,6 +36329,7 @@
       },
       "path": [
         {
+          "description": "username",
           "name": "username",
           "required": true,
           "type": {
@@ -36308,6 +36399,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "id",
           "required": true,
           "type": {
@@ -36497,6 +36589,7 @@
       },
       "path": [
         {
+          "description": "Index pattern",
           "name": "index",
           "required": false,
           "type": {
@@ -36971,6 +37064,7 @@
       },
       "path": [
         {
+          "description": "The username of the user to disable",
           "name": "username",
           "required": true,
           "type": {
@@ -37503,6 +37597,7 @@
       },
       "path": [
         {
+          "description": "The document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -37514,6 +37609,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -37525,6 +37621,7 @@
           }
         },
         {
+          "description": "The type of the document (use `_all` to fetch the first document matching the ID across all types)",
           "name": "type",
           "required": false,
           "type": {
@@ -38503,6 +38600,7 @@
       },
       "path": [
         {
+          "description": "The username of the user to enable",
           "name": "username",
           "required": true,
           "type": {
@@ -39242,6 +39340,7 @@
       },
       "path": [
         {
+          "description": "The name of the enrich policy",
           "name": "name",
           "required": true,
           "type": {
@@ -39461,6 +39560,7 @@
       },
       "path": [
         {
+          "description": "The id of the snapshot lifecycle policy to be executed",
           "name": "policy_id",
           "required": true,
           "type": {
@@ -39616,6 +39716,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "id",
           "required": false,
           "type": {
@@ -40324,6 +40425,7 @@
       },
       "path": [
         {
+          "description": "The name of the index to explain",
           "name": "index",
           "required": true,
           "type": {
@@ -40430,6 +40532,7 @@
       },
       "path": [
         {
+          "description": "The document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -40441,6 +40544,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -40452,6 +40556,7 @@
           }
         },
         {
+          "description": "The type of the document",
           "name": "type",
           "required": false,
           "type": {
@@ -41162,6 +41267,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -42671,6 +42777,7 @@
       },
       "path": [
         {
+          "description": "The name of the job to flush",
           "name": "job_id",
           "required": true,
           "type": {
@@ -42740,6 +42847,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string for all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -43420,6 +43528,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -43480,6 +43589,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index patterns; use `_all` to perform the operation on all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -43619,6 +43729,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -43808,6 +43919,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to forecast for",
           "name": "job_id",
           "required": true,
           "type": {
@@ -43999,6 +44111,7 @@
       },
       "path": [
         {
+          "description": "the name of the leader index for which specified follower retention leases should be removed",
           "name": "index",
           "required": true,
           "type": {
@@ -44099,6 +44212,7 @@
       },
       "path": [
         {
+          "description": "The name of the index to freeze",
           "name": "index",
           "required": true,
           "type": {
@@ -45717,6 +45831,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of alias names to return",
           "name": "name",
           "required": false,
           "type": {
@@ -45728,6 +45843,7 @@
           }
         },
         {
+          "description": "A comma-separated list of index names to filter aliases",
           "name": "index",
           "required": false,
           "type": {
@@ -45916,6 +46032,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job",
           "name": "job_id",
           "required": true,
           "type": {
@@ -46091,6 +46208,7 @@
       },
       "path": [
         {
+          "description": "The name of the auto follow pattern.",
           "name": "name",
           "required": false,
           "type": {
@@ -46296,6 +46414,7 @@
       },
       "path": [
         {
+          "description": "ID of the job to get bucket results from",
           "name": "job_id",
           "required": true,
           "type": {
@@ -46307,6 +46426,7 @@
           }
         },
         {
+          "description": "The timestamp of the desired single bucket result",
           "name": "timestamp",
           "required": false,
           "type": {
@@ -46467,6 +46587,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar containing the events",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -46588,6 +46709,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to fetch",
           "name": "calendar_id",
           "required": false,
           "type": {
@@ -46675,6 +46797,7 @@
       },
       "path": [
         {
+          "description": "The name of the job",
           "name": "job_id",
           "required": true,
           "type": {
@@ -46686,6 +46809,7 @@
           }
         },
         {
+          "description": "The identifier of the category definition of interest",
           "name": "category_id",
           "required": false,
           "type": {
@@ -46805,6 +46929,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeeds stats to fetch",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -46888,6 +47013,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeeds to fetch",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -46971,6 +47097,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of enrich policy names",
           "name": "name",
           "required": false,
           "type": {
@@ -47031,6 +47158,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of fields",
           "name": "fields",
           "required": true,
           "type": {
@@ -47042,6 +47170,7 @@
           }
         },
         {
+          "description": "A comma-separated list of index names",
           "name": "index",
           "required": false,
           "type": {
@@ -47053,6 +47182,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types",
           "name": "type",
           "required": false,
           "type": {
@@ -47181,6 +47311,7 @@
       },
       "path": [
         {
+          "description": "The ID of the filter to fetch",
           "name": "filter_id",
           "required": false,
           "type": {
@@ -47320,6 +47451,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names",
           "name": "index",
           "required": true,
           "type": {
@@ -47470,6 +47602,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -47481,6 +47614,7 @@
           }
         },
         {
+          "description": "The name of the settings that should be included",
           "name": "name",
           "required": false,
           "type": {
@@ -47620,6 +47754,7 @@
       },
       "path": [
         {
+          "description": "The comma separated names of the index templates",
           "name": "name",
           "required": false,
           "type": {
@@ -47808,6 +47943,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the anomaly detection job",
           "name": "job_id",
           "required": true,
           "type": {
@@ -47879,6 +48015,7 @@
       },
       "path": [
         {
+          "description": "The ID of the jobs stats to fetch",
           "name": "job_id",
           "required": false,
           "type": {
@@ -47962,6 +48099,7 @@
       },
       "path": [
         {
+          "description": "The ID of the jobs to fetch",
           "name": "job_id",
           "required": false,
           "type": {
@@ -48113,6 +48251,7 @@
       },
       "path": [
         {
+          "description": "The name of the index lifecycle policy",
           "name": "policy",
           "required": false,
           "type": {
@@ -48174,6 +48313,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names",
           "name": "index",
           "required": false,
           "type": {
@@ -48185,6 +48325,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types",
           "name": "type",
           "required": false,
           "type": {
@@ -48373,6 +48514,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to fetch",
           "name": "job_id",
           "required": true,
           "type": {
@@ -48384,6 +48526,7 @@
           }
         },
         {
+          "description": "The ID of the snapshot to fetch",
           "name": "snapshot_id",
           "required": false,
           "type": {
@@ -48537,6 +48680,7 @@
       },
       "path": [
         {
+          "description": "The job IDs for which to calculate overall bucket results",
           "name": "job_id",
           "required": true,
           "type": {
@@ -48608,6 +48752,7 @@
       },
       "path": [
         {
+          "description": "Comma separated list of pipeline ids. Wildcards supported",
           "name": "id",
           "required": false,
           "type": {
@@ -48681,6 +48826,7 @@
       },
       "path": [
         {
+          "description": "Application name",
           "name": "application",
           "required": false,
           "type": {
@@ -48692,6 +48838,7 @@
           }
         },
         {
+          "description": "Privilege name",
           "name": "name",
           "required": false,
           "type": {
@@ -48763,6 +48910,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of repository names",
           "name": "repository",
           "required": false,
           "type": {
@@ -48856,6 +49004,7 @@
       },
       "path": [
         {
+          "description": "The document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -48867,6 +49016,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -48878,6 +49028,7 @@
           }
         },
         {
+          "description": "The type of the document (use `_all` to fetch the first document matching the ID across all types)",
           "name": "type",
           "required": false,
           "type": {
@@ -49199,6 +49350,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of role-mapping names",
           "name": "name",
           "required": false,
           "type": {
@@ -49260,6 +49412,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of role names",
           "name": "name",
           "required": false,
           "type": {
@@ -49321,6 +49474,7 @@
       },
       "path": [
         {
+          "description": "The ID of the index to check rollup capabilities on, or left blank for all jobs",
           "name": "id",
           "required": false,
           "type": {
@@ -49382,6 +49536,7 @@
       },
       "path": [
         {
+          "description": "The rollup index or index pattern to obtain rollup capabilities from.",
           "name": "index",
           "required": true,
           "type": {
@@ -49443,6 +49598,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job(s) to fetch. Accepts glob patterns, or left blank for all jobs",
           "name": "id",
           "required": false,
           "type": {
@@ -49503,6 +49659,7 @@
       },
       "path": [
         {
+          "description": "Script ID",
           "name": "id",
           "required": true,
           "type": {
@@ -49617,6 +49774,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of snapshot lifecycle policies to retrieve",
           "name": "policy_id",
           "required": false,
           "type": {
@@ -49811,6 +49969,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -49822,6 +49981,7 @@
           }
         },
         {
+          "description": "A comma-separated list of snapshot names",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -50035,6 +50195,7 @@
       },
       "path": [
         {
+          "description": "Return the task with specified id (node_id:task_number)",
           "name": "task_id",
           "required": true,
           "type": {
@@ -50126,6 +50287,7 @@
       },
       "path": [
         {
+          "description": "The id or comma delimited list of id expressions of the transforms to get, '_all' or '*' implies get all transforms",
           "name": "transform_id",
           "required": false,
           "type": {
@@ -50231,6 +50393,7 @@
       },
       "path": [
         {
+          "description": "The id of the transform for which to get stats. '_all' or '*' implies all transforms",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -50590,6 +50753,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of usernames",
           "name": "username",
           "required": false,
           "type": {
@@ -50651,6 +50815,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "id",
           "required": true,
           "type": {
@@ -50947,6 +51112,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -50958,6 +51124,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -51699,6 +51866,7 @@
       },
       "path": [
         {
+          "description": "Username",
           "name": "user",
           "required": false,
           "type": {
@@ -54666,6 +54834,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names",
           "name": "index",
           "required": true,
           "type": {
@@ -55060,6 +55229,7 @@
       },
       "path": [
         {
+          "description": "Document ID",
           "name": "id",
           "required": false,
           "type": {
@@ -55071,6 +55241,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -55082,6 +55253,7 @@
           }
         },
         {
+          "description": "The type of the document",
           "name": "type",
           "required": false,
           "type": {
@@ -55570,6 +55742,7 @@
       },
       "path": [
         {
+          "description": "The comma separated names of the index templates",
           "name": "name",
           "required": true,
           "type": {
@@ -56209,6 +56382,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -56393,6 +56567,7 @@
       },
       "path": [
         {
+          "description": "Limit the information returned the specific metrics.",
           "name": "metric",
           "required": false,
           "type": {
@@ -56404,6 +56579,7 @@
           }
         },
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -63799,6 +63975,7 @@
       },
       "path": [
         {
+          "description": "The name of the index whose lifecycle step is to change",
           "name": "index",
           "required": true,
           "type": {
@@ -64235,6 +64412,7 @@
       },
       "path": [
         {
+          "description": "The name of the index",
           "name": "index",
           "required": false,
           "type": {
@@ -64246,6 +64424,7 @@
           }
         },
         {
+          "description": "The type of the document",
           "name": "type",
           "required": false,
           "type": {
@@ -64660,6 +64839,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to use as default",
           "name": "index",
           "required": false,
           "type": {
@@ -64671,6 +64851,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to use as default",
           "name": "type",
           "required": false,
           "type": {
@@ -64840,6 +65021,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to use as default",
           "name": "index",
           "required": false,
           "type": {
@@ -64851,6 +65033,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to use as default",
           "name": "type",
           "required": false,
           "type": {
@@ -65138,6 +65321,7 @@
       },
       "path": [
         {
+          "description": "The index in which the document resides.",
           "name": "index",
           "required": false,
           "type": {
@@ -65149,6 +65333,7 @@
           }
         },
         {
+          "description": "The type of the document.",
           "name": "type",
           "required": false,
           "type": {
@@ -67847,6 +68032,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
           "name": "node_id",
           "required": false,
           "type": {
@@ -67974,6 +68160,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
           "name": "node_id",
           "required": false,
           "type": {
@@ -67985,6 +68172,7 @@
           }
         },
         {
+          "description": "A comma-separated list of metrics you wish returned. Leave empty to return all.",
           "name": "metric",
           "required": false,
           "type": {
@@ -68114,6 +68302,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
           "name": "node_id",
           "required": false,
           "type": {
@@ -68125,6 +68314,7 @@
           }
         },
         {
+          "description": "Limit the information returned to the specified metrics",
           "name": "metric",
           "required": false,
           "type": {
@@ -68136,6 +68326,7 @@
           }
         },
         {
+          "description": "Limit the information returned for `indices` metric to the specific index metrics. Isn't used if `indices` (or `all`) metric isn't specified.",
           "name": "index_metric",
           "required": false,
           "type": {
@@ -68315,6 +68506,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
           "name": "node_id",
           "required": false,
           "type": {
@@ -68326,6 +68518,7 @@
           }
         },
         {
+          "description": "Limit the information returned to the specified metrics",
           "name": "metric",
           "required": false,
           "type": {
@@ -68912,6 +69105,7 @@
       },
       "path": [
         {
+          "description": "A comma separated list of indices to open",
           "name": "index",
           "required": true,
           "type": {
@@ -69040,6 +69234,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to open",
           "name": "job_id",
           "required": true,
           "type": {
@@ -70120,6 +70315,7 @@
       },
       "path": [
         {
+          "description": "The name of the auto follow pattern that should pause discovering new indices to follow.",
           "name": "name",
           "required": true,
           "type": {
@@ -70165,6 +70361,7 @@
       },
       "path": [
         {
+          "description": "The name of the follower index that should pause following its leader index.",
           "name": "index",
           "required": true,
           "type": {
@@ -71670,6 +71867,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to modify",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -71745,6 +71943,7 @@
       },
       "path": [
         {
+          "description": "The name of the job receiving the data",
           "name": "job_id",
           "required": true,
           "type": {
@@ -72130,6 +72329,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeed to preview",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -73021,6 +73221,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names the alias should point to (supports wildcards); use `_all` to perform the operation on all indices.",
           "name": "index",
           "required": true,
           "type": {
@@ -73032,6 +73233,7 @@
           }
         },
         {
+          "description": "The name of the alias to be created or updated",
           "name": "name",
           "required": true,
           "type": {
@@ -73100,6 +73302,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to modify",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -73111,6 +73314,7 @@
           }
         },
         {
+          "description": "The ID of the job to add to the calendar",
           "name": "job_id",
           "required": true,
           "type": {
@@ -73209,6 +73413,7 @@
       },
       "path": [
         {
+          "description": "The ID of the calendar to create",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -73426,6 +73631,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeed to create",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -73685,6 +73891,7 @@
       },
       "path": [
         {
+          "description": "The name of the enrich policy",
           "name": "name",
           "required": true,
           "type": {
@@ -73760,6 +73967,7 @@
       },
       "path": [
         {
+          "description": "The ID of the filter to create",
           "name": "filter_id",
           "required": true,
           "type": {
@@ -73932,6 +74140,7 @@
       },
       "path": [
         {
+          "description": "The name of the template",
           "name": "name",
           "required": true,
           "type": {
@@ -74126,6 +74335,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to create",
           "name": "job_id",
           "required": true,
           "type": {
@@ -74353,6 +74563,7 @@
       },
       "path": [
         {
+          "description": "The name of the index lifecycle policy",
           "name": "policy",
           "required": true,
           "type": {
@@ -74587,6 +74798,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices.",
           "name": "index",
           "required": false,
           "type": {
@@ -74598,6 +74810,7 @@
           }
         },
         {
+          "description": "The name of the document type",
           "name": "type",
           "required": false,
           "type": {
@@ -74754,6 +74967,7 @@
       },
       "path": [
         {
+          "description": "Pipeline ID",
           "name": "id",
           "required": true,
           "type": {
@@ -75021,6 +75235,7 @@
       },
       "path": [
         {
+          "description": "Role-mapping name",
           "name": "name",
           "required": true,
           "type": {
@@ -75216,6 +75431,7 @@
       },
       "path": [
         {
+          "description": "Role name",
           "name": "name",
           "required": true,
           "type": {
@@ -75321,6 +75537,7 @@
       },
       "path": [
         {
+          "description": "Script ID",
           "name": "id",
           "required": true,
           "type": {
@@ -75332,6 +75549,7 @@
           }
         },
         {
+          "description": "Script context",
           "name": "context",
           "required": false,
           "type": {
@@ -75460,6 +75678,7 @@
       },
       "path": [
         {
+          "description": "The id of the snapshot lifecycle policy",
           "name": "policy_id",
           "required": true,
           "type": {
@@ -75576,6 +75795,7 @@
       },
       "path": [
         {
+          "description": "The id of the new transform.",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -75713,6 +75933,7 @@
       },
       "path": [
         {
+          "description": "The username of the User",
           "name": "username",
           "required": true,
           "type": {
@@ -75880,6 +76101,7 @@
       },
       "path": [
         {
+          "description": "Watch ID",
           "name": "id",
           "required": true,
           "type": {
@@ -79130,6 +79352,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -79358,6 +79581,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -80064,6 +80288,7 @@
       },
       "path": [
         {
+          "description": "The task id to rethrottle",
           "name": "task_id",
           "required": true,
           "type": {
@@ -80543,6 +80768,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to reload analyzers for",
           "name": "index",
           "required": true,
           "type": {
@@ -80648,6 +80874,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of node IDs to span the reload/reinit call. Should stay empty because reloading usually involves all cluster nodes.",
           "name": "node_id",
           "required": false,
           "type": {
@@ -80945,6 +81172,7 @@
       },
       "path": [
         {
+          "description": "The name of the index to remove policy on",
           "name": "index",
           "required": true,
           "type": {
@@ -81670,6 +81898,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -81681,6 +81910,7 @@
           }
         },
         {
+          "description": "A snapshot name",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -81924,6 +82154,7 @@
       },
       "path": [
         {
+          "description": "The name of the auto follow pattern to resume discovering new indices to follow.",
           "name": "name",
           "required": true,
           "type": {
@@ -82084,6 +82315,7 @@
       },
       "path": [
         {
+          "description": "The name of the follow index to resume following.",
           "name": "index",
           "required": true,
           "type": {
@@ -82160,6 +82392,7 @@
       },
       "path": [
         {
+          "description": "The name of the indices (comma-separated) whose failed lifecycle step is to be retry",
           "name": "index",
           "required": true,
           "type": {
@@ -82257,6 +82490,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to fetch",
           "name": "job_id",
           "required": true,
           "type": {
@@ -82268,6 +82502,7 @@
           }
         },
         {
+          "description": "The ID of the snapshot to revert to",
           "name": "snapshot_id",
           "required": true,
           "type": {
@@ -82540,6 +82775,7 @@
       },
       "path": [
         {
+          "description": "The name of the alias to rollover",
           "name": "alias",
           "required": true,
           "type": {
@@ -82551,6 +82787,7 @@
           }
         },
         {
+          "description": "The name of the rollover index",
           "name": "new_index",
           "required": false,
           "type": {
@@ -83374,6 +83611,7 @@
       },
       "path": [
         {
+          "description": "The indices or index-pattern(s) (containing rollup or regular data) that should be searched",
           "name": "index",
           "required": true,
           "type": {
@@ -83385,6 +83623,7 @@
           }
         },
         {
+          "description": "The doc type inside the index",
           "name": "type",
           "required": false,
           "type": {
@@ -84558,6 +84797,7 @@
       },
       "path": [
         {
+          "description": "The scroll ID",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -85492,6 +85732,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -85503,6 +85744,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -86350,6 +86592,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -86718,6 +86961,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -86729,6 +86973,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -87252,6 +87497,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -90456,6 +90702,7 @@
       },
       "path": [
         {
+          "description": "The name of the source index to shrink",
           "name": "index",
           "required": true,
           "type": {
@@ -90467,6 +90714,7 @@
           }
         },
         {
+          "description": "The name of the target index to shrink into",
           "name": "target",
           "required": true,
           "type": {
@@ -91379,6 +91627,7 @@
       },
       "path": [
         {
+          "description": "Pipeline ID",
           "name": "id",
           "required": false,
           "type": {
@@ -92939,6 +93188,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -92950,6 +93200,7 @@
           }
         },
         {
+          "description": "A snapshot name",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -93427,6 +93678,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": false,
           "type": {
@@ -93438,6 +93690,7 @@
           }
         },
         {
+          "description": "A comma-separated list of snapshot names",
           "name": "snapshot",
           "required": false,
           "type": {
@@ -93850,6 +94103,7 @@
       },
       "path": [
         {
+          "description": "The document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -93861,6 +94115,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -93872,6 +94127,7 @@
           }
         },
         {
+          "description": "The type of the document; deprecated and optional starting with 7.0",
           "name": "type",
           "required": false,
           "type": {
@@ -94135,6 +94391,7 @@
       },
       "path": [
         {
+          "description": "The document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -94146,6 +94403,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -94157,6 +94415,7 @@
           }
         },
         {
+          "description": "The type of the document; deprecated and optional starting with 7.0",
           "name": "type",
           "required": false,
           "type": {
@@ -94816,6 +95075,7 @@
       },
       "path": [
         {
+          "description": "The name of the source index to split",
           "name": "index",
           "required": true,
           "type": {
@@ -94827,6 +95087,7 @@
           }
         },
         {
+          "description": "The name of the target index to split into",
           "name": "target",
           "required": true,
           "type": {
@@ -95452,6 +95713,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeed to start",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -95542,6 +95804,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to start",
           "name": "id",
           "required": true,
           "type": {
@@ -95632,6 +95895,7 @@
       },
       "path": [
         {
+          "description": "The id of the transform to start",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -96088,6 +96352,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeed to stop",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -96190,6 +96455,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to stop",
           "name": "id",
           "required": true,
           "type": {
@@ -96364,6 +96630,7 @@
       },
       "path": [
         {
+          "description": "The id of the transform to stop",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -97538,6 +97805,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string for all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -99025,6 +99293,7 @@
       },
       "path": [
         {
+          "description": "The index in which the document resides.",
           "name": "index",
           "required": true,
           "type": {
@@ -99036,6 +99305,7 @@
           }
         },
         {
+          "description": "The id of the document, when not specified a doc param should be supplied.",
           "name": "id",
           "required": false,
           "type": {
@@ -99047,6 +99317,7 @@
           }
         },
         {
+          "description": "The type of the document.",
           "name": "type",
           "required": false,
           "type": {
@@ -102954,6 +103225,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` to check the types across all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -102965,6 +103237,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to check",
           "name": "type",
           "required": true,
           "type": {
@@ -103543,6 +103816,7 @@
       },
       "path": [
         {
+          "description": "The name of the follower index that should be turned into a regular index.",
           "name": "index",
           "required": true,
           "type": {
@@ -103588,6 +103862,7 @@
       },
       "path": [
         {
+          "description": "The name of the index to unfreeze",
           "name": "index",
           "required": true,
           "type": {
@@ -103789,6 +104064,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": true,
           "type": {
@@ -103800,6 +104076,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -104357,6 +104634,7 @@
       },
       "path": [
         {
+          "description": "The task id to rethrottle",
           "name": "task_id",
           "required": true,
           "type": {
@@ -104533,6 +104811,7 @@
       },
       "path": [
         {
+          "description": "The ID of the datafeed to update",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -104809,6 +105088,7 @@
       },
       "path": [
         {
+          "description": "The ID of the filter to update",
           "name": "filter_id",
           "required": true,
           "type": {
@@ -104913,6 +105193,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -105146,6 +105427,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to create",
           "name": "job_id",
           "required": true,
           "type": {
@@ -105218,6 +105500,7 @@
       },
       "path": [
         {
+          "description": "The ID of the job to fetch",
           "name": "job_id",
           "required": true,
           "type": {
@@ -105229,6 +105512,7 @@
           }
         },
         {
+          "description": "The ID of the snapshot to update",
           "name": "snapshot_id",
           "required": true,
           "type": {
@@ -105387,6 +105671,7 @@
       },
       "path": [
         {
+          "description": "Document ID",
           "name": "id",
           "required": true,
           "type": {
@@ -105398,6 +105683,7 @@
           }
         },
         {
+          "description": "The name of the index",
           "name": "index",
           "required": true,
           "type": {
@@ -105409,6 +105695,7 @@
           }
         },
         {
+          "description": "The type of the document",
           "name": "type",
           "required": false,
           "type": {
@@ -105718,6 +106005,7 @@
       },
       "path": [
         {
+          "description": "The id of the transform.",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -106377,6 +106665,7 @@
       },
       "path": [
         {
+          "description": "A comma-separated list of index names to restrict the operation; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -106388,6 +106677,7 @@
           }
         },
         {
+          "description": "A comma-separated list of document types to restrict the operation; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -106845,6 +107135,7 @@
       },
       "path": [
         {
+          "description": "A repository name",
           "name": "repository",
           "required": true,
           "type": {
@@ -107577,6 +107868,7 @@
       },
       "path": [
         {
+          "description": "Controls what additional stat metrics should be include in the response",
           "name": "metric",
           "required": false,
           "type": {
