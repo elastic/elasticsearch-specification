@@ -8,6 +8,15 @@ The compiler is a TypeScript program that compiles the content of the [`specific
 folder, given that we only need a subset of the TypeScript types, it's designed
 to handle only those. (classes, interfaces, Enums and type aliases).
 
+## Adding features
+
+By default the compiler generates the JSON representation and writes it on disk.
+If needed you can add one or more intermediate steps before writing on disk,
+for example you can run an additional validation or change a specific field.
+Take a look at the [compiler](../specification/compiler/compiler.ts) definition
+and at the [`specification/compiler/steps`](../specification/compiler/steps) folder
+to see the currenlty defined steps.
+
 ## Structure
 
 The compiler divides the specification into four categories:
@@ -17,9 +26,9 @@ The compiler divides the specification into four categories:
 - enum declarations
 - type alias declarations
 
-Then each category gets modeled according to the [metamodel](../specification/compiler/metamodel.ts)
+Then each category gets modeled according to the [metamodel](../specification/compiler/model/metamodel.ts)
 that defines the structure of the JSON output.
-Inside [`specification/compiler/utils.ts`](../specification/compiler/utils.ts) there is a set of
+Inside [`specification/compiler/model/utils.ts`](../specification/compiler/model/utils.ts) there is a set of
 utilities that are used to model the different strctures, the most important one is `modelType`,
 which recursively traverse the types until everything is modeles accorduing to the metamodel.
 
@@ -41,14 +50,14 @@ Another useful tool that you can use for understanding how a declaration gets vi
 
 Certain APIs needs to be handled differently based on the language, to express this in the specification
 we use behaviors. All the currently supported behaviors are living in [`specification/specs/behaviors.ts`](../specification/specs/behaviors.ts)
-and must be defined in the compiler (in [`specification/compiler/utils.ts`](../specification/compiler/utils.ts)) as well.
+and must be defined in the compiler (in [`specification/compiler/model/utils.ts`](../specification/compiler/model/utils.ts)) as well.
 If a behaviors is defined in [`specification/specs/behaviors.ts`](../specification/specs/behaviors.ts) and
-it's not added in [`specification/compiler/utils.ts`](../specification/compiler/utils.ts) as well, the compiler will throw and error.
+it's not added in [`specification/compiler/model/utils.ts`](../specification/compiler/model/utils.ts) as well, the compiler will throw and error.
 
 ## Custom Types
 
 You can find the full definition of this types in the [modeling guide](./modeling-guide.md).
-Those types are also tracked in [`specification/compiler/utils.ts`](../specification/compiler/utils.ts),
+Those types are also tracked in [`specification/compiler/model/utils.ts`](../specification/compiler/model/utils.ts),
 because they can't be added in the output JSON, as we only need them to let the compiler
 know how those structures should be represented in the output JSON.
 
