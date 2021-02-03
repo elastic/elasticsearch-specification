@@ -17,6 +17,9 @@
  * under the License.
  */
 
+/**
+ * @type_stability stable
+ */
 @rest_spec_name('mget')
 @class_serializer('MultiGetRequestFormatter')
 class MultiGetRequest extends RequestBase {
@@ -30,22 +33,33 @@ class MultiGetRequest extends RequestBase {
     refresh?: boolean
     routing?: Routing
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
-    stored_fields?: Field[]
+    _source?: boolean | Fields
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    stored_fields?: Fields
   }
   body?: {
     docs?: MultiGetOperation[]
+    ids?: Id[]
   }
+}
+
+// This differs from SourceFilter by
+// using 'exclude' instead of 'excludes'
+// and 'include' instead of 'includes'.
+class MultiGetSourceFilter {
+  exclude?: Fields
+  include?: Fields
 }
 
 class MultiGetOperation {
   can_be_flattened?: boolean
   _id: Id
-  _index: IndexName
-  routing?: string
-  _source?: boolean | SourceFilter
-  stored_fields?: Field[]
+  _index?: IndexName
+  routing?: Routing
+  _source?: boolean | Fields | MultiGetSourceFilter
+  stored_fields?: Fields
+  _type?: TypeName
   version?: long
   version_type?: VersionType
 }
