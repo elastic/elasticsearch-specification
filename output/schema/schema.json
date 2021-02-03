@@ -2707,10 +2707,16 @@
             },
             "generics": [
               {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "LazyDocument"
+                "kind": "dictionary_of",
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                "value": {
+                  "kind": "user_defined_value"
                 }
               }
             ]
@@ -3028,6 +3034,13 @@
                     "namespace": "internal",
                     "name": "float"
                   }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "null"
+                  }
                 }
               ]
             }
@@ -3170,11 +3183,23 @@
             },
             "generics": [
               {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "common_options.date_math",
-                  "name": "DateMath"
-                }
+                "kind": "union_of",
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "common_options.date_math",
+                      "name": "DateMath"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "long"
+                    }
+                  }
+                ]
               }
             ]
           },
@@ -3190,11 +3215,23 @@
             },
             "generics": [
               {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "common_options.date_math",
-                  "name": "DateMath"
-                }
+                "kind": "union_of",
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "common_options.date_math",
+                      "name": "DateMath"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "long"
+                    }
+                  }
+                ]
               }
             ]
           },
@@ -5074,7 +5111,7 @@
           "required": false
         },
         {
-          "name": "missing",
+          "name": "missing_bucket",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -5945,11 +5982,30 @@
                   }
                 },
                 "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "search.search.sort",
-                    "name": "NestedSort"
-                  }
+                  "kind": "union_of",
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "search.search.sort",
+                        "name": "Sort"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "search.search.sort",
+                        "name": "SortOrder"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "search.search.sort",
+                        "name": "NestedSort"
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -6021,6 +6077,13 @@
                 "type": {
                   "namespace": "search.search.source_filtering",
                   "name": "SourceFilter"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "Field"
                 }
               }
             ]
@@ -6111,14 +6174,26 @@
         {
           "name": "sort",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "search.search.sort",
-                "name": "Sort"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "search.search.sort",
+                  "name": "Sort"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.sort",
+                    "name": "Sort"
+                  }
+                }
               }
-            }
+            ]
           },
           "required": false
         }
@@ -26703,7 +26778,7 @@
               "name": "integer"
             }
           },
-          "required": false
+          "required": true
         }
       ]
     },
@@ -29333,10 +29408,16 @@
             },
             "generics": [
               {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "LazyDocument"
+                "kind": "dictionary_of",
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                "value": {
+                  "kind": "user_defined_value"
                 }
               }
             ]
@@ -32460,6 +32541,17 @@
               }
             },
             "required": false
+          },
+          {
+            "name": "conflicts",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "common",
+                "name": "Conflicts"
+              }
+            },
+            "required": false
           }
         ]
       }
@@ -33580,11 +33672,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "LazyDocument"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -35414,7 +35502,7 @@
               }
             ]
           },
-          "required": false
+          "required": true
         }
       ]
     },
@@ -35444,7 +35532,7 @@
               }
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "mappings",
@@ -35455,7 +35543,7 @@
               "name": "TypeMapping"
             }
           },
-          "required": false
+          "required": true
         },
         {
           "name": "settings",
@@ -40361,21 +40449,46 @@
           {
             "name": "dynamic_templates",
             "type": {
-              "kind": "dictionary_of",
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "string"
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "dictionary_of",
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "string"
+                    }
+                  },
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "mapping.dynamic_template",
+                      "name": "DynamicTemplate"
+                    }
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "dictionary_of",
+                    "key": {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "string"
+                      }
+                    },
+                    "value": {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "mapping.dynamic_template",
+                        "name": "DynamicTemplate"
+                      }
+                    }
+                  }
                 }
-              },
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "mapping.dynamic_template",
-                  "name": "DynamicTemplate"
-                }
-              }
+              ]
             },
             "required": false
           },
@@ -47841,10 +47954,16 @@
         {
           "name": "_source",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "LazyDocument"
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -48737,14 +48856,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "namespace": "internal",
-        "name": "LazyDocument"
-      },
-      "properties": []
-    },
-    {
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
@@ -49095,21 +49206,46 @@
         {
           "name": "dynamic_templates",
           "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "dictionary_of",
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "mapping.dynamic_template",
+                    "name": "DynamicTemplate"
+                  }
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "dictionary_of",
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "string"
+                    }
+                  },
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "mapping.dynamic_template",
+                      "name": "DynamicTemplate"
+                    }
+                  }
+                }
               }
-            },
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "mapping.dynamic_template",
-                "name": "DynamicTemplate"
-              }
-            }
+            ]
           },
           "required": false
         },
@@ -49619,7 +49755,7 @@
               "kind": "user_defined_value"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "meta",
@@ -49640,7 +49776,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "name",
@@ -49651,7 +49787,7 @@
               "name": "PropertyName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "type",
@@ -49662,7 +49798,28 @@
               "name": "string"
             }
           },
-          "required": true
+          "required": false
+        },
+        {
+          "name": "properties",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "mapping.types",
+                "name": "PropertyBase"
+              }
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -57855,6 +58012,17 @@
             }
           },
           "required": false
+        },
+        {
+          "name": "value",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
         }
       ]
     },
@@ -58519,11 +58687,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "LazyDocument"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -59509,13 +59673,10 @@
         {
           "name": "docvalue_fields",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -59815,26 +59976,11 @@
         {
           "name": "_source_excludes",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "Field"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "Field"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
           },
           "required": false,
           "description": "A list of fields to exclude from the returned _source field"
@@ -59842,26 +59988,11 @@
         {
           "name": "_source_includes",
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "namespace": "internal",
-                  "name": "Field"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "Field"
-                  }
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
           },
           "required": false,
           "description": "A list of fields to extract and return from the _source field"
@@ -59917,45 +60048,24 @@
         {
           "name": "sort",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "Array"
-            },
-            "generics": [
+            "kind": "union_of",
+            "items": [
               {
-                "kind": "union_of",
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "namespace": "internal",
-                      "name": "Field"
-                    }
-                  },
-                  {
-                    "kind": "named_value_of",
-                    "value": {
-                      "kind": "union_of",
-                      "items": [
-                        {
-                          "kind": "instance_of",
-                          "type": {
-                            "namespace": "search.search.sort",
-                            "name": "Sort"
-                          }
-                        },
-                        {
-                          "kind": "instance_of",
-                          "type": {
-                            "namespace": "search.search.sort",
-                            "name": "SortOrder"
-                          }
-                        }
-                      ]
-                    }
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "search.search.sort",
+                  "name": "SortOptions"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.sort",
+                    "name": "SortOptions"
                   }
-                ]
+                }
               }
             ]
           },
@@ -60300,45 +60410,24 @@
           {
             "name": "sort",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Array"
-              },
-              "generics": [
+              "kind": "union_of",
+              "items": [
                 {
-                  "kind": "union_of",
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "namespace": "internal",
-                        "name": "Field"
-                      }
-                    },
-                    {
-                      "kind": "named_value_of",
-                      "value": {
-                        "kind": "union_of",
-                        "items": [
-                          {
-                            "kind": "instance_of",
-                            "type": {
-                              "namespace": "search.search.sort",
-                              "name": "Sort"
-                            }
-                          },
-                          {
-                            "kind": "instance_of",
-                            "type": {
-                              "namespace": "search.search.sort",
-                              "name": "SortOrder"
-                            }
-                          }
-                        ]
-                      }
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "search.search.sort",
+                    "name": "SortOptions"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "search.search.sort",
+                      "name": "SortOptions"
                     }
-                  ]
+                  }
                 }
               ]
             },
@@ -60485,26 +60574,11 @@
           {
             "name": "stored_fields",
             "type": {
-              "kind": "union_of",
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "Field"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "namespace": "internal",
-                      "name": "Field"
-                    }
-                  }
-                }
-              ]
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "Fields"
+              }
             },
             "required": false
           },
@@ -60651,11 +60725,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "LazyDocument"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -61335,10 +61405,16 @@
         {
           "name": "template_output",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "internal",
-              "name": "LazyDocument"
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -62053,11 +62129,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "LazyDocument"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false
@@ -62378,10 +62450,16 @@
               },
               "generics": [
                 {
-                  "kind": "instance_of",
-                  "type": {
-                    "namespace": "internal",
-                    "name": "LazyDocument"
+                  "kind": "dictionary_of",
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "namespace": "internal",
+                      "name": "string"
+                    }
+                  },
+                  "value": {
+                    "kind": "user_defined_value"
                   }
                 }
               ]
@@ -63704,6 +63782,44 @@
       ]
     },
     {
+      "kind": "union",
+      "name": {
+        "namespace": "search.search.sort",
+        "name": "SortOptions"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "Field"
+          }
+        },
+        {
+          "kind": "named_value_of",
+          "value": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "search.search.sort",
+                  "name": "Sort"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "search.search.sort",
+                  "name": "SortOrder"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "name": {
         "namespace": "search.search.sort",
@@ -64055,11 +64171,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "LazyDocument"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": true
@@ -83622,7 +83734,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "Date"
+              "name": "long"
             }
           },
           "required": true,
@@ -83887,6 +83999,20 @@
             "required": false
           },
           {
+            "name": "ids",
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              }
+            },
+            "required": false
+          },
+          {
             "name": "name",
             "type": {
               "kind": "instance_of",
@@ -83971,7 +84097,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "invalidated_api_keys",
@@ -84112,6 +84238,28 @@
         },
         {
           "name": "username",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "authentication_type",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85971,6 +86119,26 @@
       "kind": "interface",
       "name": {
         "namespace": "x_pack.security.role.get_role",
+        "name": "TransientMetadata"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "boolean"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "x_pack.security.role.get_role",
         "name": "XPackRole"
       },
       "properties": [
@@ -86029,6 +86197,17 @@
                 "namespace": "internal",
                 "name": "string"
               }
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "transient_metadata",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "x_pack.security.role.get_role",
+              "name": "TransientMetadata"
             }
           },
           "required": true
@@ -86099,7 +86278,7 @@
               "name": "FieldSecurity"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "names",
@@ -86138,7 +86317,7 @@
               "name": "QueryContainer"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -86738,6 +86917,15 @@
       "members": [
         {
           "name": "password"
+        },
+        {
+          "name": "client_credentials"
+        },
+        {
+          "name": "_kerberos"
+        },
+        {
+          "name": "refresh_token"
         }
       ]
     },
@@ -86774,6 +86962,50 @@
           },
           {
             "name": "scope",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "password",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "kerberos_ticket",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "refresh_token",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "username",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -86844,6 +87076,39 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "refresh_token",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "kerberos_authentication_response_token",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "authentication",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
         }
       ]
     },
@@ -86863,7 +87128,56 @@
         }
       ],
       "path": [],
-      "query": []
+      "query": [],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "token",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "refresh_token",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "realm_name",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "username",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": false
+          }
+        ]
+      }
     },
     {
       "kind": "interface",
@@ -86903,7 +87217,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "invalidated_tokens",
@@ -86978,22 +87292,46 @@
           {
             "name": "email",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "null"
+                  }
+                }
+              ]
             },
             "required": false
           },
           {
             "name": "full_name",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "null"
+                  }
+                }
+              ]
             },
             "required": false
           },
@@ -88171,34 +88509,70 @@
         {
           "name": "rows",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "array_of",
-              "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Array"
+            },
+            "generics": [
+              {
                 "kind": "instance_of",
                 "type": {
-                  "namespace": "x_pack.sql.query_sql",
-                  "name": "SqlValue"
-                }
+                  "namespace": "internal",
+                  "name": "Array"
+                },
+                "generics": [
+                  {
+                    "kind": "dictionary_of",
+                    "key": {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "string"
+                      }
+                    },
+                    "value": {
+                      "kind": "user_defined_value"
+                    }
+                  }
+                ]
               }
-            }
+            ]
           },
           "required": true
         },
         {
           "name": "values",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "array_of",
-              "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Array"
+            },
+            "generics": [
+              {
                 "kind": "instance_of",
                 "type": {
-                  "namespace": "x_pack.sql.query_sql",
-                  "name": "SqlValue"
-                }
+                  "namespace": "internal",
+                  "name": "Array"
+                },
+                "generics": [
+                  {
+                    "kind": "dictionary_of",
+                    "key": {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "internal",
+                        "name": "string"
+                      }
+                    },
+                    "value": {
+                      "kind": "user_defined_value"
+                    }
+                  }
+                ]
               }
-            }
+            ]
           },
           "required": true
         }
@@ -88234,22 +88608,6 @@
           "required": true
         }
       ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "x_pack.sql.query_sql",
-        "name": "SqlValue"
-      },
-      "inherits": [
-        {
-          "type": {
-            "namespace": "internal",
-            "name": "LazyDocument"
-          }
-        }
-      ],
-      "properties": []
     },
     {
       "kind": "request",

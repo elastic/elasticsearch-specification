@@ -275,7 +275,7 @@ export interface TermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKe
 }
 
 export interface TopHitsAggregate extends AggregateBase {
-  hits: HitsMetadata<LazyDocument>
+  hits: HitsMetadata<Record<string, any>>
 }
 
 export interface TopMetricsAggregate extends AggregateBase {
@@ -311,7 +311,7 @@ export interface ChildrenAggregation {
 }
 
 export interface CompositeAggregation {
-  after?: Record<string, string | float>
+  after?: Record<string, string | float | null>
   size?: integer
   sources?: Array<Record<string, CompositeAggregationSource>>
 }
@@ -325,8 +325,8 @@ export interface CompositeAggregationSource {
 
 export interface DateHistogramAggregation {
   calendar_interval?: DateInterval | Time
-  extended_bounds?: ExtendedBounds<DateMath>
-  hard_bounds?: ExtendedBounds<DateMath>
+  extended_bounds?: ExtendedBounds<DateMath | long>
+  hard_bounds?: ExtendedBounds<DateMath | long>
   field?: Field
   fixed_interval?: DateInterval | Time
   format?: string
@@ -532,7 +532,7 @@ export interface TermsAggregation {
   field?: Field
   include?: string | Array<string> | TermsInclude
   min_doc_count?: integer
-  missing?: Missing
+  missing_bucket?: Missing
   value_type?: string
   order?: Record<string, SortOrder>
   script?: Script
@@ -653,8 +653,8 @@ export interface TopHitsAggregation {
   highlight?: Highlight
   script_fields?: Record<string, ScriptField>
   size?: integer
-  sort?: string | Record<Field, NestedSort> | Array<Record<string, Sort | SortOrder | Record<Field, NestedSort>>>
-  _source?: boolean | SourceFilter
+  sort?: string | Record<Field, Sort | SortOrder | NestedSort> | Array<Record<string, Sort | SortOrder | Record<Field, NestedSort>>>
+  _source?: boolean | SourceFilter | Field
   stored_fields?: Array<Field>
   track_scores?: boolean
   version?: boolean
@@ -664,7 +664,7 @@ export interface TopHitsAggregation {
 export interface TopMetricsAggregation {
   metrics?: Array<TopMetricsValue>
   size?: integer
-  sort?: Array<Sort>
+  sort?: Sort | Array<Sort>
 }
 
 export interface TopMetricsValue {
@@ -2844,7 +2844,7 @@ export interface ShardStatistics {
   successful: integer
   total: integer
   failures?: Array<ShardFailure>
-  skipped?: integer
+  skipped: integer
 }
 
 export type MinimumShouldMatch = integer | string
@@ -3136,7 +3136,7 @@ export interface BulkResponseItemBase {
   _type?: string
   _version?: long
   forced_refresh?: boolean
-  get?: InlineGet<LazyDocument>
+  get?: InlineGet<Record<string, any>>
 }
 
 export interface BulkResponseItemContainer {
@@ -3449,6 +3449,7 @@ export interface UpdateByQueryRequest extends RequestBase {
     query?: QueryContainer
     script?: Script
     slice?: SlicedScroll
+    conflicts?: Conflicts
   }
 }
 
@@ -3554,7 +3555,7 @@ export interface GetRequest extends RequestBase {
 
 export interface GetResponse<TDocument = unknown> {
   _index: string
-  fields?: Record<string, LazyDocument>
+  fields?: Record<string, any>
   found: boolean
   _id: string
   _primary_term?: long
@@ -3728,12 +3729,12 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get?: InlineGet<TDocument>
+  get: InlineGet<TDocument>
 }
 
 export interface IndexState {
-  aliases?: Record<IndexName, Alias>
-  mappings?: TypeMapping
+  aliases: Record<IndexName, Alias>
+  mappings: TypeMapping
   settings: Record<string, any>
 }
 
@@ -4242,7 +4243,7 @@ export interface PutMappingRequest extends RequestBase {
     date_detection?: boolean
     dynamic?: boolean | DynamicMapping
     dynamic_date_formats?: Array<string>
-    dynamic_templates?: Record<string, DynamicTemplate>
+    dynamic_templates?: Record<string, DynamicTemplate> | Array<Record<string, DynamicTemplate>>
     field_names_field?: FieldNamesField
     index_field?: IndexField
     meta?: Record<string, any>
@@ -5084,7 +5085,7 @@ export interface DocumentSimulation {
   _ingest: Ingest
   _parent: string
   _routing: string
-  _source: LazyDocument
+  _source: Record<string, any>
   _type: string
 }
 
@@ -5181,9 +5182,6 @@ export interface LatLon {
   lon: double
 }
 
-export interface LazyDocument {
-}
-
 export type long = number
 
 export interface MainError extends ErrorCause {
@@ -5219,7 +5217,7 @@ export interface TypeMapping {
   date_detection?: boolean
   dynamic?: boolean | DynamicMapping
   dynamic_date_formats?: Array<string>
-  dynamic_templates?: Record<string, DynamicTemplate>
+  dynamic_templates?: Record<string, DynamicTemplate> | Array<Record<string, DynamicTemplate>>
   _field_names?: FieldNamesField
   index_field?: IndexField
   _meta?: Record<string, any>
@@ -5283,10 +5281,11 @@ export interface SourceField {
 }
 
 export interface PropertyBase {
-  local_metadata: Record<string, any>
-  meta: Record<string, string>
-  name: PropertyName
-  type: string
+  local_metadata?: Record<string, any>
+  meta?: Record<string, string>
+  name?: PropertyName
+  type?: string
+  properties?: Record<string, PropertyBase>
 }
 
 export interface StoredScript {
@@ -6162,6 +6161,7 @@ export interface TypeQuery extends QueryBase {
 
 export interface WildcardQuery extends QueryBase {
   rewrite?: MultiTermQueryRewrite
+  value: string
 }
 
 export interface CountRequest extends RequestBase {
@@ -6231,7 +6231,7 @@ export interface ExplanationDetail {
 }
 
 export interface InlineGet<TDocument = unknown> {
-  fields?: Record<string, LazyDocument>
+  fields?: Record<string, any>
   found: boolean
   _seq_no: long
   _primary_term: long
@@ -6332,7 +6332,7 @@ export interface SearchRequest extends RequestBase {
   ccs_minimize_roundtrips?: boolean
   default_operator?: DefaultOperator
   df?: string
-  docvalue_fields?: Array<Field>
+  docvalue_fields?: Fields
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
@@ -6356,13 +6356,13 @@ export interface SearchRequest extends RequestBase {
   track_total_hits?: boolean | integer
   typed_keys?: boolean
   rest_total_hits_as_int?: boolean
-  _source_excludes?: Field | Array<Field>
-  _source_includes?: Field | Array<Field>
+  _source_excludes?: Fields
+  _source_includes?: Fields
   seq_no_primary_term?: boolean
   q?: string
   size?: integer
   from?: integer
-  sort?: Array<Field | Record<string, Sort | SortOrder>>
+  sort?: SortOptions | Array<SortOptions>
   body?: {
     aggs?: Record<string, AggregationContainer>
     aggregations?: Record<string, AggregationContainer>
@@ -6382,7 +6382,7 @@ export interface SearchRequest extends RequestBase {
     search_after?: Array<integer | string>
     size?: integer
     slice?: SlicedScroll
-    sort?: Array<Field | Record<string, Sort | SortOrder>>
+    sort?: SortOptions | Array<SortOptions>
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
     suggest?: Record<string, SuggestBucket>
@@ -6391,7 +6391,7 @@ export interface SearchRequest extends RequestBase {
     track_scores?: boolean
     version?: boolean
     seq_no_primary_term?: boolean
-    stored_fields?: Field | Array<Field>
+    stored_fields?: Fields
     pit?: PointInTimeReference
   }
 }
@@ -6404,7 +6404,7 @@ export interface SearchResponse<TDocument = unknown> {
   aggregations?: Record<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   documents?: Array<TDocument>
-  fields?: Record<string, LazyDocument>
+  fields?: Record<string, any>
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
@@ -6475,7 +6475,7 @@ export interface RenderSearchTemplateRequest extends RequestBase {
 }
 
 export interface RenderSearchTemplateResponse {
-  template_output: LazyDocument
+  template_output: Record<string, any>
 }
 
 export interface FieldCollapse {
@@ -6547,7 +6547,7 @@ export interface Hit<TDocument = unknown> {
   _score?: double
   _type?: TypeName
   _explanation?: Explanation
-  fields?: Record<string, LazyDocument>
+  fields?: Record<string, any>
   highlight?: Record<string, Array<string>>
   inner_hits?: Record<string, InnerHitsResult>
   matched_queries?: Array<string>
@@ -6571,7 +6571,7 @@ export interface HitsMetadata<T = unknown> {
 
 export interface InnerHitsMetadata {
   total: TotalHits | long
-  hits: Array<Hit<LazyDocument>>
+  hits: Array<Hit<Record<string, any>>>
   max_score?: double
 }
 
@@ -6728,6 +6728,7 @@ export interface Sort {
 
 export type SortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
 
+export type SortOptions = Field | Record<string, Sort | SortOrder>
 export type SortOrder = 'asc' | 'desc'
 
 export interface DocValueField {
@@ -6765,7 +6766,7 @@ export interface SuggestDictionary<T = unknown> {
 export interface SuggestOption<TDocument = unknown> {
   collate_match: boolean
   contexts: Record<string, Array<Context>>
-  fields: Record<string, LazyDocument>
+  fields: Record<string, any>
   freq: long
   highlighted: string
   _id: string
@@ -9070,7 +9071,7 @@ export interface CreateApiKeyRequest extends RequestBase {
 
 export interface CreateApiKeyResponse {
   api_key: string
-  expiration: Date
+  expiration: long
   id: string
   name: string
 }
@@ -9100,6 +9101,7 @@ export interface GetApiKeyResponse {
 export interface InvalidateApiKeyRequest extends RequestBase {
   body: {
     id?: string
+    ids?: Array<string>
     name?: string
     owner?: boolean
     realm_name?: string
@@ -9109,7 +9111,7 @@ export interface InvalidateApiKeyRequest extends RequestBase {
 
 export interface InvalidateApiKeyResponse {
   error_count: integer
-  error_details: Array<ErrorCause>
+  error_details?: Array<ErrorCause>
   invalidated_api_keys: Array<string>
   previously_invalidated_api_keys: Array<string>
 }
@@ -9125,6 +9127,8 @@ export interface AuthenticateResponse {
   metadata: Record<string, any>
   roles: Array<string>
   username: string
+  enabled: boolean
+  authentication_type: string
 }
 
 export interface RealmInfo {
@@ -9349,11 +9353,16 @@ export interface GetRoleRequest extends RequestBase {
 export interface GetRoleResponse extends DictionaryResponseBase<string, XPackRole> {
 }
 
+export interface TransientMetadata {
+  enabled: boolean
+}
+
 export interface XPackRole {
   cluster: Array<string>
   indices: Array<IndicesPrivileges>
   metadata: Record<string, any>
   run_as: Array<string>
+  transient_metadata: TransientMetadata
 }
 
 export interface ApplicationPrivileges {
@@ -9363,10 +9372,10 @@ export interface ApplicationPrivileges {
 }
 
 export interface IndicesPrivileges {
-  field_security: FieldSecurity
+  field_security?: FieldSecurity
   names: Indices
   privileges: Array<string>
-  query: QueryContainer
+  query?: QueryContainer
 }
 
 export interface PutRoleRequest extends RequestBase {
@@ -9441,12 +9450,16 @@ export interface XPackUser {
   username: string
 }
 
-export type AccessTokenGrantType = 'password'
+export type AccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
 
 export interface GetUserAccessTokenRequest extends RequestBase {
   body: {
     grant_type?: AccessTokenGrantType
     scope?: string
+    password?: string
+    kerberos_ticket?: string
+    refresh_token?: string
+    username?: string
   }
 }
 
@@ -9455,14 +9468,23 @@ export interface GetUserAccessTokenResponse {
   expires_in: long
   scope: string
   type: string
+  refresh_token: string
+  kerberos_authentication_response_token: string
+  authentication: string
 }
 
 export interface InvalidateUserAccessTokenRequest extends RequestBase {
+  body: {
+    token?: string
+    refresh_token?: string
+    realm_name?: string
+    username?: string
+  }
 }
 
 export interface InvalidateUserAccessTokenResponse {
   error_count: long
-  error_details: Array<ErrorCause>
+  error_details?: Array<ErrorCause>
   invalidated_tokens: long
   previously_invalidated_tokens: long
 }
@@ -9471,8 +9493,8 @@ export interface PutUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
   body: {
-    email?: string
-    full_name?: string
+    email?: string | null
+    full_name?: string | null
     metadata?: Record<string, any>
     password?: string
     password_hash?: string
@@ -9627,16 +9649,13 @@ export interface QuerySqlRequest extends RequestBase {
 export interface QuerySqlResponse {
   columns: Array<SqlColumn>
   cursor: string
-  rows: Array<Array<SqlValue>>
-  values: Array<Array<SqlValue>>
+  rows: Array<Array<Record<string, any>>>
+  values: Array<Array<Record<string, any>>>
 }
 
 export interface SqlColumn {
   name: string
   type: string
-}
-
-export interface SqlValue extends LazyDocument {
 }
 
 export interface TranslateSqlRequest extends RequestBase {
