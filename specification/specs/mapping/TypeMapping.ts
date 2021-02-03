@@ -23,7 +23,9 @@ class TypeMapping {
   /** @prop_serializer DynamicMappingFormatter */
   dynamic?: boolean | DynamicMapping
   dynamic_date_formats?: string[]
-  dynamic_templates?: Dictionary<string, DynamicTemplate> | Dictionary<string, DynamicTemplate>[]
+  dynamic_templates?:
+    | Dictionary<string, DynamicTemplate>
+    | Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
   _meta?: Dictionary<string, UserDefinedValue>
