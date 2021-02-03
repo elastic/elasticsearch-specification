@@ -1083,7 +1083,7 @@ export type TokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'sym
 
 export interface CatRequestBase extends RequestBase {
   format?: string
-  h?: Array<string>
+  h?: Names
   help?: boolean
   local?: boolean
   master_timeout?: Time
@@ -5196,8 +5196,7 @@ export type MultiTermQueryRewrite = string
 
 export type Name = string
 
-export type Names = string
-
+export type Names = string | Array<string>
 export type NodeIds = string
 
 export type PropertyName = string

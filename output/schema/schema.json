@@ -9953,13 +9953,10 @@
         {
           "name": "h",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
             }
           },
           "required": false
@@ -48865,18 +48862,30 @@
       }
     },
     {
-      "kind": "type_alias",
+      "kind": "union",
       "name": {
         "namespace": "internal",
         "name": "Names"
       },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "namespace": "internal",
-          "name": "string"
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "string"
+          }
+        },
+        {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          }
         }
-      }
+      ]
     },
     {
       "kind": "type_alias",
