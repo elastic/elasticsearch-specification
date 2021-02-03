@@ -23,6 +23,6 @@ class DocumentSimulation {
   _ingest: Ingest
   _parent: string
   _routing: string
-  _source: LazyDocument
+  _source: SourceDocument
   _type: string
 }

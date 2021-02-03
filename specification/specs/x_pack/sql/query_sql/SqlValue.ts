@@ -17,5 +17,4 @@
  * under the License.
  */
 
-@class_serializer('SqlValueFormatter')
-class SqlValue extends LazyDocument {}
+type SqlValue = SourceDocument

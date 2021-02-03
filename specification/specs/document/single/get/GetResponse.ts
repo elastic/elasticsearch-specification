@@ -22,7 +22,7 @@
  */
 class GetResponse<TDocument> extends ResponseBase {
   _index: string
-  fields?: Dictionary<string, LazyDocument>
+  fields?: Dictionary<string, UserDefinedValue>
   found: boolean
   _id: string
   _primary_term?: long
