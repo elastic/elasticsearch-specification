@@ -23,6 +23,6 @@ class DocumentSimulation {
   _ingest: Ingest
   _parent: string
   _routing: string
-  _source: SourceDocument
+  _source: Dictionary<string, UserDefinedValue>
   _type: string
 }

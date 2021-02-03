@@ -32,7 +32,7 @@ class BulkResponseItemBase {
   _type?: string
   _version?: long
   forced_refresh?: boolean
-  get?: InlineGet<SourceDocument>
+  get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
 class BulkResponseItemContainer {

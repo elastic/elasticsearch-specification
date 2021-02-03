@@ -223,7 +223,7 @@ class StringStatsAggregate extends AggregateBase {
 
 //hard
 class TopHitsAggregate extends AggregateBase {
-  hits: HitsMetadata<LazyDocument>
+  hits: HitsMetadata<Dictionary<string, UserDefinedValue>>
 }
 
 //TODO wrong on purpose

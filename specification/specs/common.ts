@@ -133,9 +133,6 @@ class DateField {
  * e.g the result of a script can be anything from value types to objects  */
 class UserDefinedValue {}
 
-/** Documents a place that can return ANY document from ANY index that can not be directly related back to a generic */
-type SourceDocument = Dictionary<string, UserDefinedValue>
-
 class LatLon {
   lat: double
   lon: double

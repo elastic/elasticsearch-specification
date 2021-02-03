@@ -18,5 +18,5 @@
  */
 
 class RenderSearchTemplateResponse extends ResponseBase {
-  template_output: SourceDocument
+  template_output: Dictionary<string, UserDefinedValue>
 }

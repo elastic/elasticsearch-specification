@@ -19,7 +19,7 @@
 
 class InnerHitsMetadata {
   total: TotalHits | long
-  hits: Hit<SourceDocument>[]
+  hits: Hit<Dictionary<string, UserDefinedValue>>[]
 
   max_score?: double
 }
