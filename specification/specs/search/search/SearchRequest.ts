@@ -35,7 +35,7 @@ class SearchRequest extends RequestBase {
     ccs_minimize_roundtrips?: boolean
     default_operator?: DefaultOperator
     df?: string
-    docvalue_fields?: Field[]
+    docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
@@ -59,13 +59,13 @@ class SearchRequest extends RequestBase {
     track_total_hits?: boolean | integer
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
-    _source_excludes?: Union<Field, Field[]>
-    _source_includes?: Union<Field, Field[]>
+    _source_excludes?: Fields
+    _source_includes?: Fields
     seq_no_primary_term?: boolean
     q?: string
     size?: integer
     from?: integer
-    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>
+    sort?: SortOptions | SortOptions[]
   }
   body?: {
     aggs?: Dictionary<string, AggregationContainer>
@@ -87,7 +87,7 @@ class SearchRequest extends RequestBase {
     search_after?: Array<integer | string>
     size?: integer
     slice?: SlicedScroll
-    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>
+    sort?: SortOptions | SortOptions[]
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
     suggest?: Dictionary<string, SuggestBucket>
@@ -96,7 +96,7 @@ class SearchRequest extends RequestBase {
     track_scores?: boolean
     version?: boolean
     seq_no_primary_term?: boolean
-    stored_fields?: Field | Field[]
+    stored_fields?: Fields
     pit?: PointInTimeReference
   }
 }

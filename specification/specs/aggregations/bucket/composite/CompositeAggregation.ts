@@ -18,7 +18,7 @@
  */
 
 class CompositeAggregation {
-  after?: Dictionary<string, string | float>
+  after?: Dictionary<string, string | float | null>
   size?: integer
   sources?: Array<Dictionary<string, CompositeAggregationSource>>
 }

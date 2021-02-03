@@ -18,8 +18,9 @@
  */
 
 class PropertyBase {
-  local_metadata: Dictionary<string, UserDefinedValue>
-  meta: Dictionary<string, string>
-  name: PropertyName
-  type: string
+  local_metadata?: Dictionary<string, UserDefinedValue>
+  meta?: Dictionary<string, string>
+  name?: PropertyName
+  type?: string
+  properties?: Dictionary<string, PropertyBase>
 }
