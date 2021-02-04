@@ -1892,7 +1892,7 @@ export interface ClusterHealthRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
   wait_for_nodes?: string
   wait_for_no_initializing_shards?: boolean
@@ -2767,6 +2767,8 @@ export type SuggestMode = 'missing' | 'popular' | 'always'
 export type ThreadType = 'cpu' | 'wait' | 'block'
 
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
+
+export type WaitForActiveShardOptions = 'all'
 
 export type WaitForEvents = 'immediate' | 'urgent' | 'high' | 'normal' | 'low' | 'languid'
 
@@ -5129,6 +5131,8 @@ export interface SimulatePipelineResponse {
 
 export type AggregateName = string
 
+export type byte = number
+
 export type CategoryId = string
 
 export interface Date {
@@ -5221,6 +5225,7 @@ export type TypeName = string
 export type TypeNames = string | Array<string>
 export type Uri = string
 
+export type WaitForActiveShards = byte | WaitForActiveShardOptions
 export type DynamicMapping = 'strict'
 
 export interface TypeMapping {
