@@ -1982,7 +1982,7 @@ export interface ClusterRerouteRequest extends RequestBase {
   dry_run?: boolean
   explain?: boolean
   master_timeout?: Time
-  metric?: Array<string>
+  metric?: string | Array<string>
   retry_failed?: boolean
   timeout?: Time
   body?: {

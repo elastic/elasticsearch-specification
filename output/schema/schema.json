@@ -18978,14 +18978,26 @@
         {
           "name": "metric",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "string"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "string"
+                  }
+                }
               }
-            }
+            ]
           },
           "required": false,
           "description": "Limit the information returned to the specified metrics. Defaults to all but metadata"
