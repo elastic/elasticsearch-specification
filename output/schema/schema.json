@@ -58257,6 +58257,18 @@
           },
           "required": false,
           "description": "The maximum count for each shard, upon reaching which the query execution will terminate early"
+        },
+        {
+          "name": "q",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": false,
+          "description": "Query in the Lucene query string syntax"
         }
       ],
       "body": {
