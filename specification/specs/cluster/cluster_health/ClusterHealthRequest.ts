@@ -28,7 +28,7 @@ class ClusterHealthRequest extends RequestBase {
     local?: boolean
     master_timeout?: Time
     timeout?: Time
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     wait_for_events?: WaitForEvents
     wait_for_nodes?: string
     wait_for_no_initializing_shards?: boolean

@@ -1083,7 +1083,7 @@ export type TokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'sym
 
 export interface CatRequestBase extends RequestBase {
   format?: string
-  h?: Array<string>
+  h?: Names
   help?: boolean
   local?: boolean
   master_timeout?: Time
@@ -1892,7 +1892,7 @@ export interface ClusterHealthRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
   wait_for_nodes?: string
   wait_for_no_initializing_shards?: boolean
@@ -2768,6 +2768,8 @@ export type ThreadType = 'cpu' | 'wait' | 'block'
 
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 
+export type WaitForActiveShardOptions = 'all'
+
 export type WaitForEvents = 'immediate' | 'urgent' | 'high' | 'normal' | 'low' | 'languid'
 
 export type WaitForStatus = 'green' | 'yellow' | 'red'
@@ -3219,10 +3221,11 @@ export interface DeleteByQueryRethrottleResponse extends ListTasksResponse {
 export interface MultiGetOperation {
   can_be_flattened?: boolean
   _id: Id
-  _index: IndexName
-  routing?: string
-  _source?: boolean | SourceFilter
-  stored_fields?: Array<Field>
+  _index?: IndexName
+  routing?: Routing
+  _source?: boolean | Fields | MultiGetSourceFilter
+  stored_fields?: Fields
+  _type?: TypeName
   version?: long
   version_type?: VersionType
 }
@@ -3235,24 +3238,33 @@ export interface MultiGetRequest extends RequestBase {
   refresh?: boolean
   routing?: Routing
   source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
-  stored_fields?: Array<Field>
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  stored_fields?: Fields
   body: {
     docs?: Array<MultiGetOperation>
+    ids?: Array<Id>
   }
 }
 
+export interface MultiGetSourceFilter {
+  exclude?: Fields
+  include?: Fields
+}
+
 export interface MultiGetHit<TDocument = unknown> {
-  found: boolean
+  error?: MainError
+  fields?: Record<string, LazyDocument>
+  found?: boolean
   _id: string
   _index: string
-  _primary_term: long
-  _routing: string
-  _seq_no: long
-  _source: TDocument
-  _type: string
-  _version: long
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: long
+  _source?: TDocument
+  _type?: TypeName
+  _version?: long
 }
 
 export interface MultiGetResponse<TDocument = unknown> {
@@ -5120,6 +5132,8 @@ export interface SimulatePipelineResponse {
 
 export type AggregateName = string
 
+export type byte = number
+
 export type CategoryId = string
 
 export interface Date {
@@ -5194,8 +5208,7 @@ export type MultiTermQueryRewrite = string
 
 export type Name = string
 
-export type Names = string
-
+export type Names = string | Array<string>
 export type NodeIds = string
 
 export type PropertyName = string
@@ -5210,6 +5223,7 @@ export type TypeName = string
 export type TypeNames = string | Array<string>
 export type Uri = string
 
+export type WaitForActiveShards = byte | WaitForActiveShardOptions
 export type DynamicMapping = 'strict'
 
 export interface TypeMapping {

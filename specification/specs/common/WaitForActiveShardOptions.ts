@@ -17,12 +17,7 @@
  * under the License.
  */
 
-class CatRequestBase extends RequestBase {
-  format?: string
-  h?: Names
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  s?: string[]
-  v?: boolean
+// TODO: @see WaitForActiveShards & https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
+enum WaitForActiveShardOptions {
+  'all' = 0
 }

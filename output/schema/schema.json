@@ -10028,13 +10028,10 @@
         {
           "name": "h",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "string"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Names"
             }
           },
           "required": false
@@ -18231,7 +18228,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "WaitForActiveShards"
             }
           },
           "required": false,
@@ -26117,6 +26114,18 @@
       "kind": "enum",
       "name": {
         "namespace": "common",
+        "name": "WaitForActiveShardOptions"
+      },
+      "members": [
+        {
+          "name": "all"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "common",
         "name": "WaitForEvents"
       },
       "members": [
@@ -30240,7 +30249,7 @@
               "name": "IndexName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "routing",
@@ -30248,7 +30257,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Routing"
             }
           },
           "required": false
@@ -30268,8 +30277,15 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "namespace": "search.search.source_filtering",
-                  "name": "SourceFilter"
+                  "namespace": "internal",
+                  "name": "Fields"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "document.multiple.multi_get.request",
+                  "name": "MultiGetSourceFilter"
                 }
               }
             ]
@@ -30279,13 +30295,21 @@
         {
           "name": "stored_fields",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "_type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "TypeName"
             }
           },
           "required": false
@@ -30321,6 +30345,9 @@
         "name": "MultiGetRequest"
       },
       "description": "Document identifiers; can be either `docs` (containing full document information) or `ids` (when index and type is provided in the URL.",
+      "annotations": {
+        "type_stability": "stable"
+      },
       "inherits": [
         {
           "type": {
@@ -30416,43 +30443,60 @@
           "required": false
         },
         {
-          "name": "source_excludes",
+          "name": "_source",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "boolean"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "Fields"
+                }
               }
-            }
+            ]
           },
-          "required": false
+          "required": false,
+          "description": "True or false to return the _source field or not, or a list of fields to return"
         },
         {
-          "name": "source_includes",
+          "name": "_source_excludes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
-          "required": false
+          "required": false,
+          "description": "A list of fields to exclude from the returned _source field"
+        },
+        {
+          "name": "_source_includes",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
+          },
+          "required": false,
+          "description": "A list of fields to extract and return from the _source field"
         },
         {
           "name": "stored_fields",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
           "required": false,
@@ -30475,9 +30519,54 @@
               }
             },
             "required": false
+          },
+          {
+            "name": "ids",
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "namespace": "internal",
+                  "name": "Id"
+                }
+              }
+            },
+            "required": false
           }
         ]
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "document.multiple.multi_get.request",
+        "name": "MultiGetSourceFilter"
+      },
+      "properties": [
+        {
+          "name": "exclude",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "include",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
+            }
+          },
+          "required": false
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -30490,6 +30579,38 @@
       ],
       "properties": [
         {
+          "name": "error",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "MainError"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "fields",
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "LazyDocument"
+              }
+            }
+          },
+          "required": false
+        },
+        {
           "name": "found",
           "type": {
             "kind": "instance_of",
@@ -30498,7 +30619,7 @@
               "name": "boolean"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_id",
@@ -30531,7 +30652,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_routing",
@@ -30539,10 +30660,10 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "Routing"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_seq_no",
@@ -30553,7 +30674,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_source",
@@ -30564,7 +30685,7 @@
               "name": "TDocument"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_type",
@@ -30572,10 +30693,10 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "TypeName"
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "_version",
@@ -30586,7 +30707,7 @@
               "name": "long"
             }
           },
-          "required": true
+          "required": false
         }
       ]
     },
@@ -48233,6 +48354,20 @@
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
+        "name": "byte"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "internal",
+          "name": "number"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "internal",
         "name": "CategoryId"
       },
       "type": {
@@ -48976,18 +49111,30 @@
       }
     },
     {
-      "kind": "type_alias",
+      "kind": "union",
       "name": {
         "namespace": "internal",
         "name": "Names"
       },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "namespace": "internal",
-          "name": "string"
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "string"
+          }
+        },
+        {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          }
         }
-      }
+      ]
     },
     {
       "kind": "type_alias",
@@ -49121,6 +49268,29 @@
           "name": "string"
         }
       }
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "internal",
+        "name": "WaitForActiveShards"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "byte"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "common",
+            "name": "WaitForActiveShardOptions"
+          }
+        }
+      ]
     },
     {
       "kind": "enum",

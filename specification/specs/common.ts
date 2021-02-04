@@ -86,24 +86,30 @@ type double = number
 // TODO clean up Id and Name variants and make sure all API's use one purposefully
 // Id includes numeric support, Name does not
 type ScrollId = string
-type ScrollIds = string
+type ScrollIds = string // TODO: array of ScrollIds
+
 type CategoryId = string
 type ActionIds = string
-type Field = string
+
 type Id = string | number
 type Ids = string | number | string[]
+
 type IndexName = string
 type Indices = string | string[]
+
 type TypeName = string
 type TypeNames = string | string[]
 type Types = string | string[]
+
 type Routing = string | number
 type LongId = string
 //TODO encode metrics as API specific enums
 type IndexMetrics = string
 type Metrics = string | string[]
+
 type Name = string
-type Names = string
+type Names = string | string[]
+
 type NodeIds = string
 type PropertyName = string
 type RelationName = string
@@ -114,7 +120,10 @@ type MultiTermQueryRewrite = string
 type GeoTilePrecision = number
 type GeoHashPrecision = number
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
+type Field = string
 type Fields = Field | Field[]
+
+type WaitForActiveShards = byte | WaitForActiveShardOptions
 
 /**
  * The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back
