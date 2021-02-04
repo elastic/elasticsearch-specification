@@ -6195,6 +6195,7 @@ export interface CountRequest extends RequestBase {
   query_on_query_string?: string
   routing?: Routing
   terminate_after?: long
+  q?: string
   body?: {
     query?: QueryContainer
   }
