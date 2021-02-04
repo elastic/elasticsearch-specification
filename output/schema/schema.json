@@ -30601,11 +30601,7 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "LazyDocument"
-              }
+              "kind": "user_defined_value"
             }
           },
           "required": false

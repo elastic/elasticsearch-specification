@@ -27,7 +27,7 @@ class MultiGetResponse<TDocument> extends ResponseBase {
 
 class MultiGetHit<TDocument> {
   error?: MainError
-  fields?: Dictionary<string, LazyDocument>
+  fields?: Dictionary<string, UserDefinedValue>
   found?: boolean
   _id: string
   _index: string

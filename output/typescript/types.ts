@@ -3255,7 +3255,7 @@ export interface MultiGetSourceFilter {
 
 export interface MultiGetHit<TDocument = unknown> {
   error?: MainError
-  fields?: Record<string, LazyDocument>
+  fields?: Record<string, any>
   found?: boolean
   _id: string
   _index: string
