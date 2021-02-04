@@ -1,0 +1,43 @@
+# Behaviors
+
+Some APIs needs to be handled differenlty based on the output language, while others share many common parameters.
+This document contains the list of this special interfaces and where those should be used.
+Behaviors should be used via `implements` in the specification.
+
+You can find all the special classes and aliases in in the [modeling guide](./modeling-guide.md).
+
+## AdditionalProperties
+
+In some places in the specification an object consists of the union of a set of known properties
+and a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose
+a set of known keys and possibly. The object might already be part of an object graph and have a parent class.
+This puts it into a bind that needs a client specific solution.
+We therefore document the requirement to behave like a dictionary for unknown properties with this interface.
+
+```ts
+class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
+```
+
+## ArrayResponse
+
+A response formatted as an array of records.
+Some languages can't represent this easily and need to wrap the
+array inside an object.
+
+```ts
+class CatAliasesResponse
+  extends ResponseBase
+  implements ArrayResponse<CatAliasesRecord> {}
+```
+
+## EmptyResponseBase
+
+HEAD APIs can have a different behavior based on the language,
+the response body is always empty to it's up to language generators
+to define how those should be represented.
+
+```ts
+class DocumentExistsResponse
+  extends ResponseBase
+  implements EmptyResponseBase {}
+```

@@ -1,68 +1,87 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 class AggregationContainer {
-  adjacency_matrix?: AdjacencyMatrixAggregation;
-  aggs?: Dictionary<string, AggregationContainer>;
-  aggregations?: Dictionary<string, AggregationContainer>;
-  auto_date_histogram?: AutoDateHistogramAggregation;
-  avg?: AverageAggregation;
-  avg_bucket?: AverageBucketAggregation;
-  boxplot?: BoxplotAggregation;
-  bucket_script?: BucketScriptAggregation;
-  bucket_selector?: BucketSelectorAggregation;
-  bucket_sort?: BucketSortAggregation;
-  cardinality?: CardinalityAggregation;
-  children?: ChildrenAggregation;
-  composite?: CompositeAggregation;
-  cumulative_cardinality?: CumulativeCardinalityAggregation;
-  cumulative_sum?: CumulativeSumAggregation;
-  date_histogram?: DateHistogramAggregation;
-  date_range?: DateRangeAggregation;
-  derivative?: DerivativeAggregation;
-  extended_stats?: ExtendedStatsAggregation;
-  extended_stats_bucket?: ExtendedStatsBucketAggregation;
-  filter?: QueryContainer;
-  filters?: FiltersAggregation;
-  geo_bounds?: GeoBoundsAggregation;
-  geo_centroid?: GeoCentroidAggregation;
-  geo_distance?: GeoDistanceAggregation;
-  geohash_grid?: GeoHashGridAggregation;
-  geotile_grid?: GeoTileGridAggregation;
-  global?: GlobalAggregation;
-  histogram?: HistogramAggregation;
-  ip_range?: IpRangeAggregation;
-  matrix_stats?: MatrixStatsAggregation;
-  max?: MaxAggregation;
-  max_bucket?: MaxBucketAggregation;
-  median_absolute_deviation?: MedianAbsoluteDeviationAggregation;
-  meta?: Dictionary<string, string | number | boolean>;
-  min?: MinAggregation;
-  min_bucket?: MinBucketAggregation;
-  missing?: MissingAggregation;
-  moving_avg?: MovingAverageAggregation;
-  moving_fn?: MovingFunctionAggregation;
-  nested?: NestedAggregation;
-  parent?: ParentAggregation;
-  percentile_ranks?: PercentileRanksAggregation;
-  percentiles?: PercentilesAggregation;
-  percentiles_bucket?: PercentilesBucketAggregation;
-  range?: RangeAggregation;
-  rare_terms?: RareTermsAggregation;
-  reverse_nested?: ReverseNestedAggregation;
-  sampler?: SamplerAggregation;
-  scripted_metric?: ScriptedMetricAggregation;
-  serial_diff?: SerialDifferencingAggregation;
-  significant_terms?: SignificantTermsAggregation;
-  significant_text?: SignificantTextAggregation;
-  stats?: StatsAggregation;
-  stats_bucket?: StatsBucketAggregation;
-  string_stats?: StringStatsAggregation;
-  sum?: SumAggregation;
-  sum_bucket?: SumBucketAggregation;
-  terms?: TermsAggregation;
-  top_hits?: TopHitsAggregation;
-  top_metrics?: TopMetricsAggregation;
-  value_count?: ValueCountAggregation;
-  weighted_avg?: WeightedAverageAggregation;
-  variable_width_histogram?: VariableWidthHistogramAggregation;
+  adjacency_matrix?: AdjacencyMatrixAggregation
+  aggs?: Dictionary<string, AggregationContainer>
+  aggregations?: Dictionary<string, AggregationContainer>
+  auto_date_histogram?: AutoDateHistogramAggregation
+  avg?: AverageAggregation
+  avg_bucket?: AverageBucketAggregation
+  boxplot?: BoxplotAggregation
+  bucket_script?: BucketScriptAggregation
+  bucket_selector?: BucketSelectorAggregation
+  bucket_sort?: BucketSortAggregation
+  cardinality?: CardinalityAggregation
+  children?: ChildrenAggregation
+  composite?: CompositeAggregation
+  cumulative_cardinality?: CumulativeCardinalityAggregation
+  cumulative_sum?: CumulativeSumAggregation
+  date_histogram?: DateHistogramAggregation
+  date_range?: DateRangeAggregation
+  derivative?: DerivativeAggregation
+  extended_stats?: ExtendedStatsAggregation
+  extended_stats_bucket?: ExtendedStatsBucketAggregation
+  filter?: QueryContainer
+  filters?: FiltersAggregation
+  geo_bounds?: GeoBoundsAggregation
+  geo_centroid?: GeoCentroidAggregation
+  geo_distance?: GeoDistanceAggregation
+  geohash_grid?: GeoHashGridAggregation
+  geotile_grid?: GeoTileGridAggregation
+  global?: GlobalAggregation
+  histogram?: HistogramAggregation
+  ip_range?: IpRangeAggregation
+  matrix_stats?: MatrixStatsAggregation
+  max?: MaxAggregation
+  max_bucket?: MaxBucketAggregation
+  median_absolute_deviation?: MedianAbsoluteDeviationAggregation
+  meta?: Dictionary<string, string | number | boolean>
+  min?: MinAggregation
+  min_bucket?: MinBucketAggregation
+  missing?: MissingAggregation
+  moving_avg?: MovingAverageAggregation
+  moving_fn?: MovingFunctionAggregation
+  nested?: NestedAggregation
+  parent?: ParentAggregation
+  percentile_ranks?: PercentileRanksAggregation
+  percentiles?: PercentilesAggregation
+  percentiles_bucket?: PercentilesBucketAggregation
+  range?: RangeAggregation
+  rare_terms?: RareTermsAggregation
+  reverse_nested?: ReverseNestedAggregation
+  sampler?: SamplerAggregation
+  scripted_metric?: ScriptedMetricAggregation
+  serial_diff?: SerialDifferencingAggregation
+  significant_terms?: SignificantTermsAggregation
+  significant_text?: SignificantTextAggregation
+  stats?: StatsAggregation
+  stats_bucket?: StatsBucketAggregation
+  string_stats?: StringStatsAggregation
+  sum?: SumAggregation
+  sum_bucket?: SumBucketAggregation
+  terms?: TermsAggregation
+  top_hits?: TopHitsAggregation
+  top_metrics?: TopMetricsAggregation
+  value_count?: ValueCountAggregation
+  weighted_avg?: WeightedAverageAggregation
+  variable_width_histogram?: VariableWidthHistogramAggregation
 }
 
-type Missing = string | integer | boolean;
+type Missing = string | integer | boolean

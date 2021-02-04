@@ -1,3 +1,22 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 'use strict'
 
 const { writeFileSync } = require('fs')
@@ -24,7 +43,10 @@ let definitions = `/*
  */\n\n`
 
 const skip = [
-  'CatResponseBase'
+  'ResponseBase',
+  'ArrayResponse',
+  'EmptyResponseBase',
+  'AdditionalProperties'
 ]
 
 for (const type of types) {
@@ -158,6 +180,8 @@ function createAlias (type) {
 
 function buildInherits (type) {
   if (!Array.isArray(type.inherits)) return ''
+  // ResponseBase will always be empty
+  if (type.inherits[0].type.name === 'ResponseBase') return ''
   return ` extends ${type.inherits.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type) {
@@ -165,13 +189,15 @@ function buildInherits (type) {
   }
 }
 
-function buildGenerics (type) {
+function buildGenerics (type, noDefault = false) {
   if (!Array.isArray(type.generics)) return ''
   return `<${type.generics.map(buildGeneric).join(', ')}>`
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    return typeof type === 'string' ? `${type} = unknown` : buildType(type)
+    return typeof type === 'string'
+      ? (noDefault ? type : `${type} = unknown`)
+      : buildType(type)
   }
 }
 
@@ -182,8 +208,8 @@ function cleanPropertyName (name) {
 }
 
 function isSpecialInterface (type) {
-  if (/^Cat.*Response$/g.test(type.name.name)) {
-    return true
+  if (Array.isArray(type.attachedBehaviors)) {
+    return type.attachedBehaviors.length > 0
   }
   switch (type.name.name) {
     case 'DictionaryResponseBase':
@@ -193,23 +219,67 @@ function isSpecialInterface (type) {
   }
 }
 
-function serializeSpecialInterface (type) {
-  if (/^Cat.*Response$/g.test(type.name.name)) {
-    return buildCatResponse(type)
+function lookupBehaviorImplements (type, name) {
+  const dictionaryOf = type.behaviors.find(i => i.type.name === name)
+  if (dictionaryOf) return dictionaryOf
+  // find inherits on parent if current type has parent
+  // TODO fix spec so that inherits is no longer an array
+  if (Array.isArray(type.inherits)) return lookupBehaviorImplements(type.inherits[0], name)
+  return null
+}
+
+function serializeAdditionalPropertiesType (type) {
+  const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties')
+  if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
+  let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
+
+  function required (property) {
+    return property.required ? '' : '?'
   }
+
+  for (const property of type.properties) {
+    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildType(property.type)}\n`
+  }
+  code += '}\n'
+  code += `export type ${type.name.name}${buildGenerics(type)} = ${type.name.name}Keys${buildGenerics(type, true)} |\n`
+  code += `    { ${buildIndexer(dictionaryOf)} }\n`
+  return code
+}
+
+function serializeSpecialInterface (type) {
+  if (Array.isArray(type.attachedBehaviors)) {
+    if (type.attachedBehaviors.includes('AdditionalProperties')) {
+      return serializeAdditionalPropertiesType(type)
+    }
+    if (type.attachedBehaviors.includes('ArrayResponse')) {
+      // In the input spec the Cat* responses are represented as an object
+      // that contains a `records` key, which is an array of the inherited generic.
+      // What ES actually sends back, is an array of the inherited generic.
+      return `export type ${type.name.name} = ${type.behaviors[0].generics[0].type.name}[]\n`
+    }
+    if (type.attachedBehaviors.includes('EmptyResponseBase')) {
+      return `export type ${type.name.name} = boolean\n`
+    }
+  }
+
   switch (type.name.name) {
     case 'DictionaryResponseBase':
-      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
+      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
   [key: string]: TValue
 }\n`
     default:
       throw new Error(`Unknown interface ${type.name.name}`)
   }
 }
+function buildIndexer (type) {
+  if (!Array.isArray(type.generics)) return ''
+  return `[property: ${type.generics.map(buildGeneric).join(']: ')}`
 
-// In the input spec the Cat* responses are represented as an object
-// that contains a `records` key, which is an array of the inherited generic.
-// What ES actually sends back, is an array of the inherited generic.
-function buildCatResponse (type) {
-  return `export type ${type.name.name} = ${type.inherits[0].generics[0].type.name}[]\n`
+  // generics can either be a value/instance_of or a named generics
+  function buildGeneric (type) {
+    const t = typeof type === 'string' ? type : buildType(type)
+    // indexers do not allow type aliases so here we translate known
+    // type aliases back to string
+    return t === 'AggregateName' ? 'string' : t
+  }
 }

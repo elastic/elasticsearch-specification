@@ -1,13 +1,38 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 class SnapshotInfo {
-  duration_in_millis: long;
-  end_time: Date;
-  end_time_in_millis: long;
-  failures: SnapshotShardFailure[];
-  indices: IndexName[];
-  metadata: Dictionary<string, UserDefinedValue>;
-  snapshot: string;
-  shards: ShardStatistics;
-  start_time: Date;
-  start_time_in_millis: long;
-  state: string;
+  data_streams: Array<string>
+  duration_in_millis: long
+  end_time?: Date
+  end_time_in_millis?: long
+  failures?: SnapshotShardFailure[]
+  include_global_state?: boolean
+  indices: IndexName[]
+  metadata?: Dictionary<string, UserDefinedValue>
+  reason?: string
+  snapshot: string
+  shards?: ShardStatistics
+  start_time?: Date
+  start_time_in_millis?: long
+  state?: string
+  uuid: string
+  version?: string
+  version_id?: integer
 }

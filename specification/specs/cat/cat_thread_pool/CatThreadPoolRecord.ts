@@ -1,34 +1,53 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 class CatThreadPoolRecord {
   /** @prop_serializer StringIntFormatter */
-  active: integer;
+  active: integer
   /** @prop_serializer NullableStringLongFormatter */
-  completed: long;
+  completed: long
   /** @prop_serializer NullableStringIntFormatter */
-  core: integer;
-  ephemeral_node_id: string;
-  host: string;
-  ip: string;
-  keep_alive: Time;
+  core: integer
+  ephemeral_node_id: string
+  host: string
+  ip: string
+  keep_alive: Time
   /** @prop_serializer NullableStringIntFormatter */
-  largest: integer;
+  largest: integer
   /** @prop_serializer NullableStringIntFormatter */
-  max: integer;
-  name: string;
-  node_id: string;
-  node_name: string;
+  max: integer
+  name: string
+  node_id: string
+  node_name: string
   /** @prop_serializer NullableStringIntFormatter */
-  pool_size: integer;
+  pool_size: integer
   /** @prop_serializer NullableStringIntFormatter */
-  port: integer;
+  port: integer
   /** @prop_serializer NullableStringIntFormatter */
-  pid: integer;
+  pid: integer
   /** @prop_serializer StringIntFormatter */
-  queue: integer;
+  queue: integer
   /** @prop_serializer NullableStringIntFormatter */
-  queue_size: integer;
+  queue_size: integer
   /** @prop_serializer StringLongFormatter */
-  rejected: long;
+  rejected: long
   /** @prop_serializer NullableStringIntFormatter */
-  size: integer;
-  type: string;
+  size: integer
+  type: string
 }
