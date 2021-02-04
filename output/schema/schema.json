@@ -18153,7 +18153,7 @@
             "kind": "instance_of",
             "type": {
               "namespace": "internal",
-              "name": "string"
+              "name": "WaitForActiveShards"
             }
           },
           "required": false,
@@ -26032,6 +26032,18 @@
         },
         {
           "name": "force"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "namespace": "common",
+        "name": "WaitForActiveShardOptions"
+      },
+      "members": [
+        {
+          "name": "all"
         }
       ]
     },
@@ -48223,6 +48235,20 @@
       "kind": "type_alias",
       "name": {
         "namespace": "internal",
+        "name": "byte"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "namespace": "internal",
+          "name": "number"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "namespace": "internal",
         "name": "CategoryId"
       },
       "type": {
@@ -49131,6 +49157,29 @@
           "name": "string"
         }
       }
+    },
+    {
+      "kind": "union",
+      "name": {
+        "namespace": "internal",
+        "name": "WaitForActiveShards"
+      },
+      "items": [
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "internal",
+            "name": "byte"
+          }
+        },
+        {
+          "kind": "instance_of",
+          "type": {
+            "namespace": "common",
+            "name": "WaitForActiveShardOptions"
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
