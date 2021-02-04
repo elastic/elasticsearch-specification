@@ -2602,6 +2602,9 @@ export type PingResponse = boolean
 export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
+  body?: {
+    secure_settings_password: string
+  }
 }
 
 export interface ReloadSecureSettingsResponse extends NodesResponseBase {

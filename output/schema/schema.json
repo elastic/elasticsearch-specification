@@ -24435,7 +24435,23 @@
           "required": false,
           "description": "Explicit operation timeout"
         }
-      ]
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "secure_settings_password",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "internal",
+                "name": "string"
+              }
+            },
+            "required": true
+          }
+        ]
+      }
     },
     {
       "kind": "interface",
