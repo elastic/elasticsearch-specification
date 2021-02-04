@@ -19,9 +19,5 @@
 
 class IndexSegment {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-<<<<<<< HEAD
   shards: Dictionary<string, ShardsSegment>
-=======
-  shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>;
->>>>>>> Adde Indices.Segment Endpoint + Spec
 }
