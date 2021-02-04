@@ -4355,7 +4355,7 @@ export interface ShardRecovery {
 }
 
 export interface IndexSegment {
-  shards: Record<string, ShardsSegment>
+  shards: Record<string, ShardsSegment | Array<ShardsSegment>>
 }
 
 export interface Segment {
