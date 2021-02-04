@@ -17,8 +17,11 @@
  * under the License.
  */
 
-class ReloadSecureSettingsResponse extends NodesResponseBase {
-  cluster_name: string
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  nodes: Dictionary<string, NodeStats> //| Dictionary<string, NodeReloadException>
+class NodeReloadException {
+  name: string
+  reload_exception: {
+    type: string
+    reason: string
+    caused_by: NodeReloadExceptionCausedBy
+  }
 }
