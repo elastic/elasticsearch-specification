@@ -41337,11 +41337,32 @@
               }
             },
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "indices.monitoring.indices_segments",
-                "name": "ShardsSegment"
-              }
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "indices.monitoring.indices_segments",
+                    "name": "ShardsSegment"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "namespace": "internal",
+                    "name": "Array"
+                  },
+                  "generics": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "namespace": "indices.monitoring.indices_segments",
+                        "name": "ShardsSegment"
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           },
           "required": true,
