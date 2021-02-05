@@ -34136,32 +34136,28 @@
           "required": false
         },
         {
-          "name": "source_excludes",
+          "name": "_source_excludes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
-          "required": false
+          "required": false,
+          "description": "A list of fields to exclude from the returned _source field"
         },
         {
-          "name": "source_includes",
+          "name": "_source_includes",
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "namespace": "internal",
-                "name": "Field"
-              }
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Fields"
             }
           },
-          "required": false
+          "required": false,
+          "description": "A list of fields to extract and return from the _source field"
         },
         {
           "name": "version",

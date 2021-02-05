@@ -3607,8 +3607,8 @@ export interface SourceRequest extends RequestBase {
   refresh?: boolean
   routing?: Routing
   source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
+  _source_excludes?: Fields
+  _source_includes?: Fields
   version?: long
   version_type?: VersionType
 }
