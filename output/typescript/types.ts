@@ -5146,6 +5146,9 @@ export interface DateField {
 
 export type double = number
 
+export interface EmptyObject {
+}
+
 export interface ErrorCause {
   type: string
   reason: string
@@ -6255,11 +6258,28 @@ export interface InlineGet<TDocument = unknown> {
 
 export interface FieldCapabilities {
   aggregatable: boolean
-  indices: Indices
-  meta: Record<string, Array<string>>
-  non_aggregatable_indices: Indices
-  non_searchable_indices: Indices
+  indices?: Indices
+  meta?: Record<string, Array<string>>
+  non_aggregatable_indices?: Indices
+  non_searchable_indices?: Indices
   searchable: boolean
+  type: string
+}
+
+export interface FieldCapabilitiesBodyIndexFilter {
+  range?: FieldCapabilitiesBodyIndexFilterRange
+  match_none?: EmptyObject
+}
+
+export interface FieldCapabilitiesBodyIndexFilterRange {
+  timestamp: FieldCapabilitiesBodyIndexFilterRangeTimestamp
+}
+
+export interface FieldCapabilitiesBodyIndexFilterRangeTimestamp {
+  gte?: integer
+  gt?: integer
+  lte?: integer
+  lt?: integer
 }
 
 export interface FieldCapabilitiesRequest extends RequestBase {
@@ -6269,9 +6289,13 @@ export interface FieldCapabilitiesRequest extends RequestBase {
   fields?: Field | Array<Field>
   ignore_unavailable?: boolean
   include_unmapped?: boolean
+  body?: {
+    index_filter?: FieldCapabilitiesBodyIndexFilter
+  }
 }
 
 export interface FieldCapabilitiesResponse {
+  indices: Indices
   fields: Record<Field, Record<string, FieldCapabilities>>
 }
 

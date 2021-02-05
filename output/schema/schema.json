@@ -48341,6 +48341,14 @@
       "kind": "interface",
       "name": {
         "namespace": "internal",
+        "name": "EmptyObject"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
         "name": "EmptyResponseBase"
       },
       "properties": []
@@ -58800,7 +58808,7 @@
               "name": "Indices"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "IndicesFormatter"
           }
@@ -58827,7 +58835,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "non_aggregatable_indices",
@@ -58838,7 +58846,7 @@
               "name": "Indices"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "IndicesFormatter"
           }
@@ -58852,7 +58860,7 @@
               "name": "Indices"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "IndicesFormatter"
           }
@@ -58867,6 +58875,121 @@
             }
           },
           "required": true
+        },
+        {
+          "name": "type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "search.field_capabilities",
+        "name": "FieldCapabilitiesBodyIndexFilter"
+      },
+      "properties": [
+        {
+          "name": "range",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.field_capabilities",
+              "name": "FieldCapabilitiesBodyIndexFilterRange"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "match_none",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "EmptyObject"
+            }
+          },
+          "required": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "search.field_capabilities",
+        "name": "FieldCapabilitiesBodyIndexFilterRange"
+      },
+      "properties": [
+        {
+          "name": "timestamp",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "search.field_capabilities",
+              "name": "FieldCapabilitiesBodyIndexFilterRangeTimestamp"
+            }
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "search.field_capabilities",
+        "name": "FieldCapabilitiesBodyIndexFilterRangeTimestamp"
+      },
+      "properties": [
+        {
+          "name": "gte",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "gt",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "lte",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
+        },
+        {
+          "name": "lt",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "integer"
+            }
+          },
+          "required": false
         }
       ]
     },
@@ -58975,7 +59098,23 @@
           "required": false,
           "description": "Indicates whether unmapped fields should be included in the response."
         }
-      ]
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "index_filter",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.field_capabilities",
+                "name": "FieldCapabilitiesBodyIndexFilter"
+              }
+            },
+            "required": false
+          }
+        ]
+      }
     },
     {
       "kind": "interface",
@@ -58992,6 +59131,17 @@
         }
       ],
       "properties": [
+        {
+          "name": "indices",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
+          },
+          "required": true
+        },
         {
           "name": "fields",
           "type": {
