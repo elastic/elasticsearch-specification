@@ -26,6 +26,6 @@ class ReloadSecureSettingsRequest extends RequestBase {
     timeout?: Time
   }
   body?: {
-    secure_settings_password: string
+    secure_settings_password?: string
   }
 }
