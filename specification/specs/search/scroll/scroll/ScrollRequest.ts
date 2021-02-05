@@ -27,11 +27,14 @@ interface ScrollRequest extends RequestBase {
     scroll_id?: Id
   }
   query_parameters?: {
-    total_hits_as_integer?: boolean
     scroll?: Time
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
+    total_hits_as_integer?: boolean
   }
   body?: {
     scroll?: Time
-    scroll_id?: string
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
   }
 }
