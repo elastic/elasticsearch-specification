@@ -58807,7 +58807,7 @@
               "name": "Indices"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "IndicesFormatter"
           }
@@ -58834,7 +58834,7 @@
               }
             }
           },
-          "required": true
+          "required": false
         },
         {
           "name": "non_aggregatable_indices",
@@ -58845,7 +58845,7 @@
               "name": "Indices"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "IndicesFormatter"
           }
@@ -58859,7 +58859,7 @@
               "name": "Indices"
             }
           },
-          "required": true,
+          "required": false,
           "annotations": {
             "prop_serializer": "IndicesFormatter"
           }
@@ -58871,6 +58871,17 @@
             "type": {
               "namespace": "internal",
               "name": "boolean"
+            }
+          },
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "string"
             }
           },
           "required": true
@@ -59141,6 +59152,17 @@
         }
       ],
       "properties": [
+        {
+          "name": "indices",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "namespace": "internal",
+              "name": "Indices"
+            }
+          },
+          "required": true
+        },
         {
           "name": "fields",
           "type": {

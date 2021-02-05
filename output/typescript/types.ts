@@ -6255,11 +6255,12 @@ export interface InlineGet<TDocument = unknown> {
 
 export interface FieldCapabilities {
   aggregatable: boolean
-  indices: Indices
-  meta: Record<string, Array<string>>
-  non_aggregatable_indices: Indices
-  non_searchable_indices: Indices
+  indices?: Indices
+  meta?: Record<string, Array<string>>
+  non_aggregatable_indices?: Indices
+  non_searchable_indices?: Indices
   searchable: boolean
+  type: string
 }
 
 export interface FieldCapabilitiesBody {
@@ -6296,6 +6297,7 @@ export interface FieldCapabilitiesRequest extends RequestBase {
 }
 
 export interface FieldCapabilitiesResponse {
+  indices: Indices
   fields: Record<Field, Record<string, FieldCapabilities>>
 }
 
