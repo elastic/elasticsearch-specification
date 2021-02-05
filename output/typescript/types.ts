@@ -5146,6 +5146,9 @@ export interface DateField {
 
 export type double = number
 
+export interface EmptyObject {
+}
+
 export interface ErrorCause {
   type: string
   reason: string
@@ -6263,16 +6266,9 @@ export interface FieldCapabilities {
   type: string
 }
 
-export interface FieldCapabilitiesBody {
-  index_filter?: FieldCapabilitiesBodyIndexFilter
-}
-
 export interface FieldCapabilitiesBodyIndexFilter {
   range?: FieldCapabilitiesBodyIndexFilterRange
-  match_none?: FieldCapabilitiesBodyIndexFilterMatchAll
-}
-
-export interface FieldCapabilitiesBodyIndexFilterMatchAll {
+  match_none?: EmptyObject
 }
 
 export interface FieldCapabilitiesBodyIndexFilterRange {
@@ -6293,7 +6289,9 @@ export interface FieldCapabilitiesRequest extends RequestBase {
   fields?: Field | Array<Field>
   ignore_unavailable?: boolean
   include_unmapped?: boolean
-  body?: FieldCapabilitiesBody
+  body?: {
+    index_filter?: FieldCapabilitiesBodyIndexFilter
+  }
 }
 
 export interface FieldCapabilitiesResponse {

@@ -149,3 +149,6 @@ class LatLon {
   lat: double
   lon: double
 }
+
+/** For empty Class assignments */
+class EmptyObject {}

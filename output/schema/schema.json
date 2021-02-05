@@ -48348,6 +48348,14 @@
       "kind": "interface",
       "name": {
         "namespace": "internal",
+        "name": "EmptyObject"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "namespace": "internal",
         "name": "EmptyResponseBase"
       },
       "properties": []
@@ -58892,26 +58900,6 @@
       "kind": "interface",
       "name": {
         "namespace": "search.field_capabilities",
-        "name": "FieldCapabilitiesBody"
-      },
-      "properties": [
-        {
-          "name": "index_filter",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "namespace": "search.field_capabilities",
-              "name": "FieldCapabilitiesBodyIndexFilter"
-            }
-          },
-          "required": false
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "search.field_capabilities",
         "name": "FieldCapabilitiesBodyIndexFilter"
       },
       "properties": [
@@ -58931,21 +58919,13 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "namespace": "search.field_capabilities",
-              "name": "FieldCapabilitiesBodyIndexFilterMatchAll"
+              "namespace": "internal",
+              "name": "EmptyObject"
             }
           },
           "required": false
         }
       ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "namespace": "search.field_capabilities",
-        "name": "FieldCapabilitiesBodyIndexFilterMatchAll"
-      },
-      "properties": []
     },
     {
       "kind": "interface",
@@ -59127,14 +59107,20 @@
         }
       ],
       "body": {
-        "kind": "value",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "namespace": "search.field_capabilities",
-            "name": "FieldCapabilitiesBody"
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "index_filter",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "namespace": "search.field_capabilities",
+                "name": "FieldCapabilitiesBodyIndexFilter"
+              }
+            },
+            "required": false
           }
-        }
+        ]
       }
     },
     {

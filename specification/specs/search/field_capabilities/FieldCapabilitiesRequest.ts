@@ -29,16 +29,13 @@ class FieldCapabilitiesRequest extends RequestBase {
     ignore_unavailable?: boolean
     include_unmapped?: boolean
   }
-  body?: FieldCapabilitiesBody
+  body?: {
+    index_filter?: FieldCapabilitiesBodyIndexFilter
+  }
 }
-
-class FieldCapabilitiesBody {
-  index_filter?: FieldCapabilitiesBodyIndexFilter
-}
-
 class FieldCapabilitiesBodyIndexFilter {
   range?: FieldCapabilitiesBodyIndexFilterRange
-  match_none?: FieldCapabilitiesBodyIndexFilterMatchAll
+  match_none?: EmptyObject
 }
 
 class FieldCapabilitiesBodyIndexFilterRange {
@@ -51,5 +48,3 @@ class FieldCapabilitiesBodyIndexFilterRangeTimestamp {
   lte?: integer
   lt?: integer
 }
-
-class FieldCapabilitiesBodyIndexFilterMatchAll {}
