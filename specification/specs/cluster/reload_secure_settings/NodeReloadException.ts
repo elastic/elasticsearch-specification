@@ -19,9 +19,11 @@
 
 class NodeReloadException {
   name: string
-  reload_exception: {
-    type: string
-    reason: string
-    caused_by: NodeReloadExceptionCausedBy
-  }
+  reload_exception: NodeReloadExceptionCausedBy
+}
+
+class NodeReloadExceptionCausedBy {
+  type: string
+  reason: string
+  caused_by?: NodeReloadExceptionCausedBy
 }

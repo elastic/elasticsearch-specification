@@ -1766,7 +1766,7 @@ export interface NodesResponseBase {
 
 export interface NodeStatistics {
   failed: integer
-  failures: Array<ErrorCause>
+  failures?: Array<ErrorCause>
   successful: integer
   total: integer
 }
@@ -2599,6 +2599,17 @@ export interface PingRequest extends RequestBase {
 
 export type PingResponse = boolean
 
+export interface NodeReloadException {
+  name: string
+  reload_exception: NodeReloadExceptionCausedBy
+}
+
+export interface NodeReloadExceptionCausedBy {
+  type: string
+  reason: string
+  caused_by?: NodeReloadExceptionCausedBy
+}
+
 export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
@@ -2609,7 +2620,7 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
 
 export interface ReloadSecureSettingsResponse extends NodesResponseBase {
   cluster_name: string
-  nodes: Record<string, NodeStats>
+  nodes: Record<string, NodeStats | NodeReloadException>
 }
 
 export interface RemoteInfo {

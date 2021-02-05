@@ -19,7 +19,7 @@
 
 class NodeStatistics {
   failed: integer
-  failures: ErrorCause[]
+  failures?: ErrorCause[]
   successful: integer
   total: integer
 }
