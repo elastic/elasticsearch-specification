@@ -6262,6 +6262,29 @@ export interface FieldCapabilities {
   searchable: boolean
 }
 
+export interface FieldCapabilitiesBody {
+  index_filter?: FieldCapabilitiesBodyIndexFilter
+}
+
+export interface FieldCapabilitiesBodyIndexFilter {
+  range?: FieldCapabilitiesBodyIndexFilterRange
+  match_none?: FieldCapabilitiesBodyIndexFilterMatchAll
+}
+
+export interface FieldCapabilitiesBodyIndexFilterMatchAll {
+}
+
+export interface FieldCapabilitiesBodyIndexFilterRange {
+  timestamp: FieldCapabilitiesBodyIndexFilterRangeTimestamp
+}
+
+export interface FieldCapabilitiesBodyIndexFilterRangeTimestamp {
+  gte?: integer
+  gt?: integer
+  lte?: integer
+  lt?: integer
+}
+
 export interface FieldCapabilitiesRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -6269,6 +6292,7 @@ export interface FieldCapabilitiesRequest extends RequestBase {
   fields?: Field | Array<Field>
   ignore_unavailable?: boolean
   include_unmapped?: boolean
+  body?: FieldCapabilitiesBody
 }
 
 export interface FieldCapabilitiesResponse {
