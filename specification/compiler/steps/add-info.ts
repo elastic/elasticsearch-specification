@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import assert from 'assert'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 
@@ -31,7 +30,7 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
     version: '7.11.0',
     title: 'Elasticsearch Request & Response Specification',
     license: {
-      name: "Apache 2.0",
+      name: 'Apache 2.0',
       url: 'https://github.com/elastic/elastic-client-generator/blob/master/LICENSE'
     }
   }

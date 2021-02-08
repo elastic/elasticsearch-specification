@@ -299,6 +299,7 @@ export class Model {
       url: string
     }
   }
+
   types: TypeDefinition[]
   endpoints: Endpoint[]
 }
