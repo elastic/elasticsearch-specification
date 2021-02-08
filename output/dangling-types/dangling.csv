@@ -1,7 +1,5 @@
-SourceDocument,common.ts
 TimeSpan,common.ts
 short,common.ts
-byte,common.ts
 ScrollId,common.ts
 ScrollIds,common.ts
 ActionIds,common.ts
