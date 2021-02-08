@@ -21,11 +21,9 @@ import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 
 /**
- * Adds the `description` field to every path and query property
- * from the rest-api-spec. If a description for a property
- * does not exists, the `description` key will not be added.
+ * Adds the `_info` field to the JSON model
  */
-export default async function addDescription (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   model._info = {
     version: '7.11.0',
     title: 'Elasticsearch Request & Response Specification',
