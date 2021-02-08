@@ -27,7 +27,7 @@
     "change-case": "^4.1.1",
     "elasticsearch-client-specification": "file:../specification",
     "json-stable-stringify": "^1.0.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "eslintConfig": {
     "rules": {
