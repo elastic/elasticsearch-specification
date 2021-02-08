@@ -30,8 +30,8 @@ class SourceRequest extends RequestBase {
     refresh?: boolean
     routing?: Routing
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    _source_excludes?: Fields
+    _source_includes?: Fields
     version?: long
     version_type?: VersionType
   }

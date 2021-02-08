@@ -36,7 +36,9 @@ class PutMappingRequest extends RequestBase {
     date_detection?: boolean
     dynamic?: Union<boolean, DynamicMapping>
     dynamic_date_formats?: string[]
-    dynamic_templates?: Dictionary<string, DynamicTemplate>
+    dynamic_templates?:
+      | Dictionary<string, DynamicTemplate>
+      | Dictionary<string, DynamicTemplate>[]
     field_names_field?: FieldNamesField
     index_field?: IndexField
     meta?: Dictionary<string, UserDefinedValue>

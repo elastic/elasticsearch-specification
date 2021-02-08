@@ -18,5 +18,6 @@
  */
 
 class FieldCapabilitiesResponse extends ResponseBase {
+  indices: Indices
   fields: Dictionary<Field, Dictionary<string, FieldCapabilities>>
 }

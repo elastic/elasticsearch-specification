@@ -26,11 +26,11 @@ class TopHitsAggregation {
   size?: integer
   sort?:
     | string
-    | Dictionary<Field, NestedSort>
+    | Dictionary<Field, Sort | SortOrder | NestedSort>
     | Array<
         SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
       >
-  _source?: Union<boolean, SourceFilter>
+  _source?: boolean | SourceFilter | Field
   stored_fields?: Field[]
   track_scores?: boolean
   version?: boolean

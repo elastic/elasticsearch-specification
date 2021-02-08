@@ -17,5 +17,7 @@
  * under the License.
  */
 
-@class_serializer('SqlValueFormatter')
-class SqlValue extends LazyDocument {}
+// TODO: @see WaitForActiveShards & https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
+enum WaitForActiveShardOptions {
+  'all' = 0
+}

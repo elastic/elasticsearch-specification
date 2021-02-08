@@ -22,6 +22,7 @@ class InvalidateApiKeyRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     id?: string
+    ids?: string[]
     name?: string
     owner?: boolean
     realm_name?: string

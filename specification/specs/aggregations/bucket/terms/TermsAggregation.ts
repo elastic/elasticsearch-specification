@@ -24,7 +24,7 @@ class TermsAggregation {
   field?: Field
   include?: string | string[] | TermsInclude
   min_doc_count?: integer
-  missing?: Missing
+  missing_bucket?: Missing
   value_type?: string
   order?: Dictionary<string, SortOrder>
   script?: Script

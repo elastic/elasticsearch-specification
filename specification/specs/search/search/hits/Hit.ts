@@ -25,7 +25,7 @@ class Hit<TDocument> {
   _type?: TypeName
 
   _explanation?: Explanation
-  fields?: Dictionary<string, LazyDocument>
+  fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   inner_hits?: Dictionary<string, InnerHitsResult>

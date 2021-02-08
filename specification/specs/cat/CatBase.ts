@@ -19,7 +19,7 @@
 
 class CatRequestBase extends RequestBase {
   format?: string
-  h?: string[]
+  h?: Names
   help?: boolean
   local?: boolean
   master_timeout?: Time

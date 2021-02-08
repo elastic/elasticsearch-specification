@@ -26,7 +26,7 @@ class SearchResponse<TDocument> extends ResponseBase {
   aggregations?: Dictionary<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   documents?: TDocument[]
-  fields?: Dictionary<string, LazyDocument>
+  fields?: Dictionary<string, UserDefinedValue>
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile

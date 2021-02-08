@@ -19,5 +19,5 @@
 
 class IndexSegment {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  shards: Dictionary<string, ShardsSegment>
+  shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>
 }

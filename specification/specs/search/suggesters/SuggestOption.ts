@@ -20,7 +20,7 @@
 class SuggestOption<TDocument> {
   collate_match: boolean
   contexts: Dictionary<string, Context[]>
-  fields: Dictionary<string, LazyDocument>
+  fields: Dictionary<string, UserDefinedValue>
   freq: long
   highlighted: string
   _id: string

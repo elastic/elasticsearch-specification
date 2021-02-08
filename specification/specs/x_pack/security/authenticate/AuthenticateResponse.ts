@@ -25,4 +25,6 @@ class AuthenticateResponse extends ResponseBase {
   metadata: Dictionary<string, UserDefinedValue>
   roles: string[]
   username: string
+  enabled: boolean
+  authentication_type: string
 }

@@ -64,5 +64,6 @@ class UpdateByQueryRequest extends RequestBase {
     query?: QueryContainer
     script?: Script
     slice?: SlicedScroll
+    conflicts?: Conflicts
   }
 }
