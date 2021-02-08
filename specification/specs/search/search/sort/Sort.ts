@@ -26,3 +26,5 @@ class Sort {
   unmapped_type?: string
   order: SortOrder
 }
+
+type SortOptions = Field | SingleKeyDictionary<Sort | SortOrder>

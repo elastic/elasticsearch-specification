@@ -17,11 +17,42 @@
  * under the License.
  */
 
+// TODO: once the compiler can handle it, the body should use the commented classes in this file
+
 @rest_spec_name('security.get_token')
 class GetUserAccessTokenRequest extends RequestBase {
   query_parameters?: {}
+  // body: AccessTokenGrantTypePassword | AccessTokenGrantTypeClientCredentials | AccessTokenGrantTypeKerberos | AccessTokenGrantTypeRefresh
   body?: {
     grant_type?: AccessTokenGrantType
     scope?: string
+    password?: string
+    kerberos_ticket?: string
+    refresh_token?: string
+    username?: string
   }
 }
+
+// class AccessTokenGrantTypePassword {
+//   grant_type: 'password'
+//   username: string
+//   password: string
+//   scope?: string
+// }
+
+// class AccessTokenGrantTypeClientCredentials {
+//   grant_type: 'client_credentials'
+//   scope?: string
+// }
+
+// class AccessTokenGrantTypeKerberos {
+//   grant_type: '_kerberos'
+//   kerberos_ticket: string
+//   scope?: string
+// }
+
+// class AccessTokenGrantTypeRefresh {
+//   grant_type: 'refresh_token'
+//   refresh_token: string
+//   scope?: string
+// }

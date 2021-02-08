@@ -26,8 +26,8 @@ class PutUserRequest extends RequestBase {
     refresh?: Refresh
   }
   body?: {
-    email?: string
-    full_name?: string
+    email?: string | null
+    full_name?: string | null
     metadata?: Dictionary<string, UserDefinedValue>
     password?: string
     password_hash?: string

@@ -21,9 +21,11 @@ class TypeMapping {
   all_field?: AllField
   date_detection?: boolean
   /** @prop_serializer DynamicMappingFormatter */
-  dynamic?: Union<boolean, DynamicMapping>
+  dynamic?: boolean | DynamicMapping
   dynamic_date_formats?: string[]
-  dynamic_templates?: Dictionary<string, DynamicTemplate>
+  dynamic_templates?:
+    | Dictionary<string, DynamicTemplate>
+    | Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
   _meta?: Dictionary<string, UserDefinedValue>

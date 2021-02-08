@@ -22,4 +22,9 @@ class XPackRole {
   indices: IndicesPrivileges[]
   metadata: Dictionary<string, UserDefinedValue>
   run_as: string[]
+  transient_metadata: TransientMetadata
+}
+
+class TransientMetadata {
+  enabled: boolean
 }

@@ -38,7 +38,6 @@ type Uri = string
 // so we shoukd figure out a different name
 interface Date {}
 type TimeSpan = string
-interface SourceDocument {}
 @class_serializer('ErrorCauseFormatter')
 class ErrorCause {
   type: string
@@ -143,8 +142,6 @@ class DateField {
  * e.g the result of a script can be anything from value types to objects  */
 class UserDefinedValue {}
 
-/** Documents a place that can return ANY document from ANY index that can not be directly related back to a generic */
-class LazyDocument {}
 class LatLon {
   lat: double
   lon: double

@@ -18,7 +18,7 @@
  */
 
 class IndexState {
-  aliases?: Dictionary<IndexName, Alias>
-  mappings?: TypeMapping
+  aliases: Dictionary<IndexName, Alias>
+  mappings: TypeMapping
   settings: Dictionary<string, UserDefinedValue>
 }

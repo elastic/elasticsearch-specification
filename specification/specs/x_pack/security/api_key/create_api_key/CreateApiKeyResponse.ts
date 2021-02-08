@@ -20,7 +20,7 @@
 class CreateApiKeyResponse extends ResponseBase {
   api_key: string
   /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  expiration: Date
+  expiration: long
   id: string
   name: string
 }
