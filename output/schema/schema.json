@@ -1,4 +1,12 @@
 {
+  "_info": {
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://github.com/elastic/elastic-client-generator/blob/master/LICENSE"
+    },
+    "title": "Elasticsearch Request & Response Specification",
+    "version": "7.11.0"
+  },
   "endpoints": [
     {
       "description": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
