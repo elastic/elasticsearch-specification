@@ -17,25 +17,20 @@
  * under the License.
  */
 
-import Compiler from './compiler'
-// import validateRestSpec from './steps/validate-rest-spec'
-import addInfo from './steps/add-info'
-import addDescription from './steps/add-description'
+import * as model from '../model/metamodel'
+import { JsonSpec } from '../model/json-spec'
 
-const compiler = new Compiler()
-
-compiler
-  .generateModel()
-  .step(addInfo)
-  // validateRestSpec is not enabled until the RequestBase
-  // properties gets moved to a custom behavior
-  // .step(validateRestSpec)
-  .step(addDescription)
-  .write()
-  .then(() => {
-    console.log('Done')
-  })
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
-  })
+/**
+ * Adds the `_info` field to the JSON model
+ */
+export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+  model._info = {
+    version: '7.11.0',
+    title: 'Elasticsearch Request & Response Specification',
+    license: {
+      name: 'Apache 2.0',
+      url: 'https://github.com/elastic/elastic-client-generator/blob/master/LICENSE'
+    }
+  }
+  return model
+}

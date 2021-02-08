@@ -291,6 +291,15 @@ export class UrlTemplate {
 }
 
 export class Model {
+  _info?: {
+    version: string
+    title: string
+    license: {
+      name: string
+      url: string
+    }
+  }
+
   types: TypeDefinition[]
   endpoints: Endpoint[]
 }
