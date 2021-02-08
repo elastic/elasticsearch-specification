@@ -25,9 +25,9 @@ class ShardRecovery {
   stage: string
   start: RecoveryStartStatus
   /** @prop_serializer NullableDateTimeEpochMillisecondsFormatter */
-  start_time_in_millis: Date
+  start_time_in_millis: DateString
   /** @prop_serializer NullableDateTimeEpochMillisecondsFormatter */
-  stop_time_in_millis: Date
+  stop_time_in_millis: DateString
   target: RecoveryOrigin
   total_time_in_millis: long
   translog: RecoveryTranslogStatus

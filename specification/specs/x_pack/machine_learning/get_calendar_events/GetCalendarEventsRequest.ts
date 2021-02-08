@@ -23,7 +23,7 @@ class GetCalendarEventsRequest extends RequestBase {
     calendar_id: Id
   }
   query_parameters?: {
-    end?: Date
+    end?: DateString
     job_id?: string
     start?: string
   }

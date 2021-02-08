@@ -18,8 +18,8 @@
  */
 
 class WatchRecordQueuedStats {
-  execution_time: Date
-  triggered_time: Date
+  execution_time: DateString
+  triggered_time: DateString
   watch_id: string
   watch_record_id: string
 }

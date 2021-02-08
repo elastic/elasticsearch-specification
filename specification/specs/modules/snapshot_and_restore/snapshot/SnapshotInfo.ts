@@ -20,7 +20,7 @@
 class SnapshotInfo {
   data_streams: Array<string>
   duration_in_millis: long
-  end_time?: Date
+  end_time?: DateString
   end_time_in_millis?: long
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
@@ -29,7 +29,7 @@ class SnapshotInfo {
   reason?: string
   snapshot: string
   shards?: ShardStatistics
-  start_time?: Date
+  start_time?: DateString
   start_time_in_millis?: long
   state?: string
   uuid: string

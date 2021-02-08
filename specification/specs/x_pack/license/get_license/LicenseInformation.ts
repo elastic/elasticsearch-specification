@@ -18,9 +18,9 @@
  */
 
 class LicenseInformation {
-  expiry_date: Date
+  expiry_date: DateString
   expiry_date_in_millis: long
-  issue_date: Date
+  issue_date: DateString
   issue_date_in_millis: long
   issued_to: string
   issuer: string

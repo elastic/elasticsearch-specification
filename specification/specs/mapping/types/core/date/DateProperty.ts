@@ -23,6 +23,6 @@ class DateProperty extends DocValuesPropertyBase {
   format: string
   ignore_malformed: boolean
   index: boolean
-  null_value: Date
+  null_value: DateString
   precision_step: integer
 }

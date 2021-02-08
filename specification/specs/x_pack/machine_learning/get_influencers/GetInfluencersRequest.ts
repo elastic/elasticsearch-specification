@@ -26,12 +26,12 @@ class GetInfluencersRequest extends RequestBase {
   body?: {
     descending?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     influencer_score?: double
     page?: Page
     sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
   }
 }

@@ -29,5 +29,5 @@ class ResultBucket {
   processing_time_ms: double
   result_type: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: Date
+  timestamp: DateString
 }

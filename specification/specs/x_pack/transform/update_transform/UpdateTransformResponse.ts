@@ -19,7 +19,7 @@
 
 class UpdateTransformResponse extends ResponseBase {
   create_time: long
-  create_time_date_time: Date
+  create_time_date_time: DateString
   description: string
   dest: TransformDestination
   frequency: Time

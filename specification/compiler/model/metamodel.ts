@@ -266,7 +266,7 @@ export class Endpoint {
    * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
    */
   since?: string
-  deprecation: Deprecation
+  deprecation?: Deprecation
 
   /**
    * If the request value is `null` it means that there is not yet a

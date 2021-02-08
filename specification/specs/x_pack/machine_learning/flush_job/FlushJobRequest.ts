@@ -26,9 +26,9 @@ class FlushJobRequest extends RequestBase {
     skip_time?: string
   }
   body?: {
-    advance_time?: Date
+    advance_time?: DateString
     calc_interim?: boolean
-    end?: Date
-    start?: Date
+    end?: DateString
+    start?: DateString
   }
 }

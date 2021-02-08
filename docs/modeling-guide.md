@@ -136,5 +136,5 @@ since Elasticsearch needs a string or a numeric value, there are aliases also fo
 ```ts
 type Timestamp = string
 type TimeSpan = string
-interface Date {}
+type DateString = string
 ```

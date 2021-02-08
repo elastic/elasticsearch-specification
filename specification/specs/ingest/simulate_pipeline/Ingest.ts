@@ -18,5 +18,5 @@
  */
 
 class Ingest {
-  timestamp: Date
+  timestamp: DateString
 }

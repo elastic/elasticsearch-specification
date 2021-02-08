@@ -25,9 +25,9 @@ class StartDatafeedRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
     timeout?: Time
   }
 }

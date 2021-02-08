@@ -26,7 +26,7 @@ class DateHistogramAggregation {
   format?: string
   interval?: DateInterval | Time
   min_doc_count?: integer
-  missing?: Date
+  missing?: DateString
   offset?: Time
   order?: HistogramOrder
   params?: Dictionary<string, UserDefinedValue>

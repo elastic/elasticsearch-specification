@@ -39,6 +39,6 @@ class AnomalyRecord {
   record_score: double
   result_type: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: Date
+  timestamp: DateString
   typical: double[]
 }

@@ -19,8 +19,8 @@
 
 class WatchStatus {
   actions: Dictionary<string, ActionStatus>
-  last_checked: Date
-  last_met_condition: Date
+  last_checked: DateString
+  last_met_condition: DateString
   state: ActivationState
   version: integer
 }

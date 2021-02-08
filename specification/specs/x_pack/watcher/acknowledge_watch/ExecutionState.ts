@@ -19,5 +19,5 @@
 
 class ExecutionState {
   successful: boolean
-  timestamp: Date
+  timestamp: DateString
 }

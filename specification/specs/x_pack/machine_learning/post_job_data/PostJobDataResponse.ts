@@ -20,7 +20,7 @@
 class PostJobDataResponse extends ResponseBase {
   bucket_count: long
   /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  earliest_record_timestamp: Date
+  earliest_record_timestamp: DateString
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
@@ -28,9 +28,9 @@ class PostJobDataResponse extends ResponseBase {
   invalid_date_count: long
   job_id: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  last_data_time: Date
+  last_data_time: DateString
   /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  latest_record_timestamp: Date
+  latest_record_timestamp: DateString
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
