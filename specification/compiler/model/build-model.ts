@@ -186,11 +186,13 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   if (Node.isClassDeclaration(declaration) && isApi(declaration)) {
     // TODO: add support for implements and behaviors
 
+    // It's not guaranteed that every *Request definition
+    // has an associated *Response definition as well.
     let hasResponseDeclaration = false
     for (const declaration of allClasses) {
       if (declaration.getName() === `${name.slice(0, -7)}Response`) {
         hasResponseDeclaration = true
-        continue
+        break
       }
     }
     // Store the mappings for the current endpoint
