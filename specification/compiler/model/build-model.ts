@@ -59,7 +59,7 @@ const jsonSpec = buildJsonSpec()
 
 type MappingsType = Map<string, {
   request: model.TypeName
-  response: model.TypeName
+  response: model.TypeName | null
 }>
 
 export default function compileSpecification (): model.Model {
@@ -123,11 +123,11 @@ export default function compileSpecification (): model.Model {
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {
-    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings))
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings, declarations.classes))
   }
 
   for (const declaration of declarations.interfaces) {
-    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings))
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings, declarations.classes))
   }
 
   for (const declaration of declarations.enums) {
@@ -177,7 +177,7 @@ export default function compileSpecification (): model.Model {
   return model
 }
 
-function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType): model.Request | model.Interface {
+function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType, allClasses: ClassDeclaration[]): model.Request | model.Interface {
   const name = declaration.getName()
   assert(name, 'Anonymous classes should not exists')
 
@@ -186,10 +186,19 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   if (Node.isClassDeclaration(declaration) && isApi(declaration)) {
     // TODO: add support for implements and behaviors
 
+    let hasResponseDeclaration = false
+    for (const declaration of allClasses) {
+      if (declaration.getName() === `${name.slice(0, -7)}Response`) {
+        hasResponseDeclaration = true
+        continue
+      }
+    }
     // Store the mappings for the current endpoint
     mappings.set(getApiName(declaration), {
       request: { name, namespace: getNameSpace(declaration) },
-      response: { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
+      response: hasResponseDeclaration
+        ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
+        : null
     })
 
     const type: model.Request = {
