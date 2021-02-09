@@ -6082,10 +6082,7 @@
         "namespace": "search.multi_search_template"
       },
       "requestBodyRequired": true,
-      "response": {
-        "name": "MultiSearchTemplateResponse",
-        "namespace": "search.multi_search_template"
-      },
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -6938,10 +6935,7 @@
         "namespace": "search.search_template"
       },
       "requestBodyRequired": true,
-      "response": {
-        "name": "SearchTemplateResponse",
-        "namespace": "search.search_template"
-      },
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -8720,10 +8714,7 @@
         "namespace": "document.multiple.update_by_query_rethrottle"
       },
       "requestBodyRequired": false,
-      "response": {
-        "name": "UpdateByQueryRethrottleResponse",
-        "namespace": "document.multiple.update_by_query_rethrottle"
-      },
+      "response": null,
       "stability": "stable",
       "urls": [
         {
