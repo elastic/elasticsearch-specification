@@ -2,8 +2,7 @@
   "name": "elasticsearch-client-specification",
   "version": "0.0.1",
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
-  "main": "specification/lib/src/api-specification.js",
-  "types": "specification/lib/src/api-specification.d.ts",
+  "main": "specification/compiler/index.ts",
   "scripts": {
     "compile:specs": "npm run compile:specs --prefix specification",
     "compile:canonical-json": "npm run generate-schema --prefix specification",
