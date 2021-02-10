@@ -9122,7 +9122,7 @@ export interface ShardStatistics {
   successful: integer
   total: integer
   failures?: Array<ShardFailure>
-  skipped: integer
+  skipped?: integer
 }
 
 export interface ShardStats {
@@ -10276,7 +10276,7 @@ export interface TermsAggregation {
   field?: Field
   include?: string | Array<string> | TermsInclude
   min_doc_count?: integer
-  missing_bucket?: Missing
+  missing?: Missing
   value_type?: string
   order?: Record<string, SortOrder>
   script?: Script
@@ -10923,7 +10923,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get: InlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface UpdateTransformRequest extends RequestBase {

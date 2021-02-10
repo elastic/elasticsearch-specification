@@ -22,5 +22,5 @@ class ShardStatistics {
   successful: integer
   total: integer
   failures?: ShardFailure[]
-  skipped: integer
+  skipped?: integer
 }
