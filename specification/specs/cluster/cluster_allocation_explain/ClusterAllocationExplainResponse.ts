@@ -30,7 +30,7 @@ class ClusterAllocationExplainResponse extends ResponseBase {
   can_remain_on_current_node?: Decision
   cluster_info?: ClusterInfo
   configured_delay?: string
-  configured_delay_in_mills?: long
+  configured_delay_in_millis?: long
   current_node?: CurrentNode
   current_state: string
   index: string
