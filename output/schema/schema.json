@@ -90376,7 +90376,7 @@
         },
         {
           "name": "skipped",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100326,7 +100326,7 @@
           }
         },
         {
-          "name": "missing_bucket",
+          "name": "missing",
           "required": false,
           "type": {
             "kind": "instance_of",
