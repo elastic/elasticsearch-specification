@@ -26004,7 +26004,7 @@
           }
         },
         {
-          "name": "configured_delay_in_mills",
+          "name": "configured_delay_in_millis",
           "required": false,
           "type": {
             "kind": "instance_of",
