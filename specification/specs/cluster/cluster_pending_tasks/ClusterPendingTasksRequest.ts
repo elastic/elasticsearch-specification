@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cluster.pending_tasks')
+@since('0.0.0')
 class ClusterPendingTasksRequest extends RequestBase {
   query_parameters?: {
     local?: boolean

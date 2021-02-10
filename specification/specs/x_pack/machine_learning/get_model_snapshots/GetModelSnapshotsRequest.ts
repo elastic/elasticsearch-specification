@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_model_snapshots')
+@since('5.4.0')
 class GetModelSnapshotsRequest extends RequestBase {
   path_parts?: {
     job_id: Id

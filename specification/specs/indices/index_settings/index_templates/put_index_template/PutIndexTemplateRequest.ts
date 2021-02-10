@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.put_template')
+@since('0.0.0')
 class PutIndexTemplateRequest extends RequestBase {
   path_parts?: {
     name: Name

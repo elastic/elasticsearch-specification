@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('tasks.cancel')
+@since('2.3.0')
 class CancelTasksRequest extends RequestBase {
   path_parts?: {
     task_id?: TaskId

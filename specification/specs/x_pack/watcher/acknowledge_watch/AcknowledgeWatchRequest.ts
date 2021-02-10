@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('watcher.ack_watch')
+@since('0.0.0')
 class AcknowledgeWatchRequest extends RequestBase {
   path_parts?: {
     watch_id: Name

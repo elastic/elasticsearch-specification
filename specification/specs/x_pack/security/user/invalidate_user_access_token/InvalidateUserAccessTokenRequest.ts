@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.invalidate_token')
+@since('5.5.0')
 class InvalidateUserAccessTokenRequest extends RequestBase {
   query_parameters?: {}
   body?: {

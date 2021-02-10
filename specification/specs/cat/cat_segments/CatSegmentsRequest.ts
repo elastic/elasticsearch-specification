@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.segments')
+@since('0.0.0')
 class CatSegmentsRequest extends CatRequestBase {
   path_parts?: {
     index?: Indices

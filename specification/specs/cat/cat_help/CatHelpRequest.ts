@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.help')
+@since('0.0.0')
 class CatHelpRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}

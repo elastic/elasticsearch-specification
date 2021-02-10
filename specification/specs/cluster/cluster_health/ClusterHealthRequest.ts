@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cluster.health')
+@since('0.0.0')
 class ClusterHealthRequest extends RequestBase {
   path_parts?: {
     index?: Indices

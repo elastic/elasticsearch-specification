@@ -22,6 +22,7 @@
  */
 @rest_spec_name('mget')
 @class_serializer('MultiGetRequestFormatter')
+@since('0.0.0')
 class MultiGetRequest extends RequestBase {
   path_parts?: {
     index?: IndexName

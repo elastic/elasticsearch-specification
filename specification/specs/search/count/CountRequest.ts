@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('count')
+@since('0.0.0')
 class CountRequest extends RequestBase {
   path_parts?: {
     index?: Indices

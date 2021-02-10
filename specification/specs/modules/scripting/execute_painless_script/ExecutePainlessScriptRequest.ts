@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('scripts_painless_execute')
+@since('6.3.0')
 class ExecutePainlessScriptRequest extends RequestBase {
   query_parameters?: {}
   body?: {

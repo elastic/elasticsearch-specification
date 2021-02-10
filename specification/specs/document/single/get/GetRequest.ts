@@ -21,6 +21,7 @@
  * @type_stability stable
  */
 @rest_spec_name('get')
+@since('0.0.0')
 class GetRequest extends RequestBase {
   path_parts?: {
     id: Id

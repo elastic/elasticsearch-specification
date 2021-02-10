@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ingest.simulate')
+@since('5.0.0')
 class SimulatePipelineRequest extends RequestBase {
   path_parts?: {
     id?: Id

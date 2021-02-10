@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.delete_alias')
+@since('0.0.0')
 class DeleteAliasRequest extends RequestBase {
   path_parts?: {
     index: Indices

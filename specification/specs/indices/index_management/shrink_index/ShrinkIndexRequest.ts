@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.shrink')
+@since('5.0.0')
 class ShrinkIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.close')
+@since('0.0.0')
 class CloseIndexRequest extends RequestBase {
   path_parts?: {
     index: Indices

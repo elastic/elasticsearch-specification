@@ -19,6 +19,7 @@
 
 @rest_spec_name('security.put_privileges')
 @class_serializer('PutPrivilegesFormatter')
+@since('6.4.0')
 class PutPrivilegesRequest extends RequestBase {
   query_parameters?: {
     refresh?: Refresh

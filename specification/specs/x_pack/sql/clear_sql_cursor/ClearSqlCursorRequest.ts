@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('sql.clear_cursor')
+@since('6.3.0')
 class ClearSqlCursorRequest extends RequestBase {
   query_parameters?: {}
   body?: {

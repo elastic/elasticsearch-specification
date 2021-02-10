@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('get_script')
+@since('0.0.0')
 class GetScriptRequest extends RequestBase {
   path_parts?: {
     id: Id

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('reindex_rethrottle')
+@since('2.4.0')
 class ReindexRethrottleRequest extends RequestBase {
   path_parts?: {
     task_id: Id

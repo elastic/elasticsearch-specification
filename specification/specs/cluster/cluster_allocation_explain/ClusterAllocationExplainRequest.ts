@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cluster.allocation_explain')
+@since('5.0.0')
 class ClusterAllocationExplainRequest extends RequestBase {
   query_parameters?: {
     include_disk_info?: boolean

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('watcher.stop')
+@since('0.0.0')
 class StopWatcherRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

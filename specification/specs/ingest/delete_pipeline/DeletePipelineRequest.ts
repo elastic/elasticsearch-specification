@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ingest.delete_pipeline')
+@since('5.0.0')
 class DeletePipelineRequest extends RequestBase {
   path_parts?: {
     id: Id

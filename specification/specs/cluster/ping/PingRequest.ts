@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ping')
+@since('0.0.0')
 class PingRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

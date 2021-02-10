@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.analyze')
+@since('0.0.0')
 class AnalyzeRequest extends RequestBase {
   path_parts?: {
     index?: IndexName

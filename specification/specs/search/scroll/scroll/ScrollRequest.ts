@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('scroll')
+@since('0.0.0')
 class ScrollRequest extends RequestBase {
   path_parts?: {
     scroll_id?: Id

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.estimate_model_memory')
+@since('7.7.0')
 class EstimateModelMemoryRequest extends RequestBase {
   query_parameters?: {}
   body?: {

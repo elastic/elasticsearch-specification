@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.recovery')
+@since('0.0.0')
 class RecoveryStatusRequest extends RequestBase {
   path_parts?: {
     index?: Indices

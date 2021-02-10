@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ccr.forget_follower')
+@since('6.7.0')
 class ForgetFollowerIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

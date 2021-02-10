@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ilm.move_to_step')
+@since('6.6.0')
 class MoveToStepRequest extends RequestBase {
   path_parts?: {
     index: IndexName

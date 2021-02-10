@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('watcher.put_watch')
+@since('0.0.0')
 class PutWatchRequest extends RequestBase {
   path_parts?: {
     id: Name

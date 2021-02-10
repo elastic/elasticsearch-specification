@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.open')
+@since('0.0.0')
 class OpenIndexRequest extends RequestBase {
   path_parts?: {
     index: Indices

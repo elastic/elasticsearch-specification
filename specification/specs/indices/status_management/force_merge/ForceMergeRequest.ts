@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.forcemerge')
+@since('2.1.0')
 class ForceMergeRequest extends RequestBase {
   path_parts?: {
     index?: Indices

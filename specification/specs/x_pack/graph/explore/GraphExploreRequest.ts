@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('graph.explore')
+@since('0.0.0')
 class GraphExploreRequest extends RequestBase {
   path_parts?: {
     index: Indices

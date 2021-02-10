@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.repositories')
+@since('2.1.0')
 class CatRepositoriesRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}

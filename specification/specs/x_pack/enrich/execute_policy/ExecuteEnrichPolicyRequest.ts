@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('enrich.execute_policy')
+@since('7.5.0')
 class ExecuteEnrichPolicyRequest extends RequestBase {
   path_parts?: {
     name: Name

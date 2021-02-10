@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.flush')
+@since('0.0.0')
 class FlushRequest extends RequestBase {
   path_parts?: {
     index?: Indices

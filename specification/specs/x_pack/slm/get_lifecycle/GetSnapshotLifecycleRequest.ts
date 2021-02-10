@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('slm.get_lifecycle')
+@since('7.4.0')
 class GetSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
     policy_id?: Names

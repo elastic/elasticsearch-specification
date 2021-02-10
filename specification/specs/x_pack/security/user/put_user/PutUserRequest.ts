@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.put_user')
+@since('0.0.0')
 class PutUserRequest extends RequestBase {
   path_parts?: {
     username: Name

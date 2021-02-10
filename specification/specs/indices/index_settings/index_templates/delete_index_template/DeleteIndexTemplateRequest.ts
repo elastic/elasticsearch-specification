@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.delete_template')
+@since('0.0.0')
 class DeleteIndexTemplateRequest extends RequestBase {
   path_parts?: {
     name: Name

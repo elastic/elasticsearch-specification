@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.authenticate')
+@since('0.0.0')
 class AuthenticateRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

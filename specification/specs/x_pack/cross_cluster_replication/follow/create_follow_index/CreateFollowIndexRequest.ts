@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ccr.follow')
+@since('6.5.0')
 class CreateFollowIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

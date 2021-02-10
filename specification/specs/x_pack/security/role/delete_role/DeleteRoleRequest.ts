@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.delete_role')
+@since('0.0.0')
 class DeleteRoleRequest extends RequestBase {
   path_parts?: {
     name: Name

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.put_alias')
+@since('0.0.0')
 class PutAliasRequest extends RequestBase {
   path_parts?: {
     index: Indices

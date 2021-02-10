@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.put_calendar_job')
+@since('6.2.0')
 class PutCalendarJobRequest extends RequestBase {
   path_parts?: {
     calendar_id: Id

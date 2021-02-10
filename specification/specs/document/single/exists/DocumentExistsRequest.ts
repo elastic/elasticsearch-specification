@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('exists')
+@since('0.0.0')
 class DocumentExistsRequest extends RequestBase {
   path_parts?: {
     id: Id

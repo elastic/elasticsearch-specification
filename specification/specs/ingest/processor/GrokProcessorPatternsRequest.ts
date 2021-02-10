@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ingest.processor_grok')
+@since('6.1.0')
 class GrokProcessorPatternsRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

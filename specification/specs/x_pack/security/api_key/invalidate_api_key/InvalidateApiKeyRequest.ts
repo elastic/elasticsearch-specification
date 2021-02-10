@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.invalidate_api_key')
+@since('6.7.0')
 class InvalidateApiKeyRequest extends RequestBase {
   query_parameters?: {}
   body?: {

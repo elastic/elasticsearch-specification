@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('nodes.reload_secure_settings')
+@since('6.5.0')
 class ReloadSecureSettingsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds

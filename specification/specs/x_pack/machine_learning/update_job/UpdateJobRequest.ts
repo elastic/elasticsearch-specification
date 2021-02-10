@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.update_job')
+@since('5.4.0')
 class UpdateJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id

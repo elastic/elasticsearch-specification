@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.nodeattrs')
+@since('0.0.0')
 class CatNodeAttributesRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}

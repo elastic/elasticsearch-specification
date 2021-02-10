@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('snapshot.restore')
+@since('0.0.0')
 class RestoreRequest extends RequestBase {
   path_parts?: {
     repository: Name

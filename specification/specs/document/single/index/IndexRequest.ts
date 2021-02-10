@@ -22,6 +22,7 @@
  */
 @rest_spec_name('index')
 @class_serializer('IndexRequestFormatter`1')
+@since('0.0.0')
 class IndexRequest<TDocument> extends RequestBase {
   path_parts?: {
     id?: Id

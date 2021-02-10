@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('snapshot.cleanup_repository')
+@since('7.4.0')
 class CleanupRepositoryRequest extends RequestBase {
   path_parts?: {
     repository: Name

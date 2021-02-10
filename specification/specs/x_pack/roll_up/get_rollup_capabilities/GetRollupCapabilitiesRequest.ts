@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('rollup.get_rollup_caps')
+@since('6.3.0')
 class GetRollupCapabilitiesRequest extends RequestBase {
   path_parts?: {
     id?: Id

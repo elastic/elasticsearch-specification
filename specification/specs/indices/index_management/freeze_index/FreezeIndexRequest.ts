@@ -21,6 +21,7 @@
  * @type_stability stable
  */
 @rest_spec_name('indices.freeze')
+@since('6.6.0')
 class FreezeIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

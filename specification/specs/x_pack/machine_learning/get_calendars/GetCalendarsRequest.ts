@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_calendars')
+@since('6.2.0')
 class GetCalendarsRequest extends RequestBase {
   path_parts?: {
     calendar_id?: Id

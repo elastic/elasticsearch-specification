@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.snapshots')
+@since('2.1.0')
 class CatSnapshotsRequest extends CatRequestBase {
   path_parts?: {
     repository?: Names

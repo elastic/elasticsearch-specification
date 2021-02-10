@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('slm.stop')
+@since('7.6.0')
 class StopSnapshotLifecycleManagementRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

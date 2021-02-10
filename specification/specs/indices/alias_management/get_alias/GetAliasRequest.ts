@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.get_alias')
+@since('0.0.0')
 class GetAliasRequest extends RequestBase {
   path_parts?: {
     name?: Names

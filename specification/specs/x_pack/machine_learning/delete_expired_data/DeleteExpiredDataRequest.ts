@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.delete_expired_data')
+@since('5.4.0')
 class DeleteExpiredDataRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

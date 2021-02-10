@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.fielddata')
+@since('0.0.0')
 class CatFielddataRequest extends CatRequestBase {
   path_parts?: {
     fields?: Fields

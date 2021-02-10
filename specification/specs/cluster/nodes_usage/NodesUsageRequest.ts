@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('nodes.usage')
+@since('6.0.0')
 class NodesUsageRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds

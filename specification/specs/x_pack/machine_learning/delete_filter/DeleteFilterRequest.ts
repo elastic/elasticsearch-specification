@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.delete_filter')
+@since('5.4.0')
 class DeleteFilterRequest extends RequestBase {
   path_parts?: {
     filter_id: Id

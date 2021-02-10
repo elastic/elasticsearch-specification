@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.get_role_mapping')
+@since('5.5.0')
 class GetRoleMappingRequest extends RequestBase {
   path_parts?: {
     name?: Name

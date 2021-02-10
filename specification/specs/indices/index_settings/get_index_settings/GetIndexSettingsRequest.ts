@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.get_settings')
+@since('0.0.0')
 class GetIndexSettingsRequest extends RequestBase {
   path_parts?: {
     index?: Indices

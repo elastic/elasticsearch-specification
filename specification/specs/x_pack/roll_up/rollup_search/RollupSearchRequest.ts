@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('rollup.rollup_search')
+@since('6.3.0')
 class RollupSearchRequest extends RequestBase {
   path_parts?: {
     index: Indices

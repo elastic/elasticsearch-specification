@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.preview_datafeed')
+@since('5.4.0')
 class PreviewDatafeedRequest extends RequestBase {
   path_parts?: {
     datafeed_id: Id

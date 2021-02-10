@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('snapshot.verify_repository')
+@since('0.0.0')
 class VerifyRepositoryRequest extends RequestBase {
   path_parts?: {
     repository: Name

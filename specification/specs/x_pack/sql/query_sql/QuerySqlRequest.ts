@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('sql.query')
+@since('6.3.0')
 class QuerySqlRequest extends RequestBase {
   query_parameters?: {
     format?: string

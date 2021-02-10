@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('license.post_start_basic')
+@since('6.3.0')
 class StartBasicLicenseRequest extends RequestBase {
   query_parameters?: {
     acknowledge?: boolean

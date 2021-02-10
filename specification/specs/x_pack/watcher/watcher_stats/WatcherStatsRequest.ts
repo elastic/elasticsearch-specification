@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('watcher.stats')
+@since('0.0.0')
 class WatcherStatsRequest extends RequestBase {
   path_parts?: {
     metric?: Metrics

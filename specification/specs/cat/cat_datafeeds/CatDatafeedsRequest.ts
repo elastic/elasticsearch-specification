@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.ml_datafeeds')
+@since('7.7.0')
 class CatDatafeedsRequest extends CatRequestBase {
   path_parts?: {
     datafeed_id?: Id

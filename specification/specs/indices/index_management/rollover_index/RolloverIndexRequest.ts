@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.rollover')
+@since('5.0.0')
 class RolloverIndexRequest extends RequestBase {
   path_parts?: {
     alias: Alias

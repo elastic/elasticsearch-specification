@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ccr.delete_auto_follow_pattern')
+@since('6.5.0')
 class DeleteAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name: Name

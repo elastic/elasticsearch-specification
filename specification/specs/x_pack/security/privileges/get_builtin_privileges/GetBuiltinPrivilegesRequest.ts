@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.get_builtin_privileges')
+@since('7.3.0')
 class GetBuiltinPrivilegesRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_filters')
+@since('5.4.0')
 class GetFiltersRequest extends RequestBase {
   path_parts?: {
     filter_id?: Id

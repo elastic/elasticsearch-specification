@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('transform.put_transform')
+@since('7.5.0')
 class PutTransformRequest extends RequestBase {
   path_parts?: {
     transform_id: Name

@@ -19,6 +19,7 @@
 
 @rest_spec_name('msearch_template')
 @class_serializer('MultiSearchTemplateFormatter')
+@since('5.0.0')
 class MultiSearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.segments')
+@since('0.0.0')
 class SegmentsRequest extends RequestBase {
   path_parts?: {
     index?: Indices

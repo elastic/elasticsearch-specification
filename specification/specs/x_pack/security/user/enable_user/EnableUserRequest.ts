@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.enable_user')
+@since('0.0.0')
 class EnableUserRequest extends RequestBase {
   path_parts?: {
     username: Name

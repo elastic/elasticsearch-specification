@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('reindex')
+@since('2.3.0')
 class ReindexRequest extends RequestBase {
   query_parameters?: {
     refresh?: boolean

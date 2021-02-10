@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('transform.preview_transform')
+@since('7.5.0')
 class PreviewTransformRequest extends RequestBase {
   query_parameters?: {}
   body?: {

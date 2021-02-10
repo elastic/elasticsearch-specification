@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_overall_buckets')
+@since('6.1.0')
 class GetOverallBucketsRequest extends RequestBase {
   path_parts?: {
     job_id: Id

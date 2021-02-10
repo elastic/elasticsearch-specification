@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.split')
+@since('6.1.0')
 class SplitIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

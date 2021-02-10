@@ -32,6 +32,9 @@ function request_parameter() {
 function namespace(ns: string) {
   return function (ns: any) {}
 }
+function since(ns: string) {
+  return function (ns: any) {}
+}
 
 type Uri = string
 type DateString = string

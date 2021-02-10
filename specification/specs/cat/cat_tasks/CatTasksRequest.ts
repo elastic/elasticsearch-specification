@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.tasks')
+@since('5.0.0')
 class CatTasksRequest extends CatRequestBase {
   query_parameters?: {
     actions?: string[]

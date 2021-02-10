@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('slm.execute_retention')
+@since('7.5.0')
 class ExecuteRetentionRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

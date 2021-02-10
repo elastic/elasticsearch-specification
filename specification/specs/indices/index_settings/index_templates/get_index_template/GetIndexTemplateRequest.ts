@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.get_template')
+@since('0.0.0')
 class GetIndexTemplateRequest extends RequestBase {
   path_parts?: {
     name?: Names

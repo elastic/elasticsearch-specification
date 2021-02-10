@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.delete_user')
+@since('0.0.0')
 class DeleteUserRequest extends RequestBase {
   path_parts?: {
     username: Name

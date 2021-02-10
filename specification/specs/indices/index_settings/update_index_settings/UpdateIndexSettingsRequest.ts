@@ -19,6 +19,7 @@
 
 @rest_spec_name('indices.put_settings')
 @class_serializer('UpdateIndexSettingsRequestFormatter')
+@since('0.0.0')
 class UpdateIndexSettingsRequest extends RequestBase {
   path_parts?: {
     index?: Indices

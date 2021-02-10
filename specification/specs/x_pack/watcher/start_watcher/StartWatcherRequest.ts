@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('watcher.start')
+@since('0.0.0')
 class StartWatcherRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

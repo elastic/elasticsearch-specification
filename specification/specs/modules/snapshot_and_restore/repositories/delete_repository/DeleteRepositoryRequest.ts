@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('snapshot.delete_repository')
+@since('0.0.0')
 class DeleteRepositoryRequest extends RequestBase {
   path_parts?: {
     repository: Names

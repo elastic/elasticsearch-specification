@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('delete_by_query')
+@since('5.0.0')
 class DeleteByQueryRequest extends RequestBase {
   path_parts?: {
     index: Indices

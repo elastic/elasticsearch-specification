@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.put_role')
+@since('0.0.0')
 class PutRoleRequest extends RequestBase {
   path_parts?: {
     name: Name
