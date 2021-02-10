@@ -106528,7 +106528,7 @@
       "properties": [
         {
           "name": "get",
-          "required": true,
+          "required": false,
           "type": {
             "generics": [
               {

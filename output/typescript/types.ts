@@ -10923,7 +10923,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get: InlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface UpdateTransformRequest extends RequestBase {
