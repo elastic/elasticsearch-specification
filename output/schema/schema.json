@@ -21,6 +21,7 @@
         "name": "AsyncSearchDeleteResponse",
         "namespace": "x_pack.async_search.delete"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -44,6 +45,7 @@
         "name": "AsyncSearchGetResponse",
         "namespace": "x_pack.async_search.get"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -67,6 +69,7 @@
         "name": "AsyncSearchSubmitResponse",
         "namespace": "x_pack.async_search.submit"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -164,6 +167,7 @@
         "name": "BulkResponse",
         "namespace": "document.multiple.bulk"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -202,6 +206,7 @@
         "name": "CatAliasesResponse",
         "namespace": "cat.cat_aliases"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -231,6 +236,7 @@
         "name": "CatAllocationResponse",
         "namespace": "cat.cat_allocation"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -260,6 +266,7 @@
         "name": "CatCountResponse",
         "namespace": "cat.cat_count"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -289,6 +296,7 @@
         "name": "CatFielddataResponse",
         "namespace": "cat.cat_fielddata"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -318,6 +326,7 @@
         "name": "CatHealthResponse",
         "namespace": "cat.cat_health"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -341,6 +350,7 @@
         "name": "CatHelpResponse",
         "namespace": "cat.cat_help"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -364,6 +374,7 @@
         "name": "CatIndicesResponse",
         "namespace": "cat.cat_indices"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -393,6 +404,7 @@
         "name": "CatMasterResponse",
         "namespace": "cat.cat_master"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -416,6 +428,7 @@
         "name": "CatDataFrameAnalyticsResponse",
         "namespace": "cat.cat_data_frame_analytics"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -445,6 +458,7 @@
         "name": "CatDatafeedsResponse",
         "namespace": "cat.cat_datafeeds"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -474,6 +488,7 @@
         "name": "CatJobsResponse",
         "namespace": "cat.cat_jobs"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -503,6 +518,7 @@
         "name": "CatTrainedModelsResponse",
         "namespace": "cat.cat_trained_models"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -532,6 +548,7 @@
         "name": "CatNodeAttributesResponse",
         "namespace": "cat.cat_node_attributes"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -555,6 +572,7 @@
         "name": "CatNodesResponse",
         "namespace": "cat.cat_nodes"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -578,6 +596,7 @@
         "name": "CatPendingTasksResponse",
         "namespace": "cat.cat_pending_tasks"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -601,6 +620,7 @@
         "name": "CatPluginsResponse",
         "namespace": "cat.cat_plugins"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -624,6 +644,7 @@
         "name": "CatRecoveryResponse",
         "namespace": "cat.cat_recovery"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -653,6 +674,7 @@
         "name": "CatRepositoriesResponse",
         "namespace": "cat.cat_repositories"
       },
+      "since": "2.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -676,6 +698,7 @@
         "name": "CatSegmentsResponse",
         "namespace": "cat.cat_segments"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -705,6 +728,7 @@
         "name": "CatShardsResponse",
         "namespace": "cat.cat_shards"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -734,6 +758,7 @@
         "name": "CatSnapshotsResponse",
         "namespace": "cat.cat_snapshots"
       },
+      "since": "2.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -763,6 +788,7 @@
         "name": "CatTasksResponse",
         "namespace": "cat.cat_tasks"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -786,6 +812,7 @@
         "name": "CatTemplatesResponse",
         "namespace": "cat.cat_templates"
       },
+      "since": "5.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -815,6 +842,7 @@
         "name": "CatThreadPoolResponse",
         "namespace": "cat.cat_thread_pool"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -844,6 +872,7 @@
         "name": "CatTransformsResponse",
         "namespace": "cat.cat_transforms"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -873,6 +902,7 @@
         "name": "DeleteAutoFollowPatternResponse",
         "namespace": "x_pack.cross_cluster_replication.auto_follow.delete_auto_follow_pattern"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -896,6 +926,7 @@
         "name": "CreateFollowIndexResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.create_follow_index"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -919,6 +950,7 @@
         "name": "FollowInfoResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.follow_info"
       },
+      "since": "6.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -942,6 +974,7 @@
         "name": "FollowIndexStatsResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.follow_index_stats"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -965,6 +998,7 @@
         "name": "ForgetFollowerIndexResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.forget_follower_index"
       },
+      "since": "6.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -988,6 +1022,7 @@
         "name": "GetAutoFollowPatternResponse",
         "namespace": "x_pack.cross_cluster_replication.auto_follow.get_auto_follow_pattern"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1017,6 +1052,7 @@
         "name": "PauseAutoFollowPatternResponse",
         "namespace": "x_pack.cross_cluster_replication.auto_follow.pause_auto_follow_pattern"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1040,6 +1076,7 @@
         "name": "PauseFollowIndexResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.pause_follow_index"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1063,6 +1100,7 @@
         "name": "CreateAutoFollowPatternResponse",
         "namespace": "x_pack.cross_cluster_replication.auto_follow.create_auto_follow_pattern"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1086,6 +1124,7 @@
         "name": "ResumeAutoFollowPatternResponse",
         "namespace": "x_pack.cross_cluster_replication.auto_follow.resume_auto_follow_pattern"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1109,6 +1148,7 @@
         "name": "ResumeFollowIndexResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.resume_follow_index"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1132,6 +1172,7 @@
         "name": "CcrStatsResponse",
         "namespace": "x_pack.cross_cluster_replication.stats"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1155,6 +1196,7 @@
         "name": "UnfollowIndexResponse",
         "namespace": "x_pack.cross_cluster_replication.follow.unfollow_index"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1178,6 +1220,7 @@
         "name": "ClearScrollResponse",
         "namespace": "search.scroll.clear_scroll"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1228,6 +1271,7 @@
         "name": "ClusterAllocationExplainResponse",
         "namespace": "cluster.cluster_allocation_explain"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1326,6 +1370,7 @@
         "name": "ClusterGetSettingsResponse",
         "namespace": "cluster.cluster_settings.cluster_get_settings"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1349,6 +1394,7 @@
         "name": "ClusterHealthResponse",
         "namespace": "cluster.cluster_health"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1378,6 +1424,7 @@
         "name": "ClusterPendingTasksResponse",
         "namespace": "cluster.cluster_pending_tasks"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1436,6 +1483,7 @@
         "name": "ClusterPutSettingsResponse",
         "namespace": "cluster.cluster_settings.cluster_put_settings"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1459,6 +1507,7 @@
         "name": "RemoteInfoResponse",
         "namespace": "cluster.remote_info"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -1482,6 +1531,7 @@
         "name": "ClusterRerouteResponse",
         "namespace": "cluster.cluster_reroute"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1505,6 +1555,7 @@
         "name": "ClusterStateResponse",
         "namespace": "cluster.cluster_state"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1540,6 +1591,7 @@
         "name": "ClusterStatsResponse",
         "namespace": "cluster.cluster_stats"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1569,6 +1621,7 @@
         "name": "CountResponse",
         "namespace": "search.count"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1611,6 +1664,7 @@
         "name": "CreateResponse",
         "namespace": "document.single.create"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1875,6 +1929,7 @@
         "name": "DeleteResponse",
         "namespace": "document.single.delete"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1908,6 +1963,7 @@
         "name": "DeleteByQueryResponse",
         "namespace": "document.multiple.delete_by_query"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1941,6 +1997,7 @@
         "name": "DeleteByQueryRethrottleResponse",
         "namespace": "document.multiple.delete_by_query_rethrottle"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -1964,6 +2021,7 @@
         "name": "DeleteScriptResponse",
         "namespace": "modules.scripting.delete_script"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1987,6 +2045,7 @@
         "name": "DeleteEnrichPolicyResponse",
         "namespace": "x_pack.enrich.delete_policy"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -2010,6 +2069,7 @@
         "name": "ExecuteEnrichPolicyResponse",
         "namespace": "x_pack.enrich.execute_policy"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -2033,6 +2093,7 @@
         "name": "GetEnrichPolicyResponse",
         "namespace": "x_pack.enrich.get_policy"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -2062,6 +2123,7 @@
         "name": "PutEnrichPolicyResponse",
         "namespace": "x_pack.enrich.put_policy"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -2085,6 +2147,7 @@
         "name": "EnrichStatsResponse",
         "namespace": "x_pack.enrich.stats"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -2160,6 +2223,7 @@
         "name": "DocumentExistsResponse",
         "namespace": "document.single.exists"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2193,6 +2257,7 @@
         "name": "SourceExistsResponse",
         "namespace": "document.single.source_exists"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -2226,6 +2291,7 @@
         "name": "ExplainResponse",
         "namespace": "search.explain"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2261,6 +2327,7 @@
         "name": "FieldCapabilitiesResponse",
         "namespace": "search.field_capabilities"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -2292,6 +2359,7 @@
         "name": "GetResponse",
         "namespace": "document.single.get"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2325,6 +2393,7 @@
         "name": "GetScriptResponse",
         "namespace": "modules.scripting.get_script"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2382,6 +2451,7 @@
         "name": "SourceResponse",
         "namespace": "document.single.source"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2415,6 +2485,7 @@
         "name": "GraphExploreResponse",
         "namespace": "x_pack.graph.explore"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2450,6 +2521,7 @@
         "name": "DeleteLifecycleResponse",
         "namespace": "x_pack.ilm.delete_lifecycle"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2473,6 +2545,7 @@
         "name": "ExplainLifecycleResponse",
         "namespace": "x_pack.ilm.explain_lifecycle"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2496,6 +2569,7 @@
         "name": "GetLifecycleResponse",
         "namespace": "x_pack.ilm.get_lifecycle"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2525,6 +2599,7 @@
         "name": "GetIlmStatusResponse",
         "namespace": "x_pack.ilm.get_status"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2548,6 +2623,7 @@
         "name": "MoveToStepResponse",
         "namespace": "x_pack.ilm.move_to_step"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2571,6 +2647,7 @@
         "name": "PutLifecycleResponse",
         "namespace": "x_pack.ilm.put_lifecycle"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2594,6 +2671,7 @@
         "name": "RemovePolicyResponse",
         "namespace": "x_pack.ilm.remove_policy"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2617,6 +2695,7 @@
         "name": "RetryIlmResponse",
         "namespace": "x_pack.ilm.retry"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2640,6 +2719,7 @@
         "name": "StartIlmResponse",
         "namespace": "x_pack.ilm.start"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2663,6 +2743,7 @@
         "name": "StopIlmResponse",
         "namespace": "x_pack.ilm.stop"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -2686,6 +2767,7 @@
         "name": "IndexResponse",
         "namespace": "document.single.index"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2754,6 +2836,7 @@
         "name": "AnalyzeResponse",
         "namespace": "indices.analyze"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2785,6 +2868,7 @@
         "name": "ClearCacheResponse",
         "namespace": "indices.status_management.clear_cache"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2814,6 +2898,7 @@
         "name": "CloneIndexResponse",
         "namespace": "indices.index_management.clone_index"
       },
+      "since": "7.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -2838,6 +2923,7 @@
         "name": "CloseIndexResponse",
         "namespace": "indices.index_management.open_close_index.close_index"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2861,6 +2947,7 @@
         "name": "CreateIndexResponse",
         "namespace": "indices.index_management.create_index"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2924,6 +3011,7 @@
         "name": "DeleteIndexResponse",
         "namespace": "indices.index_management.delete_index"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -2947,6 +3035,7 @@
         "name": "DeleteAliasResponse",
         "namespace": "indices.alias_management.delete_alias"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3010,6 +3099,7 @@
         "name": "DeleteIndexTemplateResponse",
         "namespace": "indices.index_settings.index_templates.delete_index_template"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3033,6 +3123,7 @@
         "name": "IndexExistsResponse",
         "namespace": "indices.index_management.indices_exists"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3056,6 +3147,7 @@
         "name": "AliasExistsResponse",
         "namespace": "indices.alias_management.alias_exists"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3102,6 +3194,7 @@
         "name": "IndexTemplateExistsResponse",
         "namespace": "indices.index_settings.index_templates.index_template_exists"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3125,6 +3218,7 @@
         "name": "TypeExistsResponse",
         "namespace": "indices.index_management.types_exists"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3148,6 +3242,7 @@
         "name": "FlushResponse",
         "namespace": "indices.status_management.flush"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3179,6 +3274,7 @@
         "name": "SyncedFlushResponse",
         "namespace": "indices.status_management.synced_flush"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3218,6 +3314,7 @@
         "name": "ForceMergeResponse",
         "namespace": "indices.status_management.force_merge"
       },
+      "since": "2.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -3247,6 +3344,7 @@
         "name": "FreezeIndexResponse",
         "namespace": "indices.index_management.freeze_index"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -3270,6 +3368,7 @@
         "name": "GetIndexResponse",
         "namespace": "indices.index_management.get_index"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3293,6 +3392,7 @@
         "name": "GetAliasResponse",
         "namespace": "indices.alias_management.get_alias"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3357,6 +3457,7 @@
         "name": "GetFieldMappingResponse",
         "namespace": "indices.mapping_management.get_field_mapping"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3429,6 +3530,7 @@
         "name": "GetMappingResponse",
         "namespace": "indices.mapping_management.get_mapping"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3478,6 +3580,7 @@
         "name": "GetIndexSettingsResponse",
         "namespace": "indices.index_settings.get_index_settings"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3519,6 +3622,7 @@
         "name": "GetIndexTemplateResponse",
         "namespace": "indices.index_settings.index_templates.get_index_template"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3571,6 +3675,7 @@
         "name": "OpenIndexResponse",
         "namespace": "indices.index_management.open_close_index.open_index"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3594,6 +3699,7 @@
         "name": "PutAliasResponse",
         "namespace": "indices.alias_management.put_alias"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3643,6 +3749,7 @@
         "name": "PutMappingResponse",
         "namespace": "indices.mapping_management.put_mapping"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3744,6 +3851,7 @@
         "name": "UpdateIndexSettingsResponse",
         "namespace": "indices.index_settings.update_index_settings"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3773,6 +3881,7 @@
         "name": "PutIndexTemplateResponse",
         "namespace": "indices.index_settings.index_templates.put_index_template"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3797,6 +3906,7 @@
         "name": "RecoveryStatusResponse",
         "namespace": "indices.monitoring.indices_recovery"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3826,6 +3936,7 @@
         "name": "RefreshResponse",
         "namespace": "indices.status_management.refresh"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3857,6 +3968,7 @@
         "name": "ReloadSearchAnalyzersResponse",
         "namespace": "indices.reload_search_analyzers"
       },
+      "since": "7.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -3898,6 +4010,7 @@
         "name": "RolloverIndexResponse",
         "namespace": "indices.index_management.rollover_index"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3927,6 +4040,7 @@
         "name": "SegmentsResponse",
         "namespace": "indices.monitoring.indices_segments"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3956,6 +4070,7 @@
         "name": "IndicesShardStoresResponse",
         "namespace": "indices.monitoring.indices_shard_stores"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -3985,6 +4100,7 @@
         "name": "ShrinkIndexResponse",
         "namespace": "indices.index_management.shrink_index"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4049,6 +4165,7 @@
         "name": "SplitIndexResponse",
         "namespace": "indices.index_management.split_index"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -4073,6 +4190,7 @@
         "name": "IndicesStatsResponse",
         "namespace": "indices.monitoring.indices_stats"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4114,6 +4232,7 @@
         "name": "UnfreezeIndexResponse",
         "namespace": "indices.index_management.unfreeze_index"
       },
+      "since": "6.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -4137,6 +4256,7 @@
         "name": "BulkAliasResponse",
         "namespace": "indices.alias_management.alias"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4183,6 +4303,7 @@
         "name": "ValidateQueryResponse",
         "namespace": "search.validate"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4225,6 +4346,7 @@
         "name": "RootNodeInfoResponse",
         "namespace": "cluster.root_node_info"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4248,6 +4370,7 @@
         "name": "DeletePipelineResponse",
         "namespace": "ingest.delete_pipeline"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4271,6 +4394,7 @@
         "name": "GetPipelineResponse",
         "namespace": "ingest.get_pipeline"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4300,6 +4424,7 @@
         "name": "GrokProcessorPatternsResponse",
         "namespace": "ingest.processor"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -4323,6 +4448,7 @@
         "name": "PutPipelineResponse",
         "namespace": "ingest.put_pipeline"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4346,6 +4472,7 @@
         "name": "SimulatePipelineResponse",
         "namespace": "ingest.simulate_pipeline"
       },
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4377,6 +4504,7 @@
         "name": "DeleteLicenseResponse",
         "namespace": "x_pack.license.delete_license"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4400,6 +4528,7 @@
         "name": "GetLicenseResponse",
         "namespace": "x_pack.license.get_license"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4423,6 +4552,7 @@
         "name": "GetBasicLicenseStatusResponse",
         "namespace": "x_pack.license.get_basic_license_status"
       },
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -4446,6 +4576,7 @@
         "name": "GetTrialLicenseStatusResponse",
         "namespace": "x_pack.license.get_trial_license_status"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -4469,6 +4600,7 @@
         "name": "PostLicenseResponse",
         "namespace": "x_pack.license.post_license"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4493,6 +4625,7 @@
         "name": "StartBasicLicenseResponse",
         "namespace": "x_pack.license.start_basic_license"
       },
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -4516,6 +4649,7 @@
         "name": "StartTrialLicenseResponse",
         "namespace": "x_pack.license.start_trial_license"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -4539,6 +4673,7 @@
         "name": "MultiGetResponse",
         "namespace": "document.multiple.multi_get.request"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -4581,6 +4716,7 @@
         "name": "DeprecationInfoResponse",
         "namespace": "x_pack.migration.deprecation_info"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -4610,6 +4746,7 @@
         "name": "CloseJobResponse",
         "namespace": "x_pack.machine_learning.close_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4633,6 +4770,7 @@
         "name": "DeleteCalendarResponse",
         "namespace": "x_pack.machine_learning.delete_calendar"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -4656,6 +4794,7 @@
         "name": "DeleteCalendarEventResponse",
         "namespace": "x_pack.machine_learning.delete_calendar_event"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -4679,6 +4818,7 @@
         "name": "DeleteCalendarJobResponse",
         "namespace": "x_pack.machine_learning.delete_calendar_job"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -4719,6 +4859,7 @@
         "name": "DeleteDatafeedResponse",
         "namespace": "x_pack.machine_learning.delete_datafeed"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4742,6 +4883,7 @@
         "name": "DeleteExpiredDataResponse",
         "namespace": "x_pack.machine_learning.delete_expired_data"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4771,6 +4913,7 @@
         "name": "DeleteFilterResponse",
         "namespace": "x_pack.machine_learning.delete_filter"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4794,6 +4937,7 @@
         "name": "DeleteForecastResponse",
         "namespace": "x_pack.machine_learning.delete_forecast"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -4823,6 +4967,7 @@
         "name": "DeleteJobResponse",
         "namespace": "x_pack.machine_learning.delete_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4846,6 +4991,7 @@
         "name": "DeleteModelSnapshotResponse",
         "namespace": "x_pack.machine_learning.delete_model_snapshot"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4886,6 +5032,7 @@
         "name": "EstimateModelMemoryResponse",
         "namespace": "x_pack.machine_learning.estimate_model_memory"
       },
+      "since": "7.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -4968,6 +5115,7 @@
         "name": "FlushJobResponse",
         "namespace": "x_pack.machine_learning.flush_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -4991,6 +5139,7 @@
         "name": "ForecastJobResponse",
         "namespace": "x_pack.machine_learning.forecast_job"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -5014,6 +5163,7 @@
         "name": "GetBucketsResponse",
         "namespace": "x_pack.machine_learning.get_buckets"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5045,6 +5195,7 @@
         "name": "GetCalendarEventsResponse",
         "namespace": "x_pack.machine_learning.get_calendar_events"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -5068,6 +5219,7 @@
         "name": "GetCalendarsResponse",
         "namespace": "x_pack.machine_learning.get_calendars"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -5099,6 +5251,7 @@
         "name": "GetCategoriesResponse",
         "namespace": "x_pack.machine_learning.get_categories"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5176,6 +5329,7 @@
         "name": "GetDatafeedStatsResponse",
         "namespace": "x_pack.machine_learning.get_datafeed_stats"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5205,6 +5359,7 @@
         "name": "GetDatafeedsResponse",
         "namespace": "x_pack.machine_learning.get_datafeeds"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5234,6 +5389,7 @@
         "name": "GetFiltersResponse",
         "namespace": "x_pack.machine_learning.get_filters"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5263,6 +5419,7 @@
         "name": "GetInfluencersResponse",
         "namespace": "x_pack.machine_learning.get_influencers"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5287,6 +5444,7 @@
         "name": "GetJobStatsResponse",
         "namespace": "x_pack.machine_learning.get_job_stats"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5316,6 +5474,7 @@
         "name": "GetJobsResponse",
         "namespace": "x_pack.machine_learning.get_jobs"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5345,6 +5504,7 @@
         "name": "GetModelSnapshotsResponse",
         "namespace": "x_pack.machine_learning.get_model_snapshots"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5376,6 +5536,7 @@
         "name": "GetOverallBucketsResponse",
         "namespace": "x_pack.machine_learning.get_overall_buckets"
       },
+      "since": "6.1.0",
       "stability": "stable",
       "urls": [
         {
@@ -5400,6 +5561,7 @@
         "name": "GetAnomalyRecordsResponse",
         "namespace": "x_pack.machine_learning.get_anomaly_records"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5470,6 +5632,7 @@
         "name": "MachineLearningInfoResponse",
         "namespace": "x_pack.machine_learning.machine_learning_info"
       },
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -5493,6 +5656,7 @@
         "name": "OpenJobResponse",
         "namespace": "x_pack.machine_learning.open_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5516,6 +5680,7 @@
         "name": "PostCalendarEventsResponse",
         "namespace": "x_pack.machine_learning.post_calendar_events"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -5539,6 +5704,7 @@
         "name": "PostJobDataResponse",
         "namespace": "x_pack.machine_learning.post_job_data"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5562,6 +5728,7 @@
         "name": "PreviewDatafeedResponse",
         "namespace": "x_pack.machine_learning.preview_datafeed"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5585,6 +5752,7 @@
         "name": "PutCalendarResponse",
         "namespace": "x_pack.machine_learning.put_calendar"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -5608,6 +5776,7 @@
         "name": "PutCalendarJobResponse",
         "namespace": "x_pack.machine_learning.put_calendar_job"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -5648,6 +5817,7 @@
         "name": "PutDatafeedResponse",
         "namespace": "x_pack.machine_learning.put_datafeed"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5671,6 +5841,7 @@
         "name": "PutFilterResponse",
         "namespace": "x_pack.machine_learning.put_filter"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5694,6 +5865,7 @@
         "name": "PutJobResponse",
         "namespace": "x_pack.machine_learning.put_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5734,6 +5906,7 @@
         "name": "RevertModelSnapshotResponse",
         "namespace": "x_pack.machine_learning.revert_model_snapshot"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5757,6 +5930,7 @@
         "name": "SetUpgradeModeResponse",
         "namespace": "x_pack.machine_learning.set_upgrade_mode"
       },
+      "since": "6.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -5797,6 +5971,7 @@
         "name": "StartDatafeedResponse",
         "namespace": "x_pack.machine_learning.start_datafeed"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5837,6 +6012,7 @@
         "name": "StopDatafeedResponse",
         "namespace": "x_pack.machine_learning.stop_datafeed"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5877,6 +6053,7 @@
         "name": "UpdateDatafeedResponse",
         "namespace": "x_pack.machine_learning.update_data_feed"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5900,6 +6077,7 @@
         "name": "UpdateFilterResponse",
         "namespace": "x_pack.machine_learning.update_filter"
       },
+      "since": "6.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5923,6 +6101,7 @@
         "name": "UpdateJobResponse",
         "namespace": "x_pack.machine_learning.update_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5946,6 +6125,7 @@
         "name": "UpdateModelSnapshotResponse",
         "namespace": "x_pack.machine_learning.update_model_snapshot"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5969,6 +6149,7 @@
         "name": "ValidateJobResponse",
         "namespace": "x_pack.machine_learning.validate_job"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -5992,6 +6173,7 @@
         "name": "ValidateDetectorResponse",
         "namespace": "x_pack.machine_learning.validate_detector"
       },
+      "since": "5.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -6044,6 +6226,7 @@
         "name": "MultiSearchResponse",
         "namespace": "search.multi_search"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6083,6 +6266,7 @@
       },
       "requestBodyRequired": true,
       "response": null,
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6125,6 +6309,7 @@
         "name": "MultiTermVectorsResponse",
         "namespace": "document.multiple.multi_term_vectors"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6167,6 +6352,7 @@
         "name": "NodesHotThreadsResponse",
         "namespace": "cluster.nodes_hot_threads"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6256,6 +6442,7 @@
         "name": "NodesInfoResponse",
         "namespace": "cluster.nodes_info"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6297,6 +6484,7 @@
         "name": "ReloadSecureSettingsResponse",
         "namespace": "cluster.reload_secure_settings"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -6326,6 +6514,7 @@
         "name": "NodesStatsResponse",
         "namespace": "cluster.nodes_stats"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6379,6 +6568,7 @@
         "name": "NodesUsageResponse",
         "namespace": "cluster.nodes_usage"
       },
+      "since": "6.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6443,6 +6633,7 @@
         "name": "PingResponse",
         "namespace": "cluster.ping"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6466,6 +6657,7 @@
         "name": "PutScriptResponse",
         "namespace": "modules.scripting.put_script"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6522,6 +6714,7 @@
         "name": "ReindexResponse",
         "namespace": "document.multiple.reindex"
       },
+      "since": "2.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -6545,6 +6738,7 @@
         "name": "ReindexRethrottleResponse",
         "namespace": "document.multiple.reindex_rethrottle"
       },
+      "since": "2.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -6568,6 +6762,7 @@
         "name": "RenderSearchTemplateResponse",
         "namespace": "search.search_template.render_search_template"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6599,6 +6794,7 @@
         "name": "DeleteRollupJobResponse",
         "namespace": "x_pack.roll_up.delete_rollup_job"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6622,6 +6818,7 @@
         "name": "GetRollupJobResponse",
         "namespace": "x_pack.roll_up.get_rollup_job"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6651,6 +6848,7 @@
         "name": "GetRollupCapabilitiesResponse",
         "namespace": "x_pack.roll_up.get_rollup_capabilities"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6680,6 +6878,7 @@
         "name": "GetRollupIndexCapabilitiesResponse",
         "namespace": "x_pack.roll_up.get_rollup_index_capabilities"
       },
+      "since": "6.4.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6703,6 +6902,7 @@
         "name": "CreateRollupJobResponse",
         "namespace": "x_pack.roll_up.create_rollup_job"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6726,6 +6926,7 @@
         "name": "RollupSearchResponse",
         "namespace": "x_pack.roll_up.rollup_search"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6761,6 +6962,7 @@
         "name": "StartRollupJobResponse",
         "namespace": "x_pack.roll_up.start_rollup_job"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6784,6 +6986,7 @@
         "name": "StopRollupJobResponse",
         "namespace": "x_pack.roll_up.stop_rollup_job"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6807,6 +7010,7 @@
         "name": "ExecutePainlessScriptResponse",
         "namespace": "modules.scripting.execute_painless_script"
       },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -6831,6 +7035,7 @@
         "name": "ScrollResponse",
         "namespace": "search.scroll.scroll"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6866,6 +7071,7 @@
         "name": "SearchResponse",
         "namespace": "search.search"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6908,6 +7114,7 @@
         "name": "SearchShardsResponse",
         "namespace": "search.search_shards"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -6936,6 +7143,7 @@
       },
       "requestBodyRequired": true,
       "response": null,
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7058,6 +7266,7 @@
         "name": "AuthenticateResponse",
         "namespace": "x_pack.security.authenticate"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7081,6 +7290,7 @@
         "name": "ChangePasswordResponse",
         "namespace": "x_pack.security.user.change_password"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7146,6 +7356,7 @@
         "name": "ClearCachedRealmsResponse",
         "namespace": "x_pack.security.clear_cached_realms"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7169,6 +7380,7 @@
         "name": "ClearCachedRolesResponse",
         "namespace": "x_pack.security.role.clear_cached_roles"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7192,6 +7404,7 @@
         "name": "CreateApiKeyResponse",
         "namespace": "x_pack.security.api_key.create_api_key"
       },
+      "since": "6.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -7216,6 +7429,7 @@
         "name": "DeletePrivilegesResponse",
         "namespace": "x_pack.security.privileges.delete_privileges"
       },
+      "since": "6.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7239,6 +7453,7 @@
         "name": "DeleteRoleResponse",
         "namespace": "x_pack.security.role.delete_role"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7262,6 +7477,7 @@
         "name": "DeleteRoleMappingResponse",
         "namespace": "x_pack.security.role_mapping.delete_role_mapping"
       },
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7285,6 +7501,7 @@
         "name": "DeleteUserResponse",
         "namespace": "x_pack.security.user.delete_user"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7308,6 +7525,7 @@
         "name": "DisableUserResponse",
         "namespace": "x_pack.security.user.disable_user"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7332,6 +7550,7 @@
         "name": "EnableUserResponse",
         "namespace": "x_pack.security.user.enable_user"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7356,6 +7575,7 @@
         "name": "GetApiKeyResponse",
         "namespace": "x_pack.security.api_key.get_api_key"
       },
+      "since": "6.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -7379,6 +7599,7 @@
         "name": "GetBuiltinPrivilegesResponse",
         "namespace": "x_pack.security.privileges.get_builtin_privileges"
       },
+      "since": "7.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -7402,6 +7623,7 @@
         "name": "GetPrivilegesResponse",
         "namespace": "x_pack.security.privileges.get_privileges"
       },
+      "since": "6.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7437,6 +7659,7 @@
         "name": "GetRoleResponse",
         "namespace": "x_pack.security.role.get_role"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7466,6 +7689,7 @@
         "name": "GetRoleMappingResponse",
         "namespace": "x_pack.security.role_mapping.get_role_mapping"
       },
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7495,6 +7719,7 @@
         "name": "GetUserAccessTokenResponse",
         "namespace": "x_pack.security.user.get_user_access_token"
       },
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7518,6 +7743,7 @@
         "name": "GetUserResponse",
         "namespace": "x_pack.security.user.get_user"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7547,6 +7773,7 @@
         "name": "GetUserPrivilegesResponse",
         "namespace": "x_pack.security.privileges.get_user_privileges"
       },
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7587,6 +7814,7 @@
         "name": "HasPrivilegesResponse",
         "namespace": "x_pack.security.privileges.has_privileges"
       },
+      "since": "6.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7618,6 +7846,7 @@
         "name": "InvalidateApiKeyResponse",
         "namespace": "x_pack.security.api_key.invalidate_api_key"
       },
+      "since": "6.7.0",
       "stability": "stable",
       "urls": [
         {
@@ -7641,6 +7870,7 @@
         "name": "InvalidateUserAccessTokenResponse",
         "namespace": "x_pack.security.user.invalidate_user_access_token"
       },
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7664,6 +7894,7 @@
         "name": "PutPrivilegesResponse",
         "namespace": "x_pack.security.privileges.put_privileges"
       },
+      "since": "6.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7688,6 +7919,7 @@
         "name": "PutRoleResponse",
         "namespace": "x_pack.security.role.put_role"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7712,6 +7944,7 @@
         "name": "PutRoleMappingResponse",
         "namespace": "x_pack.security.role_mapping.put_role_mapping"
       },
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7736,6 +7969,7 @@
         "name": "PutUserResponse",
         "namespace": "x_pack.security.user.put_user"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -7760,6 +7994,7 @@
         "name": "DeleteSnapshotLifecycleResponse",
         "namespace": "x_pack.slm.delete_lifecycle"
       },
+      "since": "7.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7783,6 +8018,7 @@
         "name": "ExecuteSnapshotLifecycleResponse",
         "namespace": "x_pack.slm.execute_lifecycle"
       },
+      "since": "7.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7806,6 +8042,7 @@
         "name": "ExecuteRetentionResponse",
         "namespace": "x_pack.slm.execute_retention"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7829,6 +8066,7 @@
         "name": "GetSnapshotLifecycleResponse",
         "namespace": "x_pack.slm.get_lifecycle"
       },
+      "since": "7.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7858,6 +8096,7 @@
         "name": "GetSnapshotLifecycleStatsResponse",
         "namespace": "x_pack.slm.get_stats"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -7881,6 +8120,7 @@
         "name": "GetSnapshotLifecycleManagementStatusResponse",
         "namespace": "x_pack.slm.get_status"
       },
+      "since": "7.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -7904,6 +8144,7 @@
         "name": "PutSnapshotLifecycleResponse",
         "namespace": "x_pack.slm.put_lifecycle"
       },
+      "since": "7.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -7927,6 +8168,7 @@
         "name": "StartSnapshotLifecycleManagementResponse",
         "namespace": "x_pack.slm.start"
       },
+      "since": "7.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -7950,6 +8192,7 @@
         "name": "StopSnapshotLifecycleManagementResponse",
         "namespace": "x_pack.slm.stop"
       },
+      "since": "7.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -7973,6 +8216,7 @@
         "name": "CleanupRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.cleanup_repository"
       },
+      "since": "7.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -8013,6 +8257,7 @@
         "name": "SnapshotResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.snapshot"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8037,6 +8282,7 @@
         "name": "CreateRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.create_repository"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8061,6 +8307,7 @@
         "name": "DeleteSnapshotResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.delete_snapshot"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8084,6 +8331,7 @@
         "name": "DeleteRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.delete_repository"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8107,6 +8355,7 @@
         "name": "GetSnapshotResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.get_snapshot"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8130,6 +8379,7 @@
         "name": "GetRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.get_repository"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8159,6 +8409,7 @@
         "name": "RestoreResponse",
         "namespace": "modules.snapshot_and_restore.restore"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8182,6 +8433,7 @@
         "name": "SnapshotStatusResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8217,6 +8469,7 @@
         "name": "VerifyRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.verify_repository"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8240,6 +8493,7 @@
         "name": "ClearSqlCursorResponse",
         "namespace": "x_pack.sql.clear_sql_cursor"
       },
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -8263,6 +8517,7 @@
         "name": "QuerySqlResponse",
         "namespace": "x_pack.sql.query_sql"
       },
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -8287,6 +8542,7 @@
         "name": "TranslateSqlResponse",
         "namespace": "x_pack.sql.translate_sql"
       },
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -8311,6 +8567,7 @@
         "name": "GetCertificatesResponse",
         "namespace": "x_pack.ssl.get_certificates"
       },
+      "since": "6.2.0",
       "stability": "stable",
       "urls": [
         {
@@ -8334,6 +8591,7 @@
         "name": "CancelTasksResponse",
         "namespace": "cluster.task_management.cancel_tasks"
       },
+      "since": "2.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8363,6 +8621,7 @@
         "name": "GetTaskResponse",
         "namespace": "cluster.task_management.get_task"
       },
+      "since": "5.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8386,6 +8645,7 @@
         "name": "ListTasksResponse",
         "namespace": "cluster.task_management.list_tasks"
       },
+      "since": "2.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8409,6 +8669,7 @@
         "name": "TermVectorsResponse",
         "namespace": "document.single.term_vectors"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8462,6 +8723,7 @@
         "name": "DeleteTransformResponse",
         "namespace": "x_pack.transform.delete_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8485,6 +8747,7 @@
         "name": "GetTransformResponse",
         "namespace": "x_pack.transform.get_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8514,6 +8777,7 @@
         "name": "GetTransformStatsResponse",
         "namespace": "x_pack.transform.get_transform_stats"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8537,6 +8801,7 @@
         "name": "PreviewTransformResponse",
         "namespace": "x_pack.transform.preview_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8560,6 +8825,7 @@
         "name": "PutTransformResponse",
         "namespace": "x_pack.transform.put_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8583,6 +8849,7 @@
         "name": "StartTransformResponse",
         "namespace": "x_pack.transform.start_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8606,6 +8873,7 @@
         "name": "StopTransformResponse",
         "namespace": "x_pack.transform.stop_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8629,6 +8897,7 @@
         "name": "UpdateTransformResponse",
         "namespace": "x_pack.transform.update_transform"
       },
+      "since": "7.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8652,6 +8921,7 @@
         "name": "UpdateResponse",
         "namespace": "document.single.update"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8685,6 +8955,7 @@
         "name": "UpdateByQueryResponse",
         "namespace": "document.multiple.update_by_query"
       },
+      "since": "2.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -8715,6 +8986,7 @@
       },
       "requestBodyRequired": false,
       "response": null,
+      "since": "6.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8738,6 +9010,7 @@
         "name": "AcknowledgeWatchResponse",
         "namespace": "x_pack.watcher.acknowledge_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8769,6 +9042,7 @@
         "name": "ActivateWatchResponse",
         "namespace": "x_pack.watcher.activate_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8793,6 +9067,7 @@
         "name": "DeactivateWatchResponse",
         "namespace": "x_pack.watcher.deactivate_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8817,6 +9092,7 @@
         "name": "DeleteWatchResponse",
         "namespace": "x_pack.watcher.delete_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8840,6 +9116,7 @@
         "name": "ExecuteWatchResponse",
         "namespace": "x_pack.watcher.execute_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8871,6 +9148,7 @@
         "name": "GetWatchResponse",
         "namespace": "x_pack.watcher.get_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8894,6 +9172,7 @@
         "name": "PutWatchResponse",
         "namespace": "x_pack.watcher.put_watch"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8918,6 +9197,7 @@
         "name": "StartWatcherResponse",
         "namespace": "x_pack.watcher.start_watcher"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8941,6 +9221,7 @@
         "name": "WatcherStatsResponse",
         "namespace": "x_pack.watcher.watcher_stats"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8970,6 +9251,7 @@
         "name": "StopWatcherResponse",
         "namespace": "x_pack.watcher.stop_watcher"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -8993,6 +9275,7 @@
         "name": "XPackInfoResponse",
         "namespace": "x_pack.info.x_pack_info"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -9016,6 +9299,7 @@
         "name": "XPackUsageResponse",
         "namespace": "x_pack.info.x_pack_usage"
       },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
