@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ilm.remove_policy')
+@since('6.6.0')
 class RemovePolicyRequest extends RequestBase {
   path_parts?: {
     index: IndexName

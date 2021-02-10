@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_records')
+@since('5.4.0')
 class GetAnomalyRecordsRequest extends RequestBase {
   path_parts?: {
     job_id: Id

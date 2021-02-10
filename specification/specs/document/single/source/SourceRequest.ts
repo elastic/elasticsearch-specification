@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('get_source')
+@since('0.0.0')
 class SourceRequest extends RequestBase {
   path_parts?: {
     id: Id

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.templates')
+@since('5.2.0')
 class CatTemplatesRequest extends CatRequestBase {
   path_parts?: {
     name?: Name

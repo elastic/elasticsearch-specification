@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('termvectors')
+@since('0.0.0')
 class TermVectorsRequest<TDocument> extends RequestBase {
   path_parts?: {
     index: IndexName

@@ -33,6 +33,7 @@ import {
   JSDoc,
   Node
 } from 'ts-morph'
+import semver from 'semver'
 import * as model from './metamodel'
 
 /**
@@ -245,12 +246,25 @@ export function isApi (declaration: ClassDeclaration): boolean {
 
 /**
  * Given a ClassDeclaration, returns the api name
- * stores in the rest_spec_name decorator.
+ * stored in the rest_spec_name decorator.
  */
 export function getApiName (declaration: ClassDeclaration): string {
   const decorator = declaration.getDecorator('rest_spec_name')
   assert(decorator, 'The rest_spec_name decorator does not exists')
   return decorator.getArguments()[0].getText().split("'")[1]
+}
+
+/**
+ * Given a ClassDeclaration, returns the since value
+ * stored in the since decorator and verifies if the value
+ * is a valid semver string.
+ */
+export function getSinceValue (declaration: ClassDeclaration): string {
+  const decorator = declaration.getDecorator('since')
+  assert(decorator, 'The since decorator does not exists')
+  const value = decorator.getArguments()[0].getText().split("'")[1]
+  assert(semver.valid(value), `The semver value is not valid: ${value}`)
+  return value
 }
 
 /**

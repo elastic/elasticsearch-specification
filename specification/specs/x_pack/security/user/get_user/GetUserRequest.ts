@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.get_user')
+@since('0.0.0')
 class GetUserRequest extends RequestBase {
   path_parts?: {
     username?: Names

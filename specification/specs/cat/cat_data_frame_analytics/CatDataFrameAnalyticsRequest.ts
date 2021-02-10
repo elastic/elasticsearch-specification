@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.ml_data_frame_analytics')
+@since('7.7.0')
 class CatDataFrameAnalyticsRequest extends CatRequestBase {
   path_parts?: {
     id?: Id

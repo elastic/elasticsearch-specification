@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('delete_by_query_rethrottle')
+@since('6.5.0')
 class DeleteByQueryRethrottleRequest extends RequestBase {
   path_parts?: {
     task_id: Id

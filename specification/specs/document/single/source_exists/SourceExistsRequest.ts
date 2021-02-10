@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('exists_source')
+@since('5.4.0')
 class SourceExistsRequest extends RequestBase {
   path_parts?: {
     id: Id

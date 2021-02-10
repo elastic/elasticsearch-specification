@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.aliases')
+@since('0.0.0')
 class CatAliasesRequest extends CatRequestBase {
   path_parts?: {
     name?: Names

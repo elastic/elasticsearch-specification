@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('search_template')
+@since('0.0.0')
 class SearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices

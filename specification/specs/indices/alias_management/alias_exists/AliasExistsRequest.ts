@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.exists_alias')
+@since('0.0.0')
 class AliasExistsRequest extends RequestBase {
   path_parts?: {
     name: Names

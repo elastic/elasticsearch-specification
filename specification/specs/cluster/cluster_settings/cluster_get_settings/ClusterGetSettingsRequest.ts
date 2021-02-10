@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cluster.get_settings')
+@since('0.0.0')
 class ClusterGetSettingsRequest extends RequestBase {
   query_parameters?: {
     flat_settings?: boolean

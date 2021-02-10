@@ -19,6 +19,7 @@
 
 @rest_spec_name('ml.post_data')
 @class_serializer('PostJobDataFormatter')
+@since('5.4.0')
 class PostJobDataRequest extends RequestBase {
   path_parts?: {
     job_id: Id

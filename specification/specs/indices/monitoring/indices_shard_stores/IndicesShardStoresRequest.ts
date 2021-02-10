@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.shard_stores')
+@since('0.0.0')
 class IndicesShardStoresRequest extends RequestBase {
   path_parts?: {
     index?: Indices

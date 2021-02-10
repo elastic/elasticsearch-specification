@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('async_search.delete')
+@since('7.7.0')
 class AsyncSearchDeleteRequest extends RequestBase {
   path_parts?: {
     id: Id

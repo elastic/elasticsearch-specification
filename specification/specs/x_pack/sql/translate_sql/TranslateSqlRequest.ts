@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('sql.translate')
+@since('6.3.0')
 class TranslateSqlRequest extends RequestBase {
   query_parameters?: {}
   body?: {

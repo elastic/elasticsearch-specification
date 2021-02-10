@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('slm.delete_lifecycle')
+@since('7.4.0')
 class DeleteSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
     policy_id: Name

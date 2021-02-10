@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('xpack.usage')
+@since('0.0.0')
 class XPackUsageRequest extends RequestBase {
   query_parameters?: {
     master_timeout?: Time

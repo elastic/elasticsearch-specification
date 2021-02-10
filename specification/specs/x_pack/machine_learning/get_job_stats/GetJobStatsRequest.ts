@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_job_stats')
+@since('5.4.0')
 class GetJobStatsRequest extends RequestBase {
   path_parts?: {
     job_id?: Id

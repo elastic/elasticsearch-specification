@@ -49,12 +49,14 @@ A request definition should contains three top level keys:
 - `query_parameters`: the query parameters (eg: `timeout`, `pipeline`...)
 - `body`: the body parameters (eg: `query` or user defined entities)
 
-Finally there should be a decorator to inform the compiler that this is a endpoint request definition.
+Finally there should be a decorator (`rest_spec_name`) to inform the compiler that this is a endpoint request definition.
 The value of the decorator should be the endpoint name as it's defined in the json spec (eg: `search`, `indices.create`...).
+You should also add another decorator (`since`) to track the version of Elasticsearch where this API has been introduced.
 Following you can find a template valid for any request definition.
 
 ```ts
-@rest_spec_name("endpoint.name")
+@rest_spec_name('endpoint.name')
+@since('1.2.3')
 class EndpointRequest extends RequestBase {
   path_parts?: {
 
@@ -70,7 +72,8 @@ class EndpointRequest extends RequestBase {
 
 In some cases, the request could take one or more generics, in such case the definition will be:
 ```ts
-@rest_spec_name("endpoint.name")
+@rest_spec_name('endpoint.name')
+@since('1.2.3')
 class EndpointRequest<Generic> extends RequestBase {
   path_parts?: {
 

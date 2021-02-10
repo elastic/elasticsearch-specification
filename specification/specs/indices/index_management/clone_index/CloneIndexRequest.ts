@@ -21,6 +21,7 @@
  * @type_stability stable
  */
 @rest_spec_name('indices.clone')
+@since('7.4.0')
 class CloneIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

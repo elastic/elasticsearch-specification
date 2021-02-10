@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('watcher.delete_watch')
+@since('0.0.0')
 class DeleteWatchRequest extends RequestBase {
   path_parts?: {
     id: Name

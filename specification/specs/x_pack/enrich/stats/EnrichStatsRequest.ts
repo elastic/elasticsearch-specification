@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('enrich.stats')
+@since('7.5.0')
 class EnrichStatsRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

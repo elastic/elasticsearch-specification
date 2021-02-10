@@ -19,6 +19,7 @@
 
 @rest_spec_name('snapshot.create_repository')
 @class_serializer('CreateRepositoryFormatter')
+@since('0.0.0')
 class CreateRepositoryRequest extends RequestBase {
   path_parts?: {
     repository: Name

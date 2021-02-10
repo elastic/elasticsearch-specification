@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('transform.start_transform')
+@since('7.5.0')
 class StartTransformRequest extends RequestBase {
   path_parts?: {
     transform_id: Name

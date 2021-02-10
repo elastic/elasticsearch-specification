@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.get_mapping')
+@since('0.0.0')
 class GetMappingRequest extends RequestBase {
   path_parts?: {
     index?: Indices

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ilm.stop')
+@since('6.6.0')
 class StopIlmRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

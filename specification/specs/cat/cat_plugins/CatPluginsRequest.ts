@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.plugins')
+@since('0.0.0')
 class CatPluginsRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}

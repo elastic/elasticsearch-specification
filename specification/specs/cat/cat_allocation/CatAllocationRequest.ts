@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.allocation')
+@since('0.0.0')
 class CatAllocationRequest extends CatRequestBase {
   path_parts?: {
     node_id?: NodeIds

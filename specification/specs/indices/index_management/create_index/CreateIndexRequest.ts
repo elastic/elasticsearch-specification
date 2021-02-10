@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.create')
+@since('0.0.0')
 class CreateIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName

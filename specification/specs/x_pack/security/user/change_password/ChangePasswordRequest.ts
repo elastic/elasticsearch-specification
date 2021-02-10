@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.change_password')
+@since('0.0.0')
 class ChangePasswordRequest extends RequestBase {
   path_parts?: {
     username?: Name

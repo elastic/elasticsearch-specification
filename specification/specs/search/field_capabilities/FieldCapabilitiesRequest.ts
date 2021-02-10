@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('field_caps')
+@since('5.4.0')
 class FieldCapabilitiesRequest extends RequestBase {
   path_parts?: {
     index?: Indices

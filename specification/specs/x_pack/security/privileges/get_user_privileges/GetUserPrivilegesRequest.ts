@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.get_user_privileges')
+@since('6.5.0')
 class GetUserPrivilegesRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

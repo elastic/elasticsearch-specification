@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ccr.resume_auto_follow_pattern')
+@since('7.5.0')
 class ResumeAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name: Name

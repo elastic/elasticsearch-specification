@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ssl.certificates')
+@since('6.2.0')
 class GetCertificatesRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

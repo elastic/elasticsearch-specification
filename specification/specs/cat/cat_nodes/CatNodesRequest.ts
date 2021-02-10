@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.nodes')
+@since('0.0.0')
 class CatNodesRequest extends CatRequestBase {
   query_parameters?: {
     bytes?: Bytes

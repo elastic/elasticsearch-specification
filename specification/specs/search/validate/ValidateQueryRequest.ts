@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.validate_query')
+@since('0.0.0')
 class ValidateQueryRequest extends RequestBase {
   path_parts?: {
     index?: Indices

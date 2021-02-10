@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('license.post')
+@since('0.0.0')
 class PostLicenseRequest extends RequestBase {
   query_parameters?: {
     acknowledge?: boolean

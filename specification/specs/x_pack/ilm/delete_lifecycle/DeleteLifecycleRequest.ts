@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ilm.delete_lifecycle')
+@since('6.6.0')
 class DeleteLifecycleRequest extends RequestBase {
   path_parts?: {
     policy: Name

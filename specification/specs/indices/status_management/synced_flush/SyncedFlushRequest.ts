@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.flush_synced')
+@since('0.0.0')
 class SyncedFlushRequest extends RequestBase {
   path_parts?: {
     index?: Indices

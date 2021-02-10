@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('delete_script')
+@since('0.0.0')
 class DeleteScriptRequest extends RequestBase {
   path_parts?: {
     id: Id

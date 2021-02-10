@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('info')
+@since('0.0.0')
 class RootNodeInfoRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

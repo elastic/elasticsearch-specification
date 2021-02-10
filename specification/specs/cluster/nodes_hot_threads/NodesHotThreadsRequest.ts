@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('nodes.hot_threads')
+@since('0.0.0')
 class NodesHotThreadsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds

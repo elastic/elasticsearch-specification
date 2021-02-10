@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ccr.follow_stats')
+@since('6.5.0')
 class FollowIndexStatsRequest extends RequestBase {
   path_parts?: {
     index: Indices

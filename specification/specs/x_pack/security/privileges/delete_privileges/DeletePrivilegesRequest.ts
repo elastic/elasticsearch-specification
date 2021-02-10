@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.delete_privileges')
+@since('6.4.0')
 class DeletePrivilegesRequest extends RequestBase {
   path_parts?: {
     application: Name

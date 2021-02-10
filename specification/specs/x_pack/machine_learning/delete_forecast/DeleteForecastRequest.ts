@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.delete_forecast')
+@since('6.5.0')
 class DeleteForecastRequest extends RequestBase {
   path_parts?: {
     job_id: Id

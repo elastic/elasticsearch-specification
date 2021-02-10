@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ccr.pause_auto_follow_pattern')
+@since('7.5.0')
 class PauseAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name: Name

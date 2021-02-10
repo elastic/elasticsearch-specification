@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.count')
+@since('0.0.0')
 class CatCountRequest extends CatRequestBase {
   path_parts?: {
     index?: Indices

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.clear_cache')
+@since('0.0.0')
 class ClearCacheRequest extends RequestBase {
   path_parts?: {
     index?: Indices

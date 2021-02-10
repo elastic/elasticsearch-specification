@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('migration.deprecations')
+@since('6.1.0')
 class DeprecationInfoRequest extends RequestBase {
   path_parts?: {
     index?: IndexName

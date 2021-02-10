@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.exists_template')
+@since('0.0.0')
 class IndexTemplateExistsRequest extends RequestBase {
   path_parts?: {
     name: Names

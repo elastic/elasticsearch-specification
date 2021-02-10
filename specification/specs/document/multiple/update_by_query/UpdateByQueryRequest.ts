@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('update_by_query')
+@since('2.4.0')
 class UpdateByQueryRequest extends RequestBase {
   path_parts?: {
     index: Indices

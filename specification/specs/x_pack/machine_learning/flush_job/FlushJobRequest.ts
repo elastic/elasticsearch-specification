@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.flush_job')
+@since('5.4.0')
 class FlushJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id

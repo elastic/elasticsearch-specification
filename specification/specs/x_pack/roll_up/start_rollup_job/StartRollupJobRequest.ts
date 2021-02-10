@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('rollup.start_job')
+@since('6.3.0')
 class StartRollupJobRequest extends RequestBase {
   path_parts?: {
     id: Id

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('slm.get_status')
+@since('7.6.0')
 class GetSnapshotLifecycleManagementStatusRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

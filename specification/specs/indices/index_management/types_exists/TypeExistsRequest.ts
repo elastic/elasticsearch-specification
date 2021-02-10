@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.exists_type')
+@since('0.0.0')
 class TypeExistsRequest extends RequestBase {
   path_parts?: {
     index: Indices

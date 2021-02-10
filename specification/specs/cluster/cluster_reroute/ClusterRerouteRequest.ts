@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cluster.reroute')
+@since('0.0.0')
 class ClusterRerouteRequest extends RequestBase {
   query_parameters?: {
     dry_run?: boolean

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.delete_calendar_job')
+@since('6.2.0')
 class DeleteCalendarJobRequest extends RequestBase {
   path_parts?: {
     calendar_id: Id

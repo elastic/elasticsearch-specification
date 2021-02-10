@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.put_mapping')
+@since('0.0.0')
 class PutMappingRequest extends RequestBase {
   path_parts?: {
     index?: Indices

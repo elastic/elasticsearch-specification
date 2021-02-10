@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('cat.pending_tasks')
+@since('0.0.0')
 class CatPendingTasksRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}

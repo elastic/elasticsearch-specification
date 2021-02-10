@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('snapshot.status')
+@since('0.0.0')
 class SnapshotStatusRequest extends RequestBase {
   path_parts?: {
     repository?: Name

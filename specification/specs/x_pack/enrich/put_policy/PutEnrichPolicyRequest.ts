@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('enrich.put_policy')
+@since('7.5.0')
 class PutEnrichPolicyRequest extends RequestBase {
   path_parts?: {
     name: Name

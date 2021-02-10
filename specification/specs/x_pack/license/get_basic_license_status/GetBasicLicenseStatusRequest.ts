@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('license.get_basic_status')
+@since('6.3.0')
 class GetBasicLicenseStatusRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

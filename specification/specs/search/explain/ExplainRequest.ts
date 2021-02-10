@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('explain')
+@since('0.0.0')
 class ExplainRequest extends RequestBase {
   path_parts?: {
     id: Id

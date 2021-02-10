@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('nodes.info')
+@since('0.0.0')
 class NodesInfoRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds

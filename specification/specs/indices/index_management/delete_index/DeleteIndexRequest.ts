@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.delete')
+@since('0.0.0')
 class DeleteIndexRequest extends RequestBase {
   path_parts?: {
     index: Indices

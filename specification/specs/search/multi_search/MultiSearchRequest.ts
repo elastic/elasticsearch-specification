@@ -19,6 +19,7 @@
 
 @rest_spec_name('msearch')
 @class_serializer('MultiSearchFormatter')
+@since('0.0.0')
 class MultiSearchRequest extends RequestBase {
   path_parts?: {
     index?: Indices

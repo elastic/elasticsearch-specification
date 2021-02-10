@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('license.delete')
+@since('0.0.0')
 class DeleteLicenseRequest extends RequestBase {
   query_parameters?: {}
   body?: {}

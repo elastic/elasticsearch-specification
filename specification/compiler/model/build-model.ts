@@ -37,6 +37,7 @@ import {
   modelType,
   isApi,
   getApiName,
+  getSinceValue,
   modelInherits,
   modelGenerics,
   modelEnumDeclaration,
@@ -60,6 +61,7 @@ const jsonSpec = buildJsonSpec()
 type MappingsType = Map<string, {
   request: model.TypeName
   response: model.TypeName | null
+  since: string
 }>
 
 export default function compileSpecification (): model.Model {
@@ -162,6 +164,7 @@ export default function compileSpecification (): model.Model {
     if (mapping != null) {
       endpoint.request = mapping.request
       endpoint.response = mapping.response
+      endpoint.since = mapping.since
     }
 
     model.endpoints.push(endpoint)
@@ -197,6 +200,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
     // Store the mappings for the current endpoint
     mappings.set(getApiName(declaration), {
+      since: getSinceValue(declaration),
       request: { name, namespace: getNameSpace(declaration) },
       response: hasResponseDeclaration
         ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }

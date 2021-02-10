@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('security.has_privileges')
+@since('6.4.0')
 class HasPrivilegesRequest extends RequestBase {
   path_parts?: {
     user?: Name

@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.validate')
+@since('5.4.0')
 class ValidateJobRequest extends RequestBase {
   query_parameters?: {}
   body?: {

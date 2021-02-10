@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('indices.reload_search_analyzers')
+@since('7.3.0')
 class ReloadSearchAnalyzersRequest extends RequestBase {
   path_parts?: {
     index: Indices

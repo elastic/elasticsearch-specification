@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('license.get')
+@since('0.0.0')
 class GetLicenseRequest extends RequestBase {
   query_parameters?: {
     accept_enterprise?: boolean

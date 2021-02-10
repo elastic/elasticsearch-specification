@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('render_search_template')
+@since('0.0.0')
 class RenderSearchTemplateRequest extends RequestBase {
   query_parameters?: {}
   body?: {

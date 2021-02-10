@@ -18,6 +18,7 @@
  */
 
 @rest_spec_name('ml.get_datafeed_stats')
+@since('5.4.0')
 class GetDatafeedStatsRequest extends RequestBase {
   path_parts?: {
     datafeed_id?: Id
