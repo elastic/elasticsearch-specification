@@ -19,4 +19,4 @@
 
 class CatAliasesResponse
   extends ResponseBase
-  implements ArrayResponse<CatAliasesRecord> {}
+  implements ArrayResponseBase<CatAliasesRecord> {}

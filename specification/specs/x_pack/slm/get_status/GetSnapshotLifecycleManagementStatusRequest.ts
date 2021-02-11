@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name slm.get_status
  * @since 7.6.0
  * @stability TODO

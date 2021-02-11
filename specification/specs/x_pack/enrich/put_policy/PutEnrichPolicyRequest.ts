@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name enrich.put_policy
  * @since 7.5.0
  * @stability TODO

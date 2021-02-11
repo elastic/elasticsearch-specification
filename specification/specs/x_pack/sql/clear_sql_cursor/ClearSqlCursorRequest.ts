@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name sql.clear_cursor
  * @since 6.3.0
  * @stability TODO

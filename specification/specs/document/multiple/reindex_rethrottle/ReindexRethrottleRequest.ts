@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name reindex_rethrottle
  * @since 2.4.0
  * @stability TODO

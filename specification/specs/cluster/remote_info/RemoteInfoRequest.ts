@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name cluster.remote_info
  * @since 6.1.0
  * @stability TODO

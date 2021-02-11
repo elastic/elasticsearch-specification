@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name async_search.delete
  * @since 7.7.0
  * @stability TODO

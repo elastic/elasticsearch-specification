@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ml.forecast
  * @since 6.1.0
  * @stability TODO

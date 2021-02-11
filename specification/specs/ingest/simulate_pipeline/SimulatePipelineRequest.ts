@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ingest.simulate
  * @since 5.0.0
  * @stability TODO

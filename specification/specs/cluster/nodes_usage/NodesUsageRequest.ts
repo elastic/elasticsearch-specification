@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name nodes.usage
  * @since 6.0.0
  * @stability TODO

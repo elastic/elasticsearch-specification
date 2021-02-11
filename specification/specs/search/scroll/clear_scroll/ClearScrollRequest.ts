@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name clear_scroll
  * @since 0.0.0
  * @stability TODO

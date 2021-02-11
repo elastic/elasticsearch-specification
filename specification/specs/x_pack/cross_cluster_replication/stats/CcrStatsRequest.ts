@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ccr.stats
  * @since 6.5.0
  * @stability TODO

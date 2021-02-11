@@ -19,7 +19,8 @@
 
 /**
  * @rest_spec_name ml.post_data
- * @since PostJobDataFormatter
+ * @since 5.4.0
+ * @class_serializer PostJobDataFormatter
  * @stability TODO
  */
 interface PostJobDataRequest extends RequestBase {

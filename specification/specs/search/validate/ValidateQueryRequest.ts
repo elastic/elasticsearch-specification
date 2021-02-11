@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name indices.validate_query
  * @since 0.0.0
  * @stability TODO

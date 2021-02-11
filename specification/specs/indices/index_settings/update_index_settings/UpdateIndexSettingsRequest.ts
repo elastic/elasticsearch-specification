@@ -19,7 +19,8 @@
 
 /**
  * @rest_spec_name indices.put_settings
- * @since UpdateIndexSettingsRequestFormatter
+ * @since 0.0.0
+ * @class_serializer UpdateIndexSettingsRequestFormatter
  * @stability TODO
  */
 interface UpdateIndexSettingsRequest extends RequestBase {

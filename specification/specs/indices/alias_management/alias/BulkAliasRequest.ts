@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name indices.update_aliases
  * @since 0.0.0
  * @stability TODO

@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class HttpInputRequestResult extends HttpInputRequest {}
+class HttpInputRequestResult extends HttpInputRequestDefinition {}

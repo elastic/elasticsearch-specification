@@ -19,7 +19,8 @@
 
 /**
  * @rest_spec_name snapshot.create_repository
- * @since CreateRepositoryFormatter
+ * @since 0.0.0
+ * @class_serializer CreateRepositoryFormatter
  * @stability TODO
  */
 interface CreateRepositoryRequest extends RequestBase {

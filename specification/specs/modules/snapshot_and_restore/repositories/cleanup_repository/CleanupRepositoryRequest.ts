@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name snapshot.cleanup_repository
  * @since 7.4.0
  * @stability TODO

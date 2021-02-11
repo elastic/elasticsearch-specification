@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name tasks.cancel
  * @since 2.3.0
  * @stability TODO

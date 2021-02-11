@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name cat.repositories
  * @since 2.1.0
  * @stability TODO

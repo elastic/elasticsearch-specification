@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ingest.get_pipeline
  * @since 5.0.0
  * @stability TODO

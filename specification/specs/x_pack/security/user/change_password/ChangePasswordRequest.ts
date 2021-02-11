@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name security.change_password
  * @since 0.0.0
  * @stability TODO

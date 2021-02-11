@@ -19,4 +19,4 @@
 
 class CatMasterResponse
   extends ResponseBase
-  implements ArrayResponse<CatMasterRecord> {}
+  implements ArrayResponseBase<CatMasterRecord> {}

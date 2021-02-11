@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name cat.count
  * @since 0.0.0
  * @stability TODO

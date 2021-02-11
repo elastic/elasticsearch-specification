@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name scripts_painless_execute
  * @since 6.3.0
  * @stability TODO

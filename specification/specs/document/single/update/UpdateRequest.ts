@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 /**
  * @rest_spec_name update
  * @since 0.0.0

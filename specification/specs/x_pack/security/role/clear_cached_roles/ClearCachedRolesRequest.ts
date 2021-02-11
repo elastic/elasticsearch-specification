@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name security.clear_cached_roles
  * @since 0.0.0
  * @stability TODO

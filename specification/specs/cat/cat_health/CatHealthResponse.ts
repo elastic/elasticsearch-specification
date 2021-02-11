@@ -19,4 +19,4 @@
 
 class CatHealthResponse
   extends ResponseBase
-  implements ArrayResponse<CatHealthRecord> {}
+  implements ArrayResponseBase<CatHealthRecord> {}

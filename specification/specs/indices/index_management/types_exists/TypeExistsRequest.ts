@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name indices.exists_type
  * @since 0.0.0
  * @stability TODO

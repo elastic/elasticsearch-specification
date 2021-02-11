@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name cluster.state
  * @since 0.0.0
  * @stability TODO

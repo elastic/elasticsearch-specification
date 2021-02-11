@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name rollup.get_jobs
  * @since 6.3.0
  * @stability TODO

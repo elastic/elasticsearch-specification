@@ -19,7 +19,8 @@
 
 /**
  * @rest_spec_name ml.validate_detector
- * @since ValidateDetectorRequestFormatter
+ * @since 5.4.0
+ * @class_serializer ValidateDetectorRequestFormatter
  * @stability TODO
  */
 interface ValidateDetectorRequest extends RequestBase {

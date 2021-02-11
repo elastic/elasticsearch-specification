@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name cluster.pending_tasks
  * @since 0.0.0
  * @stability TODO

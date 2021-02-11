@@ -19,4 +19,4 @@
 
 class CatThreadPoolResponse
   extends ResponseBase
-  implements ArrayResponse<CatThreadPoolRecord> {}
+  implements ArrayResponseBase<CatThreadPoolRecord> {}

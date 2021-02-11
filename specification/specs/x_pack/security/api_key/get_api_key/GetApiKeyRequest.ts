@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name security.get_api_key
  * @since 6.7.0
  * @stability TODO

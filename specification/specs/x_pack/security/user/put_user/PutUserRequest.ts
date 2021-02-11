@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name security.put_user
  * @since 0.0.0
  * @stability TODO

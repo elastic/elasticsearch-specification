@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name cat.ml_trained_models
  * @since 7.7.0
  * @stability TODO

@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name license.get_trial_status
  * @since 6.1.0
  * @stability TODO

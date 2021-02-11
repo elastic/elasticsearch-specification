@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ccr.resume_auto_follow_pattern
  * @since 7.5.0
  * @stability TODO

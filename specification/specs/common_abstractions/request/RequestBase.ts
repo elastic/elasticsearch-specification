@@ -17,5 +17,7 @@
  * under the License.
  */
 
-//  Any property here is a common query parameter for each Request.
+// Every *Request will inherit the CommonQueryParameters behavior
+// as well, as every *Request interface extends RequestBase.
+
 class RequestBase implements CommonQueryParameters {}

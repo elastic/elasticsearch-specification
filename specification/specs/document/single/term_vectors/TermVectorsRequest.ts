@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name termvectors
  * @since 0.0.0
  * @stability TODO

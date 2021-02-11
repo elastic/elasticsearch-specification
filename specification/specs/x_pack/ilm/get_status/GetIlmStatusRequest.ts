@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ilm.get_status
  * @since 6.6.0
  * @stability TODO

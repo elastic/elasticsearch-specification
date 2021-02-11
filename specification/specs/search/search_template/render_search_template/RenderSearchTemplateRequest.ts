@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name render_search_template
  * @since 0.0.0
  * @stability TODO

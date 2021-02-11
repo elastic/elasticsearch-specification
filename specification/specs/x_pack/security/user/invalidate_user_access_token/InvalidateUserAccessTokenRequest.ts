@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name security.invalidate_token
  * @since 5.5.0
  * @stability TODO

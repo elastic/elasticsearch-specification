@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ml.post_calendar_events
  * @since 6.2.0
  * @stability TODO

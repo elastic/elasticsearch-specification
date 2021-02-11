@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name watcher.activate_watch
  * @since 0.0.0
  * @stability TODO

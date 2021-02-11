@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name security.get_user_privileges
  * @since 6.5.0
  * @stability TODO

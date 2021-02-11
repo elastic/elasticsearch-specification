@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name create
- * @since 0.0.0
+ * @since 5.0.0
  * @stability stable
  * @class_serializer CreateRequestFormatter`1`
  */

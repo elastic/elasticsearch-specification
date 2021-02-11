@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name transform.stop_transform
  * @since 7.5.0
  * @stability TODO

@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name indices.split
  * @since 6.1.0
  * @stability TODO

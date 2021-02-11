@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name license.post_start_basic
  * @since 6.3.0
  * @stability TODO

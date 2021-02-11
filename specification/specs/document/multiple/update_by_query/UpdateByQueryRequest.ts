@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name update_by_query
  * @since 2.4.0
  * @stability TODO

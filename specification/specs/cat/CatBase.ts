@@ -17,12 +17,10 @@
  * under the License.
  */
 
-class CatRequestBase extends RequestBase {
-  format?: string
-  h?: Names
-  help?: boolean
-  local?: boolean
-  master_timeout?: Time
-  s?: string[]
-  v?: boolean
-}
+// Cat APIs are sharing many query parameters, those are defined
+// in the CommonCatQueryParameters behavior, which every Cat*Request
+// API will inherit because extends CatRequestBase.
+// Cat*Request APIs will inherit the CommonQueryParameters behavior
+// as well, as CatRequestBase extends RequestBase.
+
+class CatRequestBase extends RequestBase implements CommonCatQueryParameters {}

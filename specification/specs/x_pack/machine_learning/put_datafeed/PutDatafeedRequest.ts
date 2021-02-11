@@ -17,7 +17,7 @@
  * under the License.
  */
 
- /**
+/**
  * @rest_spec_name ml.put_datafeed
  * @since 5.4.0
  * @stability TODO
