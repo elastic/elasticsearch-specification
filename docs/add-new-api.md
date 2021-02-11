@@ -29,7 +29,7 @@ The filename should be the same of the type definition you are writing, for exam
 
 ```ts
 // IndexRequest.ts
-class IndexRequest {}
+interface IndexRequest {}
 ```
 
 ```ts
@@ -43,15 +43,18 @@ you can define it in the same file where it's used, unless is a commonly used ty
 ### Add the endpoint request definition
 
 Request definitions are slighly different from other definitions.
-A request definition should contains three top level keys:
+A request definition is an interface and should contains three top level keys:
 
 - `path_parts`: the path parameters (eg: `indices`, `id`...)
 - `query_parameters`: the query parameters (eg: `timeout`, `pipeline`...)
 - `body`: the body parameters (eg: `query` or user defined entities)
 
-Finally there should be a decorator (`rest_spec_name`) to inform the compiler that this is a endpoint request definition.
-The value of the decorator should be the endpoint name as it's defined in the json spec (eg: `search`, `indices.create`...).
-You should also add another decorator (`since`) to track the version of Elasticsearch where this API has been introduced.
+Furthermore, every request definition **must** contain three JS Doc tags:
+
+- `@rest_spec_name`: the API name (eg: `search`, `indices.create`...).
+- `@since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`)
+- `@stability`: the API stability, one of `experimental`, `beta`, `stable`
+
 Following you can find a template valid for any request definition.
 
 ```ts
