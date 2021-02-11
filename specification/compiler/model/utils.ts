@@ -43,9 +43,10 @@ import * as model from './metamodel'
  */
 export const knownBehaviors = [
   'AdditionalProperties',
-  'ArrayResponse',
+  'ArrayResponseBase',
   'EmptyResponseBase',
-  'CommonQueryParameters'
+  'CommonQueryParameters',
+  'CommonCatQueryParameters'
 ]
 
 /**
@@ -58,6 +59,17 @@ export const customTypes = [
   'Dictionary',
   'Union',
   'UserDefinedValue'
+]
+
+/**
+ * The following js doc tags are used to signal to the compiler
+ * how certain definitions or field should be handled, and should
+ * not leak into the generated JSON.
+ */
+export const compilerJsDocTags = [
+  'behavior',
+  'since',
+  'rest_spec_name'
 ]
 
 /**
@@ -238,34 +250,36 @@ export function modelType (node: Node): model.ValueOf {
 }
 
 /**
- * Given a ClassDeclaration, returns `true` if the Node
- * represents a rest spec name by looking at the decorators.
+ * Given an InterfaceDeclaration, returns `true` if the Node
+ * represents a rest spec name by looking at the js doc tag.
  */
-export function isApi (declaration: ClassDeclaration): boolean {
-  return Boolean(declaration.getDecorator('rest_spec_name'))
+export function isApi (declaration: InterfaceDeclaration): boolean {
+  const tags = parseJsDocTags(declaration.getJsDocs())
+  return tags.some(tag => tag.name === 'rest_spec_name')
 }
 
 /**
- * Given a ClassDeclaration, returns the api name
- * stored in the rest_spec_name decorator.
+ * Given an InterfaceDeclaration, returns the api name
+ * stored in the rest_spec_name js doc tag.
  */
-export function getApiName (declaration: ClassDeclaration): string {
-  const decorator = declaration.getDecorator('rest_spec_name')
-  assert(decorator, 'The rest_spec_name decorator does not exists')
-  return decorator.getArguments()[0].getText().split("'")[1]
+export function getApiName (declaration: InterfaceDeclaration): string {
+  const tags = parseJsDocTags(declaration.getJsDocs())
+  const tag = tags.find(tag => tag.name === 'rest_spec_name')
+  assert(tag, 'The rest_spec_name tag does not exists')
+  return tag.value
 }
 
 /**
- * Given a ClassDeclaration, returns the since value
- * stored in the since decorator and verifies if the value
+ * Given an InterfaceDeclaration, returns the since value
+ * stored in the since js doc tag and verifies if the value
  * is a valid semver string.
  */
-export function getSinceValue (declaration: ClassDeclaration): string {
-  const decorator = declaration.getDecorator('since')
-  assert(decorator, 'The since decorator does not exists')
-  const value = decorator.getArguments()[0].getText().split("'")[1]
-  assert(semver.valid(value), `The semver value is not valid: ${value}`)
-  return value
+export function getSinceValue (declaration: InterfaceDeclaration): string {
+  const tags = parseJsDocTags(declaration.getJsDocs())
+  const tag = tags.find(tag => tag.name === 'since')
+  assert(tag, 'The since tag does not exists')
+  assert(semver.valid(tag.value), `The semver value is not valid: ${tag.value}`)
+  return tag.value
 }
 
 /**
@@ -522,7 +536,7 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Array<Record<string, string>> {
  * but can't be discarded.
  */
 export function isDefinedButNeverUsed (declaration: ClassDeclaration | InterfaceDeclaration | EnumDeclaration | TypeAliasDeclaration): boolean {
-  if (Node.isClassDeclaration(declaration)) {
+  if (Node.isClassDeclaration(declaration) || Node.isInterfaceDeclaration(declaration)) {
     const name = declaration.getName()
     assert(name, 'Anonymous classes should not exists')
     if (name.endsWith('Request') || name.endsWith('Response')) {

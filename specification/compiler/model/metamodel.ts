@@ -187,6 +187,8 @@ export class Request extends BaseType {
    * (an array of bulk operations) or create requests (a user provided document type).
    */
   body?: ValueBody | PropertiesBody
+  behaviors?: Implements[]
+  attachedBehaviors?: string[]
 }
 
 export class ValueBody {
