@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.clear_cached_realms')
-@since('0.0.0')
-class ClearCachedRealmsRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.clear_cached_realms
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClearCachedRealmsRequest extends RequestBase {
   path_parts?: {
     realms: Names
   }

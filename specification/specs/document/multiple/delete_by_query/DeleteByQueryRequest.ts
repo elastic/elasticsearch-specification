@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('delete_by_query')
-@since('5.0.0')
-class DeleteByQueryRequest extends RequestBase {
+ /**
+ * @rest_spec_name delete_by_query
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface DeleteByQueryRequest extends RequestBase {
   path_parts?: {
     index: Indices
     type?: TypeNames

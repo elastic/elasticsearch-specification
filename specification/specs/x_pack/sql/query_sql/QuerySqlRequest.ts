@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('sql.query')
-@since('6.3.0')
-class QuerySqlRequest extends RequestBase {
+ /**
+ * @rest_spec_name sql.query
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface QuerySqlRequest extends RequestBase {
   query_parameters?: {
     format?: string
   }

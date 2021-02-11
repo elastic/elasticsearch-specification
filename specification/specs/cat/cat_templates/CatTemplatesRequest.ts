@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.templates')
-@since('5.2.0')
-class CatTemplatesRequest extends CatRequestBase {
+ /**
+ * @rest_spec_name cat.templates
+ * @since 5.2.0
+ * @stability TODO
+ */
+interface CatTemplatesRequest extends CatRequestBase {
   path_parts?: {
     name?: Name
   }

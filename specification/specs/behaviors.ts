@@ -49,3 +49,19 @@ interface ArrayResponse<TRecord> {}
  * @behavior Defines a trait that the response is empty
  */
 interface EmptyResponseBase {}
+
+/**
+ * Implements a set of common query parameters all API's support.
+ * Since these can break the response structure these are listed explicitly as a behavior.
+ * Its up to individual clients to define support although `error_trace` and `pretty` are
+ * recommended as a minimum.
+ *
+ * @behavior Defines a common set of query parameters all API's support that alter the overall response.
+ */
+interface CommonQueryParameters {
+  error_trace?: boolean
+  filter_path?: string | string[]
+  human?: boolean
+  pretty?: boolean
+  source_query_string?: string
+}

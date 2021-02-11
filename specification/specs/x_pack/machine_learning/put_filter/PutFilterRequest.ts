@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.put_filter')
-@since('5.4.0')
-class PutFilterRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.put_filter
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface PutFilterRequest extends RequestBase {
   path_parts?: {
     filter_id: Id
   }

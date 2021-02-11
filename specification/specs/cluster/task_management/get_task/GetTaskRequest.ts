@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('tasks.get')
-@since('5.0.0')
-class GetTaskRequest extends RequestBase {
+ /**
+ * @rest_spec_name tasks.get
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface GetTaskRequest extends RequestBase {
   path_parts?: {
     task_id: Id
   }

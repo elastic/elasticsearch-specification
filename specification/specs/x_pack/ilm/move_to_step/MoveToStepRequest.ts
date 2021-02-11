@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.move_to_step')
-@since('6.6.0')
-class MoveToStepRequest extends RequestBase {
+ /**
+ * @rest_spec_name ilm.move_to_step
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface MoveToStepRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

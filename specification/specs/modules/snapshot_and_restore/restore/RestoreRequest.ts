@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('snapshot.restore')
-@since('0.0.0')
-class RestoreRequest extends RequestBase {
+ /**
+ * @rest_spec_name snapshot.restore
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface RestoreRequest extends RequestBase {
   path_parts?: {
     repository: Name
     snapshot: Name

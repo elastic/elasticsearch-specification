@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.state')
-@since('0.0.0')
-class ClusterStateRequest extends RequestBase {
+ /**
+ * @rest_spec_name cluster.state
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClusterStateRequest extends RequestBase {
   path_parts?: {
     metric?: Metrics
     index?: Indices

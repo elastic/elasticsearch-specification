@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.set_upgrade_mode')
-@since('6.7.0')
-class SetUpgradeModeRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.set_upgrade_mode
+ * @since 6.7.0
+ * @stability TODO
+ */
+interface SetUpgradeModeRequest extends RequestBase {
   query_parameters?: {
     enabled?: boolean
     timeout?: Time

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.delete_datafeed')
-@since('5.4.0')
-class DeleteDatafeedRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.delete_datafeed
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface DeleteDatafeedRequest extends RequestBase {
   path_parts?: {
     datafeed_id: Id
   }

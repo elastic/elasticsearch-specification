@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('snapshot.verify_repository')
-@since('0.0.0')
-class VerifyRepositoryRequest extends RequestBase {
+ /**
+ * @rest_spec_name snapshot.verify_repository
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface VerifyRepositoryRequest extends RequestBase {
   path_parts?: {
     repository: Name
   }

@@ -18,12 +18,12 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name create
+ * @since 0.0.0
+ * @stability stable
+ * @class_serializer CreateRequestFormatter`1`
  */
-@rest_spec_name('create')
-@class_serializer('CreateRequestFormatter`1')
-@since('5.0.0')
-class CreateRequest<TDocument> extends RequestBase {
+interface CreateRequest<TDocument> extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

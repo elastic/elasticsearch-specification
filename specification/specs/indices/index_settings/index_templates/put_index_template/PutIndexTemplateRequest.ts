@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.put_template')
-@since('0.0.0')
-class PutIndexTemplateRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.put_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PutIndexTemplateRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

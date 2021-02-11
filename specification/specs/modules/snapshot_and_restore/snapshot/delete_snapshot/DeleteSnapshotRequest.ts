@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('snapshot.delete')
-@since('0.0.0')
-class DeleteSnapshotRequest extends RequestBase {
+ /**
+ * @rest_spec_name snapshot.delete
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DeleteSnapshotRequest extends RequestBase {
   path_parts?: {
     repository: Name
     snapshot: Name

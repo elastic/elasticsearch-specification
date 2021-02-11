@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.authenticate')
-@since('0.0.0')
-class AuthenticateRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.authenticate
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface AuthenticateRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

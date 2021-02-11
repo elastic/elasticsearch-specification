@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_records')
-@since('5.4.0')
-class GetAnomalyRecordsRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.get_records
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetAnomalyRecordsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

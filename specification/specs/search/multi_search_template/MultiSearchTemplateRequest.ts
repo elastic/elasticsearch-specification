@@ -17,10 +17,13 @@
  * under the License.
  */
 
-@rest_spec_name('msearch_template')
-@class_serializer('MultiSearchTemplateFormatter')
-@since('5.0.0')
-class MultiSearchTemplateRequest extends RequestBase {
+/**
+ * @rest_spec_name msearch_template
+ * @since 5.0.0
+ * @class_serializer MultiSearchTemplateFormatter
+ * @stability TODO
+ */
+interface MultiSearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices
     type?: TypeNames

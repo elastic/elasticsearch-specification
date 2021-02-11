@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.reload_search_analyzers')
-@since('7.3.0')
-class ReloadSearchAnalyzersRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.reload_search_analyzers
+ * @since 7.3.0
+ * @stability TODO
+ */
+interface ReloadSearchAnalyzersRequest extends RequestBase {
   path_parts?: {
     index: Indices
   }

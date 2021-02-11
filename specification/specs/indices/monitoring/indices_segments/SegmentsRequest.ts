@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.segments')
-@since('0.0.0')
-class SegmentsRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.segments
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface SegmentsRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.refresh')
-@since('0.0.0')
-class RefreshRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.refresh
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface RefreshRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

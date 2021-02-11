@@ -19,9 +19,12 @@
 
 // TODO: once the compiler can handle it, the body should use the commented classes in this file
 
-@rest_spec_name('security.get_token')
-@since('5.5.0')
-class GetUserAccessTokenRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.get_token
+ * @since 5.5.0
+ * @stability TODO
+ */
+interface GetUserAccessTokenRequest extends RequestBase {
   query_parameters?: {}
   // body: AccessTokenGrantTypePassword | AccessTokenGrantTypeClientCredentials | AccessTokenGrantTypeKerberos | AccessTokenGrantTypeRefresh
   body?: {

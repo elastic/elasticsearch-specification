@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.update_model_snapshot')
-@since('5.4.0')
-class UpdateModelSnapshotRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.update_model_snapshot
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface UpdateModelSnapshotRequest extends RequestBase {
   path_parts?: {
     job_id: Id
     snapshot_id: Id

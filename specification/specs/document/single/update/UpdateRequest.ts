@@ -17,12 +17,13 @@
  * under the License.
  */
 
+
 /**
- * @type_stability stable
+ * @rest_spec_name update
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('update')
-@since('0.0.0')
-class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
+interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

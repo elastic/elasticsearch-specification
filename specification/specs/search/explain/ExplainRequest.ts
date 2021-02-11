@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('explain')
-@since('0.0.0')
-class ExplainRequest extends RequestBase {
+ /**
+ * @rest_spec_name explain
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ExplainRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.shards')
-@since('0.0.0')
-class CatShardsRequest extends CatRequestBase {
+ /**
+ * @rest_spec_name cat.shards
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatShardsRequest extends CatRequestBase {
   path_parts?: {
     index?: Indices
   }

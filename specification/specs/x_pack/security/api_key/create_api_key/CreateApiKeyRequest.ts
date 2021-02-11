@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.create_api_key')
-@since('6.7.0')
-class CreateApiKeyRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.create_api_key
+ * @since 6.7.0
+ * @stability TODO
+ */
+interface CreateApiKeyRequest extends RequestBase {
   query_parameters?: {
     refresh?: Refresh
   }

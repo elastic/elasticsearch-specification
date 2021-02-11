@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.remove_policy')
-@since('6.6.0')
-class RemovePolicyRequest extends RequestBase {
+ /**
+ * @rest_spec_name ilm.remove_policy
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface RemovePolicyRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.indices')
-@since('0.0.0')
-class CatIndicesRequest extends CatRequestBase {
+ /**
+ * @rest_spec_name cat.indices
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatIndicesRequest extends CatRequestBase {
   path_parts?: {
     index?: Indices
   }

@@ -18,11 +18,11 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name search
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('search')
-@since('0.0.0')
-class SearchRequest extends RequestBase {
+interface SearchRequest extends RequestBase {
   path_parts?: {
     index?: Indices
     type?: TypeNames

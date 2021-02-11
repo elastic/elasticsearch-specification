@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('watcher.stats')
-@since('0.0.0')
-class WatcherStatsRequest extends RequestBase {
+ /**
+ * @rest_spec_name watcher.stats
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface WatcherStatsRequest extends RequestBase {
   path_parts?: {
     metric?: Metrics
   }

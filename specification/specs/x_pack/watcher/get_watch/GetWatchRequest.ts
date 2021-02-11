@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('watcher.get_watch')
-@since('0.0.0')
-class GetWatchRequest extends RequestBase {
+ /**
+ * @rest_spec_name watcher.get_watch
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetWatchRequest extends RequestBase {
   path_parts?: {
     id: Name
   }

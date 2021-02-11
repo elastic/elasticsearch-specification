@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.get_user')
-@since('0.0.0')
-class GetUserRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.get_user
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetUserRequest extends RequestBase {
   path_parts?: {
     username?: Names
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.post_calendar_events')
-@since('6.2.0')
-class PostCalendarEventsRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.post_calendar_events
+ * @since 6.2.0
+ * @stability TODO
+ */
+interface PostCalendarEventsRequest extends RequestBase {
   path_parts?: {
     calendar_id: Id
   }

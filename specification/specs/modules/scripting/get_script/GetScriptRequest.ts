@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('get_script')
-@since('0.0.0')
-class GetScriptRequest extends RequestBase {
+ /**
+ * @rest_spec_name get_script
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetScriptRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

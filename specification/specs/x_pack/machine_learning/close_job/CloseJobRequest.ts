@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.close_job')
-@since('5.4.0')
-class CloseJobRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.close_job
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface CloseJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

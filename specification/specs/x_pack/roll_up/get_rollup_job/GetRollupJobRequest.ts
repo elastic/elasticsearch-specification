@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('rollup.get_jobs')
-@since('6.3.0')
-class GetRollupJobRequest extends RequestBase {
+ /**
+ * @rest_spec_name rollup.get_jobs
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface GetRollupJobRequest extends RequestBase {
   path_parts?: {
     id?: Id
   }

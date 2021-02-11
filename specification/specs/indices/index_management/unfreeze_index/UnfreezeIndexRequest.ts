@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.unfreeze')
-@since('6.6.0')
-class UnfreezeIndexRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.unfreeze
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface UnfreezeIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

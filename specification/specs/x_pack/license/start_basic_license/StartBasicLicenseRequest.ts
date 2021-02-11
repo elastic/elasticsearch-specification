@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('license.post_start_basic')
-@since('6.3.0')
-class StartBasicLicenseRequest extends RequestBase {
+ /**
+ * @rest_spec_name license.post_start_basic
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface StartBasicLicenseRequest extends RequestBase {
   query_parameters?: {
     acknowledge?: boolean
   }

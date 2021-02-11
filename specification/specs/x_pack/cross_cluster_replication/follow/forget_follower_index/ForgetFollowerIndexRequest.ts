@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.forget_follower')
-@since('6.7.0')
-class ForgetFollowerIndexRequest extends RequestBase {
+ /**
+ * @rest_spec_name ccr.forget_follower
+ * @since 6.7.0
+ * @stability TODO
+ */
+interface ForgetFollowerIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

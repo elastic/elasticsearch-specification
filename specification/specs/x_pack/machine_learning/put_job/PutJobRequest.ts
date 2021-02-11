@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.put_job')
-@since('5.4.0')
-class PutJobRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.put_job
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface PutJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

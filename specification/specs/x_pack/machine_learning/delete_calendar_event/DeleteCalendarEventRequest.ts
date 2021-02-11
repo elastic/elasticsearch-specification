@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.delete_calendar_event')
-@since('6.2.0')
-class DeleteCalendarEventRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.delete_calendar_event
+ * @since 6.2.0
+ * @stability TODO
+ */
+interface DeleteCalendarEventRequest extends RequestBase {
   path_parts?: {
     calendar_id: Id
     event_id: Id

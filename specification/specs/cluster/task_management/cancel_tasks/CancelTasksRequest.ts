@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('tasks.cancel')
-@since('2.3.0')
-class CancelTasksRequest extends RequestBase {
+ /**
+ * @rest_spec_name tasks.cancel
+ * @since 2.3.0
+ * @stability TODO
+ */
+interface CancelTasksRequest extends RequestBase {
   path_parts?: {
     task_id?: TaskId
   }

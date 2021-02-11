@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.ml_trained_models')
-@since('7.7.0')
-class CatTrainedModelsRequest extends CatRequestBase {
+ /**
+ * @rest_spec_name cat.ml_trained_models
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface CatTrainedModelsRequest extends CatRequestBase {
   path_parts?: {
     model_id?: Id
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.retry')
-@since('6.6.0')
-class RetryIlmRequest extends RequestBase {
+ /**
+ * @rest_spec_name ilm.retry
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface RetryIlmRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

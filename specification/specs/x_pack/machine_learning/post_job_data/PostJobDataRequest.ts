@@ -17,10 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.post_data')
-@class_serializer('PostJobDataFormatter')
-@since('5.4.0')
-class PostJobDataRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.post_data
+ * @since PostJobDataFormatter
+ * @stability TODO
+ */
+interface PostJobDataRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

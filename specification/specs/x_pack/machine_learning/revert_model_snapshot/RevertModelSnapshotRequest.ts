@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.revert_model_snapshot')
-@since('5.4.0')
-class RevertModelSnapshotRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.revert_model_snapshot
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface RevertModelSnapshotRequest extends RequestBase {
   path_parts?: {
     job_id: Id
     snapshot_id: Id

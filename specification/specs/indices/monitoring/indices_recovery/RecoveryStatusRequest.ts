@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.recovery')
-@since('0.0.0')
-class RecoveryStatusRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.recovery
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface RecoveryStatusRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

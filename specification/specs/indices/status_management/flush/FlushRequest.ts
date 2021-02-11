@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.flush')
-@since('0.0.0')
-class FlushRequest extends RequestBase {
+ /**
+ * @rest_spec_name indices.flush
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface FlushRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

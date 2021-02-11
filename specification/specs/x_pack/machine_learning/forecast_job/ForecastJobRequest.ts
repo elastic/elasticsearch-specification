@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.forecast')
-@since('6.1.0')
-class ForecastJobRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.forecast
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface ForecastJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

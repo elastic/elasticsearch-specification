@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.stats')
-@since('0.0.0')
-class ClusterStatsRequest extends RequestBase {
+ /**
+ * @rest_spec_name cluster.stats
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClusterStatsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
   }

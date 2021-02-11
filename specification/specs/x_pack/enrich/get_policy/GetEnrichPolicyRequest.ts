@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('enrich.get_policy')
-@since('7.5.0')
-class GetEnrichPolicyRequest extends RequestBase {
+ /**
+ * @rest_spec_name enrich.get_policy
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface GetEnrichPolicyRequest extends RequestBase {
   path_parts?: {
     name?: Names
   }

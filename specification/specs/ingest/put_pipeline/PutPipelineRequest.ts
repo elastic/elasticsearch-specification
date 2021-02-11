@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ingest.put_pipeline')
-@since('5.0.0')
-class PutPipelineRequest extends RequestBase {
+ /**
+ * @rest_spec_name ingest.put_pipeline
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface PutPipelineRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

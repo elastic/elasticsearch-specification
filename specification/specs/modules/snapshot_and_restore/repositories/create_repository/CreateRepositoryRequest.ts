@@ -17,10 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('snapshot.create_repository')
-@class_serializer('CreateRepositoryFormatter')
-@since('0.0.0')
-class CreateRepositoryRequest extends RequestBase {
+/**
+ * @rest_spec_name snapshot.create_repository
+ * @since CreateRepositoryFormatter
+ * @stability TODO
+ */
+interface CreateRepositoryRequest extends RequestBase {
   path_parts?: {
     repository: Name
   }

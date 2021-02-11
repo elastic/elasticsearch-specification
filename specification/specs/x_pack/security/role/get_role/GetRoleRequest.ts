@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.get_role')
-@since('0.0.0')
-class GetRoleRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.get_role
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetRoleRequest extends RequestBase {
   path_parts?: {
     name?: Name
   }

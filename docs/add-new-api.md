@@ -55,9 +55,12 @@ You should also add another decorator (`since`) to track the version of Elastics
 Following you can find a template valid for any request definition.
 
 ```ts
-@rest_spec_name('endpoint.name')
-@since('1.2.3')
-class EndpointRequest extends RequestBase {
+ /*
+ * @rest_spec_name endpoint.name
+ * @since 1.2.3
+ * @stability TODO
+ */
+interface EndpointRequest extends RequestBase {
   path_parts?: {
 
   };
@@ -72,9 +75,12 @@ class EndpointRequest extends RequestBase {
 
 In some cases, the request could take one or more generics, in such case the definition will be:
 ```ts
-@rest_spec_name('endpoint.name')
-@since('1.2.3')
-class EndpointRequest<Generic> extends RequestBase {
+ /*
+ * @rest_spec_name endpoint.name
+ * @since 1.2.3
+ * @stability TODO
+ */
+interface EndpointRequest<Generic> extends RequestBase {
   path_parts?: {
 
   };

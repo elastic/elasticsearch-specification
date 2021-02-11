@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('nodes.hot_threads')
-@since('0.0.0')
-class NodesHotThreadsRequest extends RequestBase {
+ /**
+ * @rest_spec_name nodes.hot_threads
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface NodesHotThreadsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
   }

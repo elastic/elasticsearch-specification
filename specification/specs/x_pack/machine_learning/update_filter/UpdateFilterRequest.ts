@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.update_filter')
-@since('6.4.0')
-class UpdateFilterRequest extends RequestBase {
+ /**
+ * @rest_spec_name ml.update_filter
+ * @since 6.4.0
+ * @stability TODO
+ */
+interface UpdateFilterRequest extends RequestBase {
   path_parts?: {
     filter_id: Id
   }

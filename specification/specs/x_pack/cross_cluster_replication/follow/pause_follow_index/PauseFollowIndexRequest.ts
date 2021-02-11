@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.pause_follow')
-@since('6.5.0')
-class PauseFollowIndexRequest extends RequestBase {
+ /**
+ * @rest_spec_name ccr.pause_follow
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface PauseFollowIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

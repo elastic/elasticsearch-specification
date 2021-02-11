@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.ml_jobs')
-@since('7.7.0')
-class CatJobsRequest extends CatRequestBase {
+ /**
+ * @rest_spec_name cat.ml_jobs
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface CatJobsRequest extends CatRequestBase {
   path_parts?: {
     job_id?: Id
   }

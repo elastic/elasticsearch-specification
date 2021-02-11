@@ -44,7 +44,8 @@ import * as model from './metamodel'
 export const knownBehaviors = [
   'AdditionalProperties',
   'ArrayResponse',
-  'EmptyResponseBase'
+  'EmptyResponseBase',
+  'CommonQueryParameters'
 ]
 
 /**

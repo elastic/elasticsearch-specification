@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.disable_user')
-@since('0.0.0')
-class DisableUserRequest extends RequestBase {
+ /**
+ * @rest_spec_name security.disable_user
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DisableUserRequest extends RequestBase {
   path_parts?: {
     username: Name
   }

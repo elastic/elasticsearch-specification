@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('rollup.get_rollup_index_caps')
-@since('6.4.0')
-class GetRollupIndexCapabilitiesRequest extends RequestBase {
+ /**
+ * @rest_spec_name rollup.get_rollup_index_caps
+ * @since 6.4.0
+ * @stability TODO
+ */
+interface GetRollupIndexCapabilitiesRequest extends RequestBase {
   path_parts?: {
     index: Id
   }

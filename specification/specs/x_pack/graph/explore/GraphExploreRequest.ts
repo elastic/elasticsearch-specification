@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('graph.explore')
-@since('0.0.0')
-class GraphExploreRequest extends RequestBase {
+ /**
+ * @rest_spec_name graph.explore
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GraphExploreRequest extends RequestBase {
   path_parts?: {
     index: Indices
     type?: TypeNames
