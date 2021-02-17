@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('rollup.delete_job')
-@since('6.3.0')
-class DeleteRollupJobRequest extends RequestBase {
+/**
+ * @rest_spec_name rollup.delete_job
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface DeleteRollupJobRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('sql.clear_cursor')
-@since('6.3.0')
-class ClearSqlCursorRequest extends RequestBase {
+/**
+ * @rest_spec_name sql.clear_cursor
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface ClearSqlCursorRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     cursor?: string

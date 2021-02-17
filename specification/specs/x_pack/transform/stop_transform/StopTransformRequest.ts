@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('transform.stop_transform')
-@since('7.5.0')
-class StopTransformRequest extends RequestBase {
+/**
+ * @rest_spec_name transform.stop_transform
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface StopTransformRequest extends RequestBase {
   path_parts?: {
     transform_id: Name
   }

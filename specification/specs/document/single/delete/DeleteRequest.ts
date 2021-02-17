@@ -18,11 +18,11 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name delete
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('delete')
-@since('0.0.0')
-class DeleteRequest extends RequestBase {
+interface DeleteRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

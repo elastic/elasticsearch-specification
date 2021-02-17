@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('field_caps')
-@since('5.4.0')
-class FieldCapabilitiesRequest extends RequestBase {
+/**
+ * @rest_spec_name field_caps
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface FieldCapabilitiesRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

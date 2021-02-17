@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.health')
-@since('0.0.0')
-class CatHealthRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.health
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatHealthRequest extends CatRequestBase {
   query_parameters?: {
     include_timestamp?: boolean
   }

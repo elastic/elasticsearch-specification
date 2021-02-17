@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('slm.get_stats')
-@since('7.5.0')
-class GetSnapshotLifecycleStatsRequest extends RequestBase {
+/**
+ * @rest_spec_name slm.get_stats
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface GetSnapshotLifecycleStatsRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

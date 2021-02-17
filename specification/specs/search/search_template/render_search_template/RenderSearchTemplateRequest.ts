@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('render_search_template')
-@since('0.0.0')
-class RenderSearchTemplateRequest extends RequestBase {
+/**
+ * @rest_spec_name render_search_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface RenderSearchTemplateRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     file?: string

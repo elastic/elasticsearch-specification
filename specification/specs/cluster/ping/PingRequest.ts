@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ping')
-@since('0.0.0')
-class PingRequest extends RequestBase {
+/**
+ * @rest_spec_name ping
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PingRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

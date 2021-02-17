@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_datafeeds')
-@since('5.4.0')
-class GetDatafeedsRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_datafeeds
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetDatafeedsRequest extends RequestBase {
   path_parts?: {
     datafeed_id?: Id
   }

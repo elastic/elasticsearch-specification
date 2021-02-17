@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.unfollow')
-@since('6.5.0')
-class UnfollowIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name ccr.unfollow
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface UnfollowIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

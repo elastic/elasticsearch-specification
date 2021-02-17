@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.follow_info')
-@since('6.7.0')
-class FollowInfoRequest extends RequestBase {
+/**
+ * @rest_spec_name ccr.follow_info
+ * @since 6.7.0
+ * @stability TODO
+ */
+interface FollowInfoRequest extends RequestBase {
   path_parts?: {
     index: Indices
   }

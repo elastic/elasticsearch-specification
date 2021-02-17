@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.put_settings')
-@since('0.0.0')
-class ClusterPutSettingsRequest extends RequestBase {
+/**
+ * @rest_spec_name cluster.put_settings
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClusterPutSettingsRequest extends RequestBase {
   query_parameters?: {
     flat_settings?: boolean
     master_timeout?: Time

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.snapshots')
-@since('2.1.0')
-class CatSnapshotsRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.snapshots
+ * @since 2.1.0
+ * @stability TODO
+ */
+interface CatSnapshotsRequest extends CatRequestBase {
   path_parts?: {
     repository?: Names
   }

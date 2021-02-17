@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.estimate_model_memory')
-@since('7.7.0')
-class EstimateModelMemoryRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.estimate_model_memory
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface EstimateModelMemoryRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     analysis_config?: AnalysisConfig

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('transform.get_transform_stats')
-@since('7.5.0')
-class GetTransformStatsRequest extends RequestBase {
+/**
+ * @rest_spec_name transform.get_transform_stats
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface GetTransformStatsRequest extends RequestBase {
   path_parts?: {
     transform_id: Name
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('clear_scroll')
-@since('0.0.0')
-class ClearScrollRequest extends RequestBase {
+/**
+ * @rest_spec_name clear_scroll
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClearScrollRequest extends RequestBase {
   path_parts?: {
     scroll_id?: Ids
   }

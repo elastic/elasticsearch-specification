@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.delete_filter')
-@since('5.4.0')
-class DeleteFilterRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.delete_filter
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface DeleteFilterRequest extends RequestBase {
   path_parts?: {
     filter_id: Id
   }

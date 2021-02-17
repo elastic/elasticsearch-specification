@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('nodes.stats')
-@since('0.0.0')
-class NodesStatsRequest extends RequestBase {
+/**
+ * @rest_spec_name nodes.stats
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface NodesStatsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
     metric?: Metrics

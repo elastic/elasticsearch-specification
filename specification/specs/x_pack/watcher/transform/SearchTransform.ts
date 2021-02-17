@@ -18,6 +18,6 @@
  */
 
 class SearchTransform {
-  request: SearchInputRequest
+  request: SearchInputRequestDefinition
   timeout: Time
 }

@@ -18,12 +18,12 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name mget
+ * @since 0.0.0
+ * @stability stable
+ * @class_serializer MultiGetRequestFormatter
  */
-@rest_spec_name('mget')
-@class_serializer('MultiGetRequestFormatter')
-@since('0.0.0')
-class MultiGetRequest extends RequestBase {
+interface MultiGetRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
     type?: TypeName

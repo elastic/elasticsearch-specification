@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('rollup.rollup_search')
-@since('6.3.0')
-class RollupSearchRequest extends RequestBase {
+/**
+ * @rest_spec_name rollup.rollup_search
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface RollupSearchRequest extends RequestBase {
   path_parts?: {
     index: Indices
     type?: TypeName

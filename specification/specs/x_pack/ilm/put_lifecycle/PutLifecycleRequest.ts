@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.put_lifecycle')
-@since('6.6.0')
-class PutLifecycleRequest extends RequestBase {
+/**
+ * @rest_spec_name ilm.put_lifecycle
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface PutLifecycleRequest extends RequestBase {
   path_parts?: {
     policy: Name
   }

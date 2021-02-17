@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.reroute')
-@since('0.0.0')
-class ClusterRerouteRequest extends RequestBase {
+/**
+ * @rest_spec_name cluster.reroute
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClusterRerouteRequest extends RequestBase {
   query_parameters?: {
     dry_run?: boolean
     explain?: boolean

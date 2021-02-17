@@ -19,6 +19,6 @@
 
 class HttpInput {
   extract: string[]
-  request: HttpInputRequest
+  request: HttpInputRequestDefinition
   response_content_type: ResponseContentType
 }

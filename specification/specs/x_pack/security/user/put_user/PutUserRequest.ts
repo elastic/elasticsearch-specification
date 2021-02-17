@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.put_user')
-@since('0.0.0')
-class PutUserRequest extends RequestBase {
+/**
+ * @rest_spec_name security.put_user
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PutUserRequest extends RequestBase {
   path_parts?: {
     username: Name
   }

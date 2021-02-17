@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('rollup.stop_job')
-@since('6.3.0')
-class StopRollupJobRequest extends RequestBase {
+/**
+ * @rest_spec_name rollup.stop_job
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface StopRollupJobRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

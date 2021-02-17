@@ -19,4 +19,4 @@
 
 class CatFielddataResponse
   extends ResponseBase
-  implements ArrayResponse<CatFielddataRecord> {}
+  implements ArrayResponseBase<CatFielddataRecord> {}

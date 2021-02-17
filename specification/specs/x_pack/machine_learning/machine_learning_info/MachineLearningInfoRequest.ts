@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.info')
-@since('6.3.0')
-class MachineLearningInfoRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.info
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface MachineLearningInfoRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.get_settings')
-@since('0.0.0')
-class GetIndexSettingsRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.get_settings
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetIndexSettingsRequest extends RequestBase {
   path_parts?: {
     index?: Indices
     name?: Names

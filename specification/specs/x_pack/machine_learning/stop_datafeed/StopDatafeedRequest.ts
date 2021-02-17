@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.stop_datafeed')
-@since('5.4.0')
-class StopDatafeedRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.stop_datafeed
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface StopDatafeedRequest extends RequestBase {
   path_parts?: {
     datafeed_id: Id
   }

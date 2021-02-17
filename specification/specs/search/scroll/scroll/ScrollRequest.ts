@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('scroll')
-@since('0.0.0')
-class ScrollRequest extends RequestBase {
+/**
+ * @rest_spec_name scroll
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ScrollRequest extends RequestBase {
   path_parts?: {
     scroll_id?: Id
   }

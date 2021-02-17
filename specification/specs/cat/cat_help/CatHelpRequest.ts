@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.help')
-@since('0.0.0')
-class CatHelpRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.help
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatHelpRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}
 }

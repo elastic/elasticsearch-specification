@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.get_user_privileges')
-@since('6.5.0')
-class GetUserPrivilegesRequest extends RequestBase {
+/**
+ * @rest_spec_name security.get_user_privileges
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface GetUserPrivilegesRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

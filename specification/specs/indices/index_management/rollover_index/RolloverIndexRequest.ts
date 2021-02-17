@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.rollover')
-@since('5.0.0')
-class RolloverIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.rollover
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface RolloverIndexRequest extends RequestBase {
   path_parts?: {
     alias: Alias
     new_index?: IndexName

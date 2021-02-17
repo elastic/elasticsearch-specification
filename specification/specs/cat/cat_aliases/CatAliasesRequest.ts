@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.aliases')
-@since('0.0.0')
-class CatAliasesRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.aliases
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatAliasesRequest extends CatRequestBase {
   path_parts?: {
     name?: Names
   }

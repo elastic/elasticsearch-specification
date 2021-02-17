@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.clear_cache')
-@since('0.0.0')
-class ClearCacheRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.clear_cache
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClearCacheRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

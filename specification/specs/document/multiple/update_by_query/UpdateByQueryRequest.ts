@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('update_by_query')
-@since('2.4.0')
-class UpdateByQueryRequest extends RequestBase {
+/**
+ * @rest_spec_name update_by_query
+ * @since 2.4.0
+ * @stability TODO
+ */
+interface UpdateByQueryRequest extends RequestBase {
   path_parts?: {
     index: Indices
     type?: TypeNames

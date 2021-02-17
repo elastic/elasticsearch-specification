@@ -18,12 +18,12 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name bulk
+ * @since 0.0.0
+ * @stability stable
+ * @class_serializer BulkRequestFormatter
  */
-@rest_spec_name('bulk')
-@class_serializer('BulkRequestFormatter')
-@since('0.0.0')
-class BulkRequest<TSource> extends RequestBase {
+interface BulkRequest<TSource> extends RequestBase {
   path_parts?: {
     index?: IndexName
     type?: TypeName

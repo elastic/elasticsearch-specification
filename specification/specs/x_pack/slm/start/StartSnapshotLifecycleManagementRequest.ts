@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('slm.start')
-@since('7.6.0')
-class StartSnapshotLifecycleManagementRequest extends RequestBase {
+/**
+ * @rest_spec_name slm.start
+ * @since 7.6.0
+ * @stability TODO
+ */
+interface StartSnapshotLifecycleManagementRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

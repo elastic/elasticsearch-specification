@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('enrich.delete_policy')
-@since('7.5.0')
-class DeleteEnrichPolicyRequest extends RequestBase {
+/**
+ * @rest_spec_name enrich.delete_policy
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface DeleteEnrichPolicyRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

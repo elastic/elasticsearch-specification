@@ -42,9 +42,14 @@ let definitions = `/*
  * under the License.
  */\n\n`
 
+// We don't skip `CommonQueryParameters` and `CommonCatQueryParameters`
+// behaviors because we ue them for sharing common query parameters
+// among most requests.
 const skip = [
+  'CatRequestBase',
+  'RequestBase',
   'ResponseBase',
-  'ArrayResponse',
+  'ArrayResponseBase',
   'EmptyResponseBase',
   'AdditionalProperties'
 ]
@@ -141,6 +146,24 @@ function createInterface (type) {
 }
 
 function createRequest (type) {
+  // At the moment the only behaviors that request interfaces could have
+  // are common query parameters that are shared among most apis.
+  // Until a more complex case will happen, we can safely "push" the
+  // common parameters in the inherits array.
+  if (Array.isArray(type.attachedBehaviors)) {
+    type.inherits = type.inherits || []
+    const inherits = type.attachedBehaviors.map(name => {
+      // Let's throw an error if we don't know a behavior, so if
+      // a new behavior will be added we can be sure to avoid side effects.
+      if (['CommonQueryParameters', 'CommonCatQueryParameters'].includes(name) === false) {
+        throw new Error(`Unrecognized request behavior: ${name}`)
+      }
+      // Create a metamodel.Inherits structure
+      return { type: { name } }
+    })
+    type.inherits.push(...inherits)
+  }
+
   let code = `export interface ${type.name.name}${buildGenerics(type)}${buildInherits(type)} {\n`
   for (const property of type.path) {
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
@@ -180,9 +203,9 @@ function createAlias (type) {
 
 function buildInherits (type) {
   if (!Array.isArray(type.inherits)) return ''
-  // ResponseBase will always be empty
-  if (type.inherits[0].type.name === 'ResponseBase') return ''
-  return ` extends ${type.inherits.map(buildInheritType).join(', ')}`
+  const inherits = type.inherits.filter(type => !skip.includes(type.type.name))
+  if (inherits.length === 0) return ''
+  return ` extends ${inherits.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type) {
     return `${type.type.name}${buildGenerics(type)}`
@@ -251,7 +274,7 @@ function serializeSpecialInterface (type) {
     if (type.attachedBehaviors.includes('AdditionalProperties')) {
       return serializeAdditionalPropertiesType(type)
     }
-    if (type.attachedBehaviors.includes('ArrayResponse')) {
+    if (type.attachedBehaviors.includes('ArrayResponseBase')) {
       // In the input spec the Cat* responses are represented as an object
       // that contains a `records` key, which is an array of the inherited generic.
       // What ES actually sends back, is an array of the inherited generic.

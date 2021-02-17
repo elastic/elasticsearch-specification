@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_overall_buckets')
-@since('6.1.0')
-class GetOverallBucketsRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_overall_buckets
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface GetOverallBucketsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('snapshot.get_repository')
-@since('0.0.0')
-class GetRepositoryRequest extends RequestBase {
+/**
+ * @rest_spec_name snapshot.get_repository
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetRepositoryRequest extends RequestBase {
   path_parts?: {
     repository?: Names
   }

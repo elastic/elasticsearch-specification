@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('get_source')
-@since('0.0.0')
-class SourceRequest extends RequestBase {
+/**
+ * @rest_spec_name get_source
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface SourceRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

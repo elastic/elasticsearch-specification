@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.invalidate_token')
-@since('5.5.0')
-class InvalidateUserAccessTokenRequest extends RequestBase {
+/**
+ * @rest_spec_name security.invalidate_token
+ * @since 5.5.0
+ * @stability TODO
+ */
+interface InvalidateUserAccessTokenRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     token?: string

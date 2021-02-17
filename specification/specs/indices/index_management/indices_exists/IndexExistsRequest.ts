@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.exists')
-@since('0.0.0')
-class IndexExistsRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.exists
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface IndexExistsRequest extends RequestBase {
   path_parts?: {
     index: Indices
   }

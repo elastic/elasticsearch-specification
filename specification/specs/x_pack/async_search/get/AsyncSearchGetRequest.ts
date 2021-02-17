@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('async_search.get')
-@since('7.7.0')
-class AsyncSearchGetRequest extends RequestBase {
+/**
+ * @rest_spec_name async_search.get
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface AsyncSearchGetRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

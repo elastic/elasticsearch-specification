@@ -17,10 +17,13 @@
  * under the License.
  */
 
-@rest_spec_name('ml.validate_detector')
-@class_serializer('ValidateDetectorRequestFormatter')
-@since('5.4.0')
-class ValidateDetectorRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.validate_detector
+ * @since 5.4.0
+ * @class_serializer ValidateDetectorRequestFormatter
+ * @stability TODO
+ */
+interface ValidateDetectorRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     detector?: Detector

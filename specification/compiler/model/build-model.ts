@@ -51,7 +51,8 @@ import {
   parseJsDocTags,
   knownBehaviors,
   customTypes,
-  isDefinedButNeverUsed
+  isDefinedButNeverUsed,
+  compilerJsDocTags
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
@@ -182,13 +183,25 @@ export default function compileSpecification (): model.Model {
 
 function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType, allClasses: ClassDeclaration[]): model.Request | model.Interface {
   const name = declaration.getName()
-  assert(name, 'Anonymous classes should not exists')
+  assert(name, 'Anonymous definitions should not exists')
+
+  if (name.endsWith('Request')) {
+    assert(
+      Node.isInterfaceDeclaration(declaration),
+      `Request definitions must be declared as interfaces: ${name}`
+    )
+  }
+
+  if (name.endsWith('Response')) {
+    assert(
+      Node.isClassDeclaration(declaration),
+      `Response definitions must be declared as classes: ${name}`
+    )
+  }
 
   // Request defintions neeeds to be handled
   // differently from normal classes
-  if (Node.isClassDeclaration(declaration) && isApi(declaration)) {
-    // TODO: add support for implements and behaviors
-
+  if (Node.isInterfaceDeclaration(declaration) && isApi(declaration)) {
     // It's not guaranteed that every *Request definition
     // has an associated *Response definition as well.
     let hasResponseDeclaration = false
@@ -216,7 +229,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
     if (declaration.getJsDocs().length > 0) {
       const tags = parseJsDocTags(declaration.getJsDocs())
-        .filter(tag => tag.name !== 'behavior')
+        .filter(tag => !compilerJsDocTags.includes(tag.name))
       if (tags.length > 0) {
         type.annotations = tags.reduce((acc, val) => {
           acc[val.name] = val.value
@@ -246,13 +259,27 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       }
     }
 
-    // The class is extended, an extended class
-    // could accept generics as well
+    // The  interface is extended, an extended interface could accept generics as well,
+    // Implements will be catched here as well, they can be differentiated by looking as `node.token`
+    // which can either be `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
+    // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
+    // if it's a normal implements or a behavior, in such case, the behaviors
+    // need to be collected and added to the type.
+    if (declaration.getHeritageClauses().length > 0) {
+      // check if the current node or one of the ancestor
+      // has one or more behaviors attached
+      const attachedBehaviors = getAllBehaviors(declaration)
+      if (attachedBehaviors.length > 0) {
+        type.attachedBehaviors = Array.from(
+          new Set((type.attachedBehaviors ?? []).concat(attachedBehaviors))
+        )
+      }
+    }
+
     for (const inherit of declaration.getHeritageClauses()) {
       type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
     }
 
-    // The class accepts one or more generics
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat(modelGenerics(typeParameter))
     }
@@ -277,7 +304,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       }
 
       // Any other jsdoc tag annotations should be added to the type annotations
-      const otherTags = tags.filter(tag => tag.name !== 'behavior')
+      const otherTags = tags.filter(tag => !compilerJsDocTags.includes(tag.name))
       if (otherTags.length > 0) {
         type.annotations = otherTags.reduce((acc, val) => {
           acc[val.name] = val.value
@@ -295,14 +322,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       type.properties.push(modelProperty(member))
     }
 
-    // The class is extended, an extended class could accept generics as well,
-    // Implements will be catched here as well, they can be differentiated
-    // by looking as `node.token`, which can either be
+    // The class or interface is extended, an extended class or interface could
+    // accept generics as well, Implements will be catched here as well,
+    // they can be differentiated by looking as `node.token`, which can either be
     // `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
     // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
     // if it's a normal implements or a behavior, in such case, the behaviors
     // need to be collected and added to the type.
-    if (Node.isClassDeclaration(declaration) && declaration.getHeritageClauses().length > 0) {
+    if (declaration.getHeritageClauses().length > 0) {
       // check if the current node or one of the ancestor
       // has one or more behaviors attached
       const attachedBehaviors = getAllBehaviors(declaration)
@@ -330,7 +357,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       }
     }
 
-    // The class accepts one or more generics
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat(modelGenerics(typeParameter))
     }

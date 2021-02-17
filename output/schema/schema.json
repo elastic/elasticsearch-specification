@@ -9365,6 +9365,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -9718,6 +9724,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -11505,6 +11517,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -12150,6 +12168,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -13453,7 +13477,7 @@
       ],
       "kind": "interface",
       "name": {
-        "name": "ArrayResponse",
+        "name": "ArrayResponseBase",
         "namespace": "internal"
       },
       "properties": []
@@ -13690,6 +13714,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -13736,6 +13766,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -13940,6 +13976,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -14738,6 +14780,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -16152,6 +16200,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -16516,8 +16570,12 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "class_serializer": "BulkRequestFormatter",
+        "stability": "stable"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "value",
         "value": {
@@ -17278,6 +17336,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -17517,6 +17581,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -17560,7 +17631,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -17574,7 +17645,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -17714,6 +17785,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -17757,7 +17835,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -17771,7 +17849,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -17834,6 +17912,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -17865,7 +17950,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -17879,7 +17964,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -18085,6 +18170,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -18139,7 +18231,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -18153,7 +18245,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -18315,6 +18407,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -18358,7 +18457,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -18372,7 +18471,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -18468,6 +18567,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -18511,7 +18617,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -18525,7 +18631,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -18687,6 +18793,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -18717,7 +18830,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -18731,7 +18844,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -18772,6 +18885,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -18790,7 +18910,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -18804,7 +18924,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -18955,6 +19075,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -19042,7 +19169,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -19056,7 +19183,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -19691,6 +19818,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -19745,7 +19879,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -19759,7 +19893,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -19822,6 +19956,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -19840,7 +19981,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -19854,7 +19995,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -19972,6 +20113,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -19990,7 +20138,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -20004,7 +20152,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -20815,6 +20963,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -20856,7 +21011,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -20870,7 +21025,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -20944,6 +21099,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -20962,7 +21124,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -20976,7 +21138,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -21094,6 +21256,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -21112,7 +21281,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -21126,7 +21295,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -21398,6 +21567,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -21463,7 +21639,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -21477,7 +21653,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -21529,6 +21705,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -21547,7 +21730,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -21561,7 +21744,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -21582,6 +21765,18 @@
       "properties": []
     },
     {
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "name": "CommonCatQueryParameters",
+            "namespace": "internal"
+          }
+        }
+      ],
       "inherits": [
         {
           "type": {
@@ -21595,88 +21790,7 @@
         "name": "CatRequestBase",
         "namespace": "cat"
       },
-      "properties": [
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "h",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Names",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "help",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "local",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
-          "name": "s",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "v",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "interface",
@@ -21853,6 +21967,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -21896,7 +22017,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -21910,7 +22031,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -22578,6 +22699,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -22621,7 +22749,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -22635,7 +22763,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -22786,6 +22914,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -22829,7 +22964,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -22843,7 +22978,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -22972,6 +23107,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -23041,7 +23183,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -23055,7 +23197,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -23140,6 +23282,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -23171,7 +23320,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -23185,7 +23334,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -23435,6 +23584,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -23478,7 +23634,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -23492,7 +23648,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -23676,6 +23832,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -23752,7 +23915,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -23766,7 +23929,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -24093,6 +24256,13 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -24158,7 +24328,7 @@
     },
     {
       "attachedBehaviors": [
-        "ArrayResponse"
+        "ArrayResponseBase"
       ],
       "behaviors": [
         {
@@ -24172,7 +24342,7 @@
             }
           ],
           "type": {
-            "name": "ArrayResponse",
+            "name": "ArrayResponseBase",
             "namespace": "internal"
           }
         }
@@ -24412,6 +24582,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -24560,6 +24736,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -25041,6 +25223,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -25153,6 +25341,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -25280,6 +25474,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -25374,6 +25574,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -25453,6 +25659,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -25518,6 +25730,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -25580,8 +25798,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -25755,6 +25976,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -25942,6 +26169,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -26057,6 +26290,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -26553,6 +26792,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -26666,6 +26911,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -27920,6 +28171,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -28137,6 +28394,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -28471,6 +28734,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -28661,6 +28930,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -28920,6 +29195,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -29130,6 +29411,95 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "CommonCatQueryParameters",
+        "namespace": "internal"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "h",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "help",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "local",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "s",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "v",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -29187,6 +29557,85 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CommonQueryParameters",
+        "namespace": "internal"
+      },
+      "properties": [
+        {
+          "name": "error_trace",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "filter_path",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "human",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pretty",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "source_query_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -30388,6 +30837,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -30651,6 +31106,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -30789,6 +31250,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -30986,6 +31453,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -31215,6 +31688,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -31383,6 +31862,13 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "CreateRepositoryFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -31480,8 +31966,12 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "class_serializer": "CreateRequestFormatter`1`",
+        "stability": "stable"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "value",
         "value": {
@@ -31646,6 +32136,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -34045,6 +34541,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -34182,6 +34684,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -34263,6 +34771,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -34309,6 +34823,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -34928,6 +35448,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -34986,6 +35512,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35044,6 +35576,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35139,6 +35677,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35185,6 +35729,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35243,6 +35793,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35289,6 +35845,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35334,6 +35896,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35380,6 +35948,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35461,6 +36035,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35563,6 +36143,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35632,6 +36218,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35701,6 +36293,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35734,6 +36332,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35780,6 +36384,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35838,6 +36448,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -35907,6 +36523,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36003,6 +36625,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36073,8 +36701,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36237,6 +36868,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36307,6 +36944,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36377,6 +37020,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36423,6 +37072,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36492,6 +37147,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36538,6 +37199,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36608,6 +37275,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36666,6 +37339,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36736,6 +37415,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -36926,6 +37611,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -37401,6 +38092,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -37934,6 +38631,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -38951,6 +39654,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -39180,6 +39889,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -39567,6 +40282,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -39691,6 +40412,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -39792,6 +40519,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -39878,6 +40611,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -39911,6 +40650,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -39969,6 +40714,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -40776,6 +41527,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -40867,6 +41624,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -41733,6 +42496,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -43221,6 +43990,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -43340,6 +44115,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -44021,6 +44802,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -44082,6 +44869,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -44222,6 +45015,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -44385,6 +45184,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -44555,6 +45360,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -44703,8 +45514,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -46324,6 +47138,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -46443,6 +47263,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -46597,6 +47423,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -46701,6 +47533,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -46769,6 +47607,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -46814,6 +47658,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -46991,6 +47841,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47053,6 +47909,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -47186,6 +48048,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -47274,6 +48142,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -47374,6 +48248,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47422,6 +48302,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47506,6 +48392,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47590,6 +48482,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47651,6 +48549,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47804,6 +48708,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47899,6 +48809,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47944,6 +48860,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48095,6 +49017,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48247,6 +49175,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48354,6 +49288,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -48508,6 +49448,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48592,6 +49538,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48676,6 +49628,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48744,6 +49702,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48806,6 +49770,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -48947,6 +49917,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -49091,6 +50067,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -49245,6 +50227,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -49319,6 +50307,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -49403,6 +50397,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -49495,8 +50495,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -49839,6 +50842,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -49901,6 +50910,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -49963,6 +50978,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50025,6 +51046,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50087,6 +51114,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50148,6 +51181,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50218,6 +51257,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50263,6 +51308,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50325,6 +51376,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50458,6 +51515,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50684,6 +51747,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50776,6 +51845,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50882,6 +51957,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -50988,6 +52069,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -51033,6 +52120,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -51215,6 +52308,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -51319,6 +52418,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -51381,6 +52486,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -51626,6 +52737,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -52074,6 +53191,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -52385,6 +53508,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -54127,7 +55256,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "HttpInputRequest",
+              "name": "HttpInputRequestDefinition",
               "namespace": "x_pack.watcher.input"
             }
           }
@@ -54254,7 +55383,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "HttpInputRequest",
+        "name": "HttpInputRequestDefinition",
         "namespace": "x_pack.watcher.input"
       },
       "properties": [
@@ -54427,7 +55556,7 @@
       "inherits": [
         {
           "type": {
-            "name": "HttpInputRequest",
+            "name": "HttpInputRequestDefinition",
             "namespace": "x_pack.watcher.input"
           }
         }
@@ -55396,6 +56525,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -55776,8 +56911,12 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "class_serializer": "IndexRequestFormatter`1`",
+        "stability": "stable"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "value",
         "value": {
@@ -56325,6 +57464,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -56965,6 +58110,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -57148,8 +58299,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -58696,6 +59850,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -58857,6 +60017,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -61895,6 +63061,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -62258,6 +63430,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -64588,6 +65766,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -65077,8 +66261,12 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "class_serializer": "MultiGetRequestFormatter",
+        "stability": "stable"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -65561,6 +66749,13 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "MultiSearchFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -65743,6 +66938,13 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "MultiSearchTemplateFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -66036,6 +67238,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -68795,6 +70003,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -68923,6 +70137,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -69065,6 +70285,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -69269,6 +70495,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -69868,6 +71100,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -69981,6 +71219,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -71078,6 +72322,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -71124,6 +72374,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -72156,6 +73412,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -72611,6 +73873,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -72691,6 +73959,13 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "PostJobDataFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -72941,6 +74216,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -73092,6 +74373,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -73156,6 +74443,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -73945,6 +75238,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -74086,6 +75385,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -74181,6 +75486,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -74280,6 +75591,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -74648,6 +75965,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -74721,6 +76044,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -74834,6 +76163,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -75026,6 +76361,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -75331,6 +76672,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -75393,6 +76740,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -75732,6 +77085,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -75845,6 +77204,13 @@
       "properties": []
     },
     {
+      "annotations": {
+        "class_serializer": "PutPrivilegesFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -75972,6 +77338,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -76145,6 +77517,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -76330,6 +77708,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -76427,6 +77811,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -76533,6 +77923,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -76662,6 +78058,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -76836,6 +78238,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -78484,6 +79892,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -80221,6 +81635,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -80450,6 +81870,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -80828,6 +82254,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -81157,6 +82589,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -81637,6 +83075,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -81743,6 +83187,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -81912,6 +83362,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -82041,6 +83497,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -82205,6 +83667,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -82300,83 +83768,23 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "name": "CommonQueryParameters",
+            "namespace": "internal"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "RequestBase",
         "namespace": "common_abstractions.request"
       },
-      "properties": [
-        {
-          "name": "error_trace",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter_path",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "human",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pretty",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "source_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "interface",
@@ -82666,6 +84074,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -83029,6 +84443,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -83075,6 +84495,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -83267,6 +84693,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -83349,6 +84781,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -83585,6 +85023,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -84438,6 +85882,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -84570,6 +86020,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -85645,6 +87101,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -85884,7 +87346,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SearchInputRequest",
+              "name": "SearchInputRequestDefinition",
               "namespace": "x_pack.watcher.input"
             }
           }
@@ -85905,7 +87367,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SearchInputRequest",
+        "name": "SearchInputRequestDefinition",
         "namespace": "x_pack.watcher.input"
       },
       "properties": [
@@ -86050,8 +87512,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -87373,6 +88838,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -87698,6 +89169,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -87940,7 +89417,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SearchInputRequest",
+              "name": "SearchInputRequestDefinition",
               "namespace": "x_pack.watcher.input"
             }
           }
@@ -88278,6 +89755,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -88683,6 +90166,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -91440,6 +92929,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -92378,6 +93873,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -93903,6 +95404,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -94459,6 +95966,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -94917,6 +96430,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -95205,6 +96724,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -95840,6 +97365,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -96090,59 +97621,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "SqlRequest",
-        "namespace": "x_pack.sql"
-      },
-      "properties": [
-        {
-          "name": "fetch_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "query_dsl.abstractions.container"
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "time_zone",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": [
         {
           "type": {
@@ -96375,6 +97853,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -96467,6 +97951,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -96563,6 +98053,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -96596,6 +98092,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -96654,6 +98156,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -96687,6 +98195,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -96745,6 +98259,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -96824,6 +98344,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -97117,6 +98643,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -97214,6 +98746,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -97247,6 +98785,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -97328,6 +98872,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -97422,6 +98972,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -97524,6 +99080,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -98593,6 +100155,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -100030,6 +101598,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -103612,6 +105186,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -104077,6 +105657,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -104510,14 +106096,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "TypedSearchRequest",
-        "namespace": "search"
-      },
-      "properties": []
-    },
-    {
       "kind": "type_alias",
       "name": {
         "name": "Types",
@@ -104693,6 +106271,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -104739,6 +106323,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -104892,6 +106482,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -105522,6 +107118,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -105564,6 +107166,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -105932,6 +107540,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -106059,6 +107673,13 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "UpdateIndexSettingsRequestFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -106205,6 +107826,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -106361,6 +107988,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -106459,8 +108092,11 @@
     },
     {
       "annotations": {
-        "type_stability": "stable"
+        "stability": "TODO"
       },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -106833,6 +108469,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -107373,6 +109015,13 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "ValidateDetectorRequestFormatter",
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -107422,6 +109071,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -107537,6 +109192,12 @@
       "properties": []
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -108023,6 +109684,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -108794,6 +110461,12 @@
       }
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -109881,6 +111554,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -110146,6 +111825,12 @@
       ]
     },
     {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {

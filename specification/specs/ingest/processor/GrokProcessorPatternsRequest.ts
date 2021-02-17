@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ingest.processor_grok')
-@since('6.1.0')
-class GrokProcessorPatternsRequest extends RequestBase {
+/**
+ * @rest_spec_name ingest.processor_grok
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface GrokProcessorPatternsRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

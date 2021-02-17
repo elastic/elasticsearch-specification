@@ -18,11 +18,11 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name indices.stats
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('indices.stats')
-@since('0.0.0')
-class IndicesStatsRequest extends RequestBase {
+interface IndicesStatsRequest extends RequestBase {
   path_parts?: {
     metric?: Metrics
     index?: Indices

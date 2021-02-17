@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('put_script')
-@since('0.0.0')
-class PutScriptRequest extends RequestBase {
+/**
+ * @rest_spec_name put_script
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PutScriptRequest extends RequestBase {
   path_parts?: {
     id: Id
     context?: Name

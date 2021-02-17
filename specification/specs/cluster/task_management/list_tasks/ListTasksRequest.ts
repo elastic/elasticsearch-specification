@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('tasks.list')
-@since('2.3.0')
-class ListTasksRequest extends RequestBase {
+/**
+ * @rest_spec_name tasks.list
+ * @since 2.3.0
+ * @stability TODO
+ */
+interface ListTasksRequest extends RequestBase {
   query_parameters?: {
     actions?: string[]
     detailed?: boolean

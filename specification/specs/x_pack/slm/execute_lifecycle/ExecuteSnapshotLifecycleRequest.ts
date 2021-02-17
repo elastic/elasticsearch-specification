@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('slm.execute_lifecycle')
-@since('7.4.0')
-class ExecuteSnapshotLifecycleRequest extends RequestBase {
+/**
+ * @rest_spec_name slm.execute_lifecycle
+ * @since 7.4.0
+ * @stability TODO
+ */
+interface ExecuteSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
     policy_id: Name
   }

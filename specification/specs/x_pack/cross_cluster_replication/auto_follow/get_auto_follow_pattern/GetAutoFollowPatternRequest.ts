@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.get_auto_follow_pattern')
-@since('6.5.0')
-class GetAutoFollowPatternRequest extends RequestBase {
+/**
+ * @rest_spec_name ccr.get_auto_follow_pattern
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface GetAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name?: Name
   }

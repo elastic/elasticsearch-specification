@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.open_job')
-@since('5.4.0')
-class OpenJobRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.open_job
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface OpenJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }

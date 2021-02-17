@@ -40,7 +40,7 @@ interface AdditionalProperties<TKey, TValue> {}
  * array inside an object.
  * @behavior Defines a trait that the response should be an array of records typed to TRecord
  */
-interface ArrayResponse<TRecord> {}
+interface ArrayResponseBase<TRecord> {}
 
 /**
  * HEAD APIs can have a different behavior based on the language,
@@ -49,3 +49,33 @@ interface ArrayResponse<TRecord> {}
  * @behavior Defines a trait that the response is empty
  */
 interface EmptyResponseBase {}
+
+/**
+ * Implements a set of common query parameters all API's support.
+ * Since these can break the request structure these are listed explicitly as a behavior.
+ * Its up to individual clients to define support although `error_trace` and `pretty` are
+ * recommended as a minimum.
+ * @behavior Defines a common set of query parameters all API's support that alter the overall response.
+ */
+interface CommonQueryParameters {
+  error_trace?: boolean
+  filter_path?: string | string[]
+  human?: boolean
+  pretty?: boolean
+  source_query_string?: string
+}
+
+/**
+ * Implements a set of common query parameters all Cat API's support.
+ * Since these can break the request structure these are listed explicitly as a behavior.
+ * @behavior Defines a common set of query parameters all Cat API's support that alter the overall response.
+ */
+interface CommonCatQueryParameters {
+  format?: string
+  h?: Names
+  help?: boolean
+  local?: boolean
+  master_timeout?: Time
+  s?: string[]
+  v?: boolean
+}

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.start')
-@since('6.6.0')
-class StartIlmRequest extends RequestBase {
+/**
+ * @rest_spec_name ilm.start
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface StartIlmRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

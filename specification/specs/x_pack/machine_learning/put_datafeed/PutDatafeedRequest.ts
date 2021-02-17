@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.put_datafeed')
-@since('5.4.0')
-class PutDatafeedRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.put_datafeed
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface PutDatafeedRequest extends RequestBase {
   path_parts?: {
     datafeed_id: Id
   }

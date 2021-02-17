@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.put_alias')
-@since('0.0.0')
-class PutAliasRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.put_alias
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PutAliasRequest extends RequestBase {
   path_parts?: {
     index: Indices
     name: Name

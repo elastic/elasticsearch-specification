@@ -19,4 +19,4 @@
 
 class CatIndicesResponse
   extends ResponseBase
-  implements ArrayResponse<CatIndicesRecord> {}
+  implements ArrayResponseBase<CatIndicesRecord> {}

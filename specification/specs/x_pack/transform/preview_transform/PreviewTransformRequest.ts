@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('transform.preview_transform')
-@since('7.5.0')
-class PreviewTransformRequest extends RequestBase {
+/**
+ * @rest_spec_name transform.preview_transform
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface PreviewTransformRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     description?: string

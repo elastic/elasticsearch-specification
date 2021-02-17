@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('mtermvectors')
-@since('0.0.0')
-class MultiTermVectorsRequest extends RequestBase {
+/**
+ * @rest_spec_name mtermvectors
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface MultiTermVectorsRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
     type?: TypeName

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.validate')
-@since('5.4.0')
-class ValidateJobRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.validate
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface ValidateJobRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     analysis_config?: AnalysisConfig

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('slm.put_lifecycle')
-@since('7.4.0')
-class PutSnapshotLifecycleRequest extends RequestBase {
+/**
+ * @rest_spec_name slm.put_lifecycle
+ * @since 7.4.0
+ * @stability TODO
+ */
+interface PutSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
     policy_id: Name
   }
