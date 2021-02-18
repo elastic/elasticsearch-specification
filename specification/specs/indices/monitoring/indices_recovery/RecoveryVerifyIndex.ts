@@ -18,6 +18,8 @@
  */
 
 class RecoveryVerifyIndex {
-  check_index_time_in_millis: long
-  total_time_in_millis: long
+  check_index_time?: Time
+  check_index_time_in_millis: EpochMillis
+  total_time?: Time
+  total_time_in_millis: EpochMillis
 }

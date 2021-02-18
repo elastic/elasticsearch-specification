@@ -858,6 +858,8 @@ export interface BulkUpdateOperation extends BulkOperation {
 export interface BulkUpdateResponseItem extends BulkResponseItemBase {
 }
 
+export type ByteSize = long | string
+
 export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p' | 'pb'
 
 export interface BytesProcessor extends ProcessorBase {
@@ -3329,6 +3331,8 @@ export interface EnrichStatsResponse {
   coordinator_stats: Array<CoordinatorStats>
   executing_policies: Array<ExecutingPolicy>
 }
+
+export type EpochMillis = string | long
 
 export interface ErrorCause {
   type: string
@@ -6988,6 +6992,8 @@ export interface PendingTask {
   time_in_queue_millis: integer
 }
 
+export type Percentage = string | float
+
 export interface PercentageScoreHeuristic {
 }
 
@@ -7899,10 +7905,13 @@ export interface RealmUsage extends XPackUsage {
 export type RebalanceEnable = 'all' | 'primaries' | 'replicas' | 'none'
 
 export interface RecoveryBytes {
-  percent: string
-  recovered: long
-  reused: long
-  total: long
+  percent: Percentage
+  recovered?: ByteSize
+  recovered_in_bytes: ByteSize
+  reused?: ByteSize
+  reused_in_bytes: ByteSize
+  total?: ByteSize
+  total_in_bytes: ByteSize
 }
 
 export interface RecoveryFileDetails {
@@ -7912,29 +7921,35 @@ export interface RecoveryFileDetails {
 }
 
 export interface RecoveryFiles {
-  details: Array<RecoveryFileDetails>
-  percent: string
+  details?: Array<RecoveryFileDetails>
+  percent: Percentage
   recovered: long
   reused: long
   total: long
 }
 
 export interface RecoveryIndexStatus {
-  bytes: RecoveryBytes
+  bytes?: RecoveryBytes
   files: RecoveryFiles
   size: RecoveryBytes
-  source_throttle_time_in_millis: long
-  target_throttle_time_in_millis: long
-  total_time_in_millis: long
+  source_throttle_time?: Time
+  source_throttle_time_in_millis: EpochMillis
+  target_throttle_time?: Time
+  target_throttle_time_in_millis: EpochMillis
+  total_time_in_millis: EpochMillis
+  total_time?: Time
 }
 
 export type RecoveryInitialShards = 'quorem' | 'quorem-1' | 'full' | 'full-1'
 
 export interface RecoveryOrigin {
-  hostname: string
-  id: string
-  ip: string
-  name: string
+  hostname?: string
+  host?: string
+  transport_address?: string
+  id?: string
+  ip?: string
+  name?: string
+  bootstrap_new_history_uuid?: boolean
 }
 
 export interface RecoveryStartStatus {
@@ -7963,17 +7978,19 @@ export interface RecoveryStatusResponse extends DictionaryResponseBase<IndexName
 }
 
 export interface RecoveryTranslogStatus {
-  percent: string
+  percent: Percentage
   recovered: long
   total: long
   total_on_start: long
-  total_time: string
-  total_time_in_millis: long
+  total_time?: string
+  total_time_in_millis: EpochMillis
 }
 
 export interface RecoveryVerifyIndex {
-  check_index_time_in_millis: long
-  total_time_in_millis: long
+  check_index_time?: Time
+  check_index_time_in_millis: EpochMillis
+  total_time?: Time
+  total_time_in_millis: EpochMillis
 }
 
 export type Refresh = boolean | RefreshOptions
@@ -9049,11 +9066,14 @@ export interface ShardRecovery {
   primary: boolean
   source: RecoveryOrigin
   stage: string
-  start: RecoveryStartStatus
-  start_time_in_millis: DateString
-  stop_time_in_millis: DateString
+  start?: RecoveryStartStatus
+  start_time?: DateString
+  start_time_in_millis: EpochMillis
+  stop_time?: DateString
+  stop_time_in_millis: EpochMillis
   target: RecoveryOrigin
-  total_time_in_millis: long
+  total_time?: DateString
+  total_time_in_millis: EpochMillis
   translog: RecoveryTranslogStatus
   type: string
   verify_index: RecoveryVerifyIndex
