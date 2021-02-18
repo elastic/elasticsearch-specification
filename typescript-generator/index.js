@@ -168,7 +168,12 @@ function createRequest (type) {
   for (const property of type.path) {
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
   }
+
+  // It might happen that the same property is present in both
+  // path and query parameters, we should keep only one
+  const pathPropertiesNames = type.path.map(property => property.name)
   for (const property of type.query) {
+    if (pathPropertiesNames.includes(property.name)) continue
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildType(property.type)}\n`
   }
   if (type.body && type.body.kind === 'properties') {
