@@ -5366,7 +5366,7 @@ export interface IndicesRecoverySettings {
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
-  _shards: ShardStatistics
+  _shards?: ShardStatistics
 }
 
 export interface IndicesShardStores {
