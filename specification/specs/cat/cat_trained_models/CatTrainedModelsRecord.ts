@@ -18,18 +18,19 @@
  */
 
 class CatTrainedModelsRecord {
-  created_by: string
-  create_time: string
-  data_frame_analytics_id: string
-  description: string
-  heap_size: string
-  id: string
-  'ingest.count': long
-  'ingest.current': long
-  'ingest.failed': long
+  created_by?: string
+  create_time: DateString
+  data_frame_analytics_id?: string
+  'data_frame.id': Id
+  description?: string
+  heap_size: ByteSize
+  id: Id
+  'ingest.count'?: long
+  'ingest.current'?: long
+  'ingest.failed'?: long
   'ingest.pipelines': string
-  'ingest.time': long
-  license: string
+  'ingest.time'?: long
+  license?: string
   operations: string
-  version: string
+  version?: string
 }
