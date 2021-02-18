@@ -27,4 +27,5 @@ class CatTasksRecord {
   task_id: string
   timestamp: string
   type: string
+  description?: string
 }
