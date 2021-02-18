@@ -36370,7 +36370,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "PolicyId",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -73868,20 +73868,6 @@
       ]
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "PolicyId",
-        "namespace": "internal"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
-    },
-    {
       "inherits": [
         {
           "type": {
@@ -76751,7 +76737,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "PolicyId",
+              "name": "Id",
               "namespace": "internal"
             }
           }

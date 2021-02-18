@@ -111,8 +111,6 @@ type Metrics = string | string[]
 type Name = string
 type Names = string | string[]
 
-type PolicyId = string
-
 type NodeIds = string
 type PropertyName = string
 type RelationName = string

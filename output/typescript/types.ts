@@ -2905,7 +2905,7 @@ export interface DeleteLicenseResponse {
 
 export interface DeleteLifecycleRequest extends CommonQueryParameters {
   policy?: Name
-  policy_id: PolicyId
+  policy_id: Id
 }
 
 export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
@@ -7148,8 +7148,6 @@ export interface Policy {
   phases: Phases
 }
 
-export type PolicyId = string
-
 export interface PorterStemTokenFilter extends TokenFilterBase {
 }
 
@@ -7462,7 +7460,7 @@ export interface PutJobResponse {
 
 export interface PutLifecycleRequest extends CommonQueryParameters {
   policy?: Name
-  policy_id?: PolicyId
+  policy_id?: Id
   body?: {
     policy?: Policy
   }
