@@ -19,20 +19,18 @@
 
 class CatSnapshotsRecord {
   duration: Time
-  /** @prop_serializer StringLongFormatter */
-  end_epoch: long
+  end_epoch: EpochMillis
   end_time: string
   /** @prop_serializer StringLongFormatter */
-  failed_shards: long
-  id: string
+  failed_shards: string
+  id: Id
   /** @prop_serializer StringLongFormatter */
-  indices: long
-  /** @prop_serializer StringLongFormatter */
-  start_epoch: long
+  indices: string
+  start_epoch: EpochMillis
   start_time: string
   status: string
   /** @prop_serializer StringLongFormatter */
-  successful_shards: long
+  successful_shards: string
   /** @prop_serializer StringLongFormatter */
-  total_shards: long
+  total_shards: string
 }
