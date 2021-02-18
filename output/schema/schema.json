@@ -23018,7 +23018,7 @@
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23029,7 +23029,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23040,7 +23040,7 @@
         },
         {
           "name": "parent_task_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23051,7 +23051,7 @@
         },
         {
           "name": "running_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23062,7 +23062,7 @@
         },
         {
           "name": "start_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23073,7 +23073,7 @@
         },
         {
           "name": "task_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23084,7 +23084,7 @@
         },
         {
           "name": "timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23095,7 +23095,29 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "x_opaque_id",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

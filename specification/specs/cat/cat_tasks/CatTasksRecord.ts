@@ -30,5 +30,3 @@ class CatTasksRecord {
   description?: string
   x_opaque_id?: string
 }
-
-
