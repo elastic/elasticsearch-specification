@@ -7035,14 +7035,14 @@ export interface PercolatorProperty extends PropertyBase {
 
 export interface Phase {
   actions: Record<string, LifecycleAction>
-  min_age: Time
+  min_age?: Time
 }
 
 export interface Phases {
-  cold: Phase
-  delete: Phase
-  hot: Phase
-  warm: Phase
+  cold?: Phase
+  delete?: Phase
+  hot?: Phase
+  warm?: Phase
 }
 
 export type PhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
@@ -7461,7 +7461,8 @@ export interface PutJobResponse {
 }
 
 export interface PutLifecycleRequest extends CommonQueryParameters {
-  policy: Name
+  policy?: Name
+  policy_id?: PolicyId
   body?: {
     policy?: Policy
   }
