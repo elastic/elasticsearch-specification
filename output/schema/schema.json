@@ -36355,11 +36355,22 @@
         {
           "description": "The name of the index lifecycle policy",
           "name": "policy",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "policy_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PolicyId",
               "namespace": "internal"
             }
           }
@@ -73855,6 +73866,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "PolicyId",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "inherits": [

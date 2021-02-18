@@ -2904,7 +2904,8 @@ export interface DeleteLicenseResponse {
 }
 
 export interface DeleteLifecycleRequest extends CommonQueryParameters {
-  policy: Name
+  policy?: Name
+  policy_id: PolicyId
 }
 
 export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
@@ -7146,6 +7147,8 @@ export interface PointInTimeReference {
 export interface Policy {
   phases: Phases
 }
+
+export type PolicyId = string
 
 export interface PorterStemTokenFilter extends TokenFilterBase {
 }
