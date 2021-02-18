@@ -8597,15 +8597,29 @@ export type ScrollIds = string
 
 export interface ScrollRequest extends CommonQueryParameters {
   scroll_id?: Id
-  total_hits_as_integer?: boolean
   scroll?: Time
+  scroll_id?: ScrollId
+  rest_total_hits_as_int?: boolean
+  total_hits_as_integer?: boolean
   body?: {
     scroll?: Time
-    scroll_id?: string
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
   }
 }
 
 export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+  failed_shards?: Array<ScrollResponseFailedShard>
+}
+
+export interface ScrollResponseErrorReason {
+  type: string
+  reason: string
+}
+
+export interface ScrollResponseFailedShard {
+  shard: integer
+  reason: ScrollResponseErrorReason
 }
 
 export interface SearchAsYouTypeProperty extends CorePropertyBase {
@@ -8732,7 +8746,7 @@ export interface SearchResponse<TDocument = unknown> {
   num_reduce_phases?: long
   profile?: Profile
   pit_id?: string
-  _scroll_id?: string
+  _scroll_id?: ScrollId
   suggest?: SuggestDictionary<TDocument>
   terminated_early?: boolean
 }
