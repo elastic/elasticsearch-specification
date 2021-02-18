@@ -17889,7 +17889,7 @@
         },
         {
           "name": "epoch",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17900,7 +17900,7 @@
         },
         {
           "name": "timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
