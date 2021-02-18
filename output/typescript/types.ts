@@ -8601,7 +8601,6 @@ export type ScrollIds = string
 export interface ScrollRequest extends CommonQueryParameters {
   scroll_id?: Id
   scroll?: Time
-  scroll_id?: ScrollId
   rest_total_hits_as_int?: boolean
   total_hits_as_integer?: boolean
   body?: {
