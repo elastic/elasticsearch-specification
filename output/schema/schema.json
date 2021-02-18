@@ -87127,7 +87127,18 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "ScrollId",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "rest_total_hits_as_int",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
                 "namespace": "internal"
               }
             }
@@ -87163,7 +87174,29 @@
       ],
       "query": [
         {
-          "name": "total_hits_as_integer",
+          "name": "scroll",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "scroll_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScrollId",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -87174,13 +87207,13 @@
           }
         },
         {
-          "name": "scroll",
+          "name": "total_hits_as_integer",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -87212,7 +87245,90 @@
         "name": "ScrollResponse",
         "namespace": "search.scroll.scroll"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "failed_shards",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ScrollResponseFailedShard",
+                  "namespace": "search.scroll.scroll"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Array",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScrollResponseErrorReason",
+        "namespace": "search.scroll.scroll"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScrollResponseFailedShard",
+        "namespace": "search.scroll.scroll"
+      },
+      "properties": [
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScrollResponseErrorReason",
+              "namespace": "search.scroll.scroll"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -88724,7 +88840,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ScrollId",
               "namespace": "internal"
             }
           }
