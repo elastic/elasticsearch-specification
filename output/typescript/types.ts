@@ -4773,9 +4773,9 @@ export interface GraphConnection {
 }
 
 export interface GraphExploreControls {
-  sample_diversity: SampleDiversity
+  sample_diversity?: SampleDiversity
   sample_size: integer
-  timeout: Time
+  timeout?: Time
   use_significance: boolean
 }
 
@@ -4808,12 +4808,12 @@ export interface GraphVertex {
 }
 
 export interface GraphVertexDefinition {
-  exclude: Array<string>
+  exclude?: Array<string>
   field: Field
-  include: Array<GraphVertexInclude>
-  min_doc_count: long
-  shard_min_doc_count: long
-  size: integer
+  include?: Array<GraphVertexInclude>
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  size?: integer
 }
 
 export interface GraphVertexInclude {
@@ -5024,7 +5024,7 @@ export interface HitsMetadata<T = unknown> {
 export type HoltWintersType = 'add' | 'mult'
 
 export interface Hop {
-  connections: Hop
+  connections?: Hop
   query: QueryContainer
   vertices: Array<GraphVertexDefinition>
 }

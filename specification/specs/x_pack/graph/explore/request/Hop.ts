@@ -18,7 +18,7 @@
  */
 
 class Hop {
-  connections: Hop
+  connections?: Hop
   query: QueryContainer
   vertices: GraphVertexDefinition[]
 }

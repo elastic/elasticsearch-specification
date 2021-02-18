@@ -52777,7 +52777,7 @@
       "properties": [
         {
           "name": "sample_diversity",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52799,7 +52799,7 @@
         },
         {
           "name": "timeout",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53087,7 +53087,7 @@
       "properties": [
         {
           "name": "exclude",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -53112,7 +53112,7 @@
         },
         {
           "name": "include",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -53126,7 +53126,7 @@
         },
         {
           "name": "min_doc_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53137,7 +53137,7 @@
         },
         {
           "name": "shard_min_doc_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53148,7 +53148,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55180,7 +55180,7 @@
       "properties": [
         {
           "name": "connections",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
