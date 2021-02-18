@@ -938,8 +938,8 @@ export type CatAllocationResponse = CatAllocationRecord[]
 
 export interface CatCountRecord {
   count: string
-  epoch?: string
-  timestamp?: string
+  epoch: string
+  timestamp: string
 }
 
 export interface CatCountRequest extends CommonCatQueryParameters, CommonQueryParameters {
