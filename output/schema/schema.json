@@ -20072,7 +20072,7 @@
         },
         {
           "name": "host",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20083,18 +20083,18 @@
         },
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20105,7 +20105,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20116,7 +20116,7 @@
         },
         {
           "name": "port",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20127,7 +20127,7 @@
         },
         {
           "name": "pid",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
