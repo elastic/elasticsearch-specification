@@ -18,14 +18,14 @@
  */
 
 class ScrollResponse<TDocument> extends SearchResponse<TDocument> {
-    failed_shards?: Array<ScrollResponseFailedShard>
+  failed_shards?: Array<ScrollResponseFailedShard>
 }
 
 class ScrollResponseFailedShard {
-    shard: integer
-    reason: ScrollResponseErrorReason
+  shard: integer
+  reason: ScrollResponseErrorReason
 }
 class ScrollResponseErrorReason {
-    type: string
-    reason: string
+  type: string
+  reason: string
 }
