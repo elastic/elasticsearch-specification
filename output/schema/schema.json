@@ -19952,6 +19952,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "host",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
