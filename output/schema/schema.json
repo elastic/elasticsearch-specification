@@ -17113,6 +17113,32 @@
       "properties": []
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "ByteSize",
+        "namespace": "internal"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -39955,6 +39981,32 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "EpochMillis",
+        "namespace": "internal"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "interface",
@@ -72490,6 +72542,32 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Percentage",
+        "namespace": "internal"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "PercentageScoreHeuristic",
@@ -81229,40 +81307,73 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Percentage",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "recovered",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "recovered_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "reused",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reused_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -81320,7 +81431,7 @@
       "properties": [
         {
           "name": "details",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -81338,7 +81449,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Percentage",
               "namespace": "internal"
             }
           }
@@ -81387,7 +81498,7 @@
       "properties": [
         {
           "name": "bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81419,13 +81530,35 @@
           }
         },
         {
+          "name": "source_throttle_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "source_throttle_time_in_millis",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_throttle_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -81435,7 +81568,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -81446,8 +81579,19 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
@@ -81483,7 +81627,29 @@
       "properties": [
         {
           "name": "hostname",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "host",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "transport_address",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81494,7 +81660,7 @@
         },
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81505,7 +81671,7 @@
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81516,11 +81682,22 @@
         },
         {
           "name": "name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bootstrap_new_history_uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -81738,7 +81915,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Percentage",
               "namespace": "internal"
             }
           }
@@ -81778,7 +81955,7 @@
         },
         {
           "name": "total_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81793,7 +81970,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -81808,13 +81985,35 @@
       },
       "properties": [
         {
+          "name": "check_index_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "check_index_time_in_millis",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -81824,7 +82023,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -91371,7 +91570,7 @@
         },
         {
           "name": "start",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91381,8 +91580,30 @@
           }
         },
         {
+          "name": "start_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "start_time_in_millis",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stop_time",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91397,7 +91618,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -91414,12 +91635,23 @@
           }
         },
         {
+          "name": "total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "total_time_in_millis",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
