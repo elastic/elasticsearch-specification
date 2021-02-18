@@ -19,13 +19,16 @@
 
 class CatTasksRecord {
   action: string
-  ip: string
-  node: string
-  parent_task_id: string
-  running_time: string
-  start_time: string
-  task_id: string
-  timestamp: string
-  type: string
+  ip?: string
+  node?: string
+  parent_task_id?: string
+  running_time?: string
+  start_time?: string
+  task_id?: string
+  timestamp?: string
+  type?: string
   description?: string
+  x_opaque_id?: string
 }
+
+
