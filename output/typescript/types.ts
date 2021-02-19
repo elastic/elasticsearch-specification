@@ -6662,7 +6662,7 @@ export type NodeRole = 'master' | 'data' | 'client' | 'ingest' | 'ml' | 'voting_
 
 export interface NodeStatistics {
   failed: integer
-  failures: Array<ErrorCause>
+  failures?: Array<ErrorCause>
   successful: integer
   total: integer
 }
@@ -11150,13 +11150,15 @@ export interface WatchRecord {
 
 export interface WatchRecordQueuedStats {
   execution_time: DateString
-  triggered_time: DateString
-  watch_id: string
-  watch_record_id: string
 }
 
 export interface WatchRecordStats extends WatchRecordQueuedStats {
   execution_phase: ExecutionPhase
+  execution_time: DateString
+  triggered_time: DateString
+  executed_actions?: Array<string>
+  watch_id: Id
+  watch_record_id: Id
 }
 
 export interface WatchStatus {
@@ -11173,6 +11175,7 @@ export interface WatcherNodeStats {
   queued_watches: Array<WatchRecordQueuedStats>
   watch_count: long
   watcher_state: WatcherState
+  node_id: Id
 }
 
 export type WatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
@@ -11186,6 +11189,7 @@ export interface WatcherStatsResponse {
   cluster_name: string
   manually_stopped: boolean
   stats: Array<WatcherNodeStats>
+  _nodes: NodeStatistics
 }
 
 export interface WebhookActionResult {
