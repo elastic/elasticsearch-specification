@@ -23736,7 +23736,7 @@
       "properties": [
         {
           "name": "created_by",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23751,14 +23751,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "DateString",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "data_frame_analytics_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23768,8 +23768,19 @@
           }
         },
         {
-          "name": "description",
+          "name": "data_frame.id",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23784,7 +23795,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -23795,14 +23806,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "ingest.count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23813,7 +23824,7 @@
         },
         {
           "name": "ingest.current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23824,7 +23835,7 @@
         },
         {
           "name": "ingest.failed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23846,7 +23857,7 @@
         },
         {
           "name": "ingest.time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23857,7 +23868,7 @@
         },
         {
           "name": "license",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23879,7 +23890,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
