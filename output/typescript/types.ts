@@ -1412,16 +1412,16 @@ export type CatShardsResponse = CatShardsRecord[]
 
 export interface CatSnapshotsRecord {
   duration: Time
-  end_epoch: long
+  end_epoch: EpochMillis
   end_time: string
-  failed_shards: long
-  id: string
-  indices: long
-  start_epoch: long
+  failed_shards: string
+  id: Id
+  indices: string
+  start_epoch: EpochMillis
   start_time: string
   status: string
-  successful_shards: long
-  total_shards: long
+  successful_shards: string
+  total_shards: string
 }
 
 export interface CatSnapshotsRequest extends CommonCatQueryParameters, CommonQueryParameters {
