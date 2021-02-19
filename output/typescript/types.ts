@@ -3310,7 +3310,7 @@ export interface EnrichPolicy {
   enrich_fields: Array<Field>
   indices: Indices
   match_field: Field
-  query: string
+  query?: string
 }
 
 export type EnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
