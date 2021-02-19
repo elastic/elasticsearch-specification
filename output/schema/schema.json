@@ -12774,7 +12774,7 @@
       "properties": [
         {
           "name": "actual",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -12799,7 +12799,7 @@
         },
         {
           "name": "by_field_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12810,7 +12810,7 @@
         },
         {
           "name": "by_field_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12821,7 +12821,7 @@
         },
         {
           "name": "causes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -12846,7 +12846,7 @@
         },
         {
           "name": "field_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12857,7 +12857,7 @@
         },
         {
           "name": "function",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12868,7 +12868,7 @@
         },
         {
           "name": "function_description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12879,7 +12879,7 @@
         },
         {
           "name": "influencers",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -12926,7 +12926,7 @@
         },
         {
           "name": "over_field_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12937,7 +12937,7 @@
         },
         {
           "name": "over_field_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12948,7 +12948,7 @@
         },
         {
           "name": "partition_field_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12959,7 +12959,7 @@
         },
         {
           "name": "partition_field_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13007,14 +13007,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "typical",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
