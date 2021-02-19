@@ -19238,7 +19238,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19260,7 +19260,7 @@
         },
         {
           "name": "buckets.time.exp_avg",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19271,7 +19271,7 @@
         },
         {
           "name": "buckets.time.exp_avg_hour",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19282,7 +19282,7 @@
         },
         {
           "name": "buckets.time.max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19293,7 +19293,7 @@
         },
         {
           "name": "buckets.time.min",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19304,7 +19304,7 @@
         },
         {
           "name": "buckets.time.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19315,7 +19315,7 @@
         },
         {
           "name": "data.buckets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19326,7 +19326,7 @@
         },
         {
           "name": "data.earliest_record",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19337,7 +19337,7 @@
         },
         {
           "name": "data.empty_buckets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19348,18 +19348,18 @@
         },
         {
           "name": "data.input_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "data.input_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19370,7 +19370,7 @@
         },
         {
           "name": "data.input_records",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19381,7 +19381,7 @@
         },
         {
           "name": "data.invalid_dates",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19392,7 +19392,7 @@
         },
         {
           "name": "data.last",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19403,7 +19403,7 @@
         },
         {
           "name": "data.last_empty_bucket",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19414,7 +19414,7 @@
         },
         {
           "name": "data.last_sparse_bucket",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19425,7 +19425,7 @@
         },
         {
           "name": "data.latest_record",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19436,7 +19436,7 @@
         },
         {
           "name": "data.missing_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19447,7 +19447,7 @@
         },
         {
           "name": "data.out_of_order_timestamps",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19458,7 +19458,7 @@
         },
         {
           "name": "data.processed_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19480,7 +19480,7 @@
         },
         {
           "name": "data.sparse_buckets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19491,7 +19491,7 @@
         },
         {
           "name": "forecasts.memory.avg",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19502,7 +19502,7 @@
         },
         {
           "name": "forecasts.memory.min",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19513,7 +19513,7 @@
         },
         {
           "name": "forecasts.memory.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19524,7 +19524,7 @@
         },
         {
           "name": "forecasts.records.avg",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19535,7 +19535,7 @@
         },
         {
           "name": "forecasts.records.max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19546,7 +19546,7 @@
         },
         {
           "name": "forecasts.records.min",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19557,7 +19557,7 @@
         },
         {
           "name": "forecasts.records.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19568,7 +19568,7 @@
         },
         {
           "name": "forecasts.time.avg",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19579,7 +19579,7 @@
         },
         {
           "name": "forecasts.time.max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19590,7 +19590,7 @@
         },
         {
           "name": "forecasts.time.min",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19601,7 +19601,7 @@
         },
         {
           "name": "forecasts.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19616,14 +19616,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "model.bucket_allocation_failures",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19634,7 +19634,7 @@
         },
         {
           "name": "model.by_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19649,14 +19649,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "model.categorization_status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19667,7 +19667,7 @@
         },
         {
           "name": "model.categorized_doc_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19678,7 +19678,7 @@
         },
         {
           "name": "model.dead_category_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19689,7 +19689,7 @@
         },
         {
           "name": "model.frequent_category_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19700,7 +19700,7 @@
         },
         {
           "name": "model.log_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19711,7 +19711,7 @@
         },
         {
           "name": "model.memory_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19733,7 +19733,7 @@
         },
         {
           "name": "model.over_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19744,7 +19744,7 @@
         },
         {
           "name": "model.partition_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19755,7 +19755,7 @@
         },
         {
           "name": "model.rare_category_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19766,7 +19766,7 @@
         },
         {
           "name": "model.timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19777,7 +19777,7 @@
         },
         {
           "name": "node.address",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19788,29 +19788,29 @@
         },
         {
           "name": "node.ephemeral_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "node.id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "node.name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19821,7 +19821,7 @@
         },
         {
           "name": "opened_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
