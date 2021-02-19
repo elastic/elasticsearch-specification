@@ -100608,8 +100608,24 @@
     {
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStatistics",
+                "namespace": "common_options.hit"
+              }
+            }
+          ],
           "type": {
-            "name": "ShardsOperationResponseBase",
+            "name": "DictionaryResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -100619,7 +100635,19 @@
         "name": "SyncedFlushResponse",
         "namespace": "indices.status_management.synced_flush"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "_shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "common_options.hit"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",

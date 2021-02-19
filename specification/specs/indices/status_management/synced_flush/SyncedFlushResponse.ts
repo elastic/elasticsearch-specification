@@ -17,4 +17,9 @@
  * under the License.
  */
 
-class SyncedFlushResponse extends ShardsOperationResponseBase {}
+class SyncedFlushResponse extends DictionaryResponseBase<
+  IndexName,
+  ShardStatistics
+> {
+  _shards: ShardStatistics
+}
