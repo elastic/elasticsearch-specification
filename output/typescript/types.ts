@@ -9820,7 +9820,7 @@ export interface StartBasicLicenseRequest extends CommonQueryParameters {
 }
 
 export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
-  acknowledge: Record<string, Array<string>>
+  acknowledge: Record<string, string | Array<string>>
   basic_was_started: boolean
   error_message: string
 }
