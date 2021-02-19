@@ -19,6 +19,6 @@
 
 class CatCountRecord {
   count: string
-  epoch?: string
+  epoch?: EpochMillis
   timestamp?: string
 }
