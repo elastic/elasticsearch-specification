@@ -17915,22 +17915,22 @@
         },
         {
           "name": "epoch",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "DateString",
               "namespace": "internal"
             }
           }
