@@ -18300,7 +18300,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18333,7 +18333,7 @@
         },
         {
           "name": "node.address",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18344,7 +18344,7 @@
         },
         {
           "name": "node.ephemeral_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18355,7 +18355,7 @@
         },
         {
           "name": "node.id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18366,7 +18366,7 @@
         },
         {
           "name": "node.name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18377,7 +18377,7 @@
         },
         {
           "name": "search.bucket_avg",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18399,7 +18399,7 @@
         },
         {
           "name": "search.exp_avg_hour",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18410,7 +18410,7 @@
         },
         {
           "name": "search.time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
