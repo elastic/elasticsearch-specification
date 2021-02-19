@@ -18,10 +18,13 @@
  */
 
 class RecoveryIndexStatus {
-  bytes: RecoveryBytes
+  bytes?: RecoveryBytes
   files: RecoveryFiles
   size: RecoveryBytes
-  source_throttle_time_in_millis: long
-  target_throttle_time_in_millis: long
-  total_time_in_millis: long
+  source_throttle_time?: Time
+  source_throttle_time_in_millis: EpochMillis
+  target_throttle_time?: Time
+  target_throttle_time_in_millis: EpochMillis
+  total_time_in_millis: EpochMillis
+  total_time?: Time
 }

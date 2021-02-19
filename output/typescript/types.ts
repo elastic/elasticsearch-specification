@@ -858,6 +858,8 @@ export interface BulkUpdateOperation extends BulkOperation {
 export interface BulkUpdateResponseItem extends BulkResponseItemBase {
 }
 
+export type ByteSize = long | string
+
 export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p' | 'pb'
 
 export interface BytesProcessor extends ProcessorBase {
@@ -976,17 +978,17 @@ export interface CatDataFrameAnalyticsRequest extends CommonCatQueryParameters, 
 export type CatDataFrameAnalyticsResponse = CatDataFrameAnalyticsRecord[]
 
 export interface CatDatafeedsRecord {
-  assignment_explanation: string
+  assignment_explanation?: string
   'buckets.count': string
   id: string
-  'node.address': string
-  'node.ephemeral_id': string
-  'node.id': string
-  'node.name': string
-  'search.bucket_avg': string
+  'node.address'?: string
+  'node.ephemeral_id'?: string
+  'node.id'?: string
+  'node.name'?: string
+  'search.bucket_avg'?: string
   'search.count': string
-  'search.exp_avg_hour': string
-  'search.time': string
+  'search.exp_avg_hour'?: string
+  'search.time'?: string
   state: DatafeedState
 }
 
@@ -1069,60 +1071,60 @@ export interface CatIndicesRequest extends CommonCatQueryParameters, CommonQuery
 export type CatIndicesResponse = CatIndicesRecord[]
 
 export interface CatJobsRecord {
-  assignment_explanation: string
+  assignment_explanation?: string
   'buckets.count': string
-  'buckets.time.exp_avg': string
-  'buckets.time.exp_avg_hour': string
-  'buckets.time.max': string
-  'buckets.time.min': string
-  'buckets.time.total': string
-  'data.buckets': string
-  'data.earliest_record': string
-  'data.empty_buckets': string
-  'data.input_bytes': string
-  'data.input_fields': string
-  'data.input_records': string
-  'data.invalid_dates': string
-  'data.last': string
-  'data.last_empty_bucket': string
-  'data.last_sparse_bucket': string
-  'data.latest_record': string
-  'data.missing_fields': string
-  'data.out_of_order_timestamps': string
-  'data.processed_fields': string
+  'buckets.time.exp_avg'?: string
+  'buckets.time.exp_avg_hour'?: string
+  'buckets.time.max'?: string
+  'buckets.time.min'?: string
+  'buckets.time.total'?: string
+  'data.buckets'?: string
+  'data.earliest_record'?: string
+  'data.empty_buckets'?: string
+  'data.input_bytes'?: ByteSize
+  'data.input_fields'?: string
+  'data.input_records'?: string
+  'data.invalid_dates'?: string
+  'data.last'?: string
+  'data.last_empty_bucket'?: string
+  'data.last_sparse_bucket'?: string
+  'data.latest_record'?: string
+  'data.missing_fields'?: string
+  'data.out_of_order_timestamps'?: string
+  'data.processed_fields'?: string
   'data.processed_records': string
-  'data.sparse_buckets': string
-  'forecasts.memory.avg': string
-  'forecasts.memory.min': string
-  'forecasts.memory.total': string
-  'forecasts.records.avg': string
-  'forecasts.records.max': string
-  'forecasts.records.min': string
-  'forecasts.records.total': string
-  'forecasts.time.avg': string
-  'forecasts.time.max': string
-  'forecasts.time.min': string
-  'forecasts.total': string
-  id: string
-  'model.bucket_allocation_failures': string
-  'model.by_fields': string
-  'model.bytes': string
-  'model.categorization_status': ModelCategorizationStatus
-  'model.categorized_doc_count': string
-  'model.dead_category_count': string
-  'model.frequent_category_count': string
-  'model.log_time': string
-  'model.memory_limit': string
+  'data.sparse_buckets'?: string
+  'forecasts.memory.avg'?: string
+  'forecasts.memory.min'?: string
+  'forecasts.memory.total'?: string
+  'forecasts.records.avg'?: string
+  'forecasts.records.max'?: string
+  'forecasts.records.min'?: string
+  'forecasts.records.total'?: string
+  'forecasts.time.avg'?: string
+  'forecasts.time.max'?: string
+  'forecasts.time.min'?: string
+  'forecasts.total'?: string
+  id: Id
+  'model.bucket_allocation_failures'?: string
+  'model.by_fields'?: string
+  'model.bytes': ByteSize
+  'model.categorization_status'?: ModelCategorizationStatus
+  'model.categorized_doc_count'?: string
+  'model.dead_category_count'?: string
+  'model.frequent_category_count'?: string
+  'model.log_time'?: string
+  'model.memory_limit'?: string
   'model.memory_status': ModelMemoryStatus
-  'model.over_fields': string
-  'model.partition_fields': string
-  'model.rare_category_count': string
-  'model.timestamp': string
-  'node.address': string
-  'node.ephemeral_id': string
-  'node.id': string
-  'node.name': string
-  opened_time: string
+  'model.over_fields'?: string
+  'model.partition_fields'?: string
+  'model.rare_category_count'?: string
+  'model.timestamp'?: string
+  'node.address'?: string
+  'node.ephemeral_id'?: Id
+  'node.id'?: Id
+  'node.name'?: string
+  opened_time?: string
   state: JobState
 }
 
@@ -1138,6 +1140,7 @@ export interface CatMasterRecord {
   id: string
   ip: string
   node: string
+  host: string
 }
 
 export interface CatMasterRequest extends CommonCatQueryParameters, CommonQueryParameters {
@@ -1147,12 +1150,12 @@ export type CatMasterResponse = CatMasterRecord[]
 
 export interface CatNodeAttributesRecord {
   attr: string
-  host: string
-  id: string
-  ip: string
-  node: string
-  port: long
-  pid: long
+  host?: string
+  id?: Id
+  ip?: string
+  node?: string
+  port?: long
+  pid?: long
   value: string
 }
 
@@ -1409,16 +1412,16 @@ export type CatShardsResponse = CatShardsRecord[]
 
 export interface CatSnapshotsRecord {
   duration: Time
-  end_epoch: long
+  end_epoch: EpochMillis
   end_time: string
-  failed_shards: long
-  id: string
-  indices: long
-  start_epoch: long
+  failed_shards: string
+  id: Id
+  indices: string
+  start_epoch: EpochMillis
   start_time: string
   status: string
-  successful_shards: long
-  total_shards: long
+  successful_shards: string
+  total_shards: string
 }
 
 export interface CatSnapshotsRequest extends CommonCatQueryParameters, CommonQueryParameters {
@@ -1430,14 +1433,16 @@ export type CatSnapshotsResponse = CatSnapshotsRecord[]
 
 export interface CatTasksRecord {
   action: string
-  ip: string
-  node: string
-  parent_task_id: string
-  running_time: string
-  start_time: string
-  task_id: string
-  timestamp: string
-  type: string
+  ip?: string
+  node?: string
+  parent_task_id?: string
+  running_time?: string
+  start_time?: string
+  task_id?: string
+  timestamp?: string
+  type?: string
+  description?: string
+  x_opaque_id?: string
 }
 
 export interface CatTasksRequest extends CommonCatQueryParameters, CommonQueryParameters {
@@ -1452,9 +1457,9 @@ export type CatTasksResponse = CatTasksRecord[]
 export interface CatTemplatesRecord {
   index_patterns: string
   name: string
-  order: long
-  version: long
-  composed_of: string
+  order?: string
+  version?: string
+  composed_of?: string
 }
 
 export interface CatTemplatesRequest extends CommonCatQueryParameters, CommonQueryParameters {
@@ -1494,20 +1499,21 @@ export interface CatThreadPoolRequest extends CommonCatQueryParameters, CommonQu
 export type CatThreadPoolResponse = CatThreadPoolRecord[]
 
 export interface CatTrainedModelsRecord {
-  created_by: string
-  create_time: string
-  data_frame_analytics_id: string
-  description: string
-  heap_size: string
-  id: string
-  'ingest.count': long
-  'ingest.current': long
-  'ingest.failed': long
+  created_by?: string
+  create_time: DateString
+  data_frame_analytics_id?: string
+  'data_frame.id': Id
+  description?: string
+  heap_size: ByteSize
+  id: Id
+  'ingest.count'?: long
+  'ingest.current'?: long
+  'ingest.failed'?: long
   'ingest.pipelines': string
-  'ingest.time': long
-  license: string
+  'ingest.time'?: long
+  license?: string
   operations: string
-  version: string
+  version?: string
 }
 
 export interface CatTrainedModelsRequest extends CommonCatQueryParameters, CommonQueryParameters {
@@ -3304,7 +3310,7 @@ export interface EnrichPolicy {
   enrich_fields: Array<Field>
   indices: Indices
   match_field: Field
-  query: string
+  query?: string
 }
 
 export type EnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
@@ -3326,6 +3332,8 @@ export interface EnrichStatsResponse {
   coordinator_stats: Array<CoordinatorStats>
   executing_policies: Array<ExecutingPolicy>
 }
+
+export type EpochMillis = string | long
 
 export interface ErrorCause {
   type: string
@@ -4766,9 +4774,9 @@ export interface GraphConnection {
 }
 
 export interface GraphExploreControls {
-  sample_diversity: SampleDiversity
+  sample_diversity?: SampleDiversity
   sample_size: integer
-  timeout: Time
+  timeout?: Time
   use_significance: boolean
 }
 
@@ -4801,12 +4809,12 @@ export interface GraphVertex {
 }
 
 export interface GraphVertexDefinition {
-  exclude: Array<string>
+  exclude?: Array<string>
   field: Field
-  include: Array<GraphVertexInclude>
-  min_doc_count: long
-  shard_min_doc_count: long
-  size: integer
+  include?: Array<GraphVertexInclude>
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  size?: integer
 }
 
 export interface GraphVertexInclude {
@@ -5017,7 +5025,7 @@ export interface HitsMetadata<T = unknown> {
 export type HoltWintersType = 'add' | 'mult'
 
 export interface Hop {
-  connections: Hop
+  connections?: Hop
   query: QueryContainer
   vertices: Array<GraphVertexDefinition>
 }
@@ -5359,7 +5367,7 @@ export interface IndicesRecoverySettings {
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
-  _shards: ShardStatistics
+  _shards?: ShardStatistics
 }
 
 export interface IndicesShardStores {
@@ -6654,7 +6662,7 @@ export type NodeRole = 'master' | 'data' | 'client' | 'ingest' | 'ml' | 'voting_
 
 export interface NodeStatistics {
   failed: integer
-  failures: Array<ErrorCause>
+  failures?: Array<ErrorCause>
   successful: integer
   total: integer
 }
@@ -6984,6 +6992,8 @@ export interface PendingTask {
   time_in_queue: string
   time_in_queue_millis: integer
 }
+
+export type Percentage = string | float
 
 export interface PercentageScoreHeuristic {
 }
@@ -7896,10 +7906,13 @@ export interface RealmUsage extends XPackUsage {
 export type RebalanceEnable = 'all' | 'primaries' | 'replicas' | 'none'
 
 export interface RecoveryBytes {
-  percent: string
-  recovered: long
-  reused: long
-  total: long
+  percent: Percentage
+  recovered?: ByteSize
+  recovered_in_bytes: ByteSize
+  reused?: ByteSize
+  reused_in_bytes: ByteSize
+  total?: ByteSize
+  total_in_bytes: ByteSize
 }
 
 export interface RecoveryFileDetails {
@@ -7909,29 +7922,35 @@ export interface RecoveryFileDetails {
 }
 
 export interface RecoveryFiles {
-  details: Array<RecoveryFileDetails>
-  percent: string
+  details?: Array<RecoveryFileDetails>
+  percent: Percentage
   recovered: long
   reused: long
   total: long
 }
 
 export interface RecoveryIndexStatus {
-  bytes: RecoveryBytes
+  bytes?: RecoveryBytes
   files: RecoveryFiles
   size: RecoveryBytes
-  source_throttle_time_in_millis: long
-  target_throttle_time_in_millis: long
-  total_time_in_millis: long
+  source_throttle_time?: Time
+  source_throttle_time_in_millis: EpochMillis
+  target_throttle_time?: Time
+  target_throttle_time_in_millis: EpochMillis
+  total_time_in_millis: EpochMillis
+  total_time?: Time
 }
 
 export type RecoveryInitialShards = 'quorem' | 'quorem-1' | 'full' | 'full-1'
 
 export interface RecoveryOrigin {
-  hostname: string
-  id: string
-  ip: string
-  name: string
+  hostname?: string
+  host?: string
+  transport_address?: string
+  id?: string
+  ip?: string
+  name?: string
+  bootstrap_new_history_uuid?: boolean
 }
 
 export interface RecoveryStartStatus {
@@ -7960,17 +7979,19 @@ export interface RecoveryStatusResponse extends DictionaryResponseBase<IndexName
 }
 
 export interface RecoveryTranslogStatus {
-  percent: string
+  percent: Percentage
   recovered: long
   total: long
   total_on_start: long
-  total_time: string
-  total_time_in_millis: long
+  total_time?: string
+  total_time_in_millis: EpochMillis
 }
 
 export interface RecoveryVerifyIndex {
-  check_index_time_in_millis: long
-  total_time_in_millis: long
+  check_index_time?: Time
+  check_index_time_in_millis: EpochMillis
+  total_time?: Time
+  total_time_in_millis: EpochMillis
 }
 
 export type Refresh = boolean | RefreshOptions
@@ -8597,15 +8618,28 @@ export type ScrollIds = string
 
 export interface ScrollRequest extends CommonQueryParameters {
   scroll_id?: Id
-  total_hits_as_integer?: boolean
   scroll?: Time
+  rest_total_hits_as_int?: boolean
+  total_hits_as_integer?: boolean
   body?: {
     scroll?: Time
-    scroll_id?: string
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
   }
 }
 
 export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+  failed_shards?: Array<ScrollResponseFailedShard>
+}
+
+export interface ScrollResponseErrorReason {
+  type: string
+  reason: string
+}
+
+export interface ScrollResponseFailedShard {
+  shard: integer
+  reason: ScrollResponseErrorReason
 }
 
 export interface SearchAsYouTypeProperty extends CorePropertyBase {
@@ -8732,7 +8766,7 @@ export interface SearchResponse<TDocument = unknown> {
   num_reduce_phases?: long
   profile?: Profile
   pit_id?: string
-  _scroll_id?: string
+  _scroll_id?: ScrollId
   suggest?: SuggestDictionary<TDocument>
   terminated_early?: boolean
 }
@@ -9033,11 +9067,14 @@ export interface ShardRecovery {
   primary: boolean
   source: RecoveryOrigin
   stage: string
-  start: RecoveryStartStatus
-  start_time_in_millis: DateString
-  stop_time_in_millis: DateString
+  start?: RecoveryStartStatus
+  start_time?: DateString
+  start_time_in_millis: EpochMillis
+  stop_time?: DateString
+  stop_time_in_millis: EpochMillis
   target: RecoveryOrigin
-  total_time_in_millis: long
+  total_time?: DateString
+  total_time_in_millis: EpochMillis
   translog: RecoveryTranslogStatus
   type: string
   verify_index: RecoveryVerifyIndex
@@ -9783,7 +9820,7 @@ export interface StartBasicLicenseRequest extends CommonQueryParameters {
 }
 
 export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
-  acknowledge: Record<string, Array<string>>
+  acknowledge: Record<string, string | Array<string>>
   basic_was_started: boolean
   error_message: string
 }
@@ -11113,13 +11150,15 @@ export interface WatchRecord {
 
 export interface WatchRecordQueuedStats {
   execution_time: DateString
-  triggered_time: DateString
-  watch_id: string
-  watch_record_id: string
 }
 
 export interface WatchRecordStats extends WatchRecordQueuedStats {
   execution_phase: ExecutionPhase
+  execution_time: DateString
+  triggered_time: DateString
+  executed_actions?: Array<string>
+  watch_id: Id
+  watch_record_id: Id
 }
 
 export interface WatchStatus {
@@ -11136,6 +11175,7 @@ export interface WatcherNodeStats {
   queued_watches: Array<WatchRecordQueuedStats>
   watch_count: long
   watcher_state: WatcherState
+  node_id: Id
 }
 
 export type WatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
@@ -11149,6 +11189,7 @@ export interface WatcherStatsResponse {
   cluster_name: string
   manually_stopped: boolean
   stats: Array<WatcherNodeStats>
+  _nodes: NodeStatistics
 }
 
 export interface WebhookActionResult {

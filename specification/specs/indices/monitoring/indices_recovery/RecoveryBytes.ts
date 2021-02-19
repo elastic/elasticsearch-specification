@@ -18,8 +18,11 @@
  */
 
 class RecoveryBytes {
-  percent: string
-  recovered: long
-  reused: long
-  total: long
+  percent: Percentage
+  recovered?: ByteSize
+  recovered_in_bytes: ByteSize
+  reused?: ByteSize
+  reused_in_bytes: ByteSize
+  total?: ByteSize
+  total_in_bytes: ByteSize
 }

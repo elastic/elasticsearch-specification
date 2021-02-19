@@ -18,10 +18,10 @@
  */
 
 class GraphVertexDefinition {
-  exclude: string[]
+  exclude?: string[]
   field: Field
-  include: GraphVertexInclude[]
-  min_doc_count: long
-  shard_min_doc_count: long
-  size: integer
+  include?: GraphVertexInclude[]
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  size?: integer
 }

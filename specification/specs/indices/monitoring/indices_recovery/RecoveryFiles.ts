@@ -18,8 +18,8 @@
  */
 
 class RecoveryFiles {
-  details: RecoveryFileDetails[]
-  percent: string
+  details?: RecoveryFileDetails[]
+  percent: Percentage
   recovered: long
   reused: long
   total: long

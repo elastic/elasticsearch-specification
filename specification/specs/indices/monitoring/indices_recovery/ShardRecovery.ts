@@ -23,13 +23,17 @@ class ShardRecovery {
   primary: boolean
   source: RecoveryOrigin
   stage: string
-  start: RecoveryStartStatus
+  start?: RecoveryStartStatus
+  start_time?: DateString
   /** @prop_serializer NullableDateTimeEpochMillisecondsFormatter */
-  start_time_in_millis: DateString
+  start_time_in_millis: EpochMillis
+  stop_time?: DateString
   /** @prop_serializer NullableDateTimeEpochMillisecondsFormatter */
-  stop_time_in_millis: DateString
+  stop_time_in_millis: EpochMillis
   target: RecoveryOrigin
-  total_time_in_millis: long
+  total_time?: DateString
+  /** @prop_serializer NullableDateTimeEpochMillisecondsFormatter */
+  total_time_in_millis: EpochMillis
   translog: RecoveryTranslogStatus
   type: string
   verify_index: RecoveryVerifyIndex

@@ -37,8 +37,12 @@ function since(ns: string) {
 }
 
 type Uri = string
+
+// Date/Time
 type DateString = string
 type TimeSpan = string
+type EpochMillis = string | long
+
 @class_serializer('ErrorCauseFormatter')
 class ErrorCause {
   type: string
@@ -110,6 +114,10 @@ type Metrics = string | string[]
 
 type Name = string
 type Names = string | string[]
+
+type ByteSize = long | string
+
+type Percentage = string | float
 
 type NodeIds = string
 type PropertyName = string
