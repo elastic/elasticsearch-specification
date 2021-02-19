@@ -1457,9 +1457,9 @@ export type CatTasksResponse = CatTasksRecord[]
 export interface CatTemplatesRecord {
   index_patterns: string
   name: string
-  order: long
-  version: long
-  composed_of: string
+  order?: string
+  version?: string
+  composed_of?: string
 }
 
 export interface CatTemplatesRequest extends CommonCatQueryParameters, CommonQueryParameters {

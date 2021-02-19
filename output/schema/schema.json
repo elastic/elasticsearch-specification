@@ -23307,29 +23307,29 @@
         },
         {
           "name": "order",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "composed_of",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
