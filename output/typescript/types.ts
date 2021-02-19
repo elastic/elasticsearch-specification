@@ -389,28 +389,28 @@ export interface AnomalyDetectors {
 }
 
 export interface AnomalyRecord {
-  actual: Array<double>
+  actual?: Array<double>
   bucket_span: Time
-  by_field_name: string
-  by_field_value: string
-  causes: Array<AnomalyCause>
+  by_field_name?: string
+  by_field_value?: string
+  causes?: Array<AnomalyCause>
   detector_index: integer
-  field_name: string
-  function: string
-  function_description: string
-  influencers: Array<Influence>
+  field_name?: string
+  function?: string
+  function_description?: string
+  influencers?: Array<Influence>
   initial_record_score: double
   is_interim: boolean
   job_id: string
-  over_field_name: string
-  over_field_value: string
-  partition_field_name: string
-  partition_field_value: string
+  over_field_name?: string
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
   probability: double
   record_score: double
   result_type: string
-  timestamp: DateString
-  typical: Array<double>
+  timestamp: EpochMillis
+  typical?: Array<double>
 }
 
 export interface ApiKeyPrivileges {
