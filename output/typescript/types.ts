@@ -11031,10 +11031,11 @@ export interface UserAgentProcessor extends ProcessorBase {
 export type UserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
 export interface UserIndicesPrivileges {
-  field_security: FieldSecuritySettings
+  field_security?: FieldSecuritySettings
   names: Array<string>
   privileges: Array<string>
-  query: QueryUserPrivileges
+  query?: QueryUserPrivileges
+  allow_restricted_indices: boolean
 }
 
 export interface ValidateDetectorRequest extends CommonQueryParameters {

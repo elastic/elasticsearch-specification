@@ -109550,7 +109550,7 @@
       "properties": [
         {
           "name": "field_security",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -109589,12 +109589,23 @@
         },
         {
           "name": "query",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "QueryUserPrivileges",
               "namespace": "x_pack.security.privileges.get_user_privileges"
+            }
+          }
+        },
+        {
+          "name": "allow_restricted_indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
