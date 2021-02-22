@@ -24,5 +24,5 @@ class ReindexSource {
   size: integer
   slice?: SlicedScroll
   sort?: Sort[]
-  _source?: Field[]
+  _source?: Fields
 }

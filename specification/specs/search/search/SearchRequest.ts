@@ -51,7 +51,7 @@ interface SearchRequest extends RequestBase {
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     stats?: string[]
-    stored_fields?: Field[]
+    stored_fields?: Fields
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long

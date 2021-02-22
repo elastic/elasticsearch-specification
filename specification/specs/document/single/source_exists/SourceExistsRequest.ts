@@ -34,8 +34,8 @@ interface SourceExistsRequest extends RequestBase {
     refresh?: boolean
     routing?: Routing
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    source_excludes?: Fields
+    source_includes?: Fields
     version?: long
     version_type?: VersionType
   }

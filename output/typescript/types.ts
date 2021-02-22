@@ -302,7 +302,7 @@ export interface AnalysisConfig {
   categorization_field_name: Field
   categorization_filters: Array<string>
   detectors: Array<Detector>
-  influencers: Array<Field>
+  influencers: Fields
   latency: Time
   multivariate_by_fields: boolean
   summary_count_field_name: Field
@@ -533,7 +533,7 @@ export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
     collapse?: FieldCollapse
     default_operator?: DefaultOperator
     df?: string
-    docvalue_fields?: Array<Field>
+    docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     from?: integer
@@ -562,7 +562,7 @@ export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
     sort?: Array<Sort>
     _source?: boolean | SourceFilter
     stats?: Array<string>
-    stored_fields?: Array<Field>
+    stored_fields?: Fields
     suggest?: Record<string, SuggestBucket>
     suggest_field?: Field
     suggest_mode?: SuggestMode
@@ -814,8 +814,8 @@ export interface BulkRequest<TSource = unknown> extends CommonQueryParameters {
   refresh?: Refresh
   routing?: Routing
   _source?: boolean
-  _source_excludes?: Field | Array<Field>
-  _source_includes?: Field | Array<Field>
+  _source_excludes?: Fields
+  _source_includes?: Fields
   timeout?: Time
   type_query_string?: string
   wait_for_active_shards?: string
@@ -1697,7 +1697,7 @@ export interface ClearCacheRequest extends CommonQueryParameters {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   fielddata?: boolean
-  fields?: Array<Field>
+  fields?: Fields
   ignore_unavailable?: boolean
   query?: boolean
   request?: boolean
@@ -2298,7 +2298,7 @@ export interface CoordinatorStats {
 }
 
 export interface CorePropertyBase extends PropertyBase {
-  copy_to: Array<Field>
+  copy_to: Fields
   fields: Record<PropertyName, PropertyBase>
   similarity: string
   store: boolean
@@ -2469,7 +2469,7 @@ export interface CsvProcessor extends ProcessorBase {
   ignore_missing: boolean
   quote: string
   separator: string
-  target_fields: Array<Field>
+  target_fields: Fields
   trim: boolean
 }
 
@@ -2768,8 +2768,8 @@ export interface DeleteByQueryRequest extends CommonQueryParameters {
   slices?: long
   sort?: Array<string>
   source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
+  source_excludes?: Fields
+  source_includes?: Fields
   stats?: Array<string>
   terminate_after?: long
   timeout?: Time
@@ -3191,9 +3191,9 @@ export interface DocumentExistsRequest extends CommonQueryParameters {
   refresh?: boolean
   routing?: Routing
   source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
-  stored_fields?: Array<Field>
+  source_excludes?: Fields
+  source_includes?: Fields
+  stored_fields?: Fields
   version?: long
   version_type?: VersionType
 }
@@ -3312,7 +3312,7 @@ export interface EnableUserResponse {
 }
 
 export interface EnrichPolicy {
-  enrich_fields: Array<Field>
+  enrich_fields: Fields
   indices: Indices
   match_field: Field
   query?: string
@@ -3690,8 +3690,8 @@ export interface FieldNamesField {
 }
 
 export interface FieldSecurity {
-  except: Array<Field>
-  grant: Array<Field>
+  except: Fields
+  grant: Fields
 }
 
 export interface FieldSecuritySettings {
@@ -4949,7 +4949,7 @@ export interface HighlightField {
   fragment_offset?: integer
   fragment_size?: integer
   highlight_query?: QueryContainer
-  matched_fields?: Array<Field>
+  matched_fields?: Fields
   max_fragment_length?: integer
   no_match_size?: integer
   number_of_fragments?: integer
@@ -4999,7 +4999,7 @@ export interface HistogramProperty extends PropertyBase {
 }
 
 export interface HistogramRollupGrouping {
-  fields: Array<Field>
+  fields: Fields
   interval: long
 }
 
@@ -5471,13 +5471,13 @@ export interface InnerHits {
   size?: integer
   from?: integer
   collapse?: FieldCollapse
-  docvalue_fields?: Array<Field>
+  docvalue_fields?: Fields
   explain?: boolean
   highlight?: Highlight
   ignore_unmapped?: boolean
   script_fields?: Record<string, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Array<Field>
+  fields?: Fields
   sort?: Array<Record<string, Sort | SortOrder>>
   _source?: boolean | SourceFilter
   version?: boolean
@@ -5937,7 +5937,7 @@ export type Like = string | LikeDocument
 
 export interface LikeDocument {
   doc?: any
-  fields?: Array<Field>
+  fields?: Fields
   _id?: Id
   _index?: IndexName
   per_field_analyzer?: Record<Field, string>
@@ -6085,7 +6085,7 @@ export interface MatchQuery extends QueryBase {
 export type MatchType = 'simple' | 'regex'
 
 export interface MatrixAggregation {
-  fields?: Array<Field>
+  fields?: Fields
   missing?: Record<Field, double>
 }
 
@@ -6190,7 +6190,7 @@ export type ModelCategorizationStatus = 'ok' | 'warn'
 export type ModelMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
 export interface ModelPlotConfig {
-  terms: Array<Field>
+  terms: Fields
 }
 
 export interface ModelPlotConfigEnabled {
@@ -6232,7 +6232,7 @@ export type Month = 'january' | 'february' | 'march' | 'april' | 'may' | 'june' 
 export interface MoreLikeThisQuery extends QueryBase {
   analyzer?: string
   boost_terms?: double
-  fields?: Array<Field>
+  fields?: Fields
   include?: boolean
   like?: Array<Like>
   max_doc_freq?: integer
@@ -6339,7 +6339,7 @@ export interface MultiMatchQuery extends QueryBase {
   analyzer?: string
   auto_generate_synonyms_phrase_query?: boolean
   cutoff_frequency?: double
-  fields?: Array<Field>
+  fields?: Fields
   fuzziness?: Fuzziness
   fuzzy_rewrite?: MultiTermQueryRewrite
   fuzzy_transpositions?: boolean
@@ -6392,7 +6392,7 @@ export type MultiTermQueryRewrite = string
 
 export interface MultiTermVectorOperation {
   doc: object
-  fields: Array<Field>
+  fields: Fields
   field_statistics: boolean
   filter: TermVectorFilter
   _id: Id
@@ -6409,7 +6409,7 @@ export interface MultiTermVectorOperation {
 export interface MultiTermVectorsRequest extends CommonQueryParameters {
   index?: IndexName
   type?: Type
-  fields?: Array<Field>
+  fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
   payloads?: boolean
@@ -6759,9 +6759,9 @@ export interface NodesStatsRequest extends CommonQueryParameters {
   node_id?: NodeIds
   metric?: Metrics
   index_metric?: Metrics
-  completion_fields?: Array<Field>
-  fielddata_fields?: Array<Field>
-  fields?: Array<Field>
+  completion_fields?: Fields
+  fielddata_fields?: Fields
+  fields?: Fields
   groups?: boolean
   include_segment_file_sizes?: boolean
   level?: Level
@@ -7818,7 +7818,7 @@ export interface QueryStringQuery extends QueryBase {
   default_operator?: Operator
   enable_position_increments?: boolean
   escape?: boolean
-  fields?: Array<Field>
+  fields?: Fields
   fuzziness?: Fuzziness
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
@@ -8117,7 +8117,7 @@ export interface ReindexSource {
   size: integer
   slice?: SlicedScroll
   sort?: Array<Sort>
-  _source?: Array<Field>
+  _source?: Fields
 }
 
 export interface ReindexStatus {
@@ -8212,7 +8212,7 @@ export interface RemovePolicyResponse {
 }
 
 export interface RemoveProcessor extends ProcessorBase {
-  field: Array<Field>
+  field: Fields
   ignore_missing: boolean
 }
 
@@ -8727,7 +8727,7 @@ export interface SearchRequest extends CommonQueryParameters {
   search_type?: SearchType
   sequence_number_primary_term?: boolean
   stats?: Array<string>
-  stored_fields?: Array<Field>
+  stored_fields?: Fields
   suggest_field?: Field
   suggest_mode?: SuggestMode
   suggest_size?: long
@@ -9335,7 +9335,7 @@ export interface SignificantTextAggregation {
   shard_min_doc_count?: long
   shard_size?: integer
   size?: integer
-  source_fields?: Array<Field>
+  source_fields?: Fields
 }
 
 export interface SimpleAnalyzer extends AnalyzerBase {
@@ -9352,7 +9352,7 @@ export interface SimpleQueryStringQuery extends QueryBase {
   analyze_wildcard?: boolean
   auto_generate_synonyms_phrase_query?: boolean
   default_operator?: Operator
-  fields?: Array<Field>
+  fields?: Fields
   flags?: SimpleQueryStringFlags
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
@@ -9675,8 +9675,8 @@ export interface SourceExistsRequest extends CommonQueryParameters {
   refresh?: boolean
   routing?: Routing
   source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
+  source_excludes?: Fields
+  source_includes?: Fields
   version?: long
   version_type?: VersionType
 }
@@ -10281,7 +10281,7 @@ export interface TermVectorsRequest<TDocument = unknown> extends CommonQueryPara
   index: IndexName
   id?: Id
   type?: Type
-  fields?: Array<Field>
+  fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
   payloads?: boolean
@@ -10357,7 +10357,7 @@ export interface TermsQuery extends QueryBase {
 }
 
 export interface TermsRollupGrouping {
-  fields: Array<Field>
+  fields: Fields
 }
 
 export interface TermsSetQuery extends QueryBase {
@@ -10496,7 +10496,7 @@ export interface TopHitsAggregate extends AggregateBase {
 }
 
 export interface TopHitsAggregation {
-  docvalue_fields?: Array<Field>
+  docvalue_fields?: Fields
   explain?: boolean
   from?: integer
   highlight?: Highlight
@@ -10504,7 +10504,7 @@ export interface TopHitsAggregation {
   size?: integer
   sort?: string | Record<Field, Sort | SortOrder | NestedSort> | Array<Record<string, Sort | SortOrder | Record<Field, NestedSort>>>
   _source?: boolean | SourceFilter | Field
-  stored_fields?: Array<Field>
+  stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
   seq_no_primary_term?: boolean
@@ -10813,8 +10813,8 @@ export interface UpdateByQueryRequest extends CommonQueryParameters {
   slices?: long
   sort?: Array<string>
   source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
+  source_excludes?: Fields
+  source_includes?: Fields
   stats?: Array<string>
   terminate_after?: long
   timeout?: Time
@@ -10962,8 +10962,8 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   timeout?: Time
   wait_for_active_shards?: string
   _source?: boolean | string | Array<string>
-  _source_excludes?: Array<Field>
-  _source_includes?: Array<Field>
+  _source_excludes?: Fields
+  _source_includes?: Fields
   body: {
     detect_noop?: boolean
     doc?: TPartialDocument

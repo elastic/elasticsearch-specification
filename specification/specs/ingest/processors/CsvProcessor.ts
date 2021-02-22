@@ -23,6 +23,6 @@ class CsvProcessor extends ProcessorBase {
   ignore_missing: boolean
   quote: string
   separator: string
-  target_fields: Field[]
+  target_fields: Fields
   trim: boolean
 }

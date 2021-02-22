@@ -18,7 +18,7 @@
  */
 
 class EnrichPolicy {
-  enrich_fields: Field[]
+  enrich_fields: Fields
   indices: Indices
   match_field: Field
   query?: string

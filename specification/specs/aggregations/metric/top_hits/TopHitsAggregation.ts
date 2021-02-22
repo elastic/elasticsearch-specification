@@ -18,7 +18,7 @@
  */
 
 class TopHitsAggregation {
-  docvalue_fields?: Field[]
+  docvalue_fields?: Fields
   explain?: boolean
   from?: integer
   highlight?: Highlight
@@ -31,7 +31,7 @@ class TopHitsAggregation {
         SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
       >
   _source?: boolean | SourceFilter | Field
-  stored_fields?: Field[]
+  stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
   seq_no_primary_term?: boolean

@@ -34,9 +34,9 @@ interface DocumentExistsRequest extends RequestBase {
     refresh?: boolean
     routing?: Routing
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
-    stored_fields?: Field[]
+    source_excludes?: Fields
+    source_includes?: Fields
+    stored_fields?: Fields
     version?: long
     version_type?: VersionType
   }

@@ -22,7 +22,7 @@ class AnalysisConfig {
   categorization_field_name: Field
   categorization_filters: string[]
   detectors: Detector[]
-  influencers: Field[]
+  influencers: Fields
   latency: Time
   multivariate_by_fields: boolean
   summary_count_field_name: Field

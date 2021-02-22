@@ -18,5 +18,5 @@
  */
 
 class ModelPlotConfig {
-  terms: Field[]
+  terms: Fields
 }

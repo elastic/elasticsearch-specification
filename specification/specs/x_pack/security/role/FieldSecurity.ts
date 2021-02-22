@@ -18,6 +18,6 @@
  */
 
 class FieldSecurity {
-  except: Field[]
-  grant: Field[]
+  except: Fields
+  grant: Fields
 }

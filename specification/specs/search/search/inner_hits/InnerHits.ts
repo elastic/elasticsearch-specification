@@ -22,13 +22,13 @@ class InnerHits {
   size?: integer
   from?: integer
   collapse?: FieldCollapse
-  docvalue_fields?: Field[]
+  docvalue_fields?: Fields
   explain?: boolean
   highlight?: Highlight
   ignore_unmapped?: boolean
   script_fields?: Dictionary<string, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Field[]
+  fields?: Fields
   sort?: Array<SingleKeyDictionary<Union<Sort, SortOrder>>>
   _source?: Union<boolean, SourceFilter>
   version?: boolean

@@ -21,7 +21,7 @@ class MultiMatchQuery extends QueryBase {
   analyzer?: string
   auto_generate_synonyms_phrase_query?: boolean
   cutoff_frequency?: double
-  fields?: Field[]
+  fields?: Fields
   fuzziness?: Fuzziness
   fuzzy_rewrite?: MultiTermQueryRewrite
   fuzzy_transpositions?: boolean
