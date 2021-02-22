@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class OpenIndexResponse extends AcknowledgedResponseBase {}
+class OpenIndexResponse extends AcknowledgedResponseBase {
+  shards_acknowledged: boolean
+}
