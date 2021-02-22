@@ -2308,7 +2308,7 @@ export type CountFunction = 'Count' | 'HighCount' | 'LowCount'
 
 export interface CountRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -2743,7 +2743,7 @@ export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBas
 
 export interface DeleteByQueryRequest extends CommonQueryParameters {
   index: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -4335,7 +4335,7 @@ export interface GetEnrichPolicyResponse {
 export interface GetFieldMappingRequest extends CommonQueryParameters {
   fields: Fields
   index?: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -4462,7 +4462,7 @@ export interface GetLifecycleResponse extends DictionaryResponseBase<string, Lif
 
 export interface GetMappingRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -4783,7 +4783,7 @@ export interface GraphExploreControls {
 
 export interface GraphExploreRequest extends CommonQueryParameters {
   index: Indices
-  type?: TypeNames
+  type?: Types
   routing?: Routing
   timeout?: Time
   body?: {
@@ -5406,7 +5406,7 @@ export interface IndicesStatsRequest extends CommonQueryParameters {
   include_segment_file_sizes?: boolean
   include_unloaded_segments?: boolean
   level?: Level
-  types?: TypeNames
+  types?: Types
 }
 
 export interface IndicesStatsResponse {
@@ -6338,7 +6338,7 @@ export interface MultiMatchQuery extends QueryBase {
 
 export interface MultiSearchRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   max_concurrent_shard_requests?: long
@@ -6357,7 +6357,7 @@ export interface MultiSearchResponse {
 
 export interface MultiSearchTemplateRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   search_type?: SearchType
@@ -8682,7 +8682,7 @@ export interface SearchProfile {
 
 export interface SearchRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -8816,7 +8816,7 @@ export interface SearchStats {
 
 export interface SearchTemplateRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -10681,9 +10681,11 @@ export interface TruncateTokenFilter extends TokenFilterBase {
   length: integer
 }
 
+export type Type = string
+
 export interface TypeExistsRequest extends CommonQueryParameters {
   index: Indices
-  type: TypeNames
+  type: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -10720,7 +10722,7 @@ export interface TypeQuery extends QueryBase {
   value: string
 }
 
-export type Types = string | Array<string>
+export type Types = Type | Array<Type>
 
 export interface UaxEmailUrlTokenizer extends TokenizerBase {
   max_token_length: integer
@@ -10763,7 +10765,7 @@ export interface UniqueTokenFilter extends TokenFilterBase {
 
 export interface UpdateByQueryRequest extends CommonQueryParameters {
   index: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -11043,7 +11045,7 @@ export interface ValidateJobResponse extends AcknowledgedResponseBase {
 
 export interface ValidateQueryRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeNames
+  type?: Types
   allow_no_indices?: boolean
   all_shards?: boolean
   analyzer?: string

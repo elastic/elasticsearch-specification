@@ -30962,7 +30962,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -34970,7 +34970,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -48707,7 +48707,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -49916,7 +49916,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -52935,7 +52935,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -58571,7 +58571,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -66922,7 +66922,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -67111,7 +67111,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -88450,7 +88450,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -89633,7 +89633,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -106083,6 +106083,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Type",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "annotations": {
         "stability": "TODO"
       },
@@ -106122,7 +106136,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -106532,7 +106546,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           },
@@ -106541,7 +106555,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "Type",
                 "namespace": "internal"
               }
             }
@@ -107007,7 +107021,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }
@@ -109673,7 +109687,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeNames",
+              "name": "Types",
               "namespace": "internal"
             }
           }

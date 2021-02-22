@@ -104,7 +104,8 @@ type Indices = string | string[]
 
 type TypeName = string
 type TypeNames = string | string[]
-type Types = string | string[]
+type Type = string
+type Types = Type | Type[]
 
 type Routing = string | number
 type LongId = string

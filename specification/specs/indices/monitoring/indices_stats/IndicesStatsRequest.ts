@@ -37,7 +37,7 @@ interface IndicesStatsRequest extends RequestBase {
     include_segment_file_sizes?: boolean
     include_unloaded_segments?: boolean
     level?: Level
-    types?: TypeNames
+    types?: Types
   }
   body?: {}
 }

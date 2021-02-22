@@ -25,7 +25,7 @@
 interface GraphExploreRequest extends RequestBase {
   path_parts?: {
     index: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     routing?: Routing
