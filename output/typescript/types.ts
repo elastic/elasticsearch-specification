@@ -1017,7 +1017,7 @@ export type CatFielddataResponse = CatFielddataRecord[]
 
 export interface CatHealthRecord {
   cluster: string
-  epoch: string
+  epoch?: EpochMillis
   init: string
   'node.data': string
   'node.total': string
@@ -1026,12 +1026,15 @@ export interface CatHealthRecord {
   relo: string
   shards: string
   status: string
-  timestamp: string
+  timestamp?: DateString
   unassign: string
+  max_task_wait_time: string
+  active_shards_percent: string
 }
 
 export interface CatHealthRequest extends CommonCatQueryParameters, CommonQueryParameters {
   include_timestamp?: boolean
+  ts?: boolean
 }
 
 export type CatHealthResponse = CatHealthRecord[]

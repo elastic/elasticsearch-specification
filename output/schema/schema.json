@@ -18658,11 +18658,11 @@
         },
         {
           "name": "epoch",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -18757,6 +18757,17 @@
         },
         {
           "name": "timestamp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "unassign",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -18767,7 +18778,18 @@
           }
         },
         {
-          "name": "unassign",
+          "name": "max_task_wait_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "active_shards_percent",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -18804,6 +18826,17 @@
       "query": [
         {
           "name": "include_timestamp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ts",
           "required": false,
           "type": {
             "kind": "instance_of",
