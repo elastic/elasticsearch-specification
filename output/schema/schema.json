@@ -71446,7 +71446,19 @@
         "name": "OpenIndexResponse",
         "namespace": "indices.index_management.open_close_index.open_index"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "shards_acknowledged",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "annotations": {

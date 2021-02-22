@@ -6845,6 +6845,7 @@ export interface OpenIndexRequest extends CommonQueryParameters {
 }
 
 export interface OpenIndexResponse extends AcknowledgedResponseBase {
+  shards_acknowledged: boolean
 }
 
 export interface OpenJobRequest extends CommonQueryParameters {
