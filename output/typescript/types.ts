@@ -3549,9 +3549,12 @@ export interface ExplainRequest extends CommonQueryParameters {
 }
 
 export interface ExplainResponse<TDocument = unknown> {
-  explanation: ExplanationDetail
-  get: InlineGet<TDocument>
+  _index: IndexName
+  _type?: TypeName
+  _id: Id
   matched: boolean
+  explanation?: ExplanationDetail
+  get?: InlineGet<TDocument>
 }
 
 export interface Explanation {
@@ -3562,7 +3565,7 @@ export interface Explanation {
 
 export interface ExplanationDetail {
   description: string
-  details: Array<ExplanationDetail>
+  details?: Array<ExplanationDetail>
   value: float
 }
 
@@ -5440,6 +5443,7 @@ export interface InlineGet<TDocument = unknown> {
   found: boolean
   _seq_no: long
   _primary_term: long
+  _routing?: Routing
   _source: TDocument
 }
 

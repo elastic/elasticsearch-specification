@@ -41988,8 +41988,52 @@
       },
       "properties": [
         {
-          "name": "explanation",
+          "name": "_index",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "matched",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "explanation",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42000,7 +42044,7 @@
         },
         {
           "name": "get",
-          "required": true,
+          "required": false,
           "type": {
             "generics": [
               {
@@ -42015,17 +42059,6 @@
             "type": {
               "name": "InlineGet",
               "namespace": "search.explain"
-            }
-          }
-        },
-        {
-          "name": "matched",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         }
@@ -42096,7 +42129,7 @@
         },
         {
           "name": "details",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -58857,6 +58890,17 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
               "namespace": "internal"
             }
           }

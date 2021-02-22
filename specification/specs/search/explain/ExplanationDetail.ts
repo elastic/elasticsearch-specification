@@ -19,6 +19,6 @@
 
 class ExplanationDetail {
   description: string
-  details: ExplanationDetail[]
+  details?: ExplanationDetail[]
   value: float
 }
