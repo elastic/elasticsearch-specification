@@ -24,7 +24,8 @@
  */
 interface PutLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy: Name
+    policy?: Name
+    policy_id?: Id
   }
   query_parameters?: {}
   body?: {

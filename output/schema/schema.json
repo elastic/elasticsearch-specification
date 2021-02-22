@@ -36425,11 +36425,22 @@
         {
           "description": "The name of the index lifecycle policy",
           "name": "policy",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "policy_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -72995,7 +73006,7 @@
         },
         {
           "name": "min_age",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73015,7 +73026,7 @@
       "properties": [
         {
           "name": "cold",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73026,7 +73037,7 @@
         },
         {
           "name": "delete",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73037,7 +73048,7 @@
         },
         {
           "name": "hot",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73048,7 +73059,7 @@
         },
         {
           "name": "warm",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -76833,11 +76844,22 @@
         {
           "description": "The name of the index lifecycle policy",
           "name": "policy",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "policy_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
               "namespace": "internal"
             }
           }
