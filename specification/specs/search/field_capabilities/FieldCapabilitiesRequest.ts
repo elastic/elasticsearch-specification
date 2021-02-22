@@ -29,7 +29,7 @@ interface FieldCapabilitiesRequest extends RequestBase {
   query_parameters?: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
-    fields?: Field | Field[]
+    fields?: Fields
     ignore_unavailable?: boolean
     include_unmapped?: boolean
   }
@@ -40,6 +40,7 @@ interface FieldCapabilitiesRequest extends RequestBase {
 class FieldCapabilitiesBodyIndexFilter {
   range?: FieldCapabilitiesBodyIndexFilterRange
   match_none?: EmptyObject
+  term?: FieldCapabilitiesBodyIndexFilterTerm
 }
 
 class FieldCapabilitiesBodyIndexFilterRange {
@@ -51,4 +52,12 @@ class FieldCapabilitiesBodyIndexFilterRangeTimestamp {
   gt?: integer
   lte?: integer
   lt?: integer
+}
+
+class FieldCapabilitiesBodyIndexFilterTerm {
+  versionControl: FieldCapabilitiesBodyIndexFilterTermVersionControl
+}
+
+class FieldCapabilitiesBodyIndexFilterTermVersionControl {
+  value: string
 }

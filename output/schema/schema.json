@@ -42526,6 +42526,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldCapabilitiesBodyIndexFilterTerm",
+              "namespace": "search.field_capabilities"
+            }
+          }
         }
       ]
     },
@@ -42596,6 +42607,46 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldCapabilitiesBodyIndexFilterTerm",
+        "namespace": "search.field_capabilities"
+      },
+      "properties": [
+        {
+          "name": "versionControl",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldCapabilitiesBodyIndexFilterTermVersionControl",
+              "namespace": "search.field_capabilities"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldCapabilitiesBodyIndexFilterTermVersionControl",
+        "namespace": "search.field_capabilities"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -42679,26 +42730,11 @@
           "name": "fields",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Field",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Field",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
           }
         },
         {
