@@ -37891,8 +37891,19 @@
       },
       "properties": [
         {
+          "name": "by_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "custom_rules",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -37917,7 +37928,7 @@
         },
         {
           "name": "detector_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37928,12 +37939,23 @@
         },
         {
           "name": "exclude_frequent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "ExcludeFrequent",
               "namespace": "x_pack.machine_learning.put_job"
+            }
+          }
+        },
+        {
+          "name": "field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
             }
           }
         },
@@ -37950,11 +37972,33 @@
         },
         {
           "name": "use_null",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "over_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "partition_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
               "namespace": "internal"
             }
           }
@@ -109609,20 +109653,14 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "detector",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Detector",
-                "namespace": "x_pack.machine_learning.job.detectors"
-              }
-            }
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Detector",
+            "namespace": "x_pack.machine_learning.job.detectors"
           }
-        ]
+        }
       },
       "inherits": [
         {
