@@ -12001,13 +12001,10 @@
           "name": "influencers",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -14098,13 +14095,10 @@
             "name": "docvalue_fields",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Field",
-                  "namespace": "internal"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "internal"
               }
             }
           },
@@ -14460,13 +14454,10 @@
             "name": "stored_fields",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Field",
-                  "namespace": "internal"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "internal"
               }
             }
           },
@@ -16698,52 +16689,22 @@
           "name": "_source_excludes",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Field",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Field",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
           }
         },
         {
           "name": "_source_includes",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Field",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Field",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
           }
         },
         {
@@ -25482,13 +25443,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -30833,13 +30791,10 @@
           "name": "copy_to",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -32417,13 +32372,10 @@
           "name": "target_fields",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -35248,13 +35200,10 @@
           "name": "source_excludes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -35262,13 +35211,10 @@
           "name": "source_includes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -38829,13 +38775,10 @@
           "name": "source_excludes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -38843,13 +38786,10 @@
           "name": "source_includes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -38857,13 +38797,10 @@
           "name": "stored_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -39809,13 +39746,10 @@
           "name": "enrich_fields",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -43043,13 +42977,10 @@
           "name": "except",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -43057,13 +42988,10 @@
           "name": "grant",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         }
@@ -54351,13 +54279,10 @@
           "name": "matched_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -54814,13 +54739,10 @@
           "name": "fields",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -59059,13 +58981,10 @@
           "name": "docvalue_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -59138,13 +59057,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -63123,13 +63039,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -64406,13 +64319,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -65408,13 +65318,10 @@
           "name": "terms",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         }
@@ -65802,13 +65709,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -66812,13 +66716,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -67334,13 +67235,10 @@
           "name": "fields",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -67551,13 +67449,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -70577,13 +70472,10 @@
           "name": "completion_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -70591,13 +70483,10 @@
           "name": "fielddata_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -70605,13 +70494,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -80483,13 +80369,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -83150,13 +83033,10 @@
           "name": "_source",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         }
@@ -83981,13 +83861,10 @@
           "name": "field",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -88840,13 +88717,10 @@
           "name": "stored_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -94106,13 +93980,10 @@
           "name": "source_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         }
@@ -94271,13 +94142,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -97084,13 +96952,10 @@
           "name": "source_excludes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -97098,13 +96963,10 @@
           "name": "source_includes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -102260,13 +102122,10 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -102974,13 +102833,10 @@
           "name": "fields",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         }
@@ -104487,13 +104343,10 @@
           "name": "docvalue_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -104696,13 +104549,10 @@
           "name": "stored_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -107433,13 +107283,10 @@
           "name": "source_excludes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -107447,13 +107294,10 @@
           "name": "source_includes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -108962,13 +108806,10 @@
           "name": "_source_excludes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -108976,13 +108817,10 @@
           "name": "_source_includes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         }
