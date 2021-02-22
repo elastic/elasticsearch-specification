@@ -3538,10 +3538,11 @@ export interface ExplainRequest extends CommonQueryParameters {
   preference?: string
   query_on_query_string?: string
   routing?: Routing
-  source_enabled?: boolean
-  source_excludes?: Array<Field>
-  source_includes?: Array<Field>
-  stored_fields?: Array<Field>
+  _source?: boolean | Fields | SourceFilter
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  stored_fields?: Fields
+  q?: string
   body?: {
     query?: QueryContainer
   }

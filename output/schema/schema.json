@@ -41894,41 +41894,54 @@
           }
         },
         {
-          "name": "source_enabled",
+          "name": "_source",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SourceFilter",
+                  "namespace": "search.search.source_filtering"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "_source_excludes",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
+              "name": "Fields",
               "namespace": "internal"
             }
           }
         },
         {
-          "name": "source_excludes",
+          "name": "_source_includes",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "source_includes",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
             }
           }
         },
@@ -41936,13 +41949,21 @@
           "name": "stored_fields",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "q",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
