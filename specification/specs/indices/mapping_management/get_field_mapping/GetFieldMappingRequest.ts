@@ -26,7 +26,7 @@ interface GetFieldMappingRequest extends RequestBase {
   path_parts?: {
     fields: Fields
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

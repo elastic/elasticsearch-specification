@@ -26,7 +26,7 @@ interface ExplainRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     analyzer?: string

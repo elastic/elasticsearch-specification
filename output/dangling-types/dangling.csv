@@ -2,7 +2,8 @@ TimeSpan,common.ts
 short,common.ts
 ScrollIds,common.ts
 ActionIds,common.ts
-Types,common.ts
+TypeName,common.ts
+TypeNames,common.ts
 LongId,common.ts
 IndexMetrics,common.ts
 Timestamp,common.ts

@@ -22,7 +22,7 @@ class Hit<TDocument> {
   _id: Id
 
   _score?: double
-  _type?: TypeName
+  _type?: Type
 
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>

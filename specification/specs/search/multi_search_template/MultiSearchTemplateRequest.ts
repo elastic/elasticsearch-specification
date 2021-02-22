@@ -26,7 +26,7 @@
 interface MultiSearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     ccs_minimize_roundtrips?: boolean

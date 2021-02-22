@@ -25,7 +25,7 @@
 interface SearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

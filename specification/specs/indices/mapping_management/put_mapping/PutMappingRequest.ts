@@ -25,7 +25,7 @@
 interface PutMappingRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     allow_no_indices?: boolean

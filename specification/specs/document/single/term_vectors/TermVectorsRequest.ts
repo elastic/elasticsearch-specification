@@ -26,7 +26,7 @@ interface TermVectorsRequest<TDocument> extends RequestBase {
   path_parts?: {
     index: IndexName
     id?: Id
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     fields?: Field[]
