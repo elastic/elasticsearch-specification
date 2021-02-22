@@ -3618,6 +3618,7 @@ export interface FieldCapabilities {
 export interface FieldCapabilitiesBodyIndexFilter {
   range?: FieldCapabilitiesBodyIndexFilterRange
   match_none?: EmptyObject
+  term?: FieldCapabilitiesBodyIndexFilterTerm
 }
 
 export interface FieldCapabilitiesBodyIndexFilterRange {
@@ -3631,11 +3632,19 @@ export interface FieldCapabilitiesBodyIndexFilterRangeTimestamp {
   lt?: integer
 }
 
+export interface FieldCapabilitiesBodyIndexFilterTerm {
+  versionControl: FieldCapabilitiesBodyIndexFilterTermVersionControl
+}
+
+export interface FieldCapabilitiesBodyIndexFilterTermVersionControl {
+  value: string
+}
+
 export interface FieldCapabilitiesRequest extends CommonQueryParameters {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
-  fields?: Field | Array<Field>
+  fields?: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
   body?: {
