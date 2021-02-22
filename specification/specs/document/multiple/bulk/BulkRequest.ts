@@ -33,8 +33,8 @@ interface BulkRequest<TSource> extends RequestBase {
     refresh?: Refresh
     routing?: Routing
     _source?: boolean
-    _source_excludes?: Field | Field[]
-    _source_includes?: Field | Field[]
+    _source_excludes?: Fields
+    _source_includes?: Fields
     timeout?: Time
     type_query_string?: string
     wait_for_active_shards?: string
