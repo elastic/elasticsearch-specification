@@ -26,7 +26,7 @@
 interface MultiGetRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     preference?: string
@@ -60,7 +60,7 @@ class MultiGetOperation {
   routing?: Routing
   _source?: boolean | Fields | MultiGetSourceFilter
   stored_fields?: Fields
-  _type?: TypeName
+  _type?: Type
   version?: long
   version_type?: VersionType
 }

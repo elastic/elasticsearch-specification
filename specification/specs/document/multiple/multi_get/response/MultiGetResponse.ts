@@ -35,6 +35,6 @@ class MultiGetHit<TDocument> {
   _routing?: Routing
   _seq_no?: long
   _source?: TDocument
-  _type?: TypeName
+  _type?: Type
   _version?: long
 }

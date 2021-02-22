@@ -25,7 +25,7 @@
 interface MultiTermVectorsRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     fields?: Field[]

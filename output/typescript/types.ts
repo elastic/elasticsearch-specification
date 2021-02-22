@@ -809,7 +809,7 @@ export interface BulkOperationContainer {
 
 export interface BulkRequest<TSource = unknown> extends CommonQueryParameters {
   index?: IndexName
-  type?: TypeName
+  type?: Type
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
@@ -2431,7 +2431,7 @@ export interface CreateRepositoryResponse extends AcknowledgedResponseBase {
 export interface CreateRequest<TDocument = unknown> extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
@@ -2955,7 +2955,7 @@ export interface DeleteRepositoryResponse extends AcknowledgedResponseBase {
 export interface DeleteRequest extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   if_primary_term?: long
   if_seq_no?: long
   refresh?: Refresh
@@ -3181,7 +3181,7 @@ export interface DocValuesPropertyBase extends CorePropertyBase {
 export interface DocumentExistsRequest extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -3529,7 +3529,7 @@ export interface ExplainLifecycleResponse {
 export interface ExplainRequest extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   analyzer?: string
   analyze_wildcard?: boolean
   default_operator?: DefaultOperator
@@ -4538,7 +4538,7 @@ export interface GetRepositoryResponse {
 export interface GetRequest extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -4988,7 +4988,7 @@ export interface Hit<TDocument = unknown> {
   _index: IndexName
   _id: Id
   _score?: double
-  _type?: TypeName
+  _type?: Type
   _explanation?: Explanation
   fields?: Record<string, any>
   highlight?: Record<string, Array<string>>
@@ -5250,7 +5250,7 @@ export interface IndexPrivilegesCheck {
 export interface IndexRequest<TDocument = unknown> extends CommonQueryParameters {
   id?: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   if_primary_term?: long
   if_seq_no?: long
   op_type?: OpType
@@ -6272,7 +6272,7 @@ export interface MultiGetHit<TDocument = unknown> {
   _routing?: Routing
   _seq_no?: long
   _source?: TDocument
-  _type?: TypeName
+  _type?: Type
   _version?: long
 }
 
@@ -6283,14 +6283,14 @@ export interface MultiGetOperation {
   routing?: Routing
   _source?: boolean | Fields | MultiGetSourceFilter
   stored_fields?: Fields
-  _type?: TypeName
+  _type?: Type
   version?: long
   version_type?: VersionType
 }
 
 export interface MultiGetRequest extends CommonQueryParameters {
   index?: IndexName
-  type?: TypeName
+  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -6388,7 +6388,7 @@ export interface MultiTermVectorOperation {
 
 export interface MultiTermVectorsRequest extends CommonQueryParameters {
   index?: IndexName
-  type?: TypeName
+  type?: Type
   fields?: Array<Field>
   field_statistics?: boolean
   offsets?: boolean
@@ -7481,7 +7481,7 @@ export interface PutLifecycleResponse extends AcknowledgedResponseBase {
 
 export interface PutMappingRequest extends CommonQueryParameters {
   index?: Indices
-  type?: TypeName
+  type?: Type
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8465,7 +8465,7 @@ export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 
 export interface RollupSearchRequest extends CommonQueryParameters {
   index: Indices
-  type?: TypeName
+  type?: Type
   total_hits_as_integer?: boolean
   typed_keys?: boolean
   body: {
@@ -9648,7 +9648,7 @@ export type SortSpecialField = '_score' | '_doc'
 export interface SourceExistsRequest extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -9678,7 +9678,7 @@ export interface SourceFilter {
 export interface SourceRequest extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -10258,7 +10258,7 @@ export interface TermVectorTerm {
 export interface TermVectorsRequest<TDocument = unknown> extends CommonQueryParameters {
   index: IndexName
   id?: Id
-  type?: TypeName
+  type?: Type
   fields?: Array<Field>
   field_statistics?: boolean
   offsets?: boolean
@@ -10928,7 +10928,7 @@ export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends CommonQueryParameters {
   id: Id
   index: IndexName
-  type?: TypeName
+  type?: Type
   if_primary_term?: long
   if_seq_no?: long
   lang?: string

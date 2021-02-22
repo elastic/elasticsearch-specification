@@ -25,7 +25,7 @@
 interface RollupSearchRequest extends RequestBase {
   path_parts?: {
     index: Indices
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     total_hits_as_integer?: boolean

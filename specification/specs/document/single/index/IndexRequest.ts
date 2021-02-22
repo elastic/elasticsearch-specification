@@ -27,7 +27,7 @@ interface IndexRequest<TDocument> extends RequestBase {
   path_parts?: {
     id?: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     if_primary_term?: long
