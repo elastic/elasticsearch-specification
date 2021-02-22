@@ -1017,7 +1017,7 @@ export type CatFielddataResponse = CatFielddataRecord[]
 
 export interface CatHealthRecord {
   cluster: string
-  epoch?: string
+  epoch?: EpochMillis
   init: string
   'node.data': string
   'node.total': string
