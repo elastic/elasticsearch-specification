@@ -27,7 +27,7 @@ interface CatThreadPoolRequest extends CatRequestBase {
     thread_pool_patterns?: Names
   }
   query_parameters?: {
-    size?: Size
+    size?: Size | boolean
   }
   body?: {}
 }

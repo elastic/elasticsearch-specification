@@ -23676,11 +23676,23 @@
           "name": "size",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Size",
-              "namespace": "common"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Size",
+                  "namespace": "common"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]

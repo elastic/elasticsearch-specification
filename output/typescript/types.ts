@@ -1496,7 +1496,7 @@ export interface CatThreadPoolRecord {
 
 export interface CatThreadPoolRequest extends CommonCatQueryParameters, CommonQueryParameters {
   thread_pool_patterns?: Names
-  size?: Size
+  size?: Size | boolean
 }
 
 export type CatThreadPoolResponse = CatThreadPoolRecord[]
