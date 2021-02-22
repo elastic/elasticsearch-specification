@@ -6716,8 +6716,8 @@ export interface NodeThreadPoolInfo {
 
 export interface NodeUsageInformation {
   rest_actions: Record<string, integer>
-  since: DateString
-  timestamp: DateString
+  since: EpochMillis
+  timestamp: EpochMillis
   aggregations: any
 }
 

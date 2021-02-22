@@ -19,9 +19,7 @@
 
 class NodeUsageInformation {
   rest_actions: Dictionary<string, integer>
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  since: DateString
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: DateString
+  since: EpochMillis
+  timestamp: EpochMillis
   aggregations: UserDefinedValue
 }
