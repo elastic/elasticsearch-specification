@@ -19,7 +19,7 @@
 
 class CatHealthRecord {
   cluster: string
-  epoch?: string
+  epoch?: EpochMillis
   init: string
   'node.data': string
   'node.total': string
