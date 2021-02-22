@@ -20218,7 +20218,7 @@
       "properties": [
         {
           "name": "build",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20228,8 +20228,63 @@
           }
         },
         {
-          "name": "completion_size",
-          "required": true,
+          "name": "bulk.total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bulk.total_operations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bulk.total_size_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bulk.avg_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bulk.total_opavg_size_in_byteserations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "completion.size",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20240,7 +20295,7 @@
         },
         {
           "name": "cpu",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20250,8 +20305,8 @@
           }
         },
         {
-          "name": "disk_available",
-          "required": true,
+          "name": "disk.total",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20261,8 +20316,8 @@
           }
         },
         {
-          "name": "fielddata_evictions",
-          "required": true,
+          "name": "disk.used",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20272,8 +20327,8 @@
           }
         },
         {
-          "name": "fielddata_memory",
-          "required": true,
+          "name": "disk.avail",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20283,41 +20338,8 @@
           }
         },
         {
-          "name": "file_descriptor_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "file_descriptor_max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "file_descriptor_percent",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter_cache_evictions",
-          "required": true,
+          "name": "disk.used_percent",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20327,8 +20349,8 @@
           }
         },
         {
-          "name": "filter_cache_memory",
-          "required": true,
+          "name": "fielddata.evictions",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20338,8 +20360,8 @@
           }
         },
         {
-          "name": "flush_total",
-          "required": true,
+          "name": "fielddata.memory",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20349,8 +20371,8 @@
           }
         },
         {
-          "name": "flush_total_time",
-          "required": true,
+          "name": "file_desc.current",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20360,8 +20382,8 @@
           }
         },
         {
-          "name": "get_current",
-          "required": true,
+          "name": "file_desc.max",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20371,8 +20393,8 @@
           }
         },
         {
-          "name": "get_exists_time",
-          "required": true,
+          "name": "file_desc.percent",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20382,8 +20404,8 @@
           }
         },
         {
-          "name": "get_exists_total",
-          "required": true,
+          "name": "flavor",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20393,8 +20415,8 @@
           }
         },
         {
-          "name": "get_missing_time",
-          "required": true,
+          "name": "flush.total",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20404,8 +20426,8 @@
           }
         },
         {
-          "name": "get_missing_total",
-          "required": true,
+          "name": "flush.total_time",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20415,8 +20437,8 @@
           }
         },
         {
-          "name": "get_time",
-          "required": true,
+          "name": "get.current",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20426,8 +20448,8 @@
           }
         },
         {
-          "name": "get_total",
-          "required": true,
+          "name": "get.exists_time",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20437,8 +20459,8 @@
           }
         },
         {
-          "name": "heap_current",
-          "required": true,
+          "name": "get.exists_total",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20448,8 +20470,8 @@
           }
         },
         {
-          "name": "heap_max",
-          "required": true,
+          "name": "get.missing_time",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20459,8 +20481,85 @@
           }
         },
         {
-          "name": "heap_percent",
-          "required": true,
+          "name": "get.missing_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "get.time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "get.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "heap.current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "heap.max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "heap.percent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "http",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "http_address",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20471,7 +20570,7 @@
         },
         {
           "name": "id_cache_memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20482,7 +20581,7 @@
         },
         {
           "name": "indexing_delete_current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20493,7 +20592,7 @@
         },
         {
           "name": "indexing_delete_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20504,7 +20603,7 @@
         },
         {
           "name": "indexing_delete_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20515,7 +20614,7 @@
         },
         {
           "name": "indexing_index_current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20526,7 +20625,7 @@
         },
         {
           "name": "indexing_index_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20536,8 +20635,30 @@
           }
         },
         {
-          "name": "indexing_index_total",
-          "required": true,
+          "name": "indexing.index_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indexing.failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20548,7 +20669,7 @@
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20559,7 +20680,7 @@
         },
         {
           "name": "jdk",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20570,7 +20691,7 @@
         },
         {
           "name": "load_15m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20581,7 +20702,7 @@
         },
         {
           "name": "load_5m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20592,7 +20713,7 @@
         },
         {
           "name": "load_1m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20603,7 +20724,7 @@
         },
         {
           "name": "master",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20613,8 +20734,8 @@
           }
         },
         {
-          "name": "merges_current",
-          "required": true,
+          "name": "merges.current",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20624,8 +20745,8 @@
           }
         },
         {
-          "name": "merges_current_docs",
-          "required": true,
+          "name": "merges.current_docs",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20635,8 +20756,8 @@
           }
         },
         {
-          "name": "merges_current_size",
-          "required": true,
+          "name": "merges.current_size",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20646,8 +20767,8 @@
           }
         },
         {
-          "name": "merges_total",
-          "required": true,
+          "name": "merges.total",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20657,8 +20778,8 @@
           }
         },
         {
-          "name": "merges_total_docs",
-          "required": true,
+          "name": "merges.total_docs",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20668,8 +20789,19 @@
           }
         },
         {
-          "name": "merges_total_time",
-          "required": true,
+          "name": "merges.total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "merges.total_size",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20680,7 +20812,7 @@
         },
         {
           "name": "name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20690,74 +20822,8 @@
           }
         },
         {
-          "name": "node_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node_role",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "percolate_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "percolate_memory",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "percolate_queries",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "percolate_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "percolate_total",
-          "required": true,
+          "name": "node.role",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20768,7 +20834,7 @@
         },
         {
           "name": "pid",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20779,7 +20845,7 @@
         },
         {
           "name": "port",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20789,8 +20855,8 @@
           }
         },
         {
-          "name": "ram_current",
-          "required": true,
+          "name": "query_cache.memory_size",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20800,8 +20866,8 @@
           }
         },
         {
-          "name": "ram_max",
-          "required": true,
+          "name": "query_cache.evictions",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20811,8 +20877,8 @@
           }
         },
         {
-          "name": "ram_percent",
-          "required": true,
+          "name": "query_cache.hit_count",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20822,8 +20888,8 @@
           }
         },
         {
-          "name": "refresh_time",
-          "required": true,
+          "name": "query_cache.miss_count",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20833,8 +20899,8 @@
           }
         },
         {
-          "name": "refresh_total",
-          "required": true,
+          "name": "ram.current",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20844,8 +20910,8 @@
           }
         },
         {
-          "name": "search_fetch_current",
-          "required": true,
+          "name": "ram.max",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20855,8 +20921,8 @@
           }
         },
         {
-          "name": "search_fetch_time",
-          "required": true,
+          "name": "ram.percent",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20866,8 +20932,8 @@
           }
         },
         {
-          "name": "search_fetch_total",
-          "required": true,
+          "name": "refresh.time",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20877,8 +20943,8 @@
           }
         },
         {
-          "name": "search_open_contexts",
-          "required": true,
+          "name": "refresh.total",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20888,8 +20954,8 @@
           }
         },
         {
-          "name": "search_query_current",
-          "required": true,
+          "name": "refresh.external_total",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20899,8 +20965,8 @@
           }
         },
         {
-          "name": "search_query_time",
-          "required": true,
+          "name": "refresh.external_time",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20910,8 +20976,8 @@
           }
         },
         {
-          "name": "search_query_total",
-          "required": true,
+          "name": "refresh.listeners",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20921,8 +20987,8 @@
           }
         },
         {
-          "name": "segments_count",
-          "required": true,
+          "name": "request_cache.memory_size",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20932,8 +20998,8 @@
           }
         },
         {
-          "name": "segments_index_writer_max_memory",
-          "required": true,
+          "name": "request_cache.evictions",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20943,8 +21009,8 @@
           }
         },
         {
-          "name": "segments_index_writer_memory",
-          "required": true,
+          "name": "request_cache.hit_count",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20954,8 +21020,8 @@
           }
         },
         {
-          "name": "segments_memory",
-          "required": true,
+          "name": "request_cache.miss_count",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20965,8 +21031,239 @@
           }
         },
         {
-          "name": "segments_version_map_memory",
-          "required": true,
+          "name": "script.compilations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script.cache_evictions",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script.compilation_limit_triggered",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.fetch_current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.fetch_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.fetch_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.open_contexts",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.query_current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.query_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.query_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.scroll_current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.scroll_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search.scroll_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "segments.count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "segments.index_writer_max_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "segments.index_writer_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "segments.memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "segments.version_map_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "suggest.current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "suggest.time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "suggest.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20977,7 +21274,7 @@
         },
         {
           "name": "uptime",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20988,7 +21285,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
