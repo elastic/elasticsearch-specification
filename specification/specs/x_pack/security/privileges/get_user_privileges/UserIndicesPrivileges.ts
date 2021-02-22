@@ -18,8 +18,9 @@
  */
 
 class UserIndicesPrivileges {
-  field_security: FieldSecuritySettings
+  field_security?: FieldSecuritySettings
   names: string[]
   privileges: string[]
-  query: QueryUserPrivileges
+  query?: QueryUserPrivileges
+  allow_restricted_indices: boolean
 }
