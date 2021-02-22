@@ -51351,8 +51351,30 @@
       },
       "properties": [
         {
-          "name": "script",
+          "name": "_id",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

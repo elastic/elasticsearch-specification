@@ -4607,7 +4607,9 @@ export interface GetScriptRequest extends CommonQueryParameters {
 }
 
 export interface GetScriptResponse {
-  script: StoredScript
+  _id: Id
+  found: boolean
+  script?: StoredScript
 }
 
 export interface GetSnapshotLifecycleManagementStatusRequest extends CommonQueryParameters {
