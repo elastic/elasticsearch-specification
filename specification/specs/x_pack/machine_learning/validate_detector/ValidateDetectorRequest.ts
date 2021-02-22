@@ -25,7 +25,5 @@
  */
 interface ValidateDetectorRequest extends RequestBase {
   query_parameters?: {}
-  body?: {
-    detector?: Detector
-  }
+  body?: Detector
 }

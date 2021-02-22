@@ -3082,12 +3082,16 @@ export interface DetectionRule {
 }
 
 export interface Detector {
-  custom_rules: Array<DetectionRule>
+  by_field_name?: Field
+  custom_rules?: Array<DetectionRule>
   detector_description: string
-  detector_index: integer
-  exclude_frequent: ExcludeFrequent
+  detector_index?: integer
+  exclude_frequent?: ExcludeFrequent
+  field_name?: Field
   function: string
-  use_null: boolean
+  use_null?: boolean
+  over_field_name?: Field
+  partition_field_name?: Field
 }
 
 export interface DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {
@@ -11038,9 +11042,7 @@ export interface UserIndicesPrivileges {
 }
 
 export interface ValidateDetectorRequest extends CommonQueryParameters {
-  body: {
-    detector?: Detector
-  }
+  body: Detector
 }
 
 export interface ValidateDetectorResponse extends AcknowledgedResponseBase {
