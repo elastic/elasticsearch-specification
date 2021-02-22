@@ -18,7 +18,10 @@
  */
 
 class ExplainResponse<TDocument> extends ResponseBase {
-  explanation: ExplanationDetail
-  get: InlineGet<TDocument>
+  _index: IndexName
+  _type?: TypeName
+  _id: Id
   matched: boolean
+  explanation?: ExplanationDetail
+  get?: InlineGet<TDocument>
 }

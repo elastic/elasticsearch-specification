@@ -22,6 +22,7 @@ class InlineGet<TDocument> {
   found: boolean
   _seq_no: long
   _primary_term: long
+  _routing?: Routing
   /** @prop_serializer SourceFormatter`1 */
   _source: TDocument
 }

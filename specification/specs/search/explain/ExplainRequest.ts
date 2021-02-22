@@ -37,10 +37,11 @@ interface ExplainRequest extends RequestBase {
     preference?: string
     query_on_query_string?: string
     routing?: Routing
-    source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
-    stored_fields?: Field[]
+    _source?: boolean | Fields | SourceFilter
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    stored_fields?: Fields
+    q?: string
   }
   body?: {
     query?: QueryContainer
