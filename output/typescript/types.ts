@@ -2614,7 +2614,7 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
   body?: {
-    secure_settings_password: string
+    secure_settings_password?: string
   }
 }
 
