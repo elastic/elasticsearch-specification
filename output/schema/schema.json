@@ -98589,6 +98589,17 @@
       },
       "properties": [
         {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeIds",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "started",
           "required": true,
           "type": {

@@ -9853,6 +9853,7 @@ export interface StartDatafeedRequest extends CommonQueryParameters {
 }
 
 export interface StartDatafeedResponse {
+  node: NodeIds
   started: boolean
 }
 
