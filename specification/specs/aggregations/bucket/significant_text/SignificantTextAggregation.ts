@@ -33,5 +33,5 @@ class SignificantTextAggregation {
   shard_min_doc_count?: long
   shard_size?: integer
   size?: integer
-  source_fields?: Field[]
+  source_fields?: Fields
 }

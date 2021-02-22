@@ -53,8 +53,8 @@ interface UpdateByQueryRequest extends RequestBase {
     slices?: long
     sort?: string[]
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    source_excludes?: Fields
+    source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time

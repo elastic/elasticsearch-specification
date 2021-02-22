@@ -18,6 +18,6 @@
  */
 
 class MatrixAggregation {
-  fields?: Field[]
+  fields?: Fields
   missing?: Dictionary<Field, double>
 }

@@ -26,7 +26,7 @@ class QueryStringQuery extends QueryBase {
   default_operator?: Operator
   enable_position_increments?: boolean
   escape?: boolean
-  fields?: Field[]
+  fields?: Fields
   fuzziness?: Fuzziness
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer

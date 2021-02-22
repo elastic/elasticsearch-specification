@@ -18,5 +18,5 @@
  */
 
 class TermsRollupGrouping {
-  fields: Field[]
+  fields: Fields
 }

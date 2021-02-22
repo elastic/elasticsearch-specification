@@ -30,7 +30,7 @@ interface ClearCacheRequest extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     fielddata?: boolean
-    fields?: Field[]
+    fields?: Fields
     ignore_unavailable?: boolean
     query?: boolean
     request?: boolean

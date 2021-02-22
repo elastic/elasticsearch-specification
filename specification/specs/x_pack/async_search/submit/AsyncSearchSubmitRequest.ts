@@ -37,7 +37,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     collapse?: FieldCollapse
     default_operator?: DefaultOperator
     df?: string
-    docvalue_fields?: Field[]
+    docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     from?: integer
@@ -67,7 +67,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     sort?: Sort[]
     _source?: Union<boolean, SourceFilter>
     stats?: string[]
-    stored_fields?: Field[]
+    stored_fields?: Fields
     suggest?: Dictionary<string, SuggestBucket>
     suggest_field?: Field
     suggest_mode?: SuggestMode

@@ -29,7 +29,7 @@ interface TermVectorsRequest<TDocument> extends RequestBase {
     type?: Type
   }
   query_parameters?: {
-    fields?: Field[]
+    fields?: Fields
     field_statistics?: boolean
     offsets?: boolean
     payloads?: boolean

@@ -18,6 +18,6 @@
  */
 
 class HistogramRollupGrouping {
-  fields: Field[]
+  fields: Fields
   interval: long
 }
