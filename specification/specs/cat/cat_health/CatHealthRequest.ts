@@ -24,7 +24,7 @@
  */
 interface CatHealthRequest extends CatRequestBase {
   query_parameters?: {
-    include_timestamp?: boolean
+    ts?: boolean
   }
   body?: {}
 }
