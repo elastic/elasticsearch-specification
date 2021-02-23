@@ -10134,7 +10134,8 @@ export interface SyncedFlushRequest extends CommonQueryParameters {
   ignore_unavailable?: boolean
 }
 
-export interface SyncedFlushResponse extends ShardsOperationResponseBase {
+export interface SyncedFlushResponse extends DictionaryResponseBase<IndexName, ShardStatistics> {
+  _shards: ShardStatistics
 }
 
 export type SynonymFormat = 'solr' | 'wordnet'
