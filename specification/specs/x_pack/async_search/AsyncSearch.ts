@@ -28,7 +28,7 @@ class AsyncSearch<TDocument> {
   profile: Profile
   _scroll_id: string
   _shards: ShardStatistics
-  suggest: SuggestDictionary<TDocument>
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early: boolean
   timed_out: boolean
   took: long

@@ -17,22 +17,31 @@
  * under the License.
  */
 
-class SuggestOption<TDocument> {
-  collate_match: boolean
+type SuggestOption<TDocument> =
+  CompletionSuggestOption<TDocument>
+  | PhraseSuggestOption
+  | TermSuggestOption
+
+class CompletionSuggestOption<TDocument> {
+  collate_match?: boolean
   contexts: Dictionary<string, Context[]>
   fields: Dictionary<string, UserDefinedValue>
-  freq: long
-  highlighted: string
   _id: string
   _index: IndexName
-  /** This is a comment that will be exposed
-   * @alternate_name SuggestScore
-   * @prop_x he
-   * **/
+  _type?: Type
+  _routing: Routing
   _score: double
-  /** @alternate_name DocumentScore **/
-  score: double
-  /** @prop_serializer SourceFormatter`1 */
   _source: TDocument
   text: string
+}
+
+class PhraseSuggestOption {
+  text: string
+  highlighted: string
+  score: double
+}
+class TermSuggestOption {
+  text: string
+  freq: long
+  score: double
 }

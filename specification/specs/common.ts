@@ -141,6 +141,12 @@ type WaitForActiveShards = byte | WaitForActiveShardOptions
  */
 type AggregateName = string
 
+/**
+ * The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back
+ * in the form of `name#type` instead of simply `name`
+ */
+type SuggestionName = string
+
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {
   field: Field

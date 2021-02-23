@@ -485,7 +485,7 @@ export interface AsyncSearch<TDocument = unknown> {
   profile: Profile
   _scroll_id: string
   _shards: ShardStatistics
-  suggest: SuggestDictionary<TDocument>
+  suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
   terminated_early: boolean
   timed_out: boolean
   took: long
@@ -2206,6 +2206,19 @@ export interface CompletionProperty extends DocValuesPropertyBase {
 export interface CompletionStats {
   size_in_bytes: long
   fields?: Record<Field, CompletionStats>
+}
+
+export interface CompletionSuggestOption<TDocument = unknown> {
+  collate_match?: boolean
+  contexts: Record<string, Array<Context>>
+  fields: Record<string, any>
+  _id: string
+  _index: IndexName
+  _type?: Type
+  _routing: Routing
+  _score: double
+  _source: TDocument
+  text: string
 }
 
 export interface CompletionSuggester {
@@ -5025,7 +5038,7 @@ export interface Hit<TDocument = unknown> {
   _seq_no?: long
   _primary_term?: long
   _version?: long
-  sort?: Array<long | double | string>
+  sort?: Array<long | double | string | null>
 }
 
 export interface HitMetadata<TDocument = unknown> {
@@ -7112,6 +7125,12 @@ export interface PhraseSuggestHighlight {
   pre_tag: string
 }
 
+export interface PhraseSuggestOption {
+  text: string
+  highlighted: string
+  score: double
+}
+
 export interface PhraseSuggester {
   collate: PhraseSuggestCollate
   confidence: double
@@ -8793,7 +8812,7 @@ export interface SearchResponse<TDocument = unknown> {
   profile?: Profile
   pit_id?: string
   _scroll_id?: ScrollId
-  suggest?: SuggestDictionary<TDocument>
+  suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
   terminated_early?: boolean
 }
 
@@ -10078,12 +10097,6 @@ export interface SuggestContextQuery {
   prefix: boolean
 }
 
-export interface SuggestDictionary<T = unknown> {
-  item: Array<Suggest<T>>
-  keys: Array<string>
-  values: Array<Array<Suggest<T>>>
-}
-
 export interface SuggestFuzziness {
   fuzziness: Fuzziness
   min_length: integer
@@ -10094,19 +10107,7 @@ export interface SuggestFuzziness {
 
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
-export interface SuggestOption<TDocument = unknown> {
-  collate_match: boolean
-  contexts: Record<string, Array<Context>>
-  fields: Record<string, any>
-  freq: long
-  highlighted: string
-  _id: string
-  _index: IndexName
-  _score: double
-  score: double
-  _source: TDocument
-  text: string
-}
+export type SuggestOption<TDocument> = CompletionSuggestOption<TDocument> | PhraseSuggestOption | TermSuggestOption
 
 export type SuggestSort = 'score' | 'frequency'
 
@@ -10115,6 +10116,8 @@ export interface Suggester {
   field: Field
   size: integer
 }
+
+export type SuggestionName = string
 
 export interface SumAggregation {
 }
@@ -10234,6 +10237,12 @@ export interface TemplateMapping {
 
 export interface TermQuery extends QueryBase {
   value?: string | float | boolean
+}
+
+export interface TermSuggestOption {
+  text: string
+  freq: long
+  score: double
 }
 
 export interface TermSuggester {
