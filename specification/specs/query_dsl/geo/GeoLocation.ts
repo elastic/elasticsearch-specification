@@ -18,13 +18,13 @@
  */
 
 class TwoDimensionalPoint {
-  lat: double;
-  lon: double;
+  lat: double
+  lon: double
 }
 class ThreeDimensionalPoint {
-  lat: double;
-  lon: double;
-  z?: double;
+  lat: double
+  lon: double
+  z?: double
 }
 /**
  * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point

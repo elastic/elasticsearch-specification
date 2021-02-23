@@ -44,8 +44,9 @@ class RareTermsBucket<TKey>
 class SignificantTermsBucket<TKey>
   implements AdditionalProperties<AggregateName, Aggregate> {}
 
-class KeyedBucket<TKey> implements AdditionalProperties<AggregateName, Aggregate> {
-  doc_count: long;
+class KeyedBucket<TKey>
+  implements AdditionalProperties<AggregateName, Aggregate> {
+  doc_count: long
   key: TKey
   key_as_string: string
 }
@@ -101,7 +102,9 @@ class KeyedValueAggregate extends ValueAggregate {
   keys: string[]
 }
 
-class AutoDateHistogramAggregate extends MultiBucketAggregate<KeyedBucket<long>> {
+class AutoDateHistogramAggregate extends MultiBucketAggregate<
+  KeyedBucket<long>
+> {
   interval: DateMathTime
 }
 
