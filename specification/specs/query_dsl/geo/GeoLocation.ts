@@ -17,8 +17,21 @@
  * under the License.
  */
 
-@class_serializer('GeoLocationFormatter')
-class GeoLocation {
-  lat?: double
-  lon?: double
+class TwoDimensionalPoint {
+  lat: double;
+  lon: double;
 }
+class ThreeDimensionalPoint {
+  lat: double;
+  lon: double;
+  z?: double;
+}
+/**
+ * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
+ */
+type GeoCoordinate = double[] | ThreeDimensionalPoint
+
+/**
+ * Represents a Latitude/Longitude as a 2 dimensional point
+ */
+type GeoLocation = double[] | TwoDimensionalPoint

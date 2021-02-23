@@ -17,7 +17,18 @@
  * under the License.
  */
 
-@class_serializer('GeoCoordinateFormatter')
-class GeoCoordinate extends GeoLocation {
-  z?: double
+class GeoLineAggregation {
+  point: GeoLinePoint
+  sort: GeoLineSort
+  include_sort?: boolean
+  sort_order?: SortOrder
+  size?: integer
+}
+
+class GeoLineSort {
+  field: Field
+}
+
+class GeoLinePoint {
+  field: Field
 }

@@ -37,6 +37,7 @@ LoadAverageStats,cluster/nodes_stats/LoadAverageStats.ts
 DynamicResponseBase,common_abstractions/response/DynamicResponseBase.ts
 DateMathExpression,common_options/date_math/DateMathExpression.ts
 DateMathOperation,common_options/date_math/DateMathOperation.ts
+DateMathTimeParsed,common_options/date_math/DateMathTime.ts
 TimeUnit,common_options/time_unit/TimeUnit.ts
 Normalization,index_modules/similarity/Normalization.ts
 FieldType,mapping/types/FieldType.ts
