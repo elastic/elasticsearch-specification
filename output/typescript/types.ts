@@ -2800,20 +2800,20 @@ export interface DeleteByQueryRequest extends CommonQueryParameters {
 }
 
 export interface DeleteByQueryResponse {
-  batches: long
-  deleted: long
-  failures: Array<BulkIndexByScrollFailure>
-  noops: long
-  requests_per_second: float
-  retries: Retries
-  slice_id: integer
-  task: TaskId
-  throttled_millis: long
-  throttled_until_millis: long
-  timed_out: boolean
-  took: long
-  total: long
-  version_conflicts: long
+  batches?: long
+  deleted?: long
+  failures?: Array<BulkIndexByScrollFailure>
+  noops?: long
+  requests_per_second?: float
+  retries?: Retries
+  slice_id?: integer
+  task?: TaskId
+  throttled_millis?: long
+  throttled_until_millis?: long
+  timed_out?: boolean
+  took?: long
+  total?: long
+  version_conflicts?: long
 }
 
 export interface DeleteByQueryRethrottleRequest extends CommonQueryParameters {
@@ -9480,7 +9480,7 @@ export interface SlackMessage {
 }
 
 export interface SlicedScroll {
-  field: Field
+  field?: Field
   id: integer
   max: integer
 }
