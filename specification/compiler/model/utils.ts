@@ -171,7 +171,7 @@ export function modelType (node: Node): model.ValueOf {
 
     case ts.SyntaxKind.TypeParameter: {
       assert(Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind.TypeReference} but ${node.getKind()} instead`)
-      const name = node.compilerNode.getText() as string
+      const name = node.compilerNode.getText()
       const type: model.InstanceOf = {
         kind: 'instance_of',
         type: {
