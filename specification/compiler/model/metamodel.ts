@@ -242,6 +242,8 @@ export class Enum extends BaseType {
 export class TypeAlias extends BaseType {
   kind: 'type_alias'
   type: ValueOf
+  /** generic parameters: either concrete types or open parameters from the enclosing type */
+  generics?: ValueOf[]
 }
 
 // ------------------------------------------------------------------------------------------------

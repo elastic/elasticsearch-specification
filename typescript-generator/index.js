@@ -203,7 +203,7 @@ function createEnum (type) {
 }
 
 function createAlias (type) {
-  return `export type ${type.name.name} = ${buildType(type.type)}\n`
+  return `export type ${type.name.name}${buildGenerics(type)} = ${buildType(type.type)}\n`
 }
 
 function buildInherits (type) {

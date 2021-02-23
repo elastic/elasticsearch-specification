@@ -169,6 +169,18 @@ export function modelType (node: Node): model.ValueOf {
       return modelType(node.getLiteral())
     }
 
+    case ts.SyntaxKind.TypeParameter: {
+      assert(Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind.TypeReference} but ${node.getKind()} instead`)
+      const name = node.compilerNode.getText()
+      const type: model.InstanceOf = {
+        kind: 'instance_of',
+        type: {
+          name,
+          namespace: getNameSpace(node)
+        }
+      }
+      return type
+    }
     case ts.SyntaxKind.TypeReference: {
       // TypeReferences are fun types, it's basically how TypeScript defines
       // everything that is not a basic type, an interface or a class will
@@ -384,6 +396,7 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
       acc[val.name] = val.value
       return acc
     }, {})
+  const generics = declaration.getTypeParameters().map(node => modelType(node))
 
   return {
     name: {
@@ -392,7 +405,8 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     },
     kind: 'type_alias',
     type: modelType(type),
-    ...(Object.keys(annotations).length > 0 && { annotations })
+    ...(Object.keys(annotations).length > 0 && { annotations }),
+    ...(generics.length > 0 && { generics })
   }
 }
 

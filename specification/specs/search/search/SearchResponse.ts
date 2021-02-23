@@ -32,6 +32,6 @@ class SearchResponse<TDocument> extends ResponseBase {
   profile?: Profile
   pit_id?: string
   _scroll_id?: ScrollId
-  suggest?: SuggestDictionary<TDocument>
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean
 }
