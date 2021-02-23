@@ -18,7 +18,7 @@
  */
 
 type SuggestOption<TDocument> =
-  CompletionSuggestOption<TDocument>
+  | CompletionSuggestOption<TDocument>
   | PhraseSuggestOption
   | TermSuggestOption
 
@@ -40,6 +40,7 @@ class PhraseSuggestOption {
   highlighted: string
   score: double
 }
+
 class TermSuggestOption {
   text: string
   freq: long
