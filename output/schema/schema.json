@@ -10657,6 +10657,17 @@
           }
         },
         {
+          "name": "line",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLineAggregation",
+              "namespace": "aggregations.metric.geo_line"
+            }
+          }
+        },
+        {
           "name": "matrix_stats",
           "required": false,
           "type": {
@@ -14934,8 +14945,26 @@
     {
       "inherits": [
         {
+          "generics": [
+            {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "KeyedBucket",
+                "namespace": "aggregations"
+              }
+            }
+          ],
           "type": {
-            "name": "AggregateBase",
+            "name": "MultiBucketAggregate",
             "namespace": "aggregations"
           }
         }
@@ -34195,9 +34224,23 @@
       }
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "DateMathTime",
+        "namespace": "common_options.date_math"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DateMathTimeParsed",
         "namespace": "common_options.date_math"
       },
       "properties": [
@@ -42408,8 +42451,19 @@
       },
       "properties": [
         {
-          "name": "sum_of_squares",
+          "name": "std_deviation_bounds",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StandardDeviationBounds",
+              "namespace": "aggregations"
+            }
+          }
+        },
+        {
+          "name": "sum_of_squares",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42420,7 +42474,7 @@
         },
         {
           "name": "variance",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42431,7 +42485,7 @@
         },
         {
           "name": "variance_population",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42442,7 +42496,7 @@
         },
         {
           "name": "variance_sampling",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42453,7 +42507,7 @@
         },
         {
           "name": "std_deviation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42464,7 +42518,7 @@
         },
         {
           "name": "std_deviation_population",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42475,23 +42529,12 @@
         },
         {
           "name": "std_deviation_sampling",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "double",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "std_deviation_bounds",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StandardDeviationBounds",
-              "namespace": "aggregations"
             }
           }
         }
@@ -46657,32 +46700,33 @@
       "properties": []
     },
     {
-      "inherits": [
-        {
-          "type": {
-            "name": "GeoLocation",
-            "namespace": "query_dsl.geo"
-          }
-        }
-      ],
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "GeoCoordinate",
         "namespace": "query_dsl.geo"
       },
-      "properties": [
-        {
-          "name": "z",
-          "required": false,
-          "type": {
+      "type": {
+        "items": [
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "internal"
+              "name": "ThreeDimensionalPoint",
+              "namespace": "query_dsl.geo"
             }
           }
-        }
-      ]
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "interface",
@@ -47034,35 +47078,221 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "AggregateBase",
+            "namespace": "aggregations"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
-        "name": "GeoLocation",
-        "namespace": "query_dsl.geo"
+        "name": "GeoLineAggregate",
+        "namespace": "aggregations"
       },
       "properties": [
         {
-          "name": "lat",
-          "required": false,
+          "name": "type",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
-          "name": "lon",
+          "name": "geometry",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LineStringGeoShape",
+              "namespace": "aggregations"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLineProperties",
+              "namespace": "aggregations"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GeoLineAggregation",
+        "namespace": "aggregations.metric.geo_line"
+      },
+      "properties": [
+        {
+          "name": "point",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLinePoint",
+              "namespace": "aggregations.metric.geo_line"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLineSort",
+              "namespace": "aggregations.metric.geo_line"
+            }
+          }
+        },
+        {
+          "name": "include_sort",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "sort_order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GeoLinePoint",
+        "namespace": "aggregations.metric.geo_line"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GeoLineProperties",
+        "namespace": "aggregations"
+      },
+      "properties": [
+        {
+          "name": "complete",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "sort_values",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GeoLineSort",
+        "namespace": "aggregations.metric.geo_line"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoLocation",
+        "namespace": "query_dsl.geo"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TwoDimensionalPoint",
+              "namespace": "query_dsl.geo"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "enum",
@@ -61774,7 +62004,41 @@
         "name": "KeyedBucket",
         "namespace": "aggregations"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TKey",
+              "namespace": "aggregations"
+            }
+          }
+        },
+        {
+          "name": "key_as_string",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -63394,6 +63658,29 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LineStringGeoShape",
+        "namespace": "aggregations"
+      },
+      "properties": [
+        {
+          "name": "coordinates",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoCoordinate",
+                "namespace": "query_dsl.geo"
+              }
             }
           }
         }
@@ -65125,6 +65412,13 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoCentroidAggregate",
+              "namespace": "aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLineAggregate",
               "namespace": "aggregations"
             }
           },
@@ -87557,7 +87851,15 @@
         "name": "ScriptedMetricAggregate",
         "namespace": "aggregations"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -98462,7 +98764,7 @@
       "properties": [
         {
           "name": "lower",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98473,7 +98775,7 @@
         },
         {
           "name": "upper",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98484,7 +98786,7 @@
         },
         {
           "name": "lower_population",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98495,7 +98797,7 @@
         },
         {
           "name": "upper_population",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98506,7 +98808,7 @@
         },
         {
           "name": "lower_sampling",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98517,7 +98819,7 @@
         },
         {
           "name": "upper_sampling",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99125,40 +99427,7 @@
       },
       "properties": [
         {
-          "name": "avg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "min",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -99171,6 +99440,39 @@
         {
           "name": "sum",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "min",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100101,14 +100403,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "double",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "distribution",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -103510,6 +103812,48 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ThreeDimensionalPoint",
+        "namespace": "query_dsl.geo"
+      },
+      "properties": [
+        {
+          "name": "lat",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lon",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "z",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ThrottleState",
         "namespace": "x_pack.watcher.acknowledge_watch"
       },
@@ -104816,6 +105160,94 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "TopMetrics",
+        "namespace": "aggregations"
+      },
+      "properties": [
+        {
+          "name": "sort",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "long",
+                      "namespace": "internal"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "double",
+                      "namespace": "internal"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  }
+                ],
+                "kind": "union_of"
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Array",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metrics",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -104831,29 +105263,15 @@
       },
       "properties": [
         {
-          "name": "sort",
+          "name": "top",
           "required": true,
           "type": {
             "kind": "array_of",
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "double",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "metrics",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "internal"
+                "name": "TopMetrics",
+                "namespace": "aggregations"
               }
             }
           }
@@ -106273,6 +106691,37 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TwoDimensionalPoint",
+        "namespace": "query_dsl.geo"
+      },
+      "properties": [
+        {
+          "name": "lat",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lon",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
               "namespace": "internal"
             }
           }

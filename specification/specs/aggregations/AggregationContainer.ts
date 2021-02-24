@@ -48,6 +48,7 @@ class AggregationContainer {
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
+  line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation

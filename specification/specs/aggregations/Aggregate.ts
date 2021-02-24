@@ -43,8 +43,13 @@ class RareTermsBucket<TKey>
   implements AdditionalProperties<AggregateName, Aggregate> {}
 class SignificantTermsBucket<TKey>
   implements AdditionalProperties<AggregateName, Aggregate> {}
+
 class KeyedBucket<TKey>
-  implements AdditionalProperties<AggregateName, Aggregate> {}
+  implements AdditionalProperties<AggregateName, Aggregate> {
+  doc_count: long
+  key: TKey
+  key_as_string: string
+}
 
 type Aggregate =
   | SingleBucketAggregate
@@ -64,6 +69,7 @@ type MetricAggregate =
   | BoxPlotAggregate
   | GeoBoundsAggregate
   | GeoCentroidAggregate
+  | GeoLineAggregate
   | PercentilesAggregate
   | ScriptedMetricAggregate
   | StatsAggregate
@@ -96,7 +102,9 @@ class KeyedValueAggregate extends ValueAggregate {
   keys: string[]
 }
 
-class AutoDateHistogramAggregate extends AggregateBase {
+class AutoDateHistogramAggregate extends MultiBucketAggregate<
+  KeyedBucket<long>
+> {
   interval: DateMathTime
 }
 
@@ -151,31 +159,36 @@ class BoxPlotAggregate extends AggregateBase {
 }
 
 class StatsAggregate extends AggregateBase {
-  avg: double
   count: double
-  max: double
-  min: double
   sum: double
+
+  // not returned if count is 0
+  avg?: double
+  max?: double
+  min?: double
 }
 
+// extended stats can return a completely empty object hence all optional "std_deviation_bounds": {},
 class StandardDeviationBounds {
-  lower: double
-  upper: double
-  lower_population: double
-  upper_population: double
-  lower_sampling: double
-  upper_sampling: double
+  lower?: double
+  upper?: double
+  lower_population?: double
+  upper_population?: double
+  lower_sampling?: double
+  upper_sampling?: double
 }
 
 class ExtendedStatsAggregate extends StatsAggregate {
-  sum_of_squares: double
-  variance: double
-  variance_population: double
-  variance_sampling: double
-  std_deviation: double
-  std_deviation_population: double
-  std_deviation_sampling: double
+  // if count is 0 this is an empty object
   std_deviation_bounds: StandardDeviationBounds
+
+  sum_of_squares?: double
+  variance?: double
+  variance_population?: double
+  variance_sampling?: double
+  std_deviation?: double
+  std_deviation_population?: double
+  std_deviation_sampling?: double
 }
 class GeoBounds {
   bottom_right: LatLon
@@ -188,6 +201,18 @@ class GeoBoundsAggregate extends AggregateBase {
 class GeoCentroidAggregate extends AggregateBase {
   count: long
   location: GeoLocation
+}
+class GeoLineAggregate extends AggregateBase {
+  type: string
+  geometry: LineStringGeoShape
+  properties: GeoLineProperties
+}
+class GeoLineProperties {
+  complete: boolean
+  sort_values: double[]
+}
+class LineStringGeoShape {
+  coordinates: GeoCoordinate[]
 }
 
 class PercentileItem {
@@ -209,16 +234,17 @@ class HdrPercentilesAggregate extends AggregateBase {
   values: HdrPercentileItem[]
 }
 
-//hard
-class ScriptedMetricAggregate extends AggregateBase {}
+class ScriptedMetricAggregate extends AggregateBase {
+  value: UserDefinedValue
+}
 
 class StringStatsAggregate extends AggregateBase {
   count: long
   min_length: integer
   max_length: integer
   avg_length: double
-  entropy: long
-  distribution: Dictionary<string, double>
+  entropy: double
+  distribution?: Dictionary<string, double>
 }
 
 //hard
@@ -226,8 +252,11 @@ class TopHitsAggregate extends AggregateBase {
   hits: HitsMetadata<Dictionary<string, UserDefinedValue>>
 }
 
-//TODO wrong on purpose
 class TopMetricsAggregate extends AggregateBase {
-  sort: double[]
-  metrics: double[]
+  top: TopMetrics[]
+}
+
+class TopMetrics {
+  sort: Array<long | double | string>
+  metrics: Dictionary<string, long | double | string>
 }

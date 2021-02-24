@@ -153,6 +153,7 @@ export interface AggregationContainer {
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
+  line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
@@ -609,7 +610,7 @@ export interface AuthenticateResponse {
   authentication_type: string
 }
 
-export interface AutoDateHistogramAggregate extends AggregateBase {
+export interface AutoDateHistogramAggregate extends MultiBucketAggregate<KeyedBucket<long>> {
   interval: DateMathTime
 }
 
@@ -2665,7 +2666,9 @@ export type DateMathExpression = string
 
 export type DateMathOperation = '+' | '-'
 
-export interface DateMathTime {
+export type DateMathTime = string
+
+export interface DateMathTimeParsed {
   factor: integer
   interval: DateMathTimeUnit
 }
@@ -3600,14 +3603,14 @@ export interface ExtendedMemoryStats extends MemoryStats {
 }
 
 export interface ExtendedStatsAggregate extends StatsAggregate {
-  sum_of_squares: double
-  variance: double
-  variance_population: double
-  variance_sampling: double
-  std_deviation: double
-  std_deviation_population: double
-  std_deviation_sampling: double
   std_deviation_bounds: StandardDeviationBounds
+  sum_of_squares?: double
+  variance?: double
+  variance_population?: double
+  variance_sampling?: double
+  std_deviation?: double
+  std_deviation_population?: double
+  std_deviation_sampling?: double
 }
 
 export interface ExtendedStatsAggregation {
@@ -4102,9 +4105,7 @@ export interface GeoCentroidAggregate extends AggregateBase {
 export interface GeoCentroidAggregation {
 }
 
-export interface GeoCoordinate extends GeoLocation {
-  z?: double
-}
+export type GeoCoordinate = Array<double> | ThreeDimensionalPoint
 
 export interface GeoDistanceAggregation {
   distance_type?: GeoDistanceType
@@ -4146,10 +4147,34 @@ export interface GeoIpProcessor extends ProcessorBase {
   target_field: Field
 }
 
-export interface GeoLocation {
-  lat?: double
-  lon?: double
+export interface GeoLineAggregate extends AggregateBase {
+  type: string
+  geometry: LineStringGeoShape
+  properties: GeoLineProperties
 }
+
+export interface GeoLineAggregation {
+  point: GeoLinePoint
+  sort: GeoLineSort
+  include_sort?: boolean
+  sort_order?: SortOrder
+  size?: integer
+}
+
+export interface GeoLinePoint {
+  field: Field
+}
+
+export interface GeoLineProperties {
+  complete: boolean
+  sort_values: Array<double>
+}
+
+export interface GeoLineSort {
+  field: Field
+}
+
+export type GeoLocation = Array<double> | TwoDimensionalPoint
 
 export type GeoOrientation = 'ClockWise' | 'CounterClockWise'
 
@@ -5783,6 +5808,9 @@ export interface KeyValueProcessor extends ProcessorBase {
 }
 
 export interface KeyedBucketKeys<TKey = unknown> {
+  doc_count: long
+  key: TKey
+  key_as_string: string
 }
 export type KeyedBucket<TKey = unknown> = KeyedBucketKeys<TKey> |
     { [property: string]: Aggregate }
@@ -5967,6 +5995,10 @@ export interface LimitTokenCountTokenFilter extends TokenFilterBase {
 
 export interface Limits {
   max_model_memory_limit: string
+}
+
+export interface LineStringGeoShape {
+  coordinates: Array<GeoCoordinate>
 }
 
 export interface LinearInterpolationSmoothingModel {
@@ -6164,7 +6196,7 @@ export interface MergesStats {
   total_time_in_millis: long
 }
 
-export type MetricAggregate = ValueAggregate | BoxPlotAggregate | GeoBoundsAggregate | GeoCentroidAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | ExtendedStatsAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
+export type MetricAggregate = ValueAggregate | BoxPlotAggregate | GeoBoundsAggregate | GeoCentroidAggregate | GeoLineAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | ExtendedStatsAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
 
 export interface MetricAggregation {
   field?: Field
@@ -8647,6 +8679,7 @@ export interface ScriptedHeuristic {
 }
 
 export interface ScriptedMetricAggregate extends AggregateBase {
+  value: any
 }
 
 export interface ScriptedMetricAggregation {
@@ -9848,12 +9881,12 @@ export interface StandardAnalyzer extends AnalyzerBase {
 }
 
 export interface StandardDeviationBounds {
-  lower: double
-  upper: double
-  lower_population: double
-  upper_population: double
-  lower_sampling: double
-  upper_sampling: double
+  lower?: double
+  upper?: double
+  lower_population?: double
+  upper_population?: double
+  lower_sampling?: double
+  upper_sampling?: double
 }
 
 export interface StandardTokenizer extends TokenizerBase {
@@ -9929,11 +9962,11 @@ export interface StartWatcherResponse extends AcknowledgedResponseBase {
 }
 
 export interface StatsAggregate extends AggregateBase {
-  avg: double
   count: double
-  max: double
-  min: double
   sum: double
+  avg?: double
+  max?: double
+  min?: double
 }
 
 export interface StatsAggregation {
@@ -10052,8 +10085,8 @@ export interface StringStatsAggregate extends AggregateBase {
   min_length: integer
   max_length: integer
   avg_length: double
-  entropy: long
-  distribution: Record<string, double>
+  entropy: double
+  distribution?: Record<string, double>
 }
 
 export interface StringStatsAggregation {
@@ -10421,6 +10454,12 @@ export interface ThreadStats {
 
 export type ThreadType = 'cpu' | 'wait' | 'block'
 
+export interface ThreeDimensionalPoint {
+  lat: double
+  lon: double
+  z?: double
+}
+
 export interface ThrottleState {
   reason: string
   timestamp: DateString
@@ -10523,9 +10562,13 @@ export interface TopHitsAggregation {
   seq_no_primary_term?: boolean
 }
 
+export interface TopMetrics {
+  sort: Array<long | double | string>
+  metrics: Record<string, long | double | string>
+}
+
 export interface TopMetricsAggregate extends AggregateBase {
-  sort: Array<double>
-  metrics: Array<double>
+  top: Array<TopMetrics>
 }
 
 export interface TopMetricsAggregation {
@@ -10714,6 +10757,11 @@ export interface TrimTokenFilter extends TokenFilterBase {
 
 export interface TruncateTokenFilter extends TokenFilterBase {
   length: integer
+}
+
+export interface TwoDimensionalPoint {
+  lat: double
+  lon: double
 }
 
 export type Type = string
