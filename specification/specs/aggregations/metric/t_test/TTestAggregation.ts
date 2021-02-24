@@ -20,7 +20,7 @@
 class TTestAggregation extends Aggregation {
   a?: TestPopulation
   b?: TestPopulation
-  type?: string
+  type?: TTestType
 }
 class TestPopulation {
   field: Field
