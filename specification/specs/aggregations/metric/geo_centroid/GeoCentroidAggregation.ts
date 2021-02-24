@@ -18,6 +18,6 @@
  */
 
 class GeoCentroidAggregation extends MetricAggregationBase {
-  count?:long
+  count?: long
   location?: GeoLocation
 }

@@ -30,15 +30,15 @@ type MovingAverageSettings =
   | HoltLinearModelSettings
   | HoltWintersModelSettings
 
-class EwmaModelSettings  {
+class EwmaModelSettings {
   alpha?: float
 }
 
-class HoltLinearModelSettings  {
+class HoltLinearModelSettings {
   alpha?: float
   beta?: float
 }
-class HoltWintersModelSettings  {
+class HoltWintersModelSettings {
   alpha?: float
   beta?: float
   gamma?: float
@@ -52,7 +52,3 @@ enum HoltWintersType {
   /** @alternate_name Multiplicative */
   mult
 }
-
-
-
-

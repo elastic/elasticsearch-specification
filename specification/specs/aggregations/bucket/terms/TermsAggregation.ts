@@ -34,5 +34,7 @@ class TermsAggregation extends BucketAggregationBase {
   size?: integer
 }
 
-type TermsAggregationOrder = SortOrder | Dictionary<string, SortOrder> | Dictionary<string, SortOrder>[]
-
+type TermsAggregationOrder =
+  | SortOrder
+  | Dictionary<string, SortOrder>
+  | Dictionary<string, SortOrder>[]

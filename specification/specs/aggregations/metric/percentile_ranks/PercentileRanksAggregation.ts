@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class PercentileRanksAggregation extends FormatMetricAggregationBase{
+class PercentileRanksAggregation extends FormatMetricAggregationBase {
   keyed?: boolean
   values?: double[]
   hdr?: HdrMethod

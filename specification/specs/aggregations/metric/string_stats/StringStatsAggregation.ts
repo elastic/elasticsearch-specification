@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class StringStatsAggregation extends MetricAggregationBase{
+class StringStatsAggregation extends MetricAggregationBase {
   show_distribution?: boolean
 }

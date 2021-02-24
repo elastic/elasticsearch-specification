@@ -18,6 +18,6 @@
  */
 
 class HistogramOrder {
-  _count?:SortOrder
-  _key?:SortOrder
+  _count?: SortOrder
+  _key?: SortOrder
 }

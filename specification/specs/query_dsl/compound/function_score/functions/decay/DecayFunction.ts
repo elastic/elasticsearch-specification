@@ -17,7 +17,4 @@
  * under the License.
  */
 
-class DecayFunctionBase extends ScoreFunctionBase {
-
-}
-
+class DecayFunctionBase extends ScoreFunctionBase {}

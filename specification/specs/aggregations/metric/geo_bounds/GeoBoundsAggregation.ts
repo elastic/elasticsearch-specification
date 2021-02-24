@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class GeoBoundsAggregation extends MetricAggregationBase{
+class GeoBoundsAggregation extends MetricAggregationBase {
   wrap_longitude?: boolean
 }

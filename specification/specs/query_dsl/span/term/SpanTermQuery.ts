@@ -19,5 +19,5 @@
 
 @class_serializer('FieldNameQueryFormatter`2')
 class SpanTermQuery extends QueryBase {
-  value: string;
+  value: string
 }

@@ -25,4 +25,3 @@ enum RateMode {
   sum,
   value_count
 }
-

@@ -49,9 +49,7 @@ class QueryContainer {
   match_bool_prefix?: NamedQuery<Union<MatchBoolPrefixQuery, string>>
   match_none?: MatchNoneQuery
   match_phrase?: NamedQuery<Union<MatchPhraseQuery, string>>
-  match_phrase_prefix?: NamedQuery<
-    Union<MatchPhrasePrefixQuery, string>
-  >
+  match_phrase_prefix?: NamedQuery<Union<MatchPhrasePrefixQuery, string>>
   more_like_this?: MoreLikeThisQuery
   multi_match?: MultiMatchQuery
   nested?: NestedQuery

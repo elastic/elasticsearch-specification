@@ -30,7 +30,6 @@ type Sort = SortCombinations | SortCombinations[]
 
 type SortResults = Array<long | double | string | null>
 
-
 /*
 sort?:
 | string
