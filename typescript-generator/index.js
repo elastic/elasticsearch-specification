@@ -213,11 +213,7 @@ function buildInherits (type) {
   return ` extends ${inherits.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type) {
-    let name = type.type.name;
-    if (name === 'Dictionary') {
-      name = 'Record'
-    }
-    return `${name}${buildGenerics(type)}`
+    return `${type.type.name}${buildGenerics(type)}`
   }
 }
 
