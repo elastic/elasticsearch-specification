@@ -17,19 +17,14 @@
  * under the License.
  */
 
-class TopHitsAggregation {
+class TopHitsAggregation extends MetricAggregationBase {
   docvalue_fields?: Fields
   explain?: boolean
   from?: integer
   highlight?: Highlight
   script_fields?: Dictionary<string, ScriptField>
   size?: integer
-  sort?:
-    | string
-    | Dictionary<Field, Sort | SortOrder | NestedSort>
-    | Array<
-        SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
-      >
+  sort?: Sort
   _source?: boolean | SourceFilter | Field
   stored_fields?: Fields
   track_scores?: boolean

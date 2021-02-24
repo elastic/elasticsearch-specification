@@ -17,11 +17,9 @@
  * under the License.
  */
 
-class PercentilesAggregation {
+class PercentilesAggregation extends FormatMetricAggregationBase {
   keyed?: boolean
   percents?: double[]
-  field?: Field
-  missing?: Missing
   hdr?: HdrMethod
   tdigest?: TDigest
 }

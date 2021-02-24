@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class TermsAggregation {
+class TermsAggregation extends BucketAggregationBase {
   collect_mode?: TermsAggregationCollectMode
   exclude?: string | string[]
   execution_hint?: TermsAggregationExecutionHint
@@ -25,10 +25,14 @@ class TermsAggregation {
   include?: string | string[] | TermsInclude
   min_doc_count?: integer
   missing?: Missing
+  missing_bucket?: boolean
   value_type?: string
-  order?: Dictionary<string, SortOrder>
+  order?: TermsAggregationOrder
   script?: Script
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
 }
+
+type TermsAggregationOrder = SortOrder | Dictionary<string, SortOrder> | Dictionary<string, SortOrder>[]
+

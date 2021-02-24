@@ -17,9 +17,9 @@
  * under the License.
  */
 
-class BucketSortAggregation {
+class BucketSortAggregation extends Aggregation {
   from?: integer
   gap_policy?: GapPolicy
   size?: integer
-  sort?: Sort[]
+  sort?: Sort
 }

@@ -19,5 +19,7 @@
 
 enum SortOrder {
   asc = 0,
-  desc = 1
+  desc = 1,
+   /** @alternate_name Document */
+  _doc = 2
 }

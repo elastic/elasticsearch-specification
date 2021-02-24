@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class HistogramAggregation {
+class HistogramAggregation extends BucketAggregationBase {
   extended_bounds?: ExtendedBounds<double>
   hard_bounds?: ExtendedBounds<double>
   field?: Field

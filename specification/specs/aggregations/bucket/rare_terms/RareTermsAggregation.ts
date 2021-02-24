@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class RareTermsAggregation {
+class RareTermsAggregation extends BucketAggregationBase {
   exclude?: string | string[]
   field?: Field
   include?: string | string[] | TermsInclude

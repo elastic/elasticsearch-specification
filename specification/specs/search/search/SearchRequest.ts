@@ -66,7 +66,7 @@ interface SearchRequest extends RequestBase {
     q?: string
     size?: integer
     from?: integer
-    sort?: SortOptions | SortOptions[]
+    sort?: string[]
   }
   body?: {
     aggs?: Dictionary<string, AggregationContainer>
@@ -88,7 +88,7 @@ interface SearchRequest extends RequestBase {
     search_after?: Array<integer | string>
     size?: integer
     slice?: SlicedScroll
-    sort?: SortOptions | SortOptions[]
+    sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
     suggest?: Dictionary<string, SuggestBucket>

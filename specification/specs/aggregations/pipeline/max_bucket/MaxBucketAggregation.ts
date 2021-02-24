@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class MaxBucketAggregation {}
+class MaxBucketAggregation extends PipelineAggregationBase {}

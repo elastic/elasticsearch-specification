@@ -17,8 +17,7 @@
  * under the License.
  */
 
-@class_serializer('ScoreFunctionJsonFormatter')
-class ScoreFunction {
+class ScoreFunctionBase {
   filter?: QueryContainer
   weight?: double
 }

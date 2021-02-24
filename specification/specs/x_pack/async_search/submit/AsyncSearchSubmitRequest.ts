@@ -64,7 +64,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
-    sort?: Sort[]
+    sort?: Sort
     _source?: Union<boolean, SourceFilter>
     stats?: string[]
     stored_fields?: Fields

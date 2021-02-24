@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class GlobalAggregation {}
+class GlobalAggregation extends BucketAggregationBase {}

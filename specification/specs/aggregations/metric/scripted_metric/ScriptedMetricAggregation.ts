@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class ScriptedMetricAggregation {
+class ScriptedMetricAggregation extends MetricAggregationBase {
   combine_script?: Script
   init_script?: Script
   map_script?: Script

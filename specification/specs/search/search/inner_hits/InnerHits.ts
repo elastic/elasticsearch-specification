@@ -29,7 +29,7 @@ class InnerHits {
   script_fields?: Dictionary<string, ScriptField>
   seq_no_primary_term?: boolean
   fields?: Fields
-  sort?: Array<SingleKeyDictionary<Union<Sort, SortOrder>>>
+  sort?: Sort
   _source?: Union<boolean, SourceFilter>
   version?: boolean
 }

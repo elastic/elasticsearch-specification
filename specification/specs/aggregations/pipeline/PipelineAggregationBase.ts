@@ -17,7 +17,8 @@
  * under the License.
  */
 
-enum HoltWintersType {
-  add = 0,
-  mult = 1
+class PipelineAggregationBase extends Aggregation {
+  buckets_path?: BucketsPath
+  format?: string
+  gap_policy?: GapPolicy
 }

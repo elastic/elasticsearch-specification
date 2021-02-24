@@ -18,7 +18,7 @@
  */
 
 class ScriptBase {
-  lang: string
+  lang?: string
   params?: Dictionary<string, UserDefinedValue>
 }
 

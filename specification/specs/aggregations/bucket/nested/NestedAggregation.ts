@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class NestedAggregation {
+class NestedAggregation extends BucketAggregationBase {
   path?: Field
 }

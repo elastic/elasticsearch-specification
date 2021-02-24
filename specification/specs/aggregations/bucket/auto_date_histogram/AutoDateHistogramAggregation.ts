@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class AutoDateHistogramAggregation {
+class AutoDateHistogramAggregation extends BucketAggregationBase {
   buckets?: integer
   field?: Field
   format?: string

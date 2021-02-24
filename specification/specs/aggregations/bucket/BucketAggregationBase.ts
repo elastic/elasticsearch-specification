@@ -17,8 +17,6 @@
  * under the License.
  */
 
-enum SamplerAggregationExecutionHint {
-  map = 0,
-  global_ordinals = 1,
-  bytes_hash = 2
+class BucketAggregationBase extends Aggregation {
+  aggregations?: Dictionary<string, AggregationContainer>
 }

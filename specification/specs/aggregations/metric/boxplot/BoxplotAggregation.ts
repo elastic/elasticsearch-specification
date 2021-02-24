@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class BoxplotAggregation {
+class BoxplotAggregation extends MetricAggregationBase {
   compression?: double
 }

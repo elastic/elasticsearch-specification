@@ -17,10 +17,9 @@
  * under the License.
  */
 
-class PercentileRanksAggregation {
+class PercentileRanksAggregation extends FormatMetricAggregationBase{
   keyed?: boolean
   values?: double[]
-  field?: Field
   hdr?: HdrMethod
   tdigest?: TDigest
 }

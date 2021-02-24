@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class MissingAggregation {
+class MissingAggregation extends BucketAggregationBase {
   field?: Field
   missing?: Missing
 }

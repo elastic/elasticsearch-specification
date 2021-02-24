@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class CompositeAggregation {
+class CompositeAggregation extends BucketAggregationBase {
   after?: Dictionary<string, string | float | null>
   size?: integer
   sources?: Array<Dictionary<string, CompositeAggregationSource>>

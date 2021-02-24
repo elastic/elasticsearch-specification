@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SignificantTermsAggregation {
+class SignificantTermsAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
   exclude?: string | string[]

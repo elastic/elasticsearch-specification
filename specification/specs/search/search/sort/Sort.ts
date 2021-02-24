@@ -18,13 +18,24 @@
  */
 
 @class_serializer('SortFormatter')
-class Sort {
+class SortOptions {
   missing?: Missing
   mode?: SortMode
   nested?: NestedSort
-  numeric_type?: NumericType
-  unmapped_type?: string
-  order: SortOrder
+  order?: SortOrder
 }
 
-type SortOptions = Field | SingleKeyDictionary<Sort | SortOrder>
+type SortCombinations = Field | SingleKeyDictionary<SortOptions | SortOrder>
+type Sort = SortCombinations | SortCombinations[]
+
+type SortResults = Array<long | double | string | null>
+
+
+/*
+sort?:
+| string
+| Dictionary<Field, Sort | SortOrder | NestedSort>
+| Array<
+  SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
+  >
+*/

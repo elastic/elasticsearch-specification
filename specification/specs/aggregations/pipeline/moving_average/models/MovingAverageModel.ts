@@ -17,6 +17,42 @@
  * under the License.
  */
 
-class MovingAverageModel {
-  name: string
+enum MovingAverageModel {
+  linear,
+  simple,
+  ewma,
+  holt,
+  holt_winters
 }
+
+type MovingAverageSettings =
+  | EwmaModelSettings
+  | HoltLinearModelSettings
+  | HoltWintersModelSettings
+
+class EwmaModelSettings  {
+  alpha?: float
+}
+
+class HoltLinearModelSettings  {
+  alpha?: float
+  beta?: float
+}
+class HoltWintersModelSettings  {
+  alpha?: float
+  beta?: float
+  gamma?: float
+  pad?: boolean
+  period?: integer
+  type?: HoltWintersType
+}
+enum HoltWintersType {
+  /** @alternate_name Additive */
+  add,
+  /** @alternate_name Multiplicative */
+  mult
+}
+
+
+
+

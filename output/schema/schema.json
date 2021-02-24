@@ -9958,6 +9958,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "AdjacencyMatrixAggregation",
@@ -10525,6 +10533,17 @@
           }
         },
         {
+          "name": "diversified_sampler",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DiversifiedSamplerAggregation",
+              "namespace": "aggregations.bucket.diversified_sampler"
+            }
+          }
+        },
+        {
           "name": "extended_stats",
           "required": false,
           "type": {
@@ -10609,6 +10628,17 @@
             "type": {
               "name": "GeoHashGridAggregation",
               "namespace": "aggregations.bucket.geo_hash_grid"
+            }
+          }
+        },
+        {
+          "name": "geo_line",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLineAggregation",
+              "namespace": "aggregations.metric.geo_line"
             }
           }
         },
@@ -10724,30 +10754,7 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "number",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "user_defined_value"
             }
           }
         },
@@ -10796,6 +10803,17 @@
           }
         },
         {
+          "name": "moving_percentiles",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MovingPercentilesAggregation",
+              "namespace": "aggregations.pipeline.moving_percentiles"
+            }
+          }
+        },
+        {
           "name": "moving_fn",
           "required": false,
           "type": {
@@ -10814,6 +10832,17 @@
             "type": {
               "name": "NestedAggregation",
               "namespace": "aggregations.bucket.nested"
+            }
+          }
+        },
+        {
+          "name": "normalize",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NormalizeAggregation",
+              "namespace": "aggregations.pipeline.normalize"
             }
           }
         },
@@ -10880,6 +10909,17 @@
             "type": {
               "name": "RareTermsAggregation",
               "namespace": "aggregations.bucket.rare_terms"
+            }
+          }
+        },
+        {
+          "name": "rate",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RateAggregation",
+              "namespace": "aggregations.metric.rate"
             }
           }
         },
@@ -11023,6 +11063,17 @@
             "type": {
               "name": "TopHitsAggregation",
               "namespace": "aggregations.metric.top_hits"
+            }
+          }
+        },
+        {
+          "name": "t_test",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TTestAggregation",
+              "namespace": "aggregations.metric.t_test"
             }
           }
         },
@@ -14427,13 +14478,10 @@
             "name": "sort",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Sort",
-                  "namespace": "search.search.sort"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "search.search.sort"
               }
             }
           },
@@ -14989,6 +15037,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "AutoDateHistogramAggregation",
@@ -15300,6 +15356,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "AverageAggregation",
@@ -15308,6 +15372,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "AverageBucketAggregation",
@@ -15702,6 +15774,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "BoxplotAggregation",
@@ -15980,9 +16060,17 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "Aggregation",
+            "namespace": "aggregations"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
-        "name": "BucketAggregation",
+        "name": "BucketAggregationBase",
         "namespace": "aggregations.bucket"
       },
       "properties": [
@@ -16129,6 +16217,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "BucketScriptAggregation",
@@ -16149,6 +16245,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "BucketSelectorAggregation",
@@ -16169,6 +16273,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "Aggregation",
+            "namespace": "aggregations"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "BucketSortAggregation",
@@ -16212,13 +16324,10 @@
           "name": "sort",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Sort",
-                "namespace": "search.search.sort"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "search.search.sort"
             }
           }
         }
@@ -17493,6 +17602,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "CardinalityAggregation",
@@ -17517,17 +17634,6 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
               "namespace": "internal"
             }
           }
@@ -25124,6 +25230,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ChildrenAggregation",
@@ -30232,6 +30346,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "CompositeAggregation",
@@ -32609,6 +32731,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "CumulativeCardinalityAggregation",
@@ -32617,6 +32747,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "CumulativeSumAggregation",
@@ -33705,6 +33843,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "DateHistogramAggregation",
@@ -34558,6 +34704,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "DateRangeAggregation",
@@ -34855,6 +35009,22 @@
           }
         }
       ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ScoreFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DecayFunctionBase",
+        "namespace": "query_dsl.compound.function_score.functions.decay"
+      },
+      "properties": []
     },
     {
       "kind": "enum",
@@ -37994,6 +38164,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "DerivativeAggregation",
@@ -38840,6 +39018,78 @@
         "name": "DistinctCountFunction",
         "namespace": "x_pack.machine_learning.job.detectors"
       }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DiversifiedSamplerAggregation",
+        "namespace": "aggregations.bucket.diversified_sampler"
+      },
+      "properties": [
+        {
+          "name": "execution_hint",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SamplerAggregationExecutionHint",
+              "namespace": "aggregations.bucket.diversified_sampler"
+            }
+          }
+        },
+        {
+          "name": "max_docs_per_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "common_options.scripting"
+            }
+          }
+        },
+        {
+          "name": "shard_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -40706,6 +40956,26 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "EwmaModelSettings",
+        "namespace": "aggregations.pipeline.moving_average.models"
+      },
+      "properties": [
+        {
+          "name": "alpha",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -42541,6 +42811,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ExtendedStatsAggregation",
@@ -42557,21 +42835,18 @@
               "namespace": "internal"
             }
           }
-        },
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ExtendedStatsBucketAggregation",
@@ -43993,6 +44268,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "FiltersAggregation",
@@ -45872,6 +46155,42 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "FormatMetricAggregationBase",
+        "namespace": "aggregations.metric"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "FormattableMetricAggregation",
@@ -46137,7 +46456,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ScoreFunction",
+                "name": "ScoreFunctionBase",
                 "namespace": "query_dsl.compound.function_score.functions"
               }
             }
@@ -46633,6 +46952,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GeoBoundsAggregation",
@@ -46692,12 +47019,43 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GeoCentroidAggregation",
         "namespace": "aggregations.metric.geo_centroid"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "location",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "query_dsl.geo"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "type_alias",
@@ -46729,6 +47087,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GeoDistanceAggregation",
@@ -46914,6 +47280,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GeoHashGridAggregation",
@@ -47612,6 +47986,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GeoTileGridAggregation",
@@ -53191,6 +53573,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GlobalAggregation",
@@ -54950,6 +55340,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "HistogramAggregation",
@@ -55094,63 +55492,19 @@
       },
       "properties": [
         {
-          "name": "count_ascending",
-          "required": true,
+          "name": "_count",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "HistogramOrder",
-              "namespace": "aggregations.bucket.histogram"
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
             }
           }
         },
         {
-          "name": "count_descending",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HistogramOrder",
-              "namespace": "aggregations.bucket.histogram"
-            }
-          }
-        },
-        {
-          "name": "key",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "key_ascending",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HistogramOrder",
-              "namespace": "aggregations.bucket.histogram"
-            }
-          }
-        },
-        {
-          "name": "key_descending",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HistogramOrder",
-              "namespace": "aggregations.bucket.histogram"
-            }
-          }
-        },
-        {
-          "name": "order",
-          "required": true,
+          "name": "_key",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55467,45 +55821,10 @@
           "name": "sort",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "long",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "double",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "null",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "Array",
-              "namespace": "internal"
+              "name": "SortResults",
+              "namespace": "search.search.sort"
             }
           }
         }
@@ -55681,13 +56000,121 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "HoltLinearModelSettings",
+        "namespace": "aggregations.pipeline.moving_average.models"
+      },
+      "properties": [
+        {
+          "name": "alpha",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "beta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "HoltWintersModelSettings",
+        "namespace": "aggregations.pipeline.moving_average.models"
+      },
+      "properties": [
+        {
+          "name": "alpha",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "beta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "gamma",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pad",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "period",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltWintersType",
+              "namespace": "aggregations.pipeline.moving_average.models"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
-          "name": "add"
+          "name": "add",
+          "stringValue": "Additive"
         },
         {
-          "name": "mult"
+          "name": "mult",
+          "stringValue": "Multiplicative"
         }
       ],
       "name": {
@@ -59536,34 +59963,10 @@
           "name": "sort",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "kind": "named_value_of",
-                "value": {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "Sort",
-                        "namespace": "search.search.sort"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "SortOrder",
-                        "namespace": "search.search.sort"
-                      }
-                    }
-                  ],
-                  "kind": "union_of"
-                }
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "Array",
-              "namespace": "internal"
+              "name": "Sort",
+              "namespace": "search.search.sort"
             }
           }
         },
@@ -60848,6 +61251,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "IpRangeAggregation",
@@ -64834,6 +65245,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "Aggregation",
+            "namespace": "aggregations"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MatrixAggregation",
@@ -65000,6 +65419,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MatrixAggregation",
+            "namespace": "aggregations.matrix"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MatrixStatsAggregation",
@@ -65044,6 +65471,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MaxAggregation",
@@ -65052,6 +65487,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MaxBucketAggregation",
@@ -65060,6 +65503,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MedianAbsoluteDeviationAggregation",
@@ -65074,28 +65525,6 @@
             "type": {
               "name": "double",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Missing",
-              "namespace": "aggregations"
             }
           }
         }
@@ -65492,7 +65921,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MetricAggregation",
+        "name": "MetricAggregationBase",
         "namespace": "aggregations.metric"
       },
       "properties": [
@@ -65513,8 +65942,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "internal"
+              "name": "Missing",
+              "namespace": "aggregations"
             }
           }
         },
@@ -65606,6 +66035,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MinAggregation",
@@ -65614,6 +66051,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MinBucketAggregation",
@@ -65767,6 +66212,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "boolean",
               "namespace": "internal"
             }
@@ -65776,6 +66228,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MissingAggregation",
@@ -66511,6 +66971,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MovingAverageAggregation",
@@ -66540,6 +67008,17 @@
           }
         },
         {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MovingAverageSettings",
+              "namespace": "aggregations.pipeline.moving_average.models"
+            }
+          }
+        },
+        {
           "name": "predict",
           "required": false,
           "type": {
@@ -66564,26 +67043,71 @@
       ]
     },
     {
-      "kind": "interface",
+      "kind": "enum",
+      "members": [
+        {
+          "name": "linear"
+        },
+        {
+          "name": "simple"
+        },
+        {
+          "name": "ewma"
+        },
+        {
+          "name": "holt"
+        },
+        {
+          "name": "holt_winters"
+        }
+      ],
       "name": {
         "name": "MovingAverageModel",
         "namespace": "aggregations.pipeline.moving_average.models"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "MovingAverageSettings",
+        "namespace": "aggregations.pipeline.moving_average.models"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EwmaModelSettings",
+              "namespace": "aggregations.pipeline.moving_average.models"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltLinearModelSettings",
+              "namespace": "aggregations.pipeline.moving_average.models"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltWintersModelSettings",
+              "namespace": "aggregations.pipeline.moving_average.models"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "MovingFunctionAggregation",
@@ -66614,6 +67138,45 @@
         },
         {
           "name": "window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MovingPercentilesAggregation",
+        "namespace": "aggregations.pipeline.moving_percentiles"
+      },
+      "properties": [
+        {
+          "name": "window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shift",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -68498,6 +69061,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "NestedAggregation",
@@ -71481,6 +72052,61 @@
       "inherits": [
         {
           "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "NormalizeAggregation",
+        "namespace": "aggregations.pipeline.normalize"
+      },
+      "properties": [
+        {
+          "name": "method",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NormalizeMethod",
+              "namespace": "aggregations.pipeline.normalize"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "rescale_0_1"
+        },
+        {
+          "name": "rescale_0_100"
+        },
+        {
+          "name": "percent_of_sum"
+        },
+        {
+          "name": "mean"
+        },
+        {
+          "name": "zscore"
+        },
+        {
+          "name": "softmax"
+        }
+      ],
+      "name": {
+        "name": "NormalizeMethod",
+        "namespace": "aggregations.pipeline.normalize"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "DocValuesPropertyBase",
             "namespace": "mapping.types"
           }
@@ -72523,6 +73149,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ParentAggregation",
@@ -73215,6 +73849,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "PercentileRanksAggregation",
@@ -73243,17 +73885,6 @@
                 "name": "double",
                 "namespace": "internal"
               }
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
             }
           }
         },
@@ -73313,6 +73944,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "PercentilesAggregation",
@@ -73345,28 +73984,6 @@
           }
         },
         {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Missing",
-              "namespace": "aggregations"
-            }
-          }
-        },
-        {
           "name": "hdr",
           "required": false,
           "type": {
@@ -73391,6 +74008,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "PercentilesBucketAggregation",
@@ -74280,9 +74905,17 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "Aggregation",
+            "namespace": "aggregations"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
-        "name": "PipelineAggregation",
+        "name": "PipelineAggregationBase",
         "namespace": "aggregations.pipeline"
       },
       "properties": [
@@ -81214,6 +81847,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "RangeAggregation",
@@ -81661,6 +82302,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "RareTermsAggregation",
@@ -81820,6 +82469,60 @@
         "namespace": "aggregations"
       },
       "properties": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RateAggregation",
+        "namespace": "aggregations.metric.rate"
+      },
+      "properties": [
+        {
+          "name": "unit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateInterval",
+              "namespace": "aggregations.bucket.date_histogram"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RateMode",
+              "namespace": "aggregations.metric.rate"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "sum"
+        },
+        {
+          "name": "value_count"
+        }
+      ],
+      "name": {
+        "name": "RateMode",
+        "namespace": "aggregations.metric.rate"
+      }
     },
     {
       "kind": "interface",
@@ -83605,13 +84308,10 @@
           "name": "sort",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Sort",
-                "namespace": "search.search.sort"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "search.search.sort"
             }
           }
         },
@@ -85596,6 +86296,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ReverseNestedAggregation",
@@ -87115,45 +87823,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SamplerAggregation",
         "namespace": "aggregations.bucket.sampler"
       },
       "properties": [
-        {
-          "name": "execution_hint",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SamplerAggregationExecutionHint",
-              "namespace": "aggregations.bucket.sampler"
-            }
-          }
-        },
-        {
-          "name": "max_docs_per_value",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Script",
-              "namespace": "common_options.scripting"
-            }
-          }
-        },
         {
           "name": "shard_size",
           "required": false,
@@ -87182,7 +87865,7 @@
       ],
       "name": {
         "name": "SamplerAggregationExecutionHint",
-        "namespace": "aggregations.bucket.sampler"
+        "namespace": "aggregations.bucket.diversified_sampler"
       }
     },
     {
@@ -87418,7 +88101,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ScoreFunction",
+        "name": "ScoreFunctionBase",
         "namespace": "query_dsl.compound.function_score.functions"
       },
       "properties": [
@@ -87512,7 +88195,7 @@
       "properties": [
         {
           "name": "lang",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87862,6 +88545,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ScriptedMetricAggregation",
@@ -88827,26 +89518,11 @@
             "name": "sort",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SortOptions",
-                    "namespace": "search.search.sort"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SortOptions",
-                      "namespace": "search.search.sort"
-                    }
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "search.search.sort"
+              }
             }
           },
           {
@@ -89488,26 +90164,14 @@
           "name": "sort",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SortOptions",
-                  "namespace": "search.search.sort"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SortOptions",
-                    "namespace": "search.search.sort"
-                  }
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
-            ],
-            "kind": "union_of"
+            }
           }
         }
       ]
@@ -91043,6 +91707,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SerialDifferencingAggregation",
@@ -94151,6 +94823,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SignificantTermsAggregation",
@@ -94382,6 +95062,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SignificantTextAggregation",
@@ -97222,9 +97910,103 @@
       ]
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "Sort",
+        "namespace": "search.search.sort"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortCombinations",
+              "namespace": "search.search.sort"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortCombinations",
+                "namespace": "search.search.sort"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "SortCombinations",
+        "namespace": "search.search.sort"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "named_value_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SortOptions",
+                    "namespace": "search.search.sort"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SortOrder",
+                    "namespace": "search.search.sort"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "min"
+        },
+        {
+          "name": "max"
+        },
+        {
+          "name": "sum"
+        },
+        {
+          "name": "avg"
+        },
+        {
+          "name": "median"
+        }
+      ],
+      "name": {
+        "name": "SortMode",
+        "namespace": "search.search.sort"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SortOptions",
         "namespace": "search.search.sort"
       },
       "properties": [
@@ -97262,30 +98044,8 @@
           }
         },
         {
-          "name": "numeric_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NumericType",
-              "namespace": "search.search.sort"
-            }
-          }
-        },
-        {
-          "name": "unmapped_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "order",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97300,75 +98060,14 @@
       "kind": "enum",
       "members": [
         {
-          "name": "min"
-        },
-        {
-          "name": "max"
-        },
-        {
-          "name": "sum"
-        },
-        {
-          "name": "avg"
-        },
-        {
-          "name": "median"
-        }
-      ],
-      "name": {
-        "name": "SortMode",
-        "namespace": "search.search.sort"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "SortOptions",
-        "namespace": "search.search.sort"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "named_value_of",
-            "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Sort",
-                    "namespace": "search.search.sort"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SortOrder",
-                    "namespace": "search.search.sort"
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
           "name": "asc"
         },
         {
           "name": "desc"
+        },
+        {
+          "name": "_doc",
+          "stringValue": "Document"
         }
       ],
       "name": {
@@ -97425,6 +98124,55 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "SortResults",
+        "namespace": "search.search.sort"
+      },
+      "type": {
+        "generics": [
+          {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        ],
+        "kind": "instance_of",
+        "type": {
+          "name": "Array",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "enum",
@@ -99484,6 +100232,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "StatsAggregation",
@@ -99492,6 +100248,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "StatsBucketAggregation",
@@ -100432,45 +101196,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "StringStatsAggregation",
         "namespace": "aggregations.metric.string_stats"
       },
       "properties": [
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "object",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Script",
-              "namespace": "common_options.scripting"
-            }
-          }
-        },
         {
           "name": "show_distribution",
           "required": false,
@@ -100988,6 +101727,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormatMetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SumAggregation",
@@ -100996,6 +101743,14 @@
       "properties": []
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SumBucketAggregation",
@@ -101401,6 +102156,74 @@
           }
         }
       ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "Aggregation",
+            "namespace": "aggregations"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "TTestAggregation",
+        "namespace": "aggregations.metric.t_test"
+      },
+      "properties": [
+        {
+          "name": "a",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TestPopulation",
+              "namespace": "aggregations.metric.t_test"
+            }
+          }
+        },
+        {
+          "name": "b",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TestPopulation",
+              "namespace": "aggregations.metric.t_test"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "paired"
+        },
+        {
+          "name": "homoscedastic"
+        },
+        {
+          "name": "heteroscedastic"
+        }
+      ],
+      "name": {
+        "name": "TTestType",
+        "namespace": "aggregations.metric.t_test"
+      }
     },
     {
       "kind": "interface",
@@ -103008,6 +103831,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TermsAggregation",
@@ -103129,6 +103960,17 @@
           }
         },
         {
+          "name": "missing_bucket",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "value_type",
           "required": false,
           "type": {
@@ -103143,20 +103985,10 @@
           "name": "order",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SortOrder",
-                "namespace": "search.search.sort"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsAggregationOrder",
+              "namespace": "aggregations.bucket.terms"
             }
           }
         },
@@ -103240,6 +104072,62 @@
       "name": {
         "name": "TermsAggregationExecutionHint",
         "namespace": "aggregations.bucket.terms"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TermsAggregationOrder",
+        "namespace": "aggregations.bucket.terms"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          },
+          {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortOrder",
+                "namespace": "search.search.sort"
+              }
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SortOrder",
+                  "namespace": "search.search.sort"
+                }
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -103416,6 +104304,48 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TestPopulation",
+        "namespace": "aggregations.metric.t_test"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "common_options.scripting"
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
             }
           }
         }
@@ -104901,6 +105831,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TopHitsAggregation",
@@ -104987,100 +105925,11 @@
           "name": "sort",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Field",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "value": {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "Sort",
-                        "namespace": "search.search.sort"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "SortOrder",
-                        "namespace": "search.search.sort"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "NestedSort",
-                        "namespace": "search.search.sort"
-                      }
-                    }
-                  ],
-                  "kind": "union_of"
-                }
-              },
-              {
-                "generics": [
-                  {
-                    "kind": "named_value_of",
-                    "value": {
-                      "items": [
-                        {
-                          "kind": "instance_of",
-                          "type": {
-                            "name": "Sort",
-                            "namespace": "search.search.sort"
-                          }
-                        },
-                        {
-                          "kind": "instance_of",
-                          "type": {
-                            "name": "SortOrder",
-                            "namespace": "search.search.sort"
-                          }
-                        },
-                        {
-                          "key": {
-                            "kind": "instance_of",
-                            "type": {
-                              "name": "Field",
-                              "namespace": "internal"
-                            }
-                          },
-                          "kind": "dictionary_of",
-                          "value": {
-                            "kind": "instance_of",
-                            "type": {
-                              "name": "NestedSort",
-                              "namespace": "search.search.sort"
-                            }
-                          }
-                        }
-                      ],
-                      "kind": "union_of"
-                    }
-                  }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "search.search.sort"
+            }
           }
         },
         {
@@ -105279,6 +106128,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "MetricAggregationBase",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TopMetricsAggregation",
@@ -105314,26 +106171,11 @@
           "name": "sort",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Sort",
-                  "namespace": "search.search.sort"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Sort",
-                    "namespace": "search.search.sort"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "search.search.sort"
+            }
           }
         }
       ]
@@ -110613,6 +111455,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "FormattableMetricAggregation",
+            "namespace": "aggregations.metric"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ValueCountAggregation",
@@ -111725,6 +112575,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "Aggregation",
+            "namespace": "aggregations"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "WeightedAverageAggregation",
@@ -111786,7 +112644,7 @@
       "properties": [
         {
           "name": "field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111797,7 +112655,7 @@
         },
         {
           "name": "missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111808,7 +112666,7 @@
         },
         {
           "name": "script",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

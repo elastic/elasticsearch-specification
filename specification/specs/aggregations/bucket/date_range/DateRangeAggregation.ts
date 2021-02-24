@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class DateRangeAggregation {
+class DateRangeAggregation extends BucketAggregationBase {
   field?: Field
   format?: string
   missing?: Missing

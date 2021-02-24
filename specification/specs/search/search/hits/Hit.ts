@@ -40,5 +40,5 @@ class Hit<TDocument> {
   _seq_no?: long
   _primary_term?: long
   _version?: long
-  sort?: Array<long | double | string | null>
+  sort?: SortResults
 }

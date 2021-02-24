@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class GeoDistanceAggregation {
+class GeoDistanceAggregation extends BucketAggregationBase {
   distance_type?: GeoDistanceType
   field?: Field
   origin?: GeoLocation | string

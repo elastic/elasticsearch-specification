@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class MatrixStatsAggregation {
+class MatrixStatsAggregation extends MatrixAggregation {
   mode?: MatrixStatsMode
 }
