@@ -68,7 +68,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     _source?: Union<boolean, SourceFilter>
     stats?: string[]
     stored_fields?: Fields
-    suggest?: Dictionary<string, SuggestBucket>
+    suggest?: Dictionary<string, SuggestContainer>
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long

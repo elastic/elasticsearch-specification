@@ -17,11 +17,11 @@
  * under the License.
  */
 
-class SuggestBucket {
-  completion: CompletionSuggester
-  phrase: PhraseSuggester
-  prefix: string
-  regex: string
-  term: TermSuggester
-  text: string
+class SuggestContainer {
+  completion?: CompletionSuggester
+  phrase?: PhraseSuggester
+  prefix?: string
+  regex?: string
+  term?: TermSuggester
+  text?: string
 }

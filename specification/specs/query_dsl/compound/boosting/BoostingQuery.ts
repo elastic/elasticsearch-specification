@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class BoostingQuery {
+class BoostingQuery extends QueryBase {
   negative_boost?: double
   negative?: QueryContainer
   positive?: QueryContainer

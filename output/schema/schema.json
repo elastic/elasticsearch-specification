@@ -14548,7 +14548,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SuggestBucket",
+                  "name": "SuggestContainer",
                   "namespace": "search.suggesters"
                 }
               }
@@ -15597,6 +15597,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "QueryBase",
+            "namespace": "query_dsl.abstractions.query"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "BoostingQuery",
@@ -30266,6 +30274,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "SuggesterBase",
+            "namespace": "search.suggesters"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "CompletionSuggester",
@@ -30274,7 +30290,7 @@
       "properties": [
         {
           "name": "contexts",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -30298,7 +30314,7 @@
         },
         {
           "name": "fuzzy",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30309,7 +30325,7 @@
         },
         {
           "name": "prefix",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30320,7 +30336,7 @@
         },
         {
           "name": "regex",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30331,7 +30347,7 @@
         },
         {
           "name": "skip_duplicates",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30892,6 +30908,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "QueryBase",
+            "namespace": "query_dsl.abstractions.query"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ConstantScoreQuery",
@@ -38412,7 +38436,7 @@
         },
         {
           "name": "max_edits",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38423,7 +38447,7 @@
         },
         {
           "name": "max_inspections",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38434,7 +38458,7 @@
         },
         {
           "name": "max_term_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38445,7 +38469,7 @@
         },
         {
           "name": "min_doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38456,7 +38480,7 @@
         },
         {
           "name": "min_word_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38467,7 +38491,7 @@
         },
         {
           "name": "post_filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38478,7 +38502,7 @@
         },
         {
           "name": "pre_filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38489,7 +38513,7 @@
         },
         {
           "name": "prefix_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38500,7 +38524,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38511,7 +38535,7 @@
         },
         {
           "name": "suggest_mode",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38523,6 +38547,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "QueryBase",
+            "namespace": "query_dsl.abstractions.query"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "DisMaxQuery",
@@ -46428,6 +46460,14 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "QueryBase",
+            "namespace": "query_dsl.abstractions.query"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "FunctionScoreQuery",
@@ -46599,6 +46639,24 @@
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "fuzziness",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fuzziness",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
           }
         }
       ]
@@ -74535,7 +74593,7 @@
       "properties": [
         {
           "name": "params",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -74552,7 +74610,7 @@
         },
         {
           "name": "prune",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74583,7 +74641,7 @@
       "properties": [
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74594,7 +74652,7 @@
         },
         {
           "name": "source",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74679,6 +74737,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "SuggesterBase",
+            "namespace": "search.suggesters"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "PhraseSuggester",
@@ -74687,7 +74753,7 @@
       "properties": [
         {
           "name": "collate",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74698,7 +74764,7 @@
         },
         {
           "name": "confidence",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74709,7 +74775,7 @@
         },
         {
           "name": "direct_generator",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -74723,7 +74789,7 @@
         },
         {
           "name": "force_unigrams",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74734,7 +74800,7 @@
         },
         {
           "name": "gram_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74745,7 +74811,7 @@
         },
         {
           "name": "highlight",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74756,7 +74822,7 @@
         },
         {
           "name": "max_errors",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74767,7 +74833,7 @@
         },
         {
           "name": "real_word_error_likelihood",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74778,7 +74844,7 @@
         },
         {
           "name": "separator",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74789,7 +74855,7 @@
         },
         {
           "name": "shard_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74800,7 +74866,7 @@
         },
         {
           "name": "smoothing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74811,7 +74877,7 @@
         },
         {
           "name": "text",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -74822,7 +74888,7 @@
         },
         {
           "name": "token_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81005,17 +81071,6 @@
           }
         },
         {
-          "name": "raw_query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RawQuery",
-              "namespace": "query_dsl.nest_specific"
-            }
-          }
-        },
-        {
           "name": "regexp",
           "required": false,
           "type": {
@@ -82717,26 +82772,6 @@
         "name": "RateMode",
         "namespace": "aggregations.metric.rate"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RawQuery",
-        "namespace": "query_dsl.nest_specific"
-      },
-      "properties": [
-        {
-          "name": "raw",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -89796,7 +89831,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SuggestBucket",
+                  "name": "SuggestContainer",
                   "namespace": "search.suggesters"
                 }
               }
@@ -95642,11 +95677,23 @@
           "name": "flags",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SimpleQueryStringFlags",
-              "namespace": "query_dsl.full_text.simple_query_string"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SimpleQueryStringFlags",
+                  "namespace": "query_dsl.full_text.simple_query_string"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -98863,6 +98910,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "QueryBase",
+            "namespace": "query_dsl.abstractions.query"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SpanContainingQuery",
@@ -98894,6 +98949,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "QueryBase",
+            "namespace": "query_dsl.abstractions.query"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "SpanFieldMaskingQuery",
@@ -101802,13 +101865,13 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SuggestBucket",
+        "name": "SuggestContainer",
         "namespace": "search.suggesters"
       },
       "properties": [
         {
           "name": "completion",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101819,7 +101882,7 @@
         },
         {
           "name": "phrase",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101830,7 +101893,7 @@
         },
         {
           "name": "prefix",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101841,7 +101904,7 @@
         },
         {
           "name": "regex",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101852,7 +101915,7 @@
         },
         {
           "name": "term",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101863,7 +101926,7 @@
         },
         {
           "name": "text",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101925,7 +101988,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101947,7 +102010,7 @@
         },
         {
           "name": "neighbours",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -101976,7 +102039,7 @@
         },
         {
           "name": "precision",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -101999,7 +102062,7 @@
         },
         {
           "name": "prefix",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102161,21 +102224,10 @@
     {
       "kind": "interface",
       "name": {
-        "name": "Suggester",
+        "name": "SuggesterBase",
         "namespace": "search.suggesters"
       },
       "properties": [
-        {
-          "name": "analyzer",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "field",
           "required": true,
@@ -102188,8 +102240,19 @@
           }
         },
         {
+          "name": "analyzer",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103464,6 +103527,14 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "SuggesterBase",
+            "namespace": "search.suggesters"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TermSuggester",
@@ -103472,7 +103543,7 @@
       "properties": [
         {
           "name": "lowercase_terms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103483,7 +103554,7 @@
         },
         {
           "name": "max_edits",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103494,7 +103565,7 @@
         },
         {
           "name": "max_inspections",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103505,7 +103576,7 @@
         },
         {
           "name": "max_term_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103516,7 +103587,7 @@
         },
         {
           "name": "min_doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103527,7 +103598,7 @@
         },
         {
           "name": "min_word_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103538,7 +103609,7 @@
         },
         {
           "name": "prefix_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103549,7 +103620,7 @@
         },
         {
           "name": "shard_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103560,7 +103631,7 @@
         },
         {
           "name": "sort",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103571,7 +103642,7 @@
         },
         {
           "name": "string_distance",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103582,7 +103653,7 @@
         },
         {
           "name": "suggest_mode",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103593,7 +103664,7 @@
         },
         {
           "name": "text",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

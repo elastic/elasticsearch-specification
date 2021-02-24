@@ -91,7 +91,7 @@ interface SearchRequest extends RequestBase {
     sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: Dictionary<string, SuggestBucket>
+    suggest?: Dictionary<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean

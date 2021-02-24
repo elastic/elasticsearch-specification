@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class FunctionScoreQuery {
+class FunctionScoreQuery extends QueryBase {
   boost_mode?: FunctionBoostMode
   functions?: ScoreFunctionBase[]
   max_boost?: double

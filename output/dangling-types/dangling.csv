@@ -41,7 +41,6 @@ ScriptLang,modules/scripting/ScriptLang.ts
 RewriteMultiTerm,query_dsl/multi_term_query_rewrite/RewriteMultiTerm.ts
 SpanSubQuery,query_dsl/span/SpanSubQuery.ts
 VisitorScope,query_dsl/visitor/VisitorScope.ts
-Suggester,search/suggesters/Suggester.ts
 AsyncSearchResponseBase,x_pack/async_search/AsyncSearchResponseBase.ts
 TransformSync,x_pack/transform/TransformSync.ts
 TTestType,aggregations/metric/t_test/TTestAggregation.ts

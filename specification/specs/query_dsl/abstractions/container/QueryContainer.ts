@@ -62,7 +62,6 @@ class QueryContainer {
   query_string?: QueryStringQuery
   range?: NamedQuery<RangeQuery>
   rank_feature?: NamedQuery<Union<RankFeatureQuery, string>>
-  raw_query?: RawQuery
   regexp?: NamedQuery<Union<RegexpQuery, string>>
   script?: ScriptQuery
   script_score?: ScriptScoreQuery

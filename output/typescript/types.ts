@@ -570,7 +570,7 @@ export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
     _source?: boolean | SourceFilter
     stats?: Array<string>
     stored_fields?: Fields
-    suggest?: Record<string, SuggestBucket>
+    suggest?: Record<string, SuggestContainer>
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
@@ -678,7 +678,7 @@ export interface BooleanProperty extends DocValuesPropertyBase {
   null_value: boolean
 }
 
-export interface BoostingQuery {
+export interface BoostingQuery extends QueryBase {
   negative_boost?: double
   negative?: QueryContainer
   positive?: QueryContainer
@@ -2226,12 +2226,12 @@ export interface CompletionSuggestOption<TDocument = unknown> {
   text: string
 }
 
-export interface CompletionSuggester {
-  contexts: Record<string, Array<SuggestContextQuery>>
-  fuzzy: SuggestFuzziness
-  prefix: string
-  regex: string
-  skip_duplicates: boolean
+export interface CompletionSuggester extends SuggesterBase {
+  contexts?: Record<string, Array<SuggestContextQuery>>
+  fuzzy?: SuggestFuzziness
+  prefix?: string
+  regex?: string
+  skip_duplicates?: boolean
 }
 
 export interface CompositeAggregation extends BucketAggregationBase {
@@ -2294,7 +2294,7 @@ export interface ConstantKeywordProperty extends PropertyBase {
   value: object
 }
 
-export interface ConstantScoreQuery {
+export interface ConstantScoreQuery extends QueryBase {
   filter?: QueryContainer
   boost?: float
 }
@@ -3129,19 +3129,19 @@ export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
 
 export interface DirectGenerator {
   field: Field
-  max_edits: integer
-  max_inspections: float
-  max_term_freq: float
-  min_doc_freq: float
-  min_word_length: integer
-  post_filter: string
-  pre_filter: string
-  prefix_length: integer
-  size: integer
-  suggest_mode: SuggestMode
+  max_edits?: integer
+  max_inspections?: float
+  max_term_freq?: float
+  min_doc_freq?: float
+  min_word_length?: integer
+  post_filter?: string
+  pre_filter?: string
+  prefix_length?: integer
+  size?: integer
+  suggest_mode?: SuggestMode
 }
 
-export interface DisMaxQuery {
+export interface DisMaxQuery extends QueryBase {
   queries?: Array<QueryContainer>
   tie_breaker?: double
   boost?: float
@@ -4054,7 +4054,7 @@ export type FunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' |
 
 export type FunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
 
-export interface FunctionScoreQuery {
+export interface FunctionScoreQuery extends QueryBase {
   boost_mode?: FunctionBoostMode
   functions?: Array<ScoreFunctionBase>
   max_boost?: double
@@ -4071,6 +4071,8 @@ export interface FuzzyQuery extends QueryBase {
   prefix_length?: integer
   rewrite?: MultiTermQueryRewrite
   transpositions?: boolean
+  fuzziness?: Fuzziness
+  value: any
 }
 
 export type GapPolicy = 'skip' | 'insert_zeros'
@@ -7191,14 +7193,14 @@ export interface PhoneticTokenFilter extends TokenFilterBase {
 }
 
 export interface PhraseSuggestCollate {
-  params: Record<string, any>
-  prune: boolean
+  params?: Record<string, any>
+  prune?: boolean
   query: PhraseSuggestCollateQuery
 }
 
 export interface PhraseSuggestCollateQuery {
-  id: Id
-  source: string
+  id?: Id
+  source?: string
 }
 
 export interface PhraseSuggestHighlight {
@@ -7212,20 +7214,20 @@ export interface PhraseSuggestOption {
   score: double
 }
 
-export interface PhraseSuggester {
-  collate: PhraseSuggestCollate
-  confidence: double
-  direct_generator: Array<DirectGenerator>
-  force_unigrams: boolean
-  gram_size: integer
-  highlight: PhraseSuggestHighlight
-  max_errors: double
-  real_word_error_likelihood: double
-  separator: string
-  shard_size: integer
-  smoothing: SmoothingModelContainer
-  text: string
-  token_limit: integer
+export interface PhraseSuggester extends SuggesterBase {
+  collate?: PhraseSuggestCollate
+  confidence?: double
+  direct_generator?: Array<DirectGenerator>
+  force_unigrams?: boolean
+  gram_size?: integer
+  highlight?: PhraseSuggestHighlight
+  max_errors?: double
+  real_word_error_likelihood?: double
+  separator?: string
+  shard_size?: integer
+  smoothing?: SmoothingModelContainer
+  text?: string
+  token_limit?: integer
 }
 
 export interface PingRequest extends CommonQueryParameters {
@@ -7864,7 +7866,6 @@ export interface QueryContainer {
   query_string?: QueryStringQuery
   range?: NamedQuery<RangeQuery>
   rank_feature?: NamedQuery<RankFeatureQuery | string>
-  raw_query?: RawQuery
   regexp?: NamedQuery<RegexpQuery | string>
   script?: ScriptQuery
   script_score?: ScriptScoreQuery
@@ -8021,10 +8022,6 @@ export interface RateAggregation extends FormatMetricAggregationBase {
 }
 
 export type RateMode = 'sum' | 'value_count'
-
-export interface RawQuery {
-  raw?: string
-}
 
 export interface RealmInfo {
   name: string
@@ -8874,7 +8871,7 @@ export interface SearchRequest extends CommonQueryParameters {
     sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: Record<string, SuggestBucket>
+    suggest?: Record<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
@@ -9462,7 +9459,7 @@ export interface SimpleQueryStringQuery extends QueryBase {
   auto_generate_synonyms_phrase_query?: boolean
   default_operator?: Operator
   fields?: Fields
-  flags?: SimpleQueryStringFlags
+  flags?: SimpleQueryStringFlags | string
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean
@@ -9826,12 +9823,12 @@ export interface SourceResponse<TDocument = unknown> {
   body: TDocument
 }
 
-export interface SpanContainingQuery {
+export interface SpanContainingQuery extends QueryBase {
   big?: SpanQuery
   little?: SpanQuery
 }
 
-export interface SpanFieldMaskingQuery {
+export interface SpanFieldMaskingQuery extends QueryBase {
   field?: Field
   query?: SpanQuery
 }
@@ -10161,13 +10158,13 @@ export interface Suggest<T = unknown> {
   text: string
 }
 
-export interface SuggestBucket {
-  completion: CompletionSuggester
-  phrase: PhraseSuggester
-  prefix: string
-  regex: string
-  term: TermSuggester
-  text: string
+export interface SuggestContainer {
+  completion?: CompletionSuggester
+  phrase?: PhraseSuggester
+  prefix?: string
+  regex?: string
+  term?: TermSuggester
+  text?: string
 }
 
 export interface SuggestContext {
@@ -10177,11 +10174,11 @@ export interface SuggestContext {
 }
 
 export interface SuggestContextQuery {
-  boost: double
+  boost?: double
   context: Context
-  neighbours: Array<Distance> | Array<integer>
-  precision: Distance | integer
-  prefix: boolean
+  neighbours?: Array<Distance> | Array<integer>
+  precision?: Distance | integer
+  prefix?: boolean
 }
 
 export interface SuggestFuzziness {
@@ -10198,10 +10195,10 @@ export type SuggestOption<TDocument> = CompletionSuggestOption<TDocument> | Phra
 
 export type SuggestSort = 'score' | 'frequency'
 
-export interface Suggester {
-  analyzer: string
+export interface SuggesterBase {
   field: Field
-  size: integer
+  analyzer?: string
+  size?: integer
 }
 
 export type SuggestionName = string
@@ -10341,19 +10338,19 @@ export interface TermSuggestOption {
   score: double
 }
 
-export interface TermSuggester {
-  lowercase_terms: boolean
-  max_edits: integer
-  max_inspections: integer
-  max_term_freq: float
-  min_doc_freq: float
-  min_word_length: integer
-  prefix_length: integer
-  shard_size: integer
-  sort: SuggestSort
-  string_distance: StringDistance
-  suggest_mode: SuggestMode
-  text: string
+export interface TermSuggester extends SuggesterBase {
+  lowercase_terms?: boolean
+  max_edits?: integer
+  max_inspections?: integer
+  max_term_freq?: float
+  min_doc_freq?: float
+  min_word_length?: integer
+  prefix_length?: integer
+  shard_size?: integer
+  sort?: SuggestSort
+  string_distance?: StringDistance
+  suggest_mode?: SuggestMode
+  text?: string
 }
 
 export interface TermUserPrivileges {

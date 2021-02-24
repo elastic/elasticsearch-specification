@@ -23,4 +23,6 @@ class FuzzyQuery extends QueryBase {
   prefix_length?: integer
   rewrite?: MultiTermQueryRewrite
   transpositions?: boolean
+  fuzziness?: Fuzziness
+  value: UserDefinedValue
 }

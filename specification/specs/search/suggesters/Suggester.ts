@@ -17,8 +17,8 @@
  * under the License.
  */
 
-class Suggester {
-  analyzer: string
+class SuggesterBase {
   field: Field
-  size: integer
+  analyzer?: string
+  size?: integer
 }
