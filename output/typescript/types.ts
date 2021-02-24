@@ -10255,7 +10255,7 @@ export interface TDigestPercentilesAggregate extends AggregateBase {
 export interface TTestAggregation extends Aggregation {
   a?: TestPopulation
   b?: TestPopulation
-  type?: string
+  type?: TTestType
 }
 
 export type TTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'

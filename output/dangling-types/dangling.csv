@@ -43,7 +43,6 @@ SpanSubQuery,query_dsl/span/SpanSubQuery.ts
 VisitorScope,query_dsl/visitor/VisitorScope.ts
 AsyncSearchResponseBase,x_pack/async_search/AsyncSearchResponseBase.ts
 TransformSync,x_pack/transform/TransformSync.ts
-TTestType,aggregations/metric/t_test/TTestAggregation.ts
 IcuAnalyzer,analysis/plugins/icu/IcuAnalyzer.ts
 IcuCollationTokenFilter,analysis/plugins/icu/IcuCollationTokenFilter.ts
 IcuFoldingTokenFilter,analysis/plugins/icu/IcuFoldingTokenFilter.ts

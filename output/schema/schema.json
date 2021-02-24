@@ -102751,8 +102751,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TTestType",
+              "namespace": "aggregations.metric.t_test"
             }
           }
         }
