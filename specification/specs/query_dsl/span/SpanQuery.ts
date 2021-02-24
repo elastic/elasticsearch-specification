@@ -18,14 +18,14 @@
  */
 
 class SpanQuery extends QueryBase {
-  span_containing?: SpanContainingQuery
-  field_masking_span?: SpanFieldMaskingQuery
-  span_first?: SpanFirstQuery
-  span_gap?: SpanGapQuery
-  span_multi?: SpanMultiTermQuery
-  span_near?: SpanNearQuery
-  span_not?: SpanNotQuery
-  span_or?: SpanOrQuery
-  span_term?: SpanTermQuery
-  span_within?: SpanWithinQuery
+  span_containing?: NamedQuery<SpanContainingQuery | string>
+  field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>
+  span_first?: NamedQuery<SpanFirstQuery | string>
+  span_gap?: NamedQuery<SpanGapQuery | integer>
+  span_multi?: NamedQuery<SpanMultiTermQuery | string>
+  span_near?: NamedQuery<SpanNearQuery | string>
+  span_not?: NamedQuery<SpanNotQuery | string>
+  span_or?: NamedQuery<SpanOrQuery | string>
+  span_term?: NamedQuery<SpanTermQuery | string>
+  span_within?: NamedQuery<SpanWithinQuery | string>
 }

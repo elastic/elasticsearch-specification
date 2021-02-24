@@ -17,7 +17,10 @@
  * under the License.
  */
 
-@class_serializer('FieldNameQueryFormatter`2')
-class SpanTermQuery extends QueryBase {
-  value: string;
+class DiversifiedSamplerAggregation extends BucketAggregationBase {
+  execution_hint?: SamplerAggregationExecutionHint
+  max_docs_per_value?: integer
+  script?: Script
+  shard_size?: integer
+  field?: Field
 }

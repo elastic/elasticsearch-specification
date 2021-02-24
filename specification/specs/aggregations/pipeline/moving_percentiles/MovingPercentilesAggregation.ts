@@ -17,7 +17,7 @@
  * under the License.
  */
 
-@class_serializer('FieldNameQueryFormatter`2')
-class SpanTermQuery extends QueryBase {
-  value: string;
+class MovingPercentilesAggregation extends PipelineAggregationBase {
+  window?: integer
+  shift?: integer
 }

@@ -17,7 +17,12 @@
  * under the License.
  */
 
-@class_serializer('FieldNameQueryFormatter`2')
-class SpanTermQuery extends QueryBase {
-  value: string;
+class RateAggregation extends FormatMetricAggregationBase {
+  unit?: DateInterval
+  mode?: RateMode
 }
+enum RateMode {
+  sum,
+  value_count
+}
+

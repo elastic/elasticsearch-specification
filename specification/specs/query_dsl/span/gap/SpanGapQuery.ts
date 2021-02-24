@@ -18,7 +18,7 @@
  */
 
 @class_serializer('SpanGapQueryFormatter')
-class SpanGapQuery {
+class SpanGapQuery extends QueryBase {
   field?: Field
   width?: integer
 }

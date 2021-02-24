@@ -17,7 +17,18 @@
  * under the License.
  */
 
-@class_serializer('FieldNameQueryFormatter`2')
-class SpanTermQuery extends QueryBase {
-  value: string;
+class TTestAggregation extends Aggregation {
+  a?: TestPopulation
+  b?: TestPopulation
+  type?: string
+}
+class TestPopulation {
+  field: Field
+  script?: Script
+  filter: QueryContainer
+}
+enum TTestType {
+  paired,
+  homoscedastic,
+  heteroscedastic
 }

@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class SpanSubQuery {}
+class SpanSubQuery extends QueryBase {}

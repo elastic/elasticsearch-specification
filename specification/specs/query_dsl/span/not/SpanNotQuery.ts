@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SpanNotQuery {
+class SpanNotQuery extends QueryBase {
   dist?: integer
   exclude?: SpanQuery
   include?: SpanQuery

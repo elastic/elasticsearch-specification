@@ -17,7 +17,8 @@
  * under the License.
  */
 
-@class_serializer('FieldNameQueryFormatter`2')
-class SpanTermQuery extends QueryBase {
-  value: string;
+enum SamplerAggregationExecutionHint {
+  map = 0,
+  global_ordinals = 1,
+  bytes_hash = 2
 }

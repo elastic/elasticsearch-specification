@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SpanNearQuery {
+class SpanNearQuery extends QueryBase {
   clauses?: SpanQuery[]
   in_order?: boolean
   slop?: integer

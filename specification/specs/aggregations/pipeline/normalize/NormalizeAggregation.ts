@@ -17,7 +17,15 @@
  * under the License.
  */
 
-@class_serializer('FieldNameQueryFormatter`2')
-class SpanTermQuery extends QueryBase {
-  value: string;
+class NormalizeAggregation extends PipelineAggregationBase {
+  method?: NormalizeMethod
+}
+
+enum NormalizeMethod {
+  rescale_0_1,
+  rescale_0_100,
+  percent_of_sum,
+  mean,
+  zscore,
+  softmax
 }

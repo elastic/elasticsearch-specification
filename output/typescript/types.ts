@@ -663,13 +663,12 @@ export interface AverageBucketAggregation extends PipelineAggregationBase {
 export interface BinaryProperty extends DocValuesPropertyBase {
 }
 
-export interface BoolQuery {
+export interface BoolQuery extends QueryBase {
   filter?: QueryContainer | Array<QueryContainer>
   minimum_should_match?: MinimumShouldMatch
   must?: QueryContainer | Array<QueryContainer>
   must_not?: QueryContainer | Array<QueryContainer>
   should?: QueryContainer | Array<QueryContainer>
-  _name?: string
 }
 
 export interface BooleanProperty extends DocValuesPropertyBase {
@@ -6559,6 +6558,14 @@ export interface NamedPolicyMetadata {
   config: NamedPolicyConfig
 }
 
+export interface NamedQueryKeys<TQuery = unknown> {
+  boost?: float
+  _name?: string
+  ignore_unmapped?: boolean
+}
+export type NamedQuery<TQuery = unknown> = NamedQueryKeys<TQuery> |
+    { [property: string]: TQuery }
+
 export type Names = string | Array<string>
 
 export interface NativeCodeInformation {
@@ -7335,6 +7342,7 @@ export interface PredicateTokenFilter extends TokenFilterBase {
 
 export interface PrefixQuery extends QueryBase {
   rewrite?: MultiTermQueryRewrite
+  value: string
 }
 
 export interface PreviewDatafeedRequest extends CommonQueryParameters {
@@ -7828,39 +7836,39 @@ export interface QueryContainer {
   exists?: ExistsQuery
   function_score?: FunctionScoreQuery
   fuzzy?: Record<string, FuzzyQuery | string>
-  geo_bounding_box?: Record<string, GeoBoundingBoxQuery | string>
-  geo_distance?: Record<string, GeoDistanceQuery | string>
-  geo_polygon?: Record<string, GeoPolygonQuery | string>
-  geo_shape?: Record<string, GeoShapeQuery | string>
+  geo_bounding_box?: NamedQuery<GeoBoundingBoxQuery | string>
+  geo_distance?: NamedQuery<GeoDistanceQuery | string>
+  geo_polygon?: NamedQuery<GeoPolygonQuery | string>
+  geo_shape?: NamedQuery<GeoShapeQuery | string>
   has_child?: HasChildQuery
   has_parent?: HasParentQuery
   ids?: IdsQuery
-  intervals?: Record<string, IntervalsQuery | string>
+  intervals?: NamedQuery<IntervalsQuery | string>
   is_conditionless?: boolean
   is_strict?: boolean
   is_verbatim?: boolean
   is_writable?: boolean
-  match?: Record<string, MatchQuery | string | float | boolean>
+  match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
-  match_bool_prefix?: Record<string, MatchBoolPrefixQuery | string>
+  match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>
   match_none?: MatchNoneQuery
-  match_phrase?: Record<string, MatchPhraseQuery | string>
-  match_phrase_prefix?: Record<string, MatchPhrasePrefixQuery | string>
+  match_phrase?: NamedQuery<MatchPhraseQuery | string>
+  match_phrase_prefix?: NamedQuery<MatchPhrasePrefixQuery | string>
   more_like_this?: MoreLikeThisQuery
   multi_match?: MultiMatchQuery
   nested?: NestedQuery
   parent_id?: ParentIdQuery
   percolate?: PercolateQuery
   pinned?: PinnedQuery
-  prefix?: Record<string, PrefixQuery | string>
+  prefix?: NamedQuery<PrefixQuery | string>
   query_string?: QueryStringQuery
-  range?: Record<string, RangeQuery>
-  rank_feature?: Record<string, RankFeatureQuery | string>
+  range?: NamedQuery<RangeQuery>
+  rank_feature?: NamedQuery<RankFeatureQuery | string>
   raw_query?: RawQuery
-  regexp?: Record<string, RegexpQuery | string>
+  regexp?: NamedQuery<RegexpQuery | string>
   script?: ScriptQuery
   script_score?: ScriptScoreQuery
-  shape?: Record<string, ShapeQuery | string>
+  shape?: NamedQuery<ShapeQuery | string>
   simple_query_string?: SimpleQueryStringQuery
   span_containing?: SpanContainingQuery
   field_masking_span?: SpanFieldMaskingQuery
@@ -7869,12 +7877,12 @@ export interface QueryContainer {
   span_near?: SpanNearQuery
   span_not?: SpanNotQuery
   span_or?: SpanOrQuery
-  span_term?: Record<string, SpanTermQuery | string>
+  span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
-  term?: Record<string, TermQuery | string | float | boolean>
-  terms?: Record<string, TermsQuery | Array<string>>
-  terms_set?: Record<string, TermsSetQuery | string>
-  wildcard?: Record<string, WildcardQuery | string>
+  term?: NamedQuery<TermQuery | string | float | boolean>
+  terms?: NamedQuery<TermsQuery | Array<string>>
+  terms_set?: NamedQuery<TermsSetQuery | string>
+  wildcard?: NamedQuery<WildcardQuery | string>
   type?: TypeQuery
 }
 
@@ -9828,27 +9836,27 @@ export interface SpanFieldMaskingQuery {
   query?: SpanQuery
 }
 
-export interface SpanFirstQuery {
+export interface SpanFirstQuery extends QueryBase {
   end?: integer
   match?: SpanQuery
 }
 
-export interface SpanGapQuery {
+export interface SpanGapQuery extends QueryBase {
   field?: Field
   width?: integer
 }
 
-export interface SpanMultiTermQuery {
+export interface SpanMultiTermQuery extends QueryBase {
   match?: QueryContainer
 }
 
-export interface SpanNearQuery {
+export interface SpanNearQuery extends QueryBase {
   clauses?: Array<SpanQuery>
   in_order?: boolean
   slop?: integer
 }
 
-export interface SpanNotQuery {
+export interface SpanNotQuery extends QueryBase {
   dist?: integer
   exclude?: SpanQuery
   include?: SpanQuery
@@ -9856,30 +9864,31 @@ export interface SpanNotQuery {
   pre?: integer
 }
 
-export interface SpanOrQuery {
+export interface SpanOrQuery extends QueryBase {
   clauses?: Array<SpanQuery>
 }
 
 export interface SpanQuery extends QueryBase {
-  span_containing?: SpanContainingQuery
-  field_masking_span?: SpanFieldMaskingQuery
-  span_first?: SpanFirstQuery
-  span_gap?: SpanGapQuery
-  span_multi?: SpanMultiTermQuery
-  span_near?: SpanNearQuery
-  span_not?: SpanNotQuery
-  span_or?: SpanOrQuery
-  span_term?: SpanTermQuery
-  span_within?: SpanWithinQuery
+  span_containing?: NamedQuery<SpanContainingQuery | string>
+  field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>
+  span_first?: NamedQuery<SpanFirstQuery | string>
+  span_gap?: NamedQuery<SpanGapQuery | integer>
+  span_multi?: NamedQuery<SpanMultiTermQuery | string>
+  span_near?: NamedQuery<SpanNearQuery | string>
+  span_not?: NamedQuery<SpanNotQuery | string>
+  span_or?: NamedQuery<SpanOrQuery | string>
+  span_term?: NamedQuery<SpanTermQuery | string>
+  span_within?: NamedQuery<SpanWithinQuery | string>
 }
 
-export interface SpanSubQuery {
+export interface SpanSubQuery extends QueryBase {
 }
 
-export interface SpanTermQuery {
+export interface SpanTermQuery extends QueryBase {
+  value: string
 }
 
-export interface SpanWithinQuery {
+export interface SpanWithinQuery extends QueryBase {
   big?: SpanQuery
   little?: SpanQuery
 }
