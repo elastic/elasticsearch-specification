@@ -43615,6 +43615,70 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FieldSort",
+        "namespace": "search.search.sort"
+      },
+      "properties": [
+        {
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Missing",
+              "namespace": "aggregations"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "unmapped_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldType",
+              "namespace": "mapping.types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FieldStatistics",
         "namespace": "document.single.term_vectors"
       },
@@ -47284,6 +47348,89 @@
             "type": {
               "name": "GeoValidationMethod",
               "namespace": "query_dsl.geo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "GeoLocation",
+                  "namespace": "query_dsl.geo"
+                }
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "internal"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GeoDistanceSort",
+        "namespace": "search.search.sort"
+      },
+      "properties": [
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "distance_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDistanceType",
+              "namespace": "common_options.geo"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "unit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DistanceUnit",
+              "namespace": "common_options.geo"
             }
           }
         }
@@ -69406,26 +69553,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "NestedSort",
-        "namespace": "search.search.sort"
-      },
-      "properties": [
-        {
-          "name": "nested",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NestedSortValue",
-              "namespace": "search.search.sort"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "NestedSortValue",
         "namespace": "search.search.sort"
       },
@@ -69443,7 +69570,7 @@
         },
         {
           "name": "max_children",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85692,7 +85819,7 @@
         },
         {
           "name": "query_weight",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85703,7 +85830,7 @@
         },
         {
           "name": "rescore_query_weight",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88460,6 +88587,37 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ScoreSort",
+        "namespace": "search.search.sort"
+      },
+      "properties": [
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "Script",
@@ -88733,6 +88891,48 @@
             "type": {
               "name": "Script",
               "namespace": "common_options.scripting"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptSort",
+        "namespace": "search.search.sort"
+      },
+      "properties": [
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "common_options.scripting"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -98283,13 +98483,43 @@
             }
           },
           {
-            "kind": "named_value_of",
-            "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortContainer",
+              "namespace": "search.search.sort"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "search.search.sort"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
               "items": [
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "SortOptions",
+                    "name": "FieldSort",
                     "namespace": "search.search.sort"
                   }
                 },
@@ -98303,10 +98533,64 @@
               ],
               "kind": "union_of"
             }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "internal"
           }
-        ],
-        "kind": "union_of"
-      }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SortContainer",
+        "namespace": "search.search.sort"
+      },
+      "properties": [
+        {
+          "name": "_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreSort",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "_doc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreSort",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "_geo_distance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDistanceSort",
+              "namespace": "search.search.sort"
+            }
+          }
+        },
+        {
+          "name": "_script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptSort",
+              "namespace": "search.search.sort"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -98331,59 +98615,6 @@
         "name": "SortMode",
         "namespace": "search.search.sort"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SortOptions",
-        "namespace": "search.search.sort"
-      },
-      "properties": [
-        {
-          "name": "missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Missing",
-              "namespace": "aggregations"
-            }
-          }
-        },
-        {
-          "name": "mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortMode",
-              "namespace": "search.search.sort"
-            }
-          }
-        },
-        {
-          "name": "nested",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NestedSort",
-              "namespace": "search.search.sort"
-            }
-          }
-        },
-        {
-          "name": "order",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "search.search.sort"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "enum",

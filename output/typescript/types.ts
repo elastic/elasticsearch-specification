@@ -3736,6 +3736,14 @@ export interface FieldSecuritySettings {
   grant: Array<string>
 }
 
+export interface FieldSort {
+  missing?: Missing
+  mode?: SortMode
+  nested?: NestedSortValue
+  order?: SortOrder
+  unmapped_type?: FieldType
+}
+
 export interface FieldStatistics {
   doc_count: integer
   sum_doc_freq: long
@@ -4147,6 +4155,15 @@ export interface GeoDistanceQuery extends QueryBase {
   location?: GeoLocation
   validation_method?: GeoValidationMethod
 }
+
+export interface GeoDistanceSortKeys {
+  mode?: SortMode
+  distance_type?: GeoDistanceType
+  order?: SortOrder
+  unit?: DistanceUnit
+}
+export type GeoDistanceSort = GeoDistanceSortKeys |
+    { [property: string]: Array<GeoLocation> }
 
 export type GeoDistanceType = 'arc' | 'plane'
 
@@ -6601,13 +6618,9 @@ export interface NestedQuery extends QueryBase {
 
 export type NestedScoreMode = 'avg' | 'sum' | 'min' | 'max' | 'none'
 
-export interface NestedSort {
-  nested: NestedSortValue
-}
-
 export interface NestedSortValue {
   filter: QueryContainer
-  max_children: integer
+  max_children?: integer
   path: Field
 }
 
@@ -8358,8 +8371,8 @@ export interface Rescore {
 
 export interface RescoreQuery {
   rescore_query: QueryContainer
-  query_weight: double
-  rescore_query_weight: double
+  query_weight?: double
+  rescore_query_weight?: double
   score_mode?: ScoreMode
 }
 
@@ -8690,6 +8703,11 @@ export interface ScoreFunctionBase {
 
 export type ScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
+export interface ScoreSort {
+  mode?: SortMode
+  order?: SortOrder
+}
+
 export type Script = InlineScript | IndexedScript | string
 
 export interface ScriptBase {
@@ -8722,6 +8740,12 @@ export interface ScriptQuery extends QueryBase {
 export interface ScriptScoreQuery extends QueryBase {
   query?: QueryContainer
   script?: Script
+}
+
+export interface ScriptSort {
+  order?: SortOrder
+  script: Script
+  type?: string
 }
 
 export interface ScriptStats {
@@ -9761,16 +9785,18 @@ export interface SnowballTokenFilter extends TokenFilterBase {
 
 export type Sort = SortCombinations | Array<SortCombinations>
 
-export type SortCombinations = Field | Record<string, SortOptions | SortOrder>
+export type SortCombinations = Field | SortContainer | SortOrder
+
+export interface SortContainerKeys {
+  _score?: ScoreSort
+  _doc?: ScoreSort
+  _geo_distance?: GeoDistanceSort
+  _script?: ScriptSort
+}
+export type SortContainer = SortContainerKeys |
+    { [property: string]: FieldSort | SortOrder }
 
 export type SortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
-
-export interface SortOptions {
-  missing?: Missing
-  mode?: SortMode
-  nested?: NestedSort
-  order?: SortOrder
-}
 
 export type SortOrder = 'asc' | 'desc' | '_doc'
 
