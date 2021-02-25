@@ -8634,6 +8634,14 @@ export interface RuleCondition {
 
 export type RuleFilterType = 'include' | 'exclude'
 
+export interface RuntimeField {
+  format?: string
+  script?: StoredScript
+  type: FieldType
+}
+
+export type RuntimeFields = Record<Field, RuntimeField>
+
 export interface SampleDiversity {
   field: Field
   max_docs_per_value: integer
@@ -8879,6 +8887,7 @@ export interface SearchRequest extends CommonQueryParameters {
     seq_no_primary_term?: boolean
     stored_fields?: Fields
     pit?: PointInTimeReference
+    runtime_mappings?: RuntimeFields
   }
 }
 

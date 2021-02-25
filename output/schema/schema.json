@@ -88023,6 +88023,72 @@
     {
       "kind": "interface",
       "name": {
+        "name": "RuntimeField",
+        "namespace": "mapping.runtime_fields"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StoredScript",
+              "namespace": "modules.scripting"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldType",
+              "namespace": "mapping.types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "RuntimeFields",
+        "namespace": "mapping.runtime_fields"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Field",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "RuntimeField",
+            "namespace": "mapping.runtime_fields"
+          }
+        }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "SampleDiversity",
         "namespace": "x_pack.graph.explore.request"
       },
@@ -89911,6 +89977,17 @@
               "type": {
                 "name": "PointInTimeReference",
                 "namespace": "search.search.point_in_time"
+              }
+            }
+          },
+          {
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "mapping.runtime_fields"
               }
             }
           }

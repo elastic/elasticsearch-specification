@@ -99,5 +99,6 @@ interface SearchRequest extends RequestBase {
     seq_no_primary_term?: boolean
     stored_fields?: Fields
     pit?: PointInTimeReference
+    runtime_mappings?: RuntimeFields
   }
 }

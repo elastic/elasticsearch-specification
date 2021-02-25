@@ -34,7 +34,6 @@ DateMathOperation,common_options/date_math/DateMathOperation.ts
 DateMathTimeParsed,common_options/date_math/DateMathTime.ts
 TimeUnit,common_options/time_unit/TimeUnit.ts
 Normalization,index_modules/similarity/Normalization.ts
-FieldType,mapping/types/FieldType.ts
 PropertyWithClrOrigin,mapping/types/PropertyWithClrOrigin.ts
 IndicesModuleSettings,modules/indices/IndicesModuleSettings.ts
 ScriptLang,modules/scripting/ScriptLang.ts
