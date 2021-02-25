@@ -5003,6 +5003,7 @@ export interface Highlight {
   pre_tags?: Array<string>
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
+  highlight_query?: QueryContainer
 }
 
 export interface HighlightField {

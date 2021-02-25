@@ -55061,6 +55061,17 @@
               "namespace": "search.search.highlighting"
             }
           }
+        },
+        {
+          "name": "highlight_query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
+            }
+          }
         }
       ]
     },
