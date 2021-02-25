@@ -29,7 +29,7 @@ class ScoreSort {
   mode?: SortMode
   order?: SortOrder
 }
-class GeoDistanceSort implements AdditionalProperties<string, GeoLocation[]>{
+class GeoDistanceSort implements AdditionalProperties<string, GeoLocation[]> {
   mode?: SortMode
   distance_type?: GeoDistanceType
   order?: SortOrder
@@ -42,7 +42,8 @@ class ScriptSort {
   type?: string
 }
 
-class SortContainer implements AdditionalProperties<string, FieldSort | SortOrder> {
+class SortContainer
+  implements AdditionalProperties<string, FieldSort | SortOrder> {
   _score?: ScoreSort
   _doc?: ScoreSort
   _geo_distance?: GeoDistanceSort

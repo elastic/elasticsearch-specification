@@ -22,8 +22,7 @@ class ScoreFunctionBase {
   weight?: double
 }
 
-class WeightScoreFunction extends ScoreFunctionBase {
-}
+class WeightScoreFunction extends ScoreFunctionBase {}
 
 class ScriptScoreFunction extends ScoreFunctionBase {
   script: Script
@@ -51,22 +50,20 @@ class DecayFunctionBase extends ScoreFunctionBase {
   multi_value_mode?: MultiValueMode
 }
 
-class NumericDecayFunction extends DecayFunctionBase
-  implements AdditionalProperties<string, DecayPlacement<double, double>>
-{}
+class NumericDecayFunction
+  extends DecayFunctionBase
+  implements AdditionalProperties<string, DecayPlacement<double, double>> {}
 
-class DateDecayFunction extends DecayFunctionBase
-  implements AdditionalProperties<string, DecayPlacement<DateMath, Time>>
-{}
+class DateDecayFunction
+  extends DecayFunctionBase
+  implements AdditionalProperties<string, DecayPlacement<DateMath, Time>> {}
 
-class GeoDecayFunction extends DecayFunctionBase
-  implements AdditionalProperties<string, DecayPlacement<GeoLocation, Distance>>
-{}
+class GeoDecayFunction
+  extends DecayFunctionBase
+  implements
+    AdditionalProperties<string, DecayPlacement<GeoLocation, Distance>> {}
 
-type DecayFunction =
-  | DateDecayFunction
-  | NumericDecayFunction
-  | GeoDecayFunction
+type DecayFunction = DateDecayFunction | NumericDecayFunction | GeoDecayFunction
 
 class FunctionScoreContainer {
   exp?: DecayFunction
@@ -78,5 +75,3 @@ class FunctionScoreContainer {
   filter?: QueryContainer
   weight?: double
 }
-
-
