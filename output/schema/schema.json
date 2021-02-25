@@ -33822,6 +33822,65 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "DateMath",
+                    "namespace": "common_options.date_math"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Time",
+                    "namespace": "common_options.time_unit"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "DecayPlacement",
+                "namespace": "query_dsl.compound.function_score.functions"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "internal"
+          }
+        }
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "DecayFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DateDecayFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": []
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "DateField",
@@ -35032,6 +35091,39 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "DecayFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateDecayFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumericDecayFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDecayFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -35043,9 +35135,78 @@
       "kind": "interface",
       "name": {
         "name": "DecayFunctionBase",
-        "namespace": "query_dsl.compound.function_score.functions.decay"
+        "namespace": "query_dsl.compound.function_score.functions"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "multi_value_mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiValueMode",
+              "namespace": "query_dsl.compound.function_score.functions.decay"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        "TOrigin",
+        "TScale"
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DecayPlacement",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": [
+        {
+          "name": "decay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TScale",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "scale",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TScale",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "origin",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TOrigin",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -38874,35 +39035,18 @@
       ]
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "Distance",
         "namespace": "common_options.geo"
       },
-      "properties": [
-        {
-          "name": "precision",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "unit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DistanceUnit",
-              "namespace": "common_options.geo"
-            }
-          }
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
         }
-      ]
+      }
     },
     {
       "inherits": [
@@ -38989,6 +39133,37 @@
             "type": {
               "name": "Field",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DistanceParsed",
+        "namespace": "common_options.geo"
+      },
+      "properties": [
+        {
+          "name": "precision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "unit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DistanceUnit",
+              "namespace": "common_options.geo"
             }
           }
         }
@@ -43884,6 +44059,67 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "ScoreFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "FieldValueFactorScoreFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "factor",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "modifier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldValueFactorModifier",
+              "namespace": "query_dsl.compound.function_score.functions.field_value"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Fielddata",
@@ -46497,6 +46733,103 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "FunctionScoreContainer",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": [
+        {
+          "name": "exp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecayFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "gauss",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecayFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "linear",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecayFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "field_value_factor",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldValueFactorScoreFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "random_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RandomScoreFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "script_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptScoreFunction",
+              "namespace": "query_dsl.compound.function_score.functions"
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "weight",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -46557,7 +46890,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ScoreFunctionBase",
+                "name": "FunctionScoreContainer",
                 "namespace": "query_dsl.compound.function_score.functions"
               }
             }
@@ -47204,6 +47537,65 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GeoLocation",
+                    "namespace": "query_dsl.geo"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Distance",
+                    "namespace": "common_options.geo"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "DecayPlacement",
+                "namespace": "query_dsl.compound.function_score.functions"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "internal"
+          }
+        }
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "DecayFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GeoDecayFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": []
     },
     {
       "inherits": [
@@ -72496,6 +72888,65 @@
       }
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "DecayPlacement",
+                "namespace": "query_dsl.compound.function_score.functions"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "internal"
+          }
+        }
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "DecayFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "NumericDecayFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": []
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "NumericFielddata",
@@ -82237,6 +82688,57 @@
       "inherits": [
         {
           "type": {
+            "name": "ScoreFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RandomScoreFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "seed",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "BucketAggregationBase",
             "namespace": "aggregations.bucket"
           }
@@ -85788,7 +86290,7 @@
         },
         {
           "name": "window_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88847,6 +89349,34 @@
         {
           "name": "script",
           "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "common_options.scripting"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ScoreFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ScriptScoreFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": [
+        {
+          "name": "script",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113430,6 +113960,22 @@
           }
         }
       ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ScoreFunctionBase",
+            "namespace": "query_dsl.compound.function_score.functions"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "WeightScoreFunction",
+        "namespace": "query_dsl.compound.function_score.functions"
+      },
+      "properties": []
     },
     {
       "inherits": [

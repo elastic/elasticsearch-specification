@@ -2616,6 +2616,11 @@ export interface Datafeeds {
   scroll_size: integer
 }
 
+export interface DateDecayFunctionKeys extends DecayFunctionBase {
+}
+export type DateDecayFunction = DateDecayFunctionKeys |
+    { [property: string]: DecayPlacement<DateMath, Time> }
+
 export interface DateField {
   field: Field
   format?: string
@@ -2738,7 +2743,17 @@ export interface DeactivateWatchResponse {
   status: ActivationStatus
 }
 
+export type DecayFunction = DateDecayFunction | NumericDecayFunction | GeoDecayFunction
+
 export interface DecayFunctionBase extends ScoreFunctionBase {
+  multi_value_mode?: MultiValueMode
+}
+
+export interface DecayPlacement<TOrigin = unknown, TScale = unknown> {
+  decay?: double
+  offset?: TScale
+  scale?: TScale
+  origin?: TOrigin
 }
 
 export type Decision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
@@ -3179,15 +3194,17 @@ export interface DissectProcessor extends ProcessorBase {
   pattern: string
 }
 
-export interface Distance {
-  precision: double
-  unit: DistanceUnit
-}
+export type Distance = string
 
 export interface DistanceFeatureQuery extends QueryBase {
   origin?: Array<number> | GeoCoordinate | DateMath
   pivot?: Distance | Time
   field?: Field
+}
+
+export interface DistanceParsed {
+  precision: double
+  unit: DistanceUnit
 }
 
 export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm' | 'mm'
@@ -3754,6 +3771,13 @@ export type FieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | '
 
 export type FieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
 
+export interface FieldValueFactorScoreFunction extends ScoreFunctionBase {
+  field: Field
+  factor?: double
+  missing?: double
+  modifier?: FieldValueFactorModifier
+}
+
 export interface Fielddata {
   filter: FielddataFilter
   loading: FielddataLoading
@@ -4060,11 +4084,22 @@ export interface FreezeIndexResponse extends AcknowledgedResponseBase {
 
 export type FunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' | 'min'
 
+export interface FunctionScoreContainer {
+  exp?: DecayFunction
+  gauss?: DecayFunction
+  linear?: DecayFunction
+  field_value_factor?: FieldValueFactorScoreFunction
+  random_score?: RandomScoreFunction
+  script_score?: ScriptScoreFunction
+  filter?: QueryContainer
+  weight?: double
+}
+
 export type FunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
 
 export interface FunctionScoreQuery extends QueryBase {
   boost_mode?: FunctionBoostMode
-  functions?: Array<ScoreFunctionBase>
+  functions?: Array<FunctionScoreContainer>
   max_boost?: double
   min_score?: double
   query?: QueryContainer
@@ -4140,6 +4175,11 @@ export interface GeoCentroidAggregation extends MetricAggregationBase {
 }
 
 export type GeoCoordinate = Array<double> | ThreeDimensionalPoint
+
+export interface GeoDecayFunctionKeys extends DecayFunctionBase {
+}
+export type GeoDecayFunction = GeoDecayFunctionKeys |
+    { [property: string]: DecayPlacement<GeoLocation, Distance> }
 
 export interface GeoDistanceAggregation extends BucketAggregationBase {
   distance_type?: GeoDistanceType
@@ -6938,6 +6978,11 @@ export interface NumberProperty extends DocValuesPropertyBase {
 
 export type NumberType = 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer' | 'long' | 'short' | 'byte'
 
+export interface NumericDecayFunctionKeys extends DecayFunctionBase {
+}
+export type NumericDecayFunction = NumericDecayFunctionKeys |
+    { [property: string]: DecayPlacement<double, double> }
+
 export interface NumericFielddata {
   format: NumericFielddataFormat
 }
@@ -7967,6 +8012,11 @@ export interface QueryUserPrivileges {
   term: TermUserPrivileges
 }
 
+export interface RandomScoreFunction extends ScoreFunctionBase {
+  field?: Field
+  seed?: long | string
+}
+
 export interface RangeAggregation extends BucketAggregationBase {
   field?: Field
   ranges?: Array<AggregationRange>
@@ -8366,7 +8416,7 @@ export interface RequestCacheStats {
 
 export interface Rescore {
   query: RescoreQuery
-  window_size: integer
+  window_size?: integer
 }
 
 export interface RescoreQuery {
@@ -8735,6 +8785,10 @@ export interface ScriptProcessor extends ProcessorBase {
 
 export interface ScriptQuery extends QueryBase {
   script?: Script
+}
+
+export interface ScriptScoreFunction extends ScoreFunctionBase {
+  script: Script
 }
 
 export interface ScriptScoreQuery extends QueryBase {
@@ -11385,6 +11439,9 @@ export interface WatcherStatsResponse {
 export interface WebhookActionResult {
   request: HttpInputRequestResult
   response: HttpInputResponseResult
+}
+
+export interface WeightScoreFunction extends ScoreFunctionBase {
 }
 
 export interface WeightedAverageAggregation extends Aggregation {

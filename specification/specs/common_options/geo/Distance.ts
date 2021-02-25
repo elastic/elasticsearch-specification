@@ -17,8 +17,8 @@
  * under the License.
  */
 
-@class_serializer('DistanceFormatter')
-class Distance {
+type Distance = string
+class DistanceParsed {
   precision: double
   unit: DistanceUnit
 }
