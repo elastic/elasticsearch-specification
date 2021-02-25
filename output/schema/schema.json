@@ -99473,31 +99473,10 @@
           "name": "span_multi",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanMultiTermQuery",
-                      "namespace": "query_dsl.span.multi_term"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
-              "namespace": "query_dsl.abstractions.query"
+              "name": "SpanMultiTermQuery",
+              "namespace": "query_dsl.span.multi_term"
             }
           }
         },

@@ -9879,7 +9879,7 @@ export interface SpanQuery extends QueryBase {
   field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>
   span_first?: NamedQuery<SpanFirstQuery | string>
   span_gap?: NamedQuery<SpanGapQuery | integer>
-  span_multi?: NamedQuery<SpanMultiTermQuery | string>
+  span_multi?: SpanMultiTermQuery
   span_near?: NamedQuery<SpanNearQuery | string>
   span_not?: NamedQuery<SpanNotQuery | string>
   span_or?: NamedQuery<SpanOrQuery | string>
