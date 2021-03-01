@@ -26,4 +26,35 @@ class ClusterIndicesStats {
   segments: SegmentsStats
   shards: ClusterIndicesShardsStats
   store: StoreStats
+  mappings: FieldTypesMappings
+  analysis: CharFilterTypes
+  versions?: IndicesVersionsStats[]
+}
+
+class FieldTypesMappings {
+  field_types: FieldTypesStats[]
+}
+
+class FieldTypesStats {
+  name: Name
+  count: integer
+  index_count: integer
+}
+
+class CharFilterTypes {
+  char_filter_types: FieldTypesStats[]
+  tokenizer_types: FieldTypesStats[]
+  filter_types: FieldTypesStats[]
+  analyzer_types: FieldTypesStats[]
+  built_in_char_filters: FieldTypesStats[]
+  built_in_tokenizers: FieldTypesStats[]
+  built_in_filters: FieldTypesStats[]
+  built_in_analyzers: FieldTypesStats[]
+}
+
+class IndicesVersionsStats {
+  index_count: integer
+  primary_shard_count: integer
+  total_primary_bytes: long
+  version: string
 }

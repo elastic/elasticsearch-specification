@@ -26,4 +26,6 @@ class PluginStats {
   java_version: string
   name: string
   version: string
+  licensed: boolean
+  type: string
 }

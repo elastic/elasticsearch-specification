@@ -1645,6 +1645,17 @@ export interface CharFilterDetail {
   name: string
 }
 
+export interface CharFilterTypes {
+  char_filter_types: Array<FieldTypesStats>
+  tokenizer_types: Array<FieldTypesStats>
+  filter_types: Array<FieldTypesStats>
+  analyzer_types: Array<FieldTypesStats>
+  built_in_char_filters: Array<FieldTypesStats>
+  built_in_tokenizers: Array<FieldTypesStats>
+  built_in_filters: Array<FieldTypesStats>
+  built_in_analyzers: Array<FieldTypesStats>
+}
+
 export interface CharGroupTokenizer extends TokenizerBase {
   tokenize_on_chars: Array<string>
 }
@@ -1911,10 +1922,10 @@ export interface ClusterIndicesShardsIndexStats {
 }
 
 export interface ClusterIndicesShardsStats {
-  index: ClusterIndicesShardsIndexStats
-  primaries: double
-  replication: double
-  total: double
+  index?: ClusterIndicesShardsIndexStats
+  primaries?: double
+  replication?: double
+  total?: double
 }
 
 export interface ClusterIndicesStats {
@@ -1926,6 +1937,9 @@ export interface ClusterIndicesStats {
   segments: SegmentsStats
   shards: ClusterIndicesShardsStats
   store: StoreStats
+  mappings: FieldTypesMappings
+  analysis: CharFilterTypes
+  versions?: Array<IndicesVersionsStats>
 }
 
 export interface ClusterInfo {
@@ -1974,6 +1988,13 @@ export interface ClusterNodeCount {
   master: integer
   total: integer
   voting_only: integer
+  data_cold: integer
+  data_content: integer
+  data_warm: integer
+  data_hot: integer
+  ml: integer
+  remote_cluster_client: integer
+  transform: integer
 }
 
 export interface ClusterNodesStats {
@@ -3768,6 +3789,16 @@ export interface FieldStatistics {
 }
 
 export type FieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword'
+
+export interface FieldTypesMappings {
+  field_types: Array<FieldTypesStats>
+}
+
+export interface FieldTypesStats {
+  name: Name
+  count: integer
+  index_count: integer
+}
 
 export type FieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
 
@@ -5569,6 +5600,13 @@ export interface IndicesStatsResponse {
   _all: IndicesStats
 }
 
+export interface IndicesVersionsStats {
+  index_count: integer
+  primary_shard_count: integer
+  total_primary_bytes: long
+  version: string
+}
+
 export interface Influence {
   influencer_field_name: string
   influencer_field_values: Array<string>
@@ -7343,6 +7381,8 @@ export interface PluginStats {
   java_version: string
   name: string
   version: string
+  licensed: boolean
+  type: string
 }
 
 export interface PointInTimeReference {

@@ -25143,6 +25143,127 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "CharFilterTypes",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "char_filter_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "tokenizer_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "analyzer_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "built_in_char_filters",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "built_in_tokenizers",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "built_in_filters",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "built_in_analyzers",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -27556,7 +27677,7 @@
       "properties": [
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27567,7 +27688,7 @@
         },
         {
           "name": "primaries",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27578,7 +27699,7 @@
         },
         {
           "name": "replication",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27589,7 +27710,7 @@
         },
         {
           "name": "total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27692,6 +27813,42 @@
             "type": {
               "name": "StoreStats",
               "namespace": "common_options.stats"
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldTypesMappings",
+              "namespace": "cluster.cluster_stats"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CharFilterTypes",
+              "namespace": "cluster.cluster_stats"
+            }
+          }
+        },
+        {
+          "name": "versions",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesVersionsStats",
+                "namespace": "cluster.cluster_stats"
+              }
             }
           }
         }
@@ -28112,6 +28269,83 @@
         },
         {
           "name": "voting_only",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "data_cold",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "data_content",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "data_warm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "data_hot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ml",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "remote_cluster_client",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "transform",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -44030,6 +44264,71 @@
         "name": "FieldType",
         "namespace": "mapping.types"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldTypesMappings",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "field_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldTypesStats",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -60190,6 +60489,59 @@
     {
       "kind": "interface",
       "name": {
+        "name": "IndicesVersionsStats",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "index_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "primary_shard_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_primary_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Influence",
         "namespace": "x_pack.machine_learning.job.results"
       },
@@ -75964,6 +76316,28 @@
         },
         {
           "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "licensed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
           "required": true,
           "type": {
             "kind": "instance_of",
