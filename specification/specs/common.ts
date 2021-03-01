@@ -121,6 +121,9 @@ type ByteSize = long | string
 
 type Percentage = string | float
 
+// TODO: replace all uuid's with this type
+type Uuid = string
+
 type NodeIds = string
 type PropertyName = string
 type RelationName = string
