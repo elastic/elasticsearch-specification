@@ -6829,6 +6829,17 @@ export interface NodeProcessInfo {
   refresh_interval_in_millis: long
 }
 
+export interface NodeReloadException {
+  name: string
+  reload_exception: NodeReloadExceptionCausedBy
+}
+
+export interface NodeReloadExceptionCausedBy {
+  type: string
+  reason: string
+  caused_by?: NodeReloadExceptionCausedBy
+}
+
 export type NodeRole = 'master' | 'data' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
 
 export interface NodeStatistics {
@@ -8341,11 +8352,14 @@ export interface ReloadSearchAnalyzersResponse {
 export interface ReloadSecureSettingsRequest extends CommonQueryParameters {
   node_id?: NodeIds
   timeout?: Time
+  body?: {
+    secure_settings_password?: string
+  }
 }
 
 export interface ReloadSecureSettingsResponse extends NodesResponseBase {
   cluster_name: string
-  nodes: Record<string, NodeStats>
+  nodes: Record<string, NodeStats | NodeReloadException>
 }
 
 export interface RemoteInfo {

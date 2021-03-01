@@ -71431,6 +71431,79 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "NodeReloadException",
+        "namespace": "cluster.reload_secure_settings"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reload_exception",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeReloadExceptionCausedBy",
+              "namespace": "cluster.reload_secure_settings"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeReloadExceptionCausedBy",
+        "namespace": "cluster.reload_secure_settings"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "caused_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeReloadExceptionCausedBy",
+              "namespace": "cluster.reload_secure_settings"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -85628,6 +85701,22 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "secure_settings_password",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
       "inherits": [
         {
           "type": {
@@ -85708,11 +85797,23 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeStats",
-                "namespace": "cluster.nodes_stats"
-              }
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "NodeStats",
+                    "namespace": "cluster.nodes_stats"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "NodeReloadException",
+                    "namespace": "cluster.reload_secure_settings"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           }
         }
