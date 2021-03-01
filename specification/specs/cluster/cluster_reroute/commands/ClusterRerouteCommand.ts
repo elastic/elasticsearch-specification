@@ -19,5 +19,12 @@
 
 @class_serializer('ClusterRerouteCommandFormatter')
 class ClusterRerouteCommand {
-  name: string
+  cancel: ClusterRerouteCommandAction
+  // TODO: check server if cancel is the only action to run
+}
+
+class ClusterRerouteCommandAction {
+  index: IndexName
+  shard: integer
+  node: string
 }
