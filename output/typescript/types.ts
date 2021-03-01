@@ -6160,7 +6160,7 @@ export interface ListTasksRequest extends CommonQueryParameters {
 }
 
 export interface ListTasksResponse {
-  node_failures: Array<ErrorCause>
+  node_failures?: Array<ErrorCause>
   nodes: Record<string, TaskExecutingNode>
 }
 
@@ -10450,7 +10450,7 @@ export interface TaskState {
   headers: Record<string, string>
   id: long
   node: string
-  parent_task_id: TaskId
+  parent_task_id?: TaskId
   running_time_in_nanos: long
   start_time_in_millis: long
   status: TaskStatus
