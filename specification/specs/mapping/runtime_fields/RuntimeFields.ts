@@ -17,4 +17,10 @@
  * under the License.
  */
 
-class DecayFunctionBase extends ScoreFunctionBase {}
+type RuntimeFields = Dictionary<Field, RuntimeField>
+
+class RuntimeField {
+  format?: string
+  script?: StoredScript
+  type: FieldType
+}

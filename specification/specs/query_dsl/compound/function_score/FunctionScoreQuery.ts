@@ -19,7 +19,7 @@
 
 class FunctionScoreQuery extends QueryBase {
   boost_mode?: FunctionBoostMode
-  functions?: ScoreFunctionBase[]
+  functions?: FunctionScoreContainer[]
   max_boost?: double
   min_score?: double
   query?: QueryContainer
