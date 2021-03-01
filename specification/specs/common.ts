@@ -102,6 +102,7 @@ type Ids = string | number | string[]
 
 type IndexName = string
 type Indices = string | string[]
+type IndexAlias = string
 
 type TypeName = string // TODO remove and use Type
 type TypeNames = string | string[] // TODO remove and use Types

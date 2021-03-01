@@ -17,13 +17,20 @@
  * under the License.
  */
 
-class ClusterStateResponse extends ResponseBase {
-  cluster_name: string
-  cluster_uuid: Uuid
-  master_node?: string
-  state?: string[]
-  state_uuid?: Uuid
+class ClusterStateBlocks {
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
+}
+
+class ClusterStateBlockIndex {
+  description: string
+  retryable: boolean
+  levels: string[]
+  aliases?: Array<IndexAlias>
+  aliases_version?: integer
   version?: integer
-  blocks?: ClusterStateBlocks
-  metadata?: ClusterStateMetadata
+  mapping_version?: integer
+  settings_version?: integer
+  routing_num_shards?: integer
+  state?: string // TODO: create enum of values
+
 }

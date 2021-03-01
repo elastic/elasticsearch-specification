@@ -17,13 +17,27 @@
  * under the License.
  */
 
-class ClusterStateResponse extends ResponseBase {
-  cluster_name: string
+
+class ClusterStateMetadata {
   cluster_uuid: Uuid
-  master_node?: string
-  state?: string[]
-  state_uuid?: Uuid
-  version?: integer
-  blocks?: ClusterStateBlocks
-  metadata?: ClusterStateMetadata
+  cluster_uuid_committed: boolean
+  templates: ClusterStateMetadataTemplate
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
+  'index-graveyard': ClusterStateMetadataIndexGraveyard
+  cluster_coordination: ClusterStateMetadataClusterCoordination
+}
+
+class ClusterStateMetadataIndexGraveyard {
+  tombstones: string[]
+}
+
+class ClusterStateMetadataTemplate {
+  // TODO: check server code for validation
+}
+
+class ClusterStateMetadataClusterCoordination {
+  term: integer
+  last_committed_config: string[]
+  last_accepted_config: string[]
+  voting_config_exclusions: string[]
 }
