@@ -32,5 +32,4 @@ class ClusterStateBlockIndex {
   settings_version?: integer
   routing_num_shards?: integer
   state?: string // TODO: create enum of values
-
 }

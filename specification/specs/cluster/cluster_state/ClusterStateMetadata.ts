@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 class ClusterStateMetadata {
   cluster_uuid: Uuid
   cluster_uuid_committed: boolean
