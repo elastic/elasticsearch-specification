@@ -19,9 +19,9 @@
 
 class SlackMessage {
   attachments: SlackAttachment[]
-  dynamic_attachments: SlackDynamicAttachment
+  dynamic_attachments?: SlackDynamicAttachment
   from: string
-  icon: string
+  icon?: string
   text: string
   to: string[]
 }

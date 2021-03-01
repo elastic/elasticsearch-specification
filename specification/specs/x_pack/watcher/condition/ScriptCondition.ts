@@ -20,5 +20,6 @@
 @class_serializer('ScriptConditionFormatter')
 class ScriptCondition {
   lang: string
-  params: Dictionary<string, UserDefinedValue>
+  params?: Dictionary<string, UserDefinedValue>
+  source: string
 }

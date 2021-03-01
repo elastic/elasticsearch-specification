@@ -18,6 +18,6 @@
  */
 
 class ExecuteWatchResponse extends ResponseBase {
-  _id: string
+  _id: Id
   watch_record: WatchRecord
 }

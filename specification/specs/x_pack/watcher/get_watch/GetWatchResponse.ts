@@ -19,7 +19,10 @@
 
 class GetWatchResponse extends ResponseBase {
   found: boolean
-  _id: string
-  status: WatchStatus
-  watch: Watch
+  _id: Id
+  status?: WatchStatus
+  watch?: Watch
+  _primary_term?: integer
+  _seq_no?: integer
+  _version?: integer
 }

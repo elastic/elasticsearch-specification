@@ -5,7 +5,6 @@ ActionIds,common.ts
 TypeNames,common.ts
 LongId,common.ts
 IndexMetrics,common.ts
-Timestamp,common.ts
 CustomResponseBuilderBase,common/CustomResponseBuilderBase.ts
 ElasticsearchUrlFormatter,common/ElasticsearchUrlFormatter.ts
 HttpMethod,common/HttpMethod.ts
@@ -129,6 +128,7 @@ RareFunction,x_pack/machine_learning/job/detectors/RareFunction.ts
 SumFunction,x_pack/machine_learning/job/detectors/SumFunction.ts
 TimeFunction,x_pack/machine_learning/job/detectors/TimeFunction.ts
 DataAttachmentFormat,x_pack/watcher/action/email/DataAttachmentFormat.ts
+SlackActionMessageResult,x_pack/watcher/execution/slack/SlackActionMessageResult.ts
 DateRangeProperty,mapping/types/core/range/date_range/DateRangeProperty.ts
 DoubleRangeProperty,mapping/types/core/range/double_range/DoubleRangeProperty.ts
 FloatRangeProperty,mapping/types/core/range/float_range/FloatRangeProperty.ts

@@ -18,6 +18,7 @@
  */
 
 class ActivationStatus {
-  actions: Dictionary<string, ActionStatus>
+  actions: Dictionary<IndexName, ActionStatus>
   state: ActivationState
+  version: integer
 }

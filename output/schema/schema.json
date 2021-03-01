@@ -9495,7 +9495,7 @@
       "properties": [
         {
           "name": "action_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9506,7 +9506,7 @@
         },
         {
           "name": "condition",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9517,7 +9517,7 @@
         },
         {
           "name": "foreach",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9528,7 +9528,7 @@
         },
         {
           "name": "max_iterations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9539,7 +9539,7 @@
         },
         {
           "name": "name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9550,7 +9550,7 @@
         },
         {
           "name": "throttle_period",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9560,13 +9560,35 @@
           }
         },
         {
+          "name": "throttle_period_in_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "transform",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "TransformContainer",
               "namespace": "x_pack.watcher.transform"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionIndex",
+              "namespace": "x_pack.watcher.action"
             }
           }
         }
@@ -9646,6 +9668,26 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ActionIndex",
+        "namespace": "x_pack.watcher.action"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ActionStatus",
         "namespace": "x_pack.watcher.acknowledge_watch"
       },
@@ -9663,7 +9705,7 @@
         },
         {
           "name": "last_execution",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9674,7 +9716,7 @@
         },
         {
           "name": "last_successful_execution",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9685,7 +9727,7 @@
         },
         {
           "name": "last_throttle",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -9811,7 +9853,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Timestamp",
               "namespace": "internal"
             }
           }
@@ -9832,7 +9874,7 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "IndexName",
                 "namespace": "internal"
               }
             },
@@ -9854,6 +9896,17 @@
             "type": {
               "name": "ActivationState",
               "namespace": "x_pack.watcher.acknowledge_watch"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
@@ -30953,7 +31006,7 @@
       "properties": [
         {
           "name": "always",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30964,7 +31017,7 @@
         },
         {
           "name": "array_compare",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30975,7 +31028,7 @@
         },
         {
           "name": "compare",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30986,7 +31039,7 @@
         },
         {
           "name": "never",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30997,7 +31050,7 @@
         },
         {
           "name": "script",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40410,7 +40463,7 @@
       "properties": [
         {
           "name": "account",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40432,7 +40485,7 @@
         },
         {
           "name": "reason",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40507,7 +40560,7 @@
       "properties": [
         {
           "name": "bcc",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -40521,7 +40574,7 @@
         },
         {
           "name": "body",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40532,7 +40585,7 @@
         },
         {
           "name": "cc",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -40546,7 +40599,7 @@
         },
         {
           "name": "from",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40561,14 +40614,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "priority",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40579,7 +40632,7 @@
         },
         {
           "name": "reply_to",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -41915,7 +41968,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -42104,7 +42157,7 @@
       "properties": [
         {
           "name": "email",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42119,14 +42172,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42137,7 +42190,7 @@
         },
         {
           "name": "logging",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42148,7 +42201,7 @@
         },
         {
           "name": "pagerduty",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42159,7 +42212,7 @@
         },
         {
           "name": "reason",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42170,7 +42223,7 @@
         },
         {
           "name": "slack",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42203,7 +42256,7 @@
         },
         {
           "name": "webhook",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54448,14 +54501,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54466,12 +54519,45 @@
         },
         {
           "name": "watch",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Watch",
               "namespace": "x_pack.watcher"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
@@ -58359,17 +58445,6 @@
       },
       "properties": [
         {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "response",
           "required": true,
           "type": {
@@ -58406,7 +58481,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -58440,6 +58515,17 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -61084,7 +61170,7 @@
       "properties": [
         {
           "name": "chain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -61095,7 +61181,7 @@
         },
         {
           "name": "http",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -61106,7 +61192,7 @@
         },
         {
           "name": "search",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -61117,7 +61203,7 @@
         },
         {
           "name": "simple",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89315,7 +89401,7 @@
       "properties": [
         {
           "name": "cron",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89326,7 +89412,7 @@
         },
         {
           "name": "daily",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89337,7 +89423,7 @@
         },
         {
           "name": "hourly",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89348,7 +89434,7 @@
         },
         {
           "name": "interval",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89359,7 +89445,7 @@
         },
         {
           "name": "monthly",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -89373,7 +89459,7 @@
         },
         {
           "name": "weekly",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -89387,7 +89473,7 @@
         },
         {
           "name": "yearly",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -89433,7 +89519,7 @@
         },
         {
           "name": "triggered_time",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -89696,7 +89782,7 @@
         },
         {
           "name": "params",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -89708,6 +89794,17 @@
             "kind": "dictionary_of",
             "value": {
               "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -97424,19 +97521,8 @@
           }
         },
         {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "request",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97447,34 +97533,12 @@
         },
         {
           "name": "response",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "HttpInputResponseResult",
               "namespace": "x_pack.watcher.execution"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Status",
-              "namespace": "x_pack.watcher.execution"
-            }
-          }
-        },
-        {
-          "name": "to",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -97489,7 +97553,7 @@
       "properties": [
         {
           "name": "account",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97499,16 +97563,13 @@
           }
         },
         {
-          "name": "sent_messages",
+          "name": "message",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SlackActionMessageResult",
-                "namespace": "x_pack.watcher.execution.slack"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "SlackMessage",
+              "namespace": "x_pack.watcher.action.slack"
             }
           }
         }
@@ -97523,7 +97584,7 @@
       "properties": [
         {
           "name": "author_icon",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97534,7 +97595,7 @@
         },
         {
           "name": "author_link",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97556,7 +97617,7 @@
         },
         {
           "name": "color",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97567,7 +97628,7 @@
         },
         {
           "name": "fallback",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97578,7 +97639,7 @@
         },
         {
           "name": "fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -97592,7 +97653,7 @@
         },
         {
           "name": "footer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97603,7 +97664,7 @@
         },
         {
           "name": "footer_icon",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97614,7 +97675,7 @@
         },
         {
           "name": "image_url",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97625,7 +97686,7 @@
         },
         {
           "name": "pretext",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97636,7 +97697,7 @@
         },
         {
           "name": "text",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97647,7 +97708,7 @@
         },
         {
           "name": "thumb_url",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97669,7 +97730,7 @@
         },
         {
           "name": "title_link",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97680,7 +97741,7 @@
         },
         {
           "name": "ts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97787,7 +97848,7 @@
         },
         {
           "name": "dynamic_attachments",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97809,7 +97870,7 @@
         },
         {
           "name": "icon",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113790,7 +113851,7 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "IndexName",
                 "namespace": "internal"
               }
             },
@@ -113828,7 +113889,7 @@
         },
         {
           "name": "metadata",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -113845,7 +113906,7 @@
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113856,7 +113917,7 @@
         },
         {
           "name": "throttle_period",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113867,7 +113928,7 @@
         },
         {
           "name": "transform",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114010,7 +114071,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -114143,7 +114204,7 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "IndexName",
                 "namespace": "internal"
               }
             },
@@ -114159,7 +114220,7 @@
         },
         {
           "name": "last_checked",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114170,7 +114231,7 @@
         },
         {
           "name": "last_met_condition",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114197,6 +114258,17 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "execution_state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -114437,7 +114509,7 @@
         },
         {
           "name": "response",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

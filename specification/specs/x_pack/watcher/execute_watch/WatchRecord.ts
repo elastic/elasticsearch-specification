@@ -27,5 +27,5 @@ class WatchRecord {
   state: ActionExecutionState
   trigger_event: TriggerEventResult
   user: string
-  watch_id: string
+  watch_id: Id
 }

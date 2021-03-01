@@ -40,13 +40,15 @@ export interface AcknowledgedResponseBase {
 export type AcknowledgementState = 'awaits_successful_execution' | 'ackable' | 'acked'
 
 export interface Action {
-  action_type: ActionType
-  condition: ConditionContainer
-  foreach: string
-  max_iterations: integer
-  name: string
-  throttle_period: Time
-  transform: TransformContainer
+  action_type?: ActionType
+  condition?: ConditionContainer
+  foreach?: string
+  max_iterations?: integer
+  name?: string
+  throttle_period?: Time
+  throttle_period_in_millis?: EpochMillis
+  transform?: TransformContainer
+  index: ActionIndex
 }
 
 export type ActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
@@ -55,11 +57,15 @@ export type ActionExecutionState = 'awaits_execution' | 'checking' | 'execution_
 
 export type ActionIds = string
 
+export interface ActionIndex {
+  index: IndexName
+}
+
 export interface ActionStatus {
   ack: AcknowledgeState
-  last_execution: ExecutionState
-  last_successful_execution: ExecutionState
-  last_throttle: ThrottleState
+  last_execution?: ExecutionState
+  last_successful_execution?: ExecutionState
+  last_throttle?: ThrottleState
 }
 
 export type ActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
@@ -74,12 +80,13 @@ export interface ActivateWatchResponse {
 
 export interface ActivationState {
   active: boolean
-  timestamp: DateString
+  timestamp: Timestamp
 }
 
 export interface ActivationStatus {
-  actions: Record<string, ActionStatus>
+  actions: Record<IndexName, ActionStatus>
   state: ActivationState
+  version: integer
 }
 
 export interface AdaptiveSelectionStats {
@@ -2291,11 +2298,11 @@ export interface Condition {
 }
 
 export interface ConditionContainer {
-  always: AlwaysCondition
-  array_compare: ArrayCompareCondition
-  compare: CompareCondition
-  never: NeverCondition
-  script: ScriptCondition
+  always?: AlwaysCondition
+  array_compare?: ArrayCompareCondition
+  compare?: CompareCondition
+  never?: NeverCondition
+  script?: ScriptCondition
 }
 
 export type ConditionOperator = 'gt' | 'gte' | 'lt' | 'lte'
@@ -3347,9 +3354,9 @@ export interface ElisionTokenFilter extends TokenFilterBase {
 }
 
 export interface EmailActionResult {
-  account: string
+  account?: string
   message: EmailResult
-  reason: string
+  reason?: string
 }
 
 export interface EmailBody {
@@ -3360,13 +3367,13 @@ export interface EmailBody {
 export type EmailPriority = 'lowest' | 'low' | 'normal' | 'high' | 'highest'
 
 export interface EmailResult {
-  bcc: Array<string>
-  body: EmailBody
-  cc: Array<string>
-  from: string
-  id: string
-  priority: EmailPriority
-  reply_to: Array<string>
+  bcc?: Array<string>
+  body?: EmailBody
+  cc?: Array<string>
+  from?: string
+  id: Id
+  priority?: EmailPriority
+  reply_to?: Array<string>
   sent_date: DateString
   subject: string
   to: Array<string>
@@ -3517,7 +3524,7 @@ export interface ExecuteWatchRequest extends CommonQueryParameters {
 }
 
 export interface ExecuteWatchResponse {
-  _id: string
+  _id: Id
   watch_record: WatchRecord
 }
 
@@ -3542,16 +3549,16 @@ export interface ExecutionResult {
 }
 
 export interface ExecutionResultAction {
-  email: EmailActionResult
-  id: string
-  index: IndexActionResult
-  logging: LoggingActionResult
-  pagerduty: PagerDutyActionResult
-  reason: string
-  slack: SlackActionResult
+  email?: EmailActionResult
+  id: Id
+  index?: IndexActionResult
+  logging?: LoggingActionResult
+  pagerduty?: PagerDutyActionResult
+  reason?: string
+  slack?: SlackActionResult
   status: Status
   type: ActionType
-  webhook: WebhookActionResult
+  webhook?: WebhookActionResult
 }
 
 export interface ExecutionResultCondition {
@@ -4925,9 +4932,12 @@ export interface GetWatchRequest extends CommonQueryParameters {
 
 export interface GetWatchResponse {
   found: boolean
-  _id: string
-  status: WatchStatus
-  watch: Watch
+  _id: Id
+  status?: WatchStatus
+  watch?: Watch
+  _primary_term?: integer
+  _seq_no?: integer
+  _version?: integer
 }
 
 export interface GlobalAggregation extends BucketAggregationBase {
@@ -5372,16 +5382,16 @@ export interface IlmUsage {
 }
 
 export interface IndexActionResult {
-  id: string
   response: IndexActionResultIndexResponse
 }
 
 export interface IndexActionResultIndexResponse {
   created: boolean
-  id: string
+  id: Id
   index: IndexName
   result: Result
   version: integer
+  type?: Type
 }
 
 export interface IndexAliases {
@@ -5670,10 +5680,10 @@ export interface Input {
 }
 
 export interface InputContainer {
-  chain: ChainInput
-  http: HttpInput
-  search: SearchInput
-  simple: SimpleInput
+  chain?: ChainInput
+  http?: HttpInput
+  search?: SearchInput
+  simple?: SimpleInput
 }
 
 export type InputType = 'http' | 'search' | 'simple'
@@ -8778,18 +8788,18 @@ export interface ScheduleBase {
 }
 
 export interface ScheduleContainer {
-  cron: CronExpression
-  daily: DailySchedule
-  hourly: HourlySchedule
-  interval: Interval
-  monthly: Array<TimeOfMonth>
-  weekly: Array<TimeOfWeek>
-  yearly: Array<TimeOfYear>
+  cron?: CronExpression
+  daily?: DailySchedule
+  hourly?: HourlySchedule
+  interval?: Interval
+  monthly?: Array<TimeOfMonth>
+  weekly?: Array<TimeOfWeek>
+  yearly?: Array<TimeOfYear>
 }
 
 export interface ScheduleTriggerEvent {
   scheduled_time: DateString | string
-  triggered_time: DateString | string
+  triggered_time?: DateString | string
 }
 
 export interface ScheduledEvent {
@@ -8821,7 +8831,8 @@ export interface ScriptBase {
 
 export interface ScriptCondition {
   lang: string
-  params: Record<string, any>
+  params?: Record<string, any>
+  source: string
 }
 
 export interface ScriptField {
@@ -9655,34 +9666,31 @@ export interface SizeField {
 
 export interface SlackActionMessageResult {
   message: SlackMessage
-  reason: string
-  request: HttpInputRequestResult
-  response: HttpInputResponseResult
-  status: Status
-  to: string
+  request?: HttpInputRequestResult
+  response?: HttpInputResponseResult
 }
 
 export interface SlackActionResult {
-  account: string
-  sent_messages: Array<SlackActionMessageResult>
+  account?: string
+  message: SlackMessage
 }
 
 export interface SlackAttachment {
-  author_icon: string
-  author_link: string
+  author_icon?: string
+  author_link?: string
   author_name: string
-  color: string
-  fallback: string
-  fields: Array<SlackAttachmentField>
-  footer: string
-  footer_icon: string
-  image_url: string
-  pretext: string
-  text: string
-  thumb_url: string
+  color?: string
+  fallback?: string
+  fields?: Array<SlackAttachmentField>
+  footer?: string
+  footer_icon?: string
+  image_url?: string
+  pretext?: string
+  text?: string
+  thumb_url?: string
   title: string
-  title_link: string
-  ts: DateString
+  title_link?: string
+  ts?: DateString
 }
 
 export interface SlackAttachmentField {
@@ -9698,9 +9706,9 @@ export interface SlackDynamicAttachment {
 
 export interface SlackMessage {
   attachments: Array<SlackAttachment>
-  dynamic_attachments: SlackDynamicAttachment
+  dynamic_attachments?: SlackDynamicAttachment
   from: string
-  icon: string
+  icon?: string
   text: string
   to: Array<string>
 }
@@ -11423,13 +11431,13 @@ export interface WarmerStats {
 }
 
 export interface Watch {
-  actions: Record<string, Action>
+  actions: Record<IndexName, Action>
   condition: ConditionContainer
   input: InputContainer
-  metadata: Record<string, any>
-  status: WatchStatus
-  throttle_period: string
-  transform: TransformContainer
+  metadata?: Record<string, any>
+  status?: WatchStatus
+  throttle_period?: string
+  transform?: TransformContainer
   trigger: TriggerContainer
 }
 
@@ -11443,7 +11451,7 @@ export interface WatchRecord {
   state: ActionExecutionState
   trigger_event: TriggerEventResult
   user: string
-  watch_id: string
+  watch_id: Id
 }
 
 export interface WatchRecordQueuedStats {
@@ -11460,11 +11468,12 @@ export interface WatchRecordStats extends WatchRecordQueuedStats {
 }
 
 export interface WatchStatus {
-  actions: Record<string, ActionStatus>
-  last_checked: DateString
-  last_met_condition: DateString
+  actions: Record<IndexName, ActionStatus>
+  last_checked?: DateString
+  last_met_condition?: DateString
   state: ActivationState
   version: integer
+  execution_state?: string
 }
 
 export interface WatcherNodeStats {
@@ -11492,7 +11501,7 @@ export interface WatcherStatsResponse {
 
 export interface WebhookActionResult {
   request: HttpInputRequestResult
-  response: HttpInputResponseResult
+  response?: HttpInputResponseResult
 }
 
 export interface WeightScoreFunction extends ScoreFunctionBase {
