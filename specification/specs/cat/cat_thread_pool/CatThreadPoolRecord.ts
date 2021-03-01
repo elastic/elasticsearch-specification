@@ -19,35 +19,35 @@
 
 class CatThreadPoolRecord {
   /** @prop_serializer StringIntFormatter */
-  active: integer
+  active: long
   /** @prop_serializer NullableStringLongFormatter */
-  completed: long
+  completed?: long
   /** @prop_serializer NullableStringIntFormatter */
-  core: integer
-  ephemeral_node_id: string
-  host: string
-  ip: string
-  keep_alive: Time
+  core?: integer
+  ephemeral_node_id?: Id
+  host?: string
+  ip?: string
+  keep_alive?: Time
   /** @prop_serializer NullableStringIntFormatter */
-  largest: integer
+  largest?: integer
   /** @prop_serializer NullableStringIntFormatter */
-  max: integer
+  max?: integer
   name: string
-  node_id: string
+  node_id?: Id
   node_name: string
   /** @prop_serializer NullableStringIntFormatter */
-  pool_size: integer
+  pool_size?: integer
   /** @prop_serializer NullableStringIntFormatter */
-  port: integer
+  port?: integer
   /** @prop_serializer NullableStringIntFormatter */
-  pid: integer
+  pid?: integer
   /** @prop_serializer StringIntFormatter */
   queue: integer
   /** @prop_serializer NullableStringIntFormatter */
-  queue_size: integer
+  queue_size?: integer
   /** @prop_serializer StringLongFormatter */
   rejected: long
   /** @prop_serializer NullableStringIntFormatter */
-  size: integer
-  type: string
+  size?: integer
+  type?: string
 }

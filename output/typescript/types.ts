@@ -1477,31 +1477,31 @@ export interface CatTemplatesRequest extends CommonCatQueryParameters, CommonQue
 export type CatTemplatesResponse = CatTemplatesRecord[]
 
 export interface CatThreadPoolRecord {
-  active: integer
-  completed: long
-  core: integer
-  ephemeral_node_id: string
-  host: string
-  ip: string
-  keep_alive: Time
-  largest: integer
-  max: integer
+  active: long
+  completed?: long
+  core?: integer
+  ephemeral_node_id?: Id
+  host?: string
+  ip?: string
+  keep_alive?: Time
+  largest?: integer
+  max?: integer
   name: string
-  node_id: string
+  node_id?: Id
   node_name: string
-  pool_size: integer
-  port: integer
-  pid: integer
+  pool_size?: integer
+  port?: integer
+  pid?: integer
   queue: integer
-  queue_size: integer
+  queue_size?: integer
   rejected: long
-  size: integer
-  type: string
+  size?: integer
+  type?: string
 }
 
 export interface CatThreadPoolRequest extends CommonCatQueryParameters, CommonQueryParameters {
   thread_pool_patterns?: Names
-  size?: Size
+  size?: Size | boolean
 }
 
 export type CatThreadPoolResponse = CatThreadPoolRecord[]

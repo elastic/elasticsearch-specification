@@ -23573,14 +23573,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "long",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "completed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23591,7 +23591,7 @@
         },
         {
           "name": "core",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23602,18 +23602,18 @@
         },
         {
           "name": "ephemeral_node_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "host",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23624,7 +23624,7 @@
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23635,7 +23635,7 @@
         },
         {
           "name": "keep_alive",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23646,7 +23646,7 @@
         },
         {
           "name": "largest",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23657,7 +23657,7 @@
         },
         {
           "name": "max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23679,11 +23679,11 @@
         },
         {
           "name": "node_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -23701,7 +23701,7 @@
         },
         {
           "name": "pool_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23712,7 +23712,7 @@
         },
         {
           "name": "port",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23723,7 +23723,7 @@
         },
         {
           "name": "pid",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23745,7 +23745,7 @@
         },
         {
           "name": "queue_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23767,7 +23767,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23778,7 +23778,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23829,11 +23829,23 @@
           "name": "size",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Size",
-              "namespace": "common"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Size",
+                  "namespace": "common"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
