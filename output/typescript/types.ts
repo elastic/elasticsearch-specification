@@ -1906,10 +1906,10 @@ export interface ClusterHealthRequest extends CommonQueryParameters {
 export interface ClusterHealthResponse {
   active_primary_shards: integer
   active_shards: integer
-  active_shards_percent_as_number: double
+  active_shards_percent_as_number: Percentage
   cluster_name: string
   delayed_unassigned_shards: integer
-  indices: Record<IndexName, IndexHealthStats>
+  indices?: Record<IndexName, IndexHealthStats>
   initializing_shards: integer
   number_of_data_nodes: integer
   number_of_in_flight_fetch: integer
@@ -1917,7 +1917,7 @@ export interface ClusterHealthResponse {
   number_of_pending_tasks: integer
   relocating_shards: integer
   status: Health
-  task_max_waiting_in_queue_millis: long
+  task_max_waiting_in_queue_millis: EpochMillis
   timed_out: boolean
   unassigned_shards: integer
 }
@@ -2084,7 +2084,13 @@ export interface ClusterPutSettingsResponse {
 }
 
 export interface ClusterRerouteCommand {
-  name: string
+  cancel: ClusterRerouteCommandAction
+}
+
+export interface ClusterRerouteCommandAction {
+  index: IndexName
+  shard: integer
+  node: string
 }
 
 export interface ClusterRerouteDecision {
@@ -2121,6 +2127,7 @@ export interface ClusterRerouteRequest extends CommonQueryParameters {
 }
 
 export interface ClusterRerouteResponse {
+  acknowledged: boolean
   explanations: Array<ClusterRerouteExplanation>
   state: Array<string>
 }
@@ -2129,6 +2136,46 @@ export interface ClusterShardMetrics {
   avg: double
   max: double
   min: double
+}
+
+export interface ClusterStateBlockIndex {
+  description: string
+  retryable: boolean
+  levels: Array<string>
+  aliases?: Array<IndexAlias>
+  aliases_version?: integer
+  version?: integer
+  mapping_version?: integer
+  settings_version?: integer
+  routing_num_shards?: integer
+  state?: string
+}
+
+export interface ClusterStateBlocks {
+  indices?: Record<IndexName, Record<string, ClusterStateBlockIndex>>
+}
+
+export interface ClusterStateMetadata {
+  cluster_uuid: Uuid
+  cluster_uuid_committed: boolean
+  templates: ClusterStateMetadataTemplate
+  indices?: Record<IndexName, Record<string, ClusterStateBlockIndex>>
+  'index-graveyard': ClusterStateMetadataIndexGraveyard
+  cluster_coordination: ClusterStateMetadataClusterCoordination
+}
+
+export interface ClusterStateMetadataClusterCoordination {
+  term: integer
+  last_committed_config: Array<string>
+  last_accepted_config: Array<string>
+  voting_config_exclusions: Array<string>
+}
+
+export interface ClusterStateMetadataIndexGraveyard {
+  tombstones: Array<string>
+}
+
+export interface ClusterStateMetadataTemplate {
 }
 
 export interface ClusterStateRequest extends CommonQueryParameters {
@@ -2146,11 +2193,13 @@ export interface ClusterStateRequest extends CommonQueryParameters {
 
 export interface ClusterStateResponse {
   cluster_name: string
-  cluster_uuid: string
-  master_node: string
-  state: Array<string>
-  state_uuid: string
-  version: long
+  cluster_uuid: Uuid
+  master_node?: string
+  state?: Array<string>
+  state_uuid?: Uuid
+  version?: integer
+  blocks?: ClusterStateBlocks
+  metadata?: ClusterStateMetadata
 }
 
 export interface ClusterStatistics {
@@ -5394,6 +5443,8 @@ export interface IndexActionResultIndexResponse {
   type?: Type
 }
 
+export type IndexAlias = string
+
 export interface IndexAliases {
   aliases: Record<string, AliasDefinition>
 }
@@ -5421,7 +5472,7 @@ export interface IndexHealthStats {
   number_of_replicas: integer
   number_of_shards: integer
   relocating_shards: integer
-  shards: Record<string, ShardHealthStats>
+  shards?: Record<string, ShardHealthStats>
   status: Health
   unassigned_shards: integer
 }
@@ -11322,6 +11373,8 @@ export interface UserIndicesPrivileges {
   query?: QueryUserPrivileges
   allow_restricted_indices: boolean
 }
+
+export type Uuid = string
 
 export interface ValidateDetectorRequest extends CommonQueryParameters {
   body: Detector
