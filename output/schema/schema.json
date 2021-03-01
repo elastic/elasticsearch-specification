@@ -65318,7 +65318,7 @@
       "properties": [
         {
           "name": "node_failures",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -104534,7 +104534,7 @@
         },
         {
           "name": "parent_task_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
