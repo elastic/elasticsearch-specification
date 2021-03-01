@@ -24,4 +24,11 @@ class ClusterNodeCount {
   master: integer
   total: integer
   voting_only: integer
+  data_cold: integer
+  data_content: integer
+  data_warm: integer
+  data_hot: integer
+  ml: integer
+  remote_cluster_client: integer
+  transform: integer
 }

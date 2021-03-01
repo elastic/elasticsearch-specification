@@ -18,8 +18,8 @@
  */
 
 class ClusterIndicesShardsStats {
-  index: ClusterIndicesShardsIndexStats
-  primaries: double
-  replication: double
-  total: double
+  index?: ClusterIndicesShardsIndexStats
+  primaries?: double
+  replication?: double
+  total?: double
 }
