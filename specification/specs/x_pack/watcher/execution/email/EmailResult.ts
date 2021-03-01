@@ -18,13 +18,13 @@
  */
 
 class EmailResult {
-  bcc: string[]
-  body: EmailBody
-  cc: string[]
-  from: string
-  id: string
-  priority: EmailPriority
-  reply_to: string[]
+  bcc?: string[]
+  body?: EmailBody
+  cc?: string[]
+  from?: string
+  id: Id
+  priority?: EmailPriority
+  reply_to?: string[]
   sent_date: DateString
   subject: string
   to: string[]

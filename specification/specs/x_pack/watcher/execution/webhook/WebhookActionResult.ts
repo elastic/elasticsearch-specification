@@ -19,5 +19,5 @@
 
 class WebhookActionResult {
   request: HttpInputRequestResult
-  response: HttpInputResponseResult
+  response?: HttpInputResponseResult
 }

@@ -18,7 +18,7 @@
  */
 
 class EmailActionResult {
-  account: string
+  account?: string
   message: EmailResult
-  reason: string
+  reason?: string // TODO: not sure if this needed
 }

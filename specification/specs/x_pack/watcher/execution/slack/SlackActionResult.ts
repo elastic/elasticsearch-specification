@@ -18,6 +18,7 @@
  */
 
 class SlackActionResult {
-  account: string
-  sent_messages: SlackActionMessageResult[]
+  account?: string
+//  sent_messages?: SlackActionMessageResult[] TODO: not sure if this needed
+  message: SlackMessage
 }

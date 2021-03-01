@@ -19,8 +19,9 @@
 
 class IndexActionResultIndexResponse {
   created: boolean
-  id: string
+  id: Id
   index: IndexName
   result: Result
   version: integer
+  type?: Type
 }
