@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class SumAggregation {}
+class SumAggregation extends FormatMetricAggregationBase {}

@@ -23,7 +23,7 @@ class SimpleQueryStringQuery extends QueryBase {
   auto_generate_synonyms_phrase_query?: boolean
   default_operator?: Operator
   fields?: Fields
-  flags?: SimpleQueryStringFlags
+  flags?: SimpleQueryStringFlags | string
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean

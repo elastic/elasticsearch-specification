@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class StatsAggregation {}
+class StatsAggregation extends FormatMetricAggregationBase {}

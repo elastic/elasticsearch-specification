@@ -17,11 +17,10 @@
  * under the License.
  */
 
-class SuggestBucket {
-  completion: CompletionSuggester
-  phrase: PhraseSuggester
-  prefix: string
-  regex: string
-  term: TermSuggester
-  text: string
+type RuntimeFields = Dictionary<Field, RuntimeField>
+
+class RuntimeField {
+  format?: string
+  script?: StoredScript
+  type: FieldType
 }

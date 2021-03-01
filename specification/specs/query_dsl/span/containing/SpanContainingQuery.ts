@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SpanContainingQuery {
+class SpanContainingQuery extends QueryBase {
   big?: SpanQuery
   little?: SpanQuery
 }

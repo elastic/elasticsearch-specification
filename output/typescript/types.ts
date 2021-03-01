@@ -92,7 +92,7 @@ export interface AdaptiveSelectionStats {
   rank: string
 }
 
-export interface AdjacencyMatrixAggregation {
+export interface AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Record<string, QueryContainer>
 }
 
@@ -141,6 +141,7 @@ export interface AggregationContainer {
   date_histogram?: DateHistogramAggregation
   date_range?: DateRangeAggregation
   derivative?: DerivativeAggregation
+  diversified_sampler?: DiversifiedSamplerAggregation
   extended_stats?: ExtendedStatsAggregation
   extended_stats_bucket?: ExtendedStatsBucketAggregation
   filter?: QueryContainer
@@ -149,6 +150,7 @@ export interface AggregationContainer {
   geo_centroid?: GeoCentroidAggregation
   geo_distance?: GeoDistanceAggregation
   geohash_grid?: GeoHashGridAggregation
+  geo_line?: GeoLineAggregation
   geotile_grid?: GeoTileGridAggregation
   global?: GlobalAggregation
   histogram?: HistogramAggregation
@@ -158,19 +160,22 @@ export interface AggregationContainer {
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
   median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-  meta?: Record<string, string | number | boolean>
+  meta?: Record<string, any>
   min?: MinAggregation
   min_bucket?: MinBucketAggregation
   missing?: MissingAggregation
   moving_avg?: MovingAverageAggregation
+  moving_percentiles?: MovingPercentilesAggregation
   moving_fn?: MovingFunctionAggregation
   nested?: NestedAggregation
+  normalize?: NormalizeAggregation
   parent?: ParentAggregation
   percentile_ranks?: PercentileRanksAggregation
   percentiles?: PercentilesAggregation
   percentiles_bucket?: PercentilesBucketAggregation
   range?: RangeAggregation
   rare_terms?: RareTermsAggregation
+  rate?: RateAggregation
   reverse_nested?: ReverseNestedAggregation
   sampler?: SamplerAggregation
   scripted_metric?: ScriptedMetricAggregation
@@ -184,6 +189,7 @@ export interface AggregationContainer {
   sum_bucket?: SumBucketAggregation
   terms?: TermsAggregation
   top_hits?: TopHitsAggregation
+  t_test?: TTestAggregation
   top_metrics?: TopMetricsAggregation
   value_count?: ValueCountAggregation
   weighted_avg?: WeightedAverageAggregation
@@ -560,11 +566,11 @@ export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
-    sort?: Array<Sort>
+    sort?: Sort
     _source?: boolean | SourceFilter
     stats?: Array<string>
     stored_fields?: Fields
-    suggest?: Record<string, SuggestBucket>
+    suggest?: Record<string, SuggestContainer>
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
@@ -614,7 +620,7 @@ export interface AutoDateHistogramAggregate extends MultiBucketAggregate<KeyedBu
   interval: DateMathTime
 }
 
-export interface AutoDateHistogramAggregation {
+export interface AutoDateHistogramAggregation extends BucketAggregationBase {
   buckets?: integer
   field?: Field
   format?: string
@@ -648,22 +654,21 @@ export interface AutoFollowedCluster {
   time_since_last_check_millis: DateString
 }
 
-export interface AverageAggregation {
+export interface AverageAggregation extends FormatMetricAggregationBase {
 }
 
-export interface AverageBucketAggregation {
+export interface AverageBucketAggregation extends PipelineAggregationBase {
 }
 
 export interface BinaryProperty extends DocValuesPropertyBase {
 }
 
-export interface BoolQuery {
+export interface BoolQuery extends QueryBase {
   filter?: QueryContainer | Array<QueryContainer>
   minimum_should_match?: MinimumShouldMatch
   must?: QueryContainer | Array<QueryContainer>
   must_not?: QueryContainer | Array<QueryContainer>
   should?: QueryContainer | Array<QueryContainer>
-  _name?: string
 }
 
 export interface BooleanProperty extends DocValuesPropertyBase {
@@ -673,7 +678,7 @@ export interface BooleanProperty extends DocValuesPropertyBase {
   null_value: boolean
 }
 
-export interface BoostingQuery {
+export interface BoostingQuery extends QueryBase {
   negative_boost?: double
   negative?: QueryContainer
   positive?: QueryContainer
@@ -695,7 +700,7 @@ export interface BoxPlotAggregate extends AggregateBase {
   q3: double
 }
 
-export interface BoxplotAggregation {
+export interface BoxplotAggregation extends MetricAggregationBase {
   compression?: double
 }
 
@@ -720,7 +725,7 @@ export interface BucketAggregate extends AggregateBase {
   items: Bucket
 }
 
-export interface BucketAggregation {
+export interface BucketAggregationBase extends Aggregation {
   aggregations?: Record<string, AggregationContainer>
 }
 
@@ -737,19 +742,19 @@ export interface BucketInfluencer {
   timestamp: DateString
 }
 
-export interface BucketScriptAggregation {
+export interface BucketScriptAggregation extends PipelineAggregationBase {
   script?: Script
 }
 
-export interface BucketSelectorAggregation {
+export interface BucketSelectorAggregation extends PipelineAggregationBase {
   script?: Script
 }
 
-export interface BucketSortAggregation {
+export interface BucketSortAggregation extends Aggregation {
   from?: integer
   gap_policy?: GapPolicy
   size?: integer
-  sort?: Array<Sort>
+  sort?: Sort
 }
 
 export interface BucketsPath {
@@ -897,10 +902,9 @@ export interface CancelTasksResponse {
   nodes: Record<string, TaskExecutingNode>
 }
 
-export interface CardinalityAggregation {
+export interface CardinalityAggregation extends MetricAggregationBase {
   precision_threshold?: integer
   rehash?: boolean
-  field?: Field
 }
 
 export interface CatAliasesRecord {
@@ -1654,7 +1658,7 @@ export interface ChiSquareHeuristic {
 
 export type ChildScoreMode = 'none' | 'avg' | 'sum' | 'max' | 'min'
 
-export interface ChildrenAggregation {
+export interface ChildrenAggregation extends BucketAggregationBase {
   type?: RelationName
 }
 
@@ -2222,15 +2226,15 @@ export interface CompletionSuggestOption<TDocument = unknown> {
   text: string
 }
 
-export interface CompletionSuggester {
-  contexts: Record<string, Array<SuggestContextQuery>>
-  fuzzy: SuggestFuzziness
-  prefix: string
-  regex: string
-  skip_duplicates: boolean
+export interface CompletionSuggester extends SuggesterBase {
+  contexts?: Record<string, Array<SuggestContextQuery>>
+  fuzzy?: SuggestFuzziness
+  prefix?: string
+  regex?: string
+  skip_duplicates?: boolean
 }
 
-export interface CompositeAggregation {
+export interface CompositeAggregation extends BucketAggregationBase {
   after?: Record<string, string | float | null>
   size?: integer
   sources?: Array<Record<string, CompositeAggregationSource>>
@@ -2290,7 +2294,7 @@ export interface ConstantKeywordProperty extends PropertyBase {
   value: object
 }
 
-export interface ConstantScoreQuery {
+export interface ConstantScoreQuery extends QueryBase {
   filter?: QueryContainer
   boost?: float
 }
@@ -2490,10 +2494,10 @@ export interface CsvProcessor extends ProcessorBase {
   trim: boolean
 }
 
-export interface CumulativeCardinalityAggregation {
+export interface CumulativeCardinalityAggregation extends PipelineAggregationBase {
 }
 
-export interface CumulativeSumAggregation {
+export interface CumulativeSumAggregation extends PipelineAggregationBase {
 }
 
 export interface CurrentNode {
@@ -2612,13 +2616,18 @@ export interface Datafeeds {
   scroll_size: integer
 }
 
+export interface DateDecayFunctionKeys extends DecayFunctionBase {
+}
+export type DateDecayFunction = DateDecayFunctionKeys |
+    { [property: string]: DecayPlacement<DateMath, Time> }
+
 export interface DateField {
   field: Field
   format?: string
   include_unmapped?: boolean
 }
 
-export interface DateHistogramAggregation {
+export interface DateHistogramAggregation extends BucketAggregationBase {
   calendar_interval?: DateInterval | Time
   extended_bounds?: ExtendedBounds<DateMath | long>
   hard_bounds?: ExtendedBounds<DateMath | long>
@@ -2702,7 +2711,7 @@ export interface DateProperty extends DocValuesPropertyBase {
   precision_step: integer
 }
 
-export interface DateRangeAggregation {
+export interface DateRangeAggregation extends BucketAggregationBase {
   field?: Field
   format?: string
   missing?: Missing
@@ -2732,6 +2741,19 @@ export interface DeactivateWatchRequest extends CommonQueryParameters {
 
 export interface DeactivateWatchResponse {
   status: ActivationStatus
+}
+
+export type DecayFunction = DateDecayFunction | NumericDecayFunction | GeoDecayFunction
+
+export interface DecayFunctionBase extends ScoreFunctionBase {
+  multi_value_mode?: MultiValueMode
+}
+
+export interface DecayPlacement<TOrigin = unknown, TScale = unknown> {
+  decay?: double
+  offset?: TScale
+  scale?: TScale
+  origin?: TOrigin
 }
 
 export type Decision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
@@ -3091,7 +3113,7 @@ export interface DeprecationInfoResponse {
 
 export type DeprecationWarningLevel = 'none' | 'info' | 'warning' | 'critical'
 
-export interface DerivativeAggregation {
+export interface DerivativeAggregation extends PipelineAggregationBase {
 }
 
 export interface DetectionRule {
@@ -3122,19 +3144,19 @@ export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
 
 export interface DirectGenerator {
   field: Field
-  max_edits: integer
-  max_inspections: float
-  max_term_freq: float
-  min_doc_freq: float
-  min_word_length: integer
-  post_filter: string
-  pre_filter: string
-  prefix_length: integer
-  size: integer
-  suggest_mode: SuggestMode
+  max_edits?: integer
+  max_inspections?: float
+  max_term_freq?: float
+  min_doc_freq?: float
+  min_word_length?: integer
+  post_filter?: string
+  pre_filter?: string
+  prefix_length?: integer
+  size?: integer
+  suggest_mode?: SuggestMode
 }
 
-export interface DisMaxQuery {
+export interface DisMaxQuery extends QueryBase {
   queries?: Array<QueryContainer>
   tie_breaker?: double
   boost?: float
@@ -3172,10 +3194,7 @@ export interface DissectProcessor extends ProcessorBase {
   pattern: string
 }
 
-export interface Distance {
-  precision: double
-  unit: DistanceUnit
-}
+export type Distance = string
 
 export interface DistanceFeatureQuery extends QueryBase {
   origin?: Array<number> | GeoCoordinate | DateMath
@@ -3183,9 +3202,22 @@ export interface DistanceFeatureQuery extends QueryBase {
   field?: Field
 }
 
+export interface DistanceParsed {
+  precision: double
+  unit: DistanceUnit
+}
+
 export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm' | 'mm'
 
 export type DistinctCountFunction = 'DistinctCount' | 'LowDistinctCount' | 'HighDistinctCount'
+
+export interface DiversifiedSamplerAggregation extends BucketAggregationBase {
+  execution_hint?: SamplerAggregationExecutionHint
+  max_docs_per_value?: integer
+  script?: Script
+  shard_size?: integer
+  field?: Field
+}
 
 export interface DocStats {
   count: long
@@ -3403,6 +3435,10 @@ export interface EstimateModelMemoryResponse {
   model_memory_estimate: string
 }
 
+export interface EwmaModelSettings {
+  alpha?: float
+}
+
 export type ExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
 export interface ExecuteEnrichPolicyRequest extends CommonQueryParameters {
@@ -3613,12 +3649,11 @@ export interface ExtendedStatsAggregate extends StatsAggregate {
   std_deviation_sampling?: double
 }
 
-export interface ExtendedStatsAggregation {
+export interface ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
-  field?: Field
 }
 
-export interface ExtendedStatsBucketAggregation {
+export interface ExtendedStatsBucketAggregation extends PipelineAggregationBase {
   sigma?: double
 }
 
@@ -3718,6 +3753,14 @@ export interface FieldSecuritySettings {
   grant: Array<string>
 }
 
+export interface FieldSort {
+  missing?: Missing
+  mode?: SortMode
+  nested?: NestedSortValue
+  order?: SortOrder
+  unmapped_type?: FieldType
+}
+
 export interface FieldStatistics {
   doc_count: integer
   sum_doc_freq: long
@@ -3727,6 +3770,13 @@ export interface FieldStatistics {
 export type FieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword'
 
 export type FieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
+
+export interface FieldValueFactorScoreFunction extends ScoreFunctionBase {
+  field: Field
+  factor?: double
+  missing?: double
+  modifier?: FieldValueFactorModifier
+}
 
 export interface Fielddata {
   filter: FielddataFilter
@@ -3791,7 +3841,7 @@ export interface FiltersAggregate extends AggregateBase {
   buckets: Array<FiltersBucketItem> | Record<string, FiltersBucketItem>
 }
 
-export interface FiltersAggregation {
+export interface FiltersAggregation extends BucketAggregationBase {
   filters?: Record<string, QueryContainer> | Array<QueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
@@ -4006,7 +4056,11 @@ export interface ForgetFollowerIndexResponse {
   _shards: ShardStatistics
 }
 
-export interface FormattableMetricAggregation {
+export interface FormatMetricAggregationBase extends MetricAggregationBase {
+  format?: string
+}
+
+export interface FormattableMetricAggregation extends MetricAggregationBase {
   format?: string
 }
 
@@ -4030,11 +4084,22 @@ export interface FreezeIndexResponse extends AcknowledgedResponseBase {
 
 export type FunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' | 'min'
 
+export interface FunctionScoreContainer {
+  exp?: DecayFunction
+  gauss?: DecayFunction
+  linear?: DecayFunction
+  field_value_factor?: FieldValueFactorScoreFunction
+  random_score?: RandomScoreFunction
+  script_score?: ScriptScoreFunction
+  filter?: QueryContainer
+  weight?: double
+}
+
 export type FunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
 
-export interface FunctionScoreQuery {
+export interface FunctionScoreQuery extends QueryBase {
   boost_mode?: FunctionBoostMode
-  functions?: Array<ScoreFunction>
+  functions?: Array<FunctionScoreContainer>
   max_boost?: double
   min_score?: double
   query?: QueryContainer
@@ -4049,6 +4114,8 @@ export interface FuzzyQuery extends QueryBase {
   prefix_length?: integer
   rewrite?: MultiTermQueryRewrite
   transpositions?: boolean
+  fuzziness?: Fuzziness
+  value: any
 }
 
 export type GapPolicy = 'skip' | 'insert_zeros'
@@ -4093,7 +4160,7 @@ export interface GeoBoundsAggregate extends AggregateBase {
   bounds: GeoBounds
 }
 
-export interface GeoBoundsAggregation {
+export interface GeoBoundsAggregation extends MetricAggregationBase {
   wrap_longitude?: boolean
 }
 
@@ -4102,12 +4169,19 @@ export interface GeoCentroidAggregate extends AggregateBase {
   location: GeoLocation
 }
 
-export interface GeoCentroidAggregation {
+export interface GeoCentroidAggregation extends MetricAggregationBase {
+  count?: long
+  location?: GeoLocation
 }
 
 export type GeoCoordinate = Array<double> | ThreeDimensionalPoint
 
-export interface GeoDistanceAggregation {
+export interface GeoDecayFunctionKeys extends DecayFunctionBase {
+}
+export type GeoDecayFunction = GeoDecayFunctionKeys |
+    { [property: string]: DecayPlacement<GeoLocation, Distance> }
+
+export interface GeoDistanceAggregation extends BucketAggregationBase {
   distance_type?: GeoDistanceType
   field?: Field
   origin?: GeoLocation | string
@@ -4122,13 +4196,22 @@ export interface GeoDistanceQuery extends QueryBase {
   validation_method?: GeoValidationMethod
 }
 
+export interface GeoDistanceSortKeys {
+  mode?: SortMode
+  distance_type?: GeoDistanceType
+  order?: SortOrder
+  unit?: DistanceUnit
+}
+export type GeoDistanceSort = GeoDistanceSortKeys |
+    { [property: string]: Array<GeoLocation> }
+
 export type GeoDistanceType = 'arc' | 'plane'
 
 export type GeoExecution = 'memory' | 'indexed'
 
 export type GeoFormat = 'GeoJson' | 'WellKnownText'
 
-export interface GeoHashGridAggregation {
+export interface GeoHashGridAggregation extends BucketAggregationBase {
   bounds?: BoundingBox
   field?: Field
   precision?: GeoHashPrecision
@@ -4214,7 +4297,7 @@ export type GeoShapeRelation = 'intersects' | 'disjoint' | 'within' | 'contains'
 
 export type GeoStrategy = 'recursive' | 'term'
 
-export interface GeoTileGridAggregation {
+export interface GeoTileGridAggregation extends BucketAggregationBase {
   field?: Field
   precision?: GeoTilePrecision
   shard_size?: integer
@@ -4816,7 +4899,7 @@ export interface GetWatchResponse {
   watch: Watch
 }
 
-export interface GlobalAggregation {
+export interface GlobalAggregation extends BucketAggregationBase {
 }
 
 export interface GlobalPrivileges {
@@ -4977,6 +5060,7 @@ export interface Highlight {
   pre_tags?: Array<string>
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
+  highlight_query?: QueryContainer
 }
 
 export interface HighlightField {
@@ -5013,7 +5097,7 @@ export type HighlighterTagsSchema = 'styled'
 
 export type HighlighterType = 'plain' | 'fvh' | 'unified'
 
-export interface HistogramAggregation {
+export interface HistogramAggregation extends BucketAggregationBase {
   extended_bounds?: ExtendedBounds<double>
   hard_bounds?: ExtendedBounds<double>
   field?: Field
@@ -5027,12 +5111,8 @@ export interface HistogramAggregation {
 }
 
 export interface HistogramOrder {
-  count_ascending: HistogramOrder
-  count_descending: HistogramOrder
-  key: string
-  key_ascending: HistogramOrder
-  key_descending: HistogramOrder
-  order: SortOrder
+  _count?: SortOrder
+  _key?: SortOrder
 }
 
 export interface HistogramProperty extends PropertyBase {
@@ -5063,7 +5143,7 @@ export interface Hit<TDocument = unknown> {
   _seq_no?: long
   _primary_term?: long
   _version?: long
-  sort?: Array<long | double | string | null>
+  sort?: SortResults
 }
 
 export interface HitMetadata<TDocument = unknown> {
@@ -5081,6 +5161,20 @@ export interface HitsMetadata<T = unknown> {
   total: TotalHits | long
   hits: Array<Hit<T>>
   max_score?: double
+}
+
+export interface HoltLinearModelSettings {
+  alpha?: float
+  beta?: float
+}
+
+export interface HoltWintersModelSettings {
+  alpha?: float
+  beta?: float
+  gamma?: float
+  pad?: boolean
+  period?: integer
+  type?: HoltWintersType
 }
 
 export type HoltWintersType = 'add' | 'mult'
@@ -5519,7 +5613,7 @@ export interface InnerHits {
   script_fields?: Record<string, ScriptField>
   seq_no_primary_term?: boolean
   fields?: Fields
-  sort?: Array<Record<string, Sort | SortOrder>>
+  sort?: Sort
   _source?: boolean | SourceFilter
   version?: boolean
 }
@@ -5677,7 +5771,7 @@ export interface IpProperty extends DocValuesPropertyBase {
   null_value: string
 }
 
-export interface IpRangeAggregation {
+export interface IpRangeAggregation extends BucketAggregationBase {
   field?: Field
   ranges?: Array<IpRangeAggregationRange>
 }
@@ -6132,7 +6226,7 @@ export interface MatchQuery extends QueryBase {
 
 export type MatchType = 'simple' | 'regex'
 
-export interface MatrixAggregation {
+export interface MatrixAggregation extends Aggregation {
   fields?: Fields
   missing?: Record<Field, double>
 }
@@ -6148,22 +6242,20 @@ export interface MatrixStatsAggregate extends AggregateBase {
   name: string
 }
 
-export interface MatrixStatsAggregation {
+export interface MatrixStatsAggregation extends MatrixAggregation {
   mode?: MatrixStatsMode
 }
 
 export type MatrixStatsMode = 'avg' | 'min' | 'max' | 'sum' | 'median'
 
-export interface MaxAggregation {
+export interface MaxAggregation extends FormatMetricAggregationBase {
 }
 
-export interface MaxBucketAggregation {
+export interface MaxBucketAggregation extends PipelineAggregationBase {
 }
 
-export interface MedianAbsoluteDeviationAggregation {
+export interface MedianAbsoluteDeviationAggregation extends FormatMetricAggregationBase {
   compression?: double
-  field?: Field
-  missing?: Missing
 }
 
 export interface MemoryStats {
@@ -6198,9 +6290,9 @@ export interface MergesStats {
 
 export type MetricAggregate = ValueAggregate | BoxPlotAggregate | GeoBoundsAggregate | GeoCentroidAggregate | GeoLineAggregate | PercentilesAggregate | ScriptedMetricAggregate | StatsAggregate | StringStatsAggregate | TopHitsAggregate | TopMetricsAggregate | ExtendedStatsAggregate | TDigestPercentilesAggregate | HdrPercentilesAggregate
 
-export interface MetricAggregation {
+export interface MetricAggregationBase {
   field?: Field
-  missing?: double
+  missing?: Missing
   script?: Script
 }
 
@@ -6208,10 +6300,10 @@ export type MetricFunction = 'Min' | 'Max' | 'Median' | 'HighMedian' | 'LowMedia
 
 export type Metrics = string | Array<string>
 
-export interface MinAggregation {
+export interface MinAggregation extends FormatMetricAggregationBase {
 }
 
-export interface MinBucketAggregation {
+export interface MinBucketAggregation extends PipelineAggregationBase {
 }
 
 export interface MinimalLicenseInformation {
@@ -6226,9 +6318,9 @@ export type MinimumInterval = 'second' | 'minute' | 'hour' | 'day' | 'month' | '
 
 export type MinimumShouldMatch = integer | string
 
-export type Missing = string | integer | boolean
+export type Missing = string | integer | double | boolean
 
-export interface MissingAggregation {
+export interface MissingAggregation extends BucketAggregationBase {
   field?: Field
   missing?: Missing
 }
@@ -6309,21 +6401,27 @@ export interface MoveToStepRequest extends CommonQueryParameters {
 export interface MoveToStepResponse extends AcknowledgedResponseBase {
 }
 
-export interface MovingAverageAggregation {
+export interface MovingAverageAggregation extends PipelineAggregationBase {
   minimize?: boolean
   model?: MovingAverageModel
+  settings: MovingAverageSettings
   predict?: integer
   window?: integer
 }
 
-export interface MovingAverageModel {
-  name: string
-}
+export type MovingAverageModel = 'linear' | 'simple' | 'ewma' | 'holt' | 'holt_winters'
 
-export interface MovingFunctionAggregation {
+export type MovingAverageSettings = EwmaModelSettings | HoltLinearModelSettings | HoltWintersModelSettings
+
+export interface MovingFunctionAggregation extends PipelineAggregationBase {
   script?: string
   shift?: integer
   window?: integer
+}
+
+export interface MovingPercentilesAggregation extends PipelineAggregationBase {
+  window?: integer
+  shift?: integer
 }
 
 export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
@@ -6520,6 +6618,14 @@ export interface NamedPolicyMetadata {
   config: NamedPolicyConfig
 }
 
+export interface NamedQueryKeys<TQuery = unknown> {
+  boost?: float
+  _name?: string
+  ignore_unmapped?: boolean
+}
+export type NamedQuery<TQuery = unknown> = NamedQueryKeys<TQuery> |
+    { [property: string]: TQuery }
+
 export type Names = string | Array<string>
 
 export interface NativeCodeInformation {
@@ -6527,7 +6633,7 @@ export interface NativeCodeInformation {
   version: string
 }
 
-export interface NestedAggregation {
+export interface NestedAggregation extends BucketAggregationBase {
   path?: Field
 }
 
@@ -6552,13 +6658,9 @@ export interface NestedQuery extends QueryBase {
 
 export type NestedScoreMode = 'avg' | 'sum' | 'min' | 'max' | 'none'
 
-export interface NestedSort {
-  nested: NestedSortValue
-}
-
 export interface NestedSortValue {
   filter: QueryContainer
-  max_children: integer
+  max_children?: integer
   path: Field
 }
 
@@ -6858,6 +6960,12 @@ export interface NoriTokenizer extends TokenizerBase {
 
 export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
 
+export interface NormalizeAggregation extends PipelineAggregationBase {
+  method?: NormalizeMethod
+}
+
+export type NormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'zscore' | 'softmax'
+
 export interface NumberProperty extends DocValuesPropertyBase {
   boost: double
   coerce: boolean
@@ -6869,6 +6977,11 @@ export interface NumberProperty extends DocValuesPropertyBase {
 }
 
 export type NumberType = 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer' | 'long' | 'short' | 'byte'
+
+export interface NumericDecayFunctionKeys extends DecayFunctionBase {
+}
+export type NumericDecayFunction = NumericDecayFunctionKeys |
+    { [property: string]: DecayPlacement<double, double> }
 
 export interface NumericFielddata {
   format: NumericFielddataFormat
@@ -6985,7 +7098,7 @@ export interface PainlessContextSetup {
   query: QueryContainer
 }
 
-export interface ParentAggregation {
+export interface ParentAggregation extends BucketAggregationBase {
   type?: RelationName
 }
 
@@ -7073,10 +7186,9 @@ export interface PercentileItem {
   value: double
 }
 
-export interface PercentileRanksAggregation {
+export interface PercentileRanksAggregation extends FormatMetricAggregationBase {
   keyed?: boolean
   values?: Array<double>
-  field?: Field
   hdr?: HdrMethod
   tdigest?: TDigest
 }
@@ -7085,16 +7197,14 @@ export interface PercentilesAggregate extends AggregateBase {
   items: Array<PercentileItem>
 }
 
-export interface PercentilesAggregation {
+export interface PercentilesAggregation extends FormatMetricAggregationBase {
   keyed?: boolean
   percents?: Array<double>
-  field?: Field
-  missing?: Missing
   hdr?: HdrMethod
   tdigest?: TDigest
 }
 
-export interface PercentilesBucketAggregation {
+export interface PercentilesBucketAggregation extends PipelineAggregationBase {
   percents?: Array<double>
 }
 
@@ -7142,14 +7252,14 @@ export interface PhoneticTokenFilter extends TokenFilterBase {
 }
 
 export interface PhraseSuggestCollate {
-  params: Record<string, any>
-  prune: boolean
+  params?: Record<string, any>
+  prune?: boolean
   query: PhraseSuggestCollateQuery
 }
 
 export interface PhraseSuggestCollateQuery {
-  id: Id
-  source: string
+  id?: Id
+  source?: string
 }
 
 export interface PhraseSuggestHighlight {
@@ -7163,20 +7273,20 @@ export interface PhraseSuggestOption {
   score: double
 }
 
-export interface PhraseSuggester {
-  collate: PhraseSuggestCollate
-  confidence: double
-  direct_generator: Array<DirectGenerator>
-  force_unigrams: boolean
-  gram_size: integer
-  highlight: PhraseSuggestHighlight
-  max_errors: double
-  real_word_error_likelihood: double
-  separator: string
-  shard_size: integer
-  smoothing: SmoothingModelContainer
-  text: string
-  token_limit: integer
+export interface PhraseSuggester extends SuggesterBase {
+  collate?: PhraseSuggestCollate
+  confidence?: double
+  direct_generator?: Array<DirectGenerator>
+  force_unigrams?: boolean
+  gram_size?: integer
+  highlight?: PhraseSuggestHighlight
+  max_errors?: double
+  real_word_error_likelihood?: double
+  separator?: string
+  shard_size?: integer
+  smoothing?: SmoothingModelContainer
+  text?: string
+  token_limit?: integer
 }
 
 export interface PingRequest extends CommonQueryParameters {
@@ -7195,7 +7305,7 @@ export interface Pipeline {
   processors: Array<ProcessorContainer>
 }
 
-export interface PipelineAggregation {
+export interface PipelineAggregationBase extends Aggregation {
   buckets_path?: BucketsPath
   format?: string
   gap_policy?: GapPolicy
@@ -7293,6 +7403,7 @@ export interface PredicateTokenFilter extends TokenFilterBase {
 
 export interface PrefixQuery extends QueryBase {
   rewrite?: MultiTermQueryRewrite
+  value: string
 }
 
 export interface PreviewDatafeedRequest extends CommonQueryParameters {
@@ -7786,39 +7897,38 @@ export interface QueryContainer {
   exists?: ExistsQuery
   function_score?: FunctionScoreQuery
   fuzzy?: Record<string, FuzzyQuery | string>
-  geo_bounding_box?: Record<string, GeoBoundingBoxQuery | string>
-  geo_distance?: Record<string, GeoDistanceQuery | string>
-  geo_polygon?: Record<string, GeoPolygonQuery | string>
-  geo_shape?: Record<string, GeoShapeQuery | string>
+  geo_bounding_box?: NamedQuery<GeoBoundingBoxQuery | string>
+  geo_distance?: NamedQuery<GeoDistanceQuery | string>
+  geo_polygon?: NamedQuery<GeoPolygonQuery | string>
+  geo_shape?: NamedQuery<GeoShapeQuery | string>
   has_child?: HasChildQuery
   has_parent?: HasParentQuery
   ids?: IdsQuery
-  intervals?: Record<string, IntervalsQuery | string>
+  intervals?: NamedQuery<IntervalsQuery | string>
   is_conditionless?: boolean
   is_strict?: boolean
   is_verbatim?: boolean
   is_writable?: boolean
-  match?: Record<string, MatchQuery | string | float | boolean>
+  match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
-  match_bool_prefix?: Record<string, MatchBoolPrefixQuery | string>
+  match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>
   match_none?: MatchNoneQuery
-  match_phrase?: Record<string, MatchPhraseQuery | string>
-  match_phrase_prefix?: Record<string, MatchPhrasePrefixQuery | string>
+  match_phrase?: NamedQuery<MatchPhraseQuery | string>
+  match_phrase_prefix?: NamedQuery<MatchPhrasePrefixQuery | string>
   more_like_this?: MoreLikeThisQuery
   multi_match?: MultiMatchQuery
   nested?: NestedQuery
   parent_id?: ParentIdQuery
   percolate?: PercolateQuery
   pinned?: PinnedQuery
-  prefix?: Record<string, PrefixQuery | string>
+  prefix?: NamedQuery<PrefixQuery | string>
   query_string?: QueryStringQuery
-  range?: Record<string, RangeQuery>
-  rank_feature?: Record<string, RankFeatureQuery | string>
-  raw_query?: RawQuery
-  regexp?: Record<string, RegexpQuery | string>
+  range?: NamedQuery<RangeQuery>
+  rank_feature?: NamedQuery<RankFeatureQuery | string>
+  regexp?: NamedQuery<RegexpQuery | string>
   script?: ScriptQuery
   script_score?: ScriptScoreQuery
-  shape?: Record<string, ShapeQuery | string>
+  shape?: NamedQuery<ShapeQuery | string>
   simple_query_string?: SimpleQueryStringQuery
   span_containing?: SpanContainingQuery
   field_masking_span?: SpanFieldMaskingQuery
@@ -7827,12 +7937,12 @@ export interface QueryContainer {
   span_near?: SpanNearQuery
   span_not?: SpanNotQuery
   span_or?: SpanOrQuery
-  span_term?: Record<string, SpanTermQuery | string>
+  span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
-  term?: Record<string, TermQuery | string | float | boolean>
-  terms?: Record<string, TermsQuery | Array<string>>
-  terms_set?: Record<string, TermsSetQuery | string>
-  wildcard?: Record<string, WildcardQuery | string>
+  term?: NamedQuery<TermQuery | string | float | boolean>
+  terms?: NamedQuery<TermsQuery | Array<string>>
+  terms_set?: NamedQuery<TermsSetQuery | string>
+  wildcard?: NamedQuery<WildcardQuery | string>
   type?: TypeQuery
 }
 
@@ -7902,7 +8012,12 @@ export interface QueryUserPrivileges {
   term: TermUserPrivileges
 }
 
-export interface RangeAggregation {
+export interface RandomScoreFunction extends ScoreFunctionBase {
+  field?: Field
+  seed?: long | string
+}
+
+export interface RangeAggregation extends BucketAggregationBase {
   field?: Field
   ranges?: Array<AggregationRange>
   script?: Script
@@ -7950,7 +8065,7 @@ export interface RankFeaturesProperty extends PropertyBase {
 
 export type RareFunction = 'Rare' | 'FreqRare'
 
-export interface RareTermsAggregation {
+export interface RareTermsAggregation extends BucketAggregationBase {
   exclude?: string | Array<string>
   field?: Field
   include?: string | Array<string> | TermsInclude
@@ -7965,9 +8080,12 @@ export interface RareTermsBucketKeys<TKey = unknown> {
 export type RareTermsBucket<TKey = unknown> = RareTermsBucketKeys<TKey> |
     { [property: string]: Aggregate }
 
-export interface RawQuery {
-  raw?: string
+export interface RateAggregation extends FormatMetricAggregationBase {
+  unit?: DateInterval
+  mode?: RateMode
 }
+
+export type RateMode = 'sum' | 'value_count'
 
 export interface RealmInfo {
   name: string
@@ -8170,7 +8288,7 @@ export interface ReindexSource {
   remote?: RemoteSource
   size: integer
   slice?: SlicedScroll
-  sort?: Array<Sort>
+  sort?: Sort
   _source?: Fields
 }
 
@@ -8298,13 +8416,13 @@ export interface RequestCacheStats {
 
 export interface Rescore {
   query: RescoreQuery
-  window_size: integer
+  window_size?: integer
 }
 
 export interface RescoreQuery {
   rescore_query: QueryContainer
-  query_weight: double
-  rescore_query_weight: double
+  query_weight?: double
+  rescore_query_weight?: double
   score_mode?: ScoreMode
 }
 
@@ -8401,7 +8519,7 @@ export interface RetryIlmRequest extends CommonQueryParameters {
 export interface RetryIlmResponse extends AcknowledgedResponseBase {
 }
 
-export interface ReverseNestedAggregation {
+export interface ReverseNestedAggregation extends BucketAggregationBase {
   path?: Field
 }
 
@@ -8580,15 +8698,20 @@ export interface RuleCondition {
 
 export type RuleFilterType = 'include' | 'exclude'
 
+export interface RuntimeField {
+  format?: string
+  script?: StoredScript
+  type: FieldType
+}
+
+export type RuntimeFields = Record<Field, RuntimeField>
+
 export interface SampleDiversity {
   field: Field
   max_docs_per_value: integer
 }
 
-export interface SamplerAggregation {
-  execution_hint?: SamplerAggregationExecutionHint
-  max_docs_per_value?: integer
-  script?: Script
+export interface SamplerAggregation extends BucketAggregationBase {
   shard_size?: integer
 }
 
@@ -8623,17 +8746,22 @@ export interface ScheduledEvent {
   start_time: DateString
 }
 
-export interface ScoreFunction {
+export interface ScoreFunctionBase {
   filter?: QueryContainer
   weight?: double
 }
 
 export type ScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
+export interface ScoreSort {
+  mode?: SortMode
+  order?: SortOrder
+}
+
 export type Script = InlineScript | IndexedScript | string
 
 export interface ScriptBase {
-  lang: string
+  lang?: string
   params?: Record<string, any>
 }
 
@@ -8659,9 +8787,19 @@ export interface ScriptQuery extends QueryBase {
   script?: Script
 }
 
+export interface ScriptScoreFunction extends ScoreFunctionBase {
+  script: Script
+}
+
 export interface ScriptScoreQuery extends QueryBase {
   query?: QueryContainer
   script?: Script
+}
+
+export interface ScriptSort {
+  order?: SortOrder
+  script: Script
+  type?: string
 }
 
 export interface ScriptStats {
@@ -8682,7 +8820,7 @@ export interface ScriptedMetricAggregate extends AggregateBase {
   value: any
 }
 
-export interface ScriptedMetricAggregation {
+export interface ScriptedMetricAggregation extends MetricAggregationBase {
   combine_script?: Script
   init_script?: Script
   map_script?: Script
@@ -8797,7 +8935,7 @@ export interface SearchRequest extends CommonQueryParameters {
   q?: string
   size?: integer
   from?: integer
-  sort?: SortOptions | Array<SortOptions>
+  sort?: Array<string>
   body?: {
     aggs?: Record<string, AggregationContainer>
     aggregations?: Record<string, AggregationContainer>
@@ -8817,10 +8955,10 @@ export interface SearchRequest extends CommonQueryParameters {
     search_after?: Array<integer | string>
     size?: integer
     slice?: SlicedScroll
-    sort?: SortOptions | Array<SortOptions>
+    sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: Record<string, SuggestBucket>
+    suggest?: Record<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
@@ -8828,6 +8966,7 @@ export interface SearchRequest extends CommonQueryParameters {
     seq_no_primary_term?: boolean
     stored_fields?: Fields
     pit?: PointInTimeReference
+    runtime_mappings?: RuntimeFields
   }
 }
 
@@ -8982,7 +9121,7 @@ export interface SegmentsStats {
   version_map_memory_in_bytes: long
 }
 
-export interface SerialDifferencingAggregation {
+export interface SerialDifferencingAggregation extends PipelineAggregationBase {
   lag?: integer
 }
 
@@ -9352,7 +9491,7 @@ export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAg
   doc_count: long
 }
 
-export interface SignificantTermsAggregation {
+export interface SignificantTermsAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
   exclude?: string | Array<string>
@@ -9374,7 +9513,7 @@ export interface SignificantTermsBucketKeys<TKey = unknown> {
 export type SignificantTermsBucket<TKey = unknown> = SignificantTermsBucketKeys<TKey> |
     { [property: string]: Aggregate }
 
-export interface SignificantTextAggregation {
+export interface SignificantTextAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
   exclude?: string | Array<string>
@@ -9408,7 +9547,7 @@ export interface SimpleQueryStringQuery extends QueryBase {
   auto_generate_synonyms_phrase_query?: boolean
   default_operator?: Operator
   fields?: Fields
-  flags?: SimpleQueryStringFlags
+  flags?: SimpleQueryStringFlags | string
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean
@@ -9698,26 +9837,30 @@ export interface SnowballTokenFilter extends TokenFilterBase {
   language: SnowballLanguage
 }
 
-export interface Sort {
-  missing?: Missing
-  mode?: SortMode
-  nested?: NestedSort
-  numeric_type?: NumericType
-  unmapped_type?: string
-  order: SortOrder
+export type Sort = SortCombinations | Array<SortCombinations>
+
+export type SortCombinations = Field | SortContainer | SortOrder
+
+export interface SortContainerKeys {
+  _score?: ScoreSort
+  _doc?: ScoreSort
+  _geo_distance?: GeoDistanceSort
+  _script?: ScriptSort
 }
+export type SortContainer = SortContainerKeys |
+    { [property: string]: FieldSort | SortOrder }
 
 export type SortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
 
-export type SortOptions = Field | Record<string, Sort | SortOrder>
-
-export type SortOrder = 'asc' | 'desc'
+export type SortOrder = 'asc' | 'desc' | '_doc'
 
 export interface SortProcessor extends ProcessorBase {
   field: Field
   order: SortOrder
   target_field: Field
 }
+
+export type SortResults = Array<long | double | string | null>
 
 export type SortSpecialField = '_score' | '_doc'
 
@@ -9770,37 +9913,37 @@ export interface SourceResponse<TDocument = unknown> {
   body: TDocument
 }
 
-export interface SpanContainingQuery {
+export interface SpanContainingQuery extends QueryBase {
   big?: SpanQuery
   little?: SpanQuery
 }
 
-export interface SpanFieldMaskingQuery {
+export interface SpanFieldMaskingQuery extends QueryBase {
   field?: Field
   query?: SpanQuery
 }
 
-export interface SpanFirstQuery {
+export interface SpanFirstQuery extends QueryBase {
   end?: integer
   match?: SpanQuery
 }
 
-export interface SpanGapQuery {
+export interface SpanGapQuery extends QueryBase {
   field?: Field
   width?: integer
 }
 
-export interface SpanMultiTermQuery {
+export interface SpanMultiTermQuery extends QueryBase {
   match?: QueryContainer
 }
 
-export interface SpanNearQuery {
+export interface SpanNearQuery extends QueryBase {
   clauses?: Array<SpanQuery>
   in_order?: boolean
   slop?: integer
 }
 
-export interface SpanNotQuery {
+export interface SpanNotQuery extends QueryBase {
   dist?: integer
   exclude?: SpanQuery
   include?: SpanQuery
@@ -9808,30 +9951,31 @@ export interface SpanNotQuery {
   pre?: integer
 }
 
-export interface SpanOrQuery {
+export interface SpanOrQuery extends QueryBase {
   clauses?: Array<SpanQuery>
 }
 
 export interface SpanQuery extends QueryBase {
-  span_containing?: SpanContainingQuery
-  field_masking_span?: SpanFieldMaskingQuery
-  span_first?: SpanFirstQuery
-  span_gap?: SpanGapQuery
+  span_containing?: NamedQuery<SpanContainingQuery | string>
+  field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>
+  span_first?: NamedQuery<SpanFirstQuery | string>
+  span_gap?: NamedQuery<SpanGapQuery | integer>
   span_multi?: SpanMultiTermQuery
-  span_near?: SpanNearQuery
-  span_not?: SpanNotQuery
-  span_or?: SpanOrQuery
-  span_term?: SpanTermQuery
-  span_within?: SpanWithinQuery
+  span_near?: NamedQuery<SpanNearQuery | string>
+  span_not?: NamedQuery<SpanNotQuery | string>
+  span_or?: NamedQuery<SpanOrQuery | string>
+  span_term?: NamedQuery<SpanTermQuery | string>
+  span_within?: NamedQuery<SpanWithinQuery | string>
 }
 
-export interface SpanSubQuery {
+export interface SpanSubQuery extends QueryBase {
 }
 
-export interface SpanTermQuery {
+export interface SpanTermQuery extends QueryBase {
+  value: string
 }
 
-export interface SpanWithinQuery {
+export interface SpanWithinQuery extends QueryBase {
   big?: SpanQuery
   little?: SpanQuery
 }
@@ -9969,10 +10113,10 @@ export interface StatsAggregate extends AggregateBase {
   min?: double
 }
 
-export interface StatsAggregation {
+export interface StatsAggregation extends FormatMetricAggregationBase {
 }
 
-export interface StatsBucketAggregation {
+export interface StatsBucketAggregation extends PipelineAggregationBase {
 }
 
 export type Status = 'success' | 'failure' | 'simulated' | 'throttled'
@@ -10089,10 +10233,7 @@ export interface StringStatsAggregate extends AggregateBase {
   distribution?: Record<string, double>
 }
 
-export interface StringStatsAggregation {
-  field?: Field
-  missing?: object
-  script?: Script
+export interface StringStatsAggregation extends MetricAggregationBase {
   show_distribution?: boolean
 }
 
@@ -10107,13 +10248,13 @@ export interface Suggest<T = unknown> {
   text: string
 }
 
-export interface SuggestBucket {
-  completion: CompletionSuggester
-  phrase: PhraseSuggester
-  prefix: string
-  regex: string
-  term: TermSuggester
-  text: string
+export interface SuggestContainer {
+  completion?: CompletionSuggester
+  phrase?: PhraseSuggester
+  prefix?: string
+  regex?: string
+  term?: TermSuggester
+  text?: string
 }
 
 export interface SuggestContext {
@@ -10123,11 +10264,11 @@ export interface SuggestContext {
 }
 
 export interface SuggestContextQuery {
-  boost: double
+  boost?: double
   context: Context
-  neighbours: Array<Distance> | Array<integer>
-  precision: Distance | integer
-  prefix: boolean
+  neighbours?: Array<Distance> | Array<integer>
+  precision?: Distance | integer
+  prefix?: boolean
 }
 
 export interface SuggestFuzziness {
@@ -10144,18 +10285,18 @@ export type SuggestOption<TDocument> = CompletionSuggestOption<TDocument> | Phra
 
 export type SuggestSort = 'score' | 'frequency'
 
-export interface Suggester {
-  analyzer: string
+export interface SuggesterBase {
   field: Field
-  size: integer
+  analyzer?: string
+  size?: integer
 }
 
 export type SuggestionName = string
 
-export interface SumAggregation {
+export interface SumAggregation extends FormatMetricAggregationBase {
 }
 
-export interface SumBucketAggregation {
+export interface SumBucketAggregation extends PipelineAggregationBase {
 }
 
 export type SumFunction = 'Sum' | 'HighSum' | 'LowSum'
@@ -10200,6 +10341,14 @@ export interface TDigest {
 export interface TDigestPercentilesAggregate extends AggregateBase {
   values: Record<string, double>
 }
+
+export interface TTestAggregation extends Aggregation {
+  a?: TestPopulation
+  b?: TestPopulation
+  type?: TTestType
+}
+
+export type TTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
 export interface TaskExecutingNode {
   attributes: Record<string, string>
@@ -10279,19 +10428,19 @@ export interface TermSuggestOption {
   score: double
 }
 
-export interface TermSuggester {
-  lowercase_terms: boolean
-  max_edits: integer
-  max_inspections: integer
-  max_term_freq: float
-  min_doc_freq: float
-  min_word_length: integer
-  prefix_length: integer
-  shard_size: integer
-  sort: SuggestSort
-  string_distance: StringDistance
-  suggest_mode: SuggestMode
-  text: string
+export interface TermSuggester extends SuggesterBase {
+  lowercase_terms?: boolean
+  max_edits?: integer
+  max_inspections?: integer
+  max_term_freq?: float
+  min_doc_freq?: float
+  min_word_length?: integer
+  prefix_length?: integer
+  shard_size?: integer
+  sort?: SuggestSort
+  string_distance?: StringDistance
+  suggest_mode?: SuggestMode
+  text?: string
 }
 
 export interface TermUserPrivileges {
@@ -10369,7 +10518,7 @@ export interface TermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKe
   sum_other_doc_count: long
 }
 
-export interface TermsAggregation {
+export interface TermsAggregation extends BucketAggregationBase {
   collect_mode?: TermsAggregationCollectMode
   exclude?: string | Array<string>
   execution_hint?: TermsAggregationExecutionHint
@@ -10377,8 +10526,9 @@ export interface TermsAggregation {
   include?: string | Array<string> | TermsInclude
   min_doc_count?: integer
   missing?: Missing
+  missing_bucket?: boolean
   value_type?: string
-  order?: Record<string, SortOrder>
+  order?: TermsAggregationOrder
   script?: Script
   shard_size?: integer
   show_term_doc_count_error?: boolean
@@ -10388,6 +10538,8 @@ export interface TermsAggregation {
 export type TermsAggregationCollectMode = 'depth_first' | 'breadth_first'
 
 export type TermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
+
+export type TermsAggregationOrder = SortOrder | Record<string, SortOrder> | Array<Record<string, SortOrder>>
 
 export interface TermsInclude {
   num_partitions: long
@@ -10410,6 +10562,12 @@ export interface TermsSetQuery extends QueryBase {
   minimum_should_match_field?: Field
   minimum_should_match_script?: Script
   terms?: Array<string>
+}
+
+export interface TestPopulation {
+  field: Field
+  script?: Script
+  filter: QueryContainer
 }
 
 export interface TextIndexPrefixes {
@@ -10547,14 +10705,14 @@ export interface TopHitsAggregate extends AggregateBase {
   hits: HitsMetadata<Record<string, any>>
 }
 
-export interface TopHitsAggregation {
+export interface TopHitsAggregation extends MetricAggregationBase {
   docvalue_fields?: Fields
   explain?: boolean
   from?: integer
   highlight?: Highlight
   script_fields?: Record<string, ScriptField>
   size?: integer
-  sort?: string | Record<Field, Sort | SortOrder | NestedSort> | Array<Record<string, Sort | SortOrder | Record<Field, NestedSort>>>
+  sort?: Sort
   _source?: boolean | SourceFilter | Field
   stored_fields?: Fields
   track_scores?: boolean
@@ -10571,10 +10729,10 @@ export interface TopMetricsAggregate extends AggregateBase {
   top: Array<TopMetrics>
 }
 
-export interface TopMetricsAggregation {
+export interface TopMetricsAggregation extends MetricAggregationBase {
   metrics?: Array<TopMetricsValue>
   size?: integer
-  sort?: Sort | Array<Sort>
+  sort?: Sort
 }
 
 export interface TopMetricsValue {
@@ -11163,7 +11321,7 @@ export interface ValueAggregate extends AggregateBase {
   value_as_string?: string
 }
 
-export interface ValueCountAggregation {
+export interface ValueCountAggregation extends FormattableMetricAggregation {
 }
 
 export type ValueType = 'string' | 'long' | 'double' | 'number' | 'date' | 'date_nanos' | 'ip' | 'numeric' | 'geo_point' | 'boolean'
@@ -11283,7 +11441,10 @@ export interface WebhookActionResult {
   response: HttpInputResponseResult
 }
 
-export interface WeightedAverageAggregation {
+export interface WeightScoreFunction extends ScoreFunctionBase {
+}
+
+export interface WeightedAverageAggregation extends Aggregation {
   format?: string
   value?: WeightedAverageValue
   value_type?: ValueType
@@ -11291,9 +11452,9 @@ export interface WeightedAverageAggregation {
 }
 
 export interface WeightedAverageValue {
-  field: Field
-  missing: double
-  script: Script
+  field?: Field
+  missing?: double
+  script?: Script
 }
 
 export interface WhitespaceAnalyzer extends AnalyzerBase {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SpanFieldMaskingQuery {
+class SpanFieldMaskingQuery extends QueryBase {
   field?: Field
   query?: SpanQuery
 }

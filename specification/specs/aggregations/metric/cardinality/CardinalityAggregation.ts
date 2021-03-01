@@ -17,8 +17,7 @@
  * under the License.
  */
 
-class CardinalityAggregation {
+class CardinalityAggregation extends MetricAggregationBase {
   precision_threshold?: integer
   rehash?: boolean
-  field?: Field
 }

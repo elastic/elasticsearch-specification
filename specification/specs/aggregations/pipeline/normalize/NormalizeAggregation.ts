@@ -17,8 +17,15 @@
  * under the License.
  */
 
-class PipelineAggregation {
-  buckets_path?: BucketsPath
-  format?: string
-  gap_policy?: GapPolicy
+class NormalizeAggregation extends PipelineAggregationBase {
+  method?: NormalizeMethod
+}
+
+enum NormalizeMethod {
+  rescale_0_1,
+  rescale_0_100,
+  percent_of_sum,
+  mean,
+  zscore,
+  softmax
 }

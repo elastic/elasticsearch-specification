@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SpanFirstQuery {
+class SpanFirstQuery extends QueryBase {
   end?: integer
   match?: SpanQuery
 }

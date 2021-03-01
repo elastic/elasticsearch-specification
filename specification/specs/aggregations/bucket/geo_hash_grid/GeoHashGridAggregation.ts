@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class GeoHashGridAggregation {
+class GeoHashGridAggregation extends BucketAggregationBase {
   bounds?: BoundingBox
   field?: Field
   precision?: GeoHashPrecision

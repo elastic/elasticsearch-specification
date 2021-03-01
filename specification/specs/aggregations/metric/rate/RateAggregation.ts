@@ -17,6 +17,11 @@
  * under the License.
  */
 
-class RawQuery {
-  raw?: string
+class RateAggregation extends FormatMetricAggregationBase {
+  unit?: DateInterval
+  mode?: RateMode
+}
+enum RateMode {
+  sum,
+  value_count
 }

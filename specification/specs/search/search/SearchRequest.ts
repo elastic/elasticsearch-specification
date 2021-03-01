@@ -66,7 +66,7 @@ interface SearchRequest extends RequestBase {
     q?: string
     size?: integer
     from?: integer
-    sort?: SortOptions | SortOptions[]
+    sort?: string[]
   }
   body?: {
     aggs?: Dictionary<string, AggregationContainer>
@@ -88,10 +88,10 @@ interface SearchRequest extends RequestBase {
     search_after?: Array<integer | string>
     size?: integer
     slice?: SlicedScroll
-    sort?: SortOptions | SortOptions[]
+    sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: Dictionary<string, SuggestBucket>
+    suggest?: Dictionary<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
@@ -99,5 +99,6 @@ interface SearchRequest extends RequestBase {
     seq_no_primary_term?: boolean
     stored_fields?: Fields
     pit?: PointInTimeReference
+    runtime_mappings?: RuntimeFields
   }
 }

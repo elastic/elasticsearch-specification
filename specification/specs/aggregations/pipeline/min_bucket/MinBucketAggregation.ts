@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class MinBucketAggregation {}
+class MinBucketAggregation extends PipelineAggregationBase {}

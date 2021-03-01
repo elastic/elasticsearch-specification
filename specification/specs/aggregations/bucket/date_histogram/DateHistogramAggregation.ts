@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class DateHistogramAggregation {
+class DateHistogramAggregation extends BucketAggregationBase {
   calendar_interval?: DateInterval | Time
   extended_bounds?: ExtendedBounds<DateMath | long>
   hard_bounds?: ExtendedBounds<DateMath | long>

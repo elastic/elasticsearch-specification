@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class PercentilesBucketAggregation {
+class PercentilesBucketAggregation extends PipelineAggregationBase {
   percents?: double[]
 }

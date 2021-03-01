@@ -17,9 +17,6 @@
  * under the License.
  */
 
-class StringStatsAggregation {
-  field?: Field
-  missing?: any
-  script?: Script
+class StringStatsAggregation extends MetricAggregationBase {
   show_distribution?: boolean
 }

@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class BucketSelectorAggregation {
+class BucketSelectorAggregation extends PipelineAggregationBase {
   script?: Script
 }

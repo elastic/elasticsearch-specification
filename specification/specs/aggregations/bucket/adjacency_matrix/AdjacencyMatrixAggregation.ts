@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class AdjacencyMatrixAggregation {
+class AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Dictionary<string, QueryContainer>
 }

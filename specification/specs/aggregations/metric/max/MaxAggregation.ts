@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class MaxAggregation {}
+class MaxAggregation extends FormatMetricAggregationBase {}

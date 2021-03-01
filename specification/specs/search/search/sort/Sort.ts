@@ -17,14 +17,50 @@
  * under the License.
  */
 
-@class_serializer('SortFormatter')
-class Sort {
+class FieldSort {
   missing?: Missing
   mode?: SortMode
-  nested?: NestedSort
-  numeric_type?: NumericType
-  unmapped_type?: string
-  order: SortOrder
+  nested?: NestedSortValue
+  order?: SortOrder
+  unmapped_type?: FieldType
 }
 
-type SortOptions = Field | SingleKeyDictionary<Sort | SortOrder>
+class ScoreSort {
+  mode?: SortMode
+  order?: SortOrder
+}
+class GeoDistanceSort implements AdditionalProperties<string, GeoLocation[]> {
+  mode?: SortMode
+  distance_type?: GeoDistanceType
+  order?: SortOrder
+  unit?: DistanceUnit
+}
+
+class ScriptSort {
+  order?: SortOrder
+  script: Script
+  type?: string
+}
+
+class SortContainer
+  implements AdditionalProperties<string, FieldSort | SortOrder> {
+  _score?: ScoreSort
+  _doc?: ScoreSort
+  _geo_distance?: GeoDistanceSort
+  _script?: ScriptSort
+}
+
+type SortCombinations = Field | SortContainer | SortOrder
+
+type Sort = SortCombinations | SortCombinations[]
+
+type SortResults = Array<long | double | string | null>
+
+/*
+sort?:
+| string
+| Dictionary<Field, Sort | SortOrder | NestedSort>
+| Array<
+  SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
+  >
+*/

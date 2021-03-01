@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class BucketScriptAggregation {
+class BucketScriptAggregation extends PipelineAggregationBase {
   script?: Script
 }

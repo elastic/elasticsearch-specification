@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class FormattableMetricAggregation {
+class FormattableMetricAggregation extends MetricAggregationBase {
   format?: string
 }

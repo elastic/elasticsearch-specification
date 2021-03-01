@@ -17,6 +17,11 @@
  * under the License.
  */
 
-class BucketAggregation {
-  aggregations?: Dictionary<string, AggregationContainer>
+class SuggestContainer {
+  completion?: CompletionSuggester
+  phrase?: PhraseSuggester
+  prefix?: string
+  regex?: string
+  term?: TermSuggester
+  text?: string
 }

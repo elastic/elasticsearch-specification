@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class MatrixAggregation {
+class MatrixAggregation extends Aggregation {
   fields?: Fields
   missing?: Dictionary<Field, double>
 }

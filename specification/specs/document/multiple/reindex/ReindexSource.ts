@@ -23,6 +23,6 @@ class ReindexSource {
   remote?: RemoteSource
   size: integer
   slice?: SlicedScroll
-  sort?: Sort[]
+  sort?: Sort
   _source?: Fields
 }

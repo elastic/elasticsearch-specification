@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class SpanOrQuery {
+class SpanOrQuery extends QueryBase {
   clauses?: SpanQuery[]
 }

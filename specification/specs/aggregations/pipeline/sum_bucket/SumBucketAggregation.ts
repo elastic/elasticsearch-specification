@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class SumBucketAggregation {}
+class SumBucketAggregation extends PipelineAggregationBase {}

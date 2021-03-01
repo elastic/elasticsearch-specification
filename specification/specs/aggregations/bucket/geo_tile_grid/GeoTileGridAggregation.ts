@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class GeoTileGridAggregation {
+class GeoTileGridAggregation extends BucketAggregationBase {
   field?: Field
   precision?: GeoTilePrecision
   shard_size?: integer

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-enum HoltWintersType {
-  add = 0,
-  mult = 1
+class MovingPercentilesAggregation extends PipelineAggregationBase {
+  window?: integer
+  shift?: integer
 }
