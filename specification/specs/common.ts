@@ -40,6 +40,7 @@ type Uri = string
 
 // Date/Time
 type DateString = string
+type Timestamp = string
 type TimeSpan = string
 type EpochMillis = string | long
 
@@ -124,7 +125,6 @@ type NodeIds = string
 type PropertyName = string
 type RelationName = string
 type TaskId = string
-type Timestamp = string
 type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number

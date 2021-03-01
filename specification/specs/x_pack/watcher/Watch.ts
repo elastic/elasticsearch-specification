@@ -18,12 +18,12 @@
  */
 
 class Watch {
-  actions: Dictionary<string, Action>
+  actions: Dictionary<IndexName, Action>
   condition: ConditionContainer
   input: InputContainer
-  metadata: Dictionary<string, UserDefinedValue>
-  status: WatchStatus
-  throttle_period: string
-  transform: TransformContainer
+  metadata?: Dictionary<string, UserDefinedValue>
+  status?: WatchStatus
+  throttle_period?: string
+  transform?: TransformContainer
   trigger: TriggerContainer
 }
