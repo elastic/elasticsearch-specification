@@ -3308,13 +3308,6 @@ export interface ElasticsearchResponse {
 export interface ElasticsearchUrlFormatter {
 }
 
-<<<<<<< HEAD
-export interface NodeStatistics {
-  failed: integer
-  failures?: Array<ErrorCause>
-  successful: integer
-  total: integer
-=======
 export interface ElasticsearchVersionInfo {
   build_date: DateString
   build_flavor: string
@@ -3325,7 +3318,6 @@ export interface ElasticsearchVersionInfo {
   minimum_index_compatibility_version: string
   minimum_wire_compatibility_version: string
   number: string
->>>>>>> master
 }
 
 export interface ElisionTokenFilter extends TokenFilterBase {
@@ -4002,30 +3994,6 @@ export interface FollowInfoResponse {
 
 export type FollowerIndexStatus = 'active' | 'paused'
 
-<<<<<<< HEAD
-export interface NodeReloadException {
-  name: string
-  reload_exception: NodeReloadExceptionCausedBy
-}
-
-export interface NodeReloadExceptionCausedBy {
-  type: string
-  reason: string
-  caused_by?: NodeReloadExceptionCausedBy
-}
-
-export interface ReloadSecureSettingsRequest extends RequestBase {
-  node_id?: NodeIds
-  timeout?: Time
-  body?: {
-    secure_settings_password?: string
-  }
-}
-
-export interface ReloadSecureSettingsResponse extends NodesResponseBase {
-  cluster_name: string
-  nodes: Record<string, NodeStats | NodeReloadException>
-=======
 export interface FollowerInfo {
   follower_index: string
   leader_index: string
@@ -4042,7 +4010,6 @@ export interface ForceMergeRequest extends CommonQueryParameters {
   ignore_unavailable?: boolean
   max_num_segments?: long
   only_expunge_deletes?: boolean
->>>>>>> master
 }
 
 export interface ForceMergeResponse extends ShardsOperationResponseBase {
@@ -6862,6 +6829,17 @@ export interface NodeProcessInfo {
   refresh_interval_in_millis: long
 }
 
+export interface NodeReloadException {
+  name: string
+  reload_exception: NodeReloadExceptionCausedBy
+}
+
+export interface NodeReloadExceptionCausedBy {
+  type: string
+  reason: string
+  caused_by?: NodeReloadExceptionCausedBy
+}
+
 export type NodeRole = 'master' | 'data' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
 
 export interface NodeStatistics {
@@ -8374,11 +8352,14 @@ export interface ReloadSearchAnalyzersResponse {
 export interface ReloadSecureSettingsRequest extends CommonQueryParameters {
   node_id?: NodeIds
   timeout?: Time
+  body?: {
+    secure_settings_password?: string
+  }
 }
 
 export interface ReloadSecureSettingsResponse extends NodesResponseBase {
   cluster_name: string
-  nodes: Record<string, NodeStats>
+  nodes: Record<string, NodeStats | NodeReloadException>
 }
 
 export interface RemoteInfo {
