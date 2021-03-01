@@ -18,9 +18,10 @@
  */
 
 class WatchStatus {
-  actions: Dictionary<string, ActionStatus>
+  actions: Dictionary<IndexName, ActionStatus>
   last_checked: DateString
   last_met_condition: DateString
   state: ActivationState
   version: integer
+  execution_state: string // TODO find execution states in enum in server codebase
 }
