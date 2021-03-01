@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.create')
-class CreateIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.create
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CreateIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

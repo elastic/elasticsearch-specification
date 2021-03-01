@@ -17,17 +17,21 @@
  * under the License.
  */
 
-@rest_spec_name('nodes.stats')
-class NodesStatsRequest extends RequestBase {
+/**
+ * @rest_spec_name nodes.stats
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface NodesStatsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
     metric?: Metrics
     index_metric?: Metrics
   }
   query_parameters?: {
-    completion_fields?: Field[]
-    fielddata_fields?: Field[]
-    fields?: Field[]
+    completion_fields?: Fields
+    fielddata_fields?: Fields
+    fields?: Fields
     groups?: boolean
     include_segment_file_sizes?: boolean
     level?: Level

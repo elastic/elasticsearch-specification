@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('migration.deprecations')
-class DeprecationInfoRequest extends RequestBase {
+/**
+ * @rest_spec_name migration.deprecations
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface DeprecationInfoRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
   }

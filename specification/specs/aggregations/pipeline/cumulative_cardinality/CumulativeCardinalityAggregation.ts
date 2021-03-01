@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class CumulativeCardinalityAggregation {}
+class CumulativeCardinalityAggregation extends PipelineAggregationBase {}

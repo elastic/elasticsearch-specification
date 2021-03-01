@@ -17,22 +17,25 @@
  * under the License.
  */
 
-// tslint:disable:no-console
-import { Specification } from './api-specification'
+import Compiler from './compiler'
+// import validateRestSpec from './steps/validate-rest-spec'
+import addInfo from './steps/add-info'
+import addDescription from './steps/add-description'
 
-const specification = Specification.loadWithValidation()
+const compiler = new Compiler()
 
-const errorsLength = specification.domain_errors.length + specification.endpoint_errors.length
-
-// const searchAPI = specification.endpoints.find(e => e.name === "search");
-// const searchRequest = specification.typeLookup[searchAPI.typeMapping.request];
-// const searchResponse = specification.typeLookup[searchAPI.typeMapping.response];
-
-console.log(`
-The specification contains
-  - ${errorsLength} Errors
-  - ${specification.endpoints.length} API Endpoints
-  - ${specification.types.length} Types.
-`)
-
-console.log('Done!')
+compiler
+  .generateModel()
+  .step(addInfo)
+  // validateRestSpec is not enabled until the RequestBase
+  // properties gets moved to a custom behavior
+  // .step(validateRestSpec)
+  .step(addDescription)
+  .write()
+  .then(() => {
+    console.log('Done')
+  })
+  .catch(err => {
+    console.error(err)
+    process.exit(1)
+  })

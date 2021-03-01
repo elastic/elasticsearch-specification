@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('license.delete')
-class DeleteLicenseRequest extends RequestBase {
+/**
+ * @rest_spec_name license.delete
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DeleteLicenseRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

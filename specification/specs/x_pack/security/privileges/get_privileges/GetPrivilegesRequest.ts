@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.get_privileges')
-class GetPrivilegesRequest extends RequestBase {
+/**
+ * @rest_spec_name security.get_privileges
+ * @since 6.4.0
+ * @stability TODO
+ */
+interface GetPrivilegesRequest extends RequestBase {
   path_parts?: {
     application?: Name
     name?: Name

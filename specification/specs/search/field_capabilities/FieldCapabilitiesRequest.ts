@@ -17,17 +17,47 @@
  * under the License.
  */
 
-@rest_spec_name('field_caps')
-class FieldCapabilitiesRequest extends RequestBase {
+/**
+ * @rest_spec_name field_caps
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface FieldCapabilitiesRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }
   query_parameters?: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
-    fields?: Field | Field[]
+    fields?: Fields
     ignore_unavailable?: boolean
     include_unmapped?: boolean
   }
-  body?: {}
+  body?: {
+    index_filter?: FieldCapabilitiesBodyIndexFilter
+  }
+}
+class FieldCapabilitiesBodyIndexFilter {
+  range?: FieldCapabilitiesBodyIndexFilterRange
+  match_none?: EmptyObject
+  term?: FieldCapabilitiesBodyIndexFilterTerm
+}
+
+class FieldCapabilitiesBodyIndexFilterRange {
+  timestamp: FieldCapabilitiesBodyIndexFilterRangeTimestamp
+}
+
+class FieldCapabilitiesBodyIndexFilterRangeTimestamp {
+  gte?: integer
+  gt?: integer
+  lte?: integer
+  lt?: integer
+}
+
+class FieldCapabilitiesBodyIndexFilterTerm {
+  versionControl: FieldCapabilitiesBodyIndexFilterTermVersionControl
+}
+
+class FieldCapabilitiesBodyIndexFilterTermVersionControl {
+  value: string
 }

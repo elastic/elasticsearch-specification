@@ -18,22 +18,23 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name bulk
+ * @since 0.0.0
+ * @stability stable
+ * @class_serializer BulkRequestFormatter
  */
-@rest_spec_name('bulk')
-@class_serializer('BulkRequestFormatter')
-class BulkRequest<TSource> extends RequestBase {
+interface BulkRequest<TSource> extends RequestBase {
   path_parts?: {
     index?: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
     _source?: boolean
-    _source_excludes?: Field | Field[]
-    _source_includes?: Field | Field[]
+    _source_excludes?: Fields
+    _source_includes?: Fields
     timeout?: Time
     type_query_string?: string
     wait_for_active_shards?: string

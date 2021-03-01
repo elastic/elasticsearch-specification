@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class AverageBucketAggregation {}
+class AverageBucketAggregation extends PipelineAggregationBase {}

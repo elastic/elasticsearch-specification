@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('reindex')
-class ReindexRequest extends RequestBase {
+/**
+ * @rest_spec_name reindex
+ * @since 2.3.0
+ * @stability TODO
+ */
+interface ReindexRequest extends RequestBase {
   query_parameters?: {
     refresh?: boolean
     requests_per_second?: long

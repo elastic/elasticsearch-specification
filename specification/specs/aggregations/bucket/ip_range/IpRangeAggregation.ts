@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class IpRangeAggregation {
+class IpRangeAggregation extends BucketAggregationBase {
   field?: Field
   ranges?: IpRangeAggregationRange[]
 }

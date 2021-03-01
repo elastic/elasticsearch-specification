@@ -18,10 +18,11 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name indices.stats
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('indices.stats')
-class IndicesStatsRequest extends RequestBase {
+interface IndicesStatsRequest extends RequestBase {
   path_parts?: {
     metric?: Metrics
     index?: Indices
@@ -36,7 +37,7 @@ class IndicesStatsRequest extends RequestBase {
     include_segment_file_sizes?: boolean
     include_unloaded_segments?: boolean
     level?: Level
-    types?: TypeNames
+    types?: Types
   }
   body?: {}
 }

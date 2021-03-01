@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_model_snapshots')
-class GetModelSnapshotsRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_model_snapshots
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetModelSnapshotsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
     snapshot_id?: Id
@@ -27,10 +31,10 @@ class GetModelSnapshotsRequest extends RequestBase {
   body?: {
     desc?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     page?: Page
     sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
   }
 }

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('enrich.put_policy')
-class PutEnrichPolicyRequest extends RequestBase {
+/**
+ * @rest_spec_name enrich.put_policy
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface PutEnrichPolicyRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

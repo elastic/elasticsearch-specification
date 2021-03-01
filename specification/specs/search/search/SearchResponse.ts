@@ -26,12 +26,12 @@ class SearchResponse<TDocument> extends ResponseBase {
   aggregations?: Dictionary<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   documents?: TDocument[]
-  fields?: Dictionary<string, LazyDocument>
+  fields?: Dictionary<string, UserDefinedValue>
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
   pit_id?: string
-  _scroll_id?: string
-  suggest?: SuggestDictionary<TDocument>
+  _scroll_id?: ScrollId
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean
 }

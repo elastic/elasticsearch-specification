@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.split')
-class SplitIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.split
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface SplitIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
     target: IndexName

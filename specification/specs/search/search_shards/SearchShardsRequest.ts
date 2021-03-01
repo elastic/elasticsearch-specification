@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('search_shards')
-class SearchShardsRequest extends RequestBase {
+/**
+ * @rest_spec_name search_shards
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface SearchShardsRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class ValueCountAggregation {}
+class ValueCountAggregation extends FormattableMetricAggregation {}

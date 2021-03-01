@@ -18,8 +18,11 @@
  */
 
 class RecoveryOrigin {
-  hostname: string
-  id: string
-  ip: string
-  name: string
+  hostname?: string
+  host?: string
+  transport_address?: string
+  id?: string
+  ip?: string
+  name?: string
+  bootstrap_new_history_uuid?: boolean
 }

@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('indices.exists_type')
-class TypeExistsRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.exists_type
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface TypeExistsRequest extends RequestBase {
   path_parts?: {
     index: Indices
-    type: TypeNames
+    type: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

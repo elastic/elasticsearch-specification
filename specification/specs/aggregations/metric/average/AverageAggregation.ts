@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class AverageAggregation {}
+class AverageAggregation extends FormatMetricAggregationBase {}

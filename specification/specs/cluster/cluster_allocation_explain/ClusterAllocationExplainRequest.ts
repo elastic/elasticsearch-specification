@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.allocation_explain')
-class ClusterAllocationExplainRequest extends RequestBase {
+/**
+ * @rest_spec_name cluster.allocation_explain
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface ClusterAllocationExplainRequest extends RequestBase {
   query_parameters?: {
     include_disk_info?: boolean
     include_yes_decisions?: boolean

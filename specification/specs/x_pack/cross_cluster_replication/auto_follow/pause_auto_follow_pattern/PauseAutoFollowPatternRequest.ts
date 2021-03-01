@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.pause_auto_follow_pattern')
-class PauseAutoFollowPatternRequest extends RequestBase {
+/**
+ * @rest_spec_name ccr.pause_auto_follow_pattern
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface PauseAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

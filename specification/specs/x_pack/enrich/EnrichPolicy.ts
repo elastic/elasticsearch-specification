@@ -18,9 +18,8 @@
  */
 
 class EnrichPolicy {
-  enrich_fields: Field[]
-  /** @prop_serializer IndicesFormatter */
+  enrich_fields: Fields
   indices: Indices
   match_field: Field
-  query: string
+  query?: string
 }

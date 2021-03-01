@@ -23,4 +23,5 @@ class WatcherNodeStats {
   queued_watches: WatchRecordQueuedStats[]
   watch_count: long
   watcher_state: WatcherState
+  node_id: Id
 }

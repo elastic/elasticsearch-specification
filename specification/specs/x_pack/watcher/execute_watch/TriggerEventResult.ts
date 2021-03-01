@@ -19,6 +19,6 @@
 
 class TriggerEventResult {
   manual: TriggerEventContainer
-  triggered_time: Date
+  triggered_time: DateString
   type: string
 }

@@ -17,9 +17,11 @@
  * under the License.
  */
 
-class SqlRequest {
-  fetch_size?: integer
-  filter?: QueryContainer
-  query?: string
-  time_zone?: string
+class RateAggregation extends FormatMetricAggregationBase {
+  unit?: DateInterval
+  mode?: RateMode
+}
+enum RateMode {
+  sum,
+  value_count
 }

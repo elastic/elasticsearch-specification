@@ -32,13 +32,17 @@ function request_parameter() {
 function namespace(ns: string) {
   return function (ns: any) {}
 }
+function since(ns: string) {
+  return function (ns: any) {}
+}
 
 type Uri = string
-// this should be `type Date = string`, but `Date` is already defined by TS
-// so we shoukd figure out a different name
-interface Date {}
+
+// Date/Time
+type DateString = string
 type TimeSpan = string
-interface SourceDocument {}
+type EpochMillis = string | long
+
 @class_serializer('ErrorCauseFormatter')
 class ErrorCause {
   type: string
@@ -98,9 +102,10 @@ type Ids = string | number | string[]
 type IndexName = string
 type Indices = string | string[]
 
-type TypeName = string
-type TypeNames = string | string[]
-type Types = string | string[]
+type TypeName = string // TODO remove and use Type
+type TypeNames = string | string[] // TODO remove and use Types
+type Type = string
+type Types = Type | Type[]
 
 type Routing = string | number
 type LongId = string
@@ -110,6 +115,10 @@ type Metrics = string | string[]
 
 type Name = string
 type Names = string | string[]
+
+type ByteSize = long | string
+
+type Percentage = string | float
 
 type NodeIds = string
 type PropertyName = string
@@ -132,6 +141,12 @@ type WaitForActiveShards = byte | WaitForActiveShardOptions
  */
 type AggregateName = string
 
+/**
+ * The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back
+ * in the form of `name#type` instead of simply `name`
+ */
+type SuggestionName = string
+
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {
   field: Field
@@ -143,9 +158,10 @@ class DateField {
  * e.g the result of a script can be anything from value types to objects  */
 class UserDefinedValue {}
 
-/** Documents a place that can return ANY document from ANY index that can not be directly related back to a generic */
-class LazyDocument {}
 class LatLon {
   lat: double
   lon: double
 }
+
+/** For empty Class assignments */
+class EmptyObject {}

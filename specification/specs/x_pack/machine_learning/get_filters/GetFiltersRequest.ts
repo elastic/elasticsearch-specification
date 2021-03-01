@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_filters')
-class GetFiltersRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_filters
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetFiltersRequest extends RequestBase {
   path_parts?: {
     filter_id?: Id
   }

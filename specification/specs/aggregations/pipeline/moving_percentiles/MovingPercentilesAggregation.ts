@@ -17,5 +17,7 @@
  * under the License.
  */
 
-@class_serializer('SqlValueFormatter')
-class SqlValue extends LazyDocument {}
+class MovingPercentilesAggregation extends PipelineAggregationBase {
+  window?: integer
+  shift?: integer
+}

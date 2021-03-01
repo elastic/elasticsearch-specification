@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.get_settings')
-class ClusterGetSettingsRequest extends RequestBase {
+/**
+ * @rest_spec_name cluster.get_settings
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClusterGetSettingsRequest extends RequestBase {
   query_parameters?: {
     flat_settings?: boolean
     include_defaults?: boolean

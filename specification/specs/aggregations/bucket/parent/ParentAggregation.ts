@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class ParentAggregation {
+class ParentAggregation extends BucketAggregationBase {
   type?: RelationName
 }

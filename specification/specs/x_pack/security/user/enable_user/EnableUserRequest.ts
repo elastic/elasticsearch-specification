@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.enable_user')
-class EnableUserRequest extends RequestBase {
+/**
+ * @rest_spec_name security.enable_user
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface EnableUserRequest extends RequestBase {
   path_parts?: {
     username: Name
   }

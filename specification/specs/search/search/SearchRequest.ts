@@ -18,13 +18,14 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name search
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('search')
-class SearchRequest extends RequestBase {
+interface SearchRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean
@@ -35,7 +36,7 @@ class SearchRequest extends RequestBase {
     ccs_minimize_roundtrips?: boolean
     default_operator?: DefaultOperator
     df?: string
-    docvalue_fields?: Field[]
+    docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
@@ -50,7 +51,7 @@ class SearchRequest extends RequestBase {
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     stats?: string[]
-    stored_fields?: Field[]
+    stored_fields?: Fields
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
@@ -59,13 +60,13 @@ class SearchRequest extends RequestBase {
     track_total_hits?: boolean | integer
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
-    _source_excludes?: Union<Field, Field[]>
-    _source_includes?: Union<Field, Field[]>
+    _source_excludes?: Fields
+    _source_includes?: Fields
     seq_no_primary_term?: boolean
     q?: string
     size?: integer
     from?: integer
-    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>
+    sort?: string[]
   }
   body?: {
     aggs?: Dictionary<string, AggregationContainer>
@@ -87,16 +88,17 @@ class SearchRequest extends RequestBase {
     search_after?: Array<integer | string>
     size?: integer
     slice?: SlicedScroll
-    sort?: Array<Field | SingleKeyDictionary<Sort | SortOrder>>
+    sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: Dictionary<string, SuggestBucket>
+    suggest?: Dictionary<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
     version?: boolean
     seq_no_primary_term?: boolean
-    stored_fields?: Field | Field[]
+    stored_fields?: Fields
     pit?: PointInTimeReference
+    runtime_mappings?: RuntimeFields
   }
 }

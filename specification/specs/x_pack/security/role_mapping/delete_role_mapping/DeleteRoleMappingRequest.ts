@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.delete_role_mapping')
-class DeleteRoleMappingRequest extends RequestBase {
+/**
+ * @rest_spec_name security.delete_role_mapping
+ * @since 5.5.0
+ * @stability TODO
+ */
+interface DeleteRoleMappingRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

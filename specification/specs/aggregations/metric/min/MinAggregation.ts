@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class MinAggregation {}
+class MinAggregation extends FormatMetricAggregationBase {}

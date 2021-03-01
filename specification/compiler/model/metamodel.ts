@@ -187,6 +187,8 @@ export class Request extends BaseType {
    * (an array of bulk operations) or create requests (a user provided document type).
    */
   body?: ValueBody | PropertiesBody
+  behaviors?: Implements[]
+  attachedBehaviors?: string[]
 }
 
 export class ValueBody {
@@ -240,6 +242,8 @@ export class Enum extends BaseType {
 export class TypeAlias extends BaseType {
   kind: 'type_alias'
   type: ValueOf
+  /** generic parameters: either concrete types or open parameters from the enclosing type */
+  generics?: ValueOf[]
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -266,7 +270,7 @@ export class Endpoint {
    * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
    */
   since?: string
-  deprecation: Deprecation
+  deprecation?: Deprecation
 
   /**
    * If the request value is `null` it means that there is not yet a
@@ -291,6 +295,15 @@ export class UrlTemplate {
 }
 
 export class Model {
+  _info?: {
+    version: string
+    title: string
+    license: {
+      name: string
+      url: string
+    }
+  }
+
   types: TypeDefinition[]
   endpoints: Endpoint[]
 }

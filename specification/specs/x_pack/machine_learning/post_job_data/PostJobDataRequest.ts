@@ -17,15 +17,19 @@
  * under the License.
  */
 
-@rest_spec_name('ml.post_data')
-@class_serializer('PostJobDataFormatter')
-class PostJobDataRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.post_data
+ * @since 5.4.0
+ * @class_serializer PostJobDataFormatter
+ * @stability TODO
+ */
+interface PostJobDataRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }
   query_parameters?: {
-    reset_end?: Date
-    reset_start?: Date
+    reset_end?: DateString
+    reset_start?: DateString
   }
   body?: {
     data?: UserDefinedValue[]

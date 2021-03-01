@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class SpanMultiTermQuery {
+class SpanMultiTermQuery extends QueryBase {
   match?: QueryContainer
 }

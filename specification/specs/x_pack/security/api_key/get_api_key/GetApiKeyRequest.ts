@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.get_api_key')
-class GetApiKeyRequest extends RequestBase {
+/**
+ * @rest_spec_name security.get_api_key
+ * @since 6.7.0
+ * @stability TODO
+ */
+interface GetApiKeyRequest extends RequestBase {
   query_parameters?: {
     id?: string
     name?: string

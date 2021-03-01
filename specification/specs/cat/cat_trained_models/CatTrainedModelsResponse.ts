@@ -19,4 +19,4 @@
 
 class CatTrainedModelsResponse
   extends ResponseBase
-  implements ArrayResponse<CatTrainedModelsRecord> {}
+  implements ArrayResponseBase<CatTrainedModelsRecord> {}

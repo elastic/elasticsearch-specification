@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('async_search.submit')
-class AsyncSearchSubmitRequest extends RequestBase {
+/**
+ * @rest_spec_name async_search.submit
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface AsyncSearchSubmitRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }
@@ -33,7 +37,7 @@ class AsyncSearchSubmitRequest extends RequestBase {
     collapse?: FieldCollapse
     default_operator?: DefaultOperator
     df?: string
-    docvalue_fields?: Field[]
+    docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     from?: integer
@@ -60,11 +64,11 @@ class AsyncSearchSubmitRequest extends RequestBase {
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
-    sort?: Sort[]
+    sort?: Sort
     _source?: Union<boolean, SourceFilter>
     stats?: string[]
-    stored_fields?: Field[]
-    suggest?: Dictionary<string, SuggestBucket>
+    stored_fields?: Fields
+    suggest?: Dictionary<string, SuggestContainer>
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long

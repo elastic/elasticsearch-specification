@@ -17,10 +17,10 @@
  * under the License.
  */
 
-class CompletionSuggester {
-  contexts: Dictionary<string, SuggestContextQuery[]>
-  fuzzy: SuggestFuzziness
-  prefix: string
-  regex: string
-  skip_duplicates: boolean
+class CompletionSuggester extends SuggesterBase {
+  contexts?: Dictionary<string, SuggestContextQuery[]>
+  fuzzy?: SuggestFuzziness
+  prefix?: string
+  regex?: string
+  skip_duplicates?: boolean
 }

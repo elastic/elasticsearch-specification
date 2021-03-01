@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.nodeattrs')
-class CatNodeAttributesRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.nodeattrs
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatNodeAttributesRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}
 }

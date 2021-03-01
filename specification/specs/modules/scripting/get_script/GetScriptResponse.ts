@@ -18,5 +18,7 @@
  */
 
 class GetScriptResponse extends ResponseBase {
-  script: StoredScript
+  _id: Id
+  found: boolean
+  script?: StoredScript
 }

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.clear_cache')
-class ClearCacheRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.clear_cache
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClearCacheRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }
@@ -26,7 +30,7 @@ class ClearCacheRequest extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     fielddata?: boolean
-    fields?: Field[]
+    fields?: Fields
     ignore_unavailable?: boolean
     query?: boolean
     request?: boolean

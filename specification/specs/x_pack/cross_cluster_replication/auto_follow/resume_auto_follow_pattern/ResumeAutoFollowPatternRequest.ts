@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.resume_auto_follow_pattern')
-class ResumeAutoFollowPatternRequest extends RequestBase {
+/**
+ * @rest_spec_name ccr.resume_auto_follow_pattern
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface ResumeAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

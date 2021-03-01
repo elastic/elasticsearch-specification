@@ -17,17 +17,21 @@
  * under the License.
  */
 
-@rest_spec_name('ml.start_datafeed')
-class StartDatafeedRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.start_datafeed
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface StartDatafeedRequest extends RequestBase {
   path_parts?: {
     datafeed_id: Id
   }
   query_parameters?: {}
   body?: {
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
     timeout?: Time
   }
 }

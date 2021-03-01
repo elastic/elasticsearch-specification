@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.put_user')
-class PutUserRequest extends RequestBase {
+/**
+ * @rest_spec_name security.put_user
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PutUserRequest extends RequestBase {
   path_parts?: {
     username: Name
   }
@@ -26,8 +30,8 @@ class PutUserRequest extends RequestBase {
     refresh?: Refresh
   }
   body?: {
-    email?: string
-    full_name?: string
+    email?: string | null
+    full_name?: string | null
     metadata?: Dictionary<string, UserDefinedValue>
     password?: string
     password_hash?: string

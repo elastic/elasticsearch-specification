@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.put_calendar')
-class PutCalendarRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.put_calendar
+ * @since 6.2.0
+ * @stability TODO
+ */
+interface PutCalendarRequest extends RequestBase {
   path_parts?: {
     calendar_id: Id
   }

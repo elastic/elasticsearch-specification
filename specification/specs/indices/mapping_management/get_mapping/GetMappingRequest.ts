@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('indices.get_mapping')
-class GetMappingRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.get_mapping
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetMappingRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

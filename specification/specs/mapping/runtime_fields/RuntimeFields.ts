@@ -17,7 +17,10 @@
  * under the License.
  */
 
-enum HoltWintersType {
-  add = 0,
-  mult = 1
+type RuntimeFields = Dictionary<Field, RuntimeField>
+
+class RuntimeField {
+  format?: string
+  script?: StoredScript
+  type: FieldType
 }

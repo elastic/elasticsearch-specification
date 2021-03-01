@@ -17,9 +17,13 @@
  * under the License.
  */
 
-@rest_spec_name('indices.put_settings')
-@class_serializer('UpdateIndexSettingsRequestFormatter')
-class UpdateIndexSettingsRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.put_settings
+ * @since 0.0.0
+ * @class_serializer UpdateIndexSettingsRequestFormatter
+ * @stability TODO
+ */
+interface UpdateIndexSettingsRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

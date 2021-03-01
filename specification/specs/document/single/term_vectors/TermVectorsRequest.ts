@@ -17,15 +17,19 @@
  * under the License.
  */
 
-@rest_spec_name('termvectors')
-class TermVectorsRequest<TDocument> extends RequestBase {
+/**
+ * @rest_spec_name termvectors
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface TermVectorsRequest<TDocument> extends RequestBase {
   path_parts?: {
     index: IndexName
     id?: Id
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
-    fields?: Field[]
+    fields?: Fields
     field_statistics?: boolean
     offsets?: boolean
     payloads?: boolean

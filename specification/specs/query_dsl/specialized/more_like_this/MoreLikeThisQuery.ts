@@ -20,7 +20,7 @@
 class MoreLikeThisQuery extends QueryBase {
   analyzer?: string
   boost_terms?: double
-  fields?: Field[]
+  fields?: Fields
   include?: boolean
   like?: Like[]
   max_doc_freq?: integer

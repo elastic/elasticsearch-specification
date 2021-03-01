@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.get_lifecycle')
-class GetLifecycleRequest extends RequestBase {
+/**
+ * @rest_spec_name ilm.get_lifecycle
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface GetLifecycleRequest extends RequestBase {
   path_parts?: {
     policy?: Name
   }

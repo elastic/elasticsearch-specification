@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('delete_script')
-class DeleteScriptRequest extends RequestBase {
+/**
+ * @rest_spec_name delete_script
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DeleteScriptRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

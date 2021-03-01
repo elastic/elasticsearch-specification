@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.get')
-class GetIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.get
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetIndexRequest extends RequestBase {
   path_parts?: {
     index: Indices
   }

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.master')
-class CatMasterRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.master
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatMasterRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}
 }

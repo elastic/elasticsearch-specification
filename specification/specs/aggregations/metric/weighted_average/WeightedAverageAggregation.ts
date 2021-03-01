@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class WeightedAverageAggregation {
+class WeightedAverageAggregation extends Aggregation {
   format?: string
   value?: WeightedAverageValue
   value_type?: ValueType

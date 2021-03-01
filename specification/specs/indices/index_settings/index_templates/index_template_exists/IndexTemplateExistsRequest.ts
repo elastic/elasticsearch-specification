@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.exists_template')
-class IndexTemplateExistsRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.exists_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface IndexTemplateExistsRequest extends RequestBase {
   path_parts?: {
     name: Names
   }

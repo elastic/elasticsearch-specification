@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ingest.delete_pipeline')
-class DeletePipelineRequest extends RequestBase {
+/**
+ * @rest_spec_name ingest.delete_pipeline
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface DeletePipelineRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

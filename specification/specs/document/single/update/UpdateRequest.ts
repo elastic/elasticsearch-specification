@@ -18,14 +18,15 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name update
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('update')
-class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
+interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     if_primary_term?: long
@@ -39,8 +40,8 @@ class UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     timeout?: Time
     wait_for_active_shards?: string
     _source?: Union<boolean, Union<string, string[]>>
-    _source_excludes?: Field[]
-    _source_includes?: Field[]
+    _source_excludes?: Fields
+    _source_includes?: Fields
   }
   body?: {
     detect_noop?: boolean

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.put_role_mapping')
-class PutRoleMappingRequest extends RequestBase {
+/**
+ * @rest_spec_name security.put_role_mapping
+ * @since 5.5.0
+ * @stability TODO
+ */
+interface PutRoleMappingRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

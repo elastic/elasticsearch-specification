@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.remote_info')
-class RemoteInfoRequest extends RequestBase {
+/**
+ * @rest_spec_name cluster.remote_info
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface RemoteInfoRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('info')
-class RootNodeInfoRequest extends RequestBase {
+/**
+ * @rest_spec_name info
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface RootNodeInfoRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

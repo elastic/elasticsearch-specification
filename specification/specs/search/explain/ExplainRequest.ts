@@ -17,12 +17,16 @@
  * under the License.
  */
 
-@rest_spec_name('explain')
-class ExplainRequest extends RequestBase {
+/**
+ * @rest_spec_name explain
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ExplainRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     analyzer?: string
@@ -33,10 +37,11 @@ class ExplainRequest extends RequestBase {
     preference?: string
     query_on_query_string?: string
     routing?: Routing
-    source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
-    stored_fields?: Field[]
+    _source?: boolean | Fields | SourceFilter
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    stored_fields?: Fields
+    q?: string
   }
   body?: {
     query?: QueryContainer

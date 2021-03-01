@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.delete_alias')
-class DeleteAliasRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.delete_alias
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DeleteAliasRequest extends RequestBase {
   path_parts?: {
     index: Indices
     name: Names

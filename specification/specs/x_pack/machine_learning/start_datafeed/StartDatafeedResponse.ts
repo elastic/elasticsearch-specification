@@ -18,5 +18,6 @@
  */
 
 class StartDatafeedResponse extends ResponseBase {
+  node: NodeIds
   started: boolean
 }

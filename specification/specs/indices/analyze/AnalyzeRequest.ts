@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.analyze')
-class AnalyzeRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.analyze
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface AnalyzeRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
   }

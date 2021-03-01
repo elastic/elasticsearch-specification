@@ -18,9 +18,10 @@
  */
 
 @class_serializer('MovingAverageAggregationFormatter')
-class MovingAverageAggregation {
+class MovingAverageAggregation extends PipelineAggregationBase {
   minimize?: boolean
   model?: MovingAverageModel
+  settings: MovingAverageSettings
   predict?: integer
   window?: integer
 }

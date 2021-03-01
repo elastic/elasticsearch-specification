@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('sql.translate')
-class TranslateSqlRequest extends RequestBase {
+/**
+ * @rest_spec_name sql.translate
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface TranslateSqlRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     fetch_size?: integer

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('nodes.reload_secure_settings')
-class ReloadSecureSettingsRequest extends RequestBase {
+/**
+ * @rest_spec_name nodes.reload_secure_settings
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface ReloadSecureSettingsRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
   }

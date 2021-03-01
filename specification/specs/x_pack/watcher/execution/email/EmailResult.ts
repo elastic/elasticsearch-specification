@@ -25,7 +25,7 @@ class EmailResult {
   id: string
   priority: EmailPriority
   reply_to: string[]
-  sent_date: Date
+  sent_date: DateString
   subject: string
   to: string[]
 }

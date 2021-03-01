@@ -17,14 +17,18 @@
  * under the License.
  */
 
-@rest_spec_name('mtermvectors')
-class MultiTermVectorsRequest extends RequestBase {
+/**
+ * @rest_spec_name mtermvectors
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface MultiTermVectorsRequest extends RequestBase {
   path_parts?: {
     index?: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
-    fields?: Field[]
+    fields?: Fields
     field_statistics?: boolean
     offsets?: boolean
     payloads?: boolean

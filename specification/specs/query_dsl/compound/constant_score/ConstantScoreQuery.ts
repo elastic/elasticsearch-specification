@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class ConstantScoreQuery {
+class ConstantScoreQuery extends QueryBase {
   filter?: QueryContainer
   boost?: float
 }

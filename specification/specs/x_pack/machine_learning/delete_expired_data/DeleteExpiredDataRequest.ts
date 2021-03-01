@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.delete_expired_data')
-class DeleteExpiredDataRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.delete_expired_data
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface DeleteExpiredDataRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

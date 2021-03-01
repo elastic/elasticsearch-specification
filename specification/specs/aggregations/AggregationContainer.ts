@@ -36,6 +36,7 @@ class AggregationContainer {
   date_histogram?: DateHistogramAggregation
   date_range?: DateRangeAggregation
   derivative?: DerivativeAggregation
+  diversified_sampler?: DiversifiedSamplerAggregation
   extended_stats?: ExtendedStatsAggregation
   extended_stats_bucket?: ExtendedStatsBucketAggregation
   filter?: QueryContainer
@@ -44,27 +45,32 @@ class AggregationContainer {
   geo_centroid?: GeoCentroidAggregation
   geo_distance?: GeoDistanceAggregation
   geohash_grid?: GeoHashGridAggregation
+  geo_line?: GeoLineAggregation
   geotile_grid?: GeoTileGridAggregation
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
+  line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
   median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-  meta?: Dictionary<string, string | number | boolean>
+  meta?: Dictionary<string, UserDefinedValue>
   min?: MinAggregation
   min_bucket?: MinBucketAggregation
   missing?: MissingAggregation
   moving_avg?: MovingAverageAggregation
+  moving_percentiles?: MovingPercentilesAggregation
   moving_fn?: MovingFunctionAggregation
   nested?: NestedAggregation
+  normalize?: NormalizeAggregation
   parent?: ParentAggregation
   percentile_ranks?: PercentileRanksAggregation
   percentiles?: PercentilesAggregation
   percentiles_bucket?: PercentilesBucketAggregation
   range?: RangeAggregation
   rare_terms?: RareTermsAggregation
+  rate?: RateAggregation
   reverse_nested?: ReverseNestedAggregation
   sampler?: SamplerAggregation
   scripted_metric?: ScriptedMetricAggregation
@@ -78,10 +84,11 @@ class AggregationContainer {
   sum_bucket?: SumBucketAggregation
   terms?: TermsAggregation
   top_hits?: TopHitsAggregation
+  t_test?: TTestAggregation
   top_metrics?: TopMetricsAggregation
   value_count?: ValueCountAggregation
   weighted_avg?: WeightedAverageAggregation
   variable_width_histogram?: VariableWidthHistogramAggregation
 }
 
-type Missing = string | integer | boolean
+type Missing = string | integer | double | boolean

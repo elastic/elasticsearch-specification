@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_influencers')
-class GetInfluencersRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_influencers
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetInfluencersRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }
@@ -26,12 +30,12 @@ class GetInfluencersRequest extends RequestBase {
   body?: {
     descending?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     influencer_score?: double
     page?: Page
     sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
   }
 }

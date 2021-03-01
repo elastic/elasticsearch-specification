@@ -17,12 +17,16 @@
  * under the License.
  */
 
-@rest_spec_name('exists')
-class DocumentExistsRequest extends RequestBase {
+/**
+ * @rest_spec_name exists
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DocumentExistsRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     preference?: string
@@ -30,9 +34,9 @@ class DocumentExistsRequest extends RequestBase {
     refresh?: boolean
     routing?: Routing
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
-    stored_fields?: Field[]
+    source_excludes?: Fields
+    source_includes?: Fields
+    stored_fields?: Fields
     version?: long
     version_type?: VersionType
   }

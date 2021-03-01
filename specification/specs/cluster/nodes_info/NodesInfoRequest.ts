@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('nodes.info')
-class NodesInfoRequest extends RequestBase {
+/**
+ * @rest_spec_name nodes.info
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface NodesInfoRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
     metric?: Metrics

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('transform.delete_transform')
-class DeleteTransformRequest extends RequestBase {
+/**
+ * @rest_spec_name transform.delete_transform
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface DeleteTransformRequest extends RequestBase {
   path_parts?: {
     transform_id: Name
   }

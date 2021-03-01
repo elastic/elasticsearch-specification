@@ -18,7 +18,7 @@ We therefore document the requirement to behave like a dictionary for unknown pr
 class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
 ```
 
-## ArrayResponse
+## ArrayResponseBase
 
 A response formatted as an array of records.
 Some languages can't represent this easily and need to wrap the
@@ -27,7 +27,7 @@ array inside an object.
 ```ts
 class CatAliasesResponse
   extends ResponseBase
-  implements ArrayResponse<CatAliasesRecord> {}
+  implements ArrayResponseBase<CatAliasesRecord> {}
 ```
 
 ## EmptyResponseBase
@@ -40,4 +40,24 @@ to define how those should be represented.
 class DocumentExistsResponse
   extends ResponseBase
   implements EmptyResponseBase {}
+```
+
+## CommonQueryParameters
+
+Implements a set of common query parameters all API's support.
+Since these can break the request structure these are listed explicitly as a behavior.
+Its up to individual clients to define support although `error_trace` and `pretty` are
+recommended as a minimum.
+
+```ts
+class RequestBase implements CommonQueryParameters {}
+```
+
+## CommonCatQueryParameters
+
+Implements a set of common query parameters all Cat API's support.
+Since these can break the request structure these are listed explicitly as a behavior.
+
+```ts
+class CatRequestBase extends RequestBase implements CommonCatQueryParameters {}
 ```

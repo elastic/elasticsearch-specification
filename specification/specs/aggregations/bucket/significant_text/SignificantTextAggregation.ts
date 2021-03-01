@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SignificantTextAggregation {
+class SignificantTextAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
   exclude?: string | string[]
@@ -33,5 +33,5 @@ class SignificantTextAggregation {
   shard_min_doc_count?: long
   shard_size?: integer
   size?: integer
-  source_fields?: Field[]
+  source_fields?: Fields
 }

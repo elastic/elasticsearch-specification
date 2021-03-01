@@ -17,4 +17,7 @@
  * under the License.
  */
 
-class GeoCentroidAggregation {}
+class GeoCentroidAggregation extends MetricAggregationBase {
+  count?: long
+  location?: GeoLocation
+}

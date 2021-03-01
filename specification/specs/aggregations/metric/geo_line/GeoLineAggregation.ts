@@ -17,6 +17,18 @@
  * under the License.
  */
 
-class RawQuery {
-  raw?: string
+class GeoLineAggregation {
+  point: GeoLinePoint
+  sort: GeoLineSort
+  include_sort?: boolean
+  sort_order?: SortOrder
+  size?: integer
+}
+
+class GeoLineSort {
+  field: Field
+}
+
+class GeoLinePoint {
+  field: Field
 }

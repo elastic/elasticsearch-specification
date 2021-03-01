@@ -17,12 +17,12 @@
  * under the License.
  */
 
-class AutoDateHistogramAggregation {
+class AutoDateHistogramAggregation extends BucketAggregationBase {
   buckets?: integer
   field?: Field
   format?: string
   minimum_interval?: MinimumInterval
-  missing?: Date
+  missing?: DateString
   offset?: string
   params?: Dictionary<string, UserDefinedValue>
   script?: Script

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-class ExtendedStatsAggregation {
+class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
-  field?: Field
 }

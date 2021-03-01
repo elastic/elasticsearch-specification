@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.forcemerge')
-class ForceMergeRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.forcemerge
+ * @since 2.1.0
+ * @stability TODO
+ */
+interface ForceMergeRequest extends RequestBase {
   path_parts?: {
     index?: Indices
   }

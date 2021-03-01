@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.delete_forecast')
-class DeleteForecastRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.delete_forecast
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface DeleteForecastRequest extends RequestBase {
   path_parts?: {
     job_id: Id
     forecast_id?: Id

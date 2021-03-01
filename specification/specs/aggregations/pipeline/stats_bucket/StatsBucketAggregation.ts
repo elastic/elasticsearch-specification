@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class StatsBucketAggregation {}
+class StatsBucketAggregation extends PipelineAggregationBase {}

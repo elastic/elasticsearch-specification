@@ -19,4 +19,4 @@
 
 class CatDatafeedsResponse
   extends ResponseBase
-  implements ArrayResponse<CatDatafeedsRecord> {}
+  implements ArrayResponseBase<CatDatafeedsRecord> {}

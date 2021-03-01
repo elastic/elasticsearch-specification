@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.flush_job')
-class FlushJobRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.flush_job
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface FlushJobRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }
@@ -26,9 +30,9 @@ class FlushJobRequest extends RequestBase {
     skip_time?: string
   }
   body?: {
-    advance_time?: Date
+    advance_time?: DateString
     calc_interim?: boolean
-    end?: Date
-    start?: Date
+    end?: DateString
+    start?: DateString
   }
 }

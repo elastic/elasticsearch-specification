@@ -17,11 +17,16 @@
  * under the License.
  */
 
-@rest_spec_name('security.invalidate_api_key')
-class InvalidateApiKeyRequest extends RequestBase {
+/**
+ * @rest_spec_name security.invalidate_api_key
+ * @since 6.7.0
+ * @stability TODO
+ */
+interface InvalidateApiKeyRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     id?: string
+    ids?: string[]
     name?: string
     owner?: boolean
     realm_name?: string

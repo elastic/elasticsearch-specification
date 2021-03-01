@@ -17,8 +17,8 @@
  * under the License.
  */
 
-class TopMetricsAggregation {
+class TopMetricsAggregation extends MetricAggregationBase {
   metrics?: TopMetricsValue[]
   size?: integer
-  sort?: Sort[]
+  sort?: Sort
 }

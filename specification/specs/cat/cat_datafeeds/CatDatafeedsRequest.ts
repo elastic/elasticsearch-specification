@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.ml_datafeeds')
-class CatDatafeedsRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.ml_datafeeds
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface CatDatafeedsRequest extends CatRequestBase {
   path_parts?: {
     datafeed_id?: Id
   }

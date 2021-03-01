@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('nodes.usage')
-class NodesUsageRequest extends RequestBase {
+/**
+ * @rest_spec_name nodes.usage
+ * @since 6.0.0
+ * @stability TODO
+ */
+interface NodesUsageRequest extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
     metric?: Metrics

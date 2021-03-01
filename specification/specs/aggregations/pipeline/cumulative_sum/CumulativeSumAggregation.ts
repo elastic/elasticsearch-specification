@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class CumulativeSumAggregation {}
+class CumulativeSumAggregation extends PipelineAggregationBase {}

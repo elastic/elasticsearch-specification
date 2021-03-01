@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.delete_template')
-class DeleteIndexTemplateRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.delete_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DeleteIndexTemplateRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

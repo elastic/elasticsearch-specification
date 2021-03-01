@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('indices.put_mapping')
-class PutMappingRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.put_mapping
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface PutMappingRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     allow_no_indices?: boolean
@@ -36,7 +40,9 @@ class PutMappingRequest extends RequestBase {
     date_detection?: boolean
     dynamic?: Union<boolean, DynamicMapping>
     dynamic_date_formats?: string[]
-    dynamic_templates?: Dictionary<string, DynamicTemplate>
+    dynamic_templates?:
+      | Dictionary<string, DynamicTemplate>
+      | Dictionary<string, DynamicTemplate>[]
     field_names_field?: FieldNamesField
     index_field?: IndexField
     meta?: Dictionary<string, UserDefinedValue>

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.fielddata')
-class CatFielddataRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.fielddata
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatFielddataRequest extends CatRequestBase {
   path_parts?: {
     fields?: Fields
   }

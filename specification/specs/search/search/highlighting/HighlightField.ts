@@ -29,7 +29,7 @@ class HighlightField {
   fragment_offset?: integer
   fragment_size?: integer
   highlight_query?: QueryContainer
-  matched_fields?: Field[]
+  matched_fields?: Fields
   max_fragment_length?: integer
   no_match_size?: integer
   number_of_fragments?: integer

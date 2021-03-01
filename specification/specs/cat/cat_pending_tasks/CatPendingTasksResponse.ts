@@ -19,4 +19,4 @@
 
 class CatPendingTasksResponse
   extends ResponseBase
-  implements ArrayResponse<CatPendingTasksRecord> {}
+  implements ArrayResponseBase<CatPendingTasksRecord> {}

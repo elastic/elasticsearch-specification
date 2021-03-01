@@ -17,17 +17,20 @@
  * under the License.
  */
 
-var gulp = require("gulp");
-var _ = require('lodash');
-var addsrc = require('gulp-add-src');
-var ts = require('ntypescript');
+import * as model from '../model/metamodel'
+import { JsonSpec } from '../model/json-spec'
 
-var folders = {
-    src: ['src/**/*.ts', '!src/**/*.d.ts']
-    //spec: ['spec/**/*.ts', '!spec/**/*.d.ts'],
-};
-
-gulp.task("default", [], function() {
-    var lib = tsTranspiler(gulp.src(folders.src), './lib');
-
-});
+/**
+ * Adds the `_info` field to the JSON model
+ */
+export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+  model._info = {
+    version: '7.11.0',
+    title: 'Elasticsearch Request & Response Specification',
+    license: {
+      name: 'Apache 2.0',
+      url: 'https://github.com/elastic/elastic-client-generator/blob/master/LICENSE'
+    }
+  }
+  return model
+}

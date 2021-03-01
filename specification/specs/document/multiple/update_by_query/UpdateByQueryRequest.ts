@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('update_by_query')
-class UpdateByQueryRequest extends RequestBase {
+/**
+ * @rest_spec_name update_by_query
+ * @since 2.4.0
+ * @stability TODO
+ */
+interface UpdateByQueryRequest extends RequestBase {
   path_parts?: {
     index: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean
@@ -49,8 +53,8 @@ class UpdateByQueryRequest extends RequestBase {
     slices?: long
     sort?: string[]
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    source_excludes?: Fields
+    source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time
@@ -64,5 +68,6 @@ class UpdateByQueryRequest extends RequestBase {
     query?: QueryContainer
     script?: Script
     slice?: SlicedScroll
+    conflicts?: Conflicts
   }
 }

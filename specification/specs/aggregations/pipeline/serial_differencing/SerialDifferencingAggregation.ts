@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class SerialDifferencingAggregation {
+class SerialDifferencingAggregation extends PipelineAggregationBase {
   lag?: integer
 }

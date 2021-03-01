@@ -17,8 +17,6 @@
  * under the License.
  */
 
-class MedianAbsoluteDeviationAggregation {
+class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationBase {
   compression?: double
-  field?: Field
-  missing?: Missing
 }

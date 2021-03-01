@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('scripts_painless_execute')
-class ExecutePainlessScriptRequest extends RequestBase {
+/**
+ * @rest_spec_name scripts_painless_execute
+ * @since 6.3.0
+ * @stability TODO
+ */
+interface ExecutePainlessScriptRequest extends RequestBase {
   query_parameters?: {}
   body?: {
     context?: string

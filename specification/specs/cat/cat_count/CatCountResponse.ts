@@ -19,4 +19,4 @@
 
 class CatCountResponse
   extends ResponseBase
-  implements ArrayResponse<CatCountRecord> {}
+  implements ArrayResponseBase<CatCountRecord> {}

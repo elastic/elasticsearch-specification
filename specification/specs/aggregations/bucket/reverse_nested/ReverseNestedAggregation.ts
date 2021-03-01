@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class ReverseNestedAggregation {
+class ReverseNestedAggregation extends BucketAggregationBase {
   path?: Field
 }

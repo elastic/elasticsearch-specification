@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_categories')
-class GetCategoriesRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_categories
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetCategoriesRequest extends RequestBase {
   path_parts?: {
     job_id: Id
     category_id?: CategoryId

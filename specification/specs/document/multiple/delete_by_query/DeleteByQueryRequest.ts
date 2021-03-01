@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('delete_by_query')
-class DeleteByQueryRequest extends RequestBase {
+/**
+ * @rest_spec_name delete_by_query
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface DeleteByQueryRequest extends RequestBase {
   path_parts?: {
     index: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean
@@ -48,8 +52,8 @@ class DeleteByQueryRequest extends RequestBase {
     slices?: long
     sort?: string[]
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    source_excludes?: Fields
+    source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time

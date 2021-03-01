@@ -22,8 +22,8 @@ class SimpleQueryStringQuery extends QueryBase {
   analyze_wildcard?: boolean
   auto_generate_synonyms_phrase_query?: boolean
   default_operator?: Operator
-  fields?: Field[]
-  flags?: SimpleQueryStringFlags
+  fields?: Fields
+  flags?: SimpleQueryStringFlags | string
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean

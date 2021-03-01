@@ -18,15 +18,16 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name index
+ * @since 0.0.0
+ * @stability stable
+ * @class_serializer IndexRequestFormatter`1`
  */
-@rest_spec_name('index')
-@class_serializer('IndexRequestFormatter`1')
-class IndexRequest<TDocument> extends RequestBase {
+interface IndexRequest<TDocument> extends RequestBase {
   path_parts?: {
     id?: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     if_primary_term?: long

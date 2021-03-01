@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class SpanWithinQuery {
+class SpanWithinQuery extends QueryBase {
   big?: SpanQuery
   little?: SpanQuery
 }

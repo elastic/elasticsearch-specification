@@ -18,7 +18,7 @@
  */
 
 class CorePropertyBase extends PropertyBase {
-  copy_to: Field[]
+  copy_to: Fields
   fields: Dictionary<PropertyName, PropertyBase>
   similarity: string
   store: boolean

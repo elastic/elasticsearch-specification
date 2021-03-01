@@ -18,14 +18,15 @@
  */
 
 /**
- * @type_stability stable
+ * @rest_spec_name get
+ * @since 0.0.0
+ * @stability TODO
  */
-@rest_spec_name('get')
-class GetRequest extends RequestBase {
+interface GetRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     preference?: string

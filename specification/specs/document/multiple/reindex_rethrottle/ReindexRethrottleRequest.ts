@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('reindex_rethrottle')
-class ReindexRethrottleRequest extends RequestBase {
+/**
+ * @rest_spec_name reindex_rethrottle
+ * @since 2.4.0
+ * @stability TODO
+ */
+interface ReindexRethrottleRequest extends RequestBase {
   path_parts?: {
     task_id: Id
   }

@@ -17,4 +17,15 @@
  * under the License.
  */
 
-class ScrollResponse<TDocument> extends SearchResponse<TDocument> {}
+class ScrollResponse<TDocument> extends SearchResponse<TDocument> {
+  failed_shards?: Array<ScrollResponseFailedShard>
+}
+
+class ScrollResponseFailedShard {
+  shard: integer
+  reason: ScrollResponseErrorReason
+}
+class ScrollResponseErrorReason {
+  type: string
+  reason: string
+}

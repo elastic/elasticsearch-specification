@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cluster.pending_tasks')
-class ClusterPendingTasksRequest extends RequestBase {
+/**
+ * @rest_spec_name cluster.pending_tasks
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ClusterPendingTasksRequest extends RequestBase {
   query_parameters?: {
     local?: boolean
     master_timeout?: Time

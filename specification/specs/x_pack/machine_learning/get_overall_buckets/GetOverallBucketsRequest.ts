@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_overall_buckets')
-class GetOverallBucketsRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_overall_buckets
+ * @since 6.1.0
+ * @stability TODO
+ */
+interface GetOverallBucketsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }
@@ -26,10 +30,10 @@ class GetOverallBucketsRequest extends RequestBase {
   body?: {
     allow_no_jobs?: boolean
     bucket_span?: Time
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     overall_score?: double
-    start?: Date
+    start?: DateString
     top_n?: integer
   }
 }

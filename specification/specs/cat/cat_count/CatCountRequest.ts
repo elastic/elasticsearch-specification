@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.count')
-class CatCountRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.count
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatCountRequest extends CatRequestBase {
   path_parts?: {
     index?: Indices
   }

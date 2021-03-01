@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('watcher.activate_watch')
-class ActivateWatchRequest extends RequestBase {
+/**
+ * @rest_spec_name watcher.activate_watch
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ActivateWatchRequest extends RequestBase {
   path_parts?: {
     watch_id: Name
   }

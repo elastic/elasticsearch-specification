@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.get_template')
-class GetIndexTemplateRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.get_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetIndexTemplateRequest extends RequestBase {
   path_parts?: {
     name?: Names
   }

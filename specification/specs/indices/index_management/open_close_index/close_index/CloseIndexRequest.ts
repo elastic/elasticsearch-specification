@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.close')
-class CloseIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.close
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CloseIndexRequest extends RequestBase {
   path_parts?: {
     index: Indices
   }

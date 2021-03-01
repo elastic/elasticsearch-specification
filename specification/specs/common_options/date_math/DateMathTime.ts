@@ -17,8 +17,8 @@
  * under the License.
  */
 
-@class_serializer('DateMathTimeFormatter')
-class DateMathTime {
+type DateMathTime = string
+class DateMathTimeParsed {
   factor: integer
   interval: DateMathTimeUnit
 }

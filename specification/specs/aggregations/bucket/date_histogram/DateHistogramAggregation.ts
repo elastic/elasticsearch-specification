@@ -17,16 +17,16 @@
  * under the License.
  */
 
-class DateHistogramAggregation {
-  calendar_interval?: Union<DateInterval, Time>
-  extended_bounds?: ExtendedBounds<DateMath>
-  hard_bounds?: ExtendedBounds<DateMath>
+class DateHistogramAggregation extends BucketAggregationBase {
+  calendar_interval?: DateInterval | Time
+  extended_bounds?: ExtendedBounds<DateMath | long>
+  hard_bounds?: ExtendedBounds<DateMath | long>
   field?: Field
-  fixed_interval?: Union<DateInterval, Time>
+  fixed_interval?: DateInterval | Time
   format?: string
-  interval?: Union<DateInterval, Time>
+  interval?: DateInterval | Time
   min_doc_count?: integer
-  missing?: Date
+  missing?: DateString
   offset?: Time
   order?: HistogramOrder
   params?: Dictionary<string, UserDefinedValue>

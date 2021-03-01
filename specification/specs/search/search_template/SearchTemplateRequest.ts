@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('search_template')
-class SearchTemplateRequest extends RequestBase {
+/**
+ * @rest_spec_name search_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface SearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

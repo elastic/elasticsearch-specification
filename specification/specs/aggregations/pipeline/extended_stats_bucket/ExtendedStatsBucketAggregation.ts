@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class ExtendedStatsBucketAggregation {
+class ExtendedStatsBucketAggregation extends PipelineAggregationBase {
   sigma?: double
 }

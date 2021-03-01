@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.nodes')
-class CatNodesRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.nodes
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CatNodesRequest extends CatRequestBase {
   query_parameters?: {
     bytes?: Bytes
     full_id?: boolean

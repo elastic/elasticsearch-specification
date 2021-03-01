@@ -22,9 +22,9 @@ class SnapshotLifecyclePolicyMetadata {
   last_failure: SnapshotLifecycleInvocationRecord
   last_success: SnapshotLifecycleInvocationRecord
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  modified_date_millis: Date
+  modified_date_millis: DateString
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  next_execution_millis: Date
+  next_execution_millis: DateString
   policy: SnapshotLifecyclePolicy
   version: integer
 }

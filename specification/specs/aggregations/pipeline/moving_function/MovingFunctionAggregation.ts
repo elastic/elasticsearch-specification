@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class MovingFunctionAggregation {
+class MovingFunctionAggregation extends PipelineAggregationBase {
   script?: string
   shift?: integer
   window?: integer

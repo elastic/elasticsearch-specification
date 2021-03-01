@@ -17,18 +17,10 @@
  * under the License.
  */
 
-class HttpInputRequest {
-  auth?: HttpInputAuthentication
-  body?: string
-  connection_timeout?: Time
-  headers?: Dictionary<string, string>
-  host?: string
-  method?: HttpInputMethod
-  params?: Dictionary<string, string>
-  path?: string
-  port?: integer
-  proxy?: HttpInputProxy
-  read_timeout?: Time
-  scheme?: ConnectionScheme
-  url?: string
+class DiversifiedSamplerAggregation extends BucketAggregationBase {
+  execution_hint?: SamplerAggregationExecutionHint
+  max_docs_per_value?: integer
+  script?: Script
+  shard_size?: integer
+  field?: Field
 }

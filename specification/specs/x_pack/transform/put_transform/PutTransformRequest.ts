@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('transform.put_transform')
-class PutTransformRequest extends RequestBase {
+/**
+ * @rest_spec_name transform.put_transform
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface PutTransformRequest extends RequestBase {
   path_parts?: {
     transform_id: Name
   }

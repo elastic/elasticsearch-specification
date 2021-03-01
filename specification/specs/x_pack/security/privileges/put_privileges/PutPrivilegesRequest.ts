@@ -17,9 +17,13 @@
  * under the License.
  */
 
-@rest_spec_name('security.put_privileges')
-@class_serializer('PutPrivilegesFormatter')
-class PutPrivilegesRequest extends RequestBase {
+/**
+ * @rest_spec_name security.put_privileges
+ * @since 6.4.0
+ * @class_serializer PutPrivilegesFormatter
+ * @stability TODO
+ */
+interface PutPrivilegesRequest extends RequestBase {
   query_parameters?: {
     refresh?: Refresh
   }

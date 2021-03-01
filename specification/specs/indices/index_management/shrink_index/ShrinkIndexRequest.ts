@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.shrink')
-class ShrinkIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.shrink
+ * @since 5.0.0
+ * @stability TODO
+ */
+interface ShrinkIndexRequest extends RequestBase {
   path_parts?: {
     index: IndexName
     target: IndexName

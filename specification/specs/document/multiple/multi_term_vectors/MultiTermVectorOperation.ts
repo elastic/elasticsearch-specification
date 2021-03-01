@@ -20,7 +20,7 @@
 class MultiTermVectorOperation {
   /** @prop_serializer SourceFormatter`1 */
   doc: any
-  fields: Field[]
+  fields: Fields
   field_statistics: boolean
   filter: TermVectorFilter
   _id: Id

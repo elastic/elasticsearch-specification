@@ -18,6 +18,6 @@
  */
 
 class RemoveProcessor extends ProcessorBase {
-  field: Field[]
+  field: Fields
   ignore_missing: boolean
 }

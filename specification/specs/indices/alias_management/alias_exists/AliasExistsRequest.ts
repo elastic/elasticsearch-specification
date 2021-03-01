@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.exists_alias')
-class AliasExistsRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.exists_alias
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface AliasExistsRequest extends RequestBase {
   path_parts?: {
     name: Names
     index?: Indices

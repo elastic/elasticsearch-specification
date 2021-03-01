@@ -29,7 +29,7 @@ The filename should be the same of the type definition you are writing, for exam
 
 ```ts
 // IndexRequest.ts
-class IndexRequest {}
+interface IndexRequest {}
 ```
 
 ```ts
@@ -43,19 +43,27 @@ you can define it in the same file where it's used, unless is a commonly used ty
 ### Add the endpoint request definition
 
 Request definitions are slighly different from other definitions.
-A request definition should contains three top level keys:
+A request definition is an interface and should contains three top level keys:
 
 - `path_parts`: the path parameters (eg: `indices`, `id`...)
 - `query_parameters`: the query parameters (eg: `timeout`, `pipeline`...)
 - `body`: the body parameters (eg: `query` or user defined entities)
 
-Finally there should be a decorator to inform the compiler that this is a endpoint request definition.
-The value of the decorator should be the endpoint name as it's defined in the json spec (eg: `search`, `indices.create`...).
+Furthermore, every request definition **must** contain three JS Doc tags:
+
+- `@rest_spec_name`: the API name (eg: `search`, `indices.create`...).
+- `@since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`)
+- `@stability`: the API stability, one of `experimental`, `beta`, `stable`
+
 Following you can find a template valid for any request definition.
 
 ```ts
-@rest_spec_name("endpoint.name")
-class EndpointRequest extends RequestBase {
+ /*
+ * @rest_spec_name endpoint.name
+ * @since 1.2.3
+ * @stability TODO
+ */
+interface EndpointRequest extends RequestBase {
   path_parts?: {
 
   };
@@ -70,8 +78,12 @@ class EndpointRequest extends RequestBase {
 
 In some cases, the request could take one or more generics, in such case the definition will be:
 ```ts
-@rest_spec_name("endpoint.name")
-class EndpointRequest<Generic> extends RequestBase {
+ /*
+ * @rest_spec_name endpoint.name
+ * @since 1.2.3
+ * @stability TODO
+ */
+interface EndpointRequest<Generic> extends RequestBase {
   path_parts?: {
 
   };

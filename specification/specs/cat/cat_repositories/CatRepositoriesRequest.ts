@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('cat.repositories')
-class CatRepositoriesRequest extends CatRequestBase {
+/**
+ * @rest_spec_name cat.repositories
+ * @since 2.1.0
+ * @stability TODO
+ */
+interface CatRepositoriesRequest extends CatRequestBase {
   query_parameters?: {}
   body?: {}
 }

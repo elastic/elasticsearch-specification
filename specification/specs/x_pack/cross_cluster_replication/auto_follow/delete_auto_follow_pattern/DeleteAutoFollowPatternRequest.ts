@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ccr.delete_auto_follow_pattern')
-class DeleteAutoFollowPatternRequest extends RequestBase {
+/**
+ * @rest_spec_name ccr.delete_auto_follow_pattern
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface DeleteAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

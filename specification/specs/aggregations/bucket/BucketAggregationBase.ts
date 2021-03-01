@@ -17,8 +17,6 @@
  * under the License.
  */
 
-export type TypeName = string
-export type RestSpecName = string
-export class RestSpecMapping {
-  constructor (public spec: RestSpecName, public request: TypeName, public response: TypeName) {}
+class BucketAggregationBase extends Aggregation {
+  aggregations?: Dictionary<string, AggregationContainer>
 }

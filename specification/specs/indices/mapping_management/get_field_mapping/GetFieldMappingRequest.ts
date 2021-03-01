@@ -17,12 +17,16 @@
  * under the License.
  */
 
-@rest_spec_name('indices.get_field_mapping')
-class GetFieldMappingRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.get_field_mapping
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface GetFieldMappingRequest extends RequestBase {
   path_parts?: {
     fields: Fields
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

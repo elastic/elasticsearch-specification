@@ -17,12 +17,16 @@
  * under the License.
  */
 
-@rest_spec_name('get_source')
-class SourceRequest extends RequestBase {
+/**
+ * @rest_spec_name get_source
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface SourceRequest extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: TypeName
+    type?: Type
   }
   query_parameters?: {
     preference?: string
@@ -30,8 +34,8 @@ class SourceRequest extends RequestBase {
     refresh?: boolean
     routing?: Routing
     source_enabled?: boolean
-    source_excludes?: Field[]
-    source_includes?: Field[]
+    _source_excludes?: Fields
+    _source_includes?: Fields
     version?: long
     version_type?: VersionType
   }

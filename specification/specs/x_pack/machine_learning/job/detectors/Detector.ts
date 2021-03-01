@@ -19,10 +19,14 @@
 
 @class_serializer('DetectorFormatter')
 class Detector {
-  custom_rules: DetectionRule[]
+  by_field_name?: Field
+  custom_rules?: DetectionRule[]
   detector_description: string
-  detector_index: integer
-  exclude_frequent: ExcludeFrequent
+  detector_index?: integer
+  exclude_frequent?: ExcludeFrequent
+  field_name?: Field
   function: string
-  use_null: boolean
+  use_null?: boolean
+  over_field_name?: Field
+  partition_field_name?: Field
 }

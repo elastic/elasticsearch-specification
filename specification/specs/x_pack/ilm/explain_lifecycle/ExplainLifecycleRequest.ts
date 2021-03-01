@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.explain_lifecycle')
-class ExplainLifecycleRequest extends RequestBase {
+/**
+ * @rest_spec_name ilm.explain_lifecycle
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface ExplainLifecycleRequest extends RequestBase {
   path_parts?: {
     index: IndexName
   }

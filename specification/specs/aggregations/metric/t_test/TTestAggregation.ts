@@ -17,6 +17,18 @@
  * under the License.
  */
 
-class BucketAggregation {
-  aggregations?: Dictionary<string, AggregationContainer>
+class TTestAggregation extends Aggregation {
+  a?: TestPopulation
+  b?: TestPopulation
+  type?: TTestType
+}
+class TestPopulation {
+  field: Field
+  script?: Script
+  filter: QueryContainer
+}
+enum TTestType {
+  paired,
+  homoscedastic,
+  heteroscedastic
 }

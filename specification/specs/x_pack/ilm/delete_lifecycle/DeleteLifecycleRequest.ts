@@ -17,10 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.delete_lifecycle')
-class DeleteLifecycleRequest extends RequestBase {
+/**
+ * @rest_spec_name ilm.delete_lifecycle
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface DeleteLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy: Name
+    policy?: Name
+    policy_id: Id
   }
   query_parameters?: {}
   body?: {}

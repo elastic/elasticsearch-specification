@@ -17,17 +17,24 @@
  * under the License.
  */
 
-@rest_spec_name('scroll')
-class ScrollRequest extends RequestBase {
+/**
+ * @rest_spec_name scroll
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ScrollRequest extends RequestBase {
   path_parts?: {
     scroll_id?: Id
   }
   query_parameters?: {
-    total_hits_as_integer?: boolean
     scroll?: Time
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
+    total_hits_as_integer?: boolean
   }
   body?: {
     scroll?: Time
-    scroll_id?: string
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
   }
 }

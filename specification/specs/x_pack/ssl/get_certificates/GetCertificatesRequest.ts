@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ssl.certificates')
-class GetCertificatesRequest extends RequestBase {
+/**
+ * @rest_spec_name ssl.certificates
+ * @since 6.2.0
+ * @stability TODO
+ */
+interface GetCertificatesRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

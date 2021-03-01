@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('xpack.usage')
-class XPackUsageRequest extends RequestBase {
+/**
+ * @rest_spec_name xpack.usage
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface XPackUsageRequest extends RequestBase {
   query_parameters?: {
     master_timeout?: Time
   }

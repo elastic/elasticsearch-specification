@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('update_by_query_rethrottle')
-class UpdateByQueryRethrottleRequest extends RequestBase {
+/**
+ * @rest_spec_name update_by_query_rethrottle
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface UpdateByQueryRethrottleRequest extends RequestBase {
   path_parts?: {
     task_id: Id
   }

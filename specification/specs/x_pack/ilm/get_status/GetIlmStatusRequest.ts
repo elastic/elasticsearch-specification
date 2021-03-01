@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ilm.get_status')
-class GetIlmStatusRequest extends RequestBase {
+/**
+ * @rest_spec_name ilm.get_status
+ * @since 6.6.0
+ * @stability TODO
+ */
+interface GetIlmStatusRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

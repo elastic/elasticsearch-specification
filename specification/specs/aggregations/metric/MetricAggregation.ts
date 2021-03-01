@@ -17,8 +17,12 @@
  * under the License.
  */
 
-class MetricAggregation {
+class MetricAggregationBase {
   field?: Field
-  missing?: double
+  missing?: Missing
   script?: Script
+}
+
+class FormatMetricAggregationBase extends MetricAggregationBase {
+  format?: string
 }

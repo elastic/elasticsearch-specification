@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.delete_role')
-class DeleteRoleRequest extends RequestBase {
+/**
+ * @rest_spec_name security.delete_role
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface DeleteRoleRequest extends RequestBase {
   path_parts?: {
     name: Name
   }

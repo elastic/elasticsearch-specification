@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class DerivativeAggregation {}
+class DerivativeAggregation extends PipelineAggregationBase {}

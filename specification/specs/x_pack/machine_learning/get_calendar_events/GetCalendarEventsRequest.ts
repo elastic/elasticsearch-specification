@@ -17,13 +17,17 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_calendar_events')
-class GetCalendarEventsRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_calendar_events
+ * @since 6.2.0
+ * @stability TODO
+ */
+interface GetCalendarEventsRequest extends RequestBase {
   path_parts?: {
     calendar_id: Id
   }
   query_parameters?: {
-    end?: Date
+    end?: DateString
     job_id?: string
     start?: string
   }

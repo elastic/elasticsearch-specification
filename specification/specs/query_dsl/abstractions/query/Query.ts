@@ -21,3 +21,16 @@ class QueryBase {
   boost?: float
   _name?: string
 }
+
+/**
+ * Queries can either be in the form of
+ * { type: { field: { ...query_details...including_boost_and_name } } }
+ * ||
+ * { type: { boost: _, _name: _, field: { ...query_details... } } }
+ */
+
+class NamedQuery<TQuery> implements AdditionalProperties<string, TQuery> {
+  boost?: float
+  _name?: string
+  ignore_unmapped?: boolean
+}

@@ -17,9 +17,18 @@
  * under the License.
  */
 
-@class_serializer('SuggestDictionaryFormatter`1')
-class SuggestDictionary<T> {
-  item: Suggest<T>[]
-  keys: string[]
-  values: Suggest<T>[][]
+class HttpInputRequestDefinition {
+  auth?: HttpInputAuthentication
+  body?: string
+  connection_timeout?: Time
+  headers?: Dictionary<string, string>
+  host?: string
+  method?: HttpInputMethod
+  params?: Dictionary<string, string>
+  path?: string
+  port?: integer
+  proxy?: HttpInputProxy
+  read_timeout?: Time
+  scheme?: ConnectionScheme
+  url?: string
 }

@@ -17,11 +17,8 @@
  * under the License.
  */
 
-class SuggestBucket {
-  completion: CompletionSuggester
-  phrase: PhraseSuggester
-  prefix: string
-  regex: string
-  term: TermSuggester
-  text: string
+class PipelineAggregationBase extends Aggregation {
+  buckets_path?: BucketsPath
+  format?: string
+  gap_policy?: GapPolicy
 }

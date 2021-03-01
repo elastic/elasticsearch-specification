@@ -17,11 +17,15 @@
  * under the License.
  */
 
-@rest_spec_name('count')
-class CountRequest extends RequestBase {
+/**
+ * @rest_spec_name count
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface CountRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: TypeNames
+    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

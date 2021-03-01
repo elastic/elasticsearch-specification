@@ -19,7 +19,7 @@
 
 class ClusterCertificateInformation {
   alias: string
-  expiry: Date
+  expiry: DateString
   format: string
   has_private_key: boolean
   path: string

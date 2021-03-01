@@ -18,7 +18,7 @@
  */
 
 class UnassignedInformation {
-  at: Date
+  at: DateString
   last_allocation_status: string
   reason: UnassignedInformationReason
   details?: string

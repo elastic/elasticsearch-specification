@@ -18,7 +18,7 @@
  */
 
 class SlicedScroll {
-  field: Field
+  field?: Field
   id: integer
   max: integer
 }

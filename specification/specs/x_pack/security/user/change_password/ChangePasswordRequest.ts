@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('security.change_password')
-class ChangePasswordRequest extends RequestBase {
+/**
+ * @rest_spec_name security.change_password
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface ChangePasswordRequest extends RequestBase {
   path_parts?: {
     username?: Name
   }

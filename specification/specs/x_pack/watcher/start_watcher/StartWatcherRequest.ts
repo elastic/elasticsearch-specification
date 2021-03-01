@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('watcher.start')
-class StartWatcherRequest extends RequestBase {
+/**
+ * @rest_spec_name watcher.start
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface StartWatcherRequest extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

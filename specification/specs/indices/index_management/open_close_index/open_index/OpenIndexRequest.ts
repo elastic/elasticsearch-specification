@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('indices.open')
-class OpenIndexRequest extends RequestBase {
+/**
+ * @rest_spec_name indices.open
+ * @since 0.0.0
+ * @stability TODO
+ */
+interface OpenIndexRequest extends RequestBase {
   path_parts?: {
     index: Indices
   }

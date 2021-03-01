@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('async_search.delete')
-class AsyncSearchDeleteRequest extends RequestBase {
+/**
+ * @rest_spec_name async_search.delete
+ * @since 7.7.0
+ * @stability TODO
+ */
+interface AsyncSearchDeleteRequest extends RequestBase {
   path_parts?: {
     id: Id
   }

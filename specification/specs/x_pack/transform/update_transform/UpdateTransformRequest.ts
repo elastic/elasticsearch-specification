@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('transform.update_transform')
-class UpdateTransformRequest extends RequestBase {
+/**
+ * @rest_spec_name transform.update_transform
+ * @since 7.5.0
+ * @stability TODO
+ */
+interface UpdateTransformRequest extends RequestBase {
   path_parts?: {
     transform_id: Name
   }

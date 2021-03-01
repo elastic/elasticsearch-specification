@@ -17,8 +17,12 @@
  * under the License.
  */
 
-@rest_spec_name('ml.get_records')
-class GetAnomalyRecordsRequest extends RequestBase {
+/**
+ * @rest_spec_name ml.get_records
+ * @since 5.4.0
+ * @stability TODO
+ */
+interface GetAnomalyRecordsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }
@@ -26,12 +30,12 @@ class GetAnomalyRecordsRequest extends RequestBase {
   body?: {
     desc?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: Date
+    end?: DateString
     exclude_interim?: boolean
     page?: Page
     record_score?: double
     sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: Date
+    start?: DateString
   }
 }

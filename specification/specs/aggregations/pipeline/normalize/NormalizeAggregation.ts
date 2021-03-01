@@ -17,26 +17,15 @@
  * under the License.
  */
 
-/* eslint-disable @typescript-eslint/no-extraneous-class */
+class NormalizeAggregation extends PipelineAggregationBase {
+  method?: NormalizeMethod
+}
 
-import * as ts from 'byots'
-
-export class SpecValidator {
-  static validate (program: ts.Program): string[] {
-    const errors: string[] = []
-    const emitResult = program.emit()
-
-    const allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics)
-    for (const d of allDiagnostics) {
-      const message = ts.flattenDiagnosticMessageText(d.messageText, '\n')
-      if (d.file == null) {
-        errors.push(`<global> ${message}`)
-        continue
-      }
-      const { line, character } = d.file.getLineAndCharacterOfPosition(d.start as number)
-      const error = `${d.file.fileName} ${line + 1},${character + 1}:${message}`
-      errors.push(error)
-    }
-    return errors
-  }
+enum NormalizeMethod {
+  rescale_0_1,
+  rescale_0_100,
+  percent_of_sum,
+  mean,
+  zscore,
+  softmax
 }
