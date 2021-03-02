@@ -17,14 +17,26 @@
  * under the License.
  */
 
-@class_serializer('ClusterRerouteCommandFormatter')
-class ClusterRerouteCommand {
-  cancel: ClusterRerouteCommandAction
-  // TODO: check server if cancel is the only action to run
+class ClusterStateMetadata {
+  cluster_uuid: Uuid
+  cluster_uuid_committed: boolean
+  templates: ClusterStateMetadataTemplate
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
+  'index-graveyard': ClusterStateMetadataIndexGraveyard
+  cluster_coordination: ClusterStateMetadataClusterCoordination
 }
 
-class ClusterRerouteCommandAction {
-  index: IndexName
-  shard: integer
-  node: string
+class ClusterStateMetadataIndexGraveyard {
+  tombstones: string[]
+}
+
+class ClusterStateMetadataTemplate {
+  // TODO: check server code for validation
+}
+
+class ClusterStateMetadataClusterCoordination {
+  term: integer
+  last_committed_config: string[]
+  last_accepted_config: string[]
+  voting_config_exclusions: string[]
 }

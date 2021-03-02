@@ -102,6 +102,7 @@ type Ids = string | number | string[]
 
 type IndexName = string
 type Indices = string | string[]
+type IndexAlias = string
 
 type TypeName = string // TODO remove and use Type
 type TypeNames = string | string[] // TODO remove and use Types
@@ -120,6 +121,9 @@ type Names = string | string[]
 type ByteSize = long | string
 
 type Percentage = string | float
+
+// TODO: replace all uuid's with this type
+type Uuid = string
 
 type NodeIds = string
 type PropertyName = string

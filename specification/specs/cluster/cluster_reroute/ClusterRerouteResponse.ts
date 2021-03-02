@@ -18,6 +18,7 @@
  */
 
 class ClusterRerouteResponse extends ResponseBase {
+  acknowledged: boolean
   explanations: ClusterRerouteExplanation[]
   state: string[]
 }

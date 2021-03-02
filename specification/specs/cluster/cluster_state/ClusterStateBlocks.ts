@@ -17,14 +17,19 @@
  * under the License.
  */
 
-@class_serializer('ClusterRerouteCommandFormatter')
-class ClusterRerouteCommand {
-  cancel: ClusterRerouteCommandAction
-  // TODO: check server if cancel is the only action to run
+class ClusterStateBlocks {
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
 }
 
-class ClusterRerouteCommandAction {
-  index: IndexName
-  shard: integer
-  node: string
+class ClusterStateBlockIndex {
+  description: string
+  retryable: boolean
+  levels: string[]
+  aliases?: Array<IndexAlias>
+  aliases_version?: integer
+  version?: integer
+  mapping_version?: integer
+  settings_version?: integer
+  routing_num_shards?: integer
+  state?: string // TODO: create enum of values
 }
