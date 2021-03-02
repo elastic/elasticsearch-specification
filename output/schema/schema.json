@@ -13634,7 +13634,7 @@
       "properties": [
         {
           "name": "aggregations",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -13655,7 +13655,7 @@
         },
         {
           "name": "_clusters",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13665,22 +13665,8 @@
           }
         },
         {
-          "name": "documents",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TDocument",
-                "namespace": "x_pack.async_search"
-              }
-            }
-          }
-        },
-        {
           "name": "fields",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -13717,7 +13703,7 @@
         },
         {
           "name": "max_score",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13728,7 +13714,7 @@
         },
         {
           "name": "num_reduce_phases",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13739,7 +13725,7 @@
         },
         {
           "name": "profile",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13750,7 +13736,7 @@
         },
         {
           "name": "_scroll_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13805,7 +13791,7 @@
         },
         {
           "name": "terminated_early",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13891,6 +13877,46 @@
       "properties": []
     },
     {
+      "generics": [
+        "TDocument"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "AsyncSearchResponseBase",
+            "namespace": "x_pack.async_search"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AsyncSearchDocumentResponseBase",
+        "namespace": "x_pack.async_search"
+      },
+      "properties": [
+        {
+          "name": "response",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TDocument",
+                  "namespace": "x_pack.async_search"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "AsyncSearch",
+              "namespace": "x_pack.async_search"
+            }
+          }
+        }
+      ]
+    },
+    {
       "annotations": {
         "stability": "TODO"
       },
@@ -13970,9 +13996,18 @@
       ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "x_pack.async_search.get"
+              }
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
+            "name": "AsyncSearchDocumentResponseBase",
+            "namespace": "x_pack.async_search"
           }
         }
       ],
@@ -13984,9 +14019,6 @@
       "properties": []
     },
     {
-      "generics": [
-        "TDocument"
-      ],
       "inherits": [
         {
           "type": {
@@ -14001,28 +14033,6 @@
         "namespace": "x_pack.async_search"
       },
       "properties": [
-        {
-          "name": "expiration_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "expiration_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "id",
           "required": true,
@@ -14057,32 +14067,12 @@
           }
         },
         {
-          "name": "response",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TDocument",
-                  "namespace": "x_pack.async_search"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "AsyncSearch",
-              "namespace": "x_pack.async_search"
-            }
-          }
-        },
-        {
-          "name": "start_time",
+          "name": "expiration_time_in_millis",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -14093,12 +14083,66 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
         }
       ]
+    },
+    {
+      "annotations": {
+        "stability": "TODO"
+      },
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "AsyncSearchStatusRequest",
+        "namespace": "x_pack.async_search.status"
+      },
+      "path": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "generics": [
+        "TDocument"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "AsyncSearchResponseBase",
+            "namespace": "x_pack.async_search"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AsyncSearchStatusResponse",
+        "namespace": "x_pack.async_search.status"
+      },
+      "properties": []
     },
     {
       "annotations": {
@@ -14765,9 +14809,18 @@
       ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "x_pack.async_search.submit"
+              }
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
+            "name": "AsyncSearchDocumentResponseBase",
+            "namespace": "x_pack.async_search"
           }
         }
       ],

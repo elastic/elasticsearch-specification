@@ -17,13 +17,14 @@
  * under the License.
  */
 
-class AsyncSearchResponseBase<TDocument> extends ResponseBase {
-  expiration_time: DateString
-  expiration_time_in_millis: long
+class AsyncSearchResponseBase extends ResponseBase {
   id: string
   is_partial: boolean
   is_running: boolean
+  expiration_time_in_millis: EpochMillis
+  start_time_in_millis: EpochMillis
+
+}
+class AsyncSearchDocumentResponseBase<TDocument> extends AsyncSearchResponseBase {
   response: AsyncSearch<TDocument>
-  start_time: DateString
-  start_time_in_millis: long
 }
