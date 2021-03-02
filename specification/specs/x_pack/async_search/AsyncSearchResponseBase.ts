@@ -23,8 +23,9 @@ class AsyncSearchResponseBase extends ResponseBase {
   is_running: boolean
   expiration_time_in_millis: EpochMillis
   start_time_in_millis: EpochMillis
-
 }
-class AsyncSearchDocumentResponseBase<TDocument> extends AsyncSearchResponseBase {
+class AsyncSearchDocumentResponseBase<
+  TDocument
+> extends AsyncSearchResponseBase {
   response: AsyncSearch<TDocument>
 }
