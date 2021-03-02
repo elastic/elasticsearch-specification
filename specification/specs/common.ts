@@ -60,7 +60,7 @@ class ErrorCause {
   failed_shards?: ShardFailure[]
   grouped?: boolean
   index?: string
-  index_uuid?: string
+  index_uuid?: Uuid
   language?: string
   licensed_expired_feature?: string
   line?: integer
@@ -81,7 +81,9 @@ class MainError extends ErrorCause {
 type short = number
 type byte = number
 type integer = number
+type uint = number
 type long = number
+type ulong = number
 type float = number
 type double = number
 
