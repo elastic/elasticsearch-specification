@@ -225,8 +225,9 @@ function cleanPropertyName (name) {
 function isSpecialInterface (type) {
   if (Array.isArray(type.attachedBehaviors)) {
     // assume types ending with Base are abstract and are not the ones doing the implements
-    if (type.name.name.endsWith('Base'))
+    if (type.name.name.endsWith('Base')) {
       return false
+    }
     return type.attachedBehaviors.length > 0
   }
   switch (type.name.name) {
@@ -244,7 +245,7 @@ function lookupBehavior (type, name) {
     if (behavior) return behavior
   }
   if (!type.inherits) return null
-  const parentType = types.find(t=>t.name.name === type.inherits[0].type.name)
+  const parentType = types.find(t => t.name.name === type.inherits[0].type.name)
   if (!parentType) return null
   return lookupBehavior(parentType, name)
 }
