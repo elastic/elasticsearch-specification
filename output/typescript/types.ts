@@ -3488,7 +3488,7 @@ export interface ErrorCause {
   failed_shards?: Array<ShardFailure>
   grouped?: boolean
   index?: string
-  index_uuid?: string
+  index_uuid?: Uuid
   language?: string
   licensed_expired_feature?: string
   line?: integer
@@ -11750,4 +11750,8 @@ export type integer = number
 export type long = number
 
 export type short = number
+
+export type uint = number
+
+export type ulong = number
 
