@@ -467,7 +467,7 @@ export function hoistRequestAnnotations(
     else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
   })
 
-  assert(apiName, `Request ${name} does not declare the @rest_spec_name to link back to`)
+  assert(apiName, `Request ${request.name} does not declare the @rest_spec_name to link back to`)
   const endpoint = mappings[apiName]
   assert(endpoint != null, `${apiName} is not represented in the spec as a json file`)
 

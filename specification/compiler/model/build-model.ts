@@ -138,6 +138,9 @@ export function compileSpecification (endpointMappings: Record<string, model.End
     definedButNeverUsed.join('\n'),
     'utf8'
   )
+  for (const api of jsonSpec.keys()) {
+    model.endpoints.push(endpointMappings[api])
+  }
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {

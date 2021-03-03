@@ -57,6 +57,30 @@
       ]
     },
     {
+      "description": "Retrieves the status of a previously submitted async search request given its ID.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
+      "name": "async_search.status",
+      "request": {
+        "name": "AsyncSearchStatusRequest",
+        "namespace": "x_pack.async_search.status"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "AsyncSearchStatusResponse",
+        "namespace": "x_pack.async_search.status"
+      },
+      "since": "7.11.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_async_search/status/{id}"
+        }
+      ]
+    },
+    {
       "description": "Executes a search request asynchronously.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
       "name": "async_search.submit",
@@ -14109,6 +14133,7 @@
       },
       "path": [
         {
+          "description": "The async search ID",
           "name": "id",
           "required": true,
           "type": {
