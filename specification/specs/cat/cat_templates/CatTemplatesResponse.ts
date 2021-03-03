@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatTemplatesResponse
-  extends CatResponseBase<CatTemplatesRecord> {}
+class CatTemplatesResponse extends CatResponseBase<CatTemplatesRecord> {}

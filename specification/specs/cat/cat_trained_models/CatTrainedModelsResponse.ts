@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatTrainedModelsResponse
-  extends CatResponseBase<CatTrainedModelsRecord> {}
+class CatTrainedModelsResponse extends CatResponseBase<CatTrainedModelsRecord> {}

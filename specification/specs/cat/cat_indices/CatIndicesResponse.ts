@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatIndicesResponse
-  extends CatResponseBase<CatIndicesRecord> {}
+class CatIndicesResponse extends CatResponseBase<CatIndicesRecord> {}

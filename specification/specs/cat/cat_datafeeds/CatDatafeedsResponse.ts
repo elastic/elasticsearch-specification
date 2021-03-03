@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatDatafeedsResponse
-  extends CatResponseBase<CatDatafeedsRecord> {}
+class CatDatafeedsResponse extends CatResponseBase<CatDatafeedsRecord> {}

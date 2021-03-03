@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatMasterResponse
-  extends CatResponseBase<CatMasterRecord> {}
+class CatMasterResponse extends CatResponseBase<CatMasterRecord> {}

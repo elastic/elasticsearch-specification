@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatShardsResponse
-  extends CatResponseBase<CatShardsRecord> {}
+class CatShardsResponse extends CatResponseBase<CatShardsRecord> {}

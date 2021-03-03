@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatPendingTasksResponse
-  extends CatResponseBase<CatPendingTasksRecord> {}
+class CatPendingTasksResponse extends CatResponseBase<CatPendingTasksRecord> {}

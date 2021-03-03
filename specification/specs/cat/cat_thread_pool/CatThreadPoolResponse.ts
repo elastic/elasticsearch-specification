@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatThreadPoolResponse
-  extends CatResponseBase<CatThreadPoolRecord> {}
+class CatThreadPoolResponse extends CatResponseBase<CatThreadPoolRecord> {}

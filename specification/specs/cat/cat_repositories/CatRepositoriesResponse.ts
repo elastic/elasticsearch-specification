@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatRepositoriesResponse
-  extends CatResponseBase<CatRepositoriesRecord> {}
+class CatRepositoriesResponse extends CatResponseBase<CatRepositoriesRecord> {}

@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatCountResponse
-  extends CatResponseBase<CatCountRecord> {}
+class CatCountResponse extends CatResponseBase<CatCountRecord> {}

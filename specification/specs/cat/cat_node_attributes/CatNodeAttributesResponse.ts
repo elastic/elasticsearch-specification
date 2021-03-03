@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatNodeAttributesResponse
-  extends CatResponseBase<CatNodeAttributesRecord> {}
+class CatNodeAttributesResponse extends CatResponseBase<CatNodeAttributesRecord> {}

@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatHealthResponse
-  extends CatResponseBase<CatHealthRecord> {}
+class CatHealthResponse extends CatResponseBase<CatHealthRecord> {}

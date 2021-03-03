@@ -25,4 +25,6 @@
 
 class CatRequestBase extends RequestBase implements CommonCatQueryParameters {}
 
-class CatResponseBase<TCatRecord> extends ResponseBase implements ArrayResponseBase<TCatRecord> {}
+class CatResponseBase<TCatRecord>
+  extends ResponseBase
+  implements ArrayResponseBase<TCatRecord> {}

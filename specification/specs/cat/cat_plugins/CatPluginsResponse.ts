@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatPluginsResponse
-  extends CatResponseBase<CatPluginsRecord> {}
+class CatPluginsResponse extends CatResponseBase<CatPluginsRecord> {}

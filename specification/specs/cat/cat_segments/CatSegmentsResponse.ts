@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatSegmentsResponse
-  extends CatResponseBase<CatSegmentsRecord> {}
+class CatSegmentsResponse extends CatResponseBase<CatSegmentsRecord> {}

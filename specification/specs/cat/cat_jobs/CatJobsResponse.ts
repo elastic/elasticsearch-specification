@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatJobsResponse
-  extends CatResponseBase<CatJobsRecord> {}
+class CatJobsResponse extends CatResponseBase<CatJobsRecord> {}

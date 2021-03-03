@@ -17,5 +17,4 @@
  * under the License.
  */
 
-class CatAllocationResponse
-  extends CatResponseBase<CatAllocationRecord> {}
+class CatAllocationResponse extends CatResponseBase<CatAllocationRecord> {}
