@@ -45,17 +45,14 @@ let definitions = `/*
 // We don't skip `CommonQueryParameters` and `CommonCatQueryParameters`
 // behaviors because we ue them for sharing common query parameters
 // among most requests.
-const skip = [
-  'CatRequestBase',
-  'RequestBase',
-  'ResponseBase',
+const skipBehaviors = [
   'ArrayResponseBase',
   'EmptyResponseBase',
   'AdditionalProperties'
 ]
 
 for (const type of types) {
-  if (type.kind === 'interface' && skip.includes(type.name.name)) {
+  if (type.kind === 'interface' && skipBehaviors.includes(type.name.name)) {
     continue
   }
   definitions += buildType(type) + '\n'
@@ -150,19 +147,6 @@ function createRequest (type) {
   // are common query parameters that are shared among most apis.
   // Until a more complex case will happen, we can safely "push" the
   // common parameters in the inherits array.
-  if (Array.isArray(type.attachedBehaviors)) {
-    type.inherits = type.inherits || []
-    const inherits = type.attachedBehaviors.map(name => {
-      // Let's throw an error if we don't know a behavior, so if
-      // a new behavior will be added we can be sure to avoid side effects.
-      if (['CommonQueryParameters', 'CommonCatQueryParameters'].includes(name) === false) {
-        throw new Error(`Unrecognized request behavior: ${name}`)
-      }
-      // Create a metamodel.Inherits structure
-      return { type: { name } }
-    })
-    type.inherits.push(...inherits)
-  }
 
   let code = `export interface ${type.name.name}${buildGenerics(type)}${buildInherits(type)} {\n`
   for (const property of type.path) {
@@ -207,10 +191,13 @@ function createAlias (type) {
 }
 
 function buildInherits (type) {
-  if (!Array.isArray(type.inherits)) return ''
-  const inherits = type.inherits.filter(type => !skip.includes(type.type.name))
-  if (inherits.length === 0) return ''
-  return ` extends ${inherits.map(buildInheritType).join(', ')}`
+  // since typescript is all arrays we can just merge
+  const inherits = (type.inherits || []).filter(type => !skipBehaviors.includes(type.type.name))
+  const interfaces = (type.implements || []).filter(type => !skipBehaviors.includes(type.type.name))
+  const behaviors = (type.behaviors || []).filter(type => !skipBehaviors.includes(type.type.name))
+  const extendAll = inherits.concat(interfaces).concat(behaviors)
+  if (extendAll.length === 0) return ''
+  return ` extends ${extendAll.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type) {
     return `${type.type.name}${buildGenerics(type)}`
@@ -237,6 +224,9 @@ function cleanPropertyName (name) {
 
 function isSpecialInterface (type) {
   if (Array.isArray(type.attachedBehaviors)) {
+    // assume types ending with Base are abstract and are not the ones doing the implements
+    if (type.name.name.endsWith('Base'))
+      return false
     return type.attachedBehaviors.length > 0
   }
   switch (type.name.name) {
@@ -247,17 +237,20 @@ function isSpecialInterface (type) {
   }
 }
 
-function lookupBehaviorImplements (type, name) {
-  const dictionaryOf = type.behaviors.find(i => i.type.name === name)
-  if (dictionaryOf) return dictionaryOf
-  // find inherits on parent if current type has parent
-  // TODO fix spec so that inherits is no longer an array
-  if (Array.isArray(type.inherits)) return lookupBehaviorImplements(type.inherits[0], name)
-  return null
+function lookupBehavior (type, name) {
+  if (!type.attachedBehaviors.includes(name)) return null
+  if (Array.isArray(type.behaviors)) {
+    const behavior = type.behaviors.find(i => i.type.name === name)
+    if (behavior) return behavior
+  }
+  if (!type.inherits) return null
+  const parentType = types.find(t=>t.name.name === type.inherits[0].type.name)
+  if (!parentType) return null
+  return lookupBehavior(parentType, name)
 }
 
 function serializeAdditionalPropertiesType (type) {
-  const dictionaryOf = lookupBehaviorImplements(type, 'AdditionalProperties')
+  const dictionaryOf = lookupBehavior(type, 'AdditionalProperties')
   if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
   let code = `export interface ${type.name.name}Keys${buildGenerics(type)}${buildInherits(type)} {\n`
 
@@ -280,10 +273,15 @@ function serializeSpecialInterface (type) {
       return serializeAdditionalPropertiesType(type)
     }
     if (type.attachedBehaviors.includes('ArrayResponseBase')) {
+      const behavior = lookupBehavior(type, 'ArrayResponseBase')
+      let generic = behavior.generics[0].type.name
+      if (generic === 'TCatRecord') {
+        generic = type.inherits[0].generics[0].type.name
+      }
       // In the input spec the Cat* responses are represented as an object
       // that contains a `records` key, which is an array of the inherited generic.
       // What ES actually sends back, is an array of the inherited generic.
-      return `export type ${type.name.name} = ${type.behaviors[0].generics[0].type.name}[]\n`
+      return `export type ${type.name.name} = ${generic}[]\n`
     }
     if (type.attachedBehaviors.includes('EmptyResponseBase')) {
       return `export type ${type.name.name} = boolean\n`
@@ -292,7 +290,7 @@ function serializeSpecialInterface (type) {
 
   switch (type.name.name) {
     case 'DictionaryResponseBase':
-      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
+      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
   [key: string]: TValue
 }\n`
     default:

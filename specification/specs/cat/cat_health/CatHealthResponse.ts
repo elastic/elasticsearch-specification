@@ -18,5 +18,4 @@
  */
 
 class CatHealthResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatHealthRecord> {}
+  extends CatResponseBase<CatHealthRecord> {}

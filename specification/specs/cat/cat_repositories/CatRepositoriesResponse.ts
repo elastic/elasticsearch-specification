@@ -18,5 +18,4 @@
  */
 
 class CatRepositoriesResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatRepositoriesRecord> {}
+  extends CatResponseBase<CatRepositoriesRecord> {}

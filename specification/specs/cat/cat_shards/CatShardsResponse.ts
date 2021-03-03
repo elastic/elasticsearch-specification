@@ -18,5 +18,4 @@
  */
 
 class CatShardsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatShardsRecord> {}
+  extends CatResponseBase<CatShardsRecord> {}

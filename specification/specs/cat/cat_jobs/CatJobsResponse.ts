@@ -18,5 +18,4 @@
  */
 
 class CatJobsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatJobsRecord> {}
+  extends CatResponseBase<CatJobsRecord> {}

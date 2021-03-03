@@ -18,5 +18,4 @@
  */
 
 class CatAllocationResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatAllocationRecord> {}
+  extends CatResponseBase<CatAllocationRecord> {}

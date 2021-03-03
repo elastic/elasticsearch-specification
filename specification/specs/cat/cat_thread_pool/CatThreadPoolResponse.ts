@@ -18,5 +18,4 @@
  */
 
 class CatThreadPoolResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatThreadPoolRecord> {}
+  extends CatResponseBase<CatThreadPoolRecord> {}

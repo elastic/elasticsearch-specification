@@ -18,5 +18,4 @@
  */
 
 class CatRecoveryResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatRecoveryRecord> {}
+  extends CatResponseBase<CatRecoveryRecord> {}

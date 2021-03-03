@@ -18,5 +18,4 @@
  */
 
 class CatSegmentsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatSegmentsRecord> {}
+  extends CatResponseBase<CatSegmentsRecord> {}

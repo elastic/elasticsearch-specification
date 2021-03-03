@@ -18,5 +18,4 @@
  */
 
 class CatPluginsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatPluginsRecord> {}
+  extends CatResponseBase<CatPluginsRecord> {}

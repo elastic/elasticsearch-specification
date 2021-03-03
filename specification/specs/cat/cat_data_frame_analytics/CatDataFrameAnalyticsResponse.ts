@@ -18,5 +18,4 @@
  */
 
 class CatDataFrameAnalyticsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatDataFrameAnalyticsRecord> {}
+  extends CatResponseBase<CatDataFrameAnalyticsRecord> {}

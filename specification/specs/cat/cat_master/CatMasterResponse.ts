@@ -18,5 +18,4 @@
  */
 
 class CatMasterResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatMasterRecord> {}
+  extends CatResponseBase<CatMasterRecord> {}

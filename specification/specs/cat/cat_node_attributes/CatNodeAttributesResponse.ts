@@ -18,5 +18,4 @@
  */
 
 class CatNodeAttributesResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatNodeAttributesRecord> {}
+  extends CatResponseBase<CatNodeAttributesRecord> {}
