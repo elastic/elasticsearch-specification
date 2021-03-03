@@ -29,15 +29,13 @@ import {
   EnumDeclaration,
   TypeAliasDeclaration,
   PropertyDeclaration,
-  PropertySignature
+  PropertySignature, JSDoc
 } from 'ts-morph'
 import * as model from './metamodel'
 import buildJsonSpec from './json-spec'
 import {
   modelType,
   isApi,
-  getApiName,
-  getSinceValue,
   modelInherits,
   modelGenerics,
   modelEnumDeclaration,
@@ -48,11 +46,10 @@ import {
   getNameSpace,
   getAllBehaviors,
   modelBehaviors,
-  parseJsDocTags,
-  knownBehaviors,
   customTypes,
   isDefinedButNeverUsed,
-  compilerJsDocTags
+  hoistRequestAnnotations,
+  hoistTypeAnnotations
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
@@ -60,22 +57,40 @@ const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 const jsonSpec = buildJsonSpec()
 
 type MappingsType = Map<string, {
-  request: model.TypeName
+  request: model.Request
   response: model.TypeName | null
-  since: string
 }>
 
-export default function compileSpecification (): model.Model {
-  const project = new Project({ tsConfigFilePath })
+export function compileEndpoints() : Record<string, model.Endpoint> {
+  // Create endpoints and merge them with
+  // the recorded mappings if present.
+  const map = {}
+  for (const [api, spec] of jsonSpec.entries()) {
+    const endpoint: model.Endpoint = {
+      name: api,
+      description: spec.documentation.description,
+      docUrl: spec.documentation.url,
+      stability: spec.stability,
+      request: null,
+      requestBodyRequired: Boolean(spec.body?.required),
+      response: null,
+      urls: spec.url.paths.map(path => {
+        return {
+          path: path.path,
+          methods: path.methods,
+          ...(path.deprecated != null && { deprecation: path.deprecated })
+        }
+      })
+    }
+    map[api] = endpoint;
 
-  // Currently the only way to map endpoints and the
-  // respective Request and Response classes is by
-  // parsing all the specification and looking
-  // at the rest_spec_name decorators.
-  // Since endpoints are created after the specification
-  // parsing we store all the mappings in a Map that
-  // we'll use later to complete the endpoints.
-  const mappings: MappingsType = new Map()
+    //model.endpoints.push(endpoint)
+  }
+  return map;
+}
+
+export function compileSpecification (endpointMappings: Record<string, model.Endpoint>): model.Model {
+  const project = new Project({ tsConfigFilePath })
 
   const model: model.Model = {
     types: new Array<model.TypeDefinition>(),
@@ -126,11 +141,11 @@ export default function compileSpecification (): model.Model {
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {
-    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings, declarations.classes))
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, endpointMappings, declarations.classes))
   }
 
   for (const declaration of declarations.interfaces) {
-    model.types.push(compileClassOrInterfaceDeclaration(declaration, mappings, declarations.classes))
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, endpointMappings, declarations.classes))
   }
 
   for (const declaration of declarations.enums) {
@@ -141,35 +156,6 @@ export default function compileSpecification (): model.Model {
     model.types.push(modelTypeAlias(declaration))
   }
 
-  // Create endpoints and merge them with
-  // the recorded mappings if present.
-  for (const [api, spec] of jsonSpec.entries()) {
-    const endpoint: model.Endpoint = {
-      name: api,
-      description: spec.documentation.description,
-      docUrl: spec.documentation.url,
-      stability: spec.stability,
-      request: null,
-      requestBodyRequired: Boolean(spec.body?.required),
-      response: null,
-      urls: spec.url.paths.map(path => {
-        return {
-          path: path.path,
-          methods: path.methods,
-          ...(path.deprecated != null && { deprecation: path.deprecated })
-        }
-      })
-    }
-
-    const mapping = mappings.get(api)
-    if (mapping != null) {
-      endpoint.request = mapping.request
-      endpoint.response = mapping.response
-      endpoint.since = mapping.since
-    }
-
-    model.endpoints.push(endpoint)
-  }
 
   // Sort the types in alphabetical order
   model.types.sort((a, b) => {
@@ -181,7 +167,7 @@ export default function compileSpecification (): model.Model {
   return model
 }
 
-function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: MappingsType, allClasses: ClassDeclaration[]): model.Request | model.Interface {
+function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allClasses: ClassDeclaration[]): model.Request | model.Interface {
   const name = declaration.getName()
   assert(name, 'Anonymous definitions should not exists')
 
@@ -204,21 +190,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   if (Node.isInterfaceDeclaration(declaration) && isApi(declaration)) {
     // It's not guaranteed that every *Request definition
     // has an associated *Response definition as well.
-    let hasResponseDeclaration = false
-    for (const declaration of allClasses) {
-      if (declaration.getName() === `${name.slice(0, -7)}Response`) {
-        hasResponseDeclaration = true
-        break
-      }
-    }
-    // Store the mappings for the current endpoint
-    mappings.set(getApiName(declaration), {
-      since: getSinceValue(declaration),
-      request: { name, namespace: getNameSpace(declaration) },
-      response: hasResponseDeclaration
-        ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
-        : null
-    })
+    let response = allClasses
+      .map (d => d.getName())
+      .find(n => n == `${name.slice(0, -7)}Response`)
+      ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
+      : null
 
     const type: model.Request = {
       kind: 'request',
@@ -227,16 +203,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       query: new Array<model.Property>()
     }
 
-    if (declaration.getJsDocs().length > 0) {
-      const tags = parseJsDocTags(declaration.getJsDocs())
-        .filter(tag => !compilerJsDocTags.includes(tag.name))
-      if (tags.length > 0) {
-        type.annotations = tags.reduce((acc, val) => {
-          acc[val.name] = val.value
-          return acc
-        }, {})
-      }
-    }
+    hoistRequestAnnotations(type, declaration.getJsDocs(), mappings, response)
 
     for (const member of declaration.getMembers()) {
       // we are visiting `path_parts, `query_parameters` or `body`
@@ -294,24 +261,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       properties: new Array<model.Property>()
     }
 
-    if (declaration.getJsDocs().length > 0) {
-      const tags = parseJsDocTags(declaration.getJsDocs())
-
-      // Behaviors must be defined inside the compiler
-      // before start using them in the spec.
-      if (tags.some(tag => tag.name === 'behavior')) {
-        assert(knownBehaviors.includes(name), `Detected unknown behavior: ${name}`)
-      }
-
-      // Any other jsdoc tag annotations should be added to the type annotations
-      const otherTags = tags.filter(tag => !compilerJsDocTags.includes(tag.name))
-      if (otherTags.length > 0) {
-        type.annotations = otherTags.reduce((acc, val) => {
-          acc[val.name] = val.value
-          return acc
-        }, {})
-      }
-    }
+    hoistTypeAnnotations(type, declaration.getJsDocs())
 
     for (const member of declaration.getMembers()) {
       // Any property definition
@@ -319,7 +269,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
         'Class and interfaces can only have property declarations or signatures'
       )
-      type.properties.push(modelProperty(member))
+      const property = modelProperty(member)
+      type.properties.push(property)
     }
 
     // The class or interface is extended, an extended class or interface could

@@ -9365,9 +9365,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -9410,7 +9407,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.ack_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -9766,9 +9766,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -9799,7 +9796,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.activate_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -11632,9 +11632,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -11722,7 +11719,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.exists_alias",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -12280,9 +12280,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -12462,7 +12459,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "indices.analyze",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -13825,9 +13825,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -13858,7 +13855,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "async_search.delete",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -13917,9 +13917,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -13988,7 +13985,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "async_search.get",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -14091,9 +14091,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -14123,7 +14120,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "async_search.status",
+      "since": "7.11.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -14145,9 +14145,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -14801,7 +14798,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "async_search.submit",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -14949,9 +14949,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -14969,7 +14966,10 @@
         "namespace": "x_pack.security.authenticate"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "security.authenticate",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -16453,9 +16453,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -16515,7 +16512,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.update_aliases",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -16822,10 +16822,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "BulkRequestFormatter",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -17013,12 +17009,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "bulk",
+      "since": "0.0.0",
+      "stability": "stable"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -17585,9 +17581,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -17658,7 +17651,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "tasks.cancel",
+      "since": "2.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -17827,9 +17823,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -17873,7 +17866,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.aliases",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -18023,9 +18019,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18069,7 +18062,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.allocation",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -18142,9 +18138,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18176,7 +18169,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.count",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -18392,9 +18388,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18449,7 +18442,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.ml_data_frame_analytics",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -18621,9 +18617,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18667,7 +18660,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.ml_datafeeds",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -18705,6 +18701,9 @@
       },
       "properties": [
         {
+          "aliases": [
+            "f"
+          ],
           "name": "field",
           "required": false,
           "type": {
@@ -18749,6 +18748,9 @@
           }
         },
         {
+          "aliases": [
+            "n"
+          ],
           "name": "node",
           "required": false,
           "type": {
@@ -18760,6 +18762,9 @@
           }
         },
         {
+          "aliases": [
+            "s"
+          ],
           "name": "size",
           "required": false,
           "type": {
@@ -18773,9 +18778,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18819,7 +18821,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.fielddata",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -19013,9 +19018,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -19057,7 +19059,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.health",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -19108,9 +19113,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -19129,7 +19131,10 @@
         "namespace": "cat.cat_help"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.help",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -19290,9 +19295,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -19380,7 +19382,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.indices",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -20025,9 +20030,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -20082,7 +20084,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.ml_jobs",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -20166,9 +20171,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -20187,7 +20189,10 @@
         "namespace": "cat.cat_master"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.master",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -20315,9 +20320,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -20336,7 +20338,10 @@
         "namespace": "cat.cat_node_attributes"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.nodeattrs",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -21157,9 +21162,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21201,7 +21203,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.nodes",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -21285,9 +21290,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21306,7 +21308,10 @@
         "namespace": "cat.cat_pending_tasks"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.pending_tasks",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -21434,9 +21439,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21455,7 +21457,10 @@
         "namespace": "cat.cat_plugins"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.plugins",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -21737,9 +21742,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21805,7 +21807,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.recovery",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -21867,9 +21872,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21888,7 +21890,10 @@
         "namespace": "cat.cat_repositories"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.repositories",
+      "since": "2.1.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -22160,9 +22165,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -22206,7 +22208,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.segments",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -22884,9 +22889,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -22930,7 +22932,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.shards",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -23091,9 +23096,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23137,7 +23139,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.snapshots",
+      "since": "2.1.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -23298,9 +23303,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23370,7 +23372,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.tasks",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -23465,9 +23470,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23499,7 +23501,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "cat.templates",
+      "since": "5.2.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -23759,9 +23764,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23817,7 +23819,10 @@
             "kind": "union_of"
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.thread_pool",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -24022,9 +24027,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -24101,7 +24103,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.ml_trained_models",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -24438,9 +24443,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -24506,7 +24508,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cat.transforms",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -24756,9 +24761,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -24776,7 +24778,10 @@
         "namespace": "x_pack.cross_cluster_replication.stats"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.stats",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -24910,9 +24915,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -24971,7 +24973,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.change_password",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -25526,9 +25531,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25582,7 +25584,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.cleanup_repository",
+      "since": "7.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -25644,9 +25649,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25755,7 +25757,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.clear_cache",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -25774,9 +25779,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25822,7 +25824,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.clear_cached_realms",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -25874,9 +25879,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25907,7 +25909,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "security.clear_cached_roles",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -25959,9 +25964,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26011,7 +26013,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "clear_scroll",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -26030,9 +26035,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26066,7 +26068,10 @@
         "namespace": "x_pack.sql.clear_sql_cursor"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "sql.clear_cursor",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -26097,9 +26102,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26231,12 +26233,12 @@
             "kind": "union_of"
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.clone",
+      "since": "7.4.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -26276,9 +26278,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26376,7 +26375,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.close",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -26469,9 +26471,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26536,7 +26535,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.close_job",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -26590,9 +26592,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26671,7 +26670,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.allocation_explain",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -27092,9 +27094,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -27157,7 +27156,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.get_settings",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -27211,9 +27213,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -27366,7 +27365,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.health",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -28584,9 +28586,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -28627,7 +28626,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.pending_tasks",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -28807,9 +28809,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -28900,7 +28899,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.put_settings",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -29189,9 +29191,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -29295,7 +29294,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.reroute",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -29755,9 +29757,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -29889,7 +29888,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.state",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -30042,9 +30044,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -30098,7 +30097,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "cluster.stats",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -31572,10 +31574,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "ContextFormatter",
-        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
-      },
       "kind": "type_alias",
       "name": {
         "name": "Context",
@@ -31599,7 +31597,8 @@
           }
         ],
         "kind": "union_of"
-      }
+      },
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
     },
     {
       "inherits": [
@@ -31846,9 +31845,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32073,7 +32069,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "count",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -32115,9 +32114,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32195,7 +32191,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.create_api_key",
+      "since": "6.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -32259,9 +32258,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32443,7 +32439,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.put_auto_follow_pattern",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -32462,9 +32461,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32644,7 +32640,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ccr.follow",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -32697,9 +32696,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32829,7 +32825,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.create",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -32871,10 +32870,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "CreateRepositoryFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32955,7 +32950,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.create_repository",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -32974,10 +32972,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "class_serializer": "CreateRequestFormatter`1`",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -33123,12 +33117,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "create",
+      "since": "5.0.0",
+      "stability": "stable"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -33145,9 +33139,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -33252,7 +33243,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "rollup.put_job",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -35123,32 +35117,46 @@
       "kind": "enum",
       "members": [
         {
-          "name": "s",
-          "stringValue": "Second"
+          "alternateName": [
+            "Second"
+          ],
+          "name": "s"
         },
         {
-          "name": "m",
-          "stringValue": "Minute"
+          "alternateName": [
+            "Minute"
+          ],
+          "name": "m"
         },
         {
-          "name": "h",
-          "stringValue": "Hour"
+          "alternateName": [
+            "Hour"
+          ],
+          "name": "h"
         },
         {
-          "name": "d",
-          "stringValue": "Day"
+          "alternateName": [
+            "Day"
+          ],
+          "name": "d"
         },
         {
-          "name": "w",
-          "stringValue": "Week"
+          "alternateName": [
+            "Week"
+          ],
+          "name": "w"
         },
         {
-          "name": "M",
-          "stringValue": "Month"
+          "alternateName": [
+            "Month"
+          ],
+          "name": "M"
         },
         {
-          "name": "y",
-          "stringValue": "Year"
+          "alternateName": [
+            "Year"
+          ],
+          "name": "y"
         }
       ],
       "name": {
@@ -35652,9 +35660,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -35685,7 +35690,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.deactivate_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -35913,9 +35921,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -35981,7 +35986,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.delete_alias",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36000,9 +36008,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36033,7 +36038,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.delete_auto_follow_pattern",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36052,9 +36060,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36494,7 +36499,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "delete_by_query",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36671,9 +36679,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36716,7 +36721,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "delete_by_query_rethrottle",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36735,9 +36743,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36780,7 +36785,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.delete_calendar_event",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36799,9 +36807,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36844,7 +36849,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.delete_calendar_job",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36900,9 +36908,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36933,7 +36938,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.delete_calendar",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -36952,9 +36960,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36997,7 +37002,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.delete_datafeed",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37016,9 +37024,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37049,7 +37054,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "enrich.delete_policy",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37068,9 +37076,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37088,7 +37093,10 @@
         "namespace": "x_pack.machine_learning.delete_expired_data"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.delete_expired_data",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37119,9 +37127,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37152,7 +37157,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.delete_filter",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37171,9 +37179,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37239,7 +37244,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.delete_forecast",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37258,9 +37266,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37347,7 +37352,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.delete",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37366,9 +37374,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37422,7 +37427,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.delete_template",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37441,9 +37449,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37497,7 +37502,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.delete_job",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37516,9 +37524,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37536,7 +37541,10 @@
         "namespace": "x_pack.license.delete_license"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "license.delete",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37555,9 +37563,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37599,7 +37604,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.delete_lifecycle",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37618,9 +37626,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37663,7 +37668,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.delete_model_snapshot",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37682,9 +37690,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37738,7 +37743,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ingest.delete_pipeline",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37757,9 +37765,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37814,7 +37819,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.delete_privileges",
+      "since": "6.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37859,9 +37867,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37915,7 +37920,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.delete_repository",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -37934,9 +37942,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38080,12 +38085,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "delete",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -38102,9 +38107,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38147,7 +38149,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.delete_role_mapping",
+      "since": "5.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38178,9 +38183,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38223,7 +38225,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.delete_role",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38254,9 +38259,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38287,7 +38289,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "rollup.delete_job",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38306,9 +38311,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38362,7 +38364,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "delete_script",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38381,9 +38386,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38414,7 +38416,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.delete_lifecycle",
+      "since": "7.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38433,9 +38438,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38490,7 +38492,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.delete",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38509,9 +38514,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38554,7 +38556,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.delete_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38573,9 +38578,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38618,7 +38620,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.delete_user",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38649,9 +38654,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38682,7 +38684,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.delete_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -38845,9 +38850,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38878,7 +38880,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "migration.deprecations",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -39386,9 +39391,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -39431,7 +39433,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.disable_user",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -40011,9 +40016,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -40179,7 +40181,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "exists",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -41025,9 +41030,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41070,7 +41072,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.enable_user",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -41257,9 +41262,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41277,7 +41279,10 @@
         "namespace": "x_pack.enrich.stats"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "enrich.stats",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -41676,9 +41681,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41754,7 +41756,10 @@
         "namespace": "x_pack.machine_learning.estimate_model_memory"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.estimate_model_memory",
+      "since": "7.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -41826,9 +41831,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41871,7 +41873,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "enrich.execute_policy",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -41933,9 +41938,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41991,7 +41993,10 @@
         "namespace": "modules.scripting.execute_painless_script"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "scripts_painless_execute",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -42025,9 +42030,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42045,7 +42047,10 @@
         "namespace": "x_pack.slm.execute_retention"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.execute_retention",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -42064,9 +42069,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42097,7 +42099,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.execute_lifecycle",
+      "since": "7.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -42128,9 +42133,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42271,7 +42273,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "watcher.execute_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -42941,9 +42946,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42997,7 +42999,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ilm.explain_lifecycle",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -43038,9 +43043,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -43274,7 +43276,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "explain",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -44020,9 +44025,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -44125,7 +44127,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "field_caps",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -45691,9 +45696,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -45785,7 +45787,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.flush_job",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -45816,9 +45821,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -45905,7 +45907,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.flush",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -46503,9 +46508,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46536,7 +46538,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.follow_stats",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -46570,9 +46575,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46603,7 +46605,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.follow_info",
+      "since": "6.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -46716,9 +46721,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46816,7 +46818,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.forcemerge",
+      "since": "2.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -46885,9 +46890,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46945,7 +46947,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.forecast",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -47061,9 +47066,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47143,7 +47145,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.forget_follower",
+      "since": "6.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -47250,9 +47255,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47362,12 +47364,12 @@
             "kind": "union_of"
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.freeze",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -49390,9 +49392,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49480,7 +49479,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.get_alias",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -49515,9 +49517,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49630,7 +49629,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_records",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -49675,9 +49677,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49751,7 +49750,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.get_api_key",
+      "since": "6.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -49785,9 +49787,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49818,7 +49817,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.get_auto_follow_pattern",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -49859,9 +49861,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49879,7 +49878,10 @@
         "namespace": "x_pack.license.get_basic_license_status"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "license.get_basic_status",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -49910,9 +49912,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50048,7 +50047,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_buckets",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50093,9 +50095,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50113,7 +50112,10 @@
         "namespace": "x_pack.security.privileges.get_builtin_privileges"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_builtin_privileges",
+      "since": "7.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50161,9 +50163,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50255,7 +50254,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.get_calendar_events",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50300,9 +50302,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50349,7 +50348,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_calendars",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50394,9 +50396,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50455,7 +50454,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_categories",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50500,9 +50502,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50520,7 +50519,10 @@
         "namespace": "x_pack.ssl.get_certificates"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ssl.certificates",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50554,9 +50556,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50599,7 +50598,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.get_datafeed_stats",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50644,9 +50646,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50689,7 +50688,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.get_datafeeds",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50734,9 +50736,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50767,7 +50766,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "enrich.get_policy",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50801,9 +50803,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50925,7 +50924,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.get_field_mapping",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -50960,9 +50962,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51016,7 +51015,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.get_filters",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51061,9 +51063,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51081,7 +51080,10 @@
         "namespace": "x_pack.ilm.get_status"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.get_status",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51112,9 +51114,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51234,7 +51233,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.get",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51269,9 +51271,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51392,7 +51391,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.get_settings",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51427,9 +51429,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51505,7 +51504,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.get_template",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51540,9 +51542,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51655,7 +51654,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_influencers",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51700,9 +51702,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51745,7 +51744,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.get_job_stats",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51790,9 +51792,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51835,7 +51834,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.get_jobs",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51880,9 +51882,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51923,7 +51922,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "license.get",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -51954,9 +51956,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51987,7 +51986,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.get_lifecycle",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52022,9 +52024,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52134,7 +52133,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.get_mapping",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52169,9 +52171,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52274,7 +52273,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_model_snapshots",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52319,9 +52321,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52434,7 +52433,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.get_overall_buckets",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52479,9 +52481,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52524,7 +52523,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ingest.get_pipeline",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52559,9 +52561,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52604,7 +52603,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_privileges",
+      "since": "6.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52649,9 +52651,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52705,7 +52704,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.get_repository",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -52746,9 +52748,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52952,12 +52951,12 @@
             "kind": "union_of"
           }
         }
-      ]
+      ],
+      "restSpecName": "get",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "generics": [
         "TDocument"
       ],
@@ -53094,9 +53093,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53127,7 +53123,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_role_mapping",
+      "since": "5.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53162,9 +53161,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53195,7 +53191,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_role",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53230,9 +53229,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53263,7 +53259,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "rollup.get_rollup_caps",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53298,9 +53297,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53331,7 +53327,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "rollup.get_rollup_index_caps",
+      "since": "6.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53366,9 +53365,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53399,7 +53395,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "rollup.get_jobs",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53433,9 +53432,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53478,7 +53474,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "get_script",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53531,9 +53530,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53551,7 +53547,10 @@
         "namespace": "x_pack.slm.get_status"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.get_status",
+      "since": "7.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53582,9 +53581,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53615,7 +53611,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.get_lifecycle",
+      "since": "7.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53650,9 +53649,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53670,7 +53666,10 @@
         "namespace": "x_pack.slm.get_stats"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.get_stats",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -53789,9 +53788,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53868,7 +53864,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.get",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54021,9 +54020,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54077,7 +54073,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "tasks.get",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54119,9 +54118,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54186,7 +54182,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.get_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54231,9 +54230,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54298,7 +54294,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.get_transform_stats",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54343,9 +54342,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54363,7 +54359,10 @@
         "namespace": "x_pack.license.get_trial_license_status"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "license.get_trial_status",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54394,9 +54393,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54485,7 +54481,10 @@
         "namespace": "x_pack.security.user.get_user_access_token"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_token",
+      "since": "5.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54582,9 +54581,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54602,7 +54598,10 @@
         "namespace": "x_pack.security.privileges.get_user_privileges"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_user_privileges",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54692,9 +54691,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54725,7 +54721,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "security.get_user",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -54760,9 +54759,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54793,7 +54789,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.get_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -55052,9 +55051,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -55172,7 +55168,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "graph.explore",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -55506,9 +55505,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -55526,7 +55522,10 @@
         "namespace": "ingest.processor"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ingest.processor_grok",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -55823,9 +55822,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -55903,7 +55899,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "security.has_privileges",
+      "since": "6.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -57437,12 +57436,16 @@
       "kind": "enum",
       "members": [
         {
-          "name": "add",
-          "stringValue": "Additive"
+          "alternateName": [
+            "Additive"
+          ],
+          "name": "add"
         },
         {
-          "name": "mult",
-          "stringValue": "Multiplicative"
+          "alternateName": [
+            "Multiplicative"
+          ],
+          "name": "mult"
         }
       ],
       "name": {
@@ -58903,9 +58906,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -59003,7 +59003,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.exists",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -59288,10 +59291,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "IndexRequestFormatter`1`",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -59481,12 +59480,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "index",
+      "since": "0.0.0",
+      "stability": "stable"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -59842,9 +59841,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -59909,7 +59905,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.exists_template",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -60488,9 +60487,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -60569,7 +60565,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.shard_stores",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -60676,9 +60675,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -60847,12 +60843,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.stats",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -62262,9 +62258,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -62356,7 +62349,10 @@
         "namespace": "x_pack.security.api_key.invalidate_api_key"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "security.invalidate_api_key",
+      "since": "6.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -62429,9 +62425,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -62498,7 +62491,10 @@
         "namespace": "x_pack.security.user.invalidate_user_access_token"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "security.invalidate_token",
+      "since": "5.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -65300,10 +65296,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "LikeFormatter",
-        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
-      },
       "kind": "type_alias",
       "name": {
         "name": "Like",
@@ -65327,7 +65319,8 @@
           }
         ],
         "kind": "union_of"
-      }
+      },
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
     },
     {
       "kind": "interface",
@@ -65535,9 +65528,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -65639,7 +65629,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "tasks.list",
+      "since": "2.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -65904,9 +65897,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -65924,7 +65914,10 @@
         "namespace": "x_pack.machine_learning.machine_learning_info"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.info",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -67553,10 +67546,6 @@
       }
     },
     {
-      "annotations": {
-        "class_serializer": "MinimumShouldMatchFormatter",
-        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html"
-      },
       "kind": "type_alias",
       "name": {
         "name": "MinimumShouldMatch",
@@ -67580,7 +67569,8 @@
           }
         ],
         "kind": "union_of"
-      }
+      },
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html"
     },
     {
       "kind": "type_alias",
@@ -68287,9 +68277,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -68347,7 +68334,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.move_to_step",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -68884,10 +68874,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "MultiGetRequestFormatter",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69075,12 +69061,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "mget",
+      "since": "0.0.0",
+      "stability": "stable"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "generics": [
         "TDocument"
       ],
@@ -69370,10 +69356,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "MultiSearchFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69520,7 +69502,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "msearch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -69559,10 +69544,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "MultiSearchTemplateFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69687,7 +69668,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "msearch_template",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "kind": "type_alias",
@@ -69856,9 +69840,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -70056,7 +70037,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "mtermvectors",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -72751,9 +72735,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -72851,7 +72832,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "nodes.hot_threads",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -72885,9 +72869,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -72953,7 +72934,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "nodes.info",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -73033,9 +73017,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -73182,7 +73163,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "nodes.stats",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -73234,9 +73218,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -73291,7 +73272,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "nodes.usage",
+      "since": "6.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -73953,9 +73937,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -74053,7 +74034,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.open",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -74084,9 +74068,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -74133,7 +74114,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.open_job",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -75195,9 +75179,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -75228,7 +75209,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.pause_auto_follow_pattern",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -75247,9 +75231,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -75280,7 +75261,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.pause_follow",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -76352,9 +76336,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -76372,7 +76353,10 @@
         "namespace": "cluster.ping"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ping",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -76843,9 +76827,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -76895,7 +76876,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.post_calendar_events",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -76929,10 +76913,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "PostJobDataFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77001,7 +76981,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.post_data",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -77186,9 +77169,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77234,7 +77214,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "license.post",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -77354,9 +77337,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77387,7 +77367,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.preview_datafeed",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -77424,9 +77407,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77515,7 +77495,10 @@
         "namespace": "x_pack.transform.preview_transform"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "transform.preview_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -78219,9 +78202,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78347,7 +78327,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.put_alias",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -78366,9 +78349,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78411,7 +78391,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.put_calendar_job",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -78467,9 +78450,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78516,7 +78496,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.put_calendar",
+      "since": "6.2.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -78572,9 +78555,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78785,7 +78765,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.put_datafeed",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -78946,9 +78929,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79006,7 +78986,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "enrich.put_policy",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -79025,9 +79008,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79088,7 +79068,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.put_filter",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -79144,9 +79127,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79323,7 +79303,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.put_template",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -79342,9 +79325,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79468,7 +79448,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.put_job",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -79653,9 +79636,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79713,7 +79693,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.put_lifecycle",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -79732,9 +79715,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80058,7 +80038,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.put_mapping",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80077,9 +80060,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80177,7 +80157,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ingest.put_pipeline",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80196,10 +80179,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "class_serializer": "PutPrivilegesFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80265,7 +80244,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.put_privileges",
+      "since": "6.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80330,9 +80312,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80447,7 +80426,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.put_role_mapping",
+      "since": "5.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80509,9 +80491,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80649,7 +80628,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.put_role",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80700,9 +80682,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80784,7 +80763,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "put_script",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80803,9 +80785,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80896,7 +80875,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.put_lifecycle",
+      "since": "7.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -80915,9 +80897,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81031,7 +81010,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.put_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -81050,9 +81032,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81199,7 +81178,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "security.put_user",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -81230,9 +81212,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81406,7 +81385,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "watcher.put_watch",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -82907,6 +82889,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html",
+            "version": "7.0.0"
+          },
           "name": "type",
           "required": false,
           "type": {
@@ -82987,9 +82973,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -83090,7 +83073,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "sql.query",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -84927,9 +84913,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -84983,7 +84966,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.recovery",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -85184,9 +85170,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -85251,7 +85234,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.refresh",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -85568,9 +85554,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -85748,7 +85731,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "reindex",
+      "since": "2.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -85903,9 +85889,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -85948,7 +85931,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "reindex_rethrottle",
+      "since": "2.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -86383,9 +86369,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86450,7 +86433,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.reload_search_analyzers",
+      "since": "7.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -86495,9 +86481,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86556,7 +86539,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "nodes.reload_secure_settings",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -86698,9 +86684,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86718,7 +86701,10 @@
         "namespace": "cluster.remote_info"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "cluster.remote_info",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -86833,9 +86819,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86866,7 +86849,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.remove_policy",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -87000,9 +86986,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87064,7 +87047,10 @@
         "namespace": "search.search_template.render_search_template"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "render_search_template",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -87222,6 +87208,9 @@
       },
       "properties": [
         {
+          "alternateName": [
+            "Query"
+          ],
           "name": "rescore_query",
           "required": true,
           "type": {
@@ -87407,9 +87396,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87582,7 +87568,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.restore",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -87776,9 +87765,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87809,7 +87795,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.resume_auto_follow_pattern",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -87828,9 +87817,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87976,7 +87962,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.resume_follow",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -88026,9 +88015,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88059,7 +88045,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.retry",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -88122,9 +88111,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88183,7 +88169,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.revert_model_snapshot",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -88364,9 +88353,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88530,7 +88516,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.rollover",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -89223,9 +89212,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -89339,7 +89325,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "rollup.rollup_search",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -89361,9 +89350,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -89381,7 +89367,10 @@
         "namespace": "cluster.root_node_info"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "info",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -90611,9 +90600,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -90727,7 +90713,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "scroll",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -91137,9 +91126,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -92145,7 +92131,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "search",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -92458,9 +92447,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -92558,7 +92544,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "search_shards",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -92789,9 +92778,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -93022,7 +93008,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "search_template",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "kind": "interface",
@@ -93375,9 +93364,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -93453,7 +93439,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.segments",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -93794,9 +93783,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -93837,7 +93823,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.set_upgrade_mode",
+      "since": "6.7.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -96590,9 +96579,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -96712,7 +96698,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.shrink",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -97556,9 +97545,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -97631,7 +97617,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ingest.simulate",
+      "since": "5.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -99051,9 +99040,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -99185,7 +99171,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.create",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -99613,9 +99602,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -99681,7 +99667,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.status",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -100044,8 +100033,10 @@
           "name": "desc"
         },
         {
-          "name": "_doc",
-          "stringValue": "Document"
+          "alternateName": [
+            "Document"
+          ],
+          "name": "_doc"
         }
       ],
       "name": {
@@ -100168,9 +100159,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -100325,7 +100313,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "exists_source",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -100456,9 +100447,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -100613,7 +100601,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "get_source",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "generics": [
@@ -101386,9 +101377,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -101508,7 +101496,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.split",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -101874,9 +101865,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -101906,7 +101894,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "license.post_start_basic",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -101984,9 +101975,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102055,7 +102043,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.start_datafeed",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102097,9 +102088,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102117,7 +102105,10 @@
         "namespace": "x_pack.ilm.start"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.start",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102136,9 +102127,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102169,7 +102157,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "rollup.start_job",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102200,9 +102191,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102220,7 +102208,10 @@
         "namespace": "x_pack.slm.start"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.start",
+      "since": "7.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102239,9 +102230,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102284,7 +102272,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.start_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102303,9 +102294,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102346,7 +102334,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "license.post_start_trial",
+      "since": "6.1.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102388,9 +102379,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102408,7 +102396,10 @@
         "namespace": "x_pack.watcher.start_watcher"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.start",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102703,9 +102694,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102775,7 +102763,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.stop_datafeed",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102806,9 +102797,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102826,7 +102814,10 @@
         "namespace": "x_pack.ilm.stop"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ilm.stop",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102845,9 +102836,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102901,7 +102889,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "rollup.stop_job",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -102932,9 +102923,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102952,7 +102940,10 @@
         "namespace": "x_pack.slm.stop"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "slm.stop",
+      "since": "7.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -103032,9 +103023,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103121,7 +103109,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.stop_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -103140,9 +103131,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103160,7 +103148,10 @@
         "namespace": "x_pack.watcher.stop_watcher"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "watcher.stop",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -103179,9 +103170,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "class_serializer": ": StopWordsFormatter"
-      },
       "kind": "type_alias",
       "name": {
         "name": "StopWords",
@@ -104044,9 +104032,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -104111,7 +104096,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.flush_synced",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -105633,9 +105621,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -105863,7 +105848,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "termvectors",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -109344,9 +109332,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -109413,7 +109398,10 @@
         "namespace": "x_pack.sql.translate_sql"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "sql.translate",
+      "since": "6.3.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -109860,9 +109848,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -109950,7 +109935,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.exists_type",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "attachedBehaviors": [
@@ -110474,9 +110462,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -110507,7 +110492,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ccr.unfollow",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -110526,9 +110514,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -110626,7 +110611,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.unfreeze",
+      "since": "6.6.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -110685,9 +110673,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -111171,7 +111156,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "update_by_query",
+      "since": "2.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -111315,9 +111303,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -111360,12 +111345,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "update_by_query_rethrottle",
+      "since": "6.5.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -111576,7 +111561,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "ml.update_datafeed",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -111737,9 +111725,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -111814,7 +111799,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.update_filter",
+      "since": "6.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -111870,10 +111858,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "UpdateIndexSettingsRequestFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112004,7 +111988,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.put_settings",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -112023,9 +112010,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112166,7 +112150,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.update_job",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -112185,9 +112172,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112257,7 +112241,10 @@
           }
         }
       ],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.update_model_snapshot",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -112288,9 +112275,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112614,12 +112598,12 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "update",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "generics": [
         "TDocument"
       ],
@@ -112660,9 +112644,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112765,7 +112746,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "transform.update_transform",
+      "since": "7.5.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -113231,10 +113215,6 @@
       }
     },
     {
-      "annotations": {
-        "class_serializer": "ValidateDetectorRequestFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113262,7 +113242,10 @@
         "namespace": "x_pack.machine_learning.validate_detector"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.validate_detector",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -113281,9 +113264,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113383,7 +113363,10 @@
         "namespace": "x_pack.machine_learning.validate_job"
       },
       "path": [],
-      "query": []
+      "query": [],
+      "restSpecName": "ml.validate",
+      "since": "5.4.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -113402,9 +113385,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113596,7 +113576,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "indices.validate_query",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -113902,9 +113885,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113958,7 +113938,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "snapshot.verify_repository",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -114732,9 +114715,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -114777,7 +114757,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "watcher.stats",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -115860,9 +115843,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -115895,7 +115875,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "xpack.info",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [
@@ -116131,9 +116114,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -116163,7 +116143,10 @@
             }
           }
         }
-      ]
+      ],
+      "restSpecName": "xpack.usage",
+      "since": "0.0.0",
+      "stability": "TODO"
     },
     {
       "inherits": [

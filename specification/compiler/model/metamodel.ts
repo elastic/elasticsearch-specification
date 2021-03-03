@@ -120,7 +120,13 @@ export class Property {
   type: ValueOf
   required: boolean
   description?: string
-  annotations?: Record<string, string>
+  /**
+   * If specified takes precedence over `name` when generating code. `name` is always the value
+   * to be sent over the wire
+   */
+  alternateName?: string[]
+  /** An optional set of aliases for `name` */
+  aliases?: string[]
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -128,13 +134,25 @@ export class Property {
 
 export type TypeDefinition = Interface | Request | Union | Enum | TypeAlias
 
+export type Depreciable = TypeDefinition | EnumMember
+export const isDepreciable = (type: object): type is Depreciable => {
+  return (type as Depreciable).name !== undefined;
+}
+
+export type BehaviorAttachable = Interface | Request
+export const isBehaviorAttachable = (type: object): type is BehaviorAttachable => {
+  return (type as BehaviorAttachable).name !== undefined;
+}
+
 /**
  * Common attributes for all type definitions
  */
-abstract class BaseType {
+export abstract class BaseType {
   name: TypeName
   description?: string
-  annotations?: Record<string, string>
+  /** Link to public documentation */
+  url?: string
+  deprecation?: Deprecation
 }
 
 /**
@@ -189,6 +207,11 @@ export class Request extends BaseType {
   body?: ValueBody | PropertiesBody
   behaviors?: Implements[]
   attachedBehaviors?: string[]
+
+  since?: string
+  restSpecName?: string;
+  stability?: Stability
+  visibility?: Visibility
 }
 
 export class ValueBody {
@@ -222,10 +245,13 @@ export class Union extends BaseType {
 export class EnumMember {
   /** The identifier to use for this enum */
   name: string
+  /**
+   * If specified takes precedence over `name` when generating code. `name` is always the value
+   * to be sent over the wire
+   */
+  alternateName?: string[]
   description?: string
-  /** The value to send of the wire. Use `name` if absent */
-  stringValue?: string
-  annotations?: Record<string, string>
+  deprecation?: Deprecation
 }
 
 /**
@@ -251,8 +277,13 @@ export class TypeAlias extends BaseType {
 export enum Stability {
   stable = 'stable',
   beta = 'beta',
-  experimental = 'experimental'
-  // NOTE: do we filter out "private"?
+  experimental = 'experimental',
+  TODO = 'TODO'
+}
+export enum Visibility {
+  public = 'public',
+  beta = 'feature_flag',
+  experimental = 'private'
 }
 
 export class Deprecation {

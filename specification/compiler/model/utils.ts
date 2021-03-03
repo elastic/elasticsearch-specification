@@ -62,17 +62,6 @@ export const customTypes = [
 ]
 
 /**
- * The following js doc tags are used to signal to the compiler
- * how certain definitions or field should be handled, and should
- * not leak into the generated JSON.
- */
-export const compilerJsDocTags = [
-  'behavior',
-  'since',
-  'rest_spec_name'
-]
-
-/**
  * Given a ts-morph Node element, it models it according to
  * our metamodel. It automatically models nested types as well.
  */
@@ -267,32 +256,9 @@ export function modelType (node: Node): model.ValueOf {
  */
 export function isApi (declaration: InterfaceDeclaration): boolean {
   const tags = parseJsDocTags(declaration.getJsDocs())
-  return tags.some(tag => tag.name === 'rest_spec_name')
+  return !!tags['rest_spec_name']
 }
 
-/**
- * Given an InterfaceDeclaration, returns the api name
- * stored in the rest_spec_name js doc tag.
- */
-export function getApiName (declaration: InterfaceDeclaration): string {
-  const tags = parseJsDocTags(declaration.getJsDocs())
-  const tag = tags.find(tag => tag.name === 'rest_spec_name')
-  assert(tag, 'The rest_spec_name tag does not exists')
-  return tag.value
-}
-
-/**
- * Given an InterfaceDeclaration, returns the since value
- * stored in the since js doc tag and verifies if the value
- * is a valid semver string.
- */
-export function getSinceValue (declaration: InterfaceDeclaration): string {
-  const tags = parseJsDocTags(declaration.getJsDocs())
-  const tag = tags.find(tag => tag.name === 'since')
-  assert(tag, 'The since tag does not exists')
-  assert(semver.valid(tag.value), `The semver value is not valid: ${tag.value}`)
-  return tag.value
-}
 
 /**
  * Given a HeritageClause node returns an Inherits structure.
@@ -370,14 +336,15 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
     },
     kind: 'enum',
     members: declaration.getMembers()
-      .map(member => {
-        const alternateName = parseJsDocTags(member.getJsDocs())
-          .find(tag => tag.name === 'alternate_name')
-        return {
-          // names that contains `.` or `-` will be wrapped inside single quotes
-          name: member.getName().replace(/'/g, ''),
-          ...(alternateName != null && { stringValue: alternateName.value })
+      .map(m => {
+        // names that contains `.` or `-` will be wrapped inside single quotes
+        const name = m.getName().replace(/'/g, '')
+        const member = {
+          name: name
         }
+        hoistEnumMemberAnnotations(member, m.getJsDocs())
+
+        return member
       })
   }
 }
@@ -391,23 +358,18 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
 export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAlias {
   const type = declaration.getTypeNode()
   assert(type, 'Type alias without a referenced type')
-  const annotations = parseJsDocTags(declaration.getJsDocs())
-    .reduce((acc, val) => {
-      acc[val.name] = val.value
-      return acc
-    }, {})
   const generics = declaration.getTypeParameters().map(node => modelType(node))
-
-  return {
+  const typeAlias : model.TypeAlias = {
     name: {
       name: declaration.getName(),
       namespace: getNameSpace(declaration)
     },
     kind: 'type_alias',
     type: modelType(type),
-    ...(Object.keys(annotations).length > 0 && { annotations }),
     ...(generics.length > 0 && { generics })
   }
+  hoistTypeAnnotations(typeAlias, declaration.getJsDocs())
+  return typeAlias;
 }
 
 /**
@@ -422,12 +384,136 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 
   // names that contains `.` or `-` will be wrapped inside single quotes
   const name = declaration.getName().replace(/'/g, '')
-  return {
+  const property = {
     name,
     required: !declaration.hasQuestionToken(),
     type: modelType(type)
   }
+  hoistPropertyAnnotations(property, declaration.getJsDocs())
+  return property
 }
+
+/**
+ * Pulls @obsolete and @obsolete_description from types and properties
+ */
+function setObsolete(type: model.Depreciable, tags: Record<string, string>) {
+  const obsolete = tags['obsolete']
+  const description = tags['obsolete_description']
+  if (obsolete) {
+    type.deprecation = { version: obsolete, description: description}
+  }
+  delete tags['obsolete']
+  delete tags['obsolete_description']
+}
+
+/**
+ * Validates ands sets jsDocs tags used throughout the input specification
+ */
+function setTags<TType extends model.BaseType | model.Property | model.EnumMember>(
+  type: TType,
+  jsDocs: JSDoc[],
+  validTags: string[],
+  setter: ((tags: Record<string, string>, tag:string, value:string) => void)
+) {
+  if (jsDocs.length == 0) return
+  const tags = parseJsDocTags(jsDocs)
+  if (Object.keys(tags).length == 0) return
+
+  if (model.isDepreciable(type)) {
+    setObsolete(type, tags)
+  }
+  const badTags = Object.keys(tags).filter(tag => !validTags.includes(tag))
+  assert(
+    badTags.length == 0,
+    `'${getName(type)}' has the following unknown annotations: ${badTags.join(', ')}`
+  )
+
+  for (const tag of validTags) {
+    if (tag == 'behavior' && model.isBehaviorAttachable(type)) continue
+    if (tags[tag]) {
+      setter(tags, tag, tags[tag])
+    }
+  }
+
+  function getName(type) {
+    if (type instanceof model.BaseType) return type.name
+    if (type instanceof model.Property) return type.name
+    if (type instanceof model.EnumMember) return type.name
+    return typeof(type)
+  }
+}
+
+/** Lifts jsDoc type annotations to request properties */
+export function hoistRequestAnnotations(
+  request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
+) {
+  const knownRequestAnnotations = [
+    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer'
+  ]
+  let apiName = "";
+  setTags(request, jsDocs, knownRequestAnnotations, (tags, tag, value) => {
+    if (tag.endsWith('_serializer')) return
+    else if (tag == 'visibility') {
+      request.visibility = model.Visibility[value]
+    } else if (tag == 'rest_spec_name') {
+      request.restSpecName = value
+      apiName = value
+    } else if (tag == 'stability') {
+      request.stability = model.Stability[value]
+    } else if (tag == 'since') {
+      assert(semver.valid(value), `Request ${request.name}'s @since is not valid semver: ${value}`)
+      request.since = value
+    }
+    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
+  })
+
+  assert(apiName, `Request ${name} does not declare the @rest_spec_name to link back to`)
+  const endpoint = mappings[apiName]
+  assert(endpoint != null, `${apiName} is not represented in the spec as a json file`)
+
+  endpoint.request = request.name
+  endpoint.response = response
+  if (request.since) endpoint.since = request.since
+  if (request.deprecation) endpoint.deprecation = request.deprecation
+}
+
+/** Lifts jsDoc type annotations to fixed properties on Type */
+export function hoistTypeAnnotations(type: model.TypeDefinition, jsDocs: JSDoc[]) {
+  const validTags = ['class_serializer', 'url', 'behavior']
+  setTags(type, jsDocs, validTags, (tags, tag, value) => {
+    if (tag == 'stability') return
+    if (tag.endsWith('_serializer')) return
+    else if (tag == 'url') {
+      type.url = value
+    }
+    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name}`)
+  })
+}
+
+/** Lifts jsDoc type annotations to fixed properties on Property */
+function hoistPropertyAnnotations(property: model.Property, jsDocs: JSDoc[]) {
+  const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'alternate_name']
+  setTags(property, jsDocs, validTags, (tags, tag, value) => {
+    if (tag.endsWith('_serializer')) return
+    else if (tag == 'aliases') {
+      property.aliases = value.split(",").map(v => v.trim())
+    } else if (tag == 'alternate_name') {
+      property.alternateName = value.split(",").map(v => v.trim())
+    }
+    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
+  })
+}
+/** Lifts jsDoc type annotations to fixed properties on Property */
+function hoistEnumMemberAnnotations(member: model.EnumMember, jsDocs: JSDoc[]) {
+  const validTags = ['obsolete', 'obsolete_description', 'alternate_name']
+  setTags(member, jsDocs, validTags, (tags, tag, value) => {
+    if (tag == 'alternate_name') {
+      member.alternateName = value.split(",").map(v => v.trim())
+    }
+    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
+  })
+}
+
 
 /**
  * Returns true if the passed HeritageClause node contains
@@ -532,14 +618,16 @@ export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration):
 /**
  * Given a JSDoc definition, returns a programmable array of JSTags
  */
-export function parseJsDocTags (jsDoc: JSDoc[]): Array<Record<string, string>> {
-  return jsDoc.flatMap(d => d.getTags())
+export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
+  const tags = jsDoc.flatMap(d => d.getTags())
     .map(tag => {
       return {
         name: tag.getTagName(),
         value: tag.getComment() ?? ''
       }
     })
+  const mapped = tags.reduce((acc, curr) => ({...acc, [curr.name]: curr.value}) , {})
+  return mapped
 }
 
 /**

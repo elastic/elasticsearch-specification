@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @type_stability stable
- */
 class BulkResponse extends ResponseBase {
   errors: boolean
   items: BulkResponseItemContainer[]
