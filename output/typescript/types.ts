@@ -24,16 +24,16 @@ export interface AcknowledgeState {
   timestamp: DateString
 }
 
-export interface AcknowledgeWatchRequest extends CommonQueryParameters {
+export interface AcknowledgeWatchRequest extends RequestBase {
   watch_id: Name
   action_id?: Names
 }
 
-export interface AcknowledgeWatchResponse {
+export interface AcknowledgeWatchResponse extends ResponseBase {
   status: WatchStatus
 }
 
-export interface AcknowledgedResponseBase {
+export interface AcknowledgedResponseBase extends ResponseBase {
   acknowledged: boolean
 }
 
@@ -70,11 +70,11 @@ export interface ActionStatus {
 
 export type ActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
 
-export interface ActivateWatchRequest extends CommonQueryParameters {
+export interface ActivateWatchRequest extends RequestBase {
   watch_id: Name
 }
 
-export interface ActivateWatchResponse {
+export interface ActivateWatchResponse extends ResponseBase {
   status: ActivationStatus
 }
 
@@ -263,7 +263,7 @@ export interface AliasDefinition {
   search_routing?: string
 }
 
-export interface AliasExistsRequest extends CommonQueryParameters {
+export interface AliasExistsRequest extends RequestBase {
   name: Names
   index?: Indices
   allow_no_indices?: boolean
@@ -339,7 +339,7 @@ export interface AnalyzeDetail {
   tokenizer?: TokenDetail
 }
 
-export interface AnalyzeRequest extends CommonQueryParameters {
+export interface AnalyzeRequest extends RequestBase {
   index?: IndexName
   body?: {
     analyzer?: string
@@ -354,7 +354,7 @@ export interface AnalyzeRequest extends CommonQueryParameters {
   }
 }
 
-export interface AnalyzeResponse {
+export interface AnalyzeResponse extends ResponseBase {
   detail?: AnalyzeDetail
   tokens?: Array<AnalyzeToken>
 }
@@ -504,7 +504,7 @@ export interface AsyncSearch<TDocument = unknown> {
   took: long
 }
 
-export interface AsyncSearchDeleteRequest extends CommonQueryParameters {
+export interface AsyncSearchDeleteRequest extends RequestBase {
   id: Id
 }
 
@@ -515,7 +515,7 @@ export interface AsyncSearchDocumentResponseBase<TDocument = unknown> extends As
   response: AsyncSearch<TDocument>
 }
 
-export interface AsyncSearchGetRequest extends CommonQueryParameters {
+export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
   body?: {
     keep_alive?: Time
@@ -527,7 +527,7 @@ export interface AsyncSearchGetRequest extends CommonQueryParameters {
 export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchDocumentResponseBase<TDocument> {
 }
 
-export interface AsyncSearchResponseBase {
+export interface AsyncSearchResponseBase extends ResponseBase {
   id: string
   is_partial: boolean
   is_running: boolean
@@ -535,14 +535,14 @@ export interface AsyncSearchResponseBase {
   start_time_in_millis: EpochMillis
 }
 
-export interface AsyncSearchStatusRequest extends CommonQueryParameters {
+export interface AsyncSearchStatusRequest extends RequestBase {
   id: Id
 }
 
 export interface AsyncSearchStatusResponse<TDocument = unknown> extends AsyncSearchResponseBase {
 }
 
-export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
+export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
   body?: {
     aggs?: Record<string, AggregationContainer>
@@ -615,10 +615,10 @@ export interface AuditUsage extends SecurityFeatureToggle {
   outputs: Array<string>
 }
 
-export interface AuthenticateRequest extends CommonQueryParameters {
+export interface AuthenticateRequest extends RequestBase {
 }
 
-export interface AuthenticateResponse {
+export interface AuthenticateResponse extends ResponseBase {
   authentication_realm: RealmInfo
   email: string
   full_name: string
@@ -774,7 +774,7 @@ export interface BucketSortAggregation extends Aggregation {
 export interface BucketsPath {
 }
 
-export interface BulkAliasRequest extends CommonQueryParameters {
+export interface BulkAliasRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   body: {
@@ -827,7 +827,7 @@ export interface BulkOperationContainer {
   delete?: BulkDeleteOperation
 }
 
-export interface BulkRequest<TSource = unknown> extends CommonQueryParameters {
+export interface BulkRequest<TSource = unknown> extends RequestBase {
   index?: IndexName
   type?: Type
   pipeline?: string
@@ -843,7 +843,7 @@ export interface BulkRequest<TSource = unknown> extends CommonQueryParameters {
   body: Array<BulkOperationContainer | TSource>
 }
 
-export interface BulkResponse {
+export interface BulkResponse extends ResponseBase {
   errors: boolean
   items: Array<BulkResponseItemContainer>
   took: long
@@ -904,14 +904,14 @@ export interface Calendar {
   job_ids: Array<string>
 }
 
-export interface CancelTasksRequest extends CommonQueryParameters {
+export interface CancelTasksRequest extends RequestBase {
   task_id?: TaskId
   actions?: Array<string>
   nodes?: Array<string>
   parent_task_id?: string
 }
 
-export interface CancelTasksResponse {
+export interface CancelTasksResponse extends ResponseBase {
   node_failures: Array<ErrorCause>
   nodes: Record<string, TaskExecutingNode>
 }
@@ -930,7 +930,7 @@ export interface CatAliasesRecord {
   is_write_index: string
 }
 
-export interface CatAliasesRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatAliasesRequest extends CatRequestBase {
   name?: Names
   expand_wildcards?: ExpandWildcards
 }
@@ -950,7 +950,7 @@ export interface CatAllocationRecord {
   shards: string
 }
 
-export interface CatAllocationRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatAllocationRequest extends CatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
 }
@@ -963,7 +963,7 @@ export interface CatCountRecord {
   timestamp?: DateString
 }
 
-export interface CatCountRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatCountRequest extends CatRequestBase {
   index?: Indices
 }
 
@@ -988,7 +988,7 @@ export interface CatDataFrameAnalyticsRecord {
   version: string
 }
 
-export interface CatDataFrameAnalyticsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatDataFrameAnalyticsRequest extends CatRequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
@@ -1011,7 +1011,7 @@ export interface CatDatafeedsRecord {
   state: DatafeedState
 }
 
-export interface CatDatafeedsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatDatafeedsRequest extends CatRequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
 }
@@ -1019,15 +1019,15 @@ export interface CatDatafeedsRequest extends CommonCatQueryParameters, CommonQue
 export type CatDatafeedsResponse = CatDatafeedsRecord[]
 
 export interface CatFielddataRecord {
-  field: string
-  host: string
-  id: string
-  ip: string
-  node: string
-  size: string
+  field?: string
+  host?: string
+  id?: string
+  ip?: string
+  node?: string
+  size?: string
 }
 
-export interface CatFielddataRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatFielddataRequest extends CatRequestBase {
   fields?: Fields
   bytes?: Bytes
 }
@@ -1051,7 +1051,7 @@ export interface CatHealthRecord {
   active_shards_percent: string
 }
 
-export interface CatHealthRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatHealthRequest extends CatRequestBase {
   include_timestamp?: boolean
   ts?: boolean
 }
@@ -1062,7 +1062,7 @@ export interface CatHelpRecord {
   endpoint: string
 }
 
-export interface CatHelpRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatHelpRequest extends CatRequestBase {
 }
 
 export type CatHelpResponse = CatHelpRecord[]
@@ -1081,7 +1081,7 @@ export interface CatIndicesRecord {
   uuid: string
 }
 
-export interface CatIndicesRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatIndicesRequest extends CatRequestBase {
   index?: Indices
   bytes?: Bytes
   expand_wildcards?: ExpandWildcards
@@ -1150,7 +1150,7 @@ export interface CatJobsRecord {
   state: JobState
 }
 
-export interface CatJobsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatJobsRequest extends CatRequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
   bytes?: Bytes
@@ -1165,7 +1165,7 @@ export interface CatMasterRecord {
   host: string
 }
 
-export interface CatMasterRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatMasterRequest extends CatRequestBase {
 }
 
 export type CatMasterResponse = CatMasterRecord[]
@@ -1181,7 +1181,7 @@ export interface CatNodeAttributesRecord {
   value: string
 }
 
-export interface CatNodeAttributesRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatNodeAttributesRequest extends CatRequestBase {
 }
 
 export type CatNodeAttributesResponse = CatNodeAttributesRecord[]
@@ -1260,7 +1260,7 @@ export interface CatNodesRecord {
   version: string
 }
 
-export interface CatNodesRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatNodesRequest extends CatRequestBase {
   bytes?: Bytes
   full_id?: boolean
 }
@@ -1274,7 +1274,7 @@ export interface CatPendingTasksRecord {
   timeInQueue: string
 }
 
-export interface CatPendingTasksRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatPendingTasksRequest extends CatRequestBase {
 }
 
 export type CatPendingTasksResponse = CatPendingTasksRecord[]
@@ -1290,7 +1290,7 @@ export interface CatPluginsRecord {
   version: string
 }
 
-export interface CatPluginsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatPluginsRequest extends CatRequestBase {
 }
 
 export type CatPluginsResponse = CatPluginsRecord[]
@@ -1320,7 +1320,7 @@ export interface CatRecoveryRecord {
   type: string
 }
 
-export interface CatRecoveryRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatRecoveryRequest extends CatRequestBase {
   index?: Indices
   active_only?: boolean
   bytes?: Bytes
@@ -1334,10 +1334,16 @@ export interface CatRepositoriesRecord {
   type: string
 }
 
-export interface CatRepositoriesRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatRepositoriesRequest extends CatRequestBase {
 }
 
 export type CatRepositoriesResponse = CatRepositoriesRecord[]
+
+export interface CatRequestBase extends RequestBase, CommonCatQueryParameters {
+}
+
+export interface CatResponseBase<TCatRecord = unknown> extends ResponseBase {
+}
 
 export interface CatSegmentsRecord {
   committed: string
@@ -1357,7 +1363,7 @@ export interface CatSegmentsRecord {
   version: string
 }
 
-export interface CatSegmentsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatSegmentsRequest extends CatRequestBase {
   index?: Indices
   bytes?: Bytes
 }
@@ -1425,7 +1431,7 @@ export interface CatShardsRecord {
   'warmer.total_time': string
 }
 
-export interface CatShardsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatShardsRequest extends CatRequestBase {
   index?: Indices
   bytes?: Bytes
 }
@@ -1446,7 +1452,7 @@ export interface CatSnapshotsRecord {
   total_shards: string
 }
 
-export interface CatSnapshotsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatSnapshotsRequest extends CatRequestBase {
   repository?: Names
   ignore_unavailable?: boolean
 }
@@ -1467,7 +1473,7 @@ export interface CatTasksRecord {
   x_opaque_id?: string
 }
 
-export interface CatTasksRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatTasksRequest extends CatRequestBase {
   actions?: Array<string>
   detailed?: boolean
   node_id?: Array<string>
@@ -1484,7 +1490,7 @@ export interface CatTemplatesRecord {
   composed_of?: string
 }
 
-export interface CatTemplatesRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatTemplatesRequest extends CatRequestBase {
   name?: Name
 }
 
@@ -1513,7 +1519,7 @@ export interface CatThreadPoolRecord {
   type?: string
 }
 
-export interface CatThreadPoolRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatThreadPoolRequest extends CatRequestBase {
   thread_pool_patterns?: Names
   size?: Size | boolean
 }
@@ -1538,7 +1544,7 @@ export interface CatTrainedModelsRecord {
   version?: string
 }
 
-export interface CatTrainedModelsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatTrainedModelsRequest extends CatRequestBase {
   model_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
@@ -1578,7 +1584,7 @@ export interface CatTransformsRecord {
   version: string
 }
 
-export interface CatTransformsRequest extends CommonCatQueryParameters, CommonQueryParameters {
+export interface CatTransformsRequest extends CatRequestBase {
   transform_id?: Id
   allow_no_match?: boolean
   from?: integer
@@ -1615,10 +1621,10 @@ export interface CcrFollowStats {
   indices: Array<FollowIndexStats>
 }
 
-export interface CcrStatsRequest extends CommonQueryParameters {
+export interface CcrStatsRequest extends RequestBase {
 }
 
-export interface CcrStatsResponse {
+export interface CcrStatsResponse extends ResponseBase {
   auto_follow_stats: CcrAutoFollowStats
   follow_stats: CcrFollowStats
 }
@@ -1636,7 +1642,7 @@ export interface ChainTransform {
   transforms: Array<TransformContainer>
 }
 
-export interface ChangePasswordRequest extends CommonQueryParameters {
+export interface ChangePasswordRequest extends RequestBase {
   username?: Name
   refresh?: Refresh
   body: {
@@ -1644,7 +1650,7 @@ export interface ChangePasswordRequest extends CommonQueryParameters {
   }
 }
 
-export interface ChangePasswordResponse {
+export interface ChangePasswordResponse extends ResponseBase {
 }
 
 export type CharFilter = HtmlStripCharFilter | MappingCharFilter | PatternReplaceTokenFilter
@@ -1710,13 +1716,13 @@ export interface CircuitBreakerSettings {
   total_limit: string
 }
 
-export interface CleanupRepositoryRequest extends CommonQueryParameters {
+export interface CleanupRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
   timeout?: Time
 }
 
-export interface CleanupRepositoryResponse {
+export interface CleanupRepositoryResponse extends ResponseBase {
   results: CleanupRepositoryResults
 }
 
@@ -1725,7 +1731,7 @@ export interface CleanupRepositoryResults {
   deleted_bytes: long
 }
 
-export interface ClearCacheRequest extends CommonQueryParameters {
+export interface ClearCacheRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -1739,46 +1745,46 @@ export interface ClearCacheRequest extends CommonQueryParameters {
 export interface ClearCacheResponse extends ShardsOperationResponseBase {
 }
 
-export interface ClearCachedRealmsRequest extends CommonQueryParameters {
+export interface ClearCachedRealmsRequest extends RequestBase {
   realms: Names
   usernames?: Array<string>
 }
 
-export interface ClearCachedRealmsResponse {
+export interface ClearCachedRealmsResponse extends ResponseBase {
   cluster_name: string
   nodes: Record<string, SecurityNode>
 }
 
-export interface ClearCachedRolesRequest extends CommonQueryParameters {
+export interface ClearCachedRolesRequest extends RequestBase {
   name: Names
 }
 
-export interface ClearCachedRolesResponse {
+export interface ClearCachedRolesResponse extends ResponseBase {
   cluster_name: string
   nodes: Record<string, SecurityNode>
 }
 
-export interface ClearScrollRequest extends CommonQueryParameters {
+export interface ClearScrollRequest extends RequestBase {
   scroll_id?: Ids
   body?: {
     scroll_id?: Array<string>
   }
 }
 
-export interface ClearScrollResponse {
+export interface ClearScrollResponse extends ResponseBase {
 }
 
-export interface ClearSqlCursorRequest extends CommonQueryParameters {
+export interface ClearSqlCursorRequest extends RequestBase {
   body: {
     cursor?: string
   }
 }
 
-export interface ClearSqlCursorResponse {
+export interface ClearSqlCursorResponse extends ResponseBase {
   succeeded: boolean
 }
 
-export interface CloneIndexRequest extends CommonQueryParameters {
+export interface CloneIndexRequest extends RequestBase {
   index: IndexName
   target: Name
   master_timeout?: Time
@@ -1795,7 +1801,7 @@ export interface CloneIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }
 
-export interface CloseIndexRequest extends CommonQueryParameters {
+export interface CloseIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -1815,14 +1821,14 @@ export interface CloseIndexResult {
   shards: Record<string, CloseShardResult>
 }
 
-export interface CloseJobRequest extends CommonQueryParameters {
+export interface CloseJobRequest extends RequestBase {
   job_id: Id
   allow_no_jobs?: boolean
   force?: boolean
   timeout?: Time
 }
 
-export interface CloseJobResponse {
+export interface CloseJobResponse extends ResponseBase {
   closed: boolean
 }
 
@@ -1830,7 +1836,7 @@ export interface CloseShardResult {
   failures: Array<ShardFailure>
 }
 
-export interface ClusterAllocationExplainRequest extends CommonQueryParameters {
+export interface ClusterAllocationExplainRequest extends RequestBase {
   include_disk_info?: boolean
   include_yes_decisions?: boolean
   body?: {
@@ -1840,7 +1846,7 @@ export interface ClusterAllocationExplainRequest extends CommonQueryParameters {
   }
 }
 
-export interface ClusterAllocationExplainResponse {
+export interface ClusterAllocationExplainResponse extends ResponseBase {
   allocate_explanation?: string
   allocation_delay?: string
   allocation_delay_in_millis?: long
@@ -1883,19 +1889,19 @@ export interface ClusterFileSystem {
   total_in_bytes: long
 }
 
-export interface ClusterGetSettingsRequest extends CommonQueryParameters {
+export interface ClusterGetSettingsRequest extends RequestBase {
   flat_settings?: boolean
   include_defaults?: boolean
   master_timeout?: Time
   timeout?: Time
 }
 
-export interface ClusterGetSettingsResponse {
+export interface ClusterGetSettingsResponse extends ResponseBase {
   persistent: Record<string, any>
   transient: Record<string, any>
 }
 
-export interface ClusterHealthRequest extends CommonQueryParameters {
+export interface ClusterHealthRequest extends RequestBase {
   index?: Indices
   expand_wildcards?: ExpandWildcards
   level?: Level
@@ -1910,7 +1916,7 @@ export interface ClusterHealthRequest extends CommonQueryParameters {
   wait_for_status?: WaitForStatus
 }
 
-export interface ClusterHealthResponse {
+export interface ClusterHealthResponse extends ResponseBase {
   active_primary_shards: integer
   active_shards: integer
   active_shards_percent_as_number: Percentage
@@ -2043,12 +2049,12 @@ export interface ClusterOperatingSystemStats {
   pretty_names: Array<ClusterOperatingSystemPrettyNane>
 }
 
-export interface ClusterPendingTasksRequest extends CommonQueryParameters {
+export interface ClusterPendingTasksRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
 }
 
-export interface ClusterPendingTasksResponse {
+export interface ClusterPendingTasksResponse extends ResponseBase {
   tasks: Array<PendingTask>
 }
 
@@ -2074,7 +2080,7 @@ export interface ClusterProcessorStats {
   time_in_millis: long
 }
 
-export interface ClusterPutSettingsRequest extends CommonQueryParameters {
+export interface ClusterPutSettingsRequest extends RequestBase {
   flat_settings?: boolean
   master_timeout?: Time
   timeout?: Time
@@ -2084,7 +2090,7 @@ export interface ClusterPutSettingsRequest extends CommonQueryParameters {
   }
 }
 
-export interface ClusterPutSettingsResponse {
+export interface ClusterPutSettingsResponse extends ResponseBase {
   acknowledged: boolean
   persistent: Record<string, any>
   transient: Record<string, any>
@@ -2121,7 +2127,7 @@ export interface ClusterRerouteParameters {
   to_node: string
 }
 
-export interface ClusterRerouteRequest extends CommonQueryParameters {
+export interface ClusterRerouteRequest extends RequestBase {
   dry_run?: boolean
   explain?: boolean
   master_timeout?: Time
@@ -2133,7 +2139,7 @@ export interface ClusterRerouteRequest extends CommonQueryParameters {
   }
 }
 
-export interface ClusterRerouteResponse {
+export interface ClusterRerouteResponse extends ResponseBase {
   acknowledged: boolean
   explanations: Array<ClusterRerouteExplanation>
   state: Array<string>
@@ -2185,7 +2191,7 @@ export interface ClusterStateMetadataIndexGraveyard {
 export interface ClusterStateMetadataTemplate {
 }
 
-export interface ClusterStateRequest extends CommonQueryParameters {
+export interface ClusterStateRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
   allow_no_indices?: boolean
@@ -2198,7 +2204,7 @@ export interface ClusterStateRequest extends CommonQueryParameters {
   wait_for_timeout?: Time
 }
 
-export interface ClusterStateResponse {
+export interface ClusterStateResponse extends ResponseBase {
   cluster_name: string
   cluster_uuid: Uuid
   master_node?: string
@@ -2215,7 +2221,7 @@ export interface ClusterStatistics {
   total: integer
 }
 
-export interface ClusterStatsRequest extends CommonQueryParameters {
+export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
   flat_settings?: boolean
   timeout?: Time
@@ -2411,7 +2417,7 @@ export interface CorePropertyBase extends PropertyBase {
 
 export type CountFunction = 'Count' | 'HighCount' | 'LowCount'
 
-export interface CountRequest extends CommonQueryParameters {
+export interface CountRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -2434,12 +2440,12 @@ export interface CountRequest extends CommonQueryParameters {
   }
 }
 
-export interface CountResponse {
+export interface CountResponse extends ResponseBase {
   count: long
   _shards: ShardStatistics
 }
 
-export interface CreateApiKeyRequest extends CommonQueryParameters {
+export interface CreateApiKeyRequest extends RequestBase {
   refresh?: Refresh
   body: {
     expiration?: Time
@@ -2448,14 +2454,14 @@ export interface CreateApiKeyRequest extends CommonQueryParameters {
   }
 }
 
-export interface CreateApiKeyResponse {
+export interface CreateApiKeyResponse extends ResponseBase {
   api_key: string
   expiration: long
   id: string
   name: string
 }
 
-export interface CreateAutoFollowPatternRequest extends CommonQueryParameters {
+export interface CreateAutoFollowPatternRequest extends RequestBase {
   name: Name
   body: {
     follow_index_pattern?: string
@@ -2477,7 +2483,7 @@ export interface CreateAutoFollowPatternRequest extends CommonQueryParameters {
 export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface CreateFollowIndexRequest extends CommonQueryParameters {
+export interface CreateFollowIndexRequest extends RequestBase {
   index: IndexName
   wait_for_active_shards?: string
   body: {
@@ -2496,13 +2502,13 @@ export interface CreateFollowIndexRequest extends CommonQueryParameters {
   }
 }
 
-export interface CreateFollowIndexResponse {
+export interface CreateFollowIndexResponse extends ResponseBase {
   follow_index_created: boolean
   follow_index_shards_acked: boolean
   index_following_started: boolean
 }
 
-export interface CreateIndexRequest extends CommonQueryParameters {
+export interface CreateIndexRequest extends RequestBase {
   index: IndexName
   include_type_name?: boolean
   master_timeout?: Time
@@ -2520,7 +2526,7 @@ export interface CreateIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }
 
-export interface CreateRepositoryRequest extends CommonQueryParameters {
+export interface CreateRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
   timeout?: Time
@@ -2533,7 +2539,7 @@ export interface CreateRepositoryRequest extends CommonQueryParameters {
 export interface CreateRepositoryResponse extends AcknowledgedResponseBase {
 }
 
-export interface CreateRequest<TDocument = unknown> extends CommonQueryParameters {
+export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -2550,7 +2556,7 @@ export interface CreateRequest<TDocument = unknown> extends CommonQueryParameter
 export interface CreateResponse extends WriteResponseBase {
 }
 
-export interface CreateRollupJobRequest extends CommonQueryParameters {
+export interface CreateRollupJobRequest extends RequestBase {
   id: Id
   body: {
     cron?: string
@@ -2819,11 +2825,11 @@ export type DateString = string
 
 export type Day = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
-export interface DeactivateWatchRequest extends CommonQueryParameters {
+export interface DeactivateWatchRequest extends RequestBase {
   watch_id: Name
 }
 
-export interface DeactivateWatchResponse {
+export interface DeactivateWatchResponse extends ResponseBase {
   status: ActivationStatus
 }
 
@@ -2849,24 +2855,24 @@ export interface Defaults {
   datafeeds: Datafeeds
 }
 
-export interface DeleteAliasRequest extends CommonQueryParameters {
+export interface DeleteAliasRequest extends RequestBase {
   index: Indices
   name: Names
   master_timeout?: Time
   timeout?: Time
 }
 
-export interface DeleteAliasResponse {
+export interface DeleteAliasResponse extends ResponseBase {
 }
 
-export interface DeleteAutoFollowPatternRequest extends CommonQueryParameters {
+export interface DeleteAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
 export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteByQueryRequest extends CommonQueryParameters {
+export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -2908,7 +2914,7 @@ export interface DeleteByQueryRequest extends CommonQueryParameters {
   }
 }
 
-export interface DeleteByQueryResponse {
+export interface DeleteByQueryResponse extends ResponseBase {
   batches?: long
   deleted?: long
   failures?: Array<BulkIndexByScrollFailure>
@@ -2925,7 +2931,7 @@ export interface DeleteByQueryResponse {
   version_conflicts?: long
 }
 
-export interface DeleteByQueryRethrottleRequest extends CommonQueryParameters {
+export interface DeleteByQueryRethrottleRequest extends RequestBase {
   task_id: Id
   requests_per_second?: long
 }
@@ -2933,7 +2939,7 @@ export interface DeleteByQueryRethrottleRequest extends CommonQueryParameters {
 export interface DeleteByQueryRethrottleResponse extends ListTasksResponse {
 }
 
-export interface DeleteCalendarEventRequest extends CommonQueryParameters {
+export interface DeleteCalendarEventRequest extends RequestBase {
   calendar_id: Id
   event_id: Id
 }
@@ -2941,25 +2947,25 @@ export interface DeleteCalendarEventRequest extends CommonQueryParameters {
 export interface DeleteCalendarEventResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteCalendarJobRequest extends CommonQueryParameters {
+export interface DeleteCalendarJobRequest extends RequestBase {
   calendar_id: Id
   job_id: Id
 }
 
-export interface DeleteCalendarJobResponse {
+export interface DeleteCalendarJobResponse extends ResponseBase {
   calendar_id: string
   description: string
   job_ids: Array<Id>
 }
 
-export interface DeleteCalendarRequest extends CommonQueryParameters {
+export interface DeleteCalendarRequest extends RequestBase {
   calendar_id: Id
 }
 
 export interface DeleteCalendarResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteDatafeedRequest extends CommonQueryParameters {
+export interface DeleteDatafeedRequest extends RequestBase {
   datafeed_id: Id
   force?: boolean
 }
@@ -2967,28 +2973,28 @@ export interface DeleteDatafeedRequest extends CommonQueryParameters {
 export interface DeleteDatafeedResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteEnrichPolicyRequest extends CommonQueryParameters {
+export interface DeleteEnrichPolicyRequest extends RequestBase {
   name: Name
 }
 
 export interface DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteExpiredDataRequest extends CommonQueryParameters {
+export interface DeleteExpiredDataRequest extends RequestBase {
 }
 
-export interface DeleteExpiredDataResponse {
+export interface DeleteExpiredDataResponse extends ResponseBase {
   deleted: boolean
 }
 
-export interface DeleteFilterRequest extends CommonQueryParameters {
+export interface DeleteFilterRequest extends RequestBase {
   filter_id: Id
 }
 
 export interface DeleteFilterResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteForecastRequest extends CommonQueryParameters {
+export interface DeleteForecastRequest extends RequestBase {
   job_id: Id
   forecast_id?: Id
   allow_no_forecasts?: boolean
@@ -2998,7 +3004,7 @@ export interface DeleteForecastRequest extends CommonQueryParameters {
 export interface DeleteForecastResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteIndexRequest extends CommonQueryParameters {
+export interface DeleteIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -3010,7 +3016,7 @@ export interface DeleteIndexRequest extends CommonQueryParameters {
 export interface DeleteIndexResponse extends IndicesResponseBase {
 }
 
-export interface DeleteIndexTemplateRequest extends CommonQueryParameters {
+export interface DeleteIndexTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Time
   timeout?: Time
@@ -3019,7 +3025,7 @@ export interface DeleteIndexTemplateRequest extends CommonQueryParameters {
 export interface DeleteIndexTemplateResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteJobRequest extends CommonQueryParameters {
+export interface DeleteJobRequest extends RequestBase {
   job_id: Id
   force?: boolean
   wait_for_completion?: boolean
@@ -3028,13 +3034,13 @@ export interface DeleteJobRequest extends CommonQueryParameters {
 export interface DeleteJobResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteLicenseRequest extends CommonQueryParameters {
+export interface DeleteLicenseRequest extends RequestBase {
 }
 
-export interface DeleteLicenseResponse {
+export interface DeleteLicenseResponse extends ResponseBase {
 }
 
-export interface DeleteLifecycleRequest extends CommonQueryParameters {
+export interface DeleteLifecycleRequest extends RequestBase {
   policy?: Name
   policy_id: Id
 }
@@ -3042,7 +3048,7 @@ export interface DeleteLifecycleRequest extends CommonQueryParameters {
 export interface DeleteLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteModelSnapshotRequest extends CommonQueryParameters {
+export interface DeleteModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
 }
@@ -3050,7 +3056,7 @@ export interface DeleteModelSnapshotRequest extends CommonQueryParameters {
 export interface DeleteModelSnapshotResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeletePipelineRequest extends CommonQueryParameters {
+export interface DeletePipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
@@ -3059,7 +3065,7 @@ export interface DeletePipelineRequest extends CommonQueryParameters {
 export interface DeletePipelineResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeletePrivilegesRequest extends CommonQueryParameters {
+export interface DeletePrivilegesRequest extends RequestBase {
   application: Name
   name: Name
   refresh?: Refresh
@@ -3068,7 +3074,7 @@ export interface DeletePrivilegesRequest extends CommonQueryParameters {
 export interface DeletePrivilegesResponse extends DictionaryResponseBase<string, Record<string, FoundUserPrivilege>> {
 }
 
-export interface DeleteRepositoryRequest extends CommonQueryParameters {
+export interface DeleteRepositoryRequest extends RequestBase {
   repository: Names
   master_timeout?: Time
   timeout?: Time
@@ -3077,7 +3083,7 @@ export interface DeleteRepositoryRequest extends CommonQueryParameters {
 export interface DeleteRepositoryResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteRequest extends CommonQueryParameters {
+export interface DeleteRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -3094,32 +3100,32 @@ export interface DeleteRequest extends CommonQueryParameters {
 export interface DeleteResponse extends WriteResponseBase {
 }
 
-export interface DeleteRoleMappingRequest extends CommonQueryParameters {
+export interface DeleteRoleMappingRequest extends RequestBase {
   name: Name
   refresh?: Refresh
 }
 
-export interface DeleteRoleMappingResponse {
+export interface DeleteRoleMappingResponse extends ResponseBase {
   found: boolean
 }
 
-export interface DeleteRoleRequest extends CommonQueryParameters {
+export interface DeleteRoleRequest extends RequestBase {
   name: Name
   refresh?: Refresh
 }
 
-export interface DeleteRoleResponse {
+export interface DeleteRoleResponse extends ResponseBase {
   found: boolean
 }
 
-export interface DeleteRollupJobRequest extends CommonQueryParameters {
+export interface DeleteRollupJobRequest extends RequestBase {
   id: Id
 }
 
 export interface DeleteRollupJobResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteScriptRequest extends CommonQueryParameters {
+export interface DeleteScriptRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
@@ -3128,14 +3134,14 @@ export interface DeleteScriptRequest extends CommonQueryParameters {
 export interface DeleteScriptResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteSnapshotLifecycleRequest extends CommonQueryParameters {
+export interface DeleteSnapshotLifecycleRequest extends RequestBase {
   policy_id: Name
 }
 
 export interface DeleteSnapshotLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteSnapshotRequest extends CommonQueryParameters {
+export interface DeleteSnapshotRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Time
@@ -3144,7 +3150,7 @@ export interface DeleteSnapshotRequest extends CommonQueryParameters {
 export interface DeleteSnapshotResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteTransformRequest extends CommonQueryParameters {
+export interface DeleteTransformRequest extends RequestBase {
   transform_id: Name
   force?: boolean
 }
@@ -3152,20 +3158,20 @@ export interface DeleteTransformRequest extends CommonQueryParameters {
 export interface DeleteTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface DeleteUserRequest extends CommonQueryParameters {
+export interface DeleteUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
 }
 
-export interface DeleteUserResponse {
+export interface DeleteUserResponse extends ResponseBase {
   found: boolean
 }
 
-export interface DeleteWatchRequest extends CommonQueryParameters {
+export interface DeleteWatchRequest extends RequestBase {
   id: Name
 }
 
-export interface DeleteWatchResponse {
+export interface DeleteWatchResponse extends ResponseBase {
   found: boolean
   _id: string
   _version: integer
@@ -3185,11 +3191,11 @@ export interface DeprecationInfo {
   url: string
 }
 
-export interface DeprecationInfoRequest extends CommonQueryParameters {
+export interface DeprecationInfoRequest extends RequestBase {
   index?: IndexName
 }
 
-export interface DeprecationInfoResponse {
+export interface DeprecationInfoResponse extends ResponseBase {
   cluster_settings: Array<DeprecationInfo>
   index_settings: Record<string, Array<DeprecationInfo>>
   node_settings: Array<DeprecationInfo>
@@ -3222,7 +3228,7 @@ export interface Detector {
 export interface DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {
 }
 
-export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
+export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
   [key: string]: TValue
 }
 
@@ -3246,12 +3252,12 @@ export interface DisMaxQuery extends QueryBase {
   boost?: float
 }
 
-export interface DisableUserRequest extends CommonQueryParameters {
+export interface DisableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
 }
 
-export interface DisableUserResponse {
+export interface DisableUserResponse extends ResponseBase {
 }
 
 export interface DiscoveryNode {
@@ -3317,7 +3323,7 @@ export interface DocValuesPropertyBase extends CorePropertyBase {
   doc_values: boolean
 }
 
-export interface DocumentExistsRequest extends CommonQueryParameters {
+export interface DocumentExistsRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -3358,7 +3364,7 @@ export interface DropProcessor extends ProcessorBase {
 
 export type DynamicMapping = 'strict'
 
-export interface DynamicResponseBase {
+export interface DynamicResponseBase extends ResponseBase {
 }
 
 export interface DynamicTemplate {
@@ -3438,12 +3444,12 @@ export interface EmailResult {
 export interface EmptyObject {
 }
 
-export interface EnableUserRequest extends CommonQueryParameters {
+export interface EnableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
 }
 
-export interface EnableUserResponse {
+export interface EnableUserResponse extends ResponseBase {
 }
 
 export interface EnrichPolicy {
@@ -3465,10 +3471,10 @@ export interface EnrichProcessor extends ProcessorBase {
   target_field: Field
 }
 
-export interface EnrichStatsRequest extends CommonQueryParameters {
+export interface EnrichStatsRequest extends RequestBase {
 }
 
-export interface EnrichStatsResponse {
+export interface EnrichStatsResponse extends ResponseBase {
   coordinator_stats: Array<CoordinatorStats>
   executing_policies: Array<ExecutingPolicy>
 }
@@ -3507,7 +3513,7 @@ export interface ErrorResponse {
   status: integer
 }
 
-export interface EstimateModelMemoryRequest extends CommonQueryParameters {
+export interface EstimateModelMemoryRequest extends RequestBase {
   body: {
     analysis_config?: AnalysisConfig
     max_bucket_cardinality?: Record<Field, long>
@@ -3515,7 +3521,7 @@ export interface EstimateModelMemoryRequest extends CommonQueryParameters {
   }
 }
 
-export interface EstimateModelMemoryResponse {
+export interface EstimateModelMemoryResponse extends ResponseBase {
   model_memory_estimate: string
 }
 
@@ -3525,12 +3531,12 @@ export interface EwmaModelSettings {
 
 export type ExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
-export interface ExecuteEnrichPolicyRequest extends CommonQueryParameters {
+export interface ExecuteEnrichPolicyRequest extends RequestBase {
   name: Name
   wait_for_completion?: boolean
 }
 
-export interface ExecuteEnrichPolicyResponse {
+export interface ExecuteEnrichPolicyResponse extends ResponseBase {
   status: ExecuteEnrichPolicyStatus
   task_id: TaskId
 }
@@ -3539,7 +3545,7 @@ export interface ExecuteEnrichPolicyStatus {
   phase: EnrichPolicyPhase
 }
 
-export interface ExecutePainlessScriptRequest extends CommonQueryParameters {
+export interface ExecutePainlessScriptRequest extends RequestBase {
   body?: {
     context?: string
     context_setup?: PainlessContextSetup
@@ -3547,25 +3553,25 @@ export interface ExecutePainlessScriptRequest extends CommonQueryParameters {
   }
 }
 
-export interface ExecutePainlessScriptResponse<TResult = unknown> {
+export interface ExecutePainlessScriptResponse<TResult = unknown> extends ResponseBase {
   result: TResult
 }
 
-export interface ExecuteRetentionRequest extends CommonQueryParameters {
+export interface ExecuteRetentionRequest extends RequestBase {
 }
 
 export interface ExecuteRetentionResponse extends AcknowledgedResponseBase {
 }
 
-export interface ExecuteSnapshotLifecycleRequest extends CommonQueryParameters {
+export interface ExecuteSnapshotLifecycleRequest extends RequestBase {
   policy_id: Name
 }
 
-export interface ExecuteSnapshotLifecycleResponse {
+export interface ExecuteSnapshotLifecycleResponse extends ResponseBase {
   snapshot_name: string
 }
 
-export interface ExecuteWatchRequest extends CommonQueryParameters {
+export interface ExecuteWatchRequest extends RequestBase {
   id?: Name
   debug?: boolean
   body?: {
@@ -3579,7 +3585,7 @@ export interface ExecuteWatchRequest extends CommonQueryParameters {
   }
 }
 
-export interface ExecuteWatchResponse {
+export interface ExecuteWatchResponse extends ResponseBase {
   _id: Id
   watch_record: WatchRecord
 }
@@ -3659,17 +3665,17 @@ export interface ExplainAnalyzeToken {
   type: string
 }
 
-export interface ExplainLifecycleRequest extends CommonQueryParameters {
+export interface ExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
 }
 
-export interface ExplainLifecycleResponse {
+export interface ExplainLifecycleResponse extends ResponseBase {
   indices: Record<string, LifecycleExplain>
 }
 
-export interface ExplainRequest extends CommonQueryParameters {
+export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -3691,7 +3697,7 @@ export interface ExplainRequest extends CommonQueryParameters {
   }
 }
 
-export interface ExplainResponse<TDocument = unknown> {
+export interface ExplainResponse<TDocument = unknown> extends ResponseBase {
   _index: IndexName
   _type?: TypeName
   _id: Id
@@ -3786,7 +3792,7 @@ export interface FieldCapabilitiesBodyIndexFilterTermVersionControl {
   value: string
 }
 
-export interface FieldCapabilitiesRequest extends CommonQueryParameters {
+export interface FieldCapabilitiesRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -3798,7 +3804,7 @@ export interface FieldCapabilitiesRequest extends CommonQueryParameters {
   }
 }
 
-export interface FieldCapabilitiesResponse {
+export interface FieldCapabilitiesResponse extends ResponseBase {
   indices: Indices
   fields: Record<Field, Record<string, FieldCapabilities>>
 }
@@ -3980,7 +3986,7 @@ export interface FlattenedUsage extends XPackUsage {
 export interface FloatRangeProperty extends RangePropertyBase {
 }
 
-export interface FlushJobRequest extends CommonQueryParameters {
+export interface FlushJobRequest extends RequestBase {
   job_id: Id
   skip_time?: string
   body?: {
@@ -3991,11 +3997,11 @@ export interface FlushJobRequest extends CommonQueryParameters {
   }
 }
 
-export interface FlushJobResponse {
+export interface FlushJobResponse extends ResponseBase {
   flushed: boolean
 }
 
-export interface FlushRequest extends CommonQueryParameters {
+export interface FlushRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4070,19 +4076,19 @@ export interface FollowIndexStats {
   shards: Array<FollowIndexShardStats>
 }
 
-export interface FollowIndexStatsRequest extends CommonQueryParameters {
+export interface FollowIndexStatsRequest extends RequestBase {
   index: Indices
 }
 
-export interface FollowIndexStatsResponse {
+export interface FollowIndexStatsResponse extends ResponseBase {
   indices: Array<FollowIndexStats>
 }
 
-export interface FollowInfoRequest extends CommonQueryParameters {
+export interface FollowInfoRequest extends RequestBase {
   index: Indices
 }
 
-export interface FollowInfoResponse {
+export interface FollowInfoResponse extends ResponseBase {
   follower_indices: Array<FollowerInfo>
 }
 
@@ -4096,7 +4102,7 @@ export interface FollowerInfo {
   status: FollowerIndexStatus
 }
 
-export interface ForceMergeRequest extends CommonQueryParameters {
+export interface ForceMergeRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4115,7 +4121,7 @@ export interface ForeachProcessor extends ProcessorBase {
   processor: ProcessorContainer
 }
 
-export interface ForecastJobRequest extends CommonQueryParameters {
+export interface ForecastJobRequest extends RequestBase {
   job_id: Id
   body?: {
     duration?: Time
@@ -4136,7 +4142,7 @@ export interface ForecastStatistics {
   total: long
 }
 
-export interface ForgetFollowerIndexRequest extends CommonQueryParameters {
+export interface ForgetFollowerIndexRequest extends RequestBase {
   index: IndexName
   body: {
     follower_cluster?: string
@@ -4146,7 +4152,7 @@ export interface ForgetFollowerIndexRequest extends CommonQueryParameters {
   }
 }
 
-export interface ForgetFollowerIndexResponse {
+export interface ForgetFollowerIndexResponse extends ResponseBase {
   _shards: ShardStatistics
 }
 
@@ -4162,7 +4168,7 @@ export interface FoundUserPrivilege {
   found: boolean
 }
 
-export interface FreezeIndexRequest extends CommonQueryParameters {
+export interface FreezeIndexRequest extends RequestBase {
   index: IndexName
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4406,7 +4412,7 @@ export type GeoValidationMethod = 'coerce' | 'ignore_malformed' | 'strict'
 
 export type GeographicFunction = 'LatLong'
 
-export interface GetAliasRequest extends CommonQueryParameters {
+export interface GetAliasRequest extends RequestBase {
   name?: Names
   index?: Indices
   allow_no_indices?: boolean
@@ -4418,7 +4424,7 @@ export interface GetAliasRequest extends CommonQueryParameters {
 export interface GetAliasResponse extends DictionaryResponseBase<IndexName, IndexAliases> {
 }
 
-export interface GetAnomalyRecordsRequest extends CommonQueryParameters {
+export interface GetAnomalyRecordsRequest extends RequestBase {
   job_id: Id
   body?: {
     desc?: boolean
@@ -4431,12 +4437,12 @@ export interface GetAnomalyRecordsRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetAnomalyRecordsResponse {
+export interface GetAnomalyRecordsResponse extends ResponseBase {
   count: long
   records: Array<AnomalyRecord>
 }
 
-export interface GetApiKeyRequest extends CommonQueryParameters {
+export interface GetApiKeyRequest extends RequestBase {
   id?: string
   name?: string
   owner?: boolean
@@ -4444,26 +4450,26 @@ export interface GetApiKeyRequest extends CommonQueryParameters {
   username?: string
 }
 
-export interface GetApiKeyResponse {
+export interface GetApiKeyResponse extends ResponseBase {
   api_keys: Array<ApiKeys>
 }
 
-export interface GetAutoFollowPatternRequest extends CommonQueryParameters {
+export interface GetAutoFollowPatternRequest extends RequestBase {
   name?: Name
 }
 
-export interface GetAutoFollowPatternResponse {
+export interface GetAutoFollowPatternResponse extends ResponseBase {
   patterns: Record<string, AutoFollowPattern>
 }
 
-export interface GetBasicLicenseStatusRequest extends CommonQueryParameters {
+export interface GetBasicLicenseStatusRequest extends RequestBase {
 }
 
-export interface GetBasicLicenseStatusResponse {
+export interface GetBasicLicenseStatusResponse extends ResponseBase {
   eligible_to_start_basic: boolean
 }
 
-export interface GetBucketsRequest extends CommonQueryParameters {
+export interface GetBucketsRequest extends RequestBase {
   job_id: Id
   timestamp?: Id
   body?: {
@@ -4478,20 +4484,20 @@ export interface GetBucketsRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetBucketsResponse {
+export interface GetBucketsResponse extends ResponseBase {
   buckets: Array<ResultBucket>
   count: long
 }
 
-export interface GetBuiltinPrivilegesRequest extends CommonQueryParameters {
+export interface GetBuiltinPrivilegesRequest extends RequestBase {
 }
 
-export interface GetBuiltinPrivilegesResponse {
+export interface GetBuiltinPrivilegesResponse extends ResponseBase {
   cluster: Array<string>
   index: Array<string>
 }
 
-export interface GetCalendarEventsRequest extends CommonQueryParameters {
+export interface GetCalendarEventsRequest extends RequestBase {
   calendar_id: Id
   end?: DateString
   job_id?: string
@@ -4502,24 +4508,24 @@ export interface GetCalendarEventsRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetCalendarEventsResponse {
+export interface GetCalendarEventsResponse extends ResponseBase {
   count: integer
   events: Array<ScheduledEvent>
 }
 
-export interface GetCalendarsRequest extends CommonQueryParameters {
+export interface GetCalendarsRequest extends RequestBase {
   calendar_id?: Id
   body?: {
     page?: Page
   }
 }
 
-export interface GetCalendarsResponse {
+export interface GetCalendarsResponse extends ResponseBase {
   calendars: Array<Calendar>
   count: long
 }
 
-export interface GetCategoriesRequest extends CommonQueryParameters {
+export interface GetCategoriesRequest extends RequestBase {
   job_id: Id
   category_id?: CategoryId
   body?: {
@@ -4527,47 +4533,47 @@ export interface GetCategoriesRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetCategoriesResponse {
+export interface GetCategoriesResponse extends ResponseBase {
   categories: Array<CategoryDefinition>
   count: long
 }
 
-export interface GetCertificatesRequest extends CommonQueryParameters {
+export interface GetCertificatesRequest extends RequestBase {
 }
 
-export interface GetCertificatesResponse {
+export interface GetCertificatesResponse extends ResponseBase {
   certificates: Array<ClusterCertificateInformation>
 }
 
-export interface GetDatafeedStatsRequest extends CommonQueryParameters {
+export interface GetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
 }
 
-export interface GetDatafeedStatsResponse {
+export interface GetDatafeedStatsResponse extends ResponseBase {
   count: long
   datafeeds: Array<DatafeedStats>
 }
 
-export interface GetDatafeedsRequest extends CommonQueryParameters {
+export interface GetDatafeedsRequest extends RequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
 }
 
-export interface GetDatafeedsResponse {
+export interface GetDatafeedsResponse extends ResponseBase {
   count: long
   datafeeds: Array<DatafeedConfig>
 }
 
-export interface GetEnrichPolicyRequest extends CommonQueryParameters {
+export interface GetEnrichPolicyRequest extends RequestBase {
   name?: Names
 }
 
-export interface GetEnrichPolicyResponse {
+export interface GetEnrichPolicyResponse extends ResponseBase {
   policies: Array<NamedPolicyMetadata>
 }
 
-export interface GetFieldMappingRequest extends CommonQueryParameters {
+export interface GetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
   type?: Types
@@ -4582,25 +4588,25 @@ export interface GetFieldMappingRequest extends CommonQueryParameters {
 export interface GetFieldMappingResponse extends DictionaryResponseBase<IndexName, TypeFieldMappings> {
 }
 
-export interface GetFiltersRequest extends CommonQueryParameters {
+export interface GetFiltersRequest extends RequestBase {
   filter_id?: Id
   from?: integer
   size?: integer
 }
 
-export interface GetFiltersResponse {
+export interface GetFiltersResponse extends ResponseBase {
   count: long
   filters: Array<Filter>
 }
 
-export interface GetIlmStatusRequest extends CommonQueryParameters {
+export interface GetIlmStatusRequest extends RequestBase {
 }
 
-export interface GetIlmStatusResponse {
+export interface GetIlmStatusResponse extends ResponseBase {
   operation_mode: LifecycleOperationMode
 }
 
-export interface GetIndexRequest extends CommonQueryParameters {
+export interface GetIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -4615,7 +4621,7 @@ export interface GetIndexRequest extends CommonQueryParameters {
 export interface GetIndexResponse extends DictionaryResponseBase<IndexName, IndexState> {
 }
 
-export interface GetIndexSettingsRequest extends CommonQueryParameters {
+export interface GetIndexSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
   allow_no_indices?: boolean
@@ -4630,7 +4636,7 @@ export interface GetIndexSettingsRequest extends CommonQueryParameters {
 export interface GetIndexSettingsResponse extends DictionaryResponseBase<IndexName, IndexState> {
 }
 
-export interface GetIndexTemplateRequest extends CommonQueryParameters {
+export interface GetIndexTemplateRequest extends RequestBase {
   name?: Names
   flat_settings?: boolean
   include_type_name?: boolean
@@ -4641,7 +4647,7 @@ export interface GetIndexTemplateRequest extends CommonQueryParameters {
 export interface GetIndexTemplateResponse extends DictionaryResponseBase<string, TemplateMapping> {
 }
 
-export interface GetInfluencersRequest extends CommonQueryParameters {
+export interface GetInfluencersRequest extends RequestBase {
   job_id: Id
   body?: {
     descending?: boolean
@@ -4654,48 +4660,48 @@ export interface GetInfluencersRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetInfluencersResponse {
+export interface GetInfluencersResponse extends ResponseBase {
   count: long
   influencers: Array<BucketInfluencer>
 }
 
-export interface GetJobStatsRequest extends CommonQueryParameters {
+export interface GetJobStatsRequest extends RequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
 }
 
-export interface GetJobStatsResponse {
+export interface GetJobStatsResponse extends ResponseBase {
   count: long
   jobs: Array<JobStats>
 }
 
-export interface GetJobsRequest extends CommonQueryParameters {
+export interface GetJobsRequest extends RequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
 }
 
-export interface GetJobsResponse {
+export interface GetJobsResponse extends ResponseBase {
   count: long
   jobs: Array<Job>
 }
 
-export interface GetLicenseRequest extends CommonQueryParameters {
+export interface GetLicenseRequest extends RequestBase {
   accept_enterprise?: boolean
   local?: boolean
 }
 
-export interface GetLicenseResponse {
+export interface GetLicenseResponse extends ResponseBase {
   license: LicenseInformation
 }
 
-export interface GetLifecycleRequest extends CommonQueryParameters {
+export interface GetLifecycleRequest extends RequestBase {
   policy?: Name
 }
 
 export interface GetLifecycleResponse extends DictionaryResponseBase<string, LifecyclePolicy> {
 }
 
-export interface GetMappingRequest extends CommonQueryParameters {
+export interface GetMappingRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -4709,7 +4715,7 @@ export interface GetMappingRequest extends CommonQueryParameters {
 export interface GetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappings> {
 }
 
-export interface GetModelSnapshotsRequest extends CommonQueryParameters {
+export interface GetModelSnapshotsRequest extends RequestBase {
   job_id: Id
   snapshot_id?: Id
   body?: {
@@ -4721,12 +4727,12 @@ export interface GetModelSnapshotsRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetModelSnapshotsResponse {
+export interface GetModelSnapshotsResponse extends ResponseBase {
   count: long
   model_snapshots: Array<ModelSnapshot>
 }
 
-export interface GetOverallBucketsRequest extends CommonQueryParameters {
+export interface GetOverallBucketsRequest extends RequestBase {
   job_id: Id
   body?: {
     allow_no_jobs?: boolean
@@ -4739,12 +4745,12 @@ export interface GetOverallBucketsRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetOverallBucketsResponse {
+export interface GetOverallBucketsResponse extends ResponseBase {
   count: long
   overall_buckets: Array<OverallBucket>
 }
 
-export interface GetPipelineRequest extends CommonQueryParameters {
+export interface GetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Time
 }
@@ -4752,7 +4758,7 @@ export interface GetPipelineRequest extends CommonQueryParameters {
 export interface GetPipelineResponse extends DictionaryResponseBase<string, Pipeline> {
 }
 
-export interface GetPrivilegesRequest extends CommonQueryParameters {
+export interface GetPrivilegesRequest extends RequestBase {
   application?: Name
   name?: Name
 }
@@ -4760,17 +4766,17 @@ export interface GetPrivilegesRequest extends CommonQueryParameters {
 export interface GetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, PrivilegesActions>> {
 }
 
-export interface GetRepositoryRequest extends CommonQueryParameters {
+export interface GetRepositoryRequest extends RequestBase {
   repository?: Names
   local?: boolean
   master_timeout?: Time
 }
 
-export interface GetRepositoryResponse {
+export interface GetRepositoryResponse extends ResponseBase {
   repositories: Record<string, SnapshotRepository>
 }
 
-export interface GetRequest extends CommonQueryParameters {
+export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -4787,7 +4793,7 @@ export interface GetRequest extends CommonQueryParameters {
   _source?: boolean | string | Array<string>
 }
 
-export interface GetResponse<TDocument = unknown> {
+export interface GetResponse<TDocument = unknown> extends ResponseBase {
   _index: string
   fields?: Record<string, any>
   found: boolean
@@ -4800,71 +4806,71 @@ export interface GetResponse<TDocument = unknown> {
   _version?: long
 }
 
-export interface GetRoleMappingRequest extends CommonQueryParameters {
+export interface GetRoleMappingRequest extends RequestBase {
   name?: Name
 }
 
 export interface GetRoleMappingResponse extends DictionaryResponseBase<string, XPackRoleMapping> {
 }
 
-export interface GetRoleRequest extends CommonQueryParameters {
+export interface GetRoleRequest extends RequestBase {
   name?: Name
 }
 
 export interface GetRoleResponse extends DictionaryResponseBase<string, XPackRole> {
 }
 
-export interface GetRollupCapabilitiesRequest extends CommonQueryParameters {
+export interface GetRollupCapabilitiesRequest extends RequestBase {
   id?: Id
 }
 
 export interface GetRollupCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupCapabilities> {
 }
 
-export interface GetRollupIndexCapabilitiesRequest extends CommonQueryParameters {
+export interface GetRollupIndexCapabilitiesRequest extends RequestBase {
   index: Id
 }
 
 export interface GetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupIndexCapabilities> {
 }
 
-export interface GetRollupJobRequest extends CommonQueryParameters {
+export interface GetRollupJobRequest extends RequestBase {
   id?: Id
 }
 
-export interface GetRollupJobResponse {
+export interface GetRollupJobResponse extends ResponseBase {
   jobs: Array<RollupJobInformation>
 }
 
-export interface GetScriptRequest extends CommonQueryParameters {
+export interface GetScriptRequest extends RequestBase {
   id: Id
   master_timeout?: Time
 }
 
-export interface GetScriptResponse {
+export interface GetScriptResponse extends ResponseBase {
   _id: Id
   found: boolean
   script?: StoredScript
 }
 
-export interface GetSnapshotLifecycleManagementStatusRequest extends CommonQueryParameters {
+export interface GetSnapshotLifecycleManagementStatusRequest extends RequestBase {
 }
 
-export interface GetSnapshotLifecycleManagementStatusResponse {
+export interface GetSnapshotLifecycleManagementStatusResponse extends ResponseBase {
   operation_mode: LifecycleOperationMode
 }
 
-export interface GetSnapshotLifecycleRequest extends CommonQueryParameters {
+export interface GetSnapshotLifecycleRequest extends RequestBase {
   policy_id?: Names
 }
 
 export interface GetSnapshotLifecycleResponse extends DictionaryResponseBase<string, SnapshotLifecyclePolicyMetadata> {
 }
 
-export interface GetSnapshotLifecycleStatsRequest extends CommonQueryParameters {
+export interface GetSnapshotLifecycleStatsRequest extends RequestBase {
 }
 
-export interface GetSnapshotLifecycleStatsResponse {
+export interface GetSnapshotLifecycleStatsResponse extends ResponseBase {
   retention_deletion_time: string
   retention_deletion_time_millis: long
   retention_failed: long
@@ -4876,7 +4882,7 @@ export interface GetSnapshotLifecycleStatsResponse {
   total_snapshots_taken: long
 }
 
-export interface GetSnapshotRequest extends CommonQueryParameters {
+export interface GetSnapshotRequest extends RequestBase {
   repository: Name
   snapshot: Names
   ignore_unavailable?: boolean
@@ -4884,7 +4890,7 @@ export interface GetSnapshotRequest extends CommonQueryParameters {
   verbose?: boolean
 }
 
-export interface GetSnapshotResponse {
+export interface GetSnapshotResponse extends ResponseBase {
   snapshots: Array<SnapshotInfo>
 }
 
@@ -4901,49 +4907,49 @@ export interface GetStats {
   total: long
 }
 
-export interface GetTaskRequest extends CommonQueryParameters {
+export interface GetTaskRequest extends RequestBase {
   task_id: Id
   timeout?: Time
   wait_for_completion?: boolean
 }
 
-export interface GetTaskResponse {
+export interface GetTaskResponse extends ResponseBase {
   completed: boolean
   task: TaskInfo
 }
 
-export interface GetTransformRequest extends CommonQueryParameters {
+export interface GetTransformRequest extends RequestBase {
   transform_id?: Name
   allow_no_match?: boolean
   from?: integer
   size?: integer
 }
 
-export interface GetTransformResponse {
+export interface GetTransformResponse extends ResponseBase {
   count: long
   transforms: Array<Transform>
 }
 
-export interface GetTransformStatsRequest extends CommonQueryParameters {
+export interface GetTransformStatsRequest extends RequestBase {
   transform_id: Name
   allow_no_match?: boolean
   from?: long
   size?: long
 }
 
-export interface GetTransformStatsResponse {
+export interface GetTransformStatsResponse extends ResponseBase {
   count: long
   transforms: Array<TransformStats>
 }
 
-export interface GetTrialLicenseStatusRequest extends CommonQueryParameters {
+export interface GetTrialLicenseStatusRequest extends RequestBase {
 }
 
-export interface GetTrialLicenseStatusResponse {
+export interface GetTrialLicenseStatusResponse extends ResponseBase {
   eligible_to_start_trial: boolean
 }
 
-export interface GetUserAccessTokenRequest extends CommonQueryParameters {
+export interface GetUserAccessTokenRequest extends RequestBase {
   body: {
     grant_type?: AccessTokenGrantType
     scope?: string
@@ -4954,7 +4960,7 @@ export interface GetUserAccessTokenRequest extends CommonQueryParameters {
   }
 }
 
-export interface GetUserAccessTokenResponse {
+export interface GetUserAccessTokenResponse extends ResponseBase {
   access_token: string
   expires_in: long
   scope: string
@@ -4964,10 +4970,10 @@ export interface GetUserAccessTokenResponse {
   authentication: string
 }
 
-export interface GetUserPrivilegesRequest extends CommonQueryParameters {
+export interface GetUserPrivilegesRequest extends RequestBase {
 }
 
-export interface GetUserPrivilegesResponse {
+export interface GetUserPrivilegesResponse extends ResponseBase {
   applications: Array<ApplicationResourcePrivileges>
   cluster: Array<string>
   global: Array<GlobalPrivileges>
@@ -4975,18 +4981,18 @@ export interface GetUserPrivilegesResponse {
   run_as: Array<string>
 }
 
-export interface GetUserRequest extends CommonQueryParameters {
+export interface GetUserRequest extends RequestBase {
   username?: Names
 }
 
 export interface GetUserResponse extends DictionaryResponseBase<string, XPackUser> {
 }
 
-export interface GetWatchRequest extends CommonQueryParameters {
+export interface GetWatchRequest extends RequestBase {
   id: Name
 }
 
-export interface GetWatchResponse {
+export interface GetWatchResponse extends ResponseBase {
   found: boolean
   _id: Id
   status?: WatchStatus
@@ -5021,7 +5027,7 @@ export interface GraphExploreControls {
   use_significance: boolean
 }
 
-export interface GraphExploreRequest extends CommonQueryParameters {
+export interface GraphExploreRequest extends RequestBase {
   index: Indices
   type?: Types
   routing?: Routing
@@ -5034,7 +5040,7 @@ export interface GraphExploreRequest extends CommonQueryParameters {
   }
 }
 
-export interface GraphExploreResponse {
+export interface GraphExploreResponse extends ResponseBase {
   connections: Array<GraphConnection>
   failures: Array<ShardFailure>
   timed_out: boolean
@@ -5071,10 +5077,10 @@ export interface GrokProcessor extends ProcessorBase {
   trace_match: boolean
 }
 
-export interface GrokProcessorPatternsRequest extends CommonQueryParameters {
+export interface GrokProcessorPatternsRequest extends RequestBase {
 }
 
-export interface GrokProcessorPatternsResponse {
+export interface GrokProcessorPatternsResponse extends ResponseBase {
   patterns: Record<string, string>
 }
 
@@ -5106,7 +5112,7 @@ export interface HasParentQuery extends QueryBase {
   score?: boolean
 }
 
-export interface HasPrivilegesRequest extends CommonQueryParameters {
+export interface HasPrivilegesRequest extends RequestBase {
   user?: Name
   body: {
     application?: Array<ApplicationPrivilegesCheck>
@@ -5115,7 +5121,7 @@ export interface HasPrivilegesRequest extends CommonQueryParameters {
   }
 }
 
-export interface HasPrivilegesResponse {
+export interface HasPrivilegesResponse extends ResponseBase {
   application: Record<string, Array<ResourcePrivileges>>
   cluster: Record<string, boolean>
   has_all_requested: boolean
@@ -5456,7 +5462,7 @@ export interface IndexAliases {
   aliases: Record<string, AliasDefinition>
 }
 
-export interface IndexExistsRequest extends CommonQueryParameters {
+export interface IndexExistsRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -5500,7 +5506,7 @@ export interface IndexPrivilegesCheck {
   privileges: Array<string>
 }
 
-export interface IndexRequest<TDocument = unknown> extends CommonQueryParameters {
+export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
   type?: Type
@@ -5556,7 +5562,7 @@ export interface IndexStats {
   warmer?: WarmerStats
 }
 
-export interface IndexTemplateExistsRequest extends CommonQueryParameters {
+export interface IndexTemplateExistsRequest extends RequestBase {
   name: Names
   flat_settings?: boolean
   local?: boolean
@@ -5628,7 +5634,7 @@ export interface IndicesShardStores {
   shards: Record<string, ShardStoreWrapper>
 }
 
-export interface IndicesShardStoresRequest extends CommonQueryParameters {
+export interface IndicesShardStoresRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -5636,7 +5642,7 @@ export interface IndicesShardStoresRequest extends CommonQueryParameters {
   status?: Array<string>
 }
 
-export interface IndicesShardStoresResponse {
+export interface IndicesShardStoresResponse extends ResponseBase {
   indices: Record<string, IndicesShardStores>
 }
 
@@ -5647,7 +5653,7 @@ export interface IndicesStats {
   uuid?: string
 }
 
-export interface IndicesStatsRequest extends CommonQueryParameters {
+export interface IndicesStatsRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
   completion_fields?: Fields
@@ -5662,7 +5668,7 @@ export interface IndicesStatsRequest extends CommonQueryParameters {
   types?: Types
 }
 
-export interface IndicesStatsResponse {
+export interface IndicesStatsResponse extends ResponseBase {
   indices?: Record<string, IndicesStats>
   _shards: ShardStatistics
   _all: IndicesStats
@@ -5832,7 +5838,7 @@ export interface IntervalsWildcard {
   use_field?: Field
 }
 
-export interface InvalidateApiKeyRequest extends CommonQueryParameters {
+export interface InvalidateApiKeyRequest extends RequestBase {
   body: {
     id?: string
     ids?: Array<string>
@@ -5843,14 +5849,14 @@ export interface InvalidateApiKeyRequest extends CommonQueryParameters {
   }
 }
 
-export interface InvalidateApiKeyResponse {
+export interface InvalidateApiKeyResponse extends ResponseBase {
   error_count: integer
   error_details?: Array<ErrorCause>
   invalidated_api_keys: Array<string>
   previously_invalidated_api_keys: Array<string>
 }
 
-export interface InvalidateUserAccessTokenRequest extends CommonQueryParameters {
+export interface InvalidateUserAccessTokenRequest extends RequestBase {
   body: {
     token?: string
     refresh_token?: string
@@ -5859,7 +5865,7 @@ export interface InvalidateUserAccessTokenRequest extends CommonQueryParameters 
   }
 }
 
-export interface InvalidateUserAccessTokenResponse {
+export interface InvalidateUserAccessTokenResponse extends ResponseBase {
   error_count: long
   error_details?: Array<ErrorCause>
   invalidated_tokens: long
@@ -6207,7 +6213,7 @@ export interface LinearInterpolationSmoothingModel {
   unigram_lambda: double
 }
 
-export interface ListTasksRequest extends CommonQueryParameters {
+export interface ListTasksRequest extends RequestBase {
   actions?: Array<string>
   detailed?: boolean
   group_by?: GroupBy
@@ -6217,7 +6223,7 @@ export interface ListTasksRequest extends CommonQueryParameters {
   wait_for_completion?: boolean
 }
 
-export interface ListTasksResponse {
+export interface ListTasksResponse extends ResponseBase {
   node_failures?: Array<ErrorCause>
   nodes: Record<string, TaskExecutingNode>
 }
@@ -6252,10 +6258,10 @@ export interface LowercaseTokenFilter extends TokenFilterBase {
 export interface LowercaseTokenizer extends TokenizerBase {
 }
 
-export interface MachineLearningInfoRequest extends CommonQueryParameters {
+export interface MachineLearningInfoRequest extends RequestBase {
 }
 
-export interface MachineLearningInfoResponse {
+export interface MachineLearningInfoResponse extends ResponseBase {
   defaults: Defaults
   limits: Limits
   upgrade_mode: boolean
@@ -6496,7 +6502,7 @@ export interface MoreLikeThisQuery extends QueryBase {
   version_type?: VersionType
 }
 
-export interface MoveToStepRequest extends CommonQueryParameters {
+export interface MoveToStepRequest extends RequestBase {
   index: IndexName
   body?: {
     current_step?: StepKey
@@ -6560,7 +6566,7 @@ export interface MultiGetOperation {
   version_type?: VersionType
 }
 
-export interface MultiGetRequest extends CommonQueryParameters {
+export interface MultiGetRequest extends RequestBase {
   index?: IndexName
   type?: Type
   preference?: string
@@ -6578,7 +6584,7 @@ export interface MultiGetRequest extends CommonQueryParameters {
   }
 }
 
-export interface MultiGetResponse<TDocument = unknown> {
+export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
   docs: Array<MultiGetHit<TDocument>>
 }
 
@@ -6608,7 +6614,7 @@ export interface MultiMatchQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
-export interface MultiSearchRequest extends CommonQueryParameters {
+export interface MultiSearchRequest extends RequestBase {
   index?: Indices
   type?: Types
   ccs_minimize_roundtrips?: boolean
@@ -6623,11 +6629,11 @@ export interface MultiSearchRequest extends CommonQueryParameters {
   }
 }
 
-export interface MultiSearchResponse {
+export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
-export interface MultiSearchTemplateRequest extends CommonQueryParameters {
+export interface MultiSearchTemplateRequest extends RequestBase {
   index?: Indices
   type?: Types
   ccs_minimize_roundtrips?: boolean
@@ -6658,7 +6664,7 @@ export interface MultiTermVectorOperation {
   version_type: VersionType
 }
 
-export interface MultiTermVectorsRequest extends CommonQueryParameters {
+export interface MultiTermVectorsRequest extends RequestBase {
   index?: IndexName
   type?: Type
   fields?: Fields
@@ -6678,7 +6684,7 @@ export interface MultiTermVectorsRequest extends CommonQueryParameters {
   }
 }
 
-export interface MultiTermVectorsResponse {
+export interface MultiTermVectorsResponse extends ResponseBase {
   docs: Array<TermVectorsResult>
 }
 
@@ -6992,7 +6998,7 @@ export interface NodeUsageInformation {
   aggregations: any
 }
 
-export interface NodesHotThreadsRequest extends CommonQueryParameters {
+export interface NodesHotThreadsRequest extends RequestBase {
   node_id?: NodeIds
   ignore_idle_threads?: boolean
   interval?: Time
@@ -7002,11 +7008,11 @@ export interface NodesHotThreadsRequest extends CommonQueryParameters {
   timeout?: Time
 }
 
-export interface NodesHotThreadsResponse {
+export interface NodesHotThreadsResponse extends ResponseBase {
   hot_threads: Array<HotThreadInformation>
 }
 
-export interface NodesInfoRequest extends CommonQueryParameters {
+export interface NodesInfoRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   flat_settings?: boolean
@@ -7018,11 +7024,11 @@ export interface NodesInfoResponse extends NodesResponseBase {
   nodes: Record<string, NodeInfo>
 }
 
-export interface NodesResponseBase {
+export interface NodesResponseBase extends ResponseBase {
   _nodes: NodeStatistics
 }
 
-export interface NodesStatsRequest extends CommonQueryParameters {
+export interface NodesStatsRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   index_metric?: Metrics
@@ -7041,7 +7047,7 @@ export interface NodesStatsResponse extends NodesResponseBase {
   nodes: Record<string, NodeStats>
 }
 
-export interface NodesUsageRequest extends CommonQueryParameters {
+export interface NodesUsageRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   timeout?: Time
@@ -7116,7 +7122,7 @@ export interface ObjectProperty extends CorePropertyBase {
 
 export type OpType = 'index' | 'create'
 
-export interface OpenIndexRequest extends CommonQueryParameters {
+export interface OpenIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -7130,14 +7136,14 @@ export interface OpenIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }
 
-export interface OpenJobRequest extends CommonQueryParameters {
+export interface OpenJobRequest extends RequestBase {
   job_id: Id
   body?: {
     timeout?: Time
   }
 }
 
-export interface OpenJobResponse {
+export interface OpenJobResponse extends ResponseBase {
   opened: boolean
 }
 
@@ -7271,14 +7277,14 @@ export interface PatternTokenizer extends TokenizerBase {
   pattern: string
 }
 
-export interface PauseAutoFollowPatternRequest extends CommonQueryParameters {
+export interface PauseAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
 export interface PauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface PauseFollowIndexRequest extends CommonQueryParameters {
+export interface PauseFollowIndexRequest extends RequestBase {
   index: IndexName
 }
 
@@ -7406,7 +7412,7 @@ export interface PhraseSuggester extends SuggesterBase {
   token_limit?: integer
 }
 
-export interface PingRequest extends CommonQueryParameters {
+export interface PingRequest extends RequestBase {
 }
 
 export type PingResponse = boolean
@@ -7465,18 +7471,18 @@ export interface Policy {
 export interface PorterStemTokenFilter extends TokenFilterBase {
 }
 
-export interface PostCalendarEventsRequest extends CommonQueryParameters {
+export interface PostCalendarEventsRequest extends RequestBase {
   calendar_id: Id
   body: {
     events?: Array<ScheduledEvent>
   }
 }
 
-export interface PostCalendarEventsResponse {
+export interface PostCalendarEventsResponse extends ResponseBase {
   events: Array<ScheduledEvent>
 }
 
-export interface PostJobDataRequest extends CommonQueryParameters {
+export interface PostJobDataRequest extends RequestBase {
   job_id: Id
   reset_end?: DateString
   reset_start?: DateString
@@ -7485,7 +7491,7 @@ export interface PostJobDataRequest extends CommonQueryParameters {
   }
 }
 
-export interface PostJobDataResponse {
+export interface PostJobDataResponse extends ResponseBase {
   bucket_count: long
   earliest_record_timestamp: DateString
   empty_bucket_count: long
@@ -7503,14 +7509,14 @@ export interface PostJobDataResponse {
   sparse_bucket_count: long
 }
 
-export interface PostLicenseRequest extends CommonQueryParameters {
+export interface PostLicenseRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: License
   }
 }
 
-export interface PostLicenseResponse {
+export interface PostLicenseResponse extends ResponseBase {
   acknowledge: LicenseAcknowledgement
   acknowledged: boolean
   license_status: LicenseStatus
@@ -7525,15 +7531,15 @@ export interface PrefixQuery extends QueryBase {
   value: string
 }
 
-export interface PreviewDatafeedRequest extends CommonQueryParameters {
+export interface PreviewDatafeedRequest extends RequestBase {
   datafeed_id: Id
 }
 
-export interface PreviewDatafeedResponse<TDocument = unknown> {
+export interface PreviewDatafeedResponse<TDocument = unknown> extends ResponseBase {
   data: Array<TDocument>
 }
 
-export interface PreviewTransformRequest extends CommonQueryParameters {
+export interface PreviewTransformRequest extends RequestBase {
   body: {
     description?: string
     dest?: TransformDestination
@@ -7544,7 +7550,7 @@ export interface PreviewTransformRequest extends CommonQueryParameters {
   }
 }
 
-export interface PreviewTransformResponse<TTransform = unknown> {
+export interface PreviewTransformResponse<TTransform = unknown> extends ResponseBase {
   generated_dest_index: IndexState
   preview: Array<TTransform>
 }
@@ -7621,7 +7627,7 @@ export type PropertyName = string
 export interface PropertyWithClrOrigin {
 }
 
-export interface PutAliasRequest extends CommonQueryParameters {
+export interface PutAliasRequest extends RequestBase {
   index: Indices
   name: Name
   master_timeout?: Time
@@ -7635,34 +7641,34 @@ export interface PutAliasRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutAliasResponse {
+export interface PutAliasResponse extends ResponseBase {
 }
 
-export interface PutCalendarJobRequest extends CommonQueryParameters {
+export interface PutCalendarJobRequest extends RequestBase {
   calendar_id: Id
   job_id: Id
 }
 
-export interface PutCalendarJobResponse {
+export interface PutCalendarJobResponse extends ResponseBase {
   calendar_id: string
   description: string
   job_ids: Array<string>
 }
 
-export interface PutCalendarRequest extends CommonQueryParameters {
+export interface PutCalendarRequest extends RequestBase {
   calendar_id: Id
   body?: {
     description?: string
   }
 }
 
-export interface PutCalendarResponse {
+export interface PutCalendarResponse extends ResponseBase {
   calendar_id: string
   description: string
   job_ids: Array<string>
 }
 
-export interface PutDatafeedRequest extends CommonQueryParameters {
+export interface PutDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -7682,7 +7688,7 @@ export interface PutDatafeedRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutDatafeedResponse {
+export interface PutDatafeedResponse extends ResponseBase {
   aggregations: Record<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: string
@@ -7696,7 +7702,7 @@ export interface PutDatafeedResponse {
   scroll_size: integer
 }
 
-export interface PutEnrichPolicyRequest extends CommonQueryParameters {
+export interface PutEnrichPolicyRequest extends RequestBase {
   name: Name
   body: {
     geo_match?: EnrichPolicy
@@ -7707,7 +7713,7 @@ export interface PutEnrichPolicyRequest extends CommonQueryParameters {
 export interface PutEnrichPolicyResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutFilterRequest extends CommonQueryParameters {
+export interface PutFilterRequest extends RequestBase {
   filter_id: Id
   body: {
     description?: string
@@ -7715,13 +7721,13 @@ export interface PutFilterRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutFilterResponse {
+export interface PutFilterResponse extends ResponseBase {
   description: string
   filter_id: string
   items: Array<string>
 }
 
-export interface PutIndexTemplateRequest extends CommonQueryParameters {
+export interface PutIndexTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   flat_settings?: boolean
@@ -7741,7 +7747,7 @@ export interface PutIndexTemplateRequest extends CommonQueryParameters {
 export interface PutIndexTemplateResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutJobRequest extends CommonQueryParameters {
+export interface PutJobRequest extends RequestBase {
   job_id: Id
   body: {
     allow_lazy_open?: boolean
@@ -7755,7 +7761,7 @@ export interface PutJobRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutJobResponse {
+export interface PutJobResponse extends ResponseBase {
   allow_lazy_open: boolean
   analysis_config: AnalysisConfig
   analysis_limits: AnalysisLimits
@@ -7773,7 +7779,7 @@ export interface PutJobResponse {
   results_retention_days: long
 }
 
-export interface PutLifecycleRequest extends CommonQueryParameters {
+export interface PutLifecycleRequest extends RequestBase {
   policy?: Name
   policy_id?: Id
   body?: {
@@ -7784,7 +7790,7 @@ export interface PutLifecycleRequest extends CommonQueryParameters {
 export interface PutLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutMappingRequest extends CommonQueryParameters {
+export interface PutMappingRequest extends RequestBase {
   index?: Indices
   type?: Type
   allow_no_indices?: boolean
@@ -7813,7 +7819,7 @@ export interface PutMappingRequest extends CommonQueryParameters {
 export interface PutMappingResponse extends IndicesResponseBase {
 }
 
-export interface PutPipelineRequest extends CommonQueryParameters {
+export interface PutPipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
@@ -7827,7 +7833,7 @@ export interface PutPipelineRequest extends CommonQueryParameters {
 export interface PutPipelineResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutPrivilegesRequest extends CommonQueryParameters {
+export interface PutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
   body: {
     applications?: Record<string, Record<string, PrivilegesActions>>
@@ -7841,7 +7847,7 @@ export interface PutPrivilegesStatus {
   created: boolean
 }
 
-export interface PutRoleMappingRequest extends CommonQueryParameters {
+export interface PutRoleMappingRequest extends RequestBase {
   name: Name
   refresh?: Refresh
   body: {
@@ -7853,7 +7859,7 @@ export interface PutRoleMappingRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutRoleMappingResponse {
+export interface PutRoleMappingResponse extends ResponseBase {
   created: boolean
   role_mapping: PutRoleMappingStatus
 }
@@ -7862,7 +7868,7 @@ export interface PutRoleMappingStatus {
   created: boolean
 }
 
-export interface PutRoleRequest extends CommonQueryParameters {
+export interface PutRoleRequest extends RequestBase {
   name: Name
   refresh?: Refresh
   body: {
@@ -7875,7 +7881,7 @@ export interface PutRoleRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutRoleResponse {
+export interface PutRoleResponse extends ResponseBase {
   role: PutRoleStatus
 }
 
@@ -7883,7 +7889,7 @@ export interface PutRoleStatus {
   created: boolean
 }
 
-export interface PutScriptRequest extends CommonQueryParameters {
+export interface PutScriptRequest extends RequestBase {
   id: Id
   context?: Name
   master_timeout?: Time
@@ -7896,7 +7902,7 @@ export interface PutScriptRequest extends CommonQueryParameters {
 export interface PutScriptResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutSnapshotLifecycleRequest extends CommonQueryParameters {
+export interface PutSnapshotLifecycleRequest extends RequestBase {
   policy_id: Name
   body?: {
     config?: SnapshotLifecycleConfig
@@ -7910,7 +7916,7 @@ export interface PutSnapshotLifecycleRequest extends CommonQueryParameters {
 export interface PutSnapshotLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutTransformRequest extends CommonQueryParameters {
+export interface PutTransformRequest extends RequestBase {
   transform_id: Name
   defer_validation?: boolean
   body: {
@@ -7926,7 +7932,7 @@ export interface PutTransformRequest extends CommonQueryParameters {
 export interface PutTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface PutUserRequest extends CommonQueryParameters {
+export interface PutUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
   body: {
@@ -7939,11 +7945,11 @@ export interface PutUserRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutUserResponse {
+export interface PutUserResponse extends ResponseBase {
   created: boolean
 }
 
-export interface PutWatchRequest extends CommonQueryParameters {
+export interface PutWatchRequest extends RequestBase {
   id: Name
   active?: boolean
   if_primary_term?: long
@@ -7960,7 +7966,7 @@ export interface PutWatchRequest extends CommonQueryParameters {
   }
 }
 
-export interface PutWatchResponse {
+export interface PutWatchResponse extends ResponseBase {
   created: boolean
   _id: string
   _primary_term: long
@@ -8073,7 +8079,7 @@ export interface QueryProfile {
   children?: Array<QueryProfile>
 }
 
-export interface QuerySqlRequest extends CommonQueryParameters {
+export interface QuerySqlRequest extends RequestBase {
   format?: string
   body: {
     columnar?: boolean
@@ -8085,7 +8091,7 @@ export interface QuerySqlRequest extends CommonQueryParameters {
   }
 }
 
-export interface QuerySqlResponse {
+export interface QuerySqlResponse extends ResponseBase {
   columns: Array<SqlColumn>
   cursor: string
   rows: Array<Array<Record<string, any>>>
@@ -8283,7 +8289,7 @@ export interface RecoveryStatus {
   shards: Array<ShardRecovery>
 }
 
-export interface RecoveryStatusRequest extends CommonQueryParameters {
+export interface RecoveryStatusRequest extends RequestBase {
   index?: Indices
   active_only?: boolean
   detailed?: boolean
@@ -8312,7 +8318,7 @@ export type Refresh = boolean | RefreshOptions
 
 export type RefreshOptions = 'wait_for'
 
-export interface RefreshRequest extends CommonQueryParameters {
+export interface RefreshRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -8355,7 +8361,7 @@ export interface ReindexNode {
   transport_address: string
 }
 
-export interface ReindexRequest extends CommonQueryParameters {
+export interface ReindexRequest extends RequestBase {
   refresh?: boolean
   requests_per_second?: long
   scroll?: Time
@@ -8374,7 +8380,7 @@ export interface ReindexRequest extends CommonQueryParameters {
   }
 }
 
-export interface ReindexResponse {
+export interface ReindexResponse extends ResponseBase {
   batches: long
   created: long
   failures: Array<BulkIndexByScrollFailure>
@@ -8389,12 +8395,12 @@ export interface ReindexResponse {
   version_conflicts: long
 }
 
-export interface ReindexRethrottleRequest extends CommonQueryParameters {
+export interface ReindexRethrottleRequest extends RequestBase {
   task_id: Id
   requests_per_second?: long
 }
 
-export interface ReindexRethrottleResponse {
+export interface ReindexRethrottleResponse extends ResponseBase {
   nodes: Record<string, ReindexNode>
 }
 
@@ -8445,19 +8451,19 @@ export interface ReloadDetails {
   reloaded_node_ids: Array<string>
 }
 
-export interface ReloadSearchAnalyzersRequest extends CommonQueryParameters {
+export interface ReloadSearchAnalyzersRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
 }
 
-export interface ReloadSearchAnalyzersResponse {
+export interface ReloadSearchAnalyzersResponse extends ResponseBase {
   reload_details: Array<ReloadDetails>
   _shards: ShardStatistics
 }
 
-export interface ReloadSecureSettingsRequest extends CommonQueryParameters {
+export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
   body?: {
@@ -8479,7 +8485,7 @@ export interface RemoteInfo {
   skip_unavailable: boolean
 }
 
-export interface RemoteInfoRequest extends CommonQueryParameters {
+export interface RemoteInfoRequest extends RequestBase {
 }
 
 export interface RemoteInfoResponse extends DictionaryResponseBase<string, RemoteInfo> {
@@ -8496,11 +8502,11 @@ export interface RemoteSource {
 export interface RemoveDuplicatesTokenFilter extends TokenFilterBase {
 }
 
-export interface RemovePolicyRequest extends CommonQueryParameters {
+export interface RemovePolicyRequest extends RequestBase {
   index: IndexName
 }
 
-export interface RemovePolicyResponse {
+export interface RemovePolicyResponse extends ResponseBase {
   failed_indexes: Array<string>
   has_failures: boolean
 }
@@ -8516,7 +8522,7 @@ export interface RenameProcessor extends ProcessorBase {
   target_field: Field
 }
 
-export interface RenderSearchTemplateRequest extends CommonQueryParameters {
+export interface RenderSearchTemplateRequest extends RequestBase {
   body?: {
     file?: string
     params?: Record<string, any>
@@ -8524,8 +8530,11 @@ export interface RenderSearchTemplateRequest extends CommonQueryParameters {
   }
 }
 
-export interface RenderSearchTemplateResponse {
+export interface RenderSearchTemplateResponse extends ResponseBase {
   template_output: Record<string, any>
+}
+
+export interface RequestBase extends CommonQueryParameters {
 }
 
 export interface RequestCacheStats {
@@ -8560,12 +8569,15 @@ export interface ResourcePrivileges {
   resource: string
 }
 
+export interface ResponseBase {
+}
+
 export type ResponseContentType = 'json' | 'yaml' | 'text'
 
 export interface RestartWatcherResponse extends AcknowledgedResponseBase {
 }
 
-export interface RestoreRequest extends CommonQueryParameters {
+export interface RestoreRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Time
@@ -8583,7 +8595,7 @@ export interface RestoreRequest extends CommonQueryParameters {
   }
 }
 
-export interface RestoreResponse {
+export interface RestoreResponse extends ResponseBase {
   snapshot: SnapshotRestore
 }
 
@@ -8603,14 +8615,14 @@ export interface ResultBucket {
   timestamp: DateString
 }
 
-export interface ResumeAutoFollowPatternRequest extends CommonQueryParameters {
+export interface ResumeAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
 export interface ResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
-export interface ResumeFollowIndexRequest extends CommonQueryParameters {
+export interface ResumeFollowIndexRequest extends RequestBase {
   index: IndexName
   body?: {
     max_outstanding_read_requests?: long
@@ -8634,7 +8646,7 @@ export interface Retries {
   search: long
 }
 
-export interface RetryIlmRequest extends CommonQueryParameters {
+export interface RetryIlmRequest extends RequestBase {
   index: IndexName
 }
 
@@ -8648,7 +8660,7 @@ export interface ReverseNestedAggregation extends BucketAggregationBase {
 export interface ReverseTokenFilter extends TokenFilterBase {
 }
 
-export interface RevertModelSnapshotRequest extends CommonQueryParameters {
+export interface RevertModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
   body?: {
@@ -8656,7 +8668,7 @@ export interface RevertModelSnapshotRequest extends CommonQueryParameters {
   }
 }
 
-export interface RevertModelSnapshotResponse {
+export interface RevertModelSnapshotResponse extends ResponseBase {
   model: ModelSnapshot
 }
 
@@ -8682,7 +8694,7 @@ export interface RolloverConditions {
   max_size: string
 }
 
-export interface RolloverIndexRequest extends CommonQueryParameters {
+export interface RolloverIndexRequest extends RequestBase {
   alias: Alias
   new_index?: IndexName
   dry_run?: boolean
@@ -8778,7 +8790,7 @@ export interface RollupJobStatus {
 
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 
-export interface RollupSearchRequest extends CommonQueryParameters {
+export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: Type
   total_hits_as_integer?: boolean
@@ -8790,13 +8802,13 @@ export interface RollupSearchRequest extends CommonQueryParameters {
   }
 }
 
-export interface RollupSearchResponse<TDocument = unknown> {
+export interface RollupSearchResponse<TDocument = unknown> extends ResponseBase {
 }
 
-export interface RootNodeInfoRequest extends CommonQueryParameters {
+export interface RootNodeInfoRequest extends RequestBase {
 }
 
-export interface RootNodeInfoResponse {
+export interface RootNodeInfoResponse extends ResponseBase {
   cluster_name: string
   cluster_uuid: string
   name: string
@@ -8955,7 +8967,7 @@ export type ScrollId = string
 
 export type ScrollIds = string
 
-export interface ScrollRequest extends CommonQueryParameters {
+export interface ScrollRequest extends RequestBase {
   scroll_id?: Id
   scroll?: Time
   rest_total_hits_as_int?: boolean
@@ -9017,7 +9029,7 @@ export interface SearchProfile {
   rewrite_time: long
 }
 
-export interface SearchRequest extends CommonQueryParameters {
+export interface SearchRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -9093,7 +9105,7 @@ export interface SearchRequest extends CommonQueryParameters {
   }
 }
 
-export interface SearchResponse<TDocument = unknown> {
+export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   took: long
   timed_out: boolean
   _shards: ShardStatistics
@@ -9120,7 +9132,7 @@ export interface SearchShard {
   state: string
 }
 
-export interface SearchShardsRequest extends CommonQueryParameters {
+export interface SearchShardsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -9130,7 +9142,7 @@ export interface SearchShardsRequest extends CommonQueryParameters {
   routing?: Routing
 }
 
-export interface SearchShardsResponse {
+export interface SearchShardsResponse extends ResponseBase {
   nodes: Record<string, SearchNode>
   shards: Array<Array<SearchShard>>
 }
@@ -9152,7 +9164,7 @@ export interface SearchStats {
   groups?: Record<string, SearchStats>
 }
 
-export interface SearchTemplateRequest extends CommonQueryParameters {
+export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -9214,7 +9226,7 @@ export interface Segment {
   version: string
 }
 
-export interface SegmentsRequest extends CommonQueryParameters {
+export interface SegmentsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -9222,7 +9234,7 @@ export interface SegmentsRequest extends CommonQueryParameters {
   verbose?: boolean
 }
 
-export interface SegmentsResponse {
+export interface SegmentsResponse extends ResponseBase {
   indices: Record<string, IndexSegment>
   _shards: ShardStatistics
 }
@@ -9259,7 +9271,7 @@ export interface SetSecurityUserProcessor extends ProcessorBase {
   properties: Array<string>
 }
 
-export interface SetUpgradeModeRequest extends CommonQueryParameters {
+export interface SetUpgradeModeRequest extends RequestBase {
   enabled?: boolean
   timeout?: Time
 }
@@ -9573,7 +9585,7 @@ export interface ShardWarmer {
   total_time_in_millis: long
 }
 
-export interface ShardsOperationResponseBase {
+export interface ShardsOperationResponseBase extends ResponseBase {
   _shards: ShardStatistics
 }
 
@@ -9593,7 +9605,7 @@ export interface ShingleTokenFilter extends TokenFilterBase {
   token_separator: string
 }
 
-export interface ShrinkIndexRequest extends CommonQueryParameters {
+export interface ShrinkIndexRequest extends RequestBase {
   index: IndexName
   target: IndexName
   master_timeout?: Time
@@ -9686,7 +9698,7 @@ export interface SimulatePipelineDocument {
   _source: any
 }
 
-export interface SimulatePipelineRequest extends CommonQueryParameters {
+export interface SimulatePipelineRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body: {
@@ -9695,7 +9707,7 @@ export interface SimulatePipelineRequest extends CommonQueryParameters {
   }
 }
 
-export interface SimulatePipelineResponse {
+export interface SimulatePipelineResponse extends ResponseBase {
   docs: Array<PipelineSimulation>
 }
 
@@ -9869,7 +9881,7 @@ export interface SnapshotRepository {
   type: string
 }
 
-export interface SnapshotRequest extends CommonQueryParameters {
+export interface SnapshotRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Time
@@ -9883,7 +9895,7 @@ export interface SnapshotRequest extends CommonQueryParameters {
   }
 }
 
-export interface SnapshotResponse {
+export interface SnapshotResponse extends ResponseBase {
   accepted?: boolean
   snapshot?: SnapshotInfo
 }
@@ -9935,14 +9947,14 @@ export interface SnapshotStatus {
   uuid: string
 }
 
-export interface SnapshotStatusRequest extends CommonQueryParameters {
+export interface SnapshotStatusRequest extends RequestBase {
   repository?: Name
   snapshot?: Names
   ignore_unavailable?: boolean
   master_timeout?: Time
 }
 
-export interface SnapshotStatusResponse {
+export interface SnapshotStatusResponse extends ResponseBase {
   snapshots: Array<SnapshotStatus>
 }
 
@@ -9984,7 +9996,7 @@ export type SortResults = Array<long | double | string | null>
 
 export type SortSpecialField = '_score' | '_doc'
 
-export interface SourceExistsRequest extends CommonQueryParameters {
+export interface SourceExistsRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -10014,7 +10026,7 @@ export interface SourceFilter {
   includes?: Fields
 }
 
-export interface SourceRequest extends CommonQueryParameters {
+export interface SourceRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -10029,7 +10041,7 @@ export interface SourceRequest extends CommonQueryParameters {
   version_type?: VersionType
 }
 
-export interface SourceResponse<TDocument = unknown> {
+export interface SourceResponse<TDocument = unknown> extends ResponseBase {
   body: TDocument
 }
 
@@ -10100,7 +10112,7 @@ export interface SpanWithinQuery extends QueryBase {
   little?: SpanQuery
 }
 
-export interface SplitIndexRequest extends CommonQueryParameters {
+export interface SplitIndexRequest extends RequestBase {
   index: IndexName
   target: IndexName
   master_timeout?: Time
@@ -10157,7 +10169,7 @@ export interface StandardTokenizer extends TokenizerBase {
   max_token_length: integer
 }
 
-export interface StartBasicLicenseRequest extends CommonQueryParameters {
+export interface StartBasicLicenseRequest extends RequestBase {
   acknowledge?: boolean
 }
 
@@ -10167,7 +10179,7 @@ export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
   error_message: string
 }
 
-export interface StartDatafeedRequest extends CommonQueryParameters {
+export interface StartDatafeedRequest extends RequestBase {
   datafeed_id: Id
   body?: {
     end?: DateString
@@ -10176,32 +10188,32 @@ export interface StartDatafeedRequest extends CommonQueryParameters {
   }
 }
 
-export interface StartDatafeedResponse {
+export interface StartDatafeedResponse extends ResponseBase {
   node: NodeIds
   started: boolean
 }
 
-export interface StartIlmRequest extends CommonQueryParameters {
+export interface StartIlmRequest extends RequestBase {
 }
 
 export interface StartIlmResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartRollupJobRequest extends CommonQueryParameters {
+export interface StartRollupJobRequest extends RequestBase {
   id: Id
 }
 
-export interface StartRollupJobResponse {
+export interface StartRollupJobResponse extends ResponseBase {
   started: boolean
 }
 
-export interface StartSnapshotLifecycleManagementRequest extends CommonQueryParameters {
+export interface StartSnapshotLifecycleManagementRequest extends RequestBase {
 }
 
 export interface StartSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartTransformRequest extends CommonQueryParameters {
+export interface StartTransformRequest extends RequestBase {
   transform_id: Name
   timeout?: Time
 }
@@ -10209,7 +10221,7 @@ export interface StartTransformRequest extends CommonQueryParameters {
 export interface StartTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface StartTrialLicenseRequest extends CommonQueryParameters {
+export interface StartTrialLicenseRequest extends RequestBase {
   acknowledge?: boolean
   type_query_string?: string
 }
@@ -10219,7 +10231,7 @@ export interface StartTrialLicenseResponse extends AcknowledgedResponseBase {
   trial_was_started: boolean
 }
 
-export interface StartWatcherRequest extends CommonQueryParameters {
+export interface StartWatcherRequest extends RequestBase {
 }
 
 export interface StartWatcherResponse extends AcknowledgedResponseBase {
@@ -10261,7 +10273,7 @@ export interface StopAnalyzer extends AnalyzerBase {
   stopwords_path: string
 }
 
-export interface StopDatafeedRequest extends CommonQueryParameters {
+export interface StopDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_datafeeds?: boolean
   body?: {
@@ -10270,27 +10282,27 @@ export interface StopDatafeedRequest extends CommonQueryParameters {
   }
 }
 
-export interface StopDatafeedResponse {
+export interface StopDatafeedResponse extends ResponseBase {
   stopped: boolean
 }
 
-export interface StopIlmRequest extends CommonQueryParameters {
+export interface StopIlmRequest extends RequestBase {
 }
 
 export interface StopIlmResponse extends AcknowledgedResponseBase {
 }
 
-export interface StopRollupJobRequest extends CommonQueryParameters {
+export interface StopRollupJobRequest extends RequestBase {
   id: Id
   timeout?: Time
   wait_for_completion?: boolean
 }
 
-export interface StopRollupJobResponse {
+export interface StopRollupJobResponse extends ResponseBase {
   stopped: boolean
 }
 
-export interface StopSnapshotLifecycleManagementRequest extends CommonQueryParameters {
+export interface StopSnapshotLifecycleManagementRequest extends RequestBase {
 }
 
 export interface StopSnapshotLifecycleManagementResponse extends AcknowledgedResponseBase {
@@ -10303,7 +10315,7 @@ export interface StopTokenFilter extends TokenFilterBase {
   stopwords_path?: string
 }
 
-export interface StopTransformRequest extends CommonQueryParameters {
+export interface StopTransformRequest extends RequestBase {
   transform_id: Name
   allow_no_match?: boolean
   force?: boolean
@@ -10315,7 +10327,7 @@ export interface StopTransformRequest extends CommonQueryParameters {
 export interface StopTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface StopWatcherRequest extends CommonQueryParameters {
+export interface StopWatcherRequest extends RequestBase {
 }
 
 export interface StopWatcherResponse extends AcknowledgedResponseBase {
@@ -10421,7 +10433,7 @@ export interface SumBucketAggregation extends PipelineAggregationBase {
 
 export type SumFunction = 'Sum' | 'HighSum' | 'LowSum'
 
-export interface SyncedFlushRequest extends CommonQueryParameters {
+export interface SyncedFlushRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -10592,7 +10604,7 @@ export interface TermVectorTerm {
   ttf: integer
 }
 
-export interface TermVectorsRequest<TDocument = unknown> extends CommonQueryParameters {
+export interface TermVectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
   type?: Type
@@ -10614,7 +10626,7 @@ export interface TermVectorsRequest<TDocument = unknown> extends CommonQueryPara
   }
 }
 
-export interface TermVectorsResponse {
+export interface TermVectorsResponse extends ResponseBase {
   found: boolean
   _id: string
   _index: string
@@ -10972,7 +10984,7 @@ export interface TransientMetadata {
   enabled: boolean
 }
 
-export interface TranslateSqlRequest extends CommonQueryParameters {
+export interface TranslateSqlRequest extends RequestBase {
   body: {
     fetch_size?: integer
     filter?: QueryContainer
@@ -10981,7 +10993,7 @@ export interface TranslateSqlRequest extends CommonQueryParameters {
   }
 }
 
-export interface TranslateSqlResponse {
+export interface TranslateSqlResponse extends ResponseBase {
   result: SearchRequest
 }
 
@@ -11044,7 +11056,7 @@ export interface TwoDimensionalPoint {
 
 export type Type = string
 
-export interface TypeExistsRequest extends CommonQueryParameters {
+export interface TypeExistsRequest extends RequestBase {
   index: Indices
   type: Types
   allow_no_indices?: boolean
@@ -11099,14 +11111,14 @@ export interface UnassignedInformation {
 
 export type UnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
 
-export interface UnfollowIndexRequest extends CommonQueryParameters {
+export interface UnfollowIndexRequest extends RequestBase {
   index: IndexName
 }
 
 export interface UnfollowIndexResponse extends AcknowledgedResponseBase {
 }
 
-export interface UnfreezeIndexRequest extends CommonQueryParameters {
+export interface UnfreezeIndexRequest extends RequestBase {
   index: IndexName
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -11124,7 +11136,7 @@ export interface UniqueTokenFilter extends TokenFilterBase {
   only_on_same_position: boolean
 }
 
-export interface UpdateByQueryRequest extends CommonQueryParameters {
+export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -11170,7 +11182,7 @@ export interface UpdateByQueryRequest extends CommonQueryParameters {
   }
 }
 
-export interface UpdateByQueryResponse {
+export interface UpdateByQueryResponse extends ResponseBase {
   batches: long
   failures: Array<BulkIndexByScrollFailure>
   noops: long
@@ -11184,12 +11196,12 @@ export interface UpdateByQueryResponse {
   version_conflicts: long
 }
 
-export interface UpdateByQueryRethrottleRequest extends CommonQueryParameters {
+export interface UpdateByQueryRethrottleRequest extends RequestBase {
   task_id: Id
   requests_per_second?: long
 }
 
-export interface UpdateDatafeedRequest extends CommonQueryParameters {
+export interface UpdateDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -11209,7 +11221,7 @@ export interface UpdateDatafeedRequest extends CommonQueryParameters {
   }
 }
 
-export interface UpdateDatafeedResponse {
+export interface UpdateDatafeedResponse extends ResponseBase {
   aggregations: Record<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: string
@@ -11223,7 +11235,7 @@ export interface UpdateDatafeedResponse {
   scroll_size: integer
 }
 
-export interface UpdateFilterRequest extends CommonQueryParameters {
+export interface UpdateFilterRequest extends RequestBase {
   filter_id: Id
   body: {
     add_items?: Array<string>
@@ -11232,13 +11244,13 @@ export interface UpdateFilterRequest extends CommonQueryParameters {
   }
 }
 
-export interface UpdateFilterResponse {
+export interface UpdateFilterResponse extends ResponseBase {
   description: string
   filter_id: string
   items: Array<string>
 }
 
-export interface UpdateIndexSettingsRequest extends CommonQueryParameters {
+export interface UpdateIndexSettingsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -11255,7 +11267,7 @@ export interface UpdateIndexSettingsRequest extends CommonQueryParameters {
 export interface UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
 }
 
-export interface UpdateJobRequest extends CommonQueryParameters {
+export interface UpdateJobRequest extends RequestBase {
   job_id: Id
   body: {
     allow_lazy_open?: boolean
@@ -11270,10 +11282,10 @@ export interface UpdateJobRequest extends CommonQueryParameters {
   }
 }
 
-export interface UpdateJobResponse {
+export interface UpdateJobResponse extends ResponseBase {
 }
 
-export interface UpdateModelSnapshotRequest extends CommonQueryParameters {
+export interface UpdateModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
   body: {
@@ -11286,7 +11298,7 @@ export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
   model: ModelSnapshot
 }
 
-export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends CommonQueryParameters {
+export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
   type?: Type
@@ -11318,7 +11330,7 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
   get?: InlineGet<TDocument>
 }
 
-export interface UpdateTransformRequest extends CommonQueryParameters {
+export interface UpdateTransformRequest extends RequestBase {
   transform_id: Name
   defer_validation?: boolean
   body: {
@@ -11330,7 +11342,7 @@ export interface UpdateTransformRequest extends CommonQueryParameters {
   }
 }
 
-export interface UpdateTransformResponse {
+export interface UpdateTransformResponse extends ResponseBase {
   create_time: long
   create_time_date_time: DateString
   description: string
@@ -11383,14 +11395,14 @@ export interface UserIndicesPrivileges {
 
 export type Uuid = string
 
-export interface ValidateDetectorRequest extends CommonQueryParameters {
+export interface ValidateDetectorRequest extends RequestBase {
   body: Detector
 }
 
 export interface ValidateDetectorResponse extends AcknowledgedResponseBase {
 }
 
-export interface ValidateJobRequest extends CommonQueryParameters {
+export interface ValidateJobRequest extends RequestBase {
   body: {
     analysis_config?: AnalysisConfig
     analysis_limits?: AnalysisLimits
@@ -11405,7 +11417,7 @@ export interface ValidateJobRequest extends CommonQueryParameters {
 export interface ValidateJobResponse extends AcknowledgedResponseBase {
 }
 
-export interface ValidateQueryRequest extends CommonQueryParameters {
+export interface ValidateQueryRequest extends RequestBase {
   index?: Indices
   type?: Types
   allow_no_indices?: boolean
@@ -11425,7 +11437,7 @@ export interface ValidateQueryRequest extends CommonQueryParameters {
   }
 }
 
-export interface ValidateQueryResponse {
+export interface ValidateQueryResponse extends ResponseBase {
   explanations: Array<ValidationExplanation>
   _shards: ShardStatistics
   valid: boolean
@@ -11461,13 +11473,13 @@ export interface VectorUsage extends XPackUsage {
   sparse_vector_fields_count: integer
 }
 
-export interface VerifyRepositoryRequest extends CommonQueryParameters {
+export interface VerifyRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
   timeout?: Time
 }
 
-export interface VerifyRepositoryResponse {
+export interface VerifyRepositoryResponse extends ResponseBase {
   nodes: Record<string, CompactNodeInfo>
 }
 
@@ -11547,12 +11559,12 @@ export interface WatcherNodeStats {
 
 export type WatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
 
-export interface WatcherStatsRequest extends CommonQueryParameters {
+export interface WatcherStatsRequest extends RequestBase {
   metric?: Metrics
   emit_stacktraces?: boolean
 }
 
-export interface WatcherStatsResponse {
+export interface WatcherStatsResponse extends ResponseBase {
   cluster_name: string
   manually_stopped: boolean
   stats: Array<WatcherNodeStats>
@@ -11625,7 +11637,7 @@ export interface WordDelimiterTokenFilter extends TokenFilterBase {
   type_table_path: string
 }
 
-export interface WriteResponseBase {
+export interface WriteResponseBase extends ResponseBase {
   _id: string
   _index: string
   _primary_term: long
@@ -11673,11 +11685,11 @@ export interface XPackFeatures {
   watcher: XPackFeature
 }
 
-export interface XPackInfoRequest extends CommonQueryParameters {
+export interface XPackInfoRequest extends RequestBase {
   categories?: Array<string>
 }
 
-export interface XPackInfoResponse {
+export interface XPackInfoResponse extends ResponseBase {
   build: XPackBuildInformation
   features: XPackFeatures
   license: MinimalLicenseInformation
@@ -11704,11 +11716,11 @@ export interface XPackUsage {
   enabled: boolean
 }
 
-export interface XPackUsageRequest extends CommonQueryParameters {
+export interface XPackUsageRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface XPackUsageResponse {
+export interface XPackUsageResponse extends ResponseBase {
   watcher: AlertingUsage
   ccr: CcrUsage
   data_frame: XPackUsage
