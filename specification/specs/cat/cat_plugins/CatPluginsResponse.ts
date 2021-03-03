@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatPluginsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatPluginsRecord> {}
+class CatPluginsResponse extends CatResponseBase<CatPluginsRecord> {}

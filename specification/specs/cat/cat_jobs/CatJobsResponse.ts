@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatJobsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatJobsRecord> {}
+class CatJobsResponse extends CatResponseBase<CatJobsRecord> {}

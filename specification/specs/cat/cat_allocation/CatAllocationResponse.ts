@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatAllocationResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatAllocationRecord> {}
+class CatAllocationResponse extends CatResponseBase<CatAllocationRecord> {}

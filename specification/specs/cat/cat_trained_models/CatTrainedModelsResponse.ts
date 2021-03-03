@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatTrainedModelsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatTrainedModelsRecord> {}
+class CatTrainedModelsResponse extends CatResponseBase<CatTrainedModelsRecord> {}

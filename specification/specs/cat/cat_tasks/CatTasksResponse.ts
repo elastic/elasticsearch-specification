@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatTasksResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatTasksRecord> {}
+class CatTasksResponse extends CatResponseBase<CatTasksRecord> {}

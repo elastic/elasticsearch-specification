@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatNodesResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatNodesRecord> {}
+class CatNodesResponse extends CatResponseBase<CatNodesRecord> {}

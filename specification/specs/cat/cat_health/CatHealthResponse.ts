@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatHealthResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatHealthRecord> {}
+class CatHealthResponse extends CatResponseBase<CatHealthRecord> {}

@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatMasterResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatMasterRecord> {}
+class CatMasterResponse extends CatResponseBase<CatMasterRecord> {}
