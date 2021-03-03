@@ -489,18 +489,17 @@ export interface AsciiFoldingTokenFilter extends TokenFilterBase {
 }
 
 export interface AsyncSearch<TDocument = unknown> {
-  aggregations: Record<string, Aggregate>
-  _clusters: ClusterStatistics
-  documents: Array<TDocument>
-  fields: Record<string, any>
+  aggregations?: Record<string, Aggregate>
+  _clusters?: ClusterStatistics
+  fields?: Record<string, any>
   hits: HitsMetadata<TDocument>
-  max_score: double
-  num_reduce_phases: long
-  profile: Profile
-  _scroll_id: string
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: Profile
+  _scroll_id?: string
   _shards: ShardStatistics
   suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
-  terminated_early: boolean
+  terminated_early?: boolean
   timed_out: boolean
   took: long
 }
@@ -512,6 +511,10 @@ export interface AsyncSearchDeleteRequest extends CommonQueryParameters {
 export interface AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
 }
 
+export interface AsyncSearchDocumentResponseBase<TDocument = unknown> extends AsyncSearchResponseBase {
+  response: AsyncSearch<TDocument>
+}
+
 export interface AsyncSearchGetRequest extends CommonQueryParameters {
   id: Id
   body?: {
@@ -521,18 +524,22 @@ export interface AsyncSearchGetRequest extends CommonQueryParameters {
   }
 }
 
-export interface AsyncSearchGetResponse<TDocument = unknown> {
+export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchDocumentResponseBase<TDocument> {
 }
 
-export interface AsyncSearchResponseBase<TDocument = unknown> {
-  expiration_time: DateString
-  expiration_time_in_millis: long
+export interface AsyncSearchResponseBase {
   id: string
   is_partial: boolean
   is_running: boolean
-  response: AsyncSearch<TDocument>
-  start_time: DateString
-  start_time_in_millis: long
+  expiration_time_in_millis: EpochMillis
+  start_time_in_millis: EpochMillis
+}
+
+export interface AsyncSearchStatusRequest extends CommonQueryParameters {
+  id: Id
+}
+
+export interface AsyncSearchStatusResponse<TDocument = unknown> extends AsyncSearchResponseBase {
 }
 
 export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
@@ -592,7 +599,7 @@ export interface AsyncSearchSubmitRequest extends CommonQueryParameters {
   }
 }
 
-export interface AsyncSearchSubmitResponse<TDocument = unknown> {
+export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSearchDocumentResponseBase<TDocument> {
 }
 
 export interface AttachmentProcessor extends ProcessorBase {

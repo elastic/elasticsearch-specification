@@ -17,6 +17,14 @@
  * under the License.
  */
 
-class AsyncSearchSubmitResponse<
-  TDocument
-> extends AsyncSearchDocumentResponseBase<TDocument> {}
+/**
+ * @rest_spec_name async_search.status
+ * @since 7.11.0
+ * @stability TODO
+ */
+interface AsyncSearchStatusRequest extends RequestBase {
+  path_parts?: {
+    id: Id
+  }
+  query_parameters?: {}
+}

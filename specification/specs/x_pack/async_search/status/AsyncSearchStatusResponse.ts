@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class AsyncSearchSubmitResponse<
-  TDocument
-> extends AsyncSearchDocumentResponseBase<TDocument> {}
+class AsyncSearchStatusResponse<TDocument> extends AsyncSearchResponseBase {}
