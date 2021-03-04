@@ -1,6 +1,6 @@
 # Behaviors
 
-Some APIs needs to be handled differenlty based on the output language, while others share many common parameters.
+Some APIs needs to be handled differently based on the output language, while others share many common parameters.
 This document contains the list of this special interfaces and where those should be used.
 Behaviors should be used via `implements` in the specification.
 
@@ -25,10 +25,13 @@ Some languages can't represent this easily and need to wrap the
 array inside an object.
 
 ```ts
+class CatResponseBase 
+ implements ArrayResponseBase<CatAliasesRecord> {}
 class CatAliasesResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatAliasesRecord> {}
+  extends CatResponseBase {}
 ```
+
+Hint this also showcases that behaviors can be inherited
 
 ## EmptyResponseBase
 

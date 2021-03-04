@@ -17,12 +17,14 @@
  * under the License.
  */
 
-@class_serializer('CatFielddataRecordFormatter')
 class CatFielddataRecord {
-  field: string
-  host: string
-  id: string
-  ip: string
-  node: string
-  size: string
+  /** @aliases f */
+  field?: string
+  host?: string
+  id?: string
+  ip?: string
+  /** @aliases n */
+  node?: string
+  /** @aliases s */
+  size?: string
 }

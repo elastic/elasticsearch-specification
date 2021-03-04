@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatDatafeedsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatDatafeedsRecord> {}
+class CatDatafeedsResponse extends CatResponseBase<CatDatafeedsRecord> {}

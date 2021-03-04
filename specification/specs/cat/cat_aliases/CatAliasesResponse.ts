@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatAliasesResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatAliasesRecord> {}
+class CatAliasesResponse extends CatResponseBase<CatAliasesRecord> {}

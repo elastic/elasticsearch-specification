@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatCountResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatCountRecord> {}
+class CatCountResponse extends CatResponseBase<CatCountRecord> {}

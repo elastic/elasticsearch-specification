@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatDataFrameAnalyticsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatDataFrameAnalyticsRecord> {}
+class CatDataFrameAnalyticsResponse extends CatResponseBase<CatDataFrameAnalyticsRecord> {}

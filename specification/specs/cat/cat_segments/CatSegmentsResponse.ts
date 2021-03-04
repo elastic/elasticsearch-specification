@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatSegmentsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatSegmentsRecord> {}
+class CatSegmentsResponse extends CatResponseBase<CatSegmentsRecord> {}

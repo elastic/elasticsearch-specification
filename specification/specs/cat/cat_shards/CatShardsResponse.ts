@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class CatShardsResponse
-  extends ResponseBase
-  implements ArrayResponseBase<CatShardsRecord> {}
+class CatShardsResponse extends CatResponseBase<CatShardsRecord> {}
