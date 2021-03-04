@@ -19,5 +19,5 @@
 
 class TransformDestination {
   index: IndexName
-  pipeline: string
+  pipeline?: string
 }

@@ -23,7 +23,7 @@ class UpdateTransformResponse extends ResponseBase {
   description: string
   dest: TransformDestination
   frequency: Time
-  id: string
+  id: Id
   pivot: TransformPivot
   source: TransformSource
   sync: TransformSyncContainer
