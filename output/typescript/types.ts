@@ -10915,7 +10915,7 @@ export interface TransformContainer {
 
 export interface TransformDestination {
   index: IndexName
-  pipeline: string
+  pipeline?: string
 }
 
 export interface TransformIndexerStats {
@@ -11348,7 +11348,7 @@ export interface UpdateTransformResponse extends ResponseBase {
   description: string
   dest: TransformDestination
   frequency: Time
-  id: string
+  id: Id
   pivot: TransformPivot
   source: TransformSource
   sync: TransformSyncContainer
