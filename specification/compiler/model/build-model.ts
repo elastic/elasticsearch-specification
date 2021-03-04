@@ -18,55 +18,50 @@
  */
 
 import assert from 'assert'
-import { writeFileSync } from 'fs'
-import { join } from 'path'
+import {writeFileSync} from 'fs'
+import {join} from 'path'
 import {
-  Project,
-  ts,
-  Node,
   ClassDeclaration,
-  InterfaceDeclaration,
   EnumDeclaration,
-  TypeAliasDeclaration,
+  InterfaceDeclaration,
+  Node,
+  Project,
   PropertyDeclaration,
-  PropertySignature, JSDoc
+  PropertySignature,
+  ts,
+  TypeAliasDeclaration
 } from 'ts-morph'
 import * as model from './metamodel'
 import buildJsonSpec from './json-spec'
 import {
-  modelType,
-  isApi,
-  modelInherits,
-  modelGenerics,
-  modelEnumDeclaration,
-  modelTypeAlias,
-  modelProperty,
-  isKnownBehavior,
-  modelImplements,
-  getNameSpace,
-  getAllBehaviors,
-  modelBehaviors,
   customTypes,
-  isDefinedButNeverUsed,
+  getAllBehaviors,
+  getNameSpace,
   hoistRequestAnnotations,
-  hoistTypeAnnotations
+  hoistTypeAnnotations,
+  isApi,
+  isDefinedButNeverUsed,
+  isKnownBehavior,
+  modelBehaviors,
+  modelEnumDeclaration,
+  modelGenerics,
+  modelImplements,
+  modelInherits,
+  modelProperty,
+  modelType,
+  modelTypeAlias
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
 const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 const jsonSpec = buildJsonSpec()
 
-type MappingsType = Map<string, {
-  request: model.Request
-  response: model.TypeName | null
-}>
-
 export function compileEndpoints (): Record<string, model.Endpoint> {
   // Create endpoints and merge them with
   // the recorded mappings if present.
   const map = {}
   for (const [api, spec] of jsonSpec.entries()) {
-    const endpoint: model.Endpoint = {
+    map[api] = {
       name: api,
       description: spec.documentation.description,
       docUrl: spec.documentation.url,
@@ -78,11 +73,10 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
         return {
           path: path.path,
           methods: path.methods,
-          ...(path.deprecated != null && { deprecation: path.deprecated })
+          ...(path.deprecated != null && {deprecation: path.deprecated})
         }
       })
     }
-    map[api] = endpoint
   }
   return map
 }
@@ -185,14 +179,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     )
   }
 
-  // Request defintions neeeds to be handled
+  // Request definitions needs to be handled
   // differently from normal classes
   if (Node.isInterfaceDeclaration(declaration) && isApi(declaration)) {
     // It's not guaranteed that every *Request definition
     // has an associated *Response definition as well.
     const response = allClasses
       .map(d => d.getName())
-      .find(n => n == `${name.slice(0, -7)}Response`)
+      .find(n => n === `${name.slice(0, -7)}Response`) !== undefined
       ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
       : null
 
@@ -227,7 +221,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     // The  interface is extended, an extended interface could accept generics as well,
-    // Implements will be catched here as well, they can be differentiated by looking as `node.token`
+    // Implements will be caught here as well, they can be differentiated by looking as `node.token`
     // which can either be `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
     // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
     // if it's a normal implements or a behavior, in such case, the behaviors
@@ -274,7 +268,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     // The class or interface is extended, an extended class or interface could
-    // accept generics as well, Implements will be catched here as well,
+    // accept generics as well, Implements will be caught here as well,
     // they can be differentiated by looking as `node.token`, which can either be
     // `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
     // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
