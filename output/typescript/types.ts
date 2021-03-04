@@ -5138,13 +5138,8 @@ export interface HasPrivilegesRequest extends RequestBase {
   }
 }
 
-<<<<<<< HEAD
-export interface HasPrivilegesResponse {
-  application: ApplicationsPrivileges
-=======
 export interface HasPrivilegesResponse extends ResponseBase {
-  application: Record<string, Array<ResourcePrivileges>>
->>>>>>> master
+  application: ApplicationsPrivileges
   cluster: Record<string, boolean>
   has_all_requested: boolean
   index: Record<IndexName, Privileges>
