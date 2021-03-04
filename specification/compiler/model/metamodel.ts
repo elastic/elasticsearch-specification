@@ -124,7 +124,7 @@ export class Property {
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
    */
-  alternateName?: string[]
+  identifier?: string
   /** An optional set of aliases for `name` */
   aliases?: string[]
 }
@@ -249,7 +249,7 @@ export class EnumMember {
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
    */
-  alternateName?: string[]
+  identifier?: string
   description?: string
   deprecation?: Deprecation
 }

@@ -18,18 +18,18 @@
  */
 
 enum DateMathTimeUnit {
-  /** @alternate_name Second */
+  /** @identifier Second */
   s = 0,
-  /** @alternate_name Minute */
+  /** @identifier Minute */
   m = 1,
-  /** @alternate_name Hour */
+  /** @identifier Hour */
   h = 2,
-  /** @alternate_name Day */
+  /** @identifier Day */
   d = 3,
-  /** @alternate_name Week */
+  /** @identifier Week */
   w = 4,
-  /** @alternate_name Month */
+  /** @identifier Month */
   M = 5,
-  /** @alternate_name Year */
+  /** @identifier Year */
   y = 6
 }

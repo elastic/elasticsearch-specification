@@ -18,7 +18,7 @@
  */
 
 class RescoreQuery {
-  /** @alternate_name Query */
+  /** @identifier Query */
   rescore_query: QueryContainer
   query_weight?: double
   rescore_query_weight?: double

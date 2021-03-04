@@ -492,23 +492,23 @@ export function hoistTypeAnnotations(type: model.TypeDefinition, jsDocs: JSDoc[]
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations(property: model.Property, jsDocs: JSDoc[]) {
-  const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'alternate_name']
+  const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'identifier']
   setTags(property, jsDocs, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) return
     else if (tag == 'aliases') {
       property.aliases = value.split(",").map(v => v.trim())
-    } else if (tag == 'alternate_name') {
-      property.alternateName = value.split(",").map(v => v.trim())
+    } else if (tag == 'identifier') {
+      property.identifier = value
     }
     else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
   })
 }
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistEnumMemberAnnotations(member: model.EnumMember, jsDocs: JSDoc[]) {
-  const validTags = ['obsolete', 'obsolete_description', 'alternate_name']
+  const validTags = ['obsolete', 'obsolete_description', 'identifier']
   setTags(member, jsDocs, validTags, (tags, tag, value) => {
-    if (tag == 'alternate_name') {
-      member.alternateName = value.split(",").map(v => v.trim())
+    if (tag == 'identifier') {
+      member.identifier = value
     }
     else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
   })
