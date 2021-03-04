@@ -4916,6 +4916,7 @@ export interface GetTaskRequest extends RequestBase {
 export interface GetTaskResponse extends ResponseBase {
   completed: boolean
   task: TaskInfo
+  response?: TaskStatus
 }
 
 export interface GetTransformRequest extends RequestBase {
@@ -10497,7 +10498,7 @@ export type TaskId = string
 export interface TaskInfo {
   action: string
   cancellable: boolean
-  children: Array<TaskInfo>
+  children?: Array<TaskInfo>
   description: string
   headers: Record<string, string>
   id: long
@@ -10532,10 +10533,15 @@ export interface TaskStatus {
   created: long
   deleted: long
   noops: long
+  failures?: Array<string>
   requests_per_second: float
   retries: TaskRetries
+  throttled?: Time
   throttled_millis: long
+  throttled_until?: Time
   throttled_until_millis: long
+  timed_out?: boolean
+  took?: long
   total: long
   updated: long
   version_conflicts: long

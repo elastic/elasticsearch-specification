@@ -22,10 +22,15 @@ class TaskStatus {
   created: long
   deleted: long
   noops: long
+  failures?: string[]
   requests_per_second: float
   retries: TaskRetries
+  throttled?: Time
   throttled_millis: long
+  throttled_until?: Time
   throttled_until_millis: long
+  timed_out?: boolean
+  took?: long
   total: long
   updated: long
   version_conflicts: long
