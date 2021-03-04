@@ -448,7 +448,7 @@ export function hoistRequestAnnotations (
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
   // TODO (@typescript-eslint/strict-boolean-expressions) is no fun
-  assert(apiName === '' || apiName === null || apiName === undefined,
+  assert(apiName !== '' && apiName !== null && apiName !== undefined,
     `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
   const endpoint = mappings[apiName]
@@ -462,7 +462,7 @@ export function hoistRequestAnnotations (
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'rest_spec_name') {
     } else if (tag === 'visibility') {
-      if (endpoint.visibility !== '' && endpoint.visibility !== null && endpoint.visibility !== undefined) {
+      if (endpoint.visibility !== null && endpoint.visibility !== undefined) {
         assert(endpoint.visibility === value,
           `Request ${request.name.name} visibility on annotation ${value} does not match spec: ${endpoint.visibility ?? ''}`)
       }
@@ -470,7 +470,7 @@ export function hoistRequestAnnotations (
     } else if (tag === 'stability') {
       // still need to follow up on this in a new PR
       if (value === 'TODO') return
-      if (endpoint.stability !== '' && endpoint.stability !== null && endpoint.stability !== undefined) {
+      if (endpoint.stability !== null && endpoint.stability !== undefined) {
         assert(endpoint.stability === value,
           `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
       }
