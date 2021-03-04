@@ -1,7 +1,6 @@
 TimeSpan,common.ts
 short,common.ts
 uint,common.ts
-ulong,common.ts
 ScrollIds,common.ts
 ActionIds,common.ts
 TypeNames,common.ts
