@@ -41,7 +41,6 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
   for (const endpoint of model.endpoints) {
     if (endpoint.request == null) continue
     const requestDefinition = getProperties(getDefinition(endpoint.request.name))
-    // @ts-expect-error
     if (endpoint.request.name === LOG || LOG === 'ALL') {
       const spec = jsonSpec.get(endpoint.name)
       assert(spec, `Can't find the json spec for ${endpoint.name}`)

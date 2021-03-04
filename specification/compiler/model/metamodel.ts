@@ -167,7 +167,16 @@ export class Interface extends BaseType {
   generics?: string[]
   inherits?: Inherits[]
   implements?: Implements[]
+
+  /**
+   * Behaviors directly implemented by this interface
+   */
   behaviors?: Implements[]
+
+  /**
+   * Behaviors attached to this interface, coming from the interface itself (see `behaviors`)
+   * or from inherits and implements ancestors
+   */
   attachedBehaviors?: string[]
   properties: Property[]
 }
@@ -180,6 +189,7 @@ export class Request extends BaseType {
   kind: 'request'
   generics?: string[]
   inherits?: Inherits[]
+  implements?: Implements[]
   /** URL path properties */
   path: Property[]
   /** Query string properties */

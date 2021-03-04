@@ -17,27 +17,22 @@
  * under the License.
  */
 
-import Compiler from './compiler'
-import validateRestSpec from './steps/validate-rest-spec'
-import addInfo from './steps/add-info'
-import addDescription from './steps/add-description'
-import validateModel from './steps/validate-model'
-import removeIncompleteEndpoints from './steps/remove-incomplete-endpoints'
+import * as model from '../model/metamodel'
+import { JsonSpec } from '../model/json-spec'
 
-const compiler = new Compiler()
+/**
+ * Removes incomplete endpoints from the model (missing request or response).
+ *
+ * This filter should be removed once the API model is complete.
+ */
+export default async function removeIncompleteEndpoints (apiModel: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+  const initialLength = apiModel.endpoints.length
 
-compiler
-  .generateModel()
-  .step(addInfo)
-  .step(validateRestSpec)
-  .step(removeIncompleteEndpoints)
-  .step(addDescription)
-  .step(async (model, spec) => validateModel(model, false))
-  .write()
-  .then(() => {
-    console.log('Done')
-  })
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
-  })
+  apiModel.endpoints = apiModel.endpoints.filter(endpoint => endpoint.request !== null && endpoint.response !== null)
+
+  if (apiModel.endpoints.length !== initialLength) {
+    console.info(`${initialLength - apiModel.endpoints.length} endpoints removed because of missing request or response`)
+  }
+
+  return apiModel
+}
