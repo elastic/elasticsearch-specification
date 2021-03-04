@@ -273,8 +273,8 @@ export enum Stability {
 }
 export enum Visibility {
   public = 'public',
-  beta = 'feature_flag',
-  experimental = 'private'
+  featureFlag = 'feature_flag',
+  private = 'private'
 }
 
 export class Deprecation {
@@ -328,9 +328,4 @@ export class Model {
 
   types: TypeDefinition[]
   endpoints: Endpoint[]
-}
-
-const r = new Request()
-if (isDepreciable(r)) {
-  console.log("Request is depreciable!")
 }
