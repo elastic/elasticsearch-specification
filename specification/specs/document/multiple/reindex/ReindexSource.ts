@@ -21,7 +21,7 @@ class ReindexSource {
   index: Indices
   query?: QueryContainer
   remote?: RemoteSource
-  size: integer
+  size?: integer
   slice?: SlicedScroll
   sort?: Sort
   _source?: Fields

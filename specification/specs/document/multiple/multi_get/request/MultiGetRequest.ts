@@ -45,20 +45,12 @@ interface MultiGetRequest extends RequestBase {
   }
 }
 
-// This differs from SourceFilter by
-// using 'exclude' instead of 'excludes'
-// and 'include' instead of 'includes'.
-class MultiGetSourceFilter {
-  exclude?: Fields
-  include?: Fields
-}
-
 class MultiGetOperation {
   can_be_flattened?: boolean
   _id: Id
   _index?: IndexName
   routing?: Routing
-  _source?: boolean | Fields | MultiGetSourceFilter
+  _source?: boolean | Fields | SourceFilter
   stored_fields?: Fields
   _type?: Type
   version?: long

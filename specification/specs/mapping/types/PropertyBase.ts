@@ -22,5 +22,8 @@ class PropertyBase {
   meta?: Dictionary<string, string>
   name?: PropertyName
   type?: string
-  properties?: Dictionary<string, PropertyBase>
+  properties?: Dictionary<PropertyName, PropertyBase>
+  ignore_above?: integer
+  dynamic?: boolean | DynamicMapping
+  fields?: Dictionary<PropertyName, PropertyBase>
 }

@@ -25,7 +25,7 @@ class TopHitsAggregation extends MetricAggregationBase {
   script_fields?: Dictionary<string, ScriptField>
   size?: integer
   sort?: Sort
-  _source?: boolean | SourceFilter | Field
+  _source?: boolean | SourceFilter | Fields
   stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
