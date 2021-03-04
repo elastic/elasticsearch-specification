@@ -61,7 +61,7 @@ type MappingsType = Map<string, {
   response: model.TypeName | null
 }>
 
-export function compileEndpoints() : Record<string, model.Endpoint> {
+export function compileEndpoints (): Record<string, model.Endpoint> {
   // Create endpoints and merge them with
   // the recorded mappings if present.
   const map = {}
@@ -82,9 +82,9 @@ export function compileEndpoints() : Record<string, model.Endpoint> {
         }
       })
     }
-    map[api] = endpoint;
+    map[api] = endpoint
   }
-  return map;
+  return map
 }
 
 export function compileSpecification (endpointMappings: Record<string, model.Endpoint>): model.Model {
@@ -157,7 +157,6 @@ export function compileSpecification (endpointMappings: Record<string, model.End
     model.types.push(modelTypeAlias(declaration))
   }
 
-
   // Sort the types in alphabetical order
   model.types.sort((a, b) => {
     if (a.name.name > b.name.name) return 1
@@ -191,8 +190,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   if (Node.isInterfaceDeclaration(declaration) && isApi(declaration)) {
     // It's not guaranteed that every *Request definition
     // has an associated *Response definition as well.
-    let response = allClasses
-      .map (d => d.getName())
+    const response = allClasses
+      .map(d => d.getName())
       .find(n => n == `${name.slice(0, -7)}Response`)
       ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
       : null

@@ -112,7 +112,7 @@ export class UserDefinedValue {
 /**
  * An interface or request interface property.
  */
-export class Property  {
+export class Property {
   name: string
   type: ValueOf
   required: boolean

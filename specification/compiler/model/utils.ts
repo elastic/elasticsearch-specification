@@ -256,9 +256,8 @@ export function modelType (node: Node): model.ValueOf {
  */
 export function isApi (declaration: InterfaceDeclaration): boolean {
   const tags = parseJsDocTags(declaration.getJsDocs())
-  return !!tags['rest_spec_name']
+  return !!tags.rest_spec_name
 }
-
 
 /**
  * Given a HeritageClause node returns an Inherits structure.
@@ -359,7 +358,7 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
   const type = declaration.getTypeNode()
   assert(type, 'Type alias without a referenced type')
   const generics = declaration.getTypeParameters().map(node => modelType(node))
-  const typeAlias : model.TypeAlias = {
+  const typeAlias: model.TypeAlias = {
     name: {
       name: declaration.getName(),
       namespace: getNameSpace(declaration)
@@ -369,7 +368,7 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     ...(generics.length > 0 && { generics })
   }
   hoistTypeAnnotations(typeAlias, declaration.getJsDocs())
-  return typeAlias;
+  return typeAlias
 }
 
 /**
@@ -396,24 +395,24 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 /**
  * Pulls @obsolete and @obsolete_description from types and properties
  */
-function setObsolete(type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>) {
-  const obsolete = tags['obsolete']
-  const description = tags['obsolete_description']
+function setObsolete (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>) {
+  const obsolete = tags.obsolete
+  const description = tags.obsolete_description
   if (obsolete) {
-    type.deprecation = { version: obsolete, description: description}
+    type.deprecation = { version: obsolete, description: description }
   }
-  delete tags['obsolete']
-  delete tags['obsolete_description']
+  delete tags.obsolete
+  delete tags.obsolete_description
 }
 
 /**
  * Validates ands sets jsDocs tags used throughout the input specification
  */
-function setTags<TType extends model.BaseType | model.Property | model.EnumMember>(
+function setTags<TType extends model.BaseType | model.Property | model.EnumMember> (
   type: TType,
   tags: Record<string, string>,
   validTags: string[],
-  setter: ((tags: Record<string, string>, tag:string, value:string) => void)
+  setter: ((tags: Record<string, string>, tag: string, value: string) => void)
 ) {
   if (Object.keys(tags).length == 0) return
 
@@ -431,23 +430,23 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
     }
   }
 
-  function getName(type) {
+  function getName (type) {
     if (type instanceof model.BaseType) return type.name
     if (type instanceof model.Property) return type.name
     if (type instanceof model.EnumMember) return type.name
-    return typeof(type)
+    return typeof (type)
   }
 }
 
 /** Lifts jsDoc type annotations to request properties */
-export function hoistRequestAnnotations(
+export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ) {
   const knownRequestAnnotations = [
     'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer'
   ]
   const tags = parseJsDocTags(jsDocs)
-  const apiName = tags['rest_spec_name'];
+  const apiName = tags.rest_spec_name
   assert(apiName, `Request ${request.name} does not declare the @rest_spec_name to link back to`)
 
   const endpoint = mappings[apiName]
@@ -460,7 +459,7 @@ export function hoistRequestAnnotations(
   setTags(request, tags, knownRequestAnnotations, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) return
     else if (tag == 'rest_spec_name') {
-      return
+
     } else if (tag == 'visibility') {
       if (endpoint.visibility) {
         assert(endpoint.visibility == value,
@@ -468,7 +467,7 @@ export function hoistRequestAnnotations(
       }
       endpoint.visibility = model.Visibility[value]
     } else if (tag == 'stability') {
-      //still need to follow up on this in a new PR
+      // still need to follow up on this in a new PR
       if (value == 'TODO') return
       if (endpoint.stability) {
         assert(endpoint.stability == value,
@@ -478,13 +477,12 @@ export function hoistRequestAnnotations(
     } else if (tag == 'since') {
       assert(semver.valid(value), `Request ${request.name}'s @since is not valid semver: ${value}`)
       endpoint.since = value
-    }
-    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
+    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
   })
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
-export function hoistTypeAnnotations(type: model.TypeDefinition, jsDocs: JSDoc[]) {
+export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]) {
   const validTags = ['class_serializer', 'url', 'behavior']
   const tags = parseJsDocTags(jsDocs)
   setTags(type, tags, validTags, (tags, tag, value) => {
@@ -492,37 +490,33 @@ export function hoistTypeAnnotations(type: model.TypeDefinition, jsDocs: JSDoc[]
     if (tag.endsWith('_serializer')) return
     else if (tag == 'url') {
       type.url = value
-    }
-    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name}`)
+    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name}`)
   })
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
-function hoistPropertyAnnotations(property: model.Property, jsDocs: JSDoc[]) {
+function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]) {
   const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'identifier']
   const tags = parseJsDocTags(jsDocs)
   setTags(property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) return
     else if (tag == 'aliases') {
-      property.aliases = value.split(",").map(v => v.trim())
+      property.aliases = value.split(',').map(v => v.trim())
     } else if (tag == 'identifier') {
       property.identifier = value
-    }
-    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
+    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
   })
 }
 /** Lifts jsDoc type annotations to fixed properties on Property */
-function hoistEnumMemberAnnotations(member: model.EnumMember, jsDocs: JSDoc[]) {
+function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]) {
   const validTags = ['obsolete', 'obsolete_description', 'identifier']
   const tags = parseJsDocTags(jsDocs)
   setTags(member, tags, validTags, (tags, tag, value) => {
     if (tag == 'identifier') {
       member.identifier = value
-    }
-    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
+    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
   })
 }
-
 
 /**
  * Returns true if the passed HeritageClause node contains
@@ -635,7 +629,7 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
         value: tag.getComment() ?? ''
       }
     })
-  const mapped = tags.reduce((acc, curr) => ({...acc, [curr.name]: curr.value}) , {})
+  const mapped = tags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
   return mapped
 }
 

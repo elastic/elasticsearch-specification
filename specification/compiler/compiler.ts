@@ -21,7 +21,7 @@ import { writeFile } from 'fs/promises'
 import { join } from 'path'
 import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
-import {compileSpecification,compileEndpoints} from './model/build-model'
+import { compileSpecification, compileEndpoints } from './model/build-model'
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
 
 type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>) => Promise<Model>
