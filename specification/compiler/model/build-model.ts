@@ -83,8 +83,6 @@ export function compileEndpoints() : Record<string, model.Endpoint> {
       })
     }
     map[api] = endpoint;
-
-    //model.endpoints.push(endpoint)
   }
   return map;
 }
