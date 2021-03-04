@@ -256,7 +256,7 @@ export function modelType (node: Node): model.ValueOf {
  */
 export function isApi (declaration: InterfaceDeclaration): boolean {
   const tags = parseJsDocTags(declaration.getJsDocs())
-  return !!tags.rest_spec_name
+  return tags.rest_spec_name !== undefined
 }
 
 /**
@@ -395,10 +395,10 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 /**
  * Pulls @obsolete and @obsolete_description from types and properties
  */
-function setObsolete (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>) {
+function setObsolete (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>): void {
   const obsolete = tags.obsolete
   const description = tags.obsolete_description
-  if (obsolete) {
+  if (obsolete !== undefined) {
     type.deprecation = { version: obsolete, description: description }
   }
   delete tags.obsolete
@@ -413,41 +413,43 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   tags: Record<string, string>,
   validTags: string[],
   setter: ((tags: Record<string, string>, tag: string, value: string) => void)
-) {
-  if (Object.keys(tags).length == 0) return
+): void {
+  if (Object.keys(tags).length === 0) return
 
   setObsolete(type, tags)
   const badTags = Object.keys(tags).filter(tag => !validTags.includes(tag))
   assert(
-    badTags.length == 0,
+    badTags.length === 0,
     `'${getName(type)}' has the following unknown annotations: ${badTags.join(', ')}`
   )
 
   for (const tag of validTags) {
-    if (tag == 'behavior') continue
-    if (tags[tag]) {
+    if (tag === 'behavior') continue
+    if (tags[tag] !== undefined) {
       setter(tags, tag, tags[tag])
     }
   }
 
-  function getName (type) {
-    if (type instanceof model.BaseType) return type.name
+  function getName (type): string {
+    if (type instanceof model.BaseType) return type.name.name
     if (type instanceof model.Property) return type.name
     if (type instanceof model.EnumMember) return type.name
-    return typeof (type)
+    return 'unknown'
   }
 }
 
 /** Lifts jsDoc type annotations to request properties */
 export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
-) {
+): void {
   const knownRequestAnnotations = [
     'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer'
   ]
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
-  assert(apiName, `Request ${request.name} does not declare the @rest_spec_name to link back to`)
+  // TODO (@typescript-eslint/strict-boolean-expressions) is no fun
+  assert(apiName === '' || apiName === null || apiName === undefined,
+    `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
   const endpoint = mappings[apiName]
   assert(endpoint != null, `${apiName} is not represented in the spec as a json file`)
@@ -457,62 +459,61 @@ export function hoistRequestAnnotations (
 
   // This ensures the tags from request end up on the endpoint
   setTags(request, tags, knownRequestAnnotations, (tags, tag, value) => {
-    if (tag.endsWith('_serializer')) return
-    else if (tag == 'rest_spec_name') {
-
-    } else if (tag == 'visibility') {
-      if (endpoint.visibility) {
-        assert(endpoint.visibility == value,
-          `Request ${request.name} visibility on annotation ${value} does not match spec: ${endpoint.visibility}`)
+    if (tag.endsWith('_serializer')) {
+    } else if (tag === 'rest_spec_name') {
+    } else if (tag === 'visibility') {
+      if (endpoint.visibility !== '' && endpoint.visibility !== null && endpoint.visibility !== undefined) {
+        assert(endpoint.visibility === value,
+          `Request ${request.name.name} visibility on annotation ${value} does not match spec: ${endpoint.visibility ?? ''}`)
       }
       endpoint.visibility = model.Visibility[value]
-    } else if (tag == 'stability') {
+    } else if (tag === 'stability') {
       // still need to follow up on this in a new PR
-      if (value == 'TODO') return
-      if (endpoint.stability) {
-        assert(endpoint.stability == value,
-          `Request ${request.name} stability on annotation ${value} does not match spec: ${endpoint.visibility}`)
+      if (value === 'TODO') return
+      if (endpoint.stability !== '' && endpoint.stability !== null && endpoint.stability !== undefined) {
+        assert(endpoint.stability === value,
+          `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
       }
       endpoint.stability = model.Stability[value]
-    } else if (tag == 'since') {
-      assert(semver.valid(value), `Request ${request.name}'s @since is not valid semver: ${value}`)
+    } else if (tag === 'since') {
+      assert(semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)
       endpoint.since = value
-    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
+    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
   })
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
-export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]) {
+export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]): void {
   const validTags = ['class_serializer', 'url', 'behavior']
   const tags = parseJsDocTags(jsDocs)
   setTags(type, tags, validTags, (tags, tag, value) => {
-    if (tag == 'stability') return
-    if (tag.endsWith('_serializer')) return
-    else if (tag == 'url') {
+    if (tag === 'stability') {
+    } else if (tag.endsWith('_serializer')) {
+    } else if (tag === 'url') {
       type.url = value
-    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name}`)
+    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
   })
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
-function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]) {
+function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
   const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'identifier']
   const tags = parseJsDocTags(jsDocs)
   setTags(property, tags, validTags, (tags, tag, value) => {
-    if (tag.endsWith('_serializer')) return
-    else if (tag == 'aliases') {
+    if (tag.endsWith('_serializer')) {
+    } else if (tag === 'aliases') {
       property.aliases = value.split(',').map(v => v.trim())
-    } else if (tag == 'identifier') {
+    } else if (tag === 'identifier') {
       property.identifier = value
     } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
   })
 }
 /** Lifts jsDoc type annotations to fixed properties on Property */
-function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]) {
+function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]): void {
   const validTags = ['obsolete', 'obsolete_description', 'identifier']
   const tags = parseJsDocTags(jsDocs)
   setTags(member, tags, validTags, (tags, tag, value) => {
-    if (tag == 'identifier') {
+    if (tag === 'identifier') {
       member.identifier = value
     } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
   })

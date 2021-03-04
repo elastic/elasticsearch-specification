@@ -18,8 +18,8 @@
  */
 
 import assert from 'assert'
-import {writeFileSync} from 'fs'
-import {join} from 'path'
+import { writeFileSync } from 'fs'
+import { join } from 'path'
 import {
   ClassDeclaration,
   EnumDeclaration,
@@ -73,7 +73,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
         return {
           path: path.path,
           methods: path.methods,
-          ...(path.deprecated != null && {deprecation: path.deprecated})
+          ...(path.deprecated != null && { deprecation: path.deprecated })
         }
       })
     }
