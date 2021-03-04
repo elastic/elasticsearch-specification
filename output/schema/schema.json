@@ -35142,45 +35142,31 @@
       "kind": "enum",
       "members": [
         {
-          "alternateName": [
-            "Second"
-          ],
+          "identifier": "Second",
           "name": "s"
         },
         {
-          "alternateName": [
-            "Minute"
-          ],
+          "identifier": "Minute",
           "name": "m"
         },
         {
-          "alternateName": [
-            "Hour"
-          ],
+          "identifier": "Hour",
           "name": "h"
         },
         {
-          "alternateName": [
-            "Day"
-          ],
+          "identifier": "Day",
           "name": "d"
         },
         {
-          "alternateName": [
-            "Week"
-          ],
+          "identifier": "Week",
           "name": "w"
         },
         {
-          "alternateName": [
-            "Month"
-          ],
+          "identifier": "Month",
           "name": "M"
         },
         {
-          "alternateName": [
-            "Year"
-          ],
+          "identifier": "Year",
           "name": "y"
         }
       ],
@@ -57461,15 +57447,11 @@
       "kind": "enum",
       "members": [
         {
-          "alternateName": [
-            "Additive"
-          ],
+          "identifier": "Additive",
           "name": "add"
         },
         {
-          "alternateName": [
-            "Multiplicative"
-          ],
+          "identifier": "Multiplicative",
           "name": "mult"
         }
       ],
@@ -87233,9 +87215,7 @@
       },
       "properties": [
         {
-          "alternateName": [
-            "Query"
-          ],
+          "identifier": "Query",
           "name": "rescore_query",
           "required": true,
           "type": {
@@ -100058,9 +100038,7 @@
           "name": "desc"
         },
         {
-          "alternateName": [
-            "Document"
-          ],
+          "identifier": "Document",
           "name": "_doc"
         }
       ],

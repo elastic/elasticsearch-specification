@@ -109,13 +109,10 @@ export class NamedValueOf {
 export class UserDefinedValue {
   kind: 'user_defined_value'
 }
-
-// ------------------------------------------------------------------------------------------------
-
 /**
  * An interface or request interface property.
  */
-export class Property {
+export class Property  {
   name: string
   type: ValueOf
   required: boolean
@@ -127,6 +124,7 @@ export class Property {
   identifier?: string
   /** An optional set of aliases for `name` */
   aliases?: string[]
+  deprecation?: Deprecation
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -134,15 +132,7 @@ export class Property {
 
 export type TypeDefinition = Interface | Request | Union | Enum | TypeAlias
 
-export type Depreciable = TypeDefinition | EnumMember
-export const isDepreciable = (type: object): type is Depreciable => {
-  return (type as Depreciable).name !== undefined;
-}
-
-export type BehaviorAttachable = Interface | Request
-export const isBehaviorAttachable = (type: object): type is BehaviorAttachable => {
-  return (type as BehaviorAttachable).name !== undefined;
-}
+// ------------------------------------------------------------------------------------------------
 
 /**
  * Common attributes for all type definitions
@@ -153,6 +143,7 @@ export abstract class BaseType {
   /** Link to public documentation */
   url?: string
   deprecation?: Deprecation
+  kind: string
 }
 
 /**
@@ -337,4 +328,9 @@ export class Model {
 
   types: TypeDefinition[]
   endpoints: Endpoint[]
+}
+
+const r = new Request()
+if (isDepreciable(r)) {
+  console.log("Request is depreciable!")
 }

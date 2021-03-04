@@ -396,7 +396,7 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 /**
  * Pulls @obsolete and @obsolete_description from types and properties
  */
-function setObsolete(type: model.Depreciable, tags: Record<string, string>) {
+function setObsolete(type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>) {
   const obsolete = tags['obsolete']
   const description = tags['obsolete_description']
   if (obsolete) {
@@ -419,9 +419,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   const tags = parseJsDocTags(jsDocs)
   if (Object.keys(tags).length == 0) return
 
-  if (model.isDepreciable(type)) {
-    setObsolete(type, tags)
-  }
+  setObsolete(type, tags)
   const badTags = Object.keys(tags).filter(tag => !validTags.includes(tag))
   assert(
     badTags.length == 0,
@@ -429,7 +427,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   )
 
   for (const tag of validTags) {
-    if (tag == 'behavior' && model.isBehaviorAttachable(type)) continue
+    if (tag == 'behavior') continue
     if (tags[tag]) {
       setter(tags, tag, tags[tag])
     }
