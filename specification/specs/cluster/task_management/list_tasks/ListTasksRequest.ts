@@ -24,11 +24,11 @@
  */
 interface ListTasksRequest extends RequestBase {
   query_parameters?: {
-    actions?: string[]
+    actions?: string
     detailed?: boolean
     group_by?: GroupBy
     nodes?: string[]
-    parent_task_id?: string
+    parent_task_id?: Id
     timeout?: Time
     wait_for_completion?: boolean
   }

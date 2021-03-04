@@ -6214,11 +6214,11 @@ export interface LinearInterpolationSmoothingModel {
 }
 
 export interface ListTasksRequest extends RequestBase {
-  actions?: Array<string>
+  actions?: string
   detailed?: boolean
   group_by?: GroupBy
   nodes?: Array<string>
-  parent_task_id?: string
+  parent_task_id?: Id
   timeout?: Time
   wait_for_completion?: boolean
 }
