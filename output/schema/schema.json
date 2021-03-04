@@ -9431,10 +9431,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "watcher.ack_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -9820,10 +9817,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "watcher.activate_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -11743,10 +11737,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.exists_alias",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -12483,10 +12474,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "indices.analyze",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -13879,10 +13867,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "async_search.delete",
-      "since": "7.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -14009,10 +13994,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "async_search.get",
-      "since": "7.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "generics": [
@@ -14145,10 +14127,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "async_search.status",
-      "since": "7.11.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "generics": [
@@ -14823,10 +14802,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "async_search.submit",
-      "since": "7.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "generics": [
@@ -14991,10 +14967,7 @@
         "namespace": "x_pack.security.authenticate"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "security.authenticate",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -16537,10 +16510,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.update_aliases",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -17034,10 +17004,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "bulk",
-      "since": "0.0.0",
-      "stability": "stable"
+      ]
     },
     {
       "inherits": [
@@ -17676,10 +17643,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "tasks.cancel",
-      "since": "2.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -17891,10 +17855,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.aliases",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -18087,10 +18048,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.allocation",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -18194,10 +18152,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "cat.count",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -18467,10 +18422,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.ml_data_frame_analytics",
-      "since": "7.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -18685,10 +18637,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.ml_datafeeds",
-      "since": "7.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -18846,10 +18795,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.fielddata",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -19084,10 +19030,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.health",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -19156,10 +19099,7 @@
         "namespace": "cat.cat_help"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cat.help",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -19407,10 +19347,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.indices",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -20109,10 +20046,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.ml_jobs",
-      "since": "7.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -20214,10 +20148,7 @@
         "namespace": "cat.cat_master"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cat.master",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -20363,10 +20294,7 @@
         "namespace": "cat.cat_node_attributes"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cat.nodeattrs",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -21228,10 +21156,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.nodes",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -21333,10 +21258,7 @@
         "namespace": "cat.cat_pending_tasks"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cat.pending_tasks",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -21482,10 +21404,7 @@
         "namespace": "cat.cat_plugins"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cat.plugins",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -21832,10 +21751,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.recovery",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -21915,10 +21831,7 @@
         "namespace": "cat.cat_repositories"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cat.repositories",
-      "since": "2.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -22233,10 +22146,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.segments",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -22957,10 +22867,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.shards",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -23164,10 +23071,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.snapshots",
-      "since": "2.1.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -23397,10 +23301,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.tasks",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -23526,10 +23427,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "cat.templates",
-      "since": "5.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -23844,10 +23742,7 @@
             "kind": "union_of"
           }
         }
-      ],
-      "restSpecName": "cat.thread_pool",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -24128,10 +24023,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.ml_trained_models",
-      "since": "7.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -24533,10 +24425,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cat.transforms",
-      "since": "7.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -24803,10 +24692,7 @@
         "namespace": "x_pack.cross_cluster_replication.stats"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ccr.stats",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -24998,10 +24884,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.change_password",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -25609,10 +25492,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.cleanup_repository",
-      "since": "7.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -25782,10 +25662,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.clear_cache",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -25849,10 +25726,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.clear_cached_realms",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -25934,10 +25808,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "security.clear_cached_roles",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -26038,10 +25909,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "clear_scroll",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -26093,10 +25961,7 @@
         "namespace": "x_pack.sql.clear_sql_cursor"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "sql.clear_cursor",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -26258,10 +26123,7 @@
             "kind": "union_of"
           }
         }
-      ],
-      "restSpecName": "indices.clone",
-      "since": "7.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -26400,10 +26262,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.close",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -26560,10 +26419,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.close_job",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -26695,10 +26551,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.allocation_explain",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -27181,10 +27034,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.get_settings",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -27390,10 +27240,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.health",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -28651,10 +28498,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.pending_tasks",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -28924,10 +28768,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.put_settings",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -29319,10 +29160,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.reroute",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -29913,10 +29751,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.state",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -30122,10 +29957,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "cluster.stats",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -32094,10 +31926,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "count",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -32216,10 +32045,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.create_api_key",
-      "since": "6.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -32464,10 +32290,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.put_auto_follow_pattern",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -32665,10 +32488,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ccr.follow",
-      "since": "6.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -32850,10 +32670,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.create",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -32975,10 +32792,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.create_repository",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -33142,10 +32956,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "create",
-      "since": "5.0.0",
-      "stability": "stable"
+      ]
     },
     {
       "inherits": [
@@ -33268,10 +33079,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "rollup.put_job",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -35701,10 +35509,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "watcher.deactivate_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -35997,10 +35802,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.delete_alias",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -36049,10 +35851,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.delete_auto_follow_pattern",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -36510,10 +36309,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "delete_by_query",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -36732,10 +36528,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "delete_by_query_rethrottle",
-      "since": "6.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -36796,10 +36589,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.delete_calendar_event",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -36860,10 +36650,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.delete_calendar_job",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -36949,10 +36736,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.delete_calendar",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37013,10 +36797,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.delete_datafeed",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37065,10 +36846,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "enrich.delete_policy",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37104,10 +36882,7 @@
         "namespace": "x_pack.machine_learning.delete_expired_data"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ml.delete_expired_data",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37168,10 +36943,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.delete_filter",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37255,10 +37027,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.delete_forecast",
-      "since": "6.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37363,10 +37132,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.delete",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37438,10 +37204,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.delete_template",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37513,10 +37276,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.delete_job",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37552,10 +37312,7 @@
         "namespace": "x_pack.license.delete_license"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "license.delete",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37615,10 +37372,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ilm.delete_lifecycle",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37679,10 +37433,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.delete_model_snapshot",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -37754,10 +37505,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ingest.delete_pipeline",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37830,10 +37578,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.delete_privileges",
-      "since": "6.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -37931,10 +37676,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.delete_repository",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38096,10 +37838,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "delete",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38160,10 +37899,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.delete_role_mapping",
-      "since": "5.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38236,10 +37972,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.delete_role",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38300,10 +38033,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "rollup.delete_job",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -38375,10 +38105,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "delete_script",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38427,10 +38154,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "slm.delete_lifecycle",
-      "since": "7.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -38503,10 +38227,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.delete",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38567,10 +38288,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.delete_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38631,10 +38349,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.delete_user",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -38695,10 +38410,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "watcher.delete_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -38891,10 +38603,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "migration.deprecations",
-      "since": "6.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -39444,10 +39153,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.disable_user",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -40192,10 +39898,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "exists",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -41083,10 +40786,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.enable_user",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -41290,10 +40990,7 @@
         "namespace": "x_pack.enrich.stats"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "enrich.stats",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -41767,10 +41464,7 @@
         "namespace": "x_pack.machine_learning.estimate_model_memory"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ml.estimate_model_memory",
-      "since": "7.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -41884,10 +41578,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "enrich.execute_policy",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -42004,10 +41695,7 @@
         "namespace": "modules.scripting.execute_painless_script"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "scripts_painless_execute",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "generics": [
@@ -42058,10 +41746,7 @@
         "namespace": "x_pack.slm.execute_retention"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "slm.execute_retention",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -42110,10 +41795,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "slm.execute_lifecycle",
-      "since": "7.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -42284,10 +41966,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "watcher.execute_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -43010,10 +42689,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ilm.explain_lifecycle",
-      "since": "6.6.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -43287,10 +42963,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "explain",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -44138,10 +43811,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "field_caps",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -45798,10 +45468,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.flush_job",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -45918,10 +45585,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.flush",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -46549,10 +46213,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.follow_stats",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -46616,10 +46277,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.follow_info",
-      "since": "6.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -46829,10 +46487,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.forcemerge",
-      "since": "2.1.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -46958,10 +46613,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.forecast",
-      "since": "6.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -47156,10 +46808,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.forget_follower",
-      "since": "6.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -47375,10 +47024,7 @@
             "kind": "union_of"
           }
         }
-      ],
-      "restSpecName": "indices.freeze",
-      "since": "6.6.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -49490,10 +49136,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.get_alias",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -49640,10 +49283,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_records",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -49761,10 +49401,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.get_api_key",
-      "since": "6.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -49828,10 +49465,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.get_auto_follow_pattern",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -49889,10 +49523,7 @@
         "namespace": "x_pack.license.get_basic_license_status"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "license.get_basic_status",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50058,10 +49689,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_buckets",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50123,10 +49751,7 @@
         "namespace": "x_pack.security.privileges.get_builtin_privileges"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "security.get_builtin_privileges",
-      "since": "7.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50265,10 +49890,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.get_calendar_events",
-      "since": "6.2.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -50359,10 +49981,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_calendars",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50465,10 +50084,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_categories",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50530,10 +50146,7 @@
         "namespace": "x_pack.ssl.get_certificates"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ssl.certificates",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50609,10 +50222,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.get_datafeed_stats",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -50699,10 +50309,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.get_datafeeds",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -50777,10 +50384,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "enrich.get_policy",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -50935,10 +50539,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.get_field_mapping",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51026,10 +50627,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.get_filters",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51091,10 +50689,7 @@
         "namespace": "x_pack.ilm.get_status"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ilm.get_status",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -51244,10 +50839,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.get",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51402,10 +50994,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.get_settings",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51515,10 +51104,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.get_template",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51665,10 +51251,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_influencers",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -51755,10 +51338,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.get_job_stats",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51845,10 +51425,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.get_jobs",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51933,10 +51510,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "license.get",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -51997,10 +51571,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ilm.get_lifecycle",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -52144,10 +51715,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.get_mapping",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -52284,10 +51852,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_model_snapshots",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -52444,10 +52009,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.get_overall_buckets",
-      "since": "6.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -52534,10 +52096,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ingest.get_pipeline",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -52614,10 +52173,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "security.get_privileges",
-      "since": "6.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -52715,10 +52271,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.get_repository",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -52962,10 +52515,7 @@
             "kind": "union_of"
           }
         }
-      ],
-      "restSpecName": "get",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -53134,10 +52684,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "security.get_role_mapping",
-      "since": "5.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53202,10 +52749,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "security.get_role",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53270,10 +52814,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "rollup.get_rollup_caps",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53338,10 +52879,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "rollup.get_rollup_index_caps",
-      "since": "6.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53406,10 +52944,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "rollup.get_jobs",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53485,10 +53020,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "get_script",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -53558,10 +53090,7 @@
         "namespace": "x_pack.slm.get_status"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "slm.get_status",
-      "since": "7.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53622,10 +53151,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "slm.get_lifecycle",
-      "since": "7.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53677,10 +53203,7 @@
         "namespace": "x_pack.slm.get_stats"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "slm.get_stats",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -53875,10 +53398,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.get",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -54084,10 +53604,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "tasks.get",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -54193,10 +53710,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.get_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -54305,10 +53819,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.get_transform_stats",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -54370,10 +53881,7 @@
         "namespace": "x_pack.license.get_trial_license_status"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "license.get_trial_status",
-      "since": "6.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -54492,10 +54000,7 @@
         "namespace": "x_pack.security.user.get_user_access_token"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "security.get_token",
-      "since": "5.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -54609,10 +54114,7 @@
         "namespace": "x_pack.security.privileges.get_user_privileges"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "security.get_user_privileges",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -54732,10 +54234,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "security.get_user",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -54800,10 +54299,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "watcher.get_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -55179,10 +54675,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "graph.explore",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -55533,10 +55026,7 @@
         "namespace": "ingest.processor"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ingest.processor_grok",
-      "since": "6.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -55910,10 +55400,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "security.has_privileges",
-      "since": "6.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -59010,10 +58497,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.exists",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -59487,10 +58971,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "index",
-      "since": "0.0.0",
-      "stability": "stable"
+      ]
     },
     {
       "inherits": [
@@ -59912,10 +59393,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.exists_template",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -60572,10 +60050,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.shard_stores",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -60850,10 +60325,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.stats",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -62356,10 +61828,7 @@
         "namespace": "x_pack.security.api_key.invalidate_api_key"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "security.invalidate_api_key",
-      "since": "6.7.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -62498,10 +61967,7 @@
         "namespace": "x_pack.security.user.invalidate_user_access_token"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "security.invalidate_token",
-      "since": "5.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -65636,10 +65102,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "tasks.list",
-      "since": "2.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -65921,10 +65384,7 @@
         "namespace": "x_pack.machine_learning.machine_learning_info"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ml.info",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -68341,10 +67801,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ilm.move_to_step",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -69068,10 +68525,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "mget",
-      "since": "0.0.0",
-      "stability": "stable"
+      ]
     },
     {
       "generics": [
@@ -69509,10 +68963,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "msearch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -69675,10 +69126,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "msearch_template",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "kind": "type_alias",
@@ -70044,10 +69492,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "mtermvectors",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -72839,10 +72284,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "nodes.hot_threads",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -72941,10 +72383,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "nodes.info",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -73170,10 +72609,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "nodes.stats",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -73279,10 +72715,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "nodes.usage",
-      "since": "6.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -74041,10 +73474,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.open",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -74121,10 +73551,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.open_job",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -75216,10 +74643,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.pause_auto_follow_pattern",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -75268,10 +74692,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.pause_follow",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -76360,10 +75781,7 @@
         "namespace": "cluster.ping"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ping",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -76883,10 +76301,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.post_calendar_events",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -76988,10 +76403,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.post_data",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -77221,10 +76633,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "license.post",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -77374,10 +76783,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.preview_datafeed",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "generics": [
@@ -77502,10 +76908,7 @@
         "namespace": "x_pack.transform.preview_transform"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "transform.preview_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "generics": [
@@ -78334,10 +77737,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.put_alias",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -78398,10 +77798,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.put_calendar_job",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -78503,10 +77900,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.put_calendar",
-      "since": "6.2.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -78772,10 +78166,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.put_datafeed",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -78993,10 +78384,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "enrich.put_policy",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -79075,10 +78463,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.put_filter",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -79310,10 +78695,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.put_template",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -79455,10 +78837,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.put_job",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -79700,10 +79079,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ilm.put_lifecycle",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -80045,10 +79421,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.put_mapping",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -80164,10 +79537,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ingest.put_pipeline",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -80251,10 +79621,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.put_privileges",
-      "since": "6.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -80433,10 +79800,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.put_role_mapping",
-      "since": "5.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -80635,10 +79999,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.put_role",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -80770,10 +80131,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "put_script",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -80882,10 +80240,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "slm.put_lifecycle",
-      "since": "7.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -81017,10 +80372,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.put_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -81185,10 +80537,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "security.put_user",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -81392,10 +80741,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "watcher.put_watch",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -83080,10 +82426,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "sql.query",
-      "since": "6.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -84973,10 +84316,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.recovery",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -85241,10 +84581,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.refresh",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -85738,10 +85075,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "reindex",
-      "since": "2.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -85938,10 +85272,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "reindex_rethrottle",
-      "since": "2.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -86440,10 +85771,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.reload_search_analyzers",
-      "since": "7.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -86546,10 +85874,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "nodes.reload_secure_settings",
-      "since": "6.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -86708,10 +86033,7 @@
         "namespace": "cluster.remote_info"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "cluster.remote_info",
-      "since": "6.1.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -86856,10 +86178,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ilm.remove_policy",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -87054,10 +86373,7 @@
         "namespace": "search.search_template.render_search_template"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "render_search_template",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -87573,10 +86889,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.restore",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -87800,10 +87113,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.resume_auto_follow_pattern",
-      "since": "7.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -87967,10 +87277,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.resume_follow",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -88050,10 +87357,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ilm.retry",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -88174,10 +87478,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.revert_model_snapshot",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -88521,10 +87822,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.rollover",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -89330,10 +88628,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "rollup.rollup_search",
-      "since": "6.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -89372,10 +88667,7 @@
         "namespace": "cluster.root_node_info"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "info",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -90718,10 +90010,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "scroll",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -92136,10 +91425,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "search",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -92549,10 +91835,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "search_shards",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -93013,10 +92296,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "search_template",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "kind": "interface",
@@ -93444,10 +92724,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.segments",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -93828,10 +93105,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.set_upgrade_mode",
-      "since": "6.7.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -96703,10 +95977,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.shrink",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -97622,10 +96893,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ingest.simulate",
-      "since": "5.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -99176,10 +98444,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.create",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -99672,10 +98937,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.status",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -100316,10 +99578,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "exists_source",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -100604,10 +99863,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "get_source",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -101499,10 +100755,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.split",
-      "since": "6.1.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -101897,10 +101150,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "license.post_start_basic",
-      "since": "6.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -102046,10 +101296,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.start_datafeed",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -102108,10 +101355,7 @@
         "namespace": "x_pack.ilm.start"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ilm.start",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -102160,10 +101404,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "rollup.start_job",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -102211,10 +101452,7 @@
         "namespace": "x_pack.slm.start"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "slm.start",
-      "since": "7.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -102275,10 +101513,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.start_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -102337,10 +101572,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "license.post_start_trial",
-      "since": "6.1.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -102399,10 +101631,7 @@
         "namespace": "x_pack.watcher.start_watcher"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "watcher.start",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -102766,10 +101995,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.stop_datafeed",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -102817,10 +102043,7 @@
         "namespace": "x_pack.ilm.stop"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ilm.stop",
-      "since": "6.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -102892,10 +102115,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "rollup.stop_job",
-      "since": "6.3.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -102943,10 +102163,7 @@
         "namespace": "x_pack.slm.stop"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "slm.stop",
-      "since": "7.6.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -103112,10 +102329,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.stop_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -103151,10 +102365,7 @@
         "namespace": "x_pack.watcher.stop_watcher"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "watcher.stop",
-      "since": "0.0.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -104099,10 +103310,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.flush_synced",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -105851,10 +105059,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "termvectors",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -109401,10 +108606,7 @@
         "namespace": "x_pack.sql.translate_sql"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "sql.translate",
-      "since": "6.3.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -109938,10 +109140,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.exists_type",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -110495,10 +109694,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ccr.unfollow",
-      "since": "6.5.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -110614,10 +109810,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.unfreeze",
-      "since": "6.6.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -111159,10 +110352,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "update_by_query",
-      "since": "2.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -111348,10 +110538,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "update_by_query_rethrottle",
-      "since": "6.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -111564,10 +110751,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "ml.update_datafeed",
-      "since": "5.4.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -111802,10 +110986,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.update_filter",
-      "since": "6.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -111991,10 +111172,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.put_settings",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -112153,10 +111331,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.update_job",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -112244,10 +111419,7 @@
           }
         }
       ],
-      "query": [],
-      "restSpecName": "ml.update_model_snapshot",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -112601,10 +111773,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "update",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "generics": [
@@ -112749,10 +111918,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "transform.update_transform",
-      "since": "7.5.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -113245,10 +112411,7 @@
         "namespace": "x_pack.machine_learning.validate_detector"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ml.validate_detector",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -113366,10 +112529,7 @@
         "namespace": "x_pack.machine_learning.validate_job"
       },
       "path": [],
-      "query": [],
-      "restSpecName": "ml.validate",
-      "since": "5.4.0",
-      "stability": "TODO"
+      "query": []
     },
     {
       "inherits": [
@@ -113579,10 +112739,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "indices.validate_query",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -113941,10 +113098,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "snapshot.verify_repository",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -114760,10 +113914,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "watcher.stats",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -115878,10 +115029,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "xpack.info",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [
@@ -116146,10 +115294,7 @@
             }
           }
         }
-      ],
-      "restSpecName": "xpack.usage",
-      "since": "0.0.0",
-      "stability": "TODO"
+      ]
     },
     {
       "inherits": [

@@ -406,8 +406,6 @@ function setObsolete(type: model.BaseType | model.Property | model.EnumMember, t
   delete tags['obsolete_description']
 }
 
-function
-
 /**
  * Validates ands sets jsDocs tags used throughout the input specification
  */
@@ -462,7 +460,7 @@ export function hoistRequestAnnotations(
   setTags(request, tags, knownRequestAnnotations, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) return
     else if (tag == 'rest_spec_name') {
-      continue
+      return
     } else if (tag == 'visibility') {
       if (endpoint.visibility) {
         assert(endpoint.visibility == value,
@@ -470,6 +468,8 @@ export function hoistRequestAnnotations(
       }
       endpoint.visibility = model.Visibility[value]
     } else if (tag == 'stability') {
+      //still need to follow up on this in a new PR
+      if (value == 'TODO') return
       if (endpoint.stability) {
         assert(endpoint.stability == value,
           `Request ${request.name} stability on annotation ${value} does not match spec: ${endpoint.visibility}`)
@@ -486,7 +486,8 @@ export function hoistRequestAnnotations(
 /** Lifts jsDoc type annotations to fixed properties on Type */
 export function hoistTypeAnnotations(type: model.TypeDefinition, jsDocs: JSDoc[]) {
   const validTags = ['class_serializer', 'url', 'behavior']
-  setTags(type, jsDocs, validTags, (tags, tag, value) => {
+  const tags = parseJsDocTags(jsDocs)
+  setTags(type, tags, validTags, (tags, tag, value) => {
     if (tag == 'stability') return
     if (tag.endsWith('_serializer')) return
     else if (tag == 'url') {
