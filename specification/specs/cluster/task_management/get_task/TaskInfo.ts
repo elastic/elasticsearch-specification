@@ -20,7 +20,7 @@
 class TaskInfo {
   action: string
   cancellable: boolean
-  children: TaskInfo[]
+  children?: TaskInfo[]
   description: string
   headers: Dictionary<string, string>
   id: long

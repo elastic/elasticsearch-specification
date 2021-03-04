@@ -54259,6 +54259,17 @@
               "namespace": "cluster.task_management.get_task"
             }
           }
+        },
+        {
+          "name": "response",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskStatus",
+              "namespace": "cluster.task_management.list_tasks"
+            }
+          }
         }
       ]
     },
@@ -104850,7 +104861,7 @@
         },
         {
           "name": "children",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -105196,6 +105207,20 @@
           }
         },
         {
+          "name": "failures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
           "name": "requests_per_second",
           "required": true,
           "type": {
@@ -105218,6 +105243,17 @@
           }
         },
         {
+          "name": "throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "throttled_millis",
           "required": true,
           "type": {
@@ -105229,8 +105265,41 @@
           }
         },
         {
+          "name": "throttled_until",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "throttled_until_millis",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timed_out",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
