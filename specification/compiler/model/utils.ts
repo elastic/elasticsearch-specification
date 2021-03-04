@@ -406,17 +406,17 @@ function setObsolete(type: model.BaseType | model.Property | model.EnumMember, t
   delete tags['obsolete_description']
 }
 
+function
+
 /**
  * Validates ands sets jsDocs tags used throughout the input specification
  */
 function setTags<TType extends model.BaseType | model.Property | model.EnumMember>(
   type: TType,
-  jsDocs: JSDoc[],
+  tags: Record<string, string>,
   validTags: string[],
   setter: ((tags: Record<string, string>, tag:string, value:string) => void)
 ) {
-  if (jsDocs.length == 0) return
-  const tags = parseJsDocTags(jsDocs)
   if (Object.keys(tags).length == 0) return
 
   setObsolete(type, tags)
@@ -448,31 +448,39 @@ export function hoistRequestAnnotations(
   const knownRequestAnnotations = [
     'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer'
   ]
-  let apiName = "";
-  setTags(request, jsDocs, knownRequestAnnotations, (tags, tag, value) => {
-    if (tag.endsWith('_serializer')) return
-    else if (tag == 'visibility') {
-      request.visibility = model.Visibility[value]
-    } else if (tag == 'rest_spec_name') {
-      request.restSpecName = value
-      apiName = value
-    } else if (tag == 'stability') {
-      request.stability = model.Stability[value]
-    } else if (tag == 'since') {
-      assert(semver.valid(value), `Request ${request.name}'s @since is not valid semver: ${value}`)
-      request.since = value
-    }
-    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
-  })
-
+  const tags = parseJsDocTags(jsDocs)
+  const apiName = tags['rest_spec_name'];
   assert(apiName, `Request ${request.name} does not declare the @rest_spec_name to link back to`)
+
   const endpoint = mappings[apiName]
   assert(endpoint != null, `${apiName} is not represented in the spec as a json file`)
 
   endpoint.request = request.name
   endpoint.response = response
-  if (request.since) endpoint.since = request.since
-  if (request.deprecation) endpoint.deprecation = request.deprecation
+
+  // This ensures the tags from request end up on the endpoint
+  setTags(request, tags, knownRequestAnnotations, (tags, tag, value) => {
+    if (tag.endsWith('_serializer')) return
+    else if (tag == 'rest_spec_name') {
+      continue
+    } else if (tag == 'visibility') {
+      if (endpoint.visibility) {
+        assert(endpoint.visibility == value,
+          `Request ${request.name} visibility on annotation ${value} does not match spec: ${endpoint.visibility}`)
+      }
+      endpoint.visibility = model.Visibility[value]
+    } else if (tag == 'stability') {
+      if (endpoint.stability) {
+        assert(endpoint.stability == value,
+          `Request ${request.name} stability on annotation ${value} does not match spec: ${endpoint.visibility}`)
+      }
+      endpoint.stability = model.Stability[value]
+    } else if (tag == 'since') {
+      assert(semver.valid(value), `Request ${request.name}'s @since is not valid semver: ${value}`)
+      endpoint.since = value
+    }
+    else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name}`)
+  })
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
@@ -491,7 +499,8 @@ export function hoistTypeAnnotations(type: model.TypeDefinition, jsDocs: JSDoc[]
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations(property: model.Property, jsDocs: JSDoc[]) {
   const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'identifier']
-  setTags(property, jsDocs, validTags, (tags, tag, value) => {
+  const tags = parseJsDocTags(jsDocs)
+  setTags(property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) return
     else if (tag == 'aliases') {
       property.aliases = value.split(",").map(v => v.trim())
@@ -504,7 +513,8 @@ function hoistPropertyAnnotations(property: model.Property, jsDocs: JSDoc[]) {
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistEnumMemberAnnotations(member: model.EnumMember, jsDocs: JSDoc[]) {
   const validTags = ['obsolete', 'obsolete_description', 'identifier']
-  setTags(member, jsDocs, validTags, (tags, tag, value) => {
+  const tags = parseJsDocTags(jsDocs)
+  setTags(member, tags, validTags, (tags, tag, value) => {
     if (tag == 'identifier') {
       member.identifier = value
     }

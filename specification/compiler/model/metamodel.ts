@@ -198,11 +198,6 @@ export class Request extends BaseType {
   body?: ValueBody | PropertiesBody
   behaviors?: Implements[]
   attachedBehaviors?: string[]
-
-  since?: string
-  restSpecName?: string;
-  stability?: Stability
-  visibility?: Visibility
 }
 
 export class ValueBody {
@@ -286,12 +281,6 @@ export class Endpoint {
   name: string
   description: string
   docUrl: string
-  stability: Stability
-  /**
-   * The version when this endpoint reached its current stability level.
-   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-   */
-  since?: string
   deprecation?: Deprecation
 
   /**
@@ -308,6 +297,14 @@ export class Endpoint {
   response: TypeName | null
 
   urls: UrlTemplate[]
+
+  /**
+   * The version when this endpoint reached its current stability level.
+   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
+   */
+  since?: string
+  stability?: Stability
+  visibility?: Visibility
 }
 
 export class UrlTemplate {
