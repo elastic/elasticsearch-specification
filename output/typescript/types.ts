@@ -6225,7 +6225,8 @@ export interface ListTasksRequest extends RequestBase {
 
 export interface ListTasksResponse extends ResponseBase {
   node_failures?: Array<ErrorCause>
-  nodes: Record<string, TaskExecutingNode>
+  nodes?: Record<string, TaskExecutingNode>
+  tasks?: Record<string, TaskInfo> | Array<TaskInfo>
 }
 
 export interface LoadAverageStats {
@@ -10497,15 +10498,16 @@ export type TaskId = string
 export interface TaskInfo {
   action: string
   cancellable: boolean
-  children: Array<TaskInfo>
-  description: string
+  children?: Array<TaskInfo>
+  description?: string
   headers: Record<string, string>
   id: long
   node: string
   running_time_in_nanos: long
   start_time_in_millis: long
-  status: TaskStatus
+  status?: TaskStatus
   type: string
+  parent_task_id?: Id
 }
 
 export interface TaskRetries {
@@ -10516,14 +10518,14 @@ export interface TaskRetries {
 export interface TaskState {
   action: string
   cancellable: boolean
-  description: string
+  description?: string
   headers: Record<string, string>
   id: long
   node: string
   parent_task_id?: TaskId
   running_time_in_nanos: long
   start_time_in_millis: long
-  status: TaskStatus
+  status?: TaskStatus
   type: string
 }
 

@@ -65672,7 +65672,7 @@
         },
         {
           "name": "nodes",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -65689,6 +65689,48 @@
                 "namespace": "cluster.task_management.list_tasks"
               }
             }
+          }
+        },
+        {
+          "name": "tasks",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TaskInfo",
+                    "namespace": "cluster.task_management.get_task"
+                  }
+                }
+              },
+              {
+                "generics": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TaskInfo",
+                      "namespace": "cluster.task_management.get_task"
+                    }
+                  }
+                ],
+                "kind": "instance_of",
+                "type": {
+                  "name": "Array",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -104646,7 +104688,7 @@
         },
         {
           "name": "children",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -104660,7 +104702,7 @@
         },
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104736,7 +104778,7 @@
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104752,6 +104794,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "parent_task_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -104820,7 +104873,7 @@
         },
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104907,7 +104960,7 @@
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
