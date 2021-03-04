@@ -18,15 +18,18 @@
  */
 
 class UpdateByQueryResponse extends ResponseBase {
-  batches: long
-  failures: BulkIndexByScrollFailure[]
-  noops: long
-  requests_per_second: float
-  retries: Retries
-  task: TaskId
-  timed_out: boolean
-  took: long
-  total: long
-  updated: long
-  version_conflicts: long
+  batches?: long
+  failures?: BulkIndexByScrollFailure[]
+  noops?: long
+  deleted?: long
+  requests_per_second?: float
+  retries?: Retries
+  task?: TaskId
+  timed_out?: boolean
+  took?: long
+  total?: long
+  updated?: long
+  version_conflicts?: long
+  throttled_millis?: ulong
+  throttled_until_millis?: ulong
 }

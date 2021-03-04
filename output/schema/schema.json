@@ -111474,7 +111474,7 @@
       "properties": [
         {
           "name": "batches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111485,7 +111485,7 @@
         },
         {
           "name": "failures",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -111499,7 +111499,18 @@
         },
         {
           "name": "noops",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "deleted",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111510,7 +111521,7 @@
         },
         {
           "name": "requests_per_second",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111521,7 +111532,7 @@
         },
         {
           "name": "retries",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111532,7 +111543,7 @@
         },
         {
           "name": "task",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111543,7 +111554,7 @@
         },
         {
           "name": "timed_out",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111554,7 +111565,7 @@
         },
         {
           "name": "took",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111565,7 +111576,7 @@
         },
         {
           "name": "total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111576,7 +111587,7 @@
         },
         {
           "name": "updated",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111587,11 +111598,33 @@
         },
         {
           "name": "version_conflicts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "throttled_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "throttled_until_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
               "namespace": "internal"
             }
           }
