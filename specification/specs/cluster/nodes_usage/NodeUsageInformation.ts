@@ -21,5 +21,5 @@ class NodeUsageInformation {
   rest_actions: Dictionary<string, integer>
   since: EpochMillis
   timestamp: EpochMillis
-  aggregations: UserDefinedValue
+  aggregations: Dictionary<string, UserDefinedValue>
 }

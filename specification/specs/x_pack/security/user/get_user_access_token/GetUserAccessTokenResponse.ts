@@ -20,9 +20,26 @@
 class GetUserAccessTokenResponse extends ResponseBase {
   access_token: string
   expires_in: long
-  scope: string
+  scope?: string
   type: string
   refresh_token: string
-  kerberos_authentication_response_token: string
-  authentication: string
+  kerberos_authentication_response_token?: string
+  authentication: AuthenticatedUser
+}
+
+class UserRealm {
+  name: string
+  type: string
+}
+
+class AuthenticationProvider {
+  type: string
+  name: string
+}
+
+class AuthenticatedUser extends XPackUser {
+  authentication_realm: UserRealm
+  lookup_realm: UserRealm
+  authentication_provider?: AuthenticationProvider
+  authentication_type: string
 }

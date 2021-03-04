@@ -19,7 +19,7 @@
 
 class ObjectProperty extends CorePropertyBase {
   /** @prop_serializer DynamicMappingFormatter */
-  dynamic: Union<boolean, DynamicMapping>
+  dynamic: boolean | DynamicMapping
   enabled: boolean
   properties: Dictionary<PropertyName, PropertyBase>
 }

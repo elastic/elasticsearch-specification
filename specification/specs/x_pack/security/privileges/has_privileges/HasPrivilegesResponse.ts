@@ -18,11 +18,13 @@
  */
 
 class HasPrivilegesResponse extends ResponseBase {
-  /** @prop_serializer ApplicationsPrivilegesFormatter */
-  application: Dictionary<string, ResourcePrivileges[]>
+  application: ApplicationsPrivileges
   cluster: Dictionary<string, boolean>
   has_all_requested: boolean
-  /** @prop_serializer IndicesPrivilegesFormatter */
-  index: ResourcePrivileges[]
+  index: Dictionary<IndexName, Privileges>
   username: string
 }
+
+type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>
+type ResourcePrivileges = Dictionary<Name, Privileges>
+type Privileges = Dictionary<string, boolean>

@@ -17,10 +17,16 @@
  * under the License.
  */
 
-@class_serializer('SourceFilterFormatter')
+// TODO: move singular names to aliases
+
+/**
+ * @class_serializer SourceFilterFormatter
+ */
 class SourceFilter {
   excludes?: Fields
   includes?: Fields
+  exclude?: Fields
+  include?: Fields
 }
 
 class DocValueField {
