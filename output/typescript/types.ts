@@ -103,7 +103,7 @@ export interface AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Record<string, QueryContainer>
 }
 
-export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<object> | TermsAggregate<object> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<object> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
+export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<any> | TermsAggregate<any> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<Bucket> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
 
 export interface AggregateBase {
   meta?: Record<string, any>
@@ -474,6 +474,8 @@ export interface ApplicationResourcePrivileges {
   resources: Array<string>
 }
 
+export type ApplicationsPrivileges = Record<Name, ResourcePrivileges>
+
 export type AppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface ArrayCompareCondition {
@@ -628,6 +630,18 @@ export interface AuthenticateResponse extends ResponseBase {
   username: string
   enabled: boolean
   authentication_type: string
+}
+
+export interface AuthenticatedUser extends XPackUser {
+  authentication_realm: UserRealm
+  lookup_realm: UserRealm
+  authentication_provider?: AuthenticationProvider
+  authentication_type: string
+}
+
+export interface AuthenticationProvider {
+  type: string
+  name: string
 }
 
 export interface AutoDateHistogramAggregate extends MultiBucketAggregate<KeyedBucket<long>> {
@@ -2811,8 +2825,10 @@ export interface DateRangeAggregation extends BucketAggregationBase {
 
 export interface DateRangeExpression {
   from?: DateMath | float
+  from_as_string?: string
   key?: string
   to?: DateMath | float
+  doc_count?: long
 }
 
 export interface DateRangeProperty extends RangePropertyBase {
@@ -3199,6 +3215,7 @@ export interface DeprecationInfoResponse extends ResponseBase {
   cluster_settings: Array<DeprecationInfo>
   index_settings: Record<string, Array<DeprecationInfo>>
   node_settings: Array<DeprecationInfo>
+  ml_settings: Array<DeprecationInfo>
 }
 
 export type DeprecationWarningLevel = 'none' | 'info' | 'warning' | 'critical'
@@ -3368,13 +3385,13 @@ export interface DynamicResponseBase extends ResponseBase {
 }
 
 export interface DynamicTemplate {
-  mapping: PropertyBase
-  match: string
-  match_mapping_type: string
-  match_pattern: MatchType
-  path_match: string
-  path_unmatch: string
-  unmatch: string
+  mapping?: PropertyBase
+  match?: string
+  match_mapping_type?: string
+  match_pattern?: MatchType
+  path_match?: string
+  path_unmatch?: string
+  unmatch?: string
 }
 
 export type EdgeNGramSide = 'front' | 'back'
@@ -4916,6 +4933,7 @@ export interface GetTaskRequest extends RequestBase {
 export interface GetTaskResponse extends ResponseBase {
   completed: boolean
   task: TaskInfo
+  response?: TaskStatus
 }
 
 export interface GetTransformRequest extends RequestBase {
@@ -4963,11 +4981,11 @@ export interface GetUserAccessTokenRequest extends RequestBase {
 export interface GetUserAccessTokenResponse extends ResponseBase {
   access_token: string
   expires_in: long
-  scope: string
+  scope?: string
   type: string
   refresh_token: string
-  kerberos_authentication_response_token: string
-  authentication: string
+  kerberos_authentication_response_token?: string
+  authentication: AuthenticatedUser
 }
 
 export interface GetUserPrivilegesRequest extends RequestBase {
@@ -5122,10 +5140,10 @@ export interface HasPrivilegesRequest extends RequestBase {
 }
 
 export interface HasPrivilegesResponse extends ResponseBase {
-  application: Record<string, Array<ResourcePrivileges>>
+  application: ApplicationsPrivileges
   cluster: Record<string, boolean>
   has_all_requested: boolean
-  index: Array<ResourcePrivileges>
+  index: Record<IndexName, Privileges>
   username: string
 }
 
@@ -6559,7 +6577,7 @@ export interface MultiGetOperation {
   _id: Id
   _index?: IndexName
   routing?: Routing
-  _source?: boolean | Fields | MultiGetSourceFilter
+  _source?: boolean | Fields | SourceFilter
   stored_fields?: Fields
   _type?: Type
   version?: long
@@ -6586,11 +6604,6 @@ export interface MultiGetRequest extends RequestBase {
 
 export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
   docs: Array<MultiGetHit<TDocument>>
-}
-
-export interface MultiGetSourceFilter {
-  exclude?: Fields
-  include?: Fields
 }
 
 export interface MultiMatchQuery extends QueryBase {
@@ -6995,7 +7008,7 @@ export interface NodeUsageInformation {
   rest_actions: Record<string, integer>
   since: EpochMillis
   timestamp: EpochMillis
-  aggregations: any
+  aggregations: Record<string, any>
 }
 
 export interface NodesHotThreadsRequest extends RequestBase {
@@ -7555,6 +7568,8 @@ export interface PreviewTransformResponse<TTransform = unknown> extends Response
   preview: Array<TTransform>
 }
 
+export type Privileges = Record<string, boolean>
+
 export interface PrivilegesActions {
   actions: Array<string>
   metadata: Record<string, any>
@@ -7619,7 +7634,10 @@ export interface PropertyBase {
   meta?: Record<string, string>
   name?: PropertyName
   type?: string
-  properties?: Record<string, PropertyBase>
+  properties?: Record<PropertyName, PropertyBase>
+  ignore_above?: integer
+  dynamic?: boolean | DynamicMapping
+  fields?: Record<PropertyName, PropertyBase>
 }
 
 export type PropertyName = string
@@ -8411,7 +8429,7 @@ export interface ReindexSource {
   index: Indices
   query?: QueryContainer
   remote?: RemoteSource
-  size: integer
+  size?: integer
   slice?: SlicedScroll
   sort?: Sort
   _source?: Fields
@@ -8564,10 +8582,7 @@ export interface ReservedSize {
   shards: Array<string>
 }
 
-export interface ResourcePrivileges {
-  privileges: Record<string, boolean>
-  resource: string
-}
+export type ResourcePrivileges = Record<Name, Privileges>
 
 export interface ResponseBase {
 }
@@ -10024,6 +10039,8 @@ export interface SourceField {
 export interface SourceFilter {
   excludes?: Fields
   includes?: Fields
+  exclude?: Fields
+  include?: Fields
 }
 
 export interface SourceRequest extends RequestBase {
@@ -10497,7 +10514,7 @@ export type TaskId = string
 export interface TaskInfo {
   action: string
   cancellable: boolean
-  children: Array<TaskInfo>
+  children?: Array<TaskInfo>
   description: string
   headers: Record<string, string>
   id: long
@@ -10529,13 +10546,19 @@ export interface TaskState {
 
 export interface TaskStatus {
   batches: long
+  canceled: string
   created: long
   deleted: long
   noops: long
+  failures?: Array<string>
   requests_per_second: float
   retries: TaskRetries
+  throttled?: Time
   throttled_millis: long
+  throttled_until?: Time
   throttled_until_millis: long
+  timed_out?: boolean
+  took?: long
   total: long
   updated: long
   version_conflicts: long
@@ -10845,7 +10868,7 @@ export interface TopHitsAggregation extends MetricAggregationBase {
   script_fields?: Record<string, ScriptField>
   size?: integer
   sort?: Sort
-  _source?: boolean | SourceFilter | Field
+  _source?: boolean | SourceFilter | Fields
   stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
@@ -10915,7 +10938,7 @@ export interface TransformContainer {
 
 export interface TransformDestination {
   index: IndexName
-  pipeline: string
+  pipeline?: string
 }
 
 export interface TransformIndexerStats {
@@ -11183,17 +11206,20 @@ export interface UpdateByQueryRequest extends RequestBase {
 }
 
 export interface UpdateByQueryResponse extends ResponseBase {
-  batches: long
-  failures: Array<BulkIndexByScrollFailure>
-  noops: long
-  requests_per_second: float
-  retries: Retries
-  task: TaskId
-  timed_out: boolean
-  took: long
-  total: long
-  updated: long
-  version_conflicts: long
+  batches?: long
+  failures?: Array<BulkIndexByScrollFailure>
+  noops?: long
+  deleted?: long
+  requests_per_second?: float
+  retries?: Retries
+  task?: TaskId
+  timed_out?: boolean
+  took?: long
+  total?: long
+  updated?: long
+  version_conflicts?: long
+  throttled_millis?: ulong
+  throttled_until_millis?: ulong
 }
 
 export interface UpdateByQueryRethrottleRequest extends RequestBase {
@@ -11348,7 +11374,7 @@ export interface UpdateTransformResponse extends ResponseBase {
   description: string
   dest: TransformDestination
   frequency: Time
-  id: string
+  id: Id
   pivot: TransformPivot
   source: TransformSource
   sync: TransformSyncContainer
@@ -11391,6 +11417,11 @@ export interface UserIndicesPrivileges {
   privileges: Array<string>
   query?: QueryUserPrivileges
   allow_restricted_indices: boolean
+}
+
+export interface UserRealm {
+  name: string
+  type: string
 }
 
 export type Uuid = string
@@ -11742,11 +11773,12 @@ export interface XPackUsageResponse extends ResponseBase {
 }
 
 export interface XPackUser {
-  email: string
-  full_name: string
+  email?: string
+  full_name?: string
   metadata: Record<string, any>
   roles: Array<string>
   username: string
+  enabled: boolean
 }
 
 export type ZeroTermsQuery = 'all' | 'none'

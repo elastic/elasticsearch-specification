@@ -10098,11 +10098,7 @@
           {
             "generics": [
               {
-                "kind": "instance_of",
-                "type": {
-                  "name": "object",
-                  "namespace": "internal"
-                }
+                "kind": "user_defined_value"
               }
             ],
             "kind": "instance_of",
@@ -10114,11 +10110,7 @@
           {
             "generics": [
               {
-                "kind": "instance_of",
-                "type": {
-                  "name": "object",
-                  "namespace": "internal"
-                }
+                "kind": "user_defined_value"
               }
             ],
             "kind": "instance_of",
@@ -10146,8 +10138,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "object",
-                  "namespace": "internal"
+                  "name": "Bucket",
+                  "namespace": "aggregations"
                 }
               }
             ],
@@ -13515,6 +13507,30 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "ApplicationsPrivileges",
+        "namespace": "x_pack.security.privileges.has_privileges"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Name",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "ResourcePrivileges",
+            "namespace": "x_pack.security.privileges.has_privileges"
+          }
+        }
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -15083,6 +15099,98 @@
         },
         {
           "name": "authentication_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "XPackUser",
+            "namespace": "x_pack.security.user.get_user"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AuthenticatedUser",
+        "namespace": "x_pack.security.user.get_user_access_token"
+      },
+      "properties": [
+        {
+          "name": "authentication_realm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UserRealm",
+              "namespace": "x_pack.security.user.get_user_access_token"
+            }
+          }
+        },
+        {
+          "name": "lookup_realm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UserRealm",
+              "namespace": "x_pack.security.user.get_user_access_token"
+            }
+          }
+        },
+        {
+          "name": "authentication_provider",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AuthenticationProvider",
+              "namespace": "x_pack.security.user.get_user_access_token"
+            }
+          }
+        },
+        {
+          "name": "authentication_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AuthenticationProvider",
+        "namespace": "x_pack.security.user.get_user_access_token"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -35341,6 +35449,17 @@
           }
         },
         {
+          "name": "from_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "key",
           "required": false,
           "type": {
@@ -35372,6 +35491,17 @@
               }
             ],
             "kind": "union_of"
+          }
+        },
+        {
+          "name": "doc_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -38671,6 +38801,20 @@
               }
             }
           }
+        },
+        {
+          "name": "ml_settings",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DeprecationInfo",
+                "namespace": "x_pack.migration.deprecation_info"
+              }
+            }
+          }
         }
       ]
     },
@@ -40127,7 +40271,7 @@
       "properties": [
         {
           "name": "mapping",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40138,7 +40282,7 @@
         },
         {
           "name": "match",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40149,7 +40293,7 @@
         },
         {
           "name": "match_mapping_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40160,7 +40304,7 @@
         },
         {
           "name": "match_pattern",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40171,7 +40315,7 @@
         },
         {
           "name": "path_match",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40182,7 +40326,7 @@
         },
         {
           "name": "path_unmatch",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40193,7 +40337,7 @@
         },
         {
           "name": "unmatch",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53642,6 +53786,17 @@
               "namespace": "cluster.task_management.get_task"
             }
           }
+        },
+        {
+          "name": "response",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskStatus",
+              "namespace": "cluster.task_management.list_tasks"
+            }
+          }
         }
       ]
     },
@@ -54041,7 +54196,7 @@
         },
         {
           "name": "scope",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54074,7 +54229,7 @@
         },
         {
           "name": "kerberos_authentication_response_token",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54089,8 +54244,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "AuthenticatedUser",
+              "namespace": "x_pack.security.user.get_user_access_token"
             }
           }
         }
@@ -55421,23 +55576,10 @@
           "name": "application",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ResourcePrivileges",
-                  "namespace": "x_pack.security.privileges.has_privileges"
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "ApplicationsPrivileges",
+              "namespace": "x_pack.security.privileges.has_privileges"
             }
           }
         },
@@ -55477,11 +55619,18 @@
           "name": "index",
           "required": true,
           "type": {
-            "kind": "array_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ResourcePrivileges",
+                "name": "Privileges",
                 "namespace": "x_pack.security.privileges.has_privileges"
               }
             }
@@ -68283,8 +68432,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiGetSourceFilter",
-                  "namespace": "document.multiple.multi_get.request"
+                  "name": "SourceFilter",
+                  "namespace": "search.search.source_filtering"
                 }
               }
             ],
@@ -68565,37 +68714,6 @@
                 "name": "MultiGetHit",
                 "namespace": "document.multiple.multi_get.response"
               }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "MultiGetSourceFilter",
-        "namespace": "document.multiple.multi_get.request"
-      },
-      "properties": [
-        {
-          "name": "exclude",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "include",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "internal"
             }
           }
         }
@@ -72181,7 +72299,17 @@
           "name": "aggregations",
           "required": true,
           "type": {
-            "kind": "user_defined_value"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
           }
         }
       ]
@@ -76956,6 +77084,30 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Privileges",
+        "namespace": "x_pack.security.privileges.has_privileges"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "boolean",
+            "namespace": "internal"
+          }
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "PrivilegesActions",
@@ -77573,7 +77725,62 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyBase",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        },
+        {
+          "name": "ignore_above",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "dynamic",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DynamicMapping",
+                  "namespace": "mapping"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
                 "namespace": "internal"
               }
             },
@@ -85362,7 +85569,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86634,45 +86841,28 @@
       ]
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "ResourcePrivileges",
         "namespace": "x_pack.security.privileges.has_privileges"
       },
-      "properties": [
-        {
-          "name": "privileges",
-          "required": true,
+      "type": {
+        "key": {
+          "kind": "instance_of",
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
+            "name": "Name",
+            "namespace": "internal"
           }
         },
-        {
-          "name": "resource",
-          "required": true,
+        "kind": "dictionary_of",
+        "value": {
+          "kind": "instance_of",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
+            "name": "Privileges",
+            "namespace": "x_pack.security.privileges.has_privileges"
           }
         }
-      ]
+      }
     },
     {
       "kind": "interface",
@@ -99678,6 +99868,9 @@
       ]
     },
     {
+      "annotations": {
+        "class_serializer": "SourceFilterFormatter"
+      },
       "kind": "interface",
       "name": {
         "name": "SourceFilter",
@@ -99697,6 +99890,28 @@
         },
         {
           "name": "includes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "exclude",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "include",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -103845,7 +104060,7 @@
         },
         {
           "name": "children",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -104147,6 +104362,17 @@
           }
         },
         {
+          "name": "canceled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "created",
           "required": true,
           "type": {
@@ -104180,6 +104406,20 @@
           }
         },
         {
+          "name": "failures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
           "name": "requests_per_second",
           "required": true,
           "type": {
@@ -104202,6 +104442,17 @@
           }
         },
         {
+          "name": "throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "throttled_millis",
           "required": true,
           "type": {
@@ -104213,8 +104464,41 @@
           }
         },
         {
+          "name": "throttled_until",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "throttled_until_millis",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timed_out",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -107425,7 +107709,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "Field",
+                  "name": "Fields",
                   "namespace": "internal"
                 }
               }
@@ -108001,7 +108285,7 @@
         },
         {
           "name": "pipeline",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110371,7 +110655,7 @@
       "properties": [
         {
           "name": "batches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110382,7 +110666,7 @@
         },
         {
           "name": "failures",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -110396,7 +110680,18 @@
         },
         {
           "name": "noops",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "deleted",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110407,7 +110702,7 @@
         },
         {
           "name": "requests_per_second",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110418,7 +110713,7 @@
         },
         {
           "name": "retries",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110429,7 +110724,7 @@
         },
         {
           "name": "task",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110440,7 +110735,7 @@
         },
         {
           "name": "timed_out",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110451,7 +110746,7 @@
         },
         {
           "name": "took",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110462,7 +110757,7 @@
         },
         {
           "name": "total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110473,7 +110768,7 @@
         },
         {
           "name": "updated",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110484,11 +110779,33 @@
         },
         {
           "name": "version_conflicts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "throttled_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "throttled_until_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
               "namespace": "internal"
             }
           }
@@ -111996,7 +112313,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -112363,6 +112680,37 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "UserRealm",
+        "namespace": "x_pack.security.user.get_user_access_token"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -115520,7 +115868,7 @@
       "properties": [
         {
           "name": "email",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115531,7 +115879,7 @@
         },
         {
           "name": "full_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115578,6 +115926,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }

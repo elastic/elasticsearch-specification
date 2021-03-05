@@ -38,7 +38,7 @@ interface PutMappingRequest extends RequestBase {
   body?: {
     all_field?: AllField
     date_detection?: boolean
-    dynamic?: Union<boolean, DynamicMapping>
+    dynamic?: boolean | DynamicMapping
     dynamic_date_formats?: string[]
     dynamic_templates?:
       | Dictionary<string, DynamicTemplate>
