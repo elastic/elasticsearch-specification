@@ -47,8 +47,8 @@ class HoltWintersModelSettings {
   type?: HoltWintersType
 }
 enum HoltWintersType {
-  /** @alternate_name Additive */
+  /** @identifier Additive */
   add,
-  /** @alternate_name Multiplicative */
+  /** @identifier Multiplicative */
   mult
 }

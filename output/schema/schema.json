@@ -57,6 +57,30 @@
       ]
     },
     {
+      "description": "Retrieves the status of a previously submitted async search request given its ID.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
+      "name": "async_search.status",
+      "request": {
+        "name": "AsyncSearchStatusRequest",
+        "namespace": "x_pack.async_search.status"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "AsyncSearchStatusResponse",
+        "namespace": "x_pack.async_search.status"
+      },
+      "since": "7.11.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_async_search/status/{id}"
+        }
+      ]
+    },
+    {
       "description": "Executes a search request asynchronously.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
       "name": "async_search.submit",
@@ -9365,9 +9389,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -9766,9 +9787,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -11624,9 +11642,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -12272,9 +12287,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -13841,9 +13853,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -13933,9 +13942,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -14107,9 +14113,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -14128,6 +14131,7 @@
       },
       "path": [
         {
+          "description": "The async search ID",
           "name": "id",
           "required": true,
           "type": {
@@ -14161,9 +14165,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -14965,9 +14966,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -16561,9 +16559,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -16930,10 +16925,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "BulkRequestFormatter",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -17124,9 +17115,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -17693,9 +17681,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -17935,9 +17920,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18131,9 +18113,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18250,9 +18229,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18500,9 +18476,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18729,9 +18702,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -18813,6 +18783,9 @@
       },
       "properties": [
         {
+          "aliases": [
+            "f"
+          ],
           "name": "field",
           "required": false,
           "type": {
@@ -18857,6 +18830,9 @@
           }
         },
         {
+          "aliases": [
+            "n"
+          ],
           "name": "node",
           "required": false,
           "type": {
@@ -18868,6 +18844,9 @@
           }
         },
         {
+          "aliases": [
+            "s"
+          ],
           "name": "size",
           "required": false,
           "type": {
@@ -18881,9 +18860,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -19121,9 +19097,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -19216,9 +19189,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -19398,9 +19368,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -20133,9 +20100,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -20274,9 +20238,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -20423,9 +20384,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21265,9 +21223,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21393,9 +21348,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21542,9 +21494,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21845,9 +21794,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -21975,9 +21921,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -22268,9 +22211,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -22992,9 +22932,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23199,9 +23136,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23406,9 +23340,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23573,9 +23504,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -23867,9 +23795,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -24130,9 +24055,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -24546,9 +24468,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
@@ -24864,9 +24783,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25018,9 +24934,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25634,9 +25547,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25752,9 +25662,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25882,9 +25789,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -25982,9 +25886,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26067,9 +25968,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26138,9 +26036,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26205,9 +26100,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26342,9 +26234,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -26384,9 +26273,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26577,9 +26463,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -26698,9 +26581,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -27200,9 +27080,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -27319,9 +27196,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -28692,9 +28566,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -28915,9 +28786,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -29297,9 +29165,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -29863,9 +29728,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -30150,9 +30012,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -31680,10 +31539,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "ContextFormatter",
-        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
-      },
       "kind": "type_alias",
       "name": {
         "name": "Context",
@@ -31707,7 +31562,8 @@
           }
         ],
         "kind": "union_of"
-      }
+      },
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
     },
     {
       "inherits": [
@@ -31954,9 +31810,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32223,9 +32076,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32367,9 +32217,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32570,9 +32417,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32805,9 +32649,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -32979,10 +32820,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "CreateRepositoryFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -33082,10 +32919,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "class_serializer": "CreateRequestFormatter`1`",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -33234,9 +33067,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -33253,9 +33083,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -35231,32 +35058,32 @@
       "kind": "enum",
       "members": [
         {
-          "name": "s",
-          "stringValue": "Second"
+          "identifier": "Second",
+          "name": "s"
         },
         {
-          "name": "m",
-          "stringValue": "Minute"
+          "identifier": "Minute",
+          "name": "m"
         },
         {
-          "name": "h",
-          "stringValue": "Hour"
+          "identifier": "Hour",
+          "name": "h"
         },
         {
-          "name": "d",
-          "stringValue": "Day"
+          "identifier": "Day",
+          "name": "d"
         },
         {
-          "name": "w",
-          "stringValue": "Week"
+          "identifier": "Week",
+          "name": "w"
         },
         {
-          "name": "M",
-          "stringValue": "Month"
+          "identifier": "Month",
+          "name": "M"
         },
         {
-          "name": "y",
-          "stringValue": "Year"
+          "identifier": "Year",
+          "name": "y"
         }
       ],
       "name": {
@@ -35782,9 +35609,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36043,9 +35867,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36130,9 +35951,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36182,9 +36000,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36801,9 +36616,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36865,9 +36677,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36929,9 +36738,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37030,9 +36836,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37082,9 +36885,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37146,9 +36946,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37198,9 +36995,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37249,9 +37043,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37301,9 +37092,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37388,9 +37176,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37496,9 +37281,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37571,9 +37353,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37646,9 +37425,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37685,9 +37461,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37748,9 +37521,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37812,9 +37582,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37887,9 +37654,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -37989,9 +37753,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38064,9 +37825,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38213,9 +37971,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -38232,9 +37987,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38308,9 +38060,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38384,9 +38133,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38436,9 +38182,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38511,9 +38254,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38563,9 +38303,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38639,9 +38376,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38703,9 +38437,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38779,9 +38510,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -38975,9 +38703,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -39530,9 +39255,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -40155,9 +39877,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41169,9 +40888,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41401,9 +41117,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41820,9 +41533,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -41970,9 +41680,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42077,9 +41784,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42169,9 +41873,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42208,9 +41909,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -42272,9 +41970,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -43085,9 +42780,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -43182,9 +42874,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -44164,9 +43853,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -45835,9 +45521,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -45960,9 +45643,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46647,9 +46327,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46714,9 +46391,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -46860,9 +46534,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47029,9 +46700,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47205,9 +46873,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47394,9 +47059,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47509,9 +47171,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -49534,9 +49193,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49659,9 +49315,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49819,9 +49472,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -49929,9 +49579,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50003,9 +49650,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50054,9 +49698,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50237,9 +49878,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50305,9 +49943,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50444,9 +50079,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50538,9 +50170,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50644,9 +50273,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50698,9 +50324,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50788,9 +50411,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50878,9 +50498,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -50945,9 +50562,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51104,9 +50718,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51205,9 +50816,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51256,9 +50864,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51413,9 +51018,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51571,9 +51173,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51684,9 +51283,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51844,9 +51440,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -51934,9 +51527,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52024,9 +51614,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52098,9 +51685,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52166,9 +51750,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52313,9 +51894,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52463,9 +52041,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52623,9 +52198,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52703,9 +52275,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52793,9 +52362,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -52890,9 +52456,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53099,9 +52662,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "generics": [
         "TDocument"
       ],
@@ -53238,9 +52798,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53306,9 +52863,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53374,9 +52928,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53442,9 +52993,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53510,9 +53058,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53577,9 +53122,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53675,9 +53217,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53726,9 +53265,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53794,9 +53330,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -53933,9 +53466,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54165,9 +53695,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54274,9 +53801,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54386,9 +53910,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54498,9 +54019,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54549,9 +54067,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54737,9 +54252,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54847,9 +54359,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -54915,9 +54424,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -55207,9 +54713,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -55661,9 +55164,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -55978,9 +55478,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -57586,12 +57083,12 @@
       "kind": "enum",
       "members": [
         {
-          "name": "add",
-          "stringValue": "Additive"
+          "identifier": "Additive",
+          "name": "add"
         },
         {
-          "name": "mult",
-          "stringValue": "Multiplicative"
+          "identifier": "Multiplicative",
+          "name": "mult"
         }
       ],
       "name": {
@@ -59052,9 +58549,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -59437,10 +58931,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "IndexRequestFormatter`1`",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -59633,9 +59123,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -59991,9 +59478,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -60637,9 +60121,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -60825,9 +60306,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -60999,9 +60477,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "inherits": [
         {
           "type": {
@@ -62411,9 +61886,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -62578,9 +62050,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -65449,10 +64918,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "LikeFormatter",
-        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
-      },
       "kind": "type_alias",
       "name": {
         "name": "Like",
@@ -65476,7 +64941,8 @@
           }
         ],
         "kind": "union_of"
-      }
+      },
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
     },
     {
       "kind": "interface",
@@ -65684,9 +65150,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -66053,9 +65516,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -67702,10 +67162,6 @@
       }
     },
     {
-      "annotations": {
-        "class_serializer": "MinimumShouldMatchFormatter",
-        "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html"
-      },
       "kind": "type_alias",
       "name": {
         "name": "MinimumShouldMatch",
@@ -67729,7 +67185,8 @@
           }
         ],
         "kind": "union_of"
-      }
+      },
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html"
     },
     {
       "kind": "type_alias",
@@ -68436,9 +67893,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69033,10 +68487,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "MultiGetRequestFormatter",
-        "stability": "stable"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69227,9 +68677,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "generics": [
         "TDocument"
       ],
@@ -69488,10 +68935,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "MultiSearchFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69677,10 +69120,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "MultiSearchTemplateFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69974,9 +69413,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -72879,9 +72315,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -73013,9 +72446,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -73161,9 +72591,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -73362,9 +72789,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -74081,9 +73505,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -74212,9 +73633,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -75323,9 +74741,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -75375,9 +74790,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -76480,9 +75892,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -76971,9 +76380,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77057,10 +76463,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "PostJobDataFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77314,9 +76716,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77482,9 +76881,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -77552,9 +76948,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78426,9 +77819,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78573,9 +77963,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78674,9 +78061,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -78779,9 +78163,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79153,9 +78534,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79232,9 +78610,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79351,9 +78726,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79549,9 +78921,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79860,9 +79229,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -79939,9 +79305,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80284,9 +79647,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80403,10 +79763,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "class_serializer": "PutPrivilegesFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80537,9 +79893,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80716,9 +80069,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -80907,9 +80257,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81010,9 +80357,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81122,9 +80466,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81257,9 +80598,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81437,9 +80775,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -83114,6 +82449,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html",
+            "version": "7.0.0"
+          },
           "name": "type",
           "required": false,
           "type": {
@@ -83194,9 +82533,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -85134,9 +84470,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -85391,9 +84724,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -85775,9 +85105,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86110,9 +85437,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86590,9 +85914,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86702,9 +86023,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -86905,9 +86223,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87040,9 +86355,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87207,9 +86519,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87429,6 +86738,7 @@
       },
       "properties": [
         {
+          "identifier": "Query",
           "name": "rescore_query",
           "required": true,
           "type": {
@@ -87597,9 +86907,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -87966,9 +87273,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88018,9 +87322,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88216,9 +87517,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88312,9 +87610,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -88554,9 +87849,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -89413,9 +88705,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -89551,9 +88840,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -90801,9 +90087,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -91327,9 +90610,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -92648,9 +91928,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -92979,9 +92256,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -93565,9 +92839,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -93984,9 +93255,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -96780,9 +96048,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -97746,9 +97011,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -99241,9 +98503,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -99803,9 +99062,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -100234,8 +99490,8 @@
           "name": "desc"
         },
         {
-          "name": "_doc",
-          "stringValue": "Document"
+          "identifier": "Document",
+          "name": "_doc"
         }
       ],
       "name": {
@@ -100358,9 +99614,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -100671,9 +99924,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -101601,9 +100851,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102089,9 +101336,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102199,9 +101443,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102312,9 +101553,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102351,9 +101589,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102415,9 +101650,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102454,9 +101686,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102518,9 +101747,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102603,9 +101829,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102918,9 +102141,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103021,9 +102241,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103060,9 +102277,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103147,9 +102361,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103247,9 +102458,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103355,9 +102563,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -103394,9 +102599,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "class_serializer": ": StopWordsFormatter"
-      },
       "kind": "type_alias",
       "name": {
         "name": "StopWords",
@@ -104259,9 +103461,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -105917,9 +105116,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -109628,9 +108824,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -110144,9 +109337,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -110758,9 +109948,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -110810,9 +109997,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -110969,9 +110153,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -111632,9 +110813,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -111680,9 +110858,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112054,9 +111229,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112187,10 +111359,6 @@
       ]
     },
     {
-      "annotations": {
-        "class_serializer": "UpdateIndexSettingsRequestFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112340,9 +111508,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112502,9 +111667,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112605,9 +111767,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -112934,9 +112093,6 @@
       ]
     },
     {
-      "annotations": {
-        "type_stability": "stable"
-      },
       "generics": [
         "TDocument"
       ],
@@ -112977,9 +112133,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113579,10 +112732,6 @@
       }
     },
     {
-      "annotations": {
-        "class_serializer": "ValidateDetectorRequestFormatter",
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113629,9 +112778,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -113750,9 +112896,6 @@
       "properties": []
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -114250,9 +113393,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -115080,9 +114220,6 @@
       }
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -116208,9 +115345,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -116479,9 +115613,6 @@
       ]
     },
     {
-      "annotations": {
-        "stability": "TODO"
-      },
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
