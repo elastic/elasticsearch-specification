@@ -19,33 +19,6 @@
 
 import * as model from '../model/metamodel'
 
-const annotationValidators: Record<string, (value: string) => boolean> = {
-
-  stability: (value) => {
-    return ['stable', 'TODO'].includes(value)
-  },
-
-  // Some interfaces have link to detailed docs
-  url: (value) => {
-    try {
-      new URL(value) // eslint-disable-line no-new
-      return true
-    } catch (error) {
-      return false
-    }
-  },
-
-  // FIXME: Difference with stability?
-  type_stability: (value) => {
-    return ['stable'].includes(value)
-  },
-
-  // FIXME: Remove all these annotations
-  class_serializer: (value) => {
-    return true // Don't care
-  }
-}
-
 enum TypeDefKind {
   type,
   request,
@@ -69,14 +42,14 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     return n1.namespace === n2.namespace && n1.name === n2.name
   }
 
-  let errorsFound = false
+  let errorCount = 0
 
   // Graph traversal context, for logs
   let context: string[] = []
 
   function modelError (msg: string): void {
-    console.log(context, msg)
-    errorsFound = true
+    console.log(context.join(' / '), '-', msg)
+    errorCount++
   }
 
   // Type definitions by name
@@ -129,7 +102,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       for (const bhv of typeDef.behaviors ?? []) {
         const bhvDef = getTypeDef(bhv.type)
         if (bhvDef == null) {
-          modelError(`No type definition for ${fqn(bhv.type)}`)
+          modelError(`No type definition for '${fqn(bhv.type)}'`)
         } else {
           behaviorByName.set(fqn(bhv.type), bhvDef)
           behaviorByShortName.set(bhv.type.name, bhv.type)
@@ -142,6 +115,16 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   // Now remove all behaviors from type definitions
   // FIXME: remove once behaviors are a top-level property
   apiModel.types = apiModel.types.filter(typeDef => !behaviorByName.has(fqn(typeDef.name)))
+
+  // Type definitions that have children (either implements or extends)
+  const parentTypes = new Set<string>()
+  for (const type of apiModel.types) {
+    if (type.kind === 'request' || type.kind === 'interface') {
+      for (const parent of (type.implements ?? []).concat(type.inherits ?? [])) {
+        parentTypes.add(fqn(parent.type))
+      }
+    }
+  }
 
   // Types and behaviors we have actually seen while crawling the reference graph.
   // Used both to avoid re-validating types we already visited and to find dangling types at the end.
@@ -157,9 +140,9 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       danglingTypesCount++
     }
   }
-  console.info(`Model validation: end. ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
+  console.info(`Model validation: ${errorCount} errors. ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
-  if (errorsFound && failHard) {
+  if (errorCount > 0 && failHard) {
     throw new Error('Model is inconsistent. Check logs for details')
   }
 
@@ -172,7 +155,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
     if (endpoint.request == null || endpoint.response == null) {
-      modelError(`Endpoint ${endpoint.name} skipped because of missing request or response`)
+      modelError(`Endpoint '${endpoint.name}' skipped because of missing request or response`)
       return
     }
 
@@ -180,6 +163,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
 
     context.push('Request')
     validateTypeRef(endpoint.request, undefined, TypeDefKind.request)
+    validateIsLeafType(endpoint.request)
 
     // Request path properties and url template propeties should be the same
     const reqType = getTypeDef(endpoint.request)
@@ -212,6 +196,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
 
     context.push('Response')
     validateTypeRef(endpoint.response)
+    validateIsLeafType(endpoint.request)
     context.pop()
 
     context.pop()
@@ -227,7 +212,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   function validateTypeRef (name: model.TypeName, generics?: model.ValueOf[], kind: TypeDefKind = TypeDefKind.type): void {
     const typeDef = kind === TypeDefKind.behavior ? behaviorByName.get(fqn(name)) : getTypeDef(name)
     if (typeDef == null) {
-      modelError(`No type definition for ${name.namespace}:${name.name}`)
+      modelError(`No type definition for '${fqn(name)}'`)
       return
     }
 
@@ -291,7 +276,14 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     context = []
     context.push(`${typeDef.kind} definition ${typeDef.name.namespace}:${typeDef.name.name}`)
 
-    validateAnnotations(typeDef.annotations)
+    // Validate description URL
+    if (typeDef.url != null) {
+      try {
+        new URL(typeDef.url) // eslint-disable-line no-new
+      } catch (error) {
+        modelError('Description URL is malformed')
+      }
+    }
 
     switch (typeDef.kind) {
       case 'request':
@@ -324,6 +316,10 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     validateImplements(typeDef.implements)
     validateBehaviors(typeDef)
 
+    // Note: we validate identifier/name uniqueness independently in the path, query and body as there are some
+    // valid overlaps, with some parameters that can also be represented as body properties.
+    // Client generators will have to take care of this.
+
     context.push('path')
     validateProperties(typeDef.path)
     context.pop()
@@ -354,26 +350,32 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateEnum (typeDef: model.Enum): void {
-    validateAnnotations(typeDef.annotations)
-    const values = new Set<string>()
-    for (const member of typeDef.members) {
-      const lcName = member.name.toLowerCase()
-      if (values.has(lcName)) {
-        modelError(`Duplicate lowercase enum name: ${member.name}`)
+    const allIdentifiers = new Set<string>()
+    const allNames = new Set<string>()
+
+    for (const item of typeDef.members) {
+      // Identifier must be unique among all items (case insensitive)
+      const identifier = (item.identifier ?? item.name).toLowerCase()
+      if (allIdentifiers.has(identifier)) {
+        modelError(`Duplicate enum member identifier '${item.name}'`)
       }
-      values.add(lcName)
+      allIdentifiers.add(identifier)
+
+      // Name must be unique among all items (case sensitive)
+      if (allNames.has(item.name)) {
+        modelError(`Duplicate enum member name '${item.name}'`)
+      }
+      allNames.add(item.name)
     }
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    validateAnnotations(typeDef.annotations)
     // FIXME: do we really need generics on a type alias? An alias is semantically similar to a 1-member union
     // and union doesn't have generic parameters for its members. Or is this missing in union?
     validateValueOf(typeDef.type, typeDef.generics)
   }
 
   function validateUnion (typeDef: model.Union): void {
-    validateAnnotations(typeDef.annotations)
     for (const item of typeDef.items) {
       validateValueOf(item)
     }
@@ -421,12 +423,12 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       for (const abh of typeDef.attachedBehaviors) {
         const bhName = behaviorByShortName.get(abh)
         if (bhName == null) {
-          modelError(`No type definition for behavior ${abh}`)
+          modelError(`No type definition for behavior '${abh}'`)
           continue
         }
 
         if (!behaviorExists(typeDef, bhName)) {
-          modelError(`Attached behavior ${abh} not found in type or ancestors`)
+          modelError(`Attached behavior '${abh}' not found in type or ancestors`)
         }
       }
     }
@@ -446,7 +448,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     for (const parent of parents) {
       const parentDef = getTypeDef(parent.type)
       if (parentDef == null) {
-        modelError(`No type definition for parent ${fqn(parent.type)}`)
+        modelError(`No type definition for parent '${fqn(parent.type)}'`)
         return false
       }
       if (parentDef.kind === 'request' || parentDef.kind === 'interface') {
@@ -460,28 +462,37 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateProperties (props: model.Property[]): void {
+    const allIdentifiers = new Set<string>()
+    const allNames = new Set<string>()
+
     for (const prop of props) {
-      context.push(`Property ${prop.name}`)
-      validateAnnotations(prop.annotations)
+      // Identifier must be unique among all items (case insensitive)
+      const identifier = (prop.identifier ?? prop.name).toLowerCase()
+      if (allIdentifiers.has(identifier)) {
+        modelError(`Duplicate property identifier: '${prop.name}'`)
+      }
+      allIdentifiers.add(identifier)
+
+      // Names and aliases must be unique among all items (case sensitive)
+      const names = [prop.name].concat(prop.aliases ?? [])
+      for (const name of names) {
+        if (allNames.has(name)) {
+          modelError(`Duplicate property name or alias: '${name}'`)
+        }
+        allNames.add(name)
+      }
+
+      context.push(`Property '${prop.name}'`)
       validateValueOf(prop.type)
       context.pop()
     }
   }
 
-  function validateAnnotations (annotations?: Record<string, string>): void {
-    if (annotations == null) return
-
-    Object.entries(annotations).forEach(([k, v]) => {
-      const validator = annotationValidators[k]
-      if (validator == null) {
-        modelError(`Unknown annotation ${k}`)
-        return
-      }
-
-      if (!validator(v)) {
-        modelError(`Annotation ${k}: invalid value ${v}`)
-      }
-    })
+  //
+  function validateIsLeafType (type: model.TypeName): void {
+    if (parentTypes.has(fqn(type))) {
+      modelError(`Abstract type cannot be used here: '${fqn(type)}'`)
+    }
   }
 
   // -----------------------------------------------------------------------------------------------
@@ -491,6 +502,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     switch (valueOf.kind) {
       case 'instance_of':
         validateTypeRef(valueOf.type, valueOf.generics)
+        validateIsLeafType(valueOf.type)
         break
 
       case 'array_of':
