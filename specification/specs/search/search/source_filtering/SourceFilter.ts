@@ -19,9 +19,6 @@
 
 // TODO: move singular names to aliases
 
-/**
- * @class_serializer SourceFilterFormatter
- */
 class SourceFilter {
   excludes?: Fields
   includes?: Fields

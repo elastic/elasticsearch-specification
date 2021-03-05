@@ -27,4 +27,4 @@ jobs:
 
     - name: Check freshness
       run: |
-        git diff --exit-code --quiet
+        if [ -n "$(git status --porcelain)" ]; then echo Error: changes found after running the generation; git diff; git status; exit 1; fi
