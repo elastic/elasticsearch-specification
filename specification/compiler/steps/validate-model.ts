@@ -35,6 +35,7 @@ enum TypeDefKind {
  */
 export default function validateModel (apiModel: model.Model, failHard: boolean): model.Model {
   console.log('Model validation: start')
+  const initialTypeCount = apiModel.types.length
 
   // Returns the fully-qualified name of a type name
   function fqn (name: model.TypeName): string {
@@ -85,7 +86,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       namespace: 'internal',
       name: 'Array'
     },
-    generics: ["Item"],
+    generics: ['Item'],
     properties: []
   })
 
@@ -138,13 +139,17 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   // Alright, let's go!
   apiModel.endpoints.forEach(validateEndpoint)
 
-  // Count types that were not visited in the graph traversal
-  let danglingTypesCount = 0
-  for (const type of apiModel.types) {
-    if (!typesSeen.has(fqn(type.name))) {
-      danglingTypesCount++
+  // Removes types that we've not seen
+  apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
+
+  // Re-add visited behaviors to model types
+  for (const [bhn, bh] of behaviorByName) {
+    if (typesSeen.has(bhn)) {
+      apiModel.types.push(bh)
     }
   }
+
+  const danglingTypesCount = initialTypeCount - apiModel.types.length
   console.info(`Model validation: ${errorCount} errors. ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
   if (errorCount > 0 && failHard) {
@@ -170,11 +175,9 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     const reqType = getTypeDef(endpoint.request)
 
     if (reqType == null) {
-      modelError(`Type ${fqn(endpoint.request)} not found`);
-
+      modelError(`Type ${fqn(endpoint.request)} not found`)
     } else if (reqType.kind !== 'request') {
       modelError(`Type ${fqn(endpoint.request)} is not a request definition`)
-
     } else {
       validateTypeDef(reqType)
       validateIsLeafType(endpoint.request)
@@ -210,8 +213,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     const respType = getTypeDef(endpoint.response)
 
     if (respType == null) {
-      modelError(`Type ${fqn(endpoint.request)} not found`);
-
+      modelError(`Type ${fqn(endpoint.request)} not found`)
     } else {
       validateTypeDef(respType)
       validateIsLeafType(endpoint.request)
@@ -231,11 +233,11 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
    * @param kind what do we expect this type to be?
    */
   function validateTypeRef (name: model.TypeName, generics: (model.ValueOf[] | undefined), openGenerics: Set<string>, kind: TypeDefKind = TypeDefKind.type): void {
-    const fqName = fqn(name);
+    const fqName = fqn(name)
 
     if (openGenerics.has(fqName)) {
       // This is an open generic parameter coming from the enclosing scope
-      return;
+      return
     }
 
     const typeDef = kind === TypeDefKind.behavior ? behaviorByName.get(fqName) : getTypeDef(name)
@@ -322,7 +324,6 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateRequest (typeDef: model.Request): void {
-
     const openGenerics = openGenericSet(typeDef)
 
     validateInherits(typeDef.inherits, openGenerics)
@@ -356,9 +357,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateInterface (typeDef: model.Interface): void {
-
     const openGenerics = openGenericSet(typeDef)
-    const parentProperties = new Set<string>()
 
     validateImplements(typeDef.implements, openGenerics)
     validateInherits(typeDef.inherits, openGenerics)
@@ -387,12 +386,12 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    //FIXME: type_alias.generics should be of the same type as other type definitions
+    // FIXME: type_alias.generics should be of the same type as other type definitions
     const openGenerics = new Set(typeDef.generics?.map(t => {
-      if (t.kind != 'instance_of') {
-        throw new Error("Expecting instance_of for alias generic parameter")
+      if (t.kind !== 'instance_of') {
+        throw new Error('Expecting instance_of for alias generic parameter')
       } else {
-        return fqn(t.type);
+        return fqn(t.type)
       }
     }))
 
@@ -409,7 +408,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   // -----------------------------------------------------------------------------------------------
   // Constituents of type definitions
 
-  function openGenericSet(typeDef: model.Request | model.Interface): Set<string> {
+  function openGenericSet (typeDef: model.Request | model.Interface): Set<string> {
     return new Set((typeDef.generics ?? []).map(name => fqn({
       namespace: typeDef.name.namespace,
       name: name
@@ -520,19 +519,17 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     }
   }
 
-
   // Validates that use of non-leaf types (i.e. those who are inherited or implemented) are used either
   // in contexts that are distinct from that of their children, or are abstract parent classes providing a way
   // way to identify actual concrete implementations in strongly typed languages.
   function validateIsLeafType (type: model.TypeName): void {
-
     if (parentTypes.has(fqn(type))) {
       // Aggregations are disambiguated with the 'typed_keys' parameter
-      if (type.namespace === "aggregations") return;
+      if (type.namespace === 'aggregations') return
 
-      const fqName = fqn(type);
+      const fqName = fqn(type)
 
-      switch(fqName) {
+      switch (fqName) {
         // Base type also used as property, no polymorphic usage
         case 'internal:ErrorCause':
         case 'x_pack.enrich:EnrichPolicy':
@@ -542,14 +539,16 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
         case 'x_pack.security.user.get_user:XPackUser':
         case 'cluster.nodes_stats:MemoryStats':
         case 'search.search:SearchResponse':
+          return
 
         // Have a "type" attribute that identifies the variant
         case 'mapping.types:PropertyBase':
         case 'analysis.token_filters:TokenFilterBase':
+          return
 
         // Single subclass with no additional properties, can probably be removed
         case 'x_pack.watcher.input:HttpInputRequestDefinition':
-          return;
+          return
       }
 
       modelError(`Non-leaf type cannot be used here: '${fqName}'`)

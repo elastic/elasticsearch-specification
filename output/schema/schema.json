@@ -111,74 +111,6 @@
       ]
     },
     {
-      "description": "Deletes an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-delete-autoscaling-policy.html",
-      "name": "autoscaling.delete_autoscaling_policy",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_autoscaling/policy/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Gets the current autoscaling capacity based on the configured autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-capacity.html",
-      "name": "autoscaling.get_autoscaling_capacity",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_autoscaling/capacity"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-policy.html",
-      "name": "autoscaling.get_autoscaling_policy",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_autoscaling/policy/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Creates a new autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-put-autoscaling-policy.html",
-      "name": "autoscaling.put_autoscaling_policy",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_autoscaling/policy/{name}"
-        }
-      ]
-    },
-    {
       "description": "Allows to perform multiple index/update/delete operations in a single request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-bulk.html",
       "name": "bulk",
@@ -1266,23 +1198,6 @@
       ]
     },
     {
-      "description": "Close a point in time",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
-      "name": "close_point_in_time",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_pit"
-        }
-      ]
-    },
-    {
       "description": "Provides explanations for shard allocations in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-allocation-explain.html",
       "name": "cluster.allocation_explain",
@@ -1304,80 +1219,6 @@
             "POST"
           ],
           "path": "/_cluster/allocation/explain"
-        }
-      ]
-    },
-    {
-      "description": "Deletes a component template",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
-      "name": "cluster.delete_component_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_component_template/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Clears cluster voting config exclusions.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html",
-      "name": "cluster.delete_voting_config_exclusions",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_cluster/voting_config_exclusions"
-        }
-      ]
-    },
-    {
-      "description": "Returns information about whether a particular component template exist",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
-      "name": "cluster.exists_component_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "HEAD"
-          ],
-          "path": "/_component_template/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Returns one or more component templates",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
-      "name": "cluster.get_component_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_component_template"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_component_template/{name}"
         }
       ]
     },
@@ -1456,41 +1297,6 @@
             "GET"
           ],
           "path": "/_cluster/pending_tasks"
-        }
-      ]
-    },
-    {
-      "description": "Updates the cluster voting config exclusions by node ids or node names.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html",
-      "name": "cluster.post_voting_config_exclusions",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_cluster/voting_config_exclusions"
-        }
-      ]
-    },
-    {
-      "description": "Creates or updates a component template",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
-      "name": "cluster.put_component_template",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/_component_template/{name}"
         }
       ]
     },
@@ -1708,235 +1514,6 @@
             "POST"
           ],
           "path": "/{index}/{type}/{id}/_create"
-        }
-      ]
-    },
-    {
-      "description": "Deletes the specified dangling index",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
-      "name": "dangling_indices.delete_dangling_index",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_dangling/{index_uuid}"
-        }
-      ]
-    },
-    {
-      "description": "Imports the specified dangling index",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
-      "name": "dangling_indices.import_dangling_index",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_dangling/{index_uuid}"
-        }
-      ]
-    },
-    {
-      "description": "Returns all dangling indices.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
-      "name": "dangling_indices.list_dangling_indices",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_dangling"
-        }
-      ]
-    },
-    {
-      "description": "Deletes an existing transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
-      "name": "data_frame_transform_deprecated.delete_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves configuration information for transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html",
-      "name": "data_frame_transform_deprecated.get_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}"
-        },
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_frame/transforms"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves usage information for transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html",
-      "name": "data_frame_transform_deprecated.get_transform_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_stats"
-        }
-      ]
-    },
-    {
-      "description": "Previews a transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
-      "name": "data_frame_transform_deprecated.preview_transform",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/_preview"
-        }
-      ]
-    },
-    {
-      "description": "Instantiates a transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
-      "name": "data_frame_transform_deprecated.put_transform",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}"
-        }
-      ]
-    },
-    {
-      "description": "Starts one or more transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
-      "name": "data_frame_transform_deprecated.start_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_start"
-        }
-      ]
-    },
-    {
-      "description": "Stops one or more transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html",
-      "name": "data_frame_transform_deprecated.stop_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_stop"
-        }
-      ]
-    },
-    {
-      "description": "Updates certain properties of a transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
-      "name": "data_frame_transform_deprecated.update_transform",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_update"
         }
       ]
     },
@@ -2183,75 +1760,6 @@
       ]
     },
     {
-      "description": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
-      "name": "eql.delete",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_eql/search/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Returns async results from previously executed Event Query Language (EQL) search",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
-      "name": "eql.get",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_eql/search/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Returns the status of a previously submitted async or stored Event Query Language (EQL) search",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
-      "name": "eql.get_status",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_eql/search/status/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
-      "name": "eql.search",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/_eql/search"
-        }
-      ]
-    },
-    {
       "description": "Returns information about whether a document exists in an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists",
@@ -2356,23 +1864,6 @@
       ]
     },
     {
-      "description": "Returns a list of features which can be snapshotted in this cluster.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
-      "name": "features.get_features",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_features"
-        }
-      ]
-    },
-    {
       "description": "Returns the information about the capabilities of fields among multiple indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
@@ -2459,40 +1950,6 @@
             "GET"
           ],
           "path": "/_scripts/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Returns all script contexts.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-contexts.html",
-      "name": "get_script_context",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_script_context"
-        }
-      ]
-    },
-    {
-      "description": "Returns available script types, languages and contexts",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
-      "name": "get_script_languages",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_script_language"
         }
       ]
     },
@@ -2865,23 +2322,6 @@
       ]
     },
     {
-      "description": "Adds a block to an index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html",
-      "name": "indices.add_block",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/{index}/_block/{block}"
-        }
-      ]
-    },
-    {
       "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-analyze.html",
       "name": "indices.analyze",
@@ -3017,46 +2457,6 @@
       ]
     },
     {
-      "description": "Creates a data stream",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.create_data_stream",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_data_stream/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Provides statistics on operations happening in a data stream.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.data_streams_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_stream/_stats"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_stream/{name}/_stats"
-        }
-      ]
-    },
-    {
       "description": "Deletes an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
       "name": "indices.delete",
@@ -3107,40 +2507,6 @@
             "DELETE"
           ],
           "path": "/{index}/_aliases/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Deletes a data stream.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.delete_data_stream",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_data_stream/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Deletes an index template.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
-      "name": "indices.delete_index_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_index_template/{name}"
         }
       ]
     },
@@ -3219,23 +2585,6 @@
             "HEAD"
           ],
           "path": "/{index}/_alias/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Returns information about whether a particular index template exists.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
-      "name": "indices.exists_index_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "HEAD"
-          ],
-          "path": "/_index_template/{name}"
         }
       ]
     },
@@ -3480,29 +2829,6 @@
       ]
     },
     {
-      "description": "Returns data streams.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.get_data_stream",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_stream"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_stream/{name}"
-        }
-      ]
-    },
-    {
       "description": "Returns mapping for one or more fields.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-field-mapping.html",
       "name": "indices.get_field_mapping",
@@ -3549,29 +2875,6 @@
             "GET"
           ],
           "path": "/{index}/_mapping/{type}/field/{fields}"
-        }
-      ]
-    },
-    {
-      "description": "Returns an index template.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
-      "name": "indices.get_index_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_index_template"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_index_template/{name}"
         }
       ]
     },
@@ -3698,54 +3001,6 @@
       ]
     },
     {
-      "description": "DEPRECATED Returns a progress status of current upgrade.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
-      "name": "indices.get_upgrade",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_upgrade"
-        },
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_upgrade"
-        }
-      ]
-    },
-    {
-      "description": "Migrates an alias to a data stream",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.migrate_to_data_stream",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_stream/_migrate/{name}"
-        }
-      ]
-    },
-    {
       "description": "Opens an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
       "name": "indices.open",
@@ -3766,23 +3021,6 @@
             "POST"
           ],
           "path": "/{index}/_open"
-        }
-      ]
-    },
-    {
-      "description": "Promotes a data stream from a replicated data stream managed by CCR to a regular data stream",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
-      "name": "indices.promote_data_stream",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_stream/_promote/{name}"
         }
       ]
     },
@@ -3815,24 +3053,6 @@
             "POST"
           ],
           "path": "/{index}/_aliases/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Creates or updates an index template.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
-      "name": "indices.put_index_template",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/_index_template/{name}"
         }
       ]
     },
@@ -4081,23 +3301,6 @@
       ]
     },
     {
-      "description": "Returns information about any matching indices, aliases, and data streams",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html",
-      "name": "indices.resolve_index",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_resolve/index/{name}"
-        }
-      ]
-    },
-    {
       "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-rollover-index.html",
       "name": "indices.rollover",
@@ -4213,46 +3416,6 @@
       ]
     },
     {
-      "description": "Simulate matching the given index name against the index templates in the system",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
-      "name": "indices.simulate_index_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_index_template/_simulate_index/{name}"
-        }
-      ]
-    },
-    {
-      "description": "Simulate resolving the given template name or body",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
-      "name": "indices.simulate_template",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_index_template/_simulate"
-        },
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_index_template/_simulate/{name}"
-        }
-      ]
-    },
-    {
       "description": "Allows you to split an existing index into a new index with more primary shards.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-split-index.html",
       "name": "indices.split",
@@ -4364,37 +3527,6 @@
             "POST"
           ],
           "path": "/_aliases"
-        }
-      ]
-    },
-    {
-      "description": "DEPRECATED Upgrades to the current version of Lucene.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
-      "name": "indices.upgrade",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_upgrade"
-        },
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/_upgrade"
         }
       ]
     },
@@ -4769,57 +3901,6 @@
       ]
     },
     {
-      "description": "Deletes Logstash Pipelines used by Central Management",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
-      "name": "logstash.delete_pipeline",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_logstash/pipeline/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves Logstash Pipelines used by Central Management",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
-      "name": "logstash.get_pipeline",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_logstash/pipeline/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Adds and updates Logstash Pipelines used for Central Management",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
-      "name": "logstash.put_pipeline",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_logstash/pipeline/{id}"
-        }
-      ]
-    },
-    {
       "description": "Allows to get multiple documents in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html",
       "name": "mget",
@@ -4989,23 +4070,6 @@
       ]
     },
     {
-      "description": "Deletes an existing data frame analytics job.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html",
-      "name": "ml.delete_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}"
-        }
-      ]
-    },
-    {
       "description": "Deletes an existing datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html",
       "name": "ml.delete_datafeed",
@@ -5162,40 +4226,6 @@
       ]
     },
     {
-      "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
-      "name": "ml.delete_trained_model",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_ml/trained_models/{model_id}"
-        }
-      ]
-    },
-    {
-      "description": "Deletes a model alias that refers to the trained model",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
-      "name": "ml.delete_trained_model_alias",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
-        }
-      ]
-    },
-    {
       "description": "Estimates the model memory",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html",
       "name": "ml.estimate_model_memory",
@@ -5216,48 +4246,6 @@
             "POST"
           ],
           "path": "/_ml/anomaly_detectors/_estimate_model_memory"
-        }
-      ]
-    },
-    {
-      "description": "Evaluates the data frame analytics for an annotated index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
-      "name": "ml.evaluate_data_frame",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/data_frame/_evaluate"
-        }
-      ]
-    },
-    {
-      "description": "Explains a data frame analytics config.",
-      "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html",
-      "name": "ml.explain_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/_explain"
-        },
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}/_explain"
         }
       ]
     },
@@ -5426,52 +4414,6 @@
             "POST"
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/categories/"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves configuration information for data frame analytics jobs.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
-      "name": "ml.get_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/data_frame/analytics"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves usage information for data frame analytics jobs.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html",
-      "name": "ml.get_data_frame_analytics_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/data_frame/analytics/_stats"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}/_stats"
         }
       ]
     },
@@ -5733,52 +4675,6 @@
       ]
     },
     {
-      "description": "Retrieves configuration information for a trained inference model.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
-      "name": "ml.get_trained_models",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/trained_models/{model_id}"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/trained_models"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves usage information for trained inference models.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
-      "name": "ml.get_trained_models_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/trained_models/{model_id}/_stats"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/trained_models/_stats"
-        }
-      ]
-    },
-    {
       "description": "Returns defaults and limits used by machine learning.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-ml-info.html",
       "name": "ml.info",
@@ -5875,31 +4771,6 @@
       ]
     },
     {
-      "description": "Previews that will be analyzed given a data frame analytics config.",
-      "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
-      "name": "ml.preview_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/_preview"
-        },
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}/_preview"
-        }
-      ]
-    },
-    {
       "description": "Previews a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
@@ -5968,23 +4839,6 @@
             "PUT"
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
-        }
-      ]
-    },
-    {
-      "description": "Instantiates a data frame analytics job.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html",
-      "name": "ml.put_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}"
         }
       ]
     },
@@ -6061,40 +4915,6 @@
       ]
     },
     {
-      "description": "Creates an inference trained model.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
-      "name": "ml.put_trained_model",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_ml/trained_models/{model_id}"
-        }
-      ]
-    },
-    {
-      "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
-      "name": "ml.put_trained_model_alias",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
-        }
-      ]
-    },
-    {
       "description": "Reverts to a specific snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html",
       "name": "ml.revert_model_snapshot",
@@ -6143,23 +4963,6 @@
       ]
     },
     {
-      "description": "Starts a data frame analytics job.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
-      "name": "ml.start_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}/_start"
-        }
-      ]
-    },
-    {
       "description": "Starts one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
@@ -6184,23 +4987,6 @@
       ]
     },
     {
-      "description": "Stops one or more data frame analytics jobs.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
-      "name": "ml.stop_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}/_stop"
-        }
-      ]
-    },
-    {
       "description": "Stops one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html",
       "name": "ml.stop_datafeed",
@@ -6221,23 +5007,6 @@
             "POST"
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_stop"
-        }
-      ]
-    },
-    {
-      "description": "Updates certain properties of a data frame analytics job.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
-      "name": "ml.update_data_frame_analytics",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/data_frame/analytics/{id}/_update"
         }
       ]
     },
@@ -6338,23 +5107,6 @@
       ]
     },
     {
-      "description": "Upgrades a given job snapshot to the current major version.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html",
-      "name": "ml.upgrade_job_snapshot",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade"
-        }
-      ]
-    },
-    {
       "description": "Validates an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/machine-learning/current/ml-jobs.html",
       "name": "ml.validate",
@@ -6403,35 +5155,6 @@
       ]
     },
     {
-      "description": "Used by the monitoring features to send monitoring data.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/monitor-elasticsearch-cluster.html",
-      "name": "monitoring.bulk",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "POST",
-            "PUT"
-          ],
-          "path": "/_monitoring/bulk"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST",
-            "PUT"
-          ],
-          "path": "/_monitoring/{type}/bulk"
-        }
-      ]
-    },
-    {
       "description": "Allows to execute several search operations in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html",
       "name": "msearch",
@@ -6471,46 +5194,6 @@
             "POST"
           ],
           "path": "/{index}/{type}/_msearch"
-        }
-      ]
-    },
-    {
-      "description": "Allows to execute several search template operations in one request.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
-      "name": "msearch_template",
-      "request": {
-        "name": "MultiSearchTemplateRequest",
-        "namespace": "search.multi_search_template"
-      },
-      "requestBodyRequired": true,
-      "response": null,
-      "since": "5.0.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_msearch/template"
-        },
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/_msearch/template"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_msearch/template"
         }
       ]
     },
@@ -6816,29 +5499,6 @@
       ]
     },
     {
-      "description": "Open a point in time that can be used in subsequent searches",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
-      "name": "open_point_in_time",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_pit"
-        },
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/_pit"
-        }
-      ]
-    },
-    {
       "description": "Returns whether the cluster is running.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "ping",
@@ -6891,31 +5551,6 @@
             "POST"
           ],
           "path": "/_scripts/{id}/{context}"
-        }
-      ]
-    },
-    {
-      "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
-      "name": "rank_eval",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_rank_eval"
-        },
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/_rank_eval"
         }
       ]
     },
@@ -7128,23 +5763,6 @@
             "PUT"
           ],
           "path": "/_rollup/job/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Rollup an index",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
-      "name": "rollup.rollup",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/_rollup/{rollup_index}"
         }
       ]
     },
@@ -7369,126 +5987,6 @@
       ]
     },
     {
-      "description": "Allows to use the Mustache language to pre-render a search definition.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
-      "name": "search_template",
-      "request": {
-        "name": "SearchTemplateRequest",
-        "namespace": "search.search_template"
-      },
-      "requestBodyRequired": true,
-      "response": null,
-      "since": "0.0.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_search/template"
-        },
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/_search/template"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_search/template"
-        }
-      ]
-    },
-    {
-      "description": "Clear the cache of searchable snapshots.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
-      "name": "searchable_snapshots.clear_cache",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_searchable_snapshots/cache/clear"
-        },
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/_searchable_snapshots/cache/clear"
-        }
-      ]
-    },
-    {
-      "description": "Mount a snapshot as a searchable index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
-      "name": "searchable_snapshots.mount",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_snapshot/{repository}/{snapshot}/_mount"
-        }
-      ]
-    },
-    {
-      "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
-      "name": "searchable_snapshots.repository_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_snapshot/{repository}/_stats"
-        }
-      ]
-    },
-    {
-      "description": "Retrieve various statistics about searchable snapshots.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
-      "name": "searchable_snapshots.stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_searchable_snapshots/stats"
-        },
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_searchable_snapshots/stats"
-        }
-      ]
-    },
-    {
       "description": "Enables authentication as a user and retrieve information about the authenticated user.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html",
       "name": "security.authenticate",
@@ -7541,40 +6039,6 @@
             "POST"
           ],
           "path": "/_security/user/_password"
-        }
-      ]
-    },
-    {
-      "description": "Clear a subset or all entries from the API key cache.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html",
-      "name": "security.clear_api_key_cache",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_security/api_key/{ids}/_clear_cache"
-        }
-      ]
-    },
-    {
-      "description": "Evicts application privileges from the native application privileges cache.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-privilege-cache.html",
-      "name": "security.clear_cached_privileges",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_security/privilege/{application}/_clear_cache"
         }
       ]
     },
@@ -8020,23 +6484,6 @@
       ]
     },
     {
-      "description": "Creates an API key on behalf of another user.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-grant-api-key.html",
-      "name": "security.grant_api_key",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_security/api_key/grant"
-        }
-      ]
-    },
-    {
       "description": "Determines whether the specified user has a specified list of privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html",
       "name": "security.has_privileges",
@@ -8459,23 +6906,6 @@
             "POST"
           ],
           "path": "/_snapshot/{repository}/_cleanup"
-        }
-      ]
-    },
-    {
-      "description": "Clones indices from one snapshot into another snapshot in the same repository.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
-      "name": "snapshot.clone",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_snapshot/{repository}/{snapshot}/_clone/{target_snapshot}"
         }
       ]
     },
@@ -9236,27 +7666,6 @@
       ]
     },
     {
-      "description": "Changes the number of requests per second for a particular Update By Query operation.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html",
-      "name": "update_by_query_rethrottle",
-      "request": {
-        "name": "UpdateByQueryRethrottleRequest",
-        "namespace": "document.multiple.update_by_query_rethrottle"
-      },
-      "requestBodyRequired": false,
-      "response": null,
-      "since": "6.5.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_update_by_query/{task_id}/_rethrottle"
-        }
-      ]
-    },
-    {
       "description": "Acknowledges a watch, manually throttling the execution of the watch's actions.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-ack-watch.html",
       "name": "watcher.ack_watch",
@@ -9440,24 +7849,6 @@
             "POST"
           ],
           "path": "/_watcher/watch/{id}"
-        }
-      ]
-    },
-    {
-      "description": "Retrieves stored watches.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-query-watches.html",
-      "name": "watcher.query_watches",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/_watcher/_query/watches"
         }
       ]
     },
@@ -10268,18 +8659,6 @@
           }
         }
       ]
-    },
-    {
-      "generics": [
-        "TKey",
-        "TValue"
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "AdditionalProperties",
-        "namespace": "internal"
-      },
-      "properties": []
     },
     {
       "inherits": [
@@ -13909,17 +12288,6 @@
           }
         }
       ]
-    },
-    {
-      "generics": [
-        "TRecord"
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "ArrayResponseBase",
-        "namespace": "internal"
-      },
-      "properties": []
     },
     {
       "inherits": [
@@ -31074,95 +29442,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "CommonCatQueryParameters",
-        "namespace": "internal"
-      },
-      "properties": [
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "h",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Names",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "help",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "local",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
-          "name": "s",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "v",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": [
         {
           "type": {
@@ -31220,85 +29499,6 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CommonQueryParameters",
-        "namespace": "internal"
-      },
-      "properties": [
-        {
-          "name": "error_trace",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter_path",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "human",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pretty",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "source_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
               "namespace": "internal"
             }
           }
@@ -41870,14 +40070,6 @@
       "kind": "interface",
       "name": {
         "name": "EmptyObject",
-        "namespace": "internal"
-      },
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "EmptyResponseBase",
         "namespace": "internal"
       },
       "properties": []
@@ -70842,7 +69034,6 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of index names to use as default",
           "name": "index",
           "required": false,
           "type": {
@@ -70854,7 +69045,6 @@
           }
         },
         {
-          "description": "A comma-separated list of document types to use as default",
           "name": "type",
           "required": false,
           "type": {
@@ -94044,7 +92234,6 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
           "name": "index",
           "required": false,
           "type": {
@@ -94056,7 +92245,6 @@
           }
         },
         {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
           "name": "type",
           "required": false,
           "type": {
@@ -112581,7 +110769,6 @@
       },
       "path": [
         {
-          "description": "The task id to rethrottle",
           "name": "task_id",
           "required": true,
           "type": {
