@@ -21,7 +21,6 @@ import * as model from '../model/metamodel'
 
 enum TypeDefKind {
   type,
-  request,
   behavior
 }
 
@@ -29,6 +28,10 @@ enum TypeDefKind {
  * Validates the internal consistency of the model (doesn't check the json spec)
  *
  * Any inconsistency is logged as an error.
+ *
+ * Missing validations:
+ * - verify uniqueness of property names in the inheritance chain
+ * - verify that request parents don't define properties (would they be path/request/body properties?)
  */
 export default function validateModel (apiModel: model.Model, failHard: boolean): model.Model {
   console.log('Model validation: start')
@@ -38,6 +41,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     return `${name.namespace}:${name.name}`
   }
 
+  // Are these two type names the same?
   function sameTypeName (n1: model.TypeName, n2: model.TypeName): boolean {
     return n1.namespace === n2.namespace && n1.name === n2.name
   }
@@ -61,9 +65,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
 
   // Register builtin types
   for (const name of [
-    'string', 'boolean', 'number', 'object',
-    'Array' // FIXME: could we get rid of this and use an 'array_of' value?
-
+    'string', 'boolean', 'number', 'object', 'null'
   ]) {
     const typeName = {
       namespace: 'internal',
@@ -76,16 +78,19 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     })
   }
 
+  // FIXME: could we get rid of this and use an 'array_of' value?
+  typeDefByName.set('internal:Array', {
+    kind: 'interface',
+    name: {
+      namespace: 'internal',
+      name: 'Array'
+    },
+    generics: ["Item"],
+    properties: []
+  })
+
   function getTypeDef (name: model.TypeName): model.TypeDefinition | undefined {
     return typeDefByName.get(fqn(name))
-  }
-
-  // Top-level types that are referenced with no generic parameters
-  const topLevelTypes = new Set<string>()
-
-  for (const endpoint of apiModel.endpoints) {
-    if (endpoint.request !== null) topLevelTypes.add(fqn(endpoint.request))
-    if (endpoint.response !== null) topLevelTypes.add(fqn(endpoint.response))
   }
 
   // Behaviors. Filled from the `behaviors` properties from requests and interfaces
@@ -162,12 +167,19 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     context.push(`Endpoint ${endpoint.name}`)
 
     context.push('Request')
-    validateTypeRef(endpoint.request, undefined, TypeDefKind.request)
-    validateIsLeafType(endpoint.request)
-
-    // Request path properties and url template propeties should be the same
     const reqType = getTypeDef(endpoint.request)
-    if (reqType?.kind === 'request') {
+
+    if (reqType == null) {
+      modelError(`Type ${fqn(endpoint.request)} not found`);
+
+    } else if (reqType.kind !== 'request') {
+      modelError(`Type ${fqn(endpoint.request)} is not a request definition`)
+
+    } else {
+      validateTypeDef(reqType)
+      validateIsLeafType(endpoint.request)
+
+      // Request path properties and url template properties should be the same
       const reqProperties = new Set(reqType.path.map(p => p.name))
 
       const urlProperties = new Set<string>()
@@ -195,8 +207,16 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     context.pop()
 
     context.push('Response')
-    validateTypeRef(endpoint.response)
-    validateIsLeafType(endpoint.request)
+    const respType = getTypeDef(endpoint.response)
+
+    if (respType == null) {
+      modelError(`Type ${fqn(endpoint.request)} not found`);
+
+    } else {
+      validateTypeDef(respType)
+      validateIsLeafType(endpoint.request)
+    }
+
     context.pop()
 
     context.pop()
@@ -207,71 +227,61 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
    *
    * @param name the type's name
    * @param generics generic parameter for this reference
+   * @param openGenerics fully qualified names of open generic parameters in the enclosing scope
    * @param kind what do we expect this type to be?
    */
-  function validateTypeRef (name: model.TypeName, generics?: model.ValueOf[], kind: TypeDefKind = TypeDefKind.type): void {
-    const typeDef = kind === TypeDefKind.behavior ? behaviorByName.get(fqn(name)) : getTypeDef(name)
+  function validateTypeRef (name: model.TypeName, generics: (model.ValueOf[] | undefined), openGenerics: Set<string>, kind: TypeDefKind = TypeDefKind.type): void {
+    const fqName = fqn(name);
+
+    if (openGenerics.has(fqName)) {
+      // This is an open generic parameter coming from the enclosing scope
+      return;
+    }
+
+    const typeDef = kind === TypeDefKind.behavior ? behaviorByName.get(fqName) : getTypeDef(name)
     if (typeDef == null) {
-      modelError(`No type definition for '${fqn(name)}'`)
+      modelError(`No type definition for '${fqName}'`)
       return
     }
 
-    validateTypeDef(typeDef, kind)
+    if (typeDef.kind === 'request') {
+      modelError(`'${fqName}' is a request and must only be used in endpoints`)
+    }
+
+    validateTypeDef(typeDef)
 
     // Validate generic parameters
-    if (topLevelTypes.has(fqn(name))) {
-      // Top-level types are referenced in endpoints with no generic parameters
-      if (generics != null && generics.length > 0) {
-        modelError('Top level type should not be referenced with generic parameter values')
+    const genericsCount = generics?.length ?? 0
+
+    if (typeDef.kind !== 'enum') {
+      const typeGenericsCount = typeDef.generics?.length ?? 0
+      if (genericsCount !== typeGenericsCount) {
+        modelError(`Expected ${typeGenericsCount} generic parameters but got ${genericsCount}`)
       }
     } else {
-      const genericsCount = generics?.length ?? 0
-
-      // Only request and interface accept generic parameters
-      switch (typeDef.kind) {
-        case 'request':
-        case 'interface': {
-          const typeGenericsCount = typeDef.generics?.length ?? 0
-          if (genericsCount !== typeGenericsCount) {
-            modelError(`Expected ${typeGenericsCount} generic parameters but got ${genericsCount}`)
-          }
-        }
-          break
-        default:
-          if (genericsCount !== 0) {
-            modelError(`Type kind '${typeDef.kind}' doesn't accept generic parameters`)
-          }
+      if (genericsCount !== 0) {
+        modelError(`Type kind '${typeDef.kind}' doesn't accept generic parameters`)
       }
-
-      context.push('Generics')
-      for (const v of generics ?? []) {
-        validateValueOf(v)
-      }
-      context.pop()
     }
+
+    context.push('Generics')
+    for (const v of generics ?? []) {
+      validateValueOf(v, openGenerics)
+    }
+    context.pop()
   }
 
   // -----------------------------------------------------------------------------------------------
   // Type definitions validations
 
-  function validateTypeDef (typeDef: model.TypeDefinition, kind: TypeDefKind): void {
+  function validateTypeDef (typeDef: model.TypeDefinition): void {
     if (typesSeen.has(fqn(typeDef.name))) {
       // Already visited
       return
     }
     typesSeen.add(fqn(typeDef.name))
 
-    if (kind === TypeDefKind.request) {
-      if (typeDef.kind !== 'request') {
-        modelError(`Expected a request but type is a '${typeDef.kind}'`)
-      }
-    } else {
-      if (typeDef.kind === 'request') {
-        modelError('Type is a request, which should not be used for properties')
-      }
-    }
-
-    // Type definitions are top-level elements
+    // Start a new context, type definitions are top-level elements
     const oldContext = context
     context = []
     context.push(`${typeDef.kind} definition ${typeDef.name.namespace}:${typeDef.name.name}`)
@@ -312,30 +322,33 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateRequest (typeDef: model.Request): void {
-    validateInherits(typeDef.inherits)
-    validateImplements(typeDef.implements)
-    validateBehaviors(typeDef)
+
+    const openGenerics = openGenericSet(typeDef)
+
+    validateInherits(typeDef.inherits, openGenerics)
+    validateImplements(typeDef.implements, openGenerics)
+    validateBehaviors(typeDef, openGenerics)
 
     // Note: we validate identifier/name uniqueness independently in the path, query and body as there are some
     // valid overlaps, with some parameters that can also be represented as body properties.
     // Client generators will have to take care of this.
 
     context.push('path')
-    validateProperties(typeDef.path)
+    validateProperties(typeDef.path, openGenerics)
     context.pop()
 
     context.push('query')
-    validateProperties(typeDef.query)
+    validateProperties(typeDef.query, openGenerics)
     context.pop()
 
     if (typeDef.body != null) {
       context.push('body')
       switch (typeDef.body.kind) {
         case 'properties':
-          validateProperties(typeDef.body.properties)
+          validateProperties(typeDef.body.properties, openGenerics)
           break
         case 'value':
-          validateValueOf(typeDef.body.value)
+          validateValueOf(typeDef.body.value, openGenerics)
           break
       }
       context.pop()
@@ -343,10 +356,14 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateInterface (typeDef: model.Interface): void {
-    validateImplements(typeDef.implements)
-    validateInherits(typeDef.inherits)
-    validateBehaviors(typeDef)
-    validateProperties(typeDef.properties)
+
+    const openGenerics = openGenericSet(typeDef)
+    const parentProperties = new Set<string>()
+
+    validateImplements(typeDef.implements, openGenerics)
+    validateInherits(typeDef.inherits, openGenerics)
+    validateBehaviors(typeDef, openGenerics)
+    validateProperties(typeDef.properties, openGenerics)
   }
 
   function validateEnum (typeDef: model.Enum): void {
@@ -370,21 +387,36 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    // FIXME: do we really need generics on a type alias? An alias is semantically similar to a 1-member union
-    // and union doesn't have generic parameters for its members. Or is this missing in union?
-    validateValueOf(typeDef.type, typeDef.generics)
+    //FIXME: type_alias.generics should be of the same type as other type definitions
+    const openGenerics = new Set(typeDef.generics?.map(t => {
+      if (t.kind != 'instance_of') {
+        throw new Error("Expecting instance_of for alias generic parameter")
+      } else {
+        return fqn(t.type);
+      }
+    }))
+
+    validateValueOf(typeDef.type, openGenerics)
   }
 
   function validateUnion (typeDef: model.Union): void {
+    // FIXME: union should have open generics
     for (const item of typeDef.items) {
-      validateValueOf(item)
+      validateValueOf(item, new Set())
     }
   }
 
   // -----------------------------------------------------------------------------------------------
   // Constituents of type definitions
 
-  function validateInherits (parents?: model.Inherits[]): void {
+  function openGenericSet(typeDef: model.Request | model.Interface): Set<string> {
+    return new Set((typeDef.generics ?? []).map(name => fqn({
+      namespace: typeDef.name.namespace,
+      name: name
+    })))
+  }
+
+  function validateInherits (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
     if (parents == null || parents.length === 0) return
 
     context.push('Inherits')
@@ -394,26 +426,26 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     }
 
     for (const parent of parents) {
-      validateTypeRef(parent.type, parent.generics)
+      validateTypeRef(parent.type, parent.generics, openGenerics)
     }
     context.pop()
   }
 
-  function validateImplements (parents?: model.Implements[]): void {
+  function validateImplements (parents: (model.Implements[] | undefined), openGenerics: Set<string>): void {
     if (parents == null || parents.length === 0) return
 
     context.push('Implements')
     for (const parent of parents) {
-      validateTypeRef(parent.type, parent.generics)
+      validateTypeRef(parent.type, parent.generics, openGenerics)
     }
     context.pop()
   }
 
-  function validateBehaviors (typeDef: model.Request | model.Interface): void {
+  function validateBehaviors (typeDef: model.Request | model.Interface, openGenerics: Set<string>): void {
     if (typeDef.behaviors != null && typeDef.behaviors.length > 0) {
       context.push('Behaviors')
       for (const parent of typeDef.behaviors) {
-        validateTypeRef(parent.type, parent.generics)
+        validateTypeRef(parent.type, parent.generics, openGenerics)
       }
       context.pop()
     }
@@ -461,7 +493,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
     return false
   }
 
-  function validateProperties (props: model.Property[]): void {
+  function validateProperties (props: model.Property[], openGenerics: Set<string>): void {
     const allIdentifiers = new Set<string>()
     const allNames = new Set<string>()
 
@@ -483,50 +515,81 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       }
 
       context.push(`Property '${prop.name}'`)
-      validateValueOf(prop.type)
+      validateValueOf(prop.type, openGenerics)
       context.pop()
     }
   }
 
-  //
+
+  // Validates that use of non-leaf types (i.e. those who are inherited or implemented) are used either
+  // in contexts that are distinct from that of their children, or are abstract parent classes providing a way
+  // way to identify actual concrete implementations in strongly typed languages.
   function validateIsLeafType (type: model.TypeName): void {
+
     if (parentTypes.has(fqn(type))) {
-      modelError(`Abstract type cannot be used here: '${fqn(type)}'`)
+      // Aggregations are disambiguated with the 'typed_keys' parameter
+      if (type.namespace === "aggregations") return;
+
+      const fqName = fqn(type);
+
+      switch(fqName) {
+        // Base type also used as property, no polymorphic usage
+        case 'internal:ErrorCause':
+        case 'x_pack.enrich:EnrichPolicy':
+        case 'x_pack.info.x_pack_usage:XPackUsage':
+        case 'x_pack.info.x_pack_usage:SecurityFeatureToggle':
+        case 'x_pack.watcher.watcher_stats:WatchRecordQueuedStats':
+        case 'x_pack.security.user.get_user:XPackUser':
+        case 'cluster.nodes_stats:MemoryStats':
+        case 'search.search:SearchResponse':
+
+        // Have a "type" attribute that identifies the variant
+        case 'mapping.types:PropertyBase':
+        case 'analysis.token_filters:TokenFilterBase':
+
+        // Single subclass with no additional properties, can probably be removed
+        case 'x_pack.watcher.input:HttpInputRequestDefinition':
+          return;
+      }
+
+      modelError(`Non-leaf type cannot be used here: '${fqName}'`)
     }
   }
 
   // -----------------------------------------------------------------------------------------------
   // Value_Of validations
 
-  function validateValueOf (valueOf: model.ValueOf, generics?: model.ValueOf[]): void {
+  function validateValueOf (valueOf: model.ValueOf, openGenerics: Set<string>): void {
+    context.push(valueOf.kind)
     switch (valueOf.kind) {
       case 'instance_of':
-        validateTypeRef(valueOf.type, valueOf.generics)
+        validateTypeRef(valueOf.type, valueOf.generics, openGenerics)
         validateIsLeafType(valueOf.type)
         break
 
       case 'array_of':
-        validateValueOf(valueOf.value)
+        validateValueOf(valueOf.value, openGenerics)
         break
 
       case 'union_of':
         for (const item of valueOf.items) {
-          validateValueOf(item)
+          validateValueOf(item, openGenerics)
         }
         break
 
       case 'dictionary_of':
-        validateValueOf(valueOf.key)
-        validateValueOf(valueOf.value)
+        validateValueOf(valueOf.key, openGenerics)
+        validateValueOf(valueOf.value, openGenerics)
         break
 
       case 'named_value_of':
-        validateValueOf(valueOf.value)
+        validateValueOf(valueOf.value, openGenerics)
         break
 
       case 'user_defined_value':
         // Nothing to validate
         break
     }
+    context.pop()
   }
 }

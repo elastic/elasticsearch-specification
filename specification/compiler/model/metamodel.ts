@@ -228,6 +228,7 @@ export class PropertiesBody {
  */
 export class Union extends BaseType {
   kind: 'union'
+  generics?: string[]
   items: ValueOf[]
 }
 
