@@ -18002,40 +18002,40 @@
       "properties": [
         {
           "name": "disk.avail",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "disk.indices",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "disk.percent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Percentage",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "disk_ratio",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18046,29 +18046,29 @@
         },
         {
           "name": "disk.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "disk.used",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "host",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18079,7 +18079,7 @@
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18101,7 +18101,7 @@
         },
         {
           "name": "shards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

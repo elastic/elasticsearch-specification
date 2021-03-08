@@ -952,16 +952,16 @@ export interface CatAliasesRequest extends CatRequestBase {
 export type CatAliasesResponse = CatAliasesRecord[]
 
 export interface CatAllocationRecord {
-  'disk.avail': string
-  'disk.indices': string
-  'disk.percent': string
-  disk_ratio: string
-  'disk.total': string
-  'disk.used': string
-  host: string
-  ip: string
+  'disk.avail'?: ByteSize
+  'disk.indices'?: ByteSize
+  'disk.percent'?: Percentage
+  disk_ratio?: string
+  'disk.total'?: ByteSize
+  'disk.used'?: ByteSize
+  host?: string
+  ip?: string
   node: string
-  shards: string
+  shards?: string
 }
 
 export interface CatAllocationRequest extends CatRequestBase {
