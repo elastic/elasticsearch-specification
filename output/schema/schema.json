@@ -111,13 +111,13 @@
       ]
     },
     {
-      "description": "Deletes an autoscaling policy.",
+      "description": "Deletes an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-delete-autoscaling-policy.html",
       "name": "autoscaling.delete_autoscaling_policy",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -128,30 +128,30 @@
       ]
     },
     {
-      "description": "Gets the current autoscaling decision based on the configured autoscaling policy, indicating whether or not autoscaling is needed.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-decision.html",
-      "name": "autoscaling.get_autoscaling_decision",
+      "description": "Gets the current autoscaling capacity based on the configured autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-capacity.html",
+      "name": "autoscaling.get_autoscaling_capacity",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
             "GET"
           ],
-          "path": "/_autoscaling/decision"
+          "path": "/_autoscaling/capacity"
         }
       ]
     },
     {
-      "description": "Retrieves an autoscaling policy.",
+      "description": "Retrieves an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-policy.html",
       "name": "autoscaling.get_autoscaling_policy",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -162,13 +162,13 @@
       ]
     },
     {
-      "description": "Creates a new autoscaling policy.",
+      "description": "Creates a new autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-put-autoscaling-policy.html",
       "name": "autoscaling.put_autoscaling_policy",
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -1314,7 +1314,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -1348,7 +1348,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -1365,7 +1365,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -1483,7 +1483,7 @@
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2189,7 +2189,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2206,7 +2206,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2217,13 +2217,30 @@
       ]
     },
     {
+      "description": "Returns the status of a previously submitted async or stored Event Query Language (EQL) search",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
+      "name": "eql.get_status",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_eql/search/status/{id}"
+        }
+      ]
+    },
+    {
       "description": "Returns results matching a query expressed in Event Query Language (EQL)",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.search",
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2335,6 +2352,23 @@
             "POST"
           ],
           "path": "/{index}/{type}/{id}/_explain"
+        }
+      ]
+    },
+    {
+      "description": "Returns a list of features which can be snapshotted in this cluster.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "name": "features.get_features",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_features"
         }
       ]
     },
@@ -3100,7 +3134,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3195,7 +3229,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3525,7 +3559,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3664,7 +3698,7 @@
       ]
     },
     {
-      "description": "The _upgrade API is no longer useful and will be removed.",
+      "description": "DEPRECATED Returns a progress status of current upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.get_upgrade",
       "request": null,
@@ -3673,16 +3707,41 @@
       "stability": "stable",
       "urls": [
         {
+          "deprecation": {
+            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
+            "version": "8.0.0"
+          },
           "methods": [
             "GET"
           ],
           "path": "/_upgrade"
         },
         {
+          "deprecation": {
+            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
+            "version": "8.0.0"
+          },
           "methods": [
             "GET"
           ],
           "path": "/{index}/_upgrade"
+        }
+      ]
+    },
+    {
+      "description": "Migrates an alias to a data stream",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
+      "name": "indices.migrate_to_data_stream",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_data_stream/_migrate/{name}"
         }
       ]
     },
@@ -3707,6 +3766,23 @@
             "POST"
           ],
           "path": "/{index}/_open"
+        }
+      ]
+    },
+    {
+      "description": "Promotes a data stream from a replicated data stream managed by CCR to a regular data stream",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
+      "name": "indices.promote_data_stream",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_data_stream/_promote/{name}"
         }
       ]
     },
@@ -3749,7 +3825,7 @@
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4143,7 +4219,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4160,7 +4236,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4292,7 +4368,7 @@
       ]
     },
     {
-      "description": "The _upgrade API is no longer useful and will be removed.",
+      "description": "DEPRECATED Upgrades to the current version of Lucene.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.upgrade",
       "request": null,
@@ -4301,12 +4377,20 @@
       "stability": "stable",
       "urls": [
         {
+          "deprecation": {
+            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
+            "version": "8.0.0"
+          },
           "methods": [
             "POST"
           ],
           "path": "/_upgrade"
         },
         {
+          "deprecation": {
+            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
+            "version": "8.0.0"
+          },
           "methods": [
             "POST"
           ],
@@ -4685,6 +4769,57 @@
       ]
     },
     {
+      "description": "Deletes Logstash Pipelines used by Central Management",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
+      "name": "logstash.delete_pipeline",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_logstash/pipeline/{id}"
+        }
+      ]
+    },
+    {
+      "description": "Retrieves Logstash Pipelines used by Central Management",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
+      "name": "logstash.get_pipeline",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_logstash/pipeline/{id}"
+        }
+      ]
+    },
+    {
+      "description": "Adds and updates Logstash Pipelines used for Central Management",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
+      "name": "logstash.put_pipeline",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_logstash/pipeline/{id}"
+        }
+      ]
+    },
+    {
       "description": "Allows to get multiple documents in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html",
       "name": "mget",
@@ -4860,7 +4995,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5033,13 +5168,30 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
             "DELETE"
           ],
           "path": "/_ml/trained_models/{model_id}"
+        }
+      ]
+    },
+    {
+      "description": "Deletes a model alias that refers to the trained model",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
+      "name": "ml.delete_trained_model_alias",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
       ]
     },
@@ -5074,7 +5226,7 @@
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5091,7 +5243,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5106,23 +5258,6 @@
             "POST"
           ],
           "path": "/_ml/data_frame/analytics/{id}/_explain"
-        }
-      ]
-    },
-    {
-      "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-find-file-structure.html",
-      "name": "ml.find_file_structure",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/find_file_structure"
         }
       ]
     },
@@ -5301,7 +5436,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5324,7 +5459,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5604,7 +5739,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5627,7 +5762,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5740,6 +5875,31 @@
       ]
     },
     {
+      "description": "Previews that will be analyzed given a data frame analytics config.",
+      "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
+      "name": "ml.preview_data_frame_analytics",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_ml/data_frame/analytics/_preview"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_ml/data_frame/analytics/{id}/_preview"
+        }
+      ]
+    },
+    {
       "description": "Previews a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
@@ -5818,7 +5978,7 @@
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5907,13 +6067,30 @@
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
             "PUT"
           ],
           "path": "/_ml/trained_models/{model_id}"
+        }
+      ]
+    },
+    {
+      "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
+      "name": "ml.put_trained_model_alias",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
       ]
     },
@@ -5972,7 +6149,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -6013,7 +6190,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -6054,7 +6231,7 @@
       "request": null,
       "requestBodyRequired": true,
       "response": null,
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -6157,6 +6334,23 @@
             "POST"
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update"
+        }
+      ]
+    },
+    {
+      "description": "Upgrades a given job snapshot to the current major version.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html",
+      "name": "ml.upgrade_job_snapshot",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade"
         }
       ]
     },
@@ -6934,6 +7128,23 @@
             "PUT"
           ],
           "path": "/_rollup/job/{id}"
+        }
+      ]
+    },
+    {
+      "description": "Rollup an index",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
+      "name": "rollup.rollup",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/_rollup/{rollup_index}"
         }
       ]
     },
@@ -9205,6 +9416,24 @@
             "POST"
           ],
           "path": "/_watcher/watch/{id}"
+        }
+      ]
+    },
+    {
+      "description": "Retrieves stored watches.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-query-watches.html",
+      "name": "watcher.query_watches",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_watcher/_query/watches"
         }
       ]
     },
