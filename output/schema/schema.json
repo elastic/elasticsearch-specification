@@ -22678,7 +22678,7 @@
       "properties": [
         {
           "name": "completion.size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22689,7 +22689,7 @@
         },
         {
           "name": "docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22700,7 +22700,7 @@
         },
         {
           "name": "fielddata.evictions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22711,7 +22711,7 @@
         },
         {
           "name": "fielddata.memory_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22722,7 +22722,7 @@
         },
         {
           "name": "filter_cache.memory_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22733,7 +22733,7 @@
         },
         {
           "name": "flush.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22744,7 +22744,7 @@
         },
         {
           "name": "flush.total_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22755,7 +22755,7 @@
         },
         {
           "name": "get.current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22766,7 +22766,7 @@
         },
         {
           "name": "get.exists_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22777,7 +22777,7 @@
         },
         {
           "name": "get.exists_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22788,7 +22788,7 @@
         },
         {
           "name": "get.missing_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22799,7 +22799,7 @@
         },
         {
           "name": "get.missing_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22810,7 +22810,7 @@
         },
         {
           "name": "get.time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22821,7 +22821,7 @@
         },
         {
           "name": "get.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22832,18 +22832,18 @@
         },
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "id_cache.memory_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22854,18 +22854,29 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "i",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "indexing.delete_current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22876,7 +22887,7 @@
         },
         {
           "name": "indexing.delete_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22887,7 +22898,7 @@
         },
         {
           "name": "indexing.delete_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22898,7 +22909,7 @@
         },
         {
           "name": "indexing.index_current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22909,7 +22920,7 @@
         },
         {
           "name": "indexing.index_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22920,7 +22931,7 @@
         },
         {
           "name": "indexing.index_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22931,7 +22942,7 @@
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22942,7 +22953,7 @@
         },
         {
           "name": "merges.current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22953,7 +22964,7 @@
         },
         {
           "name": "merges.current_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22964,7 +22975,7 @@
         },
         {
           "name": "merges.current_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22975,7 +22986,7 @@
         },
         {
           "name": "merges.total_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22986,7 +22997,7 @@
         },
         {
           "name": "merges.total_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22997,7 +23008,7 @@
         },
         {
           "name": "merges.total_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23008,7 +23019,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23019,7 +23030,7 @@
         },
         {
           "name": "percolate.current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23030,7 +23041,7 @@
         },
         {
           "name": "percolate.memory_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23041,7 +23052,7 @@
         },
         {
           "name": "percolate.queries",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23052,7 +23063,7 @@
         },
         {
           "name": "percolate.time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23063,7 +23074,7 @@
         },
         {
           "name": "percolate.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23074,7 +23085,7 @@
         },
         {
           "name": "prirep",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23085,7 +23096,7 @@
         },
         {
           "name": "refresh.time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23096,7 +23107,7 @@
         },
         {
           "name": "refresh.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23107,7 +23118,7 @@
         },
         {
           "name": "search.fetch_current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23118,7 +23129,7 @@
         },
         {
           "name": "search.fetch_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23129,7 +23140,7 @@
         },
         {
           "name": "search.fetch_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23140,7 +23151,7 @@
         },
         {
           "name": "search.open_contexts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23151,7 +23162,7 @@
         },
         {
           "name": "search.query_current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23162,7 +23173,7 @@
         },
         {
           "name": "search.query_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23173,7 +23184,7 @@
         },
         {
           "name": "search.query_total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23184,7 +23195,7 @@
         },
         {
           "name": "segments.count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23195,7 +23206,7 @@
         },
         {
           "name": "segments.fixed_bitset_memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23206,7 +23217,7 @@
         },
         {
           "name": "segments.index_writer_max_memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23217,7 +23228,7 @@
         },
         {
           "name": "segments.index_writer_memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23228,7 +23239,7 @@
         },
         {
           "name": "segments.memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23239,7 +23250,7 @@
         },
         {
           "name": "segments.version_map_memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23250,7 +23261,7 @@
         },
         {
           "name": "shard",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23261,7 +23272,7 @@
         },
         {
           "name": "state",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23272,7 +23283,7 @@
         },
         {
           "name": "store",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23283,7 +23294,7 @@
         },
         {
           "name": "warmer.current",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23294,7 +23305,7 @@
         },
         {
           "name": "warmer.total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23305,7 +23316,7 @@
         },
         {
           "name": "warmer.total_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
