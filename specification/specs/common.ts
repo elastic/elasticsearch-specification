@@ -99,8 +99,8 @@ type ScrollIds = string // TODO: array of ScrollIds
 type CategoryId = string
 type ActionIds = string // TODO: check if this should be an array of ActionId
 
-type Id = string | number
-type Ids = string | number | string[]
+type Id = string
+type Ids = string | string[]
 
 type IndexName = string
 type Indices = string | string[]

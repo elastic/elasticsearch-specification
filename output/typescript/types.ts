@@ -5562,9 +5562,9 @@ export interface IcuTransformTokenFilter extends TokenFilterBase {
   id: string
 }
 
-export type Id = string | number
+export type Id = string
 
-export type Ids = string | number | Array<string>
+export type Ids = string | Array<string>
 
 export interface IdsQuery extends QueryBase {
   values?: Array<Id>
