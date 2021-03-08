@@ -312,18 +312,20 @@ export interface AlwaysCondition {
 }
 
 export interface AnalysisConfig {
-  bucket_span: Time
-  categorization_field_name: Field
-  categorization_filters: Array<string>
-  detectors: Array<Detector>
-  influencers: Fields
-  latency: Time
-  multivariate_by_fields: boolean
-  summary_count_field_name: Field
+  bucket_span: TimeSpan
+  categorization_field_name?: Field
+  categorization_filters?: Array<string>
+  detectors?: Array<Detector>
+  influencers?: Fields
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: PerPartitionCategorization
+  summary_count_field_name?: Field
+  categorization_analyzer?: CategorizationAnalyzer | string
 }
 
 export interface AnalysisLimits {
-  categorization_examples_limit: long
+  categorization_examples_limit?: long
   model_memory_limit: string
 }
 
@@ -686,6 +688,11 @@ export interface AverageAggregation extends FormatMetricAggregationBase {
 }
 
 export interface AverageBucketAggregation extends PipelineAggregationBase {
+}
+
+export interface BaseUrlConfig {
+  url_name: string
+  url_value: string
 }
 
 export interface BinaryProperty extends DocValuesPropertyBase {
@@ -1608,8 +1615,9 @@ export interface CatTransformsRequest extends CatRequestBase {
 export type CatTransformsResponse = CatTransformsRecord[]
 
 export interface CategorizationAnalyzer {
-  filter: Array<TokenFilterBase>
-  tokenizer: string
+  filter?: Array<string | TokenFilter>
+  tokenizer?: string | Tokenizer
+  char_filter?: Array<string | CharFilter>
 }
 
 export interface CategoryDefinition {
@@ -1709,7 +1717,7 @@ export interface ChildrenAggregation extends BucketAggregationBase {
 
 export interface ChunkingConfig {
   mode: ChunkingMode
-  time_span: Time
+  time_span?: Time
 }
 
 export type ChunkingMode = 'auto' | 'manual' | 'off'
@@ -1913,6 +1921,7 @@ export interface ClusterGetSettingsRequest extends RequestBase {
 export interface ClusterGetSettingsResponse extends ResponseBase {
   persistent: Record<string, any>
   transient: Record<string, any>
+  defaults: Record<string, any>
 }
 
 export interface ClusterHealthRequest extends RequestBase {
@@ -2623,6 +2632,12 @@ export interface CustomAnalyzer extends AnalyzerBase {
 export interface CustomResponseBuilderBase {
 }
 
+export interface CustomSettings {
+  custom_urls?: Array<UrlConfig>
+  created_by?: string
+  job_tags?: Record<string, string>
+}
+
 export type DFIIndependenceMeasure = 'standardized' | 'saturated' | 'chisquared'
 
 export type DFRAfterEffect = 'no' | 'b' | 'l'
@@ -2637,17 +2652,17 @@ export type DataAttachmentFormat = 'json' | 'yaml'
 
 export interface DataCounts {
   bucket_count: long
-  earliest_record_timestamp: DateString
+  earliest_record_timestamp: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: string
-  last_data_time: DateString
-  latest_empty_bucket_timestamp: DateString
-  latest_record_timestamp: DateString
-  latest_sparse_bucket_timestamp: DateString
+  last_data_time: long
+  latest_empty_bucket_timestamp: long
+  latest_record_timestamp: long
+  latest_sparse_bucket_timestamp: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -2656,9 +2671,9 @@ export interface DataCounts {
 }
 
 export interface DataDescription {
-  format: string
+  format?: string
   time_field: Field
-  time_format: string
+  time_format?: string
 }
 
 export interface DataFeed {
@@ -2685,17 +2700,21 @@ export interface DataPathStats {
 }
 
 export interface DatafeedConfig {
-  aggregations: Record<string, AggregationContainer>
+  aggregations?: Record<string, AggregationContainer>
+  aggs?: Record<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: string
-  frequency: Time
+  frequency?: Timestamp
   indices: Indices
-  job_id: string
-  max_empty_searches: integer
+  indexes?: Indices
+  job_id: Id
+  max_empty_searches?: integer
   query: QueryContainer
-  query_delay: Time
-  script_fields: Record<string, ScriptField>
-  scroll_size: integer
+  query_delay?: Timestamp
+  script_fields?: Record<string, ScriptField>
+  scroll_size?: integer
+  delayed_data_check_config: DelayedDataCheckConfig
+  runtime_mappings?: RuntimeFields
 }
 
 export type DatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
@@ -2869,6 +2888,11 @@ export type DefaultOperator = 'AND' | 'OR'
 export interface Defaults {
   anomaly_detectors: AnomalyDetectors
   datafeeds: Datafeeds
+}
+
+export interface DelayedDataCheckConfig {
+  check_window?: Time
+  enabled: boolean
 }
 
 export interface DeleteAliasRequest extends RequestBase {
@@ -3226,13 +3250,13 @@ export interface DerivativeAggregation extends PipelineAggregationBase {
 export interface DetectionRule {
   actions: Array<RuleAction>
   conditions: Array<RuleCondition>
-  scope: Record<Field, FilterRef>
+  scope?: Record<Field, FilterRef>
 }
 
 export interface Detector {
   by_field_name?: Field
   custom_rules?: Array<DetectionRule>
-  detector_description: string
+  detector_description?: string
   detector_index?: integer
   exclude_frequent?: ExcludeFrequent
   field_name?: Field
@@ -4575,6 +4599,7 @@ export interface GetDatafeedStatsResponse extends ResponseBase {
 export interface GetDatafeedsRequest extends RequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
+  exclude_generated?: boolean
 }
 
 export interface GetDatafeedsResponse extends ResponseBase {
@@ -4695,6 +4720,7 @@ export interface GetJobStatsResponse extends ResponseBase {
 export interface GetJobsRequest extends RequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
+  exclude_generated?: boolean
 }
 
 export interface GetJobsResponse extends ResponseBase {
@@ -5921,22 +5947,28 @@ export interface IpRangeProperty extends RangePropertyBase {
 }
 
 export interface Job {
-  allow_lazy_open: boolean
+  allow_lazy_open?: boolean
   analysis_config: AnalysisConfig
-  analysis_limits: AnalysisLimits
+  analysis_limits?: AnalysisLimits
   background_persist_interval: Time
-  create_time: DateString
+  create_time: integer
   data_description: DataDescription
   description: string
-  finished_time: DateString
+  finished_time: integer
   job_id: string
   job_type: string
   model_plot: ModelPlotConfig
   model_snapshot_id: string
   model_snapshot_retention_days: long
   renormalization_window_days: long
-  results_index_name: string
+  results_index_name?: IndexName
   results_retention_days: long
+  groups: Array<string>
+  model_plot_config?: ModelPlotConfig
+  custom_settings?: CustomSettings
+  job_version?: string
+  deleting?: boolean
+  daily_model_snapshot_retention_after_days?: long
 }
 
 export interface JobForecastStatistics {
@@ -5966,6 +5998,7 @@ export interface JobStats {
   open_time: Time
   state: JobState
   timing_stats: TimingStats
+  deleting?: boolean
 }
 
 export interface JoinProcessor extends ProcessorBase {
@@ -6072,6 +6105,10 @@ export interface KeywordProperty extends DocValuesPropertyBase {
 
 export interface KeywordTokenizer extends TokenizerBase {
   buffer_size: integer
+}
+
+export interface KibanaUrlConfig extends BaseUrlConfig {
+  time_range?: string
 }
 
 export interface KuromojiAnalyzer extends AnalyzerBase {
@@ -6219,6 +6256,7 @@ export interface LimitTokenCountTokenFilter extends TokenFilterBase {
 
 export interface Limits {
   max_model_memory_limit: string
+  effective_max_model_memory_limit: string
 }
 
 export interface LineStringGeoShape {
@@ -6461,6 +6499,8 @@ export type ModelMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
 export interface ModelPlotConfig {
   terms: Fields
+  enabled: boolean
+  annotations_enabled?: boolean
 }
 
 export interface ModelPlotConfigEnabled {
@@ -7312,6 +7352,11 @@ export interface PendingTask {
   time_in_queue_millis: integer
 }
 
+export interface PerPartitionCategorization {
+  enabled?: boolean
+  stop_on_warn?: boolean
+}
+
 export type Percentage = string | float
 
 export interface PercentageScoreHeuristic {
@@ -7506,15 +7551,15 @@ export interface PostJobDataRequest extends RequestBase {
 
 export interface PostJobDataResponse extends ResponseBase {
   bucket_count: long
-  earliest_record_timestamp: DateString
+  earliest_record_timestamp: integer
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: string
-  last_data_time: DateString
-  latest_record_timestamp: DateString
+  last_data_time: integer
+  latest_record_timestamp: integer
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -7697,6 +7742,7 @@ export interface PutDatafeedRequest extends RequestBase {
     chunking_config?: ChunkingConfig
     frequency?: Time
     indices?: Indices
+    indexes?: Indices
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer
@@ -11305,6 +11351,7 @@ export interface UpdateJobRequest extends RequestBase {
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
+    groups?: Array<string>
   }
 }
 
@@ -11391,6 +11438,8 @@ export interface UppercaseTokenFilter extends TokenFilterBase {
 }
 
 export type Uri = string
+
+export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
 export interface UrlDecodeProcessor extends ProcessorBase {
   field: Field

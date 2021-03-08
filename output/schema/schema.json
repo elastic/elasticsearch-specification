@@ -12075,14 +12075,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
+              "name": "TimeSpan",
+              "namespace": "internal"
             }
           }
         },
         {
           "name": "categorization_field_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12093,7 +12093,7 @@
         },
         {
           "name": "categorization_filters",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -12107,7 +12107,7 @@
         },
         {
           "name": "detectors",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -12121,7 +12121,7 @@
         },
         {
           "name": "influencers",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12132,7 +12132,7 @@
         },
         {
           "name": "latency",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12143,7 +12143,7 @@
         },
         {
           "name": "multivariate_by_fields",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12153,14 +12153,48 @@
           }
         },
         {
+          "name": "per_partition_categorization",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PerPartitionCategorization",
+              "namespace": "x_pack.machine_learning.job.config"
+            }
+          }
+        },
+        {
           "name": "summary_count_field_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Field",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "categorization_analyzer",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "CategorizationAnalyzer",
+                  "namespace": "x_pack.machine_learning.machine_learning_info"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -12174,7 +12208,7 @@
       "properties": [
         {
           "name": "categorization_examples_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12322,25 +12356,31 @@
             "name": "char_filter",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
+              "generics": [
+                {
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "string",
+                        "namespace": "internal"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "CharFilter",
+                        "namespace": "analysis.char_filters"
+                      }
                     }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "CharFilter",
-                      "namespace": "analysis.char_filters"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                  ],
+                  "kind": "union_of"
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "Array",
+                "namespace": "internal"
               }
             }
           },
@@ -12370,25 +12410,31 @@
             "name": "filter",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
+              "generics": [
+                {
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "string",
+                        "namespace": "internal"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "TokenFilter",
+                        "namespace": "analysis.token_filters"
+                      }
                     }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TokenFilter",
-                      "namespace": "analysis.token_filters"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                  ],
+                  "kind": "union_of"
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "Array",
+                "namespace": "internal"
               }
             }
           },
@@ -15598,6 +15644,37 @@
         "namespace": "aggregations.pipeline.average_bucket"
       },
       "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BaseUrlConfig",
+        "namespace": "x_pack.info.x_pack_usage"
+      },
+      "properties": [
+        {
+          "name": "url_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "url_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -24572,25 +24649,87 @@
       "properties": [
         {
           "name": "filter",
-          "required": true,
+          "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TokenFilterBase",
-                "namespace": "analysis.token_filters"
+            "generics": [
+              {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TokenFilter",
+                      "namespace": "analysis.token_filters"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Array",
+              "namespace": "internal"
             }
           }
         },
         {
           "name": "tokenizer",
-          "required": true,
+          "required": false,
           "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Tokenizer",
+                  "namespace": "analysis.tokenizers"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "CharFilter",
+                      "namespace": "analysis.char_filters"
+                    }
+                  }
+                ],
+                "kind": "union_of"
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Array",
               "namespace": "internal"
             }
           }
@@ -25381,7 +25520,7 @@
         },
         {
           "name": "time_span",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27178,6 +27317,23 @@
         },
         {
           "name": "transient",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "defaults",
           "required": true,
           "type": {
             "key": {
@@ -33504,6 +33660,61 @@
       "properties": []
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "CustomSettings",
+        "namespace": "x_pack.info.x_pack_usage"
+      },
+      "properties": [
+        {
+          "name": "custom_urls",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "UrlConfig",
+                "namespace": "x_pack.info.x_pack_usage"
+              }
+            }
+          }
+        },
+        {
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "job_tags",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -33643,7 +33854,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -33720,7 +33931,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -33731,7 +33942,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -33742,7 +33953,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -33753,7 +33964,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -33824,7 +34035,7 @@
       "properties": [
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33846,7 +34057,7 @@
         },
         {
           "name": "time_format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -34071,7 +34282,28 @@
       "properties": [
         {
           "name": "aggregations",
-          "required": true,
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationContainer",
+                "namespace": "aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "aggs",
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -34114,12 +34346,12 @@
         },
         {
           "name": "frequency",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
+              "name": "Timestamp",
+              "namespace": "internal"
             }
           }
         },
@@ -34135,19 +34367,30 @@
           }
         },
         {
+          "name": "indexes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "job_id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "max_empty_searches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -34169,18 +34412,18 @@
         },
         {
           "name": "query_delay",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
+              "name": "Timestamp",
+              "namespace": "internal"
             }
           }
         },
         {
           "name": "script_fields",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -34201,12 +34444,34 @@
         },
         {
           "name": "scroll_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "delayed_data_check_config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DelayedDataCheckConfig",
+              "namespace": "x_pack.machine_learning.datafeed"
+            }
+          }
+        },
+        {
+          "name": "runtime_mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFields",
+              "namespace": "mapping.runtime_fields"
             }
           }
         }
@@ -35861,6 +36126,37 @@
             "type": {
               "name": "Datafeeds",
               "namespace": "x_pack.machine_learning.machine_learning_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DelayedDataCheckConfig",
+        "namespace": "x_pack.machine_learning.datafeed"
+      },
+      "properties": [
+        {
+          "name": "check_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -38892,7 +39188,7 @@
         },
         {
           "name": "scope",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -38947,7 +39243,7 @@
         },
         {
           "name": "detector_description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50452,6 +50748,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "exclude_generated",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -51560,6 +51867,17 @@
       "query": [
         {
           "name": "allow_no_jobs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "exclude_generated",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -62407,7 +62725,7 @@
       "properties": [
         {
           "name": "allow_lazy_open",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -62429,7 +62747,7 @@
         },
         {
           "name": "analysis_limits",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -62455,7 +62773,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -62488,7 +62806,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -62561,7 +62879,65 @@
         },
         {
           "name": "results_index_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "results_retention_days",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "model_plot_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "x_pack.machine_learning.job.config"
+            }
+          }
+        },
+        {
+          "name": "custom_settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomSettings",
+              "namespace": "x_pack.info.x_pack_usage"
+            }
+          }
+        },
+        {
+          "name": "job_version",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -62571,8 +62947,19 @@
           }
         },
         {
-          "name": "results_retention_days",
-          "required": true,
+          "name": "deleting",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "daily_model_snapshot_retention_after_days",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -62837,6 +63224,17 @@
             "type": {
               "name": "TimingStats",
               "namespace": "x_pack.machine_learning.job.config"
+            }
+          }
+        },
+        {
+          "name": "deleting",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -63744,6 +64142,34 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseUrlConfig",
+            "namespace": "x_pack.info.x_pack_usage"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "KibanaUrlConfig",
+        "namespace": "x_pack.info.x_pack_usage"
+      },
+      "properties": [
+        {
+          "name": "time_range",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -65073,6 +65499,17 @@
       "properties": [
         {
           "name": "max_model_memory_limit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "effective_max_model_memory_limit",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -67314,6 +67751,28 @@
             "kind": "instance_of",
             "type": {
               "name": "Fields",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "annotations_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -74903,6 +75362,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PerPartitionCategorization",
+        "namespace": "x_pack.machine_learning.job.config"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stop_on_warn",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "Percentage",
@@ -76565,7 +77055,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -76642,7 +77132,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -76653,7 +77143,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -78214,6 +78704,17 @@
           },
           {
             "name": "indices",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Indices",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "indexes",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -111615,6 +112116,20 @@
                 "namespace": "internal"
               }
             }
+          },
+          {
+            "name": "groups",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
           }
         ]
       },
@@ -112439,6 +112954,32 @@
           "name": "string",
           "namespace": "internal"
         }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "UrlConfig",
+        "namespace": "x_pack.info.x_pack_usage"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BaseUrlConfig",
+              "namespace": "x_pack.info.x_pack_usage"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KibanaUrlConfig",
+              "namespace": "x_pack.info.x_pack_usage"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
