@@ -1874,13 +1874,13 @@ export interface CloseIndexRequest extends RequestBase {
 }
 
 export interface CloseIndexResponse extends AcknowledgedResponseBase {
-  indices: Record<string, CloseIndexResult>
+  indices: Record<IndexName, CloseIndexResult>
   shards_acknowledged: boolean
 }
 
 export interface CloseIndexResult {
   closed: boolean
-  shards: Record<string, CloseShardResult>
+  shards?: Record<string, CloseShardResult>
 }
 
 export interface CloseJobRequest extends RequestBase {
