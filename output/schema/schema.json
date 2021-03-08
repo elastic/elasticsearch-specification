@@ -12107,7 +12107,7 @@
         },
         {
           "name": "detectors",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -12121,7 +12121,7 @@
         },
         {
           "name": "influencers",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -34071,26 +34071,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DataFeed",
-        "namespace": "x_pack.info.x_pack_usage"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "DataPathStats",
         "namespace": "cluster.nodes_stats"
       },
@@ -34276,7 +34256,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DatafeedConfig",
+        "name": "Datafeed",
         "namespace": "x_pack.machine_learning.datafeed"
       },
       "properties": [
@@ -34359,10 +34339,13 @@
           "name": "indices",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "internal"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         },
@@ -34370,10 +34353,13 @@
           "name": "indexes",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "internal"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         },
@@ -34472,6 +34458,26 @@
             "type": {
               "name": "RuntimeFields",
               "namespace": "mapping.runtime_fields"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DatafeedCount",
+        "namespace": "x_pack.info.x_pack_usage"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
             }
           }
         }
@@ -50796,7 +50802,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "DatafeedConfig",
+                "name": "Datafeed",
                 "namespace": "x_pack.machine_learning.datafeed"
               }
             }
@@ -66052,7 +66058,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "DataFeed",
+                "name": "DatafeedCount",
                 "namespace": "x_pack.info.x_pack_usage"
               }
             }
@@ -67750,7 +67756,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Fields",
+              "name": "Field",
               "namespace": "internal"
             }
           }
@@ -78706,10 +78712,13 @@
             "name": "indices",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Indices",
-                "namespace": "internal"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -78717,10 +78726,13 @@
             "name": "indexes",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Indices",
-                "namespace": "internal"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },

@@ -315,8 +315,8 @@ export interface AnalysisConfig {
   bucket_span: TimeSpan
   categorization_field_name?: Field
   categorization_filters?: Array<string>
-  detectors?: Array<Detector>
-  influencers?: Fields
+  detectors: Array<Detector>
+  influencers: Fields
   latency?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: PerPartitionCategorization
@@ -2676,10 +2676,6 @@ export interface DataDescription {
   time_format?: string
 }
 
-export interface DataFeed {
-  count: long
-}
-
 export interface DataPathStats {
   available: string
   available_in_bytes: long
@@ -2699,14 +2695,14 @@ export interface DataPathStats {
   type: string
 }
 
-export interface DatafeedConfig {
+export interface Datafeed {
   aggregations?: Record<string, AggregationContainer>
   aggs?: Record<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: string
   frequency?: Timestamp
-  indices: Indices
-  indexes?: Indices
+  indices: Array<string>
+  indexes?: Array<string>
   job_id: Id
   max_empty_searches?: integer
   query: QueryContainer
@@ -2715,6 +2711,10 @@ export interface DatafeedConfig {
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
   runtime_mappings?: RuntimeFields
+}
+
+export interface DatafeedCount {
+  count: long
 }
 
 export type DatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
@@ -4604,7 +4604,7 @@ export interface GetDatafeedsRequest extends RequestBase {
 
 export interface GetDatafeedsResponse extends ResponseBase {
   count: long
-  datafeeds: Array<DatafeedConfig>
+  datafeeds: Array<Datafeed>
 }
 
 export interface GetEnrichPolicyRequest extends RequestBase {
@@ -6324,7 +6324,7 @@ export interface MachineLearningInfoResponse extends ResponseBase {
 }
 
 export interface MachineLearningUsage extends XPackUsage {
-  datafeeds: Record<string, DataFeed>
+  datafeeds: Record<string, DatafeedCount>
   jobs: Record<string, Job>
   node_count: integer
 }
@@ -6498,7 +6498,7 @@ export type ModelCategorizationStatus = 'ok' | 'warn'
 export type ModelMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
 export interface ModelPlotConfig {
-  terms: Fields
+  terms: Field
   enabled: boolean
   annotations_enabled?: boolean
 }
@@ -7741,8 +7741,8 @@ export interface PutDatafeedRequest extends RequestBase {
     aggregations?: Record<string, AggregationContainer>
     chunking_config?: ChunkingConfig
     frequency?: Time
-    indices?: Indices
-    indexes?: Indices
+    indices?: Array<string>
+    indexes?: Array<string>
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer
