@@ -19246,7 +19246,7 @@
       "properties": [
         {
           "name": "docs.count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19257,7 +19257,7 @@
         },
         {
           "name": "docs.deleted",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19268,7 +19268,7 @@
         },
         {
           "name": "health",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19279,7 +19279,18 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "i",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19290,7 +19301,7 @@
         },
         {
           "name": "pri",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19301,18 +19312,18 @@
         },
         {
           "name": "pri.store.size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "rep",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19323,7 +19334,7 @@
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19334,18 +19345,18 @@
         },
         {
           "name": "store.size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "tm",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19356,11 +19367,55 @@
         },
         {
           "name": "uuid",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "cd",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "cds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "creation.date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "creation.date.string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
               "namespace": "internal"
             }
           }
