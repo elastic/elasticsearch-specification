@@ -17864,7 +17864,7 @@
         },
         {
           "name": "filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17879,14 +17879,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "routing.index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17897,7 +17897,7 @@
         },
         {
           "name": "routing.search",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17908,7 +17908,7 @@
         },
         {
           "name": "is_write_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
