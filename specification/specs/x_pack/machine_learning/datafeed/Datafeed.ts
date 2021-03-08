@@ -17,15 +17,15 @@
  * under the License.
  */
 
-class DatafeedConfig {
+class Datafeed {
   aggregations?: Dictionary<string, AggregationContainer>
   aggs?: Dictionary<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: string
   frequency?: Timestamp
   /** @prop_serializer IndicesFormatter */
-  indices: Indices
-  indexes?: Indices
+  indices: string[]
+  indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
   query: QueryContainer

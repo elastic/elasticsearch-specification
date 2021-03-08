@@ -18,7 +18,7 @@
  */
 
 class MachineLearningUsage extends XPackUsage {
-  datafeeds: Dictionary<string, DataFeed>
+  datafeeds: Dictionary<string, DatafeedCount>
   jobs: Dictionary<string, Job>
   node_count: integer
 }

@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class DataFeed {
+class DatafeedCount {
   count: long
 }

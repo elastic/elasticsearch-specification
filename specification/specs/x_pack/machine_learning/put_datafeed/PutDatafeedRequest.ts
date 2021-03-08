@@ -37,8 +37,8 @@ interface PutDatafeedRequest extends RequestBase {
     chunking_config?: ChunkingConfig
     frequency?: Time
     /** @prop_serializer IndicesFormatter */
-    indices?: Indices
-    indexes?: Indices
+    indices?: string[]
+    indexes?: string[]
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer

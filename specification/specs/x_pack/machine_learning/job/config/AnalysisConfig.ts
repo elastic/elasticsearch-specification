@@ -21,8 +21,8 @@ class AnalysisConfig {
   bucket_span: TimeSpan
   categorization_field_name?: Field
   categorization_filters?: string[]
-  detectors?: Detector[]
-  influencers?: Fields
+  detectors: Detector[]
+  influencers: Fields
   latency?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: PerPartitionCategorization
