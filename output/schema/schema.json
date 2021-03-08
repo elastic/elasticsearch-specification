@@ -21705,7 +21705,18 @@
       "properties": [
         {
           "name": "bytes",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "b",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21716,7 +21727,29 @@
         },
         {
           "name": "bytes_percent",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentage",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentage",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bytes_recovered",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21726,8 +21759,8 @@
           }
         },
         {
-          "name": "bytes_recovered",
-          "required": true,
+          "name": "br",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21738,7 +21771,18 @@
         },
         {
           "name": "bytes_total",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "tb",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21749,7 +21793,18 @@
         },
         {
           "name": "files",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "f",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21760,7 +21815,29 @@
         },
         {
           "name": "files_percent",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentage",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentage",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "files_recovered",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21770,8 +21847,8 @@
           }
         },
         {
-          "name": "files_recovered",
-          "required": true,
+          "name": "fr",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21782,7 +21859,18 @@
         },
         {
           "name": "files_total",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "tf",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21793,7 +21881,29 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "i",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "repository",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21803,8 +21913,8 @@
           }
         },
         {
-          "name": "repository",
-          "required": true,
+          "name": "rep",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21815,7 +21925,18 @@
         },
         {
           "name": "shard",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "s",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21826,7 +21947,18 @@
         },
         {
           "name": "snapshot",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "snap",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21837,7 +21969,18 @@
         },
         {
           "name": "source_host",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shost",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21848,7 +21991,7 @@
         },
         {
           "name": "source_node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21859,7 +22002,18 @@
         },
         {
           "name": "stage",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "st",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21870,7 +22024,18 @@
         },
         {
           "name": "target_host",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "thost",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21881,7 +22046,7 @@
         },
         {
           "name": "target_node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21892,7 +22057,18 @@
         },
         {
           "name": "time",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "t",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21903,44 +22079,88 @@
         },
         {
           "name": "translog_ops",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "translog_ops_percent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Percentage",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "top",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentage",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "translog_ops_recovered",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "tor",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ty",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
               "namespace": "internal"
             }
           }

@@ -1324,28 +1324,48 @@ export interface CatPluginsRequest extends CatRequestBase {
 export type CatPluginsResponse = CatPluginsRecord[]
 
 export interface CatRecoveryRecord {
-  bytes: string
-  bytes_percent: string
-  bytes_recovered: string
-  bytes_total: string
-  files: string
-  files_percent: string
-  files_recovered: string
-  files_total: string
-  index: string
-  repository: string
-  shard: string
-  snapshot: string
-  source_host: string
-  source_node: string
-  stage: string
-  target_host: string
-  target_node: string
-  time: string
-  translog_ops: long
-  translog_ops_percent: string
-  translog_ops_recovered: long
-  type: string
+  bytes?: string
+  b?: string
+  bytes_percent?: Percentage
+  bp?: Percentage
+  bytes_recovered?: string
+  br?: string
+  bytes_total?: string
+  tb?: string
+  files?: string
+  f?: string
+  files_percent?: Percentage
+  fp?: Percentage
+  files_recovered?: string
+  fr?: string
+  files_total?: string
+  tf?: string
+  index?: IndexName
+  i?: IndexName
+  repository?: string
+  rep?: string
+  shard?: string
+  s?: string
+  snapshot?: string
+  snap?: string
+  source_host?: string
+  shost?: string
+  source_node?: string
+  stage?: string
+  st?: string
+  target_host?: string
+  thost?: string
+  target_node?: string
+  time?: string
+  t?: string
+  translog_ops?: string
+  to?: string
+  translog_ops_percent?: Percentage
+  top?: Percentage
+  translog_ops_recovered?: string
+  tor?: string
+  type?: Type
+  ty?: Type
 }
 
 export interface CatRecoveryRequest extends CatRequestBase {
