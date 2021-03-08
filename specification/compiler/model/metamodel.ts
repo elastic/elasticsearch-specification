@@ -109,9 +109,6 @@ export class NamedValueOf {
 export class UserDefinedValue {
   kind: 'user_defined_value'
 }
-
-// ------------------------------------------------------------------------------------------------
-
 /**
  * An interface or request interface property.
  */
@@ -120,7 +117,14 @@ export class Property {
   type: ValueOf
   required: boolean
   description?: string
-  annotations?: Record<string, string>
+  /**
+   * If specified takes precedence over `name` when generating code. `name` is always the value
+   * to be sent over the wire
+   */
+  identifier?: string
+  /** An optional set of aliases for `name` */
+  aliases?: string[]
+  deprecation?: Deprecation
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -128,13 +132,18 @@ export class Property {
 
 export type TypeDefinition = Interface | Request | Union | Enum | TypeAlias
 
+// ------------------------------------------------------------------------------------------------
+
 /**
  * Common attributes for all type definitions
  */
-abstract class BaseType {
+export abstract class BaseType {
   name: TypeName
   description?: string
-  annotations?: Record<string, string>
+  /** Link to public documentation */
+  url?: string
+  deprecation?: Deprecation
+  kind: string
 }
 
 /**
@@ -222,10 +231,13 @@ export class Union extends BaseType {
 export class EnumMember {
   /** The identifier to use for this enum */
   name: string
+  /**
+   * If specified takes precedence over `name` when generating code. `name` is always the value
+   * to be sent over the wire
+   */
+  identifier?: string
   description?: string
-  /** The value to send of the wire. Use `name` if absent */
-  stringValue?: string
-  annotations?: Record<string, string>
+  deprecation?: Deprecation
 }
 
 /**
@@ -251,8 +263,13 @@ export class TypeAlias extends BaseType {
 export enum Stability {
   stable = 'stable',
   beta = 'beta',
-  experimental = 'experimental'
-  // NOTE: do we filter out "private"?
+  experimental = 'experimental',
+  TODO = 'TODO'
+}
+export enum Visibility {
+  public = 'public',
+  featureFlag = 'feature_flag',
+  private = 'private'
 }
 
 export class Deprecation {
@@ -264,12 +281,6 @@ export class Endpoint {
   name: string
   description: string
   docUrl: string
-  stability: Stability
-  /**
-   * The version when this endpoint reached its current stability level.
-   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-   */
-  since?: string
   deprecation?: Deprecation
 
   /**
@@ -286,6 +297,14 @@ export class Endpoint {
   response: TypeName | null
 
   urls: UrlTemplate[]
+
+  /**
+   * The version when this endpoint reached its current stability level.
+   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
+   */
+  since?: string
+  stability?: Stability
+  visibility?: Visibility
 }
 
 export class UrlTemplate {

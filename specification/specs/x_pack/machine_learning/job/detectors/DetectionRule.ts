@@ -20,5 +20,5 @@
 class DetectionRule {
   actions: RuleAction[]
   conditions: RuleCondition[]
-  scope: Dictionary<Field, FilterRef>
+  scope?: Dictionary<Field, FilterRef>
 }

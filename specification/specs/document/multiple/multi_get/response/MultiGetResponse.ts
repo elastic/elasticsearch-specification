@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @type_stability stable
- */
 @class_serializer('MultiGetResponseFormatter')
 class MultiGetResponse<TDocument> extends ResponseBase {
   docs: MultiGetHit<TDocument>[]

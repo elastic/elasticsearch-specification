@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @type_stability stable
- */
 class GetResponse<TDocument> extends ResponseBase {
   _index: string
   fields?: Dictionary<string, UserDefinedValue>

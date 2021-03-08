@@ -28,6 +28,7 @@ interface GetJobsRequest extends RequestBase {
   }
   query_parameters?: {
     allow_no_jobs?: boolean
+    exclude_generated?: boolean
   }
   body?: {}
 }

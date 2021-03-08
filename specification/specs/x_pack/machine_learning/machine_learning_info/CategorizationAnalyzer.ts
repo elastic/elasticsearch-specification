@@ -18,6 +18,7 @@
  */
 
 class CategorizationAnalyzer {
-  filter: TokenFilterBase[]
-  tokenizer: string
+  filter?: Array<string | TokenFilter>
+  tokenizer?: string | Tokenizer
+  char_filter?: Array<string | CharFilter>
 }

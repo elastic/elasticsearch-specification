@@ -18,22 +18,45 @@
  */
 
 class Job {
-  allow_lazy_open: boolean
+  allow_lazy_open?: boolean
   analysis_config: AnalysisConfig
-  analysis_limits: AnalysisLimits
+  analysis_limits?: AnalysisLimits
   background_persist_interval: Time
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  create_time: DateString
+  create_time: integer
   data_description: DataDescription
   description: string
   /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  finished_time: DateString
+  finished_time: integer
   job_id: string
   job_type: string
   model_plot: ModelPlotConfig
   model_snapshot_id: string
   model_snapshot_retention_days: long
   renormalization_window_days: long
-  results_index_name: string
+  results_index_name?: IndexName
   results_retention_days: long
+  groups: string[]
+  model_plot_config?: ModelPlotConfig
+  custom_settings?: CustomSettings
+  job_version?: string
+  deleting?: boolean
+  daily_model_snapshot_retention_after_days?: long
 }
+
+class CustomSettings {
+  custom_urls?: UrlConfig[]
+  created_by?: string
+  job_tags?: Dictionary<string, string>
+}
+
+class BaseUrlConfig {
+  url_name: string
+  url_value: string
+}
+
+class KibanaUrlConfig extends BaseUrlConfig {
+  time_range?: string
+}
+
+type UrlConfig = BaseUrlConfig | KibanaUrlConfig

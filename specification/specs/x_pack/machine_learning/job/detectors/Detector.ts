@@ -17,11 +17,13 @@
  * under the License.
  */
 
-@class_serializer('DetectorFormatter')
+/**
+ * @class_serializer DetectorFormatter
+ */
 class Detector {
   by_field_name?: Field
   custom_rules?: DetectionRule[]
-  detector_description: string
+  detector_description?: string
   detector_index?: integer
   exclude_frequent?: ExcludeFrequent
   field_name?: Field

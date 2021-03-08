@@ -18,15 +18,20 @@
  */
 
 class CatIndicesRecord {
-  'docs.count': string
-  'docs.deleted': string
-  health: string
-  index: string
-  pri: string
-  'pri.store.size': string
-  rep: string
-  status: string
-  'store.size': string
-  tm: string
-  uuid: string
+  'docs.count'?: string
+  'docs.deleted'?: string
+  health?: string
+  index?: IndexName
+  i?: string
+  pri?: string
+  'pri.store.size'?: ByteSize
+  rep?: string
+  status?: string
+  'store.size'?: ByteSize
+  tm?: string
+  uuid?: Uuid
+  cd?: string
+  cds?: DateString
+  'creation.date'?: string
+  'creation.date.string'?: DateString
 }

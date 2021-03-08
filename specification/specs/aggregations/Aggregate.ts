@@ -55,11 +55,11 @@ type Aggregate =
   | SingleBucketAggregate
   | AutoDateHistogramAggregate
   | FiltersAggregate
-  | SignificantTermsAggregate<any>
-  | TermsAggregate<any>
+  | SignificantTermsAggregate<UserDefinedValue>
+  | TermsAggregate<UserDefinedValue>
   | BucketAggregate
   | CompositeBucketAggregate
-  | MultiBucketAggregate<any>
+  | MultiBucketAggregate<Bucket>
   | MatrixStatsAggregate
   | KeyedValueAggregate
   | MetricAggregate

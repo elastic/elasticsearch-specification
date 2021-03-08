@@ -18,12 +18,19 @@
  */
 
 class AnalysisConfig {
-  bucket_span: Time
-  categorization_field_name: Field
-  categorization_filters: string[]
+  bucket_span: TimeSpan
+  categorization_field_name?: Field
+  categorization_filters?: string[]
   detectors: Detector[]
   influencers: Fields
-  latency: Time
-  multivariate_by_fields: boolean
-  summary_count_field_name: Field
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: PerPartitionCategorization
+  summary_count_field_name?: Field
+  categorization_analyzer?: CategorizationAnalyzer | string
+}
+
+class PerPartitionCategorization {
+  enabled?: boolean
+  stop_on_warn?: boolean
 }
