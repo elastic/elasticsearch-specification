@@ -19,7 +19,7 @@
 
 class TaskStatus {
   batches: long
-  canceled: string
+  canceled?: string
   created: long
   deleted: long
   noops: long
