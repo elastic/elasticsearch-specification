@@ -59814,23 +59814,11 @@
         "namespace": "internal"
       },
       "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "number",
-              "namespace": "internal"
-            }
-          }
-        ],
-        "kind": "union_of"
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
       }
     },
     {
@@ -59845,13 +59833,6 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "number",
               "namespace": "internal"
             }
           },
