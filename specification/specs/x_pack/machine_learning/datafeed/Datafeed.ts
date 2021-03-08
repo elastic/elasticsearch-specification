@@ -17,17 +17,26 @@
  * under the License.
  */
 
-class DatafeedConfig {
-  aggregations: Dictionary<string, AggregationContainer>
+class Datafeed {
+  aggregations?: Dictionary<string, AggregationContainer>
+  aggs?: Dictionary<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: string
-  frequency: Time
+  frequency?: Timestamp
   /** @prop_serializer IndicesFormatter */
-  indices: Indices
-  job_id: string
-  max_empty_searches: integer
+  indices: string[]
+  indexes?: string[]
+  job_id: Id
+  max_empty_searches?: integer
   query: QueryContainer
-  query_delay: Time
-  script_fields: Dictionary<string, ScriptField>
-  scroll_size: integer
+  query_delay?: Timestamp
+  script_fields?: Dictionary<string, ScriptField>
+  scroll_size?: integer
+  delayed_data_check_config: DelayedDataCheckConfig
+  runtime_mappings?: RuntimeFields
+}
+
+class DelayedDataCheckConfig {
+  check_window?: Time
+  enabled: boolean
 }

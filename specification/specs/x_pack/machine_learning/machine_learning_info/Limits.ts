@@ -19,4 +19,5 @@
 
 class Limits {
   max_model_memory_limit: string
+  effective_max_model_memory_limit: string
 }

@@ -28,6 +28,7 @@ interface GetDatafeedsRequest extends RequestBase {
   }
   query_parameters?: {
     allow_no_datafeeds?: boolean
+    exclude_generated?: boolean
   }
   body?: {}
 }
