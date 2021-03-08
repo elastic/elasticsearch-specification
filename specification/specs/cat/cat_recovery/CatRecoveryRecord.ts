@@ -18,46 +18,130 @@
  */
 
 class CatRecoveryRecord {
-  bytes?: string
-  b?: string
-  bytes_percent?: Percentage
-  bp?: Percentage
-  bytes_recovered?: string
-  br?: string
-  bytes_total?: string
-  tb?: string
-  files?: string
-  f?: string
-  files_percent?: Percentage
-  fp?: Percentage
-  files_recovered?: string
-  fr?: string
-  files_total?: string
-  tf?: string
-  index?: IndexName
-  i?: IndexName
-  repository?: string
-  rep?: string
-  shard?: string
-  s?: string
-  snapshot?: string
-  snap?: string
-  source_host?: string
-  shost?: string
-  source_node?: string
-  stage?: string
-  st?: string
-  target_host?: string
-  thost?: string
-  target_node?: string
-  time?: string
-  t?: string
-  translog_ops?: string
-  to?: string
-  translog_ops_percent?: Percentage
-  top?: Percentage
-  translog_ops_recovered?: string
-  tor?: string
-  type?: Type
-  ty?: Type
+  /**
+   * index name
+   * @aliases i,idx
+   */
+  'index'?:IndexName
+  /**
+   * shard name
+   * @aliases s,sh
+   */
+  'shard'?:string
+  /**
+   * recovery start time
+   */
+  'start_time'?:string
+  /**
+   * recovery start time in epoch milliseconds
+   */
+  'start_time_millis'?:string
+  /**
+   * recovery stop time
+   */
+  'stop_time'?:string
+  /**
+   * recovery stop time in epoch milliseconds
+   */
+  'stop_time_millis'?:string
+  /**
+   * recovery time
+   * @aliases t,ti
+   */
+  'time'?:string
+  /**
+   * recovery type
+   * @aliases ty
+   */
+  'type'?:Type
+  /**
+   * recovery stage
+   * @aliases st
+   */
+  'stage'?:string
+  /**
+   * source host
+   * @aliases shost
+   */
+  'source_host'?:string
+  /**
+   * source node name
+   * @aliases snode
+   */
+  'source_node'?:string
+  /**
+   * target host
+   * @aliases thost
+   */
+  'target_host'?:string
+  /**
+   * target node name
+   * @aliases tnode
+   */
+  'target_node'?:string
+  /**
+   * repository
+   * @aliases rep
+   */
+  'repository'?:string
+  /**
+   * snapshot
+   * @aliases snap
+   */
+  'snapshot'?:string
+  /**
+   * number of files to recover
+   * @aliases f
+   */
+  'files'?:string
+  /**
+   * files recovered
+   * @aliases fr
+   */
+  'files_recovered'?:string
+  /**
+   * percent of files recovered
+   * @aliases fp
+   */
+  'files_percent'?:Percentage
+  /**
+   * total number of files
+   * @aliases tf
+   */
+  'files_total'?:string
+  /**
+   * number of bytes to recover
+   * @aliases b
+   */
+  'bytes'?:string
+  /**
+   * bytes recovered
+   * @aliases br
+   */
+  'bytes_recovered'?:string
+  /**
+   * percent of bytes recovered
+   * @aliases bp
+   */
+  'bytes_percent'?:Percentage
+  /**
+   * total number of bytes
+   * @aliases tb
+   */
+  'bytes_total'?:string
+  /**
+   * number of translog ops to recover
+   * @aliases to
+   */
+  'translog_ops'?:string
+  /**
+   * translog ops recovered
+   * @aliases tor
+   */
+  'translog_ops_recovered'?:string
+  /**
+   * percent of translog ops recovered
+   * @aliases top
+   */
+  'translog_ops_percent'?:Percentage
 }

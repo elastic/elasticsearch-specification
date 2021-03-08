@@ -18,20 +18,65 @@
  */
 
 class CatSegmentsRecord {
-  committed?: string
-  compound?: string
-  'docs.count'?: string
-  'docs.deleted'?: string
-  generation?: string
-  id?: Id
-  index?: IndexName
-  i?: IndexName
-  ip?: string
-  prirep?: string
-  searchable?: string
-  segment?: string
-  shard?: string
-  size?: ByteSize
-  'size.memory'?: ByteSize
-  version?: string
+  /**
+   * index name
+   */
+  'index'?:IndexName
+  /**
+   * shard name
+   */
+  'shard'?:string
+  /**
+   * primary or replica
+   * @aliases p,pr,primaryOrReplica
+   */
+  'prirep'?:string
+  /**
+   * ip of node where it lives
+   */
+  'ip'?:string
+  /**
+   * unique id of node where it lives
+   */
+  'id'?:NodeId
+  /**
+   * segment name
+   */
+  'segment'?:string
+  /**
+   * segment generation
+   */
+  'generation'?:string
+  /**
+   * number of docs in segment
+   */
+  'docs.count'?:string
+  /**
+   * number of deleted docs in segment
+   */
+  'docs.deleted'?:string
+  /**
+   * segment size in bytes
+   */
+  'size'?:ByteSize
+  /**
+   * segment memory in bytes
+   */
+  'size.memory'?:ByteSize
+  /**
+   * is segment committed
+   */
+  'committed'?:string
+  /**
+   * is segment searched
+   */
+  'searchable'?:string
+  /**
+   * version
+   */
+  'version'?:string
+  /**
+   * is segment compound
+   */
+  'compound'?:string
 }

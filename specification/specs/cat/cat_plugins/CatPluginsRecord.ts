@@ -18,12 +18,33 @@
  */
 
 class CatPluginsRecord {
-  component: string
-  description?: string
-  id?: Id
-  isolation?: string
-  name: string
-  type?: Type
-  url?: string
-  version: string
+  /**
+   * unique node id
+   */
+  'id'?:NodeId
+  /**
+   * node name
+   * @aliases n
+   */
+  'name'?:string
+  /**
+   * component
+   * @aliases c
+   */
+  'component'?:string
+  /**
+   * component version
+   * @aliases v
+   */
+  'version'?:string
+  /**
+   * plugin details
+   * @aliases d
+   */
+  'description'?:string
+  /**
+   * plugin type
+   * @aliases t
+   */
+  'type'?:Type
 }

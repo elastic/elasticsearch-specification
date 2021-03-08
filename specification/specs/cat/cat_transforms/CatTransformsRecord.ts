@@ -40,7 +40,7 @@ class CatTransformsRecord {
   search_failure: long
   search_time: long
   search_total: long
-  /** @prop_serializer IndicesFormatter */
+  /*** @prop_serializer IndicesFormatter */
   source_index: Indices
   state: TransformState
   transform_type: TransformType

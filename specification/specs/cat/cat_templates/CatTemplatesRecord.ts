@@ -18,11 +18,29 @@
  */
 
 class CatTemplatesRecord {
-  index_patterns: string
-  name: string
-  /** @prop_serializer StringLongFormatter */
-  order?: string
-  /** @prop_serializer StringLongFormatter */
-  version?: string
-  composed_of?: string
+  /**
+   * template name
+   * @aliases n
+   */
+  'name'?:string
+  /**
+   * template index patterns
+   * @aliases t
+   */
+  'index_patterns'?:string
+  /**
+   * template application order/priority number
+   * @aliases o,p
+   */
+  'order'?:string
+  /**
+   * version
+   * @aliases v
+   */
+  'version'?:string
+  /**
+   * component templates comprising index template
+   * @aliases c
+   */
+  'composed_of'?:string
 }

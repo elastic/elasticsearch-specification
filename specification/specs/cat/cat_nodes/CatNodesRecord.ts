@@ -18,84 +18,480 @@
  */
 
 class CatNodesRecord {
-  build?: string
-  completion_size?: string
-  cpu?: string
-  diskAvail?: ByteSize
-  diskTotal?: ByteSize
-  diskUsed?: ByteSize
-  diskUsedPercent?: ByteSize
-  fielddata_evictions?: string
-  fielddata_memory?: string
-  'file_desc.current'?: string
-  'file_desc.max'?: string
-  'file_desc.percent'?: Percentage
-  filter_cache_evictions?: string
-  filter_cache_memory?: string
-  flush_total?: string
-  flush_total_time?: string
-  get_current?: string
-  get_exists_time?: string
-  get_exists_total?: string
-  get_missing_time?: string
-  get_missing_total?: string
-  get_time?: string
-  get_total?: string
-  'heap.current'?: string
-  'heap.max'?: string
-  'heap.percent'?: string
-  http?: string
-  id?: Id
-  id_cache_memory?: string
-  indexing_delete_current?: string
-  indexing_delete_time?: string
-  indexing_delete_total?: string
-  indexing_index_current?: string
-  indexing_index_time?: string
-  indexing_index_total?: string
-  ip?: string
-  jdk?: string
-  load_15m?: string
-  load_5m?: string
-  load_1m?: string
-  master?: string
-  merges_current?: string
-  merges_current_docs?: string
-  merges_current_size?: string
-  merges_total?: string
-  merges_total_docs?: string
-  merges_total_time?: string
-  name?: string
-  node_id?: Id
-  'node.role'?: string
-  percolate_current?: string
-  percolate_memory?: string
-  percolate_queries?: string
-  percolate_time?: string
-  percolate_total?: string
-  pid?: string
-  port?: string
-  'ram.current'?: string
-  'ram.max'?: string
-  'ram.percent'?: Percentage
-  refresh_time?: string
-  refresh_total?: string
-  search_fetch_current?: string
-  search_fetch_time?: string
-  search_fetch_total?: string
-  search_open_contexts?: string
-  search_query_current?: string
-  search_query_time?: string
-  search_query_total?: string
-  segments_count?: string
-  segments_index_writer_max_memory?: string
-  segments_index_writer_memory?: string
-  segments_memory?: string
-  segments_version_map_memory?: string
-  uptime?: string
-  version?: string
-  disk?: ByteSize
-  dt?: ByteSize
-  du?: ByteSize
-  dup?: string
+  /**
+   * unique node id
+   */
+  'id'?:string
+  /**
+   * process id
+   */
+  'pid'?:string
+  /**
+   * ip address
+   * @aliases i
+   */
+  'ip'?:string
+  /**
+   * bound transport port
+   */
+  'port'?:string
+  /**
+   * bound http address
+   */
+  'http_address'?:string
+
+  /**
+   * es version
+   */
+  'version'?:string
+  /**
+   * es distribution flavor
+   */
+  'flavor'?:string
+  /**
+   * es distribution type
+   */
+  'type'?:string
+  /**
+   * es build hash
+   */
+  'build'?:string
+  /**
+   * jdk version
+   */
+  'jdk'?:string
+  /**
+   * total disk space
+   */
+  'disk.total'?:ByteSize
+  /**
+   * used disk space
+   */
+  'disk.used'?:ByteSize
+  /**
+   * available disk space
+   */
+  'disk.avail'?:ByteSize
+  /**
+   * used disk space percentage
+   */
+  'disk.used_percent'?:Percentage
+  /**
+   * used heap
+   */
+  'heap.current'?:string
+  /**
+   * used heap ratio
+   * @aliases hp,heapPercent
+   */
+  'heap.percent'?:Percentage
+  /**
+   * max configured heap
+   */
+  'heap.max'?:string
+  /**
+   * used machine memory
+   */
+  'ram.current'?:string
+  /**
+   * used machine memory ratio
+   * @aliases rp,ramPercent
+   */
+  'ram.percent'?:Percentage
+  /**
+   * total machine memory
+   */
+  'ram.max'?:string
+  /**
+   * used file descriptors
+   */
+  'file_desc.current'?:string
+  /**
+   * used file descriptor ratio
+   */
+  'file_desc.percent'?:Percentage
+  /**
+   * max file descriptors
+   */
+  'file_desc.max'?:string
+
+  /**
+   * recent cpu usage
+   * @aliases cpu
+   */
+  'cpu'?:string
+  /**
+   * 1m load avg
+   * @aliases l
+   */
+  'load_1m'?:string
+  /**
+   * 5m load avg
+   * @aliases l
+   */
+  'load_5m'?:string
+  /**
+   * 15m load avg
+   * @aliases l
+   */
+  'load_15m'?:string
+  /**
+   * node uptime
+   */
+  'uptime'?:string
+  /**
+   * m:master eligible node, d:data node, i:ingest node, -:coordinating node only
+   * @aliases r,role,nodeRole
+   */
+  'node.role'?:string
+  /**
+   * *:current master
+   * @aliases m
+   */
+  'master'?:string
+  /**
+   * node name
+   * @aliases n
+   */
+  'name'?:string
+
+  /**
+   * size of completion
+   * @aliases cs,completionSize
+   */
+  'completion.size'?:string
+
+  /**
+   * used fielddata cache
+   * @aliases fm,fielddataMemory
+   */
+  'fielddata.memory_size'?:string
+  /**
+   * fielddata evictions
+   * @aliases fe,fielddataEvictions
+   */
+  'fielddata.evictions'?:string
+
+  /**
+   * used query cache
+   * @aliases qcm,queryCacheMemory
+   */
+  'query_cache.memory_size'?:string
+  /**
+   * query cache evictions
+   * @aliases qce,queryCacheEvictions
+   */
+  'query_cache.evictions'?:string
+  /**
+   * query cache hit counts
+   * @aliases qchc,queryCacheHitCount
+   */
+  'query_cache.hit_count'?:string
+  /**
+   * query cache miss counts
+   * @aliases qcmc,queryCacheMissCount
+   */
+  'query_cache.miss_count'?:string
+
+  /**
+   * used request cache
+   * @aliases rcm,requestCacheMemory
+   */
+  'request_cache.memory_size'?:string
+  /**
+   * request cache evictions
+   * @aliases rce,requestCacheEvictions
+   */
+  'request_cache.evictions'?:string
+  /**
+   * request cache hit counts
+   * @aliases rchc,requestCacheHitCount
+   */
+  'request_cache.hit_count'?:string
+  /**
+   * request cache miss counts
+   * @aliases rcmc,requestCacheMissCount
+   */
+  'request_cache.miss_count'?:string
+
+  /**
+   * number of flushes
+   * @aliases ft,flushTotal
+   */
+  'flush.total'?:string
+  /**
+   * time spent in flush
+   * @aliases ftt,flushTotalTime
+   */
+  'flush.total_time'?:string
+
+  /**
+   * number of current get ops
+   * @aliases gc,getCurrent
+   */
+  'get.current'?:string
+  /**
+   * time spent in get
+   * @aliases gti,getTime
+   */
+  'get.time'?:string
+  /**
+   * number of get ops
+   * @aliases gto,getTotal
+   */
+  'get.total'?:string
+  /**
+   * time spent in successful gets
+   * @aliases geti,getExistsTime
+   */
+  'get.exists_time'?:string
+  /**
+   * number of successful gets
+   * @aliases geto,getExistsTotal
+   */
+  'get.exists_total'?:string
+  /**
+   * time spent in failed gets
+   * @aliases gmti,getMissingTime
+   */
+  'get.missing_time'?:string
+  /**
+   * number of failed gets
+   * @aliases gmto,getMissingTotal
+   */
+  'get.missing_total'?:string
+
+  /**
+   * number of current deletions
+   * @aliases idc,indexingDeleteCurrent
+   */
+  'indexing.delete_current'?:string
+  /**
+   * time spent in deletions
+   * @aliases idti,indexingDeleteTime
+   */
+  'indexing.delete_time'?:string
+  /**
+   * number of delete ops
+   * @aliases idto,indexingDeleteTotal
+   */
+  'indexing.delete_total'?:string
+  /**
+   * number of current indexing ops
+   * @aliases iic,indexingIndexCurrent
+   */
+  'indexing.index_current'?:string
+  /**
+   * time spent in indexing
+   * @aliases iiti,indexingIndexTime
+   */
+  'indexing.index_time'?:string
+  /**
+   * number of indexing ops
+   * @aliases iito,indexingIndexTotal
+   */
+  'indexing.index_total'?:string
+  /**
+   * number of failed indexing ops
+   * @aliases iif,indexingIndexFailed
+   */
+  'indexing.index_failed'?:string
+
+  /**
+   * number of current merges
+   * @aliases mc,mergesCurrent
+   */
+  'merges.current'?:string
+  /**
+   * number of current merging docs
+   * @aliases mcd,mergesCurrentDocs
+   */
+  'merges.current_docs'?:string
+  /**
+   * size of current merges
+   * @aliases mcs,mergesCurrentSize
+   */
+  'merges.current_size'?:string
+  /**
+   * number of completed merge ops
+   * @aliases mt,mergesTotal
+   */
+  'merges.total'?:string
+  /**
+   * docs merged
+   * @aliases mtd,mergesTotalDocs
+   */
+  'merges.total_docs'?:string
+  /**
+   * size merged
+   * @aliases mts,mergesTotalSize
+   */
+  'merges.total_size'?:string
+  /**
+   * time spent in merges
+   * @aliases mtt,mergesTotalTime
+   */
+  'merges.total_time'?:string
+
+  /**
+   * total refreshes
+   * @aliases rto,refreshTotal
+   */
+  'refresh.total'?:string
+  /**
+   * time spent in refreshes
+   * @aliases rti,refreshTime
+   */
+  'refresh.time'?:string
+  /**
+   * total external refreshes
+   * @aliases rto,refreshTotal
+   */
+  'refresh.external_total'?:string
+  /**
+   * time spent in external refreshes
+   * @aliases rti,refreshTime
+   */
+  'refresh.external_time'?:string
+  /**
+   * number of pending refresh listeners
+   * @aliases rli,refreshListeners
+   */
+  'refresh.listeners'?:string
+
+  /**
+   * script compilations
+   * @aliases scrcc,scriptCompilations
+   */
+  'script.compilations'?:string
+  /**
+   * script cache evictions
+   * @aliases scrce,scriptCacheEvictions
+   */
+  'script.cache_evictions'?:string
+  /**
+   * script cache compilation limit triggered
+   * @aliases scrclt,scriptCacheCompilationLimitTriggered
+   */
+  'script.compilation_limit_triggered'?:string
+
+  /**
+   * current fetch phase ops
+   * @aliases sfc,searchFetchCurrent
+   */
+  'search.fetch_current'?:string
+  /**
+   * time spent in fetch phase
+   * @aliases sfti,searchFetchTime
+   */
+  'search.fetch_time'?:string
+  /**
+   * total fetch ops
+   * @aliases sfto,searchFetchTotal
+   */
+  'search.fetch_total'?:string
+  /**
+   * open search contexts
+   * @aliases so,searchOpenContexts
+   */
+  'search.open_contexts'?:string
+  /**
+   * current query phase ops
+   * @aliases sqc,searchQueryCurrent
+   */
+  'search.query_current'?:string
+  /**
+   * time spent in query phase
+   * @aliases sqti,searchQueryTime
+   */
+  'search.query_time'?:string
+  /**
+   * total query phase ops
+   * @aliases sqto,searchQueryTotal
+   */
+  'search.query_total'?:string
+  /**
+   * open scroll contexts
+   * @aliases scc,searchScrollCurrent
+   */
+  'search.scroll_current'?:string
+  /**
+   * time scroll contexts held open
+   * @aliases scti,searchScrollTime
+   */
+  'search.scroll_time'?:string
+  /**
+   * completed scroll contexts
+   * @aliases scto,searchScrollTotal
+   */
+  'search.scroll_total'?:string
+
+  /**
+   * number of segments
+   * @aliases sc,segmentsCount
+   */
+  'segments.count'?:string
+  /**
+   * memory used by segments
+   * @aliases sm,segmentsMemory
+   */
+  'segments.memory'?:string
+  /**
+   * memory used by index writer
+   * @aliases siwm,segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory'?:string
+  /**
+   * memory used by version map
+   * @aliases svmm,segmentsVersionMapMemory
+   */
+  'segments.version_map_memory'?:string
+  /**
+   * memory used by fixed bit sets for nested object field types  and type filters for types referred in _parent fields
+   * @aliases sfbm,fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory'?:string
+
+  /**
+   * number of current suggest ops
+   * @aliases suc,suggestCurrent
+   */
+  'suggest.current'?:string
+  /**
+   * time spend in suggest
+   * @aliases suti,suggestTime
+   */
+  'suggest.time'?:string
+  /**
+   * number of suggest ops
+   * @aliases suto,suggestTotal
+   */
+  'suggest.total'?:string
+
+  /**
+   * number of bulk shard ops
+   * @aliases bto,bulkTotalOperations
+   */
+  'bulk.total_operations'?:string
+  /**
+   * time spend in shard bulk
+   * @aliases btti,bulkTotalTime
+   */
+  'bulk.total_time'?:string
+  /**
+   * total size in bytes of shard bulk
+   * @aliases btsi,bulkTotalSizeInBytes
+   */
+  'bulk.total_size_in_bytes'?:string
+  /**
+   * average time spend in shard bulk
+   * @aliases bati,bulkAvgTime
+   */
+  'bulk.avg_time'?:string
+  /**
+   * average size in bytes of shard bulk
+   * @aliases basi,bulkAvgSizeInBytes
+   */
+  'bulk.avg_size_in_bytes'?:string
+
 }

@@ -18,28 +18,96 @@
  */
 
 class CatThreadPoolRecord {
-  active?: string
-  completed?: string
-  core?: string
-  ephemeral_node_id?: Id
-  host?: string
-  h?: string
-  id?: Id
-  ip?: string
-  i?: string
-  keep_alive?: Time
-  largest?: string
-  max?: string
-  name?: string
-  node_id?: Id
-  node_name?: string
-  pool_size?: string
-  port?: string
-  po?: string
-  pid?: string
-  queue?: string
-  queue_size?: string
-  rejected?: string
-  size?: string
-  type?: string
+  /**
+   * node name
+   */
+  'node_name'?:string
+  /**
+   * persistent node id
+   */
+  'node_id'?:NodeId
+  /**
+   * ephemeral node id
+   */
+  'ephemeral_node_id'?:string
+  /**
+   * process id
+   */
+  'pid'?:string
+  /**
+   * host name
+   */
+  'host'?:string
+  /**
+   * ip address
+   */
+  'ip'?:string
+  /**
+   * bound transport port
+   */
+  'port'?:string
+  /**
+   * thread pool name
+   */
+  'name'?:string
+  /**
+   * thread pool type
+   * @aliases t
+   */
+  'type'?:string
+  /**
+   * number of active threads
+   * @aliases a
+   */
+  'active'?:string
+  /**
+   * number of threads
+   * @aliases psz
+   */
+  'pool_size'?:string
+  /**
+   * number of tasks currently in queue
+   * @aliases q
+   */
+  'queue'?:string
+  /**
+   * maximum number of tasks permitted in queue
+   * @aliases qs
+   */
+  'queue_size'?:string
+  /**
+   * number of rejected tasks
+   * @aliases r
+   */
+  'rejected'?:string
+  /**
+   * highest number of seen active threads
+   * @aliases l
+   */
+  'largest'?:string
+  /**
+   * number of completed tasks
+   * @aliases c
+   */
+  'completed'?:string
+  /**
+   * core number of threads in a scaling thread pool
+   * @aliases cr
+   */
+  'core'?:string
+  /**
+   * maximum number of threads in a scaling thread pool
+   * @aliases mx
+   */
+  'max'?:string
+  /**
+   * number of threads in a fixed thread pool
+   * @aliases sz
+   */
+  'size'?:string
+  /**
+   * thread keep alive time
+   * @aliases ka
+   */
+  'keep_alive'?:string
 }

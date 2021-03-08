@@ -18,10 +18,34 @@
  */
 
 class CatAliasesRecord {
-  alias: string
-  filter?: string
-  index: IndexName
-  'routing.index'?: string
-  'routing.search'?: string
-  is_write_index?: string
+  /**
+   * alias name
+   * @aliases a
+   */
+  'alias'?:string
+  /**
+   * index alias points to
+   * @aliases i,idx
+   */
+  'index'?:IndexName
+  /**
+   * filter
+   * @aliases f,fi
+   */
+  'filter'?:string
+  /**
+   * index routing
+   * @aliases ri,routingIndex
+   */
+  'routing.index'?:string
+  /**
+   * search routing
+   * @aliases rs,routingSearch
+   */
+  'routing.search'?:string
+  /**
+   * write index
+   * @aliases w,isWriteIndex
+   */
+  'is_write_index'?:string
 }

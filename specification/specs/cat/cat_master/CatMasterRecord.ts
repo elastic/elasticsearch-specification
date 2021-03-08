@@ -18,8 +18,22 @@
  */
 
 class CatMasterRecord {
-  id: string
-  ip: string
-  node: string
-  host: string
+  /**
+   * node id
+   */
+  'id'?:string
+  /**
+   * host name
+   * @aliases h
+   */
+  'host'?:string
+  /**
+   * ip address
+   */
+  'ip'?:string
+  /**
+   * node name
+   * @aliases n
+   */
+  'node'?:string
 }
