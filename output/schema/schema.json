@@ -23970,11 +23970,11 @@
       "properties": [
         {
           "name": "active",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -23985,7 +23985,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -23996,7 +23996,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -24024,7 +24024,40 @@
           }
         },
         {
+          "name": "h",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "ip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "i",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -24051,7 +24084,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -24062,14 +24095,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -24091,7 +24124,7 @@
         },
         {
           "name": "node_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -24106,7 +24139,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -24117,7 +24150,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "po",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -24128,18 +24172,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "queue",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -24150,18 +24194,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "rejected",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -24172,7 +24216,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "string",
               "namespace": "internal"
             }
           }

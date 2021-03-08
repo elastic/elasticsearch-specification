@@ -1547,25 +1547,29 @@ export interface CatTemplatesRequest extends CatRequestBase {
 export type CatTemplatesResponse = CatTemplatesRecord[]
 
 export interface CatThreadPoolRecord {
-  active: long
-  completed?: long
-  core?: integer
+  active?: string
+  completed?: string
+  core?: string
   ephemeral_node_id?: Id
   host?: string
+  h?: string
+  id?: Id
   ip?: string
+  i?: string
   keep_alive?: Time
-  largest?: integer
-  max?: integer
-  name: string
+  largest?: string
+  max?: string
+  name?: string
   node_id?: Id
-  node_name: string
-  pool_size?: integer
-  port?: integer
-  pid?: integer
-  queue: integer
-  queue_size?: integer
-  rejected: long
-  size?: integer
+  node_name?: string
+  pool_size?: string
+  port?: string
+  po?: string
+  pid?: string
+  queue?: string
+  queue_size?: string
+  rejected?: string
+  size?: string
   type?: string
 }
 
