@@ -18,7 +18,7 @@
  */
 
 class DataDescription {
-  format: string
+  format?: string
   time_field: Field
-  time_format: string
+  time_format?: string
 }

@@ -38,6 +38,7 @@ interface PutDatafeedRequest extends RequestBase {
     frequency?: Time
     /** @prop_serializer IndicesFormatter */
     indices?: Indices
+    indexes?: Indices
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer

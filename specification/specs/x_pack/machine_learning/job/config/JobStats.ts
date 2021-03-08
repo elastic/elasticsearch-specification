@@ -27,4 +27,5 @@ class JobStats {
   open_time: Time
   state: JobState
   timing_stats: TimingStats
+  deleting?: boolean
 }
