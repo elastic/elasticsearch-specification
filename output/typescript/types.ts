@@ -3892,6 +3892,18 @@ export interface FieldSort {
   unmapped_type?: FieldType
 }
 
+export interface FieldStat {
+  count: number
+  cardinality: number
+  top_hits: Array<TopHit>
+  mean_value?: number
+  median_value?: number
+  max_value?: number
+  min_value?: number
+  earliest?: string
+  latest?: string
+}
+
 export interface FieldStatistics {
   doc_count: integer
   sum_doc_freq: long
@@ -3993,6 +4005,47 @@ export interface FiltersBucketItemKeys {
 }
 export type FiltersBucketItem = FiltersBucketItemKeys |
     { [property: string]: Aggregate }
+
+export interface FindStructureRequest<TBody = unknown> {
+  charset?: string
+  column_names?: string
+  delimiter?: string
+  explain?: boolean
+  format?: string
+  grok_pattern?: string
+  has_header_row?: boolean
+  lines_to_sample?: uint
+  quote?: string
+  should_trim_fields?: boolean
+  timeout?: Time
+  timestamp_field?: Field
+  timestamp_format?: string
+  body: TBody
+}
+
+export interface FindStructureResponse {
+  charset: string
+  has_header_row: boolean
+  has_byte_order_marker: boolean
+  format: string
+  field_stats: Record<Field, FieldStat>
+  sample_start: string
+  num_messages_analyzed: number
+  mappings: TypeMapping
+  quote: string
+  delimiter: string
+  need_client_timezone: boolean
+  num_lines_analyzed: number
+  column_names?: Array<string>
+  explanation?: Array<string>
+  grok_pattern?: string
+  multiline_start_pattern?: string
+  exclude_lines_pattern?: string
+  java_timestamp_formats?: Array<string>
+  joda_timestamp_formats?: Array<string>
+  timestamp_field?: string
+  should_trim_fields?: boolean
+}
 
 export interface FingerprintAnalyzer extends AnalyzerBase {
   max_output_size: integer
@@ -10900,6 +10953,11 @@ export type Tokenizer = CharGroupTokenizer | EdgeNGramTokenizer | KeywordTokeniz
 export interface TokenizerBase {
   type: string
   version?: string
+}
+
+export interface TopHit {
+  count: long
+  value: any
 }
 
 export interface TopHitsAggregate extends AggregateBase {
