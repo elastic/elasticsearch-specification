@@ -19,11 +19,11 @@
 
 class CatPluginsRecord {
   component: string
-  description: string
-  id: string
-  isolation: string
+  description?: string
+  id?: Id
+  isolation?: string
   name: string
-  type: string
-  url: string
+  type?: Type
+  url?: string
   version: string
 }

@@ -944,11 +944,11 @@ export interface CardinalityAggregation extends MetricAggregationBase {
 
 export interface CatAliasesRecord {
   alias: string
-  filter: string
-  index: string
-  'routing.index': string
-  'routing.search': string
-  is_write_index: string
+  filter?: string
+  index: IndexName
+  'routing.index'?: string
+  'routing.search'?: string
+  is_write_index?: string
 }
 
 export interface CatAliasesRequest extends CatRequestBase {
@@ -959,16 +959,16 @@ export interface CatAliasesRequest extends CatRequestBase {
 export type CatAliasesResponse = CatAliasesRecord[]
 
 export interface CatAllocationRecord {
-  'disk.avail': string
-  'disk.indices': string
-  'disk.percent': string
-  disk_ratio: string
-  'disk.total': string
-  'disk.used': string
-  host: string
-  ip: string
+  'disk.avail'?: ByteSize
+  'disk.indices'?: ByteSize
+  'disk.percent'?: Percentage
+  disk_ratio?: string
+  'disk.total'?: ByteSize
+  'disk.used'?: ByteSize
+  host?: string
+  ip?: string
   node: string
-  shards: string
+  shards?: string
 }
 
 export interface CatAllocationRequest extends CatRequestBase {
@@ -1089,17 +1089,22 @@ export interface CatHelpRequest extends CatRequestBase {
 export type CatHelpResponse = CatHelpRecord[]
 
 export interface CatIndicesRecord {
-  'docs.count': string
-  'docs.deleted': string
-  health: string
-  index: string
-  pri: string
-  'pri.store.size': string
-  rep: string
-  status: string
-  'store.size': string
-  tm: string
-  uuid: string
+  'docs.count'?: string
+  'docs.deleted'?: string
+  health?: string
+  index?: IndexName
+  i?: string
+  pri?: string
+  'pri.store.size'?: ByteSize
+  rep?: string
+  status?: string
+  'store.size'?: ByteSize
+  tm?: string
+  uuid?: Uuid
+  cd?: string
+  cds?: DateString
+  'creation.date'?: string
+  'creation.date.string'?: DateString
 }
 
 export interface CatIndicesRequest extends CatRequestBase {
@@ -1208,77 +1213,86 @@ export interface CatNodeAttributesRequest extends CatRequestBase {
 export type CatNodeAttributesResponse = CatNodeAttributesRecord[]
 
 export interface CatNodesRecord {
-  build: string
-  completion_size: string
-  cpu: string
-  disk_available: string
-  fielddata_evictions: string
-  fielddata_memory: string
-  file_descriptor_current: integer
-  file_descriptor_max: integer
-  file_descriptor_percent: integer
-  filter_cache_evictions: string
-  filter_cache_memory: string
-  flush_total: string
-  flush_total_time: string
-  get_current: string
-  get_exists_time: string
-  get_exists_total: string
-  get_missing_time: string
-  get_missing_total: string
-  get_time: string
-  get_total: string
-  heap_current: string
-  heap_max: string
-  heap_percent: string
-  id_cache_memory: string
-  indexing_delete_current: string
-  indexing_delete_time: string
-  indexing_delete_total: string
-  indexing_index_current: string
-  indexing_index_time: string
-  indexing_index_total: string
-  ip: string
-  jdk: string
-  load_15m: string
-  load_5m: string
-  load_1m: string
-  master: string
-  merges_current: string
-  merges_current_docs: string
-  merges_current_size: string
-  merges_total: string
-  merges_total_docs: string
-  merges_total_time: string
-  name: string
-  node_id: string
-  node_role: string
-  percolate_current: string
-  percolate_memory: string
-  percolate_queries: string
-  percolate_time: string
-  percolate_total: string
-  pid: string
-  port: string
-  ram_current: string
-  ram_max: string
-  ram_percent: string
-  refresh_time: string
-  refresh_total: string
-  search_fetch_current: string
-  search_fetch_time: string
-  search_fetch_total: string
-  search_open_contexts: string
-  search_query_current: string
-  search_query_time: string
-  search_query_total: string
-  segments_count: string
-  segments_index_writer_max_memory: string
-  segments_index_writer_memory: string
-  segments_memory: string
-  segments_version_map_memory: string
-  uptime: string
-  version: string
+  build?: string
+  completion_size?: string
+  cpu?: string
+  diskAvail?: ByteSize
+  diskTotal?: ByteSize
+  diskUsed?: ByteSize
+  diskUsedPercent?: ByteSize
+  fielddata_evictions?: string
+  fielddata_memory?: string
+  'file_desc.current'?: string
+  'file_desc.max'?: string
+  'file_desc.percent'?: Percentage
+  filter_cache_evictions?: string
+  filter_cache_memory?: string
+  flush_total?: string
+  flush_total_time?: string
+  get_current?: string
+  get_exists_time?: string
+  get_exists_total?: string
+  get_missing_time?: string
+  get_missing_total?: string
+  get_time?: string
+  get_total?: string
+  'heap.current'?: string
+  'heap.max'?: string
+  'heap.percent'?: string
+  http?: string
+  id?: Id
+  id_cache_memory?: string
+  indexing_delete_current?: string
+  indexing_delete_time?: string
+  indexing_delete_total?: string
+  indexing_index_current?: string
+  indexing_index_time?: string
+  indexing_index_total?: string
+  ip?: string
+  jdk?: string
+  load_15m?: string
+  load_5m?: string
+  load_1m?: string
+  master?: string
+  merges_current?: string
+  merges_current_docs?: string
+  merges_current_size?: string
+  merges_total?: string
+  merges_total_docs?: string
+  merges_total_time?: string
+  name?: string
+  node_id?: Id
+  'node.role'?: string
+  percolate_current?: string
+  percolate_memory?: string
+  percolate_queries?: string
+  percolate_time?: string
+  percolate_total?: string
+  pid?: string
+  port?: string
+  'ram.current'?: string
+  'ram.max'?: string
+  'ram.percent'?: Percentage
+  refresh_time?: string
+  refresh_total?: string
+  search_fetch_current?: string
+  search_fetch_time?: string
+  search_fetch_total?: string
+  search_open_contexts?: string
+  search_query_current?: string
+  search_query_time?: string
+  search_query_total?: string
+  segments_count?: string
+  segments_index_writer_max_memory?: string
+  segments_index_writer_memory?: string
+  segments_memory?: string
+  segments_version_map_memory?: string
+  uptime?: string
+  version?: string
+  disk?: ByteSize
+  dt?: ByteSize
+  du?: ByteSize
+  dup?: string
 }
 
 export interface CatNodesRequest extends CatRequestBase {
@@ -1302,12 +1316,12 @@ export type CatPendingTasksResponse = CatPendingTasksRecord[]
 
 export interface CatPluginsRecord {
   component: string
-  description: string
-  id: string
-  isolation: string
+  description?: string
+  id?: Id
+  isolation?: string
   name: string
-  type: string
-  url: string
+  type?: Type
+  url?: string
   version: string
 }
 
@@ -1317,28 +1331,48 @@ export interface CatPluginsRequest extends CatRequestBase {
 export type CatPluginsResponse = CatPluginsRecord[]
 
 export interface CatRecoveryRecord {
-  bytes: string
-  bytes_percent: string
-  bytes_recovered: string
-  bytes_total: string
-  files: string
-  files_percent: string
-  files_recovered: string
-  files_total: string
-  index: string
-  repository: string
-  shard: string
-  snapshot: string
-  source_host: string
-  source_node: string
-  stage: string
-  target_host: string
-  target_node: string
-  time: string
-  translog_ops: long
-  translog_ops_percent: string
-  translog_ops_recovered: long
-  type: string
+  bytes?: string
+  b?: string
+  bytes_percent?: Percentage
+  bp?: Percentage
+  bytes_recovered?: string
+  br?: string
+  bytes_total?: string
+  tb?: string
+  files?: string
+  f?: string
+  files_percent?: Percentage
+  fp?: Percentage
+  files_recovered?: string
+  fr?: string
+  files_total?: string
+  tf?: string
+  index?: IndexName
+  i?: IndexName
+  repository?: string
+  rep?: string
+  shard?: string
+  s?: string
+  snapshot?: string
+  snap?: string
+  source_host?: string
+  shost?: string
+  source_node?: string
+  stage?: string
+  st?: string
+  target_host?: string
+  thost?: string
+  target_node?: string
+  time?: string
+  t?: string
+  translog_ops?: string
+  to?: string
+  translog_ops_percent?: Percentage
+  top?: Percentage
+  translog_ops_recovered?: string
+  tor?: string
+  type?: Type
+  ty?: Type
 }
 
 export interface CatRecoveryRequest extends CatRequestBase {
@@ -1367,21 +1401,22 @@ export interface CatResponseBase<TCatRecord = unknown> extends ResponseBase {
 }
 
 export interface CatSegmentsRecord {
-  committed: string
-  compound: string
-  'docs.count': string
-  'docs.deleted': string
-  generation: string
-  id: string
-  index: string
-  ip: string
-  prirep: string
-  searchable: string
-  segment: string
-  shard: string
-  size: string
-  'size.memory': string
-  version: string
+  committed?: string
+  compound?: string
+  'docs.count'?: string
+  'docs.deleted'?: string
+  generation?: string
+  id?: Id
+  index?: IndexName
+  i?: IndexName
+  ip?: string
+  prirep?: string
+  searchable?: string
+  segment?: string
+  shard?: string
+  size?: ByteSize
+  'size.memory'?: ByteSize
+  version?: string
 }
 
 export interface CatSegmentsRequest extends CatRequestBase {
@@ -1392,64 +1427,65 @@ export interface CatSegmentsRequest extends CatRequestBase {
 export type CatSegmentsResponse = CatSegmentsRecord[]
 
 export interface CatShardsRecord {
-  'completion.size': string
-  docs: string
-  'fielddata.evictions': string
-  'fielddata.memory_size': string
-  'filter_cache.memory_size': string
-  'flush.total': string
-  'flush.total_time': string
-  'get.current': string
-  'get.exists_time': string
-  'get.exists_total': string
-  'get.missing_time': string
-  'get.missing_total': string
-  'get.time': string
-  'get.total': string
-  id: string
-  'id_cache.memory_size': string
-  index: string
-  'indexing.delete_current': string
-  'indexing.delete_time': string
-  'indexing.delete_total': string
-  'indexing.index_current': string
-  'indexing.index_time': string
-  'indexing.index_total': string
-  ip: string
-  'merges.current': string
-  'merges.current_docs': string
-  'merges.current_size': string
-  'merges.total_docs': string
-  'merges.total_size': string
-  'merges.total_time': string
-  node: string
-  'percolate.current': string
-  'percolate.memory_size': string
-  'percolate.queries': string
-  'percolate.time': string
-  'percolate.total': string
-  prirep: string
-  'refresh.time': string
-  'refresh.total': string
-  'search.fetch_current': string
-  'search.fetch_time': string
-  'search.fetch_total': string
-  'search.open_contexts': string
-  'search.query_current': string
-  'search.query_time': string
-  'search.query_total': string
-  'segments.count': string
-  'segments.fixed_bitset_memory': string
-  'segments.index_writer_max_memory': string
-  'segments.index_writer_memory': string
-  'segments.memory': string
-  'segments.version_map_memory': string
-  shard: string
-  state: string
-  store: string
-  'warmer.current': string
-  'warmer.total': string
-  'warmer.total_time': string
+  'completion.size'?: string
+  docs?: string
+  'fielddata.evictions'?: string
+  'fielddata.memory_size'?: string
+  'filter_cache.memory_size'?: string
+  'flush.total'?: string
+  'flush.total_time'?: string
+  'get.current'?: string
+  'get.exists_time'?: string
+  'get.exists_total'?: string
+  'get.missing_time'?: string
+  'get.missing_total'?: string
+  'get.time'?: string
+  'get.total'?: string
+  id?: Id
+  'id_cache.memory_size'?: string
+  index?: IndexName
+  i?: IndexName
+  'indexing.delete_current'?: string
+  'indexing.delete_time'?: string
+  'indexing.delete_total'?: string
+  'indexing.index_current'?: string
+  'indexing.index_time'?: string
+  'indexing.index_total'?: string
+  ip?: string
+  'merges.current'?: string
+  'merges.current_docs'?: string
+  'merges.current_size'?: string
+  'merges.total_docs'?: string
+  'merges.total_size'?: string
+  'merges.total_time'?: string
+  node?: string
+  'percolate.current'?: string
+  'percolate.memory_size'?: string
+  'percolate.queries'?: string
+  'percolate.time'?: string
+  'percolate.total'?: string
+  prirep?: string
+  'refresh.time'?: string
+  'refresh.total'?: string
+  'search.fetch_current'?: string
+  'search.fetch_time'?: string
+  'search.fetch_total'?: string
+  'search.open_contexts'?: string
+  'search.query_current'?: string
+  'search.query_time'?: string
+  'search.query_total'?: string
+  'segments.count'?: string
+  'segments.fixed_bitset_memory'?: string
+  'segments.index_writer_max_memory'?: string
+  'segments.index_writer_memory'?: string
+  'segments.memory'?: string
+  'segments.version_map_memory'?: string
+  shard?: string
+  state?: string
+  store?: string
+  'warmer.current'?: string
+  'warmer.total'?: string
+  'warmer.total_time'?: string
 }
 
 export interface CatShardsRequest extends CatRequestBase {
@@ -1518,25 +1554,29 @@ export interface CatTemplatesRequest extends CatRequestBase {
 export type CatTemplatesResponse = CatTemplatesRecord[]
 
 export interface CatThreadPoolRecord {
-  active: long
-  completed?: long
-  core?: integer
+  active?: string
+  completed?: string
+  core?: string
   ephemeral_node_id?: Id
   host?: string
+  h?: string
+  id?: Id
   ip?: string
+  i?: string
   keep_alive?: Time
-  largest?: integer
-  max?: integer
-  name: string
+  largest?: string
+  max?: string
+  name?: string
   node_id?: Id
-  node_name: string
-  pool_size?: integer
-  port?: integer
-  pid?: integer
-  queue: integer
-  queue_size?: integer
-  rejected: long
-  size?: integer
+  node_name?: string
+  pool_size?: string
+  port?: string
+  po?: string
+  pid?: string
+  queue?: string
+  queue_size?: string
+  rejected?: string
+  size?: string
   type?: string
 }
 
