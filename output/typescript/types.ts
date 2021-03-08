@@ -1394,21 +1394,22 @@ export interface CatResponseBase<TCatRecord = unknown> extends ResponseBase {
 }
 
 export interface CatSegmentsRecord {
-  committed: string
-  compound: string
-  'docs.count': string
-  'docs.deleted': string
-  generation: string
-  id: string
-  index: string
-  ip: string
-  prirep: string
-  searchable: string
-  segment: string
-  shard: string
-  size: string
-  'size.memory': string
-  version: string
+  committed?: string
+  compound?: string
+  'docs.count'?: string
+  'docs.deleted'?: string
+  generation?: string
+  id?: Id
+  index?: IndexName
+  i?: IndexName
+  ip?: string
+  prirep?: string
+  searchable?: string
+  segment?: string
+  shard?: string
+  size?: ByteSize
+  'size.memory'?: ByteSize
+  version?: string
 }
 
 export interface CatSegmentsRequest extends CatRequestBase {

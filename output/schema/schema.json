@@ -22419,7 +22419,7 @@
       "properties": [
         {
           "name": "committed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22430,7 +22430,7 @@
         },
         {
           "name": "compound",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22441,7 +22441,7 @@
         },
         {
           "name": "docs.count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22452,7 +22452,7 @@
         },
         {
           "name": "docs.deleted",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22463,7 +22463,7 @@
         },
         {
           "name": "generation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22474,29 +22474,40 @@
         },
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "i",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "ip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22507,7 +22518,7 @@
         },
         {
           "name": "prirep",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22518,7 +22529,7 @@
         },
         {
           "name": "searchable",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22529,7 +22540,7 @@
         },
         {
           "name": "segment",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22540,7 +22551,7 @@
         },
         {
           "name": "shard",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22551,29 +22562,29 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "size.memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
