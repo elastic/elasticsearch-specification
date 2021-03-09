@@ -71624,7 +71624,7 @@
       "properties": [
         {
           "name": "geo_match",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

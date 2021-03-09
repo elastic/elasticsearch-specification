@@ -6869,7 +6869,7 @@ export interface NamedPolicy extends EnrichPolicy {
 }
 
 export interface NamedPolicyConfig {
-  geo_match: NamedPolicy
+  geo_match?: NamedPolicy
   match: NamedPolicy
 }
 
