@@ -1817,6 +1817,7 @@ export interface ClearCachedRealmsRequest extends RequestBase {
 export interface ClearCachedRealmsResponse extends ResponseBase {
   cluster_name: string
   nodes: Record<string, SecurityNode>
+  _nodes: NodeStatistics
 }
 
 export interface ClearCachedRolesRequest extends RequestBase {
