@@ -22,7 +22,6 @@ import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
 import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
-import removeIncompleteEndpoints from './steps/remove-incomplete-endpoints'
 
 const compiler = new Compiler()
 
@@ -30,9 +29,8 @@ compiler
   .generateModel()
   .step(addInfo)
   .step(validateRestSpec)
-  .step(removeIncompleteEndpoints)
   .step(addDescription)
-  .step(async (model, spec) => validateModel(model, false))
+  .step(validateModel)
   .write()
   .then(() => {
     console.log('Done')

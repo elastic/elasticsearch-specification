@@ -32,9 +32,12 @@ enum TypeDefKind {
  * Missing validations:
  * - verify uniqueness of property names in the inheritance chain
  * - verify that request parents don't define properties (would they be path/request/body properties?)
+ * - verify that unions can be distinguished in a JSON stream (otherwise they should be inheritance trees)
  */
-export default function validateModel (apiModel: model.Model, failHard: boolean): model.Model {
-  console.log('Model validation: start')
+export default async function validateModel (apiModel: model.Model): Promise<model.Model> {
+  // Fail hard if the FAIL_HARD env var is defined
+  const failHard = process.env.FAIL_HARD != null
+
   const initialTypeCount = apiModel.types.length
 
   // Returns the fully-qualified name of a type name
@@ -66,7 +69,7 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
 
   // Register builtin types
   for (const name of [
-    'string', 'boolean', 'number', 'object', 'null'
+    'string', 'boolean', 'number', 'null'
   ]) {
     const typeName = {
       namespace: 'internal',
@@ -164,12 +167,13 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
    * Validate an endpoint
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
+    context.push(`Endpoint ${endpoint.name}`)
+
     if (endpoint.request == null || endpoint.response == null) {
-      modelError(`Endpoint '${endpoint.name}' skipped because of missing request or response`)
+      modelError('Skipped because of missing request or response')
+      context.pop()
       return
     }
-
-    context.push(`Endpoint ${endpoint.name}`)
 
     context.push('Request')
     const reqType = getTypeDef(endpoint.request)
@@ -317,6 +321,11 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       case 'union':
         validateUnion(typeDef)
         break
+
+      default:
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        throw new Error(`Unknown kind: ${typeDef.kind}`)
     }
 
     // Restore previous context
@@ -351,6 +360,10 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
         case 'value':
           validateValueOf(typeDef.body.value, openGenerics)
           break
+        default:
+          // @ts-expect-error
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          throw new Error(`Unknown kind: ${typeDef.body.kind}`)
       }
       context.pop()
     }
@@ -588,6 +601,11 @@ export default function validateModel (apiModel: model.Model, failHard: boolean)
       case 'user_defined_value':
         // Nothing to validate
         break
+
+      default:
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        throw new Error(`Unknown kind: ${valueOf.kind}`)
     }
     context.pop()
   }
