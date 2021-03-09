@@ -27226,7 +27226,7 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "IndexName",
                 "namespace": "internal"
               }
             },
@@ -27273,7 +27273,7 @@
         },
         {
           "name": "shards",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",

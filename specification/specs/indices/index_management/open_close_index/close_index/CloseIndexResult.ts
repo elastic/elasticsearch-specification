@@ -19,5 +19,5 @@
 
 class CloseIndexResult {
   closed: boolean
-  shards: Dictionary<string, CloseShardResult>
+  shards?: Dictionary<string, CloseShardResult>
 }

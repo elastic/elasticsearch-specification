@@ -18,6 +18,6 @@
  */
 
 class CloseIndexResponse extends AcknowledgedResponseBase {
-  indices: Dictionary<string, CloseIndexResult>
+  indices: Dictionary<IndexName, CloseIndexResult>
   shards_acknowledged: boolean
 }
