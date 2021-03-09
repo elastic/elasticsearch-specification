@@ -18,9 +18,9 @@
  */
 
 class ShardStatistics {
-  failed: integer
-  successful: integer
-  total: integer
+  failed: uint
+  successful: uint
+  total: uint
   failures?: ShardFailure[]
-  skipped?: integer
+  skipped?: uint
 }

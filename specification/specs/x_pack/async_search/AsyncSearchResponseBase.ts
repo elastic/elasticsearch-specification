@@ -18,7 +18,7 @@
  */
 
 class AsyncSearchResponseBase extends ResponseBase {
-  id: string
+  id: Id
   is_partial: boolean
   is_running: boolean
   expiration_time_in_millis: EpochMillis
