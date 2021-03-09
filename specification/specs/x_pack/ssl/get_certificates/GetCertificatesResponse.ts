@@ -17,7 +17,4 @@
  * under the License.
  */
 
-@class_serializer('GetCertificatesResponseFormatter')
-class GetCertificatesResponse extends ResponseBase {
-  certificates: ClusterCertificateInformation[]
-}
+class GetCertificatesResponse extends Array<ClusterCertificateInformation> {}

@@ -27815,7 +27815,7 @@
       "properties": [
         {
           "name": "alias",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51886,9 +51886,18 @@
     {
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterCertificateInformation",
+                "namespace": "x_pack.ssl.get_certificates"
+              }
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
+            "name": "Array",
+            "namespace": ".Users.pkrauss.github.com.elastic-client-generator.specification.node_modules.typescript.lib"
           }
         }
       ],
@@ -51897,22 +51906,7 @@
         "name": "GetCertificatesResponse",
         "namespace": "x_pack.ssl.get_certificates"
       },
-      "properties": [
-        {
-          "name": "certificates",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ClusterCertificateInformation",
-                "namespace": "x_pack.ssl.get_certificates"
-              }
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
