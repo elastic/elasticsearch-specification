@@ -8007,9 +8007,7 @@ export interface PutPipelineResponse extends AcknowledgedResponseBase {
 
 export interface PutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
-  body: {
-    applications?: Record<string, Record<string, PrivilegesActions>>
-  }
+  body: Record<string, Record<string, PrivilegesActions>>
 }
 
 export interface PutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, PutPrivilegesStatus>> {

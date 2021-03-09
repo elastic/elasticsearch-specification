@@ -81673,40 +81673,34 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "applications",
-            "required": false,
+        "kind": "value",
+        "value": {
+          "key": {
+            "kind": "instance_of",
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "PrivilegesActions",
-                    "namespace": "x_pack.security.privileges.put_privileges"
-                  }
-                }
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          "kind": "dictionary_of",
+          "value": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PrivilegesActions",
+                "namespace": "x_pack.security.privileges.put_privileges"
               }
             }
           }
-        ]
+        }
       },
       "inherits": [
         {
