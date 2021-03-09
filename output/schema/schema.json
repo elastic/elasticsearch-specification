@@ -26830,6 +26830,17 @@
               }
             }
           }
+        },
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
         }
       ]
     },

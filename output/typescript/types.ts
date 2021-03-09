@@ -1827,6 +1827,7 @@ export interface ClearCachedRolesRequest extends RequestBase {
 export interface ClearCachedRolesResponse extends ResponseBase {
   cluster_name: string
   nodes: Record<string, SecurityNode>
+  _nodes: NodeStatistics
 }
 
 export interface ClearScrollRequest extends RequestBase {
