@@ -3619,7 +3619,7 @@ export interface ExecuteEnrichPolicyRequest extends RequestBase {
 
 export interface ExecuteEnrichPolicyResponse extends ResponseBase {
   status: ExecuteEnrichPolicyStatus
-  task_id: TaskId
+  task_id?: TaskId
 }
 
 export interface ExecuteEnrichPolicyStatus {

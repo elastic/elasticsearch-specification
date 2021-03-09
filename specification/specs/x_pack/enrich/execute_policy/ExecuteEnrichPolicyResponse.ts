@@ -19,5 +19,5 @@
 
 class ExecuteEnrichPolicyResponse extends ResponseBase {
   status: ExecuteEnrichPolicyStatus
-  task_id: TaskId
+  task_id?: TaskId
 }
