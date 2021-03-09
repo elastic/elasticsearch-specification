@@ -4832,6 +4832,7 @@ export interface GetLicenseResponse extends ResponseBase {
 
 export interface GetLifecycleRequest extends RequestBase {
   policy?: Name
+  policy_id?: Id
 }
 
 export interface GetLifecycleResponse extends DictionaryResponseBase<string, LifecyclePolicy> {
