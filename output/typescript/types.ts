@@ -8032,7 +8032,7 @@ export interface PutRoleMappingRequest extends RequestBase {
 }
 
 export interface PutRoleMappingResponse extends ResponseBase {
-  created: boolean
+  created?: boolean
   role_mapping: PutRoleMappingStatus
 }
 

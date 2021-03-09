@@ -81932,7 +81932,7 @@
       "properties": [
         {
           "name": "created",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
