@@ -1022,22 +1022,47 @@ export interface CatCountRequest extends CatRequestBase {
 export type CatCountResponse = CatCountRecord[]
 
 export interface CatDataFrameAnalyticsRecord {
-  assignment_explanation: string
-  create_time: string
-  description: string
-  dest_index: string
-  failure_reason: string
-  id: string
-  model_memory_limit: string
-  'node.address': string
-  'node.ephemeral_id': string
-  'node.id': string
-  'node.name': string
-  progress: string
-  source_index: string
-  state: string
-  type: string
-  version: string
+  id?: string
+  type?: string
+  '"t"'?: string
+  create_time?: string
+  '"ct"'?: string
+  '"createTime"'?: string
+  version?: string
+  '"v"'?: string
+  source_index?: string
+  '"si"'?: string
+  '"sourceIndex"'?: string
+  dest_index?: string
+  '"di"'?: string
+  '"destIndex"'?: string
+  description?: string
+  '"d"'?: string
+  model_memory_limit?: string
+  '"mml"'?: string
+  '"modelMemoryLimit"'?: string
+  state?: string
+  '"s"'?: string
+  failure_reason?: string
+  '"fr"'?: string
+  '"failureReason"'?: string
+  progress?: string
+  '"p"'?: string
+  assignment_explanation?: string
+  '"ae"'?: string
+  '"assignmentExplanation"'?: string
+  'node.id'?: string
+  '"ni"'?: string
+  '"nodeId"'?: string
+  'node.name'?: string
+  '"nn"'?: string
+  '"nodeName"'?: string
+  'node.ephemeral_id'?: string
+  '"ne"'?: string
+  '"nodeEphemeralId"'?: string
+  'node.address'?: string
+  '"na"'?: string
+  '"nodeAddress"'?: string
 }
 
 export interface CatDataFrameAnalyticsRequest extends CatRequestBase {
@@ -1049,18 +1074,38 @@ export interface CatDataFrameAnalyticsRequest extends CatRequestBase {
 export type CatDataFrameAnalyticsResponse = CatDataFrameAnalyticsRecord[]
 
 export interface CatDatafeedsRecord {
+  id?: string
+  state?: DatafeedState
+  s?: DatafeedState
   assignment_explanation?: string
-  'buckets.count': string
-  id: string
-  'node.address'?: string
-  'node.ephemeral_id'?: string
-  'node.id'?: string
-  'node.name'?: string
-  'search.bucket_avg'?: string
-  'search.count': string
-  'search.exp_avg_hour'?: string
+  ae?: string
+  'buckets.count'?: string
+  bc?: string
+  bucketsCount?: string
+  'search.count'?: string
+  sc?: string
+  searchCount?: string
   'search.time'?: string
-  state: DatafeedState
+  st?: string
+  searchTime?: string
+  'search.bucket_avg'?: string
+  sba?: string
+  searchBucketAvg?: string
+  'search.exp_avg_hour'?: string
+  seah?: string
+  searchExpAvgHour?: string
+  'node.id'?: string
+  ni?: string
+  nodeId?: string
+  'node.name'?: string
+  nn?: string
+  nodeName?: string
+  'node.ephemeral_id'?: string
+  ne?: string
+  nodeEphemeralId?: string
+  'node.address'?: string
+  na?: string
+  nodeAddress?: string
 }
 
 export interface CatDatafeedsRequest extends CatRequestBase {
@@ -1328,61 +1373,180 @@ export interface CatIndicesRequest extends CatRequestBase {
 export type CatIndicesResponse = CatIndicesRecord[]
 
 export interface CatJobsRecord {
-  assignment_explanation?: string
-  'buckets.count': string
-  'buckets.time.exp_avg'?: string
-  'buckets.time.exp_avg_hour'?: string
-  'buckets.time.max'?: string
-  'buckets.time.min'?: string
-  'buckets.time.total'?: string
-  'data.buckets'?: string
-  'data.earliest_record'?: string
-  'data.empty_buckets'?: string
-  'data.input_bytes'?: ByteSize
-  'data.input_fields'?: string
-  'data.input_records'?: string
-  'data.invalid_dates'?: string
-  'data.last'?: string
-  'data.last_empty_bucket'?: string
-  'data.last_sparse_bucket'?: string
-  'data.latest_record'?: string
-  'data.missing_fields'?: string
-  'data.out_of_order_timestamps'?: string
-  'data.processed_fields'?: string
-  'data.processed_records': string
-  'data.sparse_buckets'?: string
-  'forecasts.memory.avg'?: string
-  'forecasts.memory.min'?: string
-  'forecasts.memory.total'?: string
-  'forecasts.records.avg'?: string
-  'forecasts.records.max'?: string
-  'forecasts.records.min'?: string
-  'forecasts.records.total'?: string
-  'forecasts.time.avg'?: string
-  'forecasts.time.max'?: string
-  'forecasts.time.min'?: string
-  'forecasts.total'?: string
-  id: Id
-  'model.bucket_allocation_failures'?: string
-  'model.by_fields'?: string
-  'model.bytes': ByteSize
-  'model.categorization_status'?: ModelCategorizationStatus
-  'model.categorized_doc_count'?: string
-  'model.dead_category_count'?: string
-  'model.frequent_category_count'?: string
-  'model.log_time'?: string
-  'model.memory_limit'?: string
-  'model.memory_status': ModelMemoryStatus
-  'model.over_fields'?: string
-  'model.partition_fields'?: string
-  'model.rare_category_count'?: string
-  'model.timestamp'?: string
-  'node.address'?: string
-  'node.ephemeral_id'?: Id
-  'node.id'?: Id
-  'node.name'?: string
+  id?: Id
+  state?: JobState
+  s?: JobState
   opened_time?: string
-  state: JobState
+  ot?: string
+  assignment_explanation?: string
+  ae?: string
+  'data.processed_records'?: string
+  dpr?: string
+  dataProcessedRecords?: string
+  'data.processed_fields'?: string
+  dpf?: string
+  dataProcessedFields?: string
+  'data.input_bytes'?: ByteSize
+  dib?: ByteSize
+  dataInputBytes?: ByteSize
+  'data.input_records'?: string
+  dir?: string
+  dataInputRecords?: string
+  'data.input_fields'?: string
+  dif?: string
+  dataInputFields?: string
+  'data.invalid_dates'?: string
+  did?: string
+  dataInvalidDates?: string
+  'data.missing_fields'?: string
+  dmf?: string
+  dataMissingFields?: string
+  'data.out_of_order_timestamps'?: string
+  doot?: string
+  dataOutOfOrderTimestamps?: string
+  'data.empty_buckets'?: string
+  deb?: string
+  dataEmptyBuckets?: string
+  'data.sparse_buckets'?: string
+  dsb?: string
+  dataSparseBuckets?: string
+  'data.buckets'?: string
+  db?: string
+  dataBuckets?: string
+  'data.earliest_record'?: string
+  der?: string
+  dataEarliestRecord?: string
+  'data.latest_record'?: string
+  dlr?: string
+  dataLatestRecord?: string
+  'data.last'?: string
+  dl?: string
+  dataLast?: string
+  'data.last_empty_bucket'?: string
+  dleb?: string
+  dataLastEmptyBucket?: string
+  'data.last_sparse_bucket'?: string
+  dlsb?: string
+  dataLastSparseBucket?: string
+  'model.bytes'?: ByteSize
+  mb?: ByteSize
+  modelBytes?: ByteSize
+  'model.memory_status'?: ModelMemoryStatus
+  mms?: ModelMemoryStatus
+  modelMemoryStatus?: ModelMemoryStatus
+  'model.bytes_exceeded'?: ByteSize
+  mbe?: ByteSize
+  modelBytesExceeded?: ByteSize
+  'model.memory_limit'?: string
+  mml?: string
+  modelMemoryLimit?: string
+  'model.by_fields'?: string
+  mbf?: string
+  modelByFields?: string
+  'model.over_fields'?: string
+  mof?: string
+  modelOverFields?: string
+  'model.partition_fields'?: string
+  mpf?: string
+  modelPartitionFields?: string
+  'model.bucket_allocation_failures'?: string
+  mbaf?: string
+  modelBucketAllocationFailures?: string
+  'model.categorization_status'?: ModelCategorizationStatus
+  mcs?: ModelCategorizationStatus
+  modelCategorizationStatus?: ModelCategorizationStatus
+  'model.categorized_doc_count'?: string
+  mcdc?: string
+  modelCategorizedDocCount?: string
+  'model.total_category_count'?: string
+  mtcc?: string
+  modelTotalCategoryCount?: string
+  'model.frequent_category_count'?: string
+  modelFrequentCategoryCount?: string
+  'model.rare_category_count'?: string
+  mrcc?: string
+  modelRareCategoryCount?: string
+  'model.dead_category_count'?: string
+  mdcc?: string
+  modelDeadCategoryCount?: string
+  'model.failed_category_count'?: string
+  mfcc?: string
+  modelFailedCategoryCount?: string
+  'model.log_time'?: string
+  mlt?: string
+  modelLogTime?: string
+  'model.timestamp'?: string
+  mt?: string
+  modelTimestamp?: string
+  'forecasts.total'?: string
+  ft?: string
+  forecastsTotal?: string
+  'forecasts.memory.min'?: string
+  fmmin?: string
+  forecastsMemoryMin?: string
+  'forecasts.memory.max'?: string
+  fmmax?: string
+  forecastsMemoryMax?: string
+  'forecasts.memory.avg'?: string
+  fmavg?: string
+  forecastsMemoryAvg?: string
+  'forecasts.memory.total'?: string
+  fmt?: string
+  forecastsMemoryTotal?: string
+  'forecasts.records.min'?: string
+  frmin?: string
+  forecastsRecordsMin?: string
+  'forecasts.records.max'?: string
+  frmax?: string
+  forecastsRecordsMax?: string
+  'forecasts.records.avg'?: string
+  fravg?: string
+  forecastsRecordsAvg?: string
+  'forecasts.records.total'?: string
+  frt?: string
+  forecastsRecordsTotal?: string
+  'forecasts.time.min'?: string
+  ftmin?: string
+  forecastsTimeMin?: string
+  'forecasts.time.max'?: string
+  ftmax?: string
+  forecastsTimeMax?: string
+  'forecasts.time.avg'?: string
+  ftavg?: string
+  forecastsTimeAvg?: string
+  'forecasts.time.total'?: string
+  ftt?: string
+  forecastsTimeTotal?: string
+  'node.id'?: NodeId
+  ni?: NodeId
+  nodeId?: NodeId
+  'node.name'?: string
+  nn?: string
+  nodeName?: string
+  'node.ephemeral_id'?: NodeId
+  ne?: NodeId
+  nodeEphemeralId?: NodeId
+  'node.address'?: string
+  na?: string
+  nodeAddress?: string
+  'buckets.count'?: string
+  bc?: string
+  bucketsCount?: string
+  'buckets.time.total'?: string
+  btt?: string
+  bucketsTimeTotal?: string
+  'buckets.time.min'?: string
+  btmin?: string
+  bucketsTimeMin?: string
+  'buckets.time.max'?: string
+  btmax?: string
+  bucketsTimeMax?: string
+  'buckets.time.exp_avg'?: string
+  btea?: string
+  bucketsTimeExpAvg?: string
+  'buckets.time.exp_avg_hour'?: string
+  bteah?: string
+  bucketsTimeExpAvgHour?: string
 }
 
 export interface CatJobsRequest extends CatRequestBase {
@@ -1454,7 +1618,6 @@ export interface CatNodesRecord {
   'file_desc.current'?: string
   'file_desc.percent'?: Percentage
   'file_desc.max'?: string
-  cpu?: string
   cpu?: string
   load_1m?: string
   load_5m?: string
@@ -2126,13 +2289,21 @@ export type CatTemplatesResponse = CatTemplatesRecord[]
 
 export interface CatThreadPoolRecord {
   node_name?: string
+  nn?: string
   node_id?: NodeId
+  id?: NodeId
   ephemeral_node_id?: string
+  eid?: string
   pid?: string
+  p?: string
   host?: string
+  h?: string
   ip?: string
+  i?: string
   port?: string
+  po?: string
   name?: string
+  n?: string
   type?: string
   t?: string
   active?: string
@@ -2167,21 +2338,51 @@ export interface CatThreadPoolRequest extends CatRequestBase {
 export type CatThreadPoolResponse = CatThreadPoolRecord[]
 
 export interface CatTrainedModelsRecord {
+  id?: string
   created_by?: string
-  create_time: DateString
-  data_frame_analytics_id?: string
-  'data_frame.id': Id
-  description?: string
-  heap_size: ByteSize
-  id: Id
-  'ingest.count'?: long
-  'ingest.current'?: long
-  'ingest.failed'?: long
-  'ingest.pipelines': string
-  'ingest.time'?: long
+  '"c"'?: string
+  '"createdBy"'?: string
+  heap_size?: ByteSize
+  '"hs"'?: ByteSize
+  '"modelHeapSize"'?: ByteSize
+  operations?: string
+  '"o"'?: string
+  '"modelOperations"'?: string
   license?: string
-  operations: string
+  '"l"'?: string
+  create_time?: DateString
+  '"ct"'?: DateString
   version?: string
+  '"v"'?: string
+  description?: string
+  '"d"'?: string
+  'ingest.pipelines'?: string
+  '"ip"'?: string
+  '"ingestPipelines"'?: string
+  'ingest.count'?: string
+  '"ic"'?: string
+  '"ingestCount"'?: string
+  'ingest.time'?: string
+  '"it"'?: string
+  '"ingestTime"'?: string
+  'ingest.current'?: string
+  '"icurr"'?: string
+  '"ingestCurrent"'?: string
+  'ingest.failed'?: string
+  '"if"'?: string
+  '"ingestFailed"'?: string
+  'data_frame.id'?: string
+  '"dfid"'?: string
+  '"dataFrameAnalytics"'?: string
+  'data_frame.create_time'?: string
+  '"dft"'?: string
+  '"dataFrameAnalyticsTime"'?: string
+  'data_frame.source_index'?: string
+  '"dfsi"'?: string
+  '"dataFrameAnalyticsSrcIndex"'?: string
+  'data_frame.analysis'?: string
+  '"dfa"'?: string
+  '"dataFrameAnalyticsAnalysis"'?: string
 }
 
 export interface CatTrainedModelsRequest extends CatRequestBase {

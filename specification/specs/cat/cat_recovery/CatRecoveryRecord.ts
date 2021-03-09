@@ -30,18 +30,22 @@ class CatRecoveryRecord {
   'shard'?:string
   /**
    * recovery start time
+   * @aliases start
    */
   'start_time'?:string
   /**
    * recovery start time in epoch milliseconds
+   * @aliases start_millis
    */
   'start_time_millis'?:string
   /**
    * recovery stop time
+   * @aliases stop
    */
   'stop_time'?:string
   /**
    * recovery stop time in epoch milliseconds
+   * @aliases stop_millis
    */
   'stop_time_millis'?:string
   /**

@@ -20,10 +20,12 @@
 class CatSegmentsRecord {
   /**
    * index name
+   * @aliases i, idx
    */
   'index'?:IndexName
   /**
    * shard name
+   * @aliases is
    */
   'shard'?:string
   /**
@@ -41,42 +43,52 @@ class CatSegmentsRecord {
   'id'?:NodeId
   /**
    * segment name
+   * @aliases seg
    */
   'segment'?:string
   /**
    * segment generation
+   * @aliases g,gen
    */
   'generation'?:string
   /**
    * number of docs in segment
+   * @aliases dc,docsCount
    */
   'docs.count'?:string
   /**
    * number of deleted docs in segment
+   * @aliases dd,docsDeleted
    */
   'docs.deleted'?:string
   /**
    * segment size in bytes
+   * @aliases si
    */
   'size'?:ByteSize
   /**
    * segment memory in bytes
+   * @aliases sm,sizeMemory
    */
   'size.memory'?:ByteSize
   /**
    * is segment committed
+   * @aliases ic,isCommitted
    */
   'committed'?:string
   /**
    * is segment searched
+   * @aliases is,isSearchable
    */
   'searchable'?:string
   /**
    * version
+   * @aliases v
    */
   'version'?:string
   /**
    * is segment compound
+   * @aliases ico,isCompound
    */
   'compound'?:string
 }

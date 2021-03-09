@@ -20,10 +20,12 @@
 class CatShardsRecord {
   /**
    * index name
+   * @aliases i,idx
    */
   'index'?:string
   /**
    * shard name
+   * @aliases s,sh
    */
   'shard'?:string
   /**
@@ -33,6 +35,7 @@ class CatShardsRecord {
   'prirep'?:string
   /**
    * shard state
+   * @aliases st
    */
   'state'?:string
   /**
@@ -55,6 +58,7 @@ class CatShardsRecord {
   'id'?:string
   /**
    * name of node where it lives
+   * @aliases n
    */
   'node'?:string
   /**

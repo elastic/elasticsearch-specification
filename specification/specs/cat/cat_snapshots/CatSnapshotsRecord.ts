@@ -80,6 +80,7 @@ class CatSnapshotsRecord {
   'total_shards'?:string
   /**
    * reason for failures
+   * @aliases r
    */
   'reason'?:string
 }

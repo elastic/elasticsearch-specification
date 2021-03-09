@@ -20,34 +20,42 @@
 class CatThreadPoolRecord {
   /**
    * node name
+   * @aliases nn
    */
   'node_name'?:string
   /**
    * persistent node id
+   * @aliases id
    */
   'node_id'?:NodeId
   /**
    * ephemeral node id
+   * @aliases eid
    */
   'ephemeral_node_id'?:string
   /**
    * process id
+   * @aliases p
    */
   'pid'?:string
   /**
    * host name
+   * @aliases h
    */
   'host'?:string
   /**
    * ip address
+   * @aliases i
    */
   'ip'?:string
   /**
    * bound transport port
+   * @aliases po
    */
   'port'?:string
   /**
    * thread pool name
+   * @aliases n
    */
   'name'?:string
   /**

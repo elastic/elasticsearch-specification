@@ -58,36 +58,44 @@ class CatTasksRecord {
   'running_time_ns'?:string
   /**
    * running time
+   * @aliases time
    */
   'running_time'?:string
 
   // Node info
   /**
    * unique node id
+   * @aliases ni
    */
   'node_id'?:string
   /**
    * ip address
+   * @aliases i
    */
   'ip'?:string
   /**
    * bound transport port
+   * @aliases po
    */
   'port'?:string
   /**
    * node name
+   * @aliases n
    */
   'node'?:string
   /**
    * es version
+   * @aliases v
    */
   'version'?:string
   /**
    * X-Opaque-ID header
+   * @aliases x
    */
   'x_opaque_id'?:string
   /**
    * task action
+   * @aliases desc
    */
   'description'?:string
 }

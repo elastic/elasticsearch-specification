@@ -18683,63 +18683,8 @@
       },
       "properties": [
         {
-          "name": "assignment_explanation",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "create_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "dest_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "failure_reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18749,96 +18694,11 @@
           }
         },
         {
-          "name": "model_memory_limit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.ephemeral_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "progress",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "source_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "\"t\""
+          ],
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18848,8 +18708,203 @@
           }
         },
         {
+          "aliases": [
+            "\"ct\"",
+            "\"createTime\""
+          ],
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"v\""
+          ],
           "name": "version",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"si\"",
+            "\"sourceIndex\""
+          ],
+          "name": "source_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"di\"",
+            "\"destIndex\""
+          ],
+          "name": "dest_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"d\""
+          ],
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"mml\"",
+            "\"modelMemoryLimit\""
+          ],
+          "name": "model_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"s\""
+          ],
+          "name": "state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"fr\"",
+            "\"failureReason\""
+          ],
+          "name": "failure_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"p\""
+          ],
+          "name": "progress",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"ae\"",
+            "\"assignmentExplanation\""
+          ],
+          "name": "assignment_explanation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"ni\"",
+            "\"nodeId\""
+          ],
+          "name": "node.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"nn\"",
+            "\"nodeName\""
+          ],
+          "name": "node.name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"ne\"",
+            "\"nodeEphemeralId\""
+          ],
+          "name": "node.ephemeral_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"na\"",
+            "\"nodeAddress\""
+          ],
+          "name": "node.address",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18953,6 +19008,34 @@
       },
       "properties": [
         {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "s"
+          ],
+          "name": "state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedState",
+              "namespace": "x_pack.machine_learning.datafeed"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ae"
+          ],
           "name": "assignment_explanation",
           "required": false,
           "type": {
@@ -18964,29 +19047,11 @@
           }
         },
         {
+          "aliases": [
+            "bc",
+            "bucketsCount"
+          ],
           "name": "buckets.count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.address",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -18997,62 +19062,11 @@
           }
         },
         {
-          "name": "node.ephemeral_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "search.bucket_avg",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "sc",
+            "searchCount"
+          ],
           "name": "search.count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "search.exp_avg_hour",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -19063,6 +19077,10 @@
           }
         },
         {
+          "aliases": [
+            "st",
+            "searchTime"
+          ],
           "name": "search.time",
           "required": false,
           "type": {
@@ -19074,13 +19092,92 @@
           }
         },
         {
-          "name": "state",
-          "required": true,
+          "aliases": [
+            "sba",
+            "searchBucketAvg"
+          ],
+          "name": "search.bucket_avg",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DatafeedState",
-              "namespace": "x_pack.machine_learning.datafeed"
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "seah",
+            "searchExpAvgHour"
+          ],
+          "name": "search.exp_avg_hour",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ni",
+            "nodeId"
+          ],
+          "name": "node.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "nn",
+            "nodeName"
+          ],
+          "name": "node.name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ne",
+            "nodeEphemeralId"
+          ],
+          "name": "node.ephemeral_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "na",
+            "nodeAddress"
+          ],
+          "name": "node.address",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -21408,557 +21505,7 @@
       },
       "properties": [
         {
-          "name": "assignment_explanation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "buckets.count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "buckets.time.exp_avg",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "buckets.time.exp_avg_hour",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "buckets.time.max",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "buckets.time.min",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "buckets.time.total",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.buckets",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.earliest_record",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.empty_buckets",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.input_bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.input_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.input_records",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.invalid_dates",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.last",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.last_empty_bucket",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.last_sparse_bucket",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.latest_record",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.missing_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.out_of_order_timestamps",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.processed_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.processed_records",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data.sparse_buckets",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.memory.avg",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.memory.min",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.memory.total",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.records.avg",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.records.max",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.records.min",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.records.total",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.time.avg",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.time.max",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.time.min",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "forecasts.total",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.bucket_allocation_failures",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.by_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.categorization_status",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelCategorizationStatus",
-              "namespace": "cat.cat_jobs"
-            }
-          }
-        },
-        {
-          "name": "model.categorized_doc_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.dead_category_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.frequent_category_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.log_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.memory_limit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.memory_status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelMemoryStatus",
-              "namespace": "cat.cat_jobs"
-            }
-          }
-        },
-        {
-          "name": "model.over_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.partition_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.rare_category_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model.timestamp",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.address",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node.ephemeral_id",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21969,28 +21516,23 @@
           }
         },
         {
-          "name": "node.id",
+          "aliases": [
+            "s"
+          ],
+          "name": "state",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
-              "namespace": "internal"
+              "name": "JobState",
+              "namespace": "x_pack.machine_learning.job.config"
             }
           }
         },
         {
-          "name": "node.name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "ot"
+          ],
           "name": "opened_time",
           "required": false,
           "type": {
@@ -22002,13 +21544,855 @@
           }
         },
         {
-          "name": "state",
-          "required": true,
+          "aliases": [
+            "ae"
+          ],
+          "name": "assignment_explanation",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "JobState",
-              "namespace": "x_pack.machine_learning.job.config"
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dpr",
+            "dataProcessedRecords"
+          ],
+          "name": "data.processed_records",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dpf",
+            "dataProcessedFields"
+          ],
+          "name": "data.processed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dib",
+            "dataInputBytes"
+          ],
+          "name": "data.input_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dir",
+            "dataInputRecords"
+          ],
+          "name": "data.input_records",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dif",
+            "dataInputFields"
+          ],
+          "name": "data.input_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "did",
+            "dataInvalidDates"
+          ],
+          "name": "data.invalid_dates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dmf",
+            "dataMissingFields"
+          ],
+          "name": "data.missing_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "doot",
+            "dataOutOfOrderTimestamps"
+          ],
+          "name": "data.out_of_order_timestamps",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "deb",
+            "dataEmptyBuckets"
+          ],
+          "name": "data.empty_buckets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dsb",
+            "dataSparseBuckets"
+          ],
+          "name": "data.sparse_buckets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "db",
+            "dataBuckets"
+          ],
+          "name": "data.buckets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "der",
+            "dataEarliestRecord"
+          ],
+          "name": "data.earliest_record",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dlr",
+            "dataLatestRecord"
+          ],
+          "name": "data.latest_record",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dl",
+            "dataLast"
+          ],
+          "name": "data.last",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dleb",
+            "dataLastEmptyBucket"
+          ],
+          "name": "data.last_empty_bucket",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dlsb",
+            "dataLastSparseBucket"
+          ],
+          "name": "data.last_sparse_bucket",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mb",
+            "modelBytes"
+          ],
+          "name": "model.bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mms",
+            "modelMemoryStatus"
+          ],
+          "name": "model.memory_status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelMemoryStatus",
+              "namespace": "cat.cat_jobs"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mbe",
+            "modelBytesExceeded"
+          ],
+          "name": "model.bytes_exceeded",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mml",
+            "modelMemoryLimit"
+          ],
+          "name": "model.memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mbf",
+            "modelByFields"
+          ],
+          "name": "model.by_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mof",
+            "modelOverFields"
+          ],
+          "name": "model.over_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mpf",
+            "modelPartitionFields"
+          ],
+          "name": "model.partition_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mbaf",
+            "modelBucketAllocationFailures"
+          ],
+          "name": "model.bucket_allocation_failures",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mcs",
+            "modelCategorizationStatus"
+          ],
+          "name": "model.categorization_status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelCategorizationStatus",
+              "namespace": "cat.cat_jobs"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mcdc",
+            "modelCategorizedDocCount"
+          ],
+          "name": "model.categorized_doc_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mtcc",
+            "modelTotalCategoryCount"
+          ],
+          "name": "model.total_category_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "modelFrequentCategoryCount"
+          ],
+          "name": "model.frequent_category_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mrcc",
+            "modelRareCategoryCount"
+          ],
+          "name": "model.rare_category_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mdcc",
+            "modelDeadCategoryCount"
+          ],
+          "name": "model.dead_category_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mfcc",
+            "modelFailedCategoryCount"
+          ],
+          "name": "model.failed_category_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mlt",
+            "modelLogTime"
+          ],
+          "name": "model.log_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mt",
+            "modelTimestamp"
+          ],
+          "name": "model.timestamp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ft",
+            "forecastsTotal"
+          ],
+          "name": "forecasts.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "fmmin",
+            "forecastsMemoryMin"
+          ],
+          "name": "forecasts.memory.min",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "fmmax",
+            "forecastsMemoryMax"
+          ],
+          "name": "forecasts.memory.max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "fmavg",
+            "forecastsMemoryAvg"
+          ],
+          "name": "forecasts.memory.avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "fmt",
+            "forecastsMemoryTotal"
+          ],
+          "name": "forecasts.memory.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "frmin",
+            "forecastsRecordsMin"
+          ],
+          "name": "forecasts.records.min",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "frmax",
+            "forecastsRecordsMax"
+          ],
+          "name": "forecasts.records.max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "fravg",
+            "forecastsRecordsAvg"
+          ],
+          "name": "forecasts.records.avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "frt",
+            "forecastsRecordsTotal"
+          ],
+          "name": "forecasts.records.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ftmin",
+            "forecastsTimeMin"
+          ],
+          "name": "forecasts.time.min",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ftmax",
+            "forecastsTimeMax"
+          ],
+          "name": "forecasts.time.max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ftavg",
+            "forecastsTimeAvg"
+          ],
+          "name": "forecasts.time.avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ftt",
+            "forecastsTimeTotal"
+          ],
+          "name": "forecasts.time.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ni",
+            "nodeId"
+          ],
+          "name": "node.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "nn",
+            "nodeName"
+          ],
+          "name": "node.name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ne",
+            "nodeEphemeralId"
+          ],
+          "name": "node.ephemeral_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "na",
+            "nodeAddress"
+          ],
+          "name": "node.address",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "bc",
+            "bucketsCount"
+          ],
+          "name": "buckets.count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "btt",
+            "bucketsTimeTotal"
+          ],
+          "name": "buckets.time.total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "btmin",
+            "bucketsTimeMin"
+          ],
+          "name": "buckets.time.min",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "btmax",
+            "bucketsTimeMax"
+          ],
+          "name": "buckets.time.max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "btea",
+            "bucketsTimeExpAvg"
+          ],
+          "name": "buckets.time.exp_avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "bteah",
+            "bucketsTimeExpAvgHour"
+          ],
+          "name": "buckets.time.exp_avg_hour",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -22631,9 +23015,6 @@
           }
         },
         {
-          "aliases": [
-            "cpu"
-          ],
           "name": "cpu",
           "required": false,
           "type": {
@@ -26799,6 +27180,9 @@
       },
       "properties": [
         {
+          "aliases": [
+            "nn"
+          ],
           "name": "node_name",
           "required": false,
           "type": {
@@ -26810,6 +27194,9 @@
           }
         },
         {
+          "aliases": [
+            "id"
+          ],
           "name": "node_id",
           "required": false,
           "type": {
@@ -26821,6 +27208,9 @@
           }
         },
         {
+          "aliases": [
+            "eid"
+          ],
           "name": "ephemeral_node_id",
           "required": false,
           "type": {
@@ -26832,6 +27222,9 @@
           }
         },
         {
+          "aliases": [
+            "p"
+          ],
           "name": "pid",
           "required": false,
           "type": {
@@ -26843,6 +27236,9 @@
           }
         },
         {
+          "aliases": [
+            "h"
+          ],
           "name": "host",
           "required": false,
           "type": {
@@ -26854,6 +27250,9 @@
           }
         },
         {
+          "aliases": [
+            "i"
+          ],
           "name": "ip",
           "required": false,
           "type": {
@@ -26865,6 +27264,9 @@
           }
         },
         {
+          "aliases": [
+            "po"
+          ],
           "name": "port",
           "required": false,
           "type": {
@@ -26876,6 +27278,9 @@
           }
         },
         {
+          "aliases": [
+            "n"
+          ],
           "name": "name",
           "required": false,
           "type": {
@@ -27150,6 +27555,21 @@
       },
       "properties": [
         {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"c\"",
+            "\"createdBy\""
+          ],
           "name": "created_by",
           "required": false,
           "type": {
@@ -27161,52 +27581,12 @@
           }
         },
         {
-          "name": "create_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data_frame_analytics_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "data_frame.id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "\"hs\"",
+            "\"modelHeapSize\""
+          ],
           "name": "heap_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27216,52 +27596,12 @@
           }
         },
         {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ingest.count",
+          "aliases": [
+            "\"o\"",
+            "\"modelOperations\""
+          ],
+          "name": "operations",
           "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ingest.current",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ingest.failed",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ingest.pipelines",
-          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27271,17 +27611,9 @@
           }
         },
         {
-          "name": "ingest.time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "\"l\""
+          ],
           "name": "license",
           "required": false,
           "type": {
@@ -27293,8 +27625,25 @@
           }
         },
         {
-          "name": "operations",
-          "required": true,
+          "aliases": [
+            "\"ct\""
+          ],
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"v\""
+          ],
+          "name": "version",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27304,7 +27653,145 @@
           }
         },
         {
-          "name": "version",
+          "aliases": [
+            "\"d\""
+          ],
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"ip\"",
+            "\"ingestPipelines\""
+          ],
+          "name": "ingest.pipelines",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"ic\"",
+            "\"ingestCount\""
+          ],
+          "name": "ingest.count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"it\"",
+            "\"ingestTime\""
+          ],
+          "name": "ingest.time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"icurr\"",
+            "\"ingestCurrent\""
+          ],
+          "name": "ingest.current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"if\"",
+            "\"ingestFailed\""
+          ],
+          "name": "ingest.failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"dfid\"",
+            "\"dataFrameAnalytics\""
+          ],
+          "name": "data_frame.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"dft\"",
+            "\"dataFrameAnalyticsTime\""
+          ],
+          "name": "data_frame.create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"dfsi\"",
+            "\"dataFrameAnalyticsSrcIndex\""
+          ],
+          "name": "data_frame.source_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "\"dfa\"",
+            "\"dataFrameAnalyticsAnalysis\""
+          ],
+          "name": "data_frame.analysis",
           "required": false,
           "type": {
             "kind": "instance_of",

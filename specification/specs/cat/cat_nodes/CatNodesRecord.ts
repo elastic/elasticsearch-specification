@@ -20,10 +20,12 @@
 class CatNodesRecord {
   /**
    * unique node id
+   * @aliases nodeId
    */
   'id'?:string
   /**
    * process id
+   * @aliases p
    */
   'pid'?:string
   /**
@@ -33,51 +35,63 @@ class CatNodesRecord {
   'ip'?:string
   /**
    * bound transport port
+   * @aliases po
    */
   'port'?:string
   /**
    * bound http address
+   * @aliases http
    */
   'http_address'?:string
 
   /**
    * es version
+   * @aliases v
    */
   'version'?:string
   /**
    * es distribution flavor
+   * @aliases f
    */
   'flavor'?:string
   /**
    * es distribution type
+   * @aliases t
    */
   'type'?:string
   /**
    * es build hash
+   * @aliases b
    */
   'build'?:string
   /**
    * jdk version
+   * @aliases j
    */
   'jdk'?:string
   /**
    * total disk space
+   * @aliases dt,diskTotal
    */
   'disk.total'?:ByteSize
   /**
    * used disk space
+   * @aliases du,diskUsed
    */
   'disk.used'?:ByteSize
   /**
    * available disk space
+   * @aliases d,da,diskAvail
    */
   'disk.avail'?:ByteSize
   /**
    * used disk space percentage
+   * @aliases dup,diskUsedPercent
    */
   'disk.used_percent'?:Percentage
   /**
    * used heap
+   * @aliases hc,heapCurrent
    */
   'heap.current'?:string
   /**
@@ -87,10 +101,12 @@ class CatNodesRecord {
   'heap.percent'?:Percentage
   /**
    * max configured heap
+   * @aliases hm,heapMax
    */
   'heap.max'?:string
   /**
    * used machine memory
+   * @aliases rc,ramCurrent
    */
   'ram.current'?:string
   /**
@@ -100,18 +116,22 @@ class CatNodesRecord {
   'ram.percent'?:Percentage
   /**
    * total machine memory
+   * @aliases rn,ramMax
    */
   'ram.max'?:string
   /**
    * used file descriptors
+   * @aliases fdc,fileDescriptorCurrent
    */
   'file_desc.current'?:string
   /**
    * used file descriptor ratio
+   * @aliases fdp,fileDescriptorPercent
    */
   'file_desc.percent'?:Percentage
   /**
    * max file descriptors
+   * @aliases fdm,fileDescriptorMax
    */
   'file_desc.max'?:string
 
@@ -134,6 +154,7 @@ class CatNodesRecord {
   'load_15m'?:string
   /**
    * node uptime
+   * @aliases u
    */
   'uptime'?:string
   /**

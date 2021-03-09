@@ -18,16 +18,64 @@
  */
 
 class CatDatafeedsRecord {
-  assignment_explanation?: string
-  'buckets.count': string
-  id: string
-  'node.address'?: string
-  'node.ephemeral_id'?: string
-  'node.id'?: string
-  'node.name'?: string
-  'search.bucket_avg'?: string
-  'search.count': string
-  'search.exp_avg_hour'?: string
+  /**
+   * the datafeed_id
+   */
+  'id'?: string
+  /**
+   * the datafeed state
+   * @aliases s
+   */
+  'state'?: DatafeedState
+  /**
+   * why the datafeed is or is not assigned to a node
+   * @aliases ae
+   */
+  'assignment_explanation'?: string
+  /**
+   * bucket count
+   * @aliases bc, bucketsCount
+   */
+  'buckets.count'?: string
+  /**
+   * number of searches ran by the datafeed
+   * @aliases sc, searchCount
+   */
+  'search.count'?: string
+  /**
+   * the total search time
+   * @aliases st, searchTime
+   */
   'search.time'?: string
-  state: DatafeedState
+  /**
+   * the average search time per bucket (millisecond)
+   * @aliases sba, searchBucketAvg
+   */
+  'search.bucket_avg'?: string
+  /**
+   * the exponential average search time per hour (millisecond)
+   * @aliases seah, searchExpAvgHour
+   */
+  //Node info
+  'search.exp_avg_hour'?: string
+  /**
+   * id of the assigned node
+   * @aliases ni, nodeId
+   */
+  'node.id'?: string
+  /**
+   * name of the assigned node
+   * @aliases nn, nodeName
+   */
+  'node.name'?: string
+  /**
+   * ephemeral id of the assigned node
+   * @aliases ne, nodeEphemeralId
+   */
+  'node.ephemeral_id'?: string
+  /**
+   * network address of the assigned node
+   * @aliases na, nodeAddress
+   */
+  'node.address'?: string
 }
