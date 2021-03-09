@@ -50,7 +50,6 @@ class CatNodeAttributesRecord {
   'attr'?:string
   /**
    * attribute value
-   * @aliases
    */
   'value'?:string
 }

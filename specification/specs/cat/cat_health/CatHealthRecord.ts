@@ -20,7 +20,7 @@
 class CatHealthRecord {
   /**
    * seconds since 1969-01-01 00:00:00
-   * @aliases t,time
+   * @aliases time
    */
   'epoch'?:EpochMillis
   /**

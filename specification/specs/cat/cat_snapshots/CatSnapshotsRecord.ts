@@ -20,7 +20,7 @@
 class CatSnapshotsRecord {
   /**
    * unique snapshot
-   * @aliases id,snapshot
+   * @aliases snapshot
    */
   'id'?:string
   /**
@@ -30,7 +30,7 @@ class CatSnapshotsRecord {
   'repository'?:string
   /**
    * snapshot name
-   * @aliases s,status
+   * @aliases s
    */
   'status'?:string
   /**
@@ -55,27 +55,27 @@ class CatSnapshotsRecord {
   'end_time'?:DateString
   /**
    * duration
-   * @aliases dur,duration
+   * @aliases dur
    */
   'duration'?:Time
   /**
    * number of indices
-   * @aliases i,indices
+   * @aliases i
    */
   'indices'?:string
   /**
    * number of successful shards
-   * @aliases ss,successful_shards
+   * @aliases ss
    */
   'successful_shards'?:string
   /**
    * number of failed shards
-   * @aliases fs,failed_shards
+   * @aliases fs
    */
   'failed_shards'?:string
   /**
    * number of total shards
-   * @aliases ts,total_shards
+   * @aliases ts
    */
   'total_shards'?:string
   /**

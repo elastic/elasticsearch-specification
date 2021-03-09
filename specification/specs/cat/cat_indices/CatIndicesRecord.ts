@@ -35,7 +35,7 @@ class CatIndicesRecord {
   'index'?:string
   /**
    * index uuid
-   * @aliases id,uuid
+   * @aliases id
    */
   'uuid'?:string
   /**

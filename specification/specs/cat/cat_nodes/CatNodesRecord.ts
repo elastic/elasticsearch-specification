@@ -117,17 +117,14 @@ class CatNodesRecord {
 
   /**
    * recent cpu usage
-   * @aliases cpu
    */
   'cpu'?:string
   /**
    * 1m load avg
-   * @aliases l
    */
   'load_1m'?:string
   /**
    * 5m load avg
-   * @aliases l
    */
   'load_5m'?:string
   /**
@@ -335,12 +332,10 @@ class CatNodesRecord {
 
   /**
    * total refreshes
-   * @aliases rto,refreshTotal
    */
   'refresh.total'?:string
   /**
    * time spent in refreshes
-   * @aliases rti,refreshTime
    */
   'refresh.time'?:string
   /**

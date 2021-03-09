@@ -18,17 +18,14 @@
  */
 
 class CatRepositoriesRecord {
-  id: string
-  type: string
-
   /**
    * unique repository id
-   * @aliases id,repoId
+   * @aliases repoId
    */
   'id'?:string
   /**
    * repository type
-   * @aliases t,type
+   * @aliases t
    */
   'type'?:string
 }

@@ -59,7 +59,6 @@ class CatShardsRecord {
   'node'?:string
   /**
    * sync id
-   * @aliases sync_id
    */
   'sync_id'?:string
   /**
@@ -229,12 +228,10 @@ class CatShardsRecord {
   'merges.total_time'?:string
   /**
    * total refreshes
-   * @aliases rto,refreshTotal
    */
   'refresh.total'?:string
   /**
    * time spent in refreshes
-   * @aliases rti,refreshTime
    */
   'refresh.time'?:string
   /**
