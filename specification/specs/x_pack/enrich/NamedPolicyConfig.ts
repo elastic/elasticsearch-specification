@@ -18,6 +18,6 @@
  */
 
 class NamedPolicyConfig {
-  geo_match: NamedPolicy
+  geo_match?: NamedPolicy
   match: NamedPolicy
 }
