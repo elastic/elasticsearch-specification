@@ -3753,7 +3753,7 @@ export interface ExplainLifecycleRequest extends RequestBase {
 }
 
 export interface ExplainLifecycleResponse extends ResponseBase {
-  indices: Record<string, LifecycleExplain>
+  indices: Record<IndexName, LifecycleExplain> | LifecycleExplainProject
 }
 
 export interface ExplainRequest extends RequestBase {
@@ -6321,6 +6321,15 @@ export interface LifecycleExplain {
   step: string
   step_info: Record<string, any>
   step_time_millis: DateString
+}
+
+export interface LifecycleExplainProject {
+  project: LifecycleExplainProjectSummary
+}
+
+export interface LifecycleExplainProjectSummary {
+  index: IndexName
+  managed: boolean
 }
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'

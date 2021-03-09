@@ -43849,21 +43849,33 @@
           "name": "indices",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+            "items": [
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "LifecycleExplain",
+                    "namespace": "x_pack.ilm.explain_lifecycle"
+                  }
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "LifecycleExplainProject",
+                  "namespace": "x_pack.ilm.explain_lifecycle"
+                }
               }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "LifecycleExplain",
-                "namespace": "x_pack.ilm.explain_lifecycle"
-              }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -66496,6 +66508,57 @@
             "kind": "instance_of",
             "type": {
               "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainProject",
+        "namespace": "x_pack.ilm.explain_lifecycle"
+      },
+      "properties": [
+        {
+          "name": "project",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainProjectSummary",
+              "namespace": "x_pack.ilm.explain_lifecycle"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainProjectSummary",
+        "namespace": "x_pack.ilm.explain_lifecycle"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "managed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
