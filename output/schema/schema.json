@@ -33529,11 +33529,33 @@
             "name": "mappings",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TypeMapping",
-                "namespace": "mapping"
-              }
+              "items": [
+                {
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  "kind": "dictionary_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TypeMapping",
+                      "namespace": "mapping"
+                    }
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TypeMapping",
+                    "namespace": "mapping"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -101560,7 +101582,7 @@
       "properties": [
         {
           "name": "compress",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101571,7 +101593,7 @@
         },
         {
           "name": "compress_threshold",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101593,7 +101615,7 @@
         },
         {
           "name": "excludes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -101607,7 +101629,7 @@
         },
         {
           "name": "includes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -111436,7 +111458,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -111485,6 +111507,27 @@
             "type": {
               "name": "SourceField",
               "namespace": "mapping.meta_fields.source"
+            }
+          }
+        },
+        {
+          "name": "runtime",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeField",
+                "namespace": "mapping.runtime_fields"
+              }
             }
           }
         }
