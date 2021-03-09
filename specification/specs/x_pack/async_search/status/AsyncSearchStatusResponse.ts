@@ -17,4 +17,7 @@
  * under the License.
  */
 
-class AsyncSearchStatusResponse<TDocument> extends AsyncSearchResponseBase {}
+class AsyncSearchStatusResponse<TDocument> extends AsyncSearchResponseBase {
+  _shards: ShardStatistics
+  completion_status: integer
+}

@@ -532,7 +532,7 @@ export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearch
 }
 
 export interface AsyncSearchResponseBase extends ResponseBase {
-  id: string
+  id: Id
   is_partial: boolean
   is_running: boolean
   expiration_time_in_millis: EpochMillis
@@ -544,6 +544,8 @@ export interface AsyncSearchStatusRequest extends RequestBase {
 }
 
 export interface AsyncSearchStatusResponse<TDocument = unknown> extends AsyncSearchResponseBase {
+  _shards: ShardStatistics
+  completion_status: integer
 }
 
 export interface AsyncSearchSubmitRequest extends RequestBase {
@@ -9671,11 +9673,11 @@ export interface ShardSequenceNumber {
 }
 
 export interface ShardStatistics {
-  failed: integer
-  successful: integer
-  total: integer
+  failed: uint
+  successful: uint
+  total: uint
   failures?: Array<ShardFailure>
-  skipped?: integer
+  skipped?: uint
 }
 
 export interface ShardStats {

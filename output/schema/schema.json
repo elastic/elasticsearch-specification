@@ -14360,7 +14360,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -14461,7 +14461,30 @@
         "name": "AsyncSearchStatusResponse",
         "namespace": "x_pack.async_search.status"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "_shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "common_options.hit"
+            }
+          }
+        },
+        {
+          "name": "completion_status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -97075,7 +97098,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "internal"
             }
           }
@@ -97086,7 +97109,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "internal"
             }
           }
@@ -97097,7 +97120,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "internal"
             }
           }
@@ -97122,7 +97145,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "internal"
             }
           }
