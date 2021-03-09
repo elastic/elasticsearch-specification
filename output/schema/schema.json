@@ -45257,7 +45257,7 @@
       "properties": [
         {
           "name": "except",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -61596,8 +61596,19 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "QueryContainer",
-              "namespace": "query_dsl.abstractions.container"
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "allow_restricted_indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }

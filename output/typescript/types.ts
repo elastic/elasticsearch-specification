@@ -3919,7 +3919,7 @@ export interface FieldNamesField {
 }
 
 export interface FieldSecurity {
-  except: Fields
+  except?: Fields
   grant: Fields
 }
 
@@ -5755,7 +5755,8 @@ export interface IndicesPrivileges {
   field_security?: FieldSecurity
   names: Indices
   privileges: Array<string>
-  query?: QueryContainer
+  query?: string
+  allow_restricted_indices: boolean
 }
 
 export interface IndicesRecoverySettings {
