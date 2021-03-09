@@ -13530,18 +13530,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "expiration",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -13552,7 +13552,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }

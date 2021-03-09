@@ -18,11 +18,9 @@
  */
 
 class ApiKeys {
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  creation: DateString
-  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  expiration: DateString
-  id: string
+  creation: long
+  expiration?: long
+  id: Id
   invalidated: boolean
   name: string
   realm: string

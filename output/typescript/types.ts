@@ -440,9 +440,9 @@ export interface ApiKeyRole {
 }
 
 export interface ApiKeys {
-  creation: DateString
-  expiration: DateString
-  id: string
+  creation: long
+  expiration?: long
+  id: Id
   invalidated: boolean
   name: string
   realm: string
