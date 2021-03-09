@@ -25,85 +25,85 @@ class CatTrainedModelsRecord {
 
     /**
    * who created the model
-   * @aliases "c", "createdBy"
+   * @aliases c, createdBy
    */
     'created_by'?: string
     /**
    * the estimated heap size to keep the model in memory
-   * @aliases "hs","modelHeapSize"
+   * @aliases hs,modelHeapSize
    */
     'heap_size'?: ByteSize
     /**
    * the estimated number of operations to use the model
-   * @aliases "o", "modelOperations"
+   * @aliases o, modelOperations
    */
     'operations'?: string
     /**
    * The license level of the model
-   * @aliases "l"
+   * @aliases l
    */
     'license'?: string
     /**
    * The time the model was created
-   * @aliases "ct"
+   * @aliases ct
    */
     'create_time'?: DateString
     /**
    * The version of Elasticsearch when the model was created
-   * @aliases "v"
+   * @aliases v
    */
     'version'?: string
     /**
    * The model description
-   * @aliases "d"
+   * @aliases d
    */
     'description'?: string
 
   // Trained Model Stats
     /**
    * The number of pipelines referencing the model
-   * @aliases "ip", "ingestPipelines"
+   * @aliases ip, ingestPipelines
    */
     'ingest.pipelines'?: string
     /**
    * The total number of docs processed by the model
-   * @aliases "ic", "ingestCount"
+   * @aliases ic, ingestCount
    */
     'ingest.count'?: string
     /**
    * The total time spent processing docs with this model
-   * @aliases "it", "ingestTime"
+   * @aliases it, ingestTime
    */
     'ingest.time'?: string
     /**
    * The total documents currently being handled by the model
-   * @aliases "icurr", "ingestCurrent"
+   * @aliases icurr, ingestCurrent
    */
     'ingest.current'?: string
     /**
    * The total count of failed ingest attempts with this model
-   * @aliases "if", "ingestFailed"
+   * @aliases if, ingestFailed
    */
     'ingest.failed'?: string
 
     /**
    * The data frame analytics config id that created the model (if still available)
-   * @aliases "dfid", "dataFrameAnalytics"
+   * @aliases dfid, dataFrameAnalytics
    */
     'data_frame.id'?: string
     /**
    * The time the data frame analytics config was created
-   * @aliases "dft", "dataFrameAnalyticsTime"
+   * @aliases dft, dataFrameAnalyticsTime
    */
     'data_frame.create_time'?: string
     /**
    * The source index used to train in the data frame analysis
-   * @aliases "dfsi", "dataFrameAnalyticsSrcIndex"
+   * @aliases dfsi, dataFrameAnalyticsSrcIndex
    */
     'data_frame.source_index'?: string
   /**
    * The analysis used by the data frame to build the model
-   * @aliases "dfa", "dataFrameAnalyticsAnalysis"
+   * @aliases dfa, dataFrameAnalyticsAnalysis
    */
   'data_frame.analysis'?: string
 }

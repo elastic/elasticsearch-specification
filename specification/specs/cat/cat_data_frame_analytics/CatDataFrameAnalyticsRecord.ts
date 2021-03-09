@@ -24,77 +24,77 @@ class CatDataFrameAnalyticsRecord {
   'id'?: string
     /**
    * analysis type
-   * @aliases "t"
+   * @aliases t
    */
   'type'?: string
     /**
    * job creation time
-   * @aliases "ct", "createTime"
+   * @aliases ct, createTime
    */
   'create_time'?: string
     /**
    * the version of Elasticsearch when the analytics was created
-   * @aliases "v"
+   * @aliases v
    */
   'version'?: string
     /**
    * source index
-   * @aliases "si", "sourceIndex"
+   * @aliases si, sourceIndex
    */
   'source_index'?: string
     /**
    * destination index
-   * @aliases "di", "destIndex"
+   * @aliases di, destIndex
    */
   'dest_index'?: string
     /**
    * description
-   * @aliases "d"
+   * @aliases d
    */
   'description'?: string
     /**
    * model memory limit
-   * @aliases "mml", "modelMemoryLimit"
+   * @aliases mml, modelMemoryLimit
    */
   'model_memory_limit'?: string
     /**
    * job state
-   * @aliases "s"
+   * @aliases s
    */
   'state'?: string
     /**
    * failure reason
-   * @aliases "fr", "failureReason"
+   * @aliases fr, failureReason
    */
   'failure_reason'?: string
     /**
    * progress
-   * @aliases "p"
+   * @aliases p
    */
   'progress'?: string
     /**
    * why the job is or is not assigned to a node
-   * @aliases "ae", "assignmentExplanation"
+   * @aliases ae, assignmentExplanation
    */
   'assignment_explanation'?: string
     /**
    * id of the assigned node
-   * @aliases "ni", "nodeId"
+   * @aliases ni, nodeId
    */
   'node.id'?: string
     /**
    * name of the assigned node
-   * @aliases "nn", "nodeName"
+   * @aliases nn, nodeName
    */
   'node.name'?: string
     /**
    * ephemeral id of the assigned node
-   * @aliases "ne", "nodeEphemeralId"
+   * @aliases ne, nodeEphemeralId
    */
   'node.ephemeral_id'?: string
     /**
    * network address of the assigned node
-   * @aliases "na", "nodeAddress"
+   * @aliases na, nodeAddress
    */
   'node.address'?: string
 }

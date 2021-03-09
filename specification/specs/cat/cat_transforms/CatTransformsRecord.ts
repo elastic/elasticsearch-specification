@@ -34,17 +34,17 @@ class CatTransformsRecord {
   'checkpoint'?: string
    /**
     * the number of documents read from source indices and processed
-    * @aliases docp", "documentsProcessed
+    * @aliases docp, documentsProcessed
     */
   'documents_processed'?: string
    /**
     * progress of the checkpoint
-    * @aliases cp", "checkpointProgress
+    * @aliases cp, checkpointProgress
     */
   'checkpoint_progress'?: string
    /**
     * last time transform searched for updates
-    * @aliases lst", "lastSearchTime
+    * @aliases lst, lastSearchTime
     */
   'last_search_time'?: string
    /**
@@ -54,7 +54,7 @@ class CatTransformsRecord {
   'changes_last_detection_time'?: string
    /**
     * transform creation time
-    * @aliases ct", "createTime
+    * @aliases ct, createTime
     */
   'create_time'?: string
    /**
@@ -64,12 +64,12 @@ class CatTransformsRecord {
   'version'?: string
    /**
     * source index
-    * @aliases si", "sourceIndex
+    * @aliases si, sourceIndex
     */
   'source_index'?: string
    /**
     * destination index
-    * @aliases di", "destIndex
+    * @aliases di, destIndex
     */
   'dest_index'?: string
    /**
@@ -104,7 +104,7 @@ class CatTransformsRecord {
   'docs_per_second'?: string
    /**
     * reason for the current state
-    * @aliases r", "reason
+    * @aliases r, reason
     */
   'reason'?: string
    /**
@@ -169,7 +169,7 @@ class CatTransformsRecord {
   'processing_time'?: string
    /**
     * exponential average checkpoint processing time (milliseconds)
-    * @aliases cdtea", "checkpointTimeExpAvg
+    * @aliases cdtea, checkpointTimeExpAvg
     */
   'checkpoint_duration_time_exp_avg'?: string
    /**
