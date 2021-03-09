@@ -34,7 +34,7 @@ interface CreateIndexRequest extends RequestBase {
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>
-    mappings?: TypeMapping
+    mappings?: Dictionary<string, TypeMapping> | TypeMapping
     settings?: Dictionary<string, UserDefinedValue>
   }
 }

@@ -2579,7 +2579,7 @@ export interface CreateIndexRequest extends RequestBase {
   wait_for_active_shards?: string
   body?: {
     aliases?: Record<IndexName, Alias>
-    mappings?: TypeMapping
+    mappings?: Record<string, TypeMapping> | TypeMapping
     settings?: Record<string, any>
   }
 }
@@ -10169,11 +10169,11 @@ export interface SourceExistsRequest extends RequestBase {
 export type SourceExistsResponse = boolean
 
 export interface SourceField {
-  compress: boolean
-  compress_threshold: string
+  compress?: boolean
+  compress_threshold?: string
   enabled: boolean
-  excludes: Array<string>
-  includes: Array<string>
+  excludes?: Array<string>
+  includes?: Array<string>
 }
 
 export interface SourceFilter {
@@ -11250,10 +11250,11 @@ export interface TypeMapping {
   index_field?: IndexField
   _meta?: Record<string, any>
   numeric_detection?: boolean
-  properties: Record<PropertyName, PropertyBase>
+  properties?: Record<PropertyName, PropertyBase>
   _routing?: RoutingField
   _size?: SizeField
   _source?: SourceField
+  runtime?: Record<string, RuntimeField>
 }
 
 export type TypeName = string
