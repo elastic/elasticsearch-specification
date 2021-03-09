@@ -19,5 +19,6 @@
 
 class ListTasksResponse extends ResponseBase {
   node_failures?: ErrorCause[]
-  nodes: Dictionary<string, TaskExecutingNode>
+  nodes?: Dictionary<string, TaskExecutingNode>
+  tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>
 }

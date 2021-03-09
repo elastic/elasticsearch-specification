@@ -6363,18 +6363,19 @@ export interface LinearInterpolationSmoothingModel {
 }
 
 export interface ListTasksRequest extends RequestBase {
-  actions?: Array<string>
+  actions?: string
   detailed?: boolean
   group_by?: GroupBy
   nodes?: Array<string>
-  parent_task_id?: string
+  parent_task_id?: Id
   timeout?: Time
   wait_for_completion?: boolean
 }
 
 export interface ListTasksResponse extends ResponseBase {
   node_failures?: Array<ErrorCause>
-  nodes: Record<string, TaskExecutingNode>
+  nodes?: Record<string, TaskExecutingNode>
+  tasks?: Record<string, TaskInfo> | Array<TaskInfo>
 }
 
 export interface LoadAverageStats {
@@ -10654,14 +10655,15 @@ export interface TaskInfo {
   action: string
   cancellable: boolean
   children?: Array<TaskInfo>
-  description: string
+  description?: string
   headers: Record<string, string>
   id: long
   node: string
   running_time_in_nanos: long
   start_time_in_millis: long
-  status: TaskStatus
+  status?: TaskStatus
   type: string
+  parent_task_id?: Id
 }
 
 export interface TaskRetries {
@@ -10672,14 +10674,14 @@ export interface TaskRetries {
 export interface TaskState {
   action: string
   cancellable: boolean
-  description: string
+  description?: string
   headers: Record<string, string>
   id: long
   node: string
   parent_task_id?: TaskId
   running_time_in_nanos: long
   start_time_in_millis: long
-  status: TaskStatus
+  status?: TaskStatus
   type: string
 }
 
