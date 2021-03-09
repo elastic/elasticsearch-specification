@@ -23,6 +23,8 @@ StopAnalyzer,analysis/analyzers/StopAnalyzer.ts
 WhitespaceAnalyzer,analysis/analyzers/WhitespaceAnalyzer.ts
 PatternReplaceCharFilter,analysis/char_filters/PatternReplaceCharFilter.ts
 PatternTokenizer,analysis/tokenizers/PatternTokenizer.ts
+TransformState,cat/cat_transforms/TransformState.ts
+TransformType,cat/cat_transforms/TransformType.ts
 StoreCopy,cluster/cluster_allocation_explain/StoreCopy.ts
 JvmPool,cluster/nodes_stats/JvmPool.ts
 LoadAverageStats,cluster/nodes_stats/LoadAverageStats.ts

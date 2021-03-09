@@ -81,7 +81,7 @@ class CatNodesRecord {
   'disk.used'?:ByteSize
   /**
    * available disk space
-   * @aliases d,da,diskAvail
+   * @aliases d,da,disk,diskAvail
    */
   'disk.avail'?:ByteSize
   /**

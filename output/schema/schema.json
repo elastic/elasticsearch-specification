@@ -18695,7 +18695,7 @@
         },
         {
           "aliases": [
-            "\"t\""
+            "t"
           ],
           "name": "type",
           "required": false,
@@ -18709,8 +18709,8 @@
         },
         {
           "aliases": [
-            "\"ct\"",
-            "\"createTime\""
+            "ct",
+            "createTime"
           ],
           "name": "create_time",
           "required": false,
@@ -18724,7 +18724,7 @@
         },
         {
           "aliases": [
-            "\"v\""
+            "v"
           ],
           "name": "version",
           "required": false,
@@ -18738,8 +18738,8 @@
         },
         {
           "aliases": [
-            "\"si\"",
-            "\"sourceIndex\""
+            "si",
+            "sourceIndex"
           ],
           "name": "source_index",
           "required": false,
@@ -18753,8 +18753,8 @@
         },
         {
           "aliases": [
-            "\"di\"",
-            "\"destIndex\""
+            "di",
+            "destIndex"
           ],
           "name": "dest_index",
           "required": false,
@@ -18768,7 +18768,7 @@
         },
         {
           "aliases": [
-            "\"d\""
+            "d"
           ],
           "name": "description",
           "required": false,
@@ -18782,8 +18782,8 @@
         },
         {
           "aliases": [
-            "\"mml\"",
-            "\"modelMemoryLimit\""
+            "mml",
+            "modelMemoryLimit"
           ],
           "name": "model_memory_limit",
           "required": false,
@@ -18797,7 +18797,7 @@
         },
         {
           "aliases": [
-            "\"s\""
+            "s"
           ],
           "name": "state",
           "required": false,
@@ -18811,8 +18811,8 @@
         },
         {
           "aliases": [
-            "\"fr\"",
-            "\"failureReason\""
+            "fr",
+            "failureReason"
           ],
           "name": "failure_reason",
           "required": false,
@@ -18826,7 +18826,7 @@
         },
         {
           "aliases": [
-            "\"p\""
+            "p"
           ],
           "name": "progress",
           "required": false,
@@ -18840,8 +18840,8 @@
         },
         {
           "aliases": [
-            "\"ae\"",
-            "\"assignmentExplanation\""
+            "ae",
+            "assignmentExplanation"
           ],
           "name": "assignment_explanation",
           "required": false,
@@ -18855,8 +18855,8 @@
         },
         {
           "aliases": [
-            "\"ni\"",
-            "\"nodeId\""
+            "ni",
+            "nodeId"
           ],
           "name": "node.id",
           "required": false,
@@ -18870,8 +18870,8 @@
         },
         {
           "aliases": [
-            "\"nn\"",
-            "\"nodeName\""
+            "nn",
+            "nodeName"
           ],
           "name": "node.name",
           "required": false,
@@ -18885,8 +18885,8 @@
         },
         {
           "aliases": [
-            "\"ne\"",
-            "\"nodeEphemeralId\""
+            "ne",
+            "nodeEphemeralId"
           ],
           "name": "node.ephemeral_id",
           "required": false,
@@ -18900,8 +18900,8 @@
         },
         {
           "aliases": [
-            "\"na\"",
-            "\"nodeAddress\""
+            "na",
+            "nodeAddress"
           ],
           "name": "node.address",
           "required": false,
@@ -19934,6 +19934,10 @@
           }
         },
         {
+          "aliases": [
+            "ss",
+            "storeSize"
+          ],
           "name": "store.size",
           "required": false,
           "type": {
@@ -19956,6 +19960,10 @@
           }
         },
         {
+          "aliases": [
+            "cs",
+            "completionSize"
+          ],
           "name": "completion.size",
           "required": false,
           "type": {
@@ -19978,6 +19986,10 @@
           }
         },
         {
+          "aliases": [
+            "fm",
+            "fielddataMemory"
+          ],
           "name": "fielddata.memory_size",
           "required": false,
           "type": {
@@ -20000,6 +20012,10 @@
           }
         },
         {
+          "aliases": [
+            "fe",
+            "fielddataEvictions"
+          ],
           "name": "fielddata.evictions",
           "required": false,
           "type": {
@@ -20022,6 +20038,10 @@
           }
         },
         {
+          "aliases": [
+            "qcm",
+            "queryCacheMemory"
+          ],
           "name": "query_cache.memory_size",
           "required": false,
           "type": {
@@ -20044,6 +20064,10 @@
           }
         },
         {
+          "aliases": [
+            "qce",
+            "queryCacheEvictions"
+          ],
           "name": "query_cache.evictions",
           "required": false,
           "type": {
@@ -20066,6 +20090,10 @@
           }
         },
         {
+          "aliases": [
+            "rcm",
+            "requestCacheMemory"
+          ],
           "name": "request_cache.memory_size",
           "required": false,
           "type": {
@@ -20088,6 +20116,10 @@
           }
         },
         {
+          "aliases": [
+            "rce",
+            "requestCacheEvictions"
+          ],
           "name": "request_cache.evictions",
           "required": false,
           "type": {
@@ -20110,6 +20142,10 @@
           }
         },
         {
+          "aliases": [
+            "rchc",
+            "requestCacheHitCount"
+          ],
           "name": "request_cache.hit_count",
           "required": false,
           "type": {
@@ -20132,6 +20168,10 @@
           }
         },
         {
+          "aliases": [
+            "rcmc",
+            "requestCacheMissCount"
+          ],
           "name": "request_cache.miss_count",
           "required": false,
           "type": {
@@ -20154,6 +20194,10 @@
           }
         },
         {
+          "aliases": [
+            "ft",
+            "flushTotal"
+          ],
           "name": "flush.total",
           "required": false,
           "type": {
@@ -20176,6 +20220,10 @@
           }
         },
         {
+          "aliases": [
+            "ftt",
+            "flushTotalTime"
+          ],
           "name": "flush.total_time",
           "required": false,
           "type": {
@@ -20198,6 +20246,10 @@
           }
         },
         {
+          "aliases": [
+            "gc",
+            "getCurrent"
+          ],
           "name": "get.current",
           "required": false,
           "type": {
@@ -20220,6 +20272,10 @@
           }
         },
         {
+          "aliases": [
+            "gti",
+            "getTime"
+          ],
           "name": "get.time",
           "required": false,
           "type": {
@@ -20242,6 +20298,10 @@
           }
         },
         {
+          "aliases": [
+            "gto",
+            "getTotal"
+          ],
           "name": "get.total",
           "required": false,
           "type": {
@@ -20264,6 +20324,10 @@
           }
         },
         {
+          "aliases": [
+            "geti",
+            "getExistsTime"
+          ],
           "name": "get.exists_time",
           "required": false,
           "type": {
@@ -20286,6 +20350,10 @@
           }
         },
         {
+          "aliases": [
+            "geto",
+            "getExistsTotal"
+          ],
           "name": "get.exists_total",
           "required": false,
           "type": {
@@ -20308,6 +20376,10 @@
           }
         },
         {
+          "aliases": [
+            "gmti",
+            "getMissingTime"
+          ],
           "name": "get.missing_time",
           "required": false,
           "type": {
@@ -20330,6 +20402,10 @@
           }
         },
         {
+          "aliases": [
+            "gmto",
+            "getMissingTotal"
+          ],
           "name": "get.missing_total",
           "required": false,
           "type": {
@@ -20352,6 +20428,10 @@
           }
         },
         {
+          "aliases": [
+            "idc",
+            "indexingDeleteCurrent"
+          ],
           "name": "indexing.delete_current",
           "required": false,
           "type": {
@@ -20374,6 +20454,10 @@
           }
         },
         {
+          "aliases": [
+            "idti",
+            "indexingDeleteTime"
+          ],
           "name": "indexing.delete_time",
           "required": false,
           "type": {
@@ -20396,6 +20480,10 @@
           }
         },
         {
+          "aliases": [
+            "idto",
+            "indexingDeleteTotal"
+          ],
           "name": "indexing.delete_total",
           "required": false,
           "type": {
@@ -20418,6 +20506,10 @@
           }
         },
         {
+          "aliases": [
+            "iic",
+            "indexingIndexCurrent"
+          ],
           "name": "indexing.index_current",
           "required": false,
           "type": {
@@ -20440,6 +20532,10 @@
           }
         },
         {
+          "aliases": [
+            "iiti",
+            "indexingIndexTime"
+          ],
           "name": "indexing.index_time",
           "required": false,
           "type": {
@@ -20462,6 +20558,10 @@
           }
         },
         {
+          "aliases": [
+            "iito",
+            "indexingIndexTotal"
+          ],
           "name": "indexing.index_total",
           "required": false,
           "type": {
@@ -20484,6 +20584,10 @@
           }
         },
         {
+          "aliases": [
+            "iif",
+            "indexingIndexFailed"
+          ],
           "name": "indexing.index_failed",
           "required": false,
           "type": {
@@ -20506,6 +20610,10 @@
           }
         },
         {
+          "aliases": [
+            "mc",
+            "mergesCurrent"
+          ],
           "name": "merges.current",
           "required": false,
           "type": {
@@ -20528,6 +20636,10 @@
           }
         },
         {
+          "aliases": [
+            "mcd",
+            "mergesCurrentDocs"
+          ],
           "name": "merges.current_docs",
           "required": false,
           "type": {
@@ -20550,6 +20662,10 @@
           }
         },
         {
+          "aliases": [
+            "mcs",
+            "mergesCurrentSize"
+          ],
           "name": "merges.current_size",
           "required": false,
           "type": {
@@ -20572,6 +20688,10 @@
           }
         },
         {
+          "aliases": [
+            "mt",
+            "mergesTotal"
+          ],
           "name": "merges.total",
           "required": false,
           "type": {
@@ -20594,6 +20714,10 @@
           }
         },
         {
+          "aliases": [
+            "mtd",
+            "mergesTotalDocs"
+          ],
           "name": "merges.total_docs",
           "required": false,
           "type": {
@@ -20616,6 +20740,10 @@
           }
         },
         {
+          "aliases": [
+            "mts",
+            "mergesTotalSize"
+          ],
           "name": "merges.total_size",
           "required": false,
           "type": {
@@ -20638,6 +20766,10 @@
           }
         },
         {
+          "aliases": [
+            "mtt",
+            "mergesTotalTime"
+          ],
           "name": "merges.total_time",
           "required": false,
           "type": {
@@ -20660,6 +20792,10 @@
           }
         },
         {
+          "aliases": [
+            "rto",
+            "refreshTotal"
+          ],
           "name": "refresh.total",
           "required": false,
           "type": {
@@ -20682,6 +20818,10 @@
           }
         },
         {
+          "aliases": [
+            "rti",
+            "refreshTime"
+          ],
           "name": "refresh.time",
           "required": false,
           "type": {
@@ -20704,6 +20844,9 @@
           }
         },
         {
+          "aliases": [
+            "reto"
+          ],
           "name": "refresh.external_total",
           "required": false,
           "type": {
@@ -20726,6 +20869,9 @@
           }
         },
         {
+          "aliases": [
+            "reti"
+          ],
           "name": "refresh.external_time",
           "required": false,
           "type": {
@@ -20748,6 +20894,10 @@
           }
         },
         {
+          "aliases": [
+            "rli",
+            "refreshListeners"
+          ],
           "name": "refresh.listeners",
           "required": false,
           "type": {
@@ -20770,6 +20920,10 @@
           }
         },
         {
+          "aliases": [
+            "sfc",
+            "searchFetchCurrent"
+          ],
           "name": "search.fetch_current",
           "required": false,
           "type": {
@@ -20792,6 +20946,10 @@
           }
         },
         {
+          "aliases": [
+            "sfti",
+            "searchFetchTime"
+          ],
           "name": "search.fetch_time",
           "required": false,
           "type": {
@@ -20814,6 +20972,10 @@
           }
         },
         {
+          "aliases": [
+            "sfto",
+            "searchFetchTotal"
+          ],
           "name": "search.fetch_total",
           "required": false,
           "type": {
@@ -20836,6 +20998,10 @@
           }
         },
         {
+          "aliases": [
+            "so",
+            "searchOpenContexts"
+          ],
           "name": "search.open_contexts",
           "required": false,
           "type": {
@@ -20858,6 +21024,10 @@
           }
         },
         {
+          "aliases": [
+            "sqc",
+            "searchQueryCurrent"
+          ],
           "name": "search.query_current",
           "required": false,
           "type": {
@@ -20880,6 +21050,10 @@
           }
         },
         {
+          "aliases": [
+            "sqti",
+            "searchQueryTime"
+          ],
           "name": "search.query_time",
           "required": false,
           "type": {
@@ -20902,6 +21076,10 @@
           }
         },
         {
+          "aliases": [
+            "sqto",
+            "searchQueryTotal"
+          ],
           "name": "search.query_total",
           "required": false,
           "type": {
@@ -20924,6 +21102,10 @@
           }
         },
         {
+          "aliases": [
+            "scc",
+            "searchScrollCurrent"
+          ],
           "name": "search.scroll_current",
           "required": false,
           "type": {
@@ -20946,6 +21128,10 @@
           }
         },
         {
+          "aliases": [
+            "scti",
+            "searchScrollTime"
+          ],
           "name": "search.scroll_time",
           "required": false,
           "type": {
@@ -20968,6 +21154,10 @@
           }
         },
         {
+          "aliases": [
+            "scto",
+            "searchScrollTotal"
+          ],
           "name": "search.scroll_total",
           "required": false,
           "type": {
@@ -20990,6 +21180,10 @@
           }
         },
         {
+          "aliases": [
+            "sc",
+            "segmentsCount"
+          ],
           "name": "segments.count",
           "required": false,
           "type": {
@@ -21012,6 +21206,10 @@
           }
         },
         {
+          "aliases": [
+            "sm",
+            "segmentsMemory"
+          ],
           "name": "segments.memory",
           "required": false,
           "type": {
@@ -21034,6 +21232,10 @@
           }
         },
         {
+          "aliases": [
+            "siwm",
+            "segmentsIndexWriterMemory"
+          ],
           "name": "segments.index_writer_memory",
           "required": false,
           "type": {
@@ -21056,6 +21258,10 @@
           }
         },
         {
+          "aliases": [
+            "svmm",
+            "segmentsVersionMapMemory"
+          ],
           "name": "segments.version_map_memory",
           "required": false,
           "type": {
@@ -21078,6 +21284,10 @@
           }
         },
         {
+          "aliases": [
+            "sfbm",
+            "fixedBitsetMemory"
+          ],
           "name": "segments.fixed_bitset_memory",
           "required": false,
           "type": {
@@ -21100,6 +21310,10 @@
           }
         },
         {
+          "aliases": [
+            "wc",
+            "warmerCurrent"
+          ],
           "name": "warmer.current",
           "required": false,
           "type": {
@@ -21122,6 +21336,10 @@
           }
         },
         {
+          "aliases": [
+            "wto",
+            "warmerTotal"
+          ],
           "name": "warmer.total",
           "required": false,
           "type": {
@@ -21144,6 +21362,10 @@
           }
         },
         {
+          "aliases": [
+            "wtt",
+            "warmerTotalTime"
+          ],
           "name": "warmer.total_time",
           "required": false,
           "type": {
@@ -21166,6 +21388,10 @@
           }
         },
         {
+          "aliases": [
+            "suc",
+            "suggestCurrent"
+          ],
           "name": "suggest.current",
           "required": false,
           "type": {
@@ -21188,6 +21414,10 @@
           }
         },
         {
+          "aliases": [
+            "suti",
+            "suggestTime"
+          ],
           "name": "suggest.time",
           "required": false,
           "type": {
@@ -21210,6 +21440,10 @@
           }
         },
         {
+          "aliases": [
+            "suto",
+            "suggestTotal"
+          ],
           "name": "suggest.total",
           "required": false,
           "type": {
@@ -21232,6 +21466,10 @@
           }
         },
         {
+          "aliases": [
+            "tm",
+            "memoryTotal"
+          ],
           "name": "memory.total",
           "required": false,
           "type": {
@@ -21268,6 +21506,10 @@
           }
         },
         {
+          "aliases": [
+            "bto",
+            "bulkTotalOperation"
+          ],
           "name": "bulk.total_operations",
           "required": false,
           "type": {
@@ -21290,6 +21532,10 @@
           }
         },
         {
+          "aliases": [
+            "btti",
+            "bulkTotalTime"
+          ],
           "name": "bulk.total_time",
           "required": false,
           "type": {
@@ -21312,6 +21558,10 @@
           }
         },
         {
+          "aliases": [
+            "btsi",
+            "bulkTotalSizeInBytes"
+          ],
           "name": "bulk.total_size_in_bytes",
           "required": false,
           "type": {
@@ -21334,6 +21584,10 @@
           }
         },
         {
+          "aliases": [
+            "bati",
+            "bulkAvgTime"
+          ],
           "name": "bulk.avg_time",
           "required": false,
           "type": {
@@ -21356,6 +21610,10 @@
           }
         },
         {
+          "aliases": [
+            "basi",
+            "bulkAvgSizeInBytes"
+          ],
           "name": "bulk.avg_size_in_bytes",
           "required": false,
           "type": {
@@ -22751,6 +23009,9 @@
       },
       "properties": [
         {
+          "aliases": [
+            "nodeId"
+          ],
           "name": "id",
           "required": false,
           "type": {
@@ -22762,6 +23023,9 @@
           }
         },
         {
+          "aliases": [
+            "p"
+          ],
           "name": "pid",
           "required": false,
           "type": {
@@ -22787,6 +23051,9 @@
           }
         },
         {
+          "aliases": [
+            "po"
+          ],
           "name": "port",
           "required": false,
           "type": {
@@ -22798,6 +23065,9 @@
           }
         },
         {
+          "aliases": [
+            "http"
+          ],
           "name": "http_address",
           "required": false,
           "type": {
@@ -22809,6 +23079,9 @@
           }
         },
         {
+          "aliases": [
+            "v"
+          ],
           "name": "version",
           "required": false,
           "type": {
@@ -22820,6 +23093,9 @@
           }
         },
         {
+          "aliases": [
+            "f"
+          ],
           "name": "flavor",
           "required": false,
           "type": {
@@ -22831,6 +23107,9 @@
           }
         },
         {
+          "aliases": [
+            "t"
+          ],
           "name": "type",
           "required": false,
           "type": {
@@ -22842,6 +23121,9 @@
           }
         },
         {
+          "aliases": [
+            "b"
+          ],
           "name": "build",
           "required": false,
           "type": {
@@ -22853,6 +23135,9 @@
           }
         },
         {
+          "aliases": [
+            "j"
+          ],
           "name": "jdk",
           "required": false,
           "type": {
@@ -22864,6 +23149,10 @@
           }
         },
         {
+          "aliases": [
+            "dt",
+            "diskTotal"
+          ],
           "name": "disk.total",
           "required": false,
           "type": {
@@ -22875,6 +23164,10 @@
           }
         },
         {
+          "aliases": [
+            "du",
+            "diskUsed"
+          ],
           "name": "disk.used",
           "required": false,
           "type": {
@@ -22886,6 +23179,12 @@
           }
         },
         {
+          "aliases": [
+            "d",
+            "da",
+            "disk",
+            "diskAvail"
+          ],
           "name": "disk.avail",
           "required": false,
           "type": {
@@ -22897,6 +23196,10 @@
           }
         },
         {
+          "aliases": [
+            "dup",
+            "diskUsedPercent"
+          ],
           "name": "disk.used_percent",
           "required": false,
           "type": {
@@ -22908,6 +23211,10 @@
           }
         },
         {
+          "aliases": [
+            "hc",
+            "heapCurrent"
+          ],
           "name": "heap.current",
           "required": false,
           "type": {
@@ -22934,6 +23241,10 @@
           }
         },
         {
+          "aliases": [
+            "hm",
+            "heapMax"
+          ],
           "name": "heap.max",
           "required": false,
           "type": {
@@ -22945,6 +23256,10 @@
           }
         },
         {
+          "aliases": [
+            "rc",
+            "ramCurrent"
+          ],
           "name": "ram.current",
           "required": false,
           "type": {
@@ -22971,6 +23286,10 @@
           }
         },
         {
+          "aliases": [
+            "rn",
+            "ramMax"
+          ],
           "name": "ram.max",
           "required": false,
           "type": {
@@ -22982,6 +23301,10 @@
           }
         },
         {
+          "aliases": [
+            "fdc",
+            "fileDescriptorCurrent"
+          ],
           "name": "file_desc.current",
           "required": false,
           "type": {
@@ -22993,6 +23316,10 @@
           }
         },
         {
+          "aliases": [
+            "fdp",
+            "fileDescriptorPercent"
+          ],
           "name": "file_desc.percent",
           "required": false,
           "type": {
@@ -23004,6 +23331,10 @@
           }
         },
         {
+          "aliases": [
+            "fdm",
+            "fileDescriptorMax"
+          ],
           "name": "file_desc.max",
           "required": false,
           "type": {
@@ -23062,6 +23393,9 @@
           }
         },
         {
+          "aliases": [
+            "u"
+          ],
           "name": "uptime",
           "required": false,
           "type": {
@@ -24120,11 +24454,23 @@
           "name": "full_id",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -24448,6 +24794,9 @@
           }
         },
         {
+          "aliases": [
+            "start"
+          ],
           "name": "start_time",
           "required": false,
           "type": {
@@ -24459,6 +24808,9 @@
           }
         },
         {
+          "aliases": [
+            "start_millis"
+          ],
           "name": "start_time_millis",
           "required": false,
           "type": {
@@ -24470,6 +24822,9 @@
           }
         },
         {
+          "aliases": [
+            "stop"
+          ],
           "name": "stop_time",
           "required": false,
           "type": {
@@ -24481,6 +24836,9 @@
           }
         },
         {
+          "aliases": [
+            "stop_millis"
+          ],
           "name": "stop_time_millis",
           "required": false,
           "type": {
@@ -25031,6 +25389,10 @@
       },
       "properties": [
         {
+          "aliases": [
+            "i",
+            "idx"
+          ],
           "name": "index",
           "required": false,
           "type": {
@@ -25042,6 +25404,10 @@
           }
         },
         {
+          "aliases": [
+            "s",
+            "sh"
+          ],
           "name": "shard",
           "required": false,
           "type": {
@@ -25091,6 +25457,9 @@
           }
         },
         {
+          "aliases": [
+            "seg"
+          ],
           "name": "segment",
           "required": false,
           "type": {
@@ -25102,6 +25471,10 @@
           }
         },
         {
+          "aliases": [
+            "g",
+            "gen"
+          ],
           "name": "generation",
           "required": false,
           "type": {
@@ -25113,6 +25486,10 @@
           }
         },
         {
+          "aliases": [
+            "dc",
+            "docsCount"
+          ],
           "name": "docs.count",
           "required": false,
           "type": {
@@ -25124,6 +25501,10 @@
           }
         },
         {
+          "aliases": [
+            "dd",
+            "docsDeleted"
+          ],
           "name": "docs.deleted",
           "required": false,
           "type": {
@@ -25135,6 +25516,9 @@
           }
         },
         {
+          "aliases": [
+            "si"
+          ],
           "name": "size",
           "required": false,
           "type": {
@@ -25146,6 +25530,10 @@
           }
         },
         {
+          "aliases": [
+            "sm",
+            "sizeMemory"
+          ],
           "name": "size.memory",
           "required": false,
           "type": {
@@ -25157,6 +25545,10 @@
           }
         },
         {
+          "aliases": [
+            "ic",
+            "isCommitted"
+          ],
           "name": "committed",
           "required": false,
           "type": {
@@ -25168,6 +25560,10 @@
           }
         },
         {
+          "aliases": [
+            "is",
+            "isSearchable"
+          ],
           "name": "searchable",
           "required": false,
           "type": {
@@ -25179,6 +25575,9 @@
           }
         },
         {
+          "aliases": [
+            "v"
+          ],
           "name": "version",
           "required": false,
           "type": {
@@ -25190,6 +25589,10 @@
           }
         },
         {
+          "aliases": [
+            "ico",
+            "isCompound"
+          ],
           "name": "compound",
           "required": false,
           "type": {
@@ -25284,6 +25687,10 @@
       },
       "properties": [
         {
+          "aliases": [
+            "i",
+            "idx"
+          ],
           "name": "index",
           "required": false,
           "type": {
@@ -25295,6 +25702,10 @@
           }
         },
         {
+          "aliases": [
+            "s",
+            "sh"
+          ],
           "name": "shard",
           "required": false,
           "type": {
@@ -25322,6 +25733,9 @@
           }
         },
         {
+          "aliases": [
+            "st"
+          ],
           "name": "state",
           "required": false,
           "type": {
@@ -25384,6 +25798,9 @@
           }
         },
         {
+          "aliases": [
+            "n"
+          ],
           "name": "node",
           "required": false,
           "type": {
@@ -26639,6 +27056,9 @@
           }
         },
         {
+          "aliases": [
+            "r"
+          ],
           "name": "reason",
           "required": false,
           "type": {
@@ -26841,6 +27261,9 @@
           }
         },
         {
+          "aliases": [
+            "time"
+          ],
           "name": "running_time",
           "required": false,
           "type": {
@@ -26852,6 +27275,9 @@
           }
         },
         {
+          "aliases": [
+            "ni"
+          ],
           "name": "node_id",
           "required": false,
           "type": {
@@ -26863,6 +27289,9 @@
           }
         },
         {
+          "aliases": [
+            "i"
+          ],
           "name": "ip",
           "required": false,
           "type": {
@@ -26874,6 +27303,9 @@
           }
         },
         {
+          "aliases": [
+            "po"
+          ],
           "name": "port",
           "required": false,
           "type": {
@@ -26885,6 +27317,9 @@
           }
         },
         {
+          "aliases": [
+            "n"
+          ],
           "name": "node",
           "required": false,
           "type": {
@@ -26896,6 +27331,9 @@
           }
         },
         {
+          "aliases": [
+            "v"
+          ],
           "name": "version",
           "required": false,
           "type": {
@@ -26907,6 +27345,9 @@
           }
         },
         {
+          "aliases": [
+            "x"
+          ],
           "name": "x_opaque_id",
           "required": false,
           "type": {
@@ -26918,6 +27359,9 @@
           }
         },
         {
+          "aliases": [
+            "desc"
+          ],
           "name": "description",
           "required": false,
           "type": {
@@ -27567,8 +28011,8 @@
         },
         {
           "aliases": [
-            "\"c\"",
-            "\"createdBy\""
+            "c",
+            "createdBy"
           ],
           "name": "created_by",
           "required": false,
@@ -27582,8 +28026,8 @@
         },
         {
           "aliases": [
-            "\"hs\"",
-            "\"modelHeapSize\""
+            "hs",
+            "modelHeapSize"
           ],
           "name": "heap_size",
           "required": false,
@@ -27597,8 +28041,8 @@
         },
         {
           "aliases": [
-            "\"o\"",
-            "\"modelOperations\""
+            "o",
+            "modelOperations"
           ],
           "name": "operations",
           "required": false,
@@ -27612,7 +28056,7 @@
         },
         {
           "aliases": [
-            "\"l\""
+            "l"
           ],
           "name": "license",
           "required": false,
@@ -27626,7 +28070,7 @@
         },
         {
           "aliases": [
-            "\"ct\""
+            "ct"
           ],
           "name": "create_time",
           "required": false,
@@ -27640,7 +28084,7 @@
         },
         {
           "aliases": [
-            "\"v\""
+            "v"
           ],
           "name": "version",
           "required": false,
@@ -27654,7 +28098,7 @@
         },
         {
           "aliases": [
-            "\"d\""
+            "d"
           ],
           "name": "description",
           "required": false,
@@ -27668,8 +28112,8 @@
         },
         {
           "aliases": [
-            "\"ip\"",
-            "\"ingestPipelines\""
+            "ip",
+            "ingestPipelines"
           ],
           "name": "ingest.pipelines",
           "required": false,
@@ -27683,8 +28127,8 @@
         },
         {
           "aliases": [
-            "\"ic\"",
-            "\"ingestCount\""
+            "ic",
+            "ingestCount"
           ],
           "name": "ingest.count",
           "required": false,
@@ -27698,8 +28142,8 @@
         },
         {
           "aliases": [
-            "\"it\"",
-            "\"ingestTime\""
+            "it",
+            "ingestTime"
           ],
           "name": "ingest.time",
           "required": false,
@@ -27713,8 +28157,8 @@
         },
         {
           "aliases": [
-            "\"icurr\"",
-            "\"ingestCurrent\""
+            "icurr",
+            "ingestCurrent"
           ],
           "name": "ingest.current",
           "required": false,
@@ -27728,8 +28172,8 @@
         },
         {
           "aliases": [
-            "\"if\"",
-            "\"ingestFailed\""
+            "if",
+            "ingestFailed"
           ],
           "name": "ingest.failed",
           "required": false,
@@ -27743,8 +28187,8 @@
         },
         {
           "aliases": [
-            "\"dfid\"",
-            "\"dataFrameAnalytics\""
+            "dfid",
+            "dataFrameAnalytics"
           ],
           "name": "data_frame.id",
           "required": false,
@@ -27758,8 +28202,8 @@
         },
         {
           "aliases": [
-            "\"dft\"",
-            "\"dataFrameAnalyticsTime\""
+            "dft",
+            "dataFrameAnalyticsTime"
           ],
           "name": "data_frame.create_time",
           "required": false,
@@ -27773,8 +28217,8 @@
         },
         {
           "aliases": [
-            "\"dfsi\"",
-            "\"dataFrameAnalyticsSrcIndex\""
+            "dfsi",
+            "dataFrameAnalyticsSrcIndex"
           ],
           "name": "data_frame.source_index",
           "required": false,
@@ -27788,8 +28232,8 @@
         },
         {
           "aliases": [
-            "\"dfa\"",
-            "\"dataFrameAnalyticsAnalysis\""
+            "dfa",
+            "dataFrameAnalyticsAnalysis"
           ],
           "name": "data_frame.analysis",
           "required": false,
@@ -27918,96 +28362,8 @@
       },
       "properties": [
         {
-          "name": "changes_last_detection_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "checkpoint_duration_time_exp_avg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "create_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "dest_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "documents_indexed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "documents_processed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "frequency",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28017,195 +28373,452 @@
           }
         },
         {
-          "name": "indexed_documents_exp_avg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "index_failure",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "index_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "index_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_page_search_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pages_processed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pipeline",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "processed_documents_exp_avg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "processing_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "search_failure",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "search_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "search_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "source_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "s"
+          ],
           "name": "state",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransformState",
-              "namespace": "cat.cat_transforms"
-            }
-          }
-        },
-        {
-          "name": "transform_type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformType",
-              "namespace": "cat.cat_transforms"
-            }
-          }
-        },
-        {
-          "name": "trigger_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
+              "name": "string",
               "namespace": "internal"
             }
           }
         },
         {
+          "aliases": [
+            "c"
+          ],
+          "name": "checkpoint",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "docp",
+            "documentsProcessed"
+          ],
+          "name": "documents_processed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "cp",
+            "checkpointProgress"
+          ],
+          "name": "checkpoint_progress",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "lst",
+            "lastSearchTime"
+          ],
+          "name": "last_search_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "cldt"
+          ],
+          "name": "changes_last_detection_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ct",
+            "createTime"
+          ],
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "v"
+          ],
           "name": "version",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "si",
+            "sourceIndex"
+          ],
+          "name": "source_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "di",
+            "destIndex"
+          ],
+          "name": "dest_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "p"
+          ],
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "d"
+          ],
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "tt"
+          ],
+          "name": "transform_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "f"
+          ],
+          "name": "frequency",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mpsz"
+          ],
+          "name": "max_page_search_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dps"
+          ],
+          "name": "docs_per_second",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "r"
+          ],
+          "name": "reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "st"
+          ],
+          "name": "search_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "sf"
+          ],
+          "name": "search_failure",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "stime"
+          ],
+          "name": "search_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "it"
+          ],
+          "name": "index_total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "if"
+          ],
+          "name": "index_failure",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "itime"
+          ],
+          "name": "index_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "doci"
+          ],
+          "name": "documents_indexed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dtime"
+          ],
+          "name": "delete_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "docd"
+          ],
+          "name": "documents_deleted",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "tc"
+          ],
+          "name": "trigger_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "pp"
+          ],
+          "name": "pages_processed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "pt"
+          ],
+          "name": "processing_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "cdtea",
+            "checkpointTimeExpAvg"
+          ],
+          "name": "checkpoint_duration_time_exp_avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "idea"
+          ],
+          "name": "indexed_documents_exp_avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "pdea"
+          ],
+          "name": "processed_documents_exp_avg",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

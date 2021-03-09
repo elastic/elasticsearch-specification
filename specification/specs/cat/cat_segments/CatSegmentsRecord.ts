@@ -25,7 +25,7 @@ class CatSegmentsRecord {
   'index'?:IndexName
   /**
    * shard name
-   * @aliases is
+   * @aliases s, sh
    */
   'shard'?:string
   /**

@@ -104,7 +104,7 @@ class CatTransformsRecord {
   'docs_per_second'?: string
    /**
     * reason for the current state
-    * @aliases r, reason
+    * @aliases r
     */
   'reason'?: string
    /**
