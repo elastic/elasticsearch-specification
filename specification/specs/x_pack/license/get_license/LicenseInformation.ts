@@ -19,16 +19,15 @@
 
 class LicenseInformation {
   expiry_date: DateString
-  expiry_date_in_millis: long
+  expiry_date_in_millis: EpochMillis
   issue_date: DateString
-  issue_date_in_millis: long
+  issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
   max_nodes: long
-  max_resource_units: integer
+  max_resource_units?: integer
   status: LicenseStatus
   type: LicenseType
-  uid: string
-  expirty_date_in_millis: long
-  start_date_in_millis: long
+  uid: Uuid
+  start_date_in_millis: EpochMillis
 }
