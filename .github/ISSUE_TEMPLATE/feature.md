@@ -1,13 +1,14 @@
 ---
 name: 🚀 Feature Proposal
 about: Submit a proposal for a new feature
+labels: enhancement
 ---
 
 **Please read this entire template before posting any issue. If you ignore these instructions
 and post an issue here that does not follow the instructions, your issue might be closed,
 locked, and assigned the `invalid` label.**
 
-It's not uncommon that somebody already opened an issue or in the best case it's already fixed but not merged. That's the reason why you should [search](https://github.com/elastic/elastic-client-generator/issues) at first before submitting a new one.
+It's not uncommon that somebody already opened an issue or in the best case it's already fixed but not merged. That's the reason why you should [search](https://github.com/elastic/elastic-client-generator/labels/enhancement) at first before submitting a new one.
 
 ## 🚀 Feature Proposal
 
