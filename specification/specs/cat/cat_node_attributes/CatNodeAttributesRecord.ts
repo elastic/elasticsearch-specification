@@ -21,35 +21,35 @@ class CatNodeAttributesRecord {
   /**
    * node name
    */
-  'node'?:string
+  'node'?: string
   /**
    * unique node id
    */
-  'id'?:string
+  'id'?: string
   /**
    * process id
    */
-  'pid'?:string
+  'pid'?: string
   /**
    * host name
    * @aliases h
    */
-  'host'?:string
+  'host'?: string
   /**
    * ip address
    * @aliases i
    */
-  'ip'?:string
+  'ip'?: string
   /**
    * bound transport port
    */
-  'port'?:string
+  'port'?: string
   /**
    * attribute description
    */
-  'attr'?:string
+  'attr'?: string
   /**
    * attribute value
    */
-  'value'?:string
+  'value'?: string
 }

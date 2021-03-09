@@ -22,25 +22,25 @@ class CatTemplatesRecord {
    * template name
    * @aliases n
    */
-  'name'?:string
+  'name'?: string
   /**
    * template index patterns
    * @aliases t
    */
-  'index_patterns'?:string
+  'index_patterns'?: string
   /**
    * template application order/priority number
    * @aliases o,p
    */
-  'order'?:string
+  'order'?: string
   /**
    * version
    * @aliases v
    */
-  'version'?:string
+  'version'?: string
   /**
    * component templates comprising index template
    * @aliases c
    */
-  'composed_of'?:string
+  'composed_of'?: string
 }

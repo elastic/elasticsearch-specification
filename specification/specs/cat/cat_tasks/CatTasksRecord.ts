@@ -21,81 +21,81 @@ class CatTasksRecord {
   /**
    * id of the task with the node
    */
-  'id'?:string
+  'id'?: string
   /**
    * task action
    * @aliases ac
    */
-  'action'?:string
+  'action'?: string
   /**
    * unique task id
    * @aliases ti
    */
-  'task_id'?:string
+  'task_id'?: string
   /**
    * parent task id
    * @aliases pti
    */
-  'parent_task_id'?:string
+  'parent_task_id'?: string
   /**
    * task type
    * @aliases ty
    */
-  'type'?:string
+  'type'?: string
   /**
    * start time in ms
    * @aliases start
    */
-  'start_time'?:string
+  'start_time'?: string
   /**
    * start time in HH:MM:SS
    * @aliases ts,hms,hhmmss
    */
-  'timestamp'?:string
+  'timestamp'?: string
   /**
    * running time ns
    */
-  'running_time_ns'?:string
+  'running_time_ns'?: string
   /**
    * running time
    * @aliases time
    */
-  'running_time'?:string
+  'running_time'?: string
 
   // Node info
   /**
    * unique node id
    * @aliases ni
    */
-  'node_id'?:string
+  'node_id'?: string
   /**
    * ip address
    * @aliases i
    */
-  'ip'?:string
+  'ip'?: string
   /**
    * bound transport port
    * @aliases po
    */
-  'port'?:string
+  'port'?: string
   /**
    * node name
    * @aliases n
    */
-  'node'?:string
+  'node'?: string
   /**
    * es version
    * @aliases v
    */
-  'version'?:string
+  'version'?: string
   /**
    * X-Opaque-ID header
    * @aliases x
    */
-  'x_opaque_id'?:string
+  'x_opaque_id'?: string
   /**
    * task action
    * @aliases desc
    */
-  'description'?:string
+  'description'?: string
 }

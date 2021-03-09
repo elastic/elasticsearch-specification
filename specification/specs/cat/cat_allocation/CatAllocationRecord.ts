@@ -18,7 +18,6 @@
  */
 
 class CatAllocationRecord {
-
   /**
    * number of shards on node
    * @aliases s

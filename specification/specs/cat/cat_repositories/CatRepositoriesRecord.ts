@@ -22,10 +22,10 @@ class CatRepositoriesRecord {
    * unique repository id
    * @aliases repoId
    */
-  'id'?:string
+  'id'?: string
   /**
    * repository type
    * @aliases t
    */
-  'type'?:string
+  'type'?: string
 }

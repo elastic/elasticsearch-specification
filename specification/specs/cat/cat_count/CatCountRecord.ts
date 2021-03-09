@@ -22,17 +22,15 @@ class CatCountRecord {
    * seconds since 1969-01-01 00:00:00
    * @aliases t,time
    */
-  'epoch'?:EpochMillis
+  'epoch'?: EpochMillis
   /**
    * time in HH:MM:SS
    * @aliases ts,hms,hhmmss
    */
-  'timestamp'?:DateString
+  'timestamp'?: DateString
   /**
    * the document count
    * @aliases dc,docs.count,docsCount
    */
-  'count'?:string
-
-
+  'count'?: string
 }

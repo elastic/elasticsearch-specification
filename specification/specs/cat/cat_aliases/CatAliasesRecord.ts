@@ -22,30 +22,30 @@ class CatAliasesRecord {
    * alias name
    * @aliases a
    */
-  'alias'?:string
+  'alias'?: string
   /**
    * index alias points to
    * @aliases i,idx
    */
-  'index'?:IndexName
+  'index'?: IndexName
   /**
    * filter
    * @aliases f,fi
    */
-  'filter'?:string
+  'filter'?: string
   /**
    * index routing
    * @aliases ri,routingIndex
    */
-  'routing.index'?:string
+  'routing.index'?: string
   /**
    * search routing
    * @aliases rs,routingSearch
    */
-  'routing.search'?:string
+  'routing.search'?: string
   /**
    * write index
    * @aliases w,isWriteIndex
    */
-  'is_write_index'?:string
+  'is_write_index'?: string
 }
