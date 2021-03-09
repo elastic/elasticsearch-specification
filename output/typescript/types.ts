@@ -5755,8 +5755,8 @@ export interface IndicesPrivileges {
   field_security?: FieldSecurity
   names: Indices
   privileges: Array<string>
-  query?: string
-  allow_restricted_indices: boolean
+  query?: QueryContainer
+  allow_restricted_indices?: boolean
 }
 
 export interface IndicesRecoverySettings {

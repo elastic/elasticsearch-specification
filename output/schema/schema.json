@@ -61596,14 +61596,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
             }
           }
         },
         {
           "name": "allow_restricted_indices",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
