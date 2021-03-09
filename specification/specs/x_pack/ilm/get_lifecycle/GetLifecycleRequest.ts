@@ -25,6 +25,7 @@
 interface GetLifecycleRequest extends RequestBase {
   path_parts?: {
     policy?: Name
+    policy_id?: Id
   }
   query_parameters?: {}
   body?: {}

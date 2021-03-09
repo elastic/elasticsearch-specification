@@ -18,5 +18,14 @@
  */
 
 class ExplainLifecycleResponse extends ResponseBase {
-  indices: Dictionary<string, LifecycleExplain>
+  indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject
+}
+
+class LifecycleExplainProject {
+  project: LifecycleExplainProjectSummary
+}
+
+class LifecycleExplainProjectSummary {
+  index: IndexName
+  managed: boolean
 }
