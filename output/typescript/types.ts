@@ -8686,7 +8686,7 @@ export interface SearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   total_hits_as_integer?: boolean
   typed_keys?: boolean
-  body?: {
+  body: {
     id?: string
     params?: Record<string, any>
     source?: string
