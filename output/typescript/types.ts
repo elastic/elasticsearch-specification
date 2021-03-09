@@ -2523,8 +2523,8 @@ export interface CreateApiKeyRequest extends RequestBase {
 
 export interface CreateApiKeyResponse extends ResponseBase {
   api_key: string
-  expiration: long
-  id: string
+  expiration?: long
+  id: Id
   name: string
 }
 
