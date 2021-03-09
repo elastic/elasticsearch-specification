@@ -15335,7 +15335,7 @@
         },
         {
           "name": "email",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -15346,7 +15346,7 @@
         },
         {
           "name": "full_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
