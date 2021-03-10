@@ -18123,7 +18123,7 @@
       "properties": [
         {
           "name": "node_failures",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {

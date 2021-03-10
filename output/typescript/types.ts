@@ -935,7 +935,7 @@ export interface CancelTasksRequest extends RequestBase {
 }
 
 export interface CancelTasksResponse extends ResponseBase {
-  node_failures: Array<ErrorCause>
+  node_failures?: Array<ErrorCause>
   nodes: Record<string, TaskExecutingNode>
 }
 
