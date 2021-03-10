@@ -19,11 +19,10 @@
 
 class TermVectorsResponse extends ResponseBase {
   found: boolean
-  _id: string
-  _index: string
-  /** @prop_serializer ResolvableReadOnlyDictionaryFormatter`2 */
-  term_vectors: Dictionary<Field, TermVector>
+  _id: Id
+  _index: IndexName
+  term_vectors?: Dictionary<Field, TermVector>
   took: long
-  _type: string
+  _type: Type
   _version: long
 }

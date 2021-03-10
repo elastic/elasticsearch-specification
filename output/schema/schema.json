@@ -110443,7 +110443,7 @@
       "properties": [
         {
           "name": "max_doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110454,7 +110454,7 @@
         },
         {
           "name": "max_num_terms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110465,7 +110465,7 @@
         },
         {
           "name": "max_term_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110476,7 +110476,7 @@
         },
         {
           "name": "max_word_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110487,7 +110487,7 @@
         },
         {
           "name": "min_doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110498,7 +110498,7 @@
         },
         {
           "name": "min_term_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110509,7 +110509,7 @@
         },
         {
           "name": "min_word_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110556,7 +110556,7 @@
       "properties": [
         {
           "name": "doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110567,7 +110567,7 @@
         },
         {
           "name": "score",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110603,7 +110603,7 @@
         },
         {
           "name": "ttf",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110876,7 +110876,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -110887,14 +110887,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "term_vectors",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -110930,7 +110930,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -112422,7 +112422,7 @@
       "properties": [
         {
           "name": "end_offset",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112433,7 +112433,7 @@
         },
         {
           "name": "payload",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112455,7 +112455,7 @@
         },
         {
           "name": "start_offset",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

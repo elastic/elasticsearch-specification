@@ -11789,23 +11789,23 @@ export interface TermVector {
 }
 
 export interface TermVectorFilter {
-  max_doc_freq: integer
-  max_num_terms: integer
-  max_term_freq: integer
-  max_word_length: integer
-  min_doc_freq: integer
-  min_term_freq: integer
-  min_word_length: integer
+  max_doc_freq?: integer
+  max_num_terms?: integer
+  max_term_freq?: integer
+  max_word_length?: integer
+  min_doc_freq?: integer
+  min_term_freq?: integer
+  min_word_length?: integer
 }
 
 export type TermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads'
 
 export interface TermVectorTerm {
-  doc_freq: integer
-  score: double
+  doc_freq?: integer
+  score?: double
   term_freq: integer
   tokens: Array<Token>
-  ttf: integer
+  ttf?: integer
 }
 
 export interface TermVectorsRequest<TDocument = unknown> extends RequestBase {
@@ -11832,11 +11832,11 @@ export interface TermVectorsRequest<TDocument = unknown> extends RequestBase {
 
 export interface TermVectorsResponse extends ResponseBase {
   found: boolean
-  _id: string
-  _index: string
-  term_vectors: Record<Field, TermVector>
+  _id: Id
+  _index: IndexName
+  term_vectors?: Record<Field, TermVector>
   took: long
-  _type: string
+  _type: Type
   _version: long
 }
 
@@ -12001,10 +12001,10 @@ export interface TimingStats {
 }
 
 export interface Token {
-  end_offset: integer
-  payload: string
+  end_offset?: integer
+  payload?: string
   position: integer
-  start_offset: integer
+  start_offset?: integer
 }
 
 export type TokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
