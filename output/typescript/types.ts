@@ -6809,7 +6809,7 @@ export interface IndicesShardStoresRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  status?: Array<string>
+  status?: string | Array<string>
 }
 
 export interface IndicesShardStoresResponse extends ResponseBase {
