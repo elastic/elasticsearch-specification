@@ -51884,7 +51884,10 @@
       "query": []
     },
     {
-      "inherits": [
+      "attachedBehaviors": [
+        "ArrayResponseBase"
+      ],
+      "behaviors": [
         {
           "generics": [
             {
@@ -51896,8 +51899,8 @@
             }
           ],
           "type": {
-            "name": "Array",
-            "namespace": ".Users.pkrauss.github.com.elastic-client-generator.specification.node_modules.typescript.lib"
+            "name": "ArrayResponseBase",
+            "namespace": "internal"
           }
         }
       ],

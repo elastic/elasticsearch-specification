@@ -17,4 +17,5 @@
  * under the License.
  */
 
-class GetCertificatesResponse extends Array<ClusterCertificateInformation> {}
+class GetCertificatesResponse
+  implements ArrayResponseBase<ClusterCertificateInformation> {}

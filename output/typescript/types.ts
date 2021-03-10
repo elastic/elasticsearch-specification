@@ -4677,8 +4677,7 @@ export interface GetCategoriesResponse extends ResponseBase {
 export interface GetCertificatesRequest extends RequestBase {
 }
 
-export interface GetCertificatesResponse extends Array<ClusterCertificateInformation> {
-}
+export type GetCertificatesResponse = ClusterCertificateInformation[]
 
 export interface GetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Id
