@@ -12101,19 +12101,19 @@ export interface Transform {
 
 export interface TransformCheckpointStats {
   checkpoint: long
-  checkpoint_progress: TransformProgress
-  timestamp: DateString
-  timestamp_millis: long
-  time_upper_bound: DateString
-  time_upper_bound_millis: long
+  checkpoint_progress?: TransformProgress
+  timestamp?: DateString
+  timestamp_millis: EpochMillis
+  time_upper_bound?: DateString
+  time_upper_bound_millis?: EpochMillis
 }
 
 export interface TransformCheckpointingInfo {
   changes_last_detected_at: long
-  changes_last_detected_at_date_time: DateString
+  changes_last_detected_at_date_time?: DateString
   last: TransformCheckpointStats
-  next: TransformCheckpointStats
-  operations_behind: long
+  next?: TransformCheckpointStats
+  operations_behind?: long
 }
 
 export interface TransformContainer {
@@ -12168,9 +12168,9 @@ export type TransformState = 'STARTED' | 'INDEXING' | 'ABORTING' | 'STOPPING' | 
 
 export interface TransformStats {
   checkpointing: TransformCheckpointingInfo
-  id: string
-  node: NodeAttributes
-  reason: string
+  id: Id
+  node?: NodeAttributes
+  reason?: string
   state: string
   stats: TransformIndexerStats
 }
