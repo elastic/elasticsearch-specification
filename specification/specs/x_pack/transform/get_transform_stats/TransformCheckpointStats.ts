@@ -19,9 +19,9 @@
 
 class TransformCheckpointStats {
   checkpoint: long
-  checkpoint_progress: TransformProgress
-  timestamp: DateString
-  timestamp_millis: long
-  time_upper_bound: DateString
-  time_upper_bound_millis: long
+  checkpoint_progress?: TransformProgress
+  timestamp?: DateString
+  timestamp_millis: EpochMillis
+  time_upper_bound?: DateString
+  time_upper_bound_millis?: EpochMillis
 }

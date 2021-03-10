@@ -110012,7 +110012,7 @@
         },
         {
           "name": "checkpoint_progress",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110023,7 +110023,7 @@
         },
         {
           "name": "timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110038,14 +110038,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "time_upper_bound",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110056,11 +110056,11 @@
         },
         {
           "name": "time_upper_bound_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -110087,7 +110087,7 @@
         },
         {
           "name": "changes_last_detected_at_date_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110109,7 +110109,7 @@
         },
         {
           "name": "next",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110120,7 +110120,7 @@
         },
         {
           "name": "operations_behind",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110586,14 +110586,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110604,7 +110604,7 @@
         },
         {
           "name": "reason",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
