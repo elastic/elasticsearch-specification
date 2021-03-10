@@ -25,7 +25,7 @@
 interface CatNodesRequest extends CatRequestBase {
   query_parameters?: {
     bytes?: Bytes
-    full_id?: boolean
+    full_id?: boolean | string
   }
   body?: {}
 }

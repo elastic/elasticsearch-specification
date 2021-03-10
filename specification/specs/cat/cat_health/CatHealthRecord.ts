@@ -18,18 +18,74 @@
  */
 
 class CatHealthRecord {
-  cluster: string
-  epoch?: EpochMillis
-  init: string
-  'node.data': string
-  'node.total': string
-  pending_tasks: string
-  pri: string
-  relo: string
-  shards: string
-  status: string
-  timestamp?: DateString
-  unassign: string
-  max_task_wait_time: string
-  active_shards_percent: string
+  /**
+   * seconds since 1969-01-01 00:00:00
+   * @aliases time
+   */
+  'epoch'?: EpochMillis
+  /**
+   * time in HH:MM:SS
+   * @aliases ts,hms,hhmmss
+   */
+  'timestamp'?: DateString
+  /**
+   * cluster name
+   * @aliases cl
+   */
+  'cluster'?: string
+  /**
+   * health status
+   * @aliases st
+   */
+  'status'?: string
+  /**
+   * total number of nodes
+   * @aliases nt,nodeTotal
+   */
+  'node.total'?: string
+  /**
+   * number of nodes that can store data
+   * @aliases nd,nodeData
+   */
+  'node.data'?: string
+  /**
+   * total number of shards
+   * @aliases t,sh,shards.total,shardsTotal
+   */
+  'shards'?: string
+  /**
+   * number of primary shards
+   * @aliases p,shards.primary,shardsPrimary
+   */
+  'pri'?: string
+  /**
+   * number of relocating nodes
+   * @aliases r,shards.relocating,shardsRelocating
+   */
+  'relo'?: string
+  /**
+   * number of initializing nodes
+   * @aliases i,shards.initializing,shardsInitializing
+   */
+  'init'?: string
+  /**
+   * number of unassigned shards
+   * @aliases u,shards.unassigned,shardsUnassigned
+   */
+  'unassign'?: string
+  /**
+   * number of pending tasks
+   * @aliases pt,pendingTasks
+   */
+  'pending_tasks'?: string
+  /**
+   * wait time of longest task pending
+   * @aliases mtwt,maxTaskWaitTime
+   */
+  'max_task_wait_time'?: string
+  /**
+   * active number of shards in percent
+   * @aliases asp,activeShardsPercent
+   */
+  'active_shards_percent'?: string
 }

@@ -101,6 +101,7 @@ type ActionIds = string // TODO: check if this should be an array of ActionId
 
 type Id = string
 type Ids = string | string[]
+type NodeId = string
 
 type IndexName = string
 type Indices = string | string[]

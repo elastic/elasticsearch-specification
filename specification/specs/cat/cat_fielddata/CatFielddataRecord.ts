@@ -18,13 +18,31 @@
  */
 
 class CatFielddataRecord {
-  /** @aliases f */
-  field?: string
-  host?: string
-  id?: string
-  ip?: string
-  /** @aliases n */
-  node?: string
-  /** @aliases s */
-  size?: string
+  /**
+   * node id
+   */
+  'id'?: string
+  /**
+   * host name
+   * @aliases h
+   */
+  'host'?: string
+  /**
+   * ip address
+   */
+  'ip'?: string
+  /**
+   * node name
+   * @aliases n
+   */
+  'node'?: string
+  /**
+   * field name
+   * @aliases f
+   */
+  'field'?: string
+  /**
+   * field data usage
+   */
+  'size'?: string
 }

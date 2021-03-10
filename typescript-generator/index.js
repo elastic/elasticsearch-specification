@@ -131,6 +131,11 @@ function createInterface (type) {
   let code = `export interface ${type.name.name}${buildGenerics(type)}${buildInherits(type)} {\n`
   for (const property of type.properties) {
     code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildType(property.type)}\n`
+    if (Array.isArray(property.aliases)) {
+      for (const alias of property.aliases) {
+        code += `  ${cleanPropertyName(alias)}${required(property)}: ${buildType(property.type)}\n`
+      }
+    }
   }
   code += '}\n'
   return code

@@ -18,12 +18,38 @@
  */
 
 class CatNodeAttributesRecord {
-  attr: string
-  host?: string
-  id?: Id
-  ip?: string
-  node?: string
-  port?: long
-  pid?: long
-  value: string
+  /**
+   * node name
+   */
+  'node'?: string
+  /**
+   * unique node id
+   */
+  'id'?: string
+  /**
+   * process id
+   */
+  'pid'?: string
+  /**
+   * host name
+   * @aliases h
+   */
+  'host'?: string
+  /**
+   * ip address
+   * @aliases i
+   */
+  'ip'?: string
+  /**
+   * bound transport port
+   */
+  'port'?: string
+  /**
+   * attribute description
+   */
+  'attr'?: string
+  /**
+   * attribute value
+   */
+  'value'?: string
 }

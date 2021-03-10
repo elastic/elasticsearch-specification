@@ -18,20 +18,77 @@
  */
 
 class CatSegmentsRecord {
-  committed?: string
-  compound?: string
+  /**
+   * index name
+   * @aliases i, idx
+   */
+  'index'?: IndexName
+  /**
+   * shard name
+   * @aliases s, sh
+   */
+  'shard'?: string
+  /**
+   * primary or replica
+   * @aliases p,pr,primaryOrReplica
+   */
+  'prirep'?: string
+  /**
+   * ip of node where it lives
+   */
+  'ip'?: string
+  /**
+   * unique id of node where it lives
+   */
+  'id'?: NodeId
+  /**
+   * segment name
+   * @aliases seg
+   */
+  'segment'?: string
+  /**
+   * segment generation
+   * @aliases g,gen
+   */
+  'generation'?: string
+  /**
+   * number of docs in segment
+   * @aliases dc,docsCount
+   */
   'docs.count'?: string
+  /**
+   * number of deleted docs in segment
+   * @aliases dd,docsDeleted
+   */
   'docs.deleted'?: string
-  generation?: string
-  id?: Id
-  index?: IndexName
-  i?: IndexName
-  ip?: string
-  prirep?: string
-  searchable?: string
-  segment?: string
-  shard?: string
-  size?: ByteSize
+  /**
+   * segment size in bytes
+   * @aliases si
+   */
+  'size'?: ByteSize
+  /**
+   * segment memory in bytes
+   * @aliases sm,sizeMemory
+   */
   'size.memory'?: ByteSize
-  version?: string
+  /**
+   * is segment committed
+   * @aliases ic,isCommitted
+   */
+  'committed'?: string
+  /**
+   * is segment searched
+   * @aliases is,isSearchable
+   */
+  'searchable'?: string
+  /**
+   * version
+   * @aliases v
+   */
+  'version'?: string
+  /**
+   * is segment compound
+   * @aliases ico,isCompound
+   */
+  'compound'?: string
 }

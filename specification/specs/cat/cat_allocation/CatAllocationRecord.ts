@@ -18,14 +18,48 @@
  */
 
 class CatAllocationRecord {
-  'disk.avail'?: ByteSize
-  'disk.indices'?: ByteSize
-  'disk.percent'?: Percentage
-  disk_ratio?: string
-  'disk.total'?: ByteSize
-  'disk.used'?: ByteSize
-  host?: string
-  ip?: string
-  node: string
+  /**
+   * number of shards on node
+   * @aliases s
+   */
   shards?: string
+  /**
+   * disk used by ES indices
+   * @aliases di,diskIndices
+   */
+  'disk.indices'?: ByteSize
+  /**
+   * disk used (total, not just ES)
+   * @aliases du,diskUsed
+   */
+  'disk.used'?: ByteSize
+  /**
+   * disk available
+   * @aliases da,diskAvail
+   */
+  'disk.avail'?: ByteSize
+  /**
+   * total capacity of all volumes
+   * @aliases dt,diskTotal
+   */
+  'disk.total'?: ByteSize
+  /**
+   * percent disk used
+   * @aliases dp,diskPercent
+   */
+  'disk.percent'?: Percentage
+  /**
+   * host of node
+   * @aliases h
+   */
+  host?: string
+  /**
+   * ip of node
+   */
+  ip?: string
+  /**
+   * name of node
+   * @aliases n
+   */
+  node?: string
 }

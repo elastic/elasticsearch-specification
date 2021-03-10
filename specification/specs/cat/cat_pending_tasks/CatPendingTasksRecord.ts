@@ -18,9 +18,24 @@
  */
 
 class CatPendingTasksRecord {
-  /** @prop_serializer NullableStringIntFormatter */
-  insertOrder: integer
-  priority: string
-  source: string
-  timeInQueue: string
+  /**
+   * task insertion order
+   * @aliases o
+   */
+  'insertOrder'?: string
+  /**
+   * how long task has been in queue
+   * @aliases t
+   */
+  'timeInQueue'?: string
+  /**
+   * task priority
+   * @aliases p
+   */
+  'priority'?: string
+  /**
+   * task source
+   * @aliases s
+   */
+  'source'?: string
 }
