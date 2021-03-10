@@ -106825,7 +106825,7 @@
       "properties": [
         {
           "name": "max_doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106836,7 +106836,7 @@
         },
         {
           "name": "max_num_terms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106847,7 +106847,7 @@
         },
         {
           "name": "max_term_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106858,7 +106858,7 @@
         },
         {
           "name": "max_word_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106869,7 +106869,7 @@
         },
         {
           "name": "min_doc_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106880,7 +106880,7 @@
         },
         {
           "name": "min_term_freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106891,7 +106891,7 @@
         },
         {
           "name": "min_word_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
