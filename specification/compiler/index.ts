@@ -18,19 +18,19 @@
  */
 
 import Compiler from './compiler'
-// import validateRestSpec from './steps/validate-rest-spec'
+import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
 import addDescription from './steps/add-description'
+import validateModel from './steps/validate-model'
 
 const compiler = new Compiler()
 
 compiler
   .generateModel()
   .step(addInfo)
-  // validateRestSpec is not enabled until the RequestBase
-  // properties gets moved to a custom behavior
-  // .step(validateRestSpec)
+  .step(validateRestSpec)
   .step(addDescription)
+  .step(validateModel)
   .write()
   .then(() => {
     console.log('Done')
