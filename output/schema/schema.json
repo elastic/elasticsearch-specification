@@ -117004,6 +117004,28 @@
                 "kind": "user_defined_value"
               }
             }
+          },
+          {
+            "name": "refresh_interval",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "name": "number_of_replicas",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
           }
         ]
       },

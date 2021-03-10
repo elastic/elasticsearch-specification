@@ -38,5 +38,7 @@ interface UpdateIndexSettingsRequest extends RequestBase {
   }
   body?: {
     index?: Dictionary<string, UserDefinedValue>
+    refresh_interval?: Time
+    number_of_replicas?: integer
   }
 }

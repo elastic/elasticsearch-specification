@@ -12477,6 +12477,8 @@ export interface UpdateIndexSettingsRequest extends RequestBase {
   timeout?: Time
   body: {
     index?: Record<string, any>
+    refresh_interval?: Time
+    number_of_replicas?: integer
   }
 }
 
