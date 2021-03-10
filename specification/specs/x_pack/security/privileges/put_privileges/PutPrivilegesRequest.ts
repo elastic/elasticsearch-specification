@@ -27,7 +27,5 @@ interface PutPrivilegesRequest extends RequestBase {
   query_parameters?: {
     refresh?: Refresh
   }
-  body?: {
-    applications?: Dictionary<string, Dictionary<string, PrivilegesActions>>
-  }
+  body?: Dictionary<string, Dictionary<string, PrivilegesActions>>
 }

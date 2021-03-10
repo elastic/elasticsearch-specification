@@ -18,6 +18,6 @@
  */
 
 class PutRoleMappingResponse extends ResponseBase {
-  created: boolean
+  created?: boolean
   role_mapping: PutRoleMappingStatus
 }

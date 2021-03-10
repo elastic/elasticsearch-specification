@@ -440,9 +440,9 @@ export interface ApiKeyRole {
 }
 
 export interface ApiKeys {
-  creation: DateString
-  expiration: DateString
-  id: string
+  creation: long
+  expiration?: long
+  id: Id
   invalidated: boolean
   name: string
   realm: string
@@ -626,8 +626,8 @@ export interface AuthenticateRequest extends RequestBase {
 
 export interface AuthenticateResponse extends ResponseBase {
   authentication_realm: RealmInfo
-  email: string
-  full_name: string
+  email?: string
+  full_name?: string
   lookup_realm: RealmInfo
   metadata: Record<string, any>
   roles: Array<string>
@@ -2844,6 +2844,7 @@ export interface ClearCachedRealmsRequest extends RequestBase {
 export interface ClearCachedRealmsResponse extends ResponseBase {
   cluster_name: string
   nodes: Record<string, SecurityNode>
+  _nodes: NodeStatistics
 }
 
 export interface ClearCachedRolesRequest extends RequestBase {
@@ -2853,6 +2854,7 @@ export interface ClearCachedRolesRequest extends RequestBase {
 export interface ClearCachedRolesResponse extends ResponseBase {
   cluster_name: string
   nodes: Record<string, SecurityNode>
+  _nodes: NodeStatistics
 }
 
 export interface ClearScrollRequest extends RequestBase {
@@ -3548,8 +3550,8 @@ export interface CreateApiKeyRequest extends RequestBase {
 
 export interface CreateApiKeyResponse extends ResponseBase {
   api_key: string
-  expiration: long
-  id: string
+  expiration?: long
+  id: Id
   name: string
 }
 
@@ -4944,7 +4946,7 @@ export interface FieldNamesField {
 }
 
 export interface FieldSecurity {
-  except: Fields
+  except?: Fields
   grant: Fields
 }
 
@@ -6781,6 +6783,7 @@ export interface IndicesPrivileges {
   names: Indices
   privileges: Array<string>
   query?: QueryContainer
+  allow_restricted_indices?: boolean
 }
 
 export interface IndicesRecoverySettings {
@@ -9033,9 +9036,7 @@ export interface PutPipelineResponse extends AcknowledgedResponseBase {
 
 export interface PutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
-  body: {
-    applications?: Record<string, Record<string, PrivilegesActions>>
-  }
+  body: Record<string, Record<string, PrivilegesActions>>
 }
 
 export interface PutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, PutPrivilegesStatus>> {
@@ -9058,7 +9059,7 @@ export interface PutRoleMappingRequest extends RequestBase {
 }
 
 export interface PutRoleMappingResponse extends ResponseBase {
-  created: boolean
+  created?: boolean
   role_mapping: PutRoleMappingStatus
 }
 

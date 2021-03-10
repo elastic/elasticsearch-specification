@@ -13530,18 +13530,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "expiration",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -13552,7 +13552,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -15335,7 +15335,7 @@
         },
         {
           "name": "email",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -15346,7 +15346,7 @@
         },
         {
           "name": "full_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30341,6 +30341,17 @@
               }
             }
           }
+        },
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
         }
       ]
     },
@@ -30421,6 +30432,17 @@
                 "name": "SecurityNode",
                 "namespace": "x_pack.security"
               }
+            }
+          }
+        },
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
             }
           }
         }
@@ -36659,7 +36681,7 @@
         },
         {
           "name": "expiration",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36674,7 +36696,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -48839,7 +48861,7 @@
       "properties": [
         {
           "name": "except",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -65180,6 +65202,17 @@
             "type": {
               "name": "QueryContainer",
               "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "allow_restricted_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -85258,40 +85291,34 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "applications",
-            "required": false,
+        "kind": "value",
+        "value": {
+          "key": {
+            "kind": "instance_of",
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "PrivilegesActions",
-                    "namespace": "x_pack.security.privileges.put_privileges"
-                  }
-                }
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          "kind": "dictionary_of",
+          "value": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PrivilegesActions",
+                "namespace": "x_pack.security.privileges.put_privileges"
               }
             }
           }
-        ]
+        }
       },
       "inherits": [
         {
@@ -85517,7 +85544,7 @@
       "properties": [
         {
           "name": "created",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
