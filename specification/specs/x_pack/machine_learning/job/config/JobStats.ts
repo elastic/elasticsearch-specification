@@ -24,7 +24,7 @@ class JobStats {
   job_id: string
   model_size_stats: ModelSizeStats
   node: DiscoveryNode
-  open_time: Time
+  open_time: DateString
   state: JobState
   timing_stats: TimingStats
   deleting?: boolean
