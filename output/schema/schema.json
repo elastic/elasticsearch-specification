@@ -65480,7 +65480,7 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "IndexName",
                 "namespace": "internal"
               }
             },
@@ -101160,7 +101160,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -101188,7 +101188,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }

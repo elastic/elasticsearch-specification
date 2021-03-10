@@ -6813,7 +6813,7 @@ export interface IndicesShardStoresRequest extends RequestBase {
 }
 
 export interface IndicesShardStoresResponse extends ResponseBase {
-  indices: Record<string, IndicesShardStores>
+  indices: Record<IndexName, IndicesShardStores>
 }
 
 export interface IndicesStats {
@@ -10748,9 +10748,9 @@ export interface ShardStatsStore {
 
 export interface ShardStore {
   allocation: ShardStoreAllocation
-  allocation_id: string
+  allocation_id: Id
   attributes: Record<string, any>
-  id: string
+  id: Id
   legacy_version: long
   name: string
   store_exception: ShardStoreException
