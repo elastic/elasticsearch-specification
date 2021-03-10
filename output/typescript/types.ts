@@ -8937,7 +8937,7 @@ export interface PutIndexTemplateRequest extends RequestBase {
   timeout?: Time
   body: {
     aliases?: Record<IndexName, Alias>
-    index_patterns?: Array<string>
+    index_patterns?: string | Array<string>
     mappings?: TypeMapping
     order?: integer
     settings?: Record<string, any>
