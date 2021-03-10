@@ -12376,10 +12376,13 @@
           "name": "influencers",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "internal"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
             }
           }
         },
@@ -64487,8 +64490,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
+              "name": "DateString",
+              "namespace": "internal"
             }
           }
         },
@@ -69112,7 +69115,7 @@
       "properties": [
         {
           "name": "terms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
