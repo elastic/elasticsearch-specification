@@ -93336,7 +93336,7 @@
       "properties": [
         {
           "name": "max_age",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93347,7 +93347,7 @@
         },
         {
           "name": "max_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93358,11 +93358,22 @@
         },
         {
           "name": "max_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_primary_shard_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -93459,8 +93470,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Alias",
-              "namespace": "indices.alias_management"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -93528,7 +93539,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "integer",
               "namespace": "internal"
             }
           }

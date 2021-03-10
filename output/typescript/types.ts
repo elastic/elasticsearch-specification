@@ -9885,19 +9885,20 @@ export interface RoleUsage {
 }
 
 export interface RolloverConditions {
-  max_age: Time
-  max_docs: long
-  max_size: string
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }
 
 export interface RolloverIndexRequest extends RequestBase {
-  alias: Alias
+  alias: string
   new_index?: IndexName
   dry_run?: boolean
   include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: integer
   body?: {
     aliases?: Record<IndexName, Alias>
     conditions?: RolloverConditions

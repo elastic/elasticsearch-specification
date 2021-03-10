@@ -24,7 +24,7 @@
  */
 interface RolloverIndexRequest extends RequestBase {
   path_parts?: {
-    alias: Alias
+    alias: string
     new_index?: IndexName
   }
   query_parameters?: {
@@ -32,7 +32,7 @@ interface RolloverIndexRequest extends RequestBase {
     include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
-    wait_for_active_shards?: string
+    wait_for_active_shards?: integer
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>
