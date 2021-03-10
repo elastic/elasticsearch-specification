@@ -18,7 +18,7 @@
  */
 
 class ModelPlotConfig {
-  terms: Field
+  terms?: Field
   enabled: boolean
   annotations_enabled?: boolean
 }

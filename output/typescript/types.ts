@@ -316,7 +316,7 @@ export interface AnalysisConfig {
   categorization_field_name?: Field
   categorization_filters?: Array<string>
   detectors: Array<Detector>
-  influencers: Fields
+  influencers: Array<Field>
   latency?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: PerPartitionCategorization
@@ -7121,7 +7121,7 @@ export interface JobStats {
   job_id: string
   model_size_stats: ModelSizeStats
   node: DiscoveryNode
-  open_time: Time
+  open_time: DateString
   state: JobState
   timing_stats: TimingStats
   deleting?: boolean
@@ -7633,7 +7633,7 @@ export type ModelCategorizationStatus = 'ok' | 'warn'
 export type ModelMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
 export interface ModelPlotConfig {
-  terms: Field
+  terms?: Field
   enabled: boolean
   annotations_enabled?: boolean
 }
