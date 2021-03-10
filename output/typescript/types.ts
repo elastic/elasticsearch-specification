@@ -929,13 +929,13 @@ export interface Calendar {
 
 export interface CancelTasksRequest extends RequestBase {
   task_id?: TaskId
-  actions?: Array<string>
+  actions?: string | Array<string>
   nodes?: Array<string>
   parent_task_id?: string
 }
 
 export interface CancelTasksResponse extends ResponseBase {
-  node_failures: Array<ErrorCause>
+  node_failures?: Array<ErrorCause>
   nodes: Record<string, TaskExecutingNode>
 }
 

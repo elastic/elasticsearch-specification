@@ -27,7 +27,7 @@ interface CancelTasksRequest extends RequestBase {
     task_id?: TaskId
   }
   query_parameters?: {
-    actions?: string[]
+    actions?: string | string[]
     nodes?: string[]
     parent_task_id?: string
   }
