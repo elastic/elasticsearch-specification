@@ -10816,6 +10816,7 @@ export interface ShrinkIndexRequest extends RequestBase {
 
 export interface ShrinkIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
+  index: IndexName
 }
 
 export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKey> {
