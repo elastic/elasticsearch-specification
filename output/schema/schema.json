@@ -15689,6 +15689,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "typed_keys",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ],
       "query": []

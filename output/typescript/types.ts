@@ -509,6 +509,7 @@ export interface AsyncSearchDocumentResponseBase<TDocument = unknown> extends As
 
 export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
+  typed_keys?: boolean
   body?: {
     keep_alive?: Time
     typed_keys?: boolean
