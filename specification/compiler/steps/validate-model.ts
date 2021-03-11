@@ -150,7 +150,6 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
     }
   }
 
-
   // Alright, let's go!
   apiModel.endpoints.forEach(validateEndpoint)
 
