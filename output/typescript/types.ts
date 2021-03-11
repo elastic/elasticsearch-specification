@@ -487,7 +487,8 @@ export interface AsyncSearch<TDocument = unknown> {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
-  _scroll_id?: string
+  pit_id?: Id
+  _scroll_id?: Id
   _shards: ShardStatistics
   suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
   terminated_early?: boolean
@@ -519,7 +520,7 @@ export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearch
 }
 
 export interface AsyncSearchResponseBase extends ResponseBase {
-  id: Id
+  id?: Id
   is_partial: boolean
   is_running: boolean
   expiration_time_in_millis: EpochMillis
