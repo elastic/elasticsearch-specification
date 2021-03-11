@@ -139,6 +139,11 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
   // Used both to avoid re-validating types we already visited and to find dangling types at the end.
   const typesSeen = new Set<string>()
 
+  // The ErrorResponse is not referenced anywhere, but we need to export it
+  // as any API could return it if an error happens. It's widely used in
+  // the type test as well.
+  validateTypeRef({ namespace: 'common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
+
   // Alright, let's go!
   apiModel.endpoints.forEach(validateEndpoint)
 

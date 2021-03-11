@@ -4465,6 +4465,11 @@ export interface ErrorCause {
   script_stack?: Array<string>
 }
 
+export interface ErrorResponse {
+  error: MainError
+  status: integer
+}
+
 export interface EstimateModelMemoryRequest extends RequestBase {
   body: {
     analysis_config?: AnalysisConfig

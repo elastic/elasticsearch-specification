@@ -4,6 +4,6 @@
     "specification": "/specification/specs",
     "generator:typescript": "/typescript-generator",
     "generator:java": "/java-generator",
-    "compiler": "/specification/src"
+    "compiler": "/specification/compiler"
   }
 }
