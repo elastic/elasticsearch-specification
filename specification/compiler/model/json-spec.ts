@@ -34,7 +34,7 @@ export interface JsonSpec {
   visibility: model.Visibility
   headers: {
     accept?: string[]
-    content_type: string[]
+    content_type?: string[]
   }
   url: {
     paths: Array<{
