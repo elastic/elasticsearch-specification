@@ -17,27 +17,27 @@
  * under the License.
  */
 
-import Compiler from './compiler'
-import validateRestSpec from './steps/validate-rest-spec'
-import addInfo from './steps/add-info'
-import addDescription from './steps/add-description'
-import validateModel from './steps/validate-model'
-import addContentType from './steps/add-content-type'
+import assert from 'assert'
+import * as model from '../model/metamodel'
+import { JsonSpec } from '../model/json-spec'
 
-const compiler = new Compiler()
+/**
+ * Adds the `accept` and `contentType` fields to every endpoint
+ * from the rest-api-spec if present.
+ */
+export default async function addContentType (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+  for (const endpoint of model.endpoints) {
+    const spec = jsonSpec.get(endpoint.name)
+    assert(spec, `Can't find the json spec for ${endpoint.name}`)
 
-compiler
-  .generateModel()
-  .step(addInfo)
-  .step(addContentType)
-  .step(validateRestSpec)
-  .step(addDescription)
-  .step(validateModel)
-  .write()
-  .then(() => {
-    console.log('Done')
-  })
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
-  })
+    if (Array.isArray(spec.headers.accept)) {
+      endpoint.accept = spec.headers.accept
+    }
+
+    if (Array.isArray(spec.headers.content_type)) {
+      endpoint.contentType = spec.headers.content_type
+    }
+  }
+
+  return model
+}
