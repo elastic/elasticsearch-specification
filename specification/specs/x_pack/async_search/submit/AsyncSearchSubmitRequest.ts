@@ -25,6 +25,10 @@
 interface AsyncSearchSubmitRequest extends RequestBase {
   path_parts?: {
     index?: Indices
+    batched_reduce_size?: long
+    wait_for_completion_timeout?: Time
+    keep_on_completion?: boolean
+    typed_keys?: boolean
   }
   query_parameters?: {}
   body?: {
@@ -44,7 +48,6 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     highlight?: Highlight
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
-    /** @prop_serializer IndicesBoostFormatter */
     indices_boost?: Dictionary<IndexName, double>
     keep_alive?: Time
     keep_on_completion?: boolean
@@ -54,6 +57,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     post_filter?: QueryContainer
     preference?: string
     profile?: boolean
+    pit?: PointInTimeReference
     query?: QueryContainer
     query_on_query_string?: string
     request_cache?: boolean

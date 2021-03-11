@@ -16171,6 +16171,17 @@
             }
           },
           {
+            "name": "pit",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PointInTimeReference",
+                "namespace": "search.search.point_in_time"
+              }
+            }
+          },
+          {
             "name": "query",
             "required": false,
             "type": {
@@ -16517,6 +16528,50 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "batched_reduce_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "keep_on_completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "typed_keys",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -78147,7 +78202,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }

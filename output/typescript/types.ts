@@ -538,6 +538,10 @@ export interface AsyncSearchStatusResponse<TDocument = unknown> extends AsyncSea
 
 export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
+  batched_reduce_size?: long
+  wait_for_completion_timeout?: Time
+  keep_on_completion?: boolean
+  typed_keys?: boolean
   body?: {
     aggs?: Record<string, AggregationContainer>
     allow_no_indices?: boolean
@@ -564,6 +568,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     post_filter?: QueryContainer
     preference?: string
     profile?: boolean
+    pit?: PointInTimeReference
     query?: QueryContainer
     query_on_query_string?: string
     request_cache?: boolean
@@ -8060,7 +8065,7 @@ export interface PluginStats {
 }
 
 export interface PointInTimeReference {
-  id: string
+  id: Id
   keep_alive?: Time
 }
 
