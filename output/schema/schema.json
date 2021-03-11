@@ -44890,6 +44890,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ErrorResponse",
+        "namespace": "common_abstractions.response"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MainError",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -115275,37 +115306,6 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ErrorResponse",
-        "namespace": "common_abstractions.response"
-      },
-      "properties": [
-        {
-          "name": "error",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MainError",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
               "namespace": "internal"
             }
           }
