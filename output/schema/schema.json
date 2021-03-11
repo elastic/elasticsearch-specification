@@ -107816,33 +107816,6 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "STARTED"
-        },
-        {
-          "name": "INDEXING"
-        },
-        {
-          "name": "ABORTING"
-        },
-        {
-          "name": "STOPPING"
-        },
-        {
-          "name": "STOPPED"
-        },
-        {
-          "name": "FAILED"
-        }
-      ],
-      "name": {
-        "name": "TransformState",
-        "namespace": "cat.cat_transforms"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "TransformStats",
@@ -107967,21 +107940,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "batch"
-        },
-        {
-          "name": "continuous"
-        }
-      ],
-      "name": {
-        "name": "TransformType",
-        "namespace": "cat.cat_transforms"
-      }
     },
     {
       "kind": "interface",
@@ -115317,6 +115275,37 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ErrorResponse",
+        "namespace": "common_abstractions.response"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MainError",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }

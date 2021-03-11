@@ -11423,8 +11423,6 @@ export interface TransformSource {
   query: QueryContainer
 }
 
-export type TransformState = 'STARTED' | 'INDEXING' | 'ABORTING' | 'STOPPING' | 'STOPPED' | 'FAILED'
-
 export interface TransformStats {
   checkpointing: TransformCheckpointingInfo
   id: Id
@@ -11442,8 +11440,6 @@ export interface TransformTimeSync {
   delay: Time
   field: Field
 }
-
-export type TransformType = 'batch' | 'continuous'
 
 export interface TransientMetadata {
   enabled: boolean
@@ -12236,5 +12232,10 @@ export interface CommonQueryParameters {
   human?: boolean
   pretty?: boolean
   source_query_string?: string
+}
+
+export interface ErrorResponse {
+  error: MainError
+  status: integer
 }
 
