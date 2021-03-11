@@ -8119,7 +8119,7 @@ export interface PostLicenseRequest extends RequestBase {
 }
 
 export interface PostLicenseResponse extends ResponseBase {
-  acknowledge: LicenseAcknowledgement
+  acknowledge?: LicenseAcknowledgement
   acknowledged: boolean
   license_status: LicenseStatus
 }
