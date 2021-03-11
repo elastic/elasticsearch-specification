@@ -31,6 +31,11 @@ export interface JsonSpec {
     description: string
   }
   stability: model.Stability
+  visibility: model.Visibility
+  headers: {
+    accept?: string[]
+    content_type?: string[]
+  }
   url: {
     paths: Array<{
       path: string

@@ -9,6 +9,9 @@
   },
   "endpoints": [
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
       "name": "async_search.delete",
@@ -33,6 +36,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the results of a previously submitted async search request given its ID.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
       "name": "async_search.get",
@@ -57,6 +63,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the status of a previously submitted async search request given its ID.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
       "name": "async_search.status",
@@ -81,6 +90,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Executes a search request asynchronously.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html",
       "name": "async_search.submit",
@@ -111,6 +126,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-delete-autoscaling-policy.html",
       "name": "autoscaling.delete_autoscaling_policy",
@@ -128,6 +146,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Gets the current autoscaling capacity based on the configured autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-capacity.html",
       "name": "autoscaling.get_autoscaling_capacity",
@@ -145,6 +166,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-policy.html",
       "name": "autoscaling.get_autoscaling_policy",
@@ -162,6 +186,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-put-autoscaling-policy.html",
       "name": "autoscaling.put_autoscaling_policy",
@@ -179,6 +209,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/x-ndjson"
+      ],
       "description": "Allows to perform multiple index/update/delete operations in a single request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-bulk.html",
       "name": "bulk",
@@ -218,6 +254,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Shows information about currently configured aliases to indices including filter and routing infos.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-alias.html",
       "name": "cat.aliases",
@@ -248,6 +288,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Provides a snapshot of how many shards are allocated to each data node and how much disk space they are using.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-allocation.html",
       "name": "cat.allocation",
@@ -278,6 +322,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Provides quick access to the document count of the entire cluster, or individual indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-count.html",
       "name": "cat.count",
@@ -308,6 +356,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Shows how much heap memory is currently being used by fielddata on every data node in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-fielddata.html",
       "name": "cat.fielddata",
@@ -338,6 +390,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns a concise representation of the cluster health.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-health.html",
       "name": "cat.health",
@@ -362,6 +418,9 @@
       ]
     },
     {
+      "accept": [
+        "text/plain"
+      ],
       "description": "Returns help for the Cat APIs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat.html",
       "name": "cat.help",
@@ -386,6 +445,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-indices.html",
       "name": "cat.indices",
@@ -416,6 +479,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about the master node.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-master.html",
       "name": "cat.master",
@@ -440,6 +507,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Gets configuration and usage information about data frame analytics jobs.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html",
       "name": "cat.ml_data_frame_analytics",
@@ -470,6 +541,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Gets configuration and usage information about datafeeds.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html",
       "name": "cat.ml_datafeeds",
@@ -500,6 +575,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Gets configuration and usage information about anomaly detection jobs.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html",
       "name": "cat.ml_jobs",
@@ -530,6 +609,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Gets configuration and usage information about inference trained models.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html",
       "name": "cat.ml_trained_models",
@@ -560,6 +643,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about custom node attributes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-nodeattrs.html",
       "name": "cat.nodeattrs",
@@ -584,6 +671,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns basic statistics about performance of cluster nodes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-nodes.html",
       "name": "cat.nodes",
@@ -608,6 +699,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns a concise representation of the cluster pending tasks.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-pending-tasks.html",
       "name": "cat.pending_tasks",
@@ -632,6 +727,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about installed plugins across nodes node.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-plugins.html",
       "name": "cat.plugins",
@@ -656,6 +755,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about index shard recoveries, both on-going completed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-recovery.html",
       "name": "cat.recovery",
@@ -686,6 +789,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about snapshot repositories registered in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-repositories.html",
       "name": "cat.repositories",
@@ -710,6 +817,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Provides low-level information about the segments in the shards of an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-segments.html",
       "name": "cat.segments",
@@ -740,6 +851,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Provides a detailed view of shard allocation on nodes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-shards.html",
       "name": "cat.shards",
@@ -770,6 +885,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns all snapshots in a specific repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-snapshots.html",
       "name": "cat.snapshots",
@@ -800,6 +919,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about the tasks currently executing on one or more nodes in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
       "name": "cat.tasks",
@@ -824,6 +947,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns information about existing templates.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-templates.html",
       "name": "cat.templates",
@@ -854,6 +981,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Returns cluster-wide thread pool statistics per node.\nBy default the active, queue and rejected statistics are returned for all thread pools.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-thread-pool.html",
       "name": "cat.thread_pool",
@@ -884,6 +1015,10 @@
       ]
     },
     {
+      "accept": [
+        "text/plain",
+        "application/json"
+      ],
       "description": "Gets configuration and usage information about transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html",
       "name": "cat.transforms",
@@ -914,6 +1049,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes auto-follow patterns.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-delete-auto-follow-pattern.html",
       "name": "ccr.delete_auto_follow_pattern",
@@ -938,6 +1076,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new follower index configured to follow the referenced leader index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-follow.html",
       "name": "ccr.follow",
@@ -962,6 +1106,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about all follower indices, including parameters and status for each follower index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-info.html",
       "name": "ccr.follow_info",
@@ -986,6 +1133,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves follower stats. return shard-level stats about the following tasks associated with each shard for the specified indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html",
       "name": "ccr.follow_stats",
@@ -1010,6 +1160,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Removes the follower retention leases from the leader.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-forget-follower.html",
       "name": "ccr.forget_follower",
@@ -1034,6 +1190,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Gets configured auto-follow patterns. Returns the specified auto-follow pattern collection.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-auto-follow-pattern.html",
       "name": "ccr.get_auto_follow_pattern",
@@ -1064,6 +1223,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Pauses an auto-follow pattern",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-pause-auto-follow-pattern.html",
       "name": "ccr.pause_auto_follow_pattern",
@@ -1088,6 +1250,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Pauses a follower index. The follower index will not fetch any additional operations from the leader index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-pause-follow.html",
       "name": "ccr.pause_follow",
@@ -1112,6 +1277,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new named collection of auto-follow patterns against a specified remote cluster. Newly created indices on the remote cluster matching any of the specified patterns will be automatically configured as follower indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-auto-follow-pattern.html",
       "name": "ccr.put_auto_follow_pattern",
@@ -1136,6 +1307,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Resumes an auto-follow pattern that has been paused",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-resume-auto-follow-pattern.html",
       "name": "ccr.resume_auto_follow_pattern",
@@ -1160,6 +1334,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Resumes a follower index that has been paused",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-resume-follow.html",
       "name": "ccr.resume_follow",
@@ -1184,6 +1364,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Gets all stats related to cross-cluster replication.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-stats.html",
       "name": "ccr.stats",
@@ -1208,6 +1391,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-unfollow.html",
       "name": "ccr.unfollow",
@@ -1232,6 +1418,13 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json",
+        "text/plain"
+      ],
       "description": "Explicitly clears the search context for a scroll.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-scroll-api.html",
       "name": "clear_scroll",
@@ -1266,6 +1459,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Close a point in time",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "close_point_in_time",
@@ -1283,6 +1479,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Provides explanations for shard allocations in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-allocation-explain.html",
       "name": "cluster.allocation_explain",
@@ -1308,6 +1510,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a component template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.delete_component_template",
@@ -1325,6 +1530,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Clears cluster voting config exclusions.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html",
       "name": "cluster.delete_voting_config_exclusions",
@@ -1342,6 +1550,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular component template exist",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.exists_component_template",
@@ -1359,6 +1570,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns one or more component templates",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.get_component_template",
@@ -1382,6 +1596,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns cluster settings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html",
       "name": "cluster.get_settings",
@@ -1406,6 +1623,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns basic information about the health of the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-health.html",
       "name": "cluster.health",
@@ -1436,6 +1656,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a list of any cluster-level changes (e.g. create index, update mapping,\nallocate or fail shard) which have not yet been executed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-pending.html",
       "name": "cluster.pending_tasks",
@@ -1460,6 +1683,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Updates the cluster voting config exclusions by node ids or node names.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html",
       "name": "cluster.post_voting_config_exclusions",
@@ -1477,6 +1703,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates a component template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.put_component_template",
@@ -1495,6 +1727,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates the cluster settings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html",
       "name": "cluster.put_settings",
@@ -1519,6 +1757,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the information about configured remote clusters.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-remote-info.html",
       "name": "cluster.remote_info",
@@ -1543,6 +1784,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to manually change the allocation of individual shards in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-reroute.html",
       "name": "cluster.reroute",
@@ -1567,6 +1814,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a comprehensive information about the state of the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-state.html",
       "name": "cluster.state",
@@ -1603,6 +1853,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns high-level overview of cluster statistics.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-stats.html",
       "name": "cluster.stats",
@@ -1633,6 +1886,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns number of documents matching a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html",
       "name": "count",
@@ -1676,6 +1935,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "create",
@@ -1712,6 +1977,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes the specified dangling index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
       "name": "dangling_indices.delete_dangling_index",
@@ -1729,6 +1997,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Imports the specified dangling index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
       "name": "dangling_indices.import_dangling_index",
@@ -1746,6 +2017,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns all dangling indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
       "name": "dangling_indices.list_dangling_indices",
@@ -1763,6 +2037,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
       "name": "data_frame_transform_deprecated.delete_transform",
@@ -1784,6 +2061,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html",
       "name": "data_frame_transform_deprecated.get_transform",
@@ -1815,6 +2095,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html",
       "name": "data_frame_transform_deprecated.get_transform_stats",
@@ -1836,6 +2119,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Previews a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
       "name": "data_frame_transform_deprecated.preview_transform",
@@ -1857,6 +2146,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
       "name": "data_frame_transform_deprecated.put_transform",
@@ -1878,6 +2173,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Starts one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
       "name": "data_frame_transform_deprecated.start_transform",
@@ -1899,6 +2197,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Stops one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html",
       "name": "data_frame_transform_deprecated.stop_transform",
@@ -1920,6 +2221,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates certain properties of a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
       "name": "data_frame_transform_deprecated.update_transform",
@@ -1941,6 +2248,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes a document from the index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
       "name": "delete",
@@ -1975,6 +2285,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Deletes documents matching the provided query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html",
       "name": "delete_by_query",
@@ -2009,6 +2325,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Changes the number of requests per second for a particular Delete By Query operation.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html",
       "name": "delete_by_query_rethrottle",
@@ -2033,6 +2352,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a script.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "delete_script",
@@ -2057,6 +2379,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing enrich policy and its enrich index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html",
       "name": "enrich.delete_policy",
@@ -2081,6 +2406,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Creates the enrich index for an existing enrich policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html",
       "name": "enrich.execute_policy",
@@ -2105,6 +2433,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Gets information about an enrich policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
@@ -2135,6 +2466,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new enrich policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
@@ -2159,6 +2496,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Gets enrich coordinator statistics and information about enrich policies that are currently executing.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html",
       "name": "enrich.stats",
@@ -2183,6 +2523,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.delete",
@@ -2200,6 +2543,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns async results from previously executed Event Query Language (EQL) search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.get",
@@ -2217,6 +2563,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the status of a previously submitted async or stored Event Query Language (EQL) search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.get_status",
@@ -2234,6 +2583,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns results matching a query expressed in Event Query Language (EQL)",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.search",
@@ -2252,6 +2607,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a document exists in an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists",
@@ -2286,6 +2644,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a document source exists in an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists_source",
@@ -2320,6 +2681,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns information about why a specific matches (or doesn't match) a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
       "name": "explain",
@@ -2356,6 +2723,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a list of features which can be snapshotted in this cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "features.get_features",
@@ -2373,6 +2743,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the information about the capabilities of fields among multiple indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
@@ -2405,6 +2778,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get",
@@ -2439,6 +2815,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a script.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "get_script",
@@ -2463,6 +2842,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns all script contexts.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-contexts.html",
       "name": "get_script_context",
@@ -2480,6 +2862,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns available script types, languages and contexts",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "get_script_languages",
@@ -2497,6 +2882,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the source of a document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get_source",
@@ -2531,6 +2919,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Explore extracted and summarized information about the documents and terms in an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html",
       "name": "graph.explore",
@@ -2567,6 +2961,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes the specified lifecycle policy definition. A currently used policy cannot be deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-delete-lifecycle.html",
       "name": "ilm.delete_lifecycle",
@@ -2591,6 +2988,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about the index's current lifecycle state, such as the currently executing phase, action, and step.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-explain-lifecycle.html",
       "name": "ilm.explain_lifecycle",
@@ -2615,6 +3015,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the specified policy definition. Includes the policy version and last modified date.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-get-lifecycle.html",
       "name": "ilm.get_lifecycle",
@@ -2645,6 +3048,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the current index lifecycle management (ILM) status.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-get-status.html",
       "name": "ilm.get_status",
@@ -2669,6 +3075,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Manually moves an index into the specified step and executes that step.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-move-to-step.html",
       "name": "ilm.move_to_step",
@@ -2693,6 +3105,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a lifecycle policy",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html",
       "name": "ilm.put_lifecycle",
@@ -2717,6 +3135,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes the assigned lifecycle policy and stops managing the specified index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-remove-policy.html",
       "name": "ilm.remove_policy",
@@ -2741,6 +3162,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retries executing the policy for an index that is in the ERROR step.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-retry-policy.html",
       "name": "ilm.retry",
@@ -2765,6 +3189,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Start the index lifecycle management (ILM) plugin.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html",
       "name": "ilm.start",
@@ -2789,6 +3216,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Halts all lifecycle management operations and stops the index lifecycle management (ILM) plugin",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-stop.html",
       "name": "ilm.stop",
@@ -2813,6 +3243,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates a document in an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "index",
@@ -2865,6 +3301,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Adds a block to an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html",
       "name": "indices.add_block",
@@ -2882,6 +3321,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-analyze.html",
       "name": "indices.analyze",
@@ -2914,6 +3359,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Clears all or specific caches for one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-clearcache.html",
       "name": "indices.clear_cache",
@@ -2944,6 +3392,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Clones an index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-clone-index.html",
       "name": "indices.clone",
@@ -2969,6 +3423,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Closes an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
       "name": "indices.close",
@@ -2993,6 +3450,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates an index with optional settings and mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-create-index.html",
       "name": "indices.create",
@@ -3017,6 +3480,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Creates a data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.create_data_stream",
@@ -3034,6 +3500,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Provides statistics on operations happening in a data stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.data_streams_stats",
@@ -3057,6 +3526,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
       "name": "indices.delete",
@@ -3081,6 +3553,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.delete_alias",
@@ -3111,6 +3586,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a data stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
@@ -3128,6 +3606,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.delete_index_template",
@@ -3145,6 +3626,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.delete_template",
@@ -3169,6 +3653,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular index exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
       "name": "indices.exists",
@@ -3193,6 +3680,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular alias exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.exists_alias",
@@ -3223,6 +3713,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular index template exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.exists_index_template",
@@ -3240,6 +3733,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular index template exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.exists_template",
@@ -3264,6 +3760,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular document type exists. (DEPRECATED)",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-types-exists.html",
       "name": "indices.exists_type",
@@ -3288,6 +3787,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Performs the flush operation on one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-flush.html",
       "name": "indices.flush",
@@ -3320,6 +3822,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Performs a synced flush operation on one or more indices. Synced flush is deprecated and will be removed in 8.0. Use flush instead",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-synced-flush-api.html",
       "name": "indices.flush_synced",
@@ -3360,6 +3865,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Performs the force merge operation on one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html",
       "name": "indices.forcemerge",
@@ -3390,6 +3898,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Freezes an index. A frozen index has almost no overhead on the cluster (except for maintaining its metadata in memory) and is read-only.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/freeze-index-api.html",
       "name": "indices.freeze",
@@ -3414,6 +3925,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html",
       "name": "indices.get",
@@ -3438,6 +3952,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.get_alias",
@@ -3480,6 +3997,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.get_data_stream",
@@ -3503,6 +4023,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns mapping for one or more fields.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-field-mapping.html",
       "name": "indices.get_field_mapping",
@@ -3553,6 +4076,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.get_index_template",
@@ -3576,6 +4102,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns mappings for one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
       "name": "indices.get_mapping",
@@ -3626,6 +4155,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns settings for one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html",
       "name": "indices.get_settings",
@@ -3668,6 +4200,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.get_template",
@@ -3698,6 +4233,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "DEPRECATED Returns a progress status of current upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.get_upgrade",
@@ -3729,6 +4267,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Migrates an alias to a data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.migrate_to_data_stream",
@@ -3746,6 +4287,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Opens an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
       "name": "indices.open",
@@ -3770,6 +4314,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Promotes a data stream from a replicated data stream managed by CCR to a regular data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.promote_data_stream",
@@ -3787,6 +4334,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.put_alias",
@@ -3819,6 +4372,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.put_index_template",
@@ -3837,6 +4396,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates the index mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html",
       "name": "indices.put_mapping",
@@ -3939,6 +4504,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates the index settings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
       "name": "indices.put_settings",
@@ -3969,6 +4540,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.put_template",
@@ -3994,6 +4571,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about ongoing index shard recoveries.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-recovery.html",
       "name": "indices.recovery",
@@ -4024,6 +4604,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Performs the refresh operation in one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
       "name": "indices.refresh",
@@ -4056,6 +4639,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Reloads an index's search analyzers and their resources.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-reload-analyzers.html",
       "name": "indices.reload_search_analyzers",
@@ -4081,6 +4667,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about any matching indices, aliases, and data streams",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html",
       "name": "indices.resolve_index",
@@ -4098,6 +4687,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-rollover-index.html",
       "name": "indices.rollover",
@@ -4128,6 +4723,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Provides low-level information about segments in a Lucene index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-segments.html",
       "name": "indices.segments",
@@ -4158,6 +4756,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Provides store information for shard copies of indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-shards-stores.html",
       "name": "indices.shard_stores",
@@ -4188,6 +4789,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allow to shrink an existing index into a new index with fewer primary shards.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-shrink-index.html",
       "name": "indices.shrink",
@@ -4213,6 +4820,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Simulate matching the given index name against the index templates in the system",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.simulate_index_template",
@@ -4230,6 +4843,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Simulate resolving the given template name or body",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.simulate_template",
@@ -4253,6 +4872,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows you to split an existing index into a new index with more primary shards.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-split-index.html",
       "name": "indices.split",
@@ -4278,6 +4903,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Provides statistics on operations happening in an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-stats.html",
       "name": "indices.stats",
@@ -4320,6 +4948,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Unfreezes an index. When a frozen index is unfrozen, the index goes through the normal recovery process and becomes writeable again.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/unfreeze-index-api.html",
       "name": "indices.unfreeze",
@@ -4344,6 +4975,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates index aliases.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.update_aliases",
@@ -4368,6 +5005,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "DEPRECATED Upgrades to the current version of Lucene.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.upgrade",
@@ -4399,6 +5039,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows a user to validate a potentially expensive query without executing it.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html",
       "name": "indices.validate_query",
@@ -4442,6 +5088,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns basic information about the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "info",
@@ -4466,6 +5115,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html",
       "name": "ingest.delete_pipeline",
@@ -4490,6 +5142,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html",
       "name": "ingest.get_pipeline",
@@ -4520,6 +5175,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a list of the built-in patterns.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/grok-processor.html#grok-processor-rest-get",
       "name": "ingest.processor_grok",
@@ -4544,6 +5202,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates a pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-pipeline-api.html",
       "name": "ingest.put_pipeline",
@@ -4568,6 +5232,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to simulate a pipeline with example documents.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html",
       "name": "ingest.simulate",
@@ -4600,6 +5270,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes licensing information for the cluster",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-license.html",
       "name": "license.delete",
@@ -4624,6 +5297,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves licensing information for the cluster",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html",
       "name": "license.get",
@@ -4648,6 +5324,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about the status of the basic license.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-basic-status.html",
       "name": "license.get_basic_status",
@@ -4672,6 +5351,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about the status of the trial license.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-trial-status.html",
       "name": "license.get_trial_status",
@@ -4696,6 +5378,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates the license for the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/update-license.html",
       "name": "license.post",
@@ -4721,6 +5409,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Starts an indefinite basic license.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-basic.html",
       "name": "license.post_start_basic",
@@ -4745,6 +5436,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "starts a limited time trial license.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trial.html",
       "name": "license.post_start_trial",
@@ -4769,6 +5463,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes Logstash Pipelines used by Central Management",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
       "name": "logstash.delete_pipeline",
@@ -4786,6 +5483,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves Logstash Pipelines used by Central Management",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
       "name": "logstash.get_pipeline",
@@ -4803,6 +5503,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Adds and updates Logstash Pipelines used for Central Management",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
       "name": "logstash.put_pipeline",
@@ -4820,6 +5526,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to get multiple documents in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html",
       "name": "mget",
@@ -4863,6 +5575,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/migration-api-deprecation.html",
       "name": "migration.deprecations",
@@ -4893,6 +5608,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html",
       "name": "ml.close_job",
@@ -4917,6 +5638,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar.html",
       "name": "ml.delete_calendar",
@@ -4941,6 +5665,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes scheduled events from a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-event.html",
       "name": "ml.delete_calendar_event",
@@ -4965,6 +5692,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes anomaly detection jobs from a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-job.html",
       "name": "ml.delete_calendar_job",
@@ -4989,6 +5719,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html",
       "name": "ml.delete_data_frame_analytics",
@@ -5006,6 +5739,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html",
       "name": "ml.delete_datafeed",
@@ -5030,6 +5766,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes expired and unused machine learning data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-expired-data.html",
       "name": "ml.delete_expired_data",
@@ -5060,6 +5799,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a filter.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html",
       "name": "ml.delete_filter",
@@ -5084,6 +5826,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes forecasts from a machine learning job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-forecast.html",
       "name": "ml.delete_forecast",
@@ -5114,6 +5859,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html",
       "name": "ml.delete_job",
@@ -5138,6 +5886,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing model snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html",
       "name": "ml.delete_model_snapshot",
@@ -5162,6 +5913,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
       "name": "ml.delete_trained_model",
@@ -5179,6 +5933,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Deletes a model alias that refers to the trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
       "name": "ml.delete_trained_model_alias",
@@ -5196,6 +5956,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Estimates the model memory",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html",
       "name": "ml.estimate_model_memory",
@@ -5220,6 +5986,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Evaluates the data frame analytics for an annotated index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
       "name": "ml.evaluate_data_frame",
@@ -5237,6 +6009,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Explains a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html",
       "name": "ml.explain_data_frame_analytics",
@@ -5262,6 +6040,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Forces any buffered data to be processed by the job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html",
       "name": "ml.flush_job",
@@ -5286,6 +6070,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Predicts the future behavior of a time series by using its historical behavior.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-forecast.html",
       "name": "ml.forecast",
@@ -5310,6 +6097,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves anomaly detection job results for one or more buckets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html",
       "name": "ml.get_buckets",
@@ -5342,6 +6135,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about the scheduled events in calendars.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html",
       "name": "ml.get_calendar_events",
@@ -5366,6 +6162,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for calendars.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html",
       "name": "ml.get_calendars",
@@ -5398,6 +6200,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves anomaly detection job results for one or more categories.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html",
       "name": "ml.get_categories",
@@ -5430,6 +6238,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
       "name": "ml.get_data_frame_analytics",
@@ -5453,6 +6264,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information for data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html",
       "name": "ml.get_data_frame_analytics_stats",
@@ -5476,6 +6290,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information for datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html",
       "name": "ml.get_datafeed_stats",
@@ -5506,6 +6323,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html",
       "name": "ml.get_datafeeds",
@@ -5536,6 +6356,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves filters.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html",
       "name": "ml.get_filters",
@@ -5566,6 +6389,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves anomaly detection job results for one or more influencers.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html",
       "name": "ml.get_influencers",
@@ -5591,6 +6420,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information for anomaly detection jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html",
       "name": "ml.get_job_stats",
@@ -5621,6 +6453,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for anomaly detection jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html",
       "name": "ml.get_jobs",
@@ -5651,6 +6486,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves information about model snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html",
       "name": "ml.get_model_snapshots",
@@ -5683,6 +6524,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html",
       "name": "ml.get_overall_buckets",
@@ -5708,6 +6555,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves anomaly records for an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html",
       "name": "ml.get_records",
@@ -5733,6 +6586,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for a trained inference model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
@@ -5756,6 +6612,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information for trained inference models.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
       "name": "ml.get_trained_models_stats",
@@ -5779,6 +6638,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns defaults and limits used by machine learning.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-ml-info.html",
       "name": "ml.info",
@@ -5803,6 +6665,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Opens one or more anomaly detection jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
@@ -5827,6 +6692,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Posts scheduled events in a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html",
       "name": "ml.post_calendar_events",
@@ -5851,6 +6722,13 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/x-ndjson",
+        "application/json"
+      ],
       "description": "Sends data to an anomaly detection job for analysis.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html",
       "name": "ml.post_data",
@@ -5875,6 +6753,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Previews that will be analyzed given a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
       "name": "ml.preview_data_frame_analytics",
@@ -5900,6 +6784,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Previews a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
@@ -5924,6 +6811,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html",
       "name": "ml.put_calendar",
@@ -5948,6 +6841,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Adds an anomaly detection job to a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html",
       "name": "ml.put_calendar_job",
@@ -5972,6 +6868,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html",
       "name": "ml.put_data_frame_analytics",
@@ -5989,6 +6891,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
@@ -6013,6 +6921,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates a filter.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html",
       "name": "ml.put_filter",
@@ -6037,6 +6951,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
@@ -6061,6 +6981,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates an inference trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
       "name": "ml.put_trained_model",
@@ -6078,6 +7004,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
       "name": "ml.put_trained_model_alias",
@@ -6095,6 +7027,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Reverts to a specific snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html",
       "name": "ml.revert_model_snapshot",
@@ -6119,6 +7057,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Sets a cluster wide upgrade_mode setting that prepares machine learning indices for an upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-set-upgrade-mode.html",
       "name": "ml.set_upgrade_mode",
@@ -6143,6 +7084,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Starts a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
       "name": "ml.start_data_frame_analytics",
@@ -6160,6 +7107,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Starts one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
@@ -6184,6 +7137,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
@@ -6201,6 +7160,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Stops one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html",
       "name": "ml.stop_datafeed",
@@ -6225,6 +7187,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates certain properties of a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
       "name": "ml.update_data_frame_analytics",
@@ -6242,6 +7210,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates certain properties of a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html",
       "name": "ml.update_datafeed",
@@ -6266,6 +7240,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates the description of a filter, adds items, or removes items.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html",
       "name": "ml.update_filter",
@@ -6290,6 +7270,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates certain properties of an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html",
       "name": "ml.update_job",
@@ -6314,6 +7300,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates certain properties of a snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-snapshot.html",
       "name": "ml.update_model_snapshot",
@@ -6338,6 +7330,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Upgrades a given job snapshot to the current major version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html",
       "name": "ml.upgrade_job_snapshot",
@@ -6355,6 +7350,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Validates an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/machine-learning/current/ml-jobs.html",
       "name": "ml.validate",
@@ -6379,6 +7380,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Validates an anomaly detection detector.",
       "docUrl": "https://www.elastic.co/guide/en/machine-learning/current/ml-jobs.html",
       "name": "ml.validate_detector",
@@ -6403,6 +7410,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Used by the monitoring features to send monitoring data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/monitor-elasticsearch-cluster.html",
       "name": "monitoring.bulk",
@@ -6432,6 +7445,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/x-ndjson"
+      ],
       "description": "Allows to execute several search operations in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html",
       "name": "msearch",
@@ -6475,6 +7494,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/x-ndjson"
+      ],
       "description": "Allows to execute several search template operations in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
       "name": "msearch_template",
@@ -6515,6 +7540,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns multiple termvectors in one request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html",
       "name": "mtermvectors",
@@ -6558,6 +7589,9 @@
       ]
     },
     {
+      "accept": [
+        "text/plain"
+      ],
       "description": "Returns information about hot threads on each node in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-hot-threads.html",
       "name": "nodes.hot_threads",
@@ -6648,6 +7682,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about nodes in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-info.html",
       "name": "nodes.info",
@@ -6690,6 +7727,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Reloads secure settings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/secure-settings.html#reloadable-secure-settings",
       "name": "nodes.reload_secure_settings",
@@ -6720,6 +7763,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns statistical information about nodes in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-stats.html",
       "name": "nodes.stats",
@@ -6774,6 +7820,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns low-level information about REST actions usage on nodes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-usage.html",
       "name": "nodes.usage",
@@ -6816,6 +7865,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Open a point in time that can be used in subsequent searches",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "open_point_in_time",
@@ -6839,6 +7891,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns whether the cluster is running.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "ping",
@@ -6863,6 +7918,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates a script.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "put_script",
@@ -6895,6 +7956,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
@@ -6920,6 +7987,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
       "name": "reindex",
@@ -6944,6 +8017,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Changes the number of requests per second for a particular Reindex operation.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
       "name": "reindex_rethrottle",
@@ -6968,6 +8044,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to use the Mustache language to pre-render a search definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#_validating_templates",
       "name": "render_search_template",
@@ -7000,6 +8082,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing rollup job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-delete-job.html",
       "name": "rollup.delete_job",
@@ -7024,6 +8109,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the configuration, stats, and status of rollup jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-job.html",
       "name": "rollup.get_jobs",
@@ -7054,6 +8142,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-rollup-caps.html",
       "name": "rollup.get_rollup_caps",
@@ -7084,6 +8175,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns the rollup capabilities of all jobs inside of a rollup index (e.g. the index where rollup data is stored).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-rollup-index-caps.html",
       "name": "rollup.get_rollup_index_caps",
@@ -7108,6 +8202,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a rollup job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-put-job.html",
       "name": "rollup.put_job",
@@ -7132,6 +8232,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Rollup an index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
       "name": "rollup.rollup",
@@ -7149,6 +8255,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Enables searching rolled-up data using the standard query DSL.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-search.html",
       "name": "rollup.rollup_search",
@@ -7185,6 +8297,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Starts an existing, stopped rollup job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-start-job.html",
       "name": "rollup.start_job",
@@ -7209,6 +8324,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Stops an existing, started rollup job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-stop-job.html",
       "name": "rollup.stop_job",
@@ -7233,6 +8351,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows an arbitrary script to be executed and a result to be returned",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html",
       "name": "scripts_painless_execute",
@@ -7258,6 +8382,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to retrieve a large numbers of results from a single search request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll",
       "name": "scroll",
@@ -7294,6 +8424,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns results matching a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
       "name": "search",
@@ -7337,6 +8473,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about the indices and shards that a search request would be executed against.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-shards.html",
       "name": "search_shards",
@@ -7369,6 +8508,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Allows to use the Mustache language to pre-render a search definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
       "name": "search_template",
@@ -7409,6 +8554,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Clear the cache of searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
@@ -7432,6 +8580,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Mount a snapshot as a searchable index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
       "name": "searchable_snapshots.mount",
@@ -7449,6 +8603,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.repository_stats",
@@ -7466,6 +8623,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieve various statistics about searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
@@ -7489,6 +8649,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Enables authentication as a user and retrieve information about the authenticated user.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html",
       "name": "security.authenticate",
@@ -7513,6 +8676,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Changes the passwords of users in the native realm and built-in users.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-change-password.html",
       "name": "security.change_password",
@@ -7545,6 +8714,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Clear a subset or all entries from the API key cache.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html",
       "name": "security.clear_api_key_cache",
@@ -7562,6 +8734,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Evicts application privileges from the native application privileges cache.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-privilege-cache.html",
       "name": "security.clear_cached_privileges",
@@ -7579,6 +8754,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Evicts users from the user cache. Can completely clear the cache or evict specific users.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-cache.html",
       "name": "security.clear_cached_realms",
@@ -7603,6 +8781,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Evicts roles from the native role cache.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-role-cache.html",
       "name": "security.clear_cached_roles",
@@ -7627,6 +8808,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates an API key for access without requiring basic authentication.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html",
       "name": "security.create_api_key",
@@ -7652,6 +8839,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes application privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-privilege.html",
       "name": "security.delete_privileges",
@@ -7676,6 +8866,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes roles in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role.html",
       "name": "security.delete_role",
@@ -7700,6 +8893,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes role mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role-mapping.html",
       "name": "security.delete_role_mapping",
@@ -7724,6 +8920,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes users from the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-user.html",
       "name": "security.delete_user",
@@ -7748,6 +8947,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Disables users in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-disable-user.html",
       "name": "security.disable_user",
@@ -7773,6 +8975,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Enables users in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-enable-user.html",
       "name": "security.enable_user",
@@ -7798,6 +9003,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information for one or more API keys.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html",
       "name": "security.get_api_key",
@@ -7822,6 +9030,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-builtin-privileges.html",
       "name": "security.get_builtin_privileges",
@@ -7846,6 +9057,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves application privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-privileges.html",
       "name": "security.get_privileges",
@@ -7882,6 +9096,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves roles in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html",
       "name": "security.get_role",
@@ -7912,6 +9129,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves role mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role-mapping.html",
       "name": "security.get_role_mapping",
@@ -7942,6 +9162,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a bearer token for access without requiring basic authentication.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-token.html",
       "name": "security.get_token",
@@ -7966,6 +9192,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about users in the native realm and built-in users.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html",
       "name": "security.get_user",
@@ -7996,6 +9225,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves application privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-privileges.html",
       "name": "security.get_user_privileges",
@@ -8020,6 +9252,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates an API key on behalf of another user.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-grant-api-key.html",
       "name": "security.grant_api_key",
@@ -8037,6 +9275,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Determines whether the specified user has a specified list of privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html",
       "name": "security.has_privileges",
@@ -8069,6 +9313,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Invalidates one or more API keys.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html",
       "name": "security.invalidate_api_key",
@@ -8093,6 +9343,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Invalidates one or more access tokens or refresh tokens.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-token.html",
       "name": "security.invalidate_token",
@@ -8117,6 +9373,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Adds or updates application privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-privileges.html",
       "name": "security.put_privileges",
@@ -8142,6 +9404,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Adds and updates roles in the native realm.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html",
       "name": "security.put_role",
@@ -8167,6 +9435,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates and updates role mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html",
       "name": "security.put_role_mapping",
@@ -8192,6 +9466,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Adds and updates users in the native realm. These users are commonly referred to as native users.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html",
       "name": "security.put_user",
@@ -8217,6 +9497,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing snapshot lifecycle policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-delete-policy.html",
       "name": "slm.delete_lifecycle",
@@ -8241,6 +9524,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Immediately creates a snapshot according to the lifecycle policy, without waiting for the scheduled time.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-execute-lifecycle.html",
       "name": "slm.execute_lifecycle",
@@ -8265,6 +9551,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes any snapshots that are expired according to the policy's retention rules.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-execute-retention.html",
       "name": "slm.execute_retention",
@@ -8289,6 +9578,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-policy.html",
       "name": "slm.get_lifecycle",
@@ -8319,6 +9611,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns global and policy-level statistics about actions taken by snapshot lifecycle management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/slm-api-get-stats.html",
       "name": "slm.get_stats",
@@ -8343,6 +9638,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the status of snapshot lifecycle management (SLM).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-status.html",
       "name": "slm.get_status",
@@ -8367,6 +9665,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates or updates a snapshot lifecycle policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html",
       "name": "slm.put_lifecycle",
@@ -8391,6 +9695,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Turns on snapshot lifecycle management (SLM).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html",
       "name": "slm.start",
@@ -8415,6 +9722,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Turns off snapshot lifecycle management (SLM).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-stop.html",
       "name": "slm.stop",
@@ -8439,6 +9749,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes stale data from repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/clean-up-snapshot-repo-api.html",
       "name": "snapshot.cleanup_repository",
@@ -8463,6 +9776,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Clones indices from one snapshot into another snapshot in the same repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.clone",
@@ -8480,6 +9799,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a snapshot in a repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.create",
@@ -8505,6 +9830,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.create_repository",
@@ -8530,6 +9861,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.delete",
@@ -8554,6 +9888,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes a repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.delete_repository",
@@ -8578,6 +9915,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about a snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.get",
@@ -8602,6 +9942,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about a repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.get_repository",
@@ -8632,6 +9975,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Restores a snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.restore",
@@ -8656,6 +10005,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about the status of a snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.status",
@@ -8692,6 +10044,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Verifies a repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.verify_repository",
@@ -8716,6 +10071,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Clears the SQL cursor",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-pagination.html",
       "name": "sql.clear_cursor",
@@ -8740,6 +10101,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Executes a SQL request",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-overview.html",
       "name": "sql.query",
@@ -8765,6 +10132,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Translates SQL into Elasticsearch queries",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate.html",
       "name": "sql.translate",
@@ -8790,6 +10163,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about the X.509 certificates used to encrypt communications in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html",
       "name": "ssl.certificates",
@@ -8814,6 +10190,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Cancels a task, if it can be cancelled through an API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
       "name": "tasks.cancel",
@@ -8844,6 +10223,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about a task.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
       "name": "tasks.get",
@@ -8868,6 +10250,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a list of tasks.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
       "name": "tasks.list",
@@ -8892,6 +10277,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns information and statistics about terms in the fields of a particular document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
@@ -8946,6 +10337,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/x-ndjson"
+      ],
       "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
       "name": "text_structure.find_structure",
@@ -8970,6 +10367,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deletes an existing transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
       "name": "transform.delete_transform",
@@ -8994,6 +10394,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html",
       "name": "transform.get_transform",
@@ -9024,6 +10427,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html",
       "name": "transform.get_transform_stats",
@@ -9048,6 +10454,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Previews a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
       "name": "transform.preview_transform",
@@ -9072,6 +10484,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Instantiates a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
       "name": "transform.put_transform",
@@ -9096,6 +10514,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Starts one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
       "name": "transform.start_transform",
@@ -9120,6 +10541,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Stops one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html",
       "name": "transform.stop_transform",
@@ -9144,6 +10568,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates certain properties of a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
       "name": "transform.update_transform",
@@ -9168,6 +10598,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Updates a document with a script or partial document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html",
       "name": "update",
@@ -9202,6 +10638,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html",
       "name": "update_by_query",
@@ -9236,6 +10678,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Changes the number of requests per second for a particular Update By Query operation.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html",
       "name": "update_by_query_rethrottle",
@@ -9257,6 +10702,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Acknowledges a watch, manually throttling the execution of the watch's actions.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-ack-watch.html",
       "name": "watcher.ack_watch",
@@ -9289,6 +10737,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Activates a currently inactive watch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-activate-watch.html",
       "name": "watcher.activate_watch",
@@ -9314,6 +10765,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Deactivates a currently active watch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-deactivate-watch.html",
       "name": "watcher.deactivate_watch",
@@ -9339,6 +10793,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Removes a watch from Watcher.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-delete-watch.html",
       "name": "watcher.delete_watch",
@@ -9363,6 +10820,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Forces the execution of a stored watch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-execute-watch.html",
       "name": "watcher.execute_watch",
@@ -9395,6 +10858,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves a watch by its ID.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-get-watch.html",
       "name": "watcher.get_watch",
@@ -9419,6 +10885,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Creates a new watch, or updates an existing one.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-put-watch.html",
       "name": "watcher.put_watch",
@@ -9444,6 +10916,12 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Retrieves stored watches.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-query-watches.html",
       "name": "watcher.query_watches",
@@ -9462,6 +10940,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Starts Watcher if it is not already running.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-start.html",
       "name": "watcher.start",
@@ -9486,6 +10967,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves the current Watcher metrics.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-stats.html",
       "name": "watcher.stats",
@@ -9516,6 +11000,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Stops Watcher if it is running.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-stop.html",
       "name": "watcher.stop",
@@ -9540,6 +11027,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves information about the installed X-Pack features.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/info-api.html",
       "name": "xpack.info",
@@ -9564,6 +11054,9 @@
       ]
     },
     {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves usage information about the installed X-Pack features.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/usage-api.html",
       "name": "xpack.usage",
@@ -107816,33 +109309,6 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "STARTED"
-        },
-        {
-          "name": "INDEXING"
-        },
-        {
-          "name": "ABORTING"
-        },
-        {
-          "name": "STOPPING"
-        },
-        {
-          "name": "STOPPED"
-        },
-        {
-          "name": "FAILED"
-        }
-      ],
-      "name": {
-        "name": "TransformState",
-        "namespace": "cat.cat_transforms"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "TransformStats",
@@ -107967,21 +109433,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "batch"
-        },
-        {
-          "name": "continuous"
-        }
-      ],
-      "name": {
-        "name": "TransformType",
-        "namespace": "cat.cat_transforms"
-      }
     },
     {
       "kind": "interface",

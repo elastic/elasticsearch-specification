@@ -316,6 +316,8 @@ export class Endpoint {
   since?: string
   stability?: Stability
   visibility?: Visibility
+  accept?: string[]
+  contentType?: string[]
 }
 
 export class UrlTemplate {
