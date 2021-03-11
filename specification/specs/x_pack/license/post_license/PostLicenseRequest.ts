@@ -28,5 +28,6 @@ interface PostLicenseRequest extends RequestBase {
   }
   body?: {
     license?: License
+    licenses?: Array<License>
   }
 }

@@ -67294,7 +67294,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -67305,7 +67305,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -67334,7 +67334,18 @@
         },
         {
           "name": "max_nodes",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_resource_units",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67350,6 +67361,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "start_date_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -78541,6 +78563,26 @@
               "type": {
                 "name": "License",
                 "namespace": "x_pack.license.get_license"
+              }
+            }
+          },
+          {
+            "name": "licenses",
+            "required": false,
+            "type": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "License",
+                    "namespace": "x_pack.license.get_license"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "Array",
+                "namespace": "internal"
               }
             }
           }

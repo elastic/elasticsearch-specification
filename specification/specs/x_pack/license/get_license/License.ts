@@ -18,12 +18,14 @@
  */
 
 class License {
-  expiry_date_in_millis: long
-  issue_date_in_millis: long
+  expiry_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes: long
+  max_nodes?: long
+  max_resource_units?: long
   signature: string
+  start_date_in_millis: EpochMillis
   type: LicenseType
   uid: string
 }
