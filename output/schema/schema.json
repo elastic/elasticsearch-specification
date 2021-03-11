@@ -62237,14 +62237,29 @@
           "name": "values",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Id",
+                    "namespace": "internal"
+                  }
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "internal"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ]

@@ -6257,7 +6257,7 @@ export type Id = string
 export type Ids = string | Array<string>
 
 export interface IdsQuery extends QueryBase {
-  values?: Array<Id>
+  values?: Array<Id> | Array<long>
 }
 
 export interface IlmPolicyStatistics {
