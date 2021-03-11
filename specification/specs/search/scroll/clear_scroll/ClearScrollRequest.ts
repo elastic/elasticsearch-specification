@@ -28,6 +28,6 @@ interface ClearScrollRequest extends RequestBase {
   }
   query_parameters?: {}
   body?: {
-    scroll_id?: string[]
+    scroll_id?: Ids
   }
 }
