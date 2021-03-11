@@ -142,13 +142,7 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
   // The ErrorResponse is not referenced anywhere, but we need to export it
   // as any API could return it if an error happens. It's widely used in
   // the type test as well.
-  let ErrorResponseType: model.Interface | undefined
-  for (const type of apiModel.types) {
-    if (type.name.name === 'ErrorResponse') {
-      ErrorResponseType = type as model.Interface
-      break
-    }
-  }
+  validateTypeRef({ namespace: 'common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
 
   // Alright, let's go!
   apiModel.endpoints.forEach(validateEndpoint)
@@ -161,10 +155,6 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
     if (typesSeen.has(bhn)) {
       apiModel.types.push(bh)
     }
-  }
-
-  if (ErrorResponseType != null) {
-    apiModel.types.push(ErrorResponseType)
   }
 
   const danglingTypesCount = initialTypeCount - apiModel.types.length
