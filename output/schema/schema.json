@@ -57946,7 +57946,7 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "Id",
                 "namespace": "internal"
               }
             },
@@ -99662,7 +99662,7 @@
       "properties": [
         {
           "name": "ignore_unavailable",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99673,7 +99673,7 @@
         },
         {
           "name": "include_global_state",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99852,7 +99852,7 @@
       "properties": [
         {
           "name": "in_progress",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99863,7 +99863,7 @@
         },
         {
           "name": "last_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99874,7 +99874,7 @@
         },
         {
           "name": "last_success",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99884,8 +99884,30 @@
           }
         },
         {
+          "name": "modified_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "modified_date_millis",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "next_execution",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99900,7 +99922,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99926,6 +99948,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "stats",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotLifecycleStats",
+              "namespace": "x_pack.info.x_pack_usage"
+            }
+          }
         }
       ]
     },
@@ -99938,29 +99971,29 @@
       "properties": [
         {
           "name": "retention_deletion_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "DateString",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "retention_deletion_time_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "retention_failed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99971,7 +100004,7 @@
         },
         {
           "name": "retention_runs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99982,7 +100015,7 @@
         },
         {
           "name": "retention_timed_out",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99992,8 +100025,22 @@
           }
         },
         {
+          "name": "policy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_deleted"
+          ],
           "name": "total_snapshots_deleted",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100003,8 +100050,11 @@
           }
         },
         {
+          "aliases": [
+            "snapshot_deletion_failures"
+          ],
           "name": "total_snapshot_deletion_failures",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100014,8 +100064,11 @@
           }
         },
         {
+          "aliases": [
+            "snapshots_failed"
+          ],
           "name": "total_snapshots_failed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100025,8 +100078,11 @@
           }
         },
         {
+          "aliases": [
+            "snapshots_taken"
+          ],
           "name": "total_snapshots_taken",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

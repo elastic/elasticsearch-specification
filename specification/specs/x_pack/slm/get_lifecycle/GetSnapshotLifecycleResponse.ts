@@ -18,6 +18,6 @@
  */
 
 class GetSnapshotLifecycleResponse extends DictionaryResponseBase<
-  string,
+  Id,
   SnapshotLifecyclePolicyMetadata
 > {}
