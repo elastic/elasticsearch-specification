@@ -24,7 +24,7 @@
  */
 interface RolloverIndexRequest extends RequestBase {
   path_parts?: {
-    alias: string
+    alias: IndexAlias
     new_index?: IndexName
   }
   query_parameters?: {
@@ -37,7 +37,7 @@ interface RolloverIndexRequest extends RequestBase {
   body?: {
     aliases?: Dictionary<IndexName, Alias>
     conditions?: RolloverConditions
-    mappings?: TypeMapping
+    mappings?: Dictionary<string, TypeMapping> | TypeMapping
     settings?: Dictionary<string, UserDefinedValue>
   }
 }
