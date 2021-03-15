@@ -6436,7 +6436,7 @@ export interface IndicesPrivileges {
   field_security?: FieldSecurity
   names: Indices
   privileges: Array<string>
-  query?: string
+  query?: string | QueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -8680,6 +8680,7 @@ export interface QueryContainer {
   span_or?: SpanOrQuery
   span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
+  template?: QueryTemplate
   term?: NamedQuery<TermQuery | string | float | boolean>
   terms?: NamedQuery<TermsQuery | Array<string>>
   terms_set?: NamedQuery<TermsSetQuery | string>
@@ -8739,6 +8740,10 @@ export interface QueryStringQuery extends QueryBase {
   tie_breaker?: double
   time_zone?: string
   type?: TextQueryType
+}
+
+export interface QueryTemplate {
+  source: string
 }
 
 export interface QueryUsage {

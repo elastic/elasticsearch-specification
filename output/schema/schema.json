@@ -63938,11 +63938,23 @@
           "name": "query",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryContainer",
+                  "namespace": "query_dsl.abstractions.container"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -84383,6 +84395,17 @@
           }
         },
         {
+          "name": "template",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryTemplate",
+              "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
           "name": "term",
           "required": false,
           "type": {
@@ -85057,6 +85080,26 @@
             "type": {
               "name": "TextQueryType",
               "namespace": "query_dsl.full_text.multi_match"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryTemplate",
+        "namespace": "query_dsl.abstractions.container"
+      },
+      "properties": [
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }

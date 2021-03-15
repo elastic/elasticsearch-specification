@@ -17,10 +17,6 @@
  * under the License.
  */
 
-class IndicesPrivileges {
-  field_security?: FieldSecurity
-  names: Indices
-  privileges: string[]
-  query?: string | QueryContainer
-  allow_restricted_indices?: boolean
+class QueryTemplate {
+  source: string
 }
