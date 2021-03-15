@@ -17,8 +17,8 @@
  * under the License.
  */
 
-class ApiKeyRole {
-  cluster: string[]
-  index: ApiKeyPrivileges[]
-  applications?: ApiKeyApplication[]
+class ApiKeyApplication {
+  application: string
+  privileges: string[]
+  resources: string[]
 }

@@ -14828,12 +14828,23 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKeyPrivileges",
+        "name": "ApiKeyApplication",
         "namespace": "x_pack.security.api_key.create_api_key"
       },
       "properties": [
         {
-          "name": "names",
+          "name": "application",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "privileges",
           "required": true,
           "type": {
             "kind": "array_of",
@@ -14843,6 +14854,40 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "resources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApiKeyPrivileges",
+        "namespace": "x_pack.security.api_key.create_api_key"
+      },
+      "properties": [
+        {
+          "name": "names",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
             }
           }
         },
@@ -14894,6 +14939,26 @@
                 "name": "ApiKeyPrivileges",
                 "namespace": "x_pack.security.api_key.create_api_key"
               }
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ApiKeyApplication",
+                  "namespace": "x_pack.security.api_key.create_api_key"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Array",
+              "namespace": "internal"
             }
           }
         }

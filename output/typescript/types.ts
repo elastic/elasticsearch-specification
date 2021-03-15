@@ -416,14 +416,21 @@ export interface AnomalyRecord {
   typical?: Array<double>
 }
 
+export interface ApiKeyApplication {
+  application: string
+  privileges: Array<string>
+  resources: Array<string>
+}
+
 export interface ApiKeyPrivileges {
-  names: Array<string>
+  names: Indices
   privileges: Array<string>
 }
 
 export interface ApiKeyRole {
   cluster: Array<string>
   index: Array<ApiKeyPrivileges>
+  applications?: Array<ApiKeyApplication>
 }
 
 export interface ApiKeys {
