@@ -5996,10 +5996,10 @@ export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export interface GsubProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   pattern: string
   replacement: string
-  target_field: Field
+  target_field?: Field
 }
 
 export interface HasChildQuery extends QueryBase {
@@ -8031,9 +8031,10 @@ export interface PinnedQuery extends QueryBase {
 }
 
 export interface Pipeline {
-  description: string
-  on_failure: Array<ProcessorContainer>
-  processors: Array<ProcessorContainer>
+  description?: string
+  on_failure?: Array<ProcessorContainer>
+  processors?: Array<ProcessorContainer>
+  version?: long
 }
 
 export interface PipelineAggregationBase extends Aggregation {
@@ -8177,46 +8178,46 @@ export interface ProcessStats {
 }
 
 export interface ProcessorBase {
-  if: string
-  ignore_failure: boolean
-  on_failure: Array<ProcessorContainer>
-  tag: string
+  if?: string
+  ignore_failure?: boolean
+  on_failure?: Array<ProcessorContainer>
+  tag?: string
 }
 
 export interface ProcessorContainer {
-  attachment: AttachmentProcessor
-  append: AppendProcessor
-  csv: CsvProcessor
-  convert: ConvertProcessor
-  date: DateProcessor
-  date_index_name: DateIndexNameProcessor
-  dot_expander: DotExpanderProcessor
-  enrich: EnrichProcessor
-  fail: FailProcessor
-  foreach: ForeachProcessor
-  json: JsonProcessor
-  user_agent: UserAgentProcessor
-  kv: KeyValueProcessor
-  geoip: GeoIpProcessor
-  grok: GrokProcessor
-  gsub: GsubProcessor
-  join: JoinProcessor
-  lowercase: LowercaseProcessor
-  remove: RemoveProcessor
-  rename: RenameProcessor
-  script: ScriptProcessor
-  set: SetProcessor
-  sort: SortProcessor
-  split: SplitProcessor
-  trim: TrimProcessor
-  uppercase: UppercaseProcessor
-  urldecode: UrlDecodeProcessor
-  bytes: BytesProcessor
-  dissect: DissectProcessor
-  set_security_user: SetSecurityUserProcessor
-  pipeline: PipelineProcessor
-  drop: DropProcessor
-  circle: CircleProcessor
+  attachment?: AttachmentProcessor
+  append?: AppendProcessor
+  csv?: CsvProcessor
+  convert?: ConvertProcessor
+  date?: DateProcessor
+  date_index_name?: DateIndexNameProcessor
+  dot_expander?: DotExpanderProcessor
+  enrich?: EnrichProcessor
+  fail?: FailProcessor
+  foreach?: ForeachProcessor
+  json?: JsonProcessor
+  user_agent?: UserAgentProcessor
+  kv?: KeyValueProcessor
+  geoip?: GeoIpProcessor
+  grok?: GrokProcessor
+  gsub?: GsubProcessor
+  join?: JoinProcessor
+  lowercase?: LowercaseProcessor
+  remove?: RemoveProcessor
+  rename?: RenameProcessor
+  script?: ScriptProcessor
+  set?: SetProcessor
+  sort?: SortProcessor
+  split?: SplitProcessor
+  trim?: TrimProcessor
+  uppercase?: UppercaseProcessor
+  urldecode?: UrlDecodeProcessor
+  bytes?: BytesProcessor
+  dissect?: DissectProcessor
+  set_security_user?: SetSecurityUserProcessor
+  pipeline?: PipelineProcessor
+  drop?: DropProcessor
+  circle?: CircleProcessor
 }
 
 export interface Profile {
@@ -9108,7 +9109,7 @@ export interface RemoveProcessor extends ProcessorBase {
 
 export interface RenameProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   target_field: Field
 }
 
@@ -9490,9 +9491,9 @@ export interface ScriptField {
 }
 
 export interface ScriptProcessor extends ProcessorBase {
-  id: string
-  lang: string
-  params: Record<string, any>
+  id?: Id
+  lang?: string
+  params?: Record<string, any>
   source: string
 }
 
@@ -9827,7 +9828,7 @@ export interface SerialDifferencingAggregation extends PipelineAggregationBase {
 
 export interface SetProcessor extends ProcessorBase {
   field: Field
-  override: boolean
+  override?: boolean
   value: any
 }
 
@@ -11846,8 +11847,8 @@ export interface UpdateTransformResponse extends ResponseBase {
 
 export interface UppercaseProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface UppercaseTokenFilter extends TokenFilterBase {
