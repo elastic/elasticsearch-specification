@@ -72,6 +72,8 @@ class ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: string[]
+  lang?: string
+  position?: PainlessExecutionPosition
 }
 @class_serializer('ErrorFormatter')
 class MainError extends ErrorCause {

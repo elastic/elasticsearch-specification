@@ -12067,6 +12067,28 @@
           }
         },
         {
+          "name": "post_collection",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "post_collection_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "reduce",
           "required": true,
           "type": {
@@ -36278,7 +36300,7 @@
         },
         {
           "name": "contexts",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -36302,7 +36324,7 @@
         },
         {
           "name": "fields",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -36352,7 +36374,7 @@
         },
         {
           "name": "_routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46452,6 +46474,28 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "lang",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "position",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PainlessExecutionPosition",
+              "namespace": "modules.scripting.execute_painless_script"
             }
           }
         }
@@ -76602,6 +76646,48 @@
             "type": {
               "name": "QueryContainer",
               "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PainlessExecutionPosition",
+        "namespace": "modules.scripting.execute_painless_script"
+      },
+      "properties": [
+        {
+          "name": "offset",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }

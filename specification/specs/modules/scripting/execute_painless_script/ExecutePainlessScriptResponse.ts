@@ -20,3 +20,12 @@
 class ExecutePainlessScriptResponse<TResult> extends ResponseBase {
   result: TResult
 }
+
+/**
+ * If a painless script fails to execute this is returned on the serialized exception
+ */
+class PainlessExecutionPosition {
+  offset: integer
+  start: integer
+  end: integer
+}

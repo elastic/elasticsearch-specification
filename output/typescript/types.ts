@@ -123,6 +123,8 @@ export interface AggregationBreakdown {
   collect_count: long
   initialize: long
   initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
   reduce: long
   reduce_count: long
 }
@@ -3346,12 +3348,12 @@ export interface CompletionStats {
 
 export interface CompletionSuggestOption<TDocument = unknown> {
   collate_match?: boolean
-  contexts: Record<string, Array<Context>>
-  fields: Record<string, any>
+  contexts?: Record<string, Array<Context>>
+  fields?: Record<string, any>
   _id: string
   _index: IndexName
   _type?: Type
-  _routing: Routing
+  _routing?: Routing
   _score: double
   _source: TDocument
   text: string
@@ -4470,6 +4472,8 @@ export interface ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
+  lang?: string
+  position?: PainlessExecutionPosition
 }
 
 export interface ErrorResponse {
@@ -7861,6 +7865,12 @@ export interface PainlessContextSetup {
   document: any
   index: IndexName
   query: QueryContainer
+}
+
+export interface PainlessExecutionPosition {
+  offset: integer
+  start: integer
+  end: integer
 }
 
 export interface ParentAggregation extends BucketAggregationBase {
