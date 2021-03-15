@@ -11,16 +11,18 @@ for describing APIs that can't be represented in the specification.
 
 ### Code generator property name hints
 
-Some APIs do not define the body as a structured object, but accept a generic instead.
+In some cases you need to tell to language generators how to name a property.
+This might happen because the default name cannot be used in the language or because
+some APIs do not define the body as a structured object, but accept a generic instead.
 In those cases you should add a js doc tag to suggest to language generators what
 property name should be used.
-Currently, only property name hints for the body are supported.
+
+It's important to mention that language generators **don't have to** respect the name hint.
+It is only a suggestion or it might apply only to specific languages.
 
 The js tag should be used as follows:
 ```ts
-  /**
-   * @codegen_param_name <property_name>
-   */
+  /** @identifier document */
   body: TDocument
 ```
 
@@ -39,10 +41,29 @@ interface IndexRequest<TDocument> extends RequestBase {
   query_parameters?: {
     ...
   }
-  /**
-   * @codegen_param_name document
-   */
+  /** @identifier document */
   body?: TDocument
+}
+```
+
+Another example with enums:
+
+```ts
+enum DateMathTimeUnit {
+  /** @identifier Second */
+  s = 0,
+  /** @identifier Minute */
+  m = 1,
+  /** @identifier Hour */
+  h = 2,
+  /** @identifier Day */
+  d = 3,
+  /** @identifier Week */
+  w = 4,
+  /** @identifier Month */
+  M = 5,
+  /** @identifier Year */
+  y = 6
 }
 ```
 
