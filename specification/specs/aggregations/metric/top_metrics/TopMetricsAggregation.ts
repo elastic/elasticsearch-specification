@@ -18,7 +18,7 @@
  */
 
 class TopMetricsAggregation extends MetricAggregationBase {
-  metrics?: TopMetricsValue[]
+  metrics?: TopMetricsValue | TopMetricsValue[]
   size?: integer
   sort?: Sort
 }

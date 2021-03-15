@@ -22,6 +22,7 @@ class LikeDocument {
   doc?: UserDefinedValue
   fields?: Fields
   _id?: Id
+  _type?: Type
   _index?: IndexName
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing

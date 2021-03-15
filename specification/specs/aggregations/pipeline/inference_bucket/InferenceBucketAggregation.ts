@@ -17,10 +17,23 @@
  * under the License.
  */
 
-class CompletionSuggester extends SuggesterBase {
-  contexts?: Dictionary<string, string | string[] | GeoLocation | SuggestContextQuery[]>
-  fuzzy?: SuggestFuzziness
-  prefix?: string
-  regex?: string
-  skip_duplicates?: boolean
+class InferenceAggregation extends PipelineAggregationBase {
+  model_id: Name
+  inference_config? : InferenceConfigContainer
+}
+
+class InferenceConfigContainer {
+  regression?:RegressionInferenceOptions
+  classification?: ClassificationInferenceOptions
+}
+
+class RegressionInferenceOptions {
+  results_field: Field
+  num_top_feature_importance_values?: integer
+}
+
+class ClassificationInferenceOptions {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_type?: string
 }

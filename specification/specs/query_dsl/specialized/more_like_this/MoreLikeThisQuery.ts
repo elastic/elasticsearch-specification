@@ -22,7 +22,7 @@ class MoreLikeThisQuery extends QueryBase {
   boost_terms?: double
   fields?: Fields
   include?: boolean
-  like?: Like[]
+  like?: Like | Like[]
   max_doc_freq?: integer
   max_query_terms?: integer
   max_word_length?: integer
@@ -33,7 +33,7 @@ class MoreLikeThisQuery extends QueryBase {
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
   stop_words?: StopWords
-  unlike?: Like[]
+  unlike?: Like | Like[]
   version?: long
   version_type?: VersionType
 }

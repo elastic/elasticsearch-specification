@@ -12492,6 +12492,17 @@
           }
         },
         {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceAggregation",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        },
+        {
           "name": "line",
           "required": false,
           "type": {
@@ -12626,6 +12637,17 @@
             "type": {
               "name": "MovingFunctionAggregation",
               "namespace": "aggregations.pipeline.moving_function"
+            }
+          }
+        },
+        {
+          "name": "multi_terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiTermsAggregation",
+              "namespace": "aggregations.bucket.multi_terms"
             }
           }
         },
@@ -31318,6 +31340,48 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ClassificationInferenceOptions",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "num_top_classes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_top_feature_importance_values",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "prediction_field_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -36446,14 +36510,43 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContextQuery",
-                  "namespace": "search.suggesters.context_suggester"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GeoLocation",
+                    "namespace": "query_dsl.geo"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "SuggestContextQuery",
+                      "namespace": "search.suggesters.context_suggester"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         },
@@ -47666,6 +47759,13 @@
               "name": "Array",
               "namespace": "internal"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         ],
         "kind": "union_of"
@@ -52874,6 +52974,13 @@
       "type": {
         "items": [
           {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
             "kind": "array_of",
             "value": {
               "kind": "instance_of",
@@ -53116,14 +53223,26 @@
               }
             },
             {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GeoLocation",
-                  "namespace": "query_dsl.geo"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GeoLocation",
+                    "namespace": "query_dsl.geo"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "GeoLocation",
+                      "namespace": "query_dsl.geo"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           ],
           "type": {
@@ -53582,6 +53701,13 @@
       },
       "type": {
         "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
           {
             "kind": "array_of",
             "value": {
@@ -60666,6 +60792,29 @@
               "namespace": "query_dsl.abstractions.container"
             }
           }
+        },
+        {
+          "name": "max_analyzed_offset",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
         }
       ]
     },
@@ -62306,11 +62455,23 @@
         "namespace": "internal"
       },
       "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -62324,7 +62485,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           },
@@ -62333,7 +62494,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "Id",
                 "namespace": "internal"
               }
             }
@@ -64432,6 +64593,76 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "InferenceAggregation",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigContainer",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfigContainer",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RegressionInferenceOptions",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        },
+        {
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClassificationInferenceOptions",
+              "namespace": "aggregations.pipeline.inference_bucket"
             }
           }
         }
@@ -68146,6 +68377,17 @@
           }
         },
         {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "_index",
           "required": false,
           "type": {
@@ -70820,14 +71062,26 @@
           "name": "like",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Like",
-                "namespace": "query_dsl.specialized.more_like_this.like"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Like",
+                  "namespace": "query_dsl.specialized.more_like_this.like"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Like",
+                    "namespace": "query_dsl.specialized.more_like_this.like"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -70954,14 +71208,26 @@
           "name": "unlike",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Like",
-                "namespace": "query_dsl.specialized.more_like_this.like"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Like",
+                  "namespace": "query_dsl.specialized.more_like_this.like"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Like",
+                    "namespace": "query_dsl.specialized.more_like_this.like"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -72034,6 +72300,26 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "MultiTermLookup",
+        "namespace": "aggregations.bucket.multi_terms"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "MultiTermQueryRewrite",
@@ -72424,6 +72710,37 @@
               "type": {
                 "name": "TermVectorsResult",
                 "namespace": "document.single.term_vectors"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiTermsAggregation",
+        "namespace": "aggregations.bucket.multi_terms"
+      },
+      "properties": [
+        {
+          "name": "terms",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MultiTermLookup",
+                "namespace": "aggregations.bucket.multi_terms"
               }
             }
           }
@@ -84433,6 +84750,16 @@
                         "namespace": "internal"
                       }
                     }
+                  },
+                  {
+                    "kind": "array_of",
+                    "value": {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "long",
+                        "namespace": "internal"
+                      }
+                    }
                   }
                 ],
                 "kind": "union_of"
@@ -86752,6 +87079,37 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RegressionInferenceOptions",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "results_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_top_feature_importance_values",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -92737,21 +93095,33 @@
             "name": "suggest",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SuggestContainer",
+                    "namespace": "search.suggesters"
+                  }
+                },
+                {
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  "kind": "dictionary_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "SuggestContainer",
+                      "namespace": "search.suggesters"
+                    }
+                  }
                 }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContainer",
-                  "namespace": "search.suggesters"
-                }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -92839,6 +93209,20 @@
               "type": {
                 "name": "RuntimeFields",
                 "namespace": "mapping.runtime_fields"
+              }
+            }
+          },
+          {
+            "name": "stats",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           }
@@ -93321,14 +93705,26 @@
           "name": "sort",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -107482,7 +107878,7 @@
         },
         {
           "name": "filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108983,14 +109379,26 @@
           "name": "metrics",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TopMetricsValue",
-                "namespace": "aggregations.metric.top_metrics"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TopMetricsValue",
+                  "namespace": "aggregations.metric.top_metrics"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TopMetricsValue",
+                    "namespace": "aggregations.metric.top_metrics"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
