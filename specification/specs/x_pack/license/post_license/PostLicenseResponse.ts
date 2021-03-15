@@ -18,7 +18,7 @@
  */
 
 class PostLicenseResponse extends ResponseBase {
-  acknowledge: LicenseAcknowledgement
+  acknowledge?: LicenseAcknowledgement
   acknowledged: boolean
   license_status: LicenseStatus
 }

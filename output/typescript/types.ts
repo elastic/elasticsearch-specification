@@ -6837,12 +6837,14 @@ export interface LetterTokenizer extends TokenizerBase {
 export type Level = 'cluster' | 'indices' | 'shards'
 
 export interface License {
-  expiry_date_in_millis: long
-  issue_date_in_millis: long
+  expiry_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes: long
+  max_nodes?: long
+  max_resource_units?: long
   signature: string
+  start_date_in_millis: EpochMillis
   type: LicenseType
   uid: string
 }
@@ -8112,11 +8114,12 @@ export interface PostLicenseRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: License
+    licenses?: Array<License>
   }
 }
 
 export interface PostLicenseResponse extends ResponseBase {
-  acknowledge: LicenseAcknowledgement
+  acknowledge?: LicenseAcknowledgement
   acknowledged: boolean
   license_status: LicenseStatus
 }
@@ -10750,8 +10753,10 @@ export interface StartTrialLicenseRequest extends RequestBase {
 }
 
 export interface StartTrialLicenseResponse extends AcknowledgedResponseBase {
-  error_message: string
+  error_message?: string
+  acknowledged: boolean
   trial_was_started: boolean
+  type: LicenseType
 }
 
 export interface StartWatcherRequest extends RequestBase {

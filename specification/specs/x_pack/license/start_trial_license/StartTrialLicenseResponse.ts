@@ -18,6 +18,8 @@
  */
 
 class StartTrialLicenseResponse extends AcknowledgedResponseBase {
-  error_message: string
+  error_message?: string
+  acknowledged: boolean
   trial_was_started: boolean
+  type: LicenseType
 }
