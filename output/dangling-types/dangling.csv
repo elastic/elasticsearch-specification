@@ -41,6 +41,7 @@ ScriptLang,modules/scripting/ScriptLang.ts
 RewriteMultiTerm,query_dsl/multi_term_query_rewrite/RewriteMultiTerm.ts
 SpanSubQuery,query_dsl/span/SpanSubQuery.ts
 VisitorScope,query_dsl/visitor/VisitorScope.ts
+SnapshotLifecyclePolicyMetadataStats,x_pack/slm/SnapshotLifecyclePolicyMetadata.ts
 TransformSync,x_pack/transform/TransformSync.ts
 IcuAnalyzer,analysis/plugins/icu/IcuAnalyzer.ts
 IcuCollationTokenFilter,analysis/plugins/icu/IcuCollationTokenFilter.ts

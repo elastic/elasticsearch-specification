@@ -5771,7 +5771,7 @@ export interface GetSnapshotLifecycleRequest extends RequestBase {
   policy_id?: Names
 }
 
-export interface GetSnapshotLifecycleResponse extends DictionaryResponseBase<string, SnapshotLifecyclePolicyMetadata> {
+export interface GetSnapshotLifecycleResponse extends DictionaryResponseBase<Id, SnapshotLifecyclePolicyMetadata> {
 }
 
 export interface GetSnapshotLifecycleStatsRequest extends RequestBase {
@@ -10375,8 +10375,8 @@ export interface SnapshotInfo {
 }
 
 export interface SnapshotLifecycleConfig {
-  ignore_unavailable: boolean
-  include_global_state: boolean
+  ignore_unavailable?: boolean
+  include_global_state?: boolean
   indices: Indices
 }
 
@@ -10401,25 +10401,33 @@ export interface SnapshotLifecyclePolicy {
 }
 
 export interface SnapshotLifecyclePolicyMetadata {
-  in_progress: SnapshotLifecycleInProgress
-  last_failure: SnapshotLifecycleInvocationRecord
-  last_success: SnapshotLifecycleInvocationRecord
-  modified_date_millis: DateString
-  next_execution_millis: DateString
+  in_progress?: SnapshotLifecycleInProgress
+  last_failure?: SnapshotLifecycleInvocationRecord
+  last_success?: SnapshotLifecycleInvocationRecord
+  modified_date?: DateString
+  modified_date_millis: EpochMillis
+  next_execution?: DateString
+  next_execution_millis: EpochMillis
   policy: SnapshotLifecyclePolicy
   version: integer
+  stats: SnapshotLifecycleStats
 }
 
 export interface SnapshotLifecycleStats {
-  retention_deletion_time: string
-  retention_deletion_time_millis: long
-  retention_failed: long
-  retention_runs: long
-  retention_timed_out: long
-  total_snapshots_deleted: long
-  total_snapshot_deletion_failures: long
-  total_snapshots_failed: long
-  total_snapshots_taken: long
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
+  total_snapshots_deleted?: long
+  snapshots_deleted?: long
+  total_snapshot_deletion_failures?: long
+  snapshot_deletion_failures?: long
+  total_snapshots_failed?: long
+  snapshots_failed?: long
+  total_snapshots_taken?: long
+  snapshots_taken?: long
 }
 
 export interface SnapshotRepository {

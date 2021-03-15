@@ -18,13 +18,22 @@
  */
 
 class SnapshotLifecyclePolicyMetadata {
-  in_progress: SnapshotLifecycleInProgress
-  last_failure: SnapshotLifecycleInvocationRecord
-  last_success: SnapshotLifecycleInvocationRecord
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  modified_date_millis: DateString
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  next_execution_millis: DateString
+  in_progress?: SnapshotLifecycleInProgress
+  last_failure?: SnapshotLifecycleInvocationRecord
+  last_success?: SnapshotLifecycleInvocationRecord
+  modified_date?: DateString
+  modified_date_millis: EpochMillis
+  next_execution?: DateString
+  next_execution_millis: EpochMillis
   policy: SnapshotLifecyclePolicy
   version: integer
+  stats: SnapshotLifecycleStats
+}
+
+class SnapshotLifecyclePolicyMetadataStats {
+  policy: Id
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
+  snapshots_failed: long
+  snapshots_taken: long
 }
