@@ -219,8 +219,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           type.body = { kind: 'properties', properties: property.properties }
         }
 
-        if (property.codegen_param_name != null) {
-          type.codegenBodyName = property.codegen_param_name
+        if (property.identifier != null) {
+          type.bodyIdentifier = property.identifier
         }
       }
     }
@@ -320,7 +320,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
  * differently as are described as nested objects, and the body could have two
  * different types, `model.Property[]` (a normal object) or `model.ValueOf` (eg: an array or generic)
  */
-function visitRequestProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null, codegen_param_name?: string } {
+function visitRequestProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null, identifier?: string } {
   const properties: model.Property[] = []
   let valueOf: model.ValueOf | null = null
 
@@ -351,7 +351,7 @@ function visitRequestProperty (member: PropertyDeclaration | PropertySignature):
     })
   }
 
-  return { name, properties, valueOf, codegen_param_name: tags.codegen_param_name }
+  return { name, properties, valueOf, identifier: tags.identifier }
 }
 
 function formatDanglingPath (path: string): string {
