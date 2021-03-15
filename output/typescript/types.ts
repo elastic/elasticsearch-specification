@@ -4321,13 +4321,13 @@ export interface DocumentExistsRequest extends RequestBase {
 export type DocumentExistsResponse = boolean
 
 export interface DocumentSimulation {
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _ingest: Ingest
-  _parent: string
-  _routing: string
+  _parent?: string
+  _routing?: string
   _source: Record<string, any>
-  _type: string
+  _type: Type
 }
 
 export interface DotExpanderProcessor extends ProcessorBase {
@@ -6514,6 +6514,7 @@ export interface Influence {
 
 export interface Ingest {
   timestamp: DateString
+  pipeline?: string
 }
 
 export interface IngestStats {
@@ -8068,9 +8069,11 @@ export interface PipelineProcessor extends ProcessorBase {
 }
 
 export interface PipelineSimulation {
-  doc: DocumentSimulation
-  processor_results: Array<PipelineSimulation>
-  tag: string
+  doc?: DocumentSimulation
+  processor_results?: Array<PipelineSimulation>
+  tag?: string
+  processor_type?: string
+  status?: Status
 }
 
 export interface PluginStats {

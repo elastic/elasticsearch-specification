@@ -18,11 +18,11 @@
  */
 
 class DocumentSimulation {
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _ingest: Ingest
-  _parent: string
-  _routing: string
+  _parent?: string
+  _routing?: string
   _source: Dictionary<string, UserDefinedValue>
-  _type: string
+  _type: Type
 }

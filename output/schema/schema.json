@@ -45129,7 +45129,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -45140,7 +45140,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -45158,7 +45158,7 @@
         },
         {
           "name": "_parent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45169,7 +45169,7 @@
         },
         {
           "name": "_routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45201,7 +45201,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -64606,6 +64606,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -78267,7 +78278,7 @@
       "properties": [
         {
           "name": "doc",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -78278,7 +78289,7 @@
         },
         {
           "name": "processor_results",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78292,12 +78303,34 @@
         },
         {
           "name": "tag",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Status",
+              "namespace": "x_pack.watcher.execution"
             }
           }
         }
