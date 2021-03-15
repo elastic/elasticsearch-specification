@@ -38360,7 +38360,7 @@
           }
         }
       },
-      "codegenBodyName": "document",
+      "bodyIdentifier": "document",
       "generics": [
         "TDocument"
       ],
@@ -50090,7 +50090,7 @@
           }
         }
       },
-      "codegenBodyName": "contents",
+      "bodyIdentifier": "contents",
       "generics": [
         "TBody"
       ],
@@ -62911,7 +62911,7 @@
           }
         }
       },
-      "codegenBodyName": "document",
+      "bodyIdentifier": "document",
       "generics": [
         "TDocument"
       ],
