@@ -10356,9 +10356,9 @@ export interface SnapshotIndexStats {
 
 export interface SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: long
+  duration_in_millis: EpochMillis
   end_time?: DateString
-  end_time_in_millis?: long
+  end_time_in_millis?: EpochMillis
   failures?: Array<SnapshotShardFailure>
   include_global_state?: boolean
   indices: Array<IndexName>
@@ -10367,11 +10367,17 @@ export interface SnapshotInfo {
   snapshot: string
   shards?: ShardStatistics
   start_time?: DateString
-  start_time_in_millis?: long
+  start_time_in_millis?: EpochMillis
   state?: string
-  uuid: string
+  uuid: Uuid
   version?: string
   version_id?: integer
+  feature_states?: Array<SnapshotInfoFeatureState>
+}
+
+export interface SnapshotInfoFeatureState {
+  feature_name: string
+  indices: Indices
 }
 
 export interface SnapshotLifecycleConfig {

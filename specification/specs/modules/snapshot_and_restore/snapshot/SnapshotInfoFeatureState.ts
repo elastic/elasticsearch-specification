@@ -17,23 +17,7 @@
  * under the License.
  */
 
-class SnapshotInfo {
-  data_streams: Array<string>
-  duration_in_millis: EpochMillis
-  end_time?: DateString
-  end_time_in_millis?: EpochMillis
-  failures?: SnapshotShardFailure[]
-  include_global_state?: boolean
-  indices: IndexName[]
-  metadata?: Dictionary<string, UserDefinedValue>
-  reason?: string
-  snapshot: string
-  shards?: ShardStatistics
-  start_time?: DateString
-  start_time_in_millis?: EpochMillis
-  state?: string
-  uuid: Uuid
-  version?: string
-  version_id?: integer
-  feature_states?: SnapshotInfoFeatureState[]
+class SnapshotInfoFeatureState {
+  feature_name: string
+  indices: Indices
 }

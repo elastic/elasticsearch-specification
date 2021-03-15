@@ -99413,7 +99413,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99435,7 +99435,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99546,7 +99546,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99568,7 +99568,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }
@@ -99591,6 +99591,51 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_states",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotInfoFeatureState",
+                "namespace": "modules.snapshot_and_restore.snapshot"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotInfoFeatureState",
+        "namespace": "modules.snapshot_and_restore.snapshot"
+      },
+      "properties": [
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
               "namespace": "internal"
             }
           }
