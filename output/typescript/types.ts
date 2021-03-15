@@ -6492,6 +6492,21 @@ export interface IndicesVersionsStats {
   version: string
 }
 
+export interface InferenceProcessor extends ProcessorBase {
+  model_id: Id
+  target_field: Field
+  field_map?: Record<Field, any>
+  inference_config?: InferenceProcessorConfig
+}
+
+export interface InferenceProcessorConfig {
+  regression?: InferenceProcessorConfigRegression
+}
+
+export interface InferenceProcessorConfigRegression {
+  results_field: string
+}
+
 export interface Influence {
   influencer_field_name: string
   influencer_field_values: Array<string>
@@ -8223,6 +8238,7 @@ export interface ProcessorContainer {
   pipeline?: PipelineProcessor
   drop?: DropProcessor
   circle?: CircleProcessor
+  inference?: InferenceProcessor
 }
 
 export interface Profile {
@@ -10254,8 +10270,8 @@ export interface SimpleQueryStringQuery extends QueryBase {
 }
 
 export interface SimulatePipelineDocument {
-  _id: Id
-  _index: IndexName
+  _id?: Id
+  _index?: IndexName
   _source: any
 }
 

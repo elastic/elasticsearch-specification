@@ -51,4 +51,5 @@ class ProcessorContainer {
   pipeline?: PipelineProcessor
   drop?: DropProcessor
   circle?: CircleProcessor
+  inference?: InferenceProcessor
 }

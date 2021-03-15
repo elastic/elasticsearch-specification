@@ -17,8 +17,17 @@
  * under the License.
  */
 
-class SimulatePipelineDocument {
-  _id?: Id
-  _index?: IndexName
-  _source: UserDefinedValue
+class InferenceProcessor extends ProcessorBase {
+  model_id: Id
+  target_field: Field
+  field_map?: Dictionary<Field, UserDefinedValue>
+  inference_config?: InferenceProcessorConfig
+}
+
+class InferenceProcessorConfig {
+  regression?: InferenceProcessorConfigRegression
+}
+
+class InferenceProcessorConfigRegression {
+  results_field: string
 }

@@ -64449,6 +64449,113 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "ProcessorBase",
+            "namespace": "ingest"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessor",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessorConfig",
+              "namespace": "ingest.processors"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessorConfig",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessorConfigRegression",
+              "namespace": "ingest.processors"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessorConfigRegression",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "results_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Influence",
@@ -79648,6 +79755,17 @@
             "kind": "instance_of",
             "type": {
               "name": "CircleProcessor",
+              "namespace": "ingest.processors"
+            }
+          }
+        },
+        {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessor",
               "namespace": "ingest.processors"
             }
           }
@@ -98607,7 +98725,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98618,7 +98736,7 @@
         },
         {
           "name": "_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
