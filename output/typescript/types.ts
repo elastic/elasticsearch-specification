@@ -6445,11 +6445,11 @@ export interface IndicesShardStoresRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  status?: Array<string>
+  status?: string | Array<string>
 }
 
 export interface IndicesShardStoresResponse extends ResponseBase {
-  indices: Record<string, IndicesShardStores>
+  indices: Record<IndexName, IndicesShardStores>
 }
 
 export interface IndicesStats {
@@ -8346,7 +8346,7 @@ export interface PutIndexTemplateRequest extends RequestBase {
   timeout?: Time
   body: {
     aliases?: Record<IndexName, Alias>
-    index_patterns?: Array<string>
+    index_patterns?: string | Array<string>
     mappings?: TypeMapping
     order?: integer
     settings?: Record<string, any>
@@ -9272,23 +9272,24 @@ export interface RoleUsage {
 }
 
 export interface RolloverConditions {
-  max_age: Time
-  max_docs: long
-  max_size: string
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }
 
 export interface RolloverIndexRequest extends RequestBase {
-  alias: Alias
+  alias: IndexAlias
   new_index?: IndexName
   dry_run?: boolean
   include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: integer
   body?: {
     aliases?: Record<IndexName, Alias>
     conditions?: RolloverConditions
-    mappings?: TypeMapping
+    mappings?: Record<string, TypeMapping> | TypeMapping
     settings?: Record<string, any>
   }
 }
@@ -10107,9 +10108,9 @@ export interface ShardStatsStore {
 
 export interface ShardStore {
   allocation: ShardStoreAllocation
-  allocation_id: string
+  allocation_id: Id
   attributes: Record<string, any>
-  id: string
+  id: Id
   legacy_version: long
   name: string
   store_exception: ShardStoreException
@@ -10175,6 +10176,7 @@ export interface ShrinkIndexRequest extends RequestBase {
 
 export interface ShrinkIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
+  index: IndexName
 }
 
 export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKey> {
@@ -11733,6 +11735,8 @@ export interface UpdateIndexSettingsRequest extends RequestBase {
   timeout?: Time
   body: {
     index?: Record<string, any>
+    refresh_interval?: Time
+    number_of_replicas?: integer
   }
 }
 

@@ -63981,14 +63981,26 @@
           "name": "status",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -64015,7 +64027,7 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "IndexName",
                 "namespace": "internal"
               }
             },
@@ -80714,14 +80726,26 @@
             "name": "index_patterns",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -89589,7 +89613,7 @@
       "properties": [
         {
           "name": "max_age",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89600,7 +89624,7 @@
         },
         {
           "name": "max_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89611,11 +89635,22 @@
         },
         {
           "name": "max_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_primary_shard_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -89665,11 +89700,33 @@
             "name": "mappings",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TypeMapping",
-                "namespace": "mapping"
-              }
+              "items": [
+                {
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  "kind": "dictionary_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TypeMapping",
+                      "namespace": "mapping"
+                    }
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TypeMapping",
+                    "namespace": "mapping"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -89712,8 +89769,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Alias",
-              "namespace": "indices.alias_management"
+              "name": "IndexAlias",
+              "namespace": "internal"
             }
           }
         },
@@ -89781,7 +89838,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -97169,7 +97226,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -97197,7 +97254,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -97744,6 +97801,17 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -112168,6 +112236,28 @@
               "kind": "dictionary_of",
               "value": {
                 "kind": "user_defined_value"
+              }
+            }
+          },
+          {
+            "name": "refresh_interval",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "name": "number_of_replicas",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
               }
             }
           }

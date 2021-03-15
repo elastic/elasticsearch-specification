@@ -18,7 +18,8 @@
  */
 
 class RolloverConditions {
-  max_age: Time
-  max_docs: long
-  max_size: string
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }

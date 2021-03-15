@@ -35,7 +35,7 @@ interface PutIndexTemplateRequest extends RequestBase {
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>
-    index_patterns?: string[]
+    index_patterns?: string | string[]
     mappings?: TypeMapping
     order?: integer
     settings?: Dictionary<string, UserDefinedValue>

@@ -17,13 +17,11 @@
  * under the License.
  */
 
-@class_serializer('ShardStoreFormatter')
 class ShardStore {
   allocation: ShardStoreAllocation
-  allocation_id: string
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
+  allocation_id: Id
   attributes: Dictionary<string, UserDefinedValue>
-  id: string
+  id: Id
   legacy_version: long
   name: string
   store_exception: ShardStoreException

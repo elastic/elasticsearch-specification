@@ -30,7 +30,7 @@ interface IndicesShardStoresRequest extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
-    status?: string[]
+    status?: string | string[]
   }
   body?: {}
 }
