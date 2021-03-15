@@ -31671,13 +31671,10 @@
             "name": "scroll_id",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "Ids",
+                "namespace": "internal"
               }
             }
           }

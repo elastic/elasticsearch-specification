@@ -2827,7 +2827,7 @@ export interface ClearCachedRolesResponse extends ResponseBase {
 export interface ClearScrollRequest extends RequestBase {
   scroll_id?: Ids
   body?: {
-    scroll_id?: Array<string>
+    scroll_id?: Ids
   }
 }
 
