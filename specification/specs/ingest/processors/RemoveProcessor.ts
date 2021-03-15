@@ -19,5 +19,5 @@
 
 class RemoveProcessor extends ProcessorBase {
   field: Fields
-  ignore_missing: boolean
+  ignore_missing?: boolean
 }

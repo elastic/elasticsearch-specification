@@ -15020,6 +15020,17 @@
               "kind": "user_defined_value"
             }
           }
+        },
+        {
+          "name": "allow_duplicates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -16647,7 +16658,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16658,7 +16669,7 @@
         },
         {
           "name": "indexed_chars",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16669,7 +16680,7 @@
         },
         {
           "name": "indexed_chars_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16680,7 +16691,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -16694,11 +16705,22 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "resource_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -19252,7 +19274,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19263,7 +19285,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37088,7 +37110,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38672,6 +38694,17 @@
           }
         },
         {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "field",
           "required": true,
           "type": {
@@ -38684,7 +38717,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38695,7 +38728,7 @@
         },
         {
           "name": "quote",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38706,7 +38739,7 @@
         },
         {
           "name": "separator",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40412,7 +40445,7 @@
         },
         {
           "name": "locale",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45203,7 +45236,7 @@
         },
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46006,7 +46039,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46017,7 +46050,7 @@
         },
         {
           "name": "max_matches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46028,7 +46061,7 @@
         },
         {
           "name": "override",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46050,7 +46083,7 @@
         },
         {
           "name": "shape_relation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51752,7 +51785,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59770,7 +59803,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59816,7 +59849,7 @@
         },
         {
           "name": "trace_match",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66659,7 +66692,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66905,7 +66938,7 @@
       "properties": [
         {
           "name": "exclude_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -66941,7 +66974,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66952,7 +66985,7 @@
         },
         {
           "name": "include_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -66966,7 +66999,7 @@
         },
         {
           "name": "prefix",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66977,7 +67010,7 @@
         },
         {
           "name": "strip_brackets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66988,7 +67021,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66999,7 +67032,7 @@
         },
         {
           "name": "trim_key",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67010,7 +67043,7 @@
         },
         {
           "name": "trim_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -68546,7 +68579,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -68557,7 +68590,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81705,6 +81738,17 @@
                 }
               }
             }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "internal"
+              }
+            }
           }
         ]
       },
@@ -88275,7 +88319,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94903,7 +94947,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -102543,7 +102587,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102554,7 +102598,7 @@
         },
         {
           "name": "preserve_trailing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102576,7 +102620,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110252,7 +110296,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110263,7 +110307,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113508,7 +113552,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113519,7 +113563,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

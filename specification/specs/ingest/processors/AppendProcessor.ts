@@ -20,4 +20,5 @@
 class AppendProcessor extends ProcessorBase {
   field: Field
   value: UserDefinedValue[]
+  allow_duplicates?: boolean
 }

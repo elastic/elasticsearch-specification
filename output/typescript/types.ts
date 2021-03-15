@@ -439,6 +439,7 @@ export interface ApiKeys {
 export interface AppendProcessor extends ProcessorBase {
   field: Field
   value: Array<any>
+  allow_duplicates?: boolean
 }
 
 export interface ApplicationGlobalUserPrivileges {
@@ -604,11 +605,12 @@ export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSea
 
 export interface AttachmentProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  indexed_chars: long
-  indexed_chars_field: Field
-  properties: Array<string>
-  target_field: Field
+  ignore_missing?: boolean
+  indexed_chars?: long
+  indexed_chars_field?: Field
+  properties?: Array<string>
+  target_field?: Field
+  resource_name?: string
 }
 
 export interface AuditUsage extends SecurityFeatureToggle {
@@ -891,8 +893,8 @@ export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p
 
 export interface BytesProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface CPUStats {
@@ -3427,7 +3429,7 @@ export type Context = string | GeoLocation
 
 export interface ConvertProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   target_field: Field
   type: ConvertProcessorType
 }
@@ -3601,10 +3603,11 @@ export interface CronExpression extends ScheduleBase {
 
 export interface CsvProcessor extends ProcessorBase {
   empty_value: any
+  description?: string
   field: Field
-  ignore_missing: boolean
-  quote: string
-  separator: string
+  ignore_missing?: boolean
+  quote?: string
+  separator?: string
   target_fields: Fields
   trim: boolean
 }
@@ -3782,7 +3785,7 @@ export type DateMathTime = string
 export interface DateProcessor extends ProcessorBase {
   field: Field
   formats: Array<string>
-  locale: string
+  locale?: string
   target_field: Field
   timezone: string
 }
@@ -4329,7 +4332,7 @@ export interface DocumentSimulation {
 
 export interface DotExpanderProcessor extends ProcessorBase {
   field: Field
-  path: string
+  path?: string
 }
 
 export interface DropProcessor extends ProcessorBase {
@@ -4427,11 +4430,11 @@ export type EnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
 
 export interface EnrichProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  max_matches: integer
-  override: boolean
+  ignore_missing?: boolean
+  max_matches?: integer
+  override?: boolean
   policy_name: string
-  shape_relation: GeoShapeRelation
+  shape_relation?: GeoShapeRelation
   target_field: Field
 }
 
@@ -5075,7 +5078,7 @@ export interface ForceMergeResponse extends ShardsOperationResponseBase {
 
 export interface ForeachProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   processor: ProcessorContainer
 }
 
@@ -5981,10 +5984,10 @@ export interface GraphVertexInclude {
 
 export interface GrokProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   pattern_definitions: Record<string, string>
   patterns: Array<string>
-  trace_match: boolean
+  trace_match?: boolean
 }
 
 export interface GrokProcessorPatternsRequest extends RequestBase {
@@ -6747,7 +6750,7 @@ export interface JobStats {
 export interface JoinProcessor extends ProcessorBase {
   field: Field
   separator: string
-  target_field: Field
+  target_field?: Field
 }
 
 export interface JsonProcessor extends ProcessorBase {
@@ -6779,16 +6782,16 @@ export interface KeepWordsTokenFilter extends TokenFilterBase {
 }
 
 export interface KeyValueProcessor extends ProcessorBase {
-  exclude_keys: Array<string>
+  exclude_keys?: Array<string>
   field: Field
   field_split: string
-  ignore_missing: boolean
-  include_keys: Array<string>
-  prefix: string
-  strip_brackets: boolean
-  target_field: Field
-  trim_key: string
-  trim_value: string
+  ignore_missing?: boolean
+  include_keys?: Array<string>
+  prefix?: string
+  strip_brackets?: boolean
+  target_field?: Field
+  trim_key?: string
+  trim_value?: string
   value_split: string
 }
 
@@ -6971,8 +6974,8 @@ export interface LoggingActionResult {
 
 export interface LowercaseProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface LowercaseTokenFilter extends TokenFilterBase {
@@ -8440,6 +8443,7 @@ export interface PutPipelineRequest extends RequestBase {
     description?: string
     on_failure?: Array<ProcessorContainer>
     processors?: Array<ProcessorContainer>
+    version?: long
   }
 }
 
@@ -9106,7 +9110,7 @@ export interface RemovePolicyResponse extends ResponseBase {
 
 export interface RemoveProcessor extends ProcessorBase {
   field: Fields
-  ignore_missing: boolean
+  ignore_missing?: boolean
 }
 
 export interface RenameProcessor extends ProcessorBase {
@@ -9836,7 +9840,7 @@ export interface SetProcessor extends ProcessorBase {
 
 export interface SetSecurityUserProcessor extends ProcessorBase {
   field: Field
-  properties: Array<string>
+  properties?: Array<string>
 }
 
 export interface SetUpgradeModeRequest extends RequestBase {
@@ -10678,10 +10682,10 @@ export interface SplitIndexResponse extends AcknowledgedResponseBase {
 
 export interface SplitProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  preserve_trailing: boolean
+  ignore_missing?: boolean
+  preserve_trailing?: boolean
   separator: string
-  target_field: Field
+  target_field?: Field
 }
 
 export interface SqlColumn {
@@ -11530,8 +11534,8 @@ export interface TriggerEventResult {
 
 export interface TrimProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface TrimTokenFilter extends TokenFilterBase {
@@ -11862,8 +11866,8 @@ export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
 export interface UrlDecodeProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface UserAgentProcessor extends ProcessorBase {
