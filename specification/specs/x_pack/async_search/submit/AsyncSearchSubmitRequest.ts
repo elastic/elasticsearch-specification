@@ -25,12 +25,13 @@
 interface AsyncSearchSubmitRequest extends RequestBase {
   path_parts?: {
     index?: Indices
+  }
+  query_parameters?: {
     batched_reduce_size?: long
     wait_for_completion_timeout?: Time
     keep_on_completion?: boolean
     typed_keys?: boolean
   }
-  query_parameters?: {}
   body?: {
     aggs?: Dictionary<string, AggregationContainer>
     allow_no_indices?: boolean

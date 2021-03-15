@@ -16542,7 +16542,9 @@
               "namespace": "internal"
             }
           }
-        },
+        }
+      ],
+      "query": [
         {
           "name": "batched_reduce_size",
           "required": false,
@@ -16587,8 +16589,7 @@
             }
           }
         }
-      ],
-      "query": []
+      ]
     },
     {
       "generics": [
