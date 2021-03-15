@@ -79205,8 +79205,30 @@
           }
         },
         {
+          "name": "application",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "metadata",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",

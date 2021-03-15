@@ -8174,7 +8174,9 @@ export type Privileges = Record<string, boolean>
 
 export interface PrivilegesActions {
   actions: Array<string>
-  metadata: Record<string, any>
+  application?: string
+  name?: string
+  metadata?: Record<string, any>
 }
 
 export interface ProcessStats {
