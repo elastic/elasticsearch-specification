@@ -66,6 +66,8 @@ class ErrorCause {
   line?: integer
   max_buckets?: integer
   phase?: string
+  property_name?: string
+  processor_type?: string
   resource_id?: string[]
   'resource.id'?: string
   resource_type?: string

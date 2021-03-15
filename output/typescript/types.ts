@@ -4464,6 +4464,8 @@ export interface ErrorCause {
   line?: integer
   max_buckets?: integer
   phase?: string
+  property_name?: string
+  processor_type?: string
   resource_id?: Array<string>
   'resource.id'?: string
   resource_type?: string
