@@ -5679,8 +5679,7 @@ export interface GetRepositoryRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface GetRepositoryResponse extends ResponseBase {
-  repositories: Record<string, SnapshotRepository>
+export interface GetRepositoryResponse extends DictionaryResponseBase<string, SnapshotRepository> {
 }
 
 export interface GetRequest extends RequestBase {
@@ -10438,6 +10437,16 @@ export interface SnapshotLifecycleStats {
 
 export interface SnapshotRepository {
   type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
+}
+
+export interface SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string
+  concurrent_streams?: string
+  location: string
+  readonly?: string
 }
 
 export interface SnapshotRequest extends RequestBase {

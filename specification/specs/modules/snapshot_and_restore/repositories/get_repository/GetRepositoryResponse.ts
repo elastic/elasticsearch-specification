@@ -17,7 +17,4 @@
  * under the License.
  */
 
-@class_serializer('GetRepositoryResponseFormatter')
-class GetRepositoryResponse extends ResponseBase {
-  repositories: Dictionary<string, SnapshotRepository>
-}
+class GetRepositoryResponse extends DictionaryResponseBase<string, SnapshotRepository> {}

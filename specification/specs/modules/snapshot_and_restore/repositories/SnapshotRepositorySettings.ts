@@ -17,8 +17,10 @@
  * under the License.
  */
 
-class SnapshotRepository {
-  type: string
-  uuid?: Uuid
-  settings: SnapshotRepositorySettings
+class SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string
+  concurrent_streams?: string
+  location: string
+  readonly?: string
 }
