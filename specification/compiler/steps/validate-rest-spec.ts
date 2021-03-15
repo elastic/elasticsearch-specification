@@ -18,9 +18,9 @@
  */
 
 import assert from 'assert'
-import chalk from 'chalk'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
+import * as errors from '../validation-errors'
 
 // This code can be simplified once https://github.com/tc39/proposal-set-methods is available
 
@@ -56,14 +56,14 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       // are all the parameters in the request definition present in the json spec?
       for (const name of pathProperties) {
         if (!urlParts.includes(name)) {
-          console.warn(`The ${chalk.green(endpoint.request.name)} definition has the path parameter ${chalk.green(name)} which is not present in the json spec`)
+          errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: path parameter '${name}' does not exist in the json spec`)
         }
       }
 
       // are all the parameters in the json spec present in the request definition?
       for (const name of urlParts) {
         if (!pathProperties.includes(name)) {
-          console.warn(`The ${chalk.green(endpoint.request.name)} definition does not include the path parameter ${chalk.green(name)} which is present in the json spec`)
+          errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: missing json spec path parameter '${name}'`)
         }
       }
 
@@ -73,24 +73,24 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         // are all the parameters in the request definition present in the json spec?
         for (const name of queryProperties) {
           if (!params.includes(name)) {
-            console.warn(`The ${chalk.green(endpoint.request.name)} definition has the query parameter ${chalk.green(name)} which is not present in the json spec`)
+            errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: query parameter '${name}' does not exist in the json spec`)
           }
         }
 
         // are all the parameters in the json spec present in the request definition?
         for (const name of params) {
           if (!queryProperties.includes(name)) {
-            console.warn(`The ${chalk.green(endpoint.request.name)} definition does not include the query parameter ${chalk.green(name)} which is present in the json spec`)
+            errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: missing json spec query parameter '${name}'`)
           }
         }
       }
 
       if (requestDefinition.body === Body.yesBody && spec.body == null) {
-        console.warn(`The ${chalk.green(endpoint.request.name)} definition should not include a body`)
+        errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: should not have a body`)
       }
 
       if (requestDefinition.body === Body.noBody && spec.body != null && spec.body.required === true) {
-        console.warn(`The ${chalk.green(endpoint.request.name)} definition should include a body`)
+        errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: should have a body definition`)
       }
     }
   }

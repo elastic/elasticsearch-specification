@@ -18,6 +18,7 @@
  */
 
 import * as model from '../model/metamodel'
+import * as errors from '../validation-errors'
 
 enum TypeDefKind {
   type,
@@ -50,51 +51,44 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
     return n1.namespace === n2.namespace && n1.name === n2.name
   }
 
-  let errorCount = 0
+  function getTypeDef (name: model.TypeName): model.TypeDefinition | undefined {
+    return typeDefByName.get(fqn(name))
+  }
 
-  // Graph traversal context, for logs
+  // ----- Error logging and collection
+
+  // Current endpoint context. Start with an undefined one for common type definitions
+  let currentEndpoint: string | undefined
+  let currentPart: 'request'|'response' = 'request'
+
+  function setRootContext (endpoint: string, what: 'request' | 'response'): void {
+    currentEndpoint = endpoint
+    currentPart = what
+  }
+
+  // Graph traversal context stack
   let context: string[] = []
 
+  let errorCount = 0
   function modelError (msg: string): void {
-    console.log(context.join(' / '), '-', msg)
+    const fullMsg = (context.length === 0) ? msg : context.join(' / ') + ' - ' + msg
+
+    if (currentEndpoint != null) {
+      errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+    } else {
+      errors.addGeneralError(fullMsg)
+    }
+
     errorCount++
   }
+
+  // ----- Type definition management
 
   // Type definitions by name
   const typeDefByName = new Map<string, model.TypeDefinition>()
 
   for (const type of apiModel.types) {
     typeDefByName.set(fqn(type.name), type)
-  }
-
-  // Register builtin types
-  for (const name of [
-    'string', 'boolean', 'number', 'null'
-  ]) {
-    const typeName = {
-      namespace: 'internal',
-      name: name
-    }
-    typeDefByName.set(fqn(typeName), {
-      kind: 'interface',
-      name: typeName,
-      properties: []
-    })
-  }
-
-  // FIXME: could we get rid of this and use an 'array_of' value?
-  typeDefByName.set('internal:Array', {
-    kind: 'interface',
-    name: {
-      namespace: 'internal',
-      name: 'Array'
-    },
-    generics: ['Item'],
-    properties: []
-  })
-
-  function getTypeDef (name: model.TypeName): model.TypeDefinition | undefined {
-    return typeDefByName.get(fqn(name))
   }
 
   // Behaviors. Filled from the `behaviors` properties from requests and interfaces
@@ -139,12 +133,40 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
   // Used both to avoid re-validating types we already visited and to find dangling types at the end.
   const typesSeen = new Set<string>()
 
-  // The ErrorResponse is not referenced anywhere, but we need to export it
-  // as any API could return it if an error happens. It's widely used in
-  // the type test as well.
+  // ----- Builtin and special types
+
+  // Register builtin types
+  for (const name of [
+    'string', 'boolean', 'number', 'null'
+  ]) {
+    const typeName = {
+      namespace: 'internal',
+      name: name
+    }
+    typeDefByName.set(fqn(typeName), {
+      kind: 'interface',
+      name: typeName,
+      properties: []
+    })
+  }
+
+  // FIXME: could we get rid of this and use an 'array_of' value?
+  typeDefByName.set('internal:Array', {
+    kind: 'interface',
+    name: {
+      namespace: 'internal',
+      name: 'Array'
+    },
+    generics: ['Item'],
+    properties: []
+  })
+
+  // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
   validateTypeRef({ namespace: 'common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
 
-  // Alright, let's go!
+  // -----  Alright, let's go!
+
+  // Validate all endpoints
   apiModel.endpoints.forEach(validateEndpoint)
 
   // Removes types that we've not seen
@@ -172,65 +194,61 @@ export default async function validateModel (apiModel: model.Model): Promise<mod
    * Validate an endpoint
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
-    context.push(`Endpoint ${endpoint.name}`)
+    setRootContext(endpoint.name, 'request')
 
-    if (endpoint.request == null || endpoint.response == null) {
-      modelError('Skipped because of missing request or response')
-      context.pop()
-      return
-    }
-
-    context.push('Request')
-    const reqType = getTypeDef(endpoint.request)
-
-    if (reqType == null) {
-      modelError(`Type ${fqn(endpoint.request)} not found`)
-    } else if (reqType.kind !== 'request') {
-      modelError(`Type ${fqn(endpoint.request)} is not a request definition`)
+    if (endpoint.request == null) {
+      modelError('Missing request')
     } else {
-      validateTypeDef(reqType)
-      validateIsLeafType(endpoint.request)
+      const reqType = getTypeDef(endpoint.request)
 
-      // Request path properties and url template properties should be the same
-      const reqProperties = new Set(reqType.path.map(p => p.name))
+      if (reqType == null) {
+        modelError(`Type ${fqn(endpoint.request)} not found`)
+      } else if (reqType.kind !== 'request') {
+        modelError(`Type ${fqn(endpoint.request)} is not a request definition`)
+      } else {
+        validateTypeDef(reqType)
+        validateIsLeafType(endpoint.request)
 
-      const urlProperties = new Set<string>()
-      for (const url of endpoint.urls) {
-        const re = /{([^}]+)}/g
-        let m
-        while ((m = re.exec(url.path)) != null) { // eslint-disable-line no-cond-assign
-          urlProperties.add(m[1])
+        // Request path properties and url template properties should be the same
+        const reqProperties = new Set(reqType.path.map(p => p.name))
+
+        const urlProperties = new Set<string>()
+        for (const url of endpoint.urls) {
+          const re = /{([^}]+)}/g
+          let m
+          while ((m = re.exec(url.path)) != null) { // eslint-disable-line no-cond-assign
+            urlProperties.add(m[1])
+          }
         }
-      }
 
-      for (const urlProp of urlProperties) {
-        if (!reqProperties.has(urlProp)) {
-          modelError(`Url path property '${urlProp}' is missing in request definition`)
+        for (const urlProp of urlProperties) {
+          if (!reqProperties.has(urlProp)) {
+            modelError(`Url path property '${urlProp}' is missing in request definition`)
+          }
         }
-      }
 
-      for (const reqProp of reqProperties) {
-        if (!urlProperties.has(reqProp)) {
-          modelError(`Request path property '${reqProp}' doesn't exist in endpoint URL templates`)
+        for (const reqProp of reqProperties) {
+          if (!urlProperties.has(reqProp)) {
+            modelError(`Request path property '${reqProp}' doesn't exist in endpoint URL templates`)
+          }
         }
       }
     }
 
-    context.pop()
+    setRootContext(endpoint.name, 'response')
 
-    context.push('Response')
-    const respType = getTypeDef(endpoint.response)
-
-    if (respType == null) {
-      modelError(`Type ${fqn(endpoint.request)} not found`)
+    if (endpoint.response == null) {
+      modelError('Missing response')
     } else {
-      validateTypeDef(respType)
-      validateIsLeafType(endpoint.request)
+      const respType = getTypeDef(endpoint.response)
+
+      if (respType == null) {
+        modelError(`Type ${fqn(endpoint.response)} not found`)
+      } else {
+        validateTypeDef(respType)
+        validateIsLeafType(endpoint.response)
+      }
     }
-
-    context.pop()
-
-    context.pop()
   }
 
   /**

@@ -23,6 +23,7 @@ import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
 import { compileSpecification, compileEndpoints } from './model/build-model'
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
+import * as errors from './validation-errors'
 
 type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>) => Promise<Model>
 
@@ -57,6 +58,12 @@ export default class Compiler {
     await writeFile(
       join(__dirname, '..', '..', 'output', 'schema', 'schema.json'),
       stringify(this.model, null, 2),
+      'utf8'
+    )
+
+    await writeFile(
+      join(__dirname, '..', '..', 'output', 'schema', 'validation-errors.json'),
+      stringify(errors.getValidationErrors(), null, 2),
       'utf8'
     )
   }
