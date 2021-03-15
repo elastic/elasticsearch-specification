@@ -42,5 +42,8 @@ interface IndexRequest<TDocument> extends RequestBase {
     wait_for_active_shards?: string
     require_alias?: boolean
   }
+  /**
+   * @codegen_param_name document
+   */
   body?: TDocument
 }

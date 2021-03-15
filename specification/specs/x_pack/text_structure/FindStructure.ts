@@ -38,6 +38,9 @@ interface FindStructureRequest<TBody> {
     timestamp_field?: Field
     timestamp_format?: string
   }
+  /**
+   * @codegen_param_name contents
+   */
   body: TBody
 }
 
