@@ -58023,7 +58023,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -58102,6 +58102,20 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "policy_stats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
