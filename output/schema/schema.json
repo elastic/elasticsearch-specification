@@ -93447,11 +93447,33 @@
             "name": "mappings",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TypeMapping",
-                "namespace": "mapping"
-              }
+              "items": [
+                {
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  "kind": "dictionary_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TypeMapping",
+                      "namespace": "mapping"
+                    }
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TypeMapping",
+                    "namespace": "mapping"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -93494,7 +93516,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexAlias",
               "namespace": "internal"
             }
           }

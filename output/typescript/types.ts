@@ -9892,7 +9892,7 @@ export interface RolloverConditions {
 }
 
 export interface RolloverIndexRequest extends RequestBase {
-  alias: string
+  alias: IndexAlias
   new_index?: IndexName
   dry_run?: boolean
   include_type_name?: boolean
@@ -9902,7 +9902,7 @@ export interface RolloverIndexRequest extends RequestBase {
   body?: {
     aliases?: Record<IndexName, Alias>
     conditions?: RolloverConditions
-    mappings?: TypeMapping
+    mappings?: Record<string, TypeMapping> | TypeMapping
     settings?: Record<string, any>
   }
 }
