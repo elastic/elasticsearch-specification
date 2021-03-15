@@ -84627,7 +84627,7 @@
       "properties": [
         {
           "name": "columns",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -84641,7 +84641,7 @@
         },
         {
           "name": "cursor",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84654,69 +84654,13 @@
           "name": "rows",
           "required": true,
           "type": {
-            "generics": [
-              {
-                "generics": [
-                  {
-                    "key": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    },
-                    "kind": "dictionary_of",
-                    "value": {
-                      "kind": "user_defined_value"
-                    }
-                  }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SqlRow",
+                "namespace": "internal"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "values",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "generics": [
-                  {
-                    "key": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    },
-                    "kind": "dictionary_of",
-                    "value": {
-                      "kind": "user_defined_value"
-                    }
-                  }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         }
@@ -102586,6 +102530,19 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "SqlRow",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -109841,13 +109798,84 @@
       },
       "properties": [
         {
-          "name": "result",
+          "name": "size",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SearchRequest",
-              "namespace": "search.search"
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SourceFilter",
+                  "namespace": "search.search.source_filtering"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Field",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Array",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "search.search.sort"
             }
           }
         }

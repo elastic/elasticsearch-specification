@@ -18,8 +18,7 @@
  */
 
 class QuerySqlResponse extends ResponseBase {
-  columns: SqlColumn[]
-  cursor: string
-  rows: Array<Array<Dictionary<string, UserDefinedValue>>>
-  values: Array<Array<Dictionary<string, UserDefinedValue>>>
+  columns?: SqlColumn[]
+  cursor?: string
+  rows: SqlRow[]
 }

@@ -8700,10 +8700,9 @@ export interface QuerySqlRequest extends RequestBase {
 }
 
 export interface QuerySqlResponse extends ResponseBase {
-  columns: Array<SqlColumn>
-  cursor: string
-  rows: Array<Array<Record<string, any>>>
-  values: Array<Array<Record<string, any>>>
+  columns?: Array<SqlColumn>
+  cursor?: string
+  rows: Array<SqlRow>
 }
 
 export interface QueryStringQuery extends QueryBase {
@@ -10679,6 +10678,8 @@ export interface SqlColumn {
   type: string
 }
 
+export type SqlRow = Array<any>
+
 export interface SqlUsage extends XPackUsage {
   features: Record<string, integer>
   queries: Record<string, QueryUsage>
@@ -11476,7 +11477,10 @@ export interface TranslateSqlRequest extends RequestBase {
 }
 
 export interface TranslateSqlResponse extends ResponseBase {
-  result: SearchRequest
+  size: long
+  _source: boolean | Fields | SourceFilter
+  fields: Array<Record<Field, string>>
+  sort: Sort
 }
 
 export interface TranslogStats {

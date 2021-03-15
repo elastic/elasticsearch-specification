@@ -154,6 +154,11 @@ type AggregateName = string
  */
 type SuggestionName = string
 
+/**
+ * QL Types
+ */
+type SqlRow = UserDefinedValue[]
+
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {
   field: Field

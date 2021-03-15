@@ -18,5 +18,8 @@
  */
 
 class TranslateSqlResponse extends ResponseBase {
-  result: SearchRequest
+  size: long
+  _source: boolean | Fields | SourceFilter
+  fields: Array<Dictionary<Field, string>>
+  sort: Sort
 }
