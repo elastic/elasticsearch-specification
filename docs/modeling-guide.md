@@ -9,6 +9,43 @@ the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.
 while in [behaviors](./behaviors.md) you can find the list of special interfaces used
 for describing APIs that can't be represented in the specification.
 
+### Code generator property name hints
+
+Some APIs do not define the body as a structured object, but accept a generic instead.
+In those cases you should add a js doc tag to suggest to language generators what
+property name should be used.
+Currently, only property name hints for the body are supported.
+
+The js tag should be used as follows:
+```ts
+  /**
+   * @codegen_param_name <property_name>
+   */
+  body: TDocument
+```
+
+Fo example: 
+```ts
+/**
+ * @rest_spec_name index
+ * @since 0.0.0
+ * @stability stable
+ * @class_serializer IndexRequestFormatter`1`
+ */
+interface IndexRequest<TDocument> extends RequestBase {
+  path_parts?: {
+    ...
+  }
+  query_parameters?: {
+    ...
+  }
+  /**
+   * @codegen_param_name document
+   */
+  body?: TDocument
+}
+```
+
 ### Dictionary
 
 Represents a dynamic key value map:
