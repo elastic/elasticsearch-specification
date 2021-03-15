@@ -32650,7 +32650,7 @@
       "properties": [
         {
           "name": "alias",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54819,6 +54819,26 @@
       "query": []
     },
     {
+      "attachedBehaviors": [
+        "ArrayResponseBase"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterCertificateInformation",
+                "namespace": "x_pack.ssl.get_certificates"
+              }
+            }
+          ],
+          "type": {
+            "name": "ArrayResponseBase",
+            "namespace": "internal"
+          }
+        }
+      ],
       "inherits": [
         {
           "type": {
@@ -54832,22 +54852,7 @@
         "name": "GetCertificatesResponse",
         "namespace": "x_pack.ssl.get_certificates"
       },
-      "properties": [
-        {
-          "name": "certificates",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ClusterCertificateInformation",
-                "namespace": "x_pack.ssl.get_certificates"
-              }
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [

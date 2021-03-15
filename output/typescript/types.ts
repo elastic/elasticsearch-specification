@@ -2934,7 +2934,7 @@ export interface ClusterAllocationExplainResponse extends ResponseBase {
 }
 
 export interface ClusterCertificateInformation {
-  alias: string
+  alias?: string
   expiry: DateString
   format: string
   has_private_key: boolean
@@ -5440,9 +5440,7 @@ export interface GetCategoriesResponse extends ResponseBase {
 export interface GetCertificatesRequest extends RequestBase {
 }
 
-export interface GetCertificatesResponse extends ResponseBase {
-  certificates: Array<ClusterCertificateInformation>
-}
+export type GetCertificatesResponse = ClusterCertificateInformation[]
 
 export interface GetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Id
