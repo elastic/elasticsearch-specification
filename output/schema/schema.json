@@ -84659,7 +84659,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SqlRow",
-                "namespace": "x_pack.sql.query_sql"
+                "namespace": "internal"
               }
             }
           }
@@ -102530,25 +102530,17 @@
       ]
     },
     {
-      "inherits": [
-        {
-          "generics": [
-            {
-              "kind": "user_defined_value"
-            }
-          ],
-          "type": {
-            "name": "Array",
-            "namespace": ".Users.pkrauss.github.com.elastic-client-generator.specification.node_modules.typescript.lib"
-          }
-        }
-      ],
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "SqlRow",
-        "namespace": "x_pack.sql.query_sql"
+        "namespace": "internal"
       },
-      "properties": []
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      }
     },
     {
       "inherits": [

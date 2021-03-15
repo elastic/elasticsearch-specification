@@ -10678,8 +10678,7 @@ export interface SqlColumn {
   type: string
 }
 
-export interface SqlRow extends Array<any> {
-}
+export type SqlRow = Array<any>
 
 export interface SqlUsage extends XPackUsage {
   features: Record<string, integer>
