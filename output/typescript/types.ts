@@ -8552,12 +8552,14 @@ export interface PutUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
   body: {
+    username?: Name
     email?: string | null
     full_name?: string | null
     metadata?: Record<string, any>
     password?: string
     password_hash?: string
     roles?: Array<string>
+    enabled?: boolean
   }
 }
 

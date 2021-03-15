@@ -30,11 +30,13 @@ interface PutUserRequest extends RequestBase {
     refresh?: Refresh
   }
   body?: {
+    username?: Name
     email?: string | null
     full_name?: string | null
     metadata?: Dictionary<string, UserDefinedValue>
     password?: string
     password_hash?: string
     roles?: string[]
+    enabled?: boolean
   }
 }

@@ -82696,6 +82696,17 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "username",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
             "name": "email",
             "required": false,
             "type": {
@@ -82791,6 +82802,17 @@
                   "name": "string",
                   "namespace": "internal"
                 }
+              }
+            }
+          },
+          {
+            "name": "enabled",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
               }
             }
           }
