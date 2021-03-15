@@ -51904,6 +51904,14 @@
           }
         }
       ],
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "GetCertificatesResponse",
