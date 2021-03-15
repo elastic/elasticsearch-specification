@@ -25,7 +25,8 @@ class AsyncSearch<TDocument> {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
-  _scroll_id?: string
+  pit_id?: Id
+  _scroll_id?: Id
   _shards: ShardStatistics
   suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean

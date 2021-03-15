@@ -18,6 +18,6 @@
  */
 
 class PointInTimeReference {
-  id: string
+  id: Id
   keep_alive?: Time
 }
