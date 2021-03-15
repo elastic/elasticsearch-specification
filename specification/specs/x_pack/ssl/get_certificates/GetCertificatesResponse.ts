@@ -18,4 +18,5 @@
  */
 
 class GetCertificatesResponse
+  extends ResponseBase
   implements ArrayResponseBase<ClusterCertificateInformation> {}
