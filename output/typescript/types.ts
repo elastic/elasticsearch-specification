@@ -6257,7 +6257,7 @@ export type Id = string
 export type Ids = string | Array<string>
 
 export interface IdsQuery extends QueryBase {
-  values?: Array<Id>
+  values?: Array<Id> | Array<long>
 }
 
 export interface IlmPolicyStatistics {
@@ -8960,18 +8960,22 @@ export interface ReindexRequest extends RequestBase {
 }
 
 export interface ReindexResponse extends ResponseBase {
-  batches: long
-  created: long
-  failures: Array<BulkIndexByScrollFailure>
-  noops: long
-  retries: Retries
-  slice_id: integer
-  task: TaskId
-  timed_out: boolean
-  took: Time
-  total: long
-  updated: long
-  version_conflicts: long
+  batches?: long
+  created?: long
+  deleted?: long
+  failures?: Array<BulkIndexByScrollFailure>
+  noops?: long
+  retries?: Retries
+  requests_per_second?: long
+  slice_id?: integer
+  task?: TaskId
+  throttled_millis?: EpochMillis
+  throttled_until_millis?: EpochMillis
+  timed_out?: boolean
+  took?: Time
+  total?: long
+  updated?: long
+  version_conflicts?: long
 }
 
 export interface ReindexRethrottleRequest extends RequestBase {

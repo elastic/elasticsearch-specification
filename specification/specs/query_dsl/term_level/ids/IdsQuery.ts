@@ -18,5 +18,5 @@
  */
 
 class IdsQuery extends QueryBase {
-  values?: Id[]
+  values?: Id[] | long[]
 }

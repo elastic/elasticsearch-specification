@@ -18,16 +18,20 @@
  */
 
 class ReindexResponse extends ResponseBase {
-  batches: long
-  created: long
-  failures: BulkIndexByScrollFailure[]
-  noops: long
-  retries: Retries
-  slice_id: integer
-  task: TaskId
-  timed_out: boolean
-  took: Time
-  total: long
-  updated: long
-  version_conflicts: long
+  batches?: long
+  created?: long
+  deleted?: long
+  failures?: BulkIndexByScrollFailure[]
+  noops?: long
+  retries?: Retries
+  requests_per_second?: long
+  slice_id?: integer
+  task?: TaskId
+  throttled_millis?: EpochMillis
+  throttled_until_millis?: EpochMillis
+  timed_out?: boolean
+  took?: Time
+  total?: long
+  updated?: long
+  version_conflicts?: long
 }
