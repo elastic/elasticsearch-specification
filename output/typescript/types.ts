@@ -6436,7 +6436,7 @@ export interface IndicesPrivileges {
   field_security?: FieldSecurity
   names: Indices
   privileges: Array<string>
-  query?: QueryContainer
+  query?: string
   allow_restricted_indices?: boolean
 }
 
