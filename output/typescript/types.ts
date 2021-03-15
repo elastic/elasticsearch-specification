@@ -3558,6 +3558,8 @@ export interface CreateRepositoryRequest extends RequestBase {
   verify?: boolean
   body: {
     repository?: SnapshotRepository
+    type: string
+    settings: SnapshotRepositorySettings
   }
 }
 
@@ -10443,10 +10445,11 @@ export interface SnapshotRepository {
 
 export interface SnapshotRepositorySettings {
   chunk_size?: string
-  compress?: string
-  concurrent_streams?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
   location: string
-  readonly?: string
+  read_only?: string | boolean
+  readonly?: string | boolean
 }
 
 export interface SnapshotRequest extends RequestBase {

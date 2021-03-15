@@ -19,8 +19,11 @@
 
 class SnapshotRepositorySettings {
   chunk_size?: string
-  compress?: string
-  concurrent_streams?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
   location: string
-  readonly?: string
+  /**
+   * @aliases readonly
+   */
+  read_only?: string | boolean
 }
