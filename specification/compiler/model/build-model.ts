@@ -49,7 +49,8 @@ import {
   modelInherits,
   modelProperty,
   modelType,
-  modelTypeAlias
+  modelTypeAlias,
+  parseJsDocTags
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
@@ -217,6 +218,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         } else if (property.properties.length > 0) {
           type.body = { kind: 'properties', properties: property.properties }
         }
+
+        if (property.codegen_param_name != null) {
+          type.codegenBodyName = property.codegen_param_name
+        }
       }
     }
 
@@ -315,14 +320,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
  * differently as are described as nested objects, and the body could have two
  * different types, `model.Property[]` (a normal object) or `model.ValueOf` (eg: an array or generic)
  */
-function visitRequestProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
+function visitRequestProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null, codegen_param_name?: string } {
   const properties: model.Property[] = []
   let valueOf: model.ValueOf | null = null
 
   const name = member.getName()
   const value = member.getTypeNode()
   assert(value, `The property ${name} is not defined`)
-
+  const tags = parseJsDocTags(member.getJsDocs())
   // Request classes have three top level properties:
   // - path_parts
   // - query_parameters
@@ -346,7 +351,7 @@ function visitRequestProperty (member: PropertyDeclaration | PropertySignature):
     })
   }
 
-  return { name, properties, valueOf }
+  return { name, properties, valueOf, codegen_param_name: tags.codegen_param_name }
 }
 
 function formatDanglingPath (path: string): string {

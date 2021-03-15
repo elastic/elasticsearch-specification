@@ -208,6 +208,11 @@ export class Request extends BaseType {
   body?: ValueBody | PropertiesBody
   behaviors?: Implements[]
   attachedBehaviors?: string[]
+  /**
+   * The parameter name language generator should use,
+   * normally used when the entire body is a generic.
+   */
+  codegenBodyName?: string
 }
 
 export class ValueBody {
