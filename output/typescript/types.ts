@@ -11476,7 +11476,10 @@ export interface TranslateSqlRequest extends RequestBase {
 }
 
 export interface TranslateSqlResponse extends ResponseBase {
-  result: SearchRequest
+  size: long
+  _source: boolean | Fields | SourceFilter
+  fields: Array<Record<Field, string>>
+  sort: Sort
 }
 
 export interface TranslogStats {

@@ -109841,13 +109841,84 @@
       },
       "properties": [
         {
-          "name": "result",
+          "name": "size",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SearchRequest",
-              "namespace": "search.search"
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SourceFilter",
+                  "namespace": "search.search.source_filtering"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Field",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Array",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "search.search.sort"
             }
           }
         }
