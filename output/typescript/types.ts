@@ -4457,7 +4457,7 @@ export interface ErrorCause {
   col?: integer
   failed_shards?: Array<ShardFailure>
   grouped?: boolean
-  index?: string
+  index?: IndexName
   index_uuid?: Uuid
   language?: string
   licensed_expired_feature?: string
@@ -4465,11 +4465,12 @@ export interface ErrorCause {
   max_buckets?: integer
   phase?: string
   resource_id?: Array<string>
-  'resource.id'?: string
+  'resource.id'?: Id
   resource_type?: string
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
+  header?: Record<string, string>
 }
 
 export interface ErrorResponse {
