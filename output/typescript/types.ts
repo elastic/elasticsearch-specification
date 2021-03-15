@@ -5674,8 +5674,8 @@ export interface GetPipelineResponse extends DictionaryResponseBase<string, Pipe
 }
 
 export interface GetPrivilegesRequest extends RequestBase {
-  application?: Name
-  name?: Name
+  application?: Name | boolean
+  name?: Name | boolean
 }
 
 export interface GetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, PrivilegesActions>> {

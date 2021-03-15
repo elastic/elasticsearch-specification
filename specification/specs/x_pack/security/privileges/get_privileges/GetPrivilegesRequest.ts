@@ -24,8 +24,8 @@
  */
 interface GetPrivilegesRequest extends RequestBase {
   path_parts?: {
-    application?: Name
-    name?: Name
+    application?: Name | boolean
+    name?: Name | boolean
   }
   query_parameters?: {}
   body?: {}

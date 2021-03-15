@@ -14946,19 +14946,13 @@
           "name": "applications",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ApiKeyApplication",
-                  "namespace": "x_pack.security.api_key.create_api_key"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApiKeyApplication",
+                "namespace": "x_pack.security.api_key.create_api_key"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         }
@@ -57025,11 +57019,23 @@
           "name": "application",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Name",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -57037,11 +57043,23 @@
           "name": "name",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Name",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
