@@ -19,7 +19,7 @@
 
 class GetSnapshotLifecycleStatsResponse extends ResponseBase {
   retention_deletion_time: string
-  retention_deletion_time_millis: long
+  retention_deletion_time_millis: EpochMillis
   retention_failed: long
   retention_runs: long
   retention_timed_out: long
@@ -27,4 +27,5 @@ class GetSnapshotLifecycleStatsResponse extends ResponseBase {
   total_snapshot_deletion_failures: long
   total_snapshots_failed: long
   total_snapshots_taken: long
+  policy_stats: string[]
 }
