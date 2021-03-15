@@ -17,8 +17,4 @@
  * under the License.
  */
 
-class QuerySqlResponse extends ResponseBase {
-  columns?: SqlColumn[]
-  cursor?: string
-  rows: SqlRow[]
-}
+class SqlRow extends Array<UserDefinedValue> {}

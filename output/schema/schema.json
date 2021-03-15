@@ -84627,7 +84627,7 @@
       "properties": [
         {
           "name": "columns",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -84641,7 +84641,7 @@
         },
         {
           "name": "cursor",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84654,69 +84654,13 @@
           "name": "rows",
           "required": true,
           "type": {
-            "generics": [
-              {
-                "generics": [
-                  {
-                    "key": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    },
-                    "kind": "dictionary_of",
-                    "value": {
-                      "kind": "user_defined_value"
-                    }
-                  }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SqlRow",
+                "namespace": "x_pack.sql.query_sql"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "values",
-          "required": true,
-          "type": {
-            "generics": [
-              {
-                "generics": [
-                  {
-                    "key": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    },
-                    "kind": "dictionary_of",
-                    "value": {
-                      "kind": "user_defined_value"
-                    }
-                  }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         }
@@ -102584,6 +102528,27 @@
           }
         }
       ]
+    },
+    {
+      "inherits": [
+        {
+          "generics": [
+            {
+              "kind": "user_defined_value"
+            }
+          ],
+          "type": {
+            "name": "Array",
+            "namespace": ".Users.pkrauss.github.com.elastic-client-generator.specification.node_modules.typescript.lib"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SqlRow",
+        "namespace": "x_pack.sql.query_sql"
+      },
+      "properties": []
     },
     {
       "inherits": [

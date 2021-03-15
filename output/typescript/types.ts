@@ -8700,10 +8700,9 @@ export interface QuerySqlRequest extends RequestBase {
 }
 
 export interface QuerySqlResponse extends ResponseBase {
-  columns: Array<SqlColumn>
-  cursor: string
-  rows: Array<Array<Record<string, any>>>
-  values: Array<Array<Record<string, any>>>
+  columns?: Array<SqlColumn>
+  cursor?: string
+  rows: Array<SqlRow>
 }
 
 export interface QueryStringQuery extends QueryBase {
@@ -10677,6 +10676,9 @@ export interface SplitProcessor extends ProcessorBase {
 export interface SqlColumn {
   name: string
   type: string
+}
+
+export interface SqlRow extends Array<any> {
 }
 
 export interface SqlUsage extends XPackUsage {
