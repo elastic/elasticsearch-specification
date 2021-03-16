@@ -18,7 +18,8 @@
  */
 
 import * as model from '../model/metamodel'
-import * as errors from '../validation-errors'
+import { ValidationErrors } from '../validation-errors'
+import { JsonSpec } from '../model/json-spec'
 
 enum TypeDefKind {
   type,
@@ -35,7 +36,7 @@ enum TypeDefKind {
  * - verify that request parents don't define properties (would they be path/request/body properties?)
  * - verify that unions can be distinguished in a JSON stream (otherwise they should be inheritance trees)
  */
-export default async function validateModel (apiModel: model.Model): Promise<model.Model> {
+export default async function validateModel (apiModel: model.Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
   // Fail hard if the FAIL_HARD env var is defined
   const failHard = process.env.FAIL_HARD != null
 

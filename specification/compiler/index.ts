@@ -23,7 +23,6 @@ import addInfo from './steps/add-info'
 import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
 import addContentType from './steps/add-content-type'
-import * as errors from './validation-errors'
 
 const compiler = new Compiler()
 
@@ -36,7 +35,6 @@ compiler
   .step(validateModel)
   .write()
   .then(() => {
-    errors.logErrors()
     console.log('Done')
   })
   .catch(err => {

@@ -27,58 +27,55 @@ export class EndpointError {
 export class ValidationErrors {
   generalErrors: string[]
   endpointErrors: Record<string, EndpointError>
-}
 
-const endpointErrors = new Map<string, EndpointError>()
-const generalErrors: string[] = []
-
-/** Add some error information relative to an endpoint's request or response */
-export function addEndpointError (endpoint: string, part: 'request' | 'response', message: string): void {
-  let error = endpointErrors.get(endpoint)
-  if (error == null) {
-    error = { request: [], response: [] }
-    endpointErrors.set(endpoint, error)
+  constructor () {
+    this.generalErrors = []
+    this.endpointErrors = {}
   }
 
-  error[part].push(message)
-}
+  /** Add some error information relative to an endpoint's request or response */
+  addEndpointError (endpoint: string, part: 'request' | 'response', message: string): void {
+    let error = this.endpointErrors[endpoint]
+    if (error == null) {
+      error = { request: [], response: [] }
+      this.endpointErrors[endpoint] = error
+    }
 
-/** Add a general error, unrelated to an endpoint */
-export function addGeneralError (message: string): void {
-  generalErrors.push(message)
-}
-
-export function getValidationErrors (): ValidationErrors {
-  const result = {
-    generalErrors: generalErrors,
-    endpointErrors: {}
+    error[part].push(message)
   }
 
-  // Filter out endpoints with no errors
-  for (const [endpoint, error] of endpointErrors) {
-    if (error.request.length !== 0 || error.response.length !== 0) {
-      result.endpointErrors[endpoint] = error
+  /** Add a general error, unrelated to an endpoint */
+  addGeneralError (message: string): void {
+    this.generalErrors.push(message)
+  }
+
+  /** Remove all endpoint records that have no associated errors */
+  cleanup (): void {
+    for (const [name, errors] of Object.entries(this.endpointErrors)) {
+      if (errors.request.length === 0 || errors.response.length === 0) {
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete this.endpointErrors[name]
+      }
     }
   }
 
-  return result
-}
-
-export function logErrors (): void {
-  const logArray = function (errs: string[], prefix = ''): void {
-    for (const err of errs) {
-      console.error(`${prefix}${err}`)
+  /** Output this error log to the console */
+  log (): void {
+    const logArray = function (errs: string[], prefix = ''): void {
+      for (const err of errs) {
+        console.error(`${prefix}${err}`)
+      }
     }
-  }
 
-  logArray(generalErrors)
-  // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
-  const names = Array.from(endpointErrors.keys()).sort()
-  for (const name of names) {
-    const endpointErrs = endpointErrors.get(name)
-    if (endpointErrs != null) {
-      for (const part of ['request', 'response']) {
-        logArray(endpointErrs[part], `${name} ${part}`)
+    logArray(this.generalErrors)
+    // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
+    const names = Array.from(Object.keys(this.endpointErrors)).sort()
+    for (const name of names) {
+      const endpointErrs = this.endpointErrors[name]
+      if (endpointErrs != null) {
+        for (const part of ['request', 'response']) {
+          logArray(endpointErrs[part], `${name} ${part}`)
+        }
       }
     }
   }

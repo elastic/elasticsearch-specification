@@ -23,9 +23,9 @@ import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
 import { compileSpecification, compileEndpoints } from './model/build-model'
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
-import * as errors from './validation-errors'
+import { ValidationErrors } from './validation-errors'
 
-type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>) => Promise<Model>
+type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors) => Promise<Model>
 
 /**
  * The main job of the compiler is to generate the Model and write it on disk.
@@ -39,8 +39,11 @@ export default class Compiler {
   queue: StepFunction[]
   model: Model
   jsonSpec: Map<string, JsonSpec>
+  errors: ValidationErrors
+
   constructor () {
     this.queue = []
+    this.errors = new ValidationErrors()
   }
 
   generateModel (): this {
@@ -52,7 +55,7 @@ export default class Compiler {
 
   async write (): Promise<void> {
     for (const step of this.queue) {
-      this.model = await step(this.model, this.jsonSpec)
+      this.model = await step(this.model, this.jsonSpec, this.errors)
     }
 
     await writeFile(
@@ -61,9 +64,12 @@ export default class Compiler {
       'utf8'
     )
 
+    this.errors.cleanup()
+    this.errors.log()
+
     await writeFile(
       join(__dirname, '..', '..', 'output', 'schema', 'validation-errors.json'),
-      stringify(errors.getValidationErrors(), null, 2),
+      stringify(this.errors, null, 2),
       'utf8'
     )
   }

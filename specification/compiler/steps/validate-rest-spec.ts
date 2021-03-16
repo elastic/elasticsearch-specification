@@ -20,7 +20,7 @@
 import assert from 'assert'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
-import * as errors from '../validation-errors'
+import { ValidationErrors } from '../validation-errors'
 
 // This code can be simplified once https://github.com/tc39/proposal-set-methods is available
 
@@ -37,7 +37,7 @@ const LOG = 'ALL' // default: ALL
  * furthermore it verifies if the body is required or not.
  * If a validation fails, it will log a warning.
  */
-export default async function validateRestSpec (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+export default async function validateRestSpec (model: model.Model, jsonSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
     if (endpoint.request == null) continue
     const requestDefinition = getProperties(getDefinition(endpoint.request.name))
