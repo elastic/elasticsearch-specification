@@ -17,4 +17,7 @@
  * under the License.
  */
 
-class GetRepositoryResponse extends DictionaryResponseBase<string, SnapshotRepository> {}
+class GetRepositoryResponse extends DictionaryResponseBase<
+  string,
+  SnapshotRepository
+> {}
