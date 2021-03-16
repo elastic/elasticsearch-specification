@@ -17,6 +17,14 @@
  * under the License.
  */
 
-class DeleteRollupJobResponse extends AcknowledgedResponseBase {
-    task_failures?: RollupJobTaskFailure[]
+class RollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
+}
+
+class RollupJobTaskFailureReason {
+  type: string
+  reason: string
 }

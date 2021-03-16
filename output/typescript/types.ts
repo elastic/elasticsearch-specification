@@ -4117,6 +4117,7 @@ export interface DeleteRollupJobRequest extends RequestBase {
 }
 
 export interface DeleteRollupJobResponse extends AcknowledgedResponseBase {
+  task_failures?: Array<RollupJobTaskFailure>
 }
 
 export interface DeleteScriptRequest extends RequestBase {
@@ -9399,6 +9400,18 @@ export interface RollupJobStatus {
   upgraded_doc_id: boolean
 }
 
+export interface RollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
+}
+
+export interface RollupJobTaskFailureReason {
+  type: string
+  reason: string
+}
+
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 
 export interface RollupSearchRequest extends RequestBase {
@@ -11060,7 +11073,7 @@ export interface TaskExecutingNode {
   transport_address: string
 }
 
-export type TaskId = string
+export type TaskId = string | integer
 
 export interface TaskInfo {
   action: string

@@ -43339,7 +43339,22 @@
         "name": "DeleteRollupJobResponse",
         "namespace": "x_pack.roll_up.delete_rollup_job"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "task_failures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RollupJobTaskFailure",
+                "namespace": "x_pack.roll_up.get_rollup_job"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -90714,6 +90729,90 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJobTaskFailure",
+        "namespace": "x_pack.roll_up.get_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "task_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskId",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RollupJobTaskFailureReason",
+              "namespace": "x_pack.roll_up.get_rollup_job"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJobTaskFailureReason",
+        "namespace": "x_pack.roll_up.get_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -105767,11 +105866,23 @@
         "namespace": "internal"
       },
       "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
