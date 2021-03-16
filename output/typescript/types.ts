@@ -9428,6 +9428,7 @@ export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: Type
   total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body: {
     aggs?: Record<string, AggregationContainer>
