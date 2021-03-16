@@ -3761,11 +3761,13 @@ export type DateHistogramBucket = DateHistogramBucketKeys |
     { [property: string]: Aggregate }
 
 export interface DateHistogramRollupGrouping {
-  delay: Time
+  delay?: Time
   field: Field
-  format: string
-  interval: Time
-  time_zone: string
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
 }
 
 export interface DateIndexNameProcessor extends ProcessorBase {
@@ -4117,6 +4119,7 @@ export interface DeleteRollupJobRequest extends RequestBase {
 }
 
 export interface DeleteRollupJobResponse extends AcknowledgedResponseBase {
+  task_failures?: Array<RollupJobTaskFailure>
 }
 
 export interface DeleteScriptRequest extends RequestBase {
@@ -9347,9 +9350,9 @@ export interface RollupFieldMetric {
 }
 
 export interface RollupGroupings {
-  date_histogram: DateHistogramRollupGrouping
-  histogram: HistogramRollupGrouping
-  terms: TermsRollupGrouping
+  date_histogram?: DateHistogramRollupGrouping
+  histogram?: HistogramRollupGrouping
+  terms?: TermsRollupGrouping
 }
 
 export interface RollupIndexCapabilities {
@@ -9357,16 +9360,22 @@ export interface RollupIndexCapabilities {
 }
 
 export interface RollupIndexCapabilitiesJob {
-  fields: Record<Field, Record<string, string>>
+  fields: Record<Field, Array<RollupIndexCapabilitiesJobField>>
   index_pattern: string
-  job_id: string
-  rollup_index: string
+  job_id: Id
+  rollup_index: IndexName
+}
+
+export interface RollupIndexCapabilitiesJobField {
+  agg: string
+  time_zone?: string
+  calendar_interval?: Time
 }
 
 export interface RollupJobConfiguration {
   cron: string
   groups: RollupGroupings
-  id: string
+  id: Id
   index_pattern: string
   metrics: Array<RollupFieldMetric>
   page_size: long
@@ -9391,12 +9400,26 @@ export interface RollupJobStats {
   search_time_in_ms: long
   search_total: long
   trigger_count: long
+  processing_time_in_ms: long
+  processing_total: long
 }
 
 export interface RollupJobStatus {
-  current_position: Record<string, any>
+  current_position?: Record<string, any>
   job_state: IndexingJobState
   upgraded_doc_id: boolean
+}
+
+export interface RollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
+}
+
+export interface RollupJobTaskFailureReason {
+  type: string
+  reason: string
 }
 
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
@@ -9404,7 +9427,7 @@ export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: Type
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body: {
     aggs?: Record<string, AggregationContainer>
@@ -11060,7 +11083,7 @@ export interface TaskExecutingNode {
   transport_address: string
 }
 
-export type TaskId = string
+export type TaskId = string | integer
 
 export interface TaskInfo {
   action: string

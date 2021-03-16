@@ -18,9 +18,11 @@
  */
 
 class DateHistogramRollupGrouping {
-  delay: Time
+  delay?: Time
   field: Field
-  format: string
-  interval: Time
-  time_zone: string
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
 }

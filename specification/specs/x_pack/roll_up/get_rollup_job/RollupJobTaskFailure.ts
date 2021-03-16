@@ -17,13 +17,14 @@
  * under the License.
  */
 
-class RollupJobConfiguration {
-  cron: string
-  groups: RollupGroupings
-  id: Id
-  index_pattern: string
-  metrics: RollupFieldMetric[]
-  page_size: long
-  rollup_index: IndexName
-  timeout: Time
+class RollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
+}
+
+class RollupJobTaskFailureReason {
+  type: string
+  reason: string
 }
