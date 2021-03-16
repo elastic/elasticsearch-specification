@@ -9427,7 +9427,6 @@ export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: Type
-  total_hits_as_integer?: boolean
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body: {

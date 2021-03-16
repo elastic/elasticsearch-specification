@@ -18,5 +18,5 @@
  */
 
 class DeleteRollupJobResponse extends AcknowledgedResponseBase {
-    task_failures?: RollupJobTaskFailure[]
+  task_failures?: RollupJobTaskFailure[]
 }

@@ -28,10 +28,6 @@ interface RollupSearchRequest extends RequestBase {
     type?: Type
   }
   query_parameters?: {
-    /**
-     * @aliases total_hits_as_int
-     */
-    total_hits_as_integer?: boolean
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }
