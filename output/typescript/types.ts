@@ -123,8 +123,6 @@ export interface AggregationBreakdown {
   collect_count: long
   initialize: long
   initialize_count: long
-  post_collection?: long
-  post_collection_count?: long
   reduce: long
   reduce_count: long
 }
@@ -162,7 +160,6 @@ export interface AggregationContainer {
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
-  inference?: InferenceAggregation
   line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
   max?: MaxAggregation
@@ -175,7 +172,6 @@ export interface AggregationContainer {
   moving_avg?: MovingAverageAggregation
   moving_percentiles?: MovingPercentilesAggregation
   moving_fn?: MovingFunctionAggregation
-  multi_terms?: MultiTermsAggregation
   nested?: NestedAggregation
   normalize?: NormalizeAggregation
   parent?: ParentAggregation
@@ -443,6 +439,7 @@ export interface ApiKeys {
 export interface AppendProcessor extends ProcessorBase {
   field: Field
   value: Array<any>
+  allow_duplicates?: boolean
 }
 
 export interface ApplicationGlobalUserPrivileges {
@@ -608,11 +605,12 @@ export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSea
 
 export interface AttachmentProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  indexed_chars: long
-  indexed_chars_field: Field
-  properties: Array<string>
-  target_field: Field
+  ignore_missing?: boolean
+  indexed_chars?: long
+  indexed_chars_field?: Field
+  properties?: Array<string>
+  target_field?: Field
+  resource_name?: string
 }
 
 export interface AuditUsage extends SecurityFeatureToggle {
@@ -895,8 +893,8 @@ export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p
 
 export interface BytesProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface CPUStats {
@@ -2785,12 +2783,6 @@ export interface CircleProcessor extends ProcessorBase {
   target_field: Field
 }
 
-export interface ClassificationInferenceOptions {
-  num_top_classes?: integer
-  num_top_feature_importance_values?: integer
-  prediction_field_type?: string
-}
-
 export interface CleanupRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
@@ -2976,7 +2968,7 @@ export interface ClusterGetSettingsRequest extends RequestBase {
 export interface ClusterGetSettingsResponse extends ResponseBase {
   persistent: Record<string, any>
   transient: Record<string, any>
-  defaults: Record<string, any>
+  defaults?: Record<string, any>
 }
 
 export interface ClusterHealthRequest extends RequestBase {
@@ -3356,19 +3348,19 @@ export interface CompletionStats {
 
 export interface CompletionSuggestOption<TDocument = unknown> {
   collate_match?: boolean
-  contexts?: Record<string, Array<Context>>
-  fields?: Record<string, any>
+  contexts: Record<string, Array<Context>>
+  fields: Record<string, any>
   _id: string
   _index: IndexName
   _type?: Type
-  _routing?: Routing
+  _routing: Routing
   _score: double
   _source: TDocument
   text: string
 }
 
 export interface CompletionSuggester extends SuggesterBase {
-  contexts?: Record<string, string | Array<string> | GeoLocation | Array<SuggestContextQuery>>
+  contexts?: Record<string, Array<SuggestContextQuery>>
   fuzzy?: SuggestFuzziness
   prefix?: string
   regex?: string
@@ -3437,7 +3429,7 @@ export type Context = string | GeoLocation
 
 export interface ConvertProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   target_field: Field
   type: ConvertProcessorType
 }
@@ -3568,6 +3560,8 @@ export interface CreateRepositoryRequest extends RequestBase {
   verify?: boolean
   body: {
     repository?: SnapshotRepository
+    type: string
+    settings: SnapshotRepositorySettings
   }
 }
 
@@ -3611,10 +3605,11 @@ export interface CronExpression extends ScheduleBase {
 
 export interface CsvProcessor extends ProcessorBase {
   empty_value: any
+  description?: string
   field: Field
-  ignore_missing: boolean
-  quote: string
-  separator: string
+  ignore_missing?: boolean
+  quote?: string
+  separator?: string
   target_fields: Fields
   trim: boolean
 }
@@ -3766,11 +3761,13 @@ export type DateHistogramBucket = DateHistogramBucketKeys |
     { [property: string]: Aggregate }
 
 export interface DateHistogramRollupGrouping {
-  delay: Time
+  delay?: Time
   field: Field
-  format: string
-  interval: Time
-  time_zone: string
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
 }
 
 export interface DateIndexNameProcessor extends ProcessorBase {
@@ -3792,7 +3789,7 @@ export type DateMathTime = string
 export interface DateProcessor extends ProcessorBase {
   field: Field
   formats: Array<string>
-  locale: string
+  locale?: string
   target_field: Field
   timezone: string
 }
@@ -4122,6 +4119,7 @@ export interface DeleteRollupJobRequest extends RequestBase {
 }
 
 export interface DeleteRollupJobResponse extends AcknowledgedResponseBase {
+  task_failures?: Array<RollupJobTaskFailure>
 }
 
 export interface DeleteScriptRequest extends RequestBase {
@@ -4328,18 +4326,18 @@ export interface DocumentExistsRequest extends RequestBase {
 export type DocumentExistsResponse = boolean
 
 export interface DocumentSimulation {
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _ingest: Ingest
-  _parent: string
-  _routing: string
+  _parent?: string
+  _routing?: string
   _source: Record<string, any>
-  _type: string
+  _type: Type
 }
 
 export interface DotExpanderProcessor extends ProcessorBase {
   field: Field
-  path: string
+  path?: string
 }
 
 export interface DropProcessor extends ProcessorBase {
@@ -4437,11 +4435,11 @@ export type EnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
 
 export interface EnrichProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  max_matches: integer
-  override: boolean
+  ignore_missing?: boolean
+  max_matches?: integer
+  override?: boolean
   policy_name: string
-  shape_relation: GeoShapeRelation
+  shape_relation?: GeoShapeRelation
   target_field: Field
 }
 
@@ -4474,14 +4472,14 @@ export interface ErrorCause {
   line?: integer
   max_buckets?: integer
   phase?: string
+  property_name?: string
+  processor_type?: string
   resource_id?: Array<string>
   'resource.id'?: string
   resource_type?: string
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
-  lang?: string
-  position?: PainlessExecutionPosition
 }
 
 export interface ErrorResponse {
@@ -4627,7 +4625,7 @@ export interface ExistsQuery extends QueryBase {
 
 export type ExpandWildcardOptions = 'open' | 'closed' | 'hidden' | 'none' | 'all'
 
-export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions> | string
+export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions>
 
 export interface ExplainAnalyzeToken {
   bytes: string
@@ -5085,7 +5083,7 @@ export interface ForceMergeResponse extends ShardsOperationResponseBase {
 
 export interface ForeachProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   processor: ProcessorContainer
 }
 
@@ -5218,7 +5216,7 @@ export interface GeoCentroidAggregation extends MetricAggregationBase {
   location?: GeoLocation
 }
 
-export type GeoCoordinate = string | Array<double> | ThreeDimensionalPoint
+export type GeoCoordinate = Array<double> | ThreeDimensionalPoint
 
 export interface GeoDecayFunctionKeys extends DecayFunctionBase {
 }
@@ -5247,7 +5245,7 @@ export interface GeoDistanceSortKeys {
   unit?: DistanceUnit
 }
 export type GeoDistanceSort = GeoDistanceSortKeys |
-    { [property: string]: GeoLocation | Array<GeoLocation> }
+    { [property: string]: Array<GeoLocation> }
 
 export type GeoDistanceType = 'arc' | 'plane'
 
@@ -5299,7 +5297,7 @@ export interface GeoLineSort {
   field: Field
 }
 
-export type GeoLocation = string | Array<double> | TwoDimensionalPoint
+export type GeoLocation = Array<double> | TwoDimensionalPoint
 
 export interface GeoPolygonQuery extends QueryBase {
   points?: Array<GeoLocation>
@@ -5691,8 +5689,7 @@ export interface GetRepositoryRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface GetRepositoryResponse extends ResponseBase {
-  repositories: Record<string, SnapshotRepository>
+export interface GetRepositoryResponse extends DictionaryResponseBase<string, SnapshotRepository> {
 }
 
 export interface GetRequest extends RequestBase {
@@ -5791,7 +5788,7 @@ export interface GetSnapshotLifecycleStatsRequest extends RequestBase {
 
 export interface GetSnapshotLifecycleStatsResponse extends ResponseBase {
   retention_deletion_time: string
-  retention_deletion_time_millis: long
+  retention_deletion_time_millis: EpochMillis
   retention_failed: long
   retention_runs: long
   retention_timed_out: long
@@ -5799,6 +5796,7 @@ export interface GetSnapshotLifecycleStatsResponse extends ResponseBase {
   total_snapshot_deletion_failures: long
   total_snapshots_failed: long
   total_snapshots_taken: long
+  policy_stats: Array<string>
 }
 
 export interface GetSnapshotRequest extends RequestBase {
@@ -5991,10 +5989,10 @@ export interface GraphVertexInclude {
 
 export interface GrokProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   pattern_definitions: Record<string, string>
   patterns: Array<string>
-  trace_match: boolean
+  trace_match?: boolean
 }
 
 export interface GrokProcessorPatternsRequest extends RequestBase {
@@ -6008,10 +6006,10 @@ export type GroupBy = 'nodes' | 'parents' | 'none'
 
 export interface GsubProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   pattern: string
   replacement: string
-  target_field: Field
+  target_field?: Field
 }
 
 export interface HasChildQuery extends QueryBase {
@@ -6084,7 +6082,6 @@ export interface Highlight {
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
   highlight_query?: QueryContainer
-  max_analyzed_offset?: string | integer
 }
 
 export interface HighlightField {
@@ -6272,7 +6269,7 @@ export interface HyphenationDecompounderTokenFilter extends CompoundWordTokenFil
 
 export type Id = string
 
-export type Ids = Id | Array<Id>
+export type Ids = string | Array<string>
 
 export interface IdsQuery extends QueryBase {
   values?: Array<Id> | Array<long>
@@ -6500,14 +6497,19 @@ export interface IndicesVersionsStats {
   version: string
 }
 
-export interface InferenceAggregation extends PipelineAggregationBase {
-  model_id: Name
-  inference_config?: InferenceConfigContainer
+export interface InferenceProcessor extends ProcessorBase {
+  model_id: Id
+  target_field: Field
+  field_map?: Record<Field, any>
+  inference_config?: InferenceProcessorConfig
 }
 
-export interface InferenceConfigContainer {
-  regression?: RegressionInferenceOptions
-  classification?: ClassificationInferenceOptions
+export interface InferenceProcessorConfig {
+  regression?: InferenceProcessorConfigRegression
+}
+
+export interface InferenceProcessorConfigRegression {
+  results_field: string
 }
 
 export interface Influence {
@@ -6517,6 +6519,7 @@ export interface Influence {
 
 export interface Ingest {
   timestamp: DateString
+  pipeline?: string
 }
 
 export interface IngestStats {
@@ -6768,7 +6771,7 @@ export interface JobStats {
 export interface JoinProcessor extends ProcessorBase {
   field: Field
   separator: string
-  target_field: Field
+  target_field?: Field
 }
 
 export interface JsonProcessor extends ProcessorBase {
@@ -6800,16 +6803,16 @@ export interface KeepWordsTokenFilter extends TokenFilterBase {
 }
 
 export interface KeyValueProcessor extends ProcessorBase {
-  exclude_keys: Array<string>
+  exclude_keys?: Array<string>
   field: Field
   field_split: string
-  ignore_missing: boolean
-  include_keys: Array<string>
-  prefix: string
-  strip_brackets: boolean
-  target_field: Field
-  trim_key: string
-  trim_value: string
+  ignore_missing?: boolean
+  include_keys?: Array<string>
+  prefix?: string
+  strip_brackets?: boolean
+  target_field?: Field
+  trim_key?: string
+  trim_value?: string
   value_split: string
 }
 
@@ -6944,8 +6947,7 @@ export type Like = string | LikeDocument
 export interface LikeDocument {
   doc?: any
   fields?: Fields
-  _id?: Id | number
-  _type?: Type
+  _id?: Id
   _index?: IndexName
   per_field_analyzer?: Record<Field, string>
   routing?: Routing
@@ -6993,8 +6995,8 @@ export interface LoggingActionResult {
 
 export interface LowercaseProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface LowercaseTokenFilter extends TokenFilterBase {
@@ -7232,7 +7234,7 @@ export interface MoreLikeThisQuery extends QueryBase {
   boost_terms?: double
   fields?: Fields
   include?: boolean
-  like?: Like | Array<Like>
+  like?: Array<Like>
   max_doc_freq?: integer
   max_query_terms?: integer
   max_word_length?: integer
@@ -7243,7 +7245,7 @@ export interface MoreLikeThisQuery extends QueryBase {
   per_field_analyzer?: Record<Field, string>
   routing?: Routing
   stop_words?: StopWords
-  unlike?: Like | Array<Like>
+  unlike?: Array<Like>
   version?: long
   version_type?: VersionType
 }
@@ -7356,10 +7358,6 @@ export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
-export interface MultiTermLookup {
-  field: Field
-}
-
 export type MultiTermQueryRewrite = string
 
 export interface MultiTermVectorOperation {
@@ -7400,10 +7398,6 @@ export interface MultiTermVectorsRequest extends RequestBase {
 
 export interface MultiTermVectorsResponse extends ResponseBase {
   docs: Array<TermVectorsResult>
-}
-
-export interface MultiTermsAggregation extends BucketAggregationBase {
-  terms: Array<MultiTermLookup>
 }
 
 export type MultiValueMode = 'min' | 'max' | 'avg' | 'sum'
@@ -7895,12 +7889,6 @@ export interface PainlessContextSetup {
   query: QueryContainer
 }
 
-export interface PainlessExecutionPosition {
-  offset: integer
-  start: integer
-  end: integer
-}
-
 export interface ParentAggregation extends BucketAggregationBase {
   type?: RelationName
 }
@@ -8064,14 +8052,15 @@ export interface PingRequest extends RequestBase {
 export type PingResponse = boolean
 
 export interface PinnedQuery extends QueryBase {
-  ids?: Array<Id> | Array<long>
+  ids?: Array<Id>
   organic?: QueryContainer
 }
 
 export interface Pipeline {
-  description: string
-  on_failure: Array<ProcessorContainer>
-  processors: Array<ProcessorContainer>
+  description?: string
+  on_failure?: Array<ProcessorContainer>
+  processors?: Array<ProcessorContainer>
+  version?: long
 }
 
 export interface PipelineAggregationBase extends Aggregation {
@@ -8085,9 +8074,11 @@ export interface PipelineProcessor extends ProcessorBase {
 }
 
 export interface PipelineSimulation {
-  doc: DocumentSimulation
-  processor_results: Array<PipelineSimulation>
-  tag: string
+  doc?: DocumentSimulation
+  processor_results?: Array<PipelineSimulation>
+  tag?: string
+  processor_type?: string
+  status?: Status
 }
 
 export interface PluginStats {
@@ -8215,46 +8206,47 @@ export interface ProcessStats {
 }
 
 export interface ProcessorBase {
-  if: string
-  ignore_failure: boolean
-  on_failure: Array<ProcessorContainer>
-  tag: string
+  if?: string
+  ignore_failure?: boolean
+  on_failure?: Array<ProcessorContainer>
+  tag?: string
 }
 
 export interface ProcessorContainer {
-  attachment: AttachmentProcessor
-  append: AppendProcessor
-  csv: CsvProcessor
-  convert: ConvertProcessor
-  date: DateProcessor
-  date_index_name: DateIndexNameProcessor
-  dot_expander: DotExpanderProcessor
-  enrich: EnrichProcessor
-  fail: FailProcessor
-  foreach: ForeachProcessor
-  json: JsonProcessor
-  user_agent: UserAgentProcessor
-  kv: KeyValueProcessor
-  geoip: GeoIpProcessor
-  grok: GrokProcessor
-  gsub: GsubProcessor
-  join: JoinProcessor
-  lowercase: LowercaseProcessor
-  remove: RemoveProcessor
-  rename: RenameProcessor
-  script: ScriptProcessor
-  set: SetProcessor
-  sort: SortProcessor
-  split: SplitProcessor
-  trim: TrimProcessor
-  uppercase: UppercaseProcessor
-  urldecode: UrlDecodeProcessor
-  bytes: BytesProcessor
-  dissect: DissectProcessor
-  set_security_user: SetSecurityUserProcessor
-  pipeline: PipelineProcessor
-  drop: DropProcessor
-  circle: CircleProcessor
+  attachment?: AttachmentProcessor
+  append?: AppendProcessor
+  csv?: CsvProcessor
+  convert?: ConvertProcessor
+  date?: DateProcessor
+  date_index_name?: DateIndexNameProcessor
+  dot_expander?: DotExpanderProcessor
+  enrich?: EnrichProcessor
+  fail?: FailProcessor
+  foreach?: ForeachProcessor
+  json?: JsonProcessor
+  user_agent?: UserAgentProcessor
+  kv?: KeyValueProcessor
+  geoip?: GeoIpProcessor
+  grok?: GrokProcessor
+  gsub?: GsubProcessor
+  join?: JoinProcessor
+  lowercase?: LowercaseProcessor
+  remove?: RemoveProcessor
+  rename?: RenameProcessor
+  script?: ScriptProcessor
+  set?: SetProcessor
+  sort?: SortProcessor
+  split?: SplitProcessor
+  trim?: TrimProcessor
+  uppercase?: UppercaseProcessor
+  urldecode?: UrlDecodeProcessor
+  bytes?: BytesProcessor
+  dissect?: DissectProcessor
+  set_security_user?: SetSecurityUserProcessor
+  pipeline?: PipelineProcessor
+  drop?: DropProcessor
+  circle?: CircleProcessor
+  inference?: InferenceProcessor
 }
 
 export interface Profile {
@@ -8475,6 +8467,7 @@ export interface PutPipelineRequest extends RequestBase {
     description?: string
     on_failure?: Array<ProcessorContainer>
     processors?: Array<ProcessorContainer>
+    version?: long
   }
 }
 
@@ -8711,7 +8704,7 @@ export interface QueryContainer {
   span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
   term?: NamedQuery<TermQuery | string | float | boolean>
-  terms?: NamedQuery<TermsQuery | Array<string> | Array<long>>
+  terms?: NamedQuery<TermsQuery | Array<string>>
   terms_set?: NamedQuery<TermsSetQuery | string>
   wildcard?: NamedQuery<WildcardQuery | string>
   type?: TypeQuery
@@ -8967,11 +8960,6 @@ export interface RegexpQuery extends QueryBase {
   value?: string
 }
 
-export interface RegressionInferenceOptions {
-  results_field: Field
-  num_top_feature_importance_values?: integer
-}
-
 export interface ReindexDestination {
   index: IndexName
   op_type?: OpType
@@ -9146,12 +9134,12 @@ export interface RemovePolicyResponse extends ResponseBase {
 
 export interface RemoveProcessor extends ProcessorBase {
   field: Fields
-  ignore_missing: boolean
+  ignore_missing?: boolean
 }
 
 export interface RenameProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   target_field: Field
 }
 
@@ -9362,9 +9350,9 @@ export interface RollupFieldMetric {
 }
 
 export interface RollupGroupings {
-  date_histogram: DateHistogramRollupGrouping
-  histogram: HistogramRollupGrouping
-  terms: TermsRollupGrouping
+  date_histogram?: DateHistogramRollupGrouping
+  histogram?: HistogramRollupGrouping
+  terms?: TermsRollupGrouping
 }
 
 export interface RollupIndexCapabilities {
@@ -9372,16 +9360,22 @@ export interface RollupIndexCapabilities {
 }
 
 export interface RollupIndexCapabilitiesJob {
-  fields: Record<Field, Record<string, string>>
+  fields: Record<Field, Array<RollupIndexCapabilitiesJobField>>
   index_pattern: string
-  job_id: string
-  rollup_index: string
+  job_id: Id
+  rollup_index: IndexName
+}
+
+export interface RollupIndexCapabilitiesJobField {
+  agg: string
+  time_zone?: string
+  calendar_interval?: Time
 }
 
 export interface RollupJobConfiguration {
   cron: string
   groups: RollupGroupings
-  id: string
+  id: Id
   index_pattern: string
   metrics: Array<RollupFieldMetric>
   page_size: long
@@ -9406,12 +9400,26 @@ export interface RollupJobStats {
   search_time_in_ms: long
   search_total: long
   trigger_count: long
+  processing_time_in_ms: long
+  processing_total: long
 }
 
 export interface RollupJobStatus {
-  current_position: Record<string, any>
+  current_position?: Record<string, any>
   job_state: IndexingJobState
   upgraded_doc_id: boolean
+}
+
+export interface RollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
+}
+
+export interface RollupJobTaskFailureReason {
+  type: string
+  reason: string
 }
 
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
@@ -9419,7 +9427,7 @@ export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: Type
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body: {
     aggs?: Record<string, AggregationContainer>
@@ -9533,9 +9541,9 @@ export interface ScriptField {
 }
 
 export interface ScriptProcessor extends ProcessorBase {
-  id: string
-  lang: string
-  params: Record<string, any>
+  id?: Id
+  lang?: string
+  params?: Record<string, any>
   source: string
 }
 
@@ -9678,7 +9686,7 @@ export interface SearchRequest extends RequestBase {
   q?: string
   size?: integer
   from?: integer
-  sort?: string | Array<string>
+  sort?: Array<string>
   body?: {
     aggs?: Record<string, AggregationContainer>
     aggregations?: Record<string, AggregationContainer>
@@ -9701,7 +9709,7 @@ export interface SearchRequest extends RequestBase {
     sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: SuggestContainer | Record<string, SuggestContainer>
+    suggest?: Record<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
@@ -9710,7 +9718,6 @@ export interface SearchRequest extends RequestBase {
     stored_fields?: Fields
     pit?: PointInTimeReference
     runtime_mappings?: RuntimeFields
-    stats?: Array<string>
   }
 }
 
@@ -9871,13 +9878,13 @@ export interface SerialDifferencingAggregation extends PipelineAggregationBase {
 
 export interface SetProcessor extends ProcessorBase {
   field: Field
-  override: boolean
+  override?: boolean
   value: any
 }
 
 export interface SetSecurityUserProcessor extends ProcessorBase {
   field: Field
-  properties: Array<string>
+  properties?: Array<string>
 }
 
 export interface SetUpgradeModeRequest extends RequestBase {
@@ -10291,8 +10298,8 @@ export interface SimpleQueryStringQuery extends QueryBase {
 }
 
 export interface SimulatePipelineDocument {
-  _id: Id
-  _index: IndexName
+  _id?: Id
+  _index?: IndexName
   _source: any
 }
 
@@ -10400,9 +10407,9 @@ export interface SnapshotIndexStats {
 
 export interface SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: long
+  duration_in_millis: EpochMillis
   end_time?: DateString
-  end_time_in_millis?: long
+  end_time_in_millis?: EpochMillis
   failures?: Array<SnapshotShardFailure>
   include_global_state?: boolean
   indices: Array<IndexName>
@@ -10411,11 +10418,17 @@ export interface SnapshotInfo {
   snapshot: string
   shards?: ShardStatistics
   start_time?: DateString
-  start_time_in_millis?: long
+  start_time_in_millis?: EpochMillis
   state?: string
-  uuid: string
+  uuid: Uuid
   version?: string
   version_id?: integer
+  feature_states?: Array<SnapshotInfoFeatureState>
+}
+
+export interface SnapshotInfoFeatureState {
+  feature_name: string
+  indices: Indices
 }
 
 export interface SnapshotLifecycleConfig {
@@ -10476,6 +10489,17 @@ export interface SnapshotLifecycleStats {
 
 export interface SnapshotRepository {
   type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
+}
+
+export interface SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
+  read_only?: string | boolean
+  readonly?: string | boolean
 }
 
 export interface SnapshotRequest extends RequestBase {
@@ -10719,10 +10743,10 @@ export interface SplitIndexResponse extends AcknowledgedResponseBase {
 
 export interface SplitProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  preserve_trailing: boolean
+  ignore_missing?: boolean
+  preserve_trailing?: boolean
   separator: string
-  target_field: Field
+  target_field?: Field
 }
 
 export interface SqlColumn {
@@ -11059,7 +11083,7 @@ export interface TaskExecutingNode {
   transport_address: string
 }
 
-export type TaskId = string
+export type TaskId = string | integer
 
 export interface TaskInfo {
   action: string
@@ -11271,7 +11295,7 @@ export interface TermsSetQuery extends QueryBase {
 export interface TestPopulation {
   field: Field
   script?: Script
-  filter?: QueryContainer
+  filter: QueryContainer
 }
 
 export type TextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
@@ -11404,7 +11428,7 @@ export interface TopMetricsAggregate extends AggregateBase {
 }
 
 export interface TopMetricsAggregation extends MetricAggregationBase {
-  metrics?: TopMetricsValue | Array<TopMetricsValue>
+  metrics?: Array<TopMetricsValue>
   size?: integer
   sort?: Sort
 }
@@ -11571,8 +11595,8 @@ export interface TriggerEventResult {
 
 export interface TrimProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface TrimTokenFilter extends TokenFilterBase {
@@ -11890,8 +11914,8 @@ export interface UpdateTransformResponse extends ResponseBase {
 
 export interface UppercaseProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface UppercaseTokenFilter extends TokenFilterBase {
@@ -11903,8 +11927,8 @@ export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
 export interface UrlDecodeProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  target_field: Field
+  ignore_missing?: boolean
+  target_field?: Field
 }
 
 export interface UserAgentProcessor extends ProcessorBase {

@@ -19,9 +19,9 @@
 
 class SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: long
+  duration_in_millis: EpochMillis
   end_time?: DateString
-  end_time_in_millis?: long
+  end_time_in_millis?: EpochMillis
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
@@ -30,9 +30,10 @@ class SnapshotInfo {
   snapshot: string
   shards?: ShardStatistics
   start_time?: DateString
-  start_time_in_millis?: long
+  start_time_in_millis?: EpochMillis
   state?: string
-  uuid: string
+  uuid: Uuid
   version?: string
   version_id?: integer
+  feature_states?: SnapshotInfoFeatureState[]
 }

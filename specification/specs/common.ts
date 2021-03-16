@@ -66,6 +66,8 @@ class ErrorCause {
   line?: integer
   max_buckets?: integer
   phase?: string
+  property_name?: string
+  processor_type?: string
   resource_id?: string[]
   'resource.id'?: string
   resource_type?: string
@@ -133,7 +135,7 @@ type Uuid = string
 type NodeIds = string
 type PropertyName = string
 type RelationName = string
-type TaskId = string
+type TaskId = string | integer
 type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number
