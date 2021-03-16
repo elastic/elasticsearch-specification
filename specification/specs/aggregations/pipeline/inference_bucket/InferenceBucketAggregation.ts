@@ -19,11 +19,11 @@
 
 class InferenceAggregation extends PipelineAggregationBase {
   model_id: Name
-  inference_config? : InferenceConfigContainer
+  inference_config?: InferenceConfigContainer
 }
 
 class InferenceConfigContainer {
-  regression?:RegressionInferenceOptions
+  regression?: RegressionInferenceOptions
   classification?: ClassificationInferenceOptions
 }
 

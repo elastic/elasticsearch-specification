@@ -25,4 +25,7 @@ enum ExpandWildcardOptions {
   all = 4
 }
 
-type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions> | string
+type ExpandWildcards =
+  | ExpandWildcardOptions
+  | Array<ExpandWildcardOptions>
+  | string
