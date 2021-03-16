@@ -32985,7 +32985,7 @@
         },
         {
           "name": "defaults",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
