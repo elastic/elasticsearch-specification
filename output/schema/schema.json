@@ -15020,6 +15020,17 @@
               "kind": "user_defined_value"
             }
           }
+        },
+        {
+          "name": "allow_duplicates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -16647,7 +16658,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16658,7 +16669,7 @@
         },
         {
           "name": "indexed_chars",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16669,7 +16680,7 @@
         },
         {
           "name": "indexed_chars_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16680,7 +16691,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -16694,11 +16705,22 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "resource_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -19252,7 +19274,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19263,7 +19285,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37088,7 +37110,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38672,6 +38694,17 @@
           }
         },
         {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "field",
           "required": true,
           "type": {
@@ -38684,7 +38717,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38695,7 +38728,7 @@
         },
         {
           "name": "quote",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38706,7 +38739,7 @@
         },
         {
           "name": "separator",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40412,7 +40445,7 @@
         },
         {
           "name": "locale",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45096,7 +45129,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -45107,7 +45140,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -45125,7 +45158,7 @@
         },
         {
           "name": "_parent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45136,7 +45169,7 @@
         },
         {
           "name": "_routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45168,7 +45201,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -45203,7 +45236,7 @@
         },
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46006,7 +46039,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46017,7 +46050,7 @@
         },
         {
           "name": "max_matches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46028,7 +46061,7 @@
         },
         {
           "name": "override",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46050,7 +46083,7 @@
         },
         {
           "name": "shape_relation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46374,6 +46407,28 @@
         },
         {
           "name": "phase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "property_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -51730,7 +51785,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59762,7 +59817,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59808,7 +59863,7 @@
         },
         {
           "name": "trace_match",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59923,7 +59978,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59956,7 +60011,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -64408,6 +64463,113 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "ProcessorBase",
+            "namespace": "ingest"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessor",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessorConfig",
+              "namespace": "ingest.processors"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessorConfig",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessorConfigRegression",
+              "namespace": "ingest.processors"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessorConfigRegression",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "results_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Influence",
@@ -64455,6 +64617,17 @@
             "kind": "instance_of",
             "type": {
               "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -66651,7 +66824,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66897,7 +67070,7 @@
       "properties": [
         {
           "name": "exclude_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -66933,7 +67106,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66944,7 +67117,7 @@
         },
         {
           "name": "include_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -66958,7 +67131,7 @@
         },
         {
           "name": "prefix",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66969,7 +67142,7 @@
         },
         {
           "name": "strip_brackets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66980,7 +67153,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66991,7 +67164,7 @@
         },
         {
           "name": "trim_key",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67002,7 +67175,7 @@
         },
         {
           "name": "trim_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -68538,7 +68711,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -68549,7 +68722,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77982,7 +78155,7 @@
       "properties": [
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77993,7 +78166,7 @@
         },
         {
           "name": "on_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78007,7 +78180,7 @@
         },
         {
           "name": "processors",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78016,6 +78189,17 @@
                 "name": "ProcessorContainer",
                 "namespace": "ingest"
               }
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
             }
           }
         }
@@ -78108,7 +78292,7 @@
       "properties": [
         {
           "name": "doc",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -78119,7 +78303,7 @@
         },
         {
           "name": "processor_results",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78133,12 +78317,34 @@
         },
         {
           "name": "tag",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Status",
+              "namespace": "x_pack.watcher.execution"
             }
           }
         }
@@ -79183,7 +79389,7 @@
       "properties": [
         {
           "name": "if",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79194,7 +79400,7 @@
         },
         {
           "name": "ignore_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79205,7 +79411,7 @@
         },
         {
           "name": "on_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -79219,7 +79425,7 @@
         },
         {
           "name": "tag",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79239,7 +79445,7 @@
       "properties": [
         {
           "name": "attachment",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79250,7 +79456,7 @@
         },
         {
           "name": "append",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79261,7 +79467,7 @@
         },
         {
           "name": "csv",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79272,7 +79478,7 @@
         },
         {
           "name": "convert",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79283,7 +79489,7 @@
         },
         {
           "name": "date",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79294,7 +79500,7 @@
         },
         {
           "name": "date_index_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79305,7 +79511,7 @@
         },
         {
           "name": "dot_expander",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79316,7 +79522,7 @@
         },
         {
           "name": "enrich",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79327,7 +79533,7 @@
         },
         {
           "name": "fail",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79338,7 +79544,7 @@
         },
         {
           "name": "foreach",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79349,7 +79555,7 @@
         },
         {
           "name": "json",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79360,7 +79566,7 @@
         },
         {
           "name": "user_agent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79371,7 +79577,7 @@
         },
         {
           "name": "kv",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79382,7 +79588,7 @@
         },
         {
           "name": "geoip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79393,7 +79599,7 @@
         },
         {
           "name": "grok",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79404,7 +79610,7 @@
         },
         {
           "name": "gsub",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79415,7 +79621,7 @@
         },
         {
           "name": "join",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79426,7 +79632,7 @@
         },
         {
           "name": "lowercase",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79437,7 +79643,7 @@
         },
         {
           "name": "remove",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79448,7 +79654,7 @@
         },
         {
           "name": "rename",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79459,7 +79665,7 @@
         },
         {
           "name": "script",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79470,7 +79676,7 @@
         },
         {
           "name": "set",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79481,7 +79687,7 @@
         },
         {
           "name": "sort",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79492,7 +79698,7 @@
         },
         {
           "name": "split",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79503,7 +79709,7 @@
         },
         {
           "name": "trim",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79514,7 +79720,7 @@
         },
         {
           "name": "uppercase",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79525,7 +79731,7 @@
         },
         {
           "name": "urldecode",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79536,7 +79742,7 @@
         },
         {
           "name": "bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79547,7 +79753,7 @@
         },
         {
           "name": "dissect",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79558,7 +79764,7 @@
         },
         {
           "name": "set_security_user",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79569,7 +79775,7 @@
         },
         {
           "name": "pipeline",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79580,7 +79786,7 @@
         },
         {
           "name": "drop",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79591,11 +79797,22 @@
         },
         {
           "name": "circle",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "CircleProcessor",
+              "namespace": "ingest.processors"
+            }
+          }
+        },
+        {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessor",
               "namespace": "ingest.processors"
             }
           }
@@ -81684,6 +81901,17 @@
                   "name": "ProcessorContainer",
                   "namespace": "ingest"
                 }
+              }
+            }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "internal"
               }
             }
           }
@@ -88256,7 +88484,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88295,7 +88523,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91444,18 +91672,18 @@
       "properties": [
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "lang",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91466,7 +91694,7 @@
         },
         {
           "name": "params",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -94838,7 +95066,7 @@
         },
         {
           "name": "override",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94884,7 +95112,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -98544,7 +98772,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98555,7 +98783,7 @@
         },
         {
           "name": "_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102524,7 +102752,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102535,7 +102763,7 @@
         },
         {
           "name": "preserve_trailing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102557,7 +102785,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110233,7 +110461,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110244,7 +110472,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113383,7 +113611,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113394,7 +113622,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113489,7 +113717,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113500,7 +113728,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

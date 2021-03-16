@@ -17,8 +17,17 @@
  * under the License.
  */
 
-class AppendProcessor extends ProcessorBase {
-  field: Field
-  value: UserDefinedValue[]
-  allow_duplicates?: boolean
+class InferenceProcessor extends ProcessorBase {
+  model_id: Id
+  target_field: Field
+  field_map?: Dictionary<Field, UserDefinedValue>
+  inference_config?: InferenceProcessorConfig
+}
+
+class InferenceProcessorConfig {
+  regression?: InferenceProcessorConfigRegression
+}
+
+class InferenceProcessorConfigRegression {
+  results_field: string
 }

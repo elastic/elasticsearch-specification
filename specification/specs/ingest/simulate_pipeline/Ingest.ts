@@ -19,4 +19,5 @@
 
 class Ingest {
   timestamp: DateString
+  pipeline?: string
 }
