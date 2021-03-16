@@ -18,6 +18,6 @@
  */
 
 class PinnedQuery extends QueryBase {
-  ids?: Id[]
+  ids?: Id[] | long[]
   organic?: QueryContainer
 }

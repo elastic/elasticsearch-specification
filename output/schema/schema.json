@@ -62455,23 +62455,11 @@
         "namespace": "internal"
       },
       "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        ],
-        "kind": "union_of"
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
       }
     },
     {
@@ -68369,11 +68357,23 @@
           "name": "_id",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Id",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "number",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -78339,14 +78339,29 @@
           "name": "ids",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Id",
+                    "namespace": "internal"
+                  }
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "internal"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {

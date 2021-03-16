@@ -101,7 +101,7 @@ type ScrollIds = string // TODO: array of ScrollIds
 type CategoryId = string
 type ActionIds = string // TODO: check if this should be an array of ActionId
 
-type Id = string | long
+type Id = string
 type Ids = Id | Id[]
 type NodeId = string
 

@@ -21,7 +21,7 @@ class LikeDocument {
   /** @prop_serializer SourceFormatter`1 */
   doc?: UserDefinedValue
   fields?: Fields
-  _id?: Id
+  _id?: Id | number
   _type?: Type
   _index?: IndexName
   per_field_analyzer?: Dictionary<Field, string>

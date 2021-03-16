@@ -6270,7 +6270,7 @@ export interface HunspellTokenFilter extends TokenFilterBase {
 export interface HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
 }
 
-export type Id = string | long
+export type Id = string
 
 export type Ids = Id | Array<Id>
 
@@ -6944,7 +6944,7 @@ export type Like = string | LikeDocument
 export interface LikeDocument {
   doc?: any
   fields?: Fields
-  _id?: Id
+  _id?: Id | number
   _type?: Type
   _index?: IndexName
   per_field_analyzer?: Record<Field, string>
@@ -8064,7 +8064,7 @@ export interface PingRequest extends RequestBase {
 export type PingResponse = boolean
 
 export interface PinnedQuery extends QueryBase {
-  ids?: Array<Id>
+  ids?: Array<Id> | Array<long>
   organic?: QueryContainer
 }
 
