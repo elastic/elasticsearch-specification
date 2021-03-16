@@ -38286,6 +38286,28 @@
                 "namespace": "modules.snapshot_and_restore.repositories"
               }
             }
+          },
+          {
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "settings",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotRepositorySettings",
+                "namespace": "modules.snapshot_and_restore.repositories"
+              }
+            }
           }
         ]
       },
@@ -57117,8 +57139,24 @@
     {
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotRepository",
+                "namespace": "modules.snapshot_and_restore.repositories"
+              }
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
+            "name": "DictionaryResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -57128,29 +57166,7 @@
         "name": "GetRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.get_repository"
       },
-      "properties": [
-        {
-          "name": "repositories",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SnapshotRepository",
-                "namespace": "modules.snapshot_and_restore.repositories"
-              }
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -99655,7 +99671,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99677,7 +99693,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99788,7 +99804,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99810,7 +99826,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }
@@ -99833,6 +99849,51 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_states",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotInfoFeatureState",
+                "namespace": "modules.snapshot_and_restore.snapshot"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotInfoFeatureState",
+        "namespace": "modules.snapshot_and_restore.snapshot"
+      },
+      "properties": [
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
               "namespace": "internal"
             }
           }
@@ -100295,6 +100356,131 @@
               "name": "string",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotRepositorySettings",
+              "namespace": "modules.snapshot_and_restore.repositories"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotRepositorySettings",
+        "namespace": "modules.snapshot_and_restore.repositories"
+      },
+      "properties": [
+        {
+          "name": "chunk_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "compress",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "concurrent_streams",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "location",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "readonly"
+          ],
+          "name": "read_only",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]

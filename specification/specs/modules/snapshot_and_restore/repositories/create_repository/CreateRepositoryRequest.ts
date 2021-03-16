@@ -34,5 +34,7 @@ interface CreateRepositoryRequest extends RequestBase {
   }
   body?: {
     repository?: SnapshotRepository
+    type: string
+    settings: SnapshotRepositorySettings
   }
 }

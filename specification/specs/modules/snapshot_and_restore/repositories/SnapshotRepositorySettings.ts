@@ -17,7 +17,13 @@
  * under the License.
  */
 
-class GetRepositoryResponse extends DictionaryResponseBase<
-  string,
-  SnapshotRepository
-> {}
+class SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
+  /**
+   * @aliases readonly
+   */
+  read_only?: string | boolean
+}

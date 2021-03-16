@@ -19,4 +19,6 @@
 
 class SnapshotRepository {
   type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
 }

@@ -3560,6 +3560,8 @@ export interface CreateRepositoryRequest extends RequestBase {
   verify?: boolean
   body: {
     repository?: SnapshotRepository
+    type: string
+    settings: SnapshotRepositorySettings
   }
 }
 
@@ -5684,8 +5686,7 @@ export interface GetRepositoryRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface GetRepositoryResponse extends ResponseBase {
-  repositories: Record<string, SnapshotRepository>
+export interface GetRepositoryResponse extends DictionaryResponseBase<string, SnapshotRepository> {
 }
 
 export interface GetRequest extends RequestBase {
@@ -10383,9 +10384,9 @@ export interface SnapshotIndexStats {
 
 export interface SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: long
+  duration_in_millis: EpochMillis
   end_time?: DateString
-  end_time_in_millis?: long
+  end_time_in_millis?: EpochMillis
   failures?: Array<SnapshotShardFailure>
   include_global_state?: boolean
   indices: Array<IndexName>
@@ -10394,11 +10395,17 @@ export interface SnapshotInfo {
   snapshot: string
   shards?: ShardStatistics
   start_time?: DateString
-  start_time_in_millis?: long
+  start_time_in_millis?: EpochMillis
   state?: string
-  uuid: string
+  uuid: Uuid
   version?: string
   version_id?: integer
+  feature_states?: Array<SnapshotInfoFeatureState>
+}
+
+export interface SnapshotInfoFeatureState {
+  feature_name: string
+  indices: Indices
 }
 
 export interface SnapshotLifecycleConfig {
@@ -10459,6 +10466,17 @@ export interface SnapshotLifecycleStats {
 
 export interface SnapshotRepository {
   type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
+}
+
+export interface SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
+  read_only?: string | boolean
+  readonly?: string | boolean
 }
 
 export interface SnapshotRequest extends RequestBase {
