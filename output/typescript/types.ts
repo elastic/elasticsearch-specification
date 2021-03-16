@@ -2968,7 +2968,7 @@ export interface ClusterGetSettingsRequest extends RequestBase {
 export interface ClusterGetSettingsResponse extends ResponseBase {
   persistent: Record<string, any>
   transient: Record<string, any>
-  defaults: Record<string, any>
+  defaults?: Record<string, any>
 }
 
 export interface ClusterHealthRequest extends RequestBase {
