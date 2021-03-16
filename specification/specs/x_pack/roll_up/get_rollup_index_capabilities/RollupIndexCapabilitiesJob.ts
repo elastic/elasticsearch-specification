@@ -18,8 +18,14 @@
  */
 
 class RollupIndexCapabilitiesJob {
-  fields: Dictionary<Field, Dictionary<string, string>>
+  fields: Dictionary<Field, RollupIndexCapabilitiesJobField[]>
   index_pattern: string
-  job_id: string
-  rollup_index: string
+  job_id: Id
+  rollup_index: IndexName
+}
+
+class RollupIndexCapabilitiesJobField {
+  agg: string
+  time_zone?: string
+  calendar_interval?: Time
 }

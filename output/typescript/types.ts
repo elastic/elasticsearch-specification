@@ -9360,10 +9360,16 @@ export interface RollupIndexCapabilities {
 }
 
 export interface RollupIndexCapabilitiesJob {
-  fields: Record<Field, Record<string, string>>
+  fields: Record<Field, Array<RollupIndexCapabilitiesJobField>>
   index_pattern: string
-  job_id: string
-  rollup_index: string
+  job_id: Id
+  rollup_index: IndexName
+}
+
+export interface RollupIndexCapabilitiesJobField {
+  agg: string
+  time_zone?: string
+  calendar_interval?: Time
 }
 
 export interface RollupJobConfiguration {

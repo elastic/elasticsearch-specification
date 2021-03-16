@@ -90388,19 +90388,12 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
+              "kind": "array_of",
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "RollupIndexCapabilitiesJobField",
+                  "namespace": "x_pack.roll_up.get_rollup_index_capabilities"
                 }
               }
             }
@@ -90423,7 +90416,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -90434,8 +90427,50 @@
           "type": {
             "kind": "instance_of",
             "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupIndexCapabilitiesJobField",
+        "namespace": "x_pack.roll_up.get_rollup_index_capabilities"
+      },
+      "properties": [
+        {
+          "name": "agg",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "calendar_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
