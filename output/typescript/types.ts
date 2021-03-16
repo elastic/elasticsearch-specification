@@ -123,6 +123,8 @@ export interface AggregationBreakdown {
   collect_count: long
   initialize: long
   initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
   reduce: long
   reduce_count: long
 }
@@ -160,6 +162,7 @@ export interface AggregationContainer {
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
+  inference?: InferenceAggregation
   line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
   max?: MaxAggregation
@@ -172,6 +175,7 @@ export interface AggregationContainer {
   moving_avg?: MovingAverageAggregation
   moving_percentiles?: MovingPercentilesAggregation
   moving_fn?: MovingFunctionAggregation
+  multi_terms?: MultiTermsAggregation
   nested?: NestedAggregation
   normalize?: NormalizeAggregation
   parent?: ParentAggregation
@@ -2783,6 +2787,12 @@ export interface CircleProcessor extends ProcessorBase {
   target_field: Field
 }
 
+export interface ClassificationInferenceOptions {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_type?: string
+}
+
 export interface CleanupRepositoryRequest extends RequestBase {
   repository: Name
   master_timeout?: Time
@@ -3348,19 +3358,19 @@ export interface CompletionStats {
 
 export interface CompletionSuggestOption<TDocument = unknown> {
   collate_match?: boolean
-  contexts: Record<string, Array<Context>>
-  fields: Record<string, any>
+  contexts?: Record<string, Array<Context>>
+  fields?: Record<string, any>
   _id: string
   _index: IndexName
   _type?: Type
-  _routing: Routing
+  _routing?: Routing
   _score: double
   _source: TDocument
   text: string
 }
 
 export interface CompletionSuggester extends SuggesterBase {
-  contexts?: Record<string, Array<SuggestContextQuery>>
+  contexts?: Record<string, string | Array<string> | GeoLocation | Array<SuggestContextQuery>>
   fuzzy?: SuggestFuzziness
   prefix?: string
   regex?: string
@@ -4480,6 +4490,8 @@ export interface ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
+  lang?: string
+  position?: PainlessExecutionPosition
 }
 
 export interface ErrorResponse {
@@ -4625,7 +4637,7 @@ export interface ExistsQuery extends QueryBase {
 
 export type ExpandWildcardOptions = 'open' | 'closed' | 'hidden' | 'none' | 'all'
 
-export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions>
+export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions> | string
 
 export interface ExplainAnalyzeToken {
   bytes: string
@@ -5216,7 +5228,7 @@ export interface GeoCentroidAggregation extends MetricAggregationBase {
   location?: GeoLocation
 }
 
-export type GeoCoordinate = Array<double> | ThreeDimensionalPoint
+export type GeoCoordinate = string | Array<double> | ThreeDimensionalPoint
 
 export interface GeoDecayFunctionKeys extends DecayFunctionBase {
 }
@@ -5245,7 +5257,7 @@ export interface GeoDistanceSortKeys {
   unit?: DistanceUnit
 }
 export type GeoDistanceSort = GeoDistanceSortKeys |
-    { [property: string]: Array<GeoLocation> }
+    { [property: string]: GeoLocation | Array<GeoLocation> }
 
 export type GeoDistanceType = 'arc' | 'plane'
 
@@ -5297,7 +5309,7 @@ export interface GeoLineSort {
   field: Field
 }
 
-export type GeoLocation = Array<double> | TwoDimensionalPoint
+export type GeoLocation = string | Array<double> | TwoDimensionalPoint
 
 export interface GeoPolygonQuery extends QueryBase {
   points?: Array<GeoLocation>
@@ -6082,6 +6094,7 @@ export interface Highlight {
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
   highlight_query?: QueryContainer
+  max_analyzed_offset?: string | integer
 }
 
 export interface HighlightField {
@@ -6269,7 +6282,7 @@ export interface HyphenationDecompounderTokenFilter extends CompoundWordTokenFil
 
 export type Id = string
 
-export type Ids = string | Array<string>
+export type Ids = Id | Array<Id>
 
 export interface IdsQuery extends QueryBase {
   values?: Array<Id> | Array<long>
@@ -6495,6 +6508,16 @@ export interface IndicesVersionsStats {
   primary_shard_count: integer
   total_primary_bytes: long
   version: string
+}
+
+export interface InferenceAggregation extends PipelineAggregationBase {
+  model_id: Name
+  inference_config?: InferenceConfigContainer
+}
+
+export interface InferenceConfigContainer {
+  regression?: RegressionInferenceOptions
+  classification?: ClassificationInferenceOptions
 }
 
 export interface InferenceProcessor extends ProcessorBase {
@@ -6947,7 +6970,8 @@ export type Like = string | LikeDocument
 export interface LikeDocument {
   doc?: any
   fields?: Fields
-  _id?: Id
+  _id?: Id | number
+  _type?: Type
   _index?: IndexName
   per_field_analyzer?: Record<Field, string>
   routing?: Routing
@@ -7234,7 +7258,7 @@ export interface MoreLikeThisQuery extends QueryBase {
   boost_terms?: double
   fields?: Fields
   include?: boolean
-  like?: Array<Like>
+  like?: Like | Array<Like>
   max_doc_freq?: integer
   max_query_terms?: integer
   max_word_length?: integer
@@ -7245,7 +7269,7 @@ export interface MoreLikeThisQuery extends QueryBase {
   per_field_analyzer?: Record<Field, string>
   routing?: Routing
   stop_words?: StopWords
-  unlike?: Array<Like>
+  unlike?: Like | Array<Like>
   version?: long
   version_type?: VersionType
 }
@@ -7358,6 +7382,10 @@ export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
+export interface MultiTermLookup {
+  field: Field
+}
+
 export type MultiTermQueryRewrite = string
 
 export interface MultiTermVectorOperation {
@@ -7398,6 +7426,10 @@ export interface MultiTermVectorsRequest extends RequestBase {
 
 export interface MultiTermVectorsResponse extends ResponseBase {
   docs: Array<TermVectorsResult>
+}
+
+export interface MultiTermsAggregation extends BucketAggregationBase {
+  terms: Array<MultiTermLookup>
 }
 
 export type MultiValueMode = 'min' | 'max' | 'avg' | 'sum'
@@ -7889,6 +7921,12 @@ export interface PainlessContextSetup {
   query: QueryContainer
 }
 
+export interface PainlessExecutionPosition {
+  offset: integer
+  start: integer
+  end: integer
+}
+
 export interface ParentAggregation extends BucketAggregationBase {
   type?: RelationName
 }
@@ -8052,7 +8090,7 @@ export interface PingRequest extends RequestBase {
 export type PingResponse = boolean
 
 export interface PinnedQuery extends QueryBase {
-  ids?: Array<Id>
+  ids?: Array<Id> | Array<long>
   organic?: QueryContainer
 }
 
@@ -8704,7 +8742,7 @@ export interface QueryContainer {
   span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
   term?: NamedQuery<TermQuery | string | float | boolean>
-  terms?: NamedQuery<TermsQuery | Array<string>>
+  terms?: NamedQuery<TermsQuery | Array<string> | Array<long>>
   terms_set?: NamedQuery<TermsSetQuery | string>
   wildcard?: NamedQuery<WildcardQuery | string>
   type?: TypeQuery
@@ -8958,6 +8996,11 @@ export interface RegexpQuery extends QueryBase {
   flags?: string
   max_determinized_states?: integer
   value?: string
+}
+
+export interface RegressionInferenceOptions {
+  results_field: Field
+  num_top_feature_importance_values?: integer
 }
 
 export interface ReindexDestination {
@@ -9686,7 +9729,7 @@ export interface SearchRequest extends RequestBase {
   q?: string
   size?: integer
   from?: integer
-  sort?: Array<string>
+  sort?: string | Array<string>
   body?: {
     aggs?: Record<string, AggregationContainer>
     aggregations?: Record<string, AggregationContainer>
@@ -9709,7 +9752,7 @@ export interface SearchRequest extends RequestBase {
     sort?: Sort
     _source?: boolean | Fields | SourceFilter
     fields?: Array<Field | DateField>
-    suggest?: Record<string, SuggestContainer>
+    suggest?: SuggestContainer | Record<string, SuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
@@ -9718,6 +9761,7 @@ export interface SearchRequest extends RequestBase {
     stored_fields?: Fields
     pit?: PointInTimeReference
     runtime_mappings?: RuntimeFields
+    stats?: Array<string>
   }
 }
 
@@ -11295,7 +11339,7 @@ export interface TermsSetQuery extends QueryBase {
 export interface TestPopulation {
   field: Field
   script?: Script
-  filter: QueryContainer
+  filter?: QueryContainer
 }
 
 export type TextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
@@ -11428,7 +11472,7 @@ export interface TopMetricsAggregate extends AggregateBase {
 }
 
 export interface TopMetricsAggregation extends MetricAggregationBase {
-  metrics?: Array<TopMetricsValue>
+  metrics?: TopMetricsValue | Array<TopMetricsValue>
   size?: integer
   sort?: Sort
 }
