@@ -3761,11 +3761,13 @@ export type DateHistogramBucket = DateHistogramBucketKeys |
     { [property: string]: Aggregate }
 
 export interface DateHistogramRollupGrouping {
-  delay: Time
+  delay?: Time
   field: Field
-  format: string
-  interval: Time
-  time_zone: string
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
 }
 
 export interface DateIndexNameProcessor extends ProcessorBase {
@@ -9348,9 +9350,9 @@ export interface RollupFieldMetric {
 }
 
 export interface RollupGroupings {
-  date_histogram: DateHistogramRollupGrouping
-  histogram: HistogramRollupGrouping
-  terms: TermsRollupGrouping
+  date_histogram?: DateHistogramRollupGrouping
+  histogram?: HistogramRollupGrouping
+  terms?: TermsRollupGrouping
 }
 
 export interface RollupIndexCapabilities {
@@ -9367,7 +9369,7 @@ export interface RollupIndexCapabilitiesJob {
 export interface RollupJobConfiguration {
   cron: string
   groups: RollupGroupings
-  id: string
+  id: Id
   index_pattern: string
   metrics: Array<RollupFieldMetric>
   page_size: long
@@ -9392,10 +9394,12 @@ export interface RollupJobStats {
   search_time_in_ms: long
   search_total: long
   trigger_count: long
+  processing_time_in_ms: long
+  processing_total: long
 }
 
 export interface RollupJobStatus {
-  current_position: Record<string, any>
+  current_position?: Record<string, any>
   job_state: IndexingJobState
   upgraded_doc_id: boolean
 }

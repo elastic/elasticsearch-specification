@@ -28,4 +28,6 @@ class RollupJobStats {
   search_time_in_ms: long
   search_total: long
   trigger_count: long
+  processing_time_in_ms: long
+  processing_total: long
 }

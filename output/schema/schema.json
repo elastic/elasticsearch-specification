@@ -40212,7 +40212,7 @@
       "properties": [
         {
           "name": "delay",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40234,7 +40234,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40245,7 +40245,29 @@
         },
         {
           "name": "interval",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "calendar_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "fixed_interval",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40256,7 +40278,7 @@
         },
         {
           "name": "time_zone",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90290,7 +90312,7 @@
       "properties": [
         {
           "name": "date_histogram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90301,7 +90323,7 @@
         },
         {
           "name": "histogram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90312,7 +90334,7 @@
         },
         {
           "name": "terms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90454,7 +90476,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -90677,6 +90699,28 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "processing_time_in_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processing_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -90689,7 +90733,7 @@
       "properties": [
         {
           "name": "current_position",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
