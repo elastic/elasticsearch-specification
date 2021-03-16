@@ -1,0 +1,667 @@
+{
+  "endpointErrors": {
+    "autoscaling.delete_autoscaling_policy": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "autoscaling.get_autoscaling_capacity": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "autoscaling.get_autoscaling_policy": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "autoscaling.put_autoscaling_policy": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "close_point_in_time": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "cluster.delete_component_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "cluster.delete_voting_config_exclusions": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "cluster.exists_component_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "cluster.get_component_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "cluster.post_voting_config_exclusions": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "cluster.put_component_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "dangling_indices.delete_dangling_index": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "dangling_indices.import_dangling_index": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "dangling_indices.list_dangling_indices": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.delete_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.get_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.get_transform_stats": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.preview_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.put_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.start_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.stop_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "data_frame_transform_deprecated.update_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "eql.delete": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "eql.get": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "eql.get_status": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "eql.search": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "features.get_features": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "get_script_context": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "get_script_languages": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.add_block": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.create_data_stream": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.data_streams_stats": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.delete_data_stream": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.delete_index_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.exists_index_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.get_data_stream": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.get_index_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.get_upgrade": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.migrate_to_data_stream": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.promote_data_stream": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.put_index_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.resolve_index": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.simulate_index_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.simulate_template": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "indices.upgrade": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "logstash.delete_pipeline": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "logstash.get_pipeline": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "logstash.put_pipeline": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "mget": {
+      "request": [
+        "MultiGetRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "MultiGetRequest: should have a body definition"
+      ],
+      "response": [
+        "Type document.multiple.multi_get.request:MultiGetResponse not found"
+      ]
+    },
+    "ml.delete_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.delete_trained_model": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.delete_trained_model_alias": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.evaluate_data_frame": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.explain_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.get_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.get_data_frame_analytics_stats": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.get_jobs": {
+      "request": [
+        "GetJobsRequest: missing json spec query parameter 'allow_no_match'"
+      ],
+      "response": [
+        "type_alias definition x_pack.info.x_pack_usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'x_pack.info.x_pack_usage:BaseUrlConfig'"
+      ]
+    },
+    "ml.get_trained_models": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.get_trained_models_stats": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.preview_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.put_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.put_trained_model": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.put_trained_model_alias": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.start_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.stop_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.update_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.upgrade_job_snapshot": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "monitoring.bulk": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "msearch_template": {
+      "request": [
+        "MultiSearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "MultiSearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
+        "MultiSearchTemplateRequest: should have a body definition",
+        "request definition search.multi_search_template:MultiSearchTemplateRequest / body / Property 'operations' / dictionary_of / instance_of - 'search.search_template:SearchTemplateRequest' is a request and must only be used in endpoints"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "open_point_in_time": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "rank_eval": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "rollup.rollup": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "search_template": {
+      "request": [
+        "SearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "SearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
+        "SearchTemplateRequest: should have a body definition"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "searchable_snapshots.clear_cache": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "searchable_snapshots.mount": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "searchable_snapshots.repository_stats": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "searchable_snapshots.stats": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "security.clear_api_key_cache": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "security.clear_cached_privileges": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "security.grant_api_key": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "snapshot.clone": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "watcher.query_watches": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    }
+  },
+  "generalErrors": []
+}

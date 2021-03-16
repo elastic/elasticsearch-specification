@@ -7390,6 +7390,19 @@ export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
+export interface MultiSearchTemplateRequest extends RequestBase {
+  index?: Indices
+  type?: Types
+  ccs_minimize_roundtrips?: boolean
+  max_concurrent_searches?: long
+  search_type?: SearchType
+  total_hits_as_integer?: boolean
+  typed_keys?: boolean
+  body: {
+    operations?: Record<string, SearchTemplateRequest>
+  }
+}
+
 export interface MultiTermLookup {
   field: Field
 }
@@ -11814,6 +11827,11 @@ export interface UpdateByQueryResponse extends ResponseBase {
   version_conflicts?: long
   throttled_millis?: ulong
   throttled_until_millis?: ulong
+}
+
+export interface UpdateByQueryRethrottleRequest extends RequestBase {
+  task_id: Id
+  requests_per_second?: long
 }
 
 export interface UpdateDatafeedRequest extends RequestBase {
