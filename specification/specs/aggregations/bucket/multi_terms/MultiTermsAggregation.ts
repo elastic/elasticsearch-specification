@@ -17,8 +17,10 @@
  * under the License.
  */
 
-class AppendProcessor extends ProcessorBase {
+class MultiTermsAggregation extends BucketAggregationBase {
+  terms: MultiTermLookup[]
+}
+
+class MultiTermLookup {
   field: Field
-  value: UserDefinedValue[]
-  allow_duplicates?: boolean
 }

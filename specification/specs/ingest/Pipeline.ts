@@ -18,7 +18,8 @@
  */
 
 class Pipeline {
-  description: string
-  on_failure: ProcessorContainer[]
-  processors: ProcessorContainer[]
+  description?: string
+  on_failure?: ProcessorContainer[]
+  processors?: ProcessorContainer[]
+  version?: long
 }

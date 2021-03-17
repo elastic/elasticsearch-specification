@@ -26,6 +26,8 @@ class AggregationBreakdown {
   collect_count: long
   initialize: long
   initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
   reduce: long
   reduce_count: long
 }

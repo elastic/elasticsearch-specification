@@ -17,8 +17,14 @@
  * under the License.
  */
 
-class AppendProcessor extends ProcessorBase {
-  field: Field
-  value: UserDefinedValue[]
-  allow_duplicates?: boolean
+class RollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
+}
+
+class RollupJobTaskFailureReason {
+  type: string
+  reason: string
 }

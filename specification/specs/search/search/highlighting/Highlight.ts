@@ -38,4 +38,6 @@ class Highlight {
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
   highlight_query?: QueryContainer
+  // TODO this is too lenient! test reports "20" is accepted
+  max_analyzed_offset?: string | integer
 }

@@ -17,8 +17,23 @@
  * under the License.
  */
 
-class AppendProcessor extends ProcessorBase {
-  field: Field
-  value: UserDefinedValue[]
-  allow_duplicates?: boolean
+class InferenceAggregation extends PipelineAggregationBase {
+  model_id: Name
+  inference_config?: InferenceConfigContainer
+}
+
+class InferenceConfigContainer {
+  regression?: RegressionInferenceOptions
+  classification?: ClassificationInferenceOptions
+}
+
+class RegressionInferenceOptions {
+  results_field: Field
+  num_top_feature_importance_values?: integer
+}
+
+class ClassificationInferenceOptions {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_type?: string
 }

@@ -66,6 +66,8 @@ class ErrorCause {
   line?: integer
   max_buckets?: integer
   phase?: string
+  property_name?: string
+  processor_type?: string
   resource_id?: string[]
   'resource.id'?: Id
   resource_type?: string
@@ -73,6 +75,8 @@ class ErrorCause {
   script?: string
   script_stack?: string[]
   header?: Dictionary<string, string>
+  lang?: string
+  position?: PainlessExecutionPosition
 }
 @class_serializer('ErrorFormatter')
 class MainError extends ErrorCause {
@@ -101,7 +105,7 @@ type CategoryId = string
 type ActionIds = string // TODO: check if this should be an array of ActionId
 
 type Id = string
-type Ids = string | string[]
+type Ids = Id | Id[]
 type NodeId = string
 
 type IndexName = string
@@ -132,7 +136,7 @@ type Uuid = string
 type NodeIds = string
 type PropertyName = string
 type RelationName = string
-type TaskId = string
+type TaskId = string | integer
 type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number

@@ -18,7 +18,10 @@
  */
 
 class CompletionSuggester extends SuggesterBase {
-  contexts?: Dictionary<string, SuggestContextQuery[]>
+  contexts?: Dictionary<
+    string,
+    string | string[] | GeoLocation | SuggestContextQuery[]
+  >
   fuzzy?: SuggestFuzziness
   prefix?: string
   regex?: string

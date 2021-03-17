@@ -17,8 +17,7 @@
  * under the License.
  */
 
-class AppendProcessor extends ProcessorBase {
-  field: Field
-  value: UserDefinedValue[]
-  allow_duplicates?: boolean
+class SnapshotInfoFeatureState {
+  feature_name: string
+  indices: Indices
 }

@@ -12067,6 +12067,28 @@
           }
         },
         {
+          "name": "post_collection",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "post_collection_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "reduce",
           "required": true,
           "type": {
@@ -12470,6 +12492,17 @@
           }
         },
         {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceAggregation",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        },
+        {
           "name": "line",
           "required": false,
           "type": {
@@ -12604,6 +12637,17 @@
             "type": {
               "name": "MovingFunctionAggregation",
               "namespace": "aggregations.pipeline.moving_function"
+            }
+          }
+        },
+        {
+          "name": "multi_terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiTermsAggregation",
+              "namespace": "aggregations.bucket.multi_terms"
             }
           }
         },
@@ -15079,6 +15123,17 @@
               "kind": "user_defined_value"
             }
           }
+        },
+        {
+          "name": "allow_duplicates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -16706,7 +16761,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16717,7 +16772,7 @@
         },
         {
           "name": "indexed_chars",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16728,7 +16783,7 @@
         },
         {
           "name": "indexed_chars_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -16739,7 +16794,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -16753,11 +16808,22 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "resource_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -19311,7 +19377,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19322,7 +19388,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -31355,6 +31421,48 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ClassificationInferenceOptions",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "num_top_classes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_top_feature_importance_values",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "prediction_field_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -33022,7 +33130,7 @@
         },
         {
           "name": "defaults",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -36337,7 +36445,7 @@
         },
         {
           "name": "contexts",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -36361,7 +36469,7 @@
         },
         {
           "name": "fields",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -36411,7 +36519,7 @@
         },
         {
           "name": "_routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36483,14 +36591,43 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContextQuery",
-                  "namespace": "search.suggesters.context_suggester"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GeoLocation",
+                    "namespace": "query_dsl.geo"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "SuggestContextQuery",
+                      "namespace": "search.suggesters.context_suggester"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         },
@@ -37147,7 +37284,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38323,6 +38460,28 @@
                 "namespace": "modules.snapshot_and_restore.repositories"
               }
             }
+          },
+          {
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "settings",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotRepositorySettings",
+                "namespace": "modules.snapshot_and_restore.repositories"
+              }
+            }
           }
         ]
       },
@@ -38731,6 +38890,17 @@
           }
         },
         {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "field",
           "required": true,
           "type": {
@@ -38743,7 +38913,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38754,7 +38924,7 @@
         },
         {
           "name": "quote",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38765,7 +38935,7 @@
         },
         {
           "name": "separator",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40216,7 +40386,7 @@
       "properties": [
         {
           "name": "delay",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40238,7 +40408,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40249,7 +40419,29 @@
         },
         {
           "name": "interval",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "calendar_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "fixed_interval",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40260,7 +40452,7 @@
         },
         {
           "name": "time_zone",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40471,7 +40663,7 @@
         },
         {
           "name": "locale",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -43343,7 +43535,22 @@
         "name": "DeleteRollupJobResponse",
         "namespace": "x_pack.roll_up.delete_rollup_job"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "task_failures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RollupJobTaskFailure",
+                "namespace": "x_pack.roll_up.get_rollup_job"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -45155,7 +45362,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -45166,7 +45373,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -45184,7 +45391,7 @@
         },
         {
           "name": "_parent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45195,7 +45402,7 @@
         },
         {
           "name": "_routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45227,7 +45434,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -45262,7 +45469,7 @@
         },
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46065,7 +46272,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46076,7 +46283,7 @@
         },
         {
           "name": "max_matches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46087,7 +46294,7 @@
         },
         {
           "name": "override",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46109,7 +46316,7 @@
         },
         {
           "name": "shape_relation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46443,6 +46650,28 @@
           }
         },
         {
+          "name": "property_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "resource_id",
           "required": false,
           "type": {
@@ -46515,6 +46744,7 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "header",
           "required": false,
           "type": {
@@ -46532,6 +46762,26 @@
                 "name": "string",
                 "namespace": "internal"
               }
+=======
+          "name": "lang",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "position",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PainlessExecutionPosition",
+              "namespace": "modules.scripting.execute_painless_script"
+>>>>>>> master
             }
           }
         }
@@ -47700,6 +47950,13 @@
             "kind": "instance_of",
             "type": {
               "name": "Array",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -51810,7 +52067,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52910,6 +53167,13 @@
       "type": {
         "items": [
           {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
             "kind": "array_of",
             "value": {
               "kind": "instance_of",
@@ -53152,14 +53416,26 @@
               }
             },
             {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GeoLocation",
-                  "namespace": "query_dsl.geo"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GeoLocation",
+                    "namespace": "query_dsl.geo"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "GeoLocation",
+                      "namespace": "query_dsl.geo"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           ],
           "type": {
@@ -53618,6 +53894,13 @@
       },
       "type": {
         "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
           {
             "kind": "array_of",
             "value": {
@@ -57142,8 +57425,24 @@
     {
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotRepository",
+                "namespace": "modules.snapshot_and_restore.repositories"
+              }
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
+            "name": "DictionaryResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -57153,29 +57452,7 @@
         "name": "GetRepositoryResponse",
         "namespace": "modules.snapshot_and_restore.repositories.get_repository"
       },
-      "properties": [
-        {
-          "name": "repositories",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SnapshotRepository",
-                "namespace": "modules.snapshot_and_restore.repositories"
-              }
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -58103,7 +58380,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -58182,6 +58459,20 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "policy_stats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -59828,7 +60119,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59874,7 +60165,7 @@
         },
         {
           "name": "trace_match",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59989,7 +60280,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -60022,7 +60313,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -60701,6 +60992,29 @@
               "name": "QueryContainer",
               "namespace": "query_dsl.abstractions.container"
             }
+          }
+        },
+        {
+          "name": "max_analyzed_offset",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -62360,7 +62674,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           },
@@ -62369,7 +62683,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "Id",
                 "namespace": "internal"
               }
             }
@@ -64486,6 +64800,183 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PipelineAggregationBase",
+            "namespace": "aggregations.pipeline"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "InferenceAggregation",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigContainer",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfigContainer",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RegressionInferenceOptions",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        },
+        {
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClassificationInferenceOptions",
+              "namespace": "aggregations.pipeline.inference_bucket"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ProcessorBase",
+            "namespace": "ingest"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessor",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessorConfig",
+              "namespace": "ingest.processors"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessorConfig",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessorConfigRegression",
+              "namespace": "ingest.processors"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessorConfigRegression",
+        "namespace": "ingest.processors"
+      },
+      "properties": [
+        {
+          "name": "results_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Influence",
@@ -64533,6 +65024,17 @@
             "kind": "instance_of",
             "type": {
               "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -66729,7 +67231,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66975,7 +67477,7 @@
       "properties": [
         {
           "name": "exclude_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -67011,7 +67513,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67022,7 +67524,7 @@
         },
         {
           "name": "include_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -67036,7 +67538,7 @@
         },
         {
           "name": "prefix",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67047,7 +67549,7 @@
         },
         {
           "name": "strip_brackets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67058,7 +67560,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67069,7 +67571,7 @@
         },
         {
           "name": "trim_key",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67080,7 +67582,7 @@
         },
         {
           "name": "trim_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -68186,9 +68688,32 @@
           "name": "_id",
           "required": false,
           "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Id",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "number",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -68616,7 +69141,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -68627,7 +69152,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -70868,14 +71393,26 @@
           "name": "like",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Like",
-                "namespace": "query_dsl.specialized.more_like_this.like"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Like",
+                  "namespace": "query_dsl.specialized.more_like_this.like"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Like",
+                    "namespace": "query_dsl.specialized.more_like_this.like"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -71002,14 +71539,26 @@
           "name": "unlike",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Like",
-                "namespace": "query_dsl.specialized.more_like_this.like"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Like",
+                  "namespace": "query_dsl.specialized.more_like_this.like"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Like",
+                    "namespace": "query_dsl.specialized.more_like_this.like"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -72082,6 +72631,26 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "MultiTermLookup",
+        "namespace": "aggregations.bucket.multi_terms"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "MultiTermQueryRewrite",
@@ -72472,6 +73041,37 @@
               "type": {
                 "name": "TermVectorsResult",
                 "namespace": "document.single.term_vectors"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "BucketAggregationBase",
+            "namespace": "aggregations.bucket"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiTermsAggregation",
+        "namespace": "aggregations.bucket.multi_terms"
+      },
+      "properties": [
+        {
+          "name": "terms",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MultiTermLookup",
+                "namespace": "aggregations.bucket.multi_terms"
               }
             }
           }
@@ -76700,6 +77300,48 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PainlessExecutionPosition",
+        "namespace": "modules.scripting.execute_painless_script"
+      },
+      "properties": [
+        {
+          "name": "offset",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -78028,14 +78670,29 @@
           "name": "ids",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Id",
+                    "namespace": "internal"
+                  }
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "internal"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -78060,7 +78717,7 @@
       "properties": [
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -78071,7 +78728,7 @@
         },
         {
           "name": "on_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78085,7 +78742,7 @@
         },
         {
           "name": "processors",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78094,6 +78751,17 @@
                 "name": "ProcessorContainer",
                 "namespace": "ingest"
               }
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
             }
           }
         }
@@ -78186,7 +78854,7 @@
       "properties": [
         {
           "name": "doc",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -78197,7 +78865,7 @@
         },
         {
           "name": "processor_results",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -78211,12 +78879,34 @@
         },
         {
           "name": "tag",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Status",
+              "namespace": "x_pack.watcher.execution"
             }
           }
         }
@@ -79283,7 +79973,7 @@
       "properties": [
         {
           "name": "if",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79294,7 +79984,7 @@
         },
         {
           "name": "ignore_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79305,7 +79995,7 @@
         },
         {
           "name": "on_failure",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -79319,7 +80009,7 @@
         },
         {
           "name": "tag",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79339,7 +80029,7 @@
       "properties": [
         {
           "name": "attachment",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79350,7 +80040,7 @@
         },
         {
           "name": "append",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79361,7 +80051,7 @@
         },
         {
           "name": "csv",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79372,7 +80062,7 @@
         },
         {
           "name": "convert",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79383,7 +80073,7 @@
         },
         {
           "name": "date",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79394,7 +80084,7 @@
         },
         {
           "name": "date_index_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79405,7 +80095,7 @@
         },
         {
           "name": "dot_expander",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79416,7 +80106,7 @@
         },
         {
           "name": "enrich",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79427,7 +80117,7 @@
         },
         {
           "name": "fail",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79438,7 +80128,7 @@
         },
         {
           "name": "foreach",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79449,7 +80139,7 @@
         },
         {
           "name": "json",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79460,7 +80150,7 @@
         },
         {
           "name": "user_agent",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79471,7 +80161,7 @@
         },
         {
           "name": "kv",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79482,7 +80172,7 @@
         },
         {
           "name": "geoip",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79493,7 +80183,7 @@
         },
         {
           "name": "grok",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79504,7 +80194,7 @@
         },
         {
           "name": "gsub",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79515,7 +80205,7 @@
         },
         {
           "name": "join",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79526,7 +80216,7 @@
         },
         {
           "name": "lowercase",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79537,7 +80227,7 @@
         },
         {
           "name": "remove",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79548,7 +80238,7 @@
         },
         {
           "name": "rename",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79559,7 +80249,7 @@
         },
         {
           "name": "script",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79570,7 +80260,7 @@
         },
         {
           "name": "set",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79581,7 +80271,7 @@
         },
         {
           "name": "sort",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79592,7 +80282,7 @@
         },
         {
           "name": "split",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79603,7 +80293,7 @@
         },
         {
           "name": "trim",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79614,7 +80304,7 @@
         },
         {
           "name": "uppercase",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79625,7 +80315,7 @@
         },
         {
           "name": "urldecode",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79636,7 +80326,7 @@
         },
         {
           "name": "bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79647,7 +80337,7 @@
         },
         {
           "name": "dissect",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79658,7 +80348,7 @@
         },
         {
           "name": "set_security_user",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79669,7 +80359,7 @@
         },
         {
           "name": "pipeline",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79680,7 +80370,7 @@
         },
         {
           "name": "drop",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79691,11 +80381,22 @@
         },
         {
           "name": "circle",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "CircleProcessor",
+              "namespace": "ingest.processors"
+            }
+          }
+        },
+        {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessor",
               "namespace": "ingest.processors"
             }
           }
@@ -81784,6 +82485,17 @@
                   "name": "ProcessorContainer",
                   "namespace": "ingest"
                 }
+              }
+            }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "internal"
               }
             }
           }
@@ -84494,6 +85206,16 @@
                         "namespace": "internal"
                       }
                     }
+                  },
+                  {
+                    "kind": "array_of",
+                    "value": {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "long",
+                        "namespace": "internal"
+                      }
+                    }
                   }
                 ],
                 "kind": "union_of"
@@ -86842,6 +87564,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "RegressionInferenceOptions",
+        "namespace": "aggregations.pipeline.inference_bucket"
+      },
+      "properties": [
+        {
+          "name": "results_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_top_feature_importance_values",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ReindexDestination",
         "namespace": "document.multiple.reindex"
       },
@@ -88409,7 +89162,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88448,7 +89201,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90184,7 +90937,7 @@
       "properties": [
         {
           "name": "date_histogram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90195,7 +90948,7 @@
         },
         {
           "name": "histogram",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90206,7 +90959,7 @@
         },
         {
           "name": "terms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90260,19 +91013,12 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
+              "kind": "array_of",
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "RollupIndexCapabilitiesJobField",
+                  "namespace": "x_pack.roll_up.get_rollup_index_capabilities"
                 }
               }
             }
@@ -90295,7 +91041,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -90306,8 +91052,50 @@
           "type": {
             "kind": "instance_of",
             "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupIndexCapabilitiesJobField",
+        "namespace": "x_pack.roll_up.get_rollup_index_capabilities"
+      },
+      "properties": [
+        {
+          "name": "agg",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "calendar_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
@@ -90348,7 +91136,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -90571,6 +91359,28 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "processing_time_in_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processing_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -90583,7 +91393,7 @@
       "properties": [
         {
           "name": "current_position",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -90616,6 +91426,90 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJobTaskFailure",
+        "namespace": "x_pack.roll_up.get_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "task_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskId",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RollupJobTaskFailureReason",
+              "namespace": "x_pack.roll_up.get_rollup_job"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJobTaskFailureReason",
+        "namespace": "x_pack.roll_up.get_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -90739,7 +91633,7 @@
       ],
       "query": [
         {
-          "name": "total_hits_as_integer",
+          "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -91597,18 +92491,18 @@
       "properties": [
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "lang",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91619,7 +92513,7 @@
         },
         {
           "name": "params",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -92818,21 +93712,33 @@
             "name": "suggest",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SuggestContainer",
+                    "namespace": "search.suggesters"
+                  }
+                },
+                {
+                  "key": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  },
+                  "kind": "dictionary_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "SuggestContainer",
+                      "namespace": "search.suggesters"
+                    }
+                  }
                 }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContainer",
-                  "namespace": "search.suggesters"
-                }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -92920,6 +93826,20 @@
               "type": {
                 "name": "RuntimeFields",
                 "namespace": "mapping.runtime_fields"
+              }
+            }
+          },
+          {
+            "name": "stats",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           }
@@ -93402,14 +94322,26 @@
           "name": "sort",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -94991,7 +95923,7 @@
         },
         {
           "name": "override",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -95037,7 +95969,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -98697,7 +99629,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98708,7 +99640,7 @@
         },
         {
           "name": "_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99580,7 +100512,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99602,7 +100534,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99713,7 +100645,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -99735,7 +100667,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }
@@ -99758,6 +100690,51 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_states",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotInfoFeatureState",
+                "namespace": "modules.snapshot_and_restore.snapshot"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotInfoFeatureState",
+        "namespace": "modules.snapshot_and_restore.snapshot"
+      },
+      "properties": [
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
               "namespace": "internal"
             }
           }
@@ -100220,6 +101197,131 @@
               "name": "string",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotRepositorySettings",
+              "namespace": "modules.snapshot_and_restore.repositories"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotRepositorySettings",
+        "namespace": "modules.snapshot_and_restore.repositories"
+      },
+      "properties": [
+        {
+          "name": "chunk_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "compress",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "concurrent_streams",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "location",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "readonly"
+          ],
+          "name": "read_only",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -102677,7 +103779,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102688,7 +103790,7 @@
         },
         {
           "name": "preserve_trailing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102710,7 +103812,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105506,11 +106608,23 @@
         "namespace": "internal"
       },
       "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -107563,7 +108677,7 @@
         },
         {
           "name": "filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -109064,14 +110178,26 @@
           "name": "metrics",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TopMetricsValue",
-                "namespace": "aggregations.metric.top_metrics"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TopMetricsValue",
+                  "namespace": "aggregations.metric.top_metrics"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TopMetricsValue",
+                    "namespace": "aggregations.metric.top_metrics"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -110386,7 +111512,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110397,7 +111523,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113536,7 +114662,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113547,7 +114673,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113642,7 +114768,7 @@
         },
         {
           "name": "ignore_missing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113653,7 +114779,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

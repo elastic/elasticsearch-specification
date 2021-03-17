@@ -17,8 +17,13 @@
  * under the License.
  */
 
-class AppendProcessor extends ProcessorBase {
-  field: Field
-  value: UserDefinedValue[]
-  allow_duplicates?: boolean
+class SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
+  /**
+   * @aliases readonly
+   */
+  read_only?: string | boolean
 }

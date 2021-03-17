@@ -25,7 +25,7 @@ class TTestAggregation extends Aggregation {
 class TestPopulation {
   field: Field
   script?: Script
-  filter: QueryContainer
+  filter?: QueryContainer
 }
 enum TTestType {
   paired,

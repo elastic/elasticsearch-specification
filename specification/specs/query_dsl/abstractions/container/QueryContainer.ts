@@ -76,7 +76,7 @@ class QueryContainer {
   span_within?: SpanWithinQuery
   template?: QueryTemplate
   term?: NamedQuery<TermQuery | string | float | boolean>
-  terms?: NamedQuery<Union<TermsQuery, string[]>>
+  terms?: NamedQuery<TermsQuery | string[] | long[]>
   terms_set?: NamedQuery<Union<TermsSetQuery, string>>
   wildcard?: NamedQuery<Union<WildcardQuery, string>>
 

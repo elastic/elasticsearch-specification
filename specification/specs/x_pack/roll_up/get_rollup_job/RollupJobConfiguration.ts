@@ -20,7 +20,7 @@
 class RollupJobConfiguration {
   cron: string
   groups: RollupGroupings
-  id: string
+  id: Id
   index_pattern: string
   metrics: RollupFieldMetric[]
   page_size: long
