@@ -74,6 +74,8 @@ class ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: string[]
+  lang?: string
+  position?: PainlessExecutionPosition
 }
 @class_serializer('ErrorFormatter')
 class MainError extends ErrorCause {
@@ -102,7 +104,7 @@ type CategoryId = string
 type ActionIds = string // TODO: check if this should be an array of ActionId
 
 type Id = string
-type Ids = string | string[]
+type Ids = Id | Id[]
 type NodeId = string
 
 type IndexName = string

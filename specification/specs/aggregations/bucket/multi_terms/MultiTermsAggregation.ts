@@ -17,13 +17,10 @@
  * under the License.
  */
 
-class CompletionSuggester extends SuggesterBase {
-  contexts?: Dictionary<
-    string,
-    string | string[] | GeoLocation | SuggestContextQuery[]
-  >
-  fuzzy?: SuggestFuzziness
-  prefix?: string
-  regex?: string
-  skip_duplicates?: boolean
+class MultiTermsAggregation extends BucketAggregationBase {
+  terms: MultiTermLookup[]
+}
+
+class MultiTermLookup {
+  field: Field
 }

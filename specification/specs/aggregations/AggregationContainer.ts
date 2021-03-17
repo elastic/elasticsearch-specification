@@ -50,6 +50,7 @@ class AggregationContainer {
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
+  inference?: InferenceAggregation
   line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
   max?: MaxAggregation
@@ -62,6 +63,7 @@ class AggregationContainer {
   moving_avg?: MovingAverageAggregation
   moving_percentiles?: MovingPercentilesAggregation
   moving_fn?: MovingFunctionAggregation
+  multi_terms?: MultiTermsAggregation
   nested?: NestedAggregation
   normalize?: NormalizeAggregation
   parent?: ParentAggregation

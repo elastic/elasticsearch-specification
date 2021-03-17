@@ -29,9 +29,9 @@ class ThreeDimensionalPoint {
 /**
  * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
  */
-type GeoCoordinate = double[] | ThreeDimensionalPoint
+type GeoCoordinate = string | double[] | ThreeDimensionalPoint
 
 /**
  * Represents a Latitude/Longitude as a 2 dimensional point
  */
-type GeoLocation = double[] | TwoDimensionalPoint
+type GeoLocation = string | double[] | TwoDimensionalPoint
