@@ -420,14 +420,21 @@ export interface AnomalyRecord {
   typical?: Array<double>
 }
 
+export interface ApiKeyApplication {
+  application: string
+  privileges: Array<string>
+  resources: Array<string>
+}
+
 export interface ApiKeyPrivileges {
-  names: Array<string>
+  names: Indices
   privileges: Array<string>
 }
 
 export interface ApiKeyRole {
   cluster: Array<string>
   index: Array<ApiKeyPrivileges>
+  applications?: Array<ApiKeyApplication>
 }
 
 export interface ApiKeys {
@@ -4475,7 +4482,7 @@ export interface ErrorCause {
   col?: integer
   failed_shards?: Array<ShardFailure>
   grouped?: boolean
-  index?: string
+  index?: IndexName
   index_uuid?: Uuid
   language?: string
   licensed_expired_feature?: string
@@ -4485,11 +4492,12 @@ export interface ErrorCause {
   property_name?: string
   processor_type?: string
   resource_id?: Array<string>
-  'resource.id'?: string
+  'resource.id'?: Id
   resource_type?: string
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
+  header?: Record<string, string>
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -6451,7 +6459,7 @@ export interface IndicesPrivileges {
   field_security?: FieldSecurity
   names: Indices
   privileges: Array<string>
-  query?: QueryContainer
+  query?: string | QueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -8233,7 +8241,9 @@ export type Privileges = Record<string, boolean>
 
 export interface PrivilegesActions {
   actions: Array<string>
-  metadata: Record<string, any>
+  application?: string
+  name?: string
+  metadata?: Record<string, any>
 }
 
 export interface ProcessStats {
@@ -8613,12 +8623,14 @@ export interface PutUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
   body: {
+    username?: Name
     email?: string | null
     full_name?: string | null
     metadata?: Record<string, any>
     password?: string
     password_hash?: string
     roles?: Array<string>
+    enabled?: boolean
   }
 }
 
@@ -8741,6 +8753,7 @@ export interface QueryContainer {
   span_or?: SpanOrQuery
   span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
+  template?: QueryTemplate
   term?: NamedQuery<TermQuery | string | float | boolean>
   terms?: NamedQuery<TermsQuery | Array<string> | Array<long>>
   terms_set?: NamedQuery<TermsSetQuery | string>
@@ -8800,6 +8813,10 @@ export interface QueryStringQuery extends QueryBase {
   tie_breaker?: double
   time_zone?: string
   type?: TextQueryType
+}
+
+export interface QueryTemplate {
+  source: string
 }
 
 export interface QueryUsage {

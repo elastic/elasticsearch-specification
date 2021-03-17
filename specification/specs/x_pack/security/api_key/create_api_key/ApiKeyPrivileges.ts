@@ -18,6 +18,6 @@
  */
 
 class ApiKeyPrivileges {
-  names: string[]
+  names: Indices
   privileges: string[]
 }

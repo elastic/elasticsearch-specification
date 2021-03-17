@@ -17,26 +17,6 @@
  * under the License.
  */
 
-/**
- * @rest_spec_name security.put_user
- * @since 0.0.0
- * @stability TODO
- */
-interface PutUserRequest extends RequestBase {
-  path_parts?: {
-    username: Name
-  }
-  query_parameters?: {
-    refresh?: Refresh
-  }
-  body?: {
-    username?: Name
-    email?: string | null
-    full_name?: string | null
-    metadata?: Dictionary<string, UserDefinedValue>
-    password?: string
-    password_hash?: string
-    roles?: string[]
-    enabled?: boolean
-  }
+class QueryTemplate {
+  source: string
 }

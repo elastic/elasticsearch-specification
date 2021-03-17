@@ -14872,12 +14872,23 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKeyPrivileges",
+        "name": "ApiKeyApplication",
         "namespace": "x_pack.security.api_key.create_api_key"
       },
       "properties": [
         {
-          "name": "names",
+          "name": "application",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "privileges",
           "required": true,
           "type": {
             "kind": "array_of",
@@ -14887,6 +14898,40 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "resources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApiKeyPrivileges",
+        "namespace": "x_pack.security.api_key.create_api_key"
+      },
+      "properties": [
+        {
+          "name": "names",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
             }
           }
         },
@@ -14936,6 +14981,20 @@
               "kind": "instance_of",
               "type": {
                 "name": "ApiKeyPrivileges",
+                "namespace": "x_pack.security.api_key.create_api_key"
+              }
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApiKeyApplication",
                 "namespace": "x_pack.security.api_key.create_api_key"
               }
             }
@@ -46519,7 +46578,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -46632,7 +46691,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -46675,6 +46734,27 @@
           "required": false,
           "type": {
             "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "header",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
             "value": {
               "kind": "instance_of",
               "type": {
@@ -64149,11 +64229,23 @@
           "name": "query",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "query_dsl.abstractions.container"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryContainer",
+                  "namespace": "query_dsl.abstractions.container"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -79780,8 +79872,30 @@
           }
         },
         {
+          "name": "application",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "metadata",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -83293,6 +83407,17 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "username",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
             "name": "email",
             "required": false,
             "type": {
@@ -83388,6 +83513,17 @@
                   "name": "string",
                   "namespace": "internal"
                 }
+              }
+            }
+          },
+          {
+            "name": "enabled",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
               }
             }
           }
@@ -84992,6 +85128,17 @@
           }
         },
         {
+          "name": "template",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryTemplate",
+              "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
           "name": "term",
           "required": false,
           "type": {
@@ -85676,6 +85823,26 @@
             "type": {
               "name": "TextQueryType",
               "namespace": "query_dsl.full_text.multi_match"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryTemplate",
+        "namespace": "query_dsl.abstractions.container"
+      },
+      "properties": [
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }

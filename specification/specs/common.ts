@@ -59,7 +59,7 @@ class ErrorCause {
   col?: integer
   failed_shards?: ShardFailure[]
   grouped?: boolean
-  index?: string
+  index?: IndexName
   index_uuid?: Uuid
   language?: string
   licensed_expired_feature?: string
@@ -69,11 +69,12 @@ class ErrorCause {
   property_name?: string
   processor_type?: string
   resource_id?: string[]
-  'resource.id'?: string
+  'resource.id'?: Id
   resource_type?: string
   'resource.type'?: string
   script?: string
   script_stack?: string[]
+  header?: Dictionary<string, string>
   lang?: string
   position?: PainlessExecutionPosition
 }

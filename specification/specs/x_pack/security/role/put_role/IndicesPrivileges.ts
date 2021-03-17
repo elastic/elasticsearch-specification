@@ -21,6 +21,6 @@ class IndicesPrivileges {
   field_security?: FieldSecurity
   names: Indices
   privileges: string[]
-  query?: QueryContainer
+  query?: string | QueryContainer
   allow_restricted_indices?: boolean
 }

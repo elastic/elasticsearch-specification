@@ -19,5 +19,7 @@
 
 class PrivilegesActions {
   actions: string[]
-  metadata: Dictionary<string, UserDefinedValue>
+  application?: string
+  name?: string
+  metadata?: Dictionary<string, UserDefinedValue>
 }
