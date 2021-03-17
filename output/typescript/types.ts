@@ -4497,12 +4497,9 @@ export interface ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
-<<<<<<< HEAD
   header?: Record<string, string>
-=======
   lang?: string
   position?: PainlessExecutionPosition
->>>>>>> master
 }
 
 export interface ErrorResponse {

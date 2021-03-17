@@ -46744,7 +46744,6 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "header",
           "required": false,
           "type": {
@@ -46762,7 +46761,10 @@
                 "name": "string",
                 "namespace": "internal"
               }
-=======
+            }
+          }
+        },
+        {
           "name": "lang",
           "required": false,
           "type": {
@@ -46781,7 +46783,6 @@
             "type": {
               "name": "PainlessExecutionPosition",
               "namespace": "modules.scripting.execute_painless_script"
->>>>>>> master
             }
           }
         }
