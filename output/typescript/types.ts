@@ -7390,6 +7390,24 @@ export interface MultiSearchResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
 }
 
+export interface MultiSearchTemplateRequest extends RequestBase {
+  index?: Indices
+  type?: Types
+  ccs_minimize_roundtrips?: boolean
+  max_concurrent_searches?: long
+  search_type?: SearchType
+  total_hits_as_integer?: boolean
+  typed_keys?: boolean
+  body: {
+    operations?: Record<string, SearchTemplateRequest>
+  }
+}
+
+export interface MultiSearchTemplateResponse extends ResponseBase {
+  responses: Array<SearchResponse<any>>
+  took: long
+}
+
 export interface MultiTermLookup {
   field: Field
 }
@@ -9794,7 +9812,7 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
-  pit_id?: string
+  pit_id?: Id
   _scroll_id?: ScrollId
   suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
   terminated_early?: boolean
