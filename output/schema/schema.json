@@ -76829,22 +76829,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "id",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -76875,7 +76859,7 @@
       "query": [
         {
           "name": "keep_alive",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

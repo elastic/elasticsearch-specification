@@ -27,9 +27,7 @@ interface OpenPointInTimeRequest extends RequestBase {
     index: IndexName
   }
   query_parameters?: {
-    keep_alive: Time
+    keep_alive?: Time
   }
-  body?: {
-    id: Id
-  }
+  body?: {}
 }

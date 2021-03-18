@@ -7868,10 +7868,7 @@ export interface OpenJobResponse extends ResponseBase {
 
 export interface OpenPointInTimeRequest extends RequestBase {
   index: IndexName
-  keep_alive: Time
-  body?: {
-    id: Id
-  }
+  keep_alive?: Time
 }
 
 export interface OpenPointInTimeResponse extends ResponseBase {

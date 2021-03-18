@@ -18,6 +18,6 @@
  */
 
 class ClosePointInTimeResponse extends ResponseBase {
-    succeeded: boolean
-    num_freed: integer
+  succeeded: boolean
+  num_freed: integer
 }
