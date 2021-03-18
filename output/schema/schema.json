@@ -32556,7 +32556,30 @@
         "name": "ClosePointInTimeResponse",
         "namespace": "x_pack.pit"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "succeeded",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_freed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",

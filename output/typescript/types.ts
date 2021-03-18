@@ -2925,6 +2925,8 @@ export interface ClosePointInTimeRequest extends RequestBase {
 }
 
 export interface ClosePointInTimeResponse extends ResponseBase {
+  succeeded: boolean
+  num_freed: integer
 }
 
 export interface CloseShardResult {
