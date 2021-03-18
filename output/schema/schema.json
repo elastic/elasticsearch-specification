@@ -1465,9 +1465,16 @@
       "description": "Close a point in time",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "close_point_in_time",
-      "request": null,
+      "request": {
+        "name": "ClosePointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClosePointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -7871,9 +7878,16 @@
       "description": "Open a point in time that can be used in subsequent searches",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "open_point_in_time",
-      "request": null,
+      "request": {
+        "name": "OpenPointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "OpenPointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -32491,6 +32505,58 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClosePointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClosePointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "properties": []
     },
     {
       "kind": "interface",
@@ -76735,6 +76801,83 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "OpenPointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to open point in time; use `_all` or empty string to perform the operation on all indices",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "keep_alive",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "OpenPointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "properties": []
     },
     {
       "kind": "interface",
