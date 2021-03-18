@@ -8734,9 +8734,16 @@
       "description": "Clear a subset or all entries from the API key cache.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html",
       "name": "security.clear_api_key_cache",
-      "request": null,
+      "request": {
+        "name": "ClearApiKeyCacheRequest",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClearApiKeyCacheResponse",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -31653,6 +31660,119 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClearApiKeyCacheNode",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClearApiKeyCacheRequest",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of IDs of API keys to clear from the cache",
+          "name": "ids",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClearApiKeyCacheResponse",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "properties": [
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "cluster_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClearApiKeyCacheNode",
+                "namespace": "x_pack.security.api_key.clear_api_key_cache"
+              }
             }
           }
         }

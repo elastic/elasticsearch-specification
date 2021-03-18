@@ -606,14 +606,6 @@
         "Missing response"
       ]
     },
-    "security.clear_api_key_cache": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "security.clear_cached_privileges": {
       "request": [
         "Missing request"

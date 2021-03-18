@@ -2823,6 +2823,20 @@ export interface CleanupRepositoryResults {
   deleted_bytes: long
 }
 
+export interface ClearApiKeyCacheNode {
+  name: Name
+}
+
+export interface ClearApiKeyCacheRequest extends RequestBase {
+  ids?: string
+}
+
+export interface ClearApiKeyCacheResponse extends ResponseBase {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, ClearApiKeyCacheNode>
+}
+
 export interface ClearCacheRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
