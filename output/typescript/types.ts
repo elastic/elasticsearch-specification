@@ -10659,7 +10659,7 @@ export interface SnapshotStatus {
   snapshot: string
   state: string
   stats: SnapshotStats
-  uuid: string
+  uuid: Uuid
 }
 
 export interface SnapshotStatusRequest extends RequestBase {
