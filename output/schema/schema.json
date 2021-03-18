@@ -9799,9 +9799,16 @@
       "description": "Clones indices from one snapshot into another snapshot in the same repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.clone",
-      "request": null,
+      "request": {
+        "name": "CloneSnapshotRequest",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "CloneSnapshotResponse",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -32220,6 +32227,118 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "indices",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "CloneSnapshotRequest",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
+      "path": [
+        {
+          "description": "A repository name",
+          "name": "repository",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the snapshot to clone from",
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the cloned snapshot to create",
+          "name": "target_snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "CloneSnapshotResponse",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
+      "properties": []
     },
     {
       "attachedBehaviors": [

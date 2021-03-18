@@ -2887,6 +2887,20 @@ export interface CloneIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }
 
+export interface CloneSnapshotRequest extends RequestBase {
+  repository: Name
+  snapshot: Name
+  target_snapshot: Name
+  master_timeout?: Time
+  timeout?: Time
+  body: {
+    indices: string
+  }
+}
+
+export interface CloneSnapshotResponse extends AcknowledgedResponseBase {
+}
+
 export interface CloseIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
