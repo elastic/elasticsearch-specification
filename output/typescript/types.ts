@@ -2918,6 +2918,17 @@ export interface CloseJobResponse extends ResponseBase {
   closed: boolean
 }
 
+export interface ClosePointInTimeRequest extends RequestBase {
+  body?: {
+    id: Id
+  }
+}
+
+export interface ClosePointInTimeResponse extends ResponseBase {
+  succeeded: boolean
+  num_freed: integer
+}
+
 export interface CloseShardResult {
   failures: Array<ShardFailure>
 }
@@ -7866,6 +7877,15 @@ export interface OpenJobRequest extends RequestBase {
 
 export interface OpenJobResponse extends ResponseBase {
   opened: boolean
+}
+
+export interface OpenPointInTimeRequest extends RequestBase {
+  index: IndexName
+  keep_alive?: Time
+}
+
+export interface OpenPointInTimeResponse extends ResponseBase {
+  id: Id
 }
 
 export interface OperatingSystemMemoryInfo {
