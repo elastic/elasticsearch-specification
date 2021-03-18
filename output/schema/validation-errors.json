@@ -32,14 +32,6 @@
         "Missing response"
       ]
     },
-    "close_point_in_time": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "cluster.delete_component_template": {
       "request": [
         "Missing request"
@@ -556,14 +548,6 @@
         "Missing response"
       ]
     },
-    "open_point_in_time": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "rank_eval": {
       "request": [
         "Missing request"
@@ -631,14 +615,6 @@
       ]
     },
     "security.clear_cached_privileges": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "security.grant_api_key": {
       "request": [
         "Missing request"
       ],

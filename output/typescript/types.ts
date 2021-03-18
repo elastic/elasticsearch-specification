@@ -420,11 +420,19 @@ export interface AnomalyRecord {
   typical?: Array<double>
 }
 
+export interface ApiKey {
+  name: Name
+  expiration?: Time
+  role_descriptors?: Array<string>
+}
+
 export interface ApiKeyApplication {
   application: string
   privileges: Array<string>
   resources: Array<string>
 }
+
+export type ApiKeyGrantType = 'access_token' | 'password'
 
 export interface ApiKeyPrivileges {
   names: Indices
@@ -5960,6 +5968,23 @@ export interface GlobalPrivileges {
 
 export interface GoogleNormalizedDistanceHeuristic {
   background_is_superset: boolean
+}
+
+export interface GrantApiKeyRequest extends RequestBase {
+  body: {
+    api_key: ApiKey
+    grant_type: ApiKeyGrantType
+    access_token?: string
+    username?: string
+    password?: string
+  }
+}
+
+export interface GrantApiKeyResponse extends ResponseBase {
+  api_key: string
+  id: Id
+  name: Name
+  expiration?: EpochMillis
 }
 
 export interface GraphConnection {
