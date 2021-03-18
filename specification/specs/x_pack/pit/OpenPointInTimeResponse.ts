@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class OpenPointInTimeResponse extends ResponseBase {}
+class OpenPointInTimeResponse extends ResponseBase {
+  id: Id
+}

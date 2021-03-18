@@ -7872,6 +7872,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
 }
 
 export interface OpenPointInTimeResponse extends ResponseBase {
+  id: Id
 }
 
 export interface OperatingSystemMemoryInfo {

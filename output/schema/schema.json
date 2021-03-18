@@ -76884,7 +76884,19 @@
         "name": "OpenPointInTimeResponse",
         "namespace": "x_pack.pit"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
