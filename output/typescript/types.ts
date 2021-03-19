@@ -9649,6 +9649,18 @@ export interface RollupJobTaskFailureReason {
 
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 
+export interface RollupRequest extends RequestBase {
+  stubb: integer
+  stuba: integer
+  body: {
+    stub: integer
+  }
+}
+
+export interface RollupResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface RollupSearchRequest extends RequestBase {
   index: Indices
   type?: Type

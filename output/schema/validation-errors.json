@@ -468,14 +468,6 @@
         "Missing response"
       ]
     },
-    "rollup.rollup": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "search_template": {
       "request": [
         "SearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",

@@ -8332,9 +8332,16 @@
       "description": "Rollup an index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
       "name": "rollup.rollup",
-      "request": null,
+      "request": {
+        "name": "RollupRequest",
+        "namespace": "x_pack.roll_up.rollup"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "RollupResponse",
+        "namespace": "x_pack.roll_up.rollup"
+      },
+      "since": "7.13.0",
       "stability": "stable",
       "urls": [
         {
@@ -92874,6 +92881,94 @@
         "name": "RollupMetric",
         "namespace": "x_pack.roll_up.rollup_configuration"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "RollupRequest",
+        "namespace": "x_pack.roll_up.rollup"
+      },
+      "path": [
+        {
+          "name": "stubb",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stuba",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RollupResponse",
+        "namespace": "x_pack.roll_up.rollup"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
