@@ -3216,6 +3216,18 @@ export interface ClusterPendingTasksResponse extends ResponseBase {
   tasks: Array<PendingTask>
 }
 
+export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterPostVotingConfigExclusionsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ClusterProcess {
   cpu: ClusterProcessCpu
   open_file_descriptors: ClusterProcessOpenFileDescriptors
@@ -3236,6 +3248,18 @@ export interface ClusterProcessorStats {
   current: long
   failed: long
   time_in_millis: long
+}
+
+export interface ClusterPutComponentTemplateRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface ClusterPutComponentTemplateResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface ClusterPutSettingsRequest extends RequestBase {
