@@ -1553,12 +1553,12 @@
       "name": "cluster.delete_component_template",
       "request": {
         "name": "ClusterDeleteComponentTemplateRequest",
-        "namespace": "cluster.cluster_delete_component_template copy"
+        "namespace": "cluster.cluster_delete_component_template"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ClusterDeleteComponentTemplateResponse",
-        "namespace": "cluster.cluster_delete_component_template copy"
+        "namespace": "cluster.cluster_delete_component_template"
       },
       "since": "7.8.0",
       "stability": "stable",
@@ -33436,7 +33436,7 @@
       "kind": "request",
       "name": {
         "name": "ClusterDeleteComponentTemplateRequest",
-        "namespace": "cluster.cluster_delete_component_template copy"
+        "namespace": "cluster.cluster_delete_component_template"
       },
       "path": [
         {
@@ -33477,7 +33477,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterDeleteComponentTemplateResponse",
-        "namespace": "cluster.cluster_delete_component_template copy"
+        "namespace": "cluster.cluster_delete_component_template"
       },
       "properties": [
         {
