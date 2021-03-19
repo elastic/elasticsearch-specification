@@ -3004,10 +3004,46 @@ export interface ClusterComponentTemplateExistsResponse extends ResponseBase {
   stub: integer
 }
 
+export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterDeleteComponentTemplateResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ClusterFileSystem {
   available_in_bytes: long
   free_in_bytes: long
   total_in_bytes: long
+}
+
+export interface ClusterGetComponentTemplateRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterGetComponentTemplateResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface ClusterGetSettingsRequest extends RequestBase {

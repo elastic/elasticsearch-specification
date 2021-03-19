@@ -1,29 +1,5 @@
 {
   "endpointErrors": {
-    "cluster.delete_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.delete_voting_config_exclusions": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.get_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "cluster.post_voting_config_exclusions": {
       "request": [
         "Missing request"

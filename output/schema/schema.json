@@ -1551,9 +1551,16 @@
       "description": "Deletes a component template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.delete_component_template",
-      "request": null,
+      "request": {
+        "name": "ClusterDeleteComponentTemplateRequest",
+        "namespace": "cluster.cluster_delete_component_template copy"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClusterDeleteComponentTemplateResponse",
+        "namespace": "cluster.cluster_delete_component_template copy"
+      },
+      "since": "7.8.0",
       "stability": "stable",
       "urls": [
         {
@@ -1571,9 +1578,16 @@
       "description": "Clears cluster voting config exclusions.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html",
       "name": "cluster.delete_voting_config_exclusions",
-      "request": null,
+      "request": {
+        "name": "ClusterDeleteVotingConfigExclusionsRequest",
+        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClusterDeleteVotingConfigExclusionsResponse",
+        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+      },
+      "since": "7.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1593,12 +1607,12 @@
       "name": "cluster.exists_component_template",
       "request": {
         "name": "ClusterComponentTemplateExistsRequest",
-        "namespace": "cluster.exists_component_template"
+        "namespace": "cluster.cluster_exists_component_template"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ClusterComponentTemplateExistsResponse",
-        "namespace": "cluster.exists_component_template"
+        "namespace": "cluster.cluster_exists_component_template"
       },
       "since": "7.8.0",
       "stability": "stable",
@@ -1618,9 +1632,16 @@
       "description": "Returns one or more component templates",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.get_component_template",
-      "request": null,
+      "request": {
+        "name": "ClusterGetComponentTemplateRequest",
+        "namespace": "cluster.cluster_get_component_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClusterGetComponentTemplateResponse",
+        "namespace": "cluster.cluster_get_component_template"
+      },
+      "since": "7.8.0",
       "stability": "stable",
       "urls": [
         {
@@ -33285,7 +33306,7 @@
       "kind": "request",
       "name": {
         "name": "ClusterComponentTemplateExistsRequest",
-        "namespace": "cluster.exists_component_template"
+        "namespace": "cluster.cluster_exists_component_template"
       },
       "path": [
         {
@@ -33326,7 +33347,183 @@
       "kind": "interface",
       "name": {
         "name": "ClusterComponentTemplateExistsResponse",
-        "namespace": "cluster.exists_component_template"
+        "namespace": "cluster.cluster_exists_component_template"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClusterDeleteComponentTemplateRequest",
+        "namespace": "cluster.cluster_delete_component_template copy"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClusterDeleteComponentTemplateResponse",
+        "namespace": "cluster.cluster_delete_component_template copy"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClusterDeleteVotingConfigExclusionsRequest",
+        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClusterDeleteVotingConfigExclusionsResponse",
+        "namespace": "cluster.cluster_delete_voting_config_exclusions"
       },
       "properties": [
         {
@@ -33378,6 +33575,94 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClusterGetComponentTemplateRequest",
+        "namespace": "cluster.cluster_get_component_template"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClusterGetComponentTemplateResponse",
+        "namespace": "cluster.cluster_get_component_template"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
