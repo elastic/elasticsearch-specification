@@ -288,30 +288,6 @@
         "Missing response"
       ]
     },
-    "logstash.delete_pipeline": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "logstash.get_pipeline": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "logstash.put_pipeline": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "mget": {
       "request": [
         "MultiGetRequest: query parameter 'source_enabled' does not exist in the json spec",

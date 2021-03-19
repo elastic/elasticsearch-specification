@@ -5532,9 +5532,16 @@
       "description": "Deletes Logstash Pipelines used by Central Management",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
       "name": "logstash.delete_pipeline",
-      "request": null,
+      "request": {
+        "name": "LogstashDeletePipelineRequest",
+        "namespace": "logstash.pipeline_delete"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "LogstashDeletePipelineResponse",
+        "namespace": "logstash.pipeline_delete"
+      },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -5552,9 +5559,16 @@
       "description": "Retrieves Logstash Pipelines used by Central Management",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
       "name": "logstash.get_pipeline",
-      "request": null,
+      "request": {
+        "name": "LogstashGetPipelineRequest",
+        "namespace": "logstash.pipeline_get"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "LogstashGetPipelineResponse",
+        "namespace": "logstash.pipeline_get"
+      },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -5575,9 +5589,16 @@
       "description": "Adds and updates Logstash Pipelines used for Central Management",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
       "name": "logstash.put_pipeline",
-      "request": null,
+      "request": {
+        "name": "LogstashPutPipelineRequest",
+        "namespace": "logstash.pipeline_put"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "LogstashPutPipelineResponse",
+        "namespace": "logstash.pipeline_put"
+      },
+      "since": "0.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -69869,6 +69890,270 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "LogstashDeletePipelineRequest",
+        "namespace": "logstash.pipeline_delete"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "LogstashDeletePipelineResponse",
+        "namespace": "logstash.pipeline_delete"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "LogstashGetPipelineRequest",
+        "namespace": "logstash.pipeline_get"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "LogstashGetPipelineResponse",
+        "namespace": "logstash.pipeline_get"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "LogstashPutPipelineRequest",
+        "namespace": "logstash.pipeline_put"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "LogstashPutPipelineResponse",
+        "namespace": "logstash.pipeline_put"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }

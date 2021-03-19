@@ -7120,6 +7120,42 @@ export interface LoggingActionResult {
   logged_text: string
 }
 
+export interface LogstashDeletePipelineRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface LogstashDeletePipelineResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface LogstashGetPipelineRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface LogstashGetPipelineResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface LogstashPutPipelineRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface LogstashPutPipelineResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface LowercaseProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
