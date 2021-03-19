@@ -4001,6 +4001,18 @@ export interface DeleteCalendarRequest extends RequestBase {
 export interface DeleteCalendarResponse extends AcknowledgedResponseBase {
 }
 
+export interface DeleteDanglingIndexRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface DeleteDanglingIndexResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface DeleteDatafeedRequest extends RequestBase {
   datafeed_id: Id
   force?: boolean
@@ -6353,6 +6365,18 @@ export interface IlmUsage {
   policy_stats: Array<IlmPolicyStatistics>
 }
 
+export interface ImportDanglingIndexRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ImportDanglingIndexResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IndexActionResult {
   response: IndexActionResultIndexResponse
 }
@@ -7050,6 +7074,18 @@ export interface LinearInterpolationSmoothingModel {
   bigram_lambda: double
   trigram_lambda: double
   unigram_lambda: double
+}
+
+export interface ListDanglingIndicesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ListDanglingIndicesResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface ListTasksRequest extends RequestBase {

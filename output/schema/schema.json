@@ -2018,9 +2018,16 @@
       "description": "Deletes the specified dangling index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
       "name": "dangling_indices.delete_dangling_index",
-      "request": null,
+      "request": {
+        "name": "DeleteDanglingIndexRequest",
+        "namespace": "dangling_indices.index_delete"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "DeleteDanglingIndexResponse",
+        "namespace": "dangling_indices.index_delete"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -2038,9 +2045,16 @@
       "description": "Imports the specified dangling index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
       "name": "dangling_indices.import_dangling_index",
-      "request": null,
+      "request": {
+        "name": "ImportDanglingIndexRequest",
+        "namespace": "dangling_indices.index_import"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ImportDanglingIndexResponse",
+        "namespace": "dangling_indices.index_import"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -2058,9 +2072,16 @@
       "description": "Returns all dangling indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html",
       "name": "dangling_indices.list_dangling_indices",
-      "request": null,
+      "request": {
+        "name": "ListDanglingIndicesRequest",
+        "namespace": "dangling_indices.indices_list"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ListDanglingIndicesResponse",
+        "namespace": "dangling_indices.indices_list"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -42449,6 +42470,94 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "DeleteDanglingIndexRequest",
+        "namespace": "dangling_indices.index_delete"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DeleteDanglingIndexResponse",
+        "namespace": "dangling_indices.index_delete"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -63186,6 +63295,94 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ImportDanglingIndexRequest",
+        "namespace": "dangling_indices.index_import"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ImportDanglingIndexResponse",
+        "namespace": "dangling_indices.index_import"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IndexActionResult",
@@ -69274,6 +69471,94 @@
             "kind": "instance_of",
             "type": {
               "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ListDanglingIndicesRequest",
+        "namespace": "dangling_indices.indices_list"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ListDanglingIndicesResponse",
+        "namespace": "dangling_indices.indices_list"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }

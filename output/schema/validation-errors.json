@@ -48,30 +48,6 @@
         "Missing response"
       ]
     },
-    "dangling_indices.delete_dangling_index": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "dangling_indices.import_dangling_index": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "dangling_indices.list_dangling_indices": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "data_frame_transform_deprecated.delete_transform": {
       "request": [
         "Missing request"
