@@ -8995,6 +8995,18 @@ export interface QueryUserPrivileges {
   term: TermUserPrivileges
 }
 
+export interface QueryWatchesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface QueryWatchesResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface RandomScoreFunction extends ScoreFunctionBase {
   field?: Field
   seed?: long | string

@@ -11023,9 +11023,16 @@
       "description": "Retrieves stored watches.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-query-watches.html",
       "name": "watcher.query_watches",
-      "request": null,
+      "request": {
+        "name": "QueryWatchesRequest",
+        "namespace": "x_pack.watcher.query_watch"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "QueryWatchesResponse",
+        "namespace": "x_pack.watcher.query_watch"
+      },
+      "since": "7.11.0",
       "stability": "stable",
       "urls": [
         {
@@ -87257,6 +87264,94 @@
             "type": {
               "name": "TermUserPrivileges",
               "namespace": "x_pack.security.privileges.get_user_privileges"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "QueryWatchesRequest",
+        "namespace": "x_pack.watcher.query_watch"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "QueryWatchesResponse",
+        "namespace": "x_pack.watcher.query_watch"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
