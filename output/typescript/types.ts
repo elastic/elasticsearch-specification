@@ -831,6 +831,18 @@ export interface BulkIndexOperation extends BulkOperation {
 export interface BulkIndexResponseItem extends BulkResponseItemBase {
 }
 
+export interface BulkMonitoringRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface BulkMonitoringResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface BulkOperation {
   _id: Id
   _index: IndexName

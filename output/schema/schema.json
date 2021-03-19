@@ -7503,9 +7503,16 @@
       "description": "Used by the monitoring features to send monitoring data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/monitor-elasticsearch-cluster.html",
       "name": "monitoring.bulk",
-      "request": null,
+      "request": {
+        "name": "BulkMonitoringRequest",
+        "namespace": "x_pack.monitoring"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "BulkMonitoringResponse",
+        "namespace": "x_pack.monitoring"
+      },
+      "since": "6.3.0",
       "stability": "experimental",
       "urls": [
         {
@@ -18750,6 +18757,94 @@
         "namespace": "document.multiple.bulk.bulk_response_item"
       },
       "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "BulkMonitoringRequest",
+        "namespace": "x_pack.monitoring"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "BulkMonitoringResponse",
+        "namespace": "x_pack.monitoring"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
