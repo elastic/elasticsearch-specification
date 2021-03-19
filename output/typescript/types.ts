@@ -3896,6 +3896,18 @@ export interface DeleteAutoFollowPatternRequest extends RequestBase {
 export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
+export interface DeleteAutoscalingPolicyRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface DeleteAutoscalingPolicyResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
@@ -5407,6 +5419,30 @@ export interface GetAutoFollowPatternRequest extends RequestBase {
 
 export interface GetAutoFollowPatternResponse extends ResponseBase {
   patterns: Record<string, AutoFollowPattern>
+}
+
+export interface GetAutoscalingCapacityRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface GetAutoscalingCapacityResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface GetAutoscalingPolicyRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface GetAutoscalingPolicyResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface GetBasicLicenseStatusRequest extends RequestBase {
@@ -8362,6 +8398,18 @@ export interface PutAliasRequest extends RequestBase {
 }
 
 export interface PutAliasResponse extends ResponseBase {
+}
+
+export interface PutAutoscalingPolicyRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface PutAutoscalingPolicyResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface PutCalendarJobRequest extends RequestBase {

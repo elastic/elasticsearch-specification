@@ -132,9 +132,16 @@
       "description": "Deletes an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-delete-autoscaling-policy.html",
       "name": "autoscaling.delete_autoscaling_policy",
-      "request": null,
+      "request": {
+        "name": "DeleteAutoscalingPolicyRequest",
+        "namespace": "x_pack.autoscaling.policy_delete"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "DeleteAutoscalingPolicyResponse",
+        "namespace": "x_pack.autoscaling.policy_delete"
+      },
+      "since": "7.11.0",
       "stability": "stable",
       "urls": [
         {
@@ -152,9 +159,16 @@
       "description": "Gets the current autoscaling capacity based on the configured autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-capacity.html",
       "name": "autoscaling.get_autoscaling_capacity",
-      "request": null,
+      "request": {
+        "name": "GetAutoscalingCapacityRequest",
+        "namespace": "x_pack.autoscaling.capacity_get"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "GetAutoscalingCapacityResponse",
+        "namespace": "x_pack.autoscaling.capacity_get"
+      },
+      "since": "7.11.0",
       "stability": "stable",
       "urls": [
         {
@@ -172,9 +186,16 @@
       "description": "Retrieves an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-get-autoscaling-policy.html",
       "name": "autoscaling.get_autoscaling_policy",
-      "request": null,
+      "request": {
+        "name": "GetAutoscalingPolicyRequest",
+        "namespace": "x_pack.autoscaling.policy_get"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "GetAutoscalingPolicyResponse",
+        "namespace": "x_pack.autoscaling.policy_get"
+      },
+      "since": "7.11.0",
       "stability": "stable",
       "urls": [
         {
@@ -195,9 +216,16 @@
       "description": "Creates a new autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-put-autoscaling-policy.html",
       "name": "autoscaling.put_autoscaling_policy",
-      "request": null,
+      "request": {
+        "name": "PutAutoscalingPolicyRequest",
+        "namespace": "x_pack.autoscaling.policy_put"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "PutAutoscalingPolicyResponse",
+        "namespace": "x_pack.autoscaling.policy_put"
+      },
+      "since": "7.11.0",
       "stability": "stable",
       "urls": [
         {
@@ -41452,6 +41480,94 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "DeleteAutoscalingPolicyRequest",
+        "namespace": "x_pack.autoscaling.policy_delete"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DeleteAutoscalingPolicyResponse",
+        "namespace": "x_pack.autoscaling.policy_delete"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
             "name": "max_docs",
             "required": false,
             "type": {
@@ -54701,6 +54817,182 @@
                 "name": "AutoFollowPattern",
                 "namespace": "x_pack.cross_cluster_replication.auto_follow.get_auto_follow_pattern"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GetAutoscalingCapacityRequest",
+        "namespace": "x_pack.autoscaling.capacity_get"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GetAutoscalingCapacityResponse",
+        "namespace": "x_pack.autoscaling.capacity_get"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GetAutoscalingPolicyRequest",
+        "namespace": "x_pack.autoscaling.policy_get"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GetAutoscalingPolicyResponse",
+        "namespace": "x_pack.autoscaling.policy_get"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
@@ -81018,6 +81310,94 @@
         "namespace": "indices.alias_management.put_alias"
       },
       "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "PutAutoscalingPolicyRequest",
+        "namespace": "x_pack.autoscaling.policy_put"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "PutAutoscalingPolicyResponse",
+        "namespace": "x_pack.autoscaling.policy_put"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
