@@ -5591,6 +5591,18 @@ export interface GetEnrichPolicyResponse extends ResponseBase {
   policies: Array<NamedPolicyMetadata>
 }
 
+export interface GetFeaturesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface GetFeaturesResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface GetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices

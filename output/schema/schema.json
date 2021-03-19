@@ -2792,9 +2792,16 @@
       "description": "Returns a list of features which can be snapshotted in this cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "features.get_features",
-      "request": null,
+      "request": {
+        "name": "GetFeaturesRequest",
+        "namespace": "features"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "GetFeaturesResponse",
+        "namespace": "features"
+      },
+      "since": "7.12.0",
       "stability": "stable",
       "urls": [
         {
@@ -56255,6 +56262,94 @@
                 "name": "NamedPolicyMetadata",
                 "namespace": "x_pack.enrich"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GetFeaturesRequest",
+        "namespace": "features"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GetFeaturesResponse",
+        "namespace": "features"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
