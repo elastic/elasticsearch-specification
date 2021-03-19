@@ -2980,6 +2980,18 @@ export interface ClusterCertificateInformation {
   subject_dn: string
 }
 
+export interface ClusterComponentTemplateExistsRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterComponentTemplateExistsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ClusterFileSystem {
   available_in_bytes: long
   free_in_bytes: long

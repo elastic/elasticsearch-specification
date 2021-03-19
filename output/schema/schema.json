@@ -1591,9 +1591,16 @@
       "description": "Returns information about whether a particular component template exist",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html",
       "name": "cluster.exists_component_template",
-      "request": null,
+      "request": {
+        "name": "ClusterComponentTemplateExistsRequest",
+        "namespace": "cluster.exists_component_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClusterComponentTemplateExistsResponse",
+        "namespace": "cluster.exists_component_template"
+      },
+      "since": "7.8.0",
       "stability": "stable",
       "urls": [
         {
@@ -33104,6 +33111,94 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClusterComponentTemplateExistsRequest",
+        "namespace": "cluster.exists_component_template"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClusterComponentTemplateExistsResponse",
+        "namespace": "cluster.exists_component_template"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }

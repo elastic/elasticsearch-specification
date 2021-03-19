@@ -16,14 +16,6 @@
         "Missing response"
       ]
     },
-    "cluster.exists_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "cluster.get_component_template": {
       "request": [
         "Missing request"
