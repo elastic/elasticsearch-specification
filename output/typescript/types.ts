@@ -4589,6 +4589,54 @@ export interface EnrichStatsResponse extends ResponseBase {
 
 export type EpochMillis = string | long
 
+export interface EqlDeleteRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface EqlDeleteResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface EqlGetRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface EqlGetResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface EqlGetStatusRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface EqlGetStatusResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface EqlSearchRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface EqlSearchResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ErrorCause {
   type: string
   reason: string

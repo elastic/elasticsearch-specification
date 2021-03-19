@@ -2627,9 +2627,16 @@
       "description": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.delete",
-      "request": null,
+      "request": {
+        "name": "EqlDeleteRequest",
+        "namespace": "x_pack.eql.delete"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "EqlDeleteResponse",
+        "namespace": "x_pack.eql.delete"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -2647,9 +2654,16 @@
       "description": "Returns async results from previously executed Event Query Language (EQL) search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.get",
-      "request": null,
+      "request": {
+        "name": "EqlGetRequest",
+        "namespace": "x_pack.eql.get"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "EqlGetResponse",
+        "namespace": "x_pack.eql.get"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -2667,9 +2681,16 @@
       "description": "Returns the status of a previously submitted async or stored Event Query Language (EQL) search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.get_status",
-      "request": null,
+      "request": {
+        "name": "EqlGetStatusRequest",
+        "namespace": "x_pack.eql.get_status"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "EqlGetStatusResponse",
+        "namespace": "x_pack.eql.get_status"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -2690,9 +2711,16 @@
       "description": "Returns results matching a query expressed in Event Query Language (EQL)",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.search",
-      "request": null,
+      "request": {
+        "name": "EqlSearchRequest",
+        "namespace": "x_pack.eql.search"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "EqlSearchResponse",
+        "namespace": "x_pack.eql.search"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -47449,6 +47477,358 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "EqlDeleteRequest",
+        "namespace": "x_pack.eql.delete"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlDeleteResponse",
+        "namespace": "x_pack.eql.delete"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "EqlGetRequest",
+        "namespace": "x_pack.eql.get"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlGetResponse",
+        "namespace": "x_pack.eql.get"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "EqlGetStatusRequest",
+        "namespace": "x_pack.eql.get_status"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlGetStatusResponse",
+        "namespace": "x_pack.eql.get_status"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "EqlSearchRequest",
+        "namespace": "x_pack.eql.search"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlSearchResponse",
+        "namespace": "x_pack.eql.search"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
