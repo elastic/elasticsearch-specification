@@ -32,14 +32,6 @@
         "Missing response"
       ]
     },
-    "close_point_in_time": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "cluster.delete_component_template": {
       "request": [
         "Missing request"
@@ -384,15 +376,6 @@
         "Missing response"
       ]
     },
-    "mget": {
-      "request": [
-        "MultiGetRequest: query parameter 'source_enabled' does not exist in the json spec",
-        "MultiGetRequest: should have a body definition"
-      ],
-      "response": [
-        "Type document.multiple.multi_get.request:MultiGetResponse not found"
-      ]
-    },
     "ml.delete_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -551,14 +534,6 @@
         "MultiSearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
         "MultiSearchTemplateRequest: should have a body definition",
         "request definition search.multi_search_template:MultiSearchTemplateRequest / body / Property 'operations' / dictionary_of / instance_of - 'search.search_template:SearchTemplateRequest' is a request and must only be used in endpoints"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "open_point_in_time": {
-      "request": [
-        "Missing request"
       ],
       "response": [
         "Missing response"
