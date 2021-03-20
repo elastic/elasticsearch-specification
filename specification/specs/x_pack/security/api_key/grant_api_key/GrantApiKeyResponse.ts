@@ -18,8 +18,8 @@
  */
 
 class GrantApiKeyResponse extends ResponseBase {
-    api_key: string
-    id: Id
-    name: Name
-    expiration?: EpochMillis
+  api_key: string
+  id: Id
+  name: Name
+  expiration?: EpochMillis
 }

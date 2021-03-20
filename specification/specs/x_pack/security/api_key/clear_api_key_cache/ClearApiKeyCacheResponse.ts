@@ -18,11 +18,11 @@
  */
 
 class ClearApiKeyCacheResponse extends ResponseBase {
-    _nodes: NodeStatistics
-    cluster_name: Name
-    nodes: Dictionary<string, ClearApiKeyCacheNode>
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Dictionary<string, ClearApiKeyCacheNode>
 }
 
 class ClearApiKeyCacheNode {
-    name: Name
+  name: Name
 }
