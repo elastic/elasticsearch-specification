@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 class MultiSearchTemplateResponse extends ResponseBase {
   responses: SearchResponse<UserDefinedValue>[]
   took: long
