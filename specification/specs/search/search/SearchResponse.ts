@@ -30,7 +30,7 @@ class SearchResponse<TDocument> extends ResponseBase {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
-  pit_id?: string
+  pit_id?: Id
   _scroll_id?: ScrollId
   suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean

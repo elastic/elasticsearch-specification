@@ -17,9 +17,22 @@
  * under the License.
  */
 
-import { Specification } from "../../specification/src/api-specification";
-export declare class SwaggerGenerator {
-    private specification;
-    constructor(specification: Specification);
-    export(folder: string): void;
+/**
+ * @rest_spec_name snapshot.clone
+ * @since 7.10.0
+ * @stability TODO
+ */
+interface CloneSnapshotRequest extends RequestBase {
+  path_parts?: {
+    repository: Name
+    snapshot: Name
+    target_snapshot: Name
+  }
+  query_parameters?: {
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {
+    indices: string
+  }
 }

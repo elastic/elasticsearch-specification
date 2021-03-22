@@ -19,7 +19,7 @@
 
 class SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: EpochMillis
+  duration_in_millis?: EpochMillis
   end_time?: DateString
   end_time_in_millis?: EpochMillis
   failures?: SnapshotShardFailure[]

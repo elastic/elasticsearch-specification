@@ -5544,12 +5544,12 @@
       "name": "mget",
       "request": {
         "name": "MultiGetRequest",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "MultiGetResponse",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -7515,7 +7515,10 @@
         "namespace": "search.multi_search_template"
       },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "MultiSearchTemplateResponse",
+        "namespace": "search.multi_search_template"
+      },
       "since": "5.0.0",
       "stability": "stable",
       "urls": [
@@ -9813,9 +9816,16 @@
       "description": "Clones indices from one snapshot into another snapshot in the same repository.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.clone",
-      "request": null,
+      "request": {
+        "name": "CloneSnapshotRequest",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "CloneSnapshotResponse",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -32407,6 +32417,118 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "indices",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "CloneSnapshotRequest",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
+      "path": [
+        {
+          "description": "A repository name",
+          "name": "repository",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the snapshot to clone from",
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the cloned snapshot to create",
+          "name": "target_snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "CloneSnapshotResponse",
+        "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
+      },
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -72332,10 +72454,149 @@
       ]
     },
     {
+      "generics": [
+        "TDocument"
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiGetHit",
+        "namespace": "document.multiple.multi_get"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MainError",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "document.multiple.multi_get"
+            }
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MultiGetOperation",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "properties": [
         {
@@ -72474,7 +72735,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiGetOperation",
-                  "namespace": "document.multiple.multi_get.request"
+                  "namespace": "document.multiple.multi_get"
                 }
               }
             }
@@ -72506,7 +72767,7 @@
       "kind": "request",
       "name": {
         "name": "MultiGetRequest",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "path": [
         {
@@ -72643,6 +72904,49 @@
             "type": {
               "name": "Fields",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        "TDocument"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiGetResponse",
+        "namespace": "document.multiple.multi_get"
+      },
+      "properties": [
+        {
+          "name": "docs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "document.multiple.multi_get"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "MultiGetHit",
+                "namespace": "document.multiple.multi_get"
+              }
             }
           }
         }
@@ -73169,6 +73473,53 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchTemplateResponse",
+        "namespace": "search.multi_search_template"
+      },
+      "properties": [
+        {
+          "name": "responses",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "user_defined_value"
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "SearchResponse",
+                "namespace": "search.search"
+              }
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -95137,7 +95488,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -101126,7 +101477,7 @@
         },
         {
           "name": "duration_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102496,7 +102847,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }

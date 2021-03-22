@@ -2909,6 +2909,20 @@ export interface CloneIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }
 
+export interface CloneSnapshotRequest extends RequestBase {
+  repository: Name
+  snapshot: Name
+  target_snapshot: Name
+  master_timeout?: Time
+  timeout?: Time
+  body: {
+    indices: string
+  }
+}
+
+export interface CloneSnapshotResponse extends AcknowledgedResponseBase {
+}
+
 export interface CloseIndexRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -7370,6 +7384,20 @@ export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
   buckets: Array<TBucket>
 }
 
+export interface MultiGetHit<TDocument = unknown> {
+  error?: MainError
+  fields?: Record<string, any>
+  found?: boolean
+  _id: string
+  _index: string
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: long
+  _source?: TDocument
+  _type?: Type
+  _version?: long
+}
+
 export interface MultiGetOperation {
   can_be_flattened?: boolean
   _id: Id
@@ -7398,6 +7426,10 @@ export interface MultiGetRequest extends RequestBase {
     docs?: Array<MultiGetOperation>
     ids?: Array<Id>
   }
+}
+
+export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
+  docs: Array<MultiGetHit<TDocument>>
 }
 
 export interface MultiMatchQuery extends QueryBase {
@@ -7451,6 +7483,11 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   body: {
     operations?: Record<string, SearchTemplateRequest>
   }
+}
+
+export interface MultiSearchTemplateResponse extends ResponseBase {
+  responses: Array<SearchResponse<any>>
+  took: long
 }
 
 export interface MultiTermLookup {
@@ -9866,7 +9903,7 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
-  pit_id?: string
+  pit_id?: Id
   _scroll_id?: ScrollId
   suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
   terminated_early?: boolean
@@ -10540,7 +10577,7 @@ export interface SnapshotIndexStats {
 
 export interface SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: EpochMillis
+  duration_in_millis?: EpochMillis
   end_time?: DateString
   end_time_in_millis?: EpochMillis
   failures?: Array<SnapshotShardFailure>
@@ -10698,7 +10735,7 @@ export interface SnapshotStatus {
   snapshot: string
   state: string
   stats: SnapshotStats
-  uuid: string
+  uuid: Uuid
 }
 
 export interface SnapshotStatusRequest extends RequestBase {

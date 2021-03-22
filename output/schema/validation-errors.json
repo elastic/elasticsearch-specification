@@ -376,15 +376,6 @@
         "Missing response"
       ]
     },
-    "mget": {
-      "request": [
-        "MultiGetRequest: query parameter 'source_enabled' does not exist in the json spec",
-        "MultiGetRequest: should have a body definition"
-      ],
-      "response": [
-        "Type document.multiple.multi_get.request:MultiGetResponse not found"
-      ]
-    },
     "ml.delete_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -537,6 +528,7 @@
         "Missing response"
       ]
     },
+<<<<<<< HEAD
     "msearch_template": {
       "request": [
         "MultiSearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
@@ -548,6 +540,8 @@
         "Missing response"
       ]
     },
+=======
+>>>>>>> master
     "rank_eval": {
       "request": [
         "Missing request"
@@ -614,7 +608,11 @@
         "Missing response"
       ]
     },
+<<<<<<< HEAD
     "snapshot.clone": {
+=======
+    "security.grant_api_key": {
+>>>>>>> master
       "request": [
         "Missing request"
       ],
