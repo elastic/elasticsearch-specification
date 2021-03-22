@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name security.clear_api_key_cache
- * @since 0.0.0
+ * @since 7.10.0
  * @stability TODO
  */
 interface ClearApiKeyCacheRequest extends RequestBase {
