@@ -10501,7 +10501,7 @@ export interface SnapshotIndexStats {
 
 export interface SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: EpochMillis
+  duration_in_millis?: EpochMillis
   end_time?: DateString
   end_time_in_millis?: EpochMillis
   failures?: Array<SnapshotShardFailure>
@@ -10659,7 +10659,7 @@ export interface SnapshotStatus {
   snapshot: string
   state: string
   stats: SnapshotStats
-  uuid: string
+  uuid: Uuid
 }
 
 export interface SnapshotStatusRequest extends RequestBase {
