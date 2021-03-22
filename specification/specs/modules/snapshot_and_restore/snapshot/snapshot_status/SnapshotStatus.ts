@@ -25,5 +25,5 @@ class SnapshotStatus {
   snapshot: string
   state: string
   stats: SnapshotStats
-  uuid: string
+  uuid: Uuid
 }
