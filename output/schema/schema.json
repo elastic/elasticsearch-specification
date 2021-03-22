@@ -47840,22 +47840,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -47871,12 +47855,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The async search ID",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -47884,13 +47869,24 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "keep_alive",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
@@ -47912,12 +47908,56 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "is_partial",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "is_running",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "took",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timed_out",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }

@@ -18,5 +18,10 @@
  */
 
 class EqlGetResponse extends ResponseBase {
-  stub: integer
+  id: Id
+  is_partial: boolean
+  is_running: boolean
+  took: integer
+  timed_out: boolean
+  hits: string[] // TODO
 }

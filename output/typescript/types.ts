@@ -4633,15 +4633,17 @@ export interface EqlDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface EqlGetRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
+  keep_alive?: Time
+  wait_for_completion_timeout?: Time
 }
 
 export interface EqlGetResponse extends ResponseBase {
-  stub: integer
+  id: Id
+  is_partial: boolean
+  is_running: boolean
+  took: integer
+  timed_out: boolean
 }
 
 export interface EqlGetStatusRequest extends RequestBase {
