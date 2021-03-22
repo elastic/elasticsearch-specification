@@ -17,21 +17,22 @@
  * under the License.
  */
 
-class SearchResponse<TDocument> extends ResponseBase {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: HitsMetadata<TDocument>
-
-  aggregations?: Dictionary<AggregateName, Aggregate>
-  _clusters?: ClusterStatistics
-  documents?: TDocument[]
-  fields?: Dictionary<string, UserDefinedValue>
-  max_score?: double
-  num_reduce_phases?: long
-  profile?: Profile
-  pit_id?: Id
-  _scroll_id?: ScrollId
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-  terminated_early?: boolean
+/**
+ * @rest_spec_name snapshot.clone
+ * @since 7.10.0
+ * @stability TODO
+ */
+interface CloneSnapshotRequest extends RequestBase {
+  path_parts?: {
+    repository: Name
+    snapshot: Name
+    target_snapshot: Name
+  }
+  query_parameters?: {
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {
+    indices: string
+  }
 }

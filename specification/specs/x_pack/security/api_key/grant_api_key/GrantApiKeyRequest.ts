@@ -17,21 +17,30 @@
  * under the License.
  */
 
-class SearchResponse<TDocument> extends ResponseBase {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: HitsMetadata<TDocument>
+/**
+ * @rest_spec_name security.grant_api_key
+ * @since 7.9.0
+ * @stability TODO
+ */
+interface GrantApiKeyRequest extends RequestBase {
+  path_parts?: {}
+  query_parameters?: {}
+  body?: {
+    api_key: ApiKey
+    grant_type: ApiKeyGrantType
+    access_token?: string
+    username?: string
+    password?: string
+  }
+}
 
-  aggregations?: Dictionary<AggregateName, Aggregate>
-  _clusters?: ClusterStatistics
-  documents?: TDocument[]
-  fields?: Dictionary<string, UserDefinedValue>
-  max_score?: double
-  num_reduce_phases?: long
-  profile?: Profile
-  pit_id?: Id
-  _scroll_id?: ScrollId
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-  terminated_early?: boolean
+class ApiKey {
+  name: Name
+  expiration?: Time
+  role_descriptors?: string[]
+}
+
+enum ApiKeyGrantType {
+  access_token = 0,
+  password = 1
 }
