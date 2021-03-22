@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name snapshot.clone
- * @since 0.0.0
+ * @since 7.10.0
  * @stability TODO
  */
 interface CloneSnapshotRequest extends RequestBase {
