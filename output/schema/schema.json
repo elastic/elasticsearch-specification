@@ -9808,7 +9808,7 @@
         "name": "CloneSnapshotResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.clone_snapshot"
       },
-      "since": "0.0.0",
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
