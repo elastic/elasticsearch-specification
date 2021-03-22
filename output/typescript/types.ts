@@ -7331,6 +7331,20 @@ export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
   buckets: Array<TBucket>
 }
 
+export interface MultiGetHit<TDocument = unknown> {
+  error?: MainError
+  fields?: Record<string, any>
+  found?: boolean
+  _id: string
+  _index: string
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: long
+  _source?: TDocument
+  _type?: Type
+  _version?: long
+}
+
 export interface MultiGetOperation {
   can_be_flattened?: boolean
   _id: Id
@@ -7359,6 +7373,10 @@ export interface MultiGetRequest extends RequestBase {
     docs?: Array<MultiGetOperation>
     ids?: Array<Id>
   }
+}
+
+export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
+  docs: Array<MultiGetHit<TDocument>>
 }
 
 export interface MultiMatchQuery extends QueryBase {

@@ -376,15 +376,6 @@
         "Missing response"
       ]
     },
-    "mget": {
-      "request": [
-        "MultiGetRequest: query parameter 'source_enabled' does not exist in the json spec",
-        "MultiGetRequest: should have a body definition"
-      ],
-      "response": [
-        "Type document.multiple.multi_get.request:MultiGetResponse not found"
-      ]
-    },
     "ml.delete_data_frame_analytics": {
       "request": [
         "Missing request"
