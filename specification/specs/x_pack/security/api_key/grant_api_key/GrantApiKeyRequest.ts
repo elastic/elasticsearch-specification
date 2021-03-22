@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name security.grant_api_key
- * @since 0.0.0
+ * @since 7.9.0
  * @stability TODO
  */
 interface GrantApiKeyRequest extends RequestBase {
