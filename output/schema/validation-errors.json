@@ -1,109 +1,5 @@
 {
   "endpointErrors": {
-    "autoscaling.delete_autoscaling_policy": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "autoscaling.get_autoscaling_capacity": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "autoscaling.get_autoscaling_policy": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "autoscaling.put_autoscaling_policy": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.delete_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.delete_voting_config_exclusions": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.exists_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.get_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.post_voting_config_exclusions": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "cluster.put_component_template": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "dangling_indices.delete_dangling_index": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "dangling_indices.import_dangling_index": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "dangling_indices.list_dangling_indices": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "data_frame_transform_deprecated.delete_transform": {
       "request": [
         "Missing request"
@@ -161,46 +57,6 @@
       ]
     },
     "data_frame_transform_deprecated.update_transform": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "eql.delete": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "eql.get": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "eql.get_status": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "eql.search": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "features.get_features": {
       "request": [
         "Missing request"
       ],
@@ -352,30 +208,6 @@
         "Missing response"
       ]
     },
-    "logstash.delete_pipeline": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "logstash.get_pipeline": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "logstash.put_pipeline": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.delete_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -520,23 +352,7 @@
         "Missing response"
       ]
     },
-    "monitoring.bulk": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "rank_eval": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "rollup.rollup": {
       "request": [
         "Missing request"
       ],
@@ -587,14 +403,6 @@
       ]
     },
     "security.clear_cached_privileges": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "watcher.query_watches": {
       "request": [
         "Missing request"
       ],

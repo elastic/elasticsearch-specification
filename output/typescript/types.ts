@@ -839,6 +839,18 @@ export interface BulkIndexOperation extends BulkOperation {
 export interface BulkIndexResponseItem extends BulkResponseItemBase {
 }
 
+export interface BulkMonitoringRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface BulkMonitoringResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface BulkOperation {
   _id: Id
   _index: IndexName
@@ -3016,10 +3028,58 @@ export interface ClusterCertificateInformation {
   subject_dn: string
 }
 
+export interface ClusterComponentTemplateExistsRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterComponentTemplateExistsResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterDeleteComponentTemplateResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ClusterFileSystem {
   available_in_bytes: long
   free_in_bytes: long
   total_in_bytes: long
+}
+
+export interface ClusterGetComponentTemplateRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterGetComponentTemplateResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface ClusterGetSettingsRequest extends RequestBase {
@@ -3192,6 +3252,18 @@ export interface ClusterPendingTasksResponse extends ResponseBase {
   tasks: Array<PendingTask>
 }
 
+export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ClusterPostVotingConfigExclusionsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ClusterProcess {
   cpu: ClusterProcessCpu
   open_file_descriptors: ClusterProcessOpenFileDescriptors
@@ -3212,6 +3284,18 @@ export interface ClusterProcessorStats {
   current: long
   failed: long
   time_in_millis: long
+}
+
+export interface ClusterPutComponentTemplateRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface ClusterPutComponentTemplateResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface ClusterPutSettingsRequest extends RequestBase {
@@ -3932,6 +4016,18 @@ export interface DeleteAutoFollowPatternRequest extends RequestBase {
 export interface DeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
+export interface DeleteAutoscalingPolicyRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface DeleteAutoscalingPolicyResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
@@ -4023,6 +4119,18 @@ export interface DeleteCalendarRequest extends RequestBase {
 }
 
 export interface DeleteCalendarResponse extends AcknowledgedResponseBase {
+}
+
+export interface DeleteDanglingIndexRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface DeleteDanglingIndexResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface DeleteDatafeedRequest extends RequestBase {
@@ -4516,6 +4624,54 @@ export interface EnrichStatsResponse extends ResponseBase {
 }
 
 export type EpochMillis = string | long
+
+export interface EqlDeleteRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface EqlDeleteResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface EqlGetRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface EqlGetResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface EqlGetStatusRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface EqlGetStatusResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface EqlSearchRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface EqlSearchResponse extends ResponseBase {
+  stub: integer
+}
 
 export interface ErrorCause {
   type: string
@@ -5445,6 +5601,30 @@ export interface GetAutoFollowPatternResponse extends ResponseBase {
   patterns: Record<string, AutoFollowPattern>
 }
 
+export interface GetAutoscalingCapacityRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface GetAutoscalingCapacityResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface GetAutoscalingPolicyRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface GetAutoscalingPolicyResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface GetBasicLicenseStatusRequest extends RequestBase {
 }
 
@@ -5553,6 +5733,18 @@ export interface GetEnrichPolicyRequest extends RequestBase {
 
 export interface GetEnrichPolicyResponse extends ResponseBase {
   policies: Array<NamedPolicyMetadata>
+}
+
+export interface GetFeaturesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface GetFeaturesResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface GetFieldMappingRequest extends RequestBase {
@@ -6370,6 +6562,18 @@ export interface IlmUsage {
   policy_stats: Array<IlmPolicyStatistics>
 }
 
+export interface ImportDanglingIndexRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ImportDanglingIndexResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IndexActionResult {
   response: IndexActionResultIndexResponse
 }
@@ -7069,6 +7273,18 @@ export interface LinearInterpolationSmoothingModel {
   unigram_lambda: double
 }
 
+export interface ListDanglingIndicesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface ListDanglingIndicesResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface ListTasksRequest extends RequestBase {
   actions?: string
   detailed?: boolean
@@ -7087,6 +7303,42 @@ export interface ListTasksResponse extends ResponseBase {
 
 export interface LoggingActionResult {
   logged_text: string
+}
+
+export interface LogstashDeletePipelineRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface LogstashDeletePipelineResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface LogstashGetPipelineRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface LogstashGetPipelineResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface LogstashPutPipelineRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface LogstashPutPipelineResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface LowercaseProcessor extends ProcessorBase {
@@ -8440,6 +8692,18 @@ export interface PutAliasRequest extends RequestBase {
 export interface PutAliasResponse extends ResponseBase {
 }
 
+export interface PutAutoscalingPolicyRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body: {
+    stub_c: string
+  }
+}
+
+export interface PutAutoscalingPolicyResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface PutCalendarJobRequest extends RequestBase {
   calendar_id: Id
   job_id: Id
@@ -8937,6 +9201,18 @@ export interface QueryUsage {
 
 export interface QueryUserPrivileges {
   term: TermUserPrivileges
+}
+
+export interface QueryWatchesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface QueryWatchesResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface RandomScoreFunction extends ScoreFunctionBase {
@@ -9592,6 +9868,18 @@ export interface RollupJobTaskFailureReason {
 }
 
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
+
+export interface RollupRequest extends RequestBase {
+  stubb: integer
+  stuba: integer
+  body: {
+    stub: integer
+  }
+}
+
+export interface RollupResponse extends ResponseBase {
+  stub: integer
+}
 
 export interface RollupSearchRequest extends RequestBase {
   index: Indices
