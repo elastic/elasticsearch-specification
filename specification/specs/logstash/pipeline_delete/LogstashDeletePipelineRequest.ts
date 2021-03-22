@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name logstash.delete_pipeline
- * @since 0.0.0
+ * @since 7.12.0
  * @stability TODO
  */
 interface LogstashDeletePipelineRequest extends RequestBase {
