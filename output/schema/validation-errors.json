@@ -528,20 +528,6 @@
         "Missing response"
       ]
     },
-<<<<<<< HEAD
-    "msearch_template": {
-      "request": [
-        "MultiSearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "MultiSearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
-        "MultiSearchTemplateRequest: should have a body definition",
-        "request definition search.multi_search_template:MultiSearchTemplateRequest / body / Property 'operations' / dictionary_of / instance_of - 'search.search_template:SearchTemplateRequest' is a request and must only be used in endpoints"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-=======
->>>>>>> master
     "rank_eval": {
       "request": [
         "Missing request"
@@ -601,18 +587,6 @@
       ]
     },
     "security.clear_cached_privileges": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-<<<<<<< HEAD
-    "snapshot.clone": {
-=======
-    "security.grant_api_key": {
->>>>>>> master
       "request": [
         "Missing request"
       ],
