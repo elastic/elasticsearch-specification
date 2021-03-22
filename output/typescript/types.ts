@@ -7432,14 +7432,11 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   }
 }
 
-<<<<<<< HEAD
 export interface MultiSearchTemplateResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
   took: long
 }
 
-=======
->>>>>>> master
 export interface MultiTermLookup {
   field: Field
 }

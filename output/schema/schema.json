@@ -73033,7 +73033,6 @@
       ]
     },
     {
-<<<<<<< HEAD
       "inherits": [
         {
           "type": {
@@ -73081,8 +73080,6 @@
       ]
     },
     {
-=======
->>>>>>> master
       "kind": "interface",
       "name": {
         "name": "MultiTermLookup",
