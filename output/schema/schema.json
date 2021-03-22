@@ -7515,7 +7515,10 @@
         "namespace": "search.multi_search_template"
       },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "MultiSearchTemplateResponse",
+        "namespace": "search.multi_search_template"
+      },
       "since": "5.0.0",
       "stability": "stable",
       "urls": [
@@ -73149,6 +73152,53 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchTemplateResponse",
+        "namespace": "search.multi_search_template"
+      },
+      "properties": [
+        {
+          "name": "responses",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "user_defined_value"
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "SearchResponse",
+                "namespace": "search.search"
+              }
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MultiTermLookup",
@@ -95110,7 +95160,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }

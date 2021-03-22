@@ -7446,6 +7446,11 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   }
 }
 
+export interface MultiSearchTemplateResponse extends ResponseBase {
+  responses: Array<SearchResponse<any>>
+  took: long
+}
+
 export interface MultiTermLookup {
   field: Field
 }
@@ -9859,7 +9864,7 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
-  pit_id?: string
+  pit_id?: Id
   _scroll_id?: ScrollId
   suggest?: Record<SuggestionName, Array<Suggest<TDocument>>>
   terminated_early?: boolean

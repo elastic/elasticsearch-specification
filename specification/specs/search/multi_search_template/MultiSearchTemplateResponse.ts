@@ -17,21 +17,7 @@
  * under the License.
  */
 
-class SearchResponse<TDocument> extends ResponseBase {
+class MultiSearchTemplateResponse extends ResponseBase {
+  responses: SearchResponse<UserDefinedValue>[]
   took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: HitsMetadata<TDocument>
-
-  aggregations?: Dictionary<AggregateName, Aggregate>
-  _clusters?: ClusterStatistics
-  documents?: TDocument[]
-  fields?: Dictionary<string, UserDefinedValue>
-  max_score?: double
-  num_reduce_phases?: long
-  profile?: Profile
-  pit_id?: Id
-  _scroll_id?: ScrollId
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-  terminated_early?: boolean
 }
