@@ -17,11 +17,6 @@
  * under the License.
  */
 
-class EqlGetResponse extends ResponseBase {
+class EqlGetResponse extends EqlSearchResponseBase {
   id: Id
-  is_partial: boolean
-  is_running: boolean
-  took: integer
-  timed_out: boolean
-  hits: string[] // TODO
 }

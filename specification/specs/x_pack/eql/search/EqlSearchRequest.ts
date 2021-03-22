@@ -24,12 +24,34 @@
  */
 interface EqlSearchRequest extends RequestBase {
   path_parts?: {
-    stub_a: string
+    index: IndexName
   }
   query_parameters?: {
-    stub_b: string
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    wait_for_completion_timeout?: Time
+    filter_path?: string
   }
   body?: {
-    stub_c: string
+    query: string
+    case_sensitive?: boolean
+    event_category_field?: Field
+    tiebreaker_field?: Field
+    timestamp_field?: Field
+    fetch_size?: uint
+    filter?: QueryContainer | QueryContainer[]
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    wait_for_completion_timeout?: Time
+    size?: integer | float
+    fields?: Array<Field | EqlSearchFieldFormatted>
   }
+}
+
+class EqlSearchFieldFormatted {
+  field: Field
+  format: string
 }

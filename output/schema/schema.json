@@ -47896,8 +47896,8 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
+            "name": "EqlSearchResponseBase",
+            "namespace": "x_pack.eql"
           }
         }
       ],
@@ -47915,64 +47915,6 @@
             "type": {
               "name": "Id",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_partial",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_running",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "took",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "timed_out",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "hits",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
             }
           }
         }
@@ -48095,6 +48037,85 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "EqlHits",
+        "namespace": "x_pack.eql"
+      },
+      "properties": [
+        {
+          "name": "total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TotalHits",
+              "namespace": "search.search.hits"
+            }
+          }
+        },
+        {
+          "name": "events",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "sequences",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EqlSearchFieldFormatted",
+        "namespace": "x_pack.eql.search"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -48102,12 +48123,181 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub_c",
+            "name": "query",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "case_sensitive",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "event_category_field",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "tiebreaker_field",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "timestamp_field",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "fetch_size",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "uint",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "filter",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryContainer",
+                    "namespace": "query_dsl.abstractions.container"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryContainer",
+                      "namespace": "query_dsl.abstractions.container"
+                    }
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "name": "keep_alive",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "name": "keep_on_completion",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "wait_for_completion_timeout",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "name": "size",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "integer",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "float",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "type": {
+              "generics": [
+                {
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "Field",
+                        "namespace": "internal"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "EqlSearchFieldFormatted",
+                        "namespace": "x_pack.eql.search"
+                      }
+                    }
+                  ],
+                  "kind": "union_of"
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "Array",
                 "namespace": "internal"
               }
             }
@@ -48129,12 +48319,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The name of the index to scope the operation",
+          "name": "index",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -48142,8 +48333,74 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "keep_alive",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "keep_on_completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "filter_path",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48158,8 +48415,8 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
+            "name": "EqlSearchResponseBase",
+            "namespace": "x_pack.eql"
           }
         }
       ],
@@ -48168,15 +48425,75 @@
         "name": "EqlSearchResponse",
         "namespace": "x_pack.eql.search"
       },
+      "properties": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlSearchResponseBase",
+        "namespace": "x_pack.eql"
+      },
       "properties": [
         {
-          "name": "stub",
+          "name": "is_partial",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "is_running",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "took",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timed_out",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "hits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlHits",
+              "namespace": "x_pack.eql"
             }
           }
         }

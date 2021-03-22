@@ -4638,13 +4638,8 @@ export interface EqlGetRequest extends RequestBase {
   wait_for_completion_timeout?: Time
 }
 
-export interface EqlGetResponse extends ResponseBase {
+export interface EqlGetResponse extends EqlSearchResponseBase {
   id: Id
-  is_partial: boolean
-  is_running: boolean
-  took: integer
-  timed_out: boolean
-  hits: Array<string>
 }
 
 export interface EqlGetStatusRequest extends RequestBase {
@@ -4660,16 +4655,51 @@ export interface EqlGetStatusResponse extends ResponseBase {
   completion_status?: integer
 }
 
+export interface EqlHits {
+  total?: TotalHits
+  events?: Array<string>
+  sequences?: Array<string>
+}
+
+export interface EqlSearchFieldFormatted {
+  field: Field
+  format: string
+}
+
 export interface EqlSearchRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
+  index: IndexName
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  keep_alive?: Time
+  keep_on_completion?: boolean
+  wait_for_completion_timeout?: Time
+  filter_path?: string
   body: {
-    stub_c: string
+    query: string
+    case_sensitive?: boolean
+    event_category_field?: Field
+    tiebreaker_field?: Field
+    timestamp_field?: Field
+    fetch_size?: uint
+    filter?: QueryContainer | Array<QueryContainer>
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    wait_for_completion_timeout?: Time
+    size?: integer | float
+    fields?: Array<Field | EqlSearchFieldFormatted>
   }
 }
 
-export interface EqlSearchResponse extends ResponseBase {
-  stub: integer
+export interface EqlSearchResponse extends EqlSearchResponseBase {
+}
+
+export interface EqlSearchResponseBase extends ResponseBase {
+  is_partial: boolean
+  is_running: boolean
+  took: integer
+  timed_out: boolean
+  hits: EqlHits
 }
 
 export interface ErrorCause {

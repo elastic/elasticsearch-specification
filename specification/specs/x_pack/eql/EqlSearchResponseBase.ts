@@ -17,4 +17,10 @@
  * under the License.
  */
 
-class EqlSearchResponse extends EqlSearchResponseBase {}
+class EqlSearchResponseBase extends ResponseBase {
+  is_partial: boolean
+  is_running: boolean
+  took: integer
+  timed_out: boolean
+  hits: EqlHits
+}

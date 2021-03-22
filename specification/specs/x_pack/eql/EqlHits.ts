@@ -17,4 +17,8 @@
  * under the License.
  */
 
-class EqlSearchResponse extends EqlSearchResponseBase {}
+class EqlHits {
+  total?: TotalHits
+  events?: string[]
+  sequences?: string[]
+}
