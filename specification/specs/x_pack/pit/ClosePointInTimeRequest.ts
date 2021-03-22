@@ -17,9 +17,15 @@
  * under the License.
  */
 
-import { Specification } from "../../specification/src/api-specification";
-export declare class SwaggerGenerator {
-    private specification;
-    constructor(specification: Specification);
-    export(folder: string): void;
+/**
+ * @rest_spec_name close_point_in_time
+ * @since 7.10.0
+ * @stability TODO
+ */
+interface ClosePointInTimeRequest extends RequestBase {
+  path_parts?: {}
+  query_parameters?: {}
+  body?: {
+    id: Id
+  }
 }

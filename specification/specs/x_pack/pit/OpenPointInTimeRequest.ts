@@ -17,22 +17,17 @@
  * under the License.
  */
 
-import { Specification } from "../../specification/src/api-specification";
-import { Path } from "swagger-schema-official";
-export declare type Paths = {
-    [p: string]: Path;
-};
-export declare class SwaggerEndpointBuilder {
-    private specification;
-    constructor(specification: Specification);
-    build(): Paths;
-    private static createPath;
-    private static createOperation;
-    private static urlBodyToParameter;
-    private static urlQueryStringToParameter;
-    private static urlPartToParameter;
-    private static amendSchema;
-    private static getValidResponse;
-    private static getResponses;
-    private static toSchema;
+/**
+ * @rest_spec_name open_point_in_time
+ * @since 7.10.0
+ * @stability TODO
+ */
+interface OpenPointInTimeRequest extends RequestBase {
+  path_parts?: {
+    index: IndexName
+  }
+  query_parameters?: {
+    keep_alive?: Time
+  }
+  body?: {}
 }

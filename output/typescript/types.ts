@@ -2918,6 +2918,17 @@ export interface CloseJobResponse extends ResponseBase {
   closed: boolean
 }
 
+export interface ClosePointInTimeRequest extends RequestBase {
+  body?: {
+    id: Id
+  }
+}
+
+export interface ClosePointInTimeResponse extends ResponseBase {
+  succeeded: boolean
+  num_freed: integer
+}
+
 export interface CloseShardResult {
   failures: Array<ShardFailure>
 }
@@ -7320,6 +7331,20 @@ export interface MultiBucketAggregate<TBucket = unknown> extends AggregateBase {
   buckets: Array<TBucket>
 }
 
+export interface MultiGetHit<TDocument = unknown> {
+  error?: MainError
+  fields?: Record<string, any>
+  found?: boolean
+  _id: string
+  _index: string
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: long
+  _source?: TDocument
+  _type?: Type
+  _version?: long
+}
+
 export interface MultiGetOperation {
   can_be_flattened?: boolean
   _id: Id
@@ -7348,6 +7373,10 @@ export interface MultiGetRequest extends RequestBase {
     docs?: Array<MultiGetOperation>
     ids?: Array<Id>
   }
+}
+
+export interface MultiGetResponse<TDocument = unknown> extends ResponseBase {
+  docs: Array<MultiGetHit<TDocument>>
 }
 
 export interface MultiMatchQuery extends QueryBase {
@@ -7403,11 +7432,14 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   }
 }
 
+<<<<<<< HEAD
 export interface MultiSearchTemplateResponse extends ResponseBase {
   responses: Array<SearchResponse<any>>
   took: long
 }
 
+=======
+>>>>>>> master
 export interface MultiTermLookup {
   field: Field
 }
@@ -7871,6 +7903,15 @@ export interface OpenJobRequest extends RequestBase {
 
 export interface OpenJobResponse extends ResponseBase {
   opened: boolean
+}
+
+export interface OpenPointInTimeRequest extends RequestBase {
+  index: IndexName
+  keep_alive?: Time
+}
+
+export interface OpenPointInTimeResponse extends ResponseBase {
+  id: Id
 }
 
 export interface OperatingSystemMemoryInfo {
@@ -10486,7 +10527,7 @@ export interface SnapshotIndexStats {
 
 export interface SnapshotInfo {
   data_streams: Array<string>
-  duration_in_millis: EpochMillis
+  duration_in_millis?: EpochMillis
   end_time?: DateString
   end_time_in_millis?: EpochMillis
   failures?: Array<SnapshotShardFailure>
@@ -10644,7 +10685,7 @@ export interface SnapshotStatus {
   snapshot: string
   state: string
   stats: SnapshotStats
-  uuid: string
+  uuid: Uuid
 }
 
 export interface SnapshotStatusRequest extends RequestBase {
@@ -11832,6 +11873,11 @@ export interface UpdateByQueryResponse extends ResponseBase {
   version_conflicts?: long
   throttled_millis?: ulong
   throttled_until_millis?: ulong
+}
+
+export interface UpdateByQueryRethrottleRequest extends RequestBase {
+  task_id: Id
+  requests_per_second?: long
 }
 
 export interface UpdateDatafeedRequest extends RequestBase {

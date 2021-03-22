@@ -17,4 +17,7 @@
  * under the License.
  */
 
-export {};
+class ClosePointInTimeResponse extends ResponseBase {
+  succeeded: boolean
+  num_freed: integer
+}

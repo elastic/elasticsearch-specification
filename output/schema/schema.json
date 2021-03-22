@@ -1465,9 +1465,16 @@
       "description": "Close a point in time",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "close_point_in_time",
-      "request": null,
+      "request": {
+        "name": "ClosePointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClosePointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -5537,12 +5544,12 @@
       "name": "mget",
       "request": {
         "name": "MultiGetRequest",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "MultiGetResponse",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -7874,9 +7881,16 @@
       "description": "Open a point in time that can be used in subsequent searches",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "open_point_in_time",
-      "request": null,
+      "request": {
+        "name": "OpenPointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "OpenPointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -32489,6 +32503,81 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClosePointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClosePointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "properties": [
+        {
+          "name": "succeeded",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_freed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -71918,10 +72007,149 @@
       ]
     },
     {
+      "generics": [
+        "TDocument"
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiGetHit",
+        "namespace": "document.multiple.multi_get"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MainError",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "document.multiple.multi_get"
+            }
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MultiGetOperation",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "properties": [
         {
@@ -72060,7 +72288,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiGetOperation",
-                  "namespace": "document.multiple.multi_get.request"
+                  "namespace": "document.multiple.multi_get"
                 }
               }
             }
@@ -72092,7 +72320,7 @@
       "kind": "request",
       "name": {
         "name": "MultiGetRequest",
-        "namespace": "document.multiple.multi_get.request"
+        "namespace": "document.multiple.multi_get"
       },
       "path": [
         {
@@ -72229,6 +72457,49 @@
             "type": {
               "name": "Fields",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        "TDocument"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiGetResponse",
+        "namespace": "document.multiple.multi_get"
+      },
+      "properties": [
+        {
+          "name": "docs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "document.multiple.multi_get"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "MultiGetHit",
+                "namespace": "document.multiple.multi_get"
+              }
             }
           }
         }
@@ -72762,6 +73033,7 @@
       ]
     },
     {
+<<<<<<< HEAD
       "inherits": [
         {
           "type": {
@@ -72809,6 +73081,8 @@
       ]
     },
     {
+=======
+>>>>>>> master
       "kind": "interface",
       "name": {
         "name": "MultiTermLookup",
@@ -76907,6 +77181,79 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "OpenPointInTimeRequest",
+        "namespace": "x_pack.pit"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to open point in time; use `_all` or empty string to perform the operation on all indices",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "keep_alive",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "OpenPointInTimeResponse",
+        "namespace": "x_pack.pit"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -100686,7 +101033,7 @@
         },
         {
           "name": "duration_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102056,7 +102403,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }
@@ -113263,6 +113610,51 @@
             "kind": "instance_of",
             "type": {
               "name": "ulong",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "UpdateByQueryRethrottleRequest",
+        "namespace": "document.multiple.update_by_query_rethrottle"
+      },
+      "path": [
+        {
+          "description": "The task id to rethrottle",
+          "name": "task_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "requests_per_second",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "internal"
             }
           }
