@@ -4644,18 +4644,20 @@ export interface EqlGetResponse extends ResponseBase {
   is_running: boolean
   took: integer
   timed_out: boolean
+  hits: Array<string>
 }
 
 export interface EqlGetStatusRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
 }
 
 export interface EqlGetStatusResponse extends ResponseBase {
-  stub: integer
+  id: Id
+  is_partial: boolean
+  is_running: boolean
+  start_time_in_millis?: EpochMillis
+  expiration_time_in_millis?: EpochMillis
+  completion_status?: integer
 }
 
 export interface EqlSearchRequest extends RequestBase {

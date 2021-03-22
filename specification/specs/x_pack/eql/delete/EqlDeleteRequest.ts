@@ -23,7 +23,7 @@
  * @stability TODO
  */
 interface EqlDeleteRequest extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
   query_parameters?: {}

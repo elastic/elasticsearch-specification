@@ -18,5 +18,10 @@
  */
 
 class EqlGetStatusResponse extends ResponseBase {
-  stub: integer
+  id: Id
+  is_partial: boolean
+  is_running: boolean
+  start_time_in_millis?: EpochMillis
+  expiration_time_in_millis?: EpochMillis
+  completion_status?: integer
 }

@@ -23,7 +23,7 @@
  * @stability TODO
  */
 interface EqlGetRequest extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
   query_parameters?: {

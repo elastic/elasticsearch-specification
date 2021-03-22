@@ -47961,20 +47961,13 @@
               "namespace": "internal"
             }
           }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
+        },
+        {
+          "name": "hits",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
@@ -47982,8 +47975,13 @@
               }
             }
           }
-        ]
-      },
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -47999,30 +47997,19 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The async search ID",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "inherits": [
@@ -48040,8 +48027,63 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "id",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "is_partial",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "is_running",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "start_time_in_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expiration_time_in_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "completion_status",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
