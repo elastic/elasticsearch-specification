@@ -420,11 +420,19 @@ export interface AnomalyRecord {
   typical?: Array<double>
 }
 
+export interface ApiKey {
+  name: Name
+  expiration?: Time
+  role_descriptors?: Array<string>
+}
+
 export interface ApiKeyApplication {
   application: string
   privileges: Array<string>
   resources: Array<string>
 }
+
+export type ApiKeyGrantType = 'access_token' | 'password'
 
 export interface ApiKeyPrivileges {
   names: Indices
@@ -2813,6 +2821,20 @@ export interface CleanupRepositoryResponse extends ResponseBase {
 export interface CleanupRepositoryResults {
   deleted_blobs: long
   deleted_bytes: long
+}
+
+export interface ClearApiKeyCacheNode {
+  name: Name
+}
+
+export interface ClearApiKeyCacheRequest extends RequestBase {
+  ids?: string
+}
+
+export interface ClearApiKeyCacheResponse extends ResponseBase {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, ClearApiKeyCacheNode>
 }
 
 export interface ClearCacheRequest extends RequestBase {
@@ -5974,6 +5996,23 @@ export interface GlobalPrivileges {
 
 export interface GoogleNormalizedDistanceHeuristic {
   background_is_superset: boolean
+}
+
+export interface GrantApiKeyRequest extends RequestBase {
+  body: {
+    api_key: ApiKey
+    grant_type: ApiKeyGrantType
+    access_token?: string
+    username?: string
+    password?: string
+  }
+}
+
+export interface GrantApiKeyResponse extends ResponseBase {
+  api_key: string
+  id: Id
+  name: Name
+  expiration?: EpochMillis
 }
 
 export interface GraphConnection {

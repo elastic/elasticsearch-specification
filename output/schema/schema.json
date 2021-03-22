@@ -8737,9 +8737,16 @@
       "description": "Clear a subset or all entries from the API key cache.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html",
       "name": "security.clear_api_key_cache",
-      "request": null,
+      "request": {
+        "name": "ClearApiKeyCacheRequest",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClearApiKeyCacheResponse",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -9278,9 +9285,16 @@
       "description": "Creates an API key on behalf of another user.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-grant-api-key.html",
       "name": "security.grant_api_key",
-      "request": null,
+      "request": {
+        "name": "GrantApiKeyRequest",
+        "namespace": "x_pack.security.api_key.grant_api_key"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "GrantApiKeyResponse",
+        "namespace": "x_pack.security.api_key.grant_api_key"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -14896,6 +14910,51 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ApiKey",
+        "namespace": "x_pack.security.api_key.grant_api_key"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expiration",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "role_descriptors",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ApiKeyApplication",
         "namespace": "x_pack.security.api_key.create_api_key"
       },
@@ -14940,6 +14999,21 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "access_token"
+        },
+        {
+          "name": "password"
+        }
+      ],
+      "name": {
+        "name": "ApiKeyGrantType",
+        "namespace": "x_pack.security.api_key.grant_api_key"
+      }
     },
     {
       "kind": "interface",
@@ -31596,6 +31670,119 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClearApiKeyCacheNode",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClearApiKeyCacheRequest",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of IDs of API keys to clear from the cache",
+          "name": "ids",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClearApiKeyCacheResponse",
+        "namespace": "x_pack.security.api_key.clear_api_key_cache"
+      },
+      "properties": [
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "cluster_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClearApiKeyCacheNode",
+                "namespace": "x_pack.security.api_key.clear_api_key_cache"
+              }
             }
           }
         }
@@ -59825,6 +60012,147 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "api_key",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApiKey",
+                "namespace": "x_pack.security.api_key.grant_api_key"
+              }
+            }
+          },
+          {
+            "name": "grant_type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApiKeyGrantType",
+                "namespace": "x_pack.security.api_key.grant_api_key"
+              }
+            }
+          },
+          {
+            "name": "access_token",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "username",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "password",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GrantApiKeyRequest",
+        "namespace": "x_pack.security.api_key.grant_api_key"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GrantApiKeyResponse",
+        "namespace": "x_pack.security.api_key.grant_api_key"
+      },
+      "properties": [
+        {
+          "name": "api_key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expiration",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
