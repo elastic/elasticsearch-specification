@@ -8743,7 +8743,7 @@
         "name": "ClearApiKeyCacheResponse",
         "namespace": "x_pack.security.api_key.clear_api_key_cache"
       },
-      "since": "0.0.0",
+      "since": "7.10.0",
       "stability": "stable",
       "urls": [
         {
@@ -9291,7 +9291,7 @@
         "name": "GrantApiKeyResponse",
         "namespace": "x_pack.security.api_key.grant_api_key"
       },
-      "since": "0.0.0",
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
