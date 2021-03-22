@@ -621,14 +621,6 @@
         "Missing response"
       ]
     },
-    "snapshot.clone": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "watcher.query_watches": {
       "request": [
         "Missing request"
