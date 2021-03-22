@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class EqlDeleteResponse extends ResponseBase {
-  stub: integer
-}
+class EqlDeleteResponse extends AcknowledgedResponseBase {}

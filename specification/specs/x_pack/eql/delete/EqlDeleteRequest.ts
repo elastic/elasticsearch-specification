@@ -24,12 +24,8 @@
  */
 interface EqlDeleteRequest extends RequestBase {
   path_parts?: {
-    stub_a: string
+    id: Id
   }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
+  query_parameters?: {}
+  body?: {}
 }

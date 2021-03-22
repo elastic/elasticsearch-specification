@@ -4626,15 +4626,10 @@ export interface EnrichStatsResponse extends ResponseBase {
 export type EpochMillis = string | long
 
 export interface EqlDeleteRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
 }
 
-export interface EqlDeleteResponse extends ResponseBase {
-  stub: integer
+export interface EqlDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface EqlGetRequest extends RequestBase {
