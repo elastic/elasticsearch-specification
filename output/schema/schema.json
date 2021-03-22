@@ -5611,7 +5611,7 @@
         "name": "LogstashDeletePipelineResponse",
         "namespace": "logstash.pipeline_delete"
       },
-      "since": "0.0.0",
+      "since": "7.12.0",
       "stability": "stable",
       "urls": [
         {
@@ -5638,7 +5638,7 @@
         "name": "LogstashGetPipelineResponse",
         "namespace": "logstash.pipeline_get"
       },
-      "since": "0.0.0",
+      "since": "7.12.0",
       "stability": "stable",
       "urls": [
         {
@@ -5668,7 +5668,7 @@
         "name": "LogstashPutPipelineResponse",
         "namespace": "logstash.pipeline_put"
       },
-      "since": "0.0.0",
+      "since": "7.12.0",
       "stability": "stable",
       "urls": [
         {
