@@ -17,7 +17,30 @@
  * under the License.
  */
 
-class AlertingCount {
-  active: long
-  total: long
+class SecurityRolesUsage {
+  native: SecurityRolesNativeUsage
+  dls: SecurityRolesDlsUsage
+  file: SecurityRolesFileUsage
+}
+
+class SecurityRolesNativeUsage {
+  dls: boolean
+  fls: boolean
+  size: long
+}
+
+class SecurityRolesDlsUsage {
+  bit_set_cache: SecurityRolesDlsBitSetCacheUsage
+}
+
+class SecurityRolesDlsBitSetCacheUsage {
+  count: integer
+  memory: ByteSize
+  memory_in_bytes: ulong
+}
+
+class SecurityRolesFileUsage {
+  dls: boolean
+  fls: boolean
+  size: long
 }

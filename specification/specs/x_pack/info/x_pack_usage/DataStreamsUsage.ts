@@ -17,9 +17,7 @@
  * under the License.
  */
 
-class QueryUsage {
-  count?: integer
-  failed?: integer
-  paging?: integer
-  total?: integer
+class DataStreamsUsage extends XPackUsage {
+  data_streams: long
+  indices_count: long
 }

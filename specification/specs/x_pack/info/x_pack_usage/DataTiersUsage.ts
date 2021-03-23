@@ -17,9 +17,23 @@
  * under the License.
  */
 
-class QueryUsage {
-  count?: integer
-  failed?: integer
-  paging?: integer
-  total?: integer
+class DataTiersUsage extends XPackUsage {
+  data_warm: DataTierPhaseCountUsage
+  data_frozen?: DataTierPhaseCountUsage
+  data_cold: DataTierPhaseCountUsage
+  data_content: DataTierPhaseCountUsage
+  data_hot: DataTierPhaseCountUsage
+}
+
+class DataTierPhaseCountUsage {
+  node_count: long
+  index_count: long
+  total_shard_count: long
+  primary_shard_count: long
+  doc_count: long
+  total_size_bytes: long
+  primary_size_bytes: long
+  primary_shard_size_avg_bytes: long
+  primary_shard_size_median_bytes: long
+  primary_shard_size_mad_bytes: long
 }

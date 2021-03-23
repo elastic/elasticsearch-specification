@@ -82,6 +82,7 @@ TokenType,query_dsl/geo/w_k_t/TokenType.ts
 HitMetadata,search/search/hits/HitMetadata.ts
 NumericType,search/search/sort/NumericType.ts
 SortSpecialField,search/search/sort/SortSpecialField.ts
+AlertingUsage,x_pack/info/x_pack_usage/AlertingUsage.ts
 ForecastStatistics,x_pack/info/x_pack_usage/ForecastStatistics.ts
 Condition,x_pack/watcher/condition/Condition.ts
 Input,x_pack/watcher/input/Input.ts

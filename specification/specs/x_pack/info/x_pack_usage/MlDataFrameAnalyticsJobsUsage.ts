@@ -17,9 +17,16 @@
  * under the License.
  */
 
-class QueryUsage {
-  count?: integer
-  failed?: integer
-  paging?: integer
-  total?: integer
+class MlDataFrameAnalyticsJobsUsage {
+  memory_usage?: MlDataFrameAnalyticsJobsMemoryUsage
+  _all: MlDataFrameAnalyticsJobsCountUsage
+  analysis_counts?: EmptyObject
+}
+
+class MlDataFrameAnalyticsJobsMemoryUsage {
+  peak_usage_bytes: JobStatistics
+}
+
+class MlDataFrameAnalyticsJobsCountUsage {
+  count: long
 }

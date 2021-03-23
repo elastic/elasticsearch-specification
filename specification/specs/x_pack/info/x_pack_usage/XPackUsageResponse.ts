@@ -18,18 +18,27 @@
  */
 
 class XPackUsageResponse extends ResponseBase {
-  watcher: AlertingUsage
+  aggregate_metric: XPackUsage
+  analytics: AnalyticsUsage
+  watcher: WatcherUsage
   ccr: CcrUsage
-  data_frame: XPackUsage
-  data_science: XPackUsage
+  data_frame?: XPackUsage
+  data_science?: XPackUsage
+  data_streams?: DataStreamsUsage
+  data_tiers: DataTiersUsage
   enrich: XPackUsage
-  flattened: FlattenedUsage
+  eql: EqlUsage
+  flattened?: FlattenedUsage
+  frozen_indices: FrozenIndicesUsage
   graph: XPackUsage
   ilm: IlmUsage
   logstash: XPackUsage
   ml: MachineLearningUsage
   monitoring: MonitoringUsage
   rollup: XPackUsage
+  runtime_fields?: RuntimeFieldsUsage
+  spatial: XPackUsage
+  searchable_snapshots: SearchableSnapshotsUsage
   security: SecurityUsage
   slm: SlmUsage
   sql: SqlUsage

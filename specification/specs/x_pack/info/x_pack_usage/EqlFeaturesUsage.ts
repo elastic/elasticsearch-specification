@@ -17,9 +17,42 @@
  * under the License.
  */
 
-class QueryUsage {
-  count?: integer
-  failed?: integer
-  paging?: integer
-  total?: integer
+class EqlFeaturesUsage {
+  join: uint
+  joins: EqlFeaturesJoinUsage
+  keys: EqlFeaturesKeysUsage
+  event: uint
+  pipes: EqlFeaturesPipesUsage
+  sequence: uint
+  sequences: EqlFeaturesSequencesUsage
+}
+
+class EqlFeaturesJoinUsage {
+  join_queries_two: uint
+  join_queries_three: uint
+  join_until: uint
+  join_queries_five_or_more: uint
+  join_queries_four: uint
+}
+
+class EqlFeaturesKeysUsage {
+  join_keys_two: uint
+  join_keys_one: uint
+  join_keys_three: uint
+  join_keys_five_or_more: uint
+  join_keys_four: uint
+}
+
+class EqlFeaturesPipesUsage {
+  pipe_tail: uint
+  pipe_head: uint
+}
+
+class EqlFeaturesSequencesUsage {
+  sequence_queries_three: uint
+  sequence_queries_four: uint
+  sequence_queries_two: uint
+  sequence_until: uint
+  sequence_queries_five_or_more: uint
+  sequence_maxspan: uint
 }

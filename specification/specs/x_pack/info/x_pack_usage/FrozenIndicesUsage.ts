@@ -17,9 +17,6 @@
  * under the License.
  */
 
-class QueryUsage {
-  count?: integer
-  failed?: integer
-  paging?: integer
-  total?: integer
+class FrozenIndicesUsage extends XPackUsage {
+  indices_count: long
 }
