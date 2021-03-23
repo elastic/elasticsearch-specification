@@ -7513,7 +7513,7 @@ export interface MinBucketAggregation extends PipelineAggregationBase {
 }
 
 export interface MinimalLicenseInformation {
-  expiry_date_in_millis: long
+  expiry_date_in_millis: EpochMillis
   mode: LicenseType
   status: LicenseStatus
   type: LicenseType
@@ -12672,18 +12672,22 @@ export interface XPackBuildInformation {
 
 export interface XPackFeature {
   available: boolean
-  description: string
+  description?: string
   enabled: boolean
-  native_code_info: NativeCodeInformation
+  native_code_info?: NativeCodeInformation
 }
 
 export interface XPackFeatures {
+  aggregate_metric: XPackFeature
   analytics: XPackFeature
   ccr: XPackFeature
-  data_frame: XPackFeature
-  data_science: XPackFeature
+  data_frame?: XPackFeature
+  data_science?: XPackFeature
+  data_streams: XPackFeature
+  data_tiers: XPackFeature
   enrich: XPackFeature
-  flattened: XPackFeature
+  eql: XPackFeature
+  flattened?: XPackFeature
   frozen_indices: XPackFeature
   graph: XPackFeature
   ilm: XPackFeature
@@ -12691,6 +12695,8 @@ export interface XPackFeatures {
   ml: XPackFeature
   monitoring: XPackFeature
   rollup: XPackFeature
+  runtime_fields?: XPackFeature
+  searchable_snapshots: XPackFeature
   security: XPackFeature
   slm: XPackFeature
   spatial: XPackFeature

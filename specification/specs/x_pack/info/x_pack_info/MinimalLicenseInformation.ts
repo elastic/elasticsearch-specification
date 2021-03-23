@@ -18,7 +18,7 @@
  */
 
 class MinimalLicenseInformation {
-  expiry_date_in_millis: long
+  expiry_date_in_millis: EpochMillis
   mode: LicenseType
   status: LicenseStatus
   type: LicenseType

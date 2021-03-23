@@ -19,7 +19,7 @@
 
 class XPackFeature {
   available: boolean
-  description: string
+  description?: string
   enabled: boolean
-  native_code_info: NativeCodeInformation
+  native_code_info?: NativeCodeInformation
 }

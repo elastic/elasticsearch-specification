@@ -73286,7 +73286,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -120585,7 +120585,7 @@
         },
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -120607,7 +120607,7 @@
         },
         {
           "name": "native_code_info",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -120625,6 +120625,17 @@
         "namespace": "x_pack.info.x_pack_info"
       },
       "properties": [
+        {
+          "name": "aggregate_metric",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "XPackFeature",
+              "namespace": "x_pack.info.x_pack_info"
+            }
+          }
+        },
         {
           "name": "analytics",
           "required": true,
@@ -120649,7 +120660,7 @@
         },
         {
           "name": "data_frame",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -120660,6 +120671,28 @@
         },
         {
           "name": "data_science",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "XPackFeature",
+              "namespace": "x_pack.info.x_pack_info"
+            }
+          }
+        },
+        {
+          "name": "data_streams",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "XPackFeature",
+              "namespace": "x_pack.info.x_pack_info"
+            }
+          }
+        },
+        {
+          "name": "data_tiers",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -120681,8 +120714,19 @@
           }
         },
         {
-          "name": "flattened",
+          "name": "eql",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "XPackFeature",
+              "namespace": "x_pack.info.x_pack_info"
+            }
+          }
+        },
+        {
+          "name": "flattened",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -120759,6 +120803,28 @@
         },
         {
           "name": "rollup",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "XPackFeature",
+              "namespace": "x_pack.info.x_pack_info"
+            }
+          }
+        },
+        {
+          "name": "runtime_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "XPackFeature",
+              "namespace": "x_pack.info.x_pack_info"
+            }
+          }
+        },
+        {
+          "name": "searchable_snapshots",
           "required": true,
           "type": {
             "kind": "instance_of",
