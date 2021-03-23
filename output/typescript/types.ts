@@ -4638,8 +4638,7 @@ export interface EqlGetRequest extends RequestBase {
   wait_for_completion_timeout?: Time
 }
 
-export interface EqlGetResponse extends EqlSearchResponseBase {
-  id: Id
+export interface EqlGetResponse<TEvent = unknown> extends EqlSearchResponseBase<TEvent> {
 }
 
 export interface EqlGetStatusRequest extends RequestBase {
@@ -4655,10 +4654,22 @@ export interface EqlGetStatusResponse extends ResponseBase {
   completion_status?: integer
 }
 
-export interface EqlHits {
+export interface EqlHits<TEvent = unknown> {
   total?: TotalHits
-  events?: Array<string>
-  sequences?: Array<string>
+  events?: Array<EqlHitsEvent<TEvent>>
+  sequences?: Array<EqlHitsSequence<TEvent>>
+}
+
+export interface EqlHitsEvent<TEvent = unknown> {
+  _index?: IndexName
+  _id?: Id
+  _source?: TEvent
+  fields?: Record<Field, Array<any>>
+}
+
+export interface EqlHitsSequence<TEvent = unknown> {
+  events: Array<EqlHitsEvent<TEvent>>
+  join_keys: Array<any>
 }
 
 export interface EqlSearchFieldFormatted {
@@ -4691,15 +4702,16 @@ export interface EqlSearchRequest extends RequestBase {
   }
 }
 
-export interface EqlSearchResponse extends EqlSearchResponseBase {
+export interface EqlSearchResponse<TEvent = unknown> extends EqlSearchResponseBase<TEvent> {
 }
 
-export interface EqlSearchResponseBase extends ResponseBase {
-  is_partial: boolean
-  is_running: boolean
-  took: integer
-  timed_out: boolean
-  hits: EqlHits
+export interface EqlSearchResponseBase<TEvent = unknown> extends ResponseBase {
+  id?: Id
+  is_partial?: boolean
+  is_running?: boolean
+  took?: integer
+  timed_out?: boolean
+  hits: EqlHits<TEvent>
 }
 
 export interface ErrorCause {

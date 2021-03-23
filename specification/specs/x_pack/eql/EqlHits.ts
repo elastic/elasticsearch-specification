@@ -17,8 +17,8 @@
  * under the License.
  */
 
-class EqlHits {
+class EqlHits<TEvent> {
   total?: TotalHits
-  events?: string[]
-  sequences?: string[]
+  events?: EqlHitsEvent<TEvent>[]
+  sequences?: EqlHitsSequence<TEvent>[]
 }

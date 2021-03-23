@@ -47893,8 +47893,20 @@
       ]
     },
     {
+      "generics": [
+        "TEvent"
+      ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TEvent",
+                "namespace": "x_pack.eql.get"
+              }
+            }
+          ],
           "type": {
             "name": "EqlSearchResponseBase",
             "namespace": "x_pack.eql"
@@ -47906,19 +47918,7 @@
         "name": "EqlGetResponse",
         "namespace": "x_pack.eql.get"
       },
-      "properties": [
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -48037,6 +48037,9 @@
       ]
     },
     {
+      "generics": [
+        "TEvent"
+      ],
       "kind": "interface",
       "name": {
         "name": "EqlHits",
@@ -48060,10 +48063,19 @@
           "type": {
             "kind": "array_of",
             "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TEvent",
+                    "namespace": "x_pack.eql"
+                  }
+                }
+              ],
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "EqlHitsEvent",
+                "namespace": "x_pack.eql"
               }
             }
           }
@@ -48074,11 +48086,130 @@
           "type": {
             "kind": "array_of",
             "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TEvent",
+                    "namespace": "x_pack.eql"
+                  }
+                }
+              ],
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "EqlHitsSequence",
+                "namespace": "x_pack.eql"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        "TEvent"
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlHitsEvent",
+        "namespace": "x_pack.eql"
+      },
+      "properties": [
+        {
+          "name": "_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TEvent",
+              "namespace": "x_pack.eql"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
                 "namespace": "internal"
               }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        "TEvent"
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlHitsSequence",
+        "namespace": "x_pack.eql"
+      },
+      "properties": [
+        {
+          "name": "events",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TEvent",
+                    "namespace": "x_pack.eql"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "EqlHitsEvent",
+                "namespace": "x_pack.eql"
+              }
+            }
+          }
+        },
+        {
+          "name": "join_keys",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
@@ -48412,8 +48543,20 @@
       ]
     },
     {
+      "generics": [
+        "TEvent"
+      ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TEvent",
+                "namespace": "x_pack.eql.search"
+              }
+            }
+          ],
           "type": {
             "name": "EqlSearchResponseBase",
             "namespace": "x_pack.eql"
@@ -48428,6 +48571,9 @@
       "properties": []
     },
     {
+      "generics": [
+        "TEvent"
+      ],
       "inherits": [
         {
           "type": {
@@ -48443,8 +48589,19 @@
       },
       "properties": [
         {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "is_partial",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48455,7 +48612,7 @@
         },
         {
           "name": "is_running",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48466,7 +48623,7 @@
         },
         {
           "name": "took",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48477,7 +48634,7 @@
         },
         {
           "name": "timed_out",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48490,6 +48647,15 @@
           "name": "hits",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TEvent",
+                  "namespace": "x_pack.eql"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
               "name": "EqlHits",

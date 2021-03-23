@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class EqlGetResponse extends EqlSearchResponseBase {
-  id: Id
-}
+class EqlGetResponse<TEvent> extends EqlSearchResponseBase<TEvent> {}

@@ -17,11 +17,9 @@
  * under the License.
  */
 
-class EqlSearchResponseBase<TEvent> extends ResponseBase {
-  id?: Id
-  is_partial?: boolean
-  is_running?: boolean
-  took?: integer
-  timed_out?: boolean
-  hits: EqlHits<TEvent>
+class EqlHitsEvent<TEvent> {
+  _index?: IndexName
+  _id?: Id
+  _source?: TEvent
+  fields?: Dictionary<Field, UserDefinedValue[]>
 }
