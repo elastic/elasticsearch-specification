@@ -128,8 +128,15 @@ the `request` and `response` value will be `null`.
 The specification is validated daily by the [client-flight-recorder](https://github.com/elastic/clients-flight-recorder) project.
 The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/dev/recordings/types-validation/types-validation.md).
 
-If you need to fix the specification and then validate the result again, you need to
-perform the following commands:
+### Validate the specification in your machine
+
+First of all, you should configure an environment variable named `GITHUB_VAULT_TOKEN` where you store
+your GitHub personal access token that will be used for reading data from Vault.
+You can see [here](https://github.com/elastic/infra/tree/master/docs/vault#github-auth)
+how to generate a token. To avoid configuring the env variable every time, you can add the variable to your
+`.*rc` file or your `.profile`.
+
+Once you have configured the environment, run the following commands:
 
 ```sh
 git clone https://github.com/elastic/elastic-client-generator.git
@@ -139,9 +146,9 @@ cd elastic-client-generator
 ./run-validations.sh
 ```
 
-The last command above will boot an Elasticsearch instance and start the fligh recorder
-recording process, once that is finished, it will not be executed
-again unless you run again the command like this: `PULL_LATEST=true ./run-validations.sh`.
+The last command above will install all the dependencies and run, download
+the test recordings and finally validate the specification.
+If you need to download the recordings again, run `PULL_LATEST=true ./run-validations.sh`.
 
 You can validate a specific API with the `--api` option, same goes for `--request` and `--response`.
 For example, the following command validates the index request api:
@@ -162,21 +169,7 @@ The following command validates the index request and response api:
 
 Once you see the errors, you can fix the original definition in `/specification/specs`
 and then run the command again until the types validator does not trigger any new error.
-Once an api is stable, add the following comment above the api definition:
-```js
-/**
- * @type_stability stable
- */
-```
-For example:
-```ts
-/**
- * @type_stability stable
- */
-class IndexRequest<TDocument> extends RequestBase { ... }
-```
-
-And finally open a pull request with your changes.
+Finally open a pull request with your changes.
 
 Namespaced APIs can be validated in the same way, for example:
 
@@ -218,8 +211,8 @@ You should copy from there the updated endpoint defintion and change it here.
 
 ### The validation in broken on GitHub but works on my machine!
 
-Very likely the recordings on your machine are stale, you can regenerate them
-by executing the following command (it will take a while).
+Very likely the recordings on your machine are stale, you can download
+the latest version with:
 
 ```sh
 PULL_LATEST=true ./run-validations.sh
