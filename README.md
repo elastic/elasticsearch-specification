@@ -130,11 +130,16 @@ The validation result can be found [here](https://github.com/elastic/clients-fli
 
 ### Validate the specification in your machine
 
-First of all, you should configure an environment variable named `GITHUB_VAULT_TOKEN` where you store
-your GitHub personal access token that will be used for reading data from Vault.
+Create GitHub token to allow authentication with [Vault](https://www.vaultproject.io/).
+  * Go to https://github.com/settings/tokens.
+  * Click `Generate new token`.
+  * Give your token a name and make sure to click the `repo` and `read:org` scopes.
+  * Create a file at `~/.elastic/github.token` and paste the GitHub token into it.
+  * Change permissions on the file allow access only from the user.
+     `chmod 600 ~/.elastic/github.token`
+
 You can see [here](https://github.com/elastic/infra/tree/master/docs/vault#github-auth)
-how to generate a token. To avoid configuring the env variable every time, you can add the variable to your
-`.*rc` file or your `.profile`.
+how to generate a token.
 
 Once you have configured the environment, run the following commands:
 
