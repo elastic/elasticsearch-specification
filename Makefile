@@ -41,7 +41,7 @@ spec-format-check:	## Check specification formatting rules
 	@npm run format:check --prefix specification
 
 spec-format-fix:	## Format/fix the specification according to the formatting rules
-	@npm run format:check --prefix specification
+	@npm run format:fix --prefix specification
 
 contrib: | contrib-install generate-spec add-license spec-format-fix 	## Pre contribution target
 

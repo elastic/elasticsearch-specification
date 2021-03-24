@@ -17,9 +17,34 @@
  * under the License.
  */
 
-class XPackFeature {
-  available: boolean
-  description?: string
-  enabled: boolean
-  native_code_info?: NativeCodeInformation
+class WatcherUsage extends XPackUsage {
+  execution: WatcherActionsUsage
+  watch: WatcherWatchUsage
+  count: UsageCount
+}
+
+class WatcherActionsUsage {
+  actions: Dictionary<Name, WatcherActionTotalsUsage>
+}
+
+class WatcherWatchUsage {
+  input: Dictionary<Name, UsageCount>
+  condition?: Dictionary<Name, UsageCount>
+  action?: Dictionary<Name, UsageCount>
+  trigger: WatcherWatchTriggerUsage
+}
+
+class WatcherWatchTriggerUsage {
+  schedule?: WatcherWatchTriggerScheduleUsage
+  _all: UsageCount
+}
+
+class WatcherWatchTriggerScheduleUsage extends UsageCount {
+  cron: UsageCount
+  _all: UsageCount
+}
+
+class WatcherActionTotalsUsage {
+  total: long
+  total_time_in_ms: long
 }

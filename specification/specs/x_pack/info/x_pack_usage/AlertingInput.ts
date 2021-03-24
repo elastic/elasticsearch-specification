@@ -18,6 +18,6 @@
  */
 
 class AlertingInput {
-  input: Dictionary<string, AlertingCount>
-  trigger: Dictionary<string, AlertingCount>
+  input: Dictionary<string, UsageCount>
+  trigger: Dictionary<string, UsageCount>
 }

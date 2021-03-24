@@ -21,4 +21,6 @@ class MachineLearningUsage extends XPackUsage {
   datafeeds: Dictionary<string, DatafeedCount>
   jobs: Dictionary<string, Job>
   node_count: integer
+  data_frame_analytics_jobs: MlDataFrameAnalyticsJobsUsage
+  inference: MlInferenceUsage
 }

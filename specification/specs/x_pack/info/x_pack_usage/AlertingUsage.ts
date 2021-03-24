@@ -18,7 +18,7 @@
  */
 
 class AlertingUsage extends XPackUsage {
-  count: AlertingCount
+  count: UsageCount
   execution: AlertingExecution
   watch: AlertingInput
 }

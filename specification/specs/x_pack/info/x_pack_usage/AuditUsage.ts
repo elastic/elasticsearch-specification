@@ -18,5 +18,5 @@
  */
 
 class AuditUsage extends SecurityFeatureToggle {
-  outputs: string[]
+  outputs?: string[]
 }

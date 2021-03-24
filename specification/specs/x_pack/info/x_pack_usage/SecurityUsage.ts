@@ -18,12 +18,16 @@
  */
 
 class SecurityUsage extends XPackUsage {
+  api_key_service: SecurityFeatureToggle
   anonymous: SecurityFeatureToggle
   audit: AuditUsage
+  fips_140: SecurityFeatureToggle
   ipfilter: IpFilterUsage
   realms: Dictionary<string, RealmUsage>
   role_mapping: Dictionary<string, RoleMappingUsage>
-  roles: Dictionary<string, RoleUsage>
+  roles: SecurityRolesUsage
   ssl: SslUsage
-  system_key: SecurityFeatureToggle
+  system_key?: SecurityFeatureToggle
+  token_service: SecurityFeatureToggle
+  operator_privileges: XPackUsage
 }

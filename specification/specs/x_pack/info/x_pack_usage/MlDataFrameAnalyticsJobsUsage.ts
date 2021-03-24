@@ -17,9 +17,16 @@
  * under the License.
  */
 
-class XPackFeature {
-  available: boolean
-  description?: string
-  enabled: boolean
-  native_code_info?: NativeCodeInformation
+class MlDataFrameAnalyticsJobsUsage {
+  memory_usage?: MlDataFrameAnalyticsJobsMemoryUsage
+  _all: MlDataFrameAnalyticsJobsCountUsage
+  analysis_counts?: EmptyObject
+}
+
+class MlDataFrameAnalyticsJobsMemoryUsage {
+  peak_usage_bytes: JobStatistics
+}
+
+class MlDataFrameAnalyticsJobsCountUsage {
+  count: long
 }

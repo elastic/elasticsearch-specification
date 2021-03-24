@@ -19,24 +19,27 @@
 
 class Job {
   allow_lazy_open?: boolean
-  analysis_config: AnalysisConfig
+  analysis_config?: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval: Time
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  create_time: integer
-  data_description: DataDescription
-  description: string
-  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  finished_time: integer
-  job_id: string
-  job_type: string
-  model_plot: ModelPlotConfig
-  model_snapshot_id: string
-  model_snapshot_retention_days: long
-  renormalization_window_days: long
+  background_persist_interval?: Time
+  count: integer
+  created_by: EmptyObject
+  create_time?: integer
+  detectors?: JobStatistics
+  data_description?: DataDescription
+  description?: string
+  finished_time?: integer
+  forecasts: MlJobForecasts
+  job_id?: Id
+  job_type?: string
+  model_plot?: ModelPlotConfig
+  model_size?: JobStatistics
+  model_snapshot_id?: Id
+  model_snapshot_retention_days?: long
+  renormalization_window_days?: long
   results_index_name?: IndexName
-  results_retention_days: long
-  groups: string[]
+  results_retention_days?: long
+  groups?: string[]
   model_plot_config?: ModelPlotConfig
   custom_settings?: CustomSettings
   job_version?: string
@@ -60,3 +63,8 @@ class KibanaUrlConfig extends BaseUrlConfig {
 }
 
 type UrlConfig = BaseUrlConfig | KibanaUrlConfig
+
+class MlJobForecasts {
+  total: long
+  forecasted_jobs: long
+}
