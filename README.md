@@ -130,6 +130,8 @@ The validation result can be found [here](https://github.com/elastic/clients-fli
 
 ### Validate the specification in your machine
 
+The following step only apply if you don't have `~/.elastic/github.token` in place.
+
 Create GitHub token to allow authentication with [Vault](https://www.vaultproject.io/).
   * Go to https://github.com/settings/tokens.
   * Click `Generate new token`.
