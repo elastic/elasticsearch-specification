@@ -48048,7 +48048,7 @@
       "properties": [
         {
           "name": "total",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48117,7 +48117,7 @@
       "properties": [
         {
           "name": "_index",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48128,7 +48128,7 @@
         },
         {
           "name": "_id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48139,7 +48139,7 @@
         },
         {
           "name": "_source",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {

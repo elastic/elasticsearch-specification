@@ -4655,15 +4655,15 @@ export interface EqlGetStatusResponse extends ResponseBase {
 }
 
 export interface EqlHits<TEvent = unknown> {
-  total?: TotalHits
+  total: TotalHits
   events?: Array<EqlHitsEvent<TEvent>>
   sequences?: Array<EqlHitsSequence<TEvent>>
 }
 
 export interface EqlHitsEvent<TEvent = unknown> {
-  _index?: IndexName
-  _id?: Id
-  _source?: TEvent
+  _index: IndexName
+  _id: Id
+  _source: TEvent
   fields?: Record<Field, Array<any>>
 }
 

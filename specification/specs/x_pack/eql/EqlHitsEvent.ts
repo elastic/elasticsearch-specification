@@ -18,8 +18,8 @@
  */
 
 class EqlHitsEvent<TEvent> {
-  _index?: IndexName
-  _id?: Id
-  _source?: TEvent
+  _index: IndexName
+  _id: Id
+  _source: TEvent
   fields?: Dictionary<Field, UserDefinedValue[]>
 }
