@@ -13096,9 +13096,9 @@ export interface WatcherActionsUsage {
 }
 
 export interface WatcherNodeStats {
-  current_watches: Array<WatchRecordStats>
+  current_watches?: Array<WatchRecordStats>
   execution_thread_pool: ExecutionThreadPool
-  queued_watches: Array<WatchRecordQueuedStats>
+  queued_watches?: Array<WatchRecordQueuedStats>
   watch_count: long
   watcher_state: WatcherState
   node_id: Id

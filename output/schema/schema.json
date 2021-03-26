@@ -124486,7 +124486,7 @@
       "properties": [
         {
           "name": "current_watches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -124511,7 +124511,7 @@
         },
         {
           "name": "queued_watches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
