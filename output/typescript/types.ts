@@ -4747,7 +4747,6 @@ export interface EqlSearchRequest extends RequestBase {
   keep_alive?: Time
   keep_on_completion?: boolean
   wait_for_completion_timeout?: Time
-  filter_path?: string
   body: {
     query: string
     case_sensitive?: boolean

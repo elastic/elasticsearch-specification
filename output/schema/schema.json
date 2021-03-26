@@ -49052,17 +49052,6 @@
               "namespace": "common_options.time_unit"
             }
           }
-        },
-        {
-          "name": "filter_path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
