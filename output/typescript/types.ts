@@ -710,6 +710,7 @@ export interface BaseUrlConfig {
 }
 
 export interface BinaryProperty extends DocValuesPropertyBase {
+  type: 'binary'
 }
 
 export interface BoolQuery extends QueryBase {
@@ -725,6 +726,7 @@ export interface BooleanProperty extends DocValuesPropertyBase {
   fielddata: NumericFielddata
   index: boolean
   null_value: boolean
+  type: 'boolean'
 }
 
 export interface BoostingQuery extends QueryBase {
@@ -3503,6 +3505,7 @@ export interface CompletionProperty extends DocValuesPropertyBase {
   preserve_position_increments: boolean
   preserve_separators: boolean
   search_analyzer: string
+  type: 'completion'
 }
 
 export interface CompletionStats {
@@ -3586,6 +3589,7 @@ export type ConnectionScheme = 'http' | 'https'
 
 export interface ConstantKeywordProperty extends PropertyBase {
   value: any
+  type: 'constant_keyword'
 }
 
 export interface ConstantScoreQuery extends QueryBase {
@@ -3996,6 +4000,7 @@ export interface DateNanosProperty extends DocValuesPropertyBase {
   index: boolean
   null_value: DateString
   precision_step: integer
+  type: 'date_nanos'
 }
 
 export interface DateProcessor extends ProcessorBase {
@@ -4014,6 +4019,7 @@ export interface DateProperty extends DocValuesPropertyBase {
   index: boolean
   null_value: DateString
   precision_step: integer
+  type: 'date'
 }
 
 export interface DateRangeAggregation extends BucketAggregationBase {
@@ -4031,6 +4037,11 @@ export interface DateRangeExpression {
   key?: string
   to?: DateMath | float
   doc_count?: long
+}
+
+export interface DateRangeProperty extends RangePropertyBase {
+  format: string
+  type: 'date_range'
 }
 
 export type DateRounding = 's' | 'm' | 'h' | 'd' | 'w' | 'M' | 'y'
@@ -4555,7 +4566,7 @@ export interface DocValueField {
   format?: string
 }
 
-export type DocValuesProperty = BinaryProperty | BooleanProperty | DateProperty | DateNanosProperty | KeywordProperty | NumberProperty | RangePropertyBase | GeoPointProperty | GeoShapeProperty | CompletionProperty | GenericProperty | IpProperty | Murmur3HashProperty | ShapeProperty | TokenCountProperty
+export type DocValuesProperty = BinaryProperty | BooleanProperty | DateProperty | DateNanosProperty | KeywordProperty | NumberProperty | RangeProperty | GeoPointProperty | GeoShapeProperty | CompletionProperty | GenericProperty | IpProperty | Murmur3HashProperty | ShapeProperty | TokenCountProperty
 
 export interface DocValuesPropertyBase extends CorePropertyBase {
   doc_values: boolean
@@ -4592,6 +4603,10 @@ export interface DocumentSimulation {
 export interface DotExpanderProcessor extends ProcessorBase {
   field: Field
   path?: string
+}
+
+export interface DoubleRangeProperty extends RangePropertyBase {
+  type: 'double_range'
 }
 
 export interface DropProcessor extends ProcessorBase {
@@ -5114,6 +5129,7 @@ export type Field = string
 
 export interface FieldAliasProperty extends PropertyBase {
   path: Field
+  type: 'alias'
 }
 
 export interface FieldCapabilities {
@@ -5354,10 +5370,15 @@ export interface FlattenedProperty extends PropertyBase {
   null_value: string
   similarity: string
   split_queries_on_whitespace: boolean
+  type: 'flattened'
 }
 
 export interface FlattenedUsage extends XPackUsage {
   field_count: integer
+}
+
+export interface FloatRangeProperty extends RangePropertyBase {
+  type: 'float_range'
 }
 
 export interface FlushJobRequest extends RequestBase {
@@ -5732,6 +5753,7 @@ export interface GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed: boolean
   ignore_z_value: boolean
   null_value: GeoLocation
+  type: 'geo_point'
 }
 
 export interface GeoPolygonQuery extends QueryBase {
@@ -5749,6 +5771,7 @@ export interface GeoShapeProperty extends DocValuesPropertyBase {
   ignore_z_value: boolean
   orientation: GeoOrientation
   strategy: GeoStrategy
+  type: 'geo_shape'
 }
 
 export interface GeoShapeQuery extends QueryBase {
@@ -6638,6 +6661,7 @@ export interface HistogramOrder {
 
 export interface HistogramProperty extends PropertyBase {
   ignore_malformed: boolean
+  type: 'histogram'
 }
 
 export interface HistogramRollupGrouping {
@@ -7116,6 +7140,10 @@ export interface InputContainer {
 
 export type InputType = 'http' | 'search' | 'simple'
 
+export interface IntegerRangeProperty extends RangePropertyBase {
+  type: 'integer_range'
+}
+
 export interface Interval extends ScheduleBase {
   factor: long
   unit: IntervalUnit
@@ -7243,6 +7271,7 @@ export interface IpProperty extends DocValuesPropertyBase {
   boost: double
   index: boolean
   null_value: string
+  type: 'ip'
 }
 
 export interface IpRangeAggregation extends BucketAggregationBase {
@@ -7260,6 +7289,10 @@ export interface IpRangeBucketKeys {
 }
 export type IpRangeBucket = IpRangeBucketKeys |
     { [property: string]: Aggregate }
+
+export interface IpRangeProperty extends RangePropertyBase {
+  type: 'ip_range'
+}
 
 export interface Job {
   allow_lazy_open?: boolean
@@ -7328,7 +7361,8 @@ export interface JoinProcessor extends ProcessorBase {
 }
 
 export interface JoinProperty extends PropertyBase {
-  relations: Record<RelationName, Array<RelationName>>
+  relations: Record<RelationName, RelationName | Array<RelationName>>
+  type: 'join'
 }
 
 export interface JsonProcessor extends ProcessorBase {
@@ -7407,6 +7441,7 @@ export interface KeywordProperty extends DocValuesPropertyBase {
   norms: boolean
   null_value: string
   split_queries_on_whitespace: boolean
+  type: 'keyword'
 }
 
 export interface KeywordTokenizer extends TokenizerBase {
@@ -7609,6 +7644,10 @@ export interface LogstashPutPipelineRequest extends RequestBase {
 
 export interface LogstashPutPipelineResponse extends ResponseBase {
   stub: integer
+}
+
+export interface LongRangeProperty extends RangePropertyBase {
+  type: 'long_range'
 }
 
 export interface LowercaseProcessor extends ProcessorBase {
@@ -8128,6 +8167,7 @@ export interface MultiplexerTokenFilter extends TokenFilterBase {
 }
 
 export interface Murmur3HashProperty extends DocValuesPropertyBase {
+  type: 'murmur3'
 }
 
 export interface MutualInformationHeuristic {
@@ -8514,7 +8554,10 @@ export interface NumberProperty extends DocValuesPropertyBase {
   index: boolean
   null_value: double
   scaling_factor: double
+  type: NumberType
 }
+
+export type NumberType = 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer' | 'long' | 'short' | 'byte'
 
 export interface NumericDecayFunctionKeys extends DecayFunctionBase {
 }
@@ -8531,6 +8574,7 @@ export interface ObjectProperty extends CorePropertyBase {
   dynamic: boolean | DynamicMapping
   enabled: boolean
   properties: Record<PropertyName, PropertyBase>
+  type: 'object'
 }
 
 export type OpType = 'index' | 'create'
@@ -8757,6 +8801,7 @@ export interface PercolateQuery extends QueryBase {
 }
 
 export interface PercolatorProperty extends PropertyBase {
+  type: 'percolator'
 }
 
 export interface Phase {
@@ -9025,7 +9070,6 @@ export interface PropertyBase {
   local_metadata?: Record<string, any>
   meta?: Record<string, string>
   name?: PropertyName
-  type?: string
   properties?: Record<PropertyName, PropertyBase>
   ignore_above?: integer
   dynamic?: boolean | DynamicMapping
@@ -9592,6 +9636,8 @@ export interface RangeBucketKeys {
 export type RangeBucket = RangeBucketKeys |
     { [property: string]: Aggregate }
 
+export type RangeProperty = LongRangeProperty | IpRangeProperty | IntegerRangeProperty | FloatRangeProperty | DoubleRangeProperty | DateRangeProperty
+
 export interface RangePropertyBase extends DocValuesPropertyBase {
   boost: double
   coerce: boolean
@@ -9617,6 +9663,7 @@ export interface RankFeatureFunction {
 
 export interface RankFeatureProperty extends PropertyBase {
   positive_score_impact: boolean
+  type: 'rank_feature'
 }
 
 export interface RankFeatureQuery extends QueryBase {
@@ -9624,6 +9671,7 @@ export interface RankFeatureQuery extends QueryBase {
 }
 
 export interface RankFeaturesProperty extends PropertyBase {
+  type: 'rank_features'
 }
 
 export interface RareTermsAggregation extends BucketAggregationBase {
@@ -10489,6 +10537,7 @@ export interface SearchAsYouTypeProperty extends CorePropertyBase {
   search_analyzer: string
   search_quote_analyzer: string
   term_vector: TermVectorOption
+  type: 'search_as_you_type'
 }
 
 export interface SearchInput {
@@ -10810,6 +10859,7 @@ export interface ShapeProperty extends DocValuesPropertyBase {
   ignore_malformed: boolean
   ignore_z_value: boolean
   orientation: ShapeOrientation
+  type: 'shape'
 }
 
 export interface ShapeQuery extends QueryBase {
@@ -12258,6 +12308,7 @@ export interface TextProperty extends CorePropertyBase {
   search_analyzer: string
   search_quote_analyzer: string
   term_vector: TermVectorOption
+  type: 'text'
 }
 
 export type TextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
@@ -12342,6 +12393,7 @@ export interface TokenCountProperty extends DocValuesPropertyBase {
   boost: double
   index: boolean
   null_value: double
+  type: 'token_count'
 }
 
 export interface TokenDetail {

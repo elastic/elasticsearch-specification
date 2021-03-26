@@ -17845,7 +17845,16 @@
         "name": "BinaryProperty",
         "namespace": "mapping.types.core.binary"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "binary"
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -18036,6 +18045,14 @@
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "boolean"
           }
         }
       ]
@@ -37762,6 +37779,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "completion"
+          }
         }
       ]
     },
@@ -38594,6 +38619,14 @@
           "required": true,
           "type": {
             "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "constant_keyword"
           }
         }
       ]
@@ -42450,6 +42483,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "date_nanos"
+          }
         }
       ]
     },
@@ -42618,6 +42659,14 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "date"
           }
         }
       ]
@@ -42792,6 +42841,42 @@
               "name": "long",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DateRangeProperty",
+        "namespace": "mapping.types.core.range.date_range"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "date_range"
           }
         }
       ]
@@ -47331,7 +47416,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "RangePropertyBase",
+              "name": "RangeProperty",
               "namespace": "mapping.types.core.range"
             }
           },
@@ -47745,6 +47830,31 @@
               "name": "string",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DoubleRangeProperty",
+        "namespace": "mapping.types.core.range.double_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "double_range"
           }
         }
       ]
@@ -52365,6 +52475,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "alias"
+          }
         }
       ]
     },
@@ -54541,6 +54659,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "flattened"
+          }
         }
       ]
     },
@@ -54568,6 +54694,31 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "FloatRangeProperty",
+        "namespace": "mapping.types.core.range.float_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "float_range"
           }
         }
       ]
@@ -57835,6 +57986,14 @@
               "namespace": "query_dsl.geo"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "geo_point"
+          }
         }
       ]
     },
@@ -57968,6 +58127,14 @@
               "name": "GeoStrategy",
               "namespace": "mapping.types.geo.geo_shape"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "geo_shape"
           }
         }
       ]
@@ -65969,6 +66136,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "histogram"
+          }
         }
       ]
     },
@@ -70179,6 +70354,31 @@
       "inherits": [
         {
           "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IntegerRangeProperty",
+        "namespace": "mapping.types.core.range.integer_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "integer_range"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "ScheduleBase",
             "namespace": "x_pack.watcher.schedule"
           }
@@ -71234,6 +71434,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ip"
+          }
         }
       ]
     },
@@ -71355,6 +71563,31 @@
         "namespace": "aggregations"
       },
       "properties": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IpRangeProperty",
+        "namespace": "mapping.types.core.range.ip_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ip_range"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -72013,15 +72246,35 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RelationName",
-                  "namespace": "internal"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "RelationName",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "RelationName",
+                      "namespace": "internal"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "join"
           }
         }
       ]
@@ -72698,6 +72951,14 @@
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
           }
         }
       ]
@@ -74376,6 +74637,31 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "LongRangeProperty",
+        "namespace": "mapping.types.core.range.long_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "long_range"
           }
         }
       ]
@@ -79186,7 +79472,16 @@
         "name": "Murmur3HashProperty",
         "namespace": "mapping.types.specialized.murmur3_hash"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "murmur3"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -82594,8 +82889,52 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumberType",
+              "namespace": "mapping.types.core.number"
+            }
+          }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "float"
+        },
+        {
+          "name": "half_float"
+        },
+        {
+          "name": "scaled_float"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "integer"
+        },
+        {
+          "name": "long"
+        },
+        {
+          "name": "short"
+        },
+        {
+          "name": "byte"
+        }
+      ],
+      "name": {
+        "name": "NumberType",
+        "namespace": "mapping.types.core.number"
+      }
     },
     {
       "attachedBehaviors": [
@@ -82759,6 +83098,14 @@
                 "namespace": "mapping.types"
               }
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "object"
           }
         }
       ]
@@ -84530,7 +84877,16 @@
         "name": "PercolatorProperty",
         "namespace": "mapping.types.core.percolator"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "percolator"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -86862,6 +87218,10 @@
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -86916,17 +87276,6 @@
             "kind": "instance_of",
             "type": {
               "name": "PropertyName",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
               "namespace": "internal"
             }
           }
@@ -92696,6 +93045,60 @@
       "properties": []
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "RangeProperty",
+        "namespace": "mapping.types.core.range"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongRangeProperty",
+              "namespace": "mapping.types.core.range.long_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpRangeProperty",
+              "namespace": "mapping.types.core.range.ip_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IntegerRangeProperty",
+              "namespace": "mapping.types.core.range.integer_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FloatRangeProperty",
+              "namespace": "mapping.types.core.range.float_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DoubleRangeProperty",
+              "namespace": "mapping.types.core.range.double_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateRangeProperty",
+              "namespace": "mapping.types.core.range.date_range"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -92984,6 +93387,14 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "rank_feature"
+          }
         }
       ]
     },
@@ -93029,7 +93440,16 @@
         "name": "RankFeaturesProperty",
         "namespace": "mapping.types.core.rank_features"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "rank_features"
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -100333,6 +100753,14 @@
               "namespace": "mapping"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "search_as_you_type"
+          }
         }
       ]
     },
@@ -103591,6 +104019,14 @@
               "name": "ShapeOrientation",
               "namespace": "mapping.types.specialized.shape"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "shape"
           }
         }
       ]
@@ -116595,6 +117031,14 @@
               "namespace": "mapping"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "text"
+          }
         }
       ]
     },
@@ -117296,6 +117740,14 @@
               "name": "double",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "token_count"
           }
         }
       ]
