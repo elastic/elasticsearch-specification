@@ -12168,7 +12168,7 @@ export interface TermVectorsResponse extends ResponseBase {
   _index: IndexName
   term_vectors?: Record<Field, TermVector>
   took: long
-  _type: Type
+  _type?: Type
   _version: long
 }
 

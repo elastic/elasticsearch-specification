@@ -23,6 +23,6 @@ class TermVectorsResponse extends ResponseBase {
   _index: IndexName
   term_vectors?: Dictionary<Field, TermVector>
   took: long
-  _type: Type
+  _type?: Type
   _version: long
 }
