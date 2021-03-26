@@ -31950,7 +31950,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ids",
               "namespace": "internal"
             }
           }

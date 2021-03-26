@@ -24,7 +24,7 @@
  */
 interface ClearApiKeyCacheRequest extends RequestBase {
   path_parts?: {
-    ids?: string
+    ids?: Ids
   }
   query_parameters?: {}
   body?: {}
