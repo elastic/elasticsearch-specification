@@ -49470,43 +49470,24 @@
           }
         },
         {
+          "aliases": [
+            "resource.id"
+          ],
           "name": "resource_id",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "resource.id",
-          "required": false,
-          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "internal"
             }
           }
         },
         {
+          "aliases": [
+            "resource.type"
+          ],
           "name": "resource_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "resource.type",
           "required": false,
           "type": {
             "kind": "instance_of",
