@@ -26,7 +26,7 @@ class XPackUsageResponse extends ResponseBase {
   data_science?: XPackUsage
   data_streams?: DataStreamsUsage
   data_tiers: DataTiersUsage
-  enrich: XPackUsage
+  enrich?: XPackUsage
   eql: EqlUsage
   flattened?: FlattenedUsage
   frozen_indices: FrozenIndicesUsage

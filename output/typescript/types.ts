@@ -10684,6 +10684,8 @@ export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
 export interface SearchableSnapshotsUsage extends XPackUsage {
   indices_count: integer
+  full_copy_indices_count?: integer
+  shared_cache_indices_count?: integer
 }
 
 export interface SecurityFeatureToggle {
@@ -13010,7 +13012,7 @@ export interface VariableWidthHistogramAggregation {
 export interface VectorUsage extends XPackUsage {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
-  sparse_vector_fields_count: integer
+  sparse_vector_fields_count?: integer
 }
 
 export interface VerifyRepositoryRequest extends RequestBase {
@@ -13302,7 +13304,7 @@ export interface XPackUsageResponse extends ResponseBase {
   data_science?: XPackUsage
   data_streams?: DataStreamsUsage
   data_tiers: DataTiersUsage
-  enrich: XPackUsage
+  enrich?: XPackUsage
   eql: EqlUsage
   flattened?: FlattenedUsage
   frozen_indices: FrozenIndicesUsage

@@ -102515,6 +102515,28 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "full_copy_indices_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shared_cache_indices_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -123716,7 +123738,7 @@
         },
         {
           "name": "sparse_vector_fields_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126385,7 +126407,7 @@
         },
         {
           "name": "enrich",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
