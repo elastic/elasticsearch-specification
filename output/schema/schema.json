@@ -49876,20 +49876,32 @@
           "name": "hits",
           "required": true,
           "type": {
-            "generics": [
+            "items": [
+              {
+                "generics": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TEvent",
+                      "namespace": "x_pack.eql"
+                    }
+                  }
+                ],
+                "kind": "instance_of",
+                "type": {
+                  "name": "EqlHits",
+                  "namespace": "x_pack.eql"
+                }
+              },
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "TEvent",
-                  "namespace": "x_pack.eql"
+                  "name": "EmptyObject",
+                  "namespace": "internal"
                 }
               }
             ],
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlHits",
-              "namespace": "x_pack.eql"
-            }
+            "kind": "union_of"
           }
         }
       ]

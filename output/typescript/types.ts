@@ -4832,7 +4832,7 @@ export interface EqlSearchResponseBase<TEvent = unknown> extends ResponseBase {
   is_running?: boolean
   took?: integer
   timed_out?: boolean
-  hits: EqlHits<TEvent>
+  hits: EqlHits<TEvent> | EmptyObject
 }
 
 export interface EqlUsage extends XPackUsage {
