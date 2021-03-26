@@ -18005,7 +18005,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18016,7 +18016,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18027,7 +18027,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18038,7 +18038,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37713,7 +37713,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37724,7 +37724,7 @@
         },
         {
           "name": "contexts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -37738,7 +37738,7 @@
         },
         {
           "name": "max_input_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37749,7 +37749,7 @@
         },
         {
           "name": "preserve_position_increments",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37760,7 +37760,7 @@
         },
         {
           "name": "preserve_separators",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37771,7 +37771,7 @@
         },
         {
           "name": "search_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38616,7 +38616,7 @@
       "properties": [
         {
           "name": "value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "user_defined_value"
           }
@@ -38870,6 +38870,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "NestedProperty",
+              "namespace": "mapping.types.complex.nested"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "SearchAsYouTypeProperty",
               "namespace": "mapping.types.core.search_as_you_type"
             }
@@ -38909,7 +38916,7 @@
       "properties": [
         {
           "name": "copy_to",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38919,29 +38926,8 @@
           }
         },
         {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PropertyName",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PropertyBase",
-                "namespace": "mapping.types"
-              }
-            }
-          }
-        },
-        {
           "name": "similarity",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38952,7 +38938,7 @@
         },
         {
           "name": "store",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42420,7 +42406,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42431,7 +42417,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42442,7 +42428,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42453,7 +42439,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42464,7 +42450,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42475,7 +42461,7 @@
         },
         {
           "name": "precision_step",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42586,7 +42572,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42597,7 +42583,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42608,7 +42594,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42619,7 +42605,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42630,7 +42616,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42641,7 +42627,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42652,7 +42638,7 @@
         },
         {
           "name": "precision_step",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42862,7 +42848,7 @@
       "properties": [
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47497,7 +47483,7 @@
       "properties": [
         {
           "name": "doc_values",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52467,7 +52453,7 @@
       "properties": [
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54552,7 +54538,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54563,7 +54549,7 @@
         },
         {
           "name": "depth_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54574,7 +54560,7 @@
         },
         {
           "name": "doc_values",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54585,7 +54571,7 @@
         },
         {
           "name": "eager_global_ordinals",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54596,7 +54582,7 @@
         },
         {
           "name": "ignore_above",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54607,7 +54593,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54618,7 +54604,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54629,7 +54615,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54640,7 +54626,7 @@
         },
         {
           "name": "similarity",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54651,7 +54637,7 @@
         },
         {
           "name": "split_queries_on_whitespace",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56844,6 +56830,17 @@
           }
         },
         {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "index",
           "required": true,
           "type": {
@@ -57956,7 +57953,7 @@
       "properties": [
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57967,7 +57964,7 @@
         },
         {
           "name": "ignore_z_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57978,7 +57975,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58076,7 +58073,7 @@
       "properties": [
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58087,7 +58084,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58098,7 +58095,7 @@
         },
         {
           "name": "ignore_z_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58109,7 +58106,7 @@
         },
         {
           "name": "orientation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58120,7 +58117,7 @@
         },
         {
           "name": "strategy",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -66128,7 +66125,7 @@
       "properties": [
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -71404,7 +71401,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -71415,7 +71412,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -71426,7 +71423,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72235,7 +72232,7 @@
       "properties": [
         {
           "name": "relations",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -72856,7 +72853,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72867,7 +72864,7 @@
         },
         {
           "name": "eager_global_ordinals",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72878,7 +72875,7 @@
         },
         {
           "name": "ignore_above",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72889,7 +72886,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72900,7 +72897,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72911,7 +72908,7 @@
         },
         {
           "name": "normalizer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72922,7 +72919,7 @@
         },
         {
           "name": "norms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72933,7 +72930,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72944,7 +72941,7 @@
         },
         {
           "name": "split_queries_on_whitespace",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -79916,6 +79913,108 @@
       "inherits": [
         {
           "type": {
+            "name": "CorePropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "NestedProperty",
+        "namespace": "mapping.types.complex.nested"
+      },
+      "properties": [
+        {
+          "name": "dynamic",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DynamicMapping",
+                  "namespace": "mapping"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Property",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        },
+        {
+          "name": "include_in_parent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "include_in_root",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nested"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "QueryBase",
             "namespace": "query_dsl.abstractions.query"
           }
@@ -82815,7 +82914,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82826,7 +82925,7 @@
         },
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82837,7 +82936,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82848,7 +82947,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82859,7 +82958,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82870,7 +82969,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82881,7 +82980,7 @@
         },
         {
           "name": "scaling_factor",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82929,6 +83028,9 @@
         },
         {
           "name": "byte"
+        },
+        {
+          "name": "unsigned_long"
         }
       ],
       "name": {
@@ -83047,7 +83149,7 @@
       "properties": [
         {
           "name": "dynamic",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -83070,7 +83172,7 @@
         },
         {
           "name": "enabled",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83081,7 +83183,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -83094,7 +83196,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
@@ -87295,7 +87397,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
@@ -87350,7 +87452,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
@@ -93115,7 +93217,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93126,7 +93228,7 @@
         },
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93137,7 +93239,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93148,7 +93250,7 @@
         },
         {
           "name": "store",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -93379,7 +93481,7 @@
       "properties": [
         {
           "name": "positive_score_impact",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100668,7 +100770,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100679,7 +100781,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100690,7 +100792,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100701,7 +100803,7 @@
         },
         {
           "name": "max_shingle_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100712,7 +100814,7 @@
         },
         {
           "name": "norms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100723,7 +100825,7 @@
         },
         {
           "name": "search_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100734,7 +100836,7 @@
         },
         {
           "name": "search_quote_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100745,7 +100847,7 @@
         },
         {
           "name": "term_vector",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103951,10 +104053,22 @@
       "kind": "enum",
       "members": [
         {
-          "name": "ClockWise"
+          "name": "right"
         },
         {
-          "name": "CounterClockWise"
+          "name": "counterclockwise"
+        },
+        {
+          "name": "ccw"
+        },
+        {
+          "name": "left"
+        },
+        {
+          "name": "clockwise"
+        },
+        {
+          "name": "cw"
         }
       ],
       "name": {
@@ -103979,7 +104093,7 @@
       "properties": [
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103990,7 +104104,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104001,7 +104115,7 @@
         },
         {
           "name": "ignore_z_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104012,7 +104126,7 @@
         },
         {
           "name": "orientation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116880,7 +116994,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116891,7 +117005,7 @@
         },
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116902,7 +117016,7 @@
         },
         {
           "name": "eager_global_ordinals",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116913,7 +117027,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116924,7 +117038,7 @@
         },
         {
           "name": "fielddata_frequency_filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116935,7 +117049,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116946,7 +117060,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116957,7 +117071,7 @@
         },
         {
           "name": "index_phrases",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116968,7 +117082,7 @@
         },
         {
           "name": "index_prefixes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116979,7 +117093,7 @@
         },
         {
           "name": "norms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116990,7 +117104,7 @@
         },
         {
           "name": "position_increment_gap",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117001,7 +117115,7 @@
         },
         {
           "name": "search_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117012,7 +117126,7 @@
         },
         {
           "name": "search_quote_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117023,7 +117137,7 @@
         },
         {
           "name": "term_vector",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117700,7 +117814,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117711,7 +117825,7 @@
         },
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117722,7 +117836,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117733,11 +117847,22 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enable_position_increments",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -120370,7 +120495,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }

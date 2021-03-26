@@ -88,7 +88,6 @@ Condition,x_pack/watcher/condition/Condition.ts
 Input,x_pack/watcher/input/Input.ts
 Schedule,x_pack/watcher/schedule/Schedule.ts
 TriggerEvent,x_pack/watcher/trigger/TriggerEvent.ts
-NestedProperty,mapping/types/complex/nested/NestedProperty.ts
 GeoTree,mapping/types/geo/geo_shape/GeoTree.ts
 GeoPointFielddataFormat,modules/indices/fielddata/geo_point/GeoPointFielddataFormat.ts
 WeightScoreFunction,query_dsl/compound/function_score/functions/ScoreFunction.ts
