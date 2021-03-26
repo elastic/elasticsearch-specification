@@ -2836,7 +2836,7 @@ export interface ClearApiKeyCacheNode {
 }
 
 export interface ClearApiKeyCacheRequest extends RequestBase {
-  ids?: string
+  ids?: Ids
 }
 
 export interface ClearApiKeyCacheResponse extends ResponseBase {
