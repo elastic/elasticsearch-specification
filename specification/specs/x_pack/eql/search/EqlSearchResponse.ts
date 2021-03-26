@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class EqlSearchResponse extends ResponseBase {
-  stub: integer
-}
+class EqlSearchResponse<TEvent> extends EqlSearchResponseBase<TEvent> {}

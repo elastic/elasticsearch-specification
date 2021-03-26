@@ -17,4 +17,11 @@
  * under the License.
  */
 
-class EqlDeleteResponse extends AcknowledgedResponseBase {}
+class EqlSearchResponseBase<TEvent> extends ResponseBase {
+  id?: Id
+  is_partial?: boolean
+  is_running?: boolean
+  took?: integer
+  timed_out?: boolean
+  hits: EqlHits<TEvent>
+}

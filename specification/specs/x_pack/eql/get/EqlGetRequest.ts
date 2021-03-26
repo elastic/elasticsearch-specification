@@ -23,13 +23,12 @@
  * @stability TODO
  */
 interface EqlGetRequest extends RequestBase {
-  path_parts?: {
-    stub_a: string
+  path_parts: {
+    id: Id
   }
   query_parameters?: {
-    stub_b: string
+    keep_alive?: Time
+    wait_for_completion_timeout?: Time
   }
-  body?: {
-    stub_c: string
-  }
+  body?: {}
 }

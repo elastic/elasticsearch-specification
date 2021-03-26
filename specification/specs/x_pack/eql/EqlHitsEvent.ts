@@ -17,4 +17,9 @@
  * under the License.
  */
 
-class EqlDeleteResponse extends AcknowledgedResponseBase {}
+class EqlHitsEvent<TEvent> {
+  _index: IndexName
+  _id: Id
+  _source: TEvent
+  fields?: Dictionary<Field, UserDefinedValue[]>
+}

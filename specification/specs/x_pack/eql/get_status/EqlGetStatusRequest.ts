@@ -23,13 +23,9 @@
  * @stability TODO
  */
 interface EqlGetStatusRequest extends RequestBase {
-  path_parts?: {
-    stub_a: string
+  path_parts: {
+    id: Id
   }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
+  query_parameters?: {}
+  body?: {}
 }

@@ -4648,15 +4648,10 @@ export interface EnrichStatsResponse extends ResponseBase {
 export type EpochMillis = string | long
 
 export interface EqlDeleteRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
 }
 
-export interface EqlDeleteResponse extends ResponseBase {
-  stub: integer
+export interface EqlDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface EqlFeaturesJoinUsage {
@@ -4700,39 +4695,85 @@ export interface EqlFeaturesUsage {
 }
 
 export interface EqlGetRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
+  keep_alive?: Time
+  wait_for_completion_timeout?: Time
 }
 
-export interface EqlGetResponse extends ResponseBase {
-  stub: integer
+export interface EqlGetResponse<TEvent = unknown> extends EqlSearchResponseBase<TEvent> {
 }
 
 export interface EqlGetStatusRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
 }
 
 export interface EqlGetStatusResponse extends ResponseBase {
-  stub: integer
+  id: Id
+  is_partial: boolean
+  is_running: boolean
+  start_time_in_millis?: EpochMillis
+  expiration_time_in_millis?: EpochMillis
+  completion_status?: integer
+}
+
+export interface EqlHits<TEvent = unknown> {
+  total: TotalHits
+  events?: Array<EqlHitsEvent<TEvent>>
+  sequences?: Array<EqlHitsSequence<TEvent>>
+}
+
+export interface EqlHitsEvent<TEvent = unknown> {
+  _index: IndexName
+  _id: Id
+  _source: TEvent
+  fields?: Record<Field, Array<any>>
+}
+
+export interface EqlHitsSequence<TEvent = unknown> {
+  events: Array<EqlHitsEvent<TEvent>>
+  join_keys: Array<any>
+}
+
+export interface EqlSearchFieldFormatted {
+  field: Field
+  format: string
 }
 
 export interface EqlSearchRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
+  index: IndexName
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  keep_alive?: Time
+  keep_on_completion?: boolean
+  wait_for_completion_timeout?: Time
+  filter_path?: string
   body: {
-    stub_c: string
+    query: string
+    case_sensitive?: boolean
+    event_category_field?: Field
+    tiebreaker_field?: Field
+    timestamp_field?: Field
+    fetch_size?: uint
+    filter?: QueryContainer | Array<QueryContainer>
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    wait_for_completion_timeout?: Time
+    size?: integer | float
+    fields?: Array<Field | EqlSearchFieldFormatted>
   }
 }
 
-export interface EqlSearchResponse extends ResponseBase {
-  stub: integer
+export interface EqlSearchResponse<TEvent = unknown> extends EqlSearchResponseBase<TEvent> {
+}
+
+export interface EqlSearchResponseBase<TEvent = unknown> extends ResponseBase {
+  id?: Id
+  is_partial?: boolean
+  is_running?: boolean
+  took?: integer
+  timed_out?: boolean
+  hits: EqlHits<TEvent>
 }
 
 export interface EqlUsage extends XPackUsage {

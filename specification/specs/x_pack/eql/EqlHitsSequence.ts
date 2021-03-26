@@ -17,4 +17,7 @@
  * under the License.
  */
 
-class EqlDeleteResponse extends AcknowledgedResponseBase {}
+class EqlHitsSequence<TEvent> {
+  events: EqlHitsEvent<TEvent>[]
+  join_keys: UserDefinedValue[]
+}
