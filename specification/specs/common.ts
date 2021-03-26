@@ -73,7 +73,7 @@ class ErrorCause {
    * @aliases resource.id
    */
   resource_id?: Ids
-    /**
+  /**
    * resource type
    * @aliases resource.type
    */
