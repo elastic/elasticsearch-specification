@@ -90,6 +90,8 @@ function buildType (type) {
       return createAlias(type)
     case 'value':
       return buildType(type.value)
+    case 'literal_value':
+      return buildLiteralValue(type)
     default:
       throw new Error(`Unhandled kind: ${type.kind}`)
   }
@@ -314,4 +316,11 @@ function buildIndexer (type) {
     // type aliases back to string
     return t === 'AggregateName' ? 'string' : t
   }
+}
+
+function buildLiteralValue (type) {
+  if (typeof type.value === 'string') {
+    return `'${type.value}'`
+  }
+  return type.value
 }
