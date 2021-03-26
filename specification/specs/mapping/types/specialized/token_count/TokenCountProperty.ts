@@ -18,9 +18,10 @@
  */
 
 class TokenCountProperty extends DocValuesPropertyBase {
-  analyzer: string
-  boost: double
-  index: boolean
-  null_value: double
+  analyzer?: string
+  boost?: double
+  index?: boolean
+  null_value?: double
+  enable_position_increments?: boolean
   type: 'token_count'
 }

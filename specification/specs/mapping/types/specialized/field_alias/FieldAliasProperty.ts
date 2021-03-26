@@ -18,6 +18,6 @@
  */
 
 class FieldAliasProperty extends PropertyBase {
-  path: Field
+  path?: Field
   type: 'alias'
 }

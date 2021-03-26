@@ -17,7 +17,11 @@
  * under the License.
  */
 
-class NestedProperty extends ObjectProperty {
-  include_in_parent: boolean
-  include_in_root: boolean
+class NestedProperty extends CorePropertyBase {
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  include_in_parent?: boolean
+  include_in_root?: boolean
+  type: 'nested'
 }

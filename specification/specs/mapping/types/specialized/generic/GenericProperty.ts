@@ -22,6 +22,7 @@ class GenericProperty extends DocValuesPropertyBase {
   boost: double
   fielddata: StringFielddata
   ignore_above: integer
+  ignore_malformed: boolean
   index: boolean
   index_options: IndexOptions
   norms: boolean

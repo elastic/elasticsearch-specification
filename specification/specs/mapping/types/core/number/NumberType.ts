@@ -25,5 +25,6 @@ enum NumberType {
   integer = 4,
   long = 5,
   short = 6,
-  byte = 7
+  byte = 7,
+  unsigned_long = 8
 }

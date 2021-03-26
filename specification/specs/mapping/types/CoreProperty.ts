@@ -18,14 +18,14 @@
  */
 
 class CorePropertyBase extends PropertyBase {
-  copy_to: Fields
-  fields: Dictionary<PropertyName, PropertyBase>
-  similarity: string
-  store: boolean
+  copy_to?: Fields
+  similarity?: string
+  store?: boolean
 }
 
 type CoreProperty =
   | ObjectProperty
+  | NestedProperty
   | SearchAsYouTypeProperty
   | TextProperty
   | DocValuesProperty

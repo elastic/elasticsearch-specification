@@ -19,8 +19,8 @@
 
 class ObjectProperty extends CorePropertyBase {
   /** @prop_serializer DynamicMappingFormatter */
-  dynamic: boolean | DynamicMapping
-  enabled: boolean
-  properties: Dictionary<PropertyName, PropertyBase>
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
   type: 'object'
 }

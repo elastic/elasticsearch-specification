@@ -18,6 +18,6 @@
  */
 
 class DateRangeProperty extends RangePropertyBase {
-  format: string
+  format?: string
   type: 'date_range'
 }

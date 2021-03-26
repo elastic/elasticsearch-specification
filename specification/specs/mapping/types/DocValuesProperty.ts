@@ -18,7 +18,7 @@
  */
 
 class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values: boolean
+  doc_values?: boolean
 }
 
 type DocValuesProperty =

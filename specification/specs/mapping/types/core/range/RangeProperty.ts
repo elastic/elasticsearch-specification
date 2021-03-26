@@ -18,10 +18,10 @@
  */
 
 class RangePropertyBase extends DocValuesPropertyBase {
-  boost: double
-  coerce: boolean
-  index: boolean
-  store: boolean
+  boost?: double
+  coerce?: boolean
+  index?: boolean
+  store?: boolean
 }
 
 type RangeProperty =

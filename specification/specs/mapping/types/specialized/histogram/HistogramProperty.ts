@@ -18,6 +18,6 @@
  */
 
 class HistogramProperty extends PropertyBase {
-  ignore_malformed: boolean
+  ignore_malformed?: boolean
   type: 'histogram'
 }

@@ -18,12 +18,12 @@
  */
 
 class DateProperty extends DocValuesPropertyBase {
-  boost: double
-  fielddata: NumericFielddata
-  format: string
-  ignore_malformed: boolean
-  index: boolean
-  null_value: DateString
-  precision_step: integer
+  boost?: double
+  fielddata?: NumericFielddata
+  format?: string
+  ignore_malformed?: boolean
+  index?: boolean
+  null_value?: DateString
+  precision_step?: integer
   type: 'date'
 }

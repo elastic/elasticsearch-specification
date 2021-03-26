@@ -21,10 +21,10 @@ class PropertyBase {
   local_metadata?: Dictionary<string, UserDefinedValue>
   meta?: Dictionary<string, string>
   name?: PropertyName
-  properties?: Dictionary<PropertyName, PropertyBase>
+  properties?: Dictionary<PropertyName, Property>
   ignore_above?: integer
   dynamic?: boolean | DynamicMapping
-  fields?: Dictionary<PropertyName, PropertyBase>
+  fields?: Dictionary<PropertyName, Property>
 }
 
 /** @variants internal tag='type' */

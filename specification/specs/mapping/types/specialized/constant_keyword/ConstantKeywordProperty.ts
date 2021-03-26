@@ -18,6 +18,6 @@
  */
 
 class ConstantKeywordProperty extends PropertyBase {
-  value: UserDefinedValue
+  value?: UserDefinedValue
   type: 'constant_keyword'
 }
