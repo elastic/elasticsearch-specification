@@ -370,30 +370,6 @@
         "Missing response"
       ]
     },
-    "searchable_snapshots.clear_cache": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "searchable_snapshots.mount": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "searchable_snapshots.repository_stats": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "security.clear_cached_privileges": {
       "request": [
         "Missing request"

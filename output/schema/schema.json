@@ -8738,9 +8738,16 @@
       "description": "Clear the cache of searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsClearCacheRequest",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsClearCacheResponse",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8767,9 +8774,16 @@
       "description": "Mount a snapshot as a searchable index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
       "name": "searchable_snapshots.mount",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsMountRequest",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsMountResponse",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8787,9 +8801,16 @@
       "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.repository_stats",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsRepositoryStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsRepositoryStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -102496,6 +102517,150 @@
         "name": "SearchType",
         "namespace": "common"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsClearCacheRequest",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsClearCacheResponse",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsMountRequest",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsMountResponse",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsRepositoryStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsRepositoryStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
