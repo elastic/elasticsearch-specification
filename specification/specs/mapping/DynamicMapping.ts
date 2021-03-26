@@ -18,5 +18,8 @@
  */
 
 enum DynamicMapping {
-  strict = 0
+  strict = 0,
+  runtime = 1,
+  true = 2,
+  false = 3
 }

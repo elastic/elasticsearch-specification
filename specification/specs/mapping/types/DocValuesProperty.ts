@@ -20,3 +20,20 @@
 class DocValuesPropertyBase extends CorePropertyBase {
   doc_values: boolean
 }
+
+type DocValuesProperty =
+  | BinaryProperty
+  | BooleanProperty
+  | DateProperty
+  | DateNanosProperty
+  | KeywordProperty
+  | NumberProperty
+  | RangePropertyBase
+  | GeoPointProperty
+  | GeoShapeProperty
+  | CompletionProperty
+  | GenericProperty
+  | IpProperty
+  | Murmur3HashProperty
+  | ShapeProperty
+  | TokenCountProperty

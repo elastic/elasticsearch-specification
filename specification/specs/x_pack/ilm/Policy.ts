@@ -19,4 +19,5 @@
 
 class Policy {
   phases: Phases
+  name?: string
 }

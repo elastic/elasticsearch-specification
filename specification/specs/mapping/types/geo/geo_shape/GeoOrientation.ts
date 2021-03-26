@@ -18,6 +18,10 @@
  */
 
 enum GeoOrientation {
-  ClockWise = 0,
-  CounterClockWise = 1
+  right = 0,
+  counterclockwise = 1,
+  ccw = 2,
+  left = 3,
+  clockwise = 4,
+  cw = 5
 }

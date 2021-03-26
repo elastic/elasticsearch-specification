@@ -20,6 +20,7 @@
 class DateRangeExpression {
   from?: DateMath | float
   from_as_string?: string
+  to_as_string?: string
   key?: string
   to?: DateMath | float
   doc_count?: long
