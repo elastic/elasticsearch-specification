@@ -49,7 +49,8 @@ import {
   modelInherits,
   modelProperty,
   modelType,
-  modelTypeAlias
+  modelTypeAlias,
+  parseVariantNameTag
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
@@ -256,6 +257,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     hoistTypeAnnotations(type, declaration.getJsDocs())
+
+    const variant = parseVariantNameTag(declaration.getJsDocs())
+    if (typeof variant === 'string') {
+      type.variantName = variant
+    }
 
     for (const member of declaration.getMembers()) {
       // Any property definition
