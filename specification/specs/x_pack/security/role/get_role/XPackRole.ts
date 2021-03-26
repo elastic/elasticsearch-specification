@@ -24,7 +24,7 @@ class XPackRole {
   run_as: string[]
   transient_metadata: TransientMetadata
   applications: ApplicationPrivileges[]
-  role_templates: RoleTemplate[]
+  role_templates?: RoleTemplate[]
 }
 
 class TransientMetadata {
