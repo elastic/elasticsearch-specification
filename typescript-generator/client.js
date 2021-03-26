@@ -189,7 +189,10 @@ function createClientTypes (kibana = false) {
       ? endpoint.name.split('.')[1]
       : endpoint.name
 
-    if (!endpoint.request || !endpoint.response) {
+    const requestType = endpoint.request != null ? getType(endpoint.request.name) : null
+    const responseType = endpoint.response != null ? getType(endpoint.response.name) : null
+
+    if (!requestType || !responseType) {
       let definition = `${camelify(name)}<TContext = unknown>(params?: TODO, options?: TransportRequestOptions): TransportRequestPromise<ApiResponse<TODO, TContext>>`
       if (kibana) {
         return definition
@@ -201,9 +204,6 @@ function createClientTypes (kibana = false) {
 
       return definition
     }
-
-    const requestType = getType(endpoint.request.name)
-    const responseType = getType(endpoint.response.name)
 
     let requestDefinition = ''
     let requestGenerics = ''
@@ -279,6 +279,12 @@ function createClientTypes (kibana = false) {
   function getType (name) {
     for (const type of types) {
       if (type.name.name === name) {
+        if (type.kind === 'request' && type.path.some(p => p.name.startsWith('stub'))) {
+          return null
+        }
+        if (type.kind === 'interface' && type.properties.some(p => p.name.startsWith('stub'))) {
+          return null
+        }
         return type
       }
     }

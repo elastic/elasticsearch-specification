@@ -18,7 +18,16 @@
  */
 
 class RealmUsage extends XPackUsage {
-  name: string[]
-  order: long[]
-  size: long[]
+  name?: string[]
+  order?: long[]
+  size?: long[]
+  cache?: RealmCacheUsage[]
+  has_authorization_realms?: boolean[]
+  has_default_username_pattern?: boolean[]
+  has_truststore?: boolean[]
+  is_authentication_delegated?: boolean[]
+}
+
+class RealmCacheUsage {
+  size: long
 }

@@ -223,26 +223,6 @@ export interface AggregationRange {
   to?: double
 }
 
-export interface AlertingCount {
-  active: long
-  total: long
-}
-
-export interface AlertingExecution {
-  actions: Record<string, ExecutionAction>
-}
-
-export interface AlertingInput {
-  input: Record<string, AlertingCount>
-  trigger: Record<string, AlertingCount>
-}
-
-export interface AlertingUsage extends XPackUsage {
-  count: AlertingCount
-  execution: AlertingExecution
-  watch: AlertingInput
-}
-
 export interface Alias {
   filter?: QueryContainer
   index_routing?: Routing
@@ -327,6 +307,22 @@ export interface AnalysisLimits {
 
 export interface AnalysisMemoryLimit {
   model_memory_limit: string
+}
+
+export interface AnalyticsStatsUsage {
+  boxplot_usage: long
+  cumulative_cardinality_usage: long
+  string_stats_usage: long
+  top_metrics_usage: long
+  t_test_usage: long
+  moving_percentiles_usage: long
+  normalize_usage: long
+  rate_usage: long
+  multi_terms_usage?: long
+}
+
+export interface AnalyticsUsage extends XPackUsage {
+  stats: AnalyticsStatsUsage
 }
 
 export interface AnalyzeDetail {
@@ -633,7 +629,7 @@ export interface AttachmentProcessor extends ProcessorBase {
 }
 
 export interface AuditUsage extends SecurityFeatureToggle {
-  outputs: Array<string>
+  outputs?: Array<string>
 }
 
 export interface AuthenticateRequest extends RequestBase {
@@ -3831,6 +3827,32 @@ export interface DataPathStats {
   type: string
 }
 
+export interface DataStreamsUsage extends XPackUsage {
+  data_streams: long
+  indices_count: long
+}
+
+export interface DataTierPhaseCountUsage {
+  node_count: long
+  index_count: long
+  total_shard_count: long
+  primary_shard_count: long
+  doc_count: long
+  total_size_bytes: long
+  primary_size_bytes: long
+  primary_shard_size_avg_bytes: long
+  primary_shard_size_median_bytes: long
+  primary_shard_size_mad_bytes: long
+}
+
+export interface DataTiersUsage extends XPackUsage {
+  data_warm: DataTierPhaseCountUsage
+  data_frozen?: DataTierPhaseCountUsage
+  data_cold: DataTierPhaseCountUsage
+  data_content: DataTierPhaseCountUsage
+  data_hot: DataTierPhaseCountUsage
+}
+
 export interface Datafeed {
   aggregations?: Record<string, AggregationContainer>
   aggs?: Record<string, AggregationContainer>
@@ -4632,6 +4654,46 @@ export interface EqlDeleteRequest extends RequestBase {
 export interface EqlDeleteResponse extends AcknowledgedResponseBase {
 }
 
+export interface EqlFeaturesJoinUsage {
+  join_queries_two: uint
+  join_queries_three: uint
+  join_until: uint
+  join_queries_five_or_more: uint
+  join_queries_four: uint
+}
+
+export interface EqlFeaturesKeysUsage {
+  join_keys_two: uint
+  join_keys_one: uint
+  join_keys_three: uint
+  join_keys_five_or_more: uint
+  join_keys_four: uint
+}
+
+export interface EqlFeaturesPipesUsage {
+  pipe_tail: uint
+  pipe_head: uint
+}
+
+export interface EqlFeaturesSequencesUsage {
+  sequence_queries_three: uint
+  sequence_queries_four: uint
+  sequence_queries_two: uint
+  sequence_until: uint
+  sequence_queries_five_or_more: uint
+  sequence_maxspan: uint
+}
+
+export interface EqlFeaturesUsage {
+  join: uint
+  joins: EqlFeaturesJoinUsage
+  keys: EqlFeaturesKeysUsage
+  event: uint
+  pipes: EqlFeaturesPipesUsage
+  sequence: uint
+  sequences: EqlFeaturesSequencesUsage
+}
+
 export interface EqlGetRequest extends RequestBase {
   id: Id
   keep_alive?: Time
@@ -4712,6 +4774,11 @@ export interface EqlSearchResponseBase<TEvent = unknown> extends ResponseBase {
   took?: integer
   timed_out?: boolean
   hits: EqlHits<TEvent>
+}
+
+export interface EqlUsage extends XPackUsage {
+  features: EqlFeaturesUsage
+  queries: Record<string, QueryUsage>
 }
 
 export interface ErrorCause {
@@ -4831,11 +4898,6 @@ export interface ExecuteWatchResponse extends ResponseBase {
 export interface ExecutingPolicy {
   name: string
   task: TaskInfo
-}
-
-export interface ExecutionAction {
-  total: long
-  total_in_ms: long
 }
 
 export type ExecutionPhase = 'awaits_execution' | 'started' | 'input' | 'condition' | 'actions' | 'watch_transform' | 'aborted' | 'finished'
@@ -5401,6 +5463,10 @@ export interface FreezeIndexRequest extends RequestBase {
 
 export interface FreezeIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
+}
+
+export interface FrozenIndicesUsage extends XPackUsage {
+  indices_count: long
 }
 
 export type FunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' | 'min'
@@ -7055,22 +7121,27 @@ export type IpRangeBucket = IpRangeBucketKeys |
 
 export interface Job {
   allow_lazy_open?: boolean
-  analysis_config: AnalysisConfig
+  analysis_config?: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval: Time
-  create_time: integer
-  data_description: DataDescription
-  description: string
-  finished_time: integer
-  job_id: string
-  job_type: string
-  model_plot: ModelPlotConfig
-  model_snapshot_id: string
-  model_snapshot_retention_days: long
-  renormalization_window_days: long
+  background_persist_interval?: Time
+  count: integer
+  created_by: EmptyObject
+  create_time?: integer
+  detectors?: JobStatistics
+  data_description?: DataDescription
+  description?: string
+  finished_time?: integer
+  forecasts: MlJobForecasts
+  job_id?: Id
+  job_type?: string
+  model_plot?: ModelPlotConfig
+  model_size?: JobStatistics
+  model_snapshot_id?: Id
+  model_snapshot_retention_days?: long
+  renormalization_window_days?: long
   results_index_name?: IndexName
-  results_retention_days: long
-  groups: Array<string>
+  results_retention_days?: long
+  groups?: Array<string>
   model_plot_config?: ModelPlotConfig
   custom_settings?: CustomSettings
   job_version?: string
@@ -7408,6 +7479,8 @@ export interface MachineLearningUsage extends XPackUsage {
   datafeeds: Record<string, DatafeedCount>
   jobs: Record<string, Job>
   node_count: integer
+  data_frame_analytics_jobs: MlDataFrameAnalyticsJobsUsage
+  inference: MlInferenceUsage
 }
 
 export interface MainError extends ErrorCause {
@@ -7554,7 +7627,7 @@ export interface MinBucketAggregation extends PipelineAggregationBase {
 }
 
 export interface MinimalLicenseInformation {
-  expiry_date_in_millis: long
+  expiry_date_in_millis: EpochMillis
   mode: LicenseType
   status: LicenseStatus
   type: LicenseType
@@ -7570,6 +7643,62 @@ export type Missing = string | integer | double | boolean
 export interface MissingAggregation extends BucketAggregationBase {
   field?: Field
   missing?: Missing
+}
+
+export interface MlDataFrameAnalyticsJobsCountUsage {
+  count: long
+}
+
+export interface MlDataFrameAnalyticsJobsMemoryUsage {
+  peak_usage_bytes: JobStatistics
+}
+
+export interface MlDataFrameAnalyticsJobsUsage {
+  memory_usage?: MlDataFrameAnalyticsJobsMemoryUsage
+  _all: MlDataFrameAnalyticsJobsCountUsage
+  analysis_counts?: EmptyObject
+}
+
+export interface MlInferenceIngestProcessorCountUsage {
+  max: long
+  sum: long
+  min: long
+}
+
+export interface MlInferenceIngestProcessorUsage {
+  num_docs_processed: MlInferenceIngestProcessorCountUsage
+  pipelines: MlUsageCounter
+  num_failures: MlInferenceIngestProcessorCountUsage
+  time_ms: MlInferenceIngestProcessorCountUsage
+}
+
+export interface MlInferenceTrainedModelsCountUsage {
+  total: long
+  prepackaged: long
+  other: long
+  regression: long
+  classification: long
+}
+
+export interface MlInferenceTrainedModelsUsage {
+  estimated_operations?: JobStatistics
+  estimated_heap_memory_usage_bytes?: JobStatistics
+  count?: MlInferenceTrainedModelsCountUsage
+  _all: MlUsageCounter
+}
+
+export interface MlInferenceUsage {
+  ingest_processors: Record<string, MlInferenceIngestProcessorUsage>
+  trained_models: MlInferenceTrainedModelsUsage
+}
+
+export interface MlJobForecasts {
+  total: long
+  forecasted_jobs: long
+}
+
+export interface MlUsageCounter {
+  count: long
 }
 
 export type ModelCategorizationStatus = 'ok' | 'warn'
@@ -8445,7 +8574,7 @@ export interface PercolateQuery extends QueryBase {
 }
 
 export interface Phase {
-  actions: Record<string, LifecycleAction>
+  actions: Record<string, LifecycleAction> | Array<string>
   min_age?: Time
 }
 
@@ -9234,10 +9363,10 @@ export interface QueryTemplate {
 }
 
 export interface QueryUsage {
-  count: integer
-  failed: integer
-  paging: integer
-  total: integer
+  count?: integer
+  failed?: integer
+  paging?: integer
+  total?: integer
 }
 
 export interface QueryUserPrivileges {
@@ -9314,15 +9443,24 @@ export interface RateAggregation extends FormatMetricAggregationBase {
 
 export type RateMode = 'sum' | 'value_count'
 
+export interface RealmCacheUsage {
+  size: long
+}
+
 export interface RealmInfo {
   name: string
   type: string
 }
 
 export interface RealmUsage extends XPackUsage {
-  name: Array<string>
-  order: Array<long>
-  size: Array<long>
+  name?: Array<string>
+  order?: Array<long>
+  size?: Array<long>
+  cache?: Array<RealmCacheUsage>
+  has_authorization_realms?: Array<boolean>
+  has_default_username_pattern?: Array<boolean>
+  has_truststore?: Array<boolean>
+  is_authentication_delegated?: Array<boolean>
 }
 
 export interface RecoveryBytes {
@@ -9781,12 +9919,6 @@ export interface RoleMappingUsage {
   size: integer
 }
 
-export interface RoleUsage {
-  dls: boolean
-  fls: boolean
-  size: long
-}
-
 export interface RolloverConditions {
   max_age?: Time
   max_docs?: long
@@ -9971,6 +10103,27 @@ export interface RuntimeField {
 }
 
 export type RuntimeFields = Record<Field, RuntimeField>
+
+export interface RuntimeFieldsTypeUsage {
+  chars_max: long
+  chars_total: long
+  count: long
+  doc_max: long
+  doc_total: long
+  index_count: long
+  lang: Array<string>
+  lines_max: long
+  lines_total: long
+  name: Field
+  scriptless_count: long
+  shadowed_count: long
+  source_max: long
+  source_total: long
+}
+
+export interface RuntimeFieldsUsage extends XPackUsage {
+  field_types: Array<RuntimeFieldsTypeUsage>
+}
 
 export interface SampleDiversity {
   field: Field
@@ -10309,6 +10462,10 @@ export interface SearchTransform {
 
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
+export interface SearchableSnapshotsUsage extends XPackUsage {
+  indices_count: integer
+}
+
 export interface SecurityFeatureToggle {
   enabled: boolean
 }
@@ -10317,15 +10474,47 @@ export interface SecurityNode {
   name: string
 }
 
+export interface SecurityRolesDlsBitSetCacheUsage {
+  count: integer
+  memory: ByteSize
+  memory_in_bytes: ulong
+}
+
+export interface SecurityRolesDlsUsage {
+  bit_set_cache: SecurityRolesDlsBitSetCacheUsage
+}
+
+export interface SecurityRolesFileUsage {
+  dls: boolean
+  fls: boolean
+  size: long
+}
+
+export interface SecurityRolesNativeUsage {
+  dls: boolean
+  fls: boolean
+  size: long
+}
+
+export interface SecurityRolesUsage {
+  native: SecurityRolesNativeUsage
+  dls: SecurityRolesDlsUsage
+  file: SecurityRolesFileUsage
+}
+
 export interface SecurityUsage extends XPackUsage {
+  api_key_service: SecurityFeatureToggle
   anonymous: SecurityFeatureToggle
   audit: AuditUsage
+  fips_140: SecurityFeatureToggle
   ipfilter: IpFilterUsage
   realms: Record<string, RealmUsage>
   role_mapping: Record<string, RoleMappingUsage>
-  roles: Record<string, RoleUsage>
+  roles: SecurityRolesUsage
   ssl: SslUsage
-  system_key: SecurityFeatureToggle
+  system_key?: SecurityFeatureToggle
+  token_service: SecurityFeatureToggle
+  operator_privileges: XPackUsage
 }
 
 export interface Segment {
@@ -10888,8 +11077,8 @@ export interface SlicedScroll {
 }
 
 export interface SlmUsage extends XPackUsage {
-  policy_count: integer
-  policy_stats: SnapshotLifecycleStats
+  policy_count?: integer
+  policy_stats?: SnapshotLifecycleStats
 }
 
 export interface SmoothingModelContainer {
@@ -12435,6 +12624,11 @@ export interface UrlDecodeProcessor extends ProcessorBase {
   target_field?: Field
 }
 
+export interface UsageCount {
+  active: long
+  total: long
+}
+
 export interface UserAgentProcessor extends ProcessorBase {
   field: Field
   ignore_missing: boolean
@@ -12611,6 +12805,15 @@ export interface WatchStatus {
   execution_state?: string
 }
 
+export interface WatcherActionTotalsUsage {
+  total: long
+  total_time_in_ms: long
+}
+
+export interface WatcherActionsUsage {
+  actions: Record<Name, WatcherActionTotalsUsage>
+}
+
 export interface WatcherNodeStats {
   current_watches: Array<WatchRecordStats>
   execution_thread_pool: ExecutionThreadPool
@@ -12632,6 +12835,29 @@ export interface WatcherStatsResponse extends ResponseBase {
   manually_stopped: boolean
   stats: Array<WatcherNodeStats>
   _nodes: NodeStatistics
+}
+
+export interface WatcherUsage extends XPackUsage {
+  execution: WatcherActionsUsage
+  watch: WatcherWatchUsage
+  count: UsageCount
+}
+
+export interface WatcherWatchTriggerScheduleUsage extends UsageCount {
+  cron: UsageCount
+  _all: UsageCount
+}
+
+export interface WatcherWatchTriggerUsage {
+  schedule?: WatcherWatchTriggerScheduleUsage
+  _all: UsageCount
+}
+
+export interface WatcherWatchUsage {
+  input: Record<Name, UsageCount>
+  condition?: Record<Name, UsageCount>
+  action?: Record<Name, UsageCount>
+  trigger: WatcherWatchTriggerUsage
 }
 
 export interface WebhookActionResult {
@@ -12713,18 +12939,22 @@ export interface XPackBuildInformation {
 
 export interface XPackFeature {
   available: boolean
-  description: string
+  description?: string
   enabled: boolean
-  native_code_info: NativeCodeInformation
+  native_code_info?: NativeCodeInformation
 }
 
 export interface XPackFeatures {
+  aggregate_metric: XPackFeature
   analytics: XPackFeature
   ccr: XPackFeature
-  data_frame: XPackFeature
-  data_science: XPackFeature
+  data_frame?: XPackFeature
+  data_science?: XPackFeature
+  data_streams: XPackFeature
+  data_tiers: XPackFeature
   enrich: XPackFeature
-  flattened: XPackFeature
+  eql: XPackFeature
+  flattened?: XPackFeature
   frozen_indices: XPackFeature
   graph: XPackFeature
   ilm: XPackFeature
@@ -12732,6 +12962,8 @@ export interface XPackFeatures {
   ml: XPackFeature
   monitoring: XPackFeature
   rollup: XPackFeature
+  runtime_fields?: XPackFeature
+  searchable_snapshots: XPackFeature
   security: XPackFeature
   slm: XPackFeature
   spatial: XPackFeature
@@ -12778,18 +13010,27 @@ export interface XPackUsageRequest extends RequestBase {
 }
 
 export interface XPackUsageResponse extends ResponseBase {
-  watcher: AlertingUsage
+  aggregate_metric: XPackUsage
+  analytics: AnalyticsUsage
+  watcher: WatcherUsage
   ccr: CcrUsage
-  data_frame: XPackUsage
-  data_science: XPackUsage
+  data_frame?: XPackUsage
+  data_science?: XPackUsage
+  data_streams?: DataStreamsUsage
+  data_tiers: DataTiersUsage
   enrich: XPackUsage
-  flattened: FlattenedUsage
+  eql: EqlUsage
+  flattened?: FlattenedUsage
+  frozen_indices: FrozenIndicesUsage
   graph: XPackUsage
   ilm: IlmUsage
   logstash: XPackUsage
   ml: MachineLearningUsage
   monitoring: MonitoringUsage
   rollup: XPackUsage
+  runtime_fields?: RuntimeFieldsUsage
+  spatial: XPackUsage
+  searchable_snapshots: SearchableSnapshotsUsage
   security: SecurityUsage
   slm: SlmUsage
   sql: SqlUsage

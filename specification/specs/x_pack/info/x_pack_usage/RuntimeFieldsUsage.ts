@@ -17,9 +17,23 @@
  * under the License.
  */
 
-class XPackFeature {
-  available: boolean
-  description?: string
-  enabled: boolean
-  native_code_info?: NativeCodeInformation
+class RuntimeFieldsUsage extends XPackUsage {
+  field_types: RuntimeFieldsTypeUsage[]
+}
+
+class RuntimeFieldsTypeUsage {
+  chars_max: long
+  chars_total: long
+  count: long
+  doc_max: long
+  doc_total: long
+  index_count: long
+  lang: string[]
+  lines_max: long
+  lines_total: long
+  name: Field
+  scriptless_count: long
+  shadowed_count: long
+  source_max: long
+  source_total: long
 }

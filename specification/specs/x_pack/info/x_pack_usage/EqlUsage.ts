@@ -17,9 +17,7 @@
  * under the License.
  */
 
-class XPackFeature {
-  available: boolean
-  description?: string
-  enabled: boolean
-  native_code_info?: NativeCodeInformation
+class EqlUsage extends XPackUsage {
+  features: EqlFeaturesUsage
+  queries: Dictionary<string, QueryUsage>
 }
