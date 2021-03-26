@@ -64111,7 +64111,7 @@
         },
         {
           "name": "sample_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

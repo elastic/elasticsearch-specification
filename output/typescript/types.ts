@@ -6439,7 +6439,7 @@ export interface GraphConnection {
 
 export interface GraphExploreControls {
   sample_diversity?: SampleDiversity
-  sample_size: integer
+  sample_size?: integer
   timeout?: Time
   use_significance: boolean
 }
