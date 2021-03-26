@@ -218,9 +218,9 @@ export interface AggregationProfileDebug {
 }
 
 export interface AggregationRange {
-  from?: double
+  from?: double | string
   key?: string
-  to?: double
+  to?: double | string
 }
 
 export interface Alias {
@@ -419,7 +419,7 @@ export interface AnomalyRecord {
 export interface ApiKey {
   name: Name
   expiration?: Time
-  role_descriptors?: Array<string>
+  role_descriptors?: Array<Record<string, any>>
 }
 
 export interface ApiKeyApplication {
@@ -576,7 +576,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     highlight?: Highlight
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
-    indices_boost?: Record<IndexName, double>
+    indices_boost?: Array<Record<IndexName, double>>
     keep_alive?: Time
     keep_on_completion?: boolean
     lenient?: boolean
@@ -612,6 +612,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     typed_keys?: boolean
     version?: boolean
     wait_for_completion_timeout?: Time
+    fields?: Array<Field | DateField>
   }
 }
 
@@ -708,12 +709,22 @@ export interface BaseUrlConfig {
   url_value: string
 }
 
+export interface BinaryProperty extends DocValuesPropertyBase {
+}
+
 export interface BoolQuery extends QueryBase {
   filter?: QueryContainer | Array<QueryContainer>
   minimum_should_match?: MinimumShouldMatch
   must?: QueryContainer | Array<QueryContainer>
   must_not?: QueryContainer | Array<QueryContainer>
   should?: QueryContainer | Array<QueryContainer>
+}
+
+export interface BooleanProperty extends DocValuesPropertyBase {
+  boost: double
+  fielddata: NumericFielddata
+  index: boolean
+  null_value: boolean
 }
 
 export interface BoostingQuery extends QueryBase {
@@ -2836,7 +2847,7 @@ export interface ClearApiKeyCacheNode {
 }
 
 export interface ClearApiKeyCacheRequest extends RequestBase {
-  ids?: string
+  ids?: Ids
 }
 
 export interface ClearApiKeyCacheResponse extends ResponseBase {
@@ -3485,6 +3496,15 @@ export interface CompareCondition {
   value: any
 }
 
+export interface CompletionProperty extends DocValuesPropertyBase {
+  analyzer: string
+  contexts: Array<SuggestContext>
+  max_input_length: integer
+  preserve_position_increments: boolean
+  preserve_separators: boolean
+  search_analyzer: string
+}
+
 export interface CompletionStats {
   size_in_bytes: long
   fields?: Record<Field, CompletionStats>
@@ -3564,6 +3584,10 @@ export type Conflicts = 'abort' | 'proceed'
 
 export type ConnectionScheme = 'http' | 'https'
 
+export interface ConstantKeywordProperty extends PropertyBase {
+  value: any
+}
+
 export interface ConstantScoreQuery extends QueryBase {
   filter?: QueryContainer
   boost?: float
@@ -3586,6 +3610,15 @@ export interface CoordinatorStats {
   queue_size: integer
   remote_requests_current: integer
   remote_requests_total: long
+}
+
+export type CoreProperty = ObjectProperty | SearchAsYouTypeProperty | TextProperty | DocValuesProperty
+
+export interface CorePropertyBase extends PropertyBase {
+  copy_to: Fields
+  fields: Record<PropertyName, PropertyBase>
+  similarity: string
+  store: boolean
 }
 
 export interface CountRequest extends RequestBase {
@@ -3956,12 +3989,31 @@ export type DateMath = string
 
 export type DateMathTime = string
 
+export interface DateNanosProperty extends DocValuesPropertyBase {
+  boost: double
+  format: string
+  ignore_malformed: boolean
+  index: boolean
+  null_value: DateString
+  precision_step: integer
+}
+
 export interface DateProcessor extends ProcessorBase {
   field: Field
   formats: Array<string>
   locale?: string
   target_field: Field
   timezone: string
+}
+
+export interface DateProperty extends DocValuesPropertyBase {
+  boost: double
+  fielddata: NumericFielddata
+  format: string
+  ignore_malformed: boolean
+  index: boolean
+  null_value: DateString
+  precision_step: integer
 }
 
 export interface DateRangeAggregation extends BucketAggregationBase {
@@ -3975,6 +4027,7 @@ export interface DateRangeAggregation extends BucketAggregationBase {
 export interface DateRangeExpression {
   from?: DateMath | float
   from_as_string?: string
+  to_as_string?: string
   key?: string
   to?: DateMath | float
   doc_count?: long
@@ -4069,6 +4122,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: long
   routing?: Routing
+  q?: string
   scroll?: Time
   scroll_size?: long
   search_timeout?: Time
@@ -4501,6 +4555,12 @@ export interface DocValueField {
   format?: string
 }
 
+export type DocValuesProperty = BinaryProperty | BooleanProperty | DateProperty | DateNanosProperty | KeywordProperty | NumberProperty | RangePropertyBase | GeoPointProperty | GeoShapeProperty | CompletionProperty | GenericProperty | IpProperty | Murmur3HashProperty | ShapeProperty | TokenCountProperty
+
+export interface DocValuesPropertyBase extends CorePropertyBase {
+  doc_values: boolean
+}
+
 export interface DocumentExistsRequest extends RequestBase {
   id: Id
   index: IndexName
@@ -4537,7 +4597,7 @@ export interface DotExpanderProcessor extends ProcessorBase {
 export interface DropProcessor extends ProcessorBase {
 }
 
-export type DynamicMapping = 'strict'
+export type DynamicMapping = 'strict' | 'runtime' | 'true' | 'false'
 
 export interface DynamicTemplate {
   mapping?: PropertyBase
@@ -4747,7 +4807,6 @@ export interface EqlSearchRequest extends RequestBase {
   keep_alive?: Time
   keep_on_completion?: boolean
   wait_for_completion_timeout?: Time
-  filter_path?: string
   body: {
     query: string
     case_sensitive?: boolean
@@ -4802,8 +4861,8 @@ export interface ErrorCause {
   phase?: string
   property_name?: string
   processor_type?: string
-  resource_id?: Array<string>
-  'resource.id'?: Id
+  resource_id?: Ids
+  'resource.id'?: Ids
   resource_type?: string
   'resource.type'?: string
   script?: string
@@ -5053,6 +5112,10 @@ export interface FailProcessor extends ProcessorBase {
 
 export type Field = string
 
+export interface FieldAliasProperty extends PropertyBase {
+  path: Field
+}
+
 export interface FieldCapabilities {
   aggregatable: boolean
   indices?: Indices
@@ -5182,6 +5245,12 @@ export interface FieldValueFactorScoreFunction extends ScoreFunctionBase {
   modifier?: FieldValueFactorModifier
 }
 
+export interface FielddataFrequencyFilter {
+  max: double
+  min: double
+  min_segment_size: integer
+}
+
 export interface FielddataStats {
   evictions?: long
   memory_size_in_bytes: long
@@ -5272,6 +5341,19 @@ export interface FindStructureResponse {
 export interface FingerprintTokenFilter extends TokenFilterBase {
   max_output_size: integer
   separator: string
+}
+
+export interface FlattenedProperty extends PropertyBase {
+  boost: double
+  depth_limit: integer
+  doc_values: boolean
+  eager_global_ordinals: boolean
+  ignore_above: integer
+  index: boolean
+  index_options: IndexOptions
+  null_value: string
+  similarity: string
+  split_queries_on_whitespace: boolean
 }
 
 export interface FlattenedUsage extends XPackUsage {
@@ -5517,6 +5599,21 @@ export interface GarbageCollectionStats {
   collectors: Record<string, GarbageCollectionGenerationStats>
 }
 
+export interface GenericProperty extends DocValuesPropertyBase {
+  analyzer: string
+  boost: double
+  fielddata: StringFielddata
+  ignore_above: integer
+  index: boolean
+  index_options: IndexOptions
+  norms: boolean
+  null_value: string
+  position_increment_gap: integer
+  search_analyzer: string
+  term_vector: TermVectorOption
+  type: string
+}
+
 export interface GeoBoundingBoxQuery extends QueryBase {
   bounding_box?: BoundingBox
   type?: GeoExecution
@@ -5629,6 +5726,14 @@ export interface GeoLineSort {
 
 export type GeoLocation = string | Array<double> | TwoDimensionalPoint
 
+export type GeoOrientation = 'right' | 'counterclockwise' | 'ccw' | 'left' | 'clockwise' | 'cw'
+
+export interface GeoPointProperty extends DocValuesPropertyBase {
+  ignore_malformed: boolean
+  ignore_z_value: boolean
+  null_value: GeoLocation
+}
+
 export interface GeoPolygonQuery extends QueryBase {
   points?: Array<GeoLocation>
   validation_method?: GeoValidationMethod
@@ -5636,6 +5741,14 @@ export interface GeoPolygonQuery extends QueryBase {
 
 export interface GeoShape {
   type?: string
+}
+
+export interface GeoShapeProperty extends DocValuesPropertyBase {
+  coerce: boolean
+  ignore_malformed: boolean
+  ignore_z_value: boolean
+  orientation: GeoOrientation
+  strategy: GeoStrategy
 }
 
 export interface GeoShapeQuery extends QueryBase {
@@ -5646,6 +5759,8 @@ export interface GeoShapeQuery extends QueryBase {
 }
 
 export type GeoShapeRelation = 'intersects' | 'disjoint' | 'within' | 'contains'
+
+export type GeoStrategy = 'recursive' | 'term'
 
 export interface GeoTileGridAggregation extends BucketAggregationBase {
   field?: Field
@@ -6200,6 +6315,7 @@ export interface GetTaskResponse extends ResponseBase {
   completed: boolean
   task: TaskInfo
   response?: TaskStatus
+  error?: ErrorCause
 }
 
 export interface GetTransformRequest extends RequestBase {
@@ -6520,6 +6636,10 @@ export interface HistogramOrder {
   _key?: SortOrder
 }
 
+export interface HistogramProperty extends PropertyBase {
+  ignore_malformed: boolean
+}
+
 export interface HistogramRollupGrouping {
   fields: Fields
   interval: long
@@ -6735,6 +6855,8 @@ export interface IndexMappings {
 
 export type IndexName = string
 
+export type IndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
+
 export interface IndexPrivilegesCheck {
   names: Array<string>
   privileges: Array<string>
@@ -6945,6 +7067,15 @@ export interface InlineGet<TDocument = unknown> {
   _source: TDocument
 }
 
+export interface InlineRoleTemplate {
+  template: InlineRoleTemplateSource
+  format?: RoleTemplateFormat
+}
+
+export interface InlineRoleTemplateSource {
+  source: string
+}
+
 export interface InlineScript extends ScriptBase {
   source: string
 }
@@ -7064,6 +7195,11 @@ export interface IntervalsWildcard {
   use_field?: Field
 }
 
+export interface InvalidRoleTemplate {
+  template: string
+  format?: RoleTemplateFormat
+}
+
 export interface InvalidateApiKeyRequest extends RequestBase {
   body: {
     id?: string
@@ -7101,6 +7237,12 @@ export interface InvalidateUserAccessTokenResponse extends ResponseBase {
 export interface IpFilterUsage {
   http: boolean
   transport: boolean
+}
+
+export interface IpProperty extends DocValuesPropertyBase {
+  boost: double
+  index: boolean
+  null_value: string
 }
 
 export interface IpRangeAggregation extends BucketAggregationBase {
@@ -7185,6 +7327,10 @@ export interface JoinProcessor extends ProcessorBase {
   target_field?: Field
 }
 
+export interface JoinProperty extends PropertyBase {
+  relations: Record<RelationName, Array<RelationName>>
+}
+
 export interface JsonProcessor extends ProcessorBase {
   add_to_root: boolean
   field: Field
@@ -7249,6 +7395,18 @@ export interface KeywordMarkerTokenFilter extends TokenFilterBase {
   keywords: Array<string>
   keywords_path: string
   keywords_pattern: string
+}
+
+export interface KeywordProperty extends DocValuesPropertyBase {
+  boost: double
+  eager_global_ordinals: boolean
+  ignore_above: integer
+  index: boolean
+  index_options: IndexOptions
+  normalizer: string
+  norms: boolean
+  null_value: string
+  split_queries_on_whitespace: boolean
 }
 
 export interface KeywordTokenizer extends TokenizerBase {
@@ -7398,7 +7556,7 @@ export interface ListDanglingIndicesResponse extends ResponseBase {
 }
 
 export interface ListTasksRequest extends RequestBase {
-  actions?: string
+  actions?: string | Array<string>
   detailed?: boolean
   group_by?: GroupBy
   nodes?: Array<string>
@@ -7969,6 +8127,9 @@ export interface MultiplexerTokenFilter extends TokenFilterBase {
   preserve_original: boolean
 }
 
+export interface Murmur3HashProperty extends DocValuesPropertyBase {
+}
+
 export interface MutualInformationHeuristic {
   background_is_superset: boolean
   include_negatives: boolean
@@ -8345,10 +8506,32 @@ export interface NormalizeAggregation extends PipelineAggregationBase {
 
 export type NormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'zscore' | 'softmax'
 
+export interface NumberProperty extends DocValuesPropertyBase {
+  boost: double
+  coerce: boolean
+  fielddata: NumericFielddata
+  ignore_malformed: boolean
+  index: boolean
+  null_value: double
+  scaling_factor: double
+}
+
 export interface NumericDecayFunctionKeys extends DecayFunctionBase {
 }
 export type NumericDecayFunction = NumericDecayFunctionKeys |
     { [property: string]: DecayPlacement<double, double> }
+
+export interface NumericFielddata {
+  format: NumericFielddataFormat
+}
+
+export type NumericFielddataFormat = 'array' | 'disabled'
+
+export interface ObjectProperty extends CorePropertyBase {
+  dynamic: boolean | DynamicMapping
+  enabled: boolean
+  properties: Record<PropertyName, PropertyBase>
+}
 
 export type OpType = 'index' | 'create'
 
@@ -8378,7 +8561,7 @@ export interface OpenJobResponse extends ResponseBase {
 }
 
 export interface OpenPointInTimeRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   keep_alive?: Time
 }
 
@@ -8573,6 +8756,9 @@ export interface PercolateQuery extends QueryBase {
   version?: long
 }
 
+export interface PercolatorProperty extends PropertyBase {
+}
+
 export interface Phase {
   actions: Record<string, LifecycleAction> | Array<string>
   min_age?: Time
@@ -8678,6 +8864,7 @@ export interface PointInTimeReference {
 
 export interface Policy {
   phases: Phases
+  name?: string
 }
 
 export interface PorterStemTokenFilter extends TokenFilterBase {
@@ -8831,6 +9018,8 @@ export interface ProcessorContainer {
 export interface Profile {
   shards: Array<ShardProfile>
 }
+
+export type Property = FlattenedProperty | JoinProperty | PercolatorProperty | RankFeatureProperty | RankFeaturesProperty | ConstantKeywordProperty | FieldAliasProperty | HistogramProperty | CoreProperty
 
 export interface PropertyBase {
   local_metadata?: Record<string, any>
@@ -9030,6 +9219,7 @@ export interface PutMappingRequest extends RequestBase {
   include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
+  write_index_only?: boolean
   body: {
     all_field?: AllField
     date_detection?: boolean
@@ -9040,7 +9230,7 @@ export interface PutMappingRequest extends RequestBase {
     index_field?: IndexField
     meta?: Record<string, any>
     numeric_detection?: boolean
-    properties?: Record<PropertyName, PropertyBase>
+    properties?: Record<PropertyName, Property>
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
@@ -9108,6 +9298,7 @@ export interface PutRoleRequest extends RequestBase {
     indices?: Array<IndicesPrivileges>
     metadata?: Record<string, any>
     run_as?: Array<string>
+    transient_metadata?: TransientMetadata
   }
 }
 
@@ -9401,6 +9592,13 @@ export interface RangeBucketKeys {
 export type RangeBucket = RangeBucketKeys |
     { [property: string]: Aggregate }
 
+export interface RangePropertyBase extends DocValuesPropertyBase {
+  boost: double
+  coerce: boolean
+  index: boolean
+  store: boolean
+}
+
 export interface RangeQuery extends QueryBase {
   gt?: double | DateMath
   gte?: double | DateMath
@@ -9417,8 +9615,15 @@ export type RangeRelation = 'within' | 'contains' | 'intersects'
 export interface RankFeatureFunction {
 }
 
+export interface RankFeatureProperty extends PropertyBase {
+  positive_score_impact: boolean
+}
+
 export interface RankFeatureQuery extends QueryBase {
   function?: RankFeatureFunction
+}
+
+export interface RankFeaturesProperty extends PropertyBase {
 }
 
 export interface RareTermsAggregation extends BucketAggregationBase {
@@ -9919,6 +10124,10 @@ export interface RoleMappingUsage {
   size: integer
 }
 
+export type RoleTemplate = InlineRoleTemplate | StoredRoleTemplate | InvalidRoleTemplate
+
+export type RoleTemplateFormat = 'string' | 'json'
+
 export interface RolloverConditions {
   max_age?: Time
   max_docs?: long
@@ -10271,6 +10480,17 @@ export interface ScrollResponseFailedShard {
   reason: ScrollResponseErrorReason
 }
 
+export interface SearchAsYouTypeProperty extends CorePropertyBase {
+  analyzer: string
+  index: boolean
+  index_options: IndexOptions
+  max_shingle_size: integer
+  norms: boolean
+  search_analyzer: string
+  search_quote_analyzer: string
+  term_vector: TermVectorOption
+}
+
 export interface SearchInput {
   extract: Array<string>
   request: SearchInputRequestDefinition
@@ -10581,6 +10801,15 @@ export interface SetUpgradeModeRequest extends RequestBase {
 }
 
 export interface SetUpgradeModeResponse extends AcknowledgedResponseBase {
+}
+
+export type ShapeOrientation = 'ClockWise' | 'CounterClockWise'
+
+export interface ShapeProperty extends DocValuesPropertyBase {
+  coerce: boolean
+  ignore_malformed: boolean
+  ignore_z_value: boolean
+  orientation: ShapeOrientation
 }
 
 export interface ShapeQuery extends QueryBase {
@@ -11636,12 +11865,27 @@ export interface StoreStats {
   reserved_in_bytes: double
 }
 
+export interface StoredRoleTemplate {
+  template: StoredRoleTemplateId
+  format?: RoleTemplateFormat
+}
+
+export interface StoredRoleTemplateId {
+  id: string
+}
+
 export interface StoredScript {
-  lang: string
+  lang?: string
   source: string
 }
 
 export type StringDistance = 'internal' | 'damerau_levenshtein' | 'levenshtein' | 'jaro_winkler' | 'ngram'
+
+export interface StringFielddata {
+  format: StringFielddataFormat
+}
+
+export type StringFielddataFormat = 'paged_bytes' | 'disabled'
 
 export interface StringStatsAggregate extends AggregateBase {
   count: long
@@ -11674,6 +11918,12 @@ export interface SuggestContainer {
   regex?: string
   term?: TermSuggester
   text?: string
+}
+
+export interface SuggestContext {
+  name: string
+  path: Field
+  type: string
 }
 
 export interface SuggestContextQuery {
@@ -11833,7 +12083,7 @@ export interface TemplateMapping {
   mappings: TypeMapping
   order: integer
   settings: Record<string, any>
-  version: integer
+  version?: integer
 }
 
 export interface TermQuery extends QueryBase {
@@ -11879,6 +12129,8 @@ export interface TermVectorFilter {
   min_term_freq?: integer
   min_word_length?: integer
 }
+
+export type TermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads'
 
 export interface TermVectorTerm {
   doc_freq?: integer
@@ -11986,6 +12238,28 @@ export interface TestPopulation {
   filter?: QueryContainer
 }
 
+export interface TextIndexPrefixes {
+  max_chars: integer
+  min_chars: integer
+}
+
+export interface TextProperty extends CorePropertyBase {
+  analyzer: string
+  boost: double
+  eager_global_ordinals: boolean
+  fielddata: boolean
+  fielddata_frequency_filter: FielddataFrequencyFilter
+  index: boolean
+  index_options: IndexOptions
+  index_phrases: boolean
+  index_prefixes: TextIndexPrefixes
+  norms: boolean
+  position_increment_gap: integer
+  search_analyzer: string
+  search_quote_analyzer: string
+  term_vector: TermVectorOption
+}
+
 export type TextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
 
 export type TextToAnalyze = string | Array<string>
@@ -12062,6 +12336,13 @@ export interface Token {
 }
 
 export type TokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
+
+export interface TokenCountProperty extends DocValuesPropertyBase {
+  analyzer: string
+  boost: double
+  index: boolean
+  null_value: double
+}
 
 export interface TokenDetail {
   name: string
@@ -12193,7 +12474,7 @@ export interface TransformIndexerStats {
 export interface TransformPivot {
   aggregations: Record<string, AggregationContainer>
   group_by: Record<string, SingleGroupSource>
-  max_page_search_size: integer
+  max_page_search_size?: integer
 }
 
 export interface TransformProgress {
@@ -12930,6 +13211,7 @@ export interface WriteResponseBase extends ResponseBase {
   _type?: string
   _version: long
   forced_refresh?: boolean
+  error?: ErrorCause
 }
 
 export interface XPackBuildInformation {
@@ -12991,6 +13273,8 @@ export interface XPackRole {
   metadata: Record<string, any>
   run_as: Array<string>
   transient_metadata: TransientMetadata
+  applications: Array<ApplicationPrivileges>
+  role_templates: Array<RoleTemplate>
 }
 
 export interface XPackRoleMapping {

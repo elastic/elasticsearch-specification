@@ -24,7 +24,7 @@
  */
 interface ListTasksRequest extends RequestBase {
   query_parameters?: {
-    actions?: string
+    actions?: string | string[]
     detailed?: boolean
     group_by?: GroupBy
     nodes?: string[]

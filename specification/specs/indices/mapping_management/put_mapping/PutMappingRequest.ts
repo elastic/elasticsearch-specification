@@ -34,6 +34,7 @@ interface PutMappingRequest extends RequestBase {
     include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
+    write_index_only?: boolean
   }
   body?: {
     all_field?: AllField
@@ -47,7 +48,7 @@ interface PutMappingRequest extends RequestBase {
     index_field?: IndexField
     meta?: Dictionary<string, UserDefinedValue>
     numeric_detection?: boolean
-    properties?: Dictionary<PropertyName, PropertyBase>
+    properties?: Dictionary<PropertyName, Property>
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField

@@ -21,4 +21,5 @@ class GetTaskResponse extends ResponseBase {
   completed: boolean
   task: TaskInfo
   response?: TaskStatus
+  error?: ErrorCause
 }

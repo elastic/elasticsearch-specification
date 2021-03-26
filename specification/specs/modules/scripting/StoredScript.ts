@@ -18,6 +18,6 @@
  */
 
 class StoredScript {
-  lang: string
+  lang?: string
   source: string
 }

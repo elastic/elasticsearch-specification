@@ -24,7 +24,7 @@
  */
 interface OpenPointInTimeRequest extends RequestBase {
   path_parts?: {
-    index: IndexName
+    index: Indices
   }
   query_parameters?: {
     keep_alive?: Time

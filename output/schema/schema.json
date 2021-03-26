@@ -13253,11 +13253,23 @@
           "name": "from",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -13275,11 +13287,23 @@
           "name": "to",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -15084,10 +15108,16 @@
           "type": {
             "kind": "array_of",
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "user_defined_value"
               }
             }
           }
@@ -16430,19 +16460,22 @@
             "name": "indices_boost",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
+              "kind": "array_of",
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "internal"
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "internal"
+                  }
                 }
               }
             }
@@ -16866,6 +16899,38 @@
               "type": {
                 "name": "Time",
                 "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "type": {
+              "generics": [
+                {
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "Field",
+                        "namespace": "internal"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "DateField",
+                        "namespace": "internal"
+                      }
+                    }
+                  ],
+                  "kind": "union_of"
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "Array",
+                "namespace": "internal"
               }
             }
           }
@@ -17770,6 +17835,22 @@
       "inherits": [
         {
           "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "BinaryProperty",
+        "namespace": "mapping.types.core.binary"
+      },
+      "properties": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "QueryBase",
             "namespace": "query_dsl.abstractions.query"
           }
@@ -17894,6 +17975,67 @@
               }
             ],
             "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "BooleanProperty",
+        "namespace": "mapping.types.core.boolean"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumericFielddata",
+              "namespace": "modules.indices.fielddata.numeric"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -31950,7 +32092,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ids",
               "namespace": "internal"
             }
           }
@@ -37538,6 +37680,92 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "CompletionProperty",
+        "namespace": "mapping.types.specialized.completion"
+      },
+      "properties": [
+        {
+          "name": "analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "contexts",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SuggestContext",
+                "namespace": "mapping.types.specialized.completion"
+              }
+            }
+          }
+        },
+        {
+          "name": "max_input_length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "preserve_position_increments",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "preserve_separators",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "CompletionStats",
@@ -38350,6 +38578,30 @@
       "inherits": [
         {
           "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ConstantKeywordProperty",
+        "namespace": "mapping.types.specialized.constant_keyword"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "QueryBase",
             "namespace": "query_dsl.abstractions.query"
           }
@@ -38561,6 +38813,117 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "CoreProperty",
+        "namespace": "mapping.types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ObjectProperty",
+              "namespace": "mapping.types.complex.object"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchAsYouTypeProperty",
+              "namespace": "mapping.types.core.search_as_you_type"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextProperty",
+              "namespace": "mapping.types.core.text"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocValuesProperty",
+              "namespace": "mapping.types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "CorePropertyBase",
+        "namespace": "mapping.types"
+      },
+      "properties": [
+        {
+          "name": "copy_to",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyBase",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        },
+        {
+          "name": "similarity",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "store",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -42011,6 +42374,89 @@
       "inherits": [
         {
           "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DateNanosProperty",
+        "namespace": "mapping.types.core.date_nanos"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "precision_step",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "ProcessorBase",
             "namespace": "ingest"
           }
@@ -42076,6 +42522,100 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DateProperty",
+        "namespace": "mapping.types.core.date"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumericFielddata",
+              "namespace": "modules.indices.fielddata.numeric"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "precision_step",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -42189,6 +42729,17 @@
         },
         {
           "name": "from_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "to_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -43083,6 +43634,17 @@
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "q",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -46717,6 +47279,151 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "DocValuesProperty",
+        "namespace": "mapping.types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BinaryProperty",
+              "namespace": "mapping.types.core.binary"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BooleanProperty",
+              "namespace": "mapping.types.core.boolean"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateProperty",
+              "namespace": "mapping.types.core.date"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateNanosProperty",
+              "namespace": "mapping.types.core.date_nanos"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KeywordProperty",
+              "namespace": "mapping.types.core.keyword"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumberProperty",
+              "namespace": "mapping.types.core.number"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RangePropertyBase",
+              "namespace": "mapping.types.core.range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoPointProperty",
+              "namespace": "mapping.types.geo.geo_point"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoShapeProperty",
+              "namespace": "mapping.types.geo.geo_shape"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompletionProperty",
+              "namespace": "mapping.types.specialized.completion"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GenericProperty",
+              "namespace": "mapping.types.specialized.generic"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpProperty",
+              "namespace": "mapping.types.specialized.ip"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Murmur3HashProperty",
+              "namespace": "mapping.types.specialized.murmur3_hash"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShapeProperty",
+              "namespace": "mapping.types.specialized.shape"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TokenCountProperty",
+              "namespace": "mapping.types.specialized.token_count"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "CorePropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DocValuesPropertyBase",
+        "namespace": "mapping.types"
+      },
+      "properties": [
+        {
+          "name": "doc_values",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -47063,6 +47770,15 @@
       "members": [
         {
           "name": "strict"
+        },
+        {
+          "name": "runtime"
+        },
+        {
+          "name": "true"
+        },
+        {
+          "name": "false"
         }
       ],
       "name": {
@@ -49052,17 +49768,6 @@
               "namespace": "common_options.time_unit"
             }
           }
-        },
-        {
-          "name": "filter_path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
@@ -49481,43 +50186,24 @@
           }
         },
         {
+          "aliases": [
+            "resource.id"
+          ],
           "name": "resource_id",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "resource.id",
-          "required": false,
-          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "internal"
             }
           }
         },
         {
+          "aliases": [
+            "resource.type"
+          ],
           "name": "resource_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "resource.type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -51655,6 +52341,34 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "FieldAliasProperty",
+        "namespace": "mapping.types.specialized.field_alias"
+      },
+      "properties": [
+        {
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "FieldCapabilities",
@@ -52789,6 +53503,48 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FielddataFrequencyFilter",
+        "namespace": "modules.indices.fielddata"
+      },
+      "properties": [
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "min_segment_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FielddataStats",
         "namespace": "common_options.stats"
       },
@@ -53655,6 +54411,133 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "FlattenedProperty",
+        "namespace": "mapping.types.complex.flattened"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "depth_limit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_values",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "eager_global_ordinals",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_above",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_options",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexOptions",
+              "namespace": "mapping.types.core.text"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "similarity",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "split_queries_on_whitespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -55754,6 +56637,155 @@
       "inherits": [
         {
           "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GenericProperty",
+        "namespace": "mapping.types.specialized.generic"
+      },
+      "properties": [
+        {
+          "name": "analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringFielddata",
+              "namespace": "modules.indices.fielddata.string"
+            }
+          }
+        },
+        {
+          "name": "ignore_above",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_options",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexOptions",
+              "namespace": "mapping.types.core.text"
+            }
+          }
+        },
+        {
+          "name": "norms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "position_increment_gap",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "term_vector",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermVectorOption",
+              "namespace": "mapping"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "QueryBase",
             "namespace": "query_dsl.abstractions.query"
           }
@@ -56730,6 +57762,83 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "right"
+        },
+        {
+          "name": "counterclockwise"
+        },
+        {
+          "name": "ccw"
+        },
+        {
+          "name": "left"
+        },
+        {
+          "name": "clockwise"
+        },
+        {
+          "name": "cw"
+        }
+      ],
+      "name": {
+        "name": "GeoOrientation",
+        "namespace": "mapping.types.geo.geo_shape"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GeoPointProperty",
+        "namespace": "mapping.types.geo.geo_point"
+      },
+      "properties": [
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_z_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "query_dsl.geo"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -56786,6 +57895,78 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GeoShapeProperty",
+        "namespace": "mapping.types.geo.geo_shape"
+      },
+      "properties": [
+        {
+          "name": "coerce",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_z_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "orientation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoOrientation",
+              "namespace": "mapping.types.geo.geo_shape"
+            }
+          }
+        },
+        {
+          "name": "strategy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoStrategy",
+              "namespace": "mapping.types.geo.geo_shape"
             }
           }
         }
@@ -56871,6 +58052,21 @@
       "name": {
         "name": "GeoShapeRelation",
         "namespace": "common_options.geo"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "recursive"
+        },
+        {
+          "name": "term"
+        }
+      ],
+      "name": {
+        "name": "GeoStrategy",
+        "namespace": "mapping.types.geo.geo_shape"
       }
     },
     {
@@ -61881,6 +63077,17 @@
               "namespace": "cluster.task_management.list_tasks"
             }
           }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -64738,6 +65945,34 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "HistogramProperty",
+        "namespace": "mapping.types.specialized.histogram"
+      },
+      "properties": [
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HistogramRollupGrouping",
@@ -66550,6 +67785,27 @@
           "name": "string",
           "namespace": "internal"
         }
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "docs"
+        },
+        {
+          "name": "freqs"
+        },
+        {
+          "name": "positions"
+        },
+        {
+          "name": "offsets"
+        }
+      ],
+      "name": {
+        "name": "IndexOptions",
+        "namespace": "mapping.types.core.text"
       }
     },
     {
@@ -68493,6 +69749,57 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "InlineRoleTemplate",
+        "namespace": "x_pack.security.role.get_role"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InlineRoleTemplateSource",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleTemplateFormat",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InlineRoleTemplateSource",
+        "namespace": "x_pack.security.role.get_role"
+      },
+      "properties": [
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -69522,6 +70829,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "InvalidRoleTemplate",
+        "namespace": "x_pack.security.role.get_role"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleTemplateFormat",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69843,6 +71181,56 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IpProperty",
+        "namespace": "mapping.types.specialized.ip"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -70601,6 +71989,47 @@
       "inherits": [
         {
           "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "JoinProperty",
+        "namespace": "mapping.types.core.join"
+      },
+      "properties": [
+        {
+          "name": "relations",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RelationName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RelationName",
+                  "namespace": "internal"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "ProcessorBase",
             "namespace": "ingest"
           }
@@ -71151,6 +72580,122 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "KeywordProperty",
+        "namespace": "mapping.types.core.keyword"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "eager_global_ordinals",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_above",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_options",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexOptions",
+              "namespace": "mapping.types.core.text"
+            }
+          }
+        },
+        {
+          "name": "normalizer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "norms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "split_queries_on_whitespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -72364,11 +73909,26 @@
           "name": "actions",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -77613,6 +79173,22 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "Murmur3HashProperty",
+        "namespace": "mapping.types.specialized.murmur3_hash"
+      },
+      "properties": []
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MutualInformationHeuristic",
@@ -80928,6 +82504,100 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "NumberProperty",
+        "namespace": "mapping.types.core.number"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "coerce",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumericFielddata",
+              "namespace": "modules.indices.fielddata.numeric"
+            }
+          }
+        },
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "scaling_factor",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
@@ -80985,6 +82655,113 @@
         "namespace": "query_dsl.compound.function_score.functions"
       },
       "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NumericFielddata",
+        "namespace": "modules.indices.fielddata.numeric"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumericFielddataFormat",
+              "namespace": "modules.indices.fielddata.numeric"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "array"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "name": {
+        "name": "NumericFielddataFormat",
+        "namespace": "modules.indices.fielddata.numeric"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "CorePropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ObjectProperty",
+        "namespace": "mapping.types.complex.object"
+      },
+      "properties": [
+        {
+          "name": "dynamic",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DynamicMapping",
+                  "namespace": "mapping"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyBase",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -81231,7 +83008,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexName",
+              "name": "Indices",
               "namespace": "internal"
             }
           }
@@ -82740,6 +84517,22 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "PercolatorProperty",
+        "namespace": "mapping.types.core.percolator"
+      },
+      "properties": []
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Phase",
@@ -83639,6 +85432,17 @@
             "type": {
               "name": "Phases",
               "namespace": "x_pack.ilm"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -84984,6 +86788,81 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Property",
+        "namespace": "mapping.types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FlattenedProperty",
+              "namespace": "mapping.types.complex.flattened"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "JoinProperty",
+              "namespace": "mapping.types.core.join"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PercolatorProperty",
+              "namespace": "mapping.types.core.percolator"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankFeatureProperty",
+              "namespace": "mapping.types.core.rank_feature"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankFeaturesProperty",
+              "namespace": "mapping.types.core.rank_features"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ConstantKeywordProperty",
+              "namespace": "mapping.types.specialized.constant_keyword"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldAliasProperty",
+              "namespace": "mapping.types.specialized.field_alias"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HistogramProperty",
+              "namespace": "mapping.types.specialized.histogram"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CoreProperty",
+              "namespace": "mapping.types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "interface",
@@ -86924,7 +88803,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "PropertyBase",
+                  "name": "Property",
                   "namespace": "mapping.types"
                 }
               }
@@ -87068,6 +88947,17 @@
             "type": {
               "name": "Time",
               "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "write_index_only",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -87610,6 +89500,17 @@
                   "name": "string",
                   "namespace": "internal"
                 }
+              }
+            }
+          },
+          {
+            "name": "transient_metadata",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransientMetadata",
+                "namespace": "x_pack.security.role.get_role"
               }
             }
           }
@@ -90798,6 +92699,67 @@
       "inherits": [
         {
           "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RangePropertyBase",
+        "namespace": "mapping.types.core.range"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "coerce",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "store",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "QueryBase",
             "namespace": "query_dsl.abstractions.query"
           }
@@ -91001,6 +92963,34 @@
       "inherits": [
         {
           "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankFeatureProperty",
+        "namespace": "mapping.types.core.rank_feature"
+      },
+      "properties": [
+        {
+          "name": "positive_score_impact",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "QueryBase",
             "namespace": "query_dsl.abstractions.query"
           }
@@ -91024,6 +93014,22 @@
           }
         }
       ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "PropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankFeaturesProperty",
+        "namespace": "mapping.types.core.rank_features"
+      },
+      "properties": []
     },
     {
       "inherits": [
@@ -95252,6 +97258,54 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "RoleTemplate",
+        "namespace": "x_pack.security.role.get_role"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InlineRoleTemplate",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StoredRoleTemplate",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InvalidRoleTemplate",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "string"
+        },
+        {
+          "name": "json"
+        }
+      ],
+      "name": {
+        "name": "RoleTemplateFormat",
+        "namespace": "x_pack.security.role.get_role"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "RolloverConditions",
@@ -98172,6 +100226,111 @@
             "type": {
               "name": "ScrollResponseErrorReason",
               "namespace": "search.scroll.scroll"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "CorePropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchAsYouTypeProperty",
+        "namespace": "mapping.types.core.search_as_you_type"
+      },
+      "properties": [
+        {
+          "name": "analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_options",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexOptions",
+              "namespace": "mapping.types.core.text"
+            }
+          }
+        },
+        {
+          "name": "max_shingle_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "norms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_quote_analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "term_vector",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermVectorOption",
+              "namespace": "mapping"
             }
           }
         }
@@ -101359,6 +103518,82 @@
         "namespace": "x_pack.machine_learning.set_upgrade_mode"
       },
       "properties": []
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "ClockWise"
+        },
+        {
+          "name": "CounterClockWise"
+        }
+      ],
+      "name": {
+        "name": "ShapeOrientation",
+        "namespace": "mapping.types.specialized.shape"
+      }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ShapeProperty",
+        "namespace": "mapping.types.specialized.shape"
+      },
+      "properties": [
+        {
+          "name": "coerce",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_z_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "orientation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShapeOrientation",
+              "namespace": "mapping.types.specialized.shape"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -110698,13 +112933,64 @@
     {
       "kind": "interface",
       "name": {
+        "name": "StoredRoleTemplate",
+        "namespace": "x_pack.security.role.get_role"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StoredRoleTemplateId",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleTemplateFormat",
+              "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StoredRoleTemplateId",
+        "namespace": "x_pack.security.role.get_role"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "StoredScript",
         "namespace": "modules.scripting"
       },
       "properties": [
         {
           "name": "lang",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110748,6 +113034,41 @@
       "name": {
         "name": "StringDistance",
         "namespace": "search.suggesters.term_suggester"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StringFielddata",
+        "namespace": "modules.indices.fielddata.string"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringFielddataFormat",
+              "namespace": "modules.indices.fielddata.string"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "paged_bytes"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "name": {
+        "name": "StringFielddataFormat",
+        "namespace": "modules.indices.fielddata.string"
       }
     },
     {
@@ -111024,6 +113345,48 @@
         {
           "name": "text",
           "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SuggestContext",
+        "namespace": "mapping.types.specialized.completion"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112552,7 +114915,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112947,6 +115310,33 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "no"
+        },
+        {
+          "name": "yes"
+        },
+        {
+          "name": "with_offsets"
+        },
+        {
+          "name": "with_positions"
+        },
+        {
+          "name": "with_positions_offsets"
+        },
+        {
+          "name": "with_positions_offsets_payloads"
+        }
+      ],
+      "name": {
+        "name": "TermVectorOption",
+        "namespace": "mapping"
+      }
     },
     {
       "kind": "interface",
@@ -114007,6 +116397,208 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "TextIndexPrefixes",
+        "namespace": "mapping.types.core.text"
+      },
+      "properties": [
+        {
+          "name": "max_chars",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "min_chars",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "CorePropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "TextProperty",
+        "namespace": "mapping.types.core.text"
+      },
+      "properties": [
+        {
+          "name": "analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "eager_global_ordinals",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fielddata_frequency_filter",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FielddataFrequencyFilter",
+              "namespace": "modules.indices.fielddata"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_options",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexOptions",
+              "namespace": "mapping.types.core.text"
+            }
+          }
+        },
+        {
+          "name": "index_phrases",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_prefixes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextIndexPrefixes",
+              "namespace": "mapping.types.core.text"
+            }
+          }
+        },
+        {
+          "name": "norms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "position_increment_gap",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_quote_analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "term_vector",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermVectorOption",
+              "namespace": "mapping"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -114646,6 +117238,67 @@
         "name": "TokenChar",
         "namespace": "analysis.tokenizers.n_gram"
       }
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "TokenCountProperty",
+        "namespace": "mapping.types.specialized.token_count"
+      },
+      "properties": [
+        {
+          "name": "analyzer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "boost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -116128,7 +118781,7 @@
         },
         {
           "name": "max_page_search_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -122895,6 +125548,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -123458,6 +126122,34 @@
             "type": {
               "name": "TransientMetadata",
               "namespace": "x_pack.security.role.get_role"
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "x_pack.security.role.put_role"
+              }
+            }
+          }
+        },
+        {
+          "name": "role_templates",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleTemplate",
+                "namespace": "x_pack.security.role.get_role"
+              }
             }
           }
         }
