@@ -68,10 +68,16 @@ class ErrorCause {
   phase?: string
   property_name?: string
   processor_type?: string
-  resource_id?: string[]
-  'resource.id'?: Id
+  /**
+   * resource id
+   * @aliases resource.id
+   */
+  resource_id?: Ids
+    /**
+   * resource type
+   * @aliases resource.type
+   */
   resource_type?: string
-  'resource.type'?: string
   script?: string
   script_stack?: string[]
   header?: Dictionary<string, string>

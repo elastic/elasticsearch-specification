@@ -4801,8 +4801,8 @@ export interface ErrorCause {
   phase?: string
   property_name?: string
   processor_type?: string
-  resource_id?: Array<string>
-  'resource.id'?: Id
+  resource_id?: Ids
+  'resource.id'?: Ids
   resource_type?: string
   'resource.type'?: string
   script?: string
