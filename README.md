@@ -258,6 +258,19 @@ If you are using MacOS, run the following command to fix the issue:
 brew install coreutils
 ```
 
+### The `recordings-dev` folder contains a zip file and not the `tmp-*` folders
+
+Very likely your system does not have the `zip` command installed.
+```sh
+# on mac
+brew install zip
+
+# on linux
+apt-get install -y zip
+```
+
+Then remove the content of `recordings-dev/elasticsearch/*` and run `PULL_LATEST=true ./run-validations.sh` again.
+
 ### I need to modify che compiler, help!
 
 Take a look at the [compiler documentation](./docs/compiler.md).
