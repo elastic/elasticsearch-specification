@@ -25,6 +25,7 @@
 interface GetTransformRequest extends RequestBase {
   path_parts?: {
     transform_id?: Name
+    exclude_generated?: boolean
   }
   query_parameters?: {
     allow_no_match?: boolean

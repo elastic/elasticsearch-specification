@@ -6320,6 +6320,7 @@ export interface GetTaskResponse extends ResponseBase {
 
 export interface GetTransformRequest extends RequestBase {
   transform_id?: Name
+  exclude_generated?: boolean
   allow_no_match?: boolean
   from?: integer
   size?: integer
