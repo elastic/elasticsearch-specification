@@ -48442,94 +48442,6 @@
         "name": "EqlGetResponse",
         "namespace": "x_pack.eql.get"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "common_abstractions.request"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "EqlGetStatusRequest",
-        "namespace": "x_pack.eql.get_status"
-      },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "EqlGetStatusResponse",
-        "namespace": "x_pack.eql.get_status"
-      },
       "properties": []
     },
     {
@@ -48546,8 +48458,8 @@
       ],
       "kind": "request",
       "name": {
-        "name": "EqlSearchRequest",
-        "namespace": "x_pack.eql.search"
+        "name": "EqlGetStatusRequest",
+        "namespace": "x_pack.eql.get_status"
       },
       "path": [
         {
@@ -48576,8 +48488,8 @@
       ],
       "kind": "interface",
       "name": {
-        "name": "EqlSearchResponse",
-        "namespace": "x_pack.eql.search"
+        "name": "EqlGetStatusResponse",
+        "namespace": "x_pack.eql.get_status"
       },
       "properties": [
         {
@@ -48590,7 +48502,6 @@
               "namespace": "internal"
             }
           }
-<<<<<<< HEAD
         },
         {
           "name": "is_partial",
@@ -48603,18 +48514,10 @@
             }
           }
         },
-=======
-        }
-      ]
-    },
-    {
-      "inherits": [
->>>>>>> master
         {
           "name": "is_running",
           "required": true,
           "type": {
-<<<<<<< HEAD
             "kind": "instance_of",
             "type": {
               "name": "boolean",
@@ -48777,44 +48680,11 @@
               "kind": "instance_of",
               "type": {
                 "name": "Field",
-=======
-            "name": "XPackUsage",
-            "namespace": "x_pack.info.x_pack_usage"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "EqlUsage",
-        "namespace": "x_pack.info.x_pack_usage"
-      },
-      "properties": [
-        {
-          "name": "features",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlFeaturesUsage",
-              "namespace": "x_pack.info.x_pack_usage"
-            }
-          }
-        },
-        {
-          "name": "queries",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
->>>>>>> master
                 "namespace": "internal"
               }
             },
             "kind": "dictionary_of",
             "value": {
-<<<<<<< HEAD
               "kind": "array_of",
               "value": {
                 "kind": "user_defined_value"
@@ -49314,13 +49184,55 @@
             "type": {
               "name": "EqlHits",
               "namespace": "x_pack.eql"
-=======
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "XPackUsage",
+            "namespace": "x_pack.info.x_pack_usage"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "EqlUsage",
+        "namespace": "x_pack.info.x_pack_usage"
+      },
+      "properties": [
+        {
+          "name": "features",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlFeaturesUsage",
+              "namespace": "x_pack.info.x_pack_usage"
+            }
+          }
+        },
+        {
+          "name": "queries",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
               "kind": "instance_of",
               "type": {
                 "name": "QueryUsage",
                 "namespace": "x_pack.info.x_pack_usage"
               }
->>>>>>> master
             }
           }
         }
