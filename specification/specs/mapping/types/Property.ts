@@ -17,9 +17,24 @@
  * under the License.
  */
 
-class CorePropertyBase extends PropertyBase {
-  copy_to: Fields
-  fields: Dictionary<PropertyName, PropertyBase>
-  similarity: string
-  store: boolean
+class PropertyBase {
+  local_metadata?: Dictionary<string, UserDefinedValue>
+  meta?: Dictionary<string, string>
+  name?: PropertyName
+  type?: string
+  properties?: Dictionary<PropertyName, PropertyBase>
+  ignore_above?: integer
+  dynamic?: boolean | DynamicMapping
+  fields?: Dictionary<PropertyName, PropertyBase>
 }
+
+type Property =
+  | FlattenedProperty
+  | JoinProperty
+  | PercolatorProperty
+  | RankFeatureProperty
+  | RankFeaturesProperty
+  | ConstantKeywordProperty
+  | FieldAliasProperty
+  | HistogramProperty
+  | CoreProperty

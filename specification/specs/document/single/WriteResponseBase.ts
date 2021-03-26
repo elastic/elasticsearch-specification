@@ -27,4 +27,5 @@ class WriteResponseBase extends ResponseBase {
   _type?: string
   _version: long
   forced_refresh?: boolean
+  error?: ErrorCause
 }

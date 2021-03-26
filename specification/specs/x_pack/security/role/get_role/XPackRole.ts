@@ -23,8 +23,43 @@ class XPackRole {
   metadata: Dictionary<string, UserDefinedValue>
   run_as: string[]
   transient_metadata: TransientMetadata
+  applications: ApplicationPrivileges[]
+  role_templates: RoleTemplate[]
 }
 
 class TransientMetadata {
   enabled: boolean
 }
+
+enum RoleTemplateFormat {
+  string = 0,
+  json = 1
+}
+
+class InlineRoleTemplate {
+  template: InlineRoleTemplateSource
+  format?: RoleTemplateFormat
+}
+
+class InlineRoleTemplateSource {
+  source: string
+}
+
+class StoredRoleTemplate {
+  template: StoredRoleTemplateId
+  format?: RoleTemplateFormat
+}
+
+class StoredRoleTemplateId {
+  id: string
+}
+
+class InvalidRoleTemplate {
+  template: string
+  format?: RoleTemplateFormat
+}
+
+type RoleTemplate =
+  | InlineRoleTemplate
+  | StoredRoleTemplate
+  | InvalidRoleTemplate

@@ -49,7 +49,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     highlight?: Highlight
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
-    indices_boost?: Dictionary<IndexName, double>
+    indices_boost?: Dictionary<IndexName, double>[]
     keep_alive?: Time
     keep_on_completion?: boolean
     lenient?: boolean
@@ -85,5 +85,6 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     typed_keys?: boolean
     version?: boolean
     wait_for_completion_timeout?: Time
+    fields?: Array<Field | DateField>
   }
 }

@@ -44,6 +44,7 @@ interface DeleteByQueryRequest extends RequestBase {
     request_cache?: boolean
     requests_per_second?: long
     routing?: Routing
+    q?: string
     scroll?: Time
     scroll_size?: long
     search_timeout?: Time

@@ -37,7 +37,7 @@ interface GrantApiKeyRequest extends RequestBase {
 class ApiKey {
   name: Name
   expiration?: Time
-  role_descriptors?: string[]
+  role_descriptors?: Dictionary<string, UserDefinedValue>[]
 }
 
 enum ApiKeyGrantType {

@@ -18,7 +18,7 @@
  */
 
 class AggregationRange {
-  from?: double
+  from?: double | string
   key?: string
-  to?: double
+  to?: double | string
 }
