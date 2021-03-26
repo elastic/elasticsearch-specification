@@ -8807,9 +8807,16 @@
       "description": "Retrieve various statistics about searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -102489,6 +102496,54 @@
         "name": "SearchType",
         "namespace": "common"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [

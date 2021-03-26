@@ -10682,6 +10682,13 @@ export interface SearchTransform {
 
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
+export interface SearchableSnapshotsStatsRequest extends RequestBase {
+}
+
+export interface SearchableSnapshotsStatsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface SearchableSnapshotsUsage extends XPackUsage {
   indices_count: integer
 }
