@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class IpRangeProperty extends RangePropertyBase {}
+class IpRangeProperty extends RangePropertyBase {
+  type: 'ip_range'
+}

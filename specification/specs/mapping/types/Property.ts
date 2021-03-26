@@ -21,13 +21,13 @@ class PropertyBase {
   local_metadata?: Dictionary<string, UserDefinedValue>
   meta?: Dictionary<string, string>
   name?: PropertyName
-  type?: string
   properties?: Dictionary<PropertyName, PropertyBase>
   ignore_above?: integer
   dynamic?: boolean | DynamicMapping
   fields?: Dictionary<PropertyName, PropertyBase>
 }
 
+/** @variants internal tag='type' */
 type Property =
   | FlattenedProperty
   | JoinProperty

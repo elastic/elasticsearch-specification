@@ -28,7 +28,7 @@ type DocValuesProperty =
   | DateNanosProperty
   | KeywordProperty
   | NumberProperty
-  | RangePropertyBase
+  | RangeProperty
   | GeoPointProperty
   | GeoShapeProperty
   | CompletionProperty

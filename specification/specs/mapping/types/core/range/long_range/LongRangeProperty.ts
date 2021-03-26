@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class LongRangeProperty extends RangePropertyBase {}
+class LongRangeProperty extends RangePropertyBase {
+  type: 'long_range'
+}

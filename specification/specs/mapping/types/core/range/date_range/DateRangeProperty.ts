@@ -19,4 +19,5 @@
 
 class DateRangeProperty extends RangePropertyBase {
   format: string
+  type: 'date_range'
 }

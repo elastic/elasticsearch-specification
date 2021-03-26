@@ -22,4 +22,5 @@ class TokenCountProperty extends DocValuesPropertyBase {
   boost: double
   index: boolean
   null_value: double
+  type: 'token_count'
 }

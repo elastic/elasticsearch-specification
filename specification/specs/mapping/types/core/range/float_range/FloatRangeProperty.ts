@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class FloatRangeProperty extends RangePropertyBase {}
+class FloatRangeProperty extends RangePropertyBase {
+  type: 'float_range'
+}

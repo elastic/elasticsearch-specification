@@ -22,4 +22,5 @@ class ObjectProperty extends CorePropertyBase {
   dynamic: boolean | DynamicMapping
   enabled: boolean
   properties: Dictionary<PropertyName, PropertyBase>
+  type: 'object'
 }

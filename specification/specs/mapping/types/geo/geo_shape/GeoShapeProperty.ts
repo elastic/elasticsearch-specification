@@ -23,4 +23,5 @@ class GeoShapeProperty extends DocValuesPropertyBase {
   ignore_z_value: boolean
   orientation: GeoOrientation
   strategy: GeoStrategy
+  type: 'geo_shape'
 }

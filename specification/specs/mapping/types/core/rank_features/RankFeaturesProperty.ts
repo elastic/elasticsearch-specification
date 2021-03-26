@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class RankFeaturesProperty extends PropertyBase {}
+class RankFeaturesProperty extends PropertyBase {
+  type: 'rank_features'
+}
