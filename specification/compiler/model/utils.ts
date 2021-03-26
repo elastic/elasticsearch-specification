@@ -381,6 +381,10 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
   if (alias.kind === 'union_of') {
     const variants = parseVariantsTag(declaration.getJsDocs())
     if (variants != null) {
+      assert(
+        variants.kind === 'internal_tag' || variants.kind === 'external_tag',
+        'Type Aliases can only have internal or external variants'
+      )
       typeAlias.variants = variants
     }
   }
@@ -666,6 +670,10 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   const [type, value] = tags.variants.split(' ')
   if (type === 'external') {
     return { kind: 'external_tag' }
+  }
+
+  if (type === 'container') {
+    return { kind: 'container' }
   }
 
   assert(type === 'internal', `Bad variant type: ${type}`)

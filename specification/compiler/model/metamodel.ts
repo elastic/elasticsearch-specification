@@ -152,7 +152,7 @@ export abstract class BaseType {
   variantName?: string
 }
 
-export type Variants = ExternalTag | InternalTag
+export type Variants = ExternalTag | InternalTag | Container
 
 export class ExternalTag {
   kind: 'external_tag'
@@ -161,6 +161,10 @@ export class ExternalTag {
 export class InternalTag {
   kind: 'internal_tag'
   tag: string // Name of the property that holds the variant tag
+}
+
+export class Container {
+  kind: 'container'
 }
 
 /**
@@ -275,7 +279,7 @@ export class TypeAlias extends BaseType {
   /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: ValueOf[]
   /** Identify typed_key unions (external) and variant inventories (internal) */
-  variants?: Variants
+  variants?: InternalTag | ExternalTag
 }
 
 // ------------------------------------------------------------------------------------------------
