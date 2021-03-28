@@ -17723,6 +17723,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
