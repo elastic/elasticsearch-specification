@@ -33834,22 +33834,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -33865,12 +33849,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The name of the template",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -33878,13 +33863,24 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "master_timeout",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
@@ -33894,7 +33890,7 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
+            "name": "AcknowledgedResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -33904,19 +33900,7 @@
         "name": "ClusterDeleteComponentTemplateResponse",
         "namespace": "cluster.cluster_delete_component_template"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
