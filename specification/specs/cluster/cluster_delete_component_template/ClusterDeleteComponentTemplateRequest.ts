@@ -27,8 +27,8 @@ interface ClusterDeleteComponentTemplateRequest extends RequestBase {
     name: Name
   }
   query_parameters?: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Time // Default: 30s
+    timeout?: Time        // Default: 30s
   }
   body?: {}
 }
