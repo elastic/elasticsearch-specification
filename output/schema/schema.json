@@ -34052,22 +34052,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -34083,12 +34067,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
-          "required": true,
+          "description": "The comma separated names of the component templates",
+          "name": "name",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -34096,13 +34081,35 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "flat_settings",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "local",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
