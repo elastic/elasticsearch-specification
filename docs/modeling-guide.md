@@ -138,3 +138,144 @@ type Timestamp = string
 type TimeSpan = string
 type DateString = string
 ```
+
+### Literal values
+
+The compiler supports literal values as well. This can be useful if a
+definition changes based on a specific field.
+
+```ts
+class Foo {
+  type: 'foo',
+  prop: string
+}
+
+class Bar {
+  type: 'bar',
+  prop: boolean
+}
+
+type FooOrBar = Foo | Bar
+```
+
+The example shown above is the correct way to solve this cases, but to make it
+easy to use in every language you need to add a *variant* definition as well.
+You can find how it works in the next section.
+
+### Variants
+
+Variants is a special syntax that can be used by language generators to understand
+which type they will need to build based on the variant configuration.
+There are three type of variants:
+
+#### Internal
+
+The key used as variant is present inside the definition, for example:
+
+```ts
+class Foo {
+  type: 'foo', // 'type' is the variant
+  prop: string
+}
+```
+
+If the variant type is internal you should configure the parent type with
+the `@variants` js doc tag. teh syntax is:
+
+```ts
+/** @variants internal tag='<field-name>' */
+```
+
+For example:
+
+```ts
+class Foo {
+  type: 'foo',
+  prop: string
+}
+
+class Bar {
+  type: 'bar',
+  prop: boolean
+}
+
+/** @variants internal tag='type' */
+type FooOrBar = Foo | Bar
+```
+
+An example of internal variants are the type mapping properties.
+
+#### External
+
+The key that defines the variant is external to the definition, like in the
+case of aggregations in responses or suggesters.
+
+The variant type should be configured in the parent type, while the variant
+name in the definition itself.
+
+The syntax is:
+
+```ts
+/** @variants external */
+
+/** @variant name='<field-name>' */
+```
+
+For example:
+
+```ts
+/** @variants external */
+type FooAlias = Faz | Bar
+
+/** @variant name='faz' */
+class Faz {
+  prop: string
+}
+
+/** @variant name='bar' */
+class Bar {
+  prop: boolean
+}
+```
+
+In the example above, `FooAlias` will look like this:
+
+```json
+{
+  "faz": {
+    "prop": "hello world"
+  }
+}
+```
+
+or:
+
+```json
+{
+  "bar": {
+    "prop": true
+  }
+}
+```
+
+#### Container
+
+The container variant is used for all the types that contains all the
+variants inside the defintion. An example is `QueryContainer`.
+
+The syntax is:
+
+```ts
+/** @variants container */
+```
+
+For example:
+
+```ts
+/** @variants container */
+class FooContainer {
+  bar: BarDefinition
+  baz: BazDefinition
+  faz: FazDefinition
+}
+```
