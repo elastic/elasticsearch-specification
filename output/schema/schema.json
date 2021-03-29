@@ -8738,9 +8738,16 @@
       "description": "Clear the cache of searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsClearCacheRequest",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsClearCacheResponse",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8767,9 +8774,16 @@
       "description": "Mount a snapshot as a searchable index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
       "name": "searchable_snapshots.mount",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsMountRequest",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsMountResponse",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8787,9 +8801,16 @@
       "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.repository_stats",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsRepositoryStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsRepositoryStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8807,9 +8828,16 @@
       "description": "Retrieve various statistics about searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -103100,6 +103128,477 @@
         "name": "SearchType",
         "namespace": "common"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsClearCacheRequest",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsClearCacheResponse",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "index",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "renamed_index",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "index_settings",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          },
+          {
+            "name": "ignore_index_settings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsMountRequest",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "path": [
+        {
+          "description": "The name of the repository containing the snapshot of the index to mount",
+          "name": "repository",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the snapshot of the index to mount",
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "storage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsMountResponse",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "properties": [
+        {
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchableSnapshotsMountSnapshot",
+              "namespace": "x_pack.searchable_snapshots.mount"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsMountSnapshot",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "properties": [
+        {
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "common_options.hit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsRepositoryStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsRepositoryStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [

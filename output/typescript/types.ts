@@ -10744,6 +10744,66 @@ export interface SearchTransform {
 
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
+export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface SearchableSnapshotsClearCacheResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface SearchableSnapshotsMountRequest extends RequestBase {
+  repository: Name
+  snapshot: Name
+  master_timeout?: Time
+  wait_for_completion?: boolean
+  storage?: string
+  body: {
+    index: IndexName
+    renamed_index?: IndexName
+    index_settings?: Record<string, any>
+    ignore_index_settings?: Array<string>
+  }
+}
+
+export interface SearchableSnapshotsMountResponse extends ResponseBase {
+  snapshot: SearchableSnapshotsMountSnapshot
+}
+
+export interface SearchableSnapshotsMountSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
+}
+
+export interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface SearchableSnapshotsRepositoryStatsResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface SearchableSnapshotsStatsRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface SearchableSnapshotsStatsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface SearchableSnapshotsUsage extends XPackUsage {
   indices_count: integer
   full_copy_indices_count?: integer
