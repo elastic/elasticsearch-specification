@@ -1314,16 +1314,9 @@
       "description": "Creates a new named collection of auto-follow patterns against a specified remote cluster. Newly created indices on the remote cluster matching any of the specified patterns will be automatically configured as follower indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-auto-follow-pattern.html",
       "name": "ccr.put_auto_follow_pattern",
-      "request": {
-        "name": "CreateAutoFollowPatternRequest",
-        "namespace": "x_pack.cross_cluster_replication.auto_follow.create_auto_follow_pattern"
-      },
+      "request": null,
       "requestBodyRequired": true,
-      "response": {
-        "name": "CreateAutoFollowPatternResponse",
-        "namespace": "x_pack.cross_cluster_replication.auto_follow.create_auto_follow_pattern"
-      },
-      "since": "6.5.0",
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -3619,9 +3612,16 @@
       "description": "Creates a data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.create_data_stream",
-      "request": null,
+      "request": {
+        "name": "IndicesCreateDataStreamRequest",
+        "namespace": "x_pack.data_streams.create_data_stream"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesCreateDataStreamResponse",
+        "namespace": "x_pack.data_streams.create_data_stream"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -3639,9 +3639,16 @@
       "description": "Provides statistics on operations happening in a data stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.data_streams_stats",
-      "request": null,
+      "request": {
+        "name": "IndicesDataStreamsStatsRequest",
+        "namespace": "x_pack.data_streams.data_streams_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesDataStreamsStatsResponse",
+        "namespace": "x_pack.data_streams.data_streams_stats"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -3725,9 +3732,16 @@
       "description": "Deletes a data stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
-      "request": null,
+      "request": {
+        "name": "IndicesDeleteDataStreamRequest",
+        "namespace": "x_pack.data_streams.delete_data_stream"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesDeleteDataStreamResponse",
+        "namespace": "x_pack.data_streams.delete_data_stream"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -39383,206 +39397,6 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "follow_index_pattern",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "leader_index_patterns",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            }
-          },
-          {
-            "name": "max_outstanding_read_requests",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_outstanding_write_requests",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_poll_timeout",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "max_read_request_operation_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_read_request_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_retry_delay",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "max_write_buffer_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_write_buffer_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_write_request_operation_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_write_request_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "remote_cluster",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "common_abstractions.request"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "CreateAutoFollowPatternRequest",
-        "namespace": "x_pack.cross_cluster_replication.auto_follow.create_auto_follow_pattern"
-      },
-      "path": [
-        {
-          "description": "The name of the auto follow pattern.",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "common_abstractions.response"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "CreateAutoFollowPatternResponse",
-        "namespace": "x_pack.cross_cluster_replication.auto_follow.create_auto_follow_pattern"
-      },
-      "properties": []
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
             "name": "leader_index",
             "required": false,
             "type": {
@@ -68912,6 +68726,270 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesCreateDataStreamRequest",
+        "namespace": "x_pack.data_streams.create_data_stream"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesCreateDataStreamResponse",
+        "namespace": "x_pack.data_streams.create_data_stream"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesDataStreamsStatsRequest",
+        "namespace": "x_pack.data_streams.data_streams_stats"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesDataStreamsStatsResponse",
+        "namespace": "x_pack.data_streams.data_streams_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesDeleteDataStreamRequest",
+        "namespace": "x_pack.data_streams.delete_data_stream"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesDeleteDataStreamResponse",
+        "namespace": "x_pack.data_streams.delete_data_stream"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",

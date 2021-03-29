@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {}
+class IndicesCreateDataStreamResponse extends ResponseBase {
+  stub: integer
+}

@@ -1,5 +1,13 @@
 {
   "endpointErrors": {
+    "ccr.put_auto_follow_pattern": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
     "data_frame_transform_deprecated.delete_transform": {
       "request": [
         "Missing request"
@@ -81,30 +89,6 @@
       ]
     },
     "indices.add_block": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.create_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.data_streams_stats": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.delete_data_stream": {
       "request": [
         "Missing request"
       ],
