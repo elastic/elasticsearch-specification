@@ -18,9 +18,9 @@
  */
 
 class FollowerInfo {
-  follower_index: string
-  leader_index: string
-  parameters: FollowConfig
-  remote_cluster: string
+  follower_index: IndexName
+  leader_index: IndexName
+  parameters?: FollowConfig
+  remote_cluster: Name
   status: FollowerIndexStatus
 }
