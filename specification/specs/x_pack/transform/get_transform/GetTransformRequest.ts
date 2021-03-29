@@ -30,6 +30,7 @@ interface GetTransformRequest extends RequestBase {
     allow_no_match?: boolean
     from?: integer
     size?: integer
+    exclude_generated?: boolean
   }
   body?: {}
 }

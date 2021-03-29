@@ -63331,6 +63331,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "exclude_generated",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
