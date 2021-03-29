@@ -73563,7 +73563,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -73574,7 +73574,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -73592,18 +73592,18 @@
         },
         {
           "name": "failed_step",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "failed_step_retry_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73625,7 +73625,7 @@
         },
         {
           "name": "is_auto_retryable_error",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73640,7 +73640,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -73662,7 +73662,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -73673,7 +73673,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -73684,7 +73684,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -73695,14 +73695,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "step_info",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -73723,7 +73723,60 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "phase_execution",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainPhaseExecution",
+              "namespace": "x_pack.ilm.explain_lifecycle"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainPhaseExecution",
+        "namespace": "x_pack.ilm.explain_lifecycle"
+      },
+      "properties": [
+        {
+          "name": "policy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "modified_date_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
