@@ -33,12 +33,30 @@ class ClusterIndicesStats {
 
 class FieldTypesMappings {
   field_types: FieldTypesStats[]
+  runtime_field_types?: RuntimeFieldTypesStats[]
 }
 
 class FieldTypesStats {
   name: Name
   count: integer
   index_count: integer
+}
+
+class RuntimeFieldTypesStats {
+  name: Name
+  count: integer
+  index_count: integer
+  scriptless_count: integer
+  shadowed_count: integer
+  lang: string[]
+  lines_max: integer
+  lines_total: integer
+  chars_max: integer
+  chars_total: integer
+  source_max: integer
+  source_total: integer
+  doc_max: integer
+  doc_total: integer
 }
 
 class CharFilterTypes {
