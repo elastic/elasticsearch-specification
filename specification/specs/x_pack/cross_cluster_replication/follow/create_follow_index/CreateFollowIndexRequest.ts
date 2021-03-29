@@ -27,7 +27,7 @@ interface CreateFollowIndexRequest extends RequestBase {
     index: IndexName
   }
   query_parameters?: {
-    wait_for_active_shards?: string
+    wait_for_active_shards?: integer
   }
   body?: {
     leader_index?: IndexName

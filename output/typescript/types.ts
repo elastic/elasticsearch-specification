@@ -3691,7 +3691,7 @@ export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBas
 
 export interface CreateFollowIndexRequest extends RequestBase {
   index: IndexName
-  wait_for_active_shards?: string
+  wait_for_active_shards?: integer
   body: {
     leader_index?: IndexName
     max_outstanding_read_requests?: long

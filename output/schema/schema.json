@@ -39738,7 +39738,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "integer",
               "namespace": "internal"
             }
           }
