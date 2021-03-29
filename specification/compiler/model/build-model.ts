@@ -266,7 +266,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
     const variants = parseVariantsTag(declaration.getJsDocs())
     if (variants != null) {
-      assert(variants.kind === 'container', 'Interfaces can only use `container` vairant kind')
+      assert(variants.kind === 'container', 'Interfaces can only use `container` variant kind')
       type.variants = variants
     }
 
