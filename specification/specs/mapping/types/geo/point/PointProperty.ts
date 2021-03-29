@@ -17,26 +17,9 @@
  * under the License.
  */
 
-class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values?: boolean
+class PointProperty extends DocValuesPropertyBase {
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  null_value?: string
+  type: 'point'
 }
-
-type DocValuesProperty =
-  | BinaryProperty
-  | BooleanProperty
-  | DateProperty
-  | DateNanosProperty
-  | KeywordProperty
-  | NumberProperty
-  | RangeProperty
-  | GeoPointProperty
-  | GeoShapeProperty
-  | CompletionProperty
-  | GenericProperty
-  | IpProperty
-  | Murmur3HashProperty
-  | ShapeProperty
-  | TokenCountProperty
-  | VersionProperty
-  | WildcardProperty
-  | PointProperty

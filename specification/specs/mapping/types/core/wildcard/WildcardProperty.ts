@@ -17,26 +17,6 @@
  * under the License.
  */
 
-class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values?: boolean
+class WildcardProperty extends DocValuesPropertyBase {
+  type: 'wildcard'
 }
-
-type DocValuesProperty =
-  | BinaryProperty
-  | BooleanProperty
-  | DateProperty
-  | DateNanosProperty
-  | KeywordProperty
-  | NumberProperty
-  | RangeProperty
-  | GeoPointProperty
-  | GeoShapeProperty
-  | CompletionProperty
-  | GenericProperty
-  | IpProperty
-  | Murmur3HashProperty
-  | ShapeProperty
-  | TokenCountProperty
-  | VersionProperty
-  | WildcardProperty
-  | PointProperty
