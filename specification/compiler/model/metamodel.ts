@@ -201,7 +201,7 @@ export class Interface extends BaseType {
   attachedBehaviors?: string[]
   properties: Property[]
   /** Identify containers */
-  variants?: ExternalTag
+  variants?: Container
 }
 
 /**
