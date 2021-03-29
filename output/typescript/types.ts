@@ -3080,11 +3080,10 @@ export interface ClusterFileSystem {
 }
 
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  name?: Name
+  flat_settings?: boolean
+  local?: boolean
+  master_timeout?: Time
 }
 
 export interface ClusterGetComponentTemplateResponse extends ResponseBase {
