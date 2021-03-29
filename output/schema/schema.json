@@ -49288,7 +49288,7 @@
       "properties": [
         {
           "name": "total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49876,32 +49876,20 @@
           "name": "hits",
           "required": true,
           "type": {
-            "items": [
+            "generics": [
               {
-                "generics": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TEvent",
-                      "namespace": "x_pack.eql"
-                    }
-                  }
-                ],
                 "kind": "instance_of",
                 "type": {
-                  "name": "EqlHits",
+                  "name": "TEvent",
                   "namespace": "x_pack.eql"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "EmptyObject",
-                  "namespace": "internal"
                 }
               }
             ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlHits",
+              "namespace": "x_pack.eql"
+            }
           }
         }
       ]

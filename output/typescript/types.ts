@@ -4777,7 +4777,7 @@ export interface EqlGetStatusResponse extends ResponseBase {
 }
 
 export interface EqlHits<TEvent = unknown> {
-  total: TotalHits
+  total?: TotalHits
   events?: Array<EqlHitsEvent<TEvent>>
   sequences?: Array<EqlHitsSequence<TEvent>>
 }
@@ -4832,7 +4832,7 @@ export interface EqlSearchResponseBase<TEvent = unknown> extends ResponseBase {
   is_running?: boolean
   took?: integer
   timed_out?: boolean
-  hits: EqlHits<TEvent> | EmptyObject
+  hits: EqlHits<TEvent>
 }
 
 export interface EqlUsage extends XPackUsage {
