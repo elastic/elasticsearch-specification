@@ -24,12 +24,11 @@
  */
 interface ClusterDeleteComponentTemplateRequest extends RequestBase {
   path_parts?: {
-    stub_a: string
+    name: Name
   }
   query_parameters?: {
-    stub_b: string
+    master_timeout?: Time // Default: 30s
+    timeout?: Time // Default: 30s
   }
-  body?: {
-    stub_c: string
-  }
+  body?: {}
 }

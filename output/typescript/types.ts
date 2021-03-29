@@ -3050,15 +3050,12 @@ export interface ClusterComponentTemplateExistsResponse extends ResponseBase {
 }
 
 export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  name: Name
+  master_timeout?: Time
+  timeout?: Time
 }
 
-export interface ClusterDeleteComponentTemplateResponse extends ResponseBase {
-  stub: integer
+export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResponseBase {
 }
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {

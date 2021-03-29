@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class ClusterDeleteComponentTemplateResponse extends ResponseBase {
-  stub: integer
-}
+class ClusterDeleteComponentTemplateResponse extends AcknowledgedResponseBase {}
