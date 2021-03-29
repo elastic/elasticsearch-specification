@@ -23,7 +23,13 @@
  * @stability TODO
  */
 interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {
-  path_parts?: {}
-  query_parameters?: {}
-  body?: {}
+  path_parts?: {
+    stub_a: integer
+  }
+  query_parameters?: {
+    stub_b: integer
+  }
+  body?: {
+    stub_c: integer
+  }
 }

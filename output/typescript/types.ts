@@ -10683,6 +10683,11 @@ export interface SearchTransform {
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
 export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
 }
 
 export interface SearchableSnapshotsClearCacheResponse extends ResponseBase {
@@ -10690,6 +10695,11 @@ export interface SearchableSnapshotsClearCacheResponse extends ResponseBase {
 }
 
 export interface SearchableSnapshotsMountRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body: {
+    stub_c: integer
+  }
 }
 
 export interface SearchableSnapshotsMountResponse extends ResponseBase {
@@ -10697,6 +10707,11 @@ export interface SearchableSnapshotsMountResponse extends ResponseBase {
 }
 
 export interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
 }
 
 export interface SearchableSnapshotsRepositoryStatsResponse extends ResponseBase {
@@ -10704,6 +10719,11 @@ export interface SearchableSnapshotsRepositoryStatsResponse extends ResponseBase
 }
 
 export interface SearchableSnapshotsStatsRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
 }
 
 export interface SearchableSnapshotsStatsResponse extends ResponseBase {
