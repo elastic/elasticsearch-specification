@@ -19472,7 +19472,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -32786,23 +32786,11 @@
           "name": "wait_for_active_shards",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "number",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "WaitForActiveShards",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -39828,7 +39816,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -40032,7 +40020,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -40340,7 +40328,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -43983,7 +43971,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -45611,7 +45599,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -56385,23 +56373,11 @@
           "name": "wait_for_active_shards",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "number",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "WaitForActiveShards",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -68329,7 +68305,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -83511,7 +83487,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -95518,7 +95494,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -98310,7 +98286,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -107826,7 +107802,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -112727,7 +112703,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -122355,7 +122331,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -123796,7 +123772,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -125370,7 +125346,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "byte",
+              "name": "integer",
               "namespace": "internal"
             }
           },
@@ -128221,20 +128197,6 @@
       "name": {
         "name": "ZeroTermsQuery",
         "namespace": "query_dsl.full_text.multi_match"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "byte",
-        "namespace": "internal"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "number",
-          "namespace": "internal"
-        }
       }
     },
     {

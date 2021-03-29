@@ -30,7 +30,7 @@ interface CreateIndexRequest extends RequestBase {
     include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>

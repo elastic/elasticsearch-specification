@@ -888,7 +888,7 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
   _source_includes?: Fields
   timeout?: Time
   type_query_string?: string
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
   body: Array<BulkOperationContainer | TSource>
 }
@@ -2919,7 +2919,7 @@ export interface CloneIndexRequest extends RequestBase {
   target: Name
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string | number
+  wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
@@ -3697,7 +3697,7 @@ export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBas
 
 export interface CreateFollowIndexRequest extends RequestBase {
   index: IndexName
-  wait_for_active_shards?: integer
+  wait_for_active_shards?: WaitForActiveShards
   body: {
     leader_index?: IndexName
     max_outstanding_read_requests?: long
@@ -3725,7 +3725,7 @@ export interface CreateIndexRequest extends RequestBase {
   include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, Alias>
     mappings?: Record<string, TypeMapping> | TypeMapping
@@ -3763,7 +3763,7 @@ export interface CreateRequest<TDocument = unknown> extends RequestBase {
   timeout?: Time
   version?: long
   version_type?: VersionType
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   body: TDocument
 }
 
@@ -4152,7 +4152,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   terminate_after?: long
   timeout?: Time
   version?: boolean
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   wait_for_completion?: boolean
   body: {
     max_docs?: long
@@ -4353,7 +4353,7 @@ export interface DeleteRequest extends RequestBase {
   timeout?: Time
   version?: long
   version_type?: VersionType
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
 }
 
 export interface DeleteResponse extends WriteResponseBase {
@@ -5566,7 +5566,7 @@ export interface FreezeIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string | number
+  wait_for_active_shards?: WaitForActiveShards
 }
 
 export interface FreezeIndexResponse extends AcknowledgedResponseBase {
@@ -6906,7 +6906,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   timeout?: Time
   version?: long
   version_type?: VersionType
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
   body: TDocument
 }
@@ -8609,7 +8609,7 @@ export interface OpenIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
 }
 
 export interface OpenIndexResponse extends AcknowledgedResponseBase {
@@ -9891,7 +9891,7 @@ export interface ReindexRequest extends RequestBase {
   scroll?: Time
   slices?: long
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   wait_for_completion?: boolean
   require_alias?: boolean
   body: {
@@ -10220,7 +10220,7 @@ export interface RolloverIndexRequest extends RequestBase {
   include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: integer
+  wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, Alias>
     conditions?: RolloverConditions
@@ -11293,7 +11293,7 @@ export interface ShrinkIndexRequest extends RequestBase {
   target: IndexName
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
@@ -11806,7 +11806,7 @@ export interface SplitIndexRequest extends RequestBase {
   target: IndexName
   master_timeout?: Time
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, Alias>
     settings?: Record<string, any>
@@ -12858,7 +12858,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   timeout?: Time
   version?: boolean
   version_type?: boolean
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   wait_for_completion?: boolean
   body?: {
     max_docs?: long
@@ -13004,7 +13004,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   routing?: Routing
   source_enabled?: boolean
   timeout?: Time
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
   _source?: boolean | string | Array<string>
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -13193,7 +13193,7 @@ export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 
 export type WaitForActiveShardOptions = 'all'
 
-export type WaitForActiveShards = byte | WaitForActiveShardOptions
+export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 export type WaitForEvents = 'immediate' | 'urgent' | 'high' | 'normal' | 'low' | 'languid'
 
@@ -13503,8 +13503,6 @@ export interface XPackUser {
 }
 
 export type ZeroTermsQuery = 'all' | 'none'
-
-export type byte = number
 
 export type double = number
 

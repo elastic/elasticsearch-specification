@@ -39,7 +39,7 @@ interface IndexRequest<TDocument> extends RequestBase {
     timeout?: Time
     version?: long
     version_type?: VersionType
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
   body?: TDocument

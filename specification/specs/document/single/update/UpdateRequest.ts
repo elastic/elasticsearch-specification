@@ -38,7 +38,7 @@ interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     routing?: Routing
     source_enabled?: boolean
     timeout?: Time
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     _source?: boolean | string | string[]
     _source_excludes?: Fields
     _source_includes?: Fields

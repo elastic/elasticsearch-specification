@@ -151,7 +151,7 @@ type GeoHashPrecision = number
 type Field = string
 type Fields = Field | Field[]
 
-type WaitForActiveShards = byte | WaitForActiveShardOptions
+type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 /**
  * The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back
