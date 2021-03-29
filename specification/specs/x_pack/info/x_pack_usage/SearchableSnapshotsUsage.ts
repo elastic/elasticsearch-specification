@@ -19,4 +19,6 @@
 
 class SearchableSnapshotsUsage extends XPackUsage {
   indices_count: integer
+  full_copy_indices_count?: integer
+  shared_cache_indices_count?: integer
 }
