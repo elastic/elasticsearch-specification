@@ -18,7 +18,7 @@
  */
 
 class EqlHits<TEvent> {
-  total: TotalHits
+  total?: TotalHits
   events?: EqlHitsEvent<TEvent>[]
   sequences?: EqlHitsSequence<TEvent>[]
 }
