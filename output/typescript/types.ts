@@ -8424,8 +8424,8 @@ export interface NodeProcessInfo {
 }
 
 export interface NodeReloadException {
-  name: string
-  reload_exception: NodeReloadExceptionCausedBy
+  name: Name
+  reload_exception?: NodeReloadExceptionCausedBy
 }
 
 export interface NodeReloadExceptionCausedBy {
@@ -9990,7 +9990,7 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
 }
 
 export interface ReloadSecureSettingsResponse extends NodesResponseBase {
-  cluster_name: string
+  cluster_name: Name
   nodes: Record<string, NodeStats | NodeReloadException>
 }
 
