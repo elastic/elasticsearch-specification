@@ -55220,7 +55220,7 @@
         },
         {
           "name": "fatal_exception",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55447,7 +55447,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -55458,7 +55458,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -55469,7 +55469,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -55480,7 +55480,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -55502,7 +55502,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -55522,7 +55522,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }

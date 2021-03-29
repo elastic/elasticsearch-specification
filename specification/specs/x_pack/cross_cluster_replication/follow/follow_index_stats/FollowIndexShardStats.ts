@@ -21,7 +21,7 @@ class FollowIndexShardStats {
   bytes_read: long
   failed_read_requests: long
   failed_write_requests: long
-  fatal_exception: ErrorCause
+  fatal_exception?: ErrorCause
   follower_aliases_version: long
   follower_global_checkpoint: long
   follower_index: string
@@ -41,10 +41,10 @@ class FollowIndexShardStats {
   shard_id: integer
   successful_read_requests: long
   successful_write_requests: long
-  time_since_last_read_millis: long
-  total_read_remote_exec_time_millis: long
-  total_read_time_millis: long
-  total_write_time_millis: long
+  time_since_last_read_millis: EpochMillis
+  total_read_remote_exec_time_millis: EpochMillis
+  total_read_time_millis: EpochMillis
+  total_write_time_millis: EpochMillis
   write_buffer_operation_count: long
-  write_buffer_size_in_bytes: long
+  write_buffer_size_in_bytes: ByteSize
 }

@@ -18,6 +18,6 @@
  */
 
 class FollowIndexStats {
-  index: string
+  index: IndexName
   shards: FollowIndexShardStats[]
 }
