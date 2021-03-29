@@ -132,6 +132,8 @@ type Metrics = string | string[]
 type Name = string
 type Names = string | string[]
 
+type DataStreamName = string
+
 type ByteSize = long | string
 
 type Percentage = string | float

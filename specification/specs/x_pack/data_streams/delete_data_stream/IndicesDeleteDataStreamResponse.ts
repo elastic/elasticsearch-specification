@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class IndicesDeleteDataStreamResponse extends ResponseBase {
-  stub: integer
-}
+class IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {}

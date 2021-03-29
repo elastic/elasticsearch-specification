@@ -3837,6 +3837,8 @@ export interface DataPathStats {
   type: string
 }
 
+export type DataStreamName = string
+
 export interface DataStreamsUsage extends XPackUsage {
   data_streams: long
   indices_count: long
@@ -6970,15 +6972,10 @@ export interface IndicesDataStreamsStatsResponse extends ResponseBase {
 }
 
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  name: DataStreamName
 }
 
-export interface IndicesDeleteDataStreamResponse extends ResponseBase {
-  stub: integer
+export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesOptions {
