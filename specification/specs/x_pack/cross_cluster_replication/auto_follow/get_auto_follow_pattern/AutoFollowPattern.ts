@@ -31,4 +31,5 @@ class AutoFollowPattern {
   max_write_request_operation_count: integer
   max_write_request_size: string
   remote_cluster: string
+  name: Name
 }

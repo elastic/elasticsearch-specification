@@ -18,10 +18,11 @@
  */
 
 class ClusterStatsResponse extends NodesResponseBase {
-  cluster_name: string
-  cluster_uuid: string
+  cluster_name: Name
+  cluster_uuid: Uuid
   indices: ClusterIndicesStats
   nodes: ClusterNodesStats
   status: ClusterStatus
   timestamp: long
+  _nodes: NodeStatistics
 }

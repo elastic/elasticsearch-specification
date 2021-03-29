@@ -30,6 +30,6 @@ class InnerHits {
   seq_no_primary_term?: boolean
   fields?: Fields
   sort?: Sort
-  _source?: Union<boolean, SourceFilter>
+  _source?: boolean | SourceFilter
   version?: boolean
 }

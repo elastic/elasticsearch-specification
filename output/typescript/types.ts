@@ -690,6 +690,7 @@ export interface AutoFollowPattern {
   max_write_request_operation_count: integer
   max_write_request_size: string
   remote_cluster: string
+  name: Name
 }
 
 export interface AutoFollowedCluster {
@@ -3208,6 +3209,7 @@ export interface ClusterNodeCount {
   total: integer
   voting_only: integer
   data_cold: integer
+  data_frozen?: integer
   data_content: integer
   data_warm: integer
   data_hot: integer
@@ -3230,6 +3232,11 @@ export interface ClusterNodesStats {
   versions: Array<string>
 }
 
+export interface ClusterOperatingSystemArchitecture {
+  count: integer
+  arch: string
+}
+
 export interface ClusterOperatingSystemName {
   count: integer
   name: string
@@ -3246,6 +3253,7 @@ export interface ClusterOperatingSystemStats {
   mem: OperatingSystemMemoryInfo
   names: Array<ClusterOperatingSystemName>
   pretty_names: Array<ClusterOperatingSystemPrettyNane>
+  architectures?: Array<ClusterOperatingSystemArchitecture>
 }
 
 export interface ClusterPendingTasksRequest extends RequestBase {
@@ -3451,12 +3459,13 @@ export interface ClusterStatsRequest extends RequestBase {
 }
 
 export interface ClusterStatsResponse extends NodesResponseBase {
-  cluster_name: string
-  cluster_uuid: string
+  cluster_name: Name
+  cluster_uuid: Uuid
   indices: ClusterIndicesStats
   nodes: ClusterNodesStats
   status: ClusterStatus
   timestamp: long
+  _nodes: NodeStatistics
 }
 
 export type ClusterStatus = 'green' | 'yellow' | 'red'
@@ -5239,6 +5248,7 @@ export type FieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | '
 
 export interface FieldTypesMappings {
   field_types: Array<FieldTypesStats>
+  runtime_field_types?: Array<RuntimeFieldTypesStats>
 }
 
 export interface FieldTypesStats {
@@ -7509,21 +7519,28 @@ export interface LifecycleAction {
 }
 
 export interface LifecycleExplain {
-  action: string
-  action_time_millis: DateString
+  action: Name
+  action_time_millis: EpochMillis
   age: Time
-  failed_step: string
-  failed_step_retry_count: integer
+  failed_step?: Name
+  failed_step_retry_count?: integer
   index: IndexName
-  is_auto_retryable_error: boolean
-  lifecycle_date_millis: DateString
+  is_auto_retryable_error?: boolean
+  lifecycle_date_millis: EpochMillis
   managed: boolean
-  phase: string
-  phase_time_millis: DateString
-  policy: string
-  step: string
-  step_info: Record<string, any>
-  step_time_millis: DateString
+  phase: Name
+  phase_time_millis: EpochMillis
+  policy: Name
+  step: Name
+  step_info?: Record<string, any>
+  step_time_millis: EpochMillis
+  phase_execution: LifecycleExplainPhaseExecution
+}
+
+export interface LifecycleExplainPhaseExecution {
+  policy: Name
+  version: integer
+  modified_date_in_millis: EpochMillis
 }
 
 export interface LifecycleExplainProject {
@@ -8417,8 +8434,8 @@ export interface NodeProcessInfo {
 }
 
 export interface NodeReloadException {
-  name: string
-  reload_exception: NodeReloadExceptionCausedBy
+  name: Name
+  reload_exception?: NodeReloadExceptionCausedBy
 }
 
 export interface NodeReloadExceptionCausedBy {
@@ -9983,7 +10000,7 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
 }
 
 export interface ReloadSecureSettingsResponse extends NodesResponseBase {
-  cluster_name: string
+  cluster_name: Name
   nodes: Record<string, NodeStats | NodeReloadException>
 }
 
@@ -10372,6 +10389,23 @@ export interface RuntimeField {
   type: FieldType
 }
 
+export interface RuntimeFieldTypesStats {
+  name: Name
+  count: integer
+  index_count: integer
+  scriptless_count: integer
+  shadowed_count: integer
+  lang: Array<string>
+  lines_max: integer
+  lines_total: integer
+  chars_max: integer
+  chars_total: integer
+  source_max: integer
+  source_total: integer
+  doc_max: integer
+  doc_total: integer
+}
+
 export type RuntimeFields = Record<Field, RuntimeField>
 
 export interface RuntimeFieldsTypeUsage {
@@ -10743,6 +10777,66 @@ export interface SearchTransform {
 }
 
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
+
+export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface SearchableSnapshotsClearCacheResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface SearchableSnapshotsMountRequest extends RequestBase {
+  repository: Name
+  snapshot: Name
+  master_timeout?: Time
+  wait_for_completion?: boolean
+  storage?: string
+  body: {
+    index: IndexName
+    renamed_index?: IndexName
+    index_settings?: Record<string, any>
+    ignore_index_settings?: Array<string>
+  }
+}
+
+export interface SearchableSnapshotsMountResponse extends ResponseBase {
+  snapshot: SearchableSnapshotsMountSnapshot
+}
+
+export interface SearchableSnapshotsMountSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
+}
+
+export interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface SearchableSnapshotsRepositoryStatsResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface SearchableSnapshotsStatsRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface SearchableSnapshotsStatsResponse extends ResponseBase {
+  stub: integer
+}
 
 export interface SearchableSnapshotsUsage extends XPackUsage {
   indices_count: integer

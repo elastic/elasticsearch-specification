@@ -17,19 +17,19 @@
  * under the License.
  */
 
-class ClusterNodeCount {
-  coordinating_only: integer
-  data: integer
-  ingest: integer
-  master: integer
-  total: integer
-  voting_only: integer
-  data_cold: integer
-  data_frozen?: integer
-  data_content: integer
-  data_warm: integer
-  data_hot: integer
-  ml: integer
-  remote_cluster_client: integer
-  transform: integer
+/**
+ * @rest_spec_name searchable_snapshots.clear_cache
+ * @since 7.10.0
+ * @stability TODO
+ */
+interface SearchableSnapshotsClearCacheRequest extends RequestBase {
+  path_parts?: {
+    stub_a: integer
+  }
+  query_parameters?: {
+    stub_b: integer
+  }
+  body?: {
+    stub_c: integer
+  }
 }

@@ -21,49 +21,49 @@
 class QueryContainer {
   bool?: BoolQuery
   boosting?: BoostingQuery
-  common?: SingleKeyDictionary<Union<CommonTermsQuery, string>>
+  common?: SingleKeyDictionary<CommonTermsQuery | string>
   constant_score?: ConstantScoreQuery
   dis_max?: DisMaxQuery
   // TODO?: can be both { __field__ ?: { options } } and { field?: "" ...options }
   // very lenient parser on the server, never documented as such but used in yamltests as such
   distance_feature?:
-    | SingleKeyDictionary<Union<DistanceFeatureQuery, string>>
+    | SingleKeyDictionary<DistanceFeatureQuery | string>
     | DistanceFeatureQuery
   exists?: ExistsQuery
   function_score?: FunctionScoreQuery
-  fuzzy?: SingleKeyDictionary<Union<FuzzyQuery, string>>
-  geo_bounding_box?: NamedQuery<Union<GeoBoundingBoxQuery, string>>
-  geo_distance?: NamedQuery<Union<GeoDistanceQuery, string>>
-  geo_polygon?: NamedQuery<Union<GeoPolygonQuery, string>>
+  fuzzy?: SingleKeyDictionary<FuzzyQuery | string>
+  geo_bounding_box?: NamedQuery<GeoBoundingBoxQuery | string>
+  geo_distance?: NamedQuery<GeoDistanceQuery | string>
+  geo_polygon?: NamedQuery<GeoPolygonQuery | string>
   geo_shape?: NamedQuery<GeoShapeQuery | string>
   has_child?: HasChildQuery
   has_parent?: HasParentQuery
   ids?: IdsQuery
-  intervals?: NamedQuery<Union<IntervalsQuery, string>>
+  intervals?: NamedQuery<IntervalsQuery | string>
   is_conditionless?: boolean
   is_strict?: boolean
   is_verbatim?: boolean
   is_writable?: boolean
   match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
-  match_bool_prefix?: NamedQuery<Union<MatchBoolPrefixQuery, string>>
+  match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>
   match_none?: MatchNoneQuery
-  match_phrase?: NamedQuery<Union<MatchPhraseQuery, string>>
-  match_phrase_prefix?: NamedQuery<Union<MatchPhrasePrefixQuery, string>>
+  match_phrase?: NamedQuery<MatchPhraseQuery | string>
+  match_phrase_prefix?: NamedQuery<MatchPhrasePrefixQuery | string>
   more_like_this?: MoreLikeThisQuery
   multi_match?: MultiMatchQuery
   nested?: NestedQuery
   parent_id?: ParentIdQuery
   percolate?: PercolateQuery
   pinned?: PinnedQuery
-  prefix?: NamedQuery<Union<PrefixQuery, string>>
+  prefix?: NamedQuery<PrefixQuery | string>
   query_string?: QueryStringQuery
   range?: NamedQuery<RangeQuery>
-  rank_feature?: NamedQuery<Union<RankFeatureQuery, string>>
-  regexp?: NamedQuery<Union<RegexpQuery, string>>
+  rank_feature?: NamedQuery<RankFeatureQuery | string>
+  regexp?: NamedQuery<RegexpQuery | string>
   script?: ScriptQuery
   script_score?: ScriptScoreQuery
-  shape?: NamedQuery<Union<ShapeQuery, string>>
+  shape?: NamedQuery<ShapeQuery | string>
   simple_query_string?: SimpleQueryStringQuery
   span_containing?: SpanContainingQuery
   field_masking_span?: SpanFieldMaskingQuery
@@ -72,13 +72,13 @@ class QueryContainer {
   span_near?: SpanNearQuery
   span_not?: SpanNotQuery
   span_or?: SpanOrQuery
-  span_term?: NamedQuery<Union<SpanTermQuery, string>>
+  span_term?: NamedQuery<SpanTermQuery | string>
   span_within?: SpanWithinQuery
   template?: QueryTemplate
   term?: NamedQuery<TermQuery | string | float | boolean>
   terms?: NamedQuery<TermsQuery | string[] | long[]>
-  terms_set?: NamedQuery<Union<TermsSetQuery, string>>
-  wildcard?: NamedQuery<Union<WildcardQuery, string>>
+  terms_set?: NamedQuery<TermsSetQuery | string>
+  wildcard?: NamedQuery<WildcardQuery | string>
 
   /**
    * @obsolete 7.0.0

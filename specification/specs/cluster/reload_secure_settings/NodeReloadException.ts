@@ -18,8 +18,8 @@
  */
 
 class NodeReloadException {
-  name: string
-  reload_exception: NodeReloadExceptionCausedBy
+  name: Name
+  reload_exception?: NodeReloadExceptionCausedBy
 }
 
 class NodeReloadExceptionCausedBy {

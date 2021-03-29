@@ -50,7 +50,7 @@ class ErrorCause {
   reason: string
 
   caused_by?: ErrorCause
-  shard?: Union<integer, string>
+  shard?: integer | string
   stack_trace?: string
 
   bytes_limit?: long

@@ -17,19 +17,6 @@
  * under the License.
  */
 
-class ClusterNodeCount {
-  coordinating_only: integer
-  data: integer
-  ingest: integer
-  master: integer
-  total: integer
-  voting_only: integer
-  data_cold: integer
-  data_frozen?: integer
-  data_content: integer
-  data_warm: integer
-  data_hot: integer
-  ml: integer
-  remote_cluster_client: integer
-  transform: integer
+class SearchableSnapshotsRepositoryStatsResponse extends ResponseBase {
+  stub: integer
 }

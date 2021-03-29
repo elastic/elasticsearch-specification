@@ -17,5 +17,19 @@
  * under the License.
  */
 
-@class_serializer('UnionFormatter`2')
-class Union<TFirst, TSecond> {}
+/**
+ * @rest_spec_name searchable_snapshots.stats
+ * @since 7.10.0
+ * @stability TODO
+ */
+interface SearchableSnapshotsStatsRequest extends RequestBase {
+  path_parts?: {
+    stub_a: integer
+  }
+  query_parameters?: {
+    stub_b: integer
+  }
+  body?: {
+    stub_c: integer
+  }
+}

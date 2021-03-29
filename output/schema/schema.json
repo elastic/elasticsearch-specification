@@ -8738,9 +8738,16 @@
       "description": "Clear the cache of searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsClearCacheRequest",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsClearCacheResponse",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8767,9 +8774,16 @@
       "description": "Mount a snapshot as a searchable index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
       "name": "searchable_snapshots.mount",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsMountRequest",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsMountResponse",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8787,9 +8801,16 @@
       "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.repository_stats",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsRepositoryStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsRepositoryStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8807,9 +8828,16 @@
       "description": "Retrieve various statistics about searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
-      "request": null,
+      "request": {
+        "name": "SearchableSnapshotsStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SearchableSnapshotsStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "since": "7.10.0",
       "stability": "experimental",
       "urls": [
         {
@@ -17720,6 +17748,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -35287,6 +35326,17 @@
           }
         },
         {
+          "name": "data_frozen",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "data_content",
           "required": true,
           "type": {
@@ -35506,6 +35556,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ClusterOperatingSystemArchitecture",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "arch",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterOperatingSystemName",
         "namespace": "cluster.cluster_stats"
       },
@@ -35629,6 +35710,20 @@
               "type": {
                 "name": "ClusterOperatingSystemPrettyNane",
                 "namespace": "cluster.nodes_info"
+              }
+            }
+          }
+        },
+        {
+          "name": "architectures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterOperatingSystemArchitecture",
+                "namespace": "cluster.cluster_stats"
               }
             }
           }
@@ -37334,7 +37429,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -37345,7 +37440,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }
@@ -37391,6 +37486,17 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
             }
           }
         }
@@ -53459,6 +53565,20 @@
               }
             }
           }
+        },
+        {
+          "name": "runtime_field_types",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
         }
       ]
     },
@@ -62052,26 +62172,21 @@
                 }
               },
               {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "array_of",
-                    "value": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    }
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
+                }
               }
             ],
             "kind": "union_of"
@@ -73511,7 +73626,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -73522,7 +73637,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -73540,18 +73655,18 @@
         },
         {
           "name": "failed_step",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "failed_step_retry_count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73573,7 +73688,7 @@
         },
         {
           "name": "is_auto_retryable_error",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73588,7 +73703,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -73610,7 +73725,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -73621,7 +73736,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -73632,7 +73747,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -73643,14 +73758,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "step_info",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -73671,7 +73786,60 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "phase_execution",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainPhaseExecution",
+              "namespace": "x_pack.ilm.explain_lifecycle"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainPhaseExecution",
+        "namespace": "x_pack.ilm.explain_lifecycle"
+      },
+      "properties": [
+        {
+          "name": "policy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "modified_date_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -81609,14 +81777,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "reload_exception",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -96219,7 +96387,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -99426,6 +99594,172 @@
             "type": {
               "name": "FieldType",
               "namespace": "mapping.types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RuntimeFieldTypesStats",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "scriptless_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shadowed_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lang",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "lines_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lines_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "chars_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "chars_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "source_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "source_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
@@ -103076,6 +103410,477 @@
         "name": "SearchType",
         "namespace": "common"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsClearCacheRequest",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsClearCacheResponse",
+        "namespace": "x_pack.searchable_snapshots.clear_cache"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "index",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "renamed_index",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "index_settings",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          },
+          {
+            "name": "ignore_index_settings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsMountRequest",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "path": [
+        {
+          "description": "The name of the repository containing the snapshot of the index to mount",
+          "name": "repository",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the snapshot of the index to mount",
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "storage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsMountResponse",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "properties": [
+        {
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchableSnapshotsMountSnapshot",
+              "namespace": "x_pack.searchable_snapshots.mount"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsMountSnapshot",
+        "namespace": "x_pack.searchable_snapshots.mount"
+      },
+      "properties": [
+        {
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "common_options.hit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsRepositoryStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsRepositoryStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.repository_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SearchableSnapshotsStatsRequest",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchableSnapshotsStatsResponse",
+        "namespace": "x_pack.searchable_snapshots.stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -122985,26 +123790,21 @@
                 }
               },
               {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "array_of",
-                    "value": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    }
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
+                }
               }
             ],
             "kind": "union_of"
