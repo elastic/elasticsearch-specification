@@ -23,4 +23,5 @@ class ClusterOperatingSystemStats {
   mem: OperatingSystemMemoryInfo
   names: ClusterOperatingSystemName[]
   pretty_names: ClusterOperatingSystemPrettyNane[]
+  architectures?: ClusterOperatingSystemArchitecture[]
 }

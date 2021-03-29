@@ -3208,6 +3208,7 @@ export interface ClusterNodeCount {
   total: integer
   voting_only: integer
   data_cold: integer
+  data_frozen?: integer
   data_content: integer
   data_warm: integer
   data_hot: integer
@@ -3230,6 +3231,11 @@ export interface ClusterNodesStats {
   versions: Array<string>
 }
 
+export interface ClusterOperatingSystemArchitecture {
+  count: integer
+  arch: string
+}
+
 export interface ClusterOperatingSystemName {
   count: integer
   name: string
@@ -3246,6 +3252,7 @@ export interface ClusterOperatingSystemStats {
   mem: OperatingSystemMemoryInfo
   names: Array<ClusterOperatingSystemName>
   pretty_names: Array<ClusterOperatingSystemPrettyNane>
+  architectures?: Array<ClusterOperatingSystemArchitecture>
 }
 
 export interface ClusterPendingTasksRequest extends RequestBase {
@@ -3451,12 +3458,13 @@ export interface ClusterStatsRequest extends RequestBase {
 }
 
 export interface ClusterStatsResponse extends NodesResponseBase {
-  cluster_name: string
-  cluster_uuid: string
+  cluster_name: Name
+  cluster_uuid: Uuid
   indices: ClusterIndicesStats
   nodes: ClusterNodesStats
   status: ClusterStatus
   timestamp: long
+  _nodes: NodeStatistics
 }
 
 export type ClusterStatus = 'green' | 'yellow' | 'red'
@@ -5239,6 +5247,7 @@ export type FieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | '
 
 export interface FieldTypesMappings {
   field_types: Array<FieldTypesStats>
+  runtime_field_types?: Array<RuntimeFieldTypesStats>
 }
 
 export interface FieldTypesStats {
@@ -10370,6 +10379,23 @@ export interface RuntimeField {
   format?: string
   script?: StoredScript
   type: FieldType
+}
+
+export interface RuntimeFieldTypesStats {
+  name: Name
+  count: integer
+  index_count: integer
+  scriptless_count: integer
+  shadowed_count: integer
+  lang: Array<string>
+  lines_max: integer
+  lines_total: integer
+  chars_max: integer
+  chars_total: integer
+  source_max: integer
+  source_total: integer
+  doc_max: integer
+  doc_total: integer
 }
 
 export type RuntimeFields = Record<Field, RuntimeField>
