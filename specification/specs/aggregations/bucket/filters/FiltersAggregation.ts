@@ -18,7 +18,7 @@
  */
 
 class FiltersAggregation extends BucketAggregationBase {
-  filters?: Union<Dictionary<string, QueryContainer>, QueryContainer[]>
+  filters?: Dictionary<string, QueryContainer> | QueryContainer[]
   other_bucket?: boolean
   other_bucket_key?: string
 }

@@ -20,7 +20,7 @@
 class SuggestContextQuery {
   boost?: double
   context: Context
-  neighbours?: Union<Distance[], integer[]>
-  precision?: Union<Distance, integer>
+  neighbours?: Distance[] | integer[]
+  precision?: Distance | integer
   prefix?: boolean
 }

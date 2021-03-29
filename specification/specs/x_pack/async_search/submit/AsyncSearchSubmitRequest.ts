@@ -70,7 +70,7 @@ interface AsyncSearchSubmitRequest extends RequestBase {
     sequence_number_primary_term?: boolean
     size?: integer
     sort?: Sort
-    _source?: Union<boolean, SourceFilter>
+    _source?: boolean | SourceFilter
     stats?: string[]
     stored_fields?: Fields
     suggest?: Dictionary<string, SuggestContainer>

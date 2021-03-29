@@ -72,8 +72,6 @@ function buildType (type) {
       return createArray(type)
     case 'union_of':
       return createUnionOf(type)
-    case 'union':
-      return createUnion(type)
     case 'dictionary_of':
       return createDictionary(type)
     case 'named_value_of':
@@ -107,10 +105,6 @@ function createArray (type) {
 
 function createUnionOf (type) {
   return type.items.map(buildType).join(' | ')
-}
-
-function createUnion (type) {
-  return `export type ${type.name.name} = ${createUnionOf(type)}`
 }
 
 function createDictionary (type) {

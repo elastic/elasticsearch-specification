@@ -57,7 +57,6 @@ export const knownBehaviors = [
 export const customTypes = [
   'SingleKeyDictionary',
   'Dictionary',
-  'Union',
   'UserDefinedValue'
 ]
 
@@ -213,21 +212,6 @@ export function modelType (node: Node): model.ValueOf {
           const type: model.NamedValueOf = {
             kind: 'named_value_of',
             value
-          }
-          return type
-        }
-
-        // TODO: the Union class should be removed from the spec
-        //       in favor of TypeScript unions
-        case 'Union': {
-          assert(
-            node.getTypeArguments().length >= 2,
-            'A Union must have at least two arguments'
-          )
-          const items = node.getTypeArguments().map(node => modelType(node))
-          const type: model.UnionOf = {
-            kind: 'union_of',
-            items
           }
           return type
         }

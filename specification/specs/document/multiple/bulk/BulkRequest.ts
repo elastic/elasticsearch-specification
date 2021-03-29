@@ -40,5 +40,5 @@ interface BulkRequest<TSource> extends RequestBase {
     wait_for_active_shards?: string
     require_alias?: boolean
   }
-  body?: Array<Union<BulkOperationContainer, TSource>>
+  body?: Array<BulkOperationContainer | TSource>
 }

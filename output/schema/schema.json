@@ -62104,26 +62104,21 @@
                 }
               },
               {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "array_of",
-                    "value": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    }
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
+                }
               }
             ],
             "kind": "union_of"
@@ -123561,26 +123556,21 @@
                 }
               },
               {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "array_of",
-                    "value": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    }
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
+                }
               }
             ],
             "kind": "union_of"

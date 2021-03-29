@@ -18,6 +18,6 @@
  */
 
 class ScheduleTriggerEvent {
-  scheduled_time: Union<DateString, string>
-  triggered_time?: Union<DateString, string>
+  scheduled_time: DateString | string
+  triggered_time?: DateString | string
 }
