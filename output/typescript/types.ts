@@ -6978,6 +6978,22 @@ export interface IndicesDeleteDataStreamRequest extends RequestBase {
 export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
 }
 
+export interface IndicesGetDataStreamRequest extends RequestBase {
+  name?: IndexName
+  expand_wildcards?: ExpandWildcardOptions
+}
+
+export interface IndicesGetDataStreamResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface IndicesMigrateToDataStreamRequest extends RequestBase {
+  name: IndexName
+}
+
+export interface IndicesMigrateToDataStreamResponse extends AcknowledgedResponseBase {
+}
+
 export interface IndicesOptions {
   allow_no_indices: boolean
   expand_wildcards: ExpandWildcards
@@ -6993,11 +7009,7 @@ export interface IndicesPrivileges {
 }
 
 export interface IndicesPromoteDataStreamRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  name: IndexName
 }
 
 export interface IndicesPromoteDataStreamResponse extends ResponseBase {

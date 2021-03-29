@@ -24,12 +24,8 @@
  */
 interface IndicesPromoteDataStreamRequest extends RequestBase {
   path_parts?: {
-    stub_a: integer
+    name: IndexName
   }
-  query_parameters?: {
-    stub_b: integer
-  }
-  body?: {
-    stub_c: integer
-  }
+  query_parameters?: {}
+  body?: {}
 }

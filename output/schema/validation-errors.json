@@ -112,14 +112,6 @@
         "Missing response"
       ]
     },
-    "indices.get_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "indices.get_index_template": {
       "request": [
         "Missing request"
@@ -129,14 +121,6 @@
       ]
     },
     "indices.get_upgrade": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.migrate_to_data_stream": {
       "request": [
         "Missing request"
       ],

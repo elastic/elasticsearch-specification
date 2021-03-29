@@ -4150,9 +4150,16 @@
       "description": "Returns data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.get_data_stream",
-      "request": null,
+      "request": {
+        "name": "IndicesGetDataStreamRequest",
+        "namespace": "x_pack.data_streams.get_data_stream"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesGetDataStreamResponse",
+        "namespace": "x_pack.data_streams.get_data_stream"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -4420,9 +4427,16 @@
       "description": "Migrates an alias to a data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.migrate_to_data_stream",
-      "request": null,
+      "request": {
+        "name": "IndicesMigrateToDataStreamRequest",
+        "namespace": "x_pack.data_streams.migrate_to_data_stream"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesMigrateToDataStreamResponse",
+        "namespace": "x_pack.data_streams.migrate_to_data_stream"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -68974,6 +68988,128 @@
       "properties": []
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesGetDataStreamRequest",
+        "namespace": "x_pack.data_streams.get_data_stream"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of data streams to get; use `*` to get all data streams",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcardOptions",
+              "namespace": "common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesGetDataStreamResponse",
+        "namespace": "x_pack.data_streams.get_data_stream"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesMigrateToDataStreamRequest",
+        "namespace": "x_pack.data_streams.migrate_to_data_stream"
+      },
+      "path": [
+        {
+          "description": "The name of the alias to migrate",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesMigrateToDataStreamResponse",
+        "namespace": "x_pack.data_streams.migrate_to_data_stream"
+      },
+      "properties": []
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IndicesOptions",
@@ -69098,22 +69234,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -69129,30 +69249,19 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The name of the data stream",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "inherits": [

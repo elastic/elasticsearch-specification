@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class IndicesMigrateToDataStreamResponse extends ResponseBase {
-  stub: integer
-}
+class IndicesMigrateToDataStreamResponse extends AcknowledgedResponseBase {}
