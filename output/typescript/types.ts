@@ -10695,15 +10695,27 @@ export interface SearchableSnapshotsClearCacheResponse extends ResponseBase {
 }
 
 export interface SearchableSnapshotsMountRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
+  repository: Name
+  snapshot: Name
+  master_timeout?: Time
+  wait_for_completion?: boolean
+  storage?: string
   body: {
-    stub_c: integer
+    index: IndexName
+    renamed_index?: IndexName
+    index_settings?: Record<string, any>
+    ignore_index_settings?: Array<string>
   }
 }
 
 export interface SearchableSnapshotsMountResponse extends ResponseBase {
-  stub: integer
+  snapshot: SearchableSnapshotsMountSnapshot
+}
+
+export interface SearchableSnapshotsMountSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
 }
 
 export interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {

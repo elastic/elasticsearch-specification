@@ -24,12 +24,18 @@
  */
 interface SearchableSnapshotsMountRequest extends RequestBase {
   path_parts?: {
-    stub_a: integer
+    repository: Name
+    snapshot: Name
   }
   query_parameters?: {
-    stub_b: integer
+    master_timeout?: Time         // default: 30s
+    wait_for_completion?: boolean // default: false
+    storage?: string              // default: full_copy
   }
   body?: {
-    stub_c: integer
+    index: IndexName
+    renamed_index?: IndexName
+    index_settings?: Dictionary<string, UserDefinedValue>
+    ignore_index_settings?: string[]
   }
 }
