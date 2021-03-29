@@ -4565,7 +4565,7 @@ export interface DocValueField {
   format?: string
 }
 
-export type DocValuesProperty = BinaryProperty | BooleanProperty | DateProperty | DateNanosProperty | KeywordProperty | NumberProperty | RangeProperty | GeoPointProperty | GeoShapeProperty | CompletionProperty | GenericProperty | IpProperty | Murmur3HashProperty | ShapeProperty | TokenCountProperty
+export type DocValuesProperty = BinaryProperty | BooleanProperty | DateProperty | DateNanosProperty | KeywordProperty | NumberProperty | RangeProperty | GeoPointProperty | GeoShapeProperty | CompletionProperty | GenericProperty | IpProperty | Murmur3HashProperty | ShapeProperty | TokenCountProperty | VersionProperty | WildcardProperty | PointProperty
 
 export interface DocValuesPropertyBase extends CorePropertyBase {
   doc_values?: boolean
@@ -8916,6 +8916,13 @@ export interface PointInTimeReference {
   keep_alive?: Time
 }
 
+export interface PointProperty extends DocValuesPropertyBase {
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  null_value?: string
+  type: 'point'
+}
+
 export interface Policy {
   phases: Phases
   name?: string
@@ -13085,6 +13092,10 @@ export interface VerifyRepositoryResponse extends ResponseBase {
   nodes: Record<string, CompactNodeInfo>
 }
 
+export interface VersionProperty extends DocValuesPropertyBase {
+  type: 'version'
+}
+
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 
 export type WaitForActiveShardOptions = 'all'
@@ -13223,6 +13234,10 @@ export interface WeightedAverageValue {
 
 export interface WhitespaceTokenizer extends TokenizerBase {
   max_token_length: integer
+}
+
+export interface WildcardProperty extends DocValuesPropertyBase {
+  type: 'wildcard'
 }
 
 export interface WildcardQuery extends QueryBase {

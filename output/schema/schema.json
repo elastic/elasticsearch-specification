@@ -47461,6 +47461,27 @@
               "name": "TokenCountProperty",
               "namespace": "mapping.types.specialized.token_count"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionProperty",
+              "namespace": "mapping.types.core.version"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WildcardProperty",
+              "namespace": "mapping.types.core.wildcard"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PointProperty",
+              "namespace": "mapping.types.geo.point"
+            }
           }
         ],
         "kind": "union_of"
@@ -85871,6 +85892,64 @@
               "name": "Time",
               "namespace": "common_options.time_unit"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "PointProperty",
+        "namespace": "mapping.types.geo.point"
+      },
+      "properties": [
+        {
+          "name": "ignore_malformed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_z_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "point"
           }
         }
       ]
@@ -124399,6 +124478,31 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "VersionProperty",
+        "namespace": "mapping.types.core.version"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "version"
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -125626,6 +125730,31 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "WildcardProperty",
+        "namespace": "mapping.types.core.wildcard"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "wildcard"
           }
         }
       ]
