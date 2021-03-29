@@ -18,5 +18,11 @@
  */
 
 class SearchableSnapshotsMountResponse extends ResponseBase {
-  stub: integer
+  snapshot: SearchableSnapshotsMountSnapshot
+}
+
+class SearchableSnapshotsMountSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
 }

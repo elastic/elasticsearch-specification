@@ -28,9 +28,9 @@ interface SearchableSnapshotsMountRequest extends RequestBase {
     snapshot: Name
   }
   query_parameters?: {
-    master_timeout?: Time         // default: 30s
+    master_timeout?: Time // default: 30s
     wait_for_completion?: boolean // default: false
-    storage?: string              // default: full_copy
+    storage?: string // default: full_copy
   }
   body?: {
     index: IndexName
