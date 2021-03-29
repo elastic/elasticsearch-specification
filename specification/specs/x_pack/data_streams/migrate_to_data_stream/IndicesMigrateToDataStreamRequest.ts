@@ -18,16 +18,14 @@
  */
 
 /**
- * @rest_spec_name indices.get_data_stream
+ * @rest_spec_name indices.migrate_to_data_stream
  * @since 7.9.0
  * @stability TODO
  */
-interface IndicesGetDataStreamRequest extends RequestBase {
+interface IndicesMigrateToDataStreamRequest extends RequestBase {
   path_parts?: {
-    name?: IndexName
+    name: IndexName
   }
-  query_parameters?: {
-    expand_wildcards?: ExpandWildcardOptions
-  }
+  query_parameters?: {}
   body?: {}
 }

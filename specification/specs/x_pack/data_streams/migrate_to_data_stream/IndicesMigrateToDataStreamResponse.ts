@@ -17,17 +17,6 @@
  * under the License.
  */
 
-/**
- * @rest_spec_name indices.get_data_stream
- * @since 7.9.0
- * @stability TODO
- */
-interface IndicesGetDataStreamRequest extends RequestBase {
-  path_parts?: {
-    name?: IndexName
-  }
-  query_parameters?: {
-    expand_wildcards?: ExpandWildcardOptions
-  }
-  body?: {}
+class IndicesMigrateToDataStreamResponse extends ResponseBase {
+  stub: integer
 }
