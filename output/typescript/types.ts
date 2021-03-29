@@ -6995,6 +6995,18 @@ export interface IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+export interface IndicesPromoteDataStreamRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IndicesPromoteDataStreamResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }

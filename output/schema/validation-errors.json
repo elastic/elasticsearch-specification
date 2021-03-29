@@ -144,14 +144,6 @@
         "Missing response"
       ]
     },
-    "indices.promote_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "indices.put_index_template": {
       "request": [
         "Missing request"

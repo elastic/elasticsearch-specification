@@ -4467,9 +4467,16 @@
       "description": "Promotes a data stream from a replicated data stream managed by CCR to a regular data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.promote_data_stream",
-      "request": null,
+      "request": {
+        "name": "IndicesPromoteDataStreamRequest",
+        "namespace": "x_pack.data_streams.promote_data_stream"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesPromoteDataStreamResponse",
+        "namespace": "x_pack.data_streams.promote_data_stream"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -69106,6 +69113,94 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesPromoteDataStreamRequest",
+        "namespace": "x_pack.data_streams.promote_data_stream"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesPromoteDataStreamResponse",
+        "namespace": "x_pack.data_streams.promote_data_stream"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
