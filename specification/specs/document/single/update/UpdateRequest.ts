@@ -39,7 +39,7 @@ interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     source_enabled?: boolean
     timeout?: Time
     wait_for_active_shards?: string
-    _source?: Union<boolean, Union<string, string[]>>
+    _source?: boolean | string | string[]
     _source_excludes?: Fields
     _source_includes?: Fields
   }
@@ -50,7 +50,7 @@ interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
     doc_as_upsert?: boolean
     script?: Script
     scripted_upsert?: boolean
-    _source?: Union<boolean, SourceFilter>
+    _source?: boolean | SourceFilter
     /** @prop_serializer SourceFormatter`1 */
     upsert?: TDocument
   }

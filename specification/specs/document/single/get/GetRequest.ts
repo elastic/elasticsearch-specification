@@ -39,7 +39,7 @@ interface GetRequest extends RequestBase {
     stored_fields?: Fields
     version?: long
     version_type?: VersionType
-    _source?: Union<boolean, Union<string, string[]>>
+    _source?: boolean | string | string[]
   }
   body?: {}
 }
