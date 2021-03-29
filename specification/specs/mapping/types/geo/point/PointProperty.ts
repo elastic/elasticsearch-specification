@@ -17,7 +17,9 @@
  * under the License.
  */
 
-class HistogramProperty extends PropertyBase {
+class PointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
-  type: 'histogram'
+  ignore_z_value?: boolean
+  null_value?: string
+  type: 'point'
 }

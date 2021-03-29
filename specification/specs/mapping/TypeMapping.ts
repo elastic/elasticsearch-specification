@@ -29,7 +29,7 @@ class TypeMapping {
   index_field?: IndexField
   _meta?: Dictionary<string, UserDefinedValue>
   numeric_detection?: boolean
-  properties?: Dictionary<PropertyName, PropertyBase>
+  properties?: Dictionary<PropertyName, Property>
   _routing?: RoutingField
   _size?: SizeField
   _source?: SourceField

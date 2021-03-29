@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class IntegerRangeProperty extends RangePropertyBase {}
+class IntegerRangeProperty extends RangePropertyBase {
+  type: 'integer_range'
+}

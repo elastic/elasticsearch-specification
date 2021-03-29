@@ -17,9 +17,6 @@
  * under the License.
  */
 
-class RangePropertyBase extends DocValuesPropertyBase {
-  boost: double
-  coerce: boolean
-  index: boolean
-  store: boolean
+class WildcardProperty extends DocValuesPropertyBase {
+  type: 'wildcard'
 }

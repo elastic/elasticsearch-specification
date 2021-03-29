@@ -17,7 +17,17 @@
  * under the License.
  */
 
-class HistogramProperty extends PropertyBase {
-  ignore_malformed?: boolean
-  type: 'histogram'
+class RangePropertyBase extends DocValuesPropertyBase {
+  boost?: double
+  coerce?: boolean
+  index?: boolean
+  store?: boolean
 }
+
+type RangeProperty =
+  | LongRangeProperty
+  | IpRangeProperty
+  | IntegerRangeProperty
+  | FloatRangeProperty
+  | DoubleRangeProperty
+  | DateRangeProperty

@@ -18,10 +18,11 @@
  */
 
 class DateNanosProperty extends DocValuesPropertyBase {
-  boost: double
-  format: string
-  ignore_malformed: boolean
-  index: boolean
-  null_value: DateString
-  precision_step: integer
+  boost?: double
+  format?: string
+  ignore_malformed?: boolean
+  index?: boolean
+  null_value?: DateString
+  precision_step?: integer
+  type: 'date_nanos'
 }

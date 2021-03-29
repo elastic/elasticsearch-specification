@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class BinaryProperty extends DocValuesPropertyBase {}
+class BinaryProperty extends DocValuesPropertyBase {
+  type: 'binary'
+}

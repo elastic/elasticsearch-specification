@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class Murmur3HashProperty extends DocValuesPropertyBase {}
+class Murmur3HashProperty extends DocValuesPropertyBase {
+  type: 'murmur3'
+}

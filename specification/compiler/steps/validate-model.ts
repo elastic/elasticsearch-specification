@@ -342,10 +342,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         validateTypeAlias(typeDef)
         break
 
-      case 'union':
-        validateUnion(typeDef)
-        break
-
       default:
         // @ts-expect-error
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
@@ -433,13 +429,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }))
 
     validateValueOf(typeDef.type, openGenerics)
-  }
-
-  function validateUnion (typeDef: model.Union): void {
-    // FIXME: union should have open generics
-    for (const item of typeDef.items) {
-      validateValueOf(item, new Set())
-    }
   }
 
   // -----------------------------------------------------------------------------------------------
@@ -623,6 +612,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         break
 
       case 'user_defined_value':
+        // Nothing to validate
+        break
+
+      case 'literal_value':
         // Nothing to validate
         break
 

@@ -17845,7 +17845,16 @@
         "name": "BinaryProperty",
         "namespace": "mapping.types.core.binary"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "binary"
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -17996,7 +18005,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18007,7 +18016,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18018,7 +18027,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18029,13 +18038,21 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "boolean"
           }
         }
       ]
@@ -37696,7 +37713,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37707,7 +37724,7 @@
         },
         {
           "name": "contexts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -37721,7 +37738,7 @@
         },
         {
           "name": "max_input_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37732,7 +37749,7 @@
         },
         {
           "name": "preserve_position_increments",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37743,7 +37760,7 @@
         },
         {
           "name": "preserve_separators",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37754,13 +37771,21 @@
         },
         {
           "name": "search_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "completion"
           }
         }
       ]
@@ -38591,9 +38616,17 @@
       "properties": [
         {
           "name": "value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "constant_keyword"
           }
         }
       ]
@@ -38837,6 +38870,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "NestedProperty",
+              "namespace": "mapping.types.complex.nested"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "SearchAsYouTypeProperty",
               "namespace": "mapping.types.core.search_as_you_type"
             }
@@ -38876,7 +38916,7 @@
       "properties": [
         {
           "name": "copy_to",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38886,29 +38926,8 @@
           }
         },
         {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PropertyName",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PropertyBase",
-                "namespace": "mapping.types"
-              }
-            }
-          }
-        },
-        {
           "name": "similarity",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38919,7 +38938,7 @@
         },
         {
           "name": "store",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42387,7 +42406,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42398,7 +42417,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42409,7 +42428,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42420,7 +42439,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42431,7 +42450,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42442,13 +42461,21 @@
         },
         {
           "name": "precision_step",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "date_nanos"
           }
         }
       ]
@@ -42545,7 +42572,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42556,7 +42583,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42567,7 +42594,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42578,7 +42605,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42589,7 +42616,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42600,7 +42627,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42611,13 +42638,21 @@
         },
         {
           "name": "precision_step",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "date"
           }
         }
       ]
@@ -42792,6 +42827,42 @@
               "name": "long",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DateRangeProperty",
+        "namespace": "mapping.types.core.range.date_range"
+      },
+      "properties": [
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "date_range"
           }
         }
       ]
@@ -47331,7 +47402,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "RangePropertyBase",
+              "name": "RangeProperty",
               "namespace": "mapping.types.core.range"
             }
           },
@@ -47390,6 +47461,27 @@
               "name": "TokenCountProperty",
               "namespace": "mapping.types.specialized.token_count"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionProperty",
+              "namespace": "mapping.types.core.version"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WildcardProperty",
+              "namespace": "mapping.types.core.wildcard"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PointProperty",
+              "namespace": "mapping.types.geo.point"
+            }
           }
         ],
         "kind": "union_of"
@@ -47412,7 +47504,7 @@
       "properties": [
         {
           "name": "doc_values",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47745,6 +47837,31 @@
               "name": "string",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DoubleRangeProperty",
+        "namespace": "mapping.types.core.range.double_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "double_range"
           }
         }
       ]
@@ -52357,13 +52474,21 @@
       "properties": [
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Field",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "alias"
           }
         }
       ]
@@ -54434,7 +54559,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54445,7 +54570,7 @@
         },
         {
           "name": "depth_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54456,7 +54581,7 @@
         },
         {
           "name": "doc_values",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54467,7 +54592,7 @@
         },
         {
           "name": "eager_global_ordinals",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54478,7 +54603,7 @@
         },
         {
           "name": "ignore_above",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54489,7 +54614,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54500,7 +54625,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54511,7 +54636,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54522,7 +54647,7 @@
         },
         {
           "name": "similarity",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54533,13 +54658,21 @@
         },
         {
           "name": "split_queries_on_whitespace",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "flattened"
           }
         }
       ]
@@ -54568,6 +54701,31 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "FloatRangeProperty",
+        "namespace": "mapping.types.core.range.float_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "float_range"
           }
         }
       ]
@@ -56693,6 +56851,17 @@
           }
         },
         {
+          "name": "ignore_malformed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "index",
           "required": true,
           "type": {
@@ -57805,7 +57974,7 @@
       "properties": [
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57816,7 +57985,7 @@
         },
         {
           "name": "ignore_z_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57827,13 +57996,21 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "GeoLocation",
               "namespace": "query_dsl.geo"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "geo_point"
           }
         }
       ]
@@ -57917,7 +58094,7 @@
       "properties": [
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57928,7 +58105,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57939,7 +58116,7 @@
         },
         {
           "name": "ignore_z_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57950,7 +58127,7 @@
         },
         {
           "name": "orientation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57961,13 +58138,21 @@
         },
         {
           "name": "strategy",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "GeoStrategy",
               "namespace": "mapping.types.geo.geo_shape"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "geo_shape"
           }
         }
       ]
@@ -65961,13 +66146,21 @@
       "properties": [
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "histogram"
           }
         }
       ]
@@ -70179,6 +70372,31 @@
       "inherits": [
         {
           "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IntegerRangeProperty",
+        "namespace": "mapping.types.core.range.integer_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "integer_range"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
             "name": "ScheduleBase",
             "namespace": "x_pack.watcher.schedule"
           }
@@ -71204,7 +71422,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -71215,7 +71433,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -71226,13 +71444,21 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ip"
           }
         }
       ]
@@ -71355,6 +71581,31 @@
         "namespace": "aggregations"
       },
       "properties": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IpRangeProperty",
+        "namespace": "mapping.types.core.range.ip_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ip_range"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -72002,7 +72253,7 @@
       "properties": [
         {
           "name": "relations",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -72013,15 +72264,35 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RelationName",
-                  "namespace": "internal"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "RelationName",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "RelationName",
+                      "namespace": "internal"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "join"
           }
         }
       ]
@@ -72603,7 +72874,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72614,7 +72885,7 @@
         },
         {
           "name": "eager_global_ordinals",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72625,7 +72896,7 @@
         },
         {
           "name": "ignore_above",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72636,7 +72907,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72647,7 +72918,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72658,7 +72929,7 @@
         },
         {
           "name": "normalizer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72669,7 +72940,7 @@
         },
         {
           "name": "norms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72680,7 +72951,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72691,13 +72962,21 @@
         },
         {
           "name": "split_queries_on_whitespace",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
           }
         }
       ]
@@ -74376,6 +74655,31 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RangePropertyBase",
+            "namespace": "mapping.types.core.range"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "LongRangeProperty",
+        "namespace": "mapping.types.core.range.long_range"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "long_range"
           }
         }
       ]
@@ -79186,7 +79490,16 @@
         "name": "Murmur3HashProperty",
         "namespace": "mapping.types.specialized.murmur3_hash"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "murmur3"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -79613,6 +79926,108 @@
               "name": "NestedIdentity",
               "namespace": "search.search.hits"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "CorePropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "NestedProperty",
+        "namespace": "mapping.types.complex.nested"
+      },
+      "properties": [
+        {
+          "name": "dynamic",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DynamicMapping",
+                  "namespace": "mapping"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Property",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        },
+        {
+          "name": "include_in_parent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "include_in_root",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nested"
           }
         }
       ]
@@ -82520,7 +82935,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82531,7 +82946,7 @@
         },
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82542,7 +82957,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82553,7 +82968,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82564,7 +82979,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82575,7 +82990,7 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82586,7 +83001,7 @@
         },
         {
           "name": "scaling_factor",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82594,8 +83009,55 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumberType",
+              "namespace": "mapping.types.core.number"
+            }
+          }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "float"
+        },
+        {
+          "name": "half_float"
+        },
+        {
+          "name": "scaled_float"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "integer"
+        },
+        {
+          "name": "long"
+        },
+        {
+          "name": "short"
+        },
+        {
+          "name": "byte"
+        },
+        {
+          "name": "unsigned_long"
+        }
+      ],
+      "name": {
+        "name": "NumberType",
+        "namespace": "mapping.types.core.number"
+      }
     },
     {
       "attachedBehaviors": [
@@ -82708,7 +83170,7 @@
       "properties": [
         {
           "name": "dynamic",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -82731,7 +83193,7 @@
         },
         {
           "name": "enabled",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82742,7 +83204,7 @@
         },
         {
           "name": "properties",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -82755,10 +83217,18 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "object"
           }
         }
       ]
@@ -84530,7 +85000,16 @@
         "name": "PercolatorProperty",
         "namespace": "mapping.types.core.percolator"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "percolator"
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -85413,6 +85892,64 @@
               "name": "Time",
               "namespace": "common_options.time_unit"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "PointProperty",
+        "namespace": "mapping.types.geo.point"
+      },
+      "properties": [
+        {
+          "name": "ignore_malformed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_z_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "point"
           }
         }
       ]
@@ -86862,6 +87399,10 @@
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -86921,17 +87462,6 @@
           }
         },
         {
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "properties",
           "required": false,
           "type": {
@@ -86946,7 +87476,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
@@ -87001,7 +87531,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
@@ -92696,6 +93226,60 @@
       "properties": []
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "RangeProperty",
+        "namespace": "mapping.types.core.range"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongRangeProperty",
+              "namespace": "mapping.types.core.range.long_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpRangeProperty",
+              "namespace": "mapping.types.core.range.ip_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IntegerRangeProperty",
+              "namespace": "mapping.types.core.range.integer_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FloatRangeProperty",
+              "namespace": "mapping.types.core.range.float_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DoubleRangeProperty",
+              "namespace": "mapping.types.core.range.double_range"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateRangeProperty",
+              "namespace": "mapping.types.core.range.date_range"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -92712,7 +93296,7 @@
       "properties": [
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92723,7 +93307,7 @@
         },
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92734,7 +93318,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92745,7 +93329,7 @@
         },
         {
           "name": "store",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92976,13 +93560,21 @@
       "properties": [
         {
           "name": "positive_score_impact",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "rank_feature"
           }
         }
       ]
@@ -93029,7 +93621,16 @@
         "name": "RankFeaturesProperty",
         "namespace": "mapping.types.core.rank_features"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "rank_features"
+          }
+        }
+      ]
     },
     {
       "inherits": [
@@ -100248,7 +100849,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100259,7 +100860,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100270,7 +100871,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100281,7 +100882,7 @@
         },
         {
           "name": "max_shingle_size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100292,7 +100893,7 @@
         },
         {
           "name": "norms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100303,7 +100904,7 @@
         },
         {
           "name": "search_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100314,7 +100915,7 @@
         },
         {
           "name": "search_quote_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100325,13 +100926,21 @@
         },
         {
           "name": "term_vector",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "TermVectorOption",
               "namespace": "mapping"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "search_as_you_type"
           }
         }
       ]
@@ -103523,10 +104132,22 @@
       "kind": "enum",
       "members": [
         {
-          "name": "ClockWise"
+          "name": "right"
         },
         {
-          "name": "CounterClockWise"
+          "name": "counterclockwise"
+        },
+        {
+          "name": "ccw"
+        },
+        {
+          "name": "left"
+        },
+        {
+          "name": "clockwise"
+        },
+        {
+          "name": "cw"
         }
       ],
       "name": {
@@ -103551,7 +104172,7 @@
       "properties": [
         {
           "name": "coerce",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103562,7 +104183,7 @@
         },
         {
           "name": "ignore_malformed",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103573,7 +104194,7 @@
         },
         {
           "name": "ignore_z_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103584,13 +104205,21 @@
         },
         {
           "name": "orientation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "ShapeOrientation",
               "namespace": "mapping.types.specialized.shape"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "shape"
           }
         }
       ]
@@ -116444,7 +117073,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116455,7 +117084,7 @@
         },
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116466,7 +117095,7 @@
         },
         {
           "name": "eager_global_ordinals",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116477,7 +117106,7 @@
         },
         {
           "name": "fielddata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116488,7 +117117,7 @@
         },
         {
           "name": "fielddata_frequency_filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116499,7 +117128,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116510,7 +117139,7 @@
         },
         {
           "name": "index_options",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116521,7 +117150,7 @@
         },
         {
           "name": "index_phrases",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116532,7 +117161,7 @@
         },
         {
           "name": "index_prefixes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116543,7 +117172,7 @@
         },
         {
           "name": "norms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116554,7 +117183,7 @@
         },
         {
           "name": "position_increment_gap",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116565,7 +117194,7 @@
         },
         {
           "name": "search_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116576,7 +117205,7 @@
         },
         {
           "name": "search_quote_analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116587,13 +117216,21 @@
         },
         {
           "name": "term_vector",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "TermVectorOption",
               "namespace": "mapping"
             }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "text"
           }
         }
       ]
@@ -117256,7 +117893,7 @@
       "properties": [
         {
           "name": "analyzer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117267,7 +117904,7 @@
         },
         {
           "name": "boost",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117278,7 +117915,7 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -117289,13 +117926,32 @@
         },
         {
           "name": "null_value",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "double",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "enable_position_increments",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "token_count"
           }
         }
       ]
@@ -119918,7 +120574,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PropertyBase",
+                "name": "Property",
                 "namespace": "mapping.types"
               }
             }
@@ -123822,6 +124478,31 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "VersionProperty",
+        "namespace": "mapping.types.core.version"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "version"
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -125049,6 +125730,31 @@
               "name": "integer",
               "namespace": "internal"
             }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "DocValuesPropertyBase",
+            "namespace": "mapping.types"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "WildcardProperty",
+        "namespace": "mapping.types.core.wildcard"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "wildcard"
           }
         }
       ]

@@ -158,6 +158,15 @@ export function modelType (node: Node): model.ValueOf {
       return modelType(node.getLiteral())
     }
 
+    case ts.SyntaxKind.StringLiteral: {
+      assert(Node.isStringLiteral(node), `The node is not of type ${ts.SyntaxKind.StringLiteral} but ${node.getKind()} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: node.getText().replace(/'/g, '')
+      }
+      return type
+    }
+
     case ts.SyntaxKind.TypeParameter: {
       assert(Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind.TypeReference} but ${node.getKind()} instead`)
       const name = node.compilerNode.getText()
@@ -358,14 +367,26 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
   const type = declaration.getTypeNode()
   assert(type, 'Type alias without a referenced type')
   const generics = declaration.getTypeParameters().map(node => modelType(node))
+
+  const alias = modelType(type)
   const typeAlias: model.TypeAlias = {
     name: {
       name: declaration.getName(),
       namespace: getNameSpace(declaration)
     },
     kind: 'type_alias',
-    type: modelType(type),
+    type: alias,
     ...(generics.length > 0 && { generics })
+  }
+  if (alias.kind === 'union_of') {
+    const variants = parseVariantsTag(declaration.getJsDocs())
+    if (variants != null) {
+      assert(
+        variants.kind === 'internal_tag' || variants.kind === 'external_tag',
+        'Type Aliases can only have internal or external variants'
+      )
+      typeAlias.variants = variants
+    }
   }
   hoistTypeAnnotations(typeAlias, declaration.getJsDocs())
   return typeAlias
@@ -484,11 +505,13 @@ export function hoistRequestAnnotations (
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
 export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]): void {
-  const validTags = ['class_serializer', 'url', 'behavior']
+  const validTags = ['class_serializer', 'url', 'behavior', 'variants', 'variant']
   const tags = parseJsDocTags(jsDocs)
   setTags(type, tags, validTags, (tags, tag, value) => {
     if (tag === 'stability') {
     } else if (tag.endsWith('_serializer')) {
+    } else if (tag === 'variants') {
+    } else if (tag === 'variant') {
     } else if (tag === 'url') {
       type.url = value
     } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
@@ -632,6 +655,54 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
     })
   const mapped = tags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
   return mapped
+}
+
+/**
+ * Given a JSDoc definition, it returns the Variants is present.
+ * It also validates the variants syntax.
+ */
+export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
+  const tags = parseJsDocTags(jsDoc)
+  if (tags.variants == null) {
+    return undefined
+  }
+
+  const [type, value] = tags.variants.split(' ')
+  if (type === 'external') {
+    return { kind: 'external_tag' }
+  }
+
+  if (type === 'container') {
+    return { kind: 'container' }
+  }
+
+  assert(type === 'internal', `Bad variant type: ${type}`)
+  assert(typeof value === 'string', 'Internal variant requires a tag definition')
+  const [tag, property] = value.split('=')
+  assert(tag === 'tag')
+  assert(typeof property === 'string')
+
+  return {
+    kind: 'internal_tag',
+    tag: property.replace(/'/g, '')
+  }
+}
+
+/**
+ * Given a JSDoc definition, it returns the variant name if present.
+ * It also validates the variant name syntax.
+ */
+export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
+  const tags = parseJsDocTags(jsDoc)
+  if (tags.variant == null) {
+    return undefined
+  }
+
+  const [key, name] = tags.variant.split('=')
+  assert(key === 'name')
+  assert(typeof name === 'string')
+
+  return name.replace(/'/g, '')
 }
 
 /**

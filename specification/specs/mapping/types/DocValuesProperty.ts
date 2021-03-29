@@ -18,7 +18,7 @@
  */
 
 class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values: boolean
+  doc_values?: boolean
 }
 
 type DocValuesProperty =
@@ -28,7 +28,7 @@ type DocValuesProperty =
   | DateNanosProperty
   | KeywordProperty
   | NumberProperty
-  | RangePropertyBase
+  | RangeProperty
   | GeoPointProperty
   | GeoShapeProperty
   | CompletionProperty
@@ -37,3 +37,6 @@ type DocValuesProperty =
   | Murmur3HashProperty
   | ShapeProperty
   | TokenCountProperty
+  | VersionProperty
+  | WildcardProperty
+  | PointProperty

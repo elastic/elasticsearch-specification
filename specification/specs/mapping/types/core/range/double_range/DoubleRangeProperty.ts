@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class DoubleRangeProperty extends RangePropertyBase {}
+class DoubleRangeProperty extends RangePropertyBase {
+  type: 'double_range'
+}

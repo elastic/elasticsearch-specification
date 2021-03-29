@@ -17,4 +17,6 @@
  * under the License.
  */
 
-class PercolatorProperty extends PropertyBase {}
+class PercolatorProperty extends PropertyBase {
+  type: 'percolator'
+}

@@ -49,7 +49,9 @@ import {
   modelInherits,
   modelProperty,
   modelType,
-  modelTypeAlias
+  modelTypeAlias,
+  parseVariantNameTag,
+  parseVariantsTag
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specs')
@@ -256,6 +258,17 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     hoistTypeAnnotations(type, declaration.getJsDocs())
+
+    const variant = parseVariantNameTag(declaration.getJsDocs())
+    if (typeof variant === 'string') {
+      type.variantName = variant
+    }
+
+    const variants = parseVariantsTag(declaration.getJsDocs())
+    if (variants != null) {
+      assert(variants.kind === 'container', 'Interfaces can only use `container` variant kind')
+      type.variants = variants
+    }
 
     for (const member of declaration.getMembers()) {
       // Any property definition

@@ -88,9 +88,6 @@ Condition,x_pack/watcher/condition/Condition.ts
 Input,x_pack/watcher/input/Input.ts
 Schedule,x_pack/watcher/schedule/Schedule.ts
 TriggerEvent,x_pack/watcher/trigger/TriggerEvent.ts
-NestedProperty,mapping/types/complex/nested/NestedProperty.ts
-NumberType,mapping/types/core/number/NumberType.ts
-RangeType,mapping/types/core/range/RangeType.ts
 GeoTree,mapping/types/geo/geo_shape/GeoTree.ts
 GeoPointFielddataFormat,modules/indices/fielddata/geo_point/GeoPointFielddataFormat.ts
 WeightScoreFunction,query_dsl/compound/function_score/functions/ScoreFunction.ts
@@ -107,9 +104,3 @@ SumFunction,x_pack/machine_learning/job/detectors/SumFunction.ts
 TimeFunction,x_pack/machine_learning/job/detectors/TimeFunction.ts
 DataAttachmentFormat,x_pack/watcher/action/email/DataAttachmentFormat.ts
 SlackActionMessageResult,x_pack/watcher/execution/slack/SlackActionMessageResult.ts
-DateRangeProperty,mapping/types/core/range/date_range/DateRangeProperty.ts
-DoubleRangeProperty,mapping/types/core/range/double_range/DoubleRangeProperty.ts
-FloatRangeProperty,mapping/types/core/range/float_range/FloatRangeProperty.ts
-IntegerRangeProperty,mapping/types/core/range/integer_range/IntegerRangeProperty.ts
-IpRangeProperty,mapping/types/core/range/ip_range/IpRangeProperty.ts
-LongRangeProperty,mapping/types/core/range/long_range/LongRangeProperty.ts

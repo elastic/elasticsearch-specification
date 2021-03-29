@@ -18,5 +18,6 @@
  */
 
 class RankFeatureProperty extends PropertyBase {
-  positive_score_impact: boolean
+  positive_score_impact?: boolean
+  type: 'rank_feature'
 }

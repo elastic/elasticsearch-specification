@@ -50,7 +50,12 @@ export class TypeName {
 /**
  * Type of a value. Used both for property types and nested type definitions.
  */
-export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValueOf | UserDefinedValue
+export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValueOf | UserDefinedValue | LiteralValue
+
+export class LiteralValue {
+  kind: 'literal_value'
+  value: string | number | boolean
+}
 
 /**
  * A single value
@@ -130,7 +135,7 @@ export class Property {
 // ------------------------------------------------------------------------------------------------
 // Type definitions
 
-export type TypeDefinition = Interface | Request | Union | Enum | TypeAlias
+export type TypeDefinition = Interface | Request | Enum | TypeAlias
 
 // ------------------------------------------------------------------------------------------------
 
@@ -144,6 +149,22 @@ export abstract class BaseType {
   url?: string
   deprecation?: Deprecation
   kind: string
+  variantName?: string
+}
+
+export type Variants = ExternalTag | InternalTag | Container
+
+export class ExternalTag {
+  kind: 'external_tag'
+}
+
+export class InternalTag {
+  kind: 'internal_tag'
+  tag: string // Name of the property that holds the variant tag
+}
+
+export class Container {
+  kind: 'container'
 }
 
 /**
@@ -179,6 +200,8 @@ export class Interface extends BaseType {
    */
   attachedBehaviors?: string[]
   properties: Property[]
+  /** Identify containers */
+  variants?: Container
 }
 
 /**
@@ -221,18 +244,6 @@ export class PropertiesBody {
 }
 
 /**
- * A union type, containing a list of type references.
- *
- * As type references can themselves be unions (see `UnionOf`) a code generator will likely have to flatten a union or
- * a unionOf in a single list of type references.
- */
-export class Union extends BaseType {
-  kind: 'union'
-  generics?: string[]
-  items: ValueOf[]
-}
-
-/**
  * An enumeration member.
  *
  * When enumeration members can become ambiguous when translated to an identifier, the `name` property will be a good
@@ -267,6 +278,8 @@ export class TypeAlias extends BaseType {
   type: ValueOf
   /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: ValueOf[]
+  /** Identify typed_key unions (external) and variant inventories (internal) */
+  variants?: InternalTag | ExternalTag
 }
 
 // ------------------------------------------------------------------------------------------------
