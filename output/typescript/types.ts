@@ -7509,21 +7509,28 @@ export interface LifecycleAction {
 }
 
 export interface LifecycleExplain {
-  action: string
-  action_time_millis: DateString
+  action: Name
+  action_time_millis: EpochMillis
   age: Time
-  failed_step: string
-  failed_step_retry_count: integer
+  failed_step?: Name
+  failed_step_retry_count?: integer
   index: IndexName
-  is_auto_retryable_error: boolean
-  lifecycle_date_millis: DateString
+  is_auto_retryable_error?: boolean
+  lifecycle_date_millis: EpochMillis
   managed: boolean
-  phase: string
-  phase_time_millis: DateString
-  policy: string
-  step: string
-  step_info: Record<string, any>
-  step_time_millis: DateString
+  phase: Name
+  phase_time_millis: EpochMillis
+  policy: Name
+  step: Name
+  step_info?: Record<string, any>
+  step_time_millis: EpochMillis
+  phase_execution: LifecycleExplainPhaseExecution
+}
+
+export interface LifecycleExplainPhaseExecution {
+  policy: Name
+  version: integer
+  modified_date_in_millis: EpochMillis
 }
 
 export interface LifecycleExplainProject {
