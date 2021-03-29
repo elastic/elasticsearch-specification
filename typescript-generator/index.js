@@ -211,8 +211,8 @@ function buildGenerics (type, noDefault = false) {
 
   // generics can either be a value/instance_of or a named generics
   function buildGeneric (type) {
-    return typeof type === 'string'
-      ? (noDefault ? type : `${type} = unknown`)
+    return typeof type.namespace === 'string'
+      ? (noDefault ? type.name : `${type.name} = unknown`)
       : buildType(type)
   }
 }

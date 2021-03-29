@@ -14298,31 +14298,25 @@
             "name": "char_filter",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "CharFilter",
-                        "namespace": "analysis.char_filters"
-                      }
+              "kind": "array_of",
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
                     }
-                  ],
-                  "kind": "union_of"
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "CharFilter",
+                      "namespace": "analysis.char_filters"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
             }
           },
@@ -14352,31 +14346,25 @@
             "name": "filter",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "TokenFilter",
-                        "namespace": "analysis.token_filters"
-                      }
+              "kind": "array_of",
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
                     }
-                  ],
-                  "kind": "union_of"
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "TokenFilter",
+                      "namespace": "analysis.token_filters"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
             }
           },
@@ -14595,19 +14583,13 @@
           "name": "tokens",
           "required": true,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ExplainAnalyzeToken",
-                  "namespace": "indices.analyze"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ExplainAnalyzeToken",
+                "namespace": "indices.analyze"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         }
@@ -15734,7 +15716,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.async_search"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -15996,7 +15981,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.async_search"
+        }
       ],
       "inherits": [
         {
@@ -16118,7 +16106,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.async_search.get"
+        }
       ],
       "inherits": [
         {
@@ -16251,7 +16242,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.async_search.status"
+        }
       ],
       "inherits": [
         {
@@ -16934,31 +16928,25 @@
             "name": "fields",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "Field",
-                        "namespace": "internal"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "DateField",
-                        "namespace": "internal"
-                      }
+              "kind": "array_of",
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "Field",
+                      "namespace": "internal"
                     }
-                  ],
-                  "kind": "union_of"
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "DateField",
+                      "namespace": "internal"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
             }
           }
@@ -17040,7 +17028,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.async_search.submit"
+        }
       ],
       "inherits": [
         {
@@ -19296,36 +19287,33 @@
       "body": {
         "kind": "value",
         "value": {
-          "generics": [
-            {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "BulkOperationContainer",
-                    "namespace": "document.multiple.bulk.bulk_operation"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TSource",
-                    "namespace": "document.multiple.bulk"
-                  }
+          "kind": "array_of",
+          "value": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "BulkOperationContainer",
+                  "namespace": "document.multiple.bulk.bulk_operation"
                 }
-              ],
-              "kind": "union_of"
-            }
-          ],
-          "kind": "instance_of",
-          "type": {
-            "name": "Array",
-            "namespace": "internal"
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TSource",
+                  "namespace": "document.multiple.bulk"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       },
       "generics": [
-        "TSource"
+        {
+          "name": "TSource",
+          "namespace": "document.multiple.bulk"
+        }
       ],
       "inherits": [
         {
@@ -27411,7 +27399,10 @@
         }
       ],
       "generics": [
-        "TCatRecord"
+        {
+          "name": "TCatRecord",
+          "namespace": "cat"
+        }
       ],
       "inherits": [
         {
@@ -30983,31 +30974,25 @@
           "name": "filter",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TokenFilter",
-                      "namespace": "analysis.token_filters"
-                    }
+            "kind": "array_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TokenFilter",
+                    "namespace": "analysis.token_filters"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           }
         },
@@ -31038,31 +31023,25 @@
           "name": "char_filter",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "CharFilter",
-                      "namespace": "analysis.char_filters"
-                    }
+            "kind": "array_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "CharFilter",
+                    "namespace": "analysis.char_filters"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           }
         }
@@ -36701,19 +36680,13 @@
           "name": "aliases",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexAlias",
-                  "namespace": "internal"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexAlias",
+                "namespace": "internal"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         },
@@ -37852,7 +37825,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "search.suggesters"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -38175,29 +38151,23 @@
           "name": "sources",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "CompositeAggregationSource",
-                    "namespace": "aggregations.bucket.composite"
-                  }
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "CompositeAggregationSource",
+                  "namespace": "aggregations.bucket.composite"
                 }
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         }
@@ -38690,6 +38660,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
       "name": {
         "name": "Context",
@@ -38713,8 +38684,7 @@
           }
         ],
         "kind": "union_of"
-      },
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
+      }
     },
     {
       "inherits": [
@@ -40136,7 +40106,10 @@
         }
       },
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.create"
+        }
       ],
       "inherits": [
         {
@@ -43084,8 +43057,14 @@
     },
     {
       "generics": [
-        "TOrigin",
-        "TScale"
+        {
+          "name": "TOrigin",
+          "namespace": "query_dsl.compound.function_score.functions"
+        },
+        {
+          "name": "TScale",
+          "namespace": "query_dsl.compound.function_score.functions"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -46622,8 +46601,14 @@
     },
     {
       "generics": [
-        "TKey",
-        "TValue"
+        {
+          "name": "TKey",
+          "namespace": "common_abstractions.response"
+        },
+        {
+          "name": "TValue",
+          "namespace": "common_abstractions.response"
+        }
       ],
       "inherits": [
         {
@@ -47129,19 +47114,13 @@
           "type": {
             "items": [
               {
-                "generics": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "number",
-                      "namespace": "internal"
-                    }
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "number",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
                 }
               },
               {
@@ -49270,7 +49249,10 @@
     },
     {
       "generics": [
-        "TEvent"
+        {
+          "name": "TEvent",
+          "namespace": "x_pack.eql.get"
+        }
       ],
       "inherits": [
         {
@@ -49414,7 +49396,10 @@
     },
     {
       "generics": [
-        "TEvent"
+        {
+          "name": "TEvent",
+          "namespace": "x_pack.eql"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -49483,7 +49468,10 @@
     },
     {
       "generics": [
-        "TEvent"
+        {
+          "name": "TEvent",
+          "namespace": "x_pack.eql"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -49548,7 +49536,10 @@
     },
     {
       "generics": [
-        "TEvent"
+        {
+          "name": "TEvent",
+          "namespace": "x_pack.eql"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -49781,31 +49772,25 @@
             "name": "fields",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "Field",
-                        "namespace": "internal"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "EqlSearchFieldFormatted",
-                        "namespace": "x_pack.eql.search"
-                      }
+              "kind": "array_of",
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "Field",
+                      "namespace": "internal"
                     }
-                  ],
-                  "kind": "union_of"
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "EqlSearchFieldFormatted",
+                      "namespace": "x_pack.eql.search"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
             }
           }
@@ -49909,7 +49894,10 @@
     },
     {
       "generics": [
-        "TEvent"
+        {
+          "name": "TEvent",
+          "namespace": "x_pack.eql.search"
+        }
       ],
       "inherits": [
         {
@@ -49937,7 +49925,10 @@
     },
     {
       "generics": [
-        "TEvent"
+        {
+          "name": "TEvent",
+          "namespace": "x_pack.eql"
+        }
       ],
       "inherits": [
         {
@@ -50761,7 +50752,10 @@
     },
     {
       "generics": [
-        "TResult"
+        {
+          "name": "TResult",
+          "namespace": "modules.scripting.execute_painless_script"
+        }
       ],
       "inherits": [
         {
@@ -51539,19 +51533,13 @@
             }
           },
           {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ExpandWildcardOptions",
-                  "namespace": "common"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ExpandWildcardOptions",
+                "namespace": "common"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           },
           {
@@ -52017,7 +52005,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "search.explain"
+        }
       ],
       "inherits": [
         {
@@ -52202,7 +52193,10 @@
     },
     {
       "generics": [
-        "T"
+        {
+          "name": "T",
+          "namespace": "aggregations.bucket.histogram"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -54106,7 +54100,10 @@
         }
       },
       "generics": [
-        "TBody"
+        {
+          "name": "TBody",
+          "namespace": "x_pack.text_structure"
+        }
       ],
       "kind": "request",
       "name": {
@@ -62128,7 +62125,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.get"
+        }
       ],
       "inherits": [
         {
@@ -66223,7 +66223,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "search.search.hits"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -66479,7 +66482,10 @@
     },
     {
       "generics": [
-        "T"
+        {
+          "name": "T",
+          "namespace": "search.search.hits"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -68078,7 +68084,10 @@
         }
       },
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.index"
+        }
       ],
       "inherits": [
         {
@@ -68300,19 +68309,13 @@
                   }
                 },
                 {
-                  "generics": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "ShardsSegment",
-                        "namespace": "indices.monitoring.indices_segments"
-                      }
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "ShardsSegment",
+                      "namespace": "indices.monitoring.indices_segments"
                     }
-                  ],
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Array",
-                    "namespace": "internal"
                   }
                 }
               ],
@@ -69884,7 +69887,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "search.explain"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -72713,7 +72719,10 @@
         }
       ],
       "generics": [
-        "TKey"
+        {
+          "name": "TKey",
+          "namespace": "aggregations"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -73890,6 +73899,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
       "name": {
         "name": "Like",
@@ -73913,8 +73923,7 @@
           }
         ],
         "kind": "union_of"
-      },
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters"
+      }
     },
     {
       "kind": "interface",
@@ -74432,19 +74441,13 @@
                 }
               },
               {
-                "generics": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TaskInfo",
-                      "namespace": "cluster.task_management.get_task"
-                    }
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TaskInfo",
+                    "namespace": "cluster.task_management.get_task"
                   }
-                ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Array",
-                  "namespace": "internal"
                 }
               }
             ],
@@ -76480,6 +76483,7 @@
       }
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html",
       "kind": "type_alias",
       "name": {
         "name": "MinimumShouldMatch",
@@ -76503,8 +76507,7 @@
           }
         ],
         "kind": "union_of"
-      },
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html"
+      }
     },
     {
       "kind": "type_alias",
@@ -77938,7 +77941,10 @@
     },
     {
       "generics": [
-        "TBucket"
+        {
+          "name": "TBucket",
+          "namespace": "aggregations"
+        }
       ],
       "inherits": [
         {
@@ -77972,7 +77978,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.multiple.multi_get"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -78428,7 +78437,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.multiple.multi_get"
+        }
       ],
       "inherits": [
         {
@@ -79835,7 +79847,10 @@
         }
       ],
       "generics": [
-        "TQuery"
+        {
+          "name": "TQuery",
+          "namespace": "query_dsl.abstractions.query"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -86437,19 +86452,13 @@
             "name": "licenses",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "License",
-                    "namespace": "x_pack.license.get_license"
-                  }
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "License",
+                  "namespace": "x_pack.license.get_license"
                 }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
               }
             }
           }
@@ -86635,7 +86644,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.machine_learning.preview_datafeed"
+        }
       ],
       "inherits": [
         {
@@ -86760,7 +86772,10 @@
     },
     {
       "generics": [
-        "TTransform"
+        {
+          "name": "TTransform",
+          "namespace": "x_pack.transform.preview_transform"
+        }
       ],
       "inherits": [
         {
@@ -93870,7 +93885,10 @@
         }
       ],
       "generics": [
-        "TKey"
+        {
+          "name": "TKey",
+          "namespace": "aggregations"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -99262,7 +99280,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "x_pack.roll_up.rollup_search"
+        }
       ],
       "inherits": [
         {
@@ -100801,7 +100822,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "search.scroll.scroll"
+        }
       ],
       "inherits": [
         {
@@ -100830,19 +100854,13 @@
           "name": "failed_shards",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ScrollResponseFailedShard",
-                  "namespace": "search.scroll.scroll"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScrollResponseFailedShard",
+                "namespace": "search.scroll.scroll"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         }
@@ -101334,29 +101352,23 @@
             "name": "indices_boost",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "IndexName",
-                      "namespace": "internal"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "double",
-                      "namespace": "internal"
-                    }
+              "kind": "array_of",
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "internal"
                   }
                 }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
               }
             }
           },
@@ -101373,31 +101385,25 @@
                   }
                 },
                 {
-                  "generics": [
-                    {
-                      "items": [
-                        {
-                          "kind": "instance_of",
-                          "type": {
-                            "name": "Field",
-                            "namespace": "internal"
-                          }
-                        },
-                        {
-                          "kind": "instance_of",
-                          "type": {
-                            "name": "DocValueField",
-                            "namespace": "search.search.source_filtering"
-                          }
+                  "kind": "array_of",
+                  "value": {
+                    "items": [
+                      {
+                        "kind": "instance_of",
+                        "type": {
+                          "name": "Field",
+                          "namespace": "internal"
                         }
-                      ],
-                      "kind": "union_of"
-                    }
-                  ],
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Array",
-                    "namespace": "internal"
+                      },
+                      {
+                        "kind": "instance_of",
+                        "type": {
+                          "name": "DocValueField",
+                          "namespace": "search.search.source_filtering"
+                        }
+                      }
+                    ],
+                    "kind": "union_of"
                   }
                 }
               ],
@@ -101499,31 +101505,25 @@
             "name": "search_after",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "integer",
-                        "namespace": "internal"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
+              "kind": "array_of",
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "integer",
+                      "namespace": "internal"
                     }
-                  ],
-                  "kind": "union_of"
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
             }
           },
@@ -101594,31 +101594,25 @@
             "name": "fields",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "Field",
-                        "namespace": "internal"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "DateField",
-                        "namespace": "internal"
-                      }
+              "kind": "array_of",
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "Field",
+                      "namespace": "internal"
                     }
-                  ],
-                  "kind": "union_of"
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Array",
-                "namespace": "internal"
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "DateField",
+                      "namespace": "internal"
+                    }
+                  }
+                ],
+                "kind": "union_of"
               }
             }
           },
@@ -102262,7 +102256,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "search.search"
+        }
       ],
       "inherits": [
         {
@@ -107616,7 +107613,10 @@
     },
     {
       "generics": [
-        "TKey"
+        {
+          "name": "TKey",
+          "namespace": "aggregations"
+        }
       ],
       "inherits": [
         {
@@ -107895,7 +107895,10 @@
         }
       ],
       "generics": [
-        "TKey"
+        {
+          "name": "TKey",
+          "namespace": "aggregations"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -109243,19 +109246,13 @@
           "name": "data_streams",
           "required": true,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         },
@@ -111094,45 +111091,39 @@
         "namespace": "search.search.sort"
       },
       "type": {
-        "generics": [
-          {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "long",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "internal"
-                }
+        "kind": "array_of",
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "internal"
               }
-            ],
-            "kind": "union_of"
-          }
-        ],
-        "kind": "instance_of",
-        "type": {
-          "name": "Array",
-          "namespace": "internal"
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "null",
+                "namespace": "internal"
+              }
+            }
+          ],
+          "kind": "union_of"
         }
       }
     },
@@ -111602,7 +111593,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.source"
+        }
       ],
       "inherits": [
         {
@@ -114414,7 +114408,10 @@
     },
     {
       "generics": [
-        "T"
+        {
+          "name": "T",
+          "namespace": "search.suggesters"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -116658,7 +116655,10 @@
         ]
       },
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.term_vectors"
+        }
       ],
       "inherits": [
         {
@@ -117026,7 +117026,10 @@
     },
     {
       "generics": [
-        "TKey"
+        {
+          "name": "TKey",
+          "namespace": "aggregations"
+        }
       ],
       "inherits": [
         {
@@ -117849,19 +117852,13 @@
             }
           },
           {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         ],
@@ -119249,38 +119246,32 @@
           "name": "sort",
           "required": true,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "long",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "double",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
+            "kind": "array_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "internal"
                   }
-                ],
-                "kind": "union_of"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           }
         },
@@ -120389,29 +120380,23 @@
           "name": "fields",
           "required": true,
           "type": {
-            "generics": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Field",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Field",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
                 }
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         },
@@ -123378,8 +123363,14 @@
         ]
       },
       "generics": [
-        "TDocument",
-        "TPartialDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.update"
+        },
+        {
+          "name": "TPartialDocument",
+          "namespace": "document.single.update"
+        }
       ],
       "inherits": [
         {
@@ -123602,7 +123593,10 @@
     },
     {
       "generics": [
-        "TDocument"
+        {
+          "name": "TDocument",
+          "namespace": "document.single.update"
+        }
       ],
       "inherits": [
         {
@@ -125538,19 +125532,13 @@
           "name": "executed_actions",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "Array",
-              "namespace": "internal"
             }
           }
         },
@@ -128162,7 +128150,10 @@
     },
     {
       "generics": [
-        "TRecord"
+        {
+          "name": "TRecord",
+          "namespace": "internal"
+        }
       ],
       "kind": "interface",
       "name": {
@@ -128173,8 +128164,14 @@
     },
     {
       "generics": [
-        "TKey",
-        "TValue"
+        {
+          "name": "TKey",
+          "namespace": "internal"
+        },
+        {
+          "name": "TValue",
+          "namespace": "internal"
+        }
       ],
       "kind": "interface",
       "name": {
