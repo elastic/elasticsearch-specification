@@ -4787,7 +4787,7 @@ export interface EqlGetStatusResponse extends ResponseBase {
 }
 
 export interface EqlHits<TEvent = unknown> {
-  total: TotalHits
+  total?: TotalHits
   events?: Array<EqlHitsEvent<TEvent>>
   sequences?: Array<EqlHitsSequence<TEvent>>
 }
