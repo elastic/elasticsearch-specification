@@ -32,7 +32,7 @@ interface OpenIndexRequest extends RequestBase {
     ignore_unavailable?: boolean
     master_timeout?: Time
     timeout?: Time
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
   }
   body?: {}
 }

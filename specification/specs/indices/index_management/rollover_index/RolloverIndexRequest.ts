@@ -32,7 +32,7 @@ interface RolloverIndexRequest extends RequestBase {
     include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
-    wait_for_active_shards?: integer
+    wait_for_active_shards?: WaitForActiveShards
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>

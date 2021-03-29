@@ -59,7 +59,7 @@ interface DeleteByQueryRequest extends RequestBase {
     terminate_after?: long
     timeout?: Time
     version?: boolean
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean
   }
   body?: {

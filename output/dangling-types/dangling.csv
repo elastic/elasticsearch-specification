@@ -1,4 +1,5 @@
 short,common.ts
+byte,common.ts
 ScrollIds,common.ts
 ActionIds,common.ts
 TypeNames,common.ts

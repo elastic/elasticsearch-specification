@@ -60,7 +60,7 @@ interface UpdateByQueryRequest extends RequestBase {
     timeout?: Time
     version?: boolean
     version_type?: boolean
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean
   }
   body?: {

@@ -29,7 +29,7 @@ interface ReindexRequest extends RequestBase {
     scroll?: Time
     slices?: long
     timeout?: Time
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean
     require_alias?: boolean
   }
