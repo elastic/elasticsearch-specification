@@ -33040,7 +33040,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
