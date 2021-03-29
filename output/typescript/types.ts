@@ -6960,11 +6960,9 @@ export interface IndicesCreateDataStreamResponse extends ResponseBase {
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  name?: IndexName
+  expand_wildcards?: ExpandWildcardOptions
+  human?: boolean
 }
 
 export interface IndicesDataStreamsStatsResponse extends ResponseBase {

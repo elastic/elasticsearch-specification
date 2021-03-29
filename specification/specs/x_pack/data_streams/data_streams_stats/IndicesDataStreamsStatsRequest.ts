@@ -24,12 +24,11 @@
  */
 interface IndicesDataStreamsStatsRequest extends RequestBase {
   path_parts?: {
-    stub_a: integer
+    name?: IndexName
   }
   query_parameters?: {
-    stub_b: integer
+    expand_wildcards?: ExpandWildcardOptions // default: open
+    human?: boolean                          // default: false
   }
-  body?: {
-    stub_c: integer
-  }
+  body?: {}
 }

@@ -19,4 +19,5 @@
 
 class IndicesDataStreamsStatsResponse extends ResponseBase {
   stub: integer
+  // https://www.elastic.co/guide/en/elasticsearch/reference/7.12/data-stream-stats-api.html#data-stream-stats-api-response-body
 }

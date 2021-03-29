@@ -68854,22 +68854,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -68885,12 +68869,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
-          "required": true,
+          "description": "A comma-separated list of data stream names; use `_all` or empty string to perform the operation on all data streams",
+          "name": "name",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -68898,12 +68883,23 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "expand_wildcards",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "ExpandWildcardOptions",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "human",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
