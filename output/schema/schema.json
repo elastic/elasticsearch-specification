@@ -126860,7 +126860,7 @@
         },
         {
           "name": "role_templates",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {

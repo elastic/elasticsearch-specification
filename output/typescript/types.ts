@@ -13349,7 +13349,7 @@ export interface XPackRole {
   run_as: Array<string>
   transient_metadata: TransientMetadata
   applications: Array<ApplicationPrivileges>
-  role_templates: Array<RoleTemplate>
+  role_templates?: Array<RoleTemplate>
 }
 
 export interface XPackRoleMapping {
