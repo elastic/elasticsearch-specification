@@ -24,5 +24,5 @@ class GetWatchResponse extends ResponseBase {
   watch?: Watch
   _primary_term?: integer
   _seq_no?: integer
-  _version?: integer
+  _version?: VersionNumber
 }

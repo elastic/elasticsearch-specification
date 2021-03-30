@@ -19,6 +19,6 @@
 
 class ShardRetentionLeases {
   primary_term: long
-  version: long
+  version: VersionNumber
   leases: ShardLease[]
 }

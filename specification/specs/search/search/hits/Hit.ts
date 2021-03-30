@@ -39,6 +39,6 @@ class Hit<TDocument> {
   _source?: TDocument
   _seq_no?: long
   _primary_term?: long
-  _version?: long
+  _version?: VersionNumber
   sort?: SortResults
 }

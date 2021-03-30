@@ -22,7 +22,7 @@ class BulkOperation {
   _index: IndexName
   retry_on_conflict: integer
   routing: Routing
-  version: long
+  version: VersionNumber
   version_type: VersionType
 }
 

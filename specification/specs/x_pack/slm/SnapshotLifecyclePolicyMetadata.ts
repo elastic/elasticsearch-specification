@@ -26,7 +26,7 @@ class SnapshotLifecyclePolicyMetadata {
   next_execution?: DateString
   next_execution_millis: EpochMillis
   policy: SnapshotLifecyclePolicy
-  version: integer
+  version: VersionNumber
   stats: SnapshotLifecycleStats
 }
 

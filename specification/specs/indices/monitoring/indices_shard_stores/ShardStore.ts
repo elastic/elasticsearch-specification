@@ -22,8 +22,8 @@ class ShardStore {
   allocation_id: Id
   attributes: Dictionary<string, UserDefinedValue>
   id: Id
-  legacy_version: long
-  name: string
+  legacy_version: VersionNumber
+  name: Name
   store_exception: ShardStoreException
   transport_address: string
 }

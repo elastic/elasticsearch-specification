@@ -27,5 +27,5 @@ class PercolateQuery extends QueryBase {
   index?: IndexName
   preference?: string
   routing?: Routing
-  version?: long
+  version?: VersionNumber
 }

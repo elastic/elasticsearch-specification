@@ -34,6 +34,6 @@ class MoreLikeThisQuery extends QueryBase {
   routing?: Routing
   stop_words?: StopWords
   unlike?: Like | Like[]
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }

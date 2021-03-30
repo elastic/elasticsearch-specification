@@ -23,5 +23,5 @@ class TemplateMapping {
   mappings: TypeMapping
   order: integer
   settings: Dictionary<string, UserDefinedValue>
-  version?: integer
+  version?: VersionNumber
 }

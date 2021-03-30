@@ -84,7 +84,7 @@ export interface ActivationState {
 export interface ActivationStatus {
   actions: Record<IndexName, ActionStatus>
   state: ActivationState
-  version: integer
+  version: VersionNumber
 }
 
 export interface AdaptiveSelectionStats {
@@ -694,8 +694,8 @@ export interface AutoFollowPattern {
 }
 
 export interface AutoFollowedCluster {
-  cluster_name: string
-  last_seen_metadata_version: long
+  cluster_name: Name
+  last_seen_metadata_version: VersionNumber
   time_since_last_check_millis: DateString
 }
 
@@ -866,7 +866,7 @@ export interface BulkOperation {
   _index: IndexName
   retry_on_conflict: integer
   routing: Routing
-  version: long
+  version: VersionNumber
   version_type: VersionType
 }
 
@@ -910,7 +910,7 @@ export interface BulkResponseItemBase {
   _seq_no?: long
   _shards?: ShardStatistics
   _type?: string
-  _version?: long
+  _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Record<string, any>>
 }
@@ -3387,11 +3387,11 @@ export interface ClusterStateBlockIndex {
   retryable: boolean
   levels: Array<string>
   aliases?: Array<IndexAlias>
-  aliases_version?: integer
-  version?: integer
-  mapping_version?: integer
-  settings_version?: integer
-  routing_num_shards?: integer
+  aliases_version?: VersionNumber
+  version?: VersionNumber
+  mapping_version?: VersionNumber
+  settings_version?: VersionNumber
+  routing_num_shards?: VersionNumber
   state?: string
 }
 
@@ -3431,7 +3431,7 @@ export interface ClusterStateRequest extends RequestBase {
   ignore_unavailable?: boolean
   local?: boolean
   master_timeout?: Time
-  wait_for_metadata_version?: long
+  wait_for_metadata_version?: VersionNumber
   wait_for_timeout?: Time
 }
 
@@ -3441,7 +3441,7 @@ export interface ClusterStateResponse extends ResponseBase {
   master_node?: string
   state?: Array<string>
   state_uuid?: Uuid
-  version?: integer
+  version?: VersionNumber
   blocks?: ClusterStateBlocks
   metadata?: ClusterStateMetadata
 }
@@ -3761,7 +3761,7 @@ export interface CreateRequest<TDocument = unknown> extends RequestBase {
   refresh?: Refresh
   routing?: Routing
   timeout?: Time
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
   wait_for_active_shards?: WaitForActiveShards
   body: TDocument
@@ -4351,7 +4351,7 @@ export interface DeleteRequest extends RequestBase {
   refresh?: Refresh
   routing?: Routing
   timeout?: Time
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
   wait_for_active_shards?: WaitForActiveShards
 }
@@ -4433,8 +4433,8 @@ export interface DeleteWatchRequest extends RequestBase {
 
 export interface DeleteWatchResponse extends ResponseBase {
   found: boolean
-  _id: string
-  _version: integer
+  _id: Id
+  _version: VersionNumber
 }
 
 export type DelimitedPayloadEncoding = 'int' | 'float' | 'identity'
@@ -4588,7 +4588,7 @@ export interface DocumentExistsRequest extends RequestBase {
   source_excludes?: Fields
   source_includes?: Fields
   stored_fields?: Fields
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }
 
@@ -5444,12 +5444,12 @@ export interface FollowIndexShardStats {
   failed_read_requests: long
   failed_write_requests: long
   fatal_exception?: ErrorCause
-  follower_aliases_version: long
+  follower_aliases_version: VersionNumber
   follower_global_checkpoint: long
   follower_index: string
-  follower_mapping_version: long
+  follower_mapping_version: VersionNumber
   follower_max_seq_no: long
-  follower_settings_version: long
+  follower_settings_version: VersionNumber
   last_requested_seq_no: long
   leader_global_checkpoint: long
   leader_index: string
@@ -6214,22 +6214,22 @@ export interface GetRequest extends RequestBase {
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
   _source?: boolean | string | Array<string>
 }
 
 export interface GetResponse<TDocument = unknown> extends ResponseBase {
-  _index: string
+  _index: IndexName
   fields?: Record<string, any>
   found: boolean
-  _id: string
+  _id: Id
   _primary_term?: long
   _routing?: string
   _seq_no?: long
   _source?: TDocument
-  _type: string
-  _version?: long
+  _type: Type
+  _version?: VersionNumber
 }
 
 export interface GetRoleMappingRequest extends RequestBase {
@@ -6429,7 +6429,7 @@ export interface GetWatchResponse extends ResponseBase {
   watch?: Watch
   _primary_term?: integer
   _seq_no?: integer
-  _version?: integer
+  _version?: VersionNumber
 }
 
 export interface GlobalAggregation extends BucketAggregationBase {
@@ -6694,7 +6694,7 @@ export interface Hit<TDocument = unknown> {
   _source?: TDocument
   _seq_no?: long
   _primary_term?: long
-  _version?: long
+  _version?: VersionNumber
   sort?: SortResults
 }
 
@@ -6841,7 +6841,7 @@ export interface IndexActionResultIndexResponse {
   id: Id
   index: IndexName
   result: Result
-  version: integer
+  version: VersionNumber
   type?: Type
 }
 
@@ -6904,7 +6904,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   refresh?: Refresh
   routing?: Routing
   timeout?: Time
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
@@ -7539,7 +7539,7 @@ export interface LifecycleExplain {
 
 export interface LifecycleExplainPhaseExecution {
   policy: Name
-  version: integer
+  version: VersionNumber
   modified_date_in_millis: EpochMillis
 }
 
@@ -7557,7 +7557,7 @@ export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 export interface LifecyclePolicy {
   modified_date: DateString
   policy: Policy
-  version: integer
+  version: VersionNumber
 }
 
 export type Like = string | LikeDocument
@@ -7975,7 +7975,7 @@ export interface MoreLikeThisQuery extends QueryBase {
   routing?: Routing
   stop_words?: StopWords
   unlike?: Like | Array<Like>
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }
 
@@ -8028,7 +8028,7 @@ export interface MultiGetHit<TDocument = unknown> {
   _seq_no?: long
   _source?: TDocument
   _type?: Type
-  _version?: long
+  _version?: VersionNumber
 }
 
 export interface MultiGetOperation {
@@ -8039,7 +8039,7 @@ export interface MultiGetOperation {
   _source?: boolean | Fields | SourceFilter
   stored_fields?: Fields
   _type?: Type
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }
 
@@ -8141,7 +8141,7 @@ export interface MultiTermVectorOperation {
   positions: boolean
   routing: Routing
   term_statistics: boolean
-  version: long
+  version: VersionNumber
   version_type: VersionType
 }
 
@@ -8157,7 +8157,7 @@ export interface MultiTermVectorsRequest extends RequestBase {
   realtime?: boolean
   routing?: Routing
   term_statistics?: boolean
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
   body?: {
     docs?: Array<MultiTermVectorOperation>
@@ -8820,7 +8820,7 @@ export interface PercolateQuery extends QueryBase {
   index?: IndexName
   preference?: string
   routing?: Routing
-  version?: long
+  version?: VersionNumber
 }
 
 export interface PercolatorProperty extends PropertyBase {
@@ -8891,7 +8891,7 @@ export interface Pipeline {
   description?: string
   on_failure?: Array<ProcessorContainer>
   processors?: Array<ProcessorContainer>
-  version?: long
+  version?: VersionNumber
 }
 
 export interface PipelineAggregationBase extends Aggregation {
@@ -9234,7 +9234,7 @@ export interface PutIndexTemplateRequest extends RequestBase {
     mappings?: TypeMapping
     order?: integer
     settings?: Record<string, any>
-    version?: integer
+    version?: VersionNumber
   }
 }
 
@@ -9322,7 +9322,7 @@ export interface PutPipelineRequest extends RequestBase {
     description?: string
     on_failure?: Array<ProcessorContainer>
     processors?: Array<ProcessorContainer>
-    version?: long
+    version?: VersionNumber
   }
 }
 
@@ -9451,7 +9451,7 @@ export interface PutWatchRequest extends RequestBase {
   active?: boolean
   if_primary_term?: long
   if_sequence_number?: long
-  version?: long
+  version?: VersionNumber
   body?: {
     actions?: Record<string, Action>
     condition?: ConditionContainer
@@ -9465,10 +9465,10 @@ export interface PutWatchRequest extends RequestBase {
 
 export interface PutWatchResponse extends ResponseBase {
   created: boolean
-  _id: string
+  _id: Id
   _primary_term: long
   _seq_no: long
-  _version: integer
+  _version: VersionNumber
 }
 
 export type Quantifier = 'some' | 'all'
@@ -11132,7 +11132,7 @@ export interface ShardRequestCache {
 
 export interface ShardRetentionLeases {
   primary_term: long
-  version: long
+  version: VersionNumber
   leases: Array<ShardLease>
 }
 
@@ -11237,8 +11237,8 @@ export interface ShardStore {
   allocation_id: Id
   attributes: Record<string, any>
   id: Id
-  legacy_version: long
-  name: string
+  legacy_version: VersionNumber
+  name: Name
   store_exception: ShardStoreException
   transport_address: string
 }
@@ -11542,7 +11542,7 @@ export interface SnapshotLifecyclePolicyMetadata {
   next_execution?: DateString
   next_execution_millis: EpochMillis
   policy: SnapshotLifecyclePolicy
-  version: integer
+  version: VersionNumber
   stats: SnapshotLifecycleStats
 }
 
@@ -11697,7 +11697,7 @@ export interface SourceExistsRequest extends RequestBase {
   source_enabled?: boolean
   source_excludes?: Fields
   source_includes?: Fields
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }
 
@@ -11729,7 +11729,7 @@ export interface SourceRequest extends RequestBase {
   source_enabled?: boolean
   _source_excludes?: Fields
   _source_includes?: Fields
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }
 
@@ -12242,7 +12242,7 @@ export interface TemplateMapping {
   mappings: TypeMapping
   order: integer
   settings: Record<string, any>
-  version?: integer
+  version?: VersionNumber
 }
 
 export interface TermQuery extends QueryBase {
@@ -12312,7 +12312,7 @@ export interface TermVectorsRequest<TDocument = unknown> extends RequestBase {
   realtime?: boolean
   routing?: Routing
   term_statistics?: boolean
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
   body?: {
     doc?: TDocument
@@ -12328,16 +12328,16 @@ export interface TermVectorsResponse extends ResponseBase {
   term_vectors?: Record<Field, TermVector>
   took: long
   _type?: Type
-  _version: long
+  _version: VersionNumber
 }
 
 export interface TermVectorsResult {
   found: boolean
-  id: string
-  index: string
+  id: Id
+  index: IndexName
   term_vectors: Record<Field, TermVector>
   took: long
-  version: long
+  version: VersionNumber
 }
 
 export interface TermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKey> {
@@ -13185,6 +13185,8 @@ export interface VerifyRepositoryResponse extends ResponseBase {
   nodes: Record<string, CompactNodeInfo>
 }
 
+export type VersionNumber = long
+
 export interface VersionProperty extends DocValuesPropertyBase {
   type: 'version'
 }
@@ -13248,7 +13250,7 @@ export interface WatchStatus {
   last_checked?: DateString
   last_met_condition?: DateString
   state: ActivationState
-  version: integer
+  version: VersionNumber
   execution_state?: string
 }
 
@@ -13372,14 +13374,14 @@ export interface WordDelimiterTokenFilter extends TokenFilterBase {
 }
 
 export interface WriteResponseBase extends ResponseBase {
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _primary_term: long
   result: Result
   _seq_no: long
   _shards: ShardStatistics
-  _type?: string
-  _version: long
+  _type?: Type
+  _version: VersionNumber
   forced_refresh?: boolean
   error?: ErrorCause
 }

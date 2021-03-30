@@ -18,8 +18,7 @@
  */
 
 class LifecyclePolicy {
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
   modified_date: DateString
   policy: Policy
-  version: integer
+  version: VersionNumber
 }

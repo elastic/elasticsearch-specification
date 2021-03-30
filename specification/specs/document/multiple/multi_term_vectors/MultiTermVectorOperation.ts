@@ -18,7 +18,6 @@
  */
 
 class MultiTermVectorOperation {
-  /** @prop_serializer SourceFormatter`1 */
   doc: any
   fields: Fields
   field_statistics: boolean
@@ -30,6 +29,6 @@ class MultiTermVectorOperation {
   positions: boolean
   routing: Routing
   term_statistics: boolean
-  version: long
+  version: VersionNumber
   version_type: VersionType
 }

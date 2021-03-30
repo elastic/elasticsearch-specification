@@ -26,5 +26,5 @@ class HitMetadata<TDocument> {
   /** @prop_serializer SourceFormatter`1 */
   _source: TDocument
   _type: string
-  _version: long
+  _version: VersionNumber
 }

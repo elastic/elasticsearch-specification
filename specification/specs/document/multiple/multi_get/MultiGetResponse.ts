@@ -33,5 +33,5 @@ class MultiGetHit<TDocument> {
   _seq_no?: long
   _source?: TDocument
   _type?: Type
-  _version?: long
+  _version?: VersionNumber
 }

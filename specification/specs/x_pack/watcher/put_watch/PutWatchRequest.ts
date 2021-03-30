@@ -30,7 +30,7 @@ interface PutWatchRequest extends RequestBase {
     active?: boolean
     if_primary_term?: long
     if_sequence_number?: long
-    version?: long
+    version?: VersionNumber
   }
   body?: {
     actions?: Dictionary<string, Action>
