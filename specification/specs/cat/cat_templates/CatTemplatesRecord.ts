@@ -22,7 +22,7 @@ class CatTemplatesRecord {
    * template name
    * @aliases n
    */
-  'name'?: string
+  'name'?: Name
   /**
    * template index patterns
    * @aliases t
@@ -37,7 +37,7 @@ class CatTemplatesRecord {
    * version
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * component templates comprising index template
    * @aliases c

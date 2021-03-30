@@ -21,8 +21,7 @@ class CatTrainedModelsRecord {
   /**
    * the trained model id
    */
-  'id'?: string
-
+  'id'?: Id
   /**
    * who created the model
    * @aliases c, createdBy
@@ -52,14 +51,12 @@ class CatTrainedModelsRecord {
    * The version of Elasticsearch when the model was created
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * The model description
    * @aliases d
    */
   'description'?: string
-
-  // Trained Model Stats
   /**
    * The number of pipelines referencing the model
    * @aliases ip, ingestPipelines

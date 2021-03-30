@@ -1051,20 +1051,20 @@ export interface CatCountRequest extends CatRequestBase {
 export type CatCountResponse = CatCountRecord[]
 
 export interface CatDataFrameAnalyticsRecord {
-  id?: string
-  type?: string
-  t?: string
+  id?: Id
+  type?: Type
+  t?: Type
   create_time?: string
   ct?: string
   createTime?: string
-  version?: string
-  v?: string
-  source_index?: string
-  si?: string
-  sourceIndex?: string
-  dest_index?: string
-  di?: string
-  destIndex?: string
+  version?: VersionString
+  v?: VersionString
+  source_index?: IndexName
+  si?: IndexName
+  sourceIndex?: IndexName
+  dest_index?: IndexName
+  di?: IndexName
+  destIndex?: IndexName
   description?: string
   d?: string
   model_memory_limit?: string
@@ -1080,15 +1080,15 @@ export interface CatDataFrameAnalyticsRecord {
   assignment_explanation?: string
   ae?: string
   assignmentExplanation?: string
-  'node.id'?: string
-  ni?: string
-  nodeId?: string
-  'node.name'?: string
-  nn?: string
-  nodeName?: string
-  'node.ephemeral_id'?: string
-  ne?: string
-  nodeEphemeralId?: string
+  'node.id'?: Id
+  ni?: Id
+  nodeId?: Id
+  'node.name'?: Name
+  nn?: Name
+  nodeName?: Name
+  'node.ephemeral_id'?: Id
+  ne?: Id
+  nodeEphemeralId?: Id
   'node.address'?: string
   na?: string
   nodeAddress?: string
@@ -1747,8 +1747,8 @@ export interface CatNodeAttributesRequest extends CatRequestBase {
 export type CatNodeAttributesResponse = CatNodeAttributesRecord[]
 
 export interface CatNodesRecord {
-  id?: string
-  nodeId?: string
+  id?: Id
+  nodeId?: Id
   pid?: string
   p?: string
   ip?: string
@@ -1757,12 +1757,12 @@ export interface CatNodesRecord {
   po?: string
   http_address?: string
   http?: string
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   flavor?: string
   f?: string
-  type?: string
-  t?: string
+  type?: Type
+  t?: Type
   build?: string
   b?: string
   jdk?: string
@@ -1821,8 +1821,8 @@ export interface CatNodesRecord {
   nodeRole?: string
   master?: string
   m?: string
-  name?: string
-  n?: string
+  name?: Name
+  n?: Name
   'completion.size'?: string
   cs?: string
   completionSize?: string
@@ -2041,12 +2041,12 @@ export type CatPendingTasksResponse = CatPendingTasksRecord[]
 
 export interface CatPluginsRecord {
   id?: NodeId
-  name?: string
-  n?: string
+  name?: Name
+  n?: Name
   component?: string
   c?: string
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   description?: string
   d?: string
   type?: Type
@@ -2178,8 +2178,8 @@ export interface CatSegmentsRecord {
   searchable?: string
   is?: string
   isSearchable?: string
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   compound?: string
   ico?: string
   isCompound?: string
@@ -2455,15 +2455,15 @@ export interface CatSnapshotsRequest extends CatRequestBase {
 export type CatSnapshotsResponse = CatSnapshotsRecord[]
 
 export interface CatTasksRecord {
-  id?: string
+  id?: Id
   action?: string
   ac?: string
-  task_id?: string
-  ti?: string
+  task_id?: Id
+  ti?: Id
   parent_task_id?: string
   pti?: string
-  type?: string
-  ty?: string
+  type?: Type
+  ty?: Type
   start_time?: string
   start?: string
   timestamp?: string
@@ -2473,16 +2473,16 @@ export interface CatTasksRecord {
   running_time_ns?: string
   running_time?: string
   time?: string
-  node_id?: string
-  ni?: string
+  node_id?: NodeId
+  ni?: NodeId
   ip?: string
   i?: string
   port?: string
   po?: string
   node?: string
   n?: string
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   x_opaque_id?: string
   x?: string
   description?: string
@@ -2499,15 +2499,15 @@ export interface CatTasksRequest extends CatRequestBase {
 export type CatTasksResponse = CatTasksRecord[]
 
 export interface CatTemplatesRecord {
-  name?: string
-  n?: string
+  name?: Name
+  n?: Name
   index_patterns?: string
   t?: string
   order?: string
   o?: string
   p?: string
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   composed_of?: string
   c?: string
 }
@@ -2569,7 +2569,7 @@ export interface CatThreadPoolRequest extends CatRequestBase {
 export type CatThreadPoolResponse = CatThreadPoolRecord[]
 
 export interface CatTrainedModelsRecord {
-  id?: string
+  id?: Id
   created_by?: string
   c?: string
   createdBy?: string
@@ -2583,8 +2583,8 @@ export interface CatTrainedModelsRecord {
   l?: string
   create_time?: DateString
   ct?: DateString
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   description?: string
   d?: string
   'ingest.pipelines'?: string
@@ -2627,7 +2627,7 @@ export interface CatTrainedModelsRequest extends CatRequestBase {
 export type CatTrainedModelsResponse = CatTrainedModelsRecord[]
 
 export interface CatTransformsRecord {
-  id?: string
+  id?: Id
   state?: string
   s?: string
   checkpoint?: string
@@ -2646,8 +2646,8 @@ export interface CatTransformsRecord {
   create_time?: string
   ct?: string
   createTime?: string
-  version?: string
-  v?: string
+  version?: VersionString
+  v?: VersionString
   source_index?: string
   si?: string
   sourceIndex?: string
