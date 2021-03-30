@@ -28,7 +28,7 @@ interface IndicesDataStreamsStatsRequest extends RequestBase {
   }
   query_parameters?: {
     expand_wildcards?: ExpandWildcardOptions // default: open
-    human?: boolean                          // default: false
+    human?: boolean // default: false
   }
   body?: {}
 }
