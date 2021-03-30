@@ -52123,7 +52123,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TypeName",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -121598,20 +121598,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "TypeName",
-        "namespace": "internal"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
     },
     {
       "inherits": [
