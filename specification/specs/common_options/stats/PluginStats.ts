@@ -20,12 +20,12 @@
 class PluginStats {
   classname: string
   description: string
-  elasticsearch_version: string
+  elasticsearch_version: VersionString
   extended_plugins: string[]
   has_native_controller: boolean
-  java_version: string
+  java_version: VersionString
   name: string
-  version: string
+  version: VersionString
   licensed: boolean
   type: string
 }

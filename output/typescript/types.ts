@@ -2775,7 +2775,7 @@ export type CharFilter = HtmlStripCharFilter | MappingCharFilter | PatternReplac
 
 export interface CharFilterBase {
   type: string
-  version?: string
+  version?: VersionString
 }
 
 export interface CharFilterDetail {
@@ -3190,10 +3190,10 @@ export interface ClusterJvmVersion {
   bundled_jdk: boolean
   count: integer
   using_bundled_jdk: boolean
-  version: string
+  version: VersionString
   vm_name: string
   vm_vendor: string
-  vm_version: string
+  vm_version: VersionString
 }
 
 export interface ClusterNetworkTypes {
@@ -4649,9 +4649,9 @@ export interface ElasticsearchVersionInfo {
   build_hash: string
   build_snapshot: boolean
   build_type: string
-  lucene_version: string
-  minimum_index_compatibility_version: string
-  minimum_wire_compatibility_version: string
+  lucene_version: VersionString
+  minimum_index_compatibility_version: VersionString
+  minimum_wire_compatibility_version: VersionString
   number: string
 }
 
@@ -7043,7 +7043,7 @@ export interface IndicesVersionsStats {
   index_count: integer
   primary_shard_count: integer
   total_primary_bytes: long
-  version: string
+  version: VersionString
 }
 
 export interface InferenceAggregation extends PipelineAggregationBase {
@@ -7326,7 +7326,7 @@ export interface Job {
   groups?: Array<string>
   model_plot_config?: ModelPlotConfig
   custom_settings?: CustomSettings
-  job_version?: string
+  job_version?: VersionString
   deleting?: boolean
   daily_model_snapshot_retention_after_days?: long
 }
@@ -8228,7 +8228,7 @@ export type Names = string | Array<string>
 
 export interface NativeCodeInformation {
   build_hash: string
-  version: string
+  version: VersionString
 }
 
 export interface NestedAggregation extends BucketAggregationBase {
@@ -8326,7 +8326,7 @@ export interface NodeInfo {
   total_indexing_buffer: long
   transport: NodeInfoTransport
   transport_address: string
-  version: string
+  version: VersionString
 }
 
 export interface NodeInfoHttp {
@@ -8392,10 +8392,10 @@ export interface NodeJvmInfo {
   memory_pools: Array<string>
   pid: integer
   start_time_in_millis: long
-  version: string
-  vm_name: string
+  version: VersionString
+  vm_name: Name
   vm_vendor: string
-  vm_version: string
+  vm_version: VersionString
 }
 
 export interface NodeJvmStats {
@@ -8415,10 +8415,10 @@ export interface NodeOperatingSystemInfo {
   cpu: NodeInfoOSCPU
   mem: NodeInfoMemory
   name: string
-  pretty_name: string
+  pretty_name: Name
   refresh_interval_in_millis: integer
   swap: NodeInfoMemory
-  version: string
+  version: VersionString
 }
 
 export interface NodePackagingType {
@@ -8915,12 +8915,12 @@ export interface PipelineSimulation {
 export interface PluginStats {
   classname: string
   description: string
-  elasticsearch_version: string
+  elasticsearch_version: VersionString
   extended_plugins: Array<string>
   has_native_controller: boolean
-  java_version: string
+  java_version: VersionString
   name: string
-  version: string
+  version: VersionString
   licensed: boolean
   type: string
 }
@@ -10905,7 +10905,7 @@ export interface Segment {
   search: boolean
   size_in_bytes: double
   num_docs: long
-  version: string
+  version: VersionString
 }
 
 export interface SegmentsRequest extends RequestBase {
@@ -11497,8 +11497,8 @@ export interface SnapshotInfo {
   start_time_in_millis?: EpochMillis
   state?: string
   uuid: Uuid
-  version?: string
-  version_id?: integer
+  version?: VersionString
+  version_id?: VersionNumber
   feature_states?: Array<SnapshotInfoFeatureState>
 }
 
@@ -12515,14 +12515,14 @@ export type TokenFilter = AsciiFoldingTokenFilter | CommonGramsTokenFilter | Con
 
 export interface TokenFilterBase {
   type: string
-  version?: string
+  version?: VersionString
 }
 
 export type Tokenizer = CharGroupTokenizer | EdgeNGramTokenizer | KeywordTokenizer | LetterTokenizer | LowercaseTokenizer | NGramTokenizer | NoriTokenizer | PathHierarchyTokenizer | StandardTokenizer | UaxEmailUrlTokenizer | WhitespaceTokenizer
 
 export interface TokenizerBase {
   type: string
-  version?: string
+  version?: VersionString
 }
 
 export interface TopHit {
@@ -13045,7 +13045,7 @@ export interface UpdateTransformResponse extends ResponseBase {
   pivot: TransformPivot
   source: TransformSource
   sync: TransformSyncContainer
-  version: string
+  version: VersionString
 }
 
 export interface UppercaseProcessor extends ProcessorBase {
@@ -13190,6 +13190,8 @@ export type VersionNumber = long
 export interface VersionProperty extends DocValuesPropertyBase {
   type: 'version'
 }
+
+export type VersionString = string
 
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 

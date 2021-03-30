@@ -23,8 +23,8 @@ class NodeOperatingSystemInfo {
   cpu: NodeInfoOSCPU
   mem: NodeInfoMemory
   name: string
-  pretty_name: string
+  pretty_name: Name
   refresh_interval_in_millis: integer
   swap: NodeInfoMemory
-  version: string
+  version: VersionString
 }

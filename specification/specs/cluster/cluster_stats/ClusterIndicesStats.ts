@@ -74,5 +74,5 @@ class IndicesVersionsStats {
   index_count: integer
   primary_shard_count: integer
   total_primary_bytes: long
-  version: string
+  version: VersionString
 }

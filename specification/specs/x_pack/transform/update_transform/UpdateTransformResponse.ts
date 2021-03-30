@@ -27,5 +27,5 @@ class UpdateTransformResponse extends ResponseBase {
   pivot: TransformPivot
   source: TransformSource
   sync: TransformSyncContainer
-  version: string
+  version: VersionString
 }

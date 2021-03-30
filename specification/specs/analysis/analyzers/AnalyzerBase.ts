@@ -19,5 +19,5 @@
 
 class AnalyzerBase {
   type: string
-  version: string
+  version: VersionString
 }

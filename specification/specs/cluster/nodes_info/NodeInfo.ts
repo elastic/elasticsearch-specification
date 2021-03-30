@@ -38,5 +38,5 @@ class NodeInfo {
   total_indexing_buffer: long
   transport: NodeInfoTransport
   transport_address: string
-  version: string
+  version: VersionString
 }

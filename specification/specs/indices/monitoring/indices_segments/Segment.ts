@@ -27,5 +27,5 @@ class Segment {
   search: boolean
   size_in_bytes: double
   num_docs: long
-  version: string
+  version: VersionString
 }

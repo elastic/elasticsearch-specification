@@ -19,7 +19,7 @@
 
 class CharFilterBase {
   type: string
-  version?: string
+  version?: VersionString
 }
 
 type CharFilter =

@@ -19,7 +19,7 @@
 
 class TokenizerBase {
   type: string
-  version?: string
+  version?: VersionString
 }
 
 type Tokenizer =
