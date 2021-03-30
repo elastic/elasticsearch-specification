@@ -514,7 +514,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'url']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier']
   const tags = parseJsDocTags(jsDocs)
   setTags(property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
