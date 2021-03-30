@@ -36,7 +36,7 @@ interface SourceExistsRequest extends RequestBase {
     source_enabled?: boolean
     source_excludes?: Fields
     source_includes?: Fields
-    version?: long
+    version?: VersionNumber
     version_type?: VersionType
   }
   body?: {}

@@ -18,15 +18,14 @@
  */
 
 class GetResponse<TDocument> extends ResponseBase {
-  _index: string
+  _index: IndexName
   fields?: Dictionary<string, UserDefinedValue>
   found: boolean
-  _id: string
+  _id: Id
   _primary_term?: long
   _routing?: string
   _seq_no?: long
-  /** @prop_serializer SourceFormatter`1 */
   _source?: TDocument
-  _type: string
-  _version?: long
+  _type: Type
+  _version?: VersionNumber
 }

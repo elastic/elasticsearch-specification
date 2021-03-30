@@ -34,6 +34,6 @@ interface PutPipelineRequest extends RequestBase {
     description?: string
     on_failure?: ProcessorContainer[]
     processors?: ProcessorContainer[]
-    version?: long
+    version?: VersionNumber
   }
 }

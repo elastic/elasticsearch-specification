@@ -34,7 +34,7 @@ interface ClusterStateRequest extends RequestBase {
     ignore_unavailable?: boolean
     local?: boolean
     master_timeout?: Time
-    wait_for_metadata_version?: long
+    wait_for_metadata_version?: VersionNumber
     wait_for_timeout?: Time
   }
   body?: {}

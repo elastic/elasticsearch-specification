@@ -20,5 +20,5 @@
 class ActivationStatus {
   actions: Dictionary<IndexName, ActionStatus>
   state: ActivationState
-  version: integer
+  version: VersionNumber
 }

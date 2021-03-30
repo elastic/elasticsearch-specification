@@ -19,9 +19,9 @@
 
 class TermVectorsResult {
   found: boolean
-  id: string
-  index: string
+  id: Id
+  index: IndexName
   term_vectors: Dictionary<Field, TermVector>
   took: long
-  version: long
+  version: VersionNumber
 }

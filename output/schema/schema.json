@@ -11889,7 +11889,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -17778,7 +17778,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -17789,7 +17789,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -19229,7 +19229,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -19678,7 +19678,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -20746,7 +20746,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -20760,7 +20760,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -20789,7 +20789,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -20804,7 +20804,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -20819,7 +20819,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -20921,7 +20921,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -20936,7 +20936,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -20951,7 +20951,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -25075,7 +25075,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -25145,7 +25145,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -25173,7 +25173,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -25503,7 +25503,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -26702,7 +26702,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -26730,7 +26730,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -27641,7 +27641,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -29216,7 +29216,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -29244,7 +29244,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -29272,7 +29272,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -29341,7 +29341,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "NodeId",
               "namespace": "internal"
             }
           }
@@ -29397,7 +29397,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -29548,7 +29548,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -29591,7 +29591,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -30062,7 +30062,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -30149,7 +30149,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -30425,7 +30425,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -30541,7 +30541,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -31549,7 +31549,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -35150,7 +35150,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -35183,7 +35183,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -36778,7 +36778,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36789,7 +36789,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36800,7 +36800,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36811,7 +36811,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36822,7 +36822,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -37184,7 +37184,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -37281,7 +37281,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -40306,7 +40306,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -45577,7 +45577,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -46225,7 +46225,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -46236,7 +46236,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -47750,7 +47750,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -48271,7 +48271,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -48282,7 +48282,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -48293,7 +48293,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -55316,7 +55316,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -55349,7 +55349,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -55371,7 +55371,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -62121,7 +62121,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -62196,7 +62196,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -62235,7 +62235,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -62290,7 +62290,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -62301,7 +62301,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -64090,7 +64090,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -66505,7 +66505,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -67679,7 +67679,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -68261,7 +68261,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -69612,7 +69612,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -71958,7 +71958,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -73795,7 +73795,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -73917,7 +73917,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -77659,7 +77659,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -78137,7 +78137,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -78253,7 +78253,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -79246,7 +79246,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -79446,7 +79446,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -79966,7 +79966,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -80860,7 +80860,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81392,7 +81392,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81403,7 +81403,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -81425,7 +81425,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81607,7 +81607,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -81640,7 +81640,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -85092,7 +85092,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -85704,7 +85704,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -85891,7 +85891,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -85927,7 +85927,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -85949,7 +85949,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -88777,7 +88777,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "integer",
+                "name": "VersionNumber",
                 "namespace": "internal"
               }
             }
@@ -89674,7 +89674,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "long",
+                "name": "VersionNumber",
                 "namespace": "internal"
               }
             }
@@ -90957,7 +90957,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -90996,7 +90996,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -91029,7 +91029,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -104407,7 +104407,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -106315,7 +106315,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -107251,7 +107251,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -107262,7 +107262,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -109621,7 +109621,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -109632,7 +109632,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -109975,7 +109975,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -111465,7 +111465,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -111772,7 +111772,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -116309,7 +116309,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -117007,7 +117007,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -117122,7 +117122,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -117153,7 +117153,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -117164,7 +117164,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -117207,7 +117207,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -119053,7 +119053,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -119173,7 +119173,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -124055,7 +124055,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -125234,6 +125234,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "VersionNumber",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "long",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -125257,6 +125271,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "VersionString",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "enum",
@@ -125824,7 +125852,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -126907,7 +126935,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -126918,7 +126946,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -126973,7 +127001,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -126984,7 +127012,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }

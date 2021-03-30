@@ -42,7 +42,7 @@ class Job {
   groups?: string[]
   model_plot_config?: ModelPlotConfig
   custom_settings?: CustomSettings
-  job_version?: string
+  job_version?: VersionString
   deleting?: boolean
   daily_model_snapshot_retention_after_days?: long
 }

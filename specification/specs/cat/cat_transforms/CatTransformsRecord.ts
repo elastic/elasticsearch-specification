@@ -21,7 +21,7 @@ class CatTransformsRecord {
   /**
    * the id
    */
-  'id'?: string
+  'id'?: Id
   /**
    * transform state
    * @aliases s
@@ -61,7 +61,7 @@ class CatTransformsRecord {
    * the version of Elasticsearch when the transform was created
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * source index
    * @aliases si, sourceIndex

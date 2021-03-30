@@ -37,7 +37,7 @@ interface MultiTermVectorsRequest extends RequestBase {
     realtime?: boolean
     routing?: Routing
     term_statistics?: boolean
-    version?: long
+    version?: VersionNumber
     version_type?: VersionType
   }
   body?: {

@@ -33,7 +33,7 @@ class SnapshotInfo {
   start_time_in_millis?: EpochMillis
   state?: string
   uuid: Uuid
-  version?: string
-  version_id?: integer
+  version?: VersionString
+  version_id?: VersionNumber
   feature_states?: SnapshotInfoFeatureState[]
 }

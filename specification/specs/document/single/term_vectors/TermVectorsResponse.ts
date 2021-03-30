@@ -24,5 +24,5 @@ class TermVectorsResponse extends ResponseBase {
   term_vectors?: Dictionary<Field, TermVector>
   took: long
   _type?: Type
-  _version: long
+  _version: VersionNumber
 }

@@ -21,7 +21,7 @@ class CatTasksRecord {
   /**
    * id of the task with the node
    */
-  'id'?: string
+  'id'?: Id
   /**
    * task action
    * @aliases ac
@@ -31,7 +31,7 @@ class CatTasksRecord {
    * unique task id
    * @aliases ti
    */
-  'task_id'?: string
+  'task_id'?: Id
   /**
    * parent task id
    * @aliases pti
@@ -41,7 +41,7 @@ class CatTasksRecord {
    * task type
    * @aliases ty
    */
-  'type'?: string
+  'type'?: Type
   /**
    * start time in ms
    * @aliases start
@@ -61,13 +61,11 @@ class CatTasksRecord {
    * @aliases time
    */
   'running_time'?: string
-
-  // Node info
   /**
    * unique node id
    * @aliases ni
    */
-  'node_id'?: string
+  'node_id'?: NodeId
   /**
    * ip address
    * @aliases i
@@ -87,7 +85,7 @@ class CatTasksRecord {
    * es version
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * X-Opaque-ID header
    * @aliases x

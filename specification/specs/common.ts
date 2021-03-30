@@ -136,6 +136,12 @@ type ByteSize = long | string
 
 type Percentage = string | float
 
+// Versionining Numbers & Strings
+type VersionNumber = long
+type VersionNumbers = VersionNumber[]
+type VersionString = string
+type VersionStrings = VersionString[]
+
 // TODO: replace all uuid's with this type
 type Uuid = string
 

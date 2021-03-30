@@ -22,7 +22,7 @@ class CatNodesRecord {
    * unique node id
    * @aliases nodeId
    */
-  'id'?: string
+  'id'?: Id
   /**
    * process id
    * @aliases p
@@ -48,7 +48,7 @@ class CatNodesRecord {
    * es version
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * es distribution flavor
    * @aliases f
@@ -58,7 +58,7 @@ class CatNodesRecord {
    * es distribution type
    * @aliases t
    */
-  'type'?: string
+  'type'?: Type
   /**
    * es build hash
    * @aliases b
@@ -162,16 +162,18 @@ class CatNodesRecord {
    * @aliases r,role,nodeRole
    */
   'node.role'?: string
+
   /**
    * *:current master
    * @aliases m
    */
   'master'?: string
+
   /**
    * node name
    * @aliases n
    */
-  'name'?: string
+  'name'?: Name
 
   /**
    * size of completion
@@ -184,6 +186,7 @@ class CatNodesRecord {
    * @aliases fm,fielddataMemory
    */
   'fielddata.memory_size'?: string
+
   /**
    * fielddata evictions
    * @aliases fe,fielddataEvictions
@@ -195,16 +198,19 @@ class CatNodesRecord {
    * @aliases qcm,queryCacheMemory
    */
   'query_cache.memory_size'?: string
+
   /**
    * query cache evictions
    * @aliases qce,queryCacheEvictions
    */
   'query_cache.evictions'?: string
+
   /**
    * query cache hit counts
    * @aliases qchc,queryCacheHitCount
    */
   'query_cache.hit_count'?: string
+
   /**
    * query cache miss counts
    * @aliases qcmc,queryCacheMissCount
@@ -216,16 +222,19 @@ class CatNodesRecord {
    * @aliases rcm,requestCacheMemory
    */
   'request_cache.memory_size'?: string
+
   /**
    * request cache evictions
    * @aliases rce,requestCacheEvictions
    */
   'request_cache.evictions'?: string
+
   /**
    * request cache hit counts
    * @aliases rchc,requestCacheHitCount
    */
   'request_cache.hit_count'?: string
+
   /**
    * request cache miss counts
    * @aliases rcmc,requestCacheMissCount
@@ -237,6 +246,7 @@ class CatNodesRecord {
    * @aliases ft,flushTotal
    */
   'flush.total'?: string
+
   /**
    * time spent in flush
    * @aliases ftt,flushTotalTime
@@ -248,31 +258,37 @@ class CatNodesRecord {
    * @aliases gc,getCurrent
    */
   'get.current'?: string
+
   /**
    * time spent in get
    * @aliases gti,getTime
    */
   'get.time'?: string
+
   /**
    * number of get ops
    * @aliases gto,getTotal
    */
   'get.total'?: string
+
   /**
    * time spent in successful gets
    * @aliases geti,getExistsTime
    */
   'get.exists_time'?: string
+
   /**
    * number of successful gets
    * @aliases geto,getExistsTotal
    */
   'get.exists_total'?: string
+
   /**
    * time spent in failed gets
    * @aliases gmti,getMissingTime
    */
   'get.missing_time'?: string
+
   /**
    * number of failed gets
    * @aliases gmto,getMissingTotal
@@ -284,31 +300,37 @@ class CatNodesRecord {
    * @aliases idc,indexingDeleteCurrent
    */
   'indexing.delete_current'?: string
+
   /**
    * time spent in deletions
    * @aliases idti,indexingDeleteTime
    */
   'indexing.delete_time'?: string
+
   /**
    * number of delete ops
    * @aliases idto,indexingDeleteTotal
    */
   'indexing.delete_total'?: string
+
   /**
    * number of current indexing ops
    * @aliases iic,indexingIndexCurrent
    */
   'indexing.index_current'?: string
+
   /**
    * time spent in indexing
    * @aliases iiti,indexingIndexTime
    */
   'indexing.index_time'?: string
+
   /**
    * number of indexing ops
    * @aliases iito,indexingIndexTotal
    */
   'indexing.index_total'?: string
+
   /**
    * number of failed indexing ops
    * @aliases iif,indexingIndexFailed
@@ -320,21 +342,25 @@ class CatNodesRecord {
    * @aliases mc,mergesCurrent
    */
   'merges.current'?: string
+
   /**
    * number of current merging docs
    * @aliases mcd,mergesCurrentDocs
    */
   'merges.current_docs'?: string
+
   /**
    * size of current merges
    * @aliases mcs,mergesCurrentSize
    */
   'merges.current_size'?: string
+
   /**
    * number of completed merge ops
    * @aliases mt,mergesTotal
    */
   'merges.total'?: string
+
   /**
    * docs merged
    * @aliases mtd,mergesTotalDocs
