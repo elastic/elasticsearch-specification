@@ -19,7 +19,7 @@
 
 class TokenFilterBase {
   type: string
-  version?: string
+  version?: VersionString
 }
 
 type TokenFilter =

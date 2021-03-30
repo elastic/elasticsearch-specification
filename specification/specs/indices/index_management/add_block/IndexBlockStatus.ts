@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class ClusterOperatingSystemPrettyNane {
-  count: integer
-  pretty_name: string
+class IndexBlockStatus {
+  name: IndexName
+  blocked: boolean
 }

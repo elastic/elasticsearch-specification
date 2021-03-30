@@ -3433,9 +3433,16 @@
       "description": "Adds a block to an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html",
       "name": "indices.add_block",
-      "request": null,
+      "request": {
+        "name": "IndexAddBlockRequest",
+        "namespace": "indices.index_management.add_block"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndexAddBlockResponse",
+        "namespace": "indices.index_management.add_block"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -11924,7 +11931,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -17786,6 +17793,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -17802,7 +17820,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -17813,7 +17831,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -19253,7 +19271,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -19496,7 +19514,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -19702,7 +19720,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -20770,7 +20788,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -20784,7 +20802,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -20813,7 +20831,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -20828,7 +20846,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -20843,7 +20861,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -20945,7 +20963,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -20960,7 +20978,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -20975,7 +20993,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -25099,7 +25117,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -25169,7 +25187,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -25197,7 +25215,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -25527,7 +25545,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -26726,7 +26744,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -26754,7 +26772,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -27665,7 +27683,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -29240,7 +29258,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -29268,7 +29286,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -29296,7 +29314,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -29365,7 +29383,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "NodeId",
               "namespace": "internal"
             }
           }
@@ -29421,7 +29439,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -29572,7 +29590,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -29615,7 +29633,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -30086,7 +30104,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -30173,7 +30191,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -30449,7 +30467,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -30565,7 +30583,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -31573,7 +31591,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -32810,23 +32828,11 @@
           "name": "wait_for_active_shards",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "number",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "WaitForActiveShards",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -35186,7 +35192,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -35219,7 +35225,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -35353,6 +35359,17 @@
         {
           "name": "data_cold",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "data_frozen",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35581,6 +35598,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ClusterOperatingSystemArchitecture",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "arch",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterOperatingSystemName",
         "namespace": "cluster.cluster_stats"
       },
@@ -35612,7 +35660,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterOperatingSystemPrettyNane",
+        "name": "ClusterOperatingSystemPrettyName",
         "namespace": "cluster.nodes_info"
       },
       "properties": [
@@ -35702,8 +35750,22 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterOperatingSystemPrettyNane",
+                "name": "ClusterOperatingSystemPrettyName",
                 "namespace": "cluster.nodes_info"
+              }
+            }
+          }
+        },
+        {
+          "name": "architectures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterOperatingSystemArchitecture",
+                "namespace": "cluster.cluster_stats"
               }
             }
           }
@@ -36758,7 +36820,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36769,7 +36831,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36780,7 +36842,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36791,7 +36853,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -36802,7 +36864,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -37164,7 +37226,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -37261,7 +37323,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -37409,7 +37471,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -37420,7 +37482,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Uuid",
               "namespace": "internal"
             }
           }
@@ -37466,6 +37528,17 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
             }
           }
         }
@@ -39585,7 +39658,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -39789,7 +39862,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -40075,7 +40148,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -40097,7 +40170,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -43754,7 +43827,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -45360,7 +45433,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -45382,7 +45455,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -46008,7 +46081,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -46019,7 +46092,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -47533,7 +47606,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -48054,7 +48127,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -48065,7 +48138,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -48076,7 +48149,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -53348,6 +53421,20 @@
               }
             }
           }
+        },
+        {
+          "name": "runtime_field_types",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFieldTypesStats",
+                "namespace": "cluster.cluster_stats"
+              }
+            }
+          }
         }
       ]
     },
@@ -54470,17 +54557,6 @@
           }
         },
         {
-          "name": "ignore_above",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "index",
           "required": false,
           "type": {
@@ -55096,7 +55172,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -55129,7 +55205,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -55151,7 +55227,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -56142,23 +56218,11 @@
           "name": "wait_for_active_shards",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "number",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "WaitForActiveShards",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -56704,17 +56768,6 @@
             "type": {
               "name": "StringFielddata",
               "namespace": "modules.indices.fielddata.string"
-            }
-          }
-        },
-        {
-          "name": "ignore_above",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
             }
           }
         },
@@ -61924,7 +61977,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -61999,7 +62052,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -62038,7 +62091,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -62093,7 +62146,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -62104,7 +62157,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -63893,7 +63946,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -66308,7 +66361,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -67482,7 +67535,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -67495,6 +67548,149 @@
             "type": {
               "name": "Type",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndexAddBlockRequest",
+        "namespace": "indices.index_management.add_block"
+      },
+      "path": [
+        {
+          "description": "A comma separated list of indices to add a block to",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The block to add (one of read, write, read_only or metadata)",
+          "name": "block",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexBlockOptions",
+              "namespace": "indices.index_management.add_block"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcardOptions",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndexAddBlockResponse",
+        "namespace": "indices.index_management.add_block"
+      },
+      "properties": [
+        {
+          "name": "shards_acknowledged",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexBlockStatus",
+                "namespace": "indices.index_management.add_block"
+              }
             }
           }
         }
@@ -67539,6 +67735,58 @@
                 "name": "AliasDefinition",
                 "namespace": "indices.alias_management"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "metadata"
+        },
+        {
+          "name": "read"
+        },
+        {
+          "name": "read_only"
+        },
+        {
+          "name": "write"
+        }
+      ],
+      "name": {
+        "name": "IndexBlockOptions",
+        "namespace": "indices.index_management.add_block"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexBlockStatus",
+        "namespace": "indices.index_management.add_block"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "blocked",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -68064,7 +68312,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -68086,7 +68334,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -69819,7 +70067,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -72165,7 +72413,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -73173,17 +73421,6 @@
           }
         },
         {
-          "name": "ignore_above",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "index",
           "required": false,
           "type": {
@@ -74013,7 +74250,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -74135,7 +74372,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -77877,7 +78114,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -78355,7 +78592,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -78471,7 +78708,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -79464,7 +79701,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -79664,7 +79901,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -80184,7 +80421,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81078,7 +81315,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81610,7 +81847,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81621,7 +81858,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -81643,7 +81880,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81825,7 +82062,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -81858,7 +82095,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -81962,14 +82199,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "reload_exception",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83672,7 +83909,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -85310,7 +85547,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -85922,7 +86159,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -86109,7 +86346,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -86145,7 +86382,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -86167,7 +86404,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -88995,7 +89232,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "integer",
+                "name": "VersionNumber",
                 "namespace": "internal"
               }
             }
@@ -89892,7 +90129,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "long",
+                "name": "VersionNumber",
                 "namespace": "internal"
               }
             }
@@ -91175,7 +91412,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -91214,7 +91451,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -91247,7 +91484,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -93657,17 +93894,6 @@
               "namespace": "internal"
             }
           }
-        },
-        {
-          "name": "store",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
@@ -95679,7 +95905,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -96572,7 +96798,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -98471,7 +98697,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -99779,6 +100005,172 @@
             "type": {
               "name": "FieldType",
               "namespace": "mapping.types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RuntimeFieldTypesStats",
+        "namespace": "cluster.cluster_stats"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "scriptless_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shadowed_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lang",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "lines_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lines_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "chars_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "chars_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "source_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "source_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
@@ -104470,7 +104862,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -106378,7 +106770,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -107314,7 +107706,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -107325,7 +107717,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -107821,7 +108213,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -109684,7 +110076,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -109695,7 +110087,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -110038,7 +110430,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -111528,7 +111920,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -111835,7 +112227,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -112722,7 +113114,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -116372,7 +116764,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -117070,7 +117462,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -117185,7 +117577,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -117216,7 +117608,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -117227,7 +117619,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -117270,7 +117662,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -119116,7 +119508,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -119236,7 +119628,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -122350,7 +122742,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -123791,7 +124183,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "WaitForActiveShards",
               "namespace": "internal"
             }
           }
@@ -124118,7 +124510,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
@@ -125297,6 +125689,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "VersionNumber",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "long",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -125320,6 +125726,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "VersionString",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "enum",
@@ -125365,7 +125785,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "byte",
+              "name": "integer",
               "namespace": "internal"
             }
           },
@@ -125766,17 +126186,6 @@
           }
         },
         {
-          "name": "execution_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "triggered_time",
           "required": true,
           "type": {
@@ -125898,7 +126307,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -126981,7 +127390,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -126992,7 +127401,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -127047,7 +127456,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }
@@ -127058,7 +127467,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionNumber",
               "namespace": "internal"
             }
           }
@@ -128216,20 +128625,6 @@
       "name": {
         "name": "ZeroTermsQuery",
         "namespace": "query_dsl.full_text.multi_match"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "byte",
-        "namespace": "internal"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "number",
-          "namespace": "internal"
-        }
       }
     },
     {

@@ -85,7 +85,7 @@ class CatSegmentsRecord {
    * version
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * is segment compound
    * @aliases ico,isCompound

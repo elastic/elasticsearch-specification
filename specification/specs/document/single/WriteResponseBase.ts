@@ -18,14 +18,14 @@
  */
 
 class WriteResponseBase extends ResponseBase {
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _primary_term: long
   result: Result
   _seq_no: long
   _shards: ShardStatistics
-  _type?: string
-  _version: long
+  _type?: Type
+  _version: VersionNumber
   forced_refresh?: boolean
   error?: ErrorCause
 }

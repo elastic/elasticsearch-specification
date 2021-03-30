@@ -37,7 +37,7 @@ interface BulkRequest<TSource> extends RequestBase {
     _source_includes?: Fields
     timeout?: Time
     type_query_string?: string
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
   body?: Array<BulkOperationContainer | TSource>

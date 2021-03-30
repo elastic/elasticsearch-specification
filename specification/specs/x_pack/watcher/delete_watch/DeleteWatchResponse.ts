@@ -19,6 +19,6 @@
 
 class DeleteWatchResponse extends ResponseBase {
   found: boolean
-  _id: string
-  _version: integer
+  _id: Id
+  _version: VersionNumber
 }

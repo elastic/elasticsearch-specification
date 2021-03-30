@@ -26,7 +26,7 @@ class CatPluginsRecord {
    * node name
    * @aliases n
    */
-  'name'?: string
+  'name'?: Name
   /**
    * component
    * @aliases c
@@ -36,7 +36,7 @@ class CatPluginsRecord {
    * component version
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * plugin details
    * @aliases d

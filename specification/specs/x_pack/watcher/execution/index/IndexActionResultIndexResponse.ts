@@ -22,6 +22,6 @@ class IndexActionResultIndexResponse {
   id: Id
   index: IndexName
   result: Result
-  version: integer
+  version: VersionNumber
   type?: Type
 }

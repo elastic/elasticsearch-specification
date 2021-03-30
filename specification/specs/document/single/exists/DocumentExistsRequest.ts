@@ -37,7 +37,7 @@ interface DocumentExistsRequest extends RequestBase {
     source_excludes?: Fields
     source_includes?: Fields
     stored_fields?: Fields
-    version?: long
+    version?: VersionNumber
     version_type?: VersionType
   }
   body?: {}

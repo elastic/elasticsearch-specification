@@ -37,7 +37,7 @@ interface GetRequest extends RequestBase {
     _source_excludes?: Fields
     _source_includes?: Fields
     stored_fields?: Fields
-    version?: long
+    version?: VersionNumber
     version_type?: VersionType
     _source?: boolean | string | string[]
   }

@@ -30,7 +30,7 @@ class BulkResponseItemBase {
   _seq_no?: long
   _shards?: ShardStatistics
   _type?: string
-  _version?: long
+  _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }

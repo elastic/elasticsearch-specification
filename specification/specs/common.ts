@@ -138,6 +138,12 @@ type ByteSize = long | string
 
 type Percentage = string | float
 
+// Versionining Numbers & Strings
+type VersionNumber = long
+type VersionNumbers = VersionNumber[]
+type VersionString = string
+type VersionStrings = VersionString[]
+
 // TODO: replace all uuid's with this type
 type Uuid = string
 
@@ -153,7 +159,7 @@ type GeoHashPrecision = number
 type Field = string
 type Fields = Field | Field[]
 
-type WaitForActiveShards = byte | WaitForActiveShardOptions
+type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 /**
  * The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back

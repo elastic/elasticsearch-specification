@@ -38,6 +38,6 @@ class LifecycleExplain {
 
 class LifecycleExplainPhaseExecution {
   policy: Name
-  version: integer
+  version: VersionNumber
   modified_date_in_millis: EpochMillis
 }

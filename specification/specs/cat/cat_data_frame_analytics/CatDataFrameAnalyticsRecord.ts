@@ -21,12 +21,12 @@ class CatDataFrameAnalyticsRecord {
   /**
    * the id
    */
-  'id'?: string
+  'id'?: Id
   /**
    * analysis type
    * @aliases t
    */
-  'type'?: string
+  'type'?: Type
   /**
    * job creation time
    * @aliases ct, createTime
@@ -36,17 +36,17 @@ class CatDataFrameAnalyticsRecord {
    * the version of Elasticsearch when the analytics was created
    * @aliases v
    */
-  'version'?: string
+  'version'?: VersionString
   /**
    * source index
    * @aliases si, sourceIndex
    */
-  'source_index'?: string
+  'source_index'?: IndexName
   /**
    * destination index
    * @aliases di, destIndex
    */
-  'dest_index'?: string
+  'dest_index'?: IndexName
   /**
    * description
    * @aliases d
@@ -81,17 +81,17 @@ class CatDataFrameAnalyticsRecord {
    * id of the assigned node
    * @aliases ni, nodeId
    */
-  'node.id'?: string
+  'node.id'?: Id
   /**
    * name of the assigned node
    * @aliases nn, nodeName
    */
-  'node.name'?: string
+  'node.name'?: Name
   /**
    * ephemeral id of the assigned node
    * @aliases ne, nodeEphemeralId
    */
-  'node.ephemeral_id'?: string
+  'node.ephemeral_id'?: Id
   /**
    * network address of the assigned node
    * @aliases na, nodeAddress

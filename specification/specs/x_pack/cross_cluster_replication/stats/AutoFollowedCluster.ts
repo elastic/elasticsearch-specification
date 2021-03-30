@@ -18,8 +18,7 @@
  */
 
 class AutoFollowedCluster {
-  cluster_name: string
-  last_seen_metadata_version: long
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
+  cluster_name: Name
+  last_seen_metadata_version: VersionNumber
   time_since_last_check_millis: DateString
 }

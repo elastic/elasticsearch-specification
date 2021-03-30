@@ -22,12 +22,12 @@ class FollowIndexShardStats {
   failed_read_requests: long
   failed_write_requests: long
   fatal_exception?: ErrorCause
-  follower_aliases_version: long
+  follower_aliases_version: VersionNumber
   follower_global_checkpoint: long
   follower_index: string
-  follower_mapping_version: long
+  follower_mapping_version: VersionNumber
   follower_max_seq_no: long
-  follower_settings_version: long
+  follower_settings_version: VersionNumber
   last_requested_seq_no: long
   leader_global_checkpoint: long
   leader_index: string

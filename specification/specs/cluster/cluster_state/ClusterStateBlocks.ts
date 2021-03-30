@@ -26,10 +26,10 @@ class ClusterStateBlockIndex {
   retryable: boolean
   levels: string[]
   aliases?: Array<IndexAlias>
-  aliases_version?: integer
-  version?: integer
-  mapping_version?: integer
-  settings_version?: integer
-  routing_num_shards?: integer
+  aliases_version?: VersionNumber
+  version?: VersionNumber
+  mapping_version?: VersionNumber
+  settings_version?: VersionNumber
+  routing_num_shards?: VersionNumber
   state?: string // TODO: create enum of values
 }

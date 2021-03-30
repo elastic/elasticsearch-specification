@@ -34,9 +34,9 @@ interface CreateRequest<TDocument> extends RequestBase {
     refresh?: Refresh
     routing?: Routing
     timeout?: Time
-    version?: long
+    version?: VersionNumber
     version_type?: VersionType
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
   }
   body?: TDocument
 }

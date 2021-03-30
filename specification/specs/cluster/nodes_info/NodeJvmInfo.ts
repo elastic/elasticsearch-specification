@@ -23,8 +23,8 @@ class NodeJvmInfo {
   memory_pools: string[]
   pid: integer
   start_time_in_millis: long
-  version: string
-  vm_name: string
+  version: VersionString
+  vm_name: Name
   vm_vendor: string
-  vm_version: string
+  vm_version: VersionString
 }

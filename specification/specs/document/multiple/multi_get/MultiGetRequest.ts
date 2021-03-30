@@ -53,6 +53,6 @@ class MultiGetOperation {
   _source?: boolean | Fields | SourceFilter
   stored_fields?: Fields
   _type?: Type
-  version?: long
+  version?: VersionNumber
   version_type?: VersionType
 }

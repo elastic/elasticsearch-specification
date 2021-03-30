@@ -23,8 +23,8 @@ class ElasticsearchVersionInfo {
   build_hash: string
   build_snapshot: boolean
   build_type: string
-  lucene_version: string
-  minimum_index_compatibility_version: string
-  minimum_wire_compatibility_version: string
+  lucene_version: VersionString
+  minimum_index_compatibility_version: VersionString
+  minimum_wire_compatibility_version: VersionString
   number: string
 }

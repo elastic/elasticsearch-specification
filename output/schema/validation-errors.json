@@ -88,14 +88,6 @@
         "Missing response"
       ]
     },
-    "indices.add_block": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "indices.delete_index_template": {
       "request": [
         "Missing request"

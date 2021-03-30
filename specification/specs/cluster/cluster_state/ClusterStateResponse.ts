@@ -23,7 +23,7 @@ class ClusterStateResponse extends ResponseBase {
   master_node?: string
   state?: string[]
   state_uuid?: Uuid
-  version?: integer
+  version?: VersionNumber
   blocks?: ClusterStateBlocks
   metadata?: ClusterStateMetadata
 }
