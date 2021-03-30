@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name watcher.stats
- * @since 0.0.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface WatcherStatsRequest extends RequestBase {
