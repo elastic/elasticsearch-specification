@@ -194,7 +194,7 @@ export function modelType (node: Node): model.ValueOf {
 
       const name = identifier.compilerNode.escapedText as string
       switch (name) {
-        case 'Array':
+        case 'Array': {
           assert(node.getTypeArguments().length === 1, 'An array must have one argument')
           const [value] = node.getTypeArguments().map(node => modelType(node))
           const type: model.ArrayOf = {
@@ -202,6 +202,7 @@ export function modelType (node: Node): model.ValueOf {
             value
           }
           return type
+        }
 
         case 'Dictionary':
         case 'AdditionalProperties': {
@@ -498,14 +499,14 @@ export function hoistRequestAnnotations (
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
 export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]): void {
-  const validTags = ['class_serializer', 'url', 'behavior', 'variants', 'variant']
+  const validTags = ['class_serializer', 'doc_url', 'behavior', 'variants', 'variant']
   const tags = parseJsDocTags(jsDocs)
   setTags(type, tags, validTags, (tags, tag, value) => {
     if (tag === 'stability') {
     } else if (tag.endsWith('_serializer')) {
     } else if (tag === 'variants') {
     } else if (tag === 'variant') {
-    } else if (tag === 'url') {
+    } else if (tag === 'doc_url') {
       type.docUrl = value
     } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
   })
@@ -513,7 +514,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
-  const validTags = ['stability', 'prop_serializer', 'url', 'aliases', 'identifier', 'url']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'url']
   const tags = parseJsDocTags(jsDocs)
   setTags(property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
@@ -521,7 +522,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.aliases = value.split(',').map(v => v.trim())
     } else if (tag === 'identifier') {
       property.identifier = value
-    } else if (tag === 'url') {
+    } else if (tag === 'doc_url') {
       property.docUrl = value
     } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
   })
