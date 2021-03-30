@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class ClusterOperatingSystemPrettyNane {
+class ClusterOperatingSystemPrettyName {
   count: integer
   pretty_name: string
 }

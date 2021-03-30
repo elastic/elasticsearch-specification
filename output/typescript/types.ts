@@ -3242,7 +3242,7 @@ export interface ClusterOperatingSystemName {
   name: string
 }
 
-export interface ClusterOperatingSystemPrettyNane {
+export interface ClusterOperatingSystemPrettyName {
   count: integer
   pretty_name: string
 }
@@ -3252,7 +3252,7 @@ export interface ClusterOperatingSystemStats {
   available_processors: integer
   mem: OperatingSystemMemoryInfo
   names: Array<ClusterOperatingSystemName>
-  pretty_names: Array<ClusterOperatingSystemPrettyNane>
+  pretty_names: Array<ClusterOperatingSystemPrettyName>
   architectures?: Array<ClusterOperatingSystemArchitecture>
 }
 

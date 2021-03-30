@@ -22,6 +22,6 @@ class ClusterOperatingSystemStats {
   available_processors: integer
   mem: OperatingSystemMemoryInfo
   names: ClusterOperatingSystemName[]
-  pretty_names: ClusterOperatingSystemPrettyNane[]
+  pretty_names: ClusterOperatingSystemPrettyName[]
   architectures?: ClusterOperatingSystemArchitecture[]
 }
