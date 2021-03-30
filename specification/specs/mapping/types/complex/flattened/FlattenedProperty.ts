@@ -22,7 +22,6 @@ class FlattenedProperty extends PropertyBase {
   depth_limit?: integer
   doc_values?: boolean
   eager_global_ordinals?: boolean
-  ignore_above?: integer
   index?: boolean
   index_options?: IndexOptions
   null_value?: string

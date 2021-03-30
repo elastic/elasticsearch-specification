@@ -5369,7 +5369,6 @@ export interface FlattenedProperty extends PropertyBase {
   depth_limit?: integer
   doc_values?: boolean
   eager_global_ordinals?: boolean
-  ignore_above?: integer
   index?: boolean
   index_options?: IndexOptions
   null_value?: string
@@ -5629,7 +5628,6 @@ export interface GenericProperty extends DocValuesPropertyBase {
   analyzer: string
   boost: double
   fielddata: StringFielddata
-  ignore_above: integer
   ignore_malformed: boolean
   index: boolean
   index_options: IndexOptions
@@ -7441,7 +7439,6 @@ export interface KeywordMarkerTokenFilter extends TokenFilterBase {
 export interface KeywordProperty extends DocValuesPropertyBase {
   boost?: double
   eager_global_ordinals?: boolean
-  ignore_above?: integer
   index?: boolean
   index_options?: IndexOptions
   normalizer?: string
@@ -9672,7 +9669,6 @@ export interface RangePropertyBase extends DocValuesPropertyBase {
   boost?: double
   coerce?: boolean
   index?: boolean
-  store?: boolean
 }
 
 export interface RangeQuery extends QueryBase {
@@ -13236,7 +13232,6 @@ export interface WatchRecordQueuedStats {
 
 export interface WatchRecordStats extends WatchRecordQueuedStats {
   execution_phase: ExecutionPhase
-  execution_time: DateString
   triggered_time: DateString
   executed_actions?: Array<string>
   watch_id: Id

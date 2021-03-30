@@ -19,7 +19,6 @@
 
 class WatchRecordStats extends WatchRecordQueuedStats {
   execution_phase: ExecutionPhase
-  execution_time: DateString
   triggered_time: DateString
   executed_actions?: Array<string>
   watch_id: Id
