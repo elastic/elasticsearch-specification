@@ -35618,7 +35618,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterOperatingSystemPrettyNane",
+        "name": "ClusterOperatingSystemPrettyName",
         "namespace": "cluster.nodes_info"
       },
       "properties": [
@@ -35708,7 +35708,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterOperatingSystemPrettyNane",
+                "name": "ClusterOperatingSystemPrettyName",
                 "namespace": "cluster.nodes_info"
               }
             }
