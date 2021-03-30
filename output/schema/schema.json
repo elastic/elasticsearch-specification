@@ -3440,9 +3440,16 @@
       "description": "Adds a block to an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html",
       "name": "indices.add_block",
-      "request": null,
+      "request": {
+        "name": "IndexAddBlockRequest",
+        "namespace": "indices.index_management.add_block"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndexAddBlockResponse",
+        "namespace": "indices.index_management.add_block"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -67720,6 +67727,149 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndexAddBlockRequest",
+        "namespace": "indices.index_management.add_block"
+      },
+      "path": [
+        {
+          "description": "A comma separated list of indices to add a block to",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The block to add (one of read, write, read_only or metadata)",
+          "name": "block",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexBlockOptions",
+              "namespace": "indices.index_management.add_block"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcardOptions",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndexAddBlockResponse",
+        "namespace": "indices.index_management.add_block"
+      },
+      "properties": [
+        {
+          "name": "shards_acknowledged",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexBlockStatus",
+                "namespace": "indices.index_management.add_block"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "IndexAlias",
@@ -67758,6 +67908,58 @@
                 "name": "AliasDefinition",
                 "namespace": "indices.alias_management"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "metadata"
+        },
+        {
+          "name": "read"
+        },
+        {
+          "name": "read_only"
+        },
+        {
+          "name": "write"
+        }
+      ],
+      "name": {
+        "name": "IndexBlockOptions",
+        "namespace": "indices.index_management.add_block"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexBlockStatus",
+        "namespace": "indices.index_management.add_block"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "blocked",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }

@@ -6845,10 +6845,32 @@ export interface IndexActionResultIndexResponse {
   type?: Type
 }
 
+export interface IndexAddBlockRequest extends RequestBase {
+  index: IndexName
+  block: IndexBlockOptions
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcardOptions
+  ignore_unavailable?: boolean
+  master_timeout?: Time
+  timeout?: Time
+}
+
+export interface IndexAddBlockResponse extends AcknowledgedResponseBase {
+  shards_acknowledged: boolean
+  indices: Array<IndexBlockStatus>
+}
+
 export type IndexAlias = string
 
 export interface IndexAliases {
   aliases: Record<string, AliasDefinition>
+}
+
+export type IndexBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
+
+export interface IndexBlockStatus {
+  name: IndexName
+  blocked: boolean
 }
 
 export interface IndexExistsRequest extends RequestBase {
