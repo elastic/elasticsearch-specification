@@ -151,17 +151,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     })
   }
 
-  // FIXME: could we get rid of this and use an 'array_of' value?
-  typeDefByName.set('internal:Array', {
-    kind: 'interface',
-    name: {
-      namespace: 'internal',
-      name: 'Array'
-    },
-    generics: ['Item'],
-    properties: []
-  })
-
   // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
   validateTypeRef({ namespace: 'common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
 
@@ -317,9 +306,9 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.push(`${typeDef.kind} definition ${typeDef.name.namespace}:${typeDef.name.name}`)
 
     // Validate description URL
-    if (typeDef.url != null) {
+    if (typeDef.docUrl != null) {
       try {
-        new URL(typeDef.url) // eslint-disable-line no-new
+        new URL(typeDef.docUrl) // eslint-disable-line no-new
       } catch (error) {
         modelError('Description URL is malformed')
       }
@@ -435,10 +424,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   // Constituents of type definitions
 
   function openGenericSet (typeDef: model.Request | model.Interface): Set<string> {
-    return new Set((typeDef.generics ?? []).map(name => fqn({
-      namespace: typeDef.name.namespace,
-      name: name
-    })))
+    return new Set((typeDef.generics ?? []).map(name => fqn(name)))
   }
 
   function validateInherits (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
@@ -456,7 +442,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
   }
 
-  function validateImplements (parents: (model.Implements[] | undefined), openGenerics: Set<string>): void {
+  function validateImplements (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
     if (parents == null || parents.length === 0) return
 
     context.push('Implements')

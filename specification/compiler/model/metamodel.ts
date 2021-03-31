@@ -29,7 +29,6 @@
  *    - string,
  *    - number: a 64bits floating point number. Additional types will be added for integers.
  *    - null: the null value. Since JS distinguishes undefined and null, some APIs make use of this value.
- *    - Array: an array,
  *    - object: used to represent "any". We may forbid it at some point. UserDefinedValue should be used for user data.
  */
 export class TypeName {
@@ -51,11 +50,6 @@ export class TypeName {
  * Type of a value. Used both for property types and nested type definitions.
  */
 export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValueOf | UserDefinedValue | LiteralValue
-
-export class LiteralValue {
-  kind: 'literal_value'
-  value: string | number | boolean
-}
 
 /**
  * A single value
@@ -114,6 +108,19 @@ export class NamedValueOf {
 export class UserDefinedValue {
   kind: 'user_defined_value'
 }
+
+/**
+ * A literal value. This is used for tagged unions, where each type member of a union has a 'type'
+ * attribute that defines its kind. This metamodel heavily uses this approach with its 'kind' attributes.
+ *
+ * It may later be used to set a property to a constant value, which is why it accepts not only strings but also
+ * other primitive types.
+ */
+export class LiteralValue {
+  kind: 'literal_value'
+  value: string | number | boolean
+}
+
 /**
  * An interface or request interface property.
  */
@@ -122,6 +129,8 @@ export class Property {
   type: ValueOf
   required: boolean
   description?: string
+  docUrl?: string
+  deprecation?: Deprecation
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
@@ -129,7 +138,6 @@ export class Property {
   identifier?: string
   /** An optional set of aliases for `name` */
   aliases?: string[]
-  deprecation?: Deprecation
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -146,7 +154,7 @@ export abstract class BaseType {
   name: TypeName
   description?: string
   /** Link to public documentation */
-  url?: string
+  docUrl?: string
   deprecation?: Deprecation
   kind: string
   variantName?: string
@@ -175,24 +183,23 @@ export class Inherits {
   generics?: ValueOf[]
 }
 
-export class Implements {
-  type: TypeName
-  generics?: ValueOf[]
-}
-
 /**
  * An interface type
  */
 export class Interface extends BaseType {
   kind: 'interface'
-  generics?: string[]
+  /**
+   * Open generic parameters. The name is that of the parameter, the namespace is an arbitrary value that allows
+   * this fully qualified type name to be used when this open generic parameter is used in property's type.
+   */
+  generics?: TypeName[]
   inherits?: Inherits[]
-  implements?: Implements[]
+  implements?: Inherits[]
 
   /**
    * Behaviors directly implemented by this interface
    */
-  behaviors?: Implements[]
+  behaviors?: Inherits[]
 
   /**
    * Behaviors attached to this interface, coming from the interface itself (see `behaviors`)
@@ -210,9 +217,9 @@ export class Interface extends BaseType {
 export class Request extends BaseType {
   // Note: does not extend Interface as properties are split across path, query and body
   kind: 'request'
-  generics?: string[]
+  generics?: TypeName[]
   inherits?: Inherits[]
-  implements?: Implements[]
+  implements?: Inherits[]
   /** URL path properties */
   path: Property[]
   /** Query string properties */
@@ -229,7 +236,7 @@ export class Request extends BaseType {
    * (an array of bulk operations) or create requests (a user provided document type).
    */
   body?: ValueBody | PropertiesBody
-  behaviors?: Implements[]
+  behaviors?: Inherits[]
   attachedBehaviors?: string[]
 }
 
