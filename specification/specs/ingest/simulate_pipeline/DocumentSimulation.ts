@@ -24,5 +24,5 @@ class DocumentSimulation {
   _parent?: string
   _routing?: string
   _source: Dictionary<string, UserDefinedValue>
-  _type: Type
+  _type?: Type
 }

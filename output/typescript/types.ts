@@ -4581,7 +4581,7 @@ export interface DocumentSimulation {
   _parent?: string
   _routing?: string
   _source: Record<string, any>
-  _type: Type
+  _type?: Type
 }
 
 export interface DotExpanderProcessor extends ProcessorBase {
