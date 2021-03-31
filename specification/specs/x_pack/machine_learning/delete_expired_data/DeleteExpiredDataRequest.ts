@@ -23,6 +23,15 @@
  * @stability TODO
  */
 interface DeleteExpiredDataRequest extends RequestBase {
-  query_parameters?: {}
-  body?: {}
+  path_parts?: {
+    name?: Name // job_id
+  }
+  query_parameters?: {
+    requests_per_second?: float // default: no throttling
+    timeout?: Time // default: 8h
+  }
+  body?: {
+    requests_per_second?: float // default: no throttling
+    timeout?: Time // default: 8h
+  }
 }
