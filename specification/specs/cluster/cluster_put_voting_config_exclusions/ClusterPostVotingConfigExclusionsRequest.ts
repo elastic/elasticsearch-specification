@@ -23,13 +23,12 @@
  * @stability TODO
  */
 interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
-  path_parts?: {
-    stub_a: string
-  }
+  path_parts?: {}
   query_parameters?: {
-    stub_b: string
+    node_names?: Names
+    node_ids?: Ids
+    timeout?: Time // default: 30s
+    wait_for_removal?: boolean // default: true
   }
-  body?: {
-    stub_c: string
-  }
+  body?: {}
 }

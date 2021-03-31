@@ -35850,22 +35850,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -35879,27 +35863,48 @@
         "name": "ClusterPostVotingConfigExclusionsRequest",
         "namespace": "cluster.cluster_put_voting_config_exclusions"
       },
-      "path": [
+      "path": [],
+      "query": [
         {
-          "name": "stub_a",
-          "required": true,
+          "name": "node_names",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Names",
               "namespace": "internal"
             }
           }
-        }
-      ],
-      "query": [
+        },
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "node_ids",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ids",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "wait_for_removal",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }

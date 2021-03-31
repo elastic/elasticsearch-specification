@@ -3266,11 +3266,10 @@ export interface ClusterPendingTasksResponse extends ResponseBase {
 }
 
 export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  node_names?: Names
+  node_ids?: Ids
+  timeout?: Time
+  wait_for_removal?: boolean
 }
 
 export interface ClusterPostVotingConfigExclusionsResponse extends ResponseBase {
