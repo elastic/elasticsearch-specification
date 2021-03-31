@@ -6115,9 +6115,16 @@
       "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
       "name": "ml.delete_trained_model",
-      "request": null,
+      "request": {
+        "name": "DeleteTrainedModelRequest",
+        "namespace": "x_pack.machine_learning.delete_trained_model"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "DeleteTrainedModelResponse",
+        "namespace": "x_pack.machine_learning.delete_trained_model"
+      },
+      "since": "7.10.0",
       "stability": "beta",
       "urls": [
         {
@@ -6138,9 +6145,16 @@
       "description": "Deletes a model alias that refers to the trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
       "name": "ml.delete_trained_model_alias",
-      "request": null,
+      "request": {
+        "name": "DeleteTrainedModelAliasRequest",
+        "namespace": "x_pack.machine_learning.delete_trained_model_alias"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "DeleteTrainedModelAliasResponse",
+        "namespace": "x_pack.machine_learning.delete_trained_model_alias"
+      },
+      "since": "7.13.0",
       "stability": "beta",
       "urls": [
         {
@@ -45858,6 +45872,116 @@
       "name": {
         "name": "DeleteSnapshotResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.delete_snapshot"
+      },
+      "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "DeleteTrainedModelAliasRequest",
+        "namespace": "x_pack.machine_learning.delete_trained_model_alias"
+      },
+      "path": [
+        {
+          "description": "The trained model alias to delete",
+          "name": "model_alias",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Alias",
+              "namespace": "indices.alias_management"
+            }
+          }
+        },
+        {
+          "description": "The trained model where the model alias is assigned",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DeleteTrainedModelAliasResponse",
+        "namespace": "x_pack.machine_learning.delete_trained_model_alias"
+      },
+      "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "DeleteTrainedModelRequest",
+        "namespace": "x_pack.machine_learning.delete_trained_model"
+      },
+      "path": [
+        {
+          "description": "The ID of the trained model to delete",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DeleteTrainedModelResponse",
+        "namespace": "x_pack.machine_learning.delete_trained_model"
       },
       "properties": []
     },
