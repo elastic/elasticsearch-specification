@@ -17,7 +17,4 @@
  * under the License.
  */
 
-class AutoFollowPatternItem {
-  name: Name
-  pattern: AutoFollowPatternGetRecord
-}
+class PutAutoFollowPatternResponse extends AcknowledgedResponseBase {}

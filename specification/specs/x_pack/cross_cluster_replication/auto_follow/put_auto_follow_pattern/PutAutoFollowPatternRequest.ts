@@ -17,7 +17,15 @@
  * under the License.
  */
 
-class AutoFollowPatternItem {
-  name: Name
-  pattern: AutoFollowPatternGetRecord
+/**
+ * @rest_spec_name ccr.put_auto_follow_pattern
+ * @since 6.5.0
+ * @stability TODO
+ */
+interface PutAutoFollowPatternRequest extends RequestBase {
+  path_parts?: {
+    name: Name // param name in docs: auto_follow_pattern_name
+  }
+  query_parameters?: {}
+  body?: {}
 }

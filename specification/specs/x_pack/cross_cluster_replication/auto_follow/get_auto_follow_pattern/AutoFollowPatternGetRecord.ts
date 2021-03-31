@@ -17,7 +17,6 @@
  * under the License.
  */
 
-class AutoFollowPatternItem {
-  name: Name
-  pattern: AutoFollowPatternGetRecord
+class AutoFollowPatternGetRecord extends AutoFollowPatternBase {
+  active: boolean
 }

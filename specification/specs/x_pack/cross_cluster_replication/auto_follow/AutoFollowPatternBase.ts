@@ -17,7 +17,7 @@
  * under the License.
  */
 
-class AutoFollowPattern {
+class AutoFollowPatternBase {
   active: boolean
   remote_cluster: string
   follow_index_pattern?: IndexPattern
