@@ -18,6 +18,18 @@
  */
 
 class IndicesDataStreamsStatsResponse extends ResponseBase {
-  stub: integer
-  // https://www.elastic.co/guide/en/elasticsearch/reference/7.12/data-stream-stats-api.html#data-stream-stats-api-response-body
+  _shards: ShardStatistics
+  backing_indices: integer
+  data_stream_count: integer
+  total_store_sizes?: ByteSize
+  total_store_size_bytes: integer
+  data_streams: DataStreamsStatsItem[]
+}
+
+class DataStreamsStatsItem {
+  backing_indices: integer
+  data_stream: Name
+  store_size?: ByteSize
+  store_size_bytes: integer
+  maximum_timestamp: integer
 }

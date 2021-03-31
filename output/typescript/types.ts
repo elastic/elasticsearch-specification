@@ -3848,6 +3848,14 @@ export interface DataPathStats {
 
 export type DataStreamName = string
 
+export interface DataStreamsStatsItem {
+  backing_indices: integer
+  data_stream: Name
+  store_size?: ByteSize
+  store_size_bytes: integer
+  maximum_timestamp: integer
+}
+
 export interface DataStreamsUsage extends XPackUsage {
   data_streams: long
   indices_count: long
@@ -6996,7 +7004,12 @@ export interface IndicesDataStreamsStatsRequest extends RequestBase {
 }
 
 export interface IndicesDataStreamsStatsResponse extends ResponseBase {
-  stub: integer
+  _shards: ShardStatistics
+  backing_indices: integer
+  data_stream_count: integer
+  total_store_sizes?: ByteSize
+  total_store_size_bytes: integer
+  data_streams: Array<DataStreamsStatsItem>
 }
 
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
