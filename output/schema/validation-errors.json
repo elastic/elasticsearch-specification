@@ -321,14 +321,6 @@
       "response": [
         "Missing response"
       ]
-    },
-    "security.clear_cached_privileges": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
     }
   },
   "generalErrors": []
