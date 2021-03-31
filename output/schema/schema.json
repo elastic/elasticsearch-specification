@@ -54790,6 +54790,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "last_finalized_bucket_end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
