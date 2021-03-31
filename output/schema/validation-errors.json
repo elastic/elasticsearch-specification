@@ -160,6 +160,14 @@
         "Missing response"
       ]
     },
+    "ingest.get_pipeline": {
+      "request": [
+        "GetPipelineRequest: query parameter 'summary' does not exist in the json spec"
+      ],
+      "response": [
+        "enum definition ingest.processors:DateRounding - Duplicate enum member identifier 'M'"
+      ]
+    },
     "ml.delete_data_frame_analytics": {
       "request": [
         "Missing request"
