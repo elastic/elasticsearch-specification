@@ -19,4 +19,5 @@
 
 class SplitIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
+  index: IndexName
 }

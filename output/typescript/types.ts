@@ -11868,6 +11868,7 @@ export interface SplitIndexRequest extends RequestBase {
 
 export interface SplitIndexResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
+  index: IndexName
 }
 
 export interface SplitProcessor extends ProcessorBase {

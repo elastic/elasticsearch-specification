@@ -113160,6 +113160,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
