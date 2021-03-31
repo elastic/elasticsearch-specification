@@ -10143,6 +10143,35 @@ export interface ReservedSize {
   shards: Array<string>
 }
 
+export interface ResolveIndexAliasItem {
+  name: Name
+  indices: Indices
+}
+
+export interface ResolveIndexDataStreamsItem {
+  name: DataStreamName
+  timestamp_field: Field
+  backing_indices: Indices
+}
+
+export interface ResolveIndexItem {
+  name: Name
+  aliases?: Array<string>
+  attributes: Array<string>
+  data_stream?: DataStreamName
+}
+
+export interface ResolveIndexRequest extends RequestBase {
+  name: Names
+  expand_wildcards?: ExpandWildcards
+}
+
+export interface ResolveIndexResponse extends ResponseBase {
+  indices: Array<ResolveIndexItem>
+  aliases: Array<ResolveIndexAliasItem>
+  data_streams: Array<ResolveIndexDataStreamsItem>
+}
+
 export type ResourcePrivileges = Record<Name, Privileges>
 
 export interface ResponseBase {
