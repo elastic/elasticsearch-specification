@@ -77583,7 +77583,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -77594,8 +77594,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
-              "namespace": "internal"
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -77633,17 +77633,6 @@
           }
         },
         {
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "total_by_field_count",
           "required": true,
           "type": {
@@ -77675,6 +77664,83 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "categorization_status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "categorized_doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "dead_category_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "failed_category_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "frequent_category_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "rare_category_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_category_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -77702,7 +77768,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -77713,8 +77779,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
-              "namespace": "internal"
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -77724,8 +77790,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
-              "namespace": "internal"
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -77768,7 +77834,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -77779,7 +77845,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "min_version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
               "namespace": "internal"
             }
           }
