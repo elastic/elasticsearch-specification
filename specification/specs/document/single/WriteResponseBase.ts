@@ -22,7 +22,7 @@ class WriteResponseBase extends ResponseBase {
   _index: IndexName
   _primary_term: long
   result: Result
-  _seq_no: long
+  _seq_no: SequenceNumber
   _shards: ShardStatistics
   _type?: Type
   _version: VersionNumber

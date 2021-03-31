@@ -30,7 +30,7 @@ interface DeleteRequest extends RequestBase {
   }
   query_parameters?: {
     if_primary_term?: long
-    if_seq_no?: long
+    if_seq_no?: SequenceNumber
     refresh?: Refresh
     routing?: Routing
     timeout?: Time

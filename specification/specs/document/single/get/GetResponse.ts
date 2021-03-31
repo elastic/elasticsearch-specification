@@ -24,7 +24,7 @@ class GetResponse<TDocument> extends ResponseBase {
   _id: Id
   _primary_term?: long
   _routing?: string
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _source?: TDocument
   _type: Type
   _version?: VersionNumber

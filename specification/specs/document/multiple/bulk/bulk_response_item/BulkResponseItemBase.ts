@@ -27,7 +27,7 @@ class BulkResponseItemBase {
   error?: ErrorCause
   _primary_term?: long
   result?: string
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _shards?: ShardStatistics
   _type?: string
   _version?: VersionNumber

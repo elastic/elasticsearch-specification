@@ -19687,7 +19687,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -45389,7 +45389,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -55097,7 +55097,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -55216,7 +55216,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -55238,7 +55238,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -55271,7 +55271,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -62124,7 +62124,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -63935,7 +63935,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -66339,7 +66339,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -68246,7 +68246,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -70427,7 +70427,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -70559,7 +70559,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -78515,7 +78515,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -78526,7 +78526,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -78559,7 +78559,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -91473,7 +91473,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -105170,6 +105170,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "SequenceNumber",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "integer",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -106109,7 +106123,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -106120,7 +106134,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -107256,7 +107270,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -124081,7 +124095,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }
@@ -127420,7 +127434,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "internal"
             }
           }

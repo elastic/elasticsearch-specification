@@ -26,12 +26,12 @@ class FollowIndexShardStats {
   follower_global_checkpoint: long
   follower_index: string
   follower_mapping_version: VersionNumber
-  follower_max_seq_no: long
+  follower_max_seq_no: SequenceNumber
   follower_settings_version: VersionNumber
-  last_requested_seq_no: long
+  last_requested_seq_no: SequenceNumber
   leader_global_checkpoint: long
   leader_index: string
-  leader_max_seq_no: long
+  leader_max_seq_no: SequenceNumber
   operations_read: long
   operations_written: long
   outstanding_read_requests: integer

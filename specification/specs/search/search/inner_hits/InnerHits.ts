@@ -18,7 +18,7 @@
  */
 
 class InnerHits {
-  name?: string
+  name?: Name
   size?: integer
   from?: integer
   collapse?: FieldCollapse

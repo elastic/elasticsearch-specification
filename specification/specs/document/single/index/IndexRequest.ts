@@ -21,7 +21,6 @@
  * @rest_spec_name index
  * @since 0.0.0
  * @stability stable
- * @class_serializer IndexRequestFormatter`1`
  */
 interface IndexRequest<TDocument> extends RequestBase {
   path_parts?: {
@@ -31,7 +30,7 @@ interface IndexRequest<TDocument> extends RequestBase {
   }
   query_parameters?: {
     if_primary_term?: long
-    if_seq_no?: long
+    if_seq_no?: SequenceNumber
     op_type?: OpType
     pipeline?: string
     refresh?: Refresh
