@@ -145,6 +145,9 @@ type VersionStrings = VersionString[]
 // TODO: replace all uuid's with this type
 type Uuid = string
 
+// _seq_no
+type SequenceNumber = integer
+
 type NodeIds = string
 type PropertyName = string
 type RelationName = string

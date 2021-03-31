@@ -21,6 +21,6 @@ class PutWatchResponse extends ResponseBase {
   created: boolean
   _id: Id
   _primary_term: long
-  _seq_no: long
+  _seq_no: SequenceNumber
   _version: VersionNumber
 }

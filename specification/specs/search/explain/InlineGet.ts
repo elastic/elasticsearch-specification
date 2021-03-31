@@ -20,9 +20,8 @@
 class InlineGet<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   found: boolean
-  _seq_no: long
+  _seq_no: SequenceNumber
   _primary_term: long
   _routing?: Routing
-  /** @prop_serializer SourceFormatter`1 */
   _source: TDocument
 }

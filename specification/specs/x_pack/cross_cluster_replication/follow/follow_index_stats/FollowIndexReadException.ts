@@ -19,6 +19,6 @@
 
 class FollowIndexReadException {
   exception: ErrorCause
-  from_seq_no: long
+  from_seq_no: SequenceNumber
   retries: integer
 }

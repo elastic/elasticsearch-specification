@@ -907,7 +907,7 @@ export interface BulkResponseItemBase {
   error?: ErrorCause
   _primary_term?: long
   result?: string
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _shards?: ShardStatistics
   _type?: string
   _version?: VersionNumber
@@ -4327,7 +4327,7 @@ export interface DeleteRequest extends RequestBase {
   index: IndexName
   type?: Type
   if_primary_term?: long
-  if_seq_no?: long
+  if_seq_no?: SequenceNumber
   refresh?: Refresh
   routing?: Routing
   timeout?: Time
@@ -5414,7 +5414,7 @@ export interface FollowConfig {
 
 export interface FollowIndexReadException {
   exception: ErrorCause
-  from_seq_no: long
+  from_seq_no: SequenceNumber
   retries: integer
 }
 
@@ -5427,12 +5427,12 @@ export interface FollowIndexShardStats {
   follower_global_checkpoint: long
   follower_index: string
   follower_mapping_version: VersionNumber
-  follower_max_seq_no: long
+  follower_max_seq_no: SequenceNumber
   follower_settings_version: VersionNumber
-  last_requested_seq_no: long
+  last_requested_seq_no: SequenceNumber
   leader_global_checkpoint: long
   leader_index: string
-  leader_max_seq_no: long
+  leader_max_seq_no: SequenceNumber
   operations_read: long
   operations_written: long
   outstanding_read_requests: integer
@@ -6204,7 +6204,7 @@ export interface GetResponse<TDocument = unknown> extends ResponseBase {
   _id: Id
   _primary_term?: long
   _routing?: string
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _source?: TDocument
   _type: Type
   _version?: VersionNumber
@@ -6406,7 +6406,7 @@ export interface GetWatchResponse extends ResponseBase {
   status?: WatchStatus
   watch?: Watch
   _primary_term?: integer
-  _seq_no?: integer
+  _seq_no?: SequenceNumber
   _version?: VersionNumber
 }
 
@@ -6670,7 +6670,7 @@ export interface Hit<TDocument = unknown> {
   _node?: string
   _routing?: string
   _source?: TDocument
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
   sort?: SortResults
@@ -6898,7 +6898,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   type?: Type
   if_primary_term?: long
-  if_seq_no?: long
+  if_seq_no?: SequenceNumber
   op_type?: OpType
   pipeline?: string
   refresh?: Refresh
@@ -7145,7 +7145,7 @@ export interface IngestStats {
 export interface InlineGet<TDocument = unknown> {
   fields?: Record<string, any>
   found: boolean
-  _seq_no: long
+  _seq_no: SequenceNumber
   _primary_term: long
   _routing?: Routing
   _source: TDocument
@@ -7165,7 +7165,7 @@ export interface InlineScript extends ScriptBase {
 }
 
 export interface InnerHits {
-  name?: string
+  name?: Name
   size?: integer
   from?: integer
   collapse?: FieldCollapse
@@ -8073,11 +8073,11 @@ export interface MultiGetHit<TDocument = unknown> {
   error?: MainError
   fields?: Record<string, any>
   found?: boolean
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _primary_term?: long
   _routing?: Routing
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _source?: TDocument
   _type?: Type
   _version?: VersionNumber
@@ -9519,7 +9519,7 @@ export interface PutWatchResponse extends ResponseBase {
   created: boolean
   _id: Id
   _primary_term: long
-  _seq_no: long
+  _seq_no: SequenceNumber
   _version: VersionNumber
 }
 
@@ -10989,6 +10989,8 @@ export interface SegmentsStats {
   version_map_memory_in_bytes: long
 }
 
+export type SequenceNumber = integer
+
 export interface SerialDifferencingAggregation extends PipelineAggregationBase {
   lag?: integer
 }
@@ -11106,8 +11108,8 @@ export interface ShardIndexing {
 }
 
 export interface ShardLease {
-  id: string
-  retaining_seq_no: long
+  id: Id
+  retaining_seq_no: SequenceNumber
   timestamp: long
   source: string
 }
@@ -11237,7 +11239,7 @@ export interface ShardSegments {
 export interface ShardSequenceNumber {
   global_checkpoint: long
   local_checkpoint: long
-  max_seq_no: long
+  max_seq_no: SequenceNumber
 }
 
 export interface ShardStatistics {
@@ -13045,7 +13047,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   index: IndexName
   type?: Type
   if_primary_term?: long
-  if_seq_no?: long
+  if_seq_no?: SequenceNumber
   lang?: string
   refresh?: Refresh
   require_alias?: boolean
@@ -13428,7 +13430,7 @@ export interface WriteResponseBase extends ResponseBase {
   _index: IndexName
   _primary_term: long
   result: Result
-  _seq_no: long
+  _seq_no: SequenceNumber
   _shards: ShardStatistics
   _type?: Type
   _version: VersionNumber

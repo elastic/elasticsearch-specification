@@ -18,8 +18,8 @@
  */
 
 class ShardLease {
-  id: string
-  retaining_seq_no: long
+  id: Id
+  retaining_seq_no: SequenceNumber
   timestamp: long
   source: string
 }

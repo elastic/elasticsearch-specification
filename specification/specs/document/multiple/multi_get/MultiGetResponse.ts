@@ -26,11 +26,11 @@ class MultiGetHit<TDocument> {
   error?: MainError
   fields?: Dictionary<string, UserDefinedValue>
   found?: boolean
-  _id: string
-  _index: string
+  _id: Id
+  _index: IndexName
   _primary_term?: long
   _routing?: Routing
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _source?: TDocument
   _type?: Type
   _version?: VersionNumber

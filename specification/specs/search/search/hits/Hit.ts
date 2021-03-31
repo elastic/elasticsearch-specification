@@ -37,7 +37,7 @@ class Hit<TDocument> {
   _node?: string
   _routing?: string
   _source?: TDocument
-  _seq_no?: long
+  _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
   sort?: SortResults

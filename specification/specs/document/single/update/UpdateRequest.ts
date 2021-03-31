@@ -30,7 +30,7 @@ interface UpdateRequest<TDocument, TPartialDocument> extends RequestBase {
   }
   query_parameters?: {
     if_primary_term?: long
-    if_seq_no?: long
+    if_seq_no?: SequenceNumber
     lang?: string
     refresh?: Refresh
     require_alias?: boolean

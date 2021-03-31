@@ -23,6 +23,6 @@ class GetWatchResponse extends ResponseBase {
   status?: WatchStatus
   watch?: Watch
   _primary_term?: integer
-  _seq_no?: integer
+  _seq_no?: SequenceNumber
   _version?: VersionNumber
 }
