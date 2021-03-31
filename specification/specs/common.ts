@@ -117,6 +117,8 @@ type NodeId = string
 type IndexName = string
 type Indices = string | string[]
 type IndexAlias = string
+type IndexPattern = string
+type IndexPatterns = IndexPattern[]
 
 type Type = string
 type Types = Type | Type[]

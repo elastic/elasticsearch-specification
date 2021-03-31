@@ -17649,136 +17649,12 @@
       },
       "properties": [
         {
-          "name": "follow_index_pattern",
+          "name": "active",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "leader_index_patterns",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "max_outstanding_read_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_outstanding_write_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "read_poll_timeout",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
-          "name": "max_read_request_operation_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_read_request_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_retry_delay",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
-          "name": "max_write_buffer_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_write_buffer_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_write_request_operation_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_write_request_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -17795,6 +17671,147 @@
           }
         },
         {
+          "name": "follow_index_pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPattern",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "leader_index_patterns",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPatterns",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_outstanding_read_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_outstanding_write_requests",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "read_poll_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "max_read_request_operation_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_read_request_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_retry_delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "max_write_buffer_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_write_buffer_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_write_request_operation_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_write_request_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AutoFollowPatternItem",
+        "namespace": "x_pack.cross_cluster_replication.auto_follow.get_auto_follow_pattern"
+      },
+      "properties": [
+        {
           "name": "name",
           "required": true,
           "type": {
@@ -17802,6 +17819,17 @@
             "type": {
               "name": "Name",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AutoFollowPattern",
+              "namespace": "x_pack.cross_cluster_replication.auto_follow.get_auto_follow_pattern"
             }
           }
         }
@@ -58706,18 +58734,11 @@
           "name": "patterns",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
+            "kind": "array_of",
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "AutoFollowPattern",
+                "name": "AutoFollowPatternItem",
                 "namespace": "x_pack.cross_cluster_replication.auto_follow.get_auto_follow_pattern"
               }
             }
@@ -68121,6 +68142,37 @@
       "name": {
         "name": "IndexOptions",
         "namespace": "mapping.types.core.text"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexPattern",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexPatterns",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "IndexPattern",
+            "namespace": "internal"
+          }
+        }
       }
     },
     {
