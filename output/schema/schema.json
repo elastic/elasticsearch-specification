@@ -94941,7 +94941,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -94963,7 +94963,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -94975,6 +94975,61 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "repository",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "snapshot",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "restoreUUID",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -106611,7 +106666,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Type",
               "namespace": "internal"
             }
           }

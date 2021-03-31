@@ -9837,10 +9837,15 @@ export interface RecoveryOrigin {
   hostname?: string
   host?: string
   transport_address?: string
-  id?: string
+  id?: Id
   ip?: string
-  name?: string
+  name?: Name
   bootstrap_new_history_uuid?: boolean
+  repository?: Name
+  snapshot?: Name
+  version?: VersionString
+  restoreUUID?: Uuid
+  index?: IndexName
 }
 
 export interface RecoveryStartStatus {
@@ -11162,7 +11167,7 @@ export interface ShardRecovery {
   total_time?: DateString
   total_time_in_millis: EpochMillis
   translog: RecoveryTranslogStatus
-  type: string
+  type: Type
   verify_index: RecoveryVerifyIndex
 }
 
