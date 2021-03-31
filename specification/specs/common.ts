@@ -53,6 +53,8 @@ class ErrorCause {
   shard?: integer | string
   stack_trace?: string
 
+  root_cause?: ErrorCause[]
+
   bytes_limit?: long
   bytes_wanted?: long
   column?: integer

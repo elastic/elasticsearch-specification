@@ -4845,6 +4845,7 @@ export interface ErrorCause {
   caused_by?: ErrorCause
   shard?: integer | string
   stack_trace?: string
+  root_cause?: Array<ErrorCause>
   bytes_limit?: long
   bytes_wanted?: long
   column?: integer
@@ -6296,7 +6297,8 @@ export interface GetSnapshotRequest extends RequestBase {
 }
 
 export interface GetSnapshotResponse extends ResponseBase {
-  snapshots: Array<SnapshotInfo>
+  responses?: Array<SnapshotResponseItem>
+  snapshots?: Array<SnapshotInfo>
 }
 
 export interface GetStats {
@@ -11648,6 +11650,12 @@ export interface SnapshotRequest extends RequestBase {
 export interface SnapshotResponse extends ResponseBase {
   accepted?: boolean
   snapshot?: SnapshotInfo
+}
+
+export interface SnapshotResponseItem {
+  repository: Name
+  snapshots?: Array<SnapshotInfo>
+  error?: ErrorCause
 }
 
 export interface SnapshotRestore {

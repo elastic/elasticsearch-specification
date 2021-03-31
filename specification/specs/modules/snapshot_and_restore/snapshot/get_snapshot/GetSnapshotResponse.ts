@@ -18,5 +18,12 @@
  */
 
 class GetSnapshotResponse extends ResponseBase {
-  snapshots: SnapshotInfo[]
+  responses?: SnapshotResponseItem[]
+  snapshots?: SnapshotInfo[]
+}
+
+class SnapshotResponseItem {
+  repository: Name
+  snapshots?: SnapshotInfo[]
+  error?: ErrorCause
 }
