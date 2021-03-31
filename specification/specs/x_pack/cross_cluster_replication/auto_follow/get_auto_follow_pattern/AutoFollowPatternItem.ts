@@ -19,5 +19,5 @@
 
 class AutoFollowPatternItem {
   name: Name
-  pattern: AutoFollowPatternGetRecord
+  pattern: AutoFollowPattern
 }

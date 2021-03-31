@@ -27,5 +27,20 @@ interface PutAutoFollowPatternRequest extends RequestBase {
     name: Name // param name in docs: auto_follow_pattern_name
   }
   query_parameters?: {}
-  body?: {}
+  body?: {
+    remote_cluster: string
+    follow_index_pattern?: IndexPattern
+    leader_index_patterns?: IndexPatterns
+    max_outstanding_read_requests?: integer // default: 12
+    settings?: Dictionary<string, UserDefinedValue>
+    max_outstanding_write_requests?: integer // default: 9
+    read_poll_timeout?: Time // default: 1m
+    max_read_request_operation_count?: integer // default: 5120
+    max_read_request_size?: ByteSize // default: 32mb
+    max_retry_delay?: Time // default: 500ms
+    max_write_buffer_count?: integer // default: 2147483647
+    max_write_buffer_size?: ByteSize // default: 512mb
+    max_write_request_operation_count?: integer // default: 5120
+    max_write_request_size?: ByteSize // default: 9223372036854775807b
+  }
 }
