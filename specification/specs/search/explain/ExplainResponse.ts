@@ -19,7 +19,7 @@
 
 class ExplainResponse<TDocument> extends ResponseBase {
   _index: IndexName
-  _type?: TypeName
+  _type?: Type
   _id: Id
   matched: boolean
   explanation?: ExplanationDetail

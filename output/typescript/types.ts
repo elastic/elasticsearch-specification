@@ -5077,7 +5077,7 @@ export interface ExplainRequest extends RequestBase {
 
 export interface ExplainResponse<TDocument = unknown> extends ResponseBase {
   _index: IndexName
-  _type?: TypeName
+  _type?: Type
   _id: Id
   matched: boolean
   explanation?: ExplanationDetail
@@ -12793,8 +12793,6 @@ export interface TypeMapping {
   _source?: SourceField
   runtime?: Record<string, RuntimeField>
 }
-
-export type TypeName = string
 
 export interface TypeQuery extends QueryBase {
   value: string
