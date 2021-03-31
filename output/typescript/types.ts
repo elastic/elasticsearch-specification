@@ -8083,9 +8083,11 @@ export interface MultiGetHit<TDocument = unknown> {
   _version?: VersionNumber
 }
 
+export type MultiGetId = string | integer
+
 export interface MultiGetOperation {
   can_be_flattened?: boolean
-  _id: Id
+  _id: MultiGetId
   _index?: IndexName
   routing?: Routing
   _source?: boolean | Fields | SourceFilter
@@ -8109,7 +8111,7 @@ export interface MultiGetRequest extends RequestBase {
   stored_fields?: Fields
   body: {
     docs?: Array<MultiGetOperation>
-    ids?: Array<Id>
+    ids?: Array<MultiGetId>
   }
 }
 

@@ -30,8 +30,8 @@ interface MultiGetRequest extends RequestBase {
   }
   query_parameters?: {
     preference?: string
-    realtime?: boolean
-    refresh?: boolean
+    realtime?: boolean // default: true
+    refresh?: boolean // default: false
     routing?: Routing
     source_enabled?: boolean
     _source?: boolean | Fields
@@ -41,13 +41,13 @@ interface MultiGetRequest extends RequestBase {
   }
   body?: {
     docs?: MultiGetOperation[]
-    ids?: Id[]
+    ids?: MultiGetId[]
   }
 }
 
 class MultiGetOperation {
   can_be_flattened?: boolean
-  _id: Id
+  _id: MultiGetId
   _index?: IndexName
   routing?: Routing
   _source?: boolean | Fields | SourceFilter
@@ -56,3 +56,5 @@ class MultiGetOperation {
   version?: VersionNumber
   version_type?: VersionType
 }
+
+type MultiGetId = string | integer

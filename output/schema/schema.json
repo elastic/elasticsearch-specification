@@ -78609,6 +78609,32 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "MultiGetId",
+        "namespace": "document.multiple.multi_get"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MultiGetOperation",
@@ -78632,8 +78658,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
-              "namespace": "internal"
+              "name": "MultiGetId",
+              "namespace": "document.multiple.multi_get"
             }
           }
         },
@@ -78764,8 +78790,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "Id",
-                  "namespace": "internal"
+                  "name": "MultiGetId",
+                  "namespace": "document.multiple.multi_get"
                 }
               }
             }
