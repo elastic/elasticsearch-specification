@@ -1,5 +1,13 @@
 {
   "endpointErrors": {
+    "ccr.put_auto_follow_pattern": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
     "data_frame_transform_deprecated.delete_transform": {
       "request": [
         "Missing request"
@@ -80,30 +88,6 @@
         "Missing response"
       ]
     },
-    "indices.create_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.data_streams_stats": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.delete_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "indices.delete_index_template": {
       "request": [
         "Missing request"
@@ -120,14 +104,6 @@
         "Missing response"
       ]
     },
-    "indices.get_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "indices.get_index_template": {
       "request": [
         "Missing request"
@@ -137,22 +113,6 @@
       ]
     },
     "indices.get_upgrade": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.migrate_to_data_stream": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "indices.promote_data_stream": {
       "request": [
         "Missing request"
       ],

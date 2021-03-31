@@ -3673,28 +3673,6 @@ export interface CreateApiKeyResponse extends ResponseBase {
   name: string
 }
 
-export interface CreateAutoFollowPatternRequest extends RequestBase {
-  name: Name
-  body: {
-    follow_index_pattern?: string
-    leader_index_patterns?: Array<string>
-    max_outstanding_read_requests?: long
-    max_outstanding_write_requests?: integer
-    max_poll_timeout?: Time
-    max_read_request_operation_count?: integer
-    max_read_request_size?: string
-    max_retry_delay?: Time
-    max_write_buffer_count?: integer
-    max_write_buffer_size?: string
-    max_write_request_operation_count?: integer
-    max_write_request_size?: string
-    remote_cluster?: string
-  }
-}
-
-export interface CreateAutoFollowPatternResponse extends AcknowledgedResponseBase {
-}
-
 export interface CreateFollowIndexRequest extends RequestBase {
   index: IndexName
   wait_for_active_shards?: WaitForActiveShards
@@ -3867,6 +3845,8 @@ export interface DataPathStats {
   total_in_bytes: long
   type: string
 }
+
+export type DataStreamName = string
 
 export interface DataStreamsUsage extends XPackUsage {
   data_streams: long
@@ -6997,6 +6977,51 @@ export interface IndexingStats {
 
 export type Indices = string | Array<string>
 
+export interface IndicesCreateDataStreamRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IndicesCreateDataStreamResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface IndicesDataStreamsStatsRequest extends RequestBase {
+  name?: IndexName
+  expand_wildcards?: ExpandWildcardOptions
+  human?: boolean
+}
+
+export interface IndicesDataStreamsStatsResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface IndicesDeleteDataStreamRequest extends RequestBase {
+  name: DataStreamName
+}
+
+export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
+}
+
+export interface IndicesGetDataStreamRequest extends RequestBase {
+  name?: IndexName
+  expand_wildcards?: ExpandWildcardOptions
+}
+
+export interface IndicesGetDataStreamResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface IndicesMigrateToDataStreamRequest extends RequestBase {
+  name: IndexName
+}
+
+export interface IndicesMigrateToDataStreamResponse extends AcknowledgedResponseBase {
+}
+
 export interface IndicesOptions {
   allow_no_indices: boolean
   expand_wildcards: ExpandWildcards
@@ -7009,6 +7034,14 @@ export interface IndicesPrivileges {
   privileges: Array<string>
   query?: string | QueryContainer
   allow_restricted_indices?: boolean
+}
+
+export interface IndicesPromoteDataStreamRequest extends RequestBase {
+  name: IndexName
+}
+
+export interface IndicesPromoteDataStreamResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
