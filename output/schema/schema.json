@@ -50385,6 +50385,20 @@
           }
         },
         {
+          "name": "root_cause",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorCause",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
           "name": "bytes_limit",
           "required": false,
           "type": {
@@ -63263,8 +63277,22 @@
       },
       "properties": [
         {
+          "name": "responses",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotResponseItem",
+                "namespace": "modules.snapshot_and_restore.snapshot.get_snapshot"
+              }
+            }
+          }
+        },
+        {
           "name": "snapshots",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -111867,6 +111895,51 @@
             "type": {
               "name": "SnapshotInfo",
               "namespace": "modules.snapshot_and_restore.snapshot"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotResponseItem",
+        "namespace": "modules.snapshot_and_restore.snapshot.get_snapshot"
+      },
+      "properties": [
+        {
+          "name": "repository",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "snapshots",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotInfo",
+                "namespace": "modules.snapshot_and_restore.snapshot"
+              }
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "internal"
             }
           }
         }
