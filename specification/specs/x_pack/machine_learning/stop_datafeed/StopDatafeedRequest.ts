@@ -28,9 +28,10 @@ interface StopDatafeedRequest extends RequestBase {
   }
   query_parameters?: {
     allow_no_datafeeds?: boolean
+    force?: boolean // default: false
   }
   body?: {
-    force?: boolean
-    timeout?: Time
+    force?: boolean // default: false
+    timeout?: Time // default: 20s
   }
 }
