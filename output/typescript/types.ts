@@ -6200,6 +6200,7 @@ export interface GetOverallBucketsResponse extends ResponseBase {
 export interface GetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Time
+  summary?: boolean
 }
 
 export interface GetPipelineResponse extends DictionaryResponseBase<string, Pipeline> {

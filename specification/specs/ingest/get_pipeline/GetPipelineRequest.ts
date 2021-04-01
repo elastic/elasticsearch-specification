@@ -20,14 +20,15 @@
 /**
  * @rest_spec_name ingest.get_pipeline
  * @since 5.0.0
- * @stability TODO
+ * @stability stable
  */
 interface GetPipelineRequest extends RequestBase {
   path_parts?: {
     id?: Id
   }
   query_parameters?: {
-    master_timeout?: Time
+    master_timeout?: Time // default: 30s
+    summary?: boolean // default: false
   }
   body?: {}
 }
