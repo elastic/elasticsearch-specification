@@ -17,15 +17,4 @@
  * under the License.
  */
 
-/**
- * @rest_spec_name ccr.get_auto_follow_pattern
- * @since 6.5.0
- * @stability TODO
- */
-interface GetAutoFollowPatternRequest extends RequestBase {
-  path_parts?: {
-    name?: Name // param name in docs: auto_follow_pattern_name
-  }
-  query_parameters?: {}
-  body?: {}
-}
+class PutAutoFollowPatternResponse extends AcknowledgedResponseBase {}

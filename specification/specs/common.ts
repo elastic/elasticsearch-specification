@@ -117,6 +117,8 @@ type NodeId = string
 type IndexName = string
 type Indices = string | string[]
 type IndexAlias = string
+type IndexPattern = string
+type IndexPatterns = IndexPattern[]
 
 type Type = string
 type Types = Type | Type[]
@@ -132,6 +134,7 @@ type Names = string | string[]
 
 type DataStreamName = string
 
+// url: https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
 type ByteSize = long | string
 
 type Percentage = string | float

@@ -677,20 +677,16 @@ export interface AutoDateHistogramAggregation extends BucketAggregationBase {
 }
 
 export interface AutoFollowPattern {
-  follow_index_pattern: string
-  leader_index_patterns: Array<string>
-  max_outstanding_read_requests: long
-  max_outstanding_write_requests: integer
-  read_poll_timeout: Time
-  max_read_request_operation_count: integer
-  max_read_request_size: string
-  max_retry_delay: Time
-  max_write_buffer_count: integer
-  max_write_buffer_size: string
-  max_write_request_operation_count: integer
-  max_write_request_size: string
+  active: boolean
   remote_cluster: string
+  follow_index_pattern?: IndexPattern
+  leader_index_patterns: IndexPatterns
+  max_outstanding_read_requests: integer
+}
+
+export interface AutoFollowPatternItem {
   name: Name
+  pattern: AutoFollowPattern
 }
 
 export interface AutoFollowedCluster {
@@ -5871,7 +5867,7 @@ export interface GetAutoFollowPatternRequest extends RequestBase {
 }
 
 export interface GetAutoFollowPatternResponse extends ResponseBase {
-  patterns: Record<string, AutoFollowPattern>
+  patterns: Array<AutoFollowPatternItem>
 }
 
 export interface GetAutoscalingCapacityRequest extends RequestBase {
@@ -6931,6 +6927,10 @@ export interface IndexMappings {
 export type IndexName = string
 
 export type IndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
+
+export type IndexPattern = string
+
+export type IndexPatterns = Array<IndexPattern>
 
 export interface IndexPrivilegesCheck {
   names: Array<string>
@@ -9233,6 +9233,29 @@ export interface PutAliasRequest extends RequestBase {
 }
 
 export interface PutAliasResponse extends ResponseBase {
+}
+
+export interface PutAutoFollowPatternRequest extends RequestBase {
+  name: Name
+  body: {
+    remote_cluster: string
+    follow_index_pattern?: IndexPattern
+    leader_index_patterns?: IndexPatterns
+    max_outstanding_read_requests?: integer
+    settings?: Record<string, any>
+    max_outstanding_write_requests?: integer
+    read_poll_timeout?: Time
+    max_read_request_operation_count?: integer
+    max_read_request_size?: ByteSize
+    max_retry_delay?: Time
+    max_write_buffer_count?: integer
+    max_write_buffer_size?: ByteSize
+    max_write_request_operation_count?: integer
+    max_write_request_size?: ByteSize
+  }
+}
+
+export interface PutAutoFollowPatternResponse extends AcknowledgedResponseBase {
 }
 
 export interface PutAutoscalingPolicyRequest extends RequestBase {
