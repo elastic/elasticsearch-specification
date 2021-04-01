@@ -5845,6 +5845,11 @@ export interface GetAliasResponse extends DictionaryResponseBase<IndexName, Inde
 
 export interface GetAnomalyRecordsRequest extends RequestBase {
   job_id: Id
+  exclude_interim?: boolean
+  from?: integer
+  size?: integer
+  start?: DateString
+  end?: DateString
   body?: {
     desc?: boolean
     end?: DateString

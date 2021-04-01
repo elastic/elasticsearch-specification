@@ -26,16 +26,20 @@ interface GetAnomalyRecordsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
   }
-  query_parameters?: {}
-  body?: {
-    desc?: boolean
-    /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
+  query_parameters?: {
+    exclude_interim?: boolean // default: false
+    from?: integer
+    size?: integer
+    start?: DateString
     end?: DateString
-    exclude_interim?: boolean
+  }
+  body?: {
+    desc?: boolean // default: false
+    exclude_interim?: boolean // default: false
     page?: Page
     record_score?: double
     sort?: Field
-    /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
     start?: DateString
+    end?: DateString
   }
 }
