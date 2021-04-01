@@ -18,7 +18,7 @@
  */
 
 enum DataStreamHealthStatus {
-    GREEN = 0,  // All shards are assigned.
-    YELLOW = 1, // All primary shards are assigned, but one or more replica shards are unassigned.
-    RED = 2     // One or more primary shards are unassigned, so some data is unavailable.
-  }
+  GREEN = 0, // All shards are assigned.
+  YELLOW = 1, // All primary shards are assigned, but one or more replica shards are unassigned.
+  RED = 2 // One or more primary shards are unassigned, so some data is unavailable.
+}
