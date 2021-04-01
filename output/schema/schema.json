@@ -9016,9 +9016,16 @@
       "description": "Evicts application privileges from the native application privileges cache.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-privilege-cache.html",
       "name": "security.clear_cached_privileges",
-      "request": null,
+      "request": {
+        "name": "ClearCachedPrivilegesRequest",
+        "namespace": "x_pack.security.privileges.clear_cached_privileges"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ClearCachedPrivilegesResponse",
+        "namespace": "x_pack.security.privileges.clear_cached_privileges"
+      },
+      "since": "7.9.0",
       "stability": "stable",
       "urls": [
         {
@@ -32384,6 +32391,119 @@
         "namespace": "indices.status_management.clear_cache"
       },
       "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClearCachedPrivilegeNode",
+        "namespace": "x_pack.security.privileges.clear_cached_privileges"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ClearCachedPrivilegesRequest",
+        "namespace": "x_pack.security.privileges.clear_cached_privileges"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of application names",
+          "name": "application",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ClearCachedPrivilegesResponse",
+        "namespace": "x_pack.security.privileges.clear_cached_privileges"
+      },
+      "properties": [
+        {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "cluster_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClearCachedPrivilegeNode",
+                "namespace": "x_pack.security.privileges.clear_cached_privileges"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [

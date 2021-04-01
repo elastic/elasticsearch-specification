@@ -2873,6 +2873,20 @@ export interface ClearCacheRequest extends RequestBase {
 export interface ClearCacheResponse extends ShardsOperationResponseBase {
 }
 
+export interface ClearCachedPrivilegeNode {
+  name: Name
+}
+
+export interface ClearCachedPrivilegesRequest extends RequestBase {
+  application: Name
+}
+
+export interface ClearCachedPrivilegesResponse extends ResponseBase {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, ClearCachedPrivilegeNode>
+}
+
 export interface ClearCachedRealmsRequest extends RequestBase {
   realms: Names
   usernames?: Array<string>
