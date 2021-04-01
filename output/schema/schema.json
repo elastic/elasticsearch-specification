@@ -87508,19 +87508,10 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "data",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        ]
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
       },
       "inherits": [
         {
@@ -87602,7 +87593,7 @@
         },
         {
           "name": "earliest_record_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87672,7 +87663,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -87690,7 +87681,7 @@
         },
         {
           "name": "latest_record_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

@@ -31,7 +31,6 @@ interface PostJobDataRequest extends RequestBase {
     reset_end?: DateString
     reset_start?: DateString
   }
-  body?: {
-    data?: UserDefinedValue[]
-  }
+  // TODO: should be name JSON Document
+  body: UserDefinedValue
 }
