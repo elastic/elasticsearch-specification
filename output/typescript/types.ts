@@ -5393,6 +5393,7 @@ export interface FlushJobRequest extends RequestBase {
 
 export interface FlushJobResponse extends ResponseBase {
   flushed: boolean
+  last_finalized_bucket_end?: integer
 }
 
 export interface FlushRequest extends RequestBase {

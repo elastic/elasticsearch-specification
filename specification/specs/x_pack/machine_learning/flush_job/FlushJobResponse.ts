@@ -19,4 +19,5 @@
 
 class FlushJobResponse extends ResponseBase {
   flushed: boolean
+  last_finalized_bucket_end?: integer
 }
