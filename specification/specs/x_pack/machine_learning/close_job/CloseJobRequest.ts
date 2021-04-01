@@ -29,7 +29,7 @@ interface CloseJobRequest extends RequestBase {
   query_parameters?: {
     allow_no_jobs?: boolean
     force?: boolean
-    timeout?: Time
+    timeout?: Time // default: 30s
   }
   body?: {}
 }
