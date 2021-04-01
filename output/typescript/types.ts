@@ -4198,9 +4198,9 @@ export interface DeleteCalendarJobRequest extends RequestBase {
 }
 
 export interface DeleteCalendarJobResponse extends ResponseBase {
-  calendar_id: string
-  description: string
-  job_ids: Array<Id>
+  calendar_id: Id
+  description?: string
+  job_ids: Ids
 }
 
 export interface DeleteCalendarRequest extends RequestBase {
