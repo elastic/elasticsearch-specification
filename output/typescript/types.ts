@@ -4390,6 +4390,21 @@ export interface DeleteSnapshotRequest extends RequestBase {
 export interface DeleteSnapshotResponse extends AcknowledgedResponseBase {
 }
 
+export interface DeleteTrainedModelAliasRequest extends RequestBase {
+  model_alias: Alias
+  model_id: Id
+}
+
+export interface DeleteTrainedModelAliasResponse extends AcknowledgedResponseBase {
+}
+
+export interface DeleteTrainedModelRequest extends RequestBase {
+  model_id: Id
+}
+
+export interface DeleteTrainedModelResponse extends AcknowledgedResponseBase {
+}
+
 export interface DeleteTransformRequest extends RequestBase {
   transform_id: Name
   force?: boolean
