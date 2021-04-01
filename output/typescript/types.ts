@@ -7980,27 +7980,34 @@ export interface ModelPlotConfigEnabled {
 
 export interface ModelSizeStats {
   bucket_allocation_failures_count: long
-  job_id: string
-  log_time: DateString
+  job_id: Id
+  log_time: Time
   memory_status: MemoryStatus
   model_bytes: long
   result_type: string
-  timestamp: DateString
   total_by_field_count: long
   total_over_field_count: long
   total_partition_field_count: long
+  categorization_status: string
+  categorized_doc_count: integer
+  dead_category_count: integer
+  failed_category_count: integer
+  frequent_category_count: integer
+  rare_category_count: integer
+  total_category_count: integer
 }
 
 export interface ModelSnapshot {
   description: string
-  job_id: string
-  latest_record_time_stamp: DateString
-  latest_result_time_stamp: DateString
+  job_id: Id
+  latest_record_time_stamp: Time
+  latest_result_time_stamp: Time
   model_size_stats: ModelSizeStats
   retain: boolean
   snapshot_doc_count: long
-  snapshot_id: string
-  timestamp: DateString
+  snapshot_id: Id
+  timestamp: Time
+  min_version: VersionString
 }
 
 export interface MonitoringUsage extends XPackUsage {

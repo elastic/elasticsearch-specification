@@ -19,15 +19,19 @@
 
 class ModelSizeStats {
   bucket_allocation_failures_count: long
-  job_id: string
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  log_time: DateString
+  job_id: Id
+  log_time: Time
   memory_status: MemoryStatus
   model_bytes: long
   result_type: string
-  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: DateString
   total_by_field_count: long
   total_over_field_count: long
   total_partition_field_count: long
+  categorization_status: string
+  categorized_doc_count: integer
+  dead_category_count: integer
+  failed_category_count: integer
+  frequent_category_count: integer
+  rare_category_count: integer
+  total_category_count: integer
 }
