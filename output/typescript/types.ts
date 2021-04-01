@@ -4220,6 +4220,13 @@ export interface DeleteEnrichPolicyResponse extends AcknowledgedResponseBase {
 }
 
 export interface DeleteExpiredDataRequest extends RequestBase {
+  name?: Name
+  requests_per_second?: float
+  timeout?: Time
+  body?: {
+    requests_per_second?: float
+    timeout?: Time
+  }
 }
 
 export interface DeleteExpiredDataResponse extends ResponseBase {

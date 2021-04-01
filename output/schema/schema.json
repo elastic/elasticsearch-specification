@@ -44483,6 +44483,33 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "requests_per_second",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "float",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "timeout",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          }
+        ]
+      },
       "inherits": [
         {
           "type": {
@@ -44496,8 +44523,43 @@
         "name": "DeleteExpiredDataRequest",
         "namespace": "x_pack.machine_learning.delete_expired_data"
       },
-      "path": [],
-      "query": []
+      "path": [
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "requests_per_second",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": [
