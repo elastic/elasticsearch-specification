@@ -4222,6 +4222,15 @@ export interface DeleteDanglingIndexResponse extends ResponseBase {
   stub: integer
 }
 
+export interface DeleteDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  force?: boolean
+  timeout?: Time
+}
+
+export interface DeleteDataFrameAnalyticsResponse extends AcknowledgedResponseBase {
+}
+
 export interface DeleteDatafeedRequest extends RequestBase {
   datafeed_id: Id
   force?: boolean

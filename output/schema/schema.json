@@ -5935,9 +5935,16 @@
       "description": "Deletes an existing data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html",
       "name": "ml.delete_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "DeleteDataFrameAnalyticsRequest",
+        "namespace": "x_pack.machine_learning.delete_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "DeleteDataFrameAnalyticsResponse",
+        "namespace": "x_pack.machine_learning.delete_data_frame_analytics"
+      },
+      "since": "7.3.0",
       "stability": "beta",
       "urls": [
         {
@@ -44514,6 +44521,78 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "DeleteDataFrameAnalyticsRequest",
+        "namespace": "x_pack.machine_learning.delete_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to delete",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "force",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DeleteDataFrameAnalyticsResponse",
+        "namespace": "x_pack.machine_learning.delete_data_frame_analytics"
+      },
+      "properties": []
     },
     {
       "attachedBehaviors": [
