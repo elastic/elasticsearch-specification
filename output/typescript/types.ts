@@ -7092,13 +7092,34 @@ export interface IndicesDeleteDataStreamRequest extends RequestBase {
 export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
 }
 
+export interface IndicesGetDataStreamItem {
+  name: DataStreamName
+  timestamp_field: IndicesGetDataStreamItemTimestampField
+  indices: Array<IndicesGetDataStreamItemIndex>
+  generation: integer
+  template: Name
+  hidden: boolean
+  status: string
+  ilm_policy?: Name
+  _meta?: Record<string, any>
+}
+
+export interface IndicesGetDataStreamItemIndex {
+  index_name: IndexName
+  index_uuid: Uuid
+}
+
+export interface IndicesGetDataStreamItemTimestampField {
+  name: Field
+}
+
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: IndexName
   expand_wildcards?: ExpandWildcardOptions
 }
 
 export interface IndicesGetDataStreamResponse extends ResponseBase {
-  stub: integer
+  data_streams: Array<IndicesGetDataStreamItem>
 }
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {

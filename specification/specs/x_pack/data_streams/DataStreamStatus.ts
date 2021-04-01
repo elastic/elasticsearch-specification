@@ -17,27 +17,8 @@
  * under the License.
  */
 
-class IndicesGetDataStreamResponse extends ResponseBase {
-  data_streams: IndicesGetDataStreamItem[]
-}
-
-class IndicesGetDataStreamItem {
-  name: DataStreamName
-  timestamp_field: IndicesGetDataStreamItemTimestampField
-  indices: IndicesGetDataStreamItemIndex[]
-  generation: integer
-  template: Name
-  hidden: boolean
-  status: string // TODO: use type Health --> must be case insensitive
-  ilm_policy?: Name
-  _meta?: Dictionary<string, UserDefinedValue>
-}
-
-class IndicesGetDataStreamItemTimestampField {
-  name: Field
-}
-
-class IndicesGetDataStreamItemIndex {
-  index_name: IndexName
-  index_uuid: Uuid
-}
+enum DataStreamHealthStatus {
+    GREEN = 0,  // All shards are assigned.
+    YELLOW = 1, // All primary shards are assigned, but one or more replica shards are unassigned.
+    RED = 2     // One or more primary shards are unassigned, so some data is unavailable.
+  }
