@@ -152,14 +152,6 @@
         "enum definition ingest.processors:DateRounding - Duplicate enum member identifier 'M'"
       ]
     },
-    "ml.delete_data_frame_analytics": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.evaluate_data_frame": {
       "request": [
         "Missing request"
