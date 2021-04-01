@@ -22,7 +22,8 @@ class ApiKeys {
   expiration?: long
   id: Id
   invalidated: boolean
-  name: string
+  name: Name
   realm: string
-  username: string
+  username: Name
+  metadata?: Dictionary<string, UserDefinedValue> // version: 7.13
 }

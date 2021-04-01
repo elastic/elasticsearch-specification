@@ -446,9 +446,10 @@ export interface ApiKeys {
   expiration?: long
   id: Id
   invalidated: boolean
-  name: string
+  name: Name
   realm: string
-  username: string
+  username: Name
+  metadata?: Record<string, any>
 }
 
 export interface AppendProcessor extends ProcessorBase {

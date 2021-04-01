@@ -15416,7 +15416,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -15438,8 +15438,25 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
