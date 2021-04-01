@@ -387,8 +387,9 @@ export interface AnomalyCause {
 export interface AnomalyDetectors {
   categorization_analyzer: CategorizationAnalyzer
   categorization_examples_limit: integer
-  model_memory_limit: string
+  model_memory_limit: ByteSize
   model_snapshot_retention_days: integer
+  daily_model_snapshot_retention_after_days: integer
 }
 
 export interface AnomalyRecord {
@@ -7716,8 +7717,9 @@ export interface LimitTokenCountTokenFilter extends TokenFilterBase {
 }
 
 export interface Limits {
-  max_model_memory_limit: string
-  effective_max_model_memory_limit: string
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit: ByteSize
+  total_ml_memory: ByteSize
 }
 
 export interface LineStringGeoShape {
@@ -7822,6 +7824,7 @@ export interface MachineLearningInfoResponse extends ResponseBase {
   defaults: Defaults
   limits: Limits
   upgrade_mode: boolean
+  native_code: NativeCode
 }
 
 export interface MachineLearningUsage extends XPackUsage {
@@ -8372,6 +8375,11 @@ export type NamedQuery<TQuery = unknown> = NamedQueryKeys<TQuery> |
     { [property: string]: TQuery }
 
 export type Names = string | Array<string>
+
+export interface NativeCode {
+  build_hash: string
+  version: VersionString
+}
 
 export interface NativeCodeInformation {
   build_hash: string
