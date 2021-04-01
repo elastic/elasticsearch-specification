@@ -21,8 +21,13 @@ class RecoveryOrigin {
   hostname?: string
   host?: string
   transport_address?: string
-  id?: string
+  id?: Id
   ip?: string
-  name?: string
+  name?: Name
   bootstrap_new_history_uuid?: boolean
+  repository?: Name
+  snapshot?: Name
+  version?: VersionString
+  restoreUUID?: Uuid
+  index?: IndexName
 }
