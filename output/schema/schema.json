@@ -2981,9 +2981,16 @@
       "description": "Returns all script contexts.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-contexts.html",
       "name": "get_script_context",
-      "request": null,
+      "request": {
+        "name": "GetScriptContextRequest",
+        "namespace": "modules.scripting.get_script_context"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "GetScriptContextResponse",
+        "namespace": "modules.scripting.get_script_context"
+      },
+      "since": "0.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -3001,9 +3008,16 @@
       "description": "Returns available script types, languages and contexts",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "get_script_languages",
-      "request": null,
+      "request": {
+        "name": "GetScriptLanguagesRequest",
+        "namespace": "modules.scripting.get_script_languages"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "GetScriptLanguagesResponse",
+        "namespace": "modules.scripting.get_script_languages"
+      },
+      "since": "0.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -62923,6 +62937,182 @@
                 "name": "RollupJobInformation",
                 "namespace": "x_pack.roll_up.get_rollup_job"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GetScriptContextRequest",
+        "namespace": "modules.scripting.get_script_context"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GetScriptContextResponse",
+        "namespace": "modules.scripting.get_script_context"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GetScriptLanguagesRequest",
+        "namespace": "modules.scripting.get_script_languages"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GetScriptLanguagesResponse",
+        "namespace": "modules.scripting.get_script_languages"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }

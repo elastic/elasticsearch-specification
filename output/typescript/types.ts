@@ -6298,6 +6298,30 @@ export interface GetRollupJobResponse extends ResponseBase {
   jobs: Array<RollupJobInformation>
 }
 
+export interface GetScriptContextRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface GetScriptContextResponse extends ResponseBase {
+  stub: integer
+}
+
+export interface GetScriptLanguagesRequest extends RequestBase {
+  stub_a: integer
+  stub_b: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface GetScriptLanguagesResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface GetScriptRequest extends RequestBase {
   id: Id
   master_timeout?: Time
