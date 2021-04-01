@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class IndicesCreateDataStreamResponse extends ResponseBase {
-  stub: integer
-}
+class IndicesCreateDataStreamResponse extends AcknowledgedResponseBase {}
