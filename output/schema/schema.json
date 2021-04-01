@@ -5260,7 +5260,7 @@
         "name": "ValidateQueryResponse",
         "namespace": "search.validate"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -126679,6 +126679,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "q",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -126699,7 +126710,7 @@
       "properties": [
         {
           "name": "explanations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -126713,7 +126724,7 @@
         },
         {
           "name": "_shards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126732,6 +126743,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -126744,7 +126766,7 @@
       "properties": [
         {
           "name": "error",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126755,7 +126777,7 @@
         },
         {
           "name": "explanation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126770,7 +126792,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }

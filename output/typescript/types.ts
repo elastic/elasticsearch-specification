@@ -13344,21 +13344,23 @@ export interface ValidateQueryRequest extends RequestBase {
   lenient?: boolean
   query_on_query_string?: string
   rewrite?: boolean
+  q?: string
   body?: {
     query?: QueryContainer
   }
 }
 
 export interface ValidateQueryResponse extends ResponseBase {
-  explanations: Array<ValidationExplanation>
-  _shards: ShardStatistics
+  explanations?: Array<ValidationExplanation>
+  _shards?: ShardStatistics
   valid: boolean
+  error?: string
 }
 
 export interface ValidationExplanation {
-  error: string
-  explanation: string
-  index: string
+  error?: string
+  explanation?: string
+  index: IndexName
   valid: boolean
 }
 
