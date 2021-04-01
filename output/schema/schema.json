@@ -58856,17 +58856,6 @@
             }
           },
           {
-            "name": "end",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
             "name": "exclude_interim",
             "required": false,
             "type": {
@@ -58912,6 +58901,17 @@
           },
           {
             "name": "start",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "end",
             "required": false,
             "type": {
               "kind": "instance_of",
