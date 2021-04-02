@@ -18,5 +18,6 @@
  */
 
 class ModelPlotConfigEnabled {
-  enabled: boolean
+  enabled: boolean // default: false
+  terms?: string // removed in 7.5.0
 }

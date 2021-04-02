@@ -14900,13 +14900,24 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "model_snapshot_retention_days",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "daily_model_snapshot_retention_after_days",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -75319,11 +75330,11 @@
       "properties": [
         {
           "name": "max_model_memory_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -75334,7 +75345,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_ml_memory",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -76166,6 +76188,17 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "native_code",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NativeCode",
+              "namespace": "x_pack.machine_learning.machine_learning_info"
             }
           }
         }
@@ -78305,6 +78338,17 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -81266,6 +81310,37 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NativeCode",
+        "namespace": "x_pack.machine_learning.machine_learning_info"
+      },
+      "properties": [
+        {
+          "name": "build_hash",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
