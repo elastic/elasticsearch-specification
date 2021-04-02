@@ -9103,11 +9103,11 @@ export interface PostCalendarEventsResponse extends ResponseBase {
   events: Array<ScheduledEvent>
 }
 
-export interface PostJobDataRequest extends RequestBase {
+export interface PostJobDataRequest<TJson = unknown> extends RequestBase {
   job_id: Id
   reset_end?: DateString
   reset_start?: DateString
-  body: any
+  body: TJson
 }
 
 export interface PostJobDataResponse extends ResponseBase {

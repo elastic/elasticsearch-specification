@@ -23,7 +23,7 @@
  * @class_serializer PostJobDataFormatter
  * @stability TODO
  */
-interface PostJobDataRequest extends RequestBase {
+interface PostJobDataRequest<TJson> extends RequestBase {
   path_parts?: {
     job_id: Id
   }
@@ -31,6 +31,5 @@ interface PostJobDataRequest extends RequestBase {
     reset_end?: DateString
     reset_start?: DateString
   }
-  // TODO: should be name JSON Document
-  body: UserDefinedValue
+  body: TJson
 }
