@@ -10085,7 +10085,7 @@ export interface ReindexNode {
   attributes: Record<string, string>
   host: string
   ip: string
-  name: string
+  name: Name
   roles: Array<string>
   tasks: Record<TaskId, ReindexTask>
   transport_address: string
@@ -10170,11 +10170,12 @@ export interface ReindexTask {
   cancellable: boolean
   description: string
   id: long
-  node: string
+  node: Name
   running_time_in_nanos: long
   start_time_in_millis: long
   status: ReindexStatus
   type: string
+  headers: Record<string, string>
 }
 
 export type RelationName = string
