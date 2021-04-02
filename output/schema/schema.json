@@ -41146,6 +41146,33 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "GREEN"
+        },
+        {
+          "name": "green"
+        },
+        {
+          "name": "YELLOW"
+        },
+        {
+          "name": "yellow"
+        },
+        {
+          "name": "RED"
+        },
+        {
+          "name": "red"
+        }
+      ],
+      "name": {
+        "name": "DataStreamHealthStatus",
+        "namespace": "x_pack.data_streams"
+      }
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "DataStreamName",
@@ -70049,8 +70076,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "DataStreamHealthStatus",
+              "namespace": "x_pack.data_streams"
             }
           }
         },

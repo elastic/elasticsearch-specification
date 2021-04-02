@@ -28,7 +28,7 @@ class IndicesGetDataStreamItem {
   generation: integer
   template: Name
   hidden: boolean
-  status: string // TODO: use type Health --> must be case insensitive
+  status: DataStreamHealthStatus
   ilm_policy?: Name
   _meta?: Dictionary<string, UserDefinedValue>
 }

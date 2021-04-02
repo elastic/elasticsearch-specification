@@ -17,8 +17,14 @@
  * under the License.
  */
 
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-response-body
+ */
 enum DataStreamHealthStatus {
   GREEN = 0, // All shards are assigned.
-  YELLOW = 1, // All primary shards are assigned, but one or more replica shards are unassigned.
-  RED = 2 // One or more primary shards are unassigned, so some data is unavailable.
+  green = 1,
+  YELLOW = 2, // All primary shards are assigned, but one or more replica shards are unassigned.
+  yellow = 3,
+  RED = 4, // One or more primary shards are unassigned, so some data is unavailable.
+  red = 5
 }

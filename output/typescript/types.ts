@@ -3856,6 +3856,8 @@ export interface DataPathStats {
   type: string
 }
 
+export type DataStreamHealthStatus = 'GREEN' | 'green' | 'YELLOW' | 'yellow' | 'RED' | 'red'
+
 export type DataStreamName = string
 
 export interface DataStreamsStatsItem {
@@ -7099,7 +7101,7 @@ export interface IndicesGetDataStreamItem {
   generation: integer
   template: Name
   hidden: boolean
-  status: string
+  status: DataStreamHealthStatus
   ilm_policy?: Name
   _meta?: Record<string, any>
 }
