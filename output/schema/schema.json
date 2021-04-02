@@ -115703,7 +115703,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "internal"
             }
           }
@@ -115711,7 +115711,7 @@
       ],
       "query": [
         {
-          "name": "allow_no_datafeeds",
+          "name": "allow_no_match",
           "required": false,
           "type": {
             "kind": "instance_of",

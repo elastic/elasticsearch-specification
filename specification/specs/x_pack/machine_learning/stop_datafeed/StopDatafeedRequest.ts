@@ -28,7 +28,6 @@ interface StopDatafeedRequest extends RequestBase {
   }
   query_parameters?: {
     allow_no_match?: boolean // default: true
-//    allow_no_datafeeds?: boolean
     force?: boolean // default: false
   }
   body?: {
