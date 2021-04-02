@@ -17,7 +17,9 @@
  * under the License.
  */
 
-class ChunkingConfig {
-  mode: ChunkingMode
-  time_span?: Time // default: 3h
+class DatafeedIndicesOptions {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  ignore_throttled?: boolean
 }
