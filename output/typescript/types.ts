@@ -292,7 +292,7 @@ export interface AnalysisConfig {
   categorization_field_name?: Field
   categorization_filters?: Array<string>
   detectors: Array<Detector>
-  influencers: Array<Field>
+  influencers?: Array<Field>
   latency?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: PerPartitionCategorization
@@ -3836,6 +3836,7 @@ export interface DataDescription {
   format?: string
   time_field: Field
   time_format?: string
+  field_delimiter?: string
 }
 
 export interface DataPathStats {
@@ -13349,6 +13350,7 @@ export interface ValidateDetectorResponse extends AcknowledgedResponseBase {
 
 export interface ValidateJobRequest extends RequestBase {
   body: {
+    job_id?: Id
     analysis_config?: AnalysisConfig
     analysis_limits?: AnalysisLimits
     data_description?: DataDescription

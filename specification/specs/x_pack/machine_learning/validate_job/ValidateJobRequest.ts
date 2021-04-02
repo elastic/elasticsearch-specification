@@ -19,12 +19,13 @@
 
 /**
  * @rest_spec_name ml.validate
- * @since 5.4.0
+ * @since 6.3.0
  * @stability TODO
  */
 interface ValidateJobRequest extends RequestBase {
   query_parameters?: {}
   body?: {
+    job_id?: Id
     analysis_config?: AnalysisConfig
     analysis_limits?: AnalysisLimits
     data_description?: DataDescription
