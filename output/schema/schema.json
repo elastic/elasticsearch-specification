@@ -7688,7 +7688,7 @@
         "name": "ValidateJobResponse",
         "namespace": "x_pack.machine_learning.validate_job"
       },
-      "since": "5.4.0",
+      "since": "6.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -14172,7 +14172,7 @@
         },
         {
           "name": "influencers",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -41111,6 +41111,17 @@
         },
         {
           "name": "time_format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field_delimiter",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -126830,6 +126841,17 @@
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "name": "job_id",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "internal"
+              }
+            }
+          },
           {
             "name": "analysis_config",
             "required": false,
