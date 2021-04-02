@@ -18,8 +18,8 @@
  */
 
 class ValidationExplanation {
-  error: string
-  explanation: string
-  index: string
+  error?: string
+  explanation?: string
+  index: IndexName
   valid: boolean
 }

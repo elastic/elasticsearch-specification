@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name indices.validate_query
- * @since 0.0.0
+ * @since 1.3.0
  * @stability TODO
  */
 interface ValidateQueryRequest extends RequestBase {
@@ -40,6 +40,7 @@ interface ValidateQueryRequest extends RequestBase {
     lenient?: boolean
     query_on_query_string?: string
     rewrite?: boolean
+    q?: string
   }
   body?: {
     query?: QueryContainer
