@@ -64,6 +64,14 @@
         "Missing response"
       ]
     },
+    "features.reset_features": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
     "indices.delete_index_template": {
       "request": [
         "Missing request"
@@ -128,12 +136,12 @@
         "Missing response"
       ]
     },
-    "ingest.get_pipeline": {
+    "ingest.geo_ip_stats": {
       "request": [
-        "GetPipelineRequest: query parameter 'summary' does not exist in the json spec"
+        "Missing request"
       ],
       "response": [
-        "enum definition ingest.processors:DateRounding - Duplicate enum member identifier 'M'"
+        "Missing response"
       ]
     },
     "ml.evaluate_data_frame": {
@@ -145,6 +153,14 @@
       ]
     },
     "ml.explain_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.find_file_structure": {
       "request": [
         "Missing request"
       ],
@@ -269,6 +285,30 @@
         "SearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
         "SearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
         "SearchTemplateRequest: should have a body definition"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "shutdown.delete_node": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "shutdown.get_node": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "shutdown.put_node": {
+      "request": [
+        "Missing request"
       ],
       "response": [
         "Missing response"
