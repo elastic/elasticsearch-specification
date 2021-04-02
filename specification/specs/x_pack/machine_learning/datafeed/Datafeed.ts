@@ -37,6 +37,6 @@ class Datafeed {
 }
 
 class DelayedDataCheckConfig {
-  check_window?: Time
-  enabled: boolean
+  check_window?: Time // default: null
+  enabled: boolean // default: true
 }

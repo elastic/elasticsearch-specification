@@ -7548,7 +7548,7 @@
         "name": "UpdateDatafeedResponse",
         "namespace": "x_pack.machine_learning.update_data_feed"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -41878,6 +41878,59 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DatafeedIndicesOptions",
+        "namespace": "x_pack.machine_learning.update_data_feed"
+      },
+      "properties": [
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -124886,6 +124939,17 @@
             }
           },
           {
+            "name": "delayed_data_check_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DelayedDataCheckConfig",
+                "namespace": "x_pack.machine_learning.datafeed"
+              }
+            }
+          },
+          {
             "name": "frequency",
             "required": false,
             "type": {
@@ -124897,6 +124961,17 @@
             }
           },
           {
+            "name": "indexes",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Indices",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
             "name": "indices",
             "required": false,
             "type": {
@@ -124904,6 +124979,17 @@
               "type": {
                 "name": "Indices",
                 "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "indices_options",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatafeedIndicesOptions",
+                "namespace": "x_pack.machine_learning.update_data_feed"
               }
             }
           },
@@ -125076,7 +125162,7 @@
       "properties": [
         {
           "name": "aggregations",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -125097,7 +125183,7 @@
         },
         {
           "name": "chunking_config",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -125112,14 +125198,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "frequency",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -125152,7 +125238,7 @@
         },
         {
           "name": "max_empty_searches",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -125185,7 +125271,7 @@
         },
         {
           "name": "script_fields",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -125212,6 +125298,28 @@
             "type": {
               "name": "integer",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices_options",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedIndicesOptions",
+              "namespace": "x_pack.machine_learning.update_data_feed"
+            }
+          }
+        },
+        {
+          "name": "delayed_data_check_config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DelayedDataCheckConfig",
+              "namespace": "x_pack.machine_learning.datafeed"
             }
           }
         }

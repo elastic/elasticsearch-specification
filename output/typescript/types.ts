@@ -3918,6 +3918,13 @@ export interface DatafeedCount {
   count: long
 }
 
+export interface DatafeedIndicesOptions {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  ignore_throttled?: boolean
+}
+
 export type DatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 
 export interface DatafeedStats {
@@ -13145,8 +13152,11 @@ export interface UpdateDatafeedRequest extends RequestBase {
   body: {
     aggregations?: Record<string, AggregationContainer>
     chunking_config?: ChunkingConfig
+    delayed_data_check_config?: DelayedDataCheckConfig
     frequency?: Time
+    indexes?: Indices
     indices?: Indices
+    indices_options?: DatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer
@@ -13157,17 +13167,19 @@ export interface UpdateDatafeedRequest extends RequestBase {
 }
 
 export interface UpdateDatafeedResponse extends ResponseBase {
-  aggregations: Record<string, AggregationContainer>
-  chunking_config: ChunkingConfig
-  datafeed_id: string
-  frequency: Time
+  aggregations?: Record<string, AggregationContainer>
+  chunking_config?: ChunkingConfig
+  datafeed_id: Id
+  frequency?: Time
   indices: Indices
   job_id: string
-  max_empty_searches: integer
+  max_empty_searches?: integer
   query: QueryContainer
   query_delay: Time
-  script_fields: Record<string, ScriptField>
+  script_fields?: Record<string, ScriptField>
   scroll_size: integer
+  indices_options: DatafeedIndicesOptions
+  delayed_data_check_config: DelayedDataCheckConfig
 }
 
 export interface UpdateFilterRequest extends RequestBase {

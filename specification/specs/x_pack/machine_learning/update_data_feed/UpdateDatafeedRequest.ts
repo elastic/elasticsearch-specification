@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name ml.update_datafeed
- * @since 5.4.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface UpdateDatafeedRequest extends RequestBase {
@@ -35,14 +35,16 @@ interface UpdateDatafeedRequest extends RequestBase {
   body?: {
     aggregations?: Dictionary<string, AggregationContainer>
     chunking_config?: ChunkingConfig
+    delayed_data_check_config?: DelayedDataCheckConfig
     frequency?: Time
-    /** @prop_serializer IndicesFormatter */
-    indices?: Indices
+    indexes?: Indices // TODO: this one should not be there!
+    indices?: Indices // ^^^ this is the real one
+    indices_options?: DatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer
     query_delay?: Time
     script_fields?: Dictionary<string, ScriptField>
-    scroll_size?: integer
+    scroll_size?: integer // default: 10000
   }
 }
