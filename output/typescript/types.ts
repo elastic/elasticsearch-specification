@@ -3814,17 +3814,18 @@ export interface DailySchedule {
 
 export interface DataCounts {
   bucket_count: long
-  earliest_record_timestamp: long
+  earliest_record_timestamp?: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
-  job_id: string
-  last_data_time: long
-  latest_empty_bucket_timestamp: long
-  latest_record_timestamp: long
-  latest_sparse_bucket_timestamp: long
+  job_id: Id
+  last_data_time?: long
+  latest_empty_bucket_timestamp?: long
+  latest_record_timestamp?: long
+  latest_sparse_bucket_timestamp?: long
+  latest_bucket_timestamp?: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -7514,11 +7515,12 @@ export interface Job {
 }
 
 export interface JobForecastStatistics {
-  memory_bytes: JobStatistics
-  processing_time_ms: JobStatistics
-  records: JobStatistics
-  status: Record<string, long>
+  memory_bytes?: JobStatistics
+  processing_time_ms?: JobStatistics
+  records?: JobStatistics
+  status?: Record<string, long>
   total: long
+  forecasted_jobs: integer
 }
 
 export type JobState = 'closing' | 'closed' | 'opened' | 'failed' | 'opening'
@@ -7531,13 +7533,13 @@ export interface JobStatistics {
 }
 
 export interface JobStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   data_counts: DataCounts
   forecasts_stats: JobForecastStatistics
   job_id: string
   model_size_stats: ModelSizeStats
-  node: DiscoveryNode
-  open_time: DateString
+  node?: DiscoveryNode
+  open_time?: DateString
   state: JobState
   timing_stats: TimingStats
   deleting?: boolean
@@ -8116,6 +8118,10 @@ export interface ModelSizeStats {
   log_time: Time
   memory_status: MemoryStatus
   model_bytes: long
+  model_bytes_exceeded?: long
+  model_bytes_memory_limit?: long
+  peak_model_bytes?: long
+  assignment_memory_basis?: string
   result_type: string
   total_by_field_count: long
   total_over_field_count: long
@@ -8127,6 +8133,7 @@ export interface ModelSizeStats {
   frequent_category_count: integer
   rare_category_count: integer
   total_category_count: integer
+  timestamp?: long
 }
 
 export interface ModelSnapshot {
@@ -12744,13 +12751,14 @@ export type TimeSpan = string
 export type Timestamp = string
 
 export interface TimingStats {
-  average_bucket_processing_time_ms: double
+  average_bucket_processing_time_ms?: double
   bucket_count: long
-  exponential_average_bucket_processing_time_ms: double
+  exponential_average_bucket_processing_time_ms?: double
   exponential_average_bucket_processing_time_per_hour_ms: double
-  job_id: string
-  maximum_bucket_processing_time_ms: double
-  minimum_bucket_processing_time_ms: double
+  job_id: Id
+  total_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
 }
 
 export interface Token {

@@ -6747,7 +6747,7 @@
         "name": "GetJobStatsResponse",
         "namespace": "x_pack.machine_learning.get_job_stats"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -40904,7 +40904,7 @@
         },
         {
           "name": "earliest_record_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40974,14 +40974,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "last_data_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40992,7 +40992,7 @@
         },
         {
           "name": "latest_empty_bucket_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -41003,7 +41003,7 @@
         },
         {
           "name": "latest_record_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -41014,7 +41014,18 @@
         },
         {
           "name": "latest_sparse_bucket_timestamp",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "latest_bucket_timestamp",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73754,7 +73765,7 @@
       "properties": [
         {
           "name": "memory_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73765,7 +73776,7 @@
         },
         {
           "name": "processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73776,7 +73787,7 @@
         },
         {
           "name": "records",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73787,7 +73798,7 @@
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -73813,6 +73824,17 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "forecasted_jobs",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -73905,7 +73927,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73960,7 +73982,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73971,7 +73993,7 @@
         },
         {
           "name": "open_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -78952,6 +78974,50 @@
           }
         },
         {
+          "name": "model_bytes_exceeded",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "model_bytes_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "peak_model_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "assignment_memory_basis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "result_type",
           "required": true,
           "type": {
@@ -79068,6 +79134,17 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "internal"
             }
           }
@@ -121003,7 +121080,7 @@
       "properties": [
         {
           "name": "average_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121025,7 +121102,7 @@
         },
         {
           "name": "exponential_average_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121051,13 +121128,13 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
-          "name": "maximum_bucket_processing_time_ms",
+          "name": "total_bucket_processing_time_ms",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -121068,8 +121145,19 @@
           }
         },
         {
+          "name": "maximum_bucket_processing_time_ms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "minimum_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
