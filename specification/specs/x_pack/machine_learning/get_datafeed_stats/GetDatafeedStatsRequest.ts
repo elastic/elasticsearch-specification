@@ -24,7 +24,7 @@
  */
 interface GetDatafeedStatsRequest extends RequestBase {
   path_parts?: {
-    datafeed_id?: Id
+    datafeed_id?: Ids
   }
   query_parameters?: {
     allow_no_datafeeds?: boolean
