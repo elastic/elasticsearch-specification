@@ -18,6 +18,7 @@
  */
 
 class Limits {
-  max_model_memory_limit: string
-  effective_max_model_memory_limit: string
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit: ByteSize
+  total_ml_memory: ByteSize
 }
