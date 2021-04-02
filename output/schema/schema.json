@@ -60030,12 +60030,34 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "end",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
             "name": "from",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "start",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
                 "namespace": "internal"
               }
             }
@@ -60082,6 +60104,17 @@
       ],
       "query": [
         {
+          "name": "job_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "end",
           "required": false,
           "type": {
@@ -60093,12 +60126,12 @@
           }
         },
         {
-          "name": "job_id",
+          "name": "from",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -60110,6 +60143,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -102634,7 +102678,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
@@ -102656,7 +102700,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "EpochMillis",
               "namespace": "internal"
             }
           }
