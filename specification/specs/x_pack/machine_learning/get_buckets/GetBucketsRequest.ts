@@ -25,17 +25,25 @@
 interface GetBucketsRequest extends RequestBase {
   path_parts?: {
     job_id: Id
-    timestamp?: Id
+    timestamp?: Timestamp
   }
-  query_parameters?: {}
+  query_parameters?: {
+    from?: integer
+    size?: integer
+    exclude_interim?: boolean // default: false
+    sort?: Field
+    desc?: boolean // default: false
+    start?: DateString
+    end?: DateString
+  }
   body?: {
     anomaly_score?: double
-    desc?: boolean
-    end?: DateString
-    exclude_interim?: boolean
-    expand?: boolean
+    desc?: boolean // default: false
+    exclude_interim?: boolean // default: false
+    expand?: boolean // default: false
     page?: Page
     sort?: Field
     start?: DateString
+    end?: DateString
   }
 }

@@ -786,7 +786,7 @@ export interface BucketInfluencer {
   influencer_score: double
   initial_influencer_score: double
   is_interim: boolean
-  job_id: string
+  job_id: Id
   probability: double
   result_type: string
   timestamp: DateString
@@ -5930,16 +5930,23 @@ export interface GetBasicLicenseStatusResponse extends ResponseBase {
 
 export interface GetBucketsRequest extends RequestBase {
   job_id: Id
-  timestamp?: Id
+  timestamp?: Timestamp
+  from?: integer
+  size?: integer
+  exclude_interim?: boolean
+  sort?: Field
+  desc?: boolean
+  start?: DateString
+  end?: DateString
   body?: {
     anomaly_score?: double
     desc?: boolean
-    end?: DateString
     exclude_interim?: boolean
     expand?: boolean
     page?: Page
     sort?: Field
     start?: DateString
+    end?: DateString
   }
 }
 
@@ -10374,11 +10381,11 @@ export interface ResultBucket {
   event_count: long
   initial_anomaly_score: double
   is_interim: boolean
-  job_id: string
-  partition_scores: Array<PartitionScore>
+  job_id: Id
+  partition_scores?: Array<PartitionScore>
   processing_time_ms: double
   result_type: string
-  timestamp: DateString
+  timestamp: Time
 }
 
 export interface ResumeAutoFollowPatternRequest extends RequestBase {
