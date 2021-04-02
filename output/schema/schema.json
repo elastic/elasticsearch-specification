@@ -41158,9 +41158,6 @@
       ]
     },
     {
-<<<<<<< HEAD
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
-=======
       "kind": "enum",
       "members": [
         {
@@ -41188,7 +41185,7 @@
       }
     },
     {
->>>>>>> indices.data_stream
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
       "kind": "type_alias",
       "name": {
         "name": "DataStreamName",
