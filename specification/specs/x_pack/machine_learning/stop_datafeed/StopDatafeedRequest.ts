@@ -24,13 +24,14 @@
  */
 interface StopDatafeedRequest extends RequestBase {
   path_parts?: {
-    datafeed_id: Id
+    datafeed_id: Ids
   }
   query_parameters?: {
-    allow_no_datafeeds?: boolean
+    allow_no_match?: boolean // default: true
+    force?: boolean // default: false
   }
   body?: {
-    force?: boolean
-    timeout?: Time
+    force?: boolean // default: false
+    timeout?: Time // default: 20s
   }
 }

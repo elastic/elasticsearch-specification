@@ -12201,8 +12201,9 @@ export interface StepKey {
 }
 
 export interface StopDatafeedRequest extends RequestBase {
-  datafeed_id: Id
-  allow_no_datafeeds?: boolean
+  datafeed_id: Ids
+  allow_no_match?: boolean
+  force?: boolean
   body?: {
     force?: boolean
     timeout?: Time
