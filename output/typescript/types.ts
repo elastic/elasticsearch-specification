@@ -5950,11 +5950,15 @@ export interface GetBuiltinPrivilegesResponse extends ResponseBase {
 
 export interface GetCalendarEventsRequest extends RequestBase {
   calendar_id: Id
+  job_id?: Id
   end?: DateString
-  job_id?: string
+  from?: integer
   start?: string
+  size?: integer
   body?: {
+    end?: DateString
     from?: integer
+    start?: string
     size?: integer
   }
 }
@@ -10696,9 +10700,9 @@ export interface ScheduleTriggerEvent {
 export interface ScheduledEvent {
   calendar_id: Id
   description: string
-  end_time: DateString
+  end_time: EpochMillis
   event_id: Id
-  start_time: DateString
+  start_time: EpochMillis
 }
 
 export interface ScoreFunctionBase {

@@ -20,9 +20,7 @@
 class ScheduledEvent {
   calendar_id: Id
   description: string
-  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  end_time: DateString
+  end_time: EpochMillis
   event_id: Id
-  /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-  start_time: DateString
+  start_time: EpochMillis
 }
