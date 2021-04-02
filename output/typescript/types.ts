@@ -7064,15 +7064,10 @@ export interface IndexingStats {
 export type Indices = string | Array<string>
 
 export interface IndicesCreateDataStreamRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  name: DataStreamName
 }
 
-export interface IndicesCreateDataStreamResponse extends ResponseBase {
-  stub: integer
+export interface IndicesCreateDataStreamResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {

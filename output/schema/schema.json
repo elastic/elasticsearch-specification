@@ -19840,6 +19840,7 @@
       "properties": []
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units",
       "kind": "type_alias",
       "name": {
         "name": "ByteSize",
@@ -41146,6 +41147,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
       "kind": "type_alias",
       "name": {
         "name": "DataStreamName",
@@ -69748,22 +69750,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -69779,36 +69765,25 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The name of the data stream",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "DataStreamName",
               "namespace": "internal"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
+            "name": "AcknowledgedResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -69818,19 +69793,7 @@
         "name": "IndicesCreateDataStreamResponse",
         "namespace": "x_pack.data_streams.create_data_stream"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [

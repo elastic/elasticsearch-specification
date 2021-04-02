@@ -134,9 +134,10 @@ type Metrics = string | string[]
 type Name = string
 type Names = string | string[]
 
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 type DataStreamName = string
 
-// url: https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 type ByteSize = long | string
 
 type Percentage = string | float
