@@ -3900,10 +3900,10 @@ export interface DataTiersUsage extends XPackUsage {
 export interface Datafeed {
   aggregations?: Record<string, AggregationContainer>
   aggs?: Record<string, AggregationContainer>
-  chunking_config: ChunkingConfig
-  datafeed_id: string
+  chunking_config?: ChunkingConfig
+  datafeed_id: Id
   frequency?: Timestamp
-  indices: Array<string>
+  indices: Indices
   indexes?: Array<string>
   job_id: Id
   max_empty_searches?: integer
@@ -3913,6 +3913,7 @@ export interface Datafeed {
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
   runtime_mappings?: RuntimeFields
+  indices_options?: DatafeedIndicesOptions
 }
 
 export interface DatafeedCount {

@@ -6650,7 +6650,7 @@
         "name": "GetDatafeedsResponse",
         "namespace": "x_pack.machine_learning.get_datafeeds"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -41716,7 +41716,7 @@
         },
         {
           "name": "chunking_config",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -41731,7 +41731,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -41751,13 +41751,10 @@
           "name": "indices",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
             }
           }
         },
@@ -41870,6 +41867,17 @@
             "type": {
               "name": "RuntimeFields",
               "namespace": "mapping.runtime_fields"
+            }
+          }
+        },
+        {
+          "name": "indices_options",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedIndicesOptions",
+              "namespace": "x_pack.machine_learning.update_data_feed"
             }
           }
         }
