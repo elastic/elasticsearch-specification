@@ -19,8 +19,7 @@
 
 class DataTiersUsage extends XPackUsage {
   data_warm: DataTierPhaseCountUsage
-  /** @version 7.13 */
-  data_frozen?: DataTierPhaseCountUsage
+  data_frozen?: DataTierPhaseCountUsage // @since 7.13
   data_cold: DataTierPhaseCountUsage
   data_content: DataTierPhaseCountUsage
   data_hot: DataTierPhaseCountUsage

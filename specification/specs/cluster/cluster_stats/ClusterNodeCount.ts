@@ -25,8 +25,7 @@ class ClusterNodeCount {
   total: integer
   voting_only: integer
   data_cold: integer
-  /** @version 7.13 */
-  data_frozen?: integer
+  data_frozen?: integer // @since 7.13
   data_content: integer
   data_warm: integer
   data_hot: integer
