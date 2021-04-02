@@ -17,27 +17,14 @@
  * under the License.
  */
 
-class IndicesGetDataStreamResponse extends ResponseBase {
-  data_streams: IndicesGetDataStreamItem[]
-}
-
-class IndicesGetDataStreamItem {
-  name: DataStreamName
-  timestamp_field: IndicesGetDataStreamItemTimestampField
-  indices: IndicesGetDataStreamItemIndex[]
-  generation: integer
-  template: Name
-  hidden: boolean
-  status: DataStreamHealthStatus
-  ilm_policy?: Name
-  _meta?: Dictionary<string, UserDefinedValue>
-}
-
-class IndicesGetDataStreamItemTimestampField {
-  name: Field
-}
-
-class IndicesGetDataStreamItemIndex {
-  index_name: IndexName
-  index_uuid: Uuid
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-response-body
+ */
+enum DataStreamHealthStatus {
+  GREEN = 0, // All shards are assigned.
+  green = 1,
+  YELLOW = 2, // All primary shards are assigned, but one or more replica shards are unassigned.
+  yellow = 3,
+  RED = 4, // One or more primary shards are unassigned, so some data is unavailable.
+  red = 5
 }
