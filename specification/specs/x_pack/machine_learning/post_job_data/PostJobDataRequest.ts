@@ -31,5 +31,6 @@ interface PostJobDataRequest<TJson> extends RequestBase {
     reset_end?: DateString
     reset_start?: DateString
   }
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/6.8/ml-post-data.html#_request_body_23 */
   body: TJson
 }
