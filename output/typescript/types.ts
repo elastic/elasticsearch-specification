@@ -3928,9 +3928,9 @@ export interface DatafeedIndicesOptions {
 export type DatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 
 export interface DatafeedStats {
-  assignment_explanation: string
-  datafeed_id: string
-  node: DiscoveryNode
+  assignment_explanation?: string
+  datafeed_id: Id
+  node?: DiscoveryNode
   state: DatafeedState
   timing_stats: DatafeedTimingStats
 }
@@ -4560,9 +4560,9 @@ export interface DisableUserResponse extends ResponseBase {
 
 export interface DiscoveryNode {
   attributes: Record<string, string>
-  ephemeral_id: string
-  id: string
-  name: string
+  ephemeral_id: Id
+  id: Id
+  name: Name
   transport_address: string
 }
 
@@ -6010,7 +6010,7 @@ export interface GetCertificatesRequest extends RequestBase {
 export type GetCertificatesResponse = ClusterCertificateInformation[]
 
 export interface GetDatafeedStatsRequest extends RequestBase {
-  datafeed_id?: Id
+  datafeed_id?: Ids
   allow_no_datafeeds?: boolean
 }
 

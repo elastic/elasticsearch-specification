@@ -18,10 +18,9 @@
  */
 
 class DiscoveryNode {
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   attributes: Dictionary<string, string>
-  ephemeral_id: string
-  id: string
-  name: string
+  ephemeral_id: Id
+  id: Id
+  name: Name
   transport_address: string
 }
