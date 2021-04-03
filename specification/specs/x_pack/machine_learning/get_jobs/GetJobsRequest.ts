@@ -19,16 +19,16 @@
 
 /**
  * @rest_spec_name ml.get_jobs
- * @since 5.4.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface GetJobsRequest extends RequestBase {
   path_parts?: {
-    job_id?: Id
+    job_id?: Ids
   }
   query_parameters?: {
-    allow_no_jobs?: boolean
-    exclude_generated?: boolean
+    allow_no_jobs?: boolean // default: true
+    exclude_generated?: boolean // default: false
   }
   body?: {}
 }

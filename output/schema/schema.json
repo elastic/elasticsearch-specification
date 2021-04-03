@@ -6780,7 +6780,7 @@
         "name": "GetJobsResponse",
         "namespace": "x_pack.machine_learning.get_jobs"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -61779,7 +61779,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "internal"
             }
           }
@@ -73489,7 +73489,7 @@
         },
         {
           "name": "count",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73500,7 +73500,7 @@
         },
         {
           "name": "created_by",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -73566,7 +73566,7 @@
         },
         {
           "name": "forecasts",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
