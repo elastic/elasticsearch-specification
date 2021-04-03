@@ -12131,9 +12131,10 @@ export interface StartBasicLicenseResponse extends AcknowledgedResponseBase {
 
 export interface StartDatafeedRequest extends RequestBase {
   datafeed_id: Id
+  start?: Time
   body?: {
-    end?: DateString
-    start?: DateString
+    end?: Time
+    start?: Time
     timeout?: Time
   }
 }
