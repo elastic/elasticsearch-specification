@@ -6683,7 +6683,7 @@
         "name": "GetFiltersResponse",
         "namespace": "x_pack.machine_learning.get_filters"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -54475,7 +54475,7 @@
       "properties": [
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54490,7 +54490,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
