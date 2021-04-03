@@ -4497,7 +4497,7 @@ export interface DerivativeAggregation extends PipelineAggregationBase {
 }
 
 export interface DetectionRule {
-  actions: Array<RuleAction>
+  actions?: Array<RuleAction>
   conditions: Array<RuleCondition>
   scope?: Record<Field, FilterRef>
 }
@@ -4509,10 +4509,11 @@ export interface Detector {
   detector_index?: integer
   exclude_frequent?: ExcludeFrequent
   field_name?: Field
-  function: string
+  function?: string
   use_null?: boolean
   over_field_name?: Field
   partition_field_name?: Field
+  description?: string
 }
 
 export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
@@ -8062,6 +8063,8 @@ export interface ModelPlotConfig {
 
 export interface ModelPlotConfigEnabled {
   enabled: boolean
+  annotations_enabled?: boolean
+  terms?: string
 }
 
 export interface ModelSizeStats {
@@ -13176,12 +13179,14 @@ export interface UpdateJobRequest extends RequestBase {
     analysis_limits?: AnalysisMemoryLimit
     background_persist_interval?: Time
     custom_settings?: Record<string, any>
+    categorization_filters?: Array<string>
     description?: string
     model_plot_config?: ModelPlotConfigEnabled
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: Array<string>
+    detectors?: Array<Detector>
   }
 }
 

@@ -7533,7 +7533,7 @@
         "name": "UpdateJobResponse",
         "namespace": "x_pack.machine_learning.update_job"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -46775,7 +46775,7 @@
       "properties": [
         {
           "name": "actions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -46902,7 +46902,7 @@
         },
         {
           "name": "function",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46940,6 +46940,17 @@
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -78286,6 +78297,28 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "annotations_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -125091,6 +125124,20 @@
             }
           },
           {
+            "name": "categorization_filters",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
             "name": "description",
             "required": false,
             "type": {
@@ -125155,6 +125202,20 @@
                 "type": {
                   "name": "string",
                   "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "name": "detectors",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Detector",
+                  "namespace": "x_pack.machine_learning.job.detectors"
                 }
               }
             }

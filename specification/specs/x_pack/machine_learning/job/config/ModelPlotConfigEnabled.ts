@@ -18,5 +18,18 @@
  */
 
 class ModelPlotConfigEnabled {
+  /**
+   * default: false
+   */
   enabled: boolean
+  /**
+   * since 7.9.0
+   * default: true
+   */
+  annotations_enabled?: boolean //
+  /**
+   * since 7.9.0
+   * stability experimental
+   */
+  terms?: string
 }

@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name ml.update_job
- * @since 5.4.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface UpdateJobRequest extends RequestBase {
@@ -32,11 +32,13 @@ interface UpdateJobRequest extends RequestBase {
     analysis_limits?: AnalysisMemoryLimit
     background_persist_interval?: Time
     custom_settings?: Dictionary<string, UserDefinedValue>
+    categorization_filters?: string[]
     description?: string
     model_plot_config?: ModelPlotConfigEnabled
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: string[]
+    detectors?: Detector[]
   }
 }

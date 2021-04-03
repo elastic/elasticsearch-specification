@@ -27,8 +27,9 @@ class Detector {
   detector_index?: integer
   exclude_frequent?: ExcludeFrequent
   field_name?: Field
-  function: string
+  function?: string
   use_null?: boolean
   over_field_name?: Field
   partition_field_name?: Field
+  description?: string
 }
