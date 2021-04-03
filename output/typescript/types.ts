@@ -4436,7 +4436,7 @@ export interface DeleteSnapshotResponse extends AcknowledgedResponseBase {
 }
 
 export interface DeleteTrainedModelAliasRequest extends RequestBase {
-  model_alias: Alias
+  model_alias: Name
   model_id: Id
 }
 
