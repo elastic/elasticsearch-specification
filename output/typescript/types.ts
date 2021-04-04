@@ -10567,7 +10567,7 @@ export interface RollupJobStats {
 export interface RollupJobStatus {
   current_position?: Record<string, any>
   job_state: IndexingJobState
-  upgraded_doc_id: boolean
+  upgraded_doc_id?: boolean
 }
 
 export interface RollupJobTaskFailure {

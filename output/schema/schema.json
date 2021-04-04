@@ -101424,7 +101424,7 @@
         },
         {
           "name": "upgraded_doc_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
