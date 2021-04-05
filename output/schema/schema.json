@@ -45488,7 +45488,7 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
+            "name": "AcknowledgedResponseBase",
             "namespace": "common_abstractions.response"
           }
         }

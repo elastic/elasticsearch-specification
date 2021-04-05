@@ -4321,7 +4321,7 @@ export interface DeleteJobResponse extends AcknowledgedResponseBase {
 export interface DeleteLicenseRequest extends RequestBase {
 }
 
-export interface DeleteLicenseResponse extends ResponseBase {
+export interface DeleteLicenseResponse extends AcknowledgedResponseBase {
 }
 
 export interface DeleteLifecycleRequest extends RequestBase {
