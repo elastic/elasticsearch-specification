@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name ml.get_filters
- * @since 5.4.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface GetFiltersRequest extends RequestBase {
