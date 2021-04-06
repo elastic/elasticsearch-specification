@@ -19,19 +19,19 @@
 
 /**
  * @rest_spec_name ml.start_datafeed
- * @since 5.4.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface StartDatafeedRequest extends RequestBase {
   path_parts?: {
     datafeed_id: Id
   }
-  query_parameters?: {}
+  query_parameters?: {
+    start?: Time // default ""
+  }
   body?: {
-    /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: DateString
-    /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: DateString
-    timeout?: Time
+    end?: Time // default ""
+    start?: Time // default ""
+    timeout?: Time // default 20s
   }
 }
