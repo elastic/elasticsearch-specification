@@ -6157,7 +6157,7 @@ export interface GetJobStatsResponse extends ResponseBase {
 }
 
 export interface GetJobsRequest extends RequestBase {
-  job_id?: Id
+  job_id?: Ids
   allow_no_jobs?: boolean
   exclude_generated?: boolean
 }
@@ -7488,14 +7488,14 @@ export interface Job {
   analysis_config?: AnalysisConfig
   analysis_limits?: AnalysisLimits
   background_persist_interval?: Time
-  count: integer
-  created_by: EmptyObject
+  count?: integer
+  created_by?: EmptyObject
   create_time?: integer
   detectors?: JobStatistics
   data_description?: DataDescription
   description?: string
   finished_time?: integer
-  forecasts: MlJobForecasts
+  forecasts?: MlJobForecasts
   job_id?: Id
   job_type?: string
   model_plot?: ModelPlotConfig
