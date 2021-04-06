@@ -11741,7 +11741,7 @@ export interface SmoothingModelContainer {
 }
 
 export interface SnapshotIndexStats {
-  shards: Record<string, SnapshotShardsStats>
+  shards: Record<string, SnapshotShardsStatus>
   shards_stats: SnapshotShardsStats
   stats: SnapshotStats
 }
@@ -11895,6 +11895,25 @@ export interface SnapshotShardsStats {
   initializing: long
   started: long
   total: long
+}
+
+export type SnapshotShardsStatsStage = 'DONE' | 'FAILURE' | 'FINALIZE' | 'INIT' | 'STARTED'
+
+export interface SnapshotShardsStatsSummary {
+  incremental: SnapshotShardsStatsSummaryItem
+  total: SnapshotShardsStatsSummaryItem
+  start_time_in_millis: long
+  time_in_millis: long
+}
+
+export interface SnapshotShardsStatsSummaryItem {
+  file_count: long
+  size_in_bytes: long
+}
+
+export interface SnapshotShardsStatus {
+  stage: SnapshotShardsStatsStage
+  stats: SnapshotShardsStatsSummary
 }
 
 export interface SnapshotStats {

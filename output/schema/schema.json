@@ -10495,7 +10495,7 @@
         "name": "SnapshotStatusResponse",
         "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
       },
-      "since": "0.0.0",
+      "since": "7.8.0",
       "stability": "stable",
       "urls": [
         {
@@ -111939,7 +111939,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotShardsStats",
+                "name": "SnapshotShardsStatus",
                 "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
               }
             }
@@ -113249,6 +113249,145 @@
             "type": {
               "name": "long",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "DONE"
+        },
+        {
+          "name": "FAILURE"
+        },
+        {
+          "name": "FINALIZE"
+        },
+        {
+          "name": "INIT"
+        },
+        {
+          "name": "STARTED"
+        }
+      ],
+      "name": {
+        "name": "SnapshotShardsStatsStage",
+        "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotShardsStatsSummary",
+        "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+      },
+      "properties": [
+        {
+          "name": "incremental",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotShardsStatsSummaryItem",
+              "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotShardsStatsSummaryItem",
+              "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+            }
+          }
+        },
+        {
+          "name": "start_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotShardsStatsSummaryItem",
+        "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+      },
+      "properties": [
+        {
+          "name": "file_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotShardsStatus",
+        "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+      },
+      "properties": [
+        {
+          "name": "stage",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotShardsStatsStage",
+              "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+            }
+          }
+        },
+        {
+          "name": "stats",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnapshotShardsStatsSummary",
+              "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
             }
           }
         }

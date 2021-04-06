@@ -18,18 +18,12 @@
  */
 
 /**
- * @rest_spec_name snapshot.status
- * @since 7.8.0
- * @stability TODO
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.8/get-snapshot-status-api.html
  */
-interface SnapshotStatusRequest extends RequestBase {
-  path_parts?: {
-    repository?: Name
-    snapshot?: Names
-  }
-  query_parameters?: {
-    ignore_unavailable?: boolean // default: false
-    master_timeout?: Time
-  }
-  body?: {}
+enum SnapshotShardsStatsStage {
+  DONE = 0,
+  FAILURE = 1,
+  FINALIZE = 2,
+  INIT = 3,
+  STARTED = 4
 }
