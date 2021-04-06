@@ -17,4 +17,4 @@
  * under the License.
  */
 
-class DeleteLicenseResponse extends ResponseBase {}
+class DeleteLicenseResponse extends AcknowledgedResponseBase {}
