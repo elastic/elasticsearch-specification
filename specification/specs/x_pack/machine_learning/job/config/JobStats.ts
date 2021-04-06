@@ -18,13 +18,13 @@
  */
 
 class JobStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   data_counts: DataCounts
   forecasts_stats: JobForecastStatistics
   job_id: string
   model_size_stats: ModelSizeStats
-  node: DiscoveryNode
-  open_time: DateString
+  node?: DiscoveryNode
+  open_time?: DateString
   state: JobState
   timing_stats: TimingStats
   deleting?: boolean

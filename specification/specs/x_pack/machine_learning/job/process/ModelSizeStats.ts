@@ -23,6 +23,10 @@ class ModelSizeStats {
   log_time: Time
   memory_status: MemoryStatus
   model_bytes: long
+  model_bytes_exceeded?: long
+  model_bytes_memory_limit?: long
+  peak_model_bytes?: long
+  assignment_memory_basis?: string
   result_type: string
   total_by_field_count: long
   total_over_field_count: long
@@ -34,4 +38,5 @@ class ModelSizeStats {
   frequent_category_count: integer
   rare_category_count: integer
   total_category_count: integer
+  timestamp?: long
 }
