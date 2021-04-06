@@ -46455,8 +46455,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Alias",
-              "namespace": "indices.alias_management"
+              "name": "Name",
+              "namespace": "internal"
             }
           }
         },
