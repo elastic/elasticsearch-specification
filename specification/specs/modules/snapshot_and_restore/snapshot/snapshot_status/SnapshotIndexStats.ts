@@ -18,7 +18,7 @@
  */
 
 class SnapshotIndexStats {
-  shards: Dictionary<string, SnapshotShardsStats>
+  shards: Dictionary<string, SnapshotShardsStatus>
   shards_stats: SnapshotShardsStats
   stats: SnapshotStats
 }

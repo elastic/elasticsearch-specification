@@ -17,19 +17,19 @@
  * under the License.
  */
 
-/**
- * @rest_spec_name snapshot.status
- * @since 7.8.0
- * @stability TODO
- */
-interface SnapshotStatusRequest extends RequestBase {
-  path_parts?: {
-    repository?: Name
-    snapshot?: Names
-  }
-  query_parameters?: {
-    ignore_unavailable?: boolean // default: false
-    master_timeout?: Time
-  }
-  body?: {}
+class SnapshotShardsStatus {
+  stage: SnapshotShardsStatsStage
+  stats: SnapshotShardsStatsSummary
+}
+
+class SnapshotShardsStatsSummary {
+  incremental: SnapshotShardsStatsSummaryItem
+  total: SnapshotShardsStatsSummaryItem
+  start_time_in_millis: long
+  time_in_millis: long
+}
+
+class SnapshotShardsStatsSummaryItem {
+  file_count: long
+  size_in_bytes: long
 }
