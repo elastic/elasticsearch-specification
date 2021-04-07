@@ -22,5 +22,15 @@ type RuntimeFields = Dictionary<Field, RuntimeField>
 class RuntimeField {
   format?: string
   script?: Script
-  type: FieldType
+  type: RuntimeFieldType
+}
+
+enum RuntimeFieldType {
+  boolean = 0,
+  date = 1,
+  double = 2,
+  geo_point = 3,
+  ip = 4,
+  keyword = 5,
+  long = 6
 }
