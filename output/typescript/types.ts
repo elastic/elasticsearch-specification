@@ -13159,9 +13159,23 @@ export interface UpdateByQueryResponse extends ResponseBase {
   throttled_until_millis?: ulong
 }
 
+export interface UpdateByQueryRethrottleNode {
+  attributes: Record<string, string>
+  host: string
+  transport_address: string
+  ip: string
+  name: Name
+  roles: Array<string>
+  tasks: Record<TaskId, TaskInfo>
+}
+
 export interface UpdateByQueryRethrottleRequest extends RequestBase {
   task_id: Id
   requests_per_second?: long
+}
+
+export interface UpdateByQueryRethrottleResponse extends ResponseBase {
+  nodes: Record<string, UpdateByQueryRethrottleNode>
 }
 
 export interface UpdateDatafeedRequest extends RequestBase {
