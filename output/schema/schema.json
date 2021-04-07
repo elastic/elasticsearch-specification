@@ -8866,8 +8866,11 @@
         "namespace": "search.search_template"
       },
       "requestBodyRequired": true,
-      "response": null,
-      "since": "0.0.0",
+      "response": {
+        "name": "SearchTemplateResponse",
+        "namespace": "search.search_template"
+      },
+      "since": "2.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -106210,6 +106213,82 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "search.search_template"
+        }
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SearchTemplateResponse",
+        "namespace": "search.search_template"
+      },
+      "properties": [
+        {
+          "name": "_shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "common_options.hit"
+            }
+          }
+        },
+        {
+          "name": "timed_out",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "hits",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TDocument",
+                  "namespace": "search.search_template"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "HitsMetadata",
+              "namespace": "search.search.hits"
             }
           }
         }

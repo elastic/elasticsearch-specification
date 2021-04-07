@@ -11062,6 +11062,13 @@ export interface SearchTemplateRequest extends RequestBase {
   }
 }
 
+export interface SearchTemplateResponse<TDocument = unknown> extends ResponseBase {
+  _shards: ShardStatistics
+  timed_out: boolean
+  took: integer
+  hits: HitsMetadata<TDocument>
+}
+
 export interface SearchTransform {
   request: SearchInputRequestDefinition
   timeout: Time

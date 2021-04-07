@@ -19,28 +19,28 @@
 
 /**
  * @rest_spec_name search_template
- * @since 0.0.0
+ * @since 2.0.0
  * @stability TODO
  */
 interface SearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types
+    type?: Types // deprecated: 7.0
   }
   query_parameters?: {
-    allow_no_indices?: boolean
-    ccs_minimize_roundtrips?: boolean
+    allow_no_indices?: boolean // default: true
+    ccs_minimize_roundtrips?: boolean // default: false
     expand_wildcards?: ExpandWildcards
-    explain?: boolean
-    ignore_throttled?: boolean
-    ignore_unavailable?: boolean
+    explain?: boolean // default: false
+    ignore_throttled?: boolean // default: true
+    ignore_unavailable?: boolean // default: false
     preference?: string
-    profile?: boolean
+    profile?: boolean // default: false
     routing?: Routing
     scroll?: Time
     search_type?: SearchType
-    total_hits_as_integer?: boolean
-    typed_keys?: boolean
+    total_hits_as_integer?: boolean // since: 7.0
+    typed_keys?: boolean // default: false
   }
   body?: {
     id?: string
