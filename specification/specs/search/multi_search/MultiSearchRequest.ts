@@ -34,10 +34,32 @@ interface MultiSearchRequest extends RequestBase {
     max_concurrent_shard_requests?: long
     pre_filter_shard_size?: long
     search_type?: SearchType
-    total_hits_as_integer?: boolean
+    rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }
-  body?: {
-    operations?: Dictionary<string, SearchRequest>
-  }
+  body?: Array<MultiSearchHeader | MultiSearchBody>
+}
+
+class MultiSearchHeader {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  index?: Indices
+  preference?: string
+  request_cache?: boolean
+  routing?: string
+  search_type?: SearchType
+}
+
+// Might contain the same parameters of SearchRequest['body'], but there are inconsistencies
+// https://github.com/elastic/elasticsearch/issues/4227
+class MultiSearchBody {
+  aggregations?: Dictionary<string, AggregationContainer>
+  aggs?: Dictionary<string, AggregationContainer>
+  query?: QueryContainer
+  from?: integer
+  size?: integer
+  pit?: PointInTimeReference
+  track_total_hits?: boolean | integer
+  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
 }

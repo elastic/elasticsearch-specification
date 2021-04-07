@@ -8287,6 +8287,28 @@ export interface MultiMatchQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
+export interface MultiSearchBody {
+  aggregations?: Record<string, AggregationContainer>
+  aggs?: Record<string, AggregationContainer>
+  query?: QueryContainer
+  from?: integer
+  size?: integer
+  pit?: PointInTimeReference
+  track_total_hits?: boolean | integer
+  suggest?: SuggestContainer | Record<string, SuggestContainer>
+}
+
+export interface MultiSearchHeader {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  index?: Indices
+  preference?: string
+  request_cache?: boolean
+  routing?: string
+  search_type?: SearchType
+}
+
 export interface MultiSearchRequest extends RequestBase {
   index?: Indices
   type?: Types
@@ -8295,15 +8317,18 @@ export interface MultiSearchRequest extends RequestBase {
   max_concurrent_shard_requests?: long
   pre_filter_shard_size?: long
   search_type?: SearchType
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body: {
-    operations?: Record<string, SearchRequest>
-  }
+  body: Array<MultiSearchHeader | MultiSearchBody>
 }
 
-export interface MultiSearchResponse extends ResponseBase {
-  responses: Array<SearchResponse<any>>
+export interface MultiSearchResponse<TDocument = unknown> extends ResponseBase {
+  took: long
+  responses: Array<MultiSearchResult<TDocument> | ErrorResponse>
+}
+
+export interface MultiSearchResult<TDocument = unknown> extends SearchResponse<TDocument> {
+  status: integer
 }
 
 export interface MultiSearchTemplateRequest extends RequestBase {
@@ -9537,6 +9562,7 @@ export interface PutMappingRequest extends RequestBase {
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
+    runtime?: RuntimeFields
   }
 }
 
@@ -10648,9 +10674,11 @@ export type RuleFilterType = 'include' | 'exclude'
 
 export interface RuntimeField {
   format?: string
-  script?: StoredScript
-  type: FieldType
+  script?: Script
+  type: RuntimeFieldType
 }
+
+export type RuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long'
 
 export interface RuntimeFieldTypesStats {
   name: Name
@@ -12544,7 +12572,7 @@ export interface TermQuery extends QueryBase {
 
 export interface TermSuggestOption {
   text: string
-  freq: long
+  freq?: long
   score: double
 }
 

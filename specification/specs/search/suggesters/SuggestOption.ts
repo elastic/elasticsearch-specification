@@ -43,6 +43,6 @@ class PhraseSuggestOption {
 
 class TermSuggestOption {
   text: string
-  freq: long
+  freq?: long
   score: double
 }
