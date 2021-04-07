@@ -11467,7 +11467,7 @@
         "name": "WatcherStatsResponse",
         "namespace": "x_pack.watcher.watcher_stats"
       },
-      "since": "0.0.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
