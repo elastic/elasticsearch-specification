@@ -21,6 +21,6 @@ type RuntimeFields = Dictionary<Field, RuntimeField>
 
 class RuntimeField {
   format?: string
-  script?: StoredScript
+  script?: Script
   type: FieldType
 }

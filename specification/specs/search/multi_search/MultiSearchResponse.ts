@@ -17,7 +17,11 @@
  * under the License.
  */
 
-@class_serializer('MultiSearchResponseFormatter')
-class MultiSearchResponse extends ResponseBase {
-  responses: SearchResponse<UserDefinedValue>[]
+class MultiSearchResponse<TDocument> extends ResponseBase {
+  took: long
+  responses: Array<MultiSearchResult<TDocument> | ErrorResponse>
+}
+
+class MultiSearchResult<TDocument> extends SearchResponse<TDocument> {
+  status: integer
 }
