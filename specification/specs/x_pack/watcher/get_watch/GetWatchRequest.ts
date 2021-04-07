@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name watcher.get_watch
- * @since 0.0.0
+ * @since 5.6.0
  * @stability TODO
  */
 interface GetWatchRequest extends RequestBase {

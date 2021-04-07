@@ -26,9 +26,16 @@ class Action {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index: ActionIndex
+  index?: ActionIndex
+  logging?: LoggingAction
 }
 
 class ActionIndex {
   index: IndexName
+  doc_id?: Id
+}
+
+class LoggingAction {
+  level: string
+  text: string
 }

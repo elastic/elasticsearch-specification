@@ -17,7 +17,6 @@
  * under the License.
  */
 
-@class_serializer('TriggerContainerInterfaceFormatter')
 class TriggerContainer {
   schedule: ScheduleContainer
 }

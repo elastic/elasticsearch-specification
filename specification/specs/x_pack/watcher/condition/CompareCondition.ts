@@ -17,9 +17,18 @@
  * under the License.
  */
 
-@class_serializer('CompareConditionFormatter')
 class CompareCondition {
-  comparison: string
-  path: string
-  value: UserDefinedValue
+  comparison?: string
+  path?: string
+  value?: UserDefinedValue
+  'ctx.payload.match'?: CompareContextPayloadCondition
+  'ctx.payload.value'?: CompareContextPayloadCondition
+}
+
+class CompareContextPayloadCondition {
+  eq?: UserDefinedValue
+  lt?: UserDefinedValue
+  gt?: UserDefinedValue
+  lte?: UserDefinedValue
+  gte?: UserDefinedValue
 }

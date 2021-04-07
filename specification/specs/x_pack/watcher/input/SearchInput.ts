@@ -18,7 +18,7 @@
  */
 
 class SearchInput {
-  extract: string[]
+  extract?: string[]
   request: SearchInputRequestDefinition
-  timeout: Time
+  timeout?: Time
 }

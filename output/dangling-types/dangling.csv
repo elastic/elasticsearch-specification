@@ -88,6 +88,7 @@ AlertingUsage,x_pack/info/x_pack_usage/AlertingUsage.ts
 ForecastStatistics,x_pack/info/x_pack_usage/ForecastStatistics.ts
 Condition,x_pack/watcher/condition/Condition.ts
 Input,x_pack/watcher/input/Input.ts
+Interval,x_pack/watcher/schedule/Interval.ts
 Schedule,x_pack/watcher/schedule/Schedule.ts
 TriggerEvent,x_pack/watcher/trigger/TriggerEvent.ts
 GeoTree,mapping/types/geo/geo_shape/GeoTree.ts

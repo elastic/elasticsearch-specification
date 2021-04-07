@@ -18,9 +18,14 @@
  */
 
 class SearchInputRequestDefinition {
-  body?: SearchRequest
+  body?: SearchInputRequestBody
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequest
+  rest_total_hits_as_int?: boolean
+}
+
+class SearchInputRequestBody {
+  query: QueryContainer
 }

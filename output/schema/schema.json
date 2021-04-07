@@ -11351,7 +11351,7 @@
         "name": "GetWatchResponse",
         "namespace": "x_pack.watcher.get_watch"
       },
-      "since": "0.0.0",
+      "since": "5.6.0",
       "stability": "stable",
       "urls": [
         {
@@ -11835,11 +11835,22 @@
         },
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "ActionIndex",
+              "namespace": "x_pack.watcher.action"
+            }
+          }
+        },
+        {
+          "name": "logging",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LoggingAction",
               "namespace": "x_pack.watcher.action"
             }
           }
@@ -11917,6 +11928,17 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -31561,14 +31583,7 @@
           "name": "inputs",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
+            "kind": "array_of",
             "value": {
               "kind": "instance_of",
               "type": {
@@ -38052,7 +38067,7 @@
       "properties": [
         {
           "name": "comparison",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38063,7 +38078,7 @@
         },
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -38074,7 +38089,73 @@
         },
         {
           "name": "value",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "ctx.payload.match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompareContextPayloadCondition",
+              "namespace": "x_pack.watcher.condition"
+            }
+          }
+        },
+        {
+          "name": "ctx.payload.value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompareContextPayloadCondition",
+              "namespace": "x_pack.watcher.condition"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CompareContextPayloadCondition",
+        "namespace": "x_pack.watcher.condition"
+      },
+      "properties": [
+        {
+          "name": "eq",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "lt",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "gt",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "lte",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "gte",
+          "required": false,
           "type": {
             "kind": "user_defined_value"
           }
@@ -67826,8 +67907,19 @@
       },
       "properties": [
         {
+          "name": "http",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpInput",
+              "namespace": "x_pack.watcher.input"
+            }
+          }
+        },
+        {
           "name": "extract",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -67841,7 +67933,7 @@
         },
         {
           "name": "request",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67852,7 +67944,7 @@
         },
         {
           "name": "response_content_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -70714,6 +70806,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "ignore_throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -72192,10 +72295,16 @@
           "name": "simple",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SimpleInput",
-              "namespace": "x_pack.watcher.input"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
@@ -72243,69 +72352,6 @@
           }
         }
       ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "ScheduleBase",
-            "namespace": "x_pack.watcher.schedule"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "Interval",
-        "namespace": "x_pack.watcher.schedule"
-      },
-      "properties": [
-        {
-          "name": "factor",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "unit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IntervalUnit",
-              "namespace": "x_pack.watcher.schedule"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "s"
-        },
-        {
-          "name": "m"
-        },
-        {
-          "name": "h"
-        },
-        {
-          "name": "d"
-        },
-        {
-          "name": "w"
-        }
-      ],
-      "name": {
-        "name": "IntervalUnit",
-        "namespace": "x_pack.watcher.schedule"
-      }
     },
     {
       "kind": "interface",
@@ -76283,6 +76329,37 @@
               }
             ],
             "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LoggingAction",
+        "namespace": "x_pack.watcher.action"
+      },
+      "properties": [
+        {
+          "name": "level",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "text",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -102991,8 +103068,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Interval",
-              "namespace": "x_pack.watcher.schedule"
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -104137,7 +104214,7 @@
       "properties": [
         {
           "name": "extract",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -104162,12 +104239,32 @@
         },
         {
           "name": "timeout",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Time",
               "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchInputRequestBody",
+        "namespace": "x_pack.watcher.input"
+      },
+      "properties": [
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
             }
           }
         }
@@ -104186,8 +104283,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SearchRequest",
-              "namespace": "search.search"
+              "name": "SearchInputRequestBody",
+              "namespace": "x_pack.watcher.input"
             }
           }
         },
@@ -104235,6 +104332,17 @@
             "type": {
               "name": "SearchTemplateRequest",
               "namespace": "search.search_template"
+            }
+          }
+        },
+        {
+          "name": "rest_total_hits_as_int",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -111226,32 +111334,6 @@
             "type": {
               "name": "Fields",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SimpleInput",
-        "namespace": "x_pack.watcher.input"
-      },
-      "properties": [
-        {
-          "name": "payload",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
             }
           }
         }
@@ -128906,6 +128988,17 @@
             "type": {
               "name": "TriggerContainer",
               "namespace": "x_pack.watcher.trigger"
+            }
+          }
+        },
+        {
+          "name": "throttle_period_in_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
             }
           }
         }

@@ -26,4 +26,5 @@ class Watch {
   throttle_period?: string
   transform?: TransformContainer
   trigger: TriggerContainer
+  throttle_period_in_millis?: long
 }

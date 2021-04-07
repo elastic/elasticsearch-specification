@@ -48,7 +48,8 @@ export interface Action {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index: ActionIndex
+  index?: ActionIndex
+  logging?: LoggingAction
 }
 
 export type ActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
@@ -57,6 +58,7 @@ export type ActionExecutionState = 'awaits_execution' | 'checking' | 'execution_
 
 export interface ActionIndex {
   index: IndexName
+  doc_id?: Id
 }
 
 export interface ActionStatus {
@@ -2751,7 +2753,7 @@ export interface CcrUsage extends XPackUsage {
 }
 
 export interface ChainInput {
-  inputs: Record<string, InputContainer>
+  inputs: Array<InputContainer>
 }
 
 export interface ChainTransform {
@@ -3509,9 +3511,19 @@ export interface CompactNodeInfo {
 }
 
 export interface CompareCondition {
-  comparison: string
-  path: string
-  value: any
+  comparison?: string
+  path?: string
+  value?: any
+  'ctx.payload.match'?: CompareContextPayloadCondition
+  'ctx.payload.value'?: CompareContextPayloadCondition
+}
+
+export interface CompareContextPayloadCondition {
+  eq?: any
+  lt?: any
+  gt?: any
+  lte?: any
+  gte?: any
 }
 
 export interface CompletionProperty extends DocValuesPropertyBase {
@@ -6825,9 +6837,10 @@ export interface HtmlStripCharFilter extends CharFilterBase {
 }
 
 export interface HttpInput {
-  extract: Array<string>
-  request: HttpInputRequestDefinition
-  response_content_type: ResponseContentType
+  http?: HttpInput
+  extract?: Array<string>
+  request?: HttpInputRequestDefinition
+  response_content_type?: ResponseContentType
 }
 
 export interface HttpInputAuthentication {
@@ -7157,6 +7170,7 @@ export interface IndicesOptions {
   allow_no_indices: boolean
   expand_wildcards: ExpandWildcards
   ignore_unavailable: boolean
+  ignore_throttled?: boolean
 }
 
 export interface IndicesPrivileges {
@@ -7326,7 +7340,7 @@ export interface InputContainer {
   chain?: ChainInput
   http?: HttpInput
   search?: SearchInput
-  simple?: SimpleInput
+  simple?: Record<string, any>
 }
 
 export type InputType = 'http' | 'search' | 'simple'
@@ -7334,13 +7348,6 @@ export type InputType = 'http' | 'search' | 'simple'
 export interface IntegerRangeProperty extends RangePropertyBase {
   type: 'integer_range'
 }
-
-export interface Interval extends ScheduleBase {
-  factor: long
-  unit: IntervalUnit
-}
-
-export type IntervalUnit = 's' | 'm' | 'h' | 'd' | 'w'
 
 export interface IntervalsAllOf {
   intervals?: Array<IntervalsContainer>
@@ -7803,6 +7810,11 @@ export interface ListTasksResponse extends ResponseBase {
   node_failures?: Array<ErrorCause>
   nodes?: Record<string, TaskExecutingNode>
   tasks?: Record<string, TaskInfo> | Array<TaskInfo>
+}
+
+export interface LoggingAction {
+  level: string
+  text: string
 }
 
 export interface LoggingActionResult {
@@ -10738,7 +10750,7 @@ export interface ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Interval
+  interval?: Time
   monthly?: Array<TimeOfMonth>
   weekly?: Array<TimeOfWeek>
   yearly?: Array<TimeOfYear>
@@ -10879,17 +10891,22 @@ export interface SearchAsYouTypeProperty extends CorePropertyBase {
 }
 
 export interface SearchInput {
-  extract: Array<string>
+  extract?: Array<string>
   request: SearchInputRequestDefinition
-  timeout: Time
+  timeout?: Time
+}
+
+export interface SearchInputRequestBody {
+  query: QueryContainer
 }
 
 export interface SearchInputRequestDefinition {
-  body?: SearchRequest
+  body?: SearchInputRequestBody
   indices?: Array<IndexName>
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequest
+  rest_total_hits_as_int?: boolean
 }
 
 export interface SearchNode {
@@ -11642,10 +11659,6 @@ export interface SignificantTextAggregation extends BucketAggregationBase {
   shard_size?: integer
   size?: integer
   source_fields?: Fields
-}
-
-export interface SimpleInput {
-  payload: Record<string, any>
 }
 
 export type SimpleQueryStringFlags = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
@@ -13561,6 +13574,7 @@ export interface Watch {
   throttle_period?: string
   transform?: TransformContainer
   trigger: TriggerContainer
+  throttle_period_in_millis?: long
 }
 
 export interface WatchRecord {

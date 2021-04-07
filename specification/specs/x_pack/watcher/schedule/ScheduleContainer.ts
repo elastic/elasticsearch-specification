@@ -21,7 +21,7 @@ class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Interval
+  interval?: Time
   monthly?: TimeOfMonth[]
   weekly?: TimeOfWeek[]
   yearly?: TimeOfYear[]

@@ -21,5 +21,5 @@ class InputContainer {
   chain?: ChainInput
   http?: HttpInput
   search?: SearchInput
-  simple?: SimpleInput
+  simple?: Dictionary<string, UserDefinedValue>
 }
