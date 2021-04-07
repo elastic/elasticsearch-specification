@@ -9103,11 +9103,19 @@ export interface PostCalendarEventsResponse extends ResponseBase {
   events: Array<ScheduledEvent>
 }
 
+<<<<<<< Updated upstream
 export interface PostJobDataRequest<TJson = unknown> extends RequestBase {
   job_id: Id
   reset_end?: DateString
   reset_start?: DateString
   body: TJson
+=======
+export interface PostJobDataRequest<TJsonDocument = unknown> extends RequestBase {
+  job_id: Id
+  reset_end?: DateString
+  reset_start?: DateString
+  body: Array<TJsonDocument>
+>>>>>>> Stashed changes
 }
 
 export interface PostJobDataResponse extends ResponseBase {

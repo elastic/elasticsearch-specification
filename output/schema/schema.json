@@ -6986,7 +6986,7 @@
         "name": "PostJobDataResponse",
         "namespace": "x_pack.machine_learning.post_job_data"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -87510,16 +87510,30 @@
       "body": {
         "kind": "value",
         "value": {
+<<<<<<< Updated upstream
           "kind": "instance_of",
           "type": {
             "name": "TJson",
             "namespace": "x_pack.machine_learning.post_job_data"
+=======
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TJsonDocument",
+              "namespace": "x_pack.machine_learning.post_job_data"
+            }
+>>>>>>> Stashed changes
           }
         }
       },
       "generics": [
         {
+<<<<<<< Updated upstream
           "name": "TJson",
+=======
+          "name": "TJsonDocument",
+>>>>>>> Stashed changes
           "namespace": "x_pack.machine_learning.post_job_data"
         }
       ],

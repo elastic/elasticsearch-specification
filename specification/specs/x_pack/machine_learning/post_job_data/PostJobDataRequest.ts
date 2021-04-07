@@ -19,11 +19,10 @@
 
 /**
  * @rest_spec_name ml.post_data
- * @since 5.4.0
- * @class_serializer PostJobDataFormatter
+ * @since 5.5.0
  * @stability TODO
  */
-interface PostJobDataRequest<TJson> extends RequestBase {
+interface PostJobDataRequest<TJsonDocument> extends RequestBase {
   path_parts?: {
     job_id: Id
   }
@@ -32,5 +31,5 @@ interface PostJobDataRequest<TJson> extends RequestBase {
     reset_start?: DateString
   }
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/6.8/ml-post-data.html#_request_body_23 */
-  body: TJson
+  body: TJsonDocument[] | TJsonDocument
 }
