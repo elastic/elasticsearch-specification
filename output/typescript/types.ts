@@ -5287,7 +5287,7 @@ export interface FieldStatistics {
   sum_ttf: long
 }
 
-export type FieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long'
+export type FieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword'
 
 export interface FieldTypesMappings {
   field_types: Array<FieldTypesStats>
@@ -10675,8 +10675,10 @@ export type RuleFilterType = 'include' | 'exclude'
 export interface RuntimeField {
   format?: string
   script?: Script
-  type: FieldType
+  type: RuntimeFieldType
 }
+
+export type RuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long'
 
 export interface RuntimeFieldTypesStats {
   name: Name

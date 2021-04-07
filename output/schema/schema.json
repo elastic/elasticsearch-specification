@@ -53985,25 +53985,121 @@
       "kind": "enum",
       "members": [
         {
-          "name": "boolean"
-        },
-        {
-          "name": "date"
-        },
-        {
-          "name": "double"
+          "name": "none"
         },
         {
           "name": "geo_point"
         },
         {
+          "name": "geo_shape"
+        },
+        {
           "name": "ip"
+        },
+        {
+          "name": "binary"
         },
         {
           "name": "keyword"
         },
         {
+          "name": "text"
+        },
+        {
+          "name": "search_as_you_type"
+        },
+        {
+          "name": "date"
+        },
+        {
+          "name": "date_nanos"
+        },
+        {
+          "name": "boolean"
+        },
+        {
+          "name": "completion"
+        },
+        {
+          "name": "nested"
+        },
+        {
+          "name": "object"
+        },
+        {
+          "name": "murmur3"
+        },
+        {
+          "name": "token_count"
+        },
+        {
+          "name": "percolator"
+        },
+        {
+          "name": "integer"
+        },
+        {
           "name": "long"
+        },
+        {
+          "name": "short"
+        },
+        {
+          "name": "byte"
+        },
+        {
+          "name": "float"
+        },
+        {
+          "name": "half_float"
+        },
+        {
+          "name": "scaled_float"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "integer_range"
+        },
+        {
+          "name": "float_range"
+        },
+        {
+          "name": "long_range"
+        },
+        {
+          "name": "double_range"
+        },
+        {
+          "name": "date_range"
+        },
+        {
+          "name": "ip_range"
+        },
+        {
+          "name": "alias"
+        },
+        {
+          "name": "join"
+        },
+        {
+          "name": "rank_feature"
+        },
+        {
+          "name": "rank_features"
+        },
+        {
+          "name": "flattened"
+        },
+        {
+          "name": "shape"
+        },
+        {
+          "name": "histogram"
+        },
+        {
+          "name": "constant_keyword"
         }
       ],
       "name": {
@@ -102337,12 +102433,42 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "FieldType",
-              "namespace": "mapping.types"
+              "name": "RuntimeFieldType",
+              "namespace": "mapping.runtime_fields"
             }
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "boolean"
+        },
+        {
+          "name": "date"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "geo_point"
+        },
+        {
+          "name": "ip"
+        },
+        {
+          "name": "keyword"
+        },
+        {
+          "name": "long"
+        }
+      ],
+      "name": {
+        "name": "RuntimeFieldType",
+        "namespace": "mapping.runtime_fields"
+      }
     },
     {
       "kind": "interface",
