@@ -53985,121 +53985,25 @@
       "kind": "enum",
       "members": [
         {
-          "name": "none"
-        },
-        {
-          "name": "geo_point"
-        },
-        {
-          "name": "geo_shape"
-        },
-        {
-          "name": "ip"
-        },
-        {
-          "name": "binary"
-        },
-        {
-          "name": "keyword"
-        },
-        {
-          "name": "text"
-        },
-        {
-          "name": "search_as_you_type"
+          "name": "boolean"
         },
         {
           "name": "date"
         },
         {
-          "name": "date_nanos"
-        },
-        {
-          "name": "boolean"
-        },
-        {
-          "name": "completion"
-        },
-        {
-          "name": "nested"
-        },
-        {
-          "name": "object"
-        },
-        {
-          "name": "murmur3"
-        },
-        {
-          "name": "token_count"
-        },
-        {
-          "name": "percolator"
-        },
-        {
-          "name": "integer"
-        },
-        {
-          "name": "long"
-        },
-        {
-          "name": "short"
-        },
-        {
-          "name": "byte"
-        },
-        {
-          "name": "float"
-        },
-        {
-          "name": "half_float"
-        },
-        {
-          "name": "scaled_float"
-        },
-        {
           "name": "double"
         },
         {
-          "name": "integer_range"
+          "name": "geo_point"
         },
         {
-          "name": "float_range"
+          "name": "ip"
         },
         {
-          "name": "long_range"
+          "name": "keyword"
         },
         {
-          "name": "double_range"
-        },
-        {
-          "name": "date_range"
-        },
-        {
-          "name": "ip_range"
-        },
-        {
-          "name": "alias"
-        },
-        {
-          "name": "join"
-        },
-        {
-          "name": "rank_feature"
-        },
-        {
-          "name": "rank_features"
-        },
-        {
-          "name": "flattened"
-        },
-        {
-          "name": "shape"
-        },
-        {
-          "name": "histogram"
-        },
-        {
-          "name": "constant_keyword"
+          "name": "long"
         }
       ],
       "name": {
@@ -80705,34 +80609,281 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchBody",
+        "namespace": "search.multi_search"
+      },
+      "properties": [
+        {
+          "name": "aggregations",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationContainer",
+                "namespace": "aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "aggs",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationContainer",
+                "namespace": "aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PointInTimeReference",
+              "namespace": "search.search.point_in_time"
+            }
+          }
+        },
+        {
+          "name": "track_total_hits",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "suggest",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SuggestContainer",
+                  "namespace": "search.suggesters"
+                }
+              },
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SuggestContainer",
+                    "namespace": "search.suggesters"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchHeader",
+        "namespace": "search.multi_search"
+      },
+      "properties": [
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "preference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "request_cache",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchType",
+              "namespace": "common"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "operations",
-            "required": false,
-            "type": {
-              "key": {
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "items": [
+              {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "MultiSearchHeader",
+                  "namespace": "search.multi_search"
                 }
               },
-              "kind": "dictionary_of",
-              "value": {
+              {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SearchRequest",
-                  "namespace": "search.search"
+                  "name": "MultiSearchBody",
+                  "namespace": "search.multi_search"
                 }
               }
-            }
+            ],
+            "kind": "union_of"
           }
-        ]
+        }
       },
       "inherits": [
         {
@@ -80830,7 +80981,7 @@
           }
         },
         {
-          "name": "total_hits_as_integer",
+          "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -80854,6 +81005,12 @@
       ]
     },
     {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "search.multi_search"
+        }
+      ],
       "inherits": [
         {
           "type": {
@@ -80869,21 +81026,91 @@
       },
       "properties": [
         {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "responses",
           "required": true,
           "type": {
             "kind": "array_of",
             "value": {
-              "generics": [
+              "items": [
                 {
-                  "kind": "user_defined_value"
+                  "generics": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "TDocument",
+                        "namespace": "search.multi_search"
+                      }
+                    }
+                  ],
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "MultiSearchResult",
+                    "namespace": "search.multi_search"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "ErrorResponse",
+                    "namespace": "common_abstractions.response"
+                  }
                 }
               ],
+              "kind": "union_of"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "search.multi_search"
+        }
+      ],
+      "inherits": [
+        {
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
-                "name": "SearchResponse",
-                "namespace": "search.search"
+                "name": "TDocument",
+                "namespace": "search.multi_search"
               }
+            }
+          ],
+          "type": {
+            "name": "SearchResponse",
+            "namespace": "search.search"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchResult",
+        "namespace": "search.multi_search"
+      },
+      "properties": [
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
             }
           }
         }
@@ -91717,6 +91944,17 @@
                 "namespace": "mapping.meta_fields.source"
               }
             }
+          },
+          {
+            "name": "runtime",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "mapping.runtime_fields"
+              }
+            }
           }
         ]
       },
@@ -102088,8 +102326,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScript",
-              "namespace": "modules.scripting"
+              "name": "Script",
+              "namespace": "common_options.scripting"
             }
           }
         },
@@ -119003,7 +119241,7 @@
         },
         {
           "name": "freq",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
