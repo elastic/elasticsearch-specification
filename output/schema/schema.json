@@ -34251,22 +34251,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -34280,27 +34264,15 @@
         "name": "ClusterDeleteVotingConfigExclusionsRequest",
         "namespace": "cluster.cluster_delete_voting_config_exclusions"
       },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
+      "path": [],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "wait_for_removal",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -34308,6 +34280,17 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "name": "EmptyResponseBase",
+            "namespace": "internal"
+          }
+        }
+      ],
       "inherits": [
         {
           "type": {
@@ -34321,19 +34304,7 @@
         "name": "ClusterDeleteVotingConfigExclusionsResponse",
         "namespace": "cluster.cluster_delete_voting_config_exclusions"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "interface",

@@ -3072,16 +3072,10 @@ export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResp
 }
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  wait_for_removal?: boolean
 }
 
-export interface ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
-  stub: integer
-}
+export type ClusterDeleteVotingConfigExclusionsResponse = boolean
 
 export interface ClusterFileSystem {
   available_in_bytes: long

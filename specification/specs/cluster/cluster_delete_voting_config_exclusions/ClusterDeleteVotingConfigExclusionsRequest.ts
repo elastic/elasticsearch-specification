@@ -23,13 +23,9 @@
  * @stability TODO
  */
 interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
-  path_parts?: {
-    stub_a: string
-  }
+  path_parts?: {}
   query_parameters?: {
-    stub_b: string
+    wait_for_removal?: boolean
   }
-  body?: {
-    stub_c: string
-  }
+  body?: {}
 }

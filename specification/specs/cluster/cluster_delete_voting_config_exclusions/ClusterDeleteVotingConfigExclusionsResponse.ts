@@ -17,6 +17,6 @@
  * under the License.
  */
 
-class ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
-  stub: integer
-}
+class ClusterDeleteVotingConfigExclusionsResponse
+  extends ResponseBase
+  implements EmptyResponseBase {}
