@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import assert from 'assert'
 import { dirname } from 'path'
 import {
   ts,
@@ -34,7 +33,9 @@ import {
   Node
 } from 'ts-morph'
 import semver from 'semver'
+import chalk from 'chalk'
 import * as model from './metamodel'
+import { EOL } from 'os'
 
 /**
  * Behaviors that the compiler recognized
@@ -134,7 +135,7 @@ export function modelType (node: Node): model.ValueOf {
       let children: Node[] = []
       node.forEachChild(child => children.push(child))
       children = children.filter(child => kinds.some(kind => kind === child.getKind()))
-      assert(children.length === 1, `Expected array to have 1 usable child but saw ${children.length}`)
+      assert(node, children.length === 1, `Expected array to have 1 usable child but saw ${children.length}`)
 
       const type: model.ArrayOf = {
         kind: 'array_of',
@@ -144,7 +145,7 @@ export function modelType (node: Node): model.ValueOf {
     }
 
     case ts.SyntaxKind.UnionType: {
-      assert(Node.isUnionTypeNode(node), `The node is not of type ${ts.SyntaxKind.UnionType} but ${node.getKind()} instead`)
+      assert(node, Node.isUnionTypeNode(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.UnionType]} but ${ts.SyntaxKind[node.getKind()]} instead`)
       const type: model.UnionOf = {
         kind: 'union_of',
         items: node.getTypeNodes().map(node => modelType(node))
@@ -153,12 +154,12 @@ export function modelType (node: Node): model.ValueOf {
     }
 
     case ts.SyntaxKind.LiteralType: {
-      assert(Node.isLiteralTypeNode(node), `The node is not of type ${ts.SyntaxKind.LiteralType} but ${node.getKind()} instead`)
+      assert(node, Node.isLiteralTypeNode(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.LiteralType]} but ${ts.SyntaxKind[node.getKind()]} instead`)
       return modelType(node.getLiteral())
     }
 
     case ts.SyntaxKind.StringLiteral: {
-      assert(Node.isStringLiteral(node), `The node is not of type ${ts.SyntaxKind.StringLiteral} but ${node.getKind()} instead`)
+      assert(node, Node.isStringLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.StringLiteral]} but ${ts.SyntaxKind[node.getKind()]} instead`)
       const type: model.LiteralValue = {
         kind: 'literal_value',
         value: node.getText().replace(/'/g, '')
@@ -167,7 +168,7 @@ export function modelType (node: Node): model.ValueOf {
     }
 
     case ts.SyntaxKind.TypeParameter: {
-      assert(Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind.TypeReference} but ${node.getKind()} instead`)
+      assert(node, Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
       const name = node.compilerNode.getText()
       const type: model.InstanceOf = {
         kind: 'instance_of',
@@ -187,15 +188,15 @@ export function modelType (node: Node): model.ValueOf {
       // The two most important fields of a TypeReference are `typeName` and `typeArguments`,
       // the first one is the name of the type (eg: `Foo`), while the second is the
       // possible generics (eg: Foo<T> => T will be in typeArguments).
-      assert(Node.isTypeReferenceNode(node), `The node is not of type ${ts.SyntaxKind.TypeReference} but ${node.getKind()} instead`)
+      assert(node, Node.isTypeReferenceNode(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
 
       const identifier = node.getTypeName()
-      assert(Node.isIdentifier(identifier))
+      assert(node, Node.isIdentifier(identifier), 'Should be an identifier')
 
       const name = identifier.compilerNode.escapedText as string
       switch (name) {
         case 'Array': {
-          assert(node.getTypeArguments().length === 1, 'An array must have one argument')
+          assert(node, node.getTypeArguments().length === 1, 'An array must have one argument')
           const [value] = node.getTypeArguments().map(node => modelType(node))
           const type: model.ArrayOf = {
             kind: 'array_of',
@@ -206,7 +207,7 @@ export function modelType (node: Node): model.ValueOf {
 
         case 'Dictionary':
         case 'AdditionalProperties': {
-          assert(node.getTypeArguments().length === 2, 'A Dictionary must have two arguments')
+          assert(node, node.getTypeArguments().length === 2, 'A Dictionary must have two arguments')
           const [key, value] = node.getTypeArguments().map(node => modelType(node))
           const type: model.DictionaryOf = {
             kind: 'dictionary_of',
@@ -217,7 +218,7 @@ export function modelType (node: Node): model.ValueOf {
         }
 
         case 'SingleKeyDictionary': {
-          assert(node.getTypeArguments().length === 1, 'A SingleKeyDictionary must have one argument')
+          assert(node, node.getTypeArguments().length === 1, 'A SingleKeyDictionary must have one argument')
           const [value] = node.getTypeArguments().map(node => modelType(node))
           const type: model.NamedValueOf = {
             kind: 'named_value_of',
@@ -249,7 +250,7 @@ export function modelType (node: Node): model.ValueOf {
     }
 
     default:
-      throw new Error(`Unhandled node kind ${node.getKind()}`)
+      assert(node, false, `Unhandled node kind: ${ts.SyntaxKind[node.getKind()]}`)
   }
 }
 
@@ -269,7 +270,7 @@ export function isApi (declaration: InterfaceDeclaration): boolean {
  */
 export function modelInherits (node: HeritageClause): model.Inherits[] {
   return node.getTypeNodes().map(node => {
-    assert(Node.isExpressionWithTypeArguments(node))
+    assert(node, Node.isExpressionWithTypeArguments(node), 'The node should be a expression with type arguments')
     const generics = node.getTypeArguments().map(node => modelType(node))
     return {
       type: {
@@ -359,7 +360,7 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
  */
 export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAlias {
   const type = declaration.getTypeNode()
-  assert(type, 'Type alias without a referenced type')
+  assert(declaration, type != null, 'Type alias without a referenced type')
   const generics = declaration.getTypeParameters().map(node => modelType(node))
 
   const alias = modelType(type)
@@ -376,6 +377,7 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     const variants = parseVariantsTag(declaration.getJsDocs())
     if (variants != null) {
       assert(
+        declaration.getJsDocs(),
         variants.kind === 'internal_tag' || variants.kind === 'external_tag',
         'Type Aliases can only have internal or external variants'
       )
@@ -394,7 +396,7 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
  */
 export function modelProperty (declaration: PropertySignature | PropertyDeclaration): model.Property {
   const type = declaration.getTypeNode()
-  assert(type, 'Type alias without a referenced type')
+  assert(declaration, type != null, 'Type alias without a referenced type')
 
   // names that contains `.` or `-` will be wrapped inside single quotes
   const name = declaration.getName().replace(/'/g, '')
@@ -424,6 +426,7 @@ function setObsolete (type: model.BaseType | model.Property | model.EnumMember, 
  * Validates ands sets jsDocs tags used throughout the input specification
  */
 function setTags<TType extends model.BaseType | model.Property | model.EnumMember> (
+  jsDocs: JSDoc[],
   type: TType,
   tags: Record<string, string>,
   validTags: string[],
@@ -434,6 +437,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   setObsolete(type, tags)
   const badTags = Object.keys(tags).filter(tag => !validTags.includes(tag))
   assert(
+    jsDocs,
     badTags.length === 0,
     `'${getName(type)}' has the following unknown annotations: ${badTags.join(', ')}`
   )
@@ -445,11 +449,14 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
     }
   }
 
-  function getName (type): string {
-    if (type instanceof model.BaseType) return type.name.name
-    if (type instanceof model.Property) return type.name
-    if (type instanceof model.EnumMember) return type.name
-    return 'unknown'
+  function getName (type: TType): string {
+    if (typeof type.name === 'string') {
+      return type.name
+    } else if (typeof type.name.name === 'string') {
+      return type.name.name
+    } else {
+      return 'unknown'
+    }
   }
 }
 
@@ -463,22 +470,22 @@ export function hoistRequestAnnotations (
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
   // TODO (@typescript-eslint/strict-boolean-expressions) is no fun
-  assert(apiName !== '' && apiName !== null && apiName !== undefined,
+  assert(jsDocs, apiName !== '' && apiName !== null && apiName !== undefined,
     `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
   const endpoint = mappings[apiName]
-  assert(endpoint != null, `${apiName} is not represented in the spec as a json file`)
+  assert(jsDocs, endpoint != null, `${apiName} is not represented in the spec as a json file`)
 
   endpoint.request = request.name
   endpoint.response = response
 
   // This ensures the tags from request end up on the endpoint
-  setTags(request, tags, knownRequestAnnotations, (tags, tag, value) => {
+  setTags(jsDocs, request, tags, knownRequestAnnotations, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'rest_spec_name') {
     } else if (tag === 'visibility') {
       if (endpoint.visibility !== null && endpoint.visibility !== undefined) {
-        assert(endpoint.visibility === value,
+        assert(jsDocs, endpoint.visibility === value,
           `Request ${request.name.name} visibility on annotation ${value} does not match spec: ${endpoint.visibility ?? ''}`)
       }
       endpoint.visibility = model.Visibility[value]
@@ -486,14 +493,16 @@ export function hoistRequestAnnotations (
       // still need to follow up on this in a new PR
       if (value === 'TODO') return
       if (endpoint.stability !== null && endpoint.stability !== undefined) {
-        assert(endpoint.stability === value,
+        assert(jsDocs, endpoint.stability === value,
           `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
       }
       endpoint.stability = model.Stability[value]
     } else if (tag === 'since') {
-      assert(semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)
+      assert(jsDocs, semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)
       endpoint.since = value
-    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
+    } else {
+      assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
+    }
   })
 }
 
@@ -501,14 +510,16 @@ export function hoistRequestAnnotations (
 export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]): void {
   const validTags = ['class_serializer', 'doc_url', 'behavior', 'variants', 'variant']
   const tags = parseJsDocTags(jsDocs)
-  setTags(type, tags, validTags, (tags, tag, value) => {
+  setTags(jsDocs, type, tags, validTags, (tags, tag, value) => {
     if (tag === 'stability') {
     } else if (tag.endsWith('_serializer')) {
     } else if (tag === 'variants') {
     } else if (tag === 'variant') {
     } else if (tag === 'doc_url') {
       type.docUrl = value
-    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
+    } else {
+      assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
+    }
   })
 }
 
@@ -516,7 +527,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
 function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
   const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier']
   const tags = parseJsDocTags(jsDocs)
-  setTags(property, tags, validTags, (tags, tag, value) => {
+  setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'aliases') {
       property.aliases = value.split(',').map(v => v.trim())
@@ -524,17 +535,21 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.identifier = value
     } else if (tag === 'doc_url') {
       property.docUrl = value
-    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
+    } else {
+      assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
+    }
   })
 }
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]): void {
   const validTags = ['obsolete', 'obsolete_description', 'identifier']
   const tags = parseJsDocTags(jsDocs)
-  setTags(member, tags, validTags, (tags, tag, value) => {
+  setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
     if (tag === 'identifier') {
       member.identifier = value
-    } else throw new Error(`Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
+    } else {
+      assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
+    }
   })
 }
 
@@ -614,14 +629,14 @@ export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration):
     .map(t => t.getExpression())
 
   for (const extend of extended) {
-    assert(Node.isReferenceFindableNode(extend))
+    assert(extend, Node.isReferenceFindableNode(extend), 'Should be a reference node')
     const declaration = extend.findReferences()[0].getDefinition().getDeclarationNode()
     if (Node.isClassDeclaration(declaration) || Node.isInterfaceDeclaration(declaration)) {
       if (declaration.getHeritageClauses().length > 0) {
         behaviors.push(...getAllBehaviors(declaration))
       }
     } else {
-      throw new Error(`Unhandled extended declaration ${declaration?.getText() ?? ''}`)
+      assert(declaration, false, `Unhandled extended declaration ${declaration?.getText() ?? ''}`)
     }
   }
 
@@ -672,11 +687,11 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return { kind: 'container' }
   }
 
-  assert(type === 'internal', `Bad variant type: ${type}`)
-  assert(typeof value === 'string', 'Internal variant requires a tag definition')
+  assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
+  assert(jsDoc, typeof value === 'string', 'Internal variant requires a tag definition')
   const [tag, property] = value.split('=')
-  assert(tag === 'tag')
-  assert(typeof property === 'string')
+  assert(jsDoc, tag === 'tag', 'The tag name should be "tag"')
+  assert(jsDoc, typeof property === 'string', 'The tag property is not defined')
 
   return {
     kind: 'internal_tag',
@@ -695,8 +710,8 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
   }
 
   const [key, name] = tags.variant.split('=')
-  assert(key === 'name')
-  assert(typeof name === 'string')
+  assert(jsDoc, key === 'name', 'The key value should be "name"')
+  assert(jsDoc, typeof name === 'string', 'The key value should be "name"')
 
   return name.replace(/'/g, '')
 }
@@ -711,7 +726,7 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
 export function isDefinedButNeverUsed (declaration: ClassDeclaration | InterfaceDeclaration | EnumDeclaration | TypeAliasDeclaration): boolean {
   if (Node.isClassDeclaration(declaration) || Node.isInterfaceDeclaration(declaration)) {
     const name = declaration.getName()
-    assert(name, 'Anonymous classes should not exists')
+    assert(declaration, name != null, 'Anonymous classes should not exists')
     if (name.endsWith('Request') || name.endsWith('Response')) {
       return false
     }
@@ -722,4 +737,46 @@ export function isDefinedButNeverUsed (declaration: ClassDeclaration | Interface
     count += referencedSymbol.getReferences().length
   }
   return count === 1
+}
+
+/**
+ * Verifies if the condition is true, if it's not, it logs the given error message
+ * and prints which part of the spec caused the error is the node has been configured.
+ * This function works as type assertion as well!
+ */
+export function assert (node: Node | Node[] | undefined, condition: boolean, message: string): asserts condition {
+  if (!condition) {
+    let file: string = ''
+    const code: string[] = []
+    if (node != null) {
+      node = Array.isArray(node) ? node : [node]
+
+      const sourceFile = node[0].getSourceFile()
+      const lines = sourceFile.getEndLineNumber()
+      const firstPos = sourceFile.getLineAndColumnAtPos(node[0].getPos())
+      // where to find the offending line (and column)
+      file = `${node[0].getSourceFile().getFilePath()}:${firstPos.line}:${firstPos.column}`
+
+      for (const n of node) {
+        // adds line numbers
+        const text = sourceFile.getFullText().split(EOL).map((line, index) => `${index + 1}  ${line}`)
+        const start = n.getStartLineNumber()
+        const end = n.getEndLineNumber()
+        for (let i = start; i <= end; i++) {
+          // colors the offending lines in red
+          text[i - 1] = chalk.red(text[i - 1])
+        }
+        // show two lines before and two lines after
+        // the offending line(s)
+        const startShow = start - 3 > 0 ? (start - 3) : 0
+        const endShow = end + 2 <= lines ? (end + 2) : lines
+        code.push(text.slice(startShow, endShow).join(EOL))
+      }
+    }
+
+    console.log('Error:', message)
+    if (file.length > 0) console.log('At:', file)
+    if (code.length > 0) console.log(`\`\`\`\n${code.join('\n```\n')}\n\`\`\``)
+    process.exit(1)
+  }
 }
