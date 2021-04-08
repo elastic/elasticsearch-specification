@@ -548,7 +548,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       switch (property.type.type.name) {
         case 'boolean':
           assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
-          property.default = value === 'true' ? true : false
+          property.default = value === 'true'
           break
         case 'number':
           assert(jsDocs, !isNaN(Number(value)), `The default value for ${property.name} should be a number`)
