@@ -547,7 +547,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
     if (tag === 'identifier') {
       member.identifier = value
-    } else  {
+    } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
     }
   })
@@ -744,10 +744,10 @@ export function isDefinedButNeverUsed (declaration: ClassDeclaration | Interface
  * and prints which part of the spec caused the error is the node has been configured.
  * This function works as type assertion as well!
  */
-export function assert (node: Node | Node[] | void, condition: boolean, message: string): asserts condition {
-  if (condition === false) {
+export function assert (node: Node | Node[] | undefined, condition: boolean, message: string): asserts condition {
+  if (!condition) {
     let file: string = ''
-    let code: string[] = []
+    const code: string[] = []
     if (node != null) {
       node = Array.isArray(node) ? node : [node]
 
