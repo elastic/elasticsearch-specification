@@ -36408,7 +36408,7 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
+            "name": "AcknowledgedResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -36418,19 +36418,7 @@
         "name": "ClusterPutComponentTemplateResponse",
         "namespace": "cluster.cluster_put_component_template"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [

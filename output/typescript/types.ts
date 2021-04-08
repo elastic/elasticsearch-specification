@@ -3318,8 +3318,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   }
 }
 
-export interface ClusterPutComponentTemplateResponse extends ResponseBase {
-  stub: integer
+export interface ClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {
 }
 
 export interface ClusterPutSettingsRequest extends RequestBase {
