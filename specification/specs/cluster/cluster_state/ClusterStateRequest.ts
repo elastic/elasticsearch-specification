@@ -33,7 +33,7 @@ interface ClusterStateRequest extends RequestBase {
     flat_settings?: boolean // default false
     ignore_unavailable?: boolean // default false
     local?: boolean // default false
-    master_timeout?: Time  // default 30s
+    master_timeout?: Time // default 30s
     wait_for_metadata_version?: VersionNumber
     wait_for_timeout?: Time
   }

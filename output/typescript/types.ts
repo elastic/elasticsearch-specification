@@ -3399,16 +3399,17 @@ export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
 
 export interface ClusterRerouteState {
   cluster_uuid: Uuid
-  state_uuid: Uuid
-  master_node: string
-  version: VersionNumber
-  blocks: EmptyObject
-  nodes: Record<NodeName, NodeAttributes>
-  routing_table: Record<string, EmptyObject>
-  routing_nodes: ClusterStateRoutingNodes
-  security_tokens: Record<string, string>
-  snapshots: ClusterStateSnapshots
-  snapshot_deletions: ClusterStateDeletedSnapshots
+  state_uuid?: Uuid
+  master_node?: string
+  version?: VersionNumber
+  blocks?: EmptyObject
+  nodes?: Record<NodeName, NodeAttributes>
+  routing_table?: Record<string, EmptyObject>
+  routing_nodes?: ClusterStateRoutingNodes
+  security_tokens?: Record<string, string>
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+  metadata?: ClusterStateMetadata
 }
 
 export interface ClusterShardMetrics {

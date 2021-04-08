@@ -37096,7 +37096,7 @@
         },
         {
           "name": "state_uuid",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37107,7 +37107,7 @@
         },
         {
           "name": "master_node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37118,7 +37118,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37129,7 +37129,7 @@
         },
         {
           "name": "blocks",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37140,7 +37140,7 @@
         },
         {
           "name": "nodes",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -37161,7 +37161,7 @@
         },
         {
           "name": "routing_table",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -37182,7 +37182,7 @@
         },
         {
           "name": "routing_nodes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37193,7 +37193,7 @@
         },
         {
           "name": "security_tokens",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -37214,7 +37214,7 @@
         },
         {
           "name": "snapshots",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37225,11 +37225,22 @@
         },
         {
           "name": "snapshot_deletions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateDeletedSnapshots",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateMetadata",
               "namespace": "cluster"
             }
           }
@@ -37282,7 +37293,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndex",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37417,7 +37428,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterStateBlockIndexSetting",
-                "namespace": "cluster.cluster_state"
+                "namespace": "cluster"
               }
             }
           }
@@ -37483,7 +37494,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterStateBlockIndexMapping",
-                "namespace": "cluster.cluster_state"
+                "namespace": "cluster"
               }
             }
           }
@@ -37543,7 +37554,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndexMapping",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37573,7 +37584,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndexSetting",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37583,7 +37594,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlockIndexSettingRouting",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -37764,7 +37775,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlockIndexSettingVersion",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -37775,7 +37786,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlockIndexSettingLifecycle",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         }
@@ -37785,7 +37796,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndexSettingLifecycle",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37805,7 +37816,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndexSettingRouting",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37815,7 +37826,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlockIndexSettingRoutingAllocation",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         }
@@ -37825,7 +37836,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndexSettingRoutingAllocation",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37855,7 +37866,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndexSettingVersion",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37875,7 +37886,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlocks",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37903,7 +37914,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "ClusterStateBlockIndex",
-                  "namespace": "cluster.cluster_state"
+                  "namespace": "cluster"
                 }
               }
             }
@@ -38172,7 +38183,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadata",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -38204,7 +38215,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadataTemplate",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -38224,7 +38235,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterStateBlockIndex",
-                "namespace": "cluster.cluster_state"
+                "namespace": "cluster"
               }
             }
           }
@@ -38236,7 +38247,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadataIndexGraveyard",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -38247,7 +38258,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadataClusterCoordination",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -38334,7 +38345,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadataClusterCoordination",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -38385,7 +38396,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "VotingConfigExclusionsItem",
-                "namespace": "cluster.cluster_state"
+                "namespace": "cluster"
               }
             }
           }
@@ -38396,7 +38407,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadataIndexGraveyard",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -38408,7 +38419,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Tombstone",
-                "namespace": "cluster.cluster_state"
+                "namespace": "cluster"
               }
             }
           }
@@ -38419,7 +38430,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadataTemplate",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": []
     },
@@ -38648,7 +38659,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlocks",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -38659,7 +38670,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadata",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -124442,7 +124453,7 @@
       "kind": "interface",
       "name": {
         "name": "Tombstone",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -124452,7 +124463,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TombstoneIndex",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -124484,7 +124495,7 @@
       "kind": "interface",
       "name": {
         "name": "TombstoneIndex",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -130876,7 +130887,7 @@
       "kind": "interface",
       "name": {
         "name": "VotingConfigExclusionsItem",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {

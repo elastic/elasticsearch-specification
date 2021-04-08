@@ -19,15 +19,15 @@
 
 class ClusterRerouteState {
   cluster_uuid: Uuid
-  state_uuid: Uuid
-  master_node: string
-  version: VersionNumber
-  blocks: EmptyObject
-  nodes: Dictionary<NodeName, NodeAttributes>
-  routing_table: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
-  routing_nodes: ClusterStateRoutingNodes
-  security_tokens: Dictionary<string, string>
-  snapshots: ClusterStateSnapshots
-  snapshot_deletions: ClusterStateDeletedSnapshots
-  metadata?: ClusterRerouteState
+  state_uuid?: Uuid
+  master_node?: string
+  version?: VersionNumber
+  blocks?: EmptyObject // TODO: this is likely wrong too
+  nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  security_tokens?: Dictionary<string, string>
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+  metadata?: ClusterStateMetadata
 }
