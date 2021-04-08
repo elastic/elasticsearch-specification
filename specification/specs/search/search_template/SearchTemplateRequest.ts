@@ -28,29 +28,29 @@ interface SearchTemplateRequest extends RequestBase {
     type?: Types // deprecated: 7.0
   }
   query_parameters?: {
-    /** @default true */
+    /** @server_default true */
     allow_no_indices?: boolean
-    /** @default false */
+    /** @server_default false */
     ccs_minimize_roundtrips?: boolean
     expand_wildcards?: ExpandWildcards
-    /** default false */
+    /** server_default false */
     explain?: boolean
-    /** @default true */
+    /** @server_default true */
     ignore_throttled?: boolean
-    /** @default false */
+    /** @server_default false */
     ignore_unavailable?: boolean
     preference?: string
-    /** @default false */
+    /** @server_default false */
     profile?: boolean
     routing?: Routing
     scroll?: Time
     search_type?: SearchType
     /**
      * @since 7.0.0
-     * @default false
+     * @server_default false
      */
     total_hits_as_integer?: boolean
-    /** @default false */
+    /** @server_default false */
     typed_keys?: boolean
   }
   body?: {

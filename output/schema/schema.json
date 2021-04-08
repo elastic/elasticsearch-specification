@@ -106074,9 +106074,9 @@
       ],
       "query": [
         {
-          "default": true,
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106086,9 +106086,9 @@
           }
         },
         {
-          "default": false,
           "name": "ccs_minimize_roundtrips",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106120,9 +106120,9 @@
           }
         },
         {
-          "default": true,
           "name": "ignore_throttled",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106132,9 +106132,9 @@
           }
         },
         {
-          "default": false,
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106155,9 +106155,9 @@
           }
         },
         {
-          "default": false,
           "name": "profile",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106200,9 +106200,9 @@
           }
         },
         {
-          "default": false,
           "name": "total_hits_as_integer",
           "required": false,
+          "serverDefault": false,
           "since": "7.0.0",
           "type": {
             "kind": "instance_of",
@@ -106213,9 +106213,9 @@
           }
         },
         {
-          "default": false,
           "name": "typed_keys",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {

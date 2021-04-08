@@ -316,15 +316,15 @@ class Foo {
 }
 ```
 
-#### `@default`
+#### `@server_default`
 
-The default value if the property is not specified.
+The server side default value if the property is not specified.
 Default values can only be specified on optional properties.
 
 ```ts
 class Foo {
   bar: string
-  /** @default hello */
+  /** @server_default hello */
   baz?: string
   faz: string
 }

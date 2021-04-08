@@ -527,7 +527,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'description', 'default']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'description', 'server_default']
   const tags = parseJsDocTags(jsDocs)
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
@@ -542,20 +542,20 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.since = value
     } else if (tag === 'description') {
       property.description = value
-    } else if (tag === 'default') {
+    } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of', `Default values can only be configured for instance_of types, you are using ${property.type.kind}`)
       assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')
       switch (property.type.type.name) {
         case 'boolean':
           assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
-          property.default = value === 'true'
+          property.serverDefault = value === 'true'
           break
         case 'number':
           assert(jsDocs, !isNaN(Number(value)), `The default value for ${property.name} should be a number`)
-          property.default = Number(value)
+          property.serverDefault = Number(value)
           break
         default:
-          property.default = value
+          property.serverDefault = value
       }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
