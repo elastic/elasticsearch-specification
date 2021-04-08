@@ -739,6 +739,11 @@ export function isDefinedButNeverUsed (declaration: ClassDeclaration | Interface
   return count === 1
 }
 
+/**
+ * Verifies if the condition is true, if it's not, it logs the given error message
+ * and prints which part of the spec caused the error is the node has been configured.
+ * This function works as type assertion as well!
+ */
 export function assert (node: Node | Node[] | void, condition: boolean, message: string): asserts condition {
   if (condition === false) {
     let file: string = ''
@@ -749,15 +754,20 @@ export function assert (node: Node | Node[] | void, condition: boolean, message:
       const sourceFile = node[0].getSourceFile()
       const lines = sourceFile.getEndLineNumber()
       const firstPos = sourceFile.getLineAndColumnAtPos(node[0].getPos())
+      // where to find the offending line (and column)
       file = `${node[0].getSourceFile().getFilePath()}:${firstPos.line}:${firstPos.column}`
 
       for (const n of node) {
+        // adds line numbers
         const text = sourceFile.getFullText().split(EOL).map((line, index) => `${index + 1}  ${line}`)
         const start = n.getStartLineNumber()
         const end = n.getEndLineNumber()
         for (let i = start; i <= end; i++) {
+          // colors the offending lines in red
           text[i - 1] = chalk.red(text[i - 1])
         }
+        // show two lines before and two lines after
+        // the offending line(s)
         const startShow = start - 3 > 0 ? (start - 3) : 0
         const endShow = end + 2 <= lines ? (end + 2) : lines
         code.push(text.slice(startShow, endShow).join(EOL))
