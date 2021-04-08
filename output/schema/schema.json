@@ -1879,7 +1879,7 @@
         "name": "ClusterRerouteResponse",
         "namespace": "cluster.cluster_reroute"
       },
-      "since": "0.0.0",
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -36872,23 +36872,12 @@
           }
         },
         {
-          "name": "from_node",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "index",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -36899,7 +36888,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "NodeName",
               "namespace": "internal"
             }
           }
@@ -36916,12 +36905,23 @@
           }
         },
         {
-          "name": "to_node",
-          "required": true,
+          "name": "from_node",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "NodeName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "to_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
               "namespace": "internal"
             }
           }
@@ -36989,17 +36989,6 @@
           }
         },
         {
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
           "name": "metric",
           "required": false,
           "type": {
@@ -37018,6 +37007,17 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         },
@@ -37051,7 +37051,7 @@
       "properties": [
         {
           "name": "explanations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -37124,6 +37124,291 @@
             "type": {
               "name": "VersionNumber",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "blocks",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeAttributes",
+                "namespace": "x_pack.transform.get_transform_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "routing_table",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EmptyObject",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "routing_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteStateRoutingNodes",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "name": "security_tokens",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "snapshots",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteStateSnapshots",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "name": "snapshot_deletions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteStateDeletedSnapshots",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteStateDeletedSnapshots",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "snapshot_deletions",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteStateRoutingNodes",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "unassigned",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeName",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ClusterRerouteStateRoutingNodesShard",
+                  "namespace": "cluster.cluster_reroute"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteStateRoutingNodesShard",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardRoutingState",
+              "namespace": "indices.monitoring.indices_stats"
+            }
+          }
+        },
+        {
+          "name": "primary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "allocation_id",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteStateSnapshots",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "snapshots",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotStatus",
+                "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+              }
             }
           }
         }

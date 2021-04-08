@@ -3373,19 +3373,19 @@ export interface ClusterRerouteExplanation {
 
 export interface ClusterRerouteParameters {
   allow_primary: boolean
-  from_node: string
-  index: string
-  node: string
+  index: IndexName
+  node: NodeName
   shard: integer
-  to_node: string
+  from_node?: NodeName
+  to_node?: NodeName
 }
 
 export interface ClusterRerouteRequest extends RequestBase {
   dry_run?: boolean
   explain?: boolean
-  master_timeout?: Time
   metric?: Metrics
   retry_failed?: boolean
+  master_timeout?: Time
   timeout?: Time
   body?: {
     commands?: Array<ClusterRerouteCommand>
@@ -3393,7 +3393,7 @@ export interface ClusterRerouteRequest extends RequestBase {
 }
 
 export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
-  explanations: Array<ClusterRerouteExplanation>
+  explanations?: Array<ClusterRerouteExplanation>
   state: ClusterRerouteState
 }
 
@@ -3402,6 +3402,35 @@ export interface ClusterRerouteState {
   state_uuid: Uuid
   master_node: string
   version: VersionNumber
+  blocks: EmptyObject
+  nodes: Record<NodeName, NodeAttributes>
+  routing_table: Record<string, EmptyObject>
+  routing_nodes: ClusterRerouteStateRoutingNodes
+  security_tokens: Record<string, string>
+  snapshots: ClusterRerouteStateSnapshots
+  snapshot_deletions: ClusterRerouteStateDeletedSnapshots
+}
+
+export interface ClusterRerouteStateDeletedSnapshots {
+  snapshot_deletions: Array<string>
+}
+
+export interface ClusterRerouteStateRoutingNodes {
+  unassigned: Array<NodeName>
+  nodes: Record<string, Array<ClusterRerouteStateRoutingNodesShard>>
+}
+
+export interface ClusterRerouteStateRoutingNodesShard {
+  state: ShardRoutingState
+  primary: boolean
+  node: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id: Record<string, string>
+}
+
+export interface ClusterRerouteStateSnapshots {
+  snapshots: Array<SnapshotStatus>
 }
 
 export interface ClusterShardMetrics {

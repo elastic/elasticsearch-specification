@@ -18,6 +18,6 @@
  */
 
 class ClusterRerouteResponse extends AcknowledgedResponseBase {
-  explanations: ClusterRerouteExplanation[]
+  explanations?: ClusterRerouteExplanation[]
   state: ClusterRerouteState
 }

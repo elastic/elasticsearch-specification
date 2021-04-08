@@ -24,5 +24,31 @@ class ClusterRerouteState {
   version: VersionNumber
   blocks: EmptyObject
   nodes: Dictionary<NodeName, NodeAttributes>
-  // routing_table:
+  routing_table: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes: ClusterRerouteStateRoutingNodes
+  security_tokens: Dictionary<string, string>
+  snapshots: ClusterRerouteStateSnapshots
+  snapshot_deletions: ClusterRerouteStateDeletedSnapshots
+}
+
+class ClusterRerouteStateSnapshots {
+  snapshots: SnapshotStatus[] // TODO: just a guess, but the tests are not exhaustive enough
+}
+
+class ClusterRerouteStateDeletedSnapshots {
+  snapshot_deletions: string[] // TODO: just a guess, but the tests are not exhaustive enough
+}
+
+class ClusterRerouteStateRoutingNodes {
+  unassigned: NodeName[]
+  nodes: Dictionary<string, ClusterRerouteStateRoutingNodesShard[]>
+}
+
+class ClusterRerouteStateRoutingNodesShard {
+  state: ShardRoutingState
+  primary: boolean
+  node: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id: Dictionary<string, string>
 }
