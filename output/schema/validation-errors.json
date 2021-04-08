@@ -280,16 +280,6 @@
         "Missing response"
       ]
     },
-    "search_template": {
-      "request": [
-        "SearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "SearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
-        "SearchTemplateRequest: should have a body definition"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "shutdown.delete_node": {
       "request": [
         "Missing request"
