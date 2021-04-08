@@ -34966,6 +34966,58 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ClusterIndexTemplate",
+        "namespace": "cluster.cluster_put_component_template"
+      },
+      "properties": [
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AliasDefinition",
+                "namespace": "indices.alias_management"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeMapping",
+              "namespace": "mapping"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterIndicesShardsIndexStats",
         "namespace": "cluster.cluster_stats"
       },
@@ -36352,12 +36404,77 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub_c",
+            "name": "template",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "ClusterIndexTemplate",
+                "namespace": "cluster.cluster_put_component_template"
+              }
+            }
+          },
+          {
+            "name": "aliases",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AliasDefinition",
+                  "namespace": "indices.alias_management"
+                }
+              }
+            }
+          },
+          {
+            "name": "mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TypeMapping",
+                "namespace": "mapping"
+              }
+            }
+          },
+          {
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexSettings",
+                "namespace": "cluster"
+              }
+            }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VersionNumber",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexMetaData",
                 "namespace": "internal"
               }
             }
@@ -36379,12 +36496,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The name of the template",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -36392,13 +36510,24 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "create",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
@@ -69211,6 +69340,24 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "false"
+        },
+        {
+          "name": "checksum"
+        },
+        {
+          "name": "true"
+        }
+      ],
+      "name": {
+        "name": "IndexCheckOnStartup",
+        "namespace": "cluster"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69505,6 +69652,27 @@
           }
         }
       ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexMetaData",
+        "namespace": "internal"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      }
     },
     {
       "kind": "type_alias",
@@ -69868,6 +70036,559 @@
     {
       "kind": "interface",
       "name": {
+        "name": "IndexSettingBlocks",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "read_only",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "read_only_allow_delete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "read",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "write",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingRouting",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "allocation.enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRoutingAllocation",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "rebalance.enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRoutingRebalance",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "new_primaries"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexSettingRoutingAllocation",
+        "namespace": "cluster"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "replicas"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexSettingRoutingRebalance",
+        "namespace": "cluster"
+      }
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings",
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettings",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "index.number_of_shards"
+          ],
+          "name": "number_of_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.number_of_replicas"
+          ],
+          "name": "number_of_replicas",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.number_of_routing_shards"
+          ],
+          "name": "number_of_routing_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.check_on_startup"
+          ],
+          "name": "check_on_startup",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexCheckOnStartup",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.codec"
+          ],
+          "name": "codec",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.routing_partition_size"
+          ],
+          "name": "routing_partition_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.soft_deletes.retention_lease.period"
+          ],
+          "name": "soft_deletes.retention_lease.period",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.load_fixed_bitset_filters_eagerly"
+          ],
+          "name": "load_fixed_bitset_filters_eagerly",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.hidden"
+          ],
+          "name": "hidden",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.auto_expand_replicas"
+          ],
+          "name": "auto_expand_replicas",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.search.idle.after"
+          ],
+          "name": "search.idle.after",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.refresh_interval"
+          ],
+          "name": "refresh_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_result_window"
+          ],
+          "name": "max_result_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_inner_result_window"
+          ],
+          "name": "max_inner_result_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_rescore_window"
+          ],
+          "name": "max_rescore_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_docvalue_fields_search"
+          ],
+          "name": "max_docvalue_fields_search",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_script_fields"
+          ],
+          "name": "max_script_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_ngram_diff"
+          ],
+          "name": "max_ngram_diff",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_shingle_diff"
+          ],
+          "name": "max_shingle_diff",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.bocks"
+          ],
+          "name": "blocks",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingBlocks",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_refresh_listeners"
+          ],
+          "name": "max_refresh_listeners",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.analyze.max_token_count"
+          ],
+          "name": "analyze.max_token_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.highlight.max_analyzed_offset"
+          ],
+          "name": "highlight.max_analyzed_offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_terms_count"
+          ],
+          "name": "max_terms_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_regex_length"
+          ],
+          "name": "max_regex_length",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.routing"
+          ],
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRouting",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.gc_deletes"
+          ],
+          "name": "gc_deletes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.default_pipeline"
+          ],
+          "name": "default_pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.final_pipeline"
+          ],
+          "name": "final_pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "IndexState",
         "namespace": "index_modules.index_settings"
       },
@@ -69908,16 +70629,10 @@
           "name": "settings",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "cluster"
             }
           }
         }
@@ -70798,16 +71513,10 @@
           "name": "_meta",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexMetaData",
+              "namespace": "internal"
             }
           }
         }
@@ -88419,6 +89128,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "PipelineName",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "inherits": [
@@ -124797,16 +125520,10 @@
           "name": "_meta",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexMetaData",
+              "namespace": "internal"
             }
           }
         },

@@ -3147,6 +3147,12 @@ export interface ClusterHealthResponse extends ResponseBase {
   unassigned_shards: integer
 }
 
+export interface ClusterIndexTemplate {
+  aliases?: Record<string, AliasDefinition>
+  mappings?: TypeMapping
+  settings?: IndexSettings
+}
+
 export interface ClusterIndicesShardsIndexStats {
   primaries: ClusterShardMetrics
   replication: ClusterShardMetrics
@@ -3311,10 +3317,16 @@ export interface ClusterProcessorStats {
 }
 
 export interface ClusterPutComponentTemplateRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
+  name: Name
+  create?: boolean
+  master_timeout?: Time
   body: {
-    stub_c: string
+    template: ClusterIndexTemplate
+    aliases?: Record<string, AliasDefinition>
+    mappings?: TypeMapping
+    settings?: IndexSettings
+    version?: VersionNumber
+    _meta?: IndexMetaData
   }
 }
 
@@ -6992,6 +7004,8 @@ export interface IndexBlockStatus {
   blocked: boolean
 }
 
+export type IndexCheckOnStartup = 'false' | 'checksum' | 'true'
+
 export interface IndexExistsRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -7024,6 +7038,8 @@ export interface IndexMappings {
   item: TypeMapping
   mappings: TypeMapping
 }
+
+export type IndexMetaData = Record<string, any>
 
 export type IndexName = string
 
@@ -7063,10 +7079,88 @@ export interface IndexSegment {
   shards: Record<string, ShardsSegment | Array<ShardsSegment>>
 }
 
+export interface IndexSettingBlocks {
+  read_only?: boolean
+  read_only_allow_delete?: boolean
+  read?: boolean
+  write?: boolean
+  metadata?: boolean
+}
+
+export interface IndexSettingRouting {
+  'allocation.enable'?: IndexSettingRoutingAllocation
+  'rebalance.enable'?: IndexSettingRoutingRebalance
+}
+
+export type IndexSettingRoutingAllocation = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export type IndexSettingRoutingRebalance = 'all' | 'primaries' | 'replicas' | 'none'
+
+export interface IndexSettings {
+  number_of_shards?: integer
+  'index.number_of_shards'?: integer
+  number_of_replicas?: integer
+  'index.number_of_replicas'?: integer
+  number_of_routing_shards?: integer
+  'index.number_of_routing_shards'?: integer
+  check_on_startup?: IndexCheckOnStartup
+  'index.check_on_startup'?: IndexCheckOnStartup
+  codec?: string
+  'index.codec'?: string
+  routing_partition_size?: integer
+  'index.routing_partition_size'?: integer
+  'soft_deletes.retention_lease.period'?: Time
+  'index.soft_deletes.retention_lease.period'?: Time
+  load_fixed_bitset_filters_eagerly?: boolean
+  'index.load_fixed_bitset_filters_eagerly'?: boolean
+  hidden?: boolean
+  'index.hidden'?: boolean
+  auto_expand_replicas?: string
+  'index.auto_expand_replicas'?: string
+  'search.idle.after'?: Time
+  'index.search.idle.after'?: Time
+  refresh_interval?: Time
+  'index.refresh_interval'?: Time
+  max_result_window?: integer
+  'index.max_result_window'?: integer
+  max_inner_result_window?: integer
+  'index.max_inner_result_window'?: integer
+  max_rescore_window?: integer
+  'index.max_rescore_window'?: integer
+  max_docvalue_fields_search?: integer
+  'index.max_docvalue_fields_search'?: integer
+  max_script_fields?: integer
+  'index.max_script_fields'?: integer
+  max_ngram_diff?: integer
+  'index.max_ngram_diff'?: integer
+  max_shingle_diff?: integer
+  'index.max_shingle_diff'?: integer
+  blocks?: IndexSettingBlocks
+  'index.bocks'?: IndexSettingBlocks
+  max_refresh_listeners?: integer
+  'index.max_refresh_listeners'?: integer
+  'analyze.max_token_count'?: integer
+  'index.analyze.max_token_count'?: integer
+  'highlight.max_analyzed_offset'?: integer
+  'index.highlight.max_analyzed_offset'?: integer
+  max_terms_count?: integer
+  'index.max_terms_count'?: integer
+  max_regex_length?: integer
+  'index.max_regex_length'?: integer
+  routing?: IndexSettingRouting
+  'index.routing'?: IndexSettingRouting
+  gc_deletes?: Time
+  'index.gc_deletes'?: Time
+  default_pipeline?: PipelineName
+  'index.default_pipeline'?: PipelineName
+  final_pipeline?: PipelineName
+  'index.final_pipeline'?: PipelineName
+}
+
 export interface IndexState {
   aliases: Record<IndexName, Alias>
   mappings: TypeMapping
-  settings: Record<string, any>
+  settings: IndexSettings
 }
 
 export interface IndexStats {
@@ -7160,7 +7254,7 @@ export interface IndicesGetDataStreamItem {
   hidden: boolean
   status: DataStreamHealthStatus
   ilm_policy?: Name
-  _meta?: Record<string, any>
+  _meta?: IndexMetaData
 }
 
 export interface IndicesGetDataStreamItemIndex {
@@ -9165,6 +9259,8 @@ export interface PipelineAggregationBase extends Aggregation {
   format?: string
   gap_policy?: GapPolicy
 }
+
+export type PipelineName = string
 
 export interface PipelineProcessor extends ProcessorBase {
   name: string
@@ -13134,7 +13230,7 @@ export interface TypeMapping {
   dynamic_templates?: Record<string, DynamicTemplate> | Array<Record<string, DynamicTemplate>>
   _field_names?: FieldNamesField
   index_field?: IndexField
-  _meta?: Record<string, any>
+  _meta?: IndexMetaData
   numeric_detection?: boolean
   properties?: Record<PropertyName, Property>
   _routing?: RoutingField

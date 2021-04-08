@@ -134,6 +134,8 @@ type Metrics = string | string[]
 type Name = string
 type Names = string | string[]
 
+type PipelineName = string
+
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 type DataStreamName = string
 
@@ -141,6 +143,9 @@ type DataStreamName = string
 type ByteSize = long | string
 
 type Percentage = string | float
+
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+type IndexMetaData = Dictionary<string, UserDefinedValue>
 
 // Versionining Numbers & Strings
 type VersionNumber = long

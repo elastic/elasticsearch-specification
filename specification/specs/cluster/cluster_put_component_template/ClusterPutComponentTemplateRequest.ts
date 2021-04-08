@@ -23,13 +23,25 @@
  * @stability TODO
  */
 interface ClusterPutComponentTemplateRequest extends RequestBase {
-  path_parts?: {
-    stub_a: string
+  path_parts: {
+    name: Name
   }
   query_parameters?: {
-    stub_b: string
+    create?: boolean // default: false
+    master_timeout?: Time // default: 30s
   }
-  body?: {
-    stub_c: string
+  body: {
+    template: ClusterIndexTemplate
+    aliases?: Dictionary<string, AliasDefinition>
+    mappings?: TypeMapping
+    settings?: IndexSettings
+    version?: VersionNumber
+    _meta?: IndexMetaData
   }
+}
+
+class ClusterIndexTemplate {
+  aliases?: Dictionary<string, AliasDefinition>
+  mappings?: TypeMapping
+  settings?: IndexSettings
 }
