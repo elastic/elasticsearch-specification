@@ -22,14 +22,4 @@
  * @since 7.0.0
  * @stability TODO
  */
-interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
-  path_parts?: {
-    stub_a: string
-  }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
-}
+interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {}
