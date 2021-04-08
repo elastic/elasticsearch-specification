@@ -17,19 +17,10 @@
  * under the License.
  */
 
-class ClusterStateBlocks {
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
+class ClusterStateSnapshots {
+  snapshots: SnapshotStatus[] // TODO: just a guess, but the tests are not exhaustive enough
 }
 
-class ClusterStateBlockIndex {
-  description: string
-  retryable: boolean
-  levels: string[]
-  aliases?: Array<IndexAlias>
-  aliases_version?: VersionNumber
-  version?: VersionNumber
-  mapping_version?: VersionNumber
-  settings_version?: VersionNumber
-  routing_num_shards?: VersionNumber
-  state?: string // TODO: create enum of values
+class ClusterStateDeletedSnapshots {
+  snapshot_deletions: string[] // TODO: just a guess, but the tests are not exhaustive enough
 }

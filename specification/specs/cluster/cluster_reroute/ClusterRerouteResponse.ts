@@ -17,8 +17,7 @@
  * under the License.
  */
 
-class ClusterRerouteResponse extends ResponseBase {
-  acknowledged: boolean
-  explanations: ClusterRerouteExplanation[]
-  state: string[]
+class ClusterRerouteResponse extends AcknowledgedResponseBase {
+  explanations?: ClusterRerouteExplanation[]
+  state: ClusterRerouteState
 }

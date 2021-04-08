@@ -1879,7 +1879,7 @@
         "name": "ClusterRerouteResponse",
         "namespace": "cluster.cluster_reroute"
       },
-      "since": "0.0.0",
+      "since": "5.0.0",
       "stability": "stable",
       "urls": [
         {
@@ -1906,7 +1906,7 @@
         "name": "ClusterStateResponse",
         "namespace": "cluster.cluster_state"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -1945,7 +1945,7 @@
         "name": "ClusterStatsResponse",
         "namespace": "cluster.cluster_stats"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -34254,22 +34254,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -34283,32 +34267,8 @@
         "name": "ClusterDeleteVotingConfigExclusionsRequest",
         "namespace": "cluster.cluster_delete_voting_config_exclusions"
       },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "inherits": [
@@ -34463,13 +34423,16 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "component_templates",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ComponentTemplate",
+                "namespace": "cluster"
+              }
             }
           }
         }
@@ -34961,6 +34924,58 @@
             "type": {
               "name": "integer",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterIndexTemplate",
+        "namespace": "cluster.cluster_put_component_template"
+      },
+      "properties": [
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AliasDefinition",
+                "namespace": "indices.alias_management"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeMapping",
+              "namespace": "mapping"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "cluster"
             }
           }
         }
@@ -36355,12 +36370,77 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub_c",
+            "name": "template",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "ClusterIndexTemplate",
+                "namespace": "cluster.cluster_put_component_template"
+              }
+            }
+          },
+          {
+            "name": "aliases",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AliasDefinition",
+                  "namespace": "indices.alias_management"
+                }
+              }
+            }
+          },
+          {
+            "name": "mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TypeMapping",
+                "namespace": "mapping"
+              }
+            }
+          },
+          {
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexSettings",
+                "namespace": "cluster"
+              }
+            }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VersionNumber",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexMetaData",
                 "namespace": "internal"
               }
             }
@@ -36382,12 +36462,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "description": "The name of the template",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -36395,13 +36476,24 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "create",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
             }
           }
         }
@@ -36411,7 +36503,7 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
+            "name": "AcknowledgedResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -36421,19 +36513,7 @@
         "name": "ClusterPutComponentTemplateResponse",
         "namespace": "cluster.cluster_put_component_template"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -36758,23 +36838,12 @@
           }
         },
         {
-          "name": "from_node",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "index",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "IndexName",
               "namespace": "internal"
             }
           }
@@ -36785,7 +36854,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "NodeName",
               "namespace": "internal"
             }
           }
@@ -36802,12 +36871,23 @@
           }
         },
         {
-          "name": "to_node",
-          "required": true,
+          "name": "from_node",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "NodeName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "to_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
               "namespace": "internal"
             }
           }
@@ -36875,17 +36955,6 @@
           }
         },
         {
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
           "name": "metric",
           "required": false,
           "type": {
@@ -36908,6 +36977,17 @@
           }
         },
         {
+          "name": "master_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
           "name": "timeout",
           "required": false,
           "type": {
@@ -36924,7 +37004,7 @@
       "inherits": [
         {
           "type": {
-            "name": "ResponseBase",
+            "name": "AcknowledgedResponseBase",
             "namespace": "common_abstractions.response"
           }
         }
@@ -36936,19 +37016,8 @@
       },
       "properties": [
         {
-          "name": "acknowledged",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "explanations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -36964,13 +37033,181 @@
           "name": "state",
           "required": true,
           "type": {
-            "kind": "array_of",
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteState",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteState",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "cluster_uuid",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "state_uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "master_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "blocks",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeAttributes",
+                "namespace": "x_pack.transform.get_transform_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "routing_table",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EmptyObject",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "routing_nodes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateRoutingNodes",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "security_tokens",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
             "value": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "snapshots",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateSnapshots",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "snapshot_deletions",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateDeletedSnapshots",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateMetadata",
+              "namespace": "cluster"
             }
           }
         }
@@ -37022,12 +37259,12 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlockIndex",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37038,7 +37275,7 @@
         },
         {
           "name": "retryable",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37049,7 +37286,7 @@
         },
         {
           "name": "levels",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -37140,6 +37377,474 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexSetting",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "in_sync_allocations",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "primary_terms",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexMapping",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "rollover_info",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RolloverConditions",
+                "namespace": "indices.index_management.rollover_index"
+              }
+            }
+          }
+        },
+        {
+          "name": "timestamp_range",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "system",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexMapping",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "properties",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Property",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSetting",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingRouting",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "refresh_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "name": "number_of_shards",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "number_of_replicas",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "verified_before_close",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "hidden",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "provided_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "auto_expand_replicas",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "creation_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingVersion",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "lifecycle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingLifecycle",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingLifecycle",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingRouting",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "allocation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingRoutingAllocation",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingRoutingAllocation",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "include",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingVersion",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -37147,7 +37852,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlocks",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37175,7 +37880,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "ClusterStateBlockIndex",
-                  "namespace": "cluster.cluster_state"
+                  "namespace": "cluster"
                 }
               }
             }
@@ -37186,8 +37891,265 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ClusterStateDeletedSnapshots",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "snapshot_deletions",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateIndexLifecycle",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "policies",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateIndexLifecycleSummary",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "operation_mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleOperationMode",
+              "namespace": "x_pack.ilm.get_status"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateIndexLifecyclePolicy",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "phases",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Phases",
+              "namespace": "x_pack.ilm"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateIndexLifecycleSummary",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "policy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateIndexLifecyclePolicy",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "headers",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "modified_date",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "modified_date_string",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateIngest",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "pipeline",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateIngestPipeline",
+                "namespace": "cluster"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateIngestPipeline",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateIngestPipelineConfig",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateIngestPipelineConfig",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ProcessorContainer",
+                "namespace": "ingest"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterStateMetadata",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37219,7 +38181,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadataTemplate",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -37236,20 +38198,10 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ClusterStateBlockIndex",
-                  "namespace": "cluster.cluster_state"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndex",
+                "namespace": "cluster"
               }
             }
           }
@@ -37261,7 +38213,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadataIndexGraveyard",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -37272,7 +38224,84 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadataClusterCoordination",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "ingest",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateIngest",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "repositories",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "component_template",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "index_template",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "index_lifecycle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateIndexLifecycle",
+              "namespace": "cluster"
             }
           }
         }
@@ -37282,7 +38311,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadataClusterCoordination",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37332,8 +38361,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "VotingConfigExclusionsItem",
+                "namespace": "cluster"
               }
             }
           }
@@ -37344,7 +38373,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadataIndexGraveyard",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": [
         {
@@ -37355,8 +38384,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Tombstone",
+                "namespace": "cluster"
               }
             }
           }
@@ -37367,7 +38396,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateMetadataTemplate",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster"
       },
       "properties": []
     },
@@ -37596,7 +38625,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlocks",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
             }
           }
         },
@@ -37607,7 +38636,269 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateMetadata",
-              "namespace": "cluster.cluster_state"
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeAttributes",
+                "namespace": "x_pack.transform.get_transform_stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "routing_table",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EmptyObject",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "routing_nodes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateRoutingNodes",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "snapshots",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateSnapshots",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "snapshot_deletions",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateDeletedSnapshots",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateRoutingNodes",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "unassigned",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateRoutingNodesShard",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ClusterStateRoutingNodesShard",
+                  "namespace": "cluster"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateRoutingNodesShard",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardRoutingState",
+              "namespace": "indices.monitoring.indices_stats"
+            }
+          }
+        },
+        {
+          "name": "primary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "allocation_id",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "recovery_source",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "unassigned_info",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UnassignedInformation",
+              "namespace": "cluster.cluster_allocation_explain"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateSnapshots",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "snapshots",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotStatus",
+                "namespace": "modules.snapshot_and_restore.snapshot.snapshot_status"
+              }
             }
           }
         }
@@ -37727,6 +39018,17 @@
       },
       "properties": [
         {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
           "name": "cluster_name",
           "required": true,
           "type": {
@@ -37789,17 +39091,6 @@
             "type": {
               "name": "long",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_nodes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeStatistics",
-              "namespace": "cluster"
             }
           }
         }
@@ -38197,23 +39488,13 @@
           }
         },
         {
-          "name": "fields",
+          "name": "size",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "CompletionStats",
-                "namespace": "common_options.stats"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
             }
           }
         }
@@ -38472,6 +39753,144 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ComponentTemplate",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "component_template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ComponentTemplateNode",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ComponentTemplateNode",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ComponentTemplateSummary",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ComponentTemplateSummary",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "_meta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexMetaData",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexSetting",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexMapping",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexAlias",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -54353,6 +55772,17 @@
           }
         },
         {
+          "name": "memory_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "memory_size_in_bytes",
           "required": true,
           "type": {
@@ -54360,27 +55790,6 @@
             "type": {
               "name": "long",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FielddataStats",
-                "namespace": "common_options.stats"
-              }
             }
           }
         }
@@ -58584,19 +59993,37 @@
           "name": "right"
         },
         {
+          "name": "RIGHT"
+        },
+        {
           "name": "counterclockwise"
+        },
+        {
+          "name": "COUNTERCLOCKWISE"
         },
         {
           "name": "ccw"
         },
         {
+          "name": "CCW"
+        },
+        {
           "name": "left"
+        },
+        {
+          "name": "LEFT"
         },
         {
           "name": "clockwise"
         },
         {
+          "name": "CLOCKWISE"
+        },
+        {
           "name": "cw"
+        },
+        {
+          "name": "CW"
         }
       ],
       "name": {
@@ -68900,6 +70327,24 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "false"
+        },
+        {
+          "name": "checksum"
+        },
+        {
+          "name": "true"
+        }
+      ],
+      "name": {
+        "name": "IndexCheckOnStartup",
+        "namespace": "cluster"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -69194,6 +70639,27 @@
           }
         }
       ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexMetaData",
+        "namespace": "internal"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      }
     },
     {
       "kind": "type_alias",
@@ -69557,6 +71023,559 @@
     {
       "kind": "interface",
       "name": {
+        "name": "IndexSettingBlocks",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "read_only",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "read_only_allow_delete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "read",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "write",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingRouting",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "allocation.enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRoutingAllocation",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "rebalance.enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRoutingRebalance",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "new_primaries"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexSettingRoutingAllocation",
+        "namespace": "cluster"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "replicas"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexSettingRoutingRebalance",
+        "namespace": "cluster"
+      }
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings",
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettings",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "index.number_of_shards"
+          ],
+          "name": "number_of_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.number_of_replicas"
+          ],
+          "name": "number_of_replicas",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.number_of_routing_shards"
+          ],
+          "name": "number_of_routing_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.check_on_startup"
+          ],
+          "name": "check_on_startup",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexCheckOnStartup",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.codec"
+          ],
+          "name": "codec",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.routing_partition_size"
+          ],
+          "name": "routing_partition_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.soft_deletes.retention_lease.period"
+          ],
+          "name": "soft_deletes.retention_lease.period",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.load_fixed_bitset_filters_eagerly"
+          ],
+          "name": "load_fixed_bitset_filters_eagerly",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.hidden"
+          ],
+          "name": "hidden",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.auto_expand_replicas"
+          ],
+          "name": "auto_expand_replicas",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.search.idle.after"
+          ],
+          "name": "search.idle.after",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.refresh_interval"
+          ],
+          "name": "refresh_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_result_window"
+          ],
+          "name": "max_result_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_inner_result_window"
+          ],
+          "name": "max_inner_result_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_rescore_window"
+          ],
+          "name": "max_rescore_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_docvalue_fields_search"
+          ],
+          "name": "max_docvalue_fields_search",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_script_fields"
+          ],
+          "name": "max_script_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_ngram_diff"
+          ],
+          "name": "max_ngram_diff",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_shingle_diff"
+          ],
+          "name": "max_shingle_diff",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.bocks"
+          ],
+          "name": "blocks",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingBlocks",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_refresh_listeners"
+          ],
+          "name": "max_refresh_listeners",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.analyze.max_token_count"
+          ],
+          "name": "analyze.max_token_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.highlight.max_analyzed_offset"
+          ],
+          "name": "highlight.max_analyzed_offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_terms_count"
+          ],
+          "name": "max_terms_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_regex_length"
+          ],
+          "name": "max_regex_length",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.routing"
+          ],
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRouting",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.gc_deletes"
+          ],
+          "name": "gc_deletes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.default_pipeline"
+          ],
+          "name": "default_pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.final_pipeline"
+          ],
+          "name": "final_pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineName",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "IndexState",
         "namespace": "index_modules.index_settings"
       },
@@ -69597,16 +71616,10 @@
           "name": "settings",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "cluster"
             }
           }
         }
@@ -70487,16 +72500,10 @@
           "name": "_meta",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexMetaData",
+              "namespace": "internal"
             }
           }
         }
@@ -82783,18 +84790,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -82805,7 +84812,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -82818,6 +84825,17 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "cluster.nodes_info"
             }
           }
         }
@@ -83888,6 +85906,21 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node",
+      "kind": "type_alias",
+      "name": {
+        "name": "NodeName",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "NodeOperatingSystemInfo",
@@ -84162,6 +86195,21 @@
           "name": "data"
         },
         {
+          "name": "data_cold"
+        },
+        {
+          "name": "data_content"
+        },
+        {
+          "name": "data_frozen"
+        },
+        {
+          "name": "data_hot"
+        },
+        {
+          "name": "data_warm"
+        },
+        {
           "name": "client"
         },
         {
@@ -84186,6 +86234,23 @@
       "name": {
         "name": "NodeRole",
         "namespace": "cluster.nodes_info"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "NodeRoles",
+        "namespace": "cluster.nodes_info"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "NodeRole",
+            "namespace": "cluster.nodes_info"
+          }
+        }
       }
     },
     {
@@ -88108,6 +90173,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "PipelineName",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "inherits": [
@@ -93875,7 +95954,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -93886,7 +95965,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -93897,7 +95976,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -93908,7 +95987,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "memory_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -93919,7 +96009,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -93930,7 +96020,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -93941,7 +96031,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -107527,7 +109617,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_values_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107538,7 +109639,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -107565,12 +109666,34 @@
           }
         },
         {
+          "name": "fixed_bit_set",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "fixed_bit_set_memory_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_writer_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107581,7 +109704,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -107592,7 +109715,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -107603,7 +109726,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107614,7 +109748,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "norms_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107625,7 +109770,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "points_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107636,7 +109792,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stored_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107647,7 +109814,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -107658,7 +109825,29 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "terms_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "term_vectory_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107669,7 +109858,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version_map_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -107680,7 +109880,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -117493,7 +119693,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -117504,7 +119704,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reserved",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -117515,7 +119726,29 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_data_set_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_data_set_size_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -122399,6 +124632,79 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Tombstone",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TombstoneIndex",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "delete_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "delete_date_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TombstoneIndex",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "index_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_uuid",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TopHit",
         "namespace": "x_pack.text_structure"
       },
@@ -124500,16 +126806,10 @@
           "name": "_meta",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexMetaData",
+              "namespace": "internal"
             }
           }
         },
@@ -124706,7 +127006,7 @@
         },
         {
           "name": "last_allocation_status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124744,6 +127044,28 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "delayed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "allocation_status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -128740,6 +131062,37 @@
         "name": "VersionType",
         "namespace": "common"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "VotingConfigExclusionsItem",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",

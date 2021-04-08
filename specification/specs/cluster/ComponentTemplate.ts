@@ -17,12 +17,19 @@
  * under the License.
  */
 
-class ClusterStatsResponse extends NodesResponseBase {
-  _nodes: NodeStatistics
-  cluster_name: Name
-  cluster_uuid: Uuid
-  indices: ClusterIndicesStats
-  nodes: ClusterNodesStats
-  status: ClusterStatus
-  timestamp: long
+class ComponentTemplate {
+  name: Name
+  component_template: ComponentTemplateNode
+}
+
+class ComponentTemplateNode {
+  template: ComponentTemplateSummary
+}
+
+class ComponentTemplateSummary {
+  _meta?: IndexMetaData
+  version?: VersionNumber
+  settings: Dictionary<IndexName, ClusterStateBlockIndexSetting>
+  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
+  aliases?: Array<IndexAlias>
 }

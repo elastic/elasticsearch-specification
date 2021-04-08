@@ -17,12 +17,17 @@
  * under the License.
  */
 
-class ClusterStatsResponse extends NodesResponseBase {
-  _nodes: NodeStatistics
-  cluster_name: Name
-  cluster_uuid: Uuid
-  indices: ClusterIndicesStats
-  nodes: ClusterNodesStats
-  status: ClusterStatus
-  timestamp: long
+class ClusterStateIngest {
+  pipeline: ClusterStateIngestPipeline[]
+}
+
+class ClusterStateIngestPipeline {
+  id: Id
+  config: ClusterStateIngestPipelineConfig
+}
+
+class ClusterStateIngestPipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
 }

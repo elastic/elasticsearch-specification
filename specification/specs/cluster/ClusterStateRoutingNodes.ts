@@ -17,12 +17,18 @@
  * under the License.
  */
 
-class ClusterStatsResponse extends NodesResponseBase {
-  _nodes: NodeStatistics
-  cluster_name: Name
-  cluster_uuid: Uuid
-  indices: ClusterIndicesStats
-  nodes: ClusterNodesStats
-  status: ClusterStatus
-  timestamp: long
+class ClusterStateRoutingNodes {
+  unassigned: ClusterStateRoutingNodesShard[]
+  nodes: Dictionary<string, ClusterStateRoutingNodesShard[]>
+}
+
+class ClusterStateRoutingNodesShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Dictionary<string, string>
+  recovery_source?: Dictionary<string, string>
+  unassigned_info?: UnassignedInformation
 }
