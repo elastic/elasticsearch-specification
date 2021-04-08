@@ -1945,7 +1945,7 @@
         "name": "ClusterStatsResponse",
         "namespace": "cluster.cluster_stats"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -38473,6 +38473,17 @@
       },
       "properties": [
         {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
           "name": "cluster_name",
           "required": true,
           "type": {
@@ -38535,17 +38546,6 @@
             "type": {
               "name": "long",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_nodes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeStatistics",
-              "namespace": "cluster"
             }
           }
         }
@@ -38943,23 +38943,13 @@
           }
         },
         {
-          "name": "fields",
+          "name": "size",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "CompletionStats",
-                "namespace": "common_options.stats"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
             }
           }
         }
@@ -55099,6 +55089,17 @@
           }
         },
         {
+          "name": "memory_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "memory_size_in_bytes",
           "required": true,
           "type": {
@@ -55106,27 +55107,6 @@
             "type": {
               "name": "long",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FielddataStats",
-                "namespace": "common_options.stats"
-              }
             }
           }
         }
@@ -95273,7 +95253,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -95284,7 +95264,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -95295,7 +95275,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -95306,7 +95286,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "memory_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -95317,7 +95308,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -95328,7 +95319,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -95339,7 +95330,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -108849,7 +108840,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_values_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108860,7 +108862,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -108887,12 +108889,34 @@
           }
         },
         {
+          "name": "fixed_bit_set",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "fixed_bit_set_memory_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_writer_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108903,7 +108927,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -108914,7 +108938,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -108925,7 +108949,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108936,7 +108971,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "norms_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108947,7 +108993,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "points_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108958,7 +109015,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stored_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108969,7 +109037,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -108980,7 +109048,29 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "terms_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "term_vectory_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -108991,7 +109081,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version_map_memory",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -109002,7 +109103,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -118815,7 +118916,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -118826,7 +118927,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reserved",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -118837,7 +118949,29 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_data_set_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_data_set_size_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }

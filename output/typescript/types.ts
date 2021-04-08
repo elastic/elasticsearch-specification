@@ -3547,13 +3547,13 @@ export interface ClusterStatsRequest extends RequestBase {
 }
 
 export interface ClusterStatsResponse extends NodesResponseBase {
+  _nodes: NodeStatistics
   cluster_name: Name
   cluster_uuid: Uuid
   indices: ClusterIndicesStats
   nodes: ClusterNodesStats
   status: ClusterStatus
   timestamp: long
-  _nodes: NodeStatistics
 }
 
 export type ClusterStatus = 'green' | 'yellow' | 'red'
@@ -3603,7 +3603,7 @@ export interface CompletionProperty extends DocValuesPropertyBase {
 
 export interface CompletionStats {
   size_in_bytes: long
-  fields?: Record<Field, CompletionStats>
+  size?: ByteSize
 }
 
 export interface CompletionSuggestOption<TDocument = unknown> {
@@ -5394,8 +5394,8 @@ export interface FielddataFrequencyFilter {
 
 export interface FielddataStats {
   evictions?: long
+  memory_size?: ByteSize
   memory_size_in_bytes: long
-  fields?: Record<Field, FielddataStats>
 }
 
 export type Fields = Field | Array<Field>
@@ -9921,13 +9921,14 @@ export interface QueryBreakdown {
 }
 
 export interface QueryCacheStats {
-  cache_count: long
-  cache_size: long
-  evictions: long
-  hit_count: long
-  memory_size_in_bytes: long
-  miss_count: long
-  total_count: long
+  cache_count: integer
+  cache_size: integer
+  evictions: integer
+  hit_count: integer
+  memory_size?: ByteSize
+  memory_size_in_bytes: integer
+  miss_count: integer
+  total_count: integer
 }
 
 export interface QueryContainer {
@@ -11379,20 +11380,30 @@ export interface SegmentsResponse extends ResponseBase {
 }
 
 export interface SegmentsStats {
-  count: long
-  doc_values_memory_in_bytes: long
+  count: integer
+  doc_values_memory?: ByteSize
+  doc_values_memory_in_bytes: integer
   file_sizes: Record<string, ShardFileSizeInfo>
-  fixed_bit_set_memory_in_bytes: long
-  index_writer_max_memory_in_bytes?: long
-  index_writer_memory_in_bytes: long
-  max_unsafe_auto_id_timestamp: long
-  memory_in_bytes: long
-  norms_memory_in_bytes: long
-  points_memory_in_bytes: long
-  stored_fields_memory_in_bytes: long
-  terms_memory_in_bytes: long
-  term_vectors_memory_in_bytes: long
-  version_map_memory_in_bytes: long
+  fixed_bit_set?: ByteSize
+  fixed_bit_set_memory_in_bytes: integer
+  index_writer_memory?: ByteSize
+  index_writer_max_memory_in_bytes?: integer
+  index_writer_memory_in_bytes: integer
+  max_unsafe_auto_id_timestamp: integer
+  memory?: ByteSize
+  memory_in_bytes: integer
+  norms_memory?: ByteSize
+  norms_memory_in_bytes: integer
+  points_memory?: ByteSize
+  points_memory_in_bytes: integer
+  stored_memory?: ByteSize
+  stored_fields_memory_in_bytes: integer
+  terms_memory_in_bytes: integer
+  terms_memory?: ByteSize
+  term_vectory_memory?: ByteSize
+  term_vectors_memory_in_bytes: integer
+  version_map_memory?: ByteSize
+  version_map_memory_in_bytes: integer
 }
 
 export type SequenceNumber = integer
@@ -12506,9 +12517,12 @@ export interface StopWatcherResponse extends AcknowledgedResponseBase {
 export type StopWords = string | Array<string>
 
 export interface StoreStats {
-  size?: string
-  size_in_bytes: double
-  reserved_in_bytes: double
+  size?: ByteSize
+  size_in_bytes: integer
+  reserved?: ByteSize
+  reserved_in_bytes: integer
+  total_data_set_size?: ByteSize
+  total_data_set_size_in_bytes?: integer
 }
 
 export interface StoredRoleTemplate {
