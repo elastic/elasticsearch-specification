@@ -38950,13 +38950,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "comparison",
-          "required": false,
-=======
           "name": "last_committed_config",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
@@ -38969,13 +38964,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "path",
-          "required": false,
-=======
           "name": "last_accepted_config",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
@@ -38988,79 +38978,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "value",
-          "required": false,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        },
-        {
-          "name": "ctx.payload.match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CompareContextPayloadCondition",
-              "namespace": "x_pack.watcher.condition"
-            }
-          }
-        },
-        {
-          "name": "ctx.payload.value",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CompareContextPayloadCondition",
-              "namespace": "x_pack.watcher.condition"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CompareContextPayloadCondition",
-        "namespace": "x_pack.watcher.condition"
-      },
-      "properties": [
-        {
-          "name": "eq",
-          "required": false,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        },
-        {
-          "name": "lt",
-          "required": false,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        },
-        {
-          "name": "gt",
-          "required": false,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        },
-        {
-          "name": "lte",
-          "required": false,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        },
-        {
-          "name": "gte",
-          "required": false,
-=======
           "name": "voting_config_exclusions",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
@@ -40051,7 +39970,7 @@
       "properties": [
         {
           "name": "comparison",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40062,7 +39981,7 @@
         },
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40073,7 +39992,73 @@
         },
         {
           "name": "value",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "ctx.payload.match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompareContextPayloadCondition",
+              "namespace": "x_pack.watcher.condition"
+            }
+          }
+        },
+        {
+          "name": "ctx.payload.value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompareContextPayloadCondition",
+              "namespace": "x_pack.watcher.condition"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CompareContextPayloadCondition",
+        "namespace": "x_pack.watcher.condition"
+      },
+      "properties": [
+        {
+          "name": "eq",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "lt",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "gt",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "lte",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "gte",
+          "required": false,
           "type": {
             "kind": "user_defined_value"
           }
@@ -69969,8 +69954,19 @@
       },
       "properties": [
         {
+          "name": "http",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpInput",
+              "namespace": "x_pack.watcher.input"
+            }
+          }
+        },
+        {
           "name": "extract",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -69984,7 +69980,7 @@
         },
         {
           "name": "request",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -69995,7 +69991,7 @@
         },
         {
           "name": "response_content_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -70917,38 +70913,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "name": "http",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HttpInput",
-              "namespace": "x_pack.watcher.input"
-            }
-          }
-        },
-        {
-          "name": "extract",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "request",
-          "required": false,
-=======
           "name": "shards_acknowledged",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -70958,13 +70924,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "response_content_type",
-          "required": false,
-=======
           "name": "indices",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
