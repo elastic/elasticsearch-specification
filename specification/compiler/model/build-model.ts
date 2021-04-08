@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import assert from 'assert'
 import { writeFileSync } from 'fs'
 import { join } from 'path'
 import {
@@ -34,6 +33,7 @@ import {
 import * as model from './metamodel'
 import buildJsonSpec from './json-spec'
 import {
+  assert,
   customTypes,
   getAllBehaviors,
   getNameSpace,
@@ -165,10 +165,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
 
 function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allClasses: ClassDeclaration[]): model.Request | model.Interface {
   const name = declaration.getName()
-  assert(name, 'Anonymous definitions should not exists')
+  assert(declaration, name != null, 'Anonymous definitions should not exists')
 
   if (name.endsWith('Request')) {
     assert(
+      declaration,
       Node.isInterfaceDeclaration(declaration),
       `Request definitions must be declared as interfaces: ${name}`
     )
@@ -176,6 +177,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
   if (name.endsWith('Response')) {
     assert(
+      declaration,
       Node.isClassDeclaration(declaration),
       `Response definitions must be declared as classes: ${name}`
     )
@@ -204,6 +206,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const member of declaration.getMembers()) {
       // we are visiting `path_parts, `query_parameters` or `body`
       assert(
+        member,
         Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
         'Class and interfaces can only have property declarations or signatures'
       )
@@ -269,13 +272,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
     const variants = parseVariantsTag(declaration.getJsDocs())
     if (variants != null) {
-      assert(variants.kind === 'container', 'Interfaces can only use `container` variant kind')
+      assert(declaration.getJsDocs(), variants.kind === 'container', 'Interfaces can only use `container` variant kind')
       type.variants = variants
     }
 
     for (const member of declaration.getMembers()) {
       // Any property definition
       assert(
+        member,
         Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
         'Class and interfaces can only have property declarations or signatures'
       )
@@ -340,7 +344,7 @@ function visitRequestProperty (member: PropertyDeclaration | PropertySignature):
 
   const name = member.getName()
   const value = member.getTypeNode()
-  assert(value, `The property ${name} is not defined`)
+  assert(member, value != null, `The property ${name} is not defined`)
 
   // Request classes have three top level properties:
   // - path_parts
@@ -358,8 +362,9 @@ function visitRequestProperty (member: PropertyDeclaration | PropertySignature):
   } else {
     value.forEachChild(child => {
       assert(
+        child,
         Node.isPropertySignature(child) || Node.isPropertyDeclaration(child),
-        `Children should be ${ts.SyntaxKind.PropertySignature} or ${ts.SyntaxKind.PropertyDeclaration} but ${child.getKind()} instead`
+        `Children should be ${ts.SyntaxKind[ts.SyntaxKind.PropertySignature]} or ${ts.SyntaxKind[ts.SyntaxKind.PropertyDeclaration]} but is ${ts.SyntaxKind[child.getKind()]} instead`
       )
       properties.push(modelProperty(child))
     })
