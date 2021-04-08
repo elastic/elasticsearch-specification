@@ -517,7 +517,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description != null) type.description = description.split(EOL).filter(Boolean).join(EOL)
+    if (description.length > 0) type.description = description.split(EOL).filter(Boolean).join(EOL)
   }
 
   setTags(jsDocs, type, tags, validTags, (tags, tag, value) => {
@@ -544,7 +544,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description != null) property.description = description.split(EOL).filter(Boolean).join(EOL)
+    if (description.length > 0) property.description = description.split(EOL).filter(Boolean).join(EOL)
   }
 
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
@@ -589,7 +589,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description != null) member.description = description.split(EOL).filter(Boolean).join(EOL)
+    if (description.length > 0) member.description = description.split(EOL).filter(Boolean).join(EOL)
   }
 
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
