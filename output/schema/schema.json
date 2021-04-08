@@ -106074,6 +106074,7 @@
       ],
       "query": [
         {
+          "default": true,
           "name": "allow_no_indices",
           "required": false,
           "type": {
@@ -106085,6 +106086,7 @@
           }
         },
         {
+          "default": false,
           "name": "ccs_minimize_roundtrips",
           "required": false,
           "type": {
@@ -106118,6 +106120,7 @@
           }
         },
         {
+          "default": true,
           "name": "ignore_throttled",
           "required": false,
           "type": {
@@ -106129,6 +106132,7 @@
           }
         },
         {
+          "default": false,
           "name": "ignore_unavailable",
           "required": false,
           "type": {
@@ -106151,6 +106155,7 @@
           }
         },
         {
+          "default": false,
           "name": "profile",
           "required": false,
           "type": {
@@ -106195,8 +106200,10 @@
           }
         },
         {
+          "default": false,
           "name": "total_hits_as_integer",
           "required": false,
+          "since": "7.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106206,6 +106213,7 @@
           }
         },
         {
+          "default": false,
           "name": "typed_keys",
           "required": false,
           "type": {
