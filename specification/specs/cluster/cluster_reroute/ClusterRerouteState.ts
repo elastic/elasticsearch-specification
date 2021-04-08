@@ -29,4 +29,5 @@ class ClusterRerouteState {
   security_tokens: Dictionary<string, string>
   snapshots: ClusterStateSnapshots
   snapshot_deletions: ClusterStateDeletedSnapshots
+  metadata?: ClusterRerouteState
 }
