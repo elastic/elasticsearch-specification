@@ -3502,6 +3502,7 @@ export interface ClusterStateResponse extends ResponseBase {
   version?: VersionNumber
   blocks?: ClusterStateBlocks
   metadata?: ClusterStateMetadata
+  nodes?: Record<NodeName, NodeAttributes>
 }
 
 export interface ClusterStatistics {
@@ -8642,10 +8643,11 @@ export interface NodeAllocationExplanation {
 
 export interface NodeAttributes {
   attributes: Record<string, string>
-  ephemeral_id: string
-  id: string
-  name: string
+  ephemeral_id: Id
+  id?: Id
+  name: Name
   transport_address: string
+  roles?: NodeRoles
 }
 
 export interface NodeBufferPool {
@@ -8769,6 +8771,8 @@ export interface NodeJvmStats {
   uptime_in_millis: long
 }
 
+export type NodeName = string
+
 export interface NodeOperatingSystemInfo {
   arch: string
   available_processors: integer
@@ -8804,7 +8808,9 @@ export interface NodeReloadExceptionCausedBy {
   caused_by?: NodeReloadExceptionCausedBy
 }
 
-export type NodeRole = 'master' | 'data' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
+export type NodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_frozen' | 'data_hot' | 'data_warm' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
+
+export type NodeRoles = Array<NodeRole>
 
 export interface NodeStatistics {
   failed: integer

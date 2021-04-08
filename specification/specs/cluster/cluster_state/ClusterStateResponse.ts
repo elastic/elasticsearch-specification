@@ -26,4 +26,5 @@ class ClusterStateResponse extends ResponseBase {
   version?: VersionNumber
   blocks?: ClusterStateBlocks
   metadata?: ClusterStateMetadata
+  nodes?: Dictionary<NodeName, NodeAttributes>
 }

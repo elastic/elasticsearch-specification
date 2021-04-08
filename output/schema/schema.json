@@ -38050,6 +38050,27 @@
               "namespace": "cluster.cluster_state"
             }
           }
+        },
+        {
+          "name": "nodes",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeAttributes",
+                "namespace": "x_pack.transform.get_transform_stats"
+              }
+            }
+          }
         }
       ]
     },
@@ -83803,18 +83824,18 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
         },
         {
           "name": "id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -83825,7 +83846,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -83838,6 +83859,17 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "cluster.nodes_info"
             }
           }
         }
@@ -84908,6 +84940,21 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node",
+      "kind": "type_alias",
+      "name": {
+        "name": "NodeName",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "NodeOperatingSystemInfo",
@@ -85182,6 +85229,21 @@
           "name": "data"
         },
         {
+          "name": "data_cold"
+        },
+        {
+          "name": "data_content"
+        },
+        {
+          "name": "data_frozen"
+        },
+        {
+          "name": "data_hot"
+        },
+        {
+          "name": "data_warm"
+        },
+        {
           "name": "client"
         },
         {
@@ -85206,6 +85268,23 @@
       "name": {
         "name": "NodeRole",
         "namespace": "cluster.nodes_info"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "NodeRoles",
+        "namespace": "cluster.nodes_info"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "NodeRole",
+            "namespace": "cluster.nodes_info"
+          }
+        }
       }
     },
     {

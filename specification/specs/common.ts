@@ -136,6 +136,9 @@ type Names = string | string[]
 
 type PipelineName = string
 
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */
+type NodeName = string
+
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 type DataStreamName = string
 
