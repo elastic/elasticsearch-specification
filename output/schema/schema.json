@@ -34460,13 +34460,16 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "component_templates",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ComponentTemplate",
+                "namespace": "cluster"
+              }
             }
           }
         }
@@ -37589,7 +37592,7 @@
       "properties": [
         {
           "name": "routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37726,7 +37729,7 @@
         },
         {
           "name": "provided_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37748,7 +37751,7 @@
         },
         {
           "name": "creation_date",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37759,7 +37762,7 @@
         },
         {
           "name": "uuid",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37770,7 +37773,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39787,6 +39790,144 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ComponentTemplate",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "component_template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ComponentTemplateNode",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ComponentTemplateNode",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ComponentTemplateSummary",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ComponentTemplateSummary",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "_meta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexMetaData",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexSetting",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexMapping",
+                "namespace": "cluster"
+              }
+            }
+          }
+        },
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexAlias",
+                "namespace": "internal"
+              }
             }
           }
         }

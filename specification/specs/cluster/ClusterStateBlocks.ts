@@ -42,18 +42,18 @@ class ClusterStateBlockIndex {
 }
 
 class ClusterStateBlockIndexSetting {
-  routing: ClusterStateBlockIndexSettingRouting
+  routing?: ClusterStateBlockIndexSettingRouting
   refresh_interval?: Time
   number_of_shards: integer | string // TODO: not sure this correct
   number_of_replicas: integer | string // TODO: not sure this correct
   verified_before_close?: boolean | string // TODO: check if it should be only bool
   hidden?: boolean | string // TODO: check if it should be only bool
   format?: integer | string // TODO: check if it should be only integer
-  provided_name: Name
+  provided_name?: Name
   auto_expand_replicas?: string
-  creation_date: DateString
-  uuid: Uuid
-  version: ClusterStateBlockIndexSettingVersion
+  creation_date?: DateString
+  uuid?: Uuid
+  version?: ClusterStateBlockIndexSettingVersion
   lifecycle?: ClusterStateBlockIndexSettingLifecycle
 }
 

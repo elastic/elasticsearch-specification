@@ -17,6 +17,19 @@
  * under the License.
  */
 
-class ClusterGetComponentTemplateResponse extends ResponseBase {
-  component_templates: ComponentTemplate[]
+class ComponentTemplate {
+  name: Name
+  component_template: ComponentTemplateNode
+}
+
+class ComponentTemplateNode {
+  template: ComponentTemplateSummary
+}
+
+class ComponentTemplateSummary {
+  _meta?: IndexMetaData
+  version?: VersionNumber
+  settings: Dictionary<IndexName, ClusterStateBlockIndexSetting>
+  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
+  aliases?: Array<IndexAlias>
 }

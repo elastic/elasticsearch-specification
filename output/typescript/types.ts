@@ -3097,7 +3097,7 @@ export interface ClusterGetComponentTemplateRequest extends RequestBase {
 }
 
 export interface ClusterGetComponentTemplateResponse extends ResponseBase {
-  stub: integer
+  component_templates: Array<ComponentTemplate>
 }
 
 export interface ClusterGetSettingsRequest extends RequestBase {
@@ -3443,18 +3443,18 @@ export interface ClusterStateBlockIndexMapping {
 }
 
 export interface ClusterStateBlockIndexSetting {
-  routing: ClusterStateBlockIndexSettingRouting
+  routing?: ClusterStateBlockIndexSettingRouting
   refresh_interval?: Time
   number_of_shards: integer | string
   number_of_replicas: integer | string
   verified_before_close?: boolean | string
   hidden?: boolean | string
   format?: integer | string
-  provided_name: Name
+  provided_name?: Name
   auto_expand_replicas?: string
-  creation_date: DateString
-  uuid: Uuid
-  version: ClusterStateBlockIndexSettingVersion
+  creation_date?: DateString
+  uuid?: Uuid
+  version?: ClusterStateBlockIndexSettingVersion
   lifecycle?: ClusterStateBlockIndexSettingLifecycle
 }
 
@@ -3682,6 +3682,23 @@ export interface CompletionSuggester extends SuggesterBase {
   prefix?: string
   regex?: string
   skip_duplicates?: boolean
+}
+
+export interface ComponentTemplate {
+  name: Name
+  component_template: ComponentTemplateNode
+}
+
+export interface ComponentTemplateNode {
+  template: ComponentTemplateSummary
+}
+
+export interface ComponentTemplateSummary {
+  _meta?: IndexMetaData
+  version?: VersionNumber
+  settings: Record<IndexName, ClusterStateBlockIndexSetting>
+  mappings?: Record<string, ClusterStateBlockIndexMapping>
+  aliases?: Array<IndexAlias>
 }
 
 export interface CompositeAggregation extends BucketAggregationBase {
