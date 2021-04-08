@@ -3381,10 +3381,16 @@ export interface ClusterRerouteRequest extends RequestBase {
   }
 }
 
-export interface ClusterRerouteResponse extends ResponseBase {
-  acknowledged: boolean
+export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
   explanations: Array<ClusterRerouteExplanation>
-  state: Array<string>
+  state: ClusterRerouteState
+}
+
+export interface ClusterRerouteState {
+  cluster_uuid: Uuid
+  state_uuid: Uuid
+  master_node: string
+  version: VersionNumber
 }
 
 export interface ClusterShardMetrics {

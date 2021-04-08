@@ -17,7 +17,12 @@
  * under the License.
  */
 
-class ClusterRerouteResponse extends AcknowledgedResponseBase {
-  explanations: ClusterRerouteExplanation[]
-  state: ClusterRerouteState
+class ClusterRerouteState {
+  cluster_uuid: Uuid
+  state_uuid: Uuid
+  master_node: string
+  version: VersionNumber
+  // blocks:
+  // nodes:
+  // routing_table:
 }
