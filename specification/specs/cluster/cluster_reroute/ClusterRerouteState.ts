@@ -17,26 +17,17 @@
  * under the License.
  */
 
-class ClusterStateMetadata {
+class ClusterRerouteState {
   cluster_uuid: Uuid
-  cluster_uuid_committed: boolean
-  templates: ClusterStateMetadataTemplate
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
-  'index-graveyard': ClusterStateMetadataIndexGraveyard
-  cluster_coordination: ClusterStateMetadataClusterCoordination
-}
-
-class ClusterStateMetadataIndexGraveyard {
-  tombstones: string[]
-}
-
-class ClusterStateMetadataTemplate {
-  // TODO: check server code for validation
-}
-
-class ClusterStateMetadataClusterCoordination {
-  term: integer
-  last_committed_config: string[]
-  last_accepted_config: string[]
-  voting_config_exclusions: string[]
+  state_uuid?: Uuid
+  master_node?: string
+  version?: VersionNumber
+  blocks?: EmptyObject // TODO: this is likely wrong too
+  nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  security_tokens?: Dictionary<string, string>
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+  metadata?: ClusterStateMetadata
 }

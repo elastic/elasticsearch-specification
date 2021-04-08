@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name cluster.stats
- * @since 0.0.0
+ * @since 1.3.0
  * @stability TODO
  */
 interface ClusterStatsRequest extends RequestBase {
@@ -28,7 +28,7 @@ interface ClusterStatsRequest extends RequestBase {
   }
   query_parameters?: {
     flat_settings?: boolean
-    timeout?: Time
+    timeout?: Time // default: no timeout
   }
   body?: {}
 }

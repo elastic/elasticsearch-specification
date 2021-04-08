@@ -1,5 +1,18 @@
 {
   "endpointErrors": {
+    "cluster.get_component_template": {
+      "request": [
+        "ClusterGetComponentTemplateRequest: query parameter 'flat_settings' does not exist in the json spec"
+      ],
+      "response": [
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'"
+      ]
+    },
     "data_frame_transform_deprecated.delete_transform": {
       "request": [
         "Missing request"

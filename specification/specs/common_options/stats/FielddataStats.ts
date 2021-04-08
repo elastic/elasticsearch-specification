@@ -19,7 +19,6 @@
 
 class FielddataStats {
   evictions?: long
+  memory_size?: ByteSize
   memory_size_in_bytes: long
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  fields?: Dictionary<Field, FielddataStats>
 }

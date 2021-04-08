@@ -19,9 +19,15 @@
 
 enum GeoOrientation {
   right = 0,
-  counterclockwise = 1,
-  ccw = 2,
-  left = 3,
-  clockwise = 4,
-  cw = 5
+  RIGHT = 1,
+  counterclockwise = 2,
+  COUNTERCLOCKWISE = 3,
+  ccw = 4,
+  CCW = 5,
+  left = 6,
+  LEFT = 7,
+  clockwise = 8,
+  CLOCKWISE = 9,
+  cw = 10,
+  CW = 11
 }

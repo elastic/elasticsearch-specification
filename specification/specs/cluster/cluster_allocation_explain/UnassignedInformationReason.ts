@@ -17,6 +17,9 @@
  * under the License.
  */
 
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html#cat-shards-query-params
+ */
 enum UnassignedInformationReason {
   INDEX_CREATED = 0,
   CLUSTER_RECOVERED = 1,
