@@ -39818,28 +39818,11 @@
               "namespace": "internal"
             }
           }
-<<<<<<< HEAD
-        }
-      ]
-    },
-    {
-      "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
-      "kind": "type_alias",
-      "name": {
-        "name": "Context",
-        "namespace": "search.suggesters.context_suggester"
-      },
-      "type": {
-        "items": [
-          {
-=======
         },
         {
           "name": "ignore_case",
           "required": true,
           "type": {
->>>>>>> master
             "kind": "instance_of",
             "type": {
               "name": "boolean",
@@ -41101,6 +41084,7 @@
       ]
     },
     {
+      "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
       "name": {
@@ -86873,6 +86857,7 @@
       }
     },
     {
+      "description": "* @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles",
       "kind": "type_alias",
       "name": {
         "name": "NodeRoles",
