@@ -17,12 +17,10 @@
  * under the License.
  */
 
-class UnassignedInformation {
-  at: DateString
-  last_allocation_status?: string
-  reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
-  delayed?: boolean
-  allocation_status?: string
+class ClusterStateSnapshots {
+  snapshots: SnapshotStatus[] // TODO: just a guess, but the tests are not exhaustive enough
+}
+
+class ClusterStateDeletedSnapshots {
+  snapshot_deletions: string[] // TODO: just a guess, but the tests are not exhaustive enough
 }

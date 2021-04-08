@@ -17,12 +17,18 @@
  * under the License.
  */
 
-class UnassignedInformation {
-  at: DateString
-  last_allocation_status?: string
-  reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
-  delayed?: boolean
-  allocation_status?: string
+class ClusterStateRoutingNodes {
+  unassigned: ClusterStateRoutingNodesShard[]
+  nodes: Dictionary<string, ClusterStateRoutingNodesShard[]>
+}
+
+class ClusterStateRoutingNodesShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Dictionary<string, string>
+  recovery_source?: Dictionary<string, string>
+  unassigned_info?: UnassignedInformation
 }

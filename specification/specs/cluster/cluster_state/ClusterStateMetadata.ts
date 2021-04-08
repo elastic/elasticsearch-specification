@@ -24,7 +24,11 @@ class ClusterStateMetadata {
   indices?: Dictionary<IndexName, ClusterStateBlockIndex>
   'index-graveyard': ClusterStateMetadataIndexGraveyard
   cluster_coordination: ClusterStateMetadataClusterCoordination
-  repositories: Dictionary<string, string>
+  ingest?: ClusterStateIngest
+  repositories?: Dictionary<string, string>
+  component_template?: Dictionary<string, UserDefinedValue>
+  index_template?: Dictionary<string, UserDefinedValue>
+  index_lifecycle?: ClusterStateIndexLifecycle
 }
 
 class ClusterStateMetadataIndexGraveyard {
@@ -33,6 +37,7 @@ class ClusterStateMetadataIndexGraveyard {
 
 class Tombstone {
   index: TombstoneIndex
+  delete_date?: DateString
   delete_date_in_millis: long
 }
 

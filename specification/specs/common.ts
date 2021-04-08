@@ -170,6 +170,7 @@ type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number
 type GeoHashPrecision = number
+
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
 type Field = string
 type Fields = Field | Field[]

@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name cluster.state
- * @since 0.0.0
+ * @since 1.3.0
  * @stability TODO
  */
 interface ClusterStateRequest extends RequestBase {
@@ -28,12 +28,12 @@ interface ClusterStateRequest extends RequestBase {
     index?: Indices
   }
   query_parameters?: {
-    allow_no_indices?: boolean
+    allow_no_indices?: boolean // default true
     expand_wildcards?: ExpandWildcards
-    flat_settings?: boolean
-    ignore_unavailable?: boolean
-    local?: boolean
-    master_timeout?: Time
+    flat_settings?: boolean // default false
+    ignore_unavailable?: boolean // default false
+    local?: boolean // default false
+    master_timeout?: Time  // default 30s
     wait_for_metadata_version?: VersionNumber
     wait_for_timeout?: Time
   }

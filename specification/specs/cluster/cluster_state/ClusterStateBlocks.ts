@@ -22,9 +22,9 @@ class ClusterStateBlocks {
 }
 
 class ClusterStateBlockIndex {
-  description: string
-  retryable: boolean
-  levels: string[]
+  description?: string
+  retryable?: boolean
+  levels?: string[]
   aliases?: Array<IndexAlias>
   aliases_version?: VersionNumber
   version?: VersionNumber
@@ -34,17 +34,27 @@ class ClusterStateBlockIndex {
   state?: string // TODO: create enum of values
   settings?: Dictionary<IndexName, ClusterStateBlockIndexSetting>
   in_sync_allocations?: Dictionary<string, string[]>
-  mappings: Dictionary<string, ClusterStateBlockIndexMapping>
+  primary_terms?: Dictionary<string, integer>
+  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
+  rollover_info?: Dictionary<string, RolloverConditions> // TODO: not sure if this is correect
+  timestamp_range?: Dictionary<string, UserDefinedValue>
+  system?: boolean
 }
 
 class ClusterStateBlockIndexSetting {
   routing: ClusterStateBlockIndexSettingRouting
+  refresh_interval?: Time
   number_of_shards: integer | string // TODO: not sure this correct
   number_of_replicas: integer | string // TODO: not sure this correct
+  verified_before_close?: boolean | string // TODO: check if it should be only bool
+  hidden?: boolean | string // TODO: check if it should be only bool
+  format?: integer | string // TODO: check if it should be only integer
   provided_name: Name
+  auto_expand_replicas?: string
   creation_date: DateString
   uuid: Uuid
   version: ClusterStateBlockIndexSettingVersion
+  lifecycle?: ClusterStateBlockIndexSettingLifecycle
 }
 
 class ClusterStateBlockIndexSettingRouting {
@@ -61,4 +71,8 @@ class ClusterStateBlockIndexSettingVersion {
 
 class ClusterStateBlockIndexMapping {
   properties: Dictionary<PropertyName, Property>
+}
+
+class ClusterStateBlockIndexSettingLifecycle {
+  name: Name
 }

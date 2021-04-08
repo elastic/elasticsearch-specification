@@ -17,12 +17,19 @@
  * under the License.
  */
 
-class UnassignedInformation {
-  at: DateString
-  last_allocation_status?: string
-  reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
-  delayed?: boolean
-  allocation_status?: string
+class ClusterStateIndexLifecycle {
+  policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>
+  operation_mode: LifecycleOperationMode
+}
+
+class ClusterStateIndexLifecycleSummary {
+  policy: ClusterStateIndexLifecyclePolicy
+  headers: Dictionary<string, string>
+  version: VersionNumber
+  modified_date: long
+  modified_date_string: DateString
+}
+
+class ClusterStateIndexLifecyclePolicy {
+  phases: Phases
 }

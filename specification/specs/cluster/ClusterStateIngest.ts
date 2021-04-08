@@ -17,12 +17,17 @@
  * under the License.
  */
 
-class UnassignedInformation {
-  at: DateString
-  last_allocation_status?: string
-  reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
-  delayed?: boolean
-  allocation_status?: string
+class ClusterStateIngest {
+  pipeline: ClusterStateIngestPipeline[]
+}
+
+class ClusterStateIngestPipeline {
+  id: Id
+  config: ClusterStateIngestPipelineConfig
+}
+
+class ClusterStateIngestPipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
 }

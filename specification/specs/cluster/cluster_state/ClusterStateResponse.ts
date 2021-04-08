@@ -27,4 +27,8 @@ class ClusterStateResponse extends ResponseBase {
   blocks?: ClusterStateBlocks
   metadata?: ClusterStateMetadata
   nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
 }

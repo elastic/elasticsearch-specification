@@ -3405,32 +3405,10 @@ export interface ClusterRerouteState {
   blocks: EmptyObject
   nodes: Record<NodeName, NodeAttributes>
   routing_table: Record<string, EmptyObject>
-  routing_nodes: ClusterRerouteStateRoutingNodes
+  routing_nodes: ClusterStateRoutingNodes
   security_tokens: Record<string, string>
-  snapshots: ClusterRerouteStateSnapshots
-  snapshot_deletions: ClusterRerouteStateDeletedSnapshots
-}
-
-export interface ClusterRerouteStateDeletedSnapshots {
-  snapshot_deletions: Array<string>
-}
-
-export interface ClusterRerouteStateRoutingNodes {
-  unassigned: Array<NodeName>
-  nodes: Record<string, Array<ClusterRerouteStateRoutingNodesShard>>
-}
-
-export interface ClusterRerouteStateRoutingNodesShard {
-  state: ShardRoutingState
-  primary: boolean
-  node: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id: Record<string, string>
-}
-
-export interface ClusterRerouteStateSnapshots {
-  snapshots: Array<SnapshotStatus>
+  snapshots: ClusterStateSnapshots
+  snapshot_deletions: ClusterStateDeletedSnapshots
 }
 
 export interface ClusterShardMetrics {
@@ -3440,9 +3418,9 @@ export interface ClusterShardMetrics {
 }
 
 export interface ClusterStateBlockIndex {
-  description: string
-  retryable: boolean
-  levels: Array<string>
+  description?: string
+  retryable?: boolean
+  levels?: Array<string>
   aliases?: Array<IndexAlias>
   aliases_version?: VersionNumber
   version?: VersionNumber
@@ -3452,7 +3430,11 @@ export interface ClusterStateBlockIndex {
   state?: string
   settings?: Record<IndexName, ClusterStateBlockIndexSetting>
   in_sync_allocations?: Record<string, Array<string>>
-  mappings: Record<string, ClusterStateBlockIndexMapping>
+  primary_terms?: Record<string, integer>
+  mappings?: Record<string, ClusterStateBlockIndexMapping>
+  rollover_info?: Record<string, RolloverConditions>
+  timestamp_range?: Record<string, any>
+  system?: boolean
 }
 
 export interface ClusterStateBlockIndexMapping {
@@ -3461,12 +3443,22 @@ export interface ClusterStateBlockIndexMapping {
 
 export interface ClusterStateBlockIndexSetting {
   routing: ClusterStateBlockIndexSettingRouting
+  refresh_interval?: Time
   number_of_shards: integer | string
   number_of_replicas: integer | string
+  verified_before_close?: boolean | string
+  hidden?: boolean | string
+  format?: integer | string
   provided_name: Name
+  auto_expand_replicas?: string
   creation_date: DateString
   uuid: Uuid
   version: ClusterStateBlockIndexSettingVersion
+  lifecycle?: ClusterStateBlockIndexSettingLifecycle
+}
+
+export interface ClusterStateBlockIndexSettingLifecycle {
+  name: Name
 }
 
 export interface ClusterStateBlockIndexSettingRouting {
@@ -3485,6 +3477,42 @@ export interface ClusterStateBlocks {
   indices?: Record<IndexName, Record<string, ClusterStateBlockIndex>>
 }
 
+export interface ClusterStateDeletedSnapshots {
+  snapshot_deletions: Array<string>
+}
+
+export interface ClusterStateIndexLifecycle {
+  policies: Record<IndexName, ClusterStateIndexLifecycleSummary>
+  operation_mode: LifecycleOperationMode
+}
+
+export interface ClusterStateIndexLifecyclePolicy {
+  phases: Phases
+}
+
+export interface ClusterStateIndexLifecycleSummary {
+  policy: ClusterStateIndexLifecyclePolicy
+  headers: Record<string, string>
+  version: VersionNumber
+  modified_date: long
+  modified_date_string: DateString
+}
+
+export interface ClusterStateIngest {
+  pipeline: Array<ClusterStateIngestPipeline>
+}
+
+export interface ClusterStateIngestPipeline {
+  id: Id
+  config: ClusterStateIngestPipelineConfig
+}
+
+export interface ClusterStateIngestPipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: Array<ProcessorContainer>
+}
+
 export interface ClusterStateMetadata {
   cluster_uuid: Uuid
   cluster_uuid_committed: boolean
@@ -3492,7 +3520,11 @@ export interface ClusterStateMetadata {
   indices?: Record<IndexName, ClusterStateBlockIndex>
   'index-graveyard': ClusterStateMetadataIndexGraveyard
   cluster_coordination: ClusterStateMetadataClusterCoordination
-  repositories: Record<string, string>
+  ingest?: ClusterStateIngest
+  repositories?: Record<string, string>
+  component_template?: Record<string, any>
+  index_template?: Record<string, any>
+  index_lifecycle?: ClusterStateIndexLifecycle
 }
 
 export interface ClusterStateMetadataClusterCoordination {
@@ -3532,6 +3564,30 @@ export interface ClusterStateResponse extends ResponseBase {
   blocks?: ClusterStateBlocks
   metadata?: ClusterStateMetadata
   nodes?: Record<NodeName, NodeAttributes>
+  routing_table?: Record<string, EmptyObject>
+  routing_nodes?: ClusterStateRoutingNodes
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+}
+
+export interface ClusterStateRoutingNodes {
+  unassigned: Array<ClusterStateRoutingNodesShard>
+  nodes: Record<string, Array<ClusterStateRoutingNodesShard>>
+}
+
+export interface ClusterStateRoutingNodesShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Record<string, string>
+  recovery_source?: Record<string, string>
+  unassigned_info?: UnassignedInformation
+}
+
+export interface ClusterStateSnapshots {
+  snapshots: Array<SnapshotStatus>
 }
 
 export interface ClusterStatistics {
@@ -5872,7 +5928,7 @@ export interface GeoLineSort {
 
 export type GeoLocation = string | Array<double> | TwoDimensionalPoint
 
-export type GeoOrientation = 'right' | 'counterclockwise' | 'ccw' | 'left' | 'clockwise' | 'cw'
+export type GeoOrientation = 'right' | 'RIGHT' | 'counterclockwise' | 'COUNTERCLOCKWISE' | 'ccw' | 'CCW' | 'left' | 'LEFT' | 'clockwise' | 'CLOCKWISE' | 'cw' | 'CW'
 
 export interface GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
@@ -13029,6 +13085,7 @@ export interface TokenizerBase {
 
 export interface Tombstone {
   index: TombstoneIndex
+  delete_date?: DateString
   delete_date_in_millis: long
 }
 
@@ -13300,10 +13357,12 @@ export interface UaxEmailUrlTokenizer extends TokenizerBase {
 
 export interface UnassignedInformation {
   at: DateString
-  last_allocation_status: string
+  last_allocation_status?: string
   reason: UnassignedInformationReason
   details?: string
   failed_allocation_attempts?: integer
+  delayed?: boolean
+  allocation_status?: string
 }
 
 export type UnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
