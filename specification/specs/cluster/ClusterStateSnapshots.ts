@@ -17,12 +17,10 @@
  * under the License.
  */
 
-class ClusterStatsResponse extends NodesResponseBase {
-  _nodes: NodeStatistics
-  cluster_name: Name
-  cluster_uuid: Uuid
-  indices: ClusterIndicesStats
-  nodes: ClusterNodesStats
-  status: ClusterStatus
-  timestamp: long
+class ClusterStateSnapshots {
+  snapshots: SnapshotStatus[] // TODO: just a guess, but the tests are not exhaustive enough
+}
+
+class ClusterStateDeletedSnapshots {
+  snapshot_deletions: string[] // TODO: just a guess, but the tests are not exhaustive enough
 }

@@ -17,6 +17,4 @@
  * under the License.
  */
 
-class ClusterPutComponentTemplateResponse extends ResponseBase {
-  stub: integer
-}
+class ClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {}

@@ -18,7 +18,10 @@
  */
 
 class StoreStats {
-  size?: string
-  size_in_bytes: double
-  reserved_in_bytes: double
+  size?: ByteSize
+  size_in_bytes: integer
+  reserved?: ByteSize
+  reserved_in_bytes: integer
+  total_data_set_size?: ByteSize
+  total_data_set_size_in_bytes?: integer
 }

@@ -19,9 +19,9 @@
 
 class ClusterRerouteParameters {
   allow_primary: boolean
-  from_node: string
-  index: string
-  node: string
+  index: IndexName
+  node: NodeName
   shard: integer
-  to_node: string
+  from_node?: NodeName
+  to_node?: NodeName
 }

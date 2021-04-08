@@ -27,7 +27,7 @@ class TypeMapping {
     | Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
-  _meta?: Dictionary<string, UserDefinedValue>
+  _meta?: IndexMetaData
   numeric_detection?: boolean
   properties?: Dictionary<PropertyName, Property>
   _routing?: RoutingField

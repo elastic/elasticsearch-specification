@@ -17,19 +17,9 @@
  * under the License.
  */
 
-class ClusterStateBlocks {
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
-}
-
-class ClusterStateBlockIndex {
-  description: string
-  retryable: boolean
-  levels: string[]
-  aliases?: Array<IndexAlias>
-  aliases_version?: VersionNumber
-  version?: VersionNumber
-  mapping_version?: VersionNumber
-  settings_version?: VersionNumber
-  routing_num_shards?: VersionNumber
-  state?: string // TODO: create enum of values
+class SearchTemplateResponse<TDocument> extends ResponseBase {
+  _shards: ShardStatistics
+  timed_out: boolean
+  took: integer
+  hits: HitsMetadata<TDocument>
 }

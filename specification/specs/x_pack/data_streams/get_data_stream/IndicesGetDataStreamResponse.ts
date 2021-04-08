@@ -30,7 +30,7 @@ class IndicesGetDataStreamItem {
   hidden: boolean
   status: DataStreamHealthStatus
   ilm_policy?: Name
-  _meta?: Dictionary<string, UserDefinedValue>
+  _meta?: IndexMetaData
 }
 
 class IndicesGetDataStreamItemTimestampField {

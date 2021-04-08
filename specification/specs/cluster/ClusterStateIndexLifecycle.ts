@@ -17,12 +17,19 @@
  * under the License.
  */
 
-class ClusterStatsResponse extends NodesResponseBase {
-  _nodes: NodeStatistics
-  cluster_name: Name
-  cluster_uuid: Uuid
-  indices: ClusterIndicesStats
-  nodes: ClusterNodesStats
-  status: ClusterStatus
-  timestamp: long
+class ClusterStateIndexLifecycle {
+  policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>
+  operation_mode: LifecycleOperationMode
+}
+
+class ClusterStateIndexLifecycleSummary {
+  policy: ClusterStateIndexLifecyclePolicy
+  headers: Dictionary<string, string>
+  version: VersionNumber
+  modified_date: long
+  modified_date_string: DateString
+}
+
+class ClusterStateIndexLifecyclePolicy {
+  phases: Phases
 }

@@ -19,27 +19,39 @@
 
 /**
  * @rest_spec_name search_template
- * @since 0.0.0
+ * @since 2.0.0
  * @stability TODO
  */
 interface SearchTemplateRequest extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types
+    type?: Types // deprecated: 7.0
   }
   query_parameters?: {
+    /** @server_default true */
     allow_no_indices?: boolean
+    /** @server_default false */
     ccs_minimize_roundtrips?: boolean
     expand_wildcards?: ExpandWildcards
+    /** server_default false */
     explain?: boolean
+    /** @server_default true */
     ignore_throttled?: boolean
+    /** @server_default false */
     ignore_unavailable?: boolean
     preference?: string
+    /** @server_default false */
     profile?: boolean
     routing?: Routing
     scroll?: Time
     search_type?: SearchType
+    /**
+     * If true, hits.total are rendered as an integer in the response.
+     * @since 7.0.0
+     * @server_default false
+     */
     total_hits_as_integer?: boolean
+    /** @server_default false */
     typed_keys?: boolean
   }
   body?: {

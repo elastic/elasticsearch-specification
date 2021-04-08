@@ -18,5 +18,5 @@
  */
 
 class ClusterGetComponentTemplateResponse extends ResponseBase {
-  stub: integer
+  component_templates: ComponentTemplate[]
 }

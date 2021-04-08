@@ -18,18 +18,28 @@
  */
 
 class SegmentsStats {
-  count: long
-  doc_values_memory_in_bytes: long
+  count: integer
+  doc_values_memory?: ByteSize
+  doc_values_memory_in_bytes: integer
   file_sizes: Dictionary<string, ShardFileSizeInfo>
-  fixed_bit_set_memory_in_bytes: long
-  index_writer_max_memory_in_bytes?: long
-  index_writer_memory_in_bytes: long
-  max_unsafe_auto_id_timestamp: long
-  memory_in_bytes: long
-  norms_memory_in_bytes: long
-  points_memory_in_bytes: long
-  stored_fields_memory_in_bytes: long
-  terms_memory_in_bytes: long
-  term_vectors_memory_in_bytes: long
-  version_map_memory_in_bytes: long
+  fixed_bit_set?: ByteSize
+  fixed_bit_set_memory_in_bytes: integer
+  index_writer_memory?: ByteSize
+  index_writer_max_memory_in_bytes?: integer
+  index_writer_memory_in_bytes: integer
+  max_unsafe_auto_id_timestamp: integer
+  memory?: ByteSize
+  memory_in_bytes: integer
+  norms_memory?: ByteSize
+  norms_memory_in_bytes: integer
+  points_memory?: ByteSize
+  points_memory_in_bytes: integer
+  stored_memory?: ByteSize
+  stored_fields_memory_in_bytes: integer
+  terms_memory_in_bytes: integer
+  terms_memory?: ByteSize
+  term_vectory_memory?: ByteSize
+  term_vectors_memory_in_bytes: integer
+  version_map_memory?: ByteSize
+  version_map_memory_in_bytes: integer
 }
