@@ -46,6 +46,7 @@ interface SearchTemplateRequest extends RequestBase {
     scroll?: Time
     search_type?: SearchType
     /**
+     * If true, hits.total are rendered as an integer in the response.
      * @since 7.0.0
      * @server_default false
      */

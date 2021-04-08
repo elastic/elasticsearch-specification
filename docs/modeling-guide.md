@@ -288,8 +288,8 @@ Following you can find a list of the supported tags:
 #### `@since`
 
 Every API already has a `@since` tag, which describes when an API has been added.
-You can specify an additional `@since` tag for every parameter that has been added afterwards.
-If the tag is not defined, it's assumed that the parameter has been added with the API the first time
+You can specify an additional `@since` tag for every property that has been added afterwards.
+If the tag is not defined, it's assumed that the property has been added with the API the first time
 
 ```ts
 /**
@@ -303,14 +303,14 @@ class FooRequest {
 }
 ```
 
-#### `@description`
+#### description
 
-A custom description of the property.
+You can add a description for each property, in this case there is no need to use a JSDoc tag.
 
 ```ts
 class Foo {
   bar: string
-  /** @description You can baz! */
+  /** You can baz! */
   baz: string
   faz: string
 }
