@@ -37176,6 +37176,282 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexSetting",
+                "namespace": "cluster.cluster_state"
+              }
+            }
+          }
+        },
+        {
+          "name": "in_sync_allocations",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndexMapping",
+                "namespace": "cluster.cluster_state"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexMapping",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "properties",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PropertyName",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Property",
+                "namespace": "mapping.types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSetting",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "routing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingRouting",
+              "namespace": "cluster.cluster_state"
+            }
+          }
+        },
+        {
+          "name": "number_of_shards",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "number_of_replicas",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "provided_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "creation_date",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "uuid",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingVersion",
+              "namespace": "cluster.cluster_state"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingRouting",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "allocation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateBlockIndexSettingRoutingAllocation",
+              "namespace": "cluster.cluster_state"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingRoutingAllocation",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "include",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterStateBlockIndexSettingVersion",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -37272,20 +37548,10 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ClusterStateBlockIndex",
-                  "namespace": "cluster.cluster_state"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterStateBlockIndex",
+                "namespace": "cluster.cluster_state"
               }
             }
           }
@@ -37309,6 +37575,27 @@
             "type": {
               "name": "ClusterStateMetadataClusterCoordination",
               "namespace": "cluster.cluster_state"
+            }
+          }
+        },
+        {
+          "name": "repositories",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -37368,8 +37655,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "VotingConfigExclusionsItem",
+                "namespace": "cluster.cluster_state"
               }
             }
           }
@@ -37391,8 +37678,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Tombstone",
+                "namespace": "cluster.cluster_state"
               }
             }
           }
@@ -122359,6 +122646,68 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Tombstone",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TombstoneIndex",
+              "namespace": "cluster.cluster_state"
+            }
+          }
+        },
+        {
+          "name": "delete_date_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TombstoneIndex",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "index_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_uuid",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TopHit",
         "namespace": "x_pack.text_structure"
       },
@@ -128700,6 +129049,37 @@
         "name": "VersionType",
         "namespace": "common"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "VotingConfigExclusionsItem",
+        "namespace": "cluster.cluster_state"
+      },
+      "properties": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",

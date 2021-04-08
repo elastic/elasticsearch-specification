@@ -21,13 +21,24 @@ class ClusterStateMetadata {
   cluster_uuid: Uuid
   cluster_uuid_committed: boolean
   templates: ClusterStateMetadataTemplate
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
+  indices?: Dictionary<IndexName, ClusterStateBlockIndex>
   'index-graveyard': ClusterStateMetadataIndexGraveyard
   cluster_coordination: ClusterStateMetadataClusterCoordination
+  repositories: Dictionary<string, string>
 }
 
 class ClusterStateMetadataIndexGraveyard {
-  tombstones: string[]
+  tombstones: Tombstone[]
+}
+
+class Tombstone {
+  index: TombstoneIndex
+  delete_date_in_millis: long
+}
+
+class TombstoneIndex {
+  index_name: Name
+  index_uuid: Uuid
 }
 
 class ClusterStateMetadataTemplate {
@@ -38,5 +49,10 @@ class ClusterStateMetadataClusterCoordination {
   term: integer
   last_committed_config: string[]
   last_accepted_config: string[]
-  voting_config_exclusions: string[]
+  voting_config_exclusions: VotingConfigExclusionsItem[]
+}
+
+class VotingConfigExclusionsItem {
+  node_id: Id
+  node_name: Name
 }

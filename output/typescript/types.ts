@@ -3410,6 +3410,35 @@ export interface ClusterStateBlockIndex {
   settings_version?: VersionNumber
   routing_num_shards?: VersionNumber
   state?: string
+  settings?: Record<IndexName, ClusterStateBlockIndexSetting>
+  in_sync_allocations?: Record<string, Array<string>>
+  mappings: Record<string, ClusterStateBlockIndexMapping>
+}
+
+export interface ClusterStateBlockIndexMapping {
+  properties: Record<PropertyName, Property>
+}
+
+export interface ClusterStateBlockIndexSetting {
+  routing: ClusterStateBlockIndexSettingRouting
+  number_of_shards: integer | string
+  number_of_replicas: integer | string
+  provided_name: Name
+  creation_date: DateString
+  uuid: Uuid
+  version: ClusterStateBlockIndexSettingVersion
+}
+
+export interface ClusterStateBlockIndexSettingRouting {
+  allocation: ClusterStateBlockIndexSettingRoutingAllocation
+}
+
+export interface ClusterStateBlockIndexSettingRoutingAllocation {
+  include: Record<string, string>
+}
+
+export interface ClusterStateBlockIndexSettingVersion {
+  created: VersionString
 }
 
 export interface ClusterStateBlocks {
@@ -3420,20 +3449,21 @@ export interface ClusterStateMetadata {
   cluster_uuid: Uuid
   cluster_uuid_committed: boolean
   templates: ClusterStateMetadataTemplate
-  indices?: Record<IndexName, Record<string, ClusterStateBlockIndex>>
+  indices?: Record<IndexName, ClusterStateBlockIndex>
   'index-graveyard': ClusterStateMetadataIndexGraveyard
   cluster_coordination: ClusterStateMetadataClusterCoordination
+  repositories: Record<string, string>
 }
 
 export interface ClusterStateMetadataClusterCoordination {
   term: integer
   last_committed_config: Array<string>
   last_accepted_config: Array<string>
-  voting_config_exclusions: Array<string>
+  voting_config_exclusions: Array<VotingConfigExclusionsItem>
 }
 
 export interface ClusterStateMetadataIndexGraveyard {
-  tombstones: Array<string>
+  tombstones: Array<Tombstone>
 }
 
 export interface ClusterStateMetadataTemplate {
@@ -12853,6 +12883,16 @@ export interface TokenizerBase {
   version?: VersionString
 }
 
+export interface Tombstone {
+  index: TombstoneIndex
+  delete_date_in_millis: long
+}
+
+export interface TombstoneIndex {
+  index_name: Name
+  index_uuid: Uuid
+}
+
 export interface TopHit {
   count: long
   value: any
@@ -13542,6 +13582,11 @@ export interface VersionProperty extends DocValuesPropertyBase {
 export type VersionString = string
 
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
+
+export interface VotingConfigExclusionsItem {
+  node_id: Id
+  node_name: Name
+}
 
 export type WaitForActiveShardOptions = 'all'
 

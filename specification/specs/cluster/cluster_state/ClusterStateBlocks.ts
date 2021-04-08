@@ -32,4 +32,33 @@ class ClusterStateBlockIndex {
   settings_version?: VersionNumber
   routing_num_shards?: VersionNumber
   state?: string // TODO: create enum of values
+  settings?: Dictionary<IndexName, ClusterStateBlockIndexSetting>
+  in_sync_allocations?: Dictionary<string, string[]>
+  mappings: Dictionary<string, ClusterStateBlockIndexMapping>
+}
+
+class ClusterStateBlockIndexSetting {
+  routing: ClusterStateBlockIndexSettingRouting
+  number_of_shards: integer | string // TODO: not sure this correct
+  number_of_replicas: integer | string // TODO: not sure this correct
+  provided_name: Name
+  creation_date: DateString
+  uuid: Uuid
+  version: ClusterStateBlockIndexSettingVersion
+}
+
+class ClusterStateBlockIndexSettingRouting {
+  allocation: ClusterStateBlockIndexSettingRoutingAllocation
+}
+
+class ClusterStateBlockIndexSettingRoutingAllocation {
+  include: Dictionary<string, string>
+}
+
+class ClusterStateBlockIndexSettingVersion {
+  created: VersionString
+}
+
+class ClusterStateBlockIndexMapping {
+  properties: Dictionary<PropertyName, Property>
 }
