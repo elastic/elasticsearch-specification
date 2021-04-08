@@ -22,7 +22,7 @@ class ClusterRerouteState {
   state_uuid: Uuid
   master_node: string
   version: VersionNumber
-  // blocks:
-  // nodes:
+  blocks: EmptyObject
+  nodes: Dictionary<NodeName, NodeAttributes>
   // routing_table:
 }
