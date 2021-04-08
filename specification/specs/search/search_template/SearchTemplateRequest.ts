@@ -28,19 +28,31 @@ interface SearchTemplateRequest extends RequestBase {
     type?: Types // deprecated: 7.0
   }
   query_parameters?: {
-    allow_no_indices?: boolean // default: true
-    ccs_minimize_roundtrips?: boolean // default: false
+    /** @server_default true */
+    allow_no_indices?: boolean
+    /** @server_default false */
+    ccs_minimize_roundtrips?: boolean
     expand_wildcards?: ExpandWildcards
-    explain?: boolean // default: false
-    ignore_throttled?: boolean // default: true
-    ignore_unavailable?: boolean // default: false
+    /** server_default false */
+    explain?: boolean
+    /** @server_default true */
+    ignore_throttled?: boolean
+    /** @server_default false */
+    ignore_unavailable?: boolean
     preference?: string
-    profile?: boolean // default: false
+    /** @server_default false */
+    profile?: boolean
     routing?: Routing
     scroll?: Time
     search_type?: SearchType
-    total_hits_as_integer?: boolean // since: 7.0
-    typed_keys?: boolean // default: false
+    /**
+     * If true, hits.total are rendered as an integer in the response.
+     * @since 7.0.0
+     * @server_default false
+     */
+    total_hits_as_integer?: boolean
+    /** @server_default false */
+    typed_keys?: boolean
   }
   body?: {
     id?: string

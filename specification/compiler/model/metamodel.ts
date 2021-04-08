@@ -130,6 +130,8 @@ export class Property {
   required: boolean
   description?: string
   docUrl?: string
+  since?: string
+  serverDefault?: boolean | string | number
   deprecation?: Deprecation
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
@@ -267,6 +269,7 @@ export class EnumMember {
   identifier?: string
   description?: string
   deprecation?: Deprecation
+  since?: string
 }
 
 /**

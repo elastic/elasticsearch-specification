@@ -12409,6 +12409,7 @@
       ]
     },
     {
+      "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
       "kind": "type_alias",
       "name": {
         "name": "AggregateName",
@@ -20443,6 +20444,7 @@
           "aliases": [
             "a"
           ],
+          "description": "alias name",
           "name": "alias",
           "required": false,
           "type": {
@@ -20458,6 +20460,7 @@
             "i",
             "idx"
           ],
+          "description": "index alias points to",
           "name": "index",
           "required": false,
           "type": {
@@ -20473,6 +20476,7 @@
             "f",
             "fi"
           ],
+          "description": "filter",
           "name": "filter",
           "required": false,
           "type": {
@@ -20488,6 +20492,7 @@
             "ri",
             "routingIndex"
           ],
+          "description": "index routing",
           "name": "routing.index",
           "required": false,
           "type": {
@@ -20503,6 +20508,7 @@
             "rs",
             "routingSearch"
           ],
+          "description": "search routing",
           "name": "routing.search",
           "required": false,
           "type": {
@@ -20518,6 +20524,7 @@
             "w",
             "isWriteIndex"
           ],
+          "description": "write index",
           "name": "is_write_index",
           "required": false,
           "type": {
@@ -20615,6 +20622,7 @@
           "aliases": [
             "s"
           ],
+          "description": "number of shards on node",
           "name": "shards",
           "required": false,
           "type": {
@@ -20630,6 +20638,7 @@
             "di",
             "diskIndices"
           ],
+          "description": "disk used by ES indices",
           "name": "disk.indices",
           "required": false,
           "type": {
@@ -20645,6 +20654,7 @@
             "du",
             "diskUsed"
           ],
+          "description": "disk used (total, not just ES)",
           "name": "disk.used",
           "required": false,
           "type": {
@@ -20660,6 +20670,7 @@
             "da",
             "diskAvail"
           ],
+          "description": "disk available",
           "name": "disk.avail",
           "required": false,
           "type": {
@@ -20675,6 +20686,7 @@
             "dt",
             "diskTotal"
           ],
+          "description": "total capacity of all volumes",
           "name": "disk.total",
           "required": false,
           "type": {
@@ -20690,6 +20702,7 @@
             "dp",
             "diskPercent"
           ],
+          "description": "percent disk used",
           "name": "disk.percent",
           "required": false,
           "type": {
@@ -20704,6 +20717,7 @@
           "aliases": [
             "h"
           ],
+          "description": "host of node",
           "name": "host",
           "required": false,
           "type": {
@@ -20715,6 +20729,7 @@
           }
         },
         {
+          "description": "ip of node",
           "name": "ip",
           "required": false,
           "type": {
@@ -20729,6 +20744,7 @@
           "aliases": [
             "n"
           ],
+          "description": "name of node",
           "name": "node",
           "required": false,
           "type": {
@@ -20827,6 +20843,7 @@
             "t",
             "time"
           ],
+          "description": "seconds since 1969-01-01 00:00:00",
           "name": "epoch",
           "required": false,
           "type": {
@@ -20843,6 +20860,7 @@
             "hms",
             "hhmmss"
           ],
+          "description": "time in HH:MM:SS",
           "name": "timestamp",
           "required": false,
           "type": {
@@ -20859,6 +20877,7 @@
             "docs.count",
             "docsCount"
           ],
+          "description": "the document count",
           "name": "count",
           "required": false,
           "type": {
@@ -20941,6 +20960,7 @@
       },
       "properties": [
         {
+          "description": "the id",
           "name": "id",
           "required": false,
           "type": {
@@ -20955,6 +20975,7 @@
           "aliases": [
             "t"
           ],
+          "description": "analysis type",
           "name": "type",
           "required": false,
           "type": {
@@ -20970,6 +20991,7 @@
             "ct",
             "createTime"
           ],
+          "description": "job creation time",
           "name": "create_time",
           "required": false,
           "type": {
@@ -20984,6 +21006,7 @@
           "aliases": [
             "v"
           ],
+          "description": "the version of Elasticsearch when the analytics was created",
           "name": "version",
           "required": false,
           "type": {
@@ -20999,6 +21022,7 @@
             "si",
             "sourceIndex"
           ],
+          "description": "source index",
           "name": "source_index",
           "required": false,
           "type": {
@@ -21014,6 +21038,7 @@
             "di",
             "destIndex"
           ],
+          "description": "destination index",
           "name": "dest_index",
           "required": false,
           "type": {
@@ -21028,6 +21053,7 @@
           "aliases": [
             "d"
           ],
+          "description": "description",
           "name": "description",
           "required": false,
           "type": {
@@ -21043,6 +21069,7 @@
             "mml",
             "modelMemoryLimit"
           ],
+          "description": "model memory limit",
           "name": "model_memory_limit",
           "required": false,
           "type": {
@@ -21057,6 +21084,7 @@
           "aliases": [
             "s"
           ],
+          "description": "job state",
           "name": "state",
           "required": false,
           "type": {
@@ -21072,6 +21100,7 @@
             "fr",
             "failureReason"
           ],
+          "description": "failure reason",
           "name": "failure_reason",
           "required": false,
           "type": {
@@ -21086,6 +21115,7 @@
           "aliases": [
             "p"
           ],
+          "description": "progress",
           "name": "progress",
           "required": false,
           "type": {
@@ -21101,6 +21131,7 @@
             "ae",
             "assignmentExplanation"
           ],
+          "description": "why the job is or is not assigned to a node",
           "name": "assignment_explanation",
           "required": false,
           "type": {
@@ -21116,6 +21147,7 @@
             "ni",
             "nodeId"
           ],
+          "description": "id of the assigned node",
           "name": "node.id",
           "required": false,
           "type": {
@@ -21131,6 +21163,7 @@
             "nn",
             "nodeName"
           ],
+          "description": "name of the assigned node",
           "name": "node.name",
           "required": false,
           "type": {
@@ -21146,6 +21179,7 @@
             "ne",
             "nodeEphemeralId"
           ],
+          "description": "ephemeral id of the assigned node",
           "name": "node.ephemeral_id",
           "required": false,
           "type": {
@@ -21161,6 +21195,7 @@
             "na",
             "nodeAddress"
           ],
+          "description": "network address of the assigned node",
           "name": "node.address",
           "required": false,
           "type": {
@@ -21266,6 +21301,7 @@
       },
       "properties": [
         {
+          "description": "the datafeed_id",
           "name": "id",
           "required": false,
           "type": {
@@ -21280,6 +21316,7 @@
           "aliases": [
             "s"
           ],
+          "description": "the datafeed state",
           "name": "state",
           "required": false,
           "type": {
@@ -21294,6 +21331,7 @@
           "aliases": [
             "ae"
           ],
+          "description": "why the datafeed is or is not assigned to a node",
           "name": "assignment_explanation",
           "required": false,
           "type": {
@@ -21309,6 +21347,7 @@
             "bc",
             "bucketsCount"
           ],
+          "description": "bucket count",
           "name": "buckets.count",
           "required": false,
           "type": {
@@ -21324,6 +21363,7 @@
             "sc",
             "searchCount"
           ],
+          "description": "number of searches ran by the datafeed",
           "name": "search.count",
           "required": false,
           "type": {
@@ -21339,6 +21379,7 @@
             "st",
             "searchTime"
           ],
+          "description": "the total search time",
           "name": "search.time",
           "required": false,
           "type": {
@@ -21354,6 +21395,7 @@
             "sba",
             "searchBucketAvg"
           ],
+          "description": "the average search time per bucket (millisecond)",
           "name": "search.bucket_avg",
           "required": false,
           "type": {
@@ -21369,6 +21411,7 @@
             "seah",
             "searchExpAvgHour"
           ],
+          "description": "the exponential average search time per hour (millisecond)",
           "name": "search.exp_avg_hour",
           "required": false,
           "type": {
@@ -21384,6 +21427,7 @@
             "ni",
             "nodeId"
           ],
+          "description": "id of the assigned node",
           "name": "node.id",
           "required": false,
           "type": {
@@ -21399,6 +21443,7 @@
             "nn",
             "nodeName"
           ],
+          "description": "name of the assigned node",
           "name": "node.name",
           "required": false,
           "type": {
@@ -21414,6 +21459,7 @@
             "ne",
             "nodeEphemeralId"
           ],
+          "description": "ephemeral id of the assigned node",
           "name": "node.ephemeral_id",
           "required": false,
           "type": {
@@ -21429,6 +21475,7 @@
             "na",
             "nodeAddress"
           ],
+          "description": "network address of the assigned node",
           "name": "node.address",
           "required": false,
           "type": {
@@ -21523,6 +21570,7 @@
       },
       "properties": [
         {
+          "description": "node id",
           "name": "id",
           "required": false,
           "type": {
@@ -21537,6 +21585,7 @@
           "aliases": [
             "h"
           ],
+          "description": "host name",
           "name": "host",
           "required": false,
           "type": {
@@ -21548,6 +21597,7 @@
           }
         },
         {
+          "description": "ip address",
           "name": "ip",
           "required": false,
           "type": {
@@ -21562,6 +21612,7 @@
           "aliases": [
             "n"
           ],
+          "description": "node name",
           "name": "node",
           "required": false,
           "type": {
@@ -21576,6 +21627,7 @@
           "aliases": [
             "f"
           ],
+          "description": "field name",
           "name": "field",
           "required": false,
           "type": {
@@ -21587,6 +21639,7 @@
           }
         },
         {
+          "description": "field data usage",
           "name": "size",
           "required": false,
           "type": {
@@ -21684,6 +21737,7 @@
           "aliases": [
             "time"
           ],
+          "description": "seconds since 1969-01-01 00:00:00",
           "name": "epoch",
           "required": false,
           "type": {
@@ -21700,6 +21754,7 @@
             "hms",
             "hhmmss"
           ],
+          "description": "time in HH:MM:SS",
           "name": "timestamp",
           "required": false,
           "type": {
@@ -21714,6 +21769,7 @@
           "aliases": [
             "cl"
           ],
+          "description": "cluster name",
           "name": "cluster",
           "required": false,
           "type": {
@@ -21728,6 +21784,7 @@
           "aliases": [
             "st"
           ],
+          "description": "health status",
           "name": "status",
           "required": false,
           "type": {
@@ -21743,6 +21800,7 @@
             "nt",
             "nodeTotal"
           ],
+          "description": "total number of nodes",
           "name": "node.total",
           "required": false,
           "type": {
@@ -21758,6 +21816,7 @@
             "nd",
             "nodeData"
           ],
+          "description": "number of nodes that can store data",
           "name": "node.data",
           "required": false,
           "type": {
@@ -21775,6 +21834,7 @@
             "shards.total",
             "shardsTotal"
           ],
+          "description": "total number of shards",
           "name": "shards",
           "required": false,
           "type": {
@@ -21791,6 +21851,7 @@
             "shards.primary",
             "shardsPrimary"
           ],
+          "description": "number of primary shards",
           "name": "pri",
           "required": false,
           "type": {
@@ -21807,6 +21868,7 @@
             "shards.relocating",
             "shardsRelocating"
           ],
+          "description": "number of relocating nodes",
           "name": "relo",
           "required": false,
           "type": {
@@ -21823,6 +21885,7 @@
             "shards.initializing",
             "shardsInitializing"
           ],
+          "description": "number of initializing nodes",
           "name": "init",
           "required": false,
           "type": {
@@ -21839,6 +21902,7 @@
             "shards.unassigned",
             "shardsUnassigned"
           ],
+          "description": "number of unassigned shards",
           "name": "unassign",
           "required": false,
           "type": {
@@ -21854,6 +21918,7 @@
             "pt",
             "pendingTasks"
           ],
+          "description": "number of pending tasks",
           "name": "pending_tasks",
           "required": false,
           "type": {
@@ -21869,6 +21934,7 @@
             "mtwt",
             "maxTaskWaitTime"
           ],
+          "description": "wait time of longest task pending",
           "name": "max_task_wait_time",
           "required": false,
           "type": {
@@ -21884,6 +21950,7 @@
             "asp",
             "activeShardsPercent"
           ],
+          "description": "active number of shards in percent",
           "name": "active_shards_percent",
           "required": false,
           "type": {
@@ -22048,6 +22115,7 @@
           "aliases": [
             "h"
           ],
+          "description": "current health status",
           "name": "health",
           "required": false,
           "type": {
@@ -22062,6 +22130,7 @@
           "aliases": [
             "s"
           ],
+          "description": "open/close status",
           "name": "status",
           "required": false,
           "type": {
@@ -22077,6 +22146,7 @@
             "i",
             "idx"
           ],
+          "description": "index name",
           "name": "index",
           "required": false,
           "type": {
@@ -22091,6 +22161,7 @@
           "aliases": [
             "id"
           ],
+          "description": "index uuid",
           "name": "uuid",
           "required": false,
           "type": {
@@ -22107,6 +22178,7 @@
             "shards.primary",
             "shardsPrimary"
           ],
+          "description": "number of primary shards",
           "name": "pri",
           "required": false,
           "type": {
@@ -22123,6 +22195,7 @@
             "shards.replica",
             "shardsReplica"
           ],
+          "description": "number of replica shards",
           "name": "rep",
           "required": false,
           "type": {
@@ -22138,6 +22211,7 @@
             "dc",
             "docsCount"
           ],
+          "description": "available docs",
           "name": "docs.count",
           "required": false,
           "type": {
@@ -22153,6 +22227,7 @@
             "dd",
             "docsDeleted"
           ],
+          "description": "deleted docs",
           "name": "docs.deleted",
           "required": false,
           "type": {
@@ -22167,6 +22242,7 @@
           "aliases": [
             "cd"
           ],
+          "description": "index creation date (millisecond value)",
           "name": "creation.date",
           "required": false,
           "type": {
@@ -22181,6 +22257,7 @@
           "aliases": [
             "cds"
           ],
+          "description": "index creation date (as string)",
           "name": "creation.date.string",
           "required": false,
           "type": {
@@ -22196,6 +22273,7 @@
             "ss",
             "storeSize"
           ],
+          "description": "store size of primaries & replicas",
           "name": "store.size",
           "required": false,
           "type": {
@@ -22207,6 +22285,7 @@
           }
         },
         {
+          "description": "store size of primaries",
           "name": "pri.store.size",
           "required": false,
           "type": {
@@ -22222,6 +22301,7 @@
             "cs",
             "completionSize"
           ],
+          "description": "size of completion",
           "name": "completion.size",
           "required": false,
           "type": {
@@ -22233,6 +22313,7 @@
           }
         },
         {
+          "description": "size of completion",
           "name": "pri.completion.size",
           "required": false,
           "type": {
@@ -22248,6 +22329,7 @@
             "fm",
             "fielddataMemory"
           ],
+          "description": "used fielddata cache",
           "name": "fielddata.memory_size",
           "required": false,
           "type": {
@@ -22259,6 +22341,7 @@
           }
         },
         {
+          "description": "used fielddata cache",
           "name": "pri.fielddata.memory_size",
           "required": false,
           "type": {
@@ -22274,6 +22357,7 @@
             "fe",
             "fielddataEvictions"
           ],
+          "description": "fielddata evictions",
           "name": "fielddata.evictions",
           "required": false,
           "type": {
@@ -22285,6 +22369,7 @@
           }
         },
         {
+          "description": "fielddata evictions",
           "name": "pri.fielddata.evictions",
           "required": false,
           "type": {
@@ -22300,6 +22385,7 @@
             "qcm",
             "queryCacheMemory"
           ],
+          "description": "used query cache",
           "name": "query_cache.memory_size",
           "required": false,
           "type": {
@@ -22311,6 +22397,7 @@
           }
         },
         {
+          "description": "used query cache",
           "name": "pri.query_cache.memory_size",
           "required": false,
           "type": {
@@ -22326,6 +22413,7 @@
             "qce",
             "queryCacheEvictions"
           ],
+          "description": "query cache evictions",
           "name": "query_cache.evictions",
           "required": false,
           "type": {
@@ -22337,6 +22425,7 @@
           }
         },
         {
+          "description": "query cache evictions",
           "name": "pri.query_cache.evictions",
           "required": false,
           "type": {
@@ -22352,6 +22441,7 @@
             "rcm",
             "requestCacheMemory"
           ],
+          "description": "used request cache",
           "name": "request_cache.memory_size",
           "required": false,
           "type": {
@@ -22363,6 +22453,7 @@
           }
         },
         {
+          "description": "used request cache",
           "name": "pri.request_cache.memory_size",
           "required": false,
           "type": {
@@ -22378,6 +22469,7 @@
             "rce",
             "requestCacheEvictions"
           ],
+          "description": "request cache evictions",
           "name": "request_cache.evictions",
           "required": false,
           "type": {
@@ -22389,6 +22481,7 @@
           }
         },
         {
+          "description": "request cache evictions",
           "name": "pri.request_cache.evictions",
           "required": false,
           "type": {
@@ -22404,6 +22497,7 @@
             "rchc",
             "requestCacheHitCount"
           ],
+          "description": "request cache hit count",
           "name": "request_cache.hit_count",
           "required": false,
           "type": {
@@ -22415,6 +22509,7 @@
           }
         },
         {
+          "description": "request cache hit count",
           "name": "pri.request_cache.hit_count",
           "required": false,
           "type": {
@@ -22430,6 +22525,7 @@
             "rcmc",
             "requestCacheMissCount"
           ],
+          "description": "request cache miss count",
           "name": "request_cache.miss_count",
           "required": false,
           "type": {
@@ -22441,6 +22537,7 @@
           }
         },
         {
+          "description": "request cache miss count",
           "name": "pri.request_cache.miss_count",
           "required": false,
           "type": {
@@ -22456,6 +22553,7 @@
             "ft",
             "flushTotal"
           ],
+          "description": "number of flushes",
           "name": "flush.total",
           "required": false,
           "type": {
@@ -22467,6 +22565,7 @@
           }
         },
         {
+          "description": "number of flushes",
           "name": "pri.flush.total",
           "required": false,
           "type": {
@@ -22482,6 +22581,7 @@
             "ftt",
             "flushTotalTime"
           ],
+          "description": "time spent in flush",
           "name": "flush.total_time",
           "required": false,
           "type": {
@@ -22493,6 +22593,7 @@
           }
         },
         {
+          "description": "time spent in flush",
           "name": "pri.flush.total_time",
           "required": false,
           "type": {
@@ -22508,6 +22609,7 @@
             "gc",
             "getCurrent"
           ],
+          "description": "number of current get ops",
           "name": "get.current",
           "required": false,
           "type": {
@@ -22519,6 +22621,7 @@
           }
         },
         {
+          "description": "number of current get ops",
           "name": "pri.get.current",
           "required": false,
           "type": {
@@ -22534,6 +22637,7 @@
             "gti",
             "getTime"
           ],
+          "description": "time spent in get",
           "name": "get.time",
           "required": false,
           "type": {
@@ -22545,6 +22649,7 @@
           }
         },
         {
+          "description": "time spent in get",
           "name": "pri.get.time",
           "required": false,
           "type": {
@@ -22560,6 +22665,7 @@
             "gto",
             "getTotal"
           ],
+          "description": "number of get ops",
           "name": "get.total",
           "required": false,
           "type": {
@@ -22571,6 +22677,7 @@
           }
         },
         {
+          "description": "number of get ops",
           "name": "pri.get.total",
           "required": false,
           "type": {
@@ -22586,6 +22693,7 @@
             "geti",
             "getExistsTime"
           ],
+          "description": "time spent in successful gets",
           "name": "get.exists_time",
           "required": false,
           "type": {
@@ -22597,6 +22705,7 @@
           }
         },
         {
+          "description": "time spent in successful gets",
           "name": "pri.get.exists_time",
           "required": false,
           "type": {
@@ -22612,6 +22721,7 @@
             "geto",
             "getExistsTotal"
           ],
+          "description": "number of successful gets",
           "name": "get.exists_total",
           "required": false,
           "type": {
@@ -22623,6 +22733,7 @@
           }
         },
         {
+          "description": "number of successful gets",
           "name": "pri.get.exists_total",
           "required": false,
           "type": {
@@ -22638,6 +22749,7 @@
             "gmti",
             "getMissingTime"
           ],
+          "description": "time spent in failed gets",
           "name": "get.missing_time",
           "required": false,
           "type": {
@@ -22649,6 +22761,7 @@
           }
         },
         {
+          "description": "time spent in failed gets",
           "name": "pri.get.missing_time",
           "required": false,
           "type": {
@@ -22664,6 +22777,7 @@
             "gmto",
             "getMissingTotal"
           ],
+          "description": "number of failed gets",
           "name": "get.missing_total",
           "required": false,
           "type": {
@@ -22675,6 +22789,7 @@
           }
         },
         {
+          "description": "number of failed gets",
           "name": "pri.get.missing_total",
           "required": false,
           "type": {
@@ -22690,6 +22805,7 @@
             "idc",
             "indexingDeleteCurrent"
           ],
+          "description": "number of current deletions",
           "name": "indexing.delete_current",
           "required": false,
           "type": {
@@ -22701,6 +22817,7 @@
           }
         },
         {
+          "description": "number of current deletions",
           "name": "pri.indexing.delete_current",
           "required": false,
           "type": {
@@ -22716,6 +22833,7 @@
             "idti",
             "indexingDeleteTime"
           ],
+          "description": "time spent in deletions",
           "name": "indexing.delete_time",
           "required": false,
           "type": {
@@ -22727,6 +22845,7 @@
           }
         },
         {
+          "description": "time spent in deletions",
           "name": "pri.indexing.delete_time",
           "required": false,
           "type": {
@@ -22742,6 +22861,7 @@
             "idto",
             "indexingDeleteTotal"
           ],
+          "description": "number of delete ops",
           "name": "indexing.delete_total",
           "required": false,
           "type": {
@@ -22753,6 +22873,7 @@
           }
         },
         {
+          "description": "number of delete ops",
           "name": "pri.indexing.delete_total",
           "required": false,
           "type": {
@@ -22768,6 +22889,7 @@
             "iic",
             "indexingIndexCurrent"
           ],
+          "description": "number of current indexing ops",
           "name": "indexing.index_current",
           "required": false,
           "type": {
@@ -22779,6 +22901,7 @@
           }
         },
         {
+          "description": "number of current indexing ops",
           "name": "pri.indexing.index_current",
           "required": false,
           "type": {
@@ -22794,6 +22917,7 @@
             "iiti",
             "indexingIndexTime"
           ],
+          "description": "time spent in indexing",
           "name": "indexing.index_time",
           "required": false,
           "type": {
@@ -22805,6 +22929,7 @@
           }
         },
         {
+          "description": "time spent in indexing",
           "name": "pri.indexing.index_time",
           "required": false,
           "type": {
@@ -22820,6 +22945,7 @@
             "iito",
             "indexingIndexTotal"
           ],
+          "description": "number of indexing ops",
           "name": "indexing.index_total",
           "required": false,
           "type": {
@@ -22831,6 +22957,7 @@
           }
         },
         {
+          "description": "number of indexing ops",
           "name": "pri.indexing.index_total",
           "required": false,
           "type": {
@@ -22846,6 +22973,7 @@
             "iif",
             "indexingIndexFailed"
           ],
+          "description": "number of failed indexing ops",
           "name": "indexing.index_failed",
           "required": false,
           "type": {
@@ -22857,6 +22985,7 @@
           }
         },
         {
+          "description": "number of failed indexing ops",
           "name": "pri.indexing.index_failed",
           "required": false,
           "type": {
@@ -22872,6 +23001,7 @@
             "mc",
             "mergesCurrent"
           ],
+          "description": "number of current merges",
           "name": "merges.current",
           "required": false,
           "type": {
@@ -22883,6 +23013,7 @@
           }
         },
         {
+          "description": "number of current merges",
           "name": "pri.merges.current",
           "required": false,
           "type": {
@@ -22898,6 +23029,7 @@
             "mcd",
             "mergesCurrentDocs"
           ],
+          "description": "number of current merging docs",
           "name": "merges.current_docs",
           "required": false,
           "type": {
@@ -22909,6 +23041,7 @@
           }
         },
         {
+          "description": "number of current merging docs",
           "name": "pri.merges.current_docs",
           "required": false,
           "type": {
@@ -22924,6 +23057,7 @@
             "mcs",
             "mergesCurrentSize"
           ],
+          "description": "size of current merges",
           "name": "merges.current_size",
           "required": false,
           "type": {
@@ -22935,6 +23069,7 @@
           }
         },
         {
+          "description": "size of current merges",
           "name": "pri.merges.current_size",
           "required": false,
           "type": {
@@ -22950,6 +23085,7 @@
             "mt",
             "mergesTotal"
           ],
+          "description": "number of completed merge ops",
           "name": "merges.total",
           "required": false,
           "type": {
@@ -22961,6 +23097,7 @@
           }
         },
         {
+          "description": "number of completed merge ops",
           "name": "pri.merges.total",
           "required": false,
           "type": {
@@ -22976,6 +23113,7 @@
             "mtd",
             "mergesTotalDocs"
           ],
+          "description": "docs merged",
           "name": "merges.total_docs",
           "required": false,
           "type": {
@@ -22987,6 +23125,7 @@
           }
         },
         {
+          "description": "docs merged",
           "name": "pri.merges.total_docs",
           "required": false,
           "type": {
@@ -23002,6 +23141,7 @@
             "mts",
             "mergesTotalSize"
           ],
+          "description": "size merged",
           "name": "merges.total_size",
           "required": false,
           "type": {
@@ -23013,6 +23153,7 @@
           }
         },
         {
+          "description": "size merged",
           "name": "pri.merges.total_size",
           "required": false,
           "type": {
@@ -23028,6 +23169,7 @@
             "mtt",
             "mergesTotalTime"
           ],
+          "description": "time spent in merges",
           "name": "merges.total_time",
           "required": false,
           "type": {
@@ -23039,6 +23181,7 @@
           }
         },
         {
+          "description": "time spent in merges",
           "name": "pri.merges.total_time",
           "required": false,
           "type": {
@@ -23054,6 +23197,7 @@
             "rto",
             "refreshTotal"
           ],
+          "description": "total refreshes",
           "name": "refresh.total",
           "required": false,
           "type": {
@@ -23065,6 +23209,7 @@
           }
         },
         {
+          "description": "total refreshes",
           "name": "pri.refresh.total",
           "required": false,
           "type": {
@@ -23080,6 +23225,7 @@
             "rti",
             "refreshTime"
           ],
+          "description": "time spent in refreshes",
           "name": "refresh.time",
           "required": false,
           "type": {
@@ -23091,6 +23237,7 @@
           }
         },
         {
+          "description": "time spent in refreshes",
           "name": "pri.refresh.time",
           "required": false,
           "type": {
@@ -23105,6 +23252,7 @@
           "aliases": [
             "reto"
           ],
+          "description": "total external refreshes",
           "name": "refresh.external_total",
           "required": false,
           "type": {
@@ -23116,6 +23264,7 @@
           }
         },
         {
+          "description": "total external refreshes",
           "name": "pri.refresh.external_total",
           "required": false,
           "type": {
@@ -23130,6 +23279,7 @@
           "aliases": [
             "reti"
           ],
+          "description": "time spent in external refreshes",
           "name": "refresh.external_time",
           "required": false,
           "type": {
@@ -23141,6 +23291,7 @@
           }
         },
         {
+          "description": "time spent in external refreshes",
           "name": "pri.refresh.external_time",
           "required": false,
           "type": {
@@ -23156,6 +23307,7 @@
             "rli",
             "refreshListeners"
           ],
+          "description": "number of pending refresh listeners",
           "name": "refresh.listeners",
           "required": false,
           "type": {
@@ -23167,6 +23319,7 @@
           }
         },
         {
+          "description": "number of pending refresh listeners",
           "name": "pri.refresh.listeners",
           "required": false,
           "type": {
@@ -23182,6 +23335,7 @@
             "sfc",
             "searchFetchCurrent"
           ],
+          "description": "current fetch phase ops",
           "name": "search.fetch_current",
           "required": false,
           "type": {
@@ -23193,6 +23347,7 @@
           }
         },
         {
+          "description": "current fetch phase ops",
           "name": "pri.search.fetch_current",
           "required": false,
           "type": {
@@ -23208,6 +23363,7 @@
             "sfti",
             "searchFetchTime"
           ],
+          "description": "time spent in fetch phase",
           "name": "search.fetch_time",
           "required": false,
           "type": {
@@ -23219,6 +23375,7 @@
           }
         },
         {
+          "description": "time spent in fetch phase",
           "name": "pri.search.fetch_time",
           "required": false,
           "type": {
@@ -23234,6 +23391,7 @@
             "sfto",
             "searchFetchTotal"
           ],
+          "description": "total fetch ops",
           "name": "search.fetch_total",
           "required": false,
           "type": {
@@ -23245,6 +23403,7 @@
           }
         },
         {
+          "description": "total fetch ops",
           "name": "pri.search.fetch_total",
           "required": false,
           "type": {
@@ -23260,6 +23419,7 @@
             "so",
             "searchOpenContexts"
           ],
+          "description": "open search contexts",
           "name": "search.open_contexts",
           "required": false,
           "type": {
@@ -23271,6 +23431,7 @@
           }
         },
         {
+          "description": "open search contexts",
           "name": "pri.search.open_contexts",
           "required": false,
           "type": {
@@ -23286,6 +23447,7 @@
             "sqc",
             "searchQueryCurrent"
           ],
+          "description": "current query phase ops",
           "name": "search.query_current",
           "required": false,
           "type": {
@@ -23297,6 +23459,7 @@
           }
         },
         {
+          "description": "current query phase ops",
           "name": "pri.search.query_current",
           "required": false,
           "type": {
@@ -23312,6 +23475,7 @@
             "sqti",
             "searchQueryTime"
           ],
+          "description": "time spent in query phase",
           "name": "search.query_time",
           "required": false,
           "type": {
@@ -23323,6 +23487,7 @@
           }
         },
         {
+          "description": "time spent in query phase",
           "name": "pri.search.query_time",
           "required": false,
           "type": {
@@ -23338,6 +23503,7 @@
             "sqto",
             "searchQueryTotal"
           ],
+          "description": "total query phase ops",
           "name": "search.query_total",
           "required": false,
           "type": {
@@ -23349,6 +23515,7 @@
           }
         },
         {
+          "description": "total query phase ops",
           "name": "pri.search.query_total",
           "required": false,
           "type": {
@@ -23364,6 +23531,7 @@
             "scc",
             "searchScrollCurrent"
           ],
+          "description": "open scroll contexts",
           "name": "search.scroll_current",
           "required": false,
           "type": {
@@ -23375,6 +23543,7 @@
           }
         },
         {
+          "description": "open scroll contexts",
           "name": "pri.search.scroll_current",
           "required": false,
           "type": {
@@ -23390,6 +23559,7 @@
             "scti",
             "searchScrollTime"
           ],
+          "description": "time scroll contexts held open",
           "name": "search.scroll_time",
           "required": false,
           "type": {
@@ -23401,6 +23571,7 @@
           }
         },
         {
+          "description": "time scroll contexts held open",
           "name": "pri.search.scroll_time",
           "required": false,
           "type": {
@@ -23416,6 +23587,7 @@
             "scto",
             "searchScrollTotal"
           ],
+          "description": "completed scroll contexts",
           "name": "search.scroll_total",
           "required": false,
           "type": {
@@ -23427,6 +23599,7 @@
           }
         },
         {
+          "description": "completed scroll contexts",
           "name": "pri.search.scroll_total",
           "required": false,
           "type": {
@@ -23442,6 +23615,7 @@
             "sc",
             "segmentsCount"
           ],
+          "description": "number of segments",
           "name": "segments.count",
           "required": false,
           "type": {
@@ -23453,6 +23627,7 @@
           }
         },
         {
+          "description": "number of segments",
           "name": "pri.segments.count",
           "required": false,
           "type": {
@@ -23468,6 +23643,7 @@
             "sm",
             "segmentsMemory"
           ],
+          "description": "memory used by segments",
           "name": "segments.memory",
           "required": false,
           "type": {
@@ -23479,6 +23655,7 @@
           }
         },
         {
+          "description": "memory used by segments",
           "name": "pri.segments.memory",
           "required": false,
           "type": {
@@ -23494,6 +23671,7 @@
             "siwm",
             "segmentsIndexWriterMemory"
           ],
+          "description": "memory used by index writer",
           "name": "segments.index_writer_memory",
           "required": false,
           "type": {
@@ -23505,6 +23683,7 @@
           }
         },
         {
+          "description": "memory used by index writer",
           "name": "pri.segments.index_writer_memory",
           "required": false,
           "type": {
@@ -23520,6 +23699,7 @@
             "svmm",
             "segmentsVersionMapMemory"
           ],
+          "description": "memory used by version map",
           "name": "segments.version_map_memory",
           "required": false,
           "type": {
@@ -23531,6 +23711,7 @@
           }
         },
         {
+          "description": "memory used by version map",
           "name": "pri.segments.version_map_memory",
           "required": false,
           "type": {
@@ -23546,6 +23727,7 @@
             "sfbm",
             "fixedBitsetMemory"
           ],
+          "description": "memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields",
           "name": "segments.fixed_bitset_memory",
           "required": false,
           "type": {
@@ -23557,6 +23739,7 @@
           }
         },
         {
+          "description": "memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields",
           "name": "pri.segments.fixed_bitset_memory",
           "required": false,
           "type": {
@@ -23572,6 +23755,7 @@
             "wc",
             "warmerCurrent"
           ],
+          "description": "current warmer ops",
           "name": "warmer.current",
           "required": false,
           "type": {
@@ -23583,6 +23767,7 @@
           }
         },
         {
+          "description": "current warmer ops",
           "name": "pri.warmer.current",
           "required": false,
           "type": {
@@ -23598,6 +23783,7 @@
             "wto",
             "warmerTotal"
           ],
+          "description": "total warmer ops",
           "name": "warmer.total",
           "required": false,
           "type": {
@@ -23609,6 +23795,7 @@
           }
         },
         {
+          "description": "total warmer ops",
           "name": "pri.warmer.total",
           "required": false,
           "type": {
@@ -23624,6 +23811,7 @@
             "wtt",
             "warmerTotalTime"
           ],
+          "description": "time spent in warmers",
           "name": "warmer.total_time",
           "required": false,
           "type": {
@@ -23635,6 +23823,7 @@
           }
         },
         {
+          "description": "time spent in warmers",
           "name": "pri.warmer.total_time",
           "required": false,
           "type": {
@@ -23650,6 +23839,7 @@
             "suc",
             "suggestCurrent"
           ],
+          "description": "number of current suggest ops",
           "name": "suggest.current",
           "required": false,
           "type": {
@@ -23661,6 +23851,7 @@
           }
         },
         {
+          "description": "number of current suggest ops",
           "name": "pri.suggest.current",
           "required": false,
           "type": {
@@ -23676,6 +23867,7 @@
             "suti",
             "suggestTime"
           ],
+          "description": "time spend in suggest",
           "name": "suggest.time",
           "required": false,
           "type": {
@@ -23687,6 +23879,7 @@
           }
         },
         {
+          "description": "time spend in suggest",
           "name": "pri.suggest.time",
           "required": false,
           "type": {
@@ -23702,6 +23895,7 @@
             "suto",
             "suggestTotal"
           ],
+          "description": "number of suggest ops",
           "name": "suggest.total",
           "required": false,
           "type": {
@@ -23713,6 +23907,7 @@
           }
         },
         {
+          "description": "number of suggest ops",
           "name": "pri.suggest.total",
           "required": false,
           "type": {
@@ -23728,6 +23923,7 @@
             "tm",
             "memoryTotal"
           ],
+          "description": "total used memory",
           "name": "memory.total",
           "required": false,
           "type": {
@@ -23739,6 +23935,7 @@
           }
         },
         {
+          "description": "total user memory",
           "name": "pri.memory.total",
           "required": false,
           "type": {
@@ -23753,6 +23950,7 @@
           "aliases": [
             "sth"
           ],
+          "description": "indicates if the index is search throttled",
           "name": "search.throttled",
           "required": false,
           "type": {
@@ -23768,6 +23966,7 @@
             "bto",
             "bulkTotalOperation"
           ],
+          "description": "number of bulk shard ops",
           "name": "bulk.total_operations",
           "required": false,
           "type": {
@@ -23779,6 +23978,7 @@
           }
         },
         {
+          "description": "number of bulk shard ops",
           "name": "pri.bulk.total_operations",
           "required": false,
           "type": {
@@ -23794,6 +23994,7 @@
             "btti",
             "bulkTotalTime"
           ],
+          "description": "time spend in shard bulk",
           "name": "bulk.total_time",
           "required": false,
           "type": {
@@ -23805,6 +24006,7 @@
           }
         },
         {
+          "description": "time spend in shard bulk",
           "name": "pri.bulk.total_time",
           "required": false,
           "type": {
@@ -23820,6 +24022,7 @@
             "btsi",
             "bulkTotalSizeInBytes"
           ],
+          "description": "total size in bytes of shard bulk",
           "name": "bulk.total_size_in_bytes",
           "required": false,
           "type": {
@@ -23831,6 +24034,7 @@
           }
         },
         {
+          "description": "total size in bytes of shard bulk",
           "name": "pri.bulk.total_size_in_bytes",
           "required": false,
           "type": {
@@ -23846,6 +24050,7 @@
             "bati",
             "bulkAvgTime"
           ],
+          "description": "average time spend in shard bulk",
           "name": "bulk.avg_time",
           "required": false,
           "type": {
@@ -23857,6 +24062,7 @@
           }
         },
         {
+          "description": "average time spend in shard bulk",
           "name": "pri.bulk.avg_time",
           "required": false,
           "type": {
@@ -23872,6 +24078,7 @@
             "basi",
             "bulkAvgSizeInBytes"
           ],
+          "description": "average size in bytes of shard bulk",
           "name": "bulk.avg_size_in_bytes",
           "required": false,
           "type": {
@@ -23883,6 +24090,7 @@
           }
         },
         {
+          "description": "average size in bytes of shard bulk",
           "name": "pri.bulk.avg_size_in_bytes",
           "required": false,
           "type": {
@@ -24021,6 +24229,7 @@
       },
       "properties": [
         {
+          "description": "the job_id",
           "name": "id",
           "required": false,
           "type": {
@@ -24035,6 +24244,7 @@
           "aliases": [
             "s"
           ],
+          "description": "the job state",
           "name": "state",
           "required": false,
           "type": {
@@ -24049,6 +24259,7 @@
           "aliases": [
             "ot"
           ],
+          "description": "the amount of time the job has been opened",
           "name": "opened_time",
           "required": false,
           "type": {
@@ -24063,6 +24274,7 @@
           "aliases": [
             "ae"
           ],
+          "description": "why the job is or is not assigned to a node",
           "name": "assignment_explanation",
           "required": false,
           "type": {
@@ -24078,6 +24290,7 @@
             "dpr",
             "dataProcessedRecords"
           ],
+          "description": "number of processed records",
           "name": "data.processed_records",
           "required": false,
           "type": {
@@ -24093,6 +24306,7 @@
             "dpf",
             "dataProcessedFields"
           ],
+          "description": "number of processed fields",
           "name": "data.processed_fields",
           "required": false,
           "type": {
@@ -24108,6 +24322,7 @@
             "dib",
             "dataInputBytes"
           ],
+          "description": "total input bytes",
           "name": "data.input_bytes",
           "required": false,
           "type": {
@@ -24123,6 +24338,7 @@
             "dir",
             "dataInputRecords"
           ],
+          "description": "total record count",
           "name": "data.input_records",
           "required": false,
           "type": {
@@ -24138,6 +24354,7 @@
             "dif",
             "dataInputFields"
           ],
+          "description": "total field count",
           "name": "data.input_fields",
           "required": false,
           "type": {
@@ -24153,6 +24370,7 @@
             "did",
             "dataInvalidDates"
           ],
+          "description": "number of records with invalid dates",
           "name": "data.invalid_dates",
           "required": false,
           "type": {
@@ -24168,6 +24386,7 @@
             "dmf",
             "dataMissingFields"
           ],
+          "description": "number of records with missing fields",
           "name": "data.missing_fields",
           "required": false,
           "type": {
@@ -24183,6 +24402,7 @@
             "doot",
             "dataOutOfOrderTimestamps"
           ],
+          "description": "number of records handled out of order",
           "name": "data.out_of_order_timestamps",
           "required": false,
           "type": {
@@ -24198,6 +24418,7 @@
             "deb",
             "dataEmptyBuckets"
           ],
+          "description": "number of empty buckets",
           "name": "data.empty_buckets",
           "required": false,
           "type": {
@@ -24213,6 +24434,7 @@
             "dsb",
             "dataSparseBuckets"
           ],
+          "description": "number of sparse buckets",
           "name": "data.sparse_buckets",
           "required": false,
           "type": {
@@ -24228,6 +24450,7 @@
             "db",
             "dataBuckets"
           ],
+          "description": "total bucket count",
           "name": "data.buckets",
           "required": false,
           "type": {
@@ -24243,6 +24466,7 @@
             "der",
             "dataEarliestRecord"
           ],
+          "description": "earliest record time",
           "name": "data.earliest_record",
           "required": false,
           "type": {
@@ -24258,6 +24482,7 @@
             "dlr",
             "dataLatestRecord"
           ],
+          "description": "latest record time",
           "name": "data.latest_record",
           "required": false,
           "type": {
@@ -24273,6 +24498,7 @@
             "dl",
             "dataLast"
           ],
+          "description": "last time data was seen",
           "name": "data.last",
           "required": false,
           "type": {
@@ -24288,6 +24514,7 @@
             "dleb",
             "dataLastEmptyBucket"
           ],
+          "description": "last time an empty bucket occurred",
           "name": "data.last_empty_bucket",
           "required": false,
           "type": {
@@ -24303,6 +24530,7 @@
             "dlsb",
             "dataLastSparseBucket"
           ],
+          "description": "last time a sparse bucket occurred",
           "name": "data.last_sparse_bucket",
           "required": false,
           "type": {
@@ -24318,6 +24546,7 @@
             "mb",
             "modelBytes"
           ],
+          "description": "model size",
           "name": "model.bytes",
           "required": false,
           "type": {
@@ -24333,6 +24562,7 @@
             "mms",
             "modelMemoryStatus"
           ],
+          "description": "current memory status",
           "name": "model.memory_status",
           "required": false,
           "type": {
@@ -24348,6 +24578,7 @@
             "mbe",
             "modelBytesExceeded"
           ],
+          "description": "how much the model has exceeded the limit",
           "name": "model.bytes_exceeded",
           "required": false,
           "type": {
@@ -24363,6 +24594,7 @@
             "mml",
             "modelMemoryLimit"
           ],
+          "description": "model memory limit",
           "name": "model.memory_limit",
           "required": false,
           "type": {
@@ -24378,6 +24610,7 @@
             "mbf",
             "modelByFields"
           ],
+          "description": "count of 'by' fields",
           "name": "model.by_fields",
           "required": false,
           "type": {
@@ -24393,6 +24626,7 @@
             "mof",
             "modelOverFields"
           ],
+          "description": "count of 'over' fields",
           "name": "model.over_fields",
           "required": false,
           "type": {
@@ -24408,6 +24642,7 @@
             "mpf",
             "modelPartitionFields"
           ],
+          "description": "count of 'partition' fields",
           "name": "model.partition_fields",
           "required": false,
           "type": {
@@ -24423,6 +24658,7 @@
             "mbaf",
             "modelBucketAllocationFailures"
           ],
+          "description": "number of bucket allocation failures",
           "name": "model.bucket_allocation_failures",
           "required": false,
           "type": {
@@ -24438,6 +24674,7 @@
             "mcs",
             "modelCategorizationStatus"
           ],
+          "description": "current categorization status",
           "name": "model.categorization_status",
           "required": false,
           "type": {
@@ -24453,6 +24690,7 @@
             "mcdc",
             "modelCategorizedDocCount"
           ],
+          "description": "count of categorized documents",
           "name": "model.categorized_doc_count",
           "required": false,
           "type": {
@@ -24468,6 +24706,7 @@
             "mtcc",
             "modelTotalCategoryCount"
           ],
+          "description": "count of categories",
           "name": "model.total_category_count",
           "required": false,
           "type": {
@@ -24482,6 +24721,7 @@
           "aliases": [
             "modelFrequentCategoryCount"
           ],
+          "description": "count of frequent categories",
           "name": "model.frequent_category_count",
           "required": false,
           "type": {
@@ -24497,6 +24737,7 @@
             "mrcc",
             "modelRareCategoryCount"
           ],
+          "description": "count of rare categories",
           "name": "model.rare_category_count",
           "required": false,
           "type": {
@@ -24512,6 +24753,7 @@
             "mdcc",
             "modelDeadCategoryCount"
           ],
+          "description": "count of dead categories",
           "name": "model.dead_category_count",
           "required": false,
           "type": {
@@ -24527,6 +24769,7 @@
             "mfcc",
             "modelFailedCategoryCount"
           ],
+          "description": "count of failed categories",
           "name": "model.failed_category_count",
           "required": false,
           "type": {
@@ -24542,6 +24785,7 @@
             "mlt",
             "modelLogTime"
           ],
+          "description": "when the model stats were gathered",
           "name": "model.log_time",
           "required": false,
           "type": {
@@ -24557,6 +24801,7 @@
             "mt",
             "modelTimestamp"
           ],
+          "description": "the time of the last record when the model stats were gathered",
           "name": "model.timestamp",
           "required": false,
           "type": {
@@ -24572,6 +24817,7 @@
             "ft",
             "forecastsTotal"
           ],
+          "description": "total number of forecasts",
           "name": "forecasts.total",
           "required": false,
           "type": {
@@ -24587,6 +24833,7 @@
             "fmmin",
             "forecastsMemoryMin"
           ],
+          "description": "minimum memory used by forecasts",
           "name": "forecasts.memory.min",
           "required": false,
           "type": {
@@ -24602,6 +24849,7 @@
             "fmmax",
             "forecastsMemoryMax"
           ],
+          "description": "maximum memory used by forecasts",
           "name": "forecasts.memory.max",
           "required": false,
           "type": {
@@ -24617,6 +24865,7 @@
             "fmavg",
             "forecastsMemoryAvg"
           ],
+          "description": "average memory used by forecasts",
           "name": "forecasts.memory.avg",
           "required": false,
           "type": {
@@ -24632,6 +24881,7 @@
             "fmt",
             "forecastsMemoryTotal"
           ],
+          "description": "total memory used by all forecasts",
           "name": "forecasts.memory.total",
           "required": false,
           "type": {
@@ -24647,6 +24897,7 @@
             "frmin",
             "forecastsRecordsMin"
           ],
+          "description": "minimum record count for forecasts",
           "name": "forecasts.records.min",
           "required": false,
           "type": {
@@ -24662,6 +24913,7 @@
             "frmax",
             "forecastsRecordsMax"
           ],
+          "description": "maximum record count for forecasts",
           "name": "forecasts.records.max",
           "required": false,
           "type": {
@@ -24677,6 +24929,7 @@
             "fravg",
             "forecastsRecordsAvg"
           ],
+          "description": "average record count for forecasts",
           "name": "forecasts.records.avg",
           "required": false,
           "type": {
@@ -24692,6 +24945,7 @@
             "frt",
             "forecastsRecordsTotal"
           ],
+          "description": "total record count for all forecasts",
           "name": "forecasts.records.total",
           "required": false,
           "type": {
@@ -24707,6 +24961,7 @@
             "ftmin",
             "forecastsTimeMin"
           ],
+          "description": "minimum runtime for forecasts",
           "name": "forecasts.time.min",
           "required": false,
           "type": {
@@ -24722,6 +24977,7 @@
             "ftmax",
             "forecastsTimeMax"
           ],
+          "description": "maximum run time for forecasts",
           "name": "forecasts.time.max",
           "required": false,
           "type": {
@@ -24737,6 +24993,7 @@
             "ftavg",
             "forecastsTimeAvg"
           ],
+          "description": "average runtime for all forecasts (milliseconds)",
           "name": "forecasts.time.avg",
           "required": false,
           "type": {
@@ -24752,6 +25009,7 @@
             "ftt",
             "forecastsTimeTotal"
           ],
+          "description": "total runtime for all forecasts",
           "name": "forecasts.time.total",
           "required": false,
           "type": {
@@ -24767,6 +25025,7 @@
             "ni",
             "nodeId"
           ],
+          "description": "id of the assigned node",
           "name": "node.id",
           "required": false,
           "type": {
@@ -24782,6 +25041,7 @@
             "nn",
             "nodeName"
           ],
+          "description": "name of the assigned node",
           "name": "node.name",
           "required": false,
           "type": {
@@ -24797,6 +25057,7 @@
             "ne",
             "nodeEphemeralId"
           ],
+          "description": "ephemeral id of the assigned node",
           "name": "node.ephemeral_id",
           "required": false,
           "type": {
@@ -24812,6 +25073,7 @@
             "na",
             "nodeAddress"
           ],
+          "description": "network address of the assigned node",
           "name": "node.address",
           "required": false,
           "type": {
@@ -24827,6 +25089,7 @@
             "bc",
             "bucketsCount"
           ],
+          "description": "bucket count",
           "name": "buckets.count",
           "required": false,
           "type": {
@@ -24842,6 +25105,7 @@
             "btt",
             "bucketsTimeTotal"
           ],
+          "description": "total bucket processing time",
           "name": "buckets.time.total",
           "required": false,
           "type": {
@@ -24857,6 +25121,7 @@
             "btmin",
             "bucketsTimeMin"
           ],
+          "description": "minimum bucket processing time",
           "name": "buckets.time.min",
           "required": false,
           "type": {
@@ -24872,6 +25137,7 @@
             "btmax",
             "bucketsTimeMax"
           ],
+          "description": "maximum bucket processing time",
           "name": "buckets.time.max",
           "required": false,
           "type": {
@@ -24887,6 +25153,7 @@
             "btea",
             "bucketsTimeExpAvg"
           ],
+          "description": "exponential average bucket processing time (milliseconds)",
           "name": "buckets.time.exp_avg",
           "required": false,
           "type": {
@@ -24902,6 +25169,7 @@
             "bteah",
             "bucketsTimeExpAvgHour"
           ],
+          "description": "exponential average bucket processing time by hour (milliseconds)",
           "name": "buckets.time.exp_avg_hour",
           "required": false,
           "type": {
@@ -25007,6 +25275,7 @@
       },
       "properties": [
         {
+          "description": "node id",
           "name": "id",
           "required": false,
           "type": {
@@ -25021,6 +25290,7 @@
           "aliases": [
             "h"
           ],
+          "description": "host name",
           "name": "host",
           "required": false,
           "type": {
@@ -25032,6 +25302,7 @@
           }
         },
         {
+          "description": "ip address",
           "name": "ip",
           "required": false,
           "type": {
@@ -25046,6 +25317,7 @@
           "aliases": [
             "n"
           ],
+          "description": "node name",
           "name": "node",
           "required": false,
           "type": {
@@ -25115,6 +25387,7 @@
       },
       "properties": [
         {
+          "description": "node name",
           "name": "node",
           "required": false,
           "type": {
@@ -25126,6 +25399,7 @@
           }
         },
         {
+          "description": "unique node id",
           "name": "id",
           "required": false,
           "type": {
@@ -25137,6 +25411,7 @@
           }
         },
         {
+          "description": "process id",
           "name": "pid",
           "required": false,
           "type": {
@@ -25151,6 +25426,7 @@
           "aliases": [
             "h"
           ],
+          "description": "host name",
           "name": "host",
           "required": false,
           "type": {
@@ -25165,6 +25441,7 @@
           "aliases": [
             "i"
           ],
+          "description": "ip address",
           "name": "ip",
           "required": false,
           "type": {
@@ -25176,6 +25453,7 @@
           }
         },
         {
+          "description": "bound transport port",
           "name": "port",
           "required": false,
           "type": {
@@ -25187,6 +25465,7 @@
           }
         },
         {
+          "description": "attribute description",
           "name": "attr",
           "required": false,
           "type": {
@@ -25198,6 +25477,7 @@
           }
         },
         {
+          "description": "attribute value",
           "name": "value",
           "required": false,
           "type": {
@@ -25270,6 +25550,7 @@
           "aliases": [
             "nodeId"
           ],
+          "description": "unique node id",
           "name": "id",
           "required": false,
           "type": {
@@ -25284,6 +25565,7 @@
           "aliases": [
             "p"
           ],
+          "description": "process id",
           "name": "pid",
           "required": false,
           "type": {
@@ -25298,6 +25580,7 @@
           "aliases": [
             "i"
           ],
+          "description": "ip address",
           "name": "ip",
           "required": false,
           "type": {
@@ -25312,6 +25595,7 @@
           "aliases": [
             "po"
           ],
+          "description": "bound transport port",
           "name": "port",
           "required": false,
           "type": {
@@ -25326,6 +25610,7 @@
           "aliases": [
             "http"
           ],
+          "description": "bound http address",
           "name": "http_address",
           "required": false,
           "type": {
@@ -25340,6 +25625,7 @@
           "aliases": [
             "v"
           ],
+          "description": "es version",
           "name": "version",
           "required": false,
           "type": {
@@ -25354,6 +25640,7 @@
           "aliases": [
             "f"
           ],
+          "description": "es distribution flavor",
           "name": "flavor",
           "required": false,
           "type": {
@@ -25368,6 +25655,7 @@
           "aliases": [
             "t"
           ],
+          "description": "es distribution type",
           "name": "type",
           "required": false,
           "type": {
@@ -25382,6 +25670,7 @@
           "aliases": [
             "b"
           ],
+          "description": "es build hash",
           "name": "build",
           "required": false,
           "type": {
@@ -25396,6 +25685,7 @@
           "aliases": [
             "j"
           ],
+          "description": "jdk version",
           "name": "jdk",
           "required": false,
           "type": {
@@ -25411,6 +25701,7 @@
             "dt",
             "diskTotal"
           ],
+          "description": "total disk space",
           "name": "disk.total",
           "required": false,
           "type": {
@@ -25426,6 +25717,7 @@
             "du",
             "diskUsed"
           ],
+          "description": "used disk space",
           "name": "disk.used",
           "required": false,
           "type": {
@@ -25443,6 +25735,7 @@
             "disk",
             "diskAvail"
           ],
+          "description": "available disk space",
           "name": "disk.avail",
           "required": false,
           "type": {
@@ -25458,6 +25751,7 @@
             "dup",
             "diskUsedPercent"
           ],
+          "description": "used disk space percentage",
           "name": "disk.used_percent",
           "required": false,
           "type": {
@@ -25473,6 +25767,7 @@
             "hc",
             "heapCurrent"
           ],
+          "description": "used heap",
           "name": "heap.current",
           "required": false,
           "type": {
@@ -25488,6 +25783,7 @@
             "hp",
             "heapPercent"
           ],
+          "description": "used heap ratio",
           "name": "heap.percent",
           "required": false,
           "type": {
@@ -25503,6 +25799,7 @@
             "hm",
             "heapMax"
           ],
+          "description": "max configured heap",
           "name": "heap.max",
           "required": false,
           "type": {
@@ -25518,6 +25815,7 @@
             "rc",
             "ramCurrent"
           ],
+          "description": "used machine memory",
           "name": "ram.current",
           "required": false,
           "type": {
@@ -25533,6 +25831,7 @@
             "rp",
             "ramPercent"
           ],
+          "description": "used machine memory ratio",
           "name": "ram.percent",
           "required": false,
           "type": {
@@ -25548,6 +25847,7 @@
             "rn",
             "ramMax"
           ],
+          "description": "total machine memory",
           "name": "ram.max",
           "required": false,
           "type": {
@@ -25563,6 +25863,7 @@
             "fdc",
             "fileDescriptorCurrent"
           ],
+          "description": "used file descriptors",
           "name": "file_desc.current",
           "required": false,
           "type": {
@@ -25578,6 +25879,7 @@
             "fdp",
             "fileDescriptorPercent"
           ],
+          "description": "used file descriptor ratio",
           "name": "file_desc.percent",
           "required": false,
           "type": {
@@ -25593,6 +25895,7 @@
             "fdm",
             "fileDescriptorMax"
           ],
+          "description": "max file descriptors",
           "name": "file_desc.max",
           "required": false,
           "type": {
@@ -25604,6 +25907,7 @@
           }
         },
         {
+          "description": "recent cpu usage",
           "name": "cpu",
           "required": false,
           "type": {
@@ -25615,6 +25919,7 @@
           }
         },
         {
+          "description": "1m load avg",
           "name": "load_1m",
           "required": false,
           "type": {
@@ -25626,6 +25931,7 @@
           }
         },
         {
+          "description": "5m load avg",
           "name": "load_5m",
           "required": false,
           "type": {
@@ -25640,6 +25946,7 @@
           "aliases": [
             "l"
           ],
+          "description": "15m load avg",
           "name": "load_15m",
           "required": false,
           "type": {
@@ -25654,6 +25961,7 @@
           "aliases": [
             "u"
           ],
+          "description": "node uptime",
           "name": "uptime",
           "required": false,
           "type": {
@@ -25670,6 +25978,7 @@
             "role",
             "nodeRole"
           ],
+          "description": "m:master eligible node, d:data node, i:ingest node, -:coordinating node only",
           "name": "node.role",
           "required": false,
           "type": {
@@ -25684,6 +25993,7 @@
           "aliases": [
             "m"
           ],
+          "description": "*:current master",
           "name": "master",
           "required": false,
           "type": {
@@ -25698,6 +26008,7 @@
           "aliases": [
             "n"
           ],
+          "description": "node name",
           "name": "name",
           "required": false,
           "type": {
@@ -25713,6 +26024,7 @@
             "cs",
             "completionSize"
           ],
+          "description": "size of completion",
           "name": "completion.size",
           "required": false,
           "type": {
@@ -25728,6 +26040,7 @@
             "fm",
             "fielddataMemory"
           ],
+          "description": "used fielddata cache",
           "name": "fielddata.memory_size",
           "required": false,
           "type": {
@@ -25743,6 +26056,7 @@
             "fe",
             "fielddataEvictions"
           ],
+          "description": "fielddata evictions",
           "name": "fielddata.evictions",
           "required": false,
           "type": {
@@ -25758,6 +26072,7 @@
             "qcm",
             "queryCacheMemory"
           ],
+          "description": "used query cache",
           "name": "query_cache.memory_size",
           "required": false,
           "type": {
@@ -25773,6 +26088,7 @@
             "qce",
             "queryCacheEvictions"
           ],
+          "description": "query cache evictions",
           "name": "query_cache.evictions",
           "required": false,
           "type": {
@@ -25788,6 +26104,7 @@
             "qchc",
             "queryCacheHitCount"
           ],
+          "description": "query cache hit counts",
           "name": "query_cache.hit_count",
           "required": false,
           "type": {
@@ -25803,6 +26120,7 @@
             "qcmc",
             "queryCacheMissCount"
           ],
+          "description": "query cache miss counts",
           "name": "query_cache.miss_count",
           "required": false,
           "type": {
@@ -25818,6 +26136,7 @@
             "rcm",
             "requestCacheMemory"
           ],
+          "description": "used request cache",
           "name": "request_cache.memory_size",
           "required": false,
           "type": {
@@ -25833,6 +26152,7 @@
             "rce",
             "requestCacheEvictions"
           ],
+          "description": "request cache evictions",
           "name": "request_cache.evictions",
           "required": false,
           "type": {
@@ -25848,6 +26168,7 @@
             "rchc",
             "requestCacheHitCount"
           ],
+          "description": "request cache hit counts",
           "name": "request_cache.hit_count",
           "required": false,
           "type": {
@@ -25863,6 +26184,7 @@
             "rcmc",
             "requestCacheMissCount"
           ],
+          "description": "request cache miss counts",
           "name": "request_cache.miss_count",
           "required": false,
           "type": {
@@ -25878,6 +26200,7 @@
             "ft",
             "flushTotal"
           ],
+          "description": "number of flushes",
           "name": "flush.total",
           "required": false,
           "type": {
@@ -25893,6 +26216,7 @@
             "ftt",
             "flushTotalTime"
           ],
+          "description": "time spent in flush",
           "name": "flush.total_time",
           "required": false,
           "type": {
@@ -25908,6 +26232,7 @@
             "gc",
             "getCurrent"
           ],
+          "description": "number of current get ops",
           "name": "get.current",
           "required": false,
           "type": {
@@ -25923,6 +26248,7 @@
             "gti",
             "getTime"
           ],
+          "description": "time spent in get",
           "name": "get.time",
           "required": false,
           "type": {
@@ -25938,6 +26264,7 @@
             "gto",
             "getTotal"
           ],
+          "description": "number of get ops",
           "name": "get.total",
           "required": false,
           "type": {
@@ -25953,6 +26280,7 @@
             "geti",
             "getExistsTime"
           ],
+          "description": "time spent in successful gets",
           "name": "get.exists_time",
           "required": false,
           "type": {
@@ -25968,6 +26296,7 @@
             "geto",
             "getExistsTotal"
           ],
+          "description": "number of successful gets",
           "name": "get.exists_total",
           "required": false,
           "type": {
@@ -25983,6 +26312,7 @@
             "gmti",
             "getMissingTime"
           ],
+          "description": "time spent in failed gets",
           "name": "get.missing_time",
           "required": false,
           "type": {
@@ -25998,6 +26328,7 @@
             "gmto",
             "getMissingTotal"
           ],
+          "description": "number of failed gets",
           "name": "get.missing_total",
           "required": false,
           "type": {
@@ -26013,6 +26344,7 @@
             "idc",
             "indexingDeleteCurrent"
           ],
+          "description": "number of current deletions",
           "name": "indexing.delete_current",
           "required": false,
           "type": {
@@ -26028,6 +26360,7 @@
             "idti",
             "indexingDeleteTime"
           ],
+          "description": "time spent in deletions",
           "name": "indexing.delete_time",
           "required": false,
           "type": {
@@ -26043,6 +26376,7 @@
             "idto",
             "indexingDeleteTotal"
           ],
+          "description": "number of delete ops",
           "name": "indexing.delete_total",
           "required": false,
           "type": {
@@ -26058,6 +26392,7 @@
             "iic",
             "indexingIndexCurrent"
           ],
+          "description": "number of current indexing ops",
           "name": "indexing.index_current",
           "required": false,
           "type": {
@@ -26073,6 +26408,7 @@
             "iiti",
             "indexingIndexTime"
           ],
+          "description": "time spent in indexing",
           "name": "indexing.index_time",
           "required": false,
           "type": {
@@ -26088,6 +26424,7 @@
             "iito",
             "indexingIndexTotal"
           ],
+          "description": "number of indexing ops",
           "name": "indexing.index_total",
           "required": false,
           "type": {
@@ -26103,6 +26440,7 @@
             "iif",
             "indexingIndexFailed"
           ],
+          "description": "number of failed indexing ops",
           "name": "indexing.index_failed",
           "required": false,
           "type": {
@@ -26118,6 +26456,7 @@
             "mc",
             "mergesCurrent"
           ],
+          "description": "number of current merges",
           "name": "merges.current",
           "required": false,
           "type": {
@@ -26133,6 +26472,7 @@
             "mcd",
             "mergesCurrentDocs"
           ],
+          "description": "number of current merging docs",
           "name": "merges.current_docs",
           "required": false,
           "type": {
@@ -26148,6 +26488,7 @@
             "mcs",
             "mergesCurrentSize"
           ],
+          "description": "size of current merges",
           "name": "merges.current_size",
           "required": false,
           "type": {
@@ -26163,6 +26504,7 @@
             "mt",
             "mergesTotal"
           ],
+          "description": "number of completed merge ops",
           "name": "merges.total",
           "required": false,
           "type": {
@@ -26178,6 +26520,7 @@
             "mtd",
             "mergesTotalDocs"
           ],
+          "description": "docs merged",
           "name": "merges.total_docs",
           "required": false,
           "type": {
@@ -26193,6 +26536,7 @@
             "mts",
             "mergesTotalSize"
           ],
+          "description": "size merged",
           "name": "merges.total_size",
           "required": false,
           "type": {
@@ -26208,6 +26552,7 @@
             "mtt",
             "mergesTotalTime"
           ],
+          "description": "time spent in merges",
           "name": "merges.total_time",
           "required": false,
           "type": {
@@ -26219,6 +26564,7 @@
           }
         },
         {
+          "description": "total refreshes",
           "name": "refresh.total",
           "required": false,
           "type": {
@@ -26230,6 +26576,7 @@
           }
         },
         {
+          "description": "time spent in refreshes",
           "name": "refresh.time",
           "required": false,
           "type": {
@@ -26245,6 +26592,7 @@
             "rto",
             "refreshTotal"
           ],
+          "description": "total external refreshes",
           "name": "refresh.external_total",
           "required": false,
           "type": {
@@ -26260,6 +26608,7 @@
             "rti",
             "refreshTime"
           ],
+          "description": "time spent in external refreshes",
           "name": "refresh.external_time",
           "required": false,
           "type": {
@@ -26275,6 +26624,7 @@
             "rli",
             "refreshListeners"
           ],
+          "description": "number of pending refresh listeners",
           "name": "refresh.listeners",
           "required": false,
           "type": {
@@ -26290,6 +26640,7 @@
             "scrcc",
             "scriptCompilations"
           ],
+          "description": "script compilations",
           "name": "script.compilations",
           "required": false,
           "type": {
@@ -26305,6 +26656,7 @@
             "scrce",
             "scriptCacheEvictions"
           ],
+          "description": "script cache evictions",
           "name": "script.cache_evictions",
           "required": false,
           "type": {
@@ -26320,6 +26672,7 @@
             "scrclt",
             "scriptCacheCompilationLimitTriggered"
           ],
+          "description": "script cache compilation limit triggered",
           "name": "script.compilation_limit_triggered",
           "required": false,
           "type": {
@@ -26335,6 +26688,7 @@
             "sfc",
             "searchFetchCurrent"
           ],
+          "description": "current fetch phase ops",
           "name": "search.fetch_current",
           "required": false,
           "type": {
@@ -26350,6 +26704,7 @@
             "sfti",
             "searchFetchTime"
           ],
+          "description": "time spent in fetch phase",
           "name": "search.fetch_time",
           "required": false,
           "type": {
@@ -26365,6 +26720,7 @@
             "sfto",
             "searchFetchTotal"
           ],
+          "description": "total fetch ops",
           "name": "search.fetch_total",
           "required": false,
           "type": {
@@ -26380,6 +26736,7 @@
             "so",
             "searchOpenContexts"
           ],
+          "description": "open search contexts",
           "name": "search.open_contexts",
           "required": false,
           "type": {
@@ -26395,6 +26752,7 @@
             "sqc",
             "searchQueryCurrent"
           ],
+          "description": "current query phase ops",
           "name": "search.query_current",
           "required": false,
           "type": {
@@ -26410,6 +26768,7 @@
             "sqti",
             "searchQueryTime"
           ],
+          "description": "time spent in query phase",
           "name": "search.query_time",
           "required": false,
           "type": {
@@ -26425,6 +26784,7 @@
             "sqto",
             "searchQueryTotal"
           ],
+          "description": "total query phase ops",
           "name": "search.query_total",
           "required": false,
           "type": {
@@ -26440,6 +26800,7 @@
             "scc",
             "searchScrollCurrent"
           ],
+          "description": "open scroll contexts",
           "name": "search.scroll_current",
           "required": false,
           "type": {
@@ -26455,6 +26816,7 @@
             "scti",
             "searchScrollTime"
           ],
+          "description": "time scroll contexts held open",
           "name": "search.scroll_time",
           "required": false,
           "type": {
@@ -26470,6 +26832,7 @@
             "scto",
             "searchScrollTotal"
           ],
+          "description": "completed scroll contexts",
           "name": "search.scroll_total",
           "required": false,
           "type": {
@@ -26485,6 +26848,7 @@
             "sc",
             "segmentsCount"
           ],
+          "description": "number of segments",
           "name": "segments.count",
           "required": false,
           "type": {
@@ -26500,6 +26864,7 @@
             "sm",
             "segmentsMemory"
           ],
+          "description": "memory used by segments",
           "name": "segments.memory",
           "required": false,
           "type": {
@@ -26515,6 +26880,7 @@
             "siwm",
             "segmentsIndexWriterMemory"
           ],
+          "description": "memory used by index writer",
           "name": "segments.index_writer_memory",
           "required": false,
           "type": {
@@ -26530,6 +26896,7 @@
             "svmm",
             "segmentsVersionMapMemory"
           ],
+          "description": "memory used by version map",
           "name": "segments.version_map_memory",
           "required": false,
           "type": {
@@ -26545,6 +26912,7 @@
             "sfbm",
             "fixedBitsetMemory"
           ],
+          "description": "memory used by fixed bit sets for nested object field types  and type filters for types referred in _parent fields",
           "name": "segments.fixed_bitset_memory",
           "required": false,
           "type": {
@@ -26560,6 +26928,7 @@
             "suc",
             "suggestCurrent"
           ],
+          "description": "number of current suggest ops",
           "name": "suggest.current",
           "required": false,
           "type": {
@@ -26575,6 +26944,7 @@
             "suti",
             "suggestTime"
           ],
+          "description": "time spend in suggest",
           "name": "suggest.time",
           "required": false,
           "type": {
@@ -26590,6 +26960,7 @@
             "suto",
             "suggestTotal"
           ],
+          "description": "number of suggest ops",
           "name": "suggest.total",
           "required": false,
           "type": {
@@ -26605,6 +26976,7 @@
             "bto",
             "bulkTotalOperations"
           ],
+          "description": "number of bulk shard ops",
           "name": "bulk.total_operations",
           "required": false,
           "type": {
@@ -26620,6 +26992,7 @@
             "btti",
             "bulkTotalTime"
           ],
+          "description": "time spend in shard bulk",
           "name": "bulk.total_time",
           "required": false,
           "type": {
@@ -26635,6 +27008,7 @@
             "btsi",
             "bulkTotalSizeInBytes"
           ],
+          "description": "total size in bytes of shard bulk",
           "name": "bulk.total_size_in_bytes",
           "required": false,
           "type": {
@@ -26650,6 +27024,7 @@
             "bati",
             "bulkAvgTime"
           ],
+          "description": "average time spend in shard bulk",
           "name": "bulk.avg_time",
           "required": false,
           "type": {
@@ -26665,6 +27040,7 @@
             "basi",
             "bulkAvgSizeInBytes"
           ],
+          "description": "average size in bytes of shard bulk",
           "name": "bulk.avg_size_in_bytes",
           "required": false,
           "type": {
@@ -26772,6 +27148,7 @@
           "aliases": [
             "o"
           ],
+          "description": "task insertion order",
           "name": "insertOrder",
           "required": false,
           "type": {
@@ -26786,6 +27163,7 @@
           "aliases": [
             "t"
           ],
+          "description": "how long task has been in queue",
           "name": "timeInQueue",
           "required": false,
           "type": {
@@ -26800,6 +27178,7 @@
           "aliases": [
             "p"
           ],
+          "description": "task priority",
           "name": "priority",
           "required": false,
           "type": {
@@ -26814,6 +27193,7 @@
           "aliases": [
             "s"
           ],
+          "description": "task source",
           "name": "source",
           "required": false,
           "type": {
@@ -26883,6 +27263,7 @@
       },
       "properties": [
         {
+          "description": "unique node id",
           "name": "id",
           "required": false,
           "type": {
@@ -26897,6 +27278,7 @@
           "aliases": [
             "n"
           ],
+          "description": "node name",
           "name": "name",
           "required": false,
           "type": {
@@ -26911,6 +27293,7 @@
           "aliases": [
             "c"
           ],
+          "description": "component",
           "name": "component",
           "required": false,
           "type": {
@@ -26925,6 +27308,7 @@
           "aliases": [
             "v"
           ],
+          "description": "component version",
           "name": "version",
           "required": false,
           "type": {
@@ -26939,6 +27323,7 @@
           "aliases": [
             "d"
           ],
+          "description": "plugin details",
           "name": "description",
           "required": false,
           "type": {
@@ -26953,6 +27338,7 @@
           "aliases": [
             "t"
           ],
+          "description": "plugin type",
           "name": "type",
           "required": false,
           "type": {
@@ -27026,6 +27412,7 @@
             "i",
             "idx"
           ],
+          "description": "index name",
           "name": "index",
           "required": false,
           "type": {
@@ -27041,6 +27428,7 @@
             "s",
             "sh"
           ],
+          "description": "shard name",
           "name": "shard",
           "required": false,
           "type": {
@@ -27055,6 +27443,7 @@
           "aliases": [
             "start"
           ],
+          "description": "recovery start time",
           "name": "start_time",
           "required": false,
           "type": {
@@ -27069,6 +27458,7 @@
           "aliases": [
             "start_millis"
           ],
+          "description": "recovery start time in epoch milliseconds",
           "name": "start_time_millis",
           "required": false,
           "type": {
@@ -27083,6 +27473,7 @@
           "aliases": [
             "stop"
           ],
+          "description": "recovery stop time",
           "name": "stop_time",
           "required": false,
           "type": {
@@ -27097,6 +27488,7 @@
           "aliases": [
             "stop_millis"
           ],
+          "description": "recovery stop time in epoch milliseconds",
           "name": "stop_time_millis",
           "required": false,
           "type": {
@@ -27112,6 +27504,7 @@
             "t",
             "ti"
           ],
+          "description": "recovery time",
           "name": "time",
           "required": false,
           "type": {
@@ -27126,6 +27519,7 @@
           "aliases": [
             "ty"
           ],
+          "description": "recovery type",
           "name": "type",
           "required": false,
           "type": {
@@ -27140,6 +27534,7 @@
           "aliases": [
             "st"
           ],
+          "description": "recovery stage",
           "name": "stage",
           "required": false,
           "type": {
@@ -27154,6 +27549,7 @@
           "aliases": [
             "shost"
           ],
+          "description": "source host",
           "name": "source_host",
           "required": false,
           "type": {
@@ -27168,6 +27564,7 @@
           "aliases": [
             "snode"
           ],
+          "description": "source node name",
           "name": "source_node",
           "required": false,
           "type": {
@@ -27182,6 +27579,7 @@
           "aliases": [
             "thost"
           ],
+          "description": "target host",
           "name": "target_host",
           "required": false,
           "type": {
@@ -27196,6 +27594,7 @@
           "aliases": [
             "tnode"
           ],
+          "description": "target node name",
           "name": "target_node",
           "required": false,
           "type": {
@@ -27210,6 +27609,7 @@
           "aliases": [
             "rep"
           ],
+          "description": "repository",
           "name": "repository",
           "required": false,
           "type": {
@@ -27224,6 +27624,7 @@
           "aliases": [
             "snap"
           ],
+          "description": "snapshot",
           "name": "snapshot",
           "required": false,
           "type": {
@@ -27238,6 +27639,7 @@
           "aliases": [
             "f"
           ],
+          "description": "number of files to recover",
           "name": "files",
           "required": false,
           "type": {
@@ -27252,6 +27654,7 @@
           "aliases": [
             "fr"
           ],
+          "description": "files recovered",
           "name": "files_recovered",
           "required": false,
           "type": {
@@ -27266,6 +27669,7 @@
           "aliases": [
             "fp"
           ],
+          "description": "percent of files recovered",
           "name": "files_percent",
           "required": false,
           "type": {
@@ -27280,6 +27684,7 @@
           "aliases": [
             "tf"
           ],
+          "description": "total number of files",
           "name": "files_total",
           "required": false,
           "type": {
@@ -27294,6 +27699,7 @@
           "aliases": [
             "b"
           ],
+          "description": "number of bytes to recover",
           "name": "bytes",
           "required": false,
           "type": {
@@ -27308,6 +27714,7 @@
           "aliases": [
             "br"
           ],
+          "description": "bytes recovered",
           "name": "bytes_recovered",
           "required": false,
           "type": {
@@ -27322,6 +27729,7 @@
           "aliases": [
             "bp"
           ],
+          "description": "percent of bytes recovered",
           "name": "bytes_percent",
           "required": false,
           "type": {
@@ -27336,6 +27744,7 @@
           "aliases": [
             "tb"
           ],
+          "description": "total number of bytes",
           "name": "bytes_total",
           "required": false,
           "type": {
@@ -27350,6 +27759,7 @@
           "aliases": [
             "to"
           ],
+          "description": "number of translog ops to recover",
           "name": "translog_ops",
           "required": false,
           "type": {
@@ -27364,6 +27774,7 @@
           "aliases": [
             "tor"
           ],
+          "description": "translog ops recovered",
           "name": "translog_ops_recovered",
           "required": false,
           "type": {
@@ -27378,6 +27789,7 @@
           "aliases": [
             "top"
           ],
+          "description": "percent of translog ops recovered",
           "name": "translog_ops_percent",
           "required": false,
           "type": {
@@ -27497,6 +27909,7 @@
           "aliases": [
             "repoId"
           ],
+          "description": "unique repository id",
           "name": "id",
           "required": false,
           "type": {
@@ -27511,6 +27924,7 @@
           "aliases": [
             "t"
           ],
+          "description": "repository type",
           "name": "type",
           "required": false,
           "type": {
@@ -27654,6 +28068,7 @@
             "i",
             "idx"
           ],
+          "description": "index name",
           "name": "index",
           "required": false,
           "type": {
@@ -27669,6 +28084,7 @@
             "s",
             "sh"
           ],
+          "description": "shard name",
           "name": "shard",
           "required": false,
           "type": {
@@ -27685,6 +28101,7 @@
             "pr",
             "primaryOrReplica"
           ],
+          "description": "primary or replica",
           "name": "prirep",
           "required": false,
           "type": {
@@ -27696,6 +28113,7 @@
           }
         },
         {
+          "description": "ip of node where it lives",
           "name": "ip",
           "required": false,
           "type": {
@@ -27707,6 +28125,7 @@
           }
         },
         {
+          "description": "unique id of node where it lives",
           "name": "id",
           "required": false,
           "type": {
@@ -27721,6 +28140,7 @@
           "aliases": [
             "seg"
           ],
+          "description": "segment name",
           "name": "segment",
           "required": false,
           "type": {
@@ -27736,6 +28156,7 @@
             "g",
             "gen"
           ],
+          "description": "segment generation",
           "name": "generation",
           "required": false,
           "type": {
@@ -27751,6 +28172,7 @@
             "dc",
             "docsCount"
           ],
+          "description": "number of docs in segment",
           "name": "docs.count",
           "required": false,
           "type": {
@@ -27766,6 +28188,7 @@
             "dd",
             "docsDeleted"
           ],
+          "description": "number of deleted docs in segment",
           "name": "docs.deleted",
           "required": false,
           "type": {
@@ -27780,6 +28203,7 @@
           "aliases": [
             "si"
           ],
+          "description": "segment size in bytes",
           "name": "size",
           "required": false,
           "type": {
@@ -27795,6 +28219,7 @@
             "sm",
             "sizeMemory"
           ],
+          "description": "segment memory in bytes",
           "name": "size.memory",
           "required": false,
           "type": {
@@ -27810,6 +28235,7 @@
             "ic",
             "isCommitted"
           ],
+          "description": "is segment committed",
           "name": "committed",
           "required": false,
           "type": {
@@ -27825,6 +28251,7 @@
             "is",
             "isSearchable"
           ],
+          "description": "is segment searched",
           "name": "searchable",
           "required": false,
           "type": {
@@ -27839,6 +28266,7 @@
           "aliases": [
             "v"
           ],
+          "description": "version",
           "name": "version",
           "required": false,
           "type": {
@@ -27854,6 +28282,7 @@
             "ico",
             "isCompound"
           ],
+          "description": "is segment compound",
           "name": "compound",
           "required": false,
           "type": {
@@ -27952,6 +28381,7 @@
             "i",
             "idx"
           ],
+          "description": "index name",
           "name": "index",
           "required": false,
           "type": {
@@ -27967,6 +28397,7 @@
             "s",
             "sh"
           ],
+          "description": "shard name",
           "name": "shard",
           "required": false,
           "type": {
@@ -27983,6 +28414,7 @@
             "pr",
             "primaryOrReplica"
           ],
+          "description": "primary or replica",
           "name": "prirep",
           "required": false,
           "type": {
@@ -27997,6 +28429,7 @@
           "aliases": [
             "st"
           ],
+          "description": "shard state",
           "name": "state",
           "required": false,
           "type": {
@@ -28012,6 +28445,7 @@
             "d",
             "dc"
           ],
+          "description": "number of docs in shard",
           "name": "docs",
           "required": false,
           "type": {
@@ -28026,6 +28460,7 @@
           "aliases": [
             "sto"
           ],
+          "description": "store size of shard (how much disk it uses)",
           "name": "store",
           "required": false,
           "type": {
@@ -28037,6 +28472,7 @@
           }
         },
         {
+          "description": "ip of node where it lives",
           "name": "ip",
           "required": false,
           "type": {
@@ -28048,6 +28484,7 @@
           }
         },
         {
+          "description": "unique id of node where it lives",
           "name": "id",
           "required": false,
           "type": {
@@ -28062,6 +28499,7 @@
           "aliases": [
             "n"
           ],
+          "description": "name of node where it lives",
           "name": "node",
           "required": false,
           "type": {
@@ -28073,6 +28511,7 @@
           }
         },
         {
+          "description": "sync id",
           "name": "sync_id",
           "required": false,
           "type": {
@@ -28087,6 +28526,7 @@
           "aliases": [
             "ur"
           ],
+          "description": "reason shard is unassigned",
           "name": "unassigned.reason",
           "required": false,
           "type": {
@@ -28101,6 +28541,7 @@
           "aliases": [
             "ua"
           ],
+          "description": "time shard became unassigned (UTC)",
           "name": "unassigned.at",
           "required": false,
           "type": {
@@ -28115,6 +28556,7 @@
           "aliases": [
             "uf"
           ],
+          "description": "time has been unassigned",
           "name": "unassigned.for",
           "required": false,
           "type": {
@@ -28129,6 +28571,7 @@
           "aliases": [
             "ud"
           ],
+          "description": "additional details as to why the shard became unassigned",
           "name": "unassigned.details",
           "required": false,
           "type": {
@@ -28143,6 +28586,7 @@
           "aliases": [
             "rs"
           ],
+          "description": "recovery source type",
           "name": "recoverysource.type",
           "required": false,
           "type": {
@@ -28158,6 +28602,7 @@
             "cs",
             "completionSize"
           ],
+          "description": "size of completion",
           "name": "completion.size",
           "required": false,
           "type": {
@@ -28173,6 +28618,7 @@
             "fm",
             "fielddataMemory"
           ],
+          "description": "used fielddata cache",
           "name": "fielddata.memory_size",
           "required": false,
           "type": {
@@ -28188,6 +28634,7 @@
             "fe",
             "fielddataEvictions"
           ],
+          "description": "fielddata evictions",
           "name": "fielddata.evictions",
           "required": false,
           "type": {
@@ -28203,6 +28650,7 @@
             "qcm",
             "queryCacheMemory"
           ],
+          "description": "used query cache",
           "name": "query_cache.memory_size",
           "required": false,
           "type": {
@@ -28218,6 +28666,7 @@
             "qce",
             "queryCacheEvictions"
           ],
+          "description": "query cache evictions",
           "name": "query_cache.evictions",
           "required": false,
           "type": {
@@ -28233,6 +28682,7 @@
             "ft",
             "flushTotal"
           ],
+          "description": "number of flushes",
           "name": "flush.total",
           "required": false,
           "type": {
@@ -28248,6 +28698,7 @@
             "ftt",
             "flushTotalTime"
           ],
+          "description": "time spent in flush",
           "name": "flush.total_time",
           "required": false,
           "type": {
@@ -28263,6 +28714,7 @@
             "gc",
             "getCurrent"
           ],
+          "description": "number of current get ops",
           "name": "get.current",
           "required": false,
           "type": {
@@ -28278,6 +28730,7 @@
             "gti",
             "getTime"
           ],
+          "description": "time spent in get",
           "name": "get.time",
           "required": false,
           "type": {
@@ -28293,6 +28746,7 @@
             "gto",
             "getTotal"
           ],
+          "description": "number of get ops",
           "name": "get.total",
           "required": false,
           "type": {
@@ -28308,6 +28762,7 @@
             "geti",
             "getExistsTime"
           ],
+          "description": "time spent in successful gets",
           "name": "get.exists_time",
           "required": false,
           "type": {
@@ -28323,6 +28778,7 @@
             "geto",
             "getExistsTotal"
           ],
+          "description": "number of successful gets",
           "name": "get.exists_total",
           "required": false,
           "type": {
@@ -28338,6 +28794,7 @@
             "gmti",
             "getMissingTime"
           ],
+          "description": "time spent in failed gets",
           "name": "get.missing_time",
           "required": false,
           "type": {
@@ -28353,6 +28810,7 @@
             "gmto",
             "getMissingTotal"
           ],
+          "description": "number of failed gets",
           "name": "get.missing_total",
           "required": false,
           "type": {
@@ -28368,6 +28826,7 @@
             "idc",
             "indexingDeleteCurrent"
           ],
+          "description": "number of current deletions",
           "name": "indexing.delete_current",
           "required": false,
           "type": {
@@ -28383,6 +28842,7 @@
             "idti",
             "indexingDeleteTime"
           ],
+          "description": "time spent in deletions",
           "name": "indexing.delete_time",
           "required": false,
           "type": {
@@ -28398,6 +28858,7 @@
             "idto",
             "indexingDeleteTotal"
           ],
+          "description": "number of delete ops",
           "name": "indexing.delete_total",
           "required": false,
           "type": {
@@ -28413,6 +28874,7 @@
             "iic",
             "indexingIndexCurrent"
           ],
+          "description": "number of current indexing ops",
           "name": "indexing.index_current",
           "required": false,
           "type": {
@@ -28428,6 +28890,7 @@
             "iiti",
             "indexingIndexTime"
           ],
+          "description": "time spent in indexing",
           "name": "indexing.index_time",
           "required": false,
           "type": {
@@ -28443,6 +28906,7 @@
             "iito",
             "indexingIndexTotal"
           ],
+          "description": "number of indexing ops",
           "name": "indexing.index_total",
           "required": false,
           "type": {
@@ -28458,6 +28922,7 @@
             "iif",
             "indexingIndexFailed"
           ],
+          "description": "number of failed indexing ops",
           "name": "indexing.index_failed",
           "required": false,
           "type": {
@@ -28473,6 +28938,7 @@
             "mc",
             "mergesCurrent"
           ],
+          "description": "number of current merges",
           "name": "merges.current",
           "required": false,
           "type": {
@@ -28488,6 +28954,7 @@
             "mcd",
             "mergesCurrentDocs"
           ],
+          "description": "number of current merging docs",
           "name": "merges.current_docs",
           "required": false,
           "type": {
@@ -28503,6 +28970,7 @@
             "mcs",
             "mergesCurrentSize"
           ],
+          "description": "size of current merges",
           "name": "merges.current_size",
           "required": false,
           "type": {
@@ -28518,6 +28986,7 @@
             "mt",
             "mergesTotal"
           ],
+          "description": "number of completed merge ops",
           "name": "merges.total",
           "required": false,
           "type": {
@@ -28533,6 +29002,7 @@
             "mtd",
             "mergesTotalDocs"
           ],
+          "description": "docs merged",
           "name": "merges.total_docs",
           "required": false,
           "type": {
@@ -28548,6 +29018,7 @@
             "mts",
             "mergesTotalSize"
           ],
+          "description": "size merged",
           "name": "merges.total_size",
           "required": false,
           "type": {
@@ -28563,6 +29034,7 @@
             "mtt",
             "mergesTotalTime"
           ],
+          "description": "time spent in merges",
           "name": "merges.total_time",
           "required": false,
           "type": {
@@ -28574,6 +29046,7 @@
           }
         },
         {
+          "description": "total refreshes",
           "name": "refresh.total",
           "required": false,
           "type": {
@@ -28585,6 +29058,7 @@
           }
         },
         {
+          "description": "time spent in refreshes",
           "name": "refresh.time",
           "required": false,
           "type": {
@@ -28600,6 +29074,7 @@
             "rto",
             "refreshTotal"
           ],
+          "description": "total external refreshes",
           "name": "refresh.external_total",
           "required": false,
           "type": {
@@ -28615,6 +29090,7 @@
             "rti",
             "refreshTime"
           ],
+          "description": "time spent in external refreshes",
           "name": "refresh.external_time",
           "required": false,
           "type": {
@@ -28630,6 +29106,7 @@
             "rli",
             "refreshListeners"
           ],
+          "description": "number of pending refresh listeners",
           "name": "refresh.listeners",
           "required": false,
           "type": {
@@ -28645,6 +29122,7 @@
             "sfc",
             "searchFetchCurrent"
           ],
+          "description": "current fetch phase ops",
           "name": "search.fetch_current",
           "required": false,
           "type": {
@@ -28660,6 +29138,7 @@
             "sfti",
             "searchFetchTime"
           ],
+          "description": "time spent in fetch phase",
           "name": "search.fetch_time",
           "required": false,
           "type": {
@@ -28675,6 +29154,7 @@
             "sfto",
             "searchFetchTotal"
           ],
+          "description": "total fetch ops",
           "name": "search.fetch_total",
           "required": false,
           "type": {
@@ -28690,6 +29170,7 @@
             "so",
             "searchOpenContexts"
           ],
+          "description": "open search contexts",
           "name": "search.open_contexts",
           "required": false,
           "type": {
@@ -28705,6 +29186,7 @@
             "sqc",
             "searchQueryCurrent"
           ],
+          "description": "current query phase ops",
           "name": "search.query_current",
           "required": false,
           "type": {
@@ -28720,6 +29202,7 @@
             "sqti",
             "searchQueryTime"
           ],
+          "description": "time spent in query phase",
           "name": "search.query_time",
           "required": false,
           "type": {
@@ -28735,6 +29218,7 @@
             "sqto",
             "searchQueryTotal"
           ],
+          "description": "total query phase ops",
           "name": "search.query_total",
           "required": false,
           "type": {
@@ -28750,6 +29234,7 @@
             "scc",
             "searchScrollCurrent"
           ],
+          "description": "open scroll contexts",
           "name": "search.scroll_current",
           "required": false,
           "type": {
@@ -28765,6 +29250,7 @@
             "scti",
             "searchScrollTime"
           ],
+          "description": "time scroll contexts held open",
           "name": "search.scroll_time",
           "required": false,
           "type": {
@@ -28780,6 +29266,7 @@
             "scto",
             "searchScrollTotal"
           ],
+          "description": "completed scroll contexts",
           "name": "search.scroll_total",
           "required": false,
           "type": {
@@ -28795,6 +29282,7 @@
             "sc",
             "segmentsCount"
           ],
+          "description": "number of segments",
           "name": "segments.count",
           "required": false,
           "type": {
@@ -28810,6 +29298,7 @@
             "sm",
             "segmentsMemory"
           ],
+          "description": "memory used by segments",
           "name": "segments.memory",
           "required": false,
           "type": {
@@ -28825,6 +29314,7 @@
             "siwm",
             "segmentsIndexWriterMemory"
           ],
+          "description": "memory used by index writer",
           "name": "segments.index_writer_memory",
           "required": false,
           "type": {
@@ -28840,6 +29330,7 @@
             "svmm",
             "segmentsVersionMapMemory"
           ],
+          "description": "memory used by version map",
           "name": "segments.version_map_memory",
           "required": false,
           "type": {
@@ -28855,6 +29346,7 @@
             "sfbm",
             "fixedBitsetMemory"
           ],
+          "description": "memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields",
           "name": "segments.fixed_bitset_memory",
           "required": false,
           "type": {
@@ -28870,6 +29362,7 @@
             "sqm",
             "maxSeqNo"
           ],
+          "description": "max sequence number",
           "name": "seq_no.max",
           "required": false,
           "type": {
@@ -28885,6 +29378,7 @@
             "sql",
             "localCheckpoint"
           ],
+          "description": "local checkpoint",
           "name": "seq_no.local_checkpoint",
           "required": false,
           "type": {
@@ -28900,6 +29394,7 @@
             "sqg",
             "globalCheckpoint"
           ],
+          "description": "global checkpoint",
           "name": "seq_no.global_checkpoint",
           "required": false,
           "type": {
@@ -28915,6 +29410,7 @@
             "wc",
             "warmerCurrent"
           ],
+          "description": "current warmer ops",
           "name": "warmer.current",
           "required": false,
           "type": {
@@ -28930,6 +29426,7 @@
             "wto",
             "warmerTotal"
           ],
+          "description": "total warmer ops",
           "name": "warmer.total",
           "required": false,
           "type": {
@@ -28945,6 +29442,7 @@
             "wtt",
             "warmerTotalTime"
           ],
+          "description": "time spent in warmers",
           "name": "warmer.total_time",
           "required": false,
           "type": {
@@ -28960,6 +29458,7 @@
             "pd",
             "dataPath"
           ],
+          "description": "shard data path",
           "name": "path.data",
           "required": false,
           "type": {
@@ -28975,6 +29474,7 @@
             "ps",
             "statsPath"
           ],
+          "description": "shard state path",
           "name": "path.state",
           "required": false,
           "type": {
@@ -28990,6 +29490,7 @@
             "bto",
             "bulkTotalOperations"
           ],
+          "description": "number of bulk shard ops",
           "name": "bulk.total_operations",
           "required": false,
           "type": {
@@ -29005,6 +29506,7 @@
             "btti",
             "bulkTotalTime"
           ],
+          "description": "time spend in shard bulk",
           "name": "bulk.total_time",
           "required": false,
           "type": {
@@ -29020,6 +29522,7 @@
             "btsi",
             "bulkTotalSizeInBytes"
           ],
+          "description": "total size in bytes of shard bulk",
           "name": "bulk.total_size_in_bytes",
           "required": false,
           "type": {
@@ -29035,6 +29538,7 @@
             "bati",
             "bulkAvgTime"
           ],
+          "description": "average time spend in shard bulk",
           "name": "bulk.avg_time",
           "required": false,
           "type": {
@@ -29050,6 +29554,7 @@
             "basi",
             "bulkAvgSizeInBytes"
           ],
+          "description": "avg size in bytes of shard bulk",
           "name": "bulk.avg_size_in_bytes",
           "required": false,
           "type": {
@@ -29147,6 +29652,7 @@
           "aliases": [
             "snapshot"
           ],
+          "description": "unique snapshot",
           "name": "id",
           "required": false,
           "type": {
@@ -29162,6 +29668,7 @@
             "re",
             "repo"
           ],
+          "description": "repository name",
           "name": "repository",
           "required": false,
           "type": {
@@ -29176,6 +29683,7 @@
           "aliases": [
             "s"
           ],
+          "description": "snapshot name",
           "name": "status",
           "required": false,
           "type": {
@@ -29191,6 +29699,7 @@
             "ste",
             "startEpoch"
           ],
+          "description": "start time in seconds since 1970-01-01 00:00:00",
           "name": "start_epoch",
           "required": false,
           "type": {
@@ -29206,6 +29715,7 @@
             "sti",
             "startTime"
           ],
+          "description": "start time in HH:MM:SS",
           "name": "start_time",
           "required": false,
           "type": {
@@ -29221,6 +29731,7 @@
             "ete",
             "endEpoch"
           ],
+          "description": "end time in seconds since 1970-01-01 00:00:00",
           "name": "end_epoch",
           "required": false,
           "type": {
@@ -29236,6 +29747,7 @@
             "eti",
             "endTime"
           ],
+          "description": "end time in HH:MM:SS",
           "name": "end_time",
           "required": false,
           "type": {
@@ -29250,6 +29762,7 @@
           "aliases": [
             "dur"
           ],
+          "description": "duration",
           "name": "duration",
           "required": false,
           "type": {
@@ -29264,6 +29777,7 @@
           "aliases": [
             "i"
           ],
+          "description": "number of indices",
           "name": "indices",
           "required": false,
           "type": {
@@ -29278,6 +29792,7 @@
           "aliases": [
             "ss"
           ],
+          "description": "number of successful shards",
           "name": "successful_shards",
           "required": false,
           "type": {
@@ -29292,6 +29807,7 @@
           "aliases": [
             "fs"
           ],
+          "description": "number of failed shards",
           "name": "failed_shards",
           "required": false,
           "type": {
@@ -29306,6 +29822,7 @@
           "aliases": [
             "ts"
           ],
+          "description": "number of total shards",
           "name": "total_shards",
           "required": false,
           "type": {
@@ -29320,6 +29837,7 @@
           "aliases": [
             "r"
           ],
+          "description": "reason for failures",
           "name": "reason",
           "required": false,
           "type": {
@@ -29414,6 +29932,7 @@
       },
       "properties": [
         {
+          "description": "id of the task with the node",
           "name": "id",
           "required": false,
           "type": {
@@ -29428,6 +29947,7 @@
           "aliases": [
             "ac"
           ],
+          "description": "task action",
           "name": "action",
           "required": false,
           "type": {
@@ -29442,6 +29962,7 @@
           "aliases": [
             "ti"
           ],
+          "description": "unique task id",
           "name": "task_id",
           "required": false,
           "type": {
@@ -29456,6 +29977,7 @@
           "aliases": [
             "pti"
           ],
+          "description": "parent task id",
           "name": "parent_task_id",
           "required": false,
           "type": {
@@ -29470,6 +29992,7 @@
           "aliases": [
             "ty"
           ],
+          "description": "task type",
           "name": "type",
           "required": false,
           "type": {
@@ -29484,6 +30007,7 @@
           "aliases": [
             "start"
           ],
+          "description": "start time in ms",
           "name": "start_time",
           "required": false,
           "type": {
@@ -29500,6 +30024,7 @@
             "hms",
             "hhmmss"
           ],
+          "description": "start time in HH:MM:SS",
           "name": "timestamp",
           "required": false,
           "type": {
@@ -29511,6 +30036,7 @@
           }
         },
         {
+          "description": "running time ns",
           "name": "running_time_ns",
           "required": false,
           "type": {
@@ -29525,6 +30051,7 @@
           "aliases": [
             "time"
           ],
+          "description": "running time",
           "name": "running_time",
           "required": false,
           "type": {
@@ -29539,6 +30066,7 @@
           "aliases": [
             "ni"
           ],
+          "description": "unique node id",
           "name": "node_id",
           "required": false,
           "type": {
@@ -29553,6 +30081,7 @@
           "aliases": [
             "i"
           ],
+          "description": "ip address",
           "name": "ip",
           "required": false,
           "type": {
@@ -29567,6 +30096,7 @@
           "aliases": [
             "po"
           ],
+          "description": "bound transport port",
           "name": "port",
           "required": false,
           "type": {
@@ -29581,6 +30111,7 @@
           "aliases": [
             "n"
           ],
+          "description": "node name",
           "name": "node",
           "required": false,
           "type": {
@@ -29595,6 +30126,7 @@
           "aliases": [
             "v"
           ],
+          "description": "es version",
           "name": "version",
           "required": false,
           "type": {
@@ -29609,6 +30141,7 @@
           "aliases": [
             "x"
           ],
+          "description": "X-Opaque-ID header",
           "name": "x_opaque_id",
           "required": false,
           "type": {
@@ -29623,6 +30156,7 @@
           "aliases": [
             "desc"
           ],
+          "description": "task action",
           "name": "description",
           "required": false,
           "type": {
@@ -29746,6 +30280,7 @@
           "aliases": [
             "n"
           ],
+          "description": "template name",
           "name": "name",
           "required": false,
           "type": {
@@ -29760,6 +30295,7 @@
           "aliases": [
             "t"
           ],
+          "description": "template index patterns",
           "name": "index_patterns",
           "required": false,
           "type": {
@@ -29775,6 +30311,7 @@
             "o",
             "p"
           ],
+          "description": "template application order/priority number",
           "name": "order",
           "required": false,
           "type": {
@@ -29789,6 +30326,7 @@
           "aliases": [
             "v"
           ],
+          "description": "version",
           "name": "version",
           "required": false,
           "type": {
@@ -29803,6 +30341,7 @@
           "aliases": [
             "c"
           ],
+          "description": "component templates comprising index template",
           "name": "composed_of",
           "required": false,
           "type": {
@@ -29888,6 +30427,7 @@
           "aliases": [
             "nn"
           ],
+          "description": "node name",
           "name": "node_name",
           "required": false,
           "type": {
@@ -29902,6 +30442,7 @@
           "aliases": [
             "id"
           ],
+          "description": "persistent node id",
           "name": "node_id",
           "required": false,
           "type": {
@@ -29916,6 +30457,7 @@
           "aliases": [
             "eid"
           ],
+          "description": "ephemeral node id",
           "name": "ephemeral_node_id",
           "required": false,
           "type": {
@@ -29930,6 +30472,7 @@
           "aliases": [
             "p"
           ],
+          "description": "process id",
           "name": "pid",
           "required": false,
           "type": {
@@ -29944,6 +30487,7 @@
           "aliases": [
             "h"
           ],
+          "description": "host name",
           "name": "host",
           "required": false,
           "type": {
@@ -29958,6 +30502,7 @@
           "aliases": [
             "i"
           ],
+          "description": "ip address",
           "name": "ip",
           "required": false,
           "type": {
@@ -29972,6 +30517,7 @@
           "aliases": [
             "po"
           ],
+          "description": "bound transport port",
           "name": "port",
           "required": false,
           "type": {
@@ -29986,6 +30532,7 @@
           "aliases": [
             "n"
           ],
+          "description": "thread pool name",
           "name": "name",
           "required": false,
           "type": {
@@ -30000,6 +30547,7 @@
           "aliases": [
             "t"
           ],
+          "description": "thread pool type",
           "name": "type",
           "required": false,
           "type": {
@@ -30014,6 +30562,7 @@
           "aliases": [
             "a"
           ],
+          "description": "number of active threads",
           "name": "active",
           "required": false,
           "type": {
@@ -30028,6 +30577,7 @@
           "aliases": [
             "psz"
           ],
+          "description": "number of threads",
           "name": "pool_size",
           "required": false,
           "type": {
@@ -30042,6 +30592,7 @@
           "aliases": [
             "q"
           ],
+          "description": "number of tasks currently in queue",
           "name": "queue",
           "required": false,
           "type": {
@@ -30056,6 +30607,7 @@
           "aliases": [
             "qs"
           ],
+          "description": "maximum number of tasks permitted in queue",
           "name": "queue_size",
           "required": false,
           "type": {
@@ -30070,6 +30622,7 @@
           "aliases": [
             "r"
           ],
+          "description": "number of rejected tasks",
           "name": "rejected",
           "required": false,
           "type": {
@@ -30084,6 +30637,7 @@
           "aliases": [
             "l"
           ],
+          "description": "highest number of seen active threads",
           "name": "largest",
           "required": false,
           "type": {
@@ -30098,6 +30652,7 @@
           "aliases": [
             "c"
           ],
+          "description": "number of completed tasks",
           "name": "completed",
           "required": false,
           "type": {
@@ -30112,6 +30667,7 @@
           "aliases": [
             "cr"
           ],
+          "description": "core number of threads in a scaling thread pool",
           "name": "core",
           "required": false,
           "type": {
@@ -30126,6 +30682,7 @@
           "aliases": [
             "mx"
           ],
+          "description": "maximum number of threads in a scaling thread pool",
           "name": "max",
           "required": false,
           "type": {
@@ -30140,6 +30697,7 @@
           "aliases": [
             "sz"
           ],
+          "description": "number of threads in a fixed thread pool",
           "name": "size",
           "required": false,
           "type": {
@@ -30154,6 +30712,7 @@
           "aliases": [
             "ka"
           ],
+          "description": "thread keep alive time",
           "name": "keep_alive",
           "required": false,
           "type": {
@@ -30260,6 +30819,7 @@
       },
       "properties": [
         {
+          "description": "the trained model id",
           "name": "id",
           "required": false,
           "type": {
@@ -30275,6 +30835,7 @@
             "c",
             "createdBy"
           ],
+          "description": "who created the model",
           "name": "created_by",
           "required": false,
           "type": {
@@ -30290,6 +30851,7 @@
             "hs",
             "modelHeapSize"
           ],
+          "description": "the estimated heap size to keep the model in memory",
           "name": "heap_size",
           "required": false,
           "type": {
@@ -30305,6 +30867,7 @@
             "o",
             "modelOperations"
           ],
+          "description": "the estimated number of operations to use the model",
           "name": "operations",
           "required": false,
           "type": {
@@ -30319,6 +30882,7 @@
           "aliases": [
             "l"
           ],
+          "description": "The license level of the model",
           "name": "license",
           "required": false,
           "type": {
@@ -30333,6 +30897,7 @@
           "aliases": [
             "ct"
           ],
+          "description": "The time the model was created",
           "name": "create_time",
           "required": false,
           "type": {
@@ -30347,6 +30912,7 @@
           "aliases": [
             "v"
           ],
+          "description": "The version of Elasticsearch when the model was created",
           "name": "version",
           "required": false,
           "type": {
@@ -30361,6 +30927,7 @@
           "aliases": [
             "d"
           ],
+          "description": "The model description",
           "name": "description",
           "required": false,
           "type": {
@@ -30376,6 +30943,7 @@
             "ip",
             "ingestPipelines"
           ],
+          "description": "The number of pipelines referencing the model",
           "name": "ingest.pipelines",
           "required": false,
           "type": {
@@ -30391,6 +30959,7 @@
             "ic",
             "ingestCount"
           ],
+          "description": "The total number of docs processed by the model",
           "name": "ingest.count",
           "required": false,
           "type": {
@@ -30406,6 +30975,7 @@
             "it",
             "ingestTime"
           ],
+          "description": "The total time spent processing docs with this model",
           "name": "ingest.time",
           "required": false,
           "type": {
@@ -30421,6 +30991,7 @@
             "icurr",
             "ingestCurrent"
           ],
+          "description": "The total documents currently being handled by the model",
           "name": "ingest.current",
           "required": false,
           "type": {
@@ -30436,6 +31007,7 @@
             "if",
             "ingestFailed"
           ],
+          "description": "The total count of failed ingest attempts with this model",
           "name": "ingest.failed",
           "required": false,
           "type": {
@@ -30451,6 +31023,7 @@
             "dfid",
             "dataFrameAnalytics"
           ],
+          "description": "The data frame analytics config id that created the model (if still available)",
           "name": "data_frame.id",
           "required": false,
           "type": {
@@ -30466,6 +31039,7 @@
             "dft",
             "dataFrameAnalyticsTime"
           ],
+          "description": "The time the data frame analytics config was created",
           "name": "data_frame.create_time",
           "required": false,
           "type": {
@@ -30481,6 +31055,7 @@
             "dfsi",
             "dataFrameAnalyticsSrcIndex"
           ],
+          "description": "The source index used to train in the data frame analysis",
           "name": "data_frame.source_index",
           "required": false,
           "type": {
@@ -30496,6 +31071,7 @@
             "dfa",
             "dataFrameAnalyticsAnalysis"
           ],
+          "description": "The analysis used by the data frame to build the model",
           "name": "data_frame.analysis",
           "required": false,
           "type": {
@@ -30623,6 +31199,7 @@
       },
       "properties": [
         {
+          "description": "the id",
           "name": "id",
           "required": false,
           "type": {
@@ -30637,6 +31214,7 @@
           "aliases": [
             "s"
           ],
+          "description": "transform state",
           "name": "state",
           "required": false,
           "type": {
@@ -30651,6 +31229,7 @@
           "aliases": [
             "c"
           ],
+          "description": "checkpoint",
           "name": "checkpoint",
           "required": false,
           "type": {
@@ -30666,6 +31245,7 @@
             "docp",
             "documentsProcessed"
           ],
+          "description": "the number of documents read from source indices and processed",
           "name": "documents_processed",
           "required": false,
           "type": {
@@ -30681,6 +31261,7 @@
             "cp",
             "checkpointProgress"
           ],
+          "description": "progress of the checkpoint",
           "name": "checkpoint_progress",
           "required": false,
           "type": {
@@ -30696,6 +31277,7 @@
             "lst",
             "lastSearchTime"
           ],
+          "description": "last time transform searched for updates",
           "name": "last_search_time",
           "required": false,
           "type": {
@@ -30710,6 +31292,7 @@
           "aliases": [
             "cldt"
           ],
+          "description": "changes last detected time",
           "name": "changes_last_detection_time",
           "required": false,
           "type": {
@@ -30725,6 +31308,7 @@
             "ct",
             "createTime"
           ],
+          "description": "transform creation time",
           "name": "create_time",
           "required": false,
           "type": {
@@ -30739,6 +31323,7 @@
           "aliases": [
             "v"
           ],
+          "description": "the version of Elasticsearch when the transform was created",
           "name": "version",
           "required": false,
           "type": {
@@ -30754,6 +31339,7 @@
             "si",
             "sourceIndex"
           ],
+          "description": "source index",
           "name": "source_index",
           "required": false,
           "type": {
@@ -30769,6 +31355,7 @@
             "di",
             "destIndex"
           ],
+          "description": "destination index",
           "name": "dest_index",
           "required": false,
           "type": {
@@ -30783,6 +31370,7 @@
           "aliases": [
             "p"
           ],
+          "description": "transform pipeline",
           "name": "pipeline",
           "required": false,
           "type": {
@@ -30797,6 +31385,7 @@
           "aliases": [
             "d"
           ],
+          "description": "description",
           "name": "description",
           "required": false,
           "type": {
@@ -30811,6 +31400,7 @@
           "aliases": [
             "tt"
           ],
+          "description": "batch or continuous transform",
           "name": "transform_type",
           "required": false,
           "type": {
@@ -30825,6 +31415,7 @@
           "aliases": [
             "f"
           ],
+          "description": "frequency of transform",
           "name": "frequency",
           "required": false,
           "type": {
@@ -30839,6 +31430,7 @@
           "aliases": [
             "mpsz"
           ],
+          "description": "max page search size",
           "name": "max_page_search_size",
           "required": false,
           "type": {
@@ -30853,6 +31445,7 @@
           "aliases": [
             "dps"
           ],
+          "description": "docs per second",
           "name": "docs_per_second",
           "required": false,
           "type": {
@@ -30867,6 +31460,7 @@
           "aliases": [
             "r"
           ],
+          "description": "reason for the current state",
           "name": "reason",
           "required": false,
           "type": {
@@ -30881,6 +31475,7 @@
           "aliases": [
             "st"
           ],
+          "description": "total number of search phases",
           "name": "search_total",
           "required": false,
           "type": {
@@ -30895,6 +31490,7 @@
           "aliases": [
             "sf"
           ],
+          "description": "total number of search failures",
           "name": "search_failure",
           "required": false,
           "type": {
@@ -30909,6 +31505,7 @@
           "aliases": [
             "stime"
           ],
+          "description": "total search time",
           "name": "search_time",
           "required": false,
           "type": {
@@ -30923,6 +31520,7 @@
           "aliases": [
             "it"
           ],
+          "description": "total number of index phases done by the transform",
           "name": "index_total",
           "required": false,
           "type": {
@@ -30937,6 +31535,7 @@
           "aliases": [
             "if"
           ],
+          "description": "total number of index failures",
           "name": "index_failure",
           "required": false,
           "type": {
@@ -30951,6 +31550,7 @@
           "aliases": [
             "itime"
           ],
+          "description": "total time spent indexing documents",
           "name": "index_time",
           "required": false,
           "type": {
@@ -30965,6 +31565,7 @@
           "aliases": [
             "doci"
           ],
+          "description": "the number of documents written to the destination index",
           "name": "documents_indexed",
           "required": false,
           "type": {
@@ -30979,6 +31580,7 @@
           "aliases": [
             "dtime"
           ],
+          "description": "total time spent deleting documents",
           "name": "delete_time",
           "required": false,
           "type": {
@@ -30993,6 +31595,7 @@
           "aliases": [
             "docd"
           ],
+          "description": "the number of documents deleted from the destination index",
           "name": "documents_deleted",
           "required": false,
           "type": {
@@ -31007,6 +31610,7 @@
           "aliases": [
             "tc"
           ],
+          "description": "the number of times the transform has been triggered",
           "name": "trigger_count",
           "required": false,
           "type": {
@@ -31021,6 +31625,7 @@
           "aliases": [
             "pp"
           ],
+          "description": "the number of pages processed",
           "name": "pages_processed",
           "required": false,
           "type": {
@@ -31035,6 +31640,7 @@
           "aliases": [
             "pt"
           ],
+          "description": "the total time spent processing documents",
           "name": "processing_time",
           "required": false,
           "type": {
@@ -31050,6 +31656,7 @@
             "cdtea",
             "checkpointTimeExpAvg"
           ],
+          "description": "exponential average checkpoint processing time (milliseconds)",
           "name": "checkpoint_duration_time_exp_avg",
           "required": false,
           "type": {
@@ -31064,6 +31671,7 @@
           "aliases": [
             "idea"
           ],
+          "description": "exponential average number of documents indexed",
           "name": "indexed_documents_exp_avg",
           "required": false,
           "type": {
@@ -31078,6 +31686,7 @@
           "aliases": [
             "pdea"
           ],
+          "description": "exponential average number of documents processed",
           "name": "processed_documents_exp_avg",
           "required": false,
           "type": {
@@ -40475,6 +41084,7 @@
       ]
     },
     {
+      "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
       "name": {
@@ -43610,6 +44220,7 @@
       "properties": []
     },
     {
+      "description": "A reference to a date field with formatting instructions on how to return the date",
       "kind": "interface",
       "name": {
         "name": "DateField",
@@ -50540,6 +51151,7 @@
       ]
     },
     {
+      "description": "For empty Class assignments",
       "kind": "interface",
       "name": {
         "name": "EmptyObject",
@@ -52375,6 +52987,7 @@
           "aliases": [
             "resource.id"
           ],
+          "description": "resource id",
           "name": "resource_id",
           "required": false,
           "type": {
@@ -52389,6 +53002,7 @@
           "aliases": [
             "resource.type"
           ],
+          "description": "resource type",
           "name": "resource_type",
           "required": false,
           "type": {
@@ -54516,6 +55130,7 @@
       ]
     },
     {
+      "description": "Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.",
       "kind": "type_alias",
       "name": {
         "name": "Field",
@@ -59223,6 +59838,7 @@
       ]
     },
     {
+      "description": "Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point",
       "kind": "type_alias",
       "name": {
         "name": "GeoCoordinate",
@@ -59951,6 +60567,7 @@
       ]
     },
     {
+      "description": "Represents a Latitude/Longitude as a 2 dimensional point",
       "kind": "type_alias",
       "name": {
         "name": "GeoLocation",
@@ -77729,6 +78346,7 @@
       ]
     },
     {
+      "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
       "name": {
@@ -80335,6 +80953,7 @@
       }
     },
     {
+      "description": "The minimum number of terms that should match as integer, percentage or range",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html",
       "kind": "type_alias",
       "name": {
@@ -84190,6 +84809,7 @@
           }
         }
       ],
+      "description": "Queries can either be in the form of\n{ type: { field: { ...query_details...including_boost_and_name } } }\n||\n{ type: { boost: _, _name: _, field: { ...query_details... } } }",
       "generics": [
         {
           "name": "TQuery",
@@ -86237,6 +86857,7 @@
       }
     },
     {
+      "description": "* @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles",
       "kind": "type_alias",
       "name": {
         "name": "NodeRoles",
@@ -88617,6 +89238,7 @@
       ]
     },
     {
+      "description": "If a painless script fails to execute this is returned on the serialized exception",
       "kind": "interface",
       "name": {
         "name": "PainlessExecutionPosition",
@@ -108166,6 +108788,7 @@
         {
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108177,6 +108800,7 @@
         {
           "name": "ccs_minimize_roundtrips",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108197,6 +108821,7 @@
           }
         },
         {
+          "description": "server_default false",
           "name": "explain",
           "required": false,
           "type": {
@@ -108210,6 +108835,7 @@
         {
           "name": "ignore_throttled",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108221,6 +108847,7 @@
         {
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108243,6 +108870,7 @@
         {
           "name": "profile",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108285,8 +108913,11 @@
           }
         },
         {
+          "description": "If true, hits.total are rendered as an integer in the response.",
           "name": "total_hits_as_integer",
           "required": false,
+          "serverDefault": false,
+          "since": "7.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108298,6 +108929,7 @@
         {
           "name": "typed_keys",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -118177,6 +118809,7 @@
       ]
     },
     {
+      "description": "QL Types",
       "kind": "type_alias",
       "name": {
         "name": "SqlRow",
@@ -119652,6 +120285,7 @@
       "properties": []
     },
     {
+      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
       "kind": "type_alias",
       "name": {
         "name": "StopWords",
@@ -120510,6 +121144,7 @@
       ]
     },
     {
+      "description": "The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
       "kind": "type_alias",
       "name": {
         "name": "SuggestionName",
@@ -134038,6 +134673,7 @@
       }
     },
     {
+      "description": "HEAD APIs can have a different behavior based on the language,\nthe response body is always empty to it's up to language generators\nto define how those should be represented.",
       "kind": "interface",
       "name": {
         "name": "EmptyResponseBase",
@@ -134046,6 +134682,7 @@
       "properties": []
     },
     {
+      "description": "Implements a set of common query parameters all Cat API's support.\nSince these can break the request structure these are listed explicitly as a behavior.",
       "kind": "interface",
       "name": {
         "name": "CommonCatQueryParameters",
@@ -134135,6 +134772,7 @@
       ]
     },
     {
+      "description": "A response formatted as an array of records.\nSome languages can't represent this easily and need to wrap the\narray inside an object.",
       "generics": [
         {
           "name": "TRecord",
@@ -134149,6 +134787,7 @@
       "properties": []
     },
     {
+      "description": "In some places in the specification an object consists of the union of a set of known properties\nand a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose\na set of known keys and possibly. The object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
       "generics": [
         {
           "name": "TKey",
@@ -134167,6 +134806,7 @@
       "properties": []
     },
     {
+      "description": "Implements a set of common query parameters all API's support.\nSince these can break the request structure these are listed explicitly as a behavior.\nIts up to individual clients to define support although `error_trace` and `pretty` are\nrecommended as a minimum.",
       "kind": "interface",
       "name": {
         "name": "CommonQueryParameters",

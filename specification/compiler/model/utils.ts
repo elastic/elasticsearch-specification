@@ -508,8 +508,18 @@ export function hoistRequestAnnotations (
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
 export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[]): void {
+  // in most of the cases the jsDocs comes in a single block,
+  // but it can happen that the user defines multiple single line jsDoc.
+  // We want to enforce a single jsDoc block.
+  assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
+
   const validTags = ['class_serializer', 'doc_url', 'behavior', 'variants', 'variant']
   const tags = parseJsDocTags(jsDocs)
+  if (jsDocs.length === 1) {
+    const description = jsDocs[0].getDescription()
+    if (description.length > 0) type.description = description.split(EOL).filter(Boolean).join(EOL)
+  }
+
   setTags(jsDocs, type, tags, validTags, (tags, tag, value) => {
     if (tag === 'stability') {
     } else if (tag.endsWith('_serializer')) {
@@ -525,8 +535,18 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier']
+  // in most of the cases the jsDocs comes in a single block,
+  // but it can happen that the user defines multiple single line jsDoc.
+  // We want to enforce a single jsDoc block.
+  assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
+
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default']
   const tags = parseJsDocTags(jsDocs)
+  if (jsDocs.length === 1) {
+    const description = jsDocs[0].getDescription()
+    if (description.length > 0) property.description = description.split(EOL).filter(Boolean).join(EOL)
+  }
+
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'aliases') {
@@ -535,6 +555,24 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.identifier = value
     } else if (tag === 'doc_url') {
       property.docUrl = value
+    } else if (tag === 'since') {
+      assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
+      property.since = value
+    } else if (tag === 'server_default') {
+      assert(jsDocs, property.type.kind === 'instance_of', `Default values can only be configured for instance_of types, you are using ${property.type.kind}`)
+      assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')
+      switch (property.type.type.name) {
+        case 'boolean':
+          assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
+          property.serverDefault = value === 'true'
+          break
+        case 'number':
+          assert(jsDocs, !isNaN(Number(value)), `The default value for ${property.name} should be a number`)
+          property.serverDefault = Number(value)
+          break
+        default:
+          property.serverDefault = value
+      }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
     }
@@ -542,11 +580,24 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
 }
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]): void {
-  const validTags = ['obsolete', 'obsolete_description', 'identifier']
+  // in most of the cases the jsDocs comes in a single block,
+  // but it can happen that the user defines multiple single line jsDoc.
+  // We want to enforce a single jsDoc block.
+  assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
+
+  const validTags = ['obsolete', 'obsolete_description', 'identifier', 'since']
   const tags = parseJsDocTags(jsDocs)
+  if (jsDocs.length === 1) {
+    const description = jsDocs[0].getDescription()
+    if (description.length > 0) member.description = description.split(EOL).filter(Boolean).join(EOL)
+  }
+
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
     if (tag === 'identifier') {
       member.identifier = value
+    } else if (tag === 'since') {
+      assert(jsDocs, semver.valid(value), `${member.name}'s @since is not valid semver: ${value}`)
+      member.since = value
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
     }
