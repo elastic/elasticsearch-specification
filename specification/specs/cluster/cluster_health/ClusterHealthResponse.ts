@@ -36,7 +36,6 @@ class ClusterHealthResponse extends ResponseBase {
   initializing_shards: integer
   /** The number of nodes that are dedicated data nodes. */
   number_of_data_nodes: integer
-  /**  */
   number_of_in_flight_fetch: integer
   /** The number of nodes within the cluster. */
   number_of_nodes: integer

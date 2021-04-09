@@ -35215,7 +35215,6 @@
         {
           "name": "expand_wildcards",
           "required": false,
-          "serverDefault": "cluster",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35225,6 +35224,7 @@
           }
         },
         {
+          "description": "Can be one of cluster, indices or shards. Controls the details level of the health information returned.",
           "name": "level",
           "required": false,
           "serverDefault": "cluster",
@@ -35237,6 +35237,7 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
           "serverDefault": false,
@@ -35249,6 +35250,7 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -35261,6 +35263,7 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
           "serverDefault": "30s",
@@ -35273,6 +35276,7 @@
           }
         },
         {
+          "description": "A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.",
           "name": "wait_for_active_shards",
           "required": false,
           "serverDefault": "0",
@@ -35285,6 +35289,7 @@
           }
         },
         {
+          "description": "Can be one of immediate, urgent, high, normal, low, languid. Wait until all currently queued events with the given priority are processed.",
           "name": "wait_for_events",
           "required": false,
           "type": {
@@ -35296,6 +35301,7 @@
           }
         },
         {
+          "description": "The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.",
           "name": "wait_for_nodes",
           "required": false,
           "type": {
@@ -35307,6 +35313,7 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.",
           "name": "wait_for_no_initializing_shards",
           "required": false,
           "serverDefault": false,
@@ -35319,6 +35326,7 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard relocations. Defaults to false, which means it will not wait for relocating shards.",
           "name": "wait_for_no_relocating_shards",
           "required": false,
           "serverDefault": false,
@@ -35331,6 +35339,7 @@
           }
         },
         {
+          "description": "One of green, yellow or red. Will wait (until the timeout provided) until the status of the cluster changes to the one provided or better, i.e. green > yellow > red. By default, will not wait for any status.",
           "name": "wait_for_status",
           "required": false,
           "type": {
