@@ -68,6 +68,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       description: spec.documentation.description,
       docUrl: spec.documentation.url,
       stability: spec.stability,
+      visibility: spec.visibility,
       request: null,
       requestBodyRequired: Boolean(spec.body?.required),
       response: null,
