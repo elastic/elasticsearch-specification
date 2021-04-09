@@ -22,7 +22,7 @@ class TaskInfo {
   cancellable: boolean
   children?: TaskInfo[]
   description?: string
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   running_time_in_nanos: long

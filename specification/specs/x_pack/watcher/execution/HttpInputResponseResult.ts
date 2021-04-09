@@ -19,6 +19,6 @@
 
 class HttpInputResponseResult {
   body: string
-  headers: Dictionary<string, string[]>
+  headers: HttpHeaders
   status: integer
 }

@@ -21,7 +21,7 @@ class TaskState {
   action: string
   cancellable: boolean
   description?: string
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   parent_task_id?: TaskId

@@ -24,7 +24,7 @@ class ClusterStateIndexLifecycle {
 
 class ClusterStateIndexLifecycleSummary {
   policy: ClusterStateIndexLifecyclePolicy
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
   version: VersionNumber
   modified_date: long
   modified_date_string: DateString

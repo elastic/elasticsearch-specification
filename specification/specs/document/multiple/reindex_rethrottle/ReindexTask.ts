@@ -27,5 +27,5 @@ class ReindexTask {
   start_time_in_millis: long
   status: ReindexStatus
   type: string
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
 }
