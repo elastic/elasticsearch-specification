@@ -17,7 +17,7 @@
  * under the License.
  */
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-reroute.html#cluster-reroute-api-request-body */
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
 class ClusterRerouteCommand {
   /**
    * Cancel allocation of a shard (or recovery). Accepts index and shard for index name and shard number, and node for the node to cancel the shard allocation on. This can be used to force resynchronization of existing replicas from the primary shard by cancelling them and allowing them to be reinitialized through the standard recovery process. By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.

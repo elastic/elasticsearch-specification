@@ -18,7 +18,7 @@
  */
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-response-body
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body
  */
 class ClusterHealthResponse extends ResponseBase {
   /** The number of active primary shards. */

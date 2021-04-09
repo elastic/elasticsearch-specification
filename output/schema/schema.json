@@ -35353,7 +35353,7 @@
       ]
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-response-body",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body",
       "inherits": [
         {
           "type": {
@@ -37311,7 +37311,7 @@
       ]
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-reroute.html#cluster-reroute-api-request-body",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body",
       "kind": "interface",
       "name": {
         "name": "ClusterRerouteCommand",
@@ -43640,7 +43640,7 @@
       }
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
       "kind": "type_alias",
       "name": {
         "name": "DataStreamName",
