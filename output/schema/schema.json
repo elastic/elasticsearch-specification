@@ -33,7 +33,8 @@
           ],
           "path": "/_async_search/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -60,7 +61,8 @@
           ],
           "path": "/_async_search/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -87,7 +89,8 @@
           ],
           "path": "/_async_search/status/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -123,7 +126,8 @@
           ],
           "path": "/{index}/_async_search"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -150,7 +154,8 @@
           ],
           "path": "/_autoscaling/policy/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -177,7 +182,8 @@
           ],
           "path": "/_autoscaling/capacity"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -204,7 +210,8 @@
           ],
           "path": "/_autoscaling/policy/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -234,7 +241,8 @@
           ],
           "path": "/_autoscaling/policy/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -279,7 +287,8 @@
           ],
           "path": "/{index}/{type}/_bulk"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -313,7 +322,8 @@
           ],
           "path": "/_cat/aliases/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -347,7 +357,8 @@
           ],
           "path": "/_cat/allocation/{node_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -381,7 +392,8 @@
           ],
           "path": "/_cat/count/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -415,7 +427,8 @@
           ],
           "path": "/_cat/fielddata/{fields}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -443,7 +456,8 @@
           ],
           "path": "/_cat/health"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -470,7 +484,8 @@
           ],
           "path": "/_cat"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -504,7 +519,8 @@
           ],
           "path": "/_cat/indices/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -532,7 +548,8 @@
           ],
           "path": "/_cat/master"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -566,7 +583,8 @@
           ],
           "path": "/_cat/ml/data_frame/analytics/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -600,7 +618,8 @@
           ],
           "path": "/_cat/ml/datafeeds/{datafeed_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -634,7 +653,8 @@
           ],
           "path": "/_cat/ml/anomaly_detectors/{job_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -668,7 +688,8 @@
           ],
           "path": "/_cat/ml/trained_models/{model_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -696,7 +717,8 @@
           ],
           "path": "/_cat/nodeattrs"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -724,7 +746,8 @@
           ],
           "path": "/_cat/nodes"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -752,7 +775,8 @@
           ],
           "path": "/_cat/pending_tasks"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -780,7 +804,8 @@
           ],
           "path": "/_cat/plugins"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -814,7 +839,8 @@
           ],
           "path": "/_cat/recovery/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -842,7 +868,8 @@
           ],
           "path": "/_cat/repositories"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -876,7 +903,8 @@
           ],
           "path": "/_cat/segments/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -910,7 +938,8 @@
           ],
           "path": "/_cat/shards/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -944,7 +973,8 @@
           ],
           "path": "/_cat/snapshots/{repository}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -972,7 +1002,8 @@
           ],
           "path": "/_cat/tasks"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1006,7 +1037,8 @@
           ],
           "path": "/_cat/templates/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1040,7 +1072,8 @@
           ],
           "path": "/_cat/thread_pool/{thread_pool_patterns}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1074,7 +1107,8 @@
           ],
           "path": "/_cat/transforms/{transform_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1101,7 +1135,8 @@
           ],
           "path": "/_ccr/auto_follow/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1131,7 +1166,8 @@
           ],
           "path": "/{index}/_ccr/follow"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1158,7 +1194,8 @@
           ],
           "path": "/{index}/_ccr/info"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1185,7 +1222,8 @@
           ],
           "path": "/{index}/_ccr/stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1215,7 +1253,8 @@
           ],
           "path": "/{index}/_ccr/forget_follower"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1248,7 +1287,8 @@
           ],
           "path": "/_ccr/auto_follow/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1275,7 +1315,8 @@
           ],
           "path": "/_ccr/auto_follow/{name}/pause"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1302,7 +1343,8 @@
           ],
           "path": "/{index}/_ccr/pause_follow"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1332,7 +1374,8 @@
           ],
           "path": "/_ccr/auto_follow/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1359,7 +1402,8 @@
           ],
           "path": "/_ccr/auto_follow/{name}/resume"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1389,7 +1433,8 @@
           ],
           "path": "/{index}/_ccr/resume_follow"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1416,7 +1461,8 @@
           ],
           "path": "/_ccr/stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1443,7 +1489,8 @@
           ],
           "path": "/{index}/_ccr/unfollow"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1484,7 +1531,8 @@
           ],
           "path": "/_search/scroll/{scroll_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1511,7 +1559,8 @@
           ],
           "path": "/_pit"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1542,7 +1591,8 @@
           ],
           "path": "/_cluster/allocation/explain"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1569,7 +1619,8 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1596,7 +1647,8 @@
           ],
           "path": "/_cluster/voting_config_exclusions"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1623,7 +1675,8 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1656,7 +1709,8 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1683,7 +1737,8 @@
           ],
           "path": "/_cluster/settings"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1716,7 +1771,8 @@
           ],
           "path": "/_cluster/health/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1743,7 +1799,8 @@
           ],
           "path": "/_cluster/pending_tasks"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1770,7 +1827,8 @@
           ],
           "path": "/_cluster/voting_config_exclusions"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1801,7 +1859,8 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1831,7 +1890,8 @@
           ],
           "path": "/_cluster/settings"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1858,7 +1918,8 @@
           ],
           "path": "/_remote/info"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1888,7 +1949,8 @@
           ],
           "path": "/_cluster/reroute"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1927,7 +1989,8 @@
           ],
           "path": "/_cluster/state/{metric}/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -1960,7 +2023,8 @@
           ],
           "path": "/_cluster/stats/nodes/{node_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2009,7 +2073,8 @@
           ],
           "path": "/{index}/{type}/_count"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2051,7 +2116,8 @@
           ],
           "path": "/{index}/{type}/{id}/_create"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2078,7 +2144,8 @@
           ],
           "path": "/_dangling/{index_uuid}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2105,7 +2172,8 @@
           ],
           "path": "/_dangling/{index_uuid}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2132,7 +2200,8 @@
           ],
           "path": "/_dangling"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2156,7 +2225,8 @@
           ],
           "path": "/_data_frame/transforms/{transform_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2190,7 +2260,8 @@
           ],
           "path": "/_data_frame/transforms"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2214,7 +2285,8 @@
           ],
           "path": "/_data_frame/transforms/{transform_id}/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2241,7 +2313,8 @@
           ],
           "path": "/_data_frame/transforms/_preview"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2268,7 +2341,8 @@
           ],
           "path": "/_data_frame/transforms/{transform_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2292,7 +2366,8 @@
           ],
           "path": "/_data_frame/transforms/{transform_id}/_start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2316,7 +2391,8 @@
           ],
           "path": "/_data_frame/transforms/{transform_id}/_stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2343,7 +2419,8 @@
           ],
           "path": "/_data_frame/transforms/{transform_id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2380,7 +2457,8 @@
           ],
           "path": "/{index}/{type}/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2420,7 +2498,8 @@
           ],
           "path": "/{index}/{type}/_delete_by_query"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2447,7 +2526,8 @@
           ],
           "path": "/_delete_by_query/{task_id}/_rethrottle"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2474,7 +2554,8 @@
           ],
           "path": "/_scripts/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2501,7 +2582,8 @@
           ],
           "path": "/_enrich/policy/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2528,7 +2610,8 @@
           ],
           "path": "/_enrich/policy/{name}/_execute"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2561,7 +2644,8 @@
           ],
           "path": "/_enrich/policy/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2591,7 +2675,8 @@
           ],
           "path": "/_enrich/policy/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2618,7 +2703,8 @@
           ],
           "path": "/_enrich/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2645,7 +2731,8 @@
           ],
           "path": "/_eql/search/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2672,7 +2759,8 @@
           ],
           "path": "/_eql/search/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2699,7 +2787,8 @@
           ],
           "path": "/_eql/search/status/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2730,7 +2819,8 @@
           ],
           "path": "/{index}/_eql/search"
         }
-      ]
+      ],
+      "visibility": "feature_flag"
     },
     {
       "accept": [
@@ -2767,7 +2857,8 @@
           ],
           "path": "/{index}/{type}/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2804,7 +2895,8 @@
           ],
           "path": "/{index}/{type}/{id}/_source"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2846,7 +2938,8 @@
           ],
           "path": "/{index}/{type}/{id}/_explain"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2873,7 +2966,8 @@
           ],
           "path": "/_features"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2893,7 +2987,8 @@
           ],
           "path": "/_features/_reset"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2928,7 +3023,8 @@
           ],
           "path": "/{index}/_field_caps"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2965,7 +3061,8 @@
           ],
           "path": "/{index}/{type}/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -2992,7 +3089,8 @@
           ],
           "path": "/_scripts/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3019,7 +3117,8 @@
           ],
           "path": "/_script_context"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3046,7 +3145,8 @@
           ],
           "path": "/_script_language"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3083,7 +3183,8 @@
           ],
           "path": "/{index}/{type}/{id}/_source"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3125,7 +3226,8 @@
           ],
           "path": "/{index}/{type}/_graph/explore"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3152,7 +3254,8 @@
           ],
           "path": "/_ilm/policy/{policy}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3179,7 +3282,8 @@
           ],
           "path": "/{index}/_ilm/explain"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3212,7 +3316,8 @@
           ],
           "path": "/_ilm/policy"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3239,7 +3344,8 @@
           ],
           "path": "/_ilm/status"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3269,7 +3375,8 @@
           ],
           "path": "/_ilm/move/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3299,7 +3406,8 @@
           ],
           "path": "/_ilm/policy/{policy}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3326,7 +3434,8 @@
           ],
           "path": "/{index}/_ilm/remove"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3353,7 +3462,8 @@
           ],
           "path": "/{index}/_ilm/retry"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3380,7 +3490,8 @@
           ],
           "path": "/_ilm/start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3407,7 +3518,8 @@
           ],
           "path": "/_ilm/stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3465,7 +3577,8 @@
           ],
           "path": "/{index}/{type}/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3492,7 +3605,8 @@
           ],
           "path": "/{index}/_block/{block}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3530,7 +3644,8 @@
           ],
           "path": "/{index}/_analyze"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3563,7 +3678,8 @@
           ],
           "path": "/{index}/_cache/clear"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3594,7 +3710,8 @@
           ],
           "path": "/{index}/_clone/{target}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3621,7 +3738,8 @@
           ],
           "path": "/{index}/_close"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3651,7 +3769,8 @@
           ],
           "path": "/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3678,7 +3797,8 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3711,7 +3831,8 @@
           ],
           "path": "/_data_stream/{name}/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3738,7 +3859,8 @@
           ],
           "path": "/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3771,7 +3893,8 @@
           ],
           "path": "/{index}/_aliases/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3798,7 +3921,8 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3818,7 +3942,8 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3845,7 +3970,8 @@
           ],
           "path": "/_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3872,7 +3998,8 @@
           ],
           "path": "/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3905,7 +4032,8 @@
           ],
           "path": "/{index}/_alias/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3925,7 +4053,8 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3952,7 +4081,8 @@
           ],
           "path": "/_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -3979,7 +4109,8 @@
           ],
           "path": "/{index}/_mapping/{type}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4014,7 +4145,8 @@
           ],
           "path": "/{index}/_flush"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4057,7 +4189,8 @@
           ],
           "path": "/{index}/_flush/synced"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4090,7 +4223,8 @@
           ],
           "path": "/{index}/_forcemerge"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4117,7 +4251,8 @@
           ],
           "path": "/{index}/_freeze"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4144,7 +4279,8 @@
           ],
           "path": "/{index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4189,7 +4325,8 @@
           ],
           "path": "/{index}/_alias"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4222,7 +4359,8 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4275,7 +4413,8 @@
           ],
           "path": "/{index}/_mapping/{type}/field/{fields}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4301,7 +4440,8 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4354,7 +4494,8 @@
           ],
           "path": "/{index}/_mapping/{type}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4399,7 +4540,8 @@
           ],
           "path": "/_settings/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4432,7 +4574,8 @@
           ],
           "path": "/_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4466,7 +4609,8 @@
           ],
           "path": "/{index}/_upgrade"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4493,7 +4637,8 @@
           ],
           "path": "/_data_stream/_migrate/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4520,7 +4665,8 @@
           ],
           "path": "/{index}/_open"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4547,7 +4693,8 @@
           ],
           "path": "/_data_stream/_promote/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4585,7 +4732,8 @@
           ],
           "path": "/{index}/_aliases/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4609,7 +4757,8 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4717,7 +4866,8 @@
           ],
           "path": "/_mapping/{type}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4753,7 +4903,8 @@
           ],
           "path": "/{index}/_settings"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4784,7 +4935,8 @@
           ],
           "path": "/_template/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4817,7 +4969,8 @@
           ],
           "path": "/{index}/_recovery"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4852,7 +5005,8 @@
           ],
           "path": "/{index}/_refresh"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4880,7 +5034,8 @@
           ],
           "path": "/{index}/_reload_search_analyzers"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4907,7 +5062,8 @@
           ],
           "path": "/_resolve/index/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4943,7 +5099,8 @@
           ],
           "path": "/{alias}/_rollover/{new_index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -4976,7 +5133,8 @@
           ],
           "path": "/{index}/_segments"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5009,7 +5167,8 @@
           ],
           "path": "/{index}/_shard_stores"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5040,7 +5199,8 @@
           ],
           "path": "/{index}/_shrink/{target}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5063,7 +5223,8 @@
           ],
           "path": "/_index_template/_simulate_index/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5092,7 +5253,8 @@
           ],
           "path": "/_index_template/_simulate/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5123,7 +5285,8 @@
           ],
           "path": "/{index}/_split/{target}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5168,7 +5331,8 @@
           ],
           "path": "/{index}/_stats/{metric}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5195,7 +5359,8 @@
           ],
           "path": "/{index}/_unfreeze"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5225,7 +5390,8 @@
           ],
           "path": "/_aliases"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5259,7 +5425,8 @@
           ],
           "path": "/{index}/_upgrade"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5308,7 +5475,8 @@
           ],
           "path": "/{index}/{type}/_validate/query"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5335,7 +5503,8 @@
           ],
           "path": "/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5362,7 +5531,8 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5382,7 +5552,8 @@
           ],
           "path": "/_ingest/geoip/stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5415,7 +5586,8 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5442,7 +5614,8 @@
           ],
           "path": "/_ingest/processor/grok"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5472,7 +5645,8 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5510,7 +5684,8 @@
           ],
           "path": "/_ingest/pipeline/{id}/_simulate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5537,7 +5712,8 @@
           ],
           "path": "/_license"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5564,7 +5740,8 @@
           ],
           "path": "/_license"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5591,7 +5768,8 @@
           ],
           "path": "/_license/basic_status"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5618,7 +5796,8 @@
           ],
           "path": "/_license/trial_status"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5649,7 +5828,8 @@
           ],
           "path": "/_license"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5676,7 +5856,8 @@
           ],
           "path": "/_license/start_basic"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5703,7 +5884,8 @@
           ],
           "path": "/_license/start_trial"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5730,7 +5912,8 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5757,7 +5940,8 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5787,7 +5971,8 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5836,7 +6021,8 @@
           ],
           "path": "/{index}/{type}/_mget"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5869,7 +6055,8 @@
           ],
           "path": "/{index}/_migration/deprecations"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5899,7 +6086,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_close"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5926,7 +6114,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5953,7 +6142,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events/{event_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -5980,7 +6170,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6007,7 +6198,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6034,7 +6226,8 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6067,7 +6260,8 @@
           ],
           "path": "/_ml/_delete_expired_data"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6094,7 +6288,8 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6127,7 +6322,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_forecast/{forecast_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6154,7 +6350,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6181,7 +6378,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6208,7 +6406,8 @@
           ],
           "path": "/_ml/trained_models/{model_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6238,7 +6437,8 @@
           ],
           "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6268,7 +6468,8 @@
           ],
           "path": "/_ml/anomaly_detectors/_estimate_model_memory"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6291,7 +6492,8 @@
           ],
           "path": "/_ml/data_frame/_evaluate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6322,7 +6524,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_explain"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6349,7 +6552,8 @@
           ],
           "path": "/_ml/find_file_structure"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6379,7 +6583,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_flush"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6406,7 +6611,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_forecast"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6444,7 +6650,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/buckets"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6471,7 +6678,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6509,7 +6717,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6547,7 +6756,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/categories/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6573,7 +6783,8 @@
           ],
           "path": "/_ml/data_frame/analytics"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6599,7 +6810,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6632,7 +6844,8 @@
           ],
           "path": "/_ml/datafeeds/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6665,7 +6878,8 @@
           ],
           "path": "/_ml/datafeeds"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6698,7 +6912,8 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6729,7 +6944,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/influencers"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6762,7 +6978,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6795,7 +7012,8 @@
           ],
           "path": "/_ml/anomaly_detectors"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6833,7 +7051,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6864,7 +7083,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/overall_buckets"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6895,7 +7115,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/records"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6921,7 +7142,8 @@
           ],
           "path": "/_ml/trained_models"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6947,7 +7169,8 @@
           ],
           "path": "/_ml/trained_models/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -6974,7 +7197,8 @@
           ],
           "path": "/_ml/info"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7001,7 +7225,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_open"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7031,7 +7256,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7062,7 +7288,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_data"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7093,7 +7320,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_preview"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7128,7 +7356,8 @@
           ],
           "path": "/_ml/datafeeds/_preview"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7158,7 +7387,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7185,7 +7415,8 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7208,7 +7439,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7238,7 +7470,8 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7268,7 +7501,8 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7298,7 +7532,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7321,7 +7556,8 @@
           ],
           "path": "/_ml/trained_models/{model_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7344,7 +7580,8 @@
           ],
           "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7374,7 +7611,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7401,7 +7639,8 @@
           ],
           "path": "/_ml/set_upgrade_mode"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7424,7 +7663,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7454,7 +7694,8 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7477,7 +7718,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7504,7 +7746,8 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7527,7 +7770,8 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7557,7 +7801,8 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7587,7 +7832,8 @@
           ],
           "path": "/_ml/filters/{filter_id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7617,7 +7863,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7647,7 +7894,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7667,7 +7915,8 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7697,7 +7946,8 @@
           ],
           "path": "/_ml/anomaly_detectors/_validate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7727,7 +7977,8 @@
           ],
           "path": "/_ml/anomaly_detectors/_validate/detector"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7769,7 +8020,8 @@
           ],
           "path": "/_monitoring/{type}/bulk"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7818,7 +8070,8 @@
           ],
           "path": "/{index}/{type}/_msearch"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7867,7 +8120,8 @@
           ],
           "path": "/{index}/{type}/_msearch/template"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -7916,7 +8170,8 @@
           ],
           "path": "/{index}/{type}/_mtermvectors"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8009,7 +8264,8 @@
           ],
           "path": "/_cluster/nodes/{node_id}/hot_threads"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8054,7 +8310,8 @@
           ],
           "path": "/_nodes/{node_id}/{metric}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8090,7 +8347,8 @@
           ],
           "path": "/_nodes/{node_id}/reload_secure_settings"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8147,7 +8405,8 @@
           ],
           "path": "/_nodes/{node_id}/stats/{metric}/{index_metric}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8192,7 +8451,8 @@
           ],
           "path": "/_nodes/{node_id}/usage/{metric}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8225,7 +8485,8 @@
           ],
           "path": "/{index}/_pit"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8252,7 +8513,8 @@
           ],
           "path": "/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8290,7 +8552,8 @@
           ],
           "path": "/_scripts/{id}/{context}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8321,7 +8584,8 @@
           ],
           "path": "/{index}/_rank_eval"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8351,7 +8615,8 @@
           ],
           "path": "/_reindex"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8378,7 +8643,8 @@
           ],
           "path": "/_reindex/{task_id}/_rethrottle"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8416,7 +8682,8 @@
           ],
           "path": "/_render/template/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8443,7 +8710,8 @@
           ],
           "path": "/_rollup/job/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8476,7 +8744,8 @@
           ],
           "path": "/_rollup/job/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8509,7 +8778,8 @@
           ],
           "path": "/_rollup/data/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8536,7 +8806,8 @@
           ],
           "path": "/{index}/_rollup/data"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8566,7 +8837,8 @@
           ],
           "path": "/_rollup/job/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8596,7 +8868,8 @@
           ],
           "path": "/{index}/_rollup/{rollup_index}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8638,7 +8911,8 @@
           ],
           "path": "/{index}/{type}/_rollup_search"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8665,7 +8939,8 @@
           ],
           "path": "/_rollup/job/{id}/_start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8692,7 +8967,8 @@
           ],
           "path": "/_rollup/job/{id}/_stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8723,7 +8999,8 @@
           ],
           "path": "/_scripts/painless/_execute"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8765,7 +9042,8 @@
           ],
           "path": "/_search/scroll/{scroll_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8814,7 +9092,8 @@
           ],
           "path": "/{index}/{type}/_search"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8849,7 +9128,8 @@
           ],
           "path": "/{index}/_search_shards"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8898,7 +9178,8 @@
           ],
           "path": "/{index}/{type}/_search/template"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8931,7 +9212,8 @@
           ],
           "path": "/{index}/_searchable_snapshots/cache/clear"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8961,7 +9243,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}/_mount"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -8988,7 +9271,8 @@
           ],
           "path": "/_snapshot/{repository}/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9021,7 +9305,8 @@
           ],
           "path": "/{index}/_searchable_snapshots/stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9048,7 +9333,8 @@
           ],
           "path": "/_security/_authenticate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9086,7 +9372,8 @@
           ],
           "path": "/_security/user/_password"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9113,7 +9400,8 @@
           ],
           "path": "/_security/api_key/{ids}/_clear_cache"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9140,7 +9428,8 @@
           ],
           "path": "/_security/privilege/{application}/_clear_cache"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9167,7 +9456,8 @@
           ],
           "path": "/_security/realm/{realms}/_clear_cache"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9194,7 +9484,8 @@
           ],
           "path": "/_security/role/{name}/_clear_cache"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9225,7 +9516,8 @@
           ],
           "path": "/_security/api_key"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9252,7 +9544,8 @@
           ],
           "path": "/_security/privilege/{application}/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9279,7 +9572,8 @@
           ],
           "path": "/_security/role/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9306,7 +9600,8 @@
           ],
           "path": "/_security/role_mapping/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9333,7 +9628,8 @@
           ],
           "path": "/_security/user/{username}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9361,7 +9657,8 @@
           ],
           "path": "/_security/user/{username}/_disable"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9389,7 +9686,8 @@
           ],
           "path": "/_security/user/{username}/_enable"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9416,7 +9714,8 @@
           ],
           "path": "/_security/api_key"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9443,7 +9742,8 @@
           ],
           "path": "/_security/privilege/_builtin"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9482,7 +9782,8 @@
           ],
           "path": "/_security/privilege/{application}/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9515,7 +9816,8 @@
           ],
           "path": "/_security/role"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9548,7 +9850,8 @@
           ],
           "path": "/_security/role_mapping"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9578,7 +9881,8 @@
           ],
           "path": "/_security/oauth2/token"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9611,7 +9915,8 @@
           ],
           "path": "/_security/user"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9638,7 +9943,8 @@
           ],
           "path": "/_security/user/_privileges"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9668,7 +9974,8 @@
           ],
           "path": "/_security/api_key/grant"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9706,7 +10013,8 @@
           ],
           "path": "/_security/user/{user}/_has_privileges"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9736,7 +10044,8 @@
           ],
           "path": "/_security/api_key"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9766,7 +10075,8 @@
           ],
           "path": "/_security/oauth2/token"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9797,7 +10107,8 @@
           ],
           "path": "/_security/privilege/"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9828,7 +10139,8 @@
           ],
           "path": "/_security/role/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9859,7 +10171,8 @@
           ],
           "path": "/_security/role_mapping/{name}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9890,7 +10203,8 @@
           ],
           "path": "/_security/user/{username}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9913,7 +10227,8 @@
           ],
           "path": "/_nodes/{node_id}/shutdown"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9942,7 +10257,8 @@
           ],
           "path": "/_nodes/{node_id}/shutdown"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9965,7 +10281,8 @@
           ],
           "path": "/_nodes/{node_id}/shutdown"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -9992,7 +10309,8 @@
           ],
           "path": "/_slm/policy/{policy_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10019,7 +10337,8 @@
           ],
           "path": "/_slm/policy/{policy_id}/_execute"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10046,7 +10365,8 @@
           ],
           "path": "/_slm/_execute_retention"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10079,7 +10399,8 @@
           ],
           "path": "/_slm/policy"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10106,7 +10427,8 @@
           ],
           "path": "/_slm/stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10133,7 +10455,8 @@
           ],
           "path": "/_slm/status"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10163,7 +10486,8 @@
           ],
           "path": "/_slm/policy/{policy_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10190,7 +10514,8 @@
           ],
           "path": "/_slm/start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10217,7 +10542,8 @@
           ],
           "path": "/_slm/stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10244,7 +10570,8 @@
           ],
           "path": "/_snapshot/{repository}/_cleanup"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10274,7 +10601,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}/_clone/{target_snapshot}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10305,7 +10633,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10336,7 +10665,8 @@
           ],
           "path": "/_snapshot/{repository}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10363,7 +10693,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10390,7 +10721,8 @@
           ],
           "path": "/_snapshot/{repository}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10417,7 +10749,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10450,7 +10783,8 @@
           ],
           "path": "/_snapshot/{repository}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10480,7 +10814,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}/_restore"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10519,7 +10854,8 @@
           ],
           "path": "/_snapshot/{repository}/{snapshot}/_status"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10546,7 +10882,8 @@
           ],
           "path": "/_snapshot/{repository}/_verify"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10576,7 +10913,8 @@
           ],
           "path": "/_sql/close"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10607,7 +10945,8 @@
           ],
           "path": "/_sql"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10638,7 +10977,8 @@
           ],
           "path": "/_sql/translate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10665,7 +11005,8 @@
           ],
           "path": "/_ssl/certificates"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10698,7 +11039,8 @@
           ],
           "path": "/_tasks/{task_id}/_cancel"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10725,7 +11067,8 @@
           ],
           "path": "/_tasks/{task_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10752,7 +11095,8 @@
           ],
           "path": "/_tasks"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10812,7 +11156,8 @@
           ],
           "path": "/{index}/{type}/_termvectors"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10842,7 +11187,8 @@
           ],
           "path": "/_text_structure/find_structure"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10869,7 +11215,8 @@
           ],
           "path": "/_transform/{transform_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10902,7 +11249,8 @@
           ],
           "path": "/_transform"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10929,7 +11277,8 @@
           ],
           "path": "/_transform/{transform_id}/_stats"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10959,7 +11308,8 @@
           ],
           "path": "/_transform/_preview"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -10989,7 +11339,8 @@
           ],
           "path": "/_transform/{transform_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11016,7 +11367,8 @@
           ],
           "path": "/_transform/{transform_id}/_start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11043,7 +11395,8 @@
           ],
           "path": "/_transform/{transform_id}/_stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11073,7 +11426,8 @@
           ],
           "path": "/_transform/{transform_id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11113,7 +11467,8 @@
           ],
           "path": "/{index}/{type}/{id}/_update"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11153,7 +11508,8 @@
           ],
           "path": "/{index}/{type}/_update_by_query"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11180,7 +11536,8 @@
           ],
           "path": "/_update_by_query/{task_id}/_rethrottle"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11215,7 +11572,8 @@
           ],
           "path": "/_watcher/watch/{watch_id}/_ack/{action_id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11243,7 +11601,8 @@
           ],
           "path": "/_watcher/watch/{watch_id}/_activate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11271,7 +11630,8 @@
           ],
           "path": "/_watcher/watch/{watch_id}/_deactivate"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11298,7 +11658,8 @@
           ],
           "path": "/_watcher/watch/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11336,7 +11697,8 @@
           ],
           "path": "/_watcher/watch/_execute"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11363,7 +11725,8 @@
           ],
           "path": "/_watcher/watch/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11394,7 +11757,8 @@
           ],
           "path": "/_watcher/watch/{id}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11425,7 +11789,8 @@
           ],
           "path": "/_watcher/_query/watches"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11452,7 +11817,8 @@
           ],
           "path": "/_watcher/_start"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11485,7 +11851,8 @@
           ],
           "path": "/_watcher/stats/{metric}"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11512,7 +11879,8 @@
           ],
           "path": "/_watcher/_stop"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11539,7 +11907,8 @@
           ],
           "path": "/_xpack"
         }
-      ]
+      ],
+      "visibility": "public"
     },
     {
       "accept": [
@@ -11566,7 +11935,8 @@
           ],
           "path": "/_xpack/usage"
         }
-      ]
+      ],
+      "visibility": "public"
     }
   ],
   "types": [
