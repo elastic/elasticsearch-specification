@@ -82,7 +82,7 @@ class ErrorCause {
   resource_type?: string
   script?: string
   script_stack?: string[]
-  header?: Dictionary<string, string>
+  header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -91,6 +91,10 @@ class MainError extends ErrorCause {
   headers?: Dictionary<string, string>
   root_cause: ErrorCause[]
 }
+
+//
+// Numeric Type Aliases
+//
 type short = number
 type byte = number
 type integer = number
@@ -193,6 +197,9 @@ type SuggestionName = string
  * QL Types
  */
 type SqlRow = UserDefinedValue[]
+
+// Container Type for HTTP Headers
+type HttpHeaders = Dictionary<string, string | string[]>
 
 /** A reference to a date field with formatting instructions on how to return the date */
 class DateField {

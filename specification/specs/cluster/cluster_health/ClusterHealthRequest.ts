@@ -19,25 +19,34 @@
 
 /**
  * @rest_spec_name cluster.health
- * @since 0.0.0
+ * @since 1.3.0
  * @stability TODO
  */
 interface ClusterHealthRequest extends RequestBase {
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-path-params */
   path_parts?: {
     index?: Indices
   }
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-query-params */
   query_parameters?: {
+    /** @server_default cluster */
     expand_wildcards?: ExpandWildcards
+    /** @server_default cluster */
     level?: Level
+    /** @server_default false */
     local?: boolean
+    /** @server_default 30s */
     master_timeout?: Time
+    /** @server_default 30s */
     timeout?: Time
+    /** @server_default 0 */
     wait_for_active_shards?: WaitForActiveShards
     wait_for_events?: WaitForEvents
     wait_for_nodes?: string
+    /** @server_default false */
     wait_for_no_initializing_shards?: boolean
+    /** @server_default false */
     wait_for_no_relocating_shards?: boolean
     wait_for_status?: WaitForStatus
   }
-  body?: {}
 }

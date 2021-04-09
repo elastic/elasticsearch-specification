@@ -5075,7 +5075,7 @@ export interface ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
-  header?: Record<string, string>
+  header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -6969,6 +6969,8 @@ export interface HourlySchedule {
 
 export interface HtmlStripCharFilter extends CharFilterBase {
 }
+
+export type HttpHeaders = Record<string, string | Array<string>>
 
 export interface HttpInput {
   extract: Array<string>

@@ -1701,7 +1701,7 @@
         "name": "ClusterHealthResponse",
         "namespace": "cluster.cluster_health"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -35215,6 +35215,7 @@
         {
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "cluster",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35226,6 +35227,7 @@
         {
           "name": "level",
           "required": false,
+          "serverDefault": "cluster",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35237,6 +35239,7 @@
         {
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35248,6 +35251,7 @@
         {
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35259,6 +35263,7 @@
         {
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35270,6 +35275,7 @@
         {
           "name": "wait_for_active_shards",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35303,6 +35309,7 @@
         {
           "name": "wait_for_no_initializing_shards",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35314,6 +35321,7 @@
         {
           "name": "wait_for_no_relocating_shards",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -35336,6 +35344,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-response-body",
       "inherits": [
         {
           "type": {
@@ -35351,6 +35360,7 @@
       },
       "properties": [
         {
+          "description": "The number of active primary shards.",
           "name": "active_primary_shards",
           "required": true,
           "type": {
@@ -35362,6 +35372,7 @@
           }
         },
         {
+          "description": "The total number of active primary and replica shards.",
           "name": "active_shards",
           "required": true,
           "type": {
@@ -35373,6 +35384,7 @@
           }
         },
         {
+          "description": "The ratio of active shards in the cluster expressed as a percentage.",
           "name": "active_shards_percent_as_number",
           "required": true,
           "type": {
@@ -35384,6 +35396,7 @@
           }
         },
         {
+          "description": "The name of the cluster.",
           "name": "cluster_name",
           "required": true,
           "type": {
@@ -35395,6 +35408,7 @@
           }
         },
         {
+          "description": "The number of shards whose allocation has been delayed by the timeout settings.",
           "name": "delayed_unassigned_shards",
           "required": true,
           "type": {
@@ -35427,6 +35441,7 @@
           }
         },
         {
+          "description": "The number of shards that are under initialization.",
           "name": "initializing_shards",
           "required": true,
           "type": {
@@ -35438,6 +35453,7 @@
           }
         },
         {
+          "description": "The number of nodes that are dedicated data nodes.",
           "name": "number_of_data_nodes",
           "required": true,
           "type": {
@@ -35460,6 +35476,7 @@
           }
         },
         {
+          "description": "The number of nodes within the cluster.",
           "name": "number_of_nodes",
           "required": true,
           "type": {
@@ -35471,6 +35488,7 @@
           }
         },
         {
+          "description": "The number of cluster-level changes that have not yet been executed.",
           "name": "number_of_pending_tasks",
           "required": true,
           "type": {
@@ -35482,6 +35500,7 @@
           }
         },
         {
+          "description": "The number of shards that are under relocation.",
           "name": "relocating_shards",
           "required": true,
           "type": {
@@ -35504,6 +35523,7 @@
           }
         },
         {
+          "description": "The time expressed in milliseconds since the earliest initiated task is waiting for being performed.",
           "name": "task_max_waiting_in_queue_millis",
           "required": true,
           "type": {
@@ -35515,6 +35535,7 @@
           }
         },
         {
+          "description": "If false the response returned within the period of time that is specified by the timeout parameter (30s by default)",
           "name": "timed_out",
           "required": true,
           "type": {
@@ -35526,6 +35547,7 @@
           }
         },
         {
+          "description": "The number of shards that are not allocated.",
           "name": "unassigned_shards",
           "required": true,
           "type": {
@@ -53042,20 +53064,10 @@
           "name": "header",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "internal"
             }
           }
         },
@@ -68424,12 +68436,15 @@
       "kind": "enum",
       "members": [
         {
+          "description": "All shards are assigned.",
           "name": "green"
         },
         {
+          "description": "All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.",
           "name": "yellow"
         },
         {
+          "description": "One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.",
           "name": "red"
         }
       ],
@@ -69864,6 +69879,45 @@
         "namespace": "analysis.char_filters"
       },
       "properties": []
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "HttpHeaders",
+        "namespace": "internal"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
     },
     {
       "kind": "interface",
