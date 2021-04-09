@@ -3345,13 +3345,38 @@ export interface ClusterPutSettingsResponse extends ResponseBase {
 }
 
 export interface ClusterRerouteCommand {
-  cancel: ClusterRerouteCommandAction
+  cancel?: ClusterRerouteCommandCancelAction
+  move?: ClusterRerouteCommandMoveAction
+  allocate_replica?: ClusterRerouteCommandAllocateReplicaAction
+  allocate_stale_primary?: ClusterRerouteCommandAllocatePrimaryAction
+  allocate_empty_primary?: ClusterRerouteCommandAllocatePrimaryAction
 }
 
-export interface ClusterRerouteCommandAction {
+export interface ClusterRerouteCommandAllocatePrimaryAction {
   index: IndexName
   shard: integer
   node: string
+  accept_data_loss: boolean
+}
+
+export interface ClusterRerouteCommandAllocateReplicaAction {
+  index: IndexName
+  shard: integer
+  node: string
+}
+
+export interface ClusterRerouteCommandCancelAction {
+  index: IndexName
+  shard: integer
+  node: string
+  allow_primary?: boolean
+}
+
+export interface ClusterRerouteCommandMoveAction {
+  index: IndexName
+  shard: integer
+  from_node: string
+  to_node: string
 }
 
 export interface ClusterRerouteDecision {

@@ -37311,6 +37311,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-reroute.html#cluster-reroute-api-request-body",
       "kind": "interface",
       "name": {
         "name": "ClusterRerouteCommand",
@@ -37318,12 +37319,61 @@
       },
       "properties": [
         {
+          "description": "Cancel allocation of a shard (or recovery). Accepts index and shard for index name and shard number, and node for the node to cancel the shard allocation on. This can be used to force resynchronization of existing replicas from the primary shard by cancelling them and allowing them to be reinitialized through the standard recovery process. By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.",
           "name": "cancel",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandAction",
+              "name": "ClusterRerouteCommandCancelAction",
+              "namespace": "cluster.cluster_reroute.commands"
+            }
+          }
+        },
+        {
+          "description": "Move a started shard from one node to another node. Accepts index and shard for index name and shard number, from_node for the node to move the shard from, and to_node for the node to move the shard to.",
+          "name": "move",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandMoveAction",
+              "namespace": "cluster.cluster_reroute.commands"
+            }
+          }
+        },
+        {
+          "description": "Allocate an unassigned replica shard to a node. Accepts index and shard for index name and shard number, and node to allocate the shard to. Takes allocation deciders into account.",
+          "name": "allocate_replica",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocateReplicaAction",
+              "namespace": "cluster.cluster_reroute.commands"
+            }
+          }
+        },
+        {
+          "description": "Allocate a primary shard to a node that holds a stale copy. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command may lead to data loss for the provided shard id. If a node which has the good copy of the data rejoins the cluster later on, that data will be deleted or overwritten with the data of the stale copy that was forcefully allocated with this command. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "allocate_stale_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocatePrimaryAction",
+              "namespace": "cluster.cluster_reroute.commands"
+            }
+          }
+        },
+        {
+          "description": "Allocate an empty primary shard to a node. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command leads to a complete loss of all data that was indexed into this shard, if it was previously started. If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "allocate_empty_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocatePrimaryAction",
               "namespace": "cluster.cluster_reroute.commands"
             }
           }
@@ -37333,7 +37383,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandAction",
+        "name": "ClusterRerouteCommandAllocatePrimaryAction",
         "namespace": "cluster.cluster_reroute.commands"
       },
       "properties": [
@@ -37361,6 +37411,170 @@
         },
         {
           "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "accept_data_loss",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html",
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandAllocateReplicaAction",
+        "namespace": "cluster.cluster_reroute.commands"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandCancelAction",
+        "namespace": "cluster.cluster_reroute.commands"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.",
+          "name": "allow_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandMoveAction",
+        "namespace": "cluster.cluster_reroute.commands"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The node to move the shard from",
+          "name": "from_node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The node to move the shard to",
+          "name": "to_node",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -37542,6 +37756,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Defines the commands to perform.",
             "name": "commands",
             "required": false,
             "type": {
@@ -37573,8 +37788,10 @@
       "path": [],
       "query": [
         {
+          "description": "If true, then the request simulates the operation only and returns the resulting state.",
           "name": "dry_run",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37584,8 +37801,10 @@
           }
         },
         {
+          "description": "If true, then the response contains an explanation of why the commands can or cannot be executed.",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37595,8 +37814,10 @@
           }
         },
         {
+          "description": "Limits the information returned to the specified metrics.",
           "name": "metric",
           "required": false,
+          "serverDefault": "all",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37606,8 +37827,10 @@
           }
         },
         {
+          "description": "If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.",
           "name": "retry_failed",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37617,8 +37840,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37628,8 +37853,10 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124339,6 +124566,8 @@
       ]
     },
     {
+      "description": "Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.",
+      "docUrl": "https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java",
       "kind": "type_alias",
       "name": {
         "name": "Time",
