@@ -17,11 +17,32 @@
  * under the License.
  */
 
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html#eql-search-api-response-body
+ */
 class EqlSearchResponseBase<TEvent> extends ResponseBase {
+  /**
+   *  Identifier for the search.
+   */
   id?: Id
+  /**
+   * If true, the response does not contain complete search results.
+   */
   is_partial?: boolean
+  /**
+   * If true, the search request is still executing.
+   */
   is_running?: boolean
+  /**
+   * Milliseconds it took Elasticsearch to execute the request.
+   */
   took?: integer
+  /**
+   * If true, the request timed out before completion.
+   */
   timed_out?: boolean
+  /**
+   * Contains matching events and sequences. Also contains related metadata.
+   */
   hits: EqlHits<TEvent>
 }

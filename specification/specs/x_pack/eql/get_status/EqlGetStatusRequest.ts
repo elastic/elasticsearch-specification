@@ -24,8 +24,7 @@
  */
 interface EqlGetStatusRequest extends RequestBase {
   path_parts: {
+    /** Identifier for the search. */
     id: Id
   }
-  query_parameters?: {}
-  body?: {}
 }

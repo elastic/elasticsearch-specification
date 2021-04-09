@@ -18,6 +18,13 @@
  */
 
 class EqlHitsSequence<TEvent> {
+  /**
+   * Contains events matching the query. Each object represents a matching event.
+   */
   events: EqlHitsEvent<TEvent>[]
+  /**
+   * Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
+   */
   join_keys: UserDefinedValue[]
 }

@@ -18,6 +18,8 @@
  */
 
 enum TotalHitsRelation {
+  /** Accurate */
   eq = 0,
+  /** Lower bound, including returned events or sequences */
   gte = 1
 }

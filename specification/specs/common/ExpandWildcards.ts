@@ -17,11 +17,29 @@
  * under the License.
  */
 
+/**
+ * Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.
+ */
 enum ExpandWildcardOptions {
+  /**
+   * Match open, non-hidden indices. Also matches any non-hidden data stream.
+   */
   open = 0,
+  /**
+   * Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.
+   */
   closed = 1,
+  /**
+   * Match hidden data streams and hidden indices. Must be combined with open, closed, or both.
+   */
   hidden = 2,
+  /**
+   * Wildcard expressions are not accepted.
+   */
   none = 3,
+  /**
+   * Match any data stream or index, including hidden ones.
+   */
   all = 4
 }
 

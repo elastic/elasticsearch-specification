@@ -24,8 +24,7 @@
  */
 interface EqlDeleteRequest extends RequestBase {
   path_parts: {
+    /** Identifier for the search to delete. */
     id: Id
   }
-  query_parameters?: {}
-  body?: {}
 }

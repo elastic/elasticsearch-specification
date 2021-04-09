@@ -18,8 +18,11 @@
  */
 
 class EqlHitsEvent<TEvent> {
+  /** Name of the index containing the event. */
   _index: IndexName
+  /** Unique identifier for the event. This ID is only unique within the index. */
   _id: Id
+  /** Original JSON body passed for the event at index time. */
   _source: TEvent
   fields?: Dictionary<Field, UserDefinedValue[]>
 }

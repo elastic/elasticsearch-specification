@@ -24,11 +24,19 @@
  */
 interface EqlGetRequest extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the search.
+     */
     id: Id
   }
   query_parameters?: {
+    /**
+     * Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search’s EQL search API request.
+     */
     keep_alive?: Time
+    /**
+     * Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.
+     */
     wait_for_completion_timeout?: Time
   }
-  body?: {}
 }
