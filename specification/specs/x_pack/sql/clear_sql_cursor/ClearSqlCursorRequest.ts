@@ -23,8 +23,7 @@
  * @stability TODO
  */
 interface ClearSqlCursorRequest extends RequestBase {
-  query_parameters?: {}
-  body?: {
+  body: {
     cursor?: string
   }
 }

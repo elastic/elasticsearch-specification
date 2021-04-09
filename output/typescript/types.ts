@@ -10079,7 +10079,10 @@ export interface QuerySqlRequest extends RequestBase {
     fetch_size?: integer
     filter?: QueryContainer
     query?: string
+    request_timeout?: Time
+    page_timeout?: Time
     time_zone?: string
+    field_multi_value_leniency?: boolean
   }
 }
 
@@ -13270,7 +13273,7 @@ export interface TranslateSqlRequest extends RequestBase {
   body: {
     fetch_size?: integer
     filter?: QueryContainer
-    query?: string
+    query: string
     time_zone?: string
   }
 }

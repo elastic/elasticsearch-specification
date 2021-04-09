@@ -98335,8 +98335,10 @@
             }
           },
           {
+            "description": "The maximum number of rows (or entries) to return in one response",
             "name": "fetch_size",
             "required": false,
+            "serverDefault": "1000",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -98346,8 +98348,11 @@
             }
           },
           {
+            "description": "Optional Elasticsearch query DSL for additional filtering.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/6.8/sql-rest-filtering.html",
             "name": "filter",
             "required": false,
+            "serverDefault": "none",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -98357,6 +98362,7 @@
             }
           },
           {
+            "description": "SQL query to execute",
             "name": "query",
             "required": false,
             "type": {
@@ -98368,12 +98374,53 @@
             }
           },
           {
+            "description": "The timeout before the request fails.",
+            "name": "request_timeout",
+            "required": false,
+            "serverDefault": "90s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "description": "The timeout before a pagination request fails.",
+            "name": "page_timeout",
+            "required": false,
+            "serverDefault": "45s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "common_options.time_unit"
+              }
+            }
+          },
+          {
+            "description": "Time-zone in ISO 8601 used for executing the query on the server. More information available here.",
+            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
             "name": "time_zone",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
+            "name": "field_multi_value_leniency",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
                 "namespace": "internal"
               }
             }
@@ -98396,6 +98443,7 @@
       "path": [],
       "query": [
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/sql-rest-format.html#sql-rest-format",
           "name": "format",
           "required": false,
           "type": {
@@ -127087,7 +127135,7 @@
           },
           {
             "name": "query",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {

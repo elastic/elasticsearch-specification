@@ -23,11 +23,10 @@
  * @stability TODO
  */
 interface TranslateSqlRequest extends RequestBase {
-  query_parameters?: {}
   body?: {
     fetch_size?: integer
     filter?: QueryContainer
-    query?: string
+    query: string
     time_zone?: string
   }
 }
