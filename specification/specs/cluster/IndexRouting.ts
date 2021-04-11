@@ -17,12 +17,34 @@
  * under the License.
  */
 
-class IndexState {
-  aliases?: Dictionary<IndexName, Alias>
-  mappings?: TypeMapping
-  settings: IndexStateSettings
+class IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
 }
 
-class IndexStateSettings {
-  index: IndexSettings
+class IndexRoutingAllocation {
+  /** server_default all */
+  enable?: IndexRoutingAllocationOptions
+  include: Dictionary<string, string>
+  initial_recovery?: Dictionary<string, string>
+}
+
+class IndexRoutingRebalance {
+  /** server_default all */
+  enable: IndexRoutingRebalanceOptions
+  include: Dictionary<string, string>
+}
+
+enum IndexRoutingAllocationOptions {
+  all = 0,
+  primaries = 1,
+  new_primaries = 2,
+  none = 3
+}
+
+enum IndexRoutingRebalanceOptions {
+  all = 0,
+  primaries = 1,
+  replicas = 2,
+  none = 3
 }

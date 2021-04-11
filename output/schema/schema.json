@@ -38538,7 +38538,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterStateBlockIndexSettingRouting",
+              "name": "IndexRouting",
               "namespace": "cluster"
             }
           }
@@ -38752,56 +38752,6 @@
             "type": {
               "name": "Name",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterStateBlockIndexSettingRouting",
-        "namespace": "cluster"
-      },
-      "properties": [
-        {
-          "name": "allocation",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ClusterStateBlockIndexSettingRoutingAllocation",
-              "namespace": "cluster"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterStateBlockIndexSettingRoutingAllocation",
-        "namespace": "cluster"
-      },
-      "properties": [
-        {
-          "name": "include",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
             }
           }
         }
@@ -71977,6 +71927,184 @@
     {
       "kind": "interface",
       "name": {
+        "name": "IndexRouting",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "allocation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocation",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "rebalance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingRebalance",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocation",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "description": "server_default all",
+          "name": "enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationOptions",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "include",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "initial_recovery",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "new_primaries"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexRoutingAllocationOptions",
+        "namespace": "cluster"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingRebalance",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "description": "server_default all",
+          "name": "enable",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingRebalanceOptions",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "include",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "replicas"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexRoutingRebalanceOptions",
+        "namespace": "cluster"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "IndexSegment",
         "namespace": "indices.monitoring.indices_segments"
       },
@@ -72082,79 +72210,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingRouting",
-        "namespace": "cluster"
-      },
-      "properties": [
-        {
-          "name": "allocation.enable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettingRoutingAllocation",
-              "namespace": "cluster"
-            }
-          }
-        },
-        {
-          "name": "rebalance.enable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettingRoutingRebalance",
-              "namespace": "cluster"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "all"
-        },
-        {
-          "name": "primaries"
-        },
-        {
-          "name": "new_primaries"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "IndexSettingRoutingAllocation",
-        "namespace": "cluster"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "all"
-        },
-        {
-          "name": "primaries"
-        },
-        {
-          "name": "replicas"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "IndexSettingRoutingRebalance",
-        "namespace": "cluster"
-      }
     },
     {
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings",
@@ -72545,7 +72600,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexSettingRouting",
+              "name": "IndexRouting",
               "namespace": "cluster"
             }
           }
@@ -72606,7 +72661,7 @@
       "properties": [
         {
           "name": "aliases",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -72627,7 +72682,7 @@
         },
         {
           "name": "mappings",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72638,6 +72693,26 @@
         },
         {
           "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexStateSettings",
+              "namespace": "index_modules.index_settings"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexStateSettings",
+        "namespace": "index_modules.index_settings"
+      },
+      "properties": [
+        {
+          "name": "index",
           "required": true,
           "type": {
             "kind": "instance_of",

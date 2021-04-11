@@ -3438,7 +3438,7 @@ export interface ClusterStateBlockIndexMapping {
 }
 
 export interface ClusterStateBlockIndexSetting {
-  routing?: ClusterStateBlockIndexSettingRouting
+  routing?: IndexRouting
   refresh_interval?: Time
   number_of_shards: integer | string
   number_of_replicas: integer | string
@@ -3455,14 +3455,6 @@ export interface ClusterStateBlockIndexSetting {
 
 export interface ClusterStateBlockIndexSettingLifecycle {
   name: Name
-}
-
-export interface ClusterStateBlockIndexSettingRouting {
-  allocation: ClusterStateBlockIndexSettingRoutingAllocation
-}
-
-export interface ClusterStateBlockIndexSettingRoutingAllocation {
-  include: Record<string, string>
 }
 
 export interface ClusterStateBlockIndexSettingVersion {
@@ -7174,6 +7166,26 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
 export interface IndexResponse extends WriteResponseBase {
 }
 
+export interface IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
+}
+
+export interface IndexRoutingAllocation {
+  enable?: IndexRoutingAllocationOptions
+  include: Record<string, string>
+  initial_recovery?: Record<string, string>
+}
+
+export type IndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export interface IndexRoutingRebalance {
+  enable: IndexRoutingRebalanceOptions
+  include: Record<string, string>
+}
+
+export type IndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
+
 export interface IndexSegment {
   shards: Record<string, ShardsSegment | Array<ShardsSegment>>
 }
@@ -7185,15 +7197,6 @@ export interface IndexSettingBlocks {
   write?: boolean
   metadata?: boolean
 }
-
-export interface IndexSettingRouting {
-  'allocation.enable'?: IndexSettingRoutingAllocation
-  'rebalance.enable'?: IndexSettingRoutingRebalance
-}
-
-export type IndexSettingRoutingAllocation = 'all' | 'primaries' | 'new_primaries' | 'none'
-
-export type IndexSettingRoutingRebalance = 'all' | 'primaries' | 'replicas' | 'none'
 
 export interface IndexSettings {
   number_of_shards?: integer
@@ -7246,8 +7249,8 @@ export interface IndexSettings {
   'index.max_terms_count'?: integer
   max_regex_length?: integer
   'index.max_regex_length'?: integer
-  routing?: IndexSettingRouting
-  'index.routing'?: IndexSettingRouting
+  routing?: IndexRouting
+  'index.routing'?: IndexRouting
   gc_deletes?: Time
   'index.gc_deletes'?: Time
   default_pipeline?: PipelineName
@@ -7257,9 +7260,13 @@ export interface IndexSettings {
 }
 
 export interface IndexState {
-  aliases: Record<IndexName, Alias>
-  mappings: TypeMapping
-  settings: IndexSettings
+  aliases?: Record<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexStateSettings
+}
+
+export interface IndexStateSettings {
+  index: IndexSettings
 }
 
 export interface IndexStats {

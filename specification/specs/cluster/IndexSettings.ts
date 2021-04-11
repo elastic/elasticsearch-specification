@@ -146,7 +146,7 @@ class IndexSettings {
   /**
    * @aliases index.routing
    */
-  routing?: IndexSettingRouting
+  routing?: IndexRouting
   /**
    * @aliases index.gc_deletes
    * @server_default 60s
@@ -176,23 +176,4 @@ enum IndexCheckOnStartup {
   false = 0,
   checksum = 1,
   true = 2
-}
-
-class IndexSettingRouting {
-  'allocation.enable'?: IndexSettingRoutingAllocation // default: all
-  'rebalance.enable'?: IndexSettingRoutingRebalance // default: all
-}
-
-enum IndexSettingRoutingAllocation {
-  all = 0,
-  primaries = 1,
-  new_primaries = 2,
-  none = 3
-}
-
-enum IndexSettingRoutingRebalance {
-  all = 0,
-  primaries = 1,
-  replicas = 2,
-  none = 3
 }

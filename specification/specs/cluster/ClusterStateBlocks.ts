@@ -42,7 +42,7 @@ class ClusterStateBlockIndex {
 }
 
 class ClusterStateBlockIndexSetting {
-  routing?: ClusterStateBlockIndexSettingRouting
+  routing?: IndexRouting
   refresh_interval?: Time
   number_of_shards: integer | string // TODO: not sure this correct
   number_of_replicas: integer | string // TODO: not sure this correct
@@ -55,14 +55,6 @@ class ClusterStateBlockIndexSetting {
   uuid?: Uuid
   version?: ClusterStateBlockIndexSettingVersion
   lifecycle?: ClusterStateBlockIndexSettingLifecycle
-}
-
-class ClusterStateBlockIndexSettingRouting {
-  allocation: ClusterStateBlockIndexSettingRoutingAllocation
-}
-
-class ClusterStateBlockIndexSettingRoutingAllocation {
-  include: Dictionary<string, string>
 }
 
 class ClusterStateBlockIndexSettingVersion {
