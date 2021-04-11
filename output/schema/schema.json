@@ -72170,6 +72170,7 @@
           ],
           "name": "number_of_shards",
           "required": false,
+          "serverDefault": "1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72184,6 +72185,7 @@
           ],
           "name": "number_of_replicas",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72212,6 +72214,7 @@
           ],
           "name": "check_on_startup",
           "required": false,
+          "serverDefault": "false",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72226,6 +72229,7 @@
           ],
           "name": "codec",
           "required": false,
+          "serverDefault": "LZ4",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72240,6 +72244,7 @@
           ],
           "name": "routing_partition_size",
           "required": false,
+          "serverDefault": "1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72254,6 +72259,7 @@
           ],
           "name": "soft_deletes.retention_lease.period",
           "required": false,
+          "serverDefault": "12h",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72268,6 +72274,7 @@
           ],
           "name": "load_fixed_bitset_filters_eagerly",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72282,6 +72289,7 @@
           ],
           "name": "hidden",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72296,6 +72304,7 @@
           ],
           "name": "auto_expand_replicas",
           "required": false,
+          "serverDefault": "false",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72310,6 +72319,7 @@
           ],
           "name": "search.idle.after",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72324,6 +72334,7 @@
           ],
           "name": "refresh_interval",
           "required": false,
+          "serverDefault": "1s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72338,6 +72349,7 @@
           ],
           "name": "max_result_window",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72352,6 +72364,7 @@
           ],
           "name": "max_inner_result_window",
           "required": false,
+          "serverDefault": "100",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72366,6 +72379,7 @@
           ],
           "name": "max_rescore_window",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72380,6 +72394,7 @@
           ],
           "name": "max_docvalue_fields_search",
           "required": false,
+          "serverDefault": "100",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72394,6 +72409,7 @@
           ],
           "name": "max_script_fields",
           "required": false,
+          "serverDefault": "32",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72408,6 +72424,7 @@
           ],
           "name": "max_ngram_diff",
           "required": false,
+          "serverDefault": "1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72422,6 +72439,7 @@
           ],
           "name": "max_shingle_diff",
           "required": false,
+          "serverDefault": "3",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72464,6 +72482,7 @@
           ],
           "name": "analyze.max_token_count",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72478,6 +72497,7 @@
           ],
           "name": "highlight.max_analyzed_offset",
           "required": false,
+          "serverDefault": "1000000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72492,6 +72512,7 @@
           ],
           "name": "max_terms_count",
           "required": false,
+          "serverDefault": "65536",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72506,6 +72527,7 @@
           ],
           "name": "max_regex_length",
           "required": false,
+          "serverDefault": "1000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72534,6 +72556,7 @@
           ],
           "name": "gc_deletes",
           "required": false,
+          "serverDefault": "60s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72548,6 +72571,7 @@
           ],
           "name": "default_pipeline",
           "required": false,
+          "serverDefault": "_none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -72562,6 +72586,7 @@
           ],
           "name": "final_pipeline",
           "required": false,
+          "serverDefault": "_none",
           "type": {
             "kind": "instance_of",
             "type": {

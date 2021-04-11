@@ -23,80 +23,98 @@
 class IndexSettings {
   /**
    * @aliases index.number_of_shards
+   * @server_default 1
    */
-  number_of_shards?: integer // default 1
+  number_of_shards?: integer
   /**
    * @aliases index.number_of_replicas
+   * @server_default 0
    */
-  number_of_replicas?: integer // default 0
+  number_of_replicas?: integer
   /**
    * @aliases index.number_of_routing_shards
    */
   number_of_routing_shards?: integer
   /**
    * @aliases index.check_on_startup
+   * @server_default false
    */
-  check_on_startup?: IndexCheckOnStartup // default false
+  check_on_startup?: IndexCheckOnStartup
   /**
    * @aliases index.codec
+   * @server_default LZ4
    */
-  codec?: string // default LZ4
+  codec?: string
   /**
    * @aliases index.routing_partition_size
+   * @server_default 1
    */
-  routing_partition_size?: integer // default 1
+  routing_partition_size?: integer
   /**
    * @aliases index.soft_deletes.retention_lease.period
+   * @server_default 12h
    */
-  'soft_deletes.retention_lease.period'?: Time // default 12h
+  'soft_deletes.retention_lease.period'?: Time
   /**
    * @aliases index.load_fixed_bitset_filters_eagerly
+   * @server_default true
    */
-  load_fixed_bitset_filters_eagerly?: boolean // default true
+  load_fixed_bitset_filters_eagerly?: boolean
   /**
    * @aliases index.hidden
+   * @server_default false
    */
-  hidden?: boolean // default false
+  hidden?: boolean
   /**
    * @aliases index.auto_expand_replicas
+   * @server_default false
    */
-  auto_expand_replicas?: string // default false
+  auto_expand_replicas?: string
   /**
    * @aliases index.search.idle.after
+   * @server_default 30s
    */
-  'search.idle.after'?: Time // default 30s
+  'search.idle.after'?: Time
   /**
    * @aliases index.refresh_interval
+   * @server_default 1s
    */
-  refresh_interval?: Time // default 1s
+  refresh_interval?: Time
   /**
    * @aliases index.max_result_window
+   * @server_default 10000
    */
-  max_result_window?: integer // default 10000
+  max_result_window?: integer
   /**
    * @aliases index.max_inner_result_window
+   * @server_default 100
    */
-  max_inner_result_window?: integer // default 100
+  max_inner_result_window?: integer
   /**
    * @aliases index.max_rescore_window
+   * @server_default 10000
    */
-  max_rescore_window?: integer // default 10000
+  max_rescore_window?: integer
   /**
    * @aliases index.max_docvalue_fields_search
+   * @server_default 100
    */
-  max_docvalue_fields_search?: integer // default 100
+  max_docvalue_fields_search?: integer
   /**
    * @aliases index.max_script_fields
+   * @server_default 32
    */
-  max_script_fields?: integer // default 32
+  max_script_fields?: integer
   /**
    * @aliases index.max_ngram_diff
+   * @server_default 1
    */
-  max_ngram_diff?: integer // default 1
+  max_ngram_diff?: integer
   /**
    * @aliases index.max_shingle_diff
+   * @server_default 3
    */
-  max_shingle_diff?: integer // default 3
+  max_shingle_diff?: integer
   /**
    * @aliases index.bocks
    */
@@ -107,36 +125,43 @@ class IndexSettings {
   max_refresh_listeners?: integer
   /**
    * @aliases index.analyze.max_token_count
+   * @server_default 10000
    */
-  'analyze.max_token_count'?: integer // default 10000
+  'analyze.max_token_count'?: integer
   /**
    * @aliases index.highlight.max_analyzed_offset
+   * @server_default 1000000
    */
-  'highlight.max_analyzed_offset'?: integer // default 1000000
+  'highlight.max_analyzed_offset'?: integer
   /**
    * @aliases index.max_terms_count
+   * @server_default 65536
    */
-  max_terms_count?: integer // default 65536
+  max_terms_count?: integer
   /**
    * @aliases index.max_regex_length
+   * @server_default 1000
    */
-  max_regex_length?: integer // default 1000
+  max_regex_length?: integer
   /**
    * @aliases index.routing
    */
   routing?: IndexSettingRouting
   /**
    * @aliases index.gc_deletes
+   * @server_default 60s
    */
-  gc_deletes?: Time // default 60s
+  gc_deletes?: Time
   /**
    * @aliases index.default_pipeline
+   * @server_default _none
    */
-  default_pipeline?: PipelineName // default _none
+  default_pipeline?: PipelineName
   /**
    * @aliases index.final_pipeline
+   * @server_default _none
    */
-  final_pipeline?: PipelineName // default _none
+  final_pipeline?: PipelineName
 }
 
 class IndexSettingBlocks {
