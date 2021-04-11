@@ -19,22 +19,54 @@
 
 /**
  * @rest_spec_name indices.get_settings
- * @since 0.0.0
+ * @since 1.3.0
  * @stability TODO
  */
 interface GetIndexSettingsRequest extends RequestBase {
   path_parts?: {
+    /**
+     * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported.
+     * To target all data streams and indices in a cluster, omit this parameter or use _all or *.
+     */
     index?: Indices
+    /**
+     * Comma-separated list or wildcard expression of setting names used to limit the request.
+     */
     name?: Names
   }
   query_parameters?: {
+    /**
+     * @server_default true
+     */
     allow_no_indices?: boolean
+    /**
+     * @server_default all
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If true, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
+    /**
+     * If true, missing or closed indices are not included in the response.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
+    /**
+     * If true, return all default settings in the response.
+     * @server_default false
+     */
     include_defaults?: boolean
+    /**
+     * If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.
+     * @server_default false
+     */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Time
   }
-  body?: {}
 }

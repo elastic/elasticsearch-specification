@@ -4513,7 +4513,7 @@
         "name": "GetIndexSettingsResponse",
         "namespace": "indices.index_settings.get_index_settings"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -63731,6 +63731,7 @@
         {
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -63742,6 +63743,7 @@
         {
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "all",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -63751,8 +63753,10 @@
           }
         },
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -63762,8 +63766,10 @@
           }
         },
         {
+          "description": "If true, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -63773,8 +63779,10 @@
           }
         },
         {
+          "description": "If true, return all default settings in the response.",
           "name": "include_defaults",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -63784,8 +63792,10 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -63795,8 +63805,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
