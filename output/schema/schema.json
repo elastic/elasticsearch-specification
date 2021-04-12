@@ -102285,7 +102285,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Uri",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -130869,20 +130869,6 @@
         "namespace": "analysis.token_filters"
       },
       "properties": []
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Uri",
-        "namespace": "internal"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
     },
     {
       "kind": "type_alias",

@@ -33,7 +33,6 @@ class NodeInfo {
   process: NodeProcessInfo
   roles: NodeRole[]
   settings: string[]
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   thread_pool: Dictionary<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   transport: NodeInfoTransport

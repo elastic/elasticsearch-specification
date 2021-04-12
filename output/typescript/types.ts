@@ -10519,7 +10519,7 @@ export interface RemoteInfoResponse extends DictionaryResponseBase<string, Remot
 
 export interface RemoteSource {
   connect_timeout: Time
-  host: Uri
+  host: string
   password: string
   socket_timeout: Time
   username: string
@@ -13666,8 +13666,6 @@ export interface UppercaseProcessor extends ProcessorBase {
 
 export interface UppercaseTokenFilter extends TokenFilterBase {
 }
-
-export type Uri = string
 
 export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 

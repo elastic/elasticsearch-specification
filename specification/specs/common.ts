@@ -35,16 +35,6 @@ function namespace(ns: string) {
 function since(ns: string) {
   return function (ns: any) {}
 }
-
-type Ip = string
-type Uri = string
-
-// Date/Time
-type DateString = string
-type Timestamp = string
-type TimeSpan = string
-type EpochMillis = string | long
-
 @class_serializer('ErrorCauseFormatter')
 class ErrorCause {
   type: string
@@ -162,6 +152,18 @@ type Uuid = string
 
 // _seq_no
 type SequenceNumber = integer
+
+// Date/Time
+type DateString = string
+type Timestamp = string
+type TimeSpan = string
+type EpochMillis = string | long
+
+// Networking
+type Ip = string
+type Host = string
+type Hostname = string
+type TransportAddress = string
 
 type NodeIds = string
 type PropertyName = string
