@@ -703,6 +703,15 @@ export interface AverageAggregation extends FormatMetricAggregationBase {
 export interface AverageBucketAggregation extends PipelineAggregationBase {
 }
 
+export interface BaseNode {
+  attributes: Record<string, string>
+  host: Host
+  ip: Ip
+  name: Name
+  roles?: NodeRoles
+  transport_address: TransportAddress
+}
+
 export interface BaseUrlConfig {
   url_name: string
   url_value: string
@@ -10374,14 +10383,8 @@ export interface ReindexDestination {
   version_type?: VersionType
 }
 
-export interface ReindexNode {
-  attributes: Record<string, string>
-  host: Host
-  ip: Ip
-  name: Name
-  roles: Array<string>
+export interface ReindexNode extends BaseNode {
   tasks: Record<TaskId, ReindexTask>
-  transport_address: TransportAddress
 }
 
 export interface ReindexRequest extends RequestBase {
@@ -12751,14 +12754,8 @@ export interface TTestAggregation extends Aggregation {
 
 export type TTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
-export interface TaskExecutingNode {
-  attributes: Record<string, string>
-  host: Host
-  ip: Ip
-  name: Name
-  roles: Array<string>
+export interface TaskExecutingNode extends BaseNode {
   tasks: Record<TaskId, TaskState>
-  transport_address: TransportAddress
 }
 
 export type TaskId = string | integer
@@ -13481,13 +13478,7 @@ export interface UpdateByQueryResponse extends ResponseBase {
   throttled_until_millis?: ulong
 }
 
-export interface UpdateByQueryRethrottleNode {
-  attributes: Record<string, string>
-  host: Host
-  transport_address: TransportAddress
-  ip: Ip
-  name: Name
-  roles: Array<string>
+export interface UpdateByQueryRethrottleNode extends BaseNode {
   tasks: Record<TaskId, TaskInfo>
 }
 

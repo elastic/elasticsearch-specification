@@ -17,12 +17,6 @@
  * under the License.
  */
 
-class ReindexNode {
-  attributes: Dictionary<string, string>
-  host: Host
-  ip: Ip
-  name: Name
-  roles: string[]
+class ReindexNode extends BaseNode {
   tasks: Dictionary<TaskId, ReindexTask>
-  transport_address: TransportAddress
 }

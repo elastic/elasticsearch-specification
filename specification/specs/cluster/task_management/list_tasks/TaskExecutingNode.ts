@@ -17,12 +17,6 @@
  * under the License.
  */
 
-class TaskExecutingNode {
-  attributes: Dictionary<string, string>
-  host: Host
-  ip: Ip
-  name: Name
-  roles: string[]
+class TaskExecutingNode extends BaseNode {
   tasks: Dictionary<TaskId, TaskState>
-  transport_address: TransportAddress
 }

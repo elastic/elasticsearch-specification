@@ -17,6 +17,11 @@
  * under the License.
  */
 
-class UpdateByQueryRethrottleNode extends BaseNode {
-  tasks: Dictionary<TaskId, TaskInfo>
+class BaseNode {
+  attributes: Dictionary<string, string>
+  host: Host
+  ip: Ip
+  name: Name
+  roles?: NodeRoles
+  transport_address: TransportAddress
 }

@@ -18415,6 +18415,91 @@
     {
       "kind": "interface",
       "name": {
+        "name": "BaseNode",
+        "namespace": "common"
+      },
+      "properties": [
+        {
+          "name": "attributes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "host",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Host",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "ip",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ip",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "cluster.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "transport_address",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransportAddress",
+              "namespace": "common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "BaseUrlConfig",
         "namespace": "x_pack.info.x_pack_usage"
       },
@@ -100933,80 +101018,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "common"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ReindexNode",
         "namespace": "document.multiple.reindex_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Host",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Ip",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -101025,17 +101050,6 @@
                 "name": "ReindexTask",
                 "namespace": "document.multiple.reindex_rethrottle"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
             }
           }
         }
@@ -122036,80 +122050,20 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "common"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TaskExecutingNode",
         "namespace": "cluster.task_management.list_tasks"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Host",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Ip",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -122128,17 +122082,6 @@
                 "name": "TaskState",
                 "namespace": "cluster.task_management.list_tasks"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
             }
           }
         }
@@ -129040,91 +128983,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "common"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryRethrottleNode",
         "namespace": "document.multiple.update_by_query_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Host",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Ip",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
