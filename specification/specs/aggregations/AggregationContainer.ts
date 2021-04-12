@@ -17,10 +17,30 @@
  * under the License.
  */
 
+/**
+ * @variants container
+ */
 class AggregationContainer {
-  adjacency_matrix?: AdjacencyMatrixAggregation
+  // These two field are always available
+  /**
+   * Nested aggregations. Bucket aggregations support bucket or metric sub-aggregations.
+   *
+   * @variant container_property
+   * @aliases aggregations
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html#run-sub-aggs
+   */
+  // Note: this is only applicable to children of BucketAggregationBase, but the JSON format attaches it to the
+  // container. Code generators may want to move it down as a member of the BucketAggregationBase structure to only
+  // expose it where it makes sense.
   aggs?: Dictionary<string, AggregationContainer>
-  aggregations?: Dictionary<string, AggregationContainer>
+
+  /**
+   * @variant container_property
+   */
+  meta?: Dictionary<string, UserDefinedValue>
+
+  // Regular container fields. Only one of them can exist at a time.
+  adjacency_matrix?: AdjacencyMatrixAggregation
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
   avg_bucket?: AverageBucketAggregation
@@ -56,7 +76,6 @@ class AggregationContainer {
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
   median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-  meta?: Dictionary<string, UserDefinedValue>
   min?: MinAggregation
   min_bucket?: MinBucketAggregation
   missing?: MissingAggregation

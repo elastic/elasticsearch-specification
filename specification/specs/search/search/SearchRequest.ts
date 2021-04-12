@@ -69,8 +69,8 @@ interface SearchRequest extends RequestBase {
     sort?: string | string[]
   }
   body?: {
+    /** @aliases aggregations */
     aggs?: Dictionary<string, AggregationContainer>
-    aggregations?: Dictionary<string, AggregationContainer>
     collapse?: FieldCollapse
     explain?: boolean
     from?: integer

@@ -18,9 +18,10 @@
  */
 
 class DateRangeAggregation extends BucketAggregationBase {
-  field?: Field
+  field: Field
   format?: string
   missing?: Missing
   ranges?: DateRangeExpression[]
   time_zone?: string
+  // Note: "keyed" has been omitted. It changes the response format (see DateHistogramAggregate).
 }

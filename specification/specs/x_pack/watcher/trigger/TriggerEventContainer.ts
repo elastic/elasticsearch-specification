@@ -17,6 +17,9 @@
  * under the License.
  */
 
+/**
+ * @variants container
+ */
 class TriggerEventContainer {
   schedule: ScheduleTriggerEvent
 }

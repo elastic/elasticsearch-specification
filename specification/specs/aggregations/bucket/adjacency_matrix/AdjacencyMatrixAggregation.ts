@@ -17,6 +17,17 @@
  * under the License.
  */
 
+/**
+ * A bucket aggregation returning a form of [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix). The
+ * request provides a collection of named filter expressions, similar to the filters aggregation request. Each bucket
+ * in the response represents a non-empty cell in the matrix of intersecting filters.
+ *
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-adjacency-matrix-aggregation.html
+ */
 class AdjacencyMatrixAggregation extends BucketAggregationBase {
-  filters?: Dictionary<string, QueryContainer>
+  /** Filters used to create buckets. */
+  filters: Dictionary<string, QueryContainer>
+
+  /** Separator used to concatenate filter names. Defaults to `&`. */
+  separator?: string
 }

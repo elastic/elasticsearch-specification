@@ -17,6 +17,9 @@
  * under the License.
  */
 
+/**
+ * @variants container
+ */
 class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule

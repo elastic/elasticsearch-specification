@@ -17,6 +17,9 @@
  * under the License.
  */
 
+/**
+ * @variants container
+ */
 @class_serializer('QueryContainerInterfaceFormatter')
 class QueryContainer {
   bool?: BoolQuery
@@ -40,10 +43,6 @@ class QueryContainer {
   has_parent?: HasParentQuery
   ids?: IdsQuery
   intervals?: NamedQuery<IntervalsQuery | string>
-  is_conditionless?: boolean
-  is_strict?: boolean
-  is_verbatim?: boolean
-  is_writable?: boolean
   match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
   match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>

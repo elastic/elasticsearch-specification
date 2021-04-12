@@ -32,4 +32,5 @@ class DateHistogramAggregation extends BucketAggregationBase {
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
   time_zone?: string
+  // Note: "keyed" has been omitted. It changes the response format (see DateHistogramAggregate).
 }

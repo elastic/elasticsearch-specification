@@ -79,3 +79,9 @@ interface CommonCatQueryParameters {
   s?: string[]
   v?: boolean
 }
+
+/**
+ * Typed keys are used in responses for aggregation and suggesters which are represented as (name, value) pairs.
+ * The typed_keys parameter encodes the type as (type#name, value) pairs (default in 7.x)
+ */
+interface TypedKeysContainer<TKey, TValue> {}

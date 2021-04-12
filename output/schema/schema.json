@@ -12607,6 +12607,8 @@
       ]
     },
     {
+      "description": "A bucket aggregation returning a form of [adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix). The\nrequest provides a collection of named filter expressions, similar to the filters aggregation request. Each bucket\nin the response represents a non-empty cell in the matrix of intersecting filters.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-adjacency-matrix-aggregation.html",
       "inherits": [
         {
           "type": {
@@ -12622,8 +12624,9 @@
       },
       "properties": [
         {
+          "description": "Filters used to create buckets.",
           "name": "filters",
-          "required": false,
+          "required": true,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -12639,6 +12642,18 @@
                 "name": "QueryContainer",
                 "namespace": "query_dsl.abstractions.container"
               }
+            }
+          }
+        },
+        {
+          "description": "Separator used to concatenate filter names. Defaults to `&`.",
+          "name": "separator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -12799,36 +12814,7 @@
         "name": "Aggregation",
         "namespace": "aggregations"
       },
-      "properties": [
-        {
-          "name": "meta",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "interface",
@@ -12979,17 +12965,12 @@
       },
       "properties": [
         {
-          "name": "adjacency_matrix",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AdjacencyMatrixAggregation",
-              "namespace": "aggregations.bucket.adjacency_matrix"
-            }
-          }
-        },
-        {
+          "aliases": [
+            "aggregations"
+          ],
+          "container_property": true,
+          "description": "Nested aggregations. Bucket aggregations support bucket or metric sub-aggregations.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html#run-sub-aggs",
           "name": "aggs",
           "required": false,
           "type": {
@@ -13011,7 +12992,8 @@
           }
         },
         {
-          "name": "aggregations",
+          "container_property": true,
+          "name": "meta",
           "required": false,
           "type": {
             "key": {
@@ -13023,11 +13005,18 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "aggregations"
-              }
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "adjacency_matrix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AdjacencyMatrixAggregation",
+              "namespace": "aggregations.bucket.adjacency_matrix"
             }
           }
         },
@@ -13417,23 +13406,6 @@
           }
         },
         {
-          "name": "meta",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
           "name": "min",
           "required": false,
           "type": {
@@ -13807,7 +13779,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -16742,17 +16717,6 @@
               "namespace": "internal"
             }
           }
-        },
-        {
-          "name": "typed_keys",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
         }
       ],
       "query": []
@@ -18122,6 +18086,8 @@
       ]
     },
     {
+      "description": "A multi-bucket aggregation similar to `date_histogram` except instead of providing an interval to use as the width\nof each bucket, a target number of buckets is provided indicating the number of buckets needed and the interval of\nthe buckets is automatically chosen to best achieve that target. The number of buckets returned will always be less\nthan or equal to this target number.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-autodatehistogram-aggregation.html",
       "inherits": [
         {
           "type": {
@@ -19151,29 +19117,7 @@
         "name": "BucketAggregationBase",
         "namespace": "aggregations.bucket"
       },
-      "properties": [
-        {
-          "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "aggregations"
-              }
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "interface",
@@ -19871,7 +19815,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "attachedBehaviors": [
@@ -20343,7 +20290,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "inherits": [
@@ -32968,6 +32918,8 @@
       }
     },
     {
+      "description": "A special single bucket aggregation that selects child documents that have the specified type, as defined in a join\nfield.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-children-aggregation.html",
       "inherits": [
         {
           "type": {
@@ -32984,7 +32936,7 @@
       "properties": [
         {
           "name": "type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40876,6 +40828,8 @@
       ]
     },
     {
+      "description": "A multi-bucket aggregation that creates composite buckets from different sources.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html",
       "inherits": [
         {
           "type": {
@@ -40890,6 +40844,41 @@
         "namespace": "aggregations.bucket.composite"
       },
       "properties": [
+        {
+          "name": "sources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "CompositeAggregationSource",
+                  "namespace": "aggregations.bucket.composite"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
         {
           "name": "after",
           "required": false,
@@ -40914,7 +40903,7 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "float",
+                    "name": "number",
                     "namespace": "internal"
                   }
                 },
@@ -40927,41 +40916,6 @@
                 }
               ],
               "kind": "union_of"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "sources",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "CompositeAggregationSource",
-                  "namespace": "aggregations.bucket.composite"
-                }
-              }
             }
           }
         }
@@ -41018,7 +40972,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "attachedBehaviors": [
@@ -41263,7 +41220,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "enum",
@@ -45451,7 +45411,7 @@
       "properties": [
         {
           "name": "field",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45540,39 +45500,6 @@
           }
         },
         {
-          "name": "from_as_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "to_as_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "key",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "to",
           "required": false,
           "type": {
@@ -45593,17 +45520,6 @@
               }
             ],
             "kind": "union_of"
-          }
-        },
-        {
-          "name": "doc_count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
           }
         }
       ]
@@ -51842,6 +51758,13 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
               "namespace": "internal"
             }
           }
@@ -74461,7 +74384,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "inherits": [
@@ -75196,7 +75122,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "enum",
@@ -75467,7 +75396,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -83135,17 +83067,6 @@
         "namespace": "document.multiple.multi_get"
       },
       "properties": [
-        {
-          "name": "can_be_flattened",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "_id",
           "required": true,
@@ -92833,7 +92754,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -97387,50 +97311,6 @@
           }
         },
         {
-          "name": "is_conditionless",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_strict",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_verbatim",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_writable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "match",
           "required": false,
           "type": {
@@ -98153,7 +98033,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -106123,7 +106006,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -107412,28 +107298,10 @@
         "kind": "properties",
         "properties": [
           {
+            "aliases": [
+              "aggregations"
+            ],
             "name": "aggs",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "AggregationContainer",
-                  "namespace": "aggregations"
-                }
-              }
-            }
-          },
-          {
-            "name": "aggregations",
             "required": false,
             "type": {
               "key": {
@@ -115532,7 +115400,7 @@
       "properties": [
         {
           "name": "laplace",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115543,7 +115411,7 @@
         },
         {
           "name": "linear_interpolation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115554,7 +115422,7 @@
         },
         {
           "name": "stupid_backoff",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115563,7 +115431,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -121185,7 +121056,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -126430,7 +126304,7 @@
       "properties": [
         {
           "name": "chain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126441,7 +126315,7 @@
         },
         {
           "name": "script",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126452,7 +126326,7 @@
         },
         {
           "name": "search",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126461,7 +126335,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -126918,7 +126795,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -127323,7 +127203,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -127343,7 +127226,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",

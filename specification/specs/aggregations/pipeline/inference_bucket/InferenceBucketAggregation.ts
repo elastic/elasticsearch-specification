@@ -22,6 +22,7 @@ class InferenceAggregation extends PipelineAggregationBase {
   inference_config?: InferenceConfigContainer
 }
 
+/** @variants container */
 class InferenceConfigContainer {
   regression?: RegressionInferenceOptions
   classification?: ClassificationInferenceOptions
