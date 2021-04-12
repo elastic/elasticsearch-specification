@@ -87426,7 +87426,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
+                "name": "Ip",
                 "namespace": "internal"
               }
             }
@@ -87449,7 +87449,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }

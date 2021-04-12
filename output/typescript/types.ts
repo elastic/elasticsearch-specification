@@ -8927,9 +8927,9 @@ export interface NodeStats {
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
-  ip: Array<string>
+  ip: Array<Ip>
   jvm: NodeJvmStats
-  name: string
+  name: Name
   os: OperatingSystemStats
   process: ProcessStats
   roles: Array<NodeRole>
