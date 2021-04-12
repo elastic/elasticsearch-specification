@@ -4782,6 +4782,12 @@ export interface DocumentExistsRequest extends RequestBase {
 
 export type DocumentExistsResponse = boolean
 
+export interface DocumentRating {
+  _id: Id
+  _index: IndexName
+  rating: integer
+}
+
 export interface DocumentSimulation {
   _id: Id
   _index: IndexName
@@ -5216,7 +5222,7 @@ export interface ExistsQuery extends QueryBase {
   field?: Field
 }
 
-export type ExpandWildcardOptions = 'open' | 'closed' | 'hidden' | 'none' | 'all'
+export type ExpandWildcardOptions = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions> | string
 
@@ -10177,6 +10183,69 @@ export interface RangeQuery extends QueryBase {
 }
 
 export type RangeRelation = 'within' | 'contains' | 'intersects'
+
+export interface RankEvalMetric {
+  precision?: RankEvalMetricPrecision
+  recall?: RankEvalMetricRecall
+  mean_reciprocal_rank?: RankEvalMetricMeanReciprocalRank
+  dcg?: RankEvalMetricDiscountedCumulativeGain
+  expected_reciprocal_rank?: RankEvalMetricExpectedReciprocalRank
+}
+
+export interface RankEvalMetricBase {
+  k?: integer
+}
+
+export interface RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
+  normalize?: boolean
+}
+
+export interface RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
+  maximum_relevance: integer
+}
+
+export interface RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {
+}
+
+export interface RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
+  ignore_unlabeled?: boolean
+}
+
+export interface RankEvalMetricRatingTreshold extends RankEvalMetricBase {
+  relevant_rating_threshold?: integer
+}
+
+export interface RankEvalMetricRecall extends RankEvalMetricRatingTreshold {
+}
+
+export interface RankEvalQuery {
+  query: QueryContainer
+  size?: integer
+}
+
+export interface RankEvalRequest extends RequestBase {
+  index: Indices
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcardOptions
+  ignore_unavailable?: boolean
+  search_type?: string
+  body: {
+    requests: Array<RankEvalRequestItem>
+    metric?: RankEvalMetric
+  }
+}
+
+export interface RankEvalRequestItem {
+  id: Id
+  request?: RankEvalQuery
+  ratings: Array<DocumentRating>
+  template_id?: Id
+  params?: Record<string, any>
+}
+
+export interface RankEvalResponse extends ResponseBase {
+  stub: integer
+}
 
 export interface RankFeatureFunction {
 }

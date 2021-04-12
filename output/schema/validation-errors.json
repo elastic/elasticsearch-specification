@@ -285,14 +285,6 @@
         "Missing response"
       ]
     },
-    "rank_eval": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "shutdown.delete_node": {
       "request": [
         "Missing request"

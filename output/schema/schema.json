@@ -8565,9 +8565,16 @@
       "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
-      "request": null,
+      "request": {
+        "name": "RankEvalRequest",
+        "namespace": "rank_eval"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "RankEvalResponse",
+        "namespace": "rank_eval"
+      },
+      "since": "6.2.0",
       "stability": "experimental",
       "urls": [
         {
@@ -50737,6 +50744,51 @@
     {
       "kind": "interface",
       "name": {
+        "name": "DocumentRating",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The document ID.",
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The document’s index. For data streams, this should be the document’s backing index.",
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The document’s relevance with regard to this search request.",
+          "name": "rating",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "DocumentSimulation",
         "namespace": "ingest.simulate_pipeline"
       },
@@ -54540,19 +54592,24 @@
       "kind": "enum",
       "members": [
         {
+          "description": "Match any data stream or index, including hidden ones.",
+          "name": "all"
+        },
+        {
+          "description": "Match open, non-hidden indices. Also matches any non-hidden data stream.",
           "name": "open"
         },
         {
+          "description": "Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.",
           "name": "closed"
         },
         {
+          "description": "Match hidden data streams and hidden indices. Must be combined with open, closed, or both.",
           "name": "hidden"
         },
         {
+          "description": "Wildcard expressions are not accepted.",
           "name": "none"
-        },
-        {
-          "name": "all"
         }
       ],
       "name": {
@@ -99291,6 +99348,506 @@
         "name": "RangeRelation",
         "namespace": "query_dsl.term_level.range"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetric",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricPrecision",
+              "namespace": "rank_eval"
+            }
+          }
+        },
+        {
+          "name": "recall",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricRecall",
+              "namespace": "rank_eval"
+            }
+          }
+        },
+        {
+          "name": "mean_reciprocal_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricMeanReciprocalRank",
+              "namespace": "rank_eval"
+            }
+          }
+        },
+        {
+          "name": "dcg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricDiscountedCumulativeGain",
+              "namespace": "rank_eval"
+            }
+          }
+        },
+        {
+          "name": "expected_reciprocal_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricExpectedReciprocalRank",
+              "namespace": "rank_eval"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricBase",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "Sets the maximum number of documents retrieved per query. This value will act in place of the usual size parameter in the query.",
+          "name": "k",
+          "required": false,
+          "serverDefault": "10",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Discounted cumulative gain (DCG)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_discounted_cumulative_gain_dcg",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricBase",
+            "namespace": "rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricDiscountedCumulativeGain",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "If set to true, this metric will calculate the Normalized DCG.",
+          "docUrl": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG",
+          "name": "normalize",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Expected Reciprocal Rank (ERR)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_expected_reciprocal_rank_err",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricBase",
+            "namespace": "rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricExpectedReciprocalRank",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The highest relevance grade used in the user-supplied relevance judgments.",
+          "name": "maximum_relevance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Mean Reciprocal Rank",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_mean_reciprocal_rank",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricRatingTreshold",
+            "namespace": "rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricMeanReciprocalRank",
+        "namespace": "rank_eval"
+      },
+      "properties": []
+    },
+    {
+      "description": "Precision at K (P@k)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-precision",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricRatingTreshold",
+            "namespace": "rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricPrecision",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "Controls how unlabeled documents in the search results are counted. If set to true, unlabeled documents are ignored and neither count as relevant or irrelevant. Set to false (the default), they are treated as irrelevant.",
+          "name": "ignore_unlabeled",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricBase",
+            "namespace": "rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricRatingTreshold",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "Sets the rating threshold above which documents are considered to be \"relevant\".",
+          "name": "relevant_rating_threshold",
+          "required": false,
+          "serverDefault": "1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Recall at K (R@k)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-recall",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricRatingTreshold",
+            "namespace": "rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricRecall",
+        "namespace": "rank_eval"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalQuery",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A set of typical search requests, together with their provided ratings",
+            "name": "requests",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RankEvalRequestItem",
+                  "namespace": "rank_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "Definition of the evaluation metric to calculate",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_available_evaluation_metrics",
+            "name": "metric",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RankEvalMetric",
+                "namespace": "rank_eval"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "RankEvalRequest",
+        "namespace": "rank_eval"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcardOptions",
+              "namespace": "common"
+            }
+          }
+        },
+        {
+          "description": "If true, missing or closed indices are not included in the response.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalRequestItem",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The search request’s ID, used to group result details later.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The query being evaluated.",
+          "name": "request",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalQuery",
+              "namespace": "rank_eval"
+            }
+          }
+        },
+        {
+          "description": "List of document ratings",
+          "name": "ratings",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentRating",
+                "namespace": "rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "description": "The search template Id",
+          "name": "template_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The search template parameters.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalResponse",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
