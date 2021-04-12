@@ -18,7 +18,10 @@
  */
 
 class NodeProcessInfo {
+  /** Process identifier (PID) */
   id: long
+  /** Indicates if the process address space has been successfully locked in memory */
   mlockall: boolean
+  /** Refresh interval for the process statistics */
   refresh_interval_in_millis: long
 }

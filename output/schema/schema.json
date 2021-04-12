@@ -8283,7 +8283,7 @@
         "name": "NodesInfoResponse",
         "namespace": "cluster.nodes_info"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -86005,6 +86005,7 @@
           }
         },
         {
+          "description": "Short hash of the last git commit in this release.",
           "name": "build_hash",
           "required": true,
           "type": {
@@ -86027,6 +86028,7 @@
           }
         },
         {
+          "description": "The node’s host name.",
           "name": "host",
           "required": true,
           "type": {
@@ -86049,6 +86051,7 @@
           }
         },
         {
+          "description": "The node’s IP address.",
           "name": "ip",
           "required": true,
           "type": {
@@ -86071,6 +86074,7 @@
           }
         },
         {
+          "description": "The node’s name.",
           "name": "name",
           "required": true,
           "type": {
@@ -86118,8 +86122,9 @@
           }
         },
         {
+          "description": "The process flag can be set to retrieve information that concern the current running process",
           "name": "process",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86178,12 +86183,26 @@
           }
         },
         {
+          "description": "Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html",
           "name": "total_indexing_buffer",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Same as total_indexing_buffer, but expressed in bytes.",
+          "name": "total_indexing_buffer_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86200,6 +86219,7 @@
           }
         },
         {
+          "description": "Host and port where transport HTTP connections are accepted.",
           "name": "transport_address",
           "required": true,
           "type": {
@@ -86211,6 +86231,7 @@
           }
         },
         {
+          "description": "Elasticsearch version running on this node.",
           "name": "version",
           "required": true,
           "type": {
@@ -86918,6 +86939,7 @@
       },
       "properties": [
         {
+          "description": "Name of the JVM architecture (ex: amd64, x86)",
           "name": "arch",
           "required": true,
           "type": {
@@ -86929,6 +86951,7 @@
           }
         },
         {
+          "description": "Number of processors available to the Java virtual machine",
           "name": "available_processors",
           "required": true,
           "type": {
@@ -86962,12 +86985,13 @@
           }
         },
         {
+          "description": "Name of the operating system (ex: Linux, Windows, Mac OS X)",
           "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -86984,6 +87008,7 @@
           }
         },
         {
+          "description": "Refresh interval for the OS statistics",
           "name": "refresh_interval_in_millis",
           "required": true,
           "type": {
@@ -87006,6 +87031,7 @@
           }
         },
         {
+          "description": "Version of the operating system",
           "name": "version",
           "required": true,
           "type": {
@@ -87068,6 +87094,7 @@
       },
       "properties": [
         {
+          "description": "Process identifier (PID)",
           "name": "id",
           "required": true,
           "type": {
@@ -87079,6 +87106,7 @@
           }
         },
         {
+          "description": "Indicates if the process address space has been successfully locked in memory",
           "name": "mlockall",
           "required": true,
           "type": {
@@ -87090,6 +87118,7 @@
           }
         },
         {
+          "description": "Refresh interval for the process statistics",
           "name": "refresh_interval_in_millis",
           "required": true,
           "type": {
@@ -87863,8 +87892,10 @@
       ],
       "query": [
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87874,8 +87905,23 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87902,12 +87948,23 @@
       },
       "properties": [
         {
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
           "name": "cluster_name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }

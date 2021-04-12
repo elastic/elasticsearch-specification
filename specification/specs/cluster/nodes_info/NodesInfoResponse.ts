@@ -18,7 +18,7 @@
  */
 
 class NodesInfoResponse extends NodesResponseBase {
-  cluster_name: string
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
+  _nodes: NodeStatistics
+  cluster_name: Name
   nodes: Dictionary<string, NodeInfo>
 }

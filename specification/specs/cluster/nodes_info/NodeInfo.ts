@@ -20,23 +20,35 @@
 class NodeInfo {
   attributes: Dictionary<string, string>
   build_flavor: string
+  /** Short hash of the last git commit in this release. */
   build_hash: string
   build_type: string
+  /** The node’s host name. */
   host: string
   http: NodeInfoHttp
+  /** The node’s IP address. */
   ip: string
   jvm: NodeJvmInfo
+  /** The node’s name. */
   name: string
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: PluginStats[]
-  process: NodeProcessInfo
+  /** The process flag can be set to retrieve information that concern the current running process */
+  process?: NodeProcessInfo
   roles: NodeRole[]
   settings: string[]
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   thread_pool: Dictionary<string, NodeThreadPoolInfo>
+  /**
+   * Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html
+   */
   total_indexing_buffer: long
+  /** Same as total_indexing_buffer, but expressed in bytes. */
+  total_indexing_buffer_in_bytes?: ByteSize
   transport: NodeInfoTransport
+  /** Host and port where transport HTTP connections are accepted. */
   transport_address: string
+  /** Elasticsearch version running on this node. */
   version: VersionString
 }

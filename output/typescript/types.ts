@@ -8779,11 +8779,12 @@ export interface NodeInfo {
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: Array<PluginStats>
-  process: NodeProcessInfo
+  process?: NodeProcessInfo
   roles: Array<NodeRole>
   settings: Array<string>
   thread_pool: Record<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
+  total_indexing_buffer_in_bytes?: ByteSize
   transport: NodeInfoTransport
   transport_address: string
   version: VersionString
@@ -8876,7 +8877,7 @@ export interface NodeOperatingSystemInfo {
   available_processors: integer
   cpu: NodeInfoOSCPU
   mem: NodeInfoMemory
-  name: string
+  name: Name
   pretty_name: Name
   refresh_interval_in_millis: integer
   swap: NodeInfoMemory
@@ -8972,11 +8973,13 @@ export interface NodesInfoRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   flat_settings?: boolean
+  master_timeout?: Time
   timeout?: Time
 }
 
 export interface NodesInfoResponse extends NodesResponseBase {
-  cluster_name: string
+  _nodes: NodeStatistics
+  cluster_name: Name
   nodes: Record<string, NodeInfo>
 }
 
