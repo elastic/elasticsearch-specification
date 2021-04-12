@@ -22,14 +22,15 @@ class NodeOperatingSystemInfo {
   arch: string
   /** Number of processors available to the Java virtual machine */
   available_processors: integer
-  cpu: NodeInfoOSCPU
-  mem: NodeInfoMemory
+  allocated_processors?: integer
+  cpu?: NodeInfoOSCPU
+  mem?: NodeInfoMemory
   /** Name of the operating system (ex: Linux, Windows, Mac OS X) */
   name: Name
   pretty_name: Name
   /** Refresh interval for the OS statistics */
   refresh_interval_in_millis: integer
-  swap: NodeInfoMemory
+  swap?: NodeInfoMemory
   /** Version of the operating system */
   version: VersionString
 }

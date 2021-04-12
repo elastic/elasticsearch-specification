@@ -86151,13 +86151,10 @@
           "name": "settings",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeSettings",
+              "namespace": "cluster"
             }
           }
         },
@@ -86267,11 +86264,11 @@
         },
         {
           "name": "max_content_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86309,11 +86306,11 @@
       "properties": [
         {
           "name": "direct_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86331,11 +86328,11 @@
         },
         {
           "name": "heap_init",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86353,11 +86350,11 @@
         },
         {
           "name": "heap_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86375,11 +86372,11 @@
         },
         {
           "name": "non_heap_init",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86397,11 +86394,11 @@
         },
         {
           "name": "non_heap_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "ByteSize",
               "namespace": "internal"
             }
           }
@@ -86651,6 +86648,27 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "profiles",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
         }
       ]
     },
@@ -86704,6 +86722,20 @@
       "properties": [
         {
           "name": "gc_collectors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "input_arguments",
           "required": true,
           "type": {
             "kind": "array_of",
@@ -86805,6 +86837,51 @@
               "name": "VersionString",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "bundled_jdk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "using_bundled_jdk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "using_compressed_ordinary_object_pointers",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -86963,8 +87040,19 @@
           }
         },
         {
+          "name": "allocated_processors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "cpu",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86975,7 +87063,7 @@
         },
         {
           "name": "mem",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87021,7 +87109,7 @@
         },
         {
           "name": "swap",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87272,6 +87360,99 @@
           }
         }
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeSettings",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingRouting",
+              "namespace": "cluster"
+            }
+          }
+        },
+        {
+          "name": "client",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "cluster",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeSettingsCluster",
+              "namespace": "cluster"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeSettingsCluster",
+        "namespace": "cluster"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "election",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -87581,7 +87762,7 @@
       "properties": [
         {
           "name": "core",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87592,7 +87773,7 @@
         },
         {
           "name": "keep_alive",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87603,7 +87784,7 @@
         },
         {
           "name": "max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87625,7 +87806,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

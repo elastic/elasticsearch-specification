@@ -17,8 +17,13 @@
  * under the License.
  */
 
-class NodeInfoTransport {
-  bound_address: string[]
-  publish_address: string
-  profiles: Dictionary<string, string>
+class NodeSettings {
+  routing?: IndexSettingRouting
+  client?: Dictionary<string, string>
+  cluster?: NodeSettingsCluster
+}
+
+class NodeSettingsCluster {
+  name: Name
+  election: Dictionary<string, string>
 }

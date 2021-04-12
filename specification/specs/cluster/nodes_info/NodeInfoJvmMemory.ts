@@ -18,14 +18,14 @@
  */
 
 class NodeInfoJvmMemory {
-  direct_max: string
+  direct_max?: ByteSize
   direct_max_in_bytes: long
-  heap_init: string
+  heap_init?: ByteSize
   heap_init_in_bytes: long
-  heap_max: string
+  heap_max?: ByteSize
   heap_max_in_bytes: long
-  non_heap_init: string
+  non_heap_init?: ByteSize
   non_heap_init_in_bytes: long
-  non_heap_max: string
+  non_heap_max?: ByteSize
   non_heap_max_in_bytes: long
 }

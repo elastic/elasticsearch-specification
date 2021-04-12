@@ -37,7 +37,7 @@ class NodeInfo {
   /** The process flag can be set to retrieve information that concern the current running process */
   process?: NodeProcessInfo
   roles: NodeRole[]
-  settings: string[]
+  settings: NodeSettings
   thread_pool: Dictionary<string, NodeThreadPoolInfo>
   /**
    * Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.

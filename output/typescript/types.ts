@@ -8781,7 +8781,7 @@ export interface NodeInfo {
   plugins: Array<PluginStats>
   process?: NodeProcessInfo
   roles: Array<NodeRole>
-  settings: Array<string>
+  settings: NodeSettings
   thread_pool: Record<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   total_indexing_buffer_in_bytes?: ByteSize
@@ -8792,21 +8792,21 @@ export interface NodeInfo {
 
 export interface NodeInfoHttp {
   bound_address: Array<string>
-  max_content_length: string
+  max_content_length?: ByteSize
   max_content_length_in_bytes: long
   publish_address: string
 }
 
 export interface NodeInfoJvmMemory {
-  direct_max: string
+  direct_max?: ByteSize
   direct_max_in_bytes: long
-  heap_init: string
+  heap_init?: ByteSize
   heap_init_in_bytes: long
-  heap_max: string
+  heap_max?: ByteSize
   heap_max_in_bytes: long
-  non_heap_init: string
+  non_heap_init?: ByteSize
   non_heap_init_in_bytes: long
-  non_heap_max: string
+  non_heap_max?: ByteSize
   non_heap_max_in_bytes: long
 }
 
@@ -8840,6 +8840,7 @@ export interface NodeInfoOSCPU {
 export interface NodeInfoTransport {
   bound_address: Array<string>
   publish_address: string
+  profiles: Record<string, string>
 }
 
 export interface NodeIngestStats {
@@ -8849,6 +8850,7 @@ export interface NodeIngestStats {
 
 export interface NodeJvmInfo {
   gc_collectors: Array<string>
+  input_arguments: Array<string>
   mem: NodeInfoJvmMemory
   memory_pools: Array<string>
   pid: integer
@@ -8857,6 +8859,9 @@ export interface NodeJvmInfo {
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
+  bundled_jdk: boolean
+  using_bundled_jdk: boolean
+  using_compressed_ordinary_object_pointers: boolean | string
 }
 
 export interface NodeJvmStats {
@@ -8875,12 +8880,13 @@ export type NodeName = string
 export interface NodeOperatingSystemInfo {
   arch: string
   available_processors: integer
-  cpu: NodeInfoOSCPU
-  mem: NodeInfoMemory
+  allocated_processors?: integer
+  cpu?: NodeInfoOSCPU
+  mem?: NodeInfoMemory
   name: Name
   pretty_name: Name
   refresh_interval_in_millis: integer
-  swap: NodeInfoMemory
+  swap?: NodeInfoMemory
   version: VersionString
 }
 
@@ -8911,6 +8917,17 @@ export type NodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_
 
 export type NodeRoles = Array<NodeRole>
 
+export interface NodeSettings {
+  routing?: IndexSettingRouting
+  client?: Record<string, string>
+  cluster?: NodeSettingsCluster
+}
+
+export interface NodeSettingsCluster {
+  name: Name
+  election: Record<string, string>
+}
+
 export interface NodeStatistics {
   failed: integer
   failures?: Array<ErrorCause>
@@ -8940,11 +8957,11 @@ export interface NodeStats {
 }
 
 export interface NodeThreadPoolInfo {
-  core: integer
-  keep_alive: string
-  max: integer
+  core?: integer
+  keep_alive?: string
+  max?: integer
   queue_size: integer
-  size: integer
+  size?: integer
   type: string
 }
 
