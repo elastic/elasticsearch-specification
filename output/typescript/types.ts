@@ -13579,11 +13579,13 @@ export interface UpdateJobRequest extends RequestBase {
     categorization_filters?: Array<string>
     description?: string
     model_plot_config?: ModelPlotConfigEnabled
+    daily_model_snapshot_retention_after_days?: long
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: Array<string>
     detectors?: Array<Detector>
+    per_partition_categorization?: PerPartitionCategorization
   }
 }
 

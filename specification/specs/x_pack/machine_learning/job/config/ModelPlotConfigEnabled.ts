@@ -17,9 +17,12 @@
  * under the License.
  */
 
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
+ */
 class ModelPlotConfigEnabled {
   /**
-   * server_default false
+   * If true, enables calculation and storage of the model bounds for each entity that is being analyzed.
    */
   enabled: boolean
   /**
