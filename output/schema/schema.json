@@ -76223,6 +76223,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Ip",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IpFilterUsage",
@@ -86054,7 +86068,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ip",
               "namespace": "internal"
             }
           }
@@ -100948,7 +100962,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ip",
               "namespace": "internal"
             }
           }
@@ -122051,7 +122065,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ip",
               "namespace": "internal"
             }
           }
@@ -122062,7 +122076,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -129052,7 +129066,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ip",
               "namespace": "internal"
             }
           }

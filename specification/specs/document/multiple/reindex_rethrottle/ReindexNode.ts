@@ -20,7 +20,7 @@
 class ReindexNode {
   attributes: Dictionary<string, string>
   host: string
-  ip: string
+  ip: Ip
   name: Name
   roles: string[]
   tasks: Dictionary<TaskId, ReindexTask>

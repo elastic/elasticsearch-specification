@@ -21,7 +21,7 @@ class UpdateByQueryRethrottleNode {
   attributes: Dictionary<string, string>
   host: string
   transport_address: string
-  ip: string
+  ip: Ip
   name: Name
   roles: string[]
   tasks: Dictionary<TaskId, TaskInfo>

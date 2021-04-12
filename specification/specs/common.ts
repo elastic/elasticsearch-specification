@@ -36,6 +36,7 @@ function since(ns: string) {
   return function (ns: any) {}
 }
 
+type Ip = string
 type Uri = string
 
 // Date/Time

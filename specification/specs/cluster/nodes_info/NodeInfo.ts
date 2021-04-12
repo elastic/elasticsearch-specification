@@ -24,7 +24,7 @@ class NodeInfo {
   build_type: string
   host: string
   http: NodeInfoHttp
-  ip: string
+  ip: Ip
   jvm: NodeJvmInfo
   name: string
   network: NodeInfoNetwork

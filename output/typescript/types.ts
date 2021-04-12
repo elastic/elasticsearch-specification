@@ -7681,6 +7681,8 @@ export interface InvalidateUserAccessTokenResponse extends ResponseBase {
   previously_invalidated_tokens: long
 }
 
+export type Ip = string
+
 export interface IpFilterUsage {
   http: boolean
   transport: boolean
@@ -8773,7 +8775,7 @@ export interface NodeInfo {
   build_type: string
   host: string
   http: NodeInfoHttp
-  ip: string
+  ip: Ip
   jvm: NodeJvmInfo
   name: string
   network: NodeInfoNetwork
@@ -10373,7 +10375,7 @@ export interface ReindexDestination {
 export interface ReindexNode {
   attributes: Record<string, string>
   host: string
-  ip: string
+  ip: Ip
   name: Name
   roles: Array<string>
   tasks: Record<TaskId, ReindexTask>
@@ -12750,8 +12752,8 @@ export type TTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 export interface TaskExecutingNode {
   attributes: Record<string, string>
   host: string
-  ip: string
-  name: string
+  ip: Ip
+  name: Name
   roles: Array<string>
   tasks: Record<TaskId, TaskState>
   transport_address: string
@@ -13479,7 +13481,7 @@ export interface UpdateByQueryRethrottleNode {
   attributes: Record<string, string>
   host: string
   transport_address: string
-  ip: string
+  ip: Ip
   name: Name
   roles: Array<string>
   tasks: Record<TaskId, TaskInfo>
