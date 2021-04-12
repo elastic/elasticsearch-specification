@@ -22,9 +22,10 @@ class ReindexTask {
   cancellable: boolean
   description: string
   id: long
-  node: string
+  node: Name
   running_time_in_nanos: long
   start_time_in_millis: long
   status: ReindexStatus
   type: string
+  headers: Dictionary<string, string>
 }

@@ -19,17 +19,17 @@
 
 class ModelPlotConfigEnabled {
   /**
-   * default: false
+   * server_default false
    */
   enabled: boolean
   /**
-   * since 7.9.0
-   * default: true
+   * @since 7.9.0
+   * @server_default true
    */
-  annotations_enabled?: boolean //
+  annotations_enabled?: boolean
   /**
-   * since 7.9.0
-   * stability experimental
+   * stability: experimental
+   * @since 7.9.0
    */
   terms?: string
 }

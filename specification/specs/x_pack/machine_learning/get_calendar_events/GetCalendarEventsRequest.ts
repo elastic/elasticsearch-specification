@@ -27,12 +27,18 @@ interface GetCalendarEventsRequest extends RequestBase {
     calendar_id: Id
   }
   query_parameters?: {
+    job_id?: Id // undocumented
+    // these params below should all be in the request body, but the tests are failing
+    // https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html#ml-get-calendar-event-request-body
     end?: DateString
-    job_id?: string
+    from?: integer
     start?: string
+    size?: integer
   }
   body?: {
+    end?: DateString
     from?: integer
+    start?: string
     size?: integer
   }
 }

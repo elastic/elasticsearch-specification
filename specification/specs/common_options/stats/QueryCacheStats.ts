@@ -18,11 +18,12 @@
  */
 
 class QueryCacheStats {
-  cache_count: long
-  cache_size: long
-  evictions: long
-  hit_count: long
-  memory_size_in_bytes: long
-  miss_count: long
-  total_count: long
+  cache_count: integer
+  cache_size: integer
+  evictions: integer
+  hit_count: integer
+  memory_size?: ByteSize
+  memory_size_in_bytes: integer
+  miss_count: integer
+  total_count: integer
 }

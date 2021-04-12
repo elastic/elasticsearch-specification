@@ -18,6 +18,26 @@
  */
 
 class IndicesGetDataStreamResponse extends ResponseBase {
-  stub: integer
-  // https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-get-data-stream.html#get-data-stream-api-response-body
+  data_streams: IndicesGetDataStreamItem[]
+}
+
+class IndicesGetDataStreamItem {
+  name: DataStreamName
+  timestamp_field: IndicesGetDataStreamItemTimestampField
+  indices: IndicesGetDataStreamItemIndex[]
+  generation: integer
+  template: Name
+  hidden: boolean
+  status: DataStreamHealthStatus
+  ilm_policy?: Name
+  _meta?: IndexMetaData
+}
+
+class IndicesGetDataStreamItemTimestampField {
+  name: Field
+}
+
+class IndicesGetDataStreamItemIndex {
+  index_name: IndexName
+  index_uuid: Uuid
 }

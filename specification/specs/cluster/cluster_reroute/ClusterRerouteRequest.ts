@@ -19,19 +19,19 @@
 
 /**
  * @rest_spec_name cluster.reroute
- * @since 0.0.0
+ * @since 5.0.0
  * @stability TODO
  */
 interface ClusterRerouteRequest extends RequestBase {
   query_parameters?: {
-    dry_run?: boolean
-    explain?: boolean
-    master_timeout?: Time
-    metric?: Metrics
-    retry_failed?: boolean
-    timeout?: Time
+    dry_run?: boolean // default: false
+    explain?: boolean // default: false
+    metric?: Metrics // default: all
+    retry_failed?: boolean // default: false
+    master_timeout?: Time // default: 30s
+    timeout?: Time // default: 30s
   }
-  body?: {
+  body: {
     commands?: ClusterRerouteCommand[]
   }
 }

@@ -19,7 +19,7 @@
 
 /**
  * @rest_spec_name snapshot.status
- * @since 0.0.0
+ * @since 7.8.0
  * @stability TODO
  */
 interface SnapshotStatusRequest extends RequestBase {
@@ -28,7 +28,7 @@ interface SnapshotStatusRequest extends RequestBase {
     snapshot?: Names
   }
   query_parameters?: {
-    ignore_unavailable?: boolean
+    ignore_unavailable?: boolean // default: false
     master_timeout?: Time
   }
   body?: {}

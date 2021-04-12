@@ -134,12 +134,21 @@ type Metrics = string | string[]
 type Name = string
 type Names = string | string[]
 
+type PipelineName = string
+
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */
+type NodeName = string
+
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 type DataStreamName = string
 
-// url: https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 type ByteSize = long | string
 
 type Percentage = string | float
+
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+type IndexMetaData = Dictionary<string, UserDefinedValue>
 
 // Versionining Numbers & Strings
 type VersionNumber = long
@@ -161,6 +170,7 @@ type Fuzziness = string | integer
 type MultiTermQueryRewrite = string
 type GeoTilePrecision = number
 type GeoHashPrecision = number
+
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
 type Field = string
 type Fields = Field | Field[]

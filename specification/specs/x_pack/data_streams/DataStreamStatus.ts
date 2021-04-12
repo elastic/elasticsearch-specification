@@ -17,26 +17,14 @@
  * under the License.
  */
 
-class ClusterStateMetadata {
-  cluster_uuid: Uuid
-  cluster_uuid_committed: boolean
-  templates: ClusterStateMetadataTemplate
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
-  'index-graveyard': ClusterStateMetadataIndexGraveyard
-  cluster_coordination: ClusterStateMetadataClusterCoordination
-}
-
-class ClusterStateMetadataIndexGraveyard {
-  tombstones: string[]
-}
-
-class ClusterStateMetadataTemplate {
-  // TODO: check server code for validation
-}
-
-class ClusterStateMetadataClusterCoordination {
-  term: integer
-  last_committed_config: string[]
-  last_accepted_config: string[]
-  voting_config_exclusions: string[]
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/cluster-health.html#cluster-health-api-response-body
+ */
+enum DataStreamHealthStatus {
+  GREEN = 0, // All shards are assigned.
+  green = 1,
+  YELLOW = 2, // All primary shards are assigned, but one or more replica shards are unassigned.
+  yellow = 3,
+  RED = 4, // One or more primary shards are unassigned, so some data is unavailable.
+  red = 5
 }

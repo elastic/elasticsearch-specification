@@ -18,7 +18,7 @@
  */
 
 class Filter {
-  description: string
-  filter_id: string
+  description?: string
+  filter_id: Id
   items: string[]
 }

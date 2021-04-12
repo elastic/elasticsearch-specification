@@ -24,7 +24,7 @@
  */
 interface DeleteTrainedModelAliasRequest extends RequestBase {
   path_parts?: {
-    model_alias: Alias
+    model_alias: Name
     model_id: Id
   }
   query_parameters?: {}

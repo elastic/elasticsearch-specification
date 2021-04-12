@@ -19,8 +19,9 @@
 
 class NodeAttributes {
   attributes: Dictionary<string, string>
-  ephemeral_id: string
-  id: string
-  name: string
+  ephemeral_id: Id
+  id?: Id
+  name: Name
   transport_address: string
+  roles?: NodeRoles
 }

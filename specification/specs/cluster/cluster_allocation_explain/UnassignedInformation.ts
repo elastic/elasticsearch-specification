@@ -19,8 +19,10 @@
 
 class UnassignedInformation {
   at: DateString
-  last_allocation_status: string
+  last_allocation_status?: string
   reason: UnassignedInformationReason
   details?: string
   failed_allocation_attempts?: integer
+  delayed?: boolean
+  allocation_status?: string
 }

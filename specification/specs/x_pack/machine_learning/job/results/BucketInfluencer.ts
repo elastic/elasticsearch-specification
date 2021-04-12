@@ -24,9 +24,8 @@ class BucketInfluencer {
   influencer_score: double
   initial_influencer_score: double
   is_interim: boolean
-  job_id: string
+  job_id: Id
   probability: double
   result_type: string
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
   timestamp: DateString
 }

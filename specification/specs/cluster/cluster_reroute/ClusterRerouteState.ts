@@ -17,19 +17,17 @@
  * under the License.
  */
 
-class ClusterStateBlocks {
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
-}
-
-class ClusterStateBlockIndex {
-  description: string
-  retryable: boolean
-  levels: string[]
-  aliases?: Array<IndexAlias>
-  aliases_version?: VersionNumber
+class ClusterRerouteState {
+  cluster_uuid: Uuid
+  state_uuid?: Uuid
+  master_node?: string
   version?: VersionNumber
-  mapping_version?: VersionNumber
-  settings_version?: VersionNumber
-  routing_num_shards?: VersionNumber
-  state?: string // TODO: create enum of values
+  blocks?: EmptyObject // TODO: this is likely wrong too
+  nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  security_tokens?: Dictionary<string, string>
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+  metadata?: ClusterStateMetadata
 }

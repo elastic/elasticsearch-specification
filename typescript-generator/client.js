@@ -42,14 +42,27 @@ const clientDefinitions = `/*
  * under the License.
  */
 
-import * as T from './types'
+/// <reference types="node" />
+
 import {
-  TransportRequestPromise,
+  ClientOptions,
+  ConnectionPool,
+  Serializer,
+  Transport,
+  errors,
+  RequestEvent,
+  ResurrectEvent,
+  ApiError
+} from '../index'
+import Helpers from '../lib/Helpers'
+import {
+  ApiResponse,
   TransportRequestCallback,
-  TransportRequestOptions,
-  ApiError,
-  ApiResponse
+  TransportRequestPromise,
+  TransportRequestParams,
+  TransportRequestOptions
 } from '../lib/Transport'
+import * as T from './types'
 
 /**
   * We are still working on this type, it will arrive soon.
@@ -58,8 +71,42 @@ import {
   */
 type TODO = Record<string, any>
 
+// Extend API
+interface ClientExtendsCallbackOptions {
+  ConfigurationError: errors.ConfigurationError,
+  makeRequest(params: TransportRequestParams, options?: TransportRequestOptions): Promise<void> | void;
+  result: {
+    body: null,
+    statusCode: null,
+    headers: null,
+    warnings: null
+  }
+}
+declare type extendsCallback = (options: ClientExtendsCallbackOptions) => any;
+// /Extend API
+
 declare type callbackFn<TResponse, TContext> = (err: ApiError, result: ApiResponse<TResponse, TContext>) => void;
-declare class ESAPI {\n`
+interface NewClientTypes {
+  connectionPool: ConnectionPool
+  transport: Transport
+  serializer: Serializer
+  extend(method: string, fn: extendsCallback): void
+  extend(method: string, opts: { force: boolean }, fn: extendsCallback): void;
+  helpers: Helpers
+  child(opts?: ClientOptions): NewClientTypes
+  close(callback: Function): void;
+  close(): Promise<void>;
+  emit(event: string | symbol, ...args: any[]): boolean;
+  on(event: 'request', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  on(event: 'response', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  on(event: 'sniff', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  on(event: 'resurrect', listener: (err: null, meta: ResurrectEvent) => void): this;
+  once(event: 'request', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  once(event: 'response', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  once(event: 'sniff', listener: (err: ApiError, meta: RequestEvent) => void): this;
+  once(event: 'resurrect', listener: (err: null, meta: ResurrectEvent) => void): this;
+  off(event: string | symbol, listener: (...args: any[]) => void): this;
+`
 
 const kibanaDefinitions = `/*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -175,7 +222,7 @@ function createClientTypes (kibana = false) {
   if (kibana) {
     definitions += '}\n\nexport { KibanaClient }\n'
   } else {
-    definitions += '}\n\nexport default ESAPI\n'
+    definitions += '}\n\nexport { NewClientTypes }\n'
   }
 
   writeFileSync(
@@ -209,8 +256,11 @@ function createClientTypes (kibana = false) {
     let requestGenerics = ''
 
     if (Array.isArray(requestType.generics)) {
-      requestDefinition = `T.${requestType.name.name}<${requestType.generics.join(', ')}>`
-      requestGenerics = requestType.generics.map(unknownify).join(', ') + ', '
+      requestDefinition = `T.${requestType.name.name}<${requestType.generics.map(unwrapGeneric).join(', ')}>`
+      requestGenerics = requestType.generics
+        .map(unwrapGeneric)
+        .map(unknownify)
+        .join(', ') + ', '
     } else if (requestType === null) {
       requestDefinition = 'TODO'
     } else {
@@ -221,8 +271,12 @@ function createClientTypes (kibana = false) {
     let responseGenerics = ''
 
     if (Array.isArray(responseType.generics)) {
-      responseDefinition = `T.${responseType.name.name}<${responseType.generics.map(avoidCollisions).join(', ')}>`
-      responseGenerics = responseType.generics.map(avoidCollisions).map(unknownify).join(', ') + ', '
+      responseDefinition = `T.${responseType.name.name}<${responseType.generics.map(unwrapGeneric).map(avoidCollisions).join(', ')}>`
+      responseGenerics = responseType.generics
+        .map(unwrapGeneric)
+        .map(avoidCollisions)
+        .map(unknownify)
+        .join(', ') + ', '
     } else if (responseType === null) {
       responseDefinition = 'TODO'
     } else {
@@ -264,7 +318,7 @@ function createClientTypes (kibana = false) {
     function avoidCollisions (generic) {
       if (requestType === null || !Array.isArray(requestType.generics)) {
         return generic
-      } else if (requestType.generics.includes(generic)) {
+      } else if (requestType.generics.map(unwrapGeneric).includes(generic)) {
         return generic + 'R'
       } else {
         return generic
@@ -273,6 +327,11 @@ function createClientTypes (kibana = false) {
 
     function unknownify (generic) {
       return `${generic} = unknown`
+    }
+
+    function unwrapGeneric (generic) {
+      if (typeof generic === 'string') return generic
+      return generic.name
     }
   }
 

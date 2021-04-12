@@ -17,6 +17,9 @@
  * under the License.
  */
 
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body
+ */
 enum ClusterStatus {
   green = 0,
   yellow = 1,

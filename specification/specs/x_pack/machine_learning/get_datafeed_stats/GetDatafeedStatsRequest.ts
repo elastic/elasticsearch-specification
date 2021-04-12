@@ -19,12 +19,12 @@
 
 /**
  * @rest_spec_name ml.get_datafeed_stats
- * @since 5.4.0
+ * @since 5.5.0
  * @stability TODO
  */
 interface GetDatafeedStatsRequest extends RequestBase {
   path_parts?: {
-    datafeed_id?: Id
+    datafeed_id?: Ids
   }
   query_parameters?: {
     allow_no_datafeeds?: boolean

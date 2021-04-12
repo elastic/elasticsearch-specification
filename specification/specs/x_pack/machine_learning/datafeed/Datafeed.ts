@@ -20,11 +20,10 @@
 class Datafeed {
   aggregations?: Dictionary<string, AggregationContainer>
   aggs?: Dictionary<string, AggregationContainer>
-  chunking_config: ChunkingConfig
-  datafeed_id: string
+  chunking_config?: ChunkingConfig
+  datafeed_id: Id
   frequency?: Timestamp
-  /** @prop_serializer IndicesFormatter */
-  indices: string[]
+  indices: Indices
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
@@ -34,9 +33,10 @@ class Datafeed {
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
   runtime_mappings?: RuntimeFields
+  indices_options?: DatafeedIndicesOptions
 }
 
 class DelayedDataCheckConfig {
-  check_window?: Time
-  enabled: boolean
+  check_window?: Time // default: null
+  enabled: boolean // default: true
 }

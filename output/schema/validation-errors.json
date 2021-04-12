@@ -1,5 +1,18 @@
 {
   "endpointErrors": {
+    "cluster.get_component_template": {
+      "request": [
+        "ClusterGetComponentTemplateRequest: query parameter 'flat_settings' does not exist in the json spec"
+      ],
+      "response": [
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'"
+      ]
+    },
     "data_frame_transform_deprecated.delete_transform": {
       "request": [
         "Missing request"
@@ -57,6 +70,14 @@
       ]
     },
     "data_frame_transform_deprecated.update_transform": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "features.reset_features": {
       "request": [
         "Missing request"
       ],
@@ -128,12 +149,12 @@
         "Missing response"
       ]
     },
-    "ingest.get_pipeline": {
+    "ingest.geo_ip_stats": {
       "request": [
-        "GetPipelineRequest: query parameter 'summary' does not exist in the json spec"
+        "Missing request"
       ],
       "response": [
-        "enum definition ingest.processors:DateRounding - Duplicate enum member identifier 'M'"
+        "Missing response"
       ]
     },
     "ml.evaluate_data_frame": {
@@ -145,6 +166,14 @@
       ]
     },
     "ml.explain_data_frame_analytics": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "ml.find_file_structure": {
       "request": [
         "Missing request"
       ],
@@ -264,11 +293,25 @@
         "Missing response"
       ]
     },
-    "search_template": {
+    "shutdown.delete_node": {
       "request": [
-        "SearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "SearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
-        "SearchTemplateRequest: should have a body definition"
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "shutdown.get_node": {
+      "request": [
+        "Missing request"
+      ],
+      "response": [
+        "Missing response"
+      ]
+    },
+    "shutdown.put_node": {
+      "request": [
+        "Missing request"
       ],
       "response": [
         "Missing response"

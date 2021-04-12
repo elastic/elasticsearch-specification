@@ -52,5 +52,6 @@ interface PutMappingRequest extends RequestBase {
     routing_field?: RoutingField
     size_field?: SizeField
     source_field?: SourceField
+    runtime?: RuntimeFields
   }
 }
