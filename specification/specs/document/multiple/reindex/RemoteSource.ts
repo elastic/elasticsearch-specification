@@ -19,7 +19,7 @@
 
 class RemoteSource {
   connect_timeout: Time
-  host: string
+  host: Host
   password: string
   socket_timeout: Time
   username: string

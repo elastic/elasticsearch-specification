@@ -21,9 +21,9 @@ class NodeAllocationExplanation {
   deciders: AllocationDecision[]
   node_attributes: Dictionary<string, string>
   node_decision: Decision
-  node_id: string
-  node_name: string
+  node_id: Id
+  node_name: Name
   store?: AllocationStore
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }

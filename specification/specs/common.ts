@@ -162,7 +162,6 @@ type EpochMillis = string | long
 // Networking
 type Ip = string
 type Host = string
-type Hostname = string
 type TransportAddress = string
 
 type NodeIds = string

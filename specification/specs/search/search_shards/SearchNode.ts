@@ -18,6 +18,6 @@
  */
 
 class SearchNode {
-  name: string
-  transport_address: string
+  name: Name
+  transport_address: TransportAddress
 }

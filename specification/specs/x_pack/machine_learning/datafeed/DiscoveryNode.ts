@@ -22,5 +22,5 @@ class DiscoveryNode {
   ephemeral_id: Id
   id: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
 }

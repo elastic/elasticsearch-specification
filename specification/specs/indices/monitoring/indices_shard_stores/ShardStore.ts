@@ -25,5 +25,5 @@ class ShardStore {
   legacy_version: VersionNumber
   name: Name
   store_exception: ShardStoreException
-  transport_address: string
+  transport_address: TransportAddress
 }

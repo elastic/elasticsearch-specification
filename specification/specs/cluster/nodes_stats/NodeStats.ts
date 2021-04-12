@@ -21,7 +21,7 @@ class NodeStats {
   adaptive_selection: Dictionary<string, AdaptiveSelectionStats>
   breakers: Dictionary<string, BreakerStats>
   fs: FileSystemStats
-  host: string
+  host: Host
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
@@ -35,5 +35,5 @@ class NodeStats {
   thread_pool: Dictionary<string, ThreadCountStats>
   timestamp: long
   transport: TransportStats
-  transport_address: string
+  transport_address: TransportAddress
 }

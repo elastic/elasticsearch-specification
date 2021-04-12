@@ -1014,9 +1014,9 @@ export interface CatAllocationRecord {
   'disk.percent'?: Percentage
   dp?: Percentage
   diskPercent?: Percentage
-  host?: string
-  h?: string
-  ip?: string
+  host?: Host
+  h?: Host
+  ip?: Ip
   node?: string
   n?: string
 }
@@ -3941,10 +3941,10 @@ export interface CumulativeSumAggregation extends PipelineAggregationBase {
 }
 
 export interface CurrentNode {
-  id: string
-  name: string
+  id: Id
+  name: Name
   attributes: Record<string, string>
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }
 
@@ -4711,7 +4711,7 @@ export interface DiscoveryNode {
   ephemeral_id: Id
   id: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export interface DiskUsage {
@@ -6956,6 +6956,8 @@ export interface Hop {
   vertices: Array<GraphVertexDefinition>
 }
 
+export type Host = string
+
 export interface HotThreadInformation {
   hosts: Array<string>
   node_id: string
@@ -6988,8 +6990,8 @@ export interface HttpInputBasicAuthentication {
 export type HttpInputMethod = 'head' | 'get' | 'post' | 'put' | 'delete'
 
 export interface HttpInputProxy {
-  host: string
-  port: integer
+  host: Host
+  port: uint
 }
 
 export interface HttpInputRequestDefinition {
@@ -6997,11 +6999,11 @@ export interface HttpInputRequestDefinition {
   body?: string
   connection_timeout?: Time
   headers?: Record<string, string>
-  host?: string
+  host?: Host
   method?: HttpInputMethod
   params?: Record<string, string>
   path?: string
-  port?: integer
+  port?: uint
   proxy?: HttpInputProxy
   read_timeout?: Time
   scheme?: ConnectionScheme
@@ -8734,10 +8736,10 @@ export interface NodeAllocationExplanation {
   deciders: Array<AllocationDecision>
   node_attributes: Record<string, string>
   node_decision: Decision
-  node_id: string
-  node_name: string
+  node_id: Id
+  node_name: Name
   store?: AllocationStore
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }
 
@@ -8746,7 +8748,7 @@ export interface NodeAttributes {
   ephemeral_id: Id
   id?: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
   roles?: NodeRoles
 }
 
@@ -8773,11 +8775,11 @@ export interface NodeInfo {
   build_flavor: string
   build_hash: string
   build_type: string
-  host: string
+  host: Host
   http: NodeInfoHttp
   ip: Ip
   jvm: NodeJvmInfo
-  name: string
+  name: Name
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: Array<PluginStats>
@@ -8787,7 +8789,7 @@ export interface NodeInfo {
   thread_pool: Record<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   transport: NodeInfoTransport
-  transport_address: string
+  transport_address: TransportAddress
   version: VersionString
 }
 
@@ -8923,7 +8925,7 @@ export interface NodeStats {
   adaptive_selection: Record<string, AdaptiveSelectionStats>
   breakers: Record<string, BreakerStats>
   fs: FileSystemStats
-  host: string
+  host: Host
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
@@ -8937,7 +8939,7 @@ export interface NodeStats {
   thread_pool: Record<string, ThreadCountStats>
   timestamp: long
   transport: TransportStats
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export interface NodeThreadPoolInfo {
@@ -10276,10 +10278,10 @@ export interface RecoveryIndexStatus {
 
 export interface RecoveryOrigin {
   hostname?: string
-  host?: string
-  transport_address?: string
+  host?: Host
+  transport_address?: TransportAddress
   id?: Id
-  ip?: string
+  ip?: Ip
   name?: Name
   bootstrap_new_history_uuid?: boolean
   repository?: Name
@@ -10374,12 +10376,12 @@ export interface ReindexDestination {
 
 export interface ReindexNode {
   attributes: Record<string, string>
-  host: string
+  host: Host
   ip: Ip
   name: Name
   roles: Array<string>
   tasks: Record<TaskId, ReindexTask>
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export interface ReindexRequest extends RequestBase {
@@ -10519,7 +10521,7 @@ export interface RemoteInfoResponse extends DictionaryResponseBase<string, Remot
 
 export interface RemoteSource {
   connect_timeout: Time
-  host: string
+  host: Host
   password: string
   socket_timeout: Time
   username: string
@@ -11131,8 +11133,8 @@ export interface SearchInputRequestDefinition {
 }
 
 export interface SearchNode {
-  name: string
-  transport_address: string
+  name: Name
+  transport_address: TransportAddress
 }
 
 export interface SearchProfile {
@@ -11788,7 +11790,7 @@ export interface ShardStore {
   legacy_version: VersionNumber
   name: Name
   store_exception: ShardStoreException
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export type ShardStoreAllocation = 'primary' | 'replica' | 'unused'
@@ -12751,12 +12753,12 @@ export type TTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
 export interface TaskExecutingNode {
   attributes: Record<string, string>
-  host: string
+  host: Host
   ip: Ip
   name: Name
   roles: Array<string>
   tasks: Record<TaskId, TaskState>
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export type TaskId = string | integer
@@ -13291,6 +13293,8 @@ export interface TranslogStats {
   uncommitted_size_in_bytes: long
 }
 
+export type TransportAddress = string
+
 export interface TransportStats {
   rx_count: long
   rx_size: string
@@ -13479,8 +13483,8 @@ export interface UpdateByQueryResponse extends ResponseBase {
 
 export interface UpdateByQueryRethrottleNode {
   attributes: Record<string, string>
-  host: string
-  transport_address: string
+  host: Host
+  transport_address: TransportAddress
   ip: Ip
   name: Name
   roles: Array<string>

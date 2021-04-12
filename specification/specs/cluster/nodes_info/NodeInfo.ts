@@ -22,11 +22,11 @@ class NodeInfo {
   build_flavor: string
   build_hash: string
   build_type: string
-  host: string
+  host: Host
   http: NodeInfoHttp
   ip: Ip
   jvm: NodeJvmInfo
-  name: string
+  name: Name
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: PluginStats[]
@@ -36,6 +36,6 @@ class NodeInfo {
   thread_pool: Dictionary<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   transport: NodeInfoTransport
-  transport_address: string
+  transport_address: TransportAddress
   version: VersionString
 }

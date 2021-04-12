@@ -18,6 +18,6 @@
  */
 
 class HttpInputProxy {
-  host: string
-  port: integer
+  host: Host
+  port: uint
 }

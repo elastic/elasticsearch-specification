@@ -6,9 +6,6 @@ LongId,common.ts
 IndexMetrics,common.ts
 VersionNumbers,common.ts
 VersionStrings,common.ts
-Host,common.ts
-Hostname,common.ts
-TransportAddress,common.ts
 CustomResponseBuilderBase,common/CustomResponseBuilderBase.ts
 ElasticsearchUrlFormatter,common/ElasticsearchUrlFormatter.ts
 HttpMethod,common/HttpMethod.ts

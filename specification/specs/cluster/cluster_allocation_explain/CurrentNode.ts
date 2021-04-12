@@ -18,9 +18,9 @@
  */
 
 class CurrentNode {
-  id: string
-  name: string
+  id: Id
+  name: Name
   attributes: Dictionary<string, string>
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }

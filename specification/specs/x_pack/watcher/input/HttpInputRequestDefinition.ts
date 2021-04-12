@@ -22,11 +22,11 @@ class HttpInputRequestDefinition {
   body?: string
   connection_timeout?: Time
   headers?: Dictionary<string, string>
-  host?: string
+  host?: Host
   method?: HttpInputMethod
   params?: Dictionary<string, string>
   path?: string
-  port?: integer
+  port?: uint
   proxy?: HttpInputProxy
   read_timeout?: Time
   scheme?: ConnectionScheme

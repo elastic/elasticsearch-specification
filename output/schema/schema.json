@@ -21093,7 +21093,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -21105,7 +21105,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ip",
               "namespace": "internal"
             }
           }
@@ -43138,7 +43138,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -43149,7 +43149,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -43181,7 +43181,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -49962,7 +49962,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -70138,6 +70138,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Host",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HotThreadInformation",
@@ -70368,7 +70382,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -70379,7 +70393,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "internal"
             }
           }
@@ -70453,7 +70467,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -70507,7 +70521,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "internal"
             }
           }
@@ -85709,7 +85723,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Id",
               "namespace": "internal"
             }
           }
@@ -85720,7 +85734,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -85742,7 +85756,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -85827,7 +85841,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -86046,7 +86060,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -86090,7 +86104,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -86219,7 +86233,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -87380,7 +87394,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -87550,7 +87564,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -100136,7 +100150,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -100147,7 +100161,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -100169,7 +100183,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Ip",
               "namespace": "internal"
             }
           }
@@ -100951,7 +100965,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -101019,7 +101033,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -102285,7 +102299,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -107352,7 +107366,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Name",
               "namespace": "internal"
             }
           }
@@ -107363,7 +107377,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -113487,7 +113501,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -122054,7 +122068,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -122122,7 +122136,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
@@ -127234,6 +127248,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "TransportAddress",
+        "namespace": "internal"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "TransportStats",
@@ -129044,7 +129072,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Host",
               "namespace": "internal"
             }
           }
@@ -129055,7 +129083,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "TransportAddress",
               "namespace": "internal"
             }
           }
