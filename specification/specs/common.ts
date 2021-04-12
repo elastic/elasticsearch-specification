@@ -90,6 +90,7 @@ type long = number
 type ulong = number
 type float = number
 type double = number
+type Percentage = string | float
 
 //strongly typed path parameters these are aliases so we can expose documentation
 //Some languages that support type alias or typed value types might want to keep these types
@@ -133,11 +134,6 @@ type NodeName = string
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 type DataStreamName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
-type ByteSize = long | string
-
-type Percentage = string | float
-
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
 type IndexMetaData = Dictionary<string, UserDefinedValue>
 
@@ -158,11 +154,6 @@ type DateString = string
 type Timestamp = string
 type TimeSpan = string
 type EpochMillis = string | long
-
-// Networking
-type Ip = string
-type Host = string
-type TransportAddress = string
 
 type NodeIds = string
 type PropertyName = string

@@ -15428,7 +15428,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -20378,11 +20378,12 @@
       "properties": []
     },
     {
+      "description": "Whenever the byte size of data needs to be specified, e.g. when setting a buffer size parameter, the value must specify the unit, like 10kb for 10 kilobytes. Note that these units use powers of 1024, so 1kb means 1024 bytes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units",
       "kind": "type_alias",
       "name": {
         "name": "ByteSize",
-        "namespace": "internal"
+        "namespace": "common"
       },
       "type": {
         "items": [
@@ -21015,7 +21016,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -21031,7 +21032,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -21047,7 +21048,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -21063,7 +21064,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -21094,7 +21095,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -21106,7 +21107,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -24699,7 +24700,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -24923,7 +24924,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -24955,7 +24956,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -26078,7 +26079,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -26094,7 +26095,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -26112,7 +26113,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -28580,7 +28581,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -28596,7 +28597,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -31228,7 +31229,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -40473,7 +40474,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -43182,7 +43183,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -43812,7 +43813,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -49963,7 +49964,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -56763,7 +56764,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -58560,7 +58561,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -70141,7 +70142,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Host",
-        "namespace": "internal"
+        "namespace": "common"
       },
       "type": {
         "kind": "instance_of",
@@ -70383,7 +70384,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -70468,7 +70469,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -73319,7 +73320,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -76240,7 +76241,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Ip",
-        "namespace": "internal"
+        "namespace": "common"
       },
       "type": {
         "kind": "instance_of",
@@ -78928,7 +78929,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -78939,7 +78940,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -78950,7 +78951,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -85757,7 +85758,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -85842,7 +85843,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -86061,7 +86062,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -86083,7 +86084,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -86234,7 +86235,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -87395,7 +87396,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -87441,7 +87442,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Ip",
-                "namespace": "internal"
+                "namespace": "common"
               }
             }
           }
@@ -87565,7 +87566,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -93365,7 +93366,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ByteSize",
-                "namespace": "internal"
+                "namespace": "common"
               }
             }
           },
@@ -93398,7 +93399,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ByteSize",
-                "namespace": "internal"
+                "namespace": "common"
               }
             }
           },
@@ -93420,7 +93421,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ByteSize",
-                "namespace": "internal"
+                "namespace": "common"
               }
             }
           }
@@ -97019,7 +97020,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -99848,7 +99849,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -99859,7 +99860,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -99870,7 +99871,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -99881,7 +99882,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -99892,7 +99893,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -99903,7 +99904,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -100151,7 +100152,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -100162,7 +100163,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -100184,7 +100185,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -100966,7 +100967,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -100977,7 +100978,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -101034,7 +101035,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -102300,7 +102301,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -104053,7 +104054,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -107378,7 +107379,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -110046,7 +110047,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110659,7 +110660,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110702,7 +110703,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110724,7 +110725,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110768,7 +110769,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110790,7 +110791,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110812,7 +110813,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110834,7 +110835,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110867,7 +110868,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110878,7 +110879,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -110900,7 +110901,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -113502,7 +113503,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -120726,7 +120727,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -120748,7 +120749,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -120770,7 +120771,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -122069,7 +122070,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -122080,7 +122081,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -122137,7 +122138,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         }
@@ -127251,7 +127252,7 @@
       "kind": "type_alias",
       "name": {
         "name": "TransportAddress",
-        "namespace": "internal"
+        "namespace": "common"
       },
       "type": {
         "kind": "instance_of",
@@ -129073,7 +129074,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -129084,7 +129085,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
@@ -129095,7 +129096,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "internal"
+              "namespace": "common"
             }
           }
         },
