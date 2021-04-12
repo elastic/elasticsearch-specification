@@ -99352,6 +99352,90 @@
     {
       "kind": "interface",
       "name": {
+        "name": "RankEvalHit",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalHitItem",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "name": "hit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalHit",
+              "namespace": "rank_eval"
+            }
+          }
+        },
+        {
+          "name": "rating",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "RankEvalMetric",
         "namespace": "rank_eval"
       },
@@ -99430,6 +99514,85 @@
             "type": {
               "name": "integer",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricDetail",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The metric_score in the details section shows the contribution of this query to the global quality metric score",
+          "name": "metric_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents",
+          "name": "unrated_docs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "UnratedDocument",
+                "namespace": "rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "description": "The hits section shows a grouping of the search results with their supplied ratings",
+          "name": "hits",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RankEvalHitItem",
+                "namespace": "rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "description": "The metric_details give additional information about the calculated quality metric (e.g. how many of the retrieved documents were relevant). The content varies for each metric but allows for better interpretation of the results",
+          "name": "metric_details",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "user_defined_value"
+              }
             }
           }
         }
@@ -99837,13 +100000,53 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "description": "The overall evaluation quality calculated by the defined metric",
+          "name": "metric_score",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "double",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The details section contains one entry for every query in the original requests section, keyed by the search request id",
+          "name": "details",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RankEvalMetricDetail",
+                "namespace": "rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "name": "failures",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
@@ -128887,6 +129090,37 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "UnratedDocument",
+        "namespace": "rank_eval"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
               "namespace": "internal"
             }
           }

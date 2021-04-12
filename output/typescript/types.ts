@@ -10184,6 +10184,18 @@ export interface RangeQuery extends QueryBase {
 
 export type RangeRelation = 'within' | 'contains' | 'intersects'
 
+export interface RankEvalHit {
+  _id: Id
+  _index: IndexName
+  _type?: Type
+  _score: double
+}
+
+export interface RankEvalHitItem {
+  hit: RankEvalHit
+  rating?: double
+}
+
 export interface RankEvalMetric {
   precision?: RankEvalMetricPrecision
   recall?: RankEvalMetricRecall
@@ -10194,6 +10206,13 @@ export interface RankEvalMetric {
 
 export interface RankEvalMetricBase {
   k?: integer
+}
+
+export interface RankEvalMetricDetail {
+  metric_score: double
+  unrated_docs: Array<UnratedDocument>
+  hits: Array<RankEvalHitItem>
+  metric_details: Record<string, Record<string, any>>
 }
 
 export interface RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
@@ -10244,7 +10263,9 @@ export interface RankEvalRequestItem {
 }
 
 export interface RankEvalResponse extends ResponseBase {
-  stub: integer
+  metric_score: double
+  details: Record<Id, RankEvalMetricDetail>
+  failures: Record<string, any>
 }
 
 export interface RankFeatureFunction {
@@ -13479,6 +13500,11 @@ export interface UnfreezeIndexResponse extends AcknowledgedResponseBase {
 
 export interface UniqueTokenFilter extends TokenFilterBase {
   only_on_same_position: boolean
+}
+
+export interface UnratedDocument {
+  _id: Id
+  _index: IndexName
 }
 
 export interface UpdateByQueryRequest extends RequestBase {

@@ -18,5 +18,37 @@
  */
 
 class RankEvalResponse extends ResponseBase {
-  stub: integer
+  /** The overall evaluation quality calculated by the defined metric */
+  metric_score: double
+  /** The details section contains one entry for every query in the original requests section, keyed by the search request id */
+  details: Dictionary<Id, RankEvalMetricDetail>
+  failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
+}
+
+class RankEvalMetricDetail {
+  /** The metric_score in the details section shows the contribution of this query to the global quality metric score */
+  metric_score: double
+  /** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents */
+  unrated_docs: UnratedDocument[]
+  /** The hits section shows a grouping of the search results with their supplied ratings */
+  hits: RankEvalHitItem[]
+  /** The metric_details give additional information about the calculated quality metric (e.g. how many of the retrieved documents were relevant). The content varies for each metric but allows for better interpretation of the results */
+  metric_details: Dictionary<string, Dictionary<string, UserDefinedValue>>
+}
+
+class RankEvalHitItem {
+  hit: RankEvalHit
+  rating?: double
+}
+
+class RankEvalHit {
+  _id: Id
+  _index: IndexName
+  _type?: Type
+  _score: double
+}
+
+class UnratedDocument {
+  _id: Id
+  _index: IndexName
 }

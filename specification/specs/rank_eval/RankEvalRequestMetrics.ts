@@ -30,7 +30,7 @@ class RankEvalMetricRatingTreshold extends RankEvalMetricBase {
    * Sets the rating threshold above which documents are considered to be "relevant".
    * @server_default 1
    */
- relevant_rating_threshold?: integer
+  relevant_rating_threshold?: integer
 }
 
 /**
@@ -49,36 +49,36 @@ class RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
  * Recall at K (R@k)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-recall
  */
- class RankEvalMetricRecall extends RankEvalMetricRatingTreshold {}
+class RankEvalMetricRecall extends RankEvalMetricRatingTreshold {}
 
 /**
  * Mean Reciprocal Rank
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_mean_reciprocal_rank
  */
- class RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {}
+class RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {}
 
 /**
  * Discounted cumulative gain (DCG)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_discounted_cumulative_gain_dcg
  */
- class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
-   /**
-    * If set to true, this metric will calculate the Normalized DCG.
-    * @server_default false
-    * @doc_url https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG
-    */
-   normalize?: boolean
- }
+class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
+  /**
+   * If set to true, this metric will calculate the Normalized DCG.
+   * @server_default false
+   * @doc_url https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG
+   */
+  normalize?: boolean
+}
 
 /**
  * Expected Reciprocal Rank (ERR)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_expected_reciprocal_rank_err
  */
- class RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
+class RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
   /**
    * The highest relevance grade used in the user-supplied relevance judgments.
    */
-   maximum_relevance: integer
+  maximum_relevance: integer
 }
 
 class RankEvalMetric {

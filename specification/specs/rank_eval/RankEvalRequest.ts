@@ -28,7 +28,7 @@ interface RankEvalRequest extends RequestBase {
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported.
      * To target all data streams and indices in a cluster, omit this parameter or use _all or *.
      */
-     index: Indices
+    index: Indices
   }
   query_parameters?: {
     /**
@@ -41,8 +41,8 @@ interface RankEvalRequest extends RequestBase {
      * If true, missing or closed indices are not included in the response.
      * @server_default false
      */
-     ignore_unavailable?: boolean
-     search_type?: string
+    ignore_unavailable?: boolean
+    search_type?: string
   }
   body: {
     /** A set of typical search requests, together with their provided ratings */
