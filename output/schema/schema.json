@@ -45310,7 +45310,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45321,7 +45321,7 @@
         },
         {
           "name": "timezone",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56251,7 +56251,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -56262,7 +56262,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -56287,7 +56287,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -56298,7 +56298,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -56309,7 +56309,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -56320,7 +56320,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -57161,6 +57161,7 @@
       "path": [],
       "query": [
         {
+          "description": "The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set.",
           "name": "charset",
           "required": false,
           "type": {
@@ -57172,6 +57173,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", etc.",
           "name": "column_names",
           "required": false,
           "type": {
@@ -57183,6 +57185,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
           "name": "delimiter",
           "required": false,
           "type": {
@@ -57194,8 +57197,10 @@
           }
         },
         {
+          "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57205,6 +57210,7 @@
           }
         },
         {
+          "description": "The high level structure of the text. Valid values are ndjson, xml, delimited, and semi_structured_text. By default, the API chooses the format. In this default scenario, all rows must have the same number of fields for a delimited format to be detected. If the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
           "name": "format",
           "required": false,
           "type": {
@@ -57216,6 +57222,7 @@
           }
         },
         {
+          "description": "If you have set format to semi_structured_text, you can specify a Grok pattern that is used to extract fields from every message in the text. The name of the timestamp field in the Grok pattern must match what is specified in the timestamp_field parameter. If that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\". If grok_pattern is not specified, the structure finder creates a Grok pattern.",
           "name": "grok_pattern",
           "required": false,
           "type": {
@@ -57227,6 +57234,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can use this parameter to indicate whether the column names are in the first row of the text. If this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows.",
           "name": "has_header_row",
           "required": false,
           "type": {
@@ -57238,8 +57246,10 @@
           }
         },
         {
-          "name": "lines_to_sample",
+          "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text. If you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
+          "name": "line_merge_size_limit",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57249,6 +57259,20 @@
           }
         },
         {
+          "description": "The number of lines to include in the structural analysis, starting from the beginning of the text. The minimum is 2; If the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.",
+          "name": "lines_to_sample",
+          "required": false,
+          "serverDefault": "1000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "uint",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If you have set format to delimited, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character. Only a single character is supported. If this parameter is not specified, the default value is a double quote (\"). If your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
           "name": "quote",
           "required": false,
           "type": {
@@ -57260,6 +57284,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can specify whether values between delimiters should have whitespace trimmed from them. If this parameter is not specified and the delimiter is pipe (|), the default value is true. Otherwise, the default value is false.",
           "name": "should_trim_fields",
           "required": false,
           "type": {
@@ -57271,8 +57296,10 @@
           }
         },
         {
+          "description": "Sets the maximum amount of time that the structure analysis make take. If the analysis is still running when the timeout expires then it will be aborted.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "25s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57293,6 +57320,7 @@
           }
         },
         {
+          "description": "The Java time format of the timestamp field in the text.",
           "name": "timestamp_format",
           "required": false,
           "type": {
@@ -57325,7 +57353,7 @@
         },
         {
           "name": "has_header_row",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57394,7 +57422,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -57412,7 +57440,7 @@
         },
         {
           "name": "quote",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57423,7 +57451,7 @@
         },
         {
           "name": "delimiter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -57449,7 +57477,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
+              "name": "integer",
               "namespace": "internal"
             }
           }
@@ -57549,7 +57577,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "Field",
               "namespace": "internal"
             }
           }
@@ -57562,6 +57590,17 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ingest_pipeline",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterStateIngestPipelineConfig",
+              "namespace": "cluster"
             }
           }
         }
