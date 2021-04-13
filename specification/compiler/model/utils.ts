@@ -552,11 +552,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'doc_url') {
       property.docUrl = value
     } else if (tag === 'variant') {
-      if (value === 'container_property') {
-        property.container_property = true
-      } else {
-        throw new Error(`Unknown 'variant' value '${value}' on property ${property.name}`)
-      }
+      assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
+      property.container_property = true
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
       property.since = value
