@@ -13656,6 +13656,18 @@ export interface UpdateTransformResponse extends ResponseBase {
   version: VersionString
 }
 
+export interface UpgradeRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface UpgradeResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface UppercaseProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
