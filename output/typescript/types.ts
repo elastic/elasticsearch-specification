@@ -12529,6 +12529,17 @@ export interface StepKey {
   phase: string
 }
 
+export interface StopDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  allow_no_match?: boolean
+  force?: boolean
+  timeout?: Time
+}
+
+export interface StopDataFrameAnalyticsResponse extends ResponseBase {
+  stopped: boolean
+}
+
 export interface StopDatafeedRequest extends RequestBase {
   datafeed_id: Ids
   allow_no_match?: boolean

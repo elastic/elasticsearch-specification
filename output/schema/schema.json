@@ -7707,9 +7707,16 @@
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "StopDataFrameAnalyticsRequest",
+        "namespace": "x_pack.machine_learning"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "StopDataFrameAnalyticsResponse",
+        "namespace": "x_pack.machine_learning"
+      },
+      "since": "7.3.0",
       "stability": "beta",
       "urls": [
         {
@@ -120179,6 +120186,106 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "StopDataFrameAnalyticsRequest",
+        "namespace": "x_pack.machine_learning"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to stop",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, the data frame analytics job is stopped forcefully.",
+          "name": "force",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "StopDataFrameAnalyticsResponse",
+        "namespace": "x_pack.machine_learning"
+      },
+      "properties": [
+        {
+          "name": "stopped",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
