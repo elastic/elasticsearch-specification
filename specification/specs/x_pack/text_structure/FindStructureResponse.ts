@@ -39,7 +39,7 @@ class FindStructureResponse {
   joda_timestamp_formats?: string[]
   timestamp_field?: Field
   should_trim_fields?: boolean
-  ingest_pipeline: ClusterStateIngestPipelineConfig
+  ingest_pipeline: PipelineConfig
 }
 
 class FieldStat {

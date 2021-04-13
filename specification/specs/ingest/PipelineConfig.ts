@@ -17,11 +17,8 @@
  * under the License.
  */
 
-class ClusterStateIngest {
-  pipeline: ClusterStateIngestPipeline[]
-}
-
-class ClusterStateIngestPipeline {
-  id: Id
-  config: PipelineConfig
+class PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
 }

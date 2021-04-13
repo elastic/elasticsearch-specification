@@ -3500,13 +3500,7 @@ export interface ClusterStateIngest {
 
 export interface ClusterStateIngestPipeline {
   id: Id
-  config: ClusterStateIngestPipelineConfig
-}
-
-export interface ClusterStateIngestPipelineConfig {
-  description?: string
-  version?: VersionNumber
-  processors: Array<ProcessorContainer>
+  config: PipelineConfig
 }
 
 export interface ClusterStateMetadata {
@@ -5547,7 +5541,7 @@ export interface FindStructureResponse {
   joda_timestamp_formats?: Array<string>
   timestamp_field?: Field
   should_trim_fields?: boolean
-  ingest_pipeline: ClusterStateIngestPipelineConfig
+  ingest_pipeline: PipelineConfig
 }
 
 export interface FingerprintTokenFilter extends TokenFilterBase {
@@ -9364,6 +9358,12 @@ export interface PipelineAggregationBase extends Aggregation {
   buckets_path?: BucketsPath
   format?: string
   gap_policy?: GapPolicy
+}
+
+export interface PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: Array<ProcessorContainer>
 }
 
 export type PipelineName = string

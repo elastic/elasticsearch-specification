@@ -39072,53 +39072,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterStateIngestPipelineConfig",
-              "namespace": "cluster"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterStateIngestPipelineConfig",
-        "namespace": "cluster"
-      },
-      "properties": [
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "processors",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ProcessorContainer",
-                "namespace": "ingest"
-              }
+              "name": "PipelineConfig",
+              "namespace": "ingest"
             }
           }
         }
@@ -57599,8 +57554,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterStateIngestPipelineConfig",
-              "namespace": "cluster"
+              "name": "PipelineConfig",
+              "namespace": "ingest"
             }
           }
         }
@@ -91200,6 +91155,51 @@
             "type": {
               "name": "GapPolicy",
               "namespace": "aggregations.pipeline"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineConfig",
+        "namespace": "ingest"
+      },
+      "properties": [
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ProcessorContainer",
+                "namespace": "ingest"
+              }
             }
           }
         }
