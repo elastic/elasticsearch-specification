@@ -5541,9 +5541,16 @@
       "description": "Returns statistical information about geoip databases",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/geoip-stats-api.html",
       "name": "ingest.geo_ip_stats",
-      "request": null,
+      "request": {
+        "name": "GeoIpStatsRequest",
+        "namespace": "ingest"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "GeoIpStatsResponse",
+        "namespace": "ingest"
+      },
+      "since": "7.13.0",
       "stability": "stable",
       "urls": [
         {
@@ -60742,6 +60749,94 @@
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "GeoIpStatsRequest",
+        "namespace": "ingest"
+      },
+      "path": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GeoIpStatsResponse",
+        "namespace": "ingest"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "internal"
             }
           }

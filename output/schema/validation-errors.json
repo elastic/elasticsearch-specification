@@ -149,14 +149,6 @@
         "Missing response"
       ]
     },
-    "ingest.geo_ip_stats": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.evaluate_data_frame": {
       "request": [
         "Missing request"
