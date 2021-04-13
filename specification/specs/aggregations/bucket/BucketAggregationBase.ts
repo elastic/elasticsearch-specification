@@ -18,5 +18,7 @@
  */
 
 class BucketAggregationBase extends Aggregation {
-  aggregations?: Dictionary<string, AggregationContainer>
+  // This is a property of the container (one level higher in the JSON tree) even if semantically applicable
+  // only to bucket aggregations. See note in AggregationContainer.
+  // aggregations?: Dictionary<string, AggregationContainer>
 }

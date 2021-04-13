@@ -17,6 +17,12 @@
  * under the License.
  */
 
+/**
+ * A special single bucket aggregation that selects child documents that have the specified type, as defined in a join
+ * field.
+ *
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-children-aggregation.html
+ */
 class ChildrenAggregation extends BucketAggregationBase {
-  type?: RelationName
+  type: RelationName
 }

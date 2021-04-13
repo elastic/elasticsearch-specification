@@ -25,7 +25,6 @@
 interface AsyncSearchGetRequest extends RequestBase {
   path_parts?: {
     id: Id
-    typed_keys?: boolean
   }
   query_parameters?: {}
   body?: {

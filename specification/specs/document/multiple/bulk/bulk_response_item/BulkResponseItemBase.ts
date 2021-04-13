@@ -35,6 +35,7 @@ class BulkResponseItemBase {
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
+/** @variants container */
 class BulkResponseItemContainer {
   index?: BulkIndexResponseItem
   create?: BulkCreateResponseItem

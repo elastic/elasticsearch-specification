@@ -42,7 +42,7 @@ type Uri = string
 type DateString = string
 type Timestamp = string
 type TimeSpan = string
-type EpochMillis = string | long
+type EpochMillis = string | long | double // In some places (e.g. date range aggregation) it's output as a double value
 
 @class_serializer('ErrorCauseFormatter')
 class ErrorCause {

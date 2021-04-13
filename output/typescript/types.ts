@@ -98,7 +98,8 @@ export interface AdaptiveSelectionStats {
 }
 
 export interface AdjacencyMatrixAggregation extends BucketAggregationBase {
-  filters?: Record<string, QueryContainer>
+  filters: Record<string, QueryContainer>
+  separator?: string
 }
 
 export type Aggregate = SingleBucketAggregate | AutoDateHistogramAggregate | FiltersAggregate | SignificantTermsAggregate<any> | TermsAggregate<any> | BucketAggregate | CompositeBucketAggregate | MultiBucketAggregate<Bucket> | MatrixStatsAggregate | KeyedValueAggregate | MetricAggregate
@@ -110,8 +111,6 @@ export interface AggregateBase {
 export type AggregateName = string
 
 export interface Aggregation {
-  meta?: Record<string, any>
-  name?: string
 }
 
 export interface AggregationBreakdown {
@@ -130,9 +129,10 @@ export interface AggregationBreakdown {
 }
 
 export interface AggregationContainer {
-  adjacency_matrix?: AdjacencyMatrixAggregation
   aggs?: Record<string, AggregationContainer>
   aggregations?: Record<string, AggregationContainer>
+  meta?: Record<string, any>
+  adjacency_matrix?: AdjacencyMatrixAggregation
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
   avg_bucket?: AverageBucketAggregation
@@ -168,7 +168,6 @@ export interface AggregationContainer {
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
   median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-  meta?: Record<string, any>
   min?: MinAggregation
   min_bucket?: MinBucketAggregation
   missing?: MissingAggregation
@@ -527,7 +526,6 @@ export interface AsyncSearchDocumentResponseBase<TDocument = unknown> extends As
 
 export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
-  typed_keys?: boolean
   body?: {
     keep_alive?: Time
     typed_keys?: boolean
@@ -776,7 +774,6 @@ export interface BucketAggregate extends AggregateBase {
 }
 
 export interface BucketAggregationBase extends Aggregation {
-  aggregations?: Record<string, AggregationContainer>
 }
 
 export interface BucketInfluencer {
@@ -2804,7 +2801,7 @@ export interface ChiSquareHeuristic {
 export type ChildScoreMode = 'none' | 'avg' | 'sum' | 'max' | 'min'
 
 export interface ChildrenAggregation extends BucketAggregationBase {
-  type?: RelationName
+  type: RelationName
 }
 
 export interface ChunkingConfig {
@@ -3697,9 +3694,9 @@ export interface ComponentTemplateSummary {
 }
 
 export interface CompositeAggregation extends BucketAggregationBase {
-  after?: Record<string, string | float | null>
+  sources: Array<Record<string, CompositeAggregationSource>>
   size?: integer
-  sources?: Array<Record<string, CompositeAggregationSource>>
+  after?: Record<string, string | number | null>
 }
 
 export interface CompositeAggregationSource {
@@ -4184,7 +4181,7 @@ export interface DateProperty extends DocValuesPropertyBase {
 }
 
 export interface DateRangeAggregation extends BucketAggregationBase {
-  field?: Field
+  field: Field
   format?: string
   missing?: Missing
   ranges?: Array<DateRangeExpression>
@@ -4193,11 +4190,7 @@ export interface DateRangeAggregation extends BucketAggregationBase {
 
 export interface DateRangeExpression {
   from?: DateMath | float
-  from_as_string?: string
-  to_as_string?: string
-  key?: string
   to?: DateMath | float
-  doc_count?: long
 }
 
 export interface DateRangeProperty extends RangePropertyBase {
@@ -4912,7 +4905,7 @@ export interface EnrichStatsResponse extends ResponseBase {
   executing_policies: Array<ExecutingPolicy>
 }
 
-export type EpochMillis = string | long
+export type EpochMillis = string | long | double
 
 export interface EqlDeleteRequest extends RequestBase {
   id: Id
@@ -8461,7 +8454,6 @@ export interface MultiGetHit<TDocument = unknown> {
 export type MultiGetId = string | integer
 
 export interface MultiGetOperation {
-  can_be_flattened?: boolean
   _id: MultiGetId
   _index?: IndexName
   routing?: Routing
@@ -10018,10 +10010,6 @@ export interface QueryContainer {
   has_parent?: HasParentQuery
   ids?: IdsQuery
   intervals?: NamedQuery<IntervalsQuery | string>
-  is_conditionless?: boolean
-  is_strict?: boolean
-  is_verbatim?: boolean
-  is_writable?: boolean
   match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
   match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>
@@ -11183,7 +11171,6 @@ export interface SearchRequest extends RequestBase {
   sort?: string | Array<string>
   body?: {
     aggs?: Record<string, AggregationContainer>
-    aggregations?: Record<string, AggregationContainer>
     collapse?: FieldCollapse
     explain?: boolean
     from?: integer
@@ -12016,9 +12003,9 @@ export interface SlmUsage extends XPackUsage {
 }
 
 export interface SmoothingModelContainer {
-  laplace: LaplaceSmoothingModel
-  linear_interpolation: LinearInterpolationSmoothingModel
-  stupid_backoff: StupidBackoffSmoothingModel
+  laplace?: LaplaceSmoothingModel
+  linear_interpolation?: LinearInterpolationSmoothingModel
+  stupid_backoff?: StupidBackoffSmoothingModel
 }
 
 export interface SnapshotIndexStats {
@@ -13194,9 +13181,9 @@ export interface TransformCheckpointingInfo {
 }
 
 export interface TransformContainer {
-  chain: ChainTransform
-  script: ScriptTransform
-  search: SearchTransform
+  chain?: ChainTransform
+  script?: ScriptTransform
+  search?: SearchTransform
 }
 
 export interface TransformDestination {
