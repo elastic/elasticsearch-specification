@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { EpochMillis, long, Percentage } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class RecoveryTranslogStatus {
+  percent: Percentage
+  recovered: long
+  total: long
+  total_on_start: long
+  total_time?: string
+  total_time_in_millis: EpochMillis
 }

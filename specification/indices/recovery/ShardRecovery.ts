@@ -17,23 +17,28 @@
  * under the License.
  */
 
-import { ShardRoutingState } from '../indices/stats/ShardRoutingState'
-import { IndexName, integer, NodeName } from '../__common/common'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UnassignedInformation } from './cluster_allocation_explain/UnassignedInformation'
+import { DateString, EpochMillis, long, Type } from '../../__common/common'
+import { RecoveryIndexStatus } from './RecoveryIndexStatus'
+import { RecoveryOrigin } from './RecoveryOrigin'
+import { RecoveryStartStatus } from './RecoveryStartStatus'
+import { RecoveryTranslogStatus } from './RecoveryTranslogStatus'
+import { RecoveryVerifyIndex } from './RecoveryVerifyIndex'
 
-export class ClusterStateRoutingNodes {
-  unassigned: ClusterStateRoutingNodesShard[]
-  nodes: Dictionary<string, ClusterStateRoutingNodesShard[]>
-}
-
-export class ClusterStateRoutingNodesShard {
-  state: ShardRoutingState
+export class ShardRecovery {
+  id: long
+  index: RecoveryIndexStatus
   primary: boolean
-  node?: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id?: Dictionary<string, string>
-  recovery_source?: Dictionary<string, string>
-  unassigned_info?: UnassignedInformation
+  source: RecoveryOrigin
+  stage: string
+  start?: RecoveryStartStatus
+  start_time?: DateString
+  start_time_in_millis: EpochMillis
+  stop_time?: DateString
+  stop_time_in_millis: EpochMillis
+  target: RecoveryOrigin
+  total_time?: DateString
+  total_time_in_millis: EpochMillis
+  translog: RecoveryTranslogStatus
+  type: Type
+  verify_index: RecoveryVerifyIndex
 }

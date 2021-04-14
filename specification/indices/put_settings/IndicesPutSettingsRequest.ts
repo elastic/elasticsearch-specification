@@ -17,34 +17,35 @@
  * under the License.
  */
 
-import { IndicesPutSettingsRequest } from '../../indices/put_settings/IndicesPutSettingsRequest'
-import { Indices, Name } from '../../__common/common'
+import { Indices, integer } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
- * @rest_spec_name snapshot.restore
+ * @rest_spec_name indices.put_settings
  * @since 0.0.0
+ *
  * @stability TODO
  */
-export interface RestoreRequest extends RequestBase {
+export interface IndicesPutSettingsRequest extends RequestBase {
   path_parts?: {
-    repository: Name
-    snapshot: Name
+    index?: Indices
   }
   query_parameters?: {
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    flat_settings?: boolean
+    ignore_unavailable?: boolean
     master_timeout?: Time
-    wait_for_completion?: boolean
+    preserve_existing?: boolean
+    timeout?: Time
   }
   body?: {
-    ignore_index_settings?: string[]
-    ignore_unavailable?: boolean
-    include_aliases?: boolean
-    include_global_state?: boolean
-    index_settings?: IndicesPutSettingsRequest
-    indices?: Indices
-    partial?: boolean
-    rename_pattern?: string
-    rename_replacement?: string
+    index?: Dictionary<string, UserDefinedValue>
+    refresh_interval?: Time
+    number_of_replicas?: integer
   }
 }

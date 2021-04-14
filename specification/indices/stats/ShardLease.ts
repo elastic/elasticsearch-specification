@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Id, long, SequenceNumber } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class ShardLease {
+  id: Id
+  retaining_seq_no: SequenceNumber
+  timestamp: long
+  source: string
 }

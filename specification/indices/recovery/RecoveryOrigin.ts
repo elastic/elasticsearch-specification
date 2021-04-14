@@ -17,13 +17,19 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Id, IndexName, Name, Uuid, VersionString } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class RecoveryOrigin {
+  hostname?: string
+  host?: string
+  transport_address?: string
+  id?: Id
+  ip?: string
+  name?: Name
+  bootstrap_new_history_uuid?: boolean
+  repository?: Name
+  snapshot?: Name
+  version?: VersionString
+  restoreUUID?: Uuid
+  index?: IndexName
 }

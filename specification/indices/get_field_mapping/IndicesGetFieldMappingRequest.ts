@@ -17,13 +17,28 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Fields, Indices, Types } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+/**
+ * @rest_spec_name indices.get_field_mapping
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesGetFieldMappingRequest extends RequestBase {
+  path_parts?: {
+    fields: Fields
+    index?: Indices
+    type?: Types
+  }
+  query_parameters?: {
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    include_defaults?: boolean
+    include_type_name?: boolean
+    local?: boolean
+  }
+  body?: {}
 }

@@ -17,13 +17,24 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+/**
+ * @rest_spec_name indices.get_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesGetTemplateRequest extends RequestBase {
+  path_parts?: {
+    name?: Names
+  }
+  query_parameters?: {
+    flat_settings?: boolean
+    include_type_name?: boolean
+    local?: boolean
+    master_timeout?: Time
+  }
+  body?: {}
 }

@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { long } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class ShardTransactionLog {
+  earliest_last_modified_age: long
+  operations: long
+  size_in_bytes: long
+  uncommitted_operations: long
+  uncommitted_size_in_bytes: long
 }

@@ -17,13 +17,19 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { EpochMillis } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { RecoveryBytes } from './RecoveryBytes'
+import { RecoveryFiles } from './RecoveryFiles'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class RecoveryIndexStatus {
+  bytes?: RecoveryBytes
+  files: RecoveryFiles
+  size: RecoveryBytes
+  source_throttle_time?: Time
+  source_throttle_time_in_millis: EpochMillis
+  target_throttle_time?: Time
+  target_throttle_time_in_millis: EpochMillis
+  total_time_in_millis: EpochMillis
+  total_time?: Time
 }

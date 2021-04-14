@@ -17,13 +17,19 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Id, Name, VersionNumber } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ShardStoreAllocation } from './ShardStoreAllocation'
+import { ShardStoreException } from './ShardStoreException'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class ShardStore {
+  allocation: ShardStoreAllocation
+  allocation_id: Id
+  attributes: Dictionary<string, UserDefinedValue>
+  id: Id
+  legacy_version: VersionNumber
+  name: Name
+  store_exception: ShardStoreException
+  transport_address: string
 }

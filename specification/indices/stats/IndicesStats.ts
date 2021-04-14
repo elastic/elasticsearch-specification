@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndexStats } from './IndexStats'
+import { ShardStats } from './ShardStats'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class IndicesStats {
+  primaries: IndexStats
+  shards?: Dictionary<string, ShardStats[]>
+  total: IndexStats
+  uuid?: Uuid
 }

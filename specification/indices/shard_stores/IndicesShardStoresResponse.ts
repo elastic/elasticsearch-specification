@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { IndexName } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndicesShardStores } from './IndicesShardStores'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class IndicesShardStoresResponse extends ResponseBase {
+  indices: Dictionary<IndexName, IndicesShardStores>
 }

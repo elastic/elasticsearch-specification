@@ -17,13 +17,21 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Indices } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+/**
+ * @rest_spec_name indices.recovery
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesRecoveryRequest extends RequestBase {
+  path_parts?: {
+    index?: Indices
+  }
+  query_parameters?: {
+    active_only?: boolean
+    detailed?: boolean
+  }
+  body?: {}
 }

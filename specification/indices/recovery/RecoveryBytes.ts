@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { ByteSize, Percentage } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class RecoveryBytes {
+  percent: Percentage
+  recovered?: ByteSize
+  recovered_in_bytes: ByteSize
+  reused?: ByteSize
+  reused_in_bytes: ByteSize
+  total?: ByteSize
+  total_in_bytes: ByteSize
 }

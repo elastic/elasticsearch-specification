@@ -17,13 +17,18 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { double, integer, long, VersionString } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class Segment {
+  attributes: Dictionary<string, string>
+  committed: boolean
+  compound: boolean
+  deleted_docs: long
+  generation: integer
+  memory_in_bytes: double
+  search: boolean
+  size_in_bytes: double
+  num_docs: long
+  version: VersionString
 }

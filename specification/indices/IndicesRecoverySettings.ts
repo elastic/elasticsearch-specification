@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { integer } from '../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class IndicesRecoverySettings {
+  compress: boolean
+  concurrent_small_file_streams: integer
+  concurrent_streams: integer
+  file_chunk_size: string
+  max_bytes_per_second: string
+  translog_operations: integer
+  translog_size: string
 }

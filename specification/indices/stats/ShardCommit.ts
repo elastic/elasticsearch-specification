@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { integer, long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class ShardCommit {
+  generation: integer
+  id: Id
+  num_docs: long
+  user_data: Dictionary<string, string>
 }

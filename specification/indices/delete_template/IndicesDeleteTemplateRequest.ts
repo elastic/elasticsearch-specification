@@ -17,13 +17,22 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+/**
+ * @rest_spec_name indices.delete_template
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesDeleteTemplateRequest extends RequestBase {
+  path_parts?: {
+    name: Name
+  }
+  query_parameters?: {
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {}
 }

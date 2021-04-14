@@ -17,13 +17,20 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { long } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class ShardSearch {
+  fetch_current: long
+  fetch_time_in_millis: long
+  fetch_total: long
+  open_contexts: long
+  query_current: long
+  query_time_in_millis: long
+  query_total: long
+  scroll_current: long
+  scroll_time_in_millis: long
+  scroll_total: long
+  suggest_current: long
+  suggest_time_in_millis: long
+  suggest_total: long
 }

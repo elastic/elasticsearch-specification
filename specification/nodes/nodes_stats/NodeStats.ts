@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexStats } from '../../indices/monitoring/indices_stats/IndexStats'
+import { IndexStats } from '../../indices/stats/IndexStats'
 import { long } from '../../__common/common'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { NodeRole } from '../nodes_info/NodeRole'
@@ -34,16 +34,13 @@ import { ThreadCountStats } from './ThreadCountStats'
 import { TransportStats } from './TransportStats'
 
 export class NodeStats {
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   adaptive_selection: Dictionary<string, AdaptiveSelectionStats>
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   breakers: Dictionary<string, BreakerStats>
   fs: FileSystemStats
   host: string
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
-  /** @prop_serializer SingleOrEnumerableFormatter`1 */
   ip: string[]
   jvm: NodeJvmStats
   name: string
@@ -51,7 +48,6 @@ export class NodeStats {
   process: ProcessStats
   roles: NodeRole[]
   script: ScriptStats
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   thread_pool: Dictionary<string, ThreadCountStats>
   timestamp: long
   transport: TransportStats

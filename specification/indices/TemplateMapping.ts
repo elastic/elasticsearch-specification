@@ -17,13 +17,17 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { IndexName, integer, VersionNumber } from '../__common/common'
+import { TypeMapping } from '../__common/mapping/TypeMapping'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { Alias } from './Alias'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class TemplateMapping {
+  aliases: Dictionary<IndexName, Alias>
+  index_patterns: string[]
+  mappings: TypeMapping
+  order: integer
+  settings: Dictionary<string, UserDefinedValue>
+  version?: VersionNumber
 }

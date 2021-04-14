@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ShardFileSizeInfo } from '../../../indices/monitoring/indices_stats/ShardFileSizeInfo'
+import { ShardFileSizeInfo } from '../../../indices/stats/ShardFileSizeInfo'
 import { Dictionary } from '../../../__spec_utils/Dictionary'
 import { ByteSize, integer } from '../../common'
 

@@ -17,13 +17,17 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { long } from '../../__common/common'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class ShardMerges {
+  current: long
+  current_docs: long
+  current_size_in_bytes: long
+  total: long
+  total_auto_throttle_in_bytes: long
+  total_docs: long
+  total_size_in_bytes: long
+  total_stopped_time_in_millis: long
+  total_throttled_time_in_millis: long
+  total_time_in_millis: long
 }

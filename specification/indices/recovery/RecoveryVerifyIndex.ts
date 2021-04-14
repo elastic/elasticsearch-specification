@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { EpochMillis } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class RecoveryVerifyIndex {
+  check_index_time?: Time
+  check_index_time_in_millis: EpochMillis
+  total_time?: Time
+  total_time_in_millis: EpochMillis
 }

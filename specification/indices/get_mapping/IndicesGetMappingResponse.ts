@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { IndexName } from '../../__common/common'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { IndexMappings } from '../IndexMappings'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
-}
+export class IndicesGetMappingResponse extends DictionaryResponseBase<
+  IndexName,
+  IndexMappings
+> {}

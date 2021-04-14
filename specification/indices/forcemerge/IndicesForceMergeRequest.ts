@@ -17,13 +17,26 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Indices, long } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+/**
+ * @rest_spec_name indices.forcemerge
+ * @since 2.1.0
+ * @stability TODO
+ */
+export interface IndicesForceMergeRequest extends RequestBase {
+  path_parts?: {
+    index?: Indices
+  }
+  query_parameters?: {
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    flush?: boolean
+    ignore_unavailable?: boolean
+    max_num_segments?: long
+    only_expunge_deletes?: boolean
+  }
+  body?: {}
 }

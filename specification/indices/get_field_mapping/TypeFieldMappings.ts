@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { FielddataSettings } from './FielddataSettings'
-import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
-import { IndicesRecoverySettings } from './IndicesRecoverySettings'
+import { Field } from '../../__common/common'
+import { FieldMapping } from '../../__common/mapping/meta_fields/FieldMapping'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
-export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings
-  fielddata_settings: FielddataSettings
-  qeueries_cache_size: string
-  recovery_settings: IndicesRecoverySettings
+export class TypeFieldMappings {
+  /** @prop_serializer ResolvableReadOnlyDictionaryFormatter`2 */
+  mappings: Dictionary<Field, FieldMapping>
 }

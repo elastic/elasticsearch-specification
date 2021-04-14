@@ -17,34 +17,32 @@
  * under the License.
  */
 
-import { IndicesPutSettingsRequest } from '../../indices/put_settings/IndicesPutSettingsRequest'
-import { Indices, Name } from '../../__common/common'
+import { Fields, Indices, Metrics, Types } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { Level } from '../../__common/common/Level'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
- * @rest_spec_name snapshot.restore
+ * @rest_spec_name indices.stats
  * @since 0.0.0
  * @stability TODO
  */
-export interface RestoreRequest extends RequestBase {
+export interface IndicesStatsRequest extends RequestBase {
   path_parts?: {
-    repository: Name
-    snapshot: Name
+    metric?: Metrics
+    index?: Indices
   }
   query_parameters?: {
-    master_timeout?: Time
-    wait_for_completion?: boolean
+    completion_fields?: Fields
+    expand_wildcards?: ExpandWildcards
+    fielddata_fields?: Fields
+    fields?: Fields
+    forbid_closed_indices?: boolean
+    groups?: string | string[]
+    include_segment_file_sizes?: boolean
+    include_unloaded_segments?: boolean
+    level?: Level
+    types?: Types
   }
-  body?: {
-    ignore_index_settings?: string[]
-    ignore_unavailable?: boolean
-    include_aliases?: boolean
-    include_global_state?: boolean
-    index_settings?: IndicesPutSettingsRequest
-    indices?: Indices
-    partial?: boolean
-    rename_pattern?: string
-    rename_replacement?: string
-  }
+  body?: {}
 }
