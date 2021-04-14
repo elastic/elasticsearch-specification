@@ -69,12 +69,12 @@ async function fixImports (): Promise<void> {
     console.log(`Updating imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`)
     sourceFile.fixMissingImports({ semicolons: ts.SemicolonPreference.Remove }, {
       quotePreference: 'single',
-      importModuleSpecifierPreference: 'relative',
+      importModuleSpecifierPreference: 'auto',
       includePackageJsonAutoImports: 'off'
     })
     sourceFile.organizeImports({ semicolons: ts.SemicolonPreference.Remove }, {
       quotePreference: 'single',
-      importModuleSpecifierPreference: 'relative',
+      importModuleSpecifierPreference: 'auto',
       includePackageJsonAutoImports: 'off'
     })
   }
