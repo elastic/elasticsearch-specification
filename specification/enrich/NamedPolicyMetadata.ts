@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NamedPolicyConfig } from './NamedPolicyConfig';
+import { NamedPolicyConfig } from './NamedPolicyConfig'
 
 export class NamedPolicyMetadata {
   config: NamedPolicyConfig

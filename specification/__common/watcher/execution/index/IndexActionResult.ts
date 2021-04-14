@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexActionResultIndexResponse } from './IndexActionResultIndexResponse';
+import { IndexActionResultIndexResponse } from './IndexActionResultIndexResponse'
 
 export class IndexActionResult {
   response: IndexActionResultIndexResponse

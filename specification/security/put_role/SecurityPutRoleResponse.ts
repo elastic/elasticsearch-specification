@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
-import { PutRoleStatus } from './PutRoleStatus';
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { PutRoleStatus } from './PutRoleStatus'
 
 export class SecurityPutRoleResponse extends ResponseBase {
   role: PutRoleStatus

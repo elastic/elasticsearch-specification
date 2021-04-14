@@ -17,7 +17,16 @@
  * under the License.
  */
 
-import { Id, IndexName, long, MainError, Routing, SequenceNumber, Type, VersionNumber } from '../../__common/common'
+import {
+  Id,
+  IndexName,
+  long,
+  MainError,
+  Routing,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'

@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { FormatMetricAggregationBase } from '../MetricAggregation';
+import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class MaxAggregation extends FormatMetricAggregationBase {}

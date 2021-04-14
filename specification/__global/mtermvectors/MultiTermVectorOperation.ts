@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { Fields, Id, IndexName, Routing, VersionNumber } from '../../__common/common'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  VersionNumber
+} from '../../__common/common'
 import { VersionType } from '../../__common/common/VersionType'
 import { TermVectorFilter } from '../termvectors/TermVectorFilter'
 

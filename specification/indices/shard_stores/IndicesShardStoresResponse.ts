@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common';
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { IndicesShardStores } from './IndicesShardStores';
+import { IndexName } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndicesShardStores } from './IndicesShardStores'
 
 export class IndicesShardStoresResponse extends ResponseBase {
   indices: Dictionary<IndexName, IndicesShardStores>

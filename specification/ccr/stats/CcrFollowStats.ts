@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { FollowIndexStats } from '../follow_index_stats/FollowIndexStats';
+import { FollowIndexStats } from '../follow_index_stats/FollowIndexStats'
 
 export class CcrFollowStats {
   indices: FollowIndexStats[]

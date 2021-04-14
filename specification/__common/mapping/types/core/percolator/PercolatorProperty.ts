@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PropertyBase } from '../../Property';
+import { PropertyBase } from '../../Property'
 
 export class PercolatorProperty extends PropertyBase {
   type: 'percolator'

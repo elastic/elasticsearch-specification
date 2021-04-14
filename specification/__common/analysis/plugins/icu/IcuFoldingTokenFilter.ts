@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TokenFilterBase } from '../../token_filters/TokenFilterBase';
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
 
 export class IcuFoldingTokenFilter extends TokenFilterBase {
   unicode_set_filter: string

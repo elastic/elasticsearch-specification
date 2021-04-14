@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long, NodeIds } from '../../__common/common';
-import { ThreadType } from '../../__common/common/ThreadType';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { Time } from '../../__common/common_options/time_unit/Time';
+import { long, NodeIds } from '../../__common/common'
+import { ThreadType } from '../../__common/common/ThreadType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name nodes.hot_threads

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common';
-import { Refresh } from '../../__common/common/Refresh';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
+import { Name } from '../../__common/common'
+import { Refresh } from '../../__common/common/Refresh'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name security.put_role_mapping

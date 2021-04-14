@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '../../__common/common';
-import { CatRequestBase } from '../CatBase';
+import { long } from '../../__common/common'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.tasks

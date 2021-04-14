@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { License } from '../get_license/License';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { License } from '../get_license/License'
 
 /**
  * @rest_spec_name license.post

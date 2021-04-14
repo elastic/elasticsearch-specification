@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { ActionExecutionMode } from '../../__common/watcher/execution/ActionExecutionMode';
-import { SimulatedActions } from '../../__common/watcher/execution/SimulatedActions';
-import { ScheduleTriggerEvent } from '../../__common/watcher/schedule/ScheduleTriggerEvent';
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
-import { Watch } from '../Watch';
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { ActionExecutionMode } from '../../__common/watcher/execution/ActionExecutionMode'
+import { SimulatedActions } from '../../__common/watcher/execution/SimulatedActions'
+import { ScheduleTriggerEvent } from '../../__common/watcher/schedule/ScheduleTriggerEvent'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Watch } from '../Watch'
 
 /**
  * @rest_spec_name watcher.execute_watch

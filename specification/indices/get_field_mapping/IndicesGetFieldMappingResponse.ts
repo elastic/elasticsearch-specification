@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common';
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
-import { TypeFieldMappings } from './TypeFieldMappings';
+import { IndexName } from '../../__common/common'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { TypeFieldMappings } from './TypeFieldMappings'
 
 export class IndicesGetFieldMappingResponse extends DictionaryResponseBase<
   IndexName,

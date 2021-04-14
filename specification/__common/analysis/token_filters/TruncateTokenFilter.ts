@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../common';
-import { TokenFilterBase } from './TokenFilterBase';
+import { integer } from '../../common'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class TruncateTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */

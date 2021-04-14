@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { EqlSearchResponseBase } from '../EqlSearchResponseBase';
+import { EqlSearchResponseBase } from '../EqlSearchResponseBase'
 
 export class EqlSearchResponse<TEvent> extends EqlSearchResponseBase<TEvent> {}

@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ListTasksResponse } from '../../task/list_tasks/ListTasksResponse';
+import { ListTasksResponse } from '../../task/list_tasks/ListTasksResponse'
 
 export class DeleteByQueryRethrottleResponse extends ListTasksResponse {}

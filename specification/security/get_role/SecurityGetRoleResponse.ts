@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
-import { XPackRole } from '../../__common/security/XPackRole';
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { XPackRole } from '../../__common/security/XPackRole'
 
 export class SecurityGetRoleResponse extends DictionaryResponseBase<
   string,

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatResponseBase } from '../CatBase';
-import { CatThreadPoolRecord } from './CatThreadPoolRecord';
+import { CatResponseBase } from '../CatBase'
+import { CatThreadPoolRecord } from './CatThreadPoolRecord'
 
 export class CatThreadPoolResponse extends CatResponseBase<CatThreadPoolRecord> {}

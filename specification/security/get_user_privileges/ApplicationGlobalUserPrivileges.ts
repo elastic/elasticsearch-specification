@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ManageUserPrivileges } from './ManageUserPrivileges';
+import { ManageUserPrivileges } from './ManageUserPrivileges'
 
 export class ApplicationGlobalUserPrivileges {
   manage: ManageUserPrivileges

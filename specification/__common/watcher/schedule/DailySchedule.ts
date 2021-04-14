@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TimeOfDay } from './TimeOfDay';
+import { TimeOfDay } from './TimeOfDay'
 
 export class DailySchedule {
   at: string[] | TimeOfDay

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
-import { RollupJobInformation } from './RollupJobInformation';
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { RollupJobInformation } from './RollupJobInformation'
 
 export class GetRollupJobResponse extends ResponseBase {
   jobs: RollupJobInformation[]

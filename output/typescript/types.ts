@@ -5928,6 +5928,9 @@ export interface StartDatafeedRequest extends RequestBase {
 }
 
 export interface StartIlmRequest extends RequestBase {
+  body?: {
+    stub: boolean
+  }
 }
 
 export interface StartRollupJobRequest extends RequestBase {
@@ -5979,6 +5982,9 @@ export interface StopDatafeedRequest extends RequestBase {
 }
 
 export interface StopIlmRequest extends RequestBase {
+  body?: {
+    stub: boolean
+  }
 }
 
 export interface StopRollupJobRequest extends RequestBase {

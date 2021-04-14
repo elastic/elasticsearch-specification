@@ -23,8 +23,8 @@
  * These are problem sets that need a custom client solution.
  */
 
-import { Names } from '../__common/common';
-import { Time } from '../__common/common_options/time_unit/Time';
+import { Names } from '../__common/common'
+import { Time } from '../__common/common_options/time_unit/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties

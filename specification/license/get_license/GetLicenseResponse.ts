@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
-import { LicenseInformation } from './LicenseInformation';
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { LicenseInformation } from './LicenseInformation'
 
 export class GetLicenseResponse extends ResponseBase {
   license: LicenseInformation
