@@ -701,10 +701,6 @@ export interface CleanupRepositoryRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface ClearApiKeyCacheRequest extends RequestBase {
-  ids?: Ids
-}
-
 export interface ClearScrollRequest extends RequestBase {
   scroll_id?: Ids
   body?: {
@@ -1004,15 +1000,6 @@ export interface CountRequest extends RequestBase {
   q?: string
   body?: {
     query?: QueryContainer
-  }
-}
-
-export interface CreateApiKeyRequest extends RequestBase {
-  refresh?: Refresh
-  body: {
-    expiration?: Time
-    name?: string
-    role_descriptors?: Record<string, ApiKeyRole>
   }
 }
 
@@ -2169,14 +2156,6 @@ export interface GetAnomalyRecordsRequest extends RequestBase {
   }
 }
 
-export interface GetApiKeyRequest extends RequestBase {
-  id?: string
-  name?: string
-  owner?: boolean
-  realm_name?: string
-  username?: string
-}
-
 export interface GetAutoFollowPatternRequest extends RequestBase {
   name?: Name
 }
@@ -2445,16 +2424,6 @@ export interface GlobalAggregation extends BucketAggregationBase {
 
 export interface GoogleNormalizedDistanceHeuristic {
   background_is_superset: boolean
-}
-
-export interface GrantApiKeyRequest extends RequestBase {
-  body: {
-    api_key: ApiKey
-    grant_type: ApiKeyGrantType
-    access_token?: string
-    username?: string
-    password?: string
-  }
 }
 
 export interface GraphExploreControls {
@@ -3462,17 +3431,6 @@ export interface IntervalsWildcard {
   analyzer?: string
   pattern?: string
   use_field?: Field
-}
-
-export interface InvalidateApiKeyRequest extends RequestBase {
-  body: {
-    id?: string
-    ids?: Array<string>
-    name?: string
-    owner?: boolean
-    realm_name?: string
-    username?: string
-  }
 }
 
 export interface IpProperty extends DocValuesPropertyBase {
@@ -5344,6 +5302,10 @@ export interface SecurityChangePasswordRequest extends RequestBase {
   }
 }
 
+export interface SecurityClearApiKeyCacheRequest extends RequestBase {
+  ids?: Ids
+}
+
 export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
   application: Name
 }
@@ -5355,6 +5317,15 @@ export interface SecurityClearCachedRealmsRequest extends RequestBase {
 
 export interface SecurityClearCachedRolesRequest extends RequestBase {
   name: Names
+}
+
+export interface SecurityCreateApiKeyRequest extends RequestBase {
+  refresh?: Refresh
+  body: {
+    expiration?: Time
+    name?: Name
+    role_descriptors?: Record<string, ApiKeyRole>
+  }
 }
 
 export interface SecurityDeletePrivilegesRequest extends RequestBase {
@@ -5386,6 +5357,14 @@ export interface SecurityDisableUserRequest extends RequestBase {
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
+}
+
+export interface SecurityGetApiKeyRequest extends RequestBase {
+  id?: Id
+  name?: Name
+  owner?: boolean
+  realm_name?: Name
+  username?: Name
 }
 
 export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
@@ -5424,12 +5403,33 @@ export interface SecurityGetUserRequest extends RequestBase {
   username?: Names
 }
 
+export interface SecurityGrantApiKeyRequest extends RequestBase {
+  body: {
+    api_key: ApiKey
+    grant_type: ApiKeyGrantType
+    access_token?: string
+    username?: Name
+    password?: string
+  }
+}
+
 export interface SecurityHasPrivilegesRequest extends RequestBase {
   user?: Name
   body: {
     application?: Array<ApplicationPrivilegesCheck>
     cluster?: Array<string>
     index?: Array<IndexPrivilegesCheck>
+  }
+}
+
+export interface SecurityInvalidateApiKeyRequest extends RequestBase {
+  body: {
+    id?: Id
+    ids?: Array<Id>
+    name?: Name
+    owner?: boolean
+    realm_name?: string
+    username?: Name
   }
 }
 

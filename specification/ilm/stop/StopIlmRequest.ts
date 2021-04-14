@@ -26,5 +26,7 @@ import { RequestBase } from '../../__common/common_abstractions/request/RequestB
  */
 export interface StopIlmRequest extends RequestBase {
   query_parameters?: {}
-  body?: {}
+  body?: {
+    stub: boolean
+  }
 }

@@ -9383,13 +9383,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html",
       "name": "security.clear_api_key_cache",
       "request": {
-        "name": "ClearApiKeyCacheRequest",
-        "namespace": "security.api_key.clear_api_key_cache.ClearApiKeyCacheRequest"
+        "name": "SecurityClearApiKeyCacheRequest",
+        "namespace": "security.clear_api_key_cache.SecurityClearApiKeyCacheRequest"
       },
       "requestBodyRequired": false,
       "response": {
-        "name": "ClearApiKeyCacheResponse",
-        "namespace": "security.api_key.clear_api_key_cache.ClearApiKeyCacheRequest"
+        "name": "SecurityClearApiKeyCacheResponse",
+        "namespace": "security.clear_api_key_cache.SecurityClearApiKeyCacheRequest"
       },
       "since": "7.10.0",
       "stability": "stable",
@@ -9498,13 +9498,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html",
       "name": "security.create_api_key",
       "request": {
-        "name": "CreateApiKeyRequest",
-        "namespace": "security.api_key.create_api_key.CreateApiKeyRequest"
+        "name": "SecurityCreateApiKeyRequest",
+        "namespace": "security.create_api_key.SecurityCreateApiKeyRequest"
       },
       "requestBodyRequired": true,
       "response": {
-        "name": "CreateApiKeyResponse",
-        "namespace": "security.api_key.create_api_key.CreateApiKeyRequest"
+        "name": "SecurityCreateApiKeyResponse",
+        "namespace": "security.create_api_key.SecurityCreateApiKeyRequest"
       },
       "since": "6.7.0",
       "stability": "stable",
@@ -9694,13 +9694,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html",
       "name": "security.get_api_key",
       "request": {
-        "name": "GetApiKeyRequest",
-        "namespace": "security.api_key.get_api_key.GetApiKeyRequest"
+        "name": "SecurityGetApiKeyRequest",
+        "namespace": "security.get_api_key.SecurityGetApiKeyRequest"
       },
       "requestBodyRequired": false,
       "response": {
-        "name": "GetApiKeyResponse",
-        "namespace": "security.api_key.get_api_key.GetApiKeyRequest"
+        "name": "SecurityGetApiKeyResponse",
+        "namespace": "security.get_api_key.SecurityGetApiKeyRequest"
       },
       "since": "6.7.0",
       "stability": "stable",
@@ -9954,13 +9954,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-grant-api-key.html",
       "name": "security.grant_api_key",
       "request": {
-        "name": "GrantApiKeyRequest",
-        "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
+        "name": "SecurityGrantApiKeyRequest",
+        "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
       },
       "requestBodyRequired": true,
       "response": {
-        "name": "GrantApiKeyResponse",
-        "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
+        "name": "SecurityGrantApiKeyResponse",
+        "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
       },
       "since": "7.9.0",
       "stability": "stable",
@@ -10024,13 +10024,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html",
       "name": "security.invalidate_api_key",
       "request": {
-        "name": "InvalidateApiKeyRequest",
-        "namespace": "security.api_key.invalidate_api_key.InvalidateApiKeyRequest"
+        "name": "SecurityInvalidateApiKeyRequest",
+        "namespace": "security.invalidate_api_key.SecurityInvalidateApiKeyRequest"
       },
       "requestBodyRequired": true,
       "response": {
-        "name": "InvalidateApiKeyResponse",
-        "namespace": "security.api_key.invalidate_api_key.InvalidateApiKeyRequest"
+        "name": "SecurityInvalidateApiKeyResponse",
+        "namespace": "security.invalidate_api_key.SecurityInvalidateApiKeyRequest"
       },
       "since": "6.7.0",
       "stability": "stable",
@@ -13710,7 +13710,7 @@
       "kind": "interface",
       "name": {
         "name": "ApiKey",
-        "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
+        "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
       },
       "properties": [
         {
@@ -13761,7 +13761,7 @@
       "kind": "interface",
       "name": {
         "name": "ApiKeyApplication",
-        "namespace": "security.api_key.create_api_key.ApiKeyApplication"
+        "namespace": "security.create_api_key.ApiKeyApplication"
       },
       "properties": [
         {
@@ -13817,14 +13817,14 @@
       ],
       "name": {
         "name": "ApiKeyGrantType",
-        "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
+        "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "ApiKeyPrivileges",
-        "namespace": "security.api_key.create_api_key.ApiKeyPrivileges"
+        "namespace": "security.create_api_key.ApiKeyPrivileges"
       },
       "properties": [
         {
@@ -13858,7 +13858,7 @@
       "kind": "interface",
       "name": {
         "name": "ApiKeyRole",
-        "namespace": "security.api_key.create_api_key.ApiKeyRole"
+        "namespace": "security.create_api_key.ApiKeyRole"
       },
       "properties": [
         {
@@ -13884,7 +13884,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ApiKeyPrivileges",
-                "namespace": "security.api_key.create_api_key.ApiKeyPrivileges"
+                "namespace": "security.create_api_key.ApiKeyPrivileges"
               }
             }
           }
@@ -13898,7 +13898,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ApiKeyApplication",
-                "namespace": "security.api_key.create_api_key.ApiKeyApplication"
+                "namespace": "security.create_api_key.ApiKeyApplication"
               }
             }
           }
@@ -18273,39 +18273,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request.RequestBase"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "ClearApiKeyCacheRequest",
-        "namespace": "security.api_key.clear_api_key_cache.ClearApiKeyCacheRequest"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of IDs of API keys to clear from the cache",
-          "name": "ids",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Ids",
-              "namespace": "__common.common"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -21063,86 +21030,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "expiration",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "__common.common_options.time_unit.Time"
-              }
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "role_descriptors",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ApiKeyRole",
-                  "namespace": "security.api_key.create_api_key.ApiKeyRole"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request.RequestBase"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "CreateApiKeyRequest",
-        "namespace": "security.api_key.create_api_key.CreateApiKeyRequest"
-      },
-      "path": [],
-      "query": [
-        {
-          "name": "refresh",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Refresh",
-              "namespace": "__common.common.Refresh"
             }
           }
         }
@@ -31885,82 +31772,6 @@
       ],
       "kind": "request",
       "name": {
-        "name": "GetApiKeyRequest",
-        "namespace": "security.api_key.get_api_key.GetApiKeyRequest"
-      },
-      "path": [],
-      "query": [
-        {
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "owner",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "realm_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "username",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request.RequestBase"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
         "name": "GetAutoFollowPatternRequest",
         "namespace": "ccr.get_auto_follow_pattern.GetAutoFollowPatternRequest"
       },
@@ -34280,86 +34091,6 @@
           }
         }
       ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "api_key",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ApiKey",
-                "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
-              }
-            }
-          },
-          {
-            "name": "grant_type",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ApiKeyGrantType",
-                "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
-              }
-            }
-          },
-          {
-            "name": "access_token",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "username",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "password",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request.RequestBase"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "GrantApiKeyRequest",
-        "namespace": "security.api_key.grant_api_key.GrantApiKeyRequest"
-      },
-      "path": [],
-      "query": []
     },
     {
       "kind": "interface",
@@ -43689,100 +43420,6 @@
           }
         }
       ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "id",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "ids",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "owner",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "realm_name",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "username",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request.RequestBase"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "InvalidateApiKeyRequest",
-        "namespace": "security.api_key.invalidate_api_key.InvalidateApiKeyRequest"
-      },
-      "path": [],
-      "query": []
     },
     {
       "inherits": [
@@ -61320,6 +60957,39 @@
       ],
       "kind": "request",
       "name": {
+        "name": "SecurityClearApiKeyCacheRequest",
+        "namespace": "security.clear_api_key_cache.SecurityClearApiKeyCacheRequest"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of IDs of API keys to clear from the cache",
+          "name": "ids",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ids",
+              "namespace": "__common.common"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request.RequestBase"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
         "name": "SecurityClearCachedPrivilegesRequest",
         "namespace": "security.clear_cached_privileges.SecurityClearCachedPrivilegesRequest"
       },
@@ -61419,6 +61089,86 @@
         }
       ],
       "query": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "expiration",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "__common.common_options.time_unit.Time"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "__common.common"
+              }
+            }
+          },
+          {
+            "name": "role_descriptors",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ApiKeyRole",
+                  "namespace": "security.create_api_key.ApiKeyRole"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request.RequestBase"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SecurityCreateApiKeyRequest",
+        "namespace": "security.create_api_key.SecurityCreateApiKeyRequest"
+      },
+      "path": [],
+      "query": [
+        {
+          "name": "refresh",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "__common.common.Refresh"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -61697,6 +61447,82 @@
             "type": {
               "name": "Refresh",
               "namespace": "__common.common.Refresh"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request.RequestBase"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SecurityGetApiKeyRequest",
+        "namespace": "security.get_api_key.SecurityGetApiKeyRequest"
+      },
+      "path": [],
+      "query": [
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common.common"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "__common.common"
+            }
+          }
+        },
+        {
+          "name": "owner",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "realm_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "__common.common"
+            }
+          }
+        },
+        {
+          "name": "username",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "__common.common"
             }
           }
         }
@@ -62009,6 +61835,86 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "api_key",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApiKey",
+                "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
+              }
+            }
+          },
+          {
+            "name": "grant_type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApiKeyGrantType",
+                "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
+              }
+            }
+          },
+          {
+            "name": "access_token",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "username",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "__common.common"
+              }
+            }
+          },
+          {
+            "name": "password",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request.RequestBase"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SecurityGrantApiKeyRequest",
+        "namespace": "security.grant_api_key.SecurityGrantApiKeyRequest"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
             "name": "application",
             "required": false,
             "type": {
@@ -62079,6 +61985,100 @@
           }
         }
       ],
+      "query": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "id",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "__common.common"
+              }
+            }
+          },
+          {
+            "name": "ids",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Id",
+                  "namespace": "__common.common"
+                }
+              }
+            }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "__common.common"
+              }
+            }
+          },
+          {
+            "name": "owner",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "realm_name",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "username",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "__common.common"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request.RequestBase"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "SecurityInvalidateApiKeyRequest",
+        "namespace": "security.invalidate_api_key.SecurityInvalidateApiKeyRequest"
+      },
+      "path": [],
       "query": []
     },
     {

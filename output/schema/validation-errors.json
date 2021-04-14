@@ -1678,10 +1678,10 @@
     },
     "security.create_api_key": {
       "request": [
-        "CreateApiKeyRequest: should have a body definition"
+        "SecurityCreateApiKeyRequest: should have a body definition"
       ],
       "response": [
-        "Type security.api_key.create_api_key.CreateApiKeyRequest:CreateApiKeyResponse not found"
+        "Type security.create_api_key.SecurityCreateApiKeyRequest:SecurityCreateApiKeyResponse not found"
       ]
     },
     "security.get_builtin_privileges": {
@@ -1710,11 +1710,11 @@
     },
     "security.grant_api_key": {
       "request": [
-        "GrantApiKeyRequest: missing json spec query parameter 'refresh'",
-        "GrantApiKeyRequest: should have a body definition"
+        "SecurityGrantApiKeyRequest: missing json spec query parameter 'refresh'",
+        "SecurityGrantApiKeyRequest: should have a body definition"
       ],
       "response": [
-        "Type security.api_key.grant_api_key.GrantApiKeyRequest:GrantApiKeyResponse not found"
+        "Type security.grant_api_key.SecurityGrantApiKeyRequest:SecurityGrantApiKeyResponse not found"
       ]
     },
     "security.has_privileges": {
@@ -1727,10 +1727,10 @@
     },
     "security.invalidate_api_key": {
       "request": [
-        "InvalidateApiKeyRequest: should have a body definition"
+        "SecurityInvalidateApiKeyRequest: should have a body definition"
       ],
       "response": [
-        "Type security.api_key.invalidate_api_key.InvalidateApiKeyRequest:InvalidateApiKeyResponse not found"
+        "Type security.invalidate_api_key.SecurityInvalidateApiKeyRequest:SecurityInvalidateApiKeyResponse not found"
       ]
     },
     "security.invalidate_token": {

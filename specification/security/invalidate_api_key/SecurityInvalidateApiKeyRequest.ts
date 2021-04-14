@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, Name } from '../../__common/common';
+import { Id, Name } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
