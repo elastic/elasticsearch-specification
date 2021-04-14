@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Job } from '../../xpack/x_pack_usage/Job'
+import { Job } from '../../xpack/usage/Job'
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 

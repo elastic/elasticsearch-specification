@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { JobStatistics } from '../../../xpack/x_pack_usage/JobStatistics'
+import { JobStatistics } from '../../../xpack/usage/JobStatistics'
 import { integer, long } from '../../../__common/common'
 import { Dictionary } from '../../../__spec_utils/Dictionary'
 

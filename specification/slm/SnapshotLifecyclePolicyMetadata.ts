@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SnapshotLifecycleStats } from '../xpack/x_pack_usage/SnapshotLifecycleStats'
+import { SnapshotLifecycleStats } from '../xpack/usage/SnapshotLifecycleStats'
 import {
   DateString,
   EpochMillis,

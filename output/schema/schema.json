@@ -11888,12 +11888,12 @@
       "name": "xpack.info",
       "request": {
         "name": "XPackInfoRequest",
-        "namespace": "xpack.x_pack_info.XPackInfoRequest"
+        "namespace": "xpack.info.XPackInfoRequest"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "XPackInfoResponse",
-        "namespace": "xpack.x_pack_info.XPackInfoRequest"
+        "namespace": "xpack.info.XPackInfoRequest"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -11916,12 +11916,12 @@
       "name": "xpack.usage",
       "request": {
         "name": "XPackUsageRequest",
-        "namespace": "xpack.x_pack_usage.XPackUsageRequest"
+        "namespace": "xpack.usage.XPackUsageRequest"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "XPackUsageResponse",
-        "namespace": "xpack.x_pack_usage.XPackUsageRequest"
+        "namespace": "xpack.usage.XPackUsageRequest"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -75274,7 +75274,7 @@
       "kind": "request",
       "name": {
         "name": "XPackInfoRequest",
-        "namespace": "xpack.x_pack_info.XPackInfoRequest"
+        "namespace": "xpack.info.XPackInfoRequest"
       },
       "path": [],
       "query": [
@@ -75309,7 +75309,7 @@
       "kind": "request",
       "name": {
         "name": "XPackUsageRequest",
-        "namespace": "xpack.x_pack_usage.XPackUsageRequest"
+        "namespace": "xpack.usage.XPackUsageRequest"
       },
       "path": [],
       "query": [

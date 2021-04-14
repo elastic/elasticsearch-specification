@@ -1945,7 +1945,7 @@
         "XPackInfoRequest: missing json spec query parameter 'accept_enterprise'"
       ],
       "response": [
-        "Type xpack.x_pack_info.XPackInfoRequest:XPackInfoResponse not found"
+        "Type xpack.info.XPackInfoRequest:XPackInfoResponse not found"
       ]
     }
   },
