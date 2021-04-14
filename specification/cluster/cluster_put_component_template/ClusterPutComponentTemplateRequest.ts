@@ -23,7 +23,7 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
 import { Time } from "../../__common/common_options/time_unit/Time";
 import { TypeMapping } from "../../__common/mapping/TypeMapping";
 import { Dictionary } from "../../__spec_utils/Dictionary";
-import { IndexSettings } from "../IndexSettings";
+import { IndexSettings } from "../../__common/index_settings/IndexSettings";
 
 /**
  * @rest_spec_name cluster.put_component_template

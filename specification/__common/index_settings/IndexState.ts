@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexSettings } from "../../cluster/IndexSettings";
+import { IndexSettings } from "./IndexSettings";
 import { Alias } from "../../indices/alias_management/Alias";
 import { Dictionary } from "../../__spec_utils/Dictionary";
 import { IndexName } from "../common";
