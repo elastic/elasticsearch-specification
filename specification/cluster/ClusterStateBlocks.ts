@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RolloverConditions } from '../indices/index_management/rollover_index/RolloverConditions'
+import { RolloverConditions } from '../indices/rollover/IndicesRolloverConditions'
 import {
   DateString,
   IndexAlias,
