@@ -34,7 +34,6 @@ add-license:	## Add the license headers to the files
 	.github/add-license-headers.sh
 
 contrib-install:	## make sure NPM install runs so that the contrib targets tooling is available
-	@npm install
 	@npm install --prefix compiler
 
 spec-format-check:	## Check specification formatting rules
