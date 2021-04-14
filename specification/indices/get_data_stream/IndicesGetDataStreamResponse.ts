@@ -17,7 +17,15 @@
  * under the License.
  */
 
-import { DataStreamName, Field, IndexMetaData, IndexName, integer, Name, Uuid } from '../../__common/common'
+import {
+  DataStreamName,
+  Field,
+  IndexMetaData,
+  IndexName,
+  integer,
+  Name,
+  Uuid
+} from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { DataStreamHealthStatus } from '../DataStreamStatus'
 

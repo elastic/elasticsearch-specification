@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { CharFilter } from '../../__common/analysis/char_filters/CharFilterBase';
-import { Tokenizer } from '../../__common/analysis/tokenizers/TokenizerBase';
-import { TokenFilter } from '../../__common/analysis/token_filters/TokenFilterBase';
-import { Field, IndexName } from '../../__common/common';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { CharFilter } from '../../__common/analysis/char_filters/CharFilterBase'
+import { Tokenizer } from '../../__common/analysis/tokenizers/TokenizerBase'
+import { TokenFilter } from '../../__common/analysis/token_filters/TokenFilterBase'
+import { Field, IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.analyze

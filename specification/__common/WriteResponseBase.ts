@@ -17,7 +17,15 @@
  * under the License.
  */
 
-import { ErrorCause, Id, IndexName, long, SequenceNumber, Type, VersionNumber } from './common'
+import {
+  ErrorCause,
+  Id,
+  IndexName,
+  long,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from './common'
 import { ResponseBase } from './common_abstractions/response/ResponseBase'
 import { ShardStatistics } from './common_options/hit/ShardStatistics'
 import { Result } from './Result'

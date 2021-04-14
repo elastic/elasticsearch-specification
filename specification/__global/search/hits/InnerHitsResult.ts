@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { InnerHitsMetadata } from './InnerHitsMetadata';
+import { InnerHitsMetadata } from './InnerHitsMetadata'
 
 export class InnerHitsResult {
   hits: InnerHitsMetadata

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PipelineAggregationBase } from '../PipelineAggregationBase';
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class NormalizeAggregation extends PipelineAggregationBase {
   method?: NormalizeMethod

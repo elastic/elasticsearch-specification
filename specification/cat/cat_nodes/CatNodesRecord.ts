@@ -17,7 +17,14 @@
  * under the License.
  */
 
-import { ByteSize, Id, Name, Percentage, Type, VersionString } from '../../__common/common'
+import {
+  ByteSize,
+  Id,
+  Name,
+  Percentage,
+  Type,
+  VersionString
+} from '../../__common/common'
 
 export class CatNodesRecord {
   /**

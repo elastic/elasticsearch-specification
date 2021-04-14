@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name enrich.delete_policy

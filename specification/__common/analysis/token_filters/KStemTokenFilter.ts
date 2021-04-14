@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { TokenFilterBase } from './TokenFilterBase';
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class KStemTokenFilter extends TokenFilterBase {}

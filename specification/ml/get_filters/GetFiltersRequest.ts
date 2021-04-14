@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, integer } from '../../__common/common';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Id, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.get_filters

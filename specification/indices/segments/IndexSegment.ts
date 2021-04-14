@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { ShardsSegment } from './ShardsSegment';
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ShardsSegment } from './ShardsSegment'
 
 export class IndexSegment {
   shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>

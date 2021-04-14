@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../../../common';
-import { BucketAggregationBase } from '../BucketAggregationBase';
+import { Field } from '../../../common'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class NestedAggregation extends BucketAggregationBase {
   path?: Field

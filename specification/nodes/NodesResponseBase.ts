@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../__common/common_abstractions/response/ResponseBase';
-import { NodeStatistics } from './NodeStatistics';
+import { ResponseBase } from '../__common/common_abstractions/response/ResponseBase'
+import { NodeStatistics } from './NodeStatistics'
 
 export class NodesResponseBase extends ResponseBase {
   _nodes: NodeStatistics

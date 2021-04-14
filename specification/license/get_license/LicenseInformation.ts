@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, integer, long, Uuid } from '../../__common/common'
+import {
+  DateString,
+  EpochMillis,
+  integer,
+  long,
+  Uuid
+} from '../../__common/common'
 import { LicenseStatus } from './LicenseStatus'
 import { LicenseType } from './LicenseType'
 

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from '../../__common/common';
-import { CatRequestBase } from '../CatBase';
+import { Names } from '../../__common/common'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.snapshots

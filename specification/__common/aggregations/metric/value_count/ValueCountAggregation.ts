@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { FormattableMetricAggregation } from '../FormattableMetricAggregation';
+import { FormattableMetricAggregation } from '../FormattableMetricAggregation'
 
 export class ValueCountAggregation extends FormattableMetricAggregation {}

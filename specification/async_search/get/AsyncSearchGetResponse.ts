@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AsyncSearchDocumentResponseBase } from '../AsyncSearchResponseBase';
+import { AsyncSearchDocumentResponseBase } from '../AsyncSearchResponseBase'
 
 export class AsyncSearchGetResponse<
   TDocument

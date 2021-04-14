@@ -20,8 +20,8 @@
 import { NodeStatistics } from '../../nodes/NodeStatistics'
 import { Name } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { SecurityNode } from '../../__common/security/SecurityNode'
 import { Dictionary } from '../../__spec_utils/Dictionary'
-import { SecurityNode } from '../SecurityNode'
 
 export class SecurityClearCachedRealmsResponse extends ResponseBase {
   cluster_name: Name

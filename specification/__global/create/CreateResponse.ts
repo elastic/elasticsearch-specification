@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { WriteResponseBase } from '../../__common/WriteResponseBase';
+import { WriteResponseBase } from '../../__common/WriteResponseBase'
 
 export class CreateResponse extends WriteResponseBase {}

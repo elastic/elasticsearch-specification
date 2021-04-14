@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
-import { PendingTask } from './PendingTask';
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { PendingTask } from './PendingTask'
 
 export class ClusterPendingTasksResponse extends ResponseBase {
   tasks: PendingTask[]
