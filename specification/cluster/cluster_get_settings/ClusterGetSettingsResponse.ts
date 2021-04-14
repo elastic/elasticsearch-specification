@@ -17,23 +17,12 @@
  * under the License.
  */
 
-import { NodeIds } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { Dictionary } from "../../__spec_utils/Dictionary";
+import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
 
-/**
- * @rest_spec_name nodes.reload_secure_settings
- * @since 6.5.0
- * @stability TODO
- */
-export interface ReloadSecureSettingsRequest extends RequestBase {
-  path_parts?: {
-    node_id?: NodeIds;
-  };
-  query_parameters?: {
-    timeout?: Time;
-  };
-  body?: {
-    secure_settings_password?: string;
-  };
+export class ClusterGetSettingsResponse extends ResponseBase {
+  persistent: Dictionary<string, UserDefinedValue>;
+  transient: Dictionary<string, UserDefinedValue>;
+  defaults?: Dictionary<string, UserDefinedValue>;
 }

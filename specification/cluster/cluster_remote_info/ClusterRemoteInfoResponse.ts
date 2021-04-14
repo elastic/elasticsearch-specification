@@ -17,10 +17,20 @@
  * under the License.
  */
 
-import { RemoteInfo } from "dgram";
+import { integer, long } from "../../__common/common";
+import { Time } from "../../__common/common_options/time_unit/Time";
 import { DictionaryResponseBase } from "../../__common/common_abstractions/response/DictionaryResponseBase";
 
-export class RemoteInfoResponse extends DictionaryResponseBase<
+export class ClusterRemoteInfoResponse extends DictionaryResponseBase<
   string,
-  RemoteInfo
+  ClusterRemoteInfo
 > {}
+
+export class ClusterRemoteInfo {
+  connected: boolean;
+  initial_connect_timeout: Time;
+  max_connections_per_cluster: integer;
+  num_nodes_connected: long;
+  seeds: string[];
+  skip_unavailable: boolean;
+}

@@ -18,13 +18,19 @@
  */
 
 import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Time } from "../../__common/common_options/time_unit/Time";
 
 /**
- * @rest_spec_name cluster.remote_info
- * @since 6.1.0
+ * @rest_spec_name cluster.get_settings
+ * @since 0.0.0
  * @stability TODO
  */
-export interface RemoteInfoRequest extends RequestBase {
-  query_parameters?: {};
+export interface ClusterGetSettingsRequest extends RequestBase {
+  query_parameters?: {
+    flat_settings?: boolean;
+    include_defaults?: boolean;
+    master_timeout?: Time;
+    timeout?: Time;
+  };
   body?: {};
 }

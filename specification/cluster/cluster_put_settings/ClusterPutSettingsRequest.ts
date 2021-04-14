@@ -17,7 +17,24 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { EmptyResponseBase } from "../../__spec_utils/behaviors";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Time } from "../../__common/common_options/time_unit/Time";
+import { Dictionary } from "../../__spec_utils/Dictionary";
+import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
 
-export class PingResponse extends ResponseBase implements EmptyResponseBase {}
+/**
+ * @rest_spec_name cluster.put_settings
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface ClusterPutSettingsRequest extends RequestBase {
+  query_parameters?: {
+    flat_settings?: boolean;
+    master_timeout?: Time;
+    timeout?: Time;
+  };
+  body?: {
+    persistent?: Dictionary<string, UserDefinedValue>;
+    transient?: Dictionary<string, UserDefinedValue>;
+  };
+}

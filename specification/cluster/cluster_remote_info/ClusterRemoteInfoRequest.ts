@@ -17,20 +17,14 @@
  * under the License.
  */
 
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
 
 /**
- * @rest_spec_name cluster.get_settings
- * @since 0.0.0
+ * @rest_spec_name cluster.remote_info
+ * @since 6.1.0
  * @stability TODO
  */
-export interface ClusterGetSettingsRequest extends RequestBase {
-  query_parameters?: {
-    flat_settings?: boolean;
-    include_defaults?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-  };
+export interface ClusterRemoteInfoRequest extends RequestBase {
+  query_parameters?: {};
   body?: {};
 }
