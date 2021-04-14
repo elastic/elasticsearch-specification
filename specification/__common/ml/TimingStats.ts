@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, Id, long } from '../common'
+import { double, Id, long } from '@common/common'
 
 export class TimingStats {
   average_bucket_processing_time_ms?: double

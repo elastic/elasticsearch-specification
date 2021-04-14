@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field, integer } from '../../../common'
-import { Script } from '../../../common_options/scripting/Script'
+import { Field, integer } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { SamplerAggregationExecutionHint } from './SamplerAggregationExecutionHint'
 

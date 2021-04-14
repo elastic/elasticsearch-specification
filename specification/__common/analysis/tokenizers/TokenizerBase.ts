@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { VersionString } from '../../common'
+import { VersionString } from '@common/common'
 import { CharGroupTokenizer } from './CharGroupTokenizer'
 import { KeywordTokenizer } from './KeywordTokenizer'
 import { LetterTokenizer } from './LetterTokenizer'

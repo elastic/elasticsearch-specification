@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../common'
+import { integer } from '@common/common'
 import { TokenFilterBase } from './TokenFilterBase'
 
 export class LimitTokenCountTokenFilter extends TokenFilterBase {

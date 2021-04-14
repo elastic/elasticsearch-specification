@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName, Name, Uuid, VersionString } from '../../__common/common'
+import { Id, IndexName, Name, Uuid, VersionString } from '@common/common'
 
 export class RecoveryOrigin {
   hostname?: string

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ExpandWildcards } from '../../common/ExpandWildcards'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
 
 export class IndicesOptions {
   allow_no_indices: boolean

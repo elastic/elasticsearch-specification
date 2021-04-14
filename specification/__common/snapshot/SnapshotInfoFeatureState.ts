@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices } from '../common'
+import { Indices } from '@common/common'
 
 export class SnapshotInfoFeatureState {
   feature_name: string

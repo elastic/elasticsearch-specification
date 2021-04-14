@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { TemplateMapping } from '../TemplateMapping'
+import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
+import { TemplateMapping } from '@indices/TemplateMapping'
 
 export class IndicesGetTemplateResponse extends DictionaryResponseBase<
   string,

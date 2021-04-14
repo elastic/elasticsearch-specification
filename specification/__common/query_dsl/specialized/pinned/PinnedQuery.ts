@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, long } from '../../../common'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Id, long } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class PinnedQuery extends QueryBase {
   ids?: Id[] | long[]

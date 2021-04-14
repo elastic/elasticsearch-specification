@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../common'
+import { integer } from '@common/common'
 import { AnalyzerBase } from './AnalyzerBase'
 
 export class CustomAnalyzer extends AnalyzerBase {

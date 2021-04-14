@@ -17,22 +17,17 @@
  * under the License.
  */
 
-import { NodeAttributes } from '../../transform/get_transform_stats/NodeAttributes'
-import {
-  EmptyObject,
-  NodeName,
-  Uuid,
-  VersionNumber
-} from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { ClusterStateBlocks } from '../ClusterStateBlocks'
-import { ClusterStateMetadata } from '../ClusterStateMetadata'
-import { ClusterStateRoutingNodes } from '../ClusterStateRoutingNodes'
+import { ClusterStateBlocks } from '@cluster/ClusterStateBlocks'
+import { ClusterStateMetadata } from '@cluster/ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '@cluster/ClusterStateRoutingNodes'
 import {
   ClusterStateDeletedSnapshots,
   ClusterStateSnapshots
-} from '../ClusterStateSnapshots'
+} from '@cluster/ClusterStateSnapshots'
+import { EmptyObject, NodeName, Uuid, VersionNumber } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { NodeAttributes } from '@transform/get_transform_stats/NodeAttributes'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class ClusterStateResponse extends ResponseBase {
   cluster_name: string

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, long, Name } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Id, long, Name } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 export class SecurityCreateApiKeyResponse extends ResponseBase {
   api_key: string

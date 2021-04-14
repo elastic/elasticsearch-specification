@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { float, integer } from '../../../../__common/common'
-import { SuggestMode } from '../../../../__common/common/SuggestMode'
+import { float, integer } from '@common/common'
+import { SuggestMode } from '@common/common/SuggestMode'
 import { SuggesterBase } from '../Suggester'
 import { StringDistance } from './StringDistance'
 import { SuggestSort } from './SuggestSort'

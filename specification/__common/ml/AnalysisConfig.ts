@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CategorizationAnalyzer } from '../../ml/info/CategorizationAnalyzer'
-import { Field, TimeSpan } from '../common'
-import { Time } from '../common_options/time_unit/Time'
+import { Field, TimeSpan } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+import { CategorizationAnalyzer } from '@ml/info/CategorizationAnalyzer'
 import { Detector } from './Detector'
 
 export class AnalysisConfig {

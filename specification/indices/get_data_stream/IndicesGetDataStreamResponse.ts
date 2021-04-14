@@ -25,9 +25,9 @@ import {
   integer,
   Name,
   Uuid
-} from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { DataStreamHealthStatus } from '../DataStreamStatus'
+} from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { DataStreamHealthStatus } from '@indices/DataStreamStatus'
 
 export class IndicesGetDataStreamResponse extends ResponseBase {
   data_streams: IndicesGetDataStreamItem[]

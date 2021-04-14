@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName, integer, VersionNumber } from '../__common/common'
-import { TypeMapping } from '../__common/mapping/TypeMapping'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { IndexName, integer, VersionNumber } from '@common/common'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { Alias } from './Alias'
 
 export class TemplateMapping {

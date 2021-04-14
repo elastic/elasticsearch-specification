@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SlackMessage } from '../../actions/slack/SlackMessage'
+import { SlackMessage } from '@common/watcher/actions/slack/SlackMessage'
 
 export class SlackActionResult {
   account?: string

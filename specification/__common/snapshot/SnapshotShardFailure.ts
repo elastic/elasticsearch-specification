@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName } from '../common'
+import { Id, IndexName } from '@common/common'
 
 export class SnapshotShardFailure {
   index: IndexName

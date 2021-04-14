@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NumericFielddata } from '../../../../../indices/NumericFielddata'
-import { DateString, double, integer } from '../../../../common'
+import { DateString, double, integer } from '@common/common'
+import { NumericFielddata } from '@indices/NumericFielddata'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class DateProperty extends DocValuesPropertyBase {

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '../../__common/common'
-import { SortOrder } from '../../__global/search/sort/SortOrder'
-import { ProcessorBase } from '../ProcessorBase'
+import { Field } from '@common/common'
+import { SortOrder } from '@global/search/sort/SortOrder'
+import { ProcessorBase } from '@ingest/ProcessorBase'
 
 export class SortProcessor extends ProcessorBase {
   field: Field

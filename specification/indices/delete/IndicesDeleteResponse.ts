@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { IndicesResponseBase } from '../../__common/common_abstractions/response/IndicesResponseBase'
+import { IndicesResponseBase } from '@common/common_abstractions/response/IndicesResponseBase'
 
 export class IndicesDeleteResponse extends IndicesResponseBase {}

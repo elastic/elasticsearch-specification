@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TotalHits } from '../__global/search/hits/TotalHits'
+import { TotalHits } from '@global/search/hits/TotalHits'
 import { EqlHitsEvent } from './EqlHitsEvent'
 import { EqlHitsSequence } from './EqlHitsSequence'
 

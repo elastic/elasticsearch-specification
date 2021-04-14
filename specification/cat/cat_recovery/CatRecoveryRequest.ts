@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices } from '../../__common/common'
-import { Bytes } from '../../__common/common/Bytes'
-import { CatRequestBase } from '../CatBase'
+import { CatRequestBase } from '@cat/CatBase'
+import { Indices } from '@common/common'
+import { Bytes } from '@common/common/Bytes'
 
 /**
  * @rest_spec_name cat.recovery

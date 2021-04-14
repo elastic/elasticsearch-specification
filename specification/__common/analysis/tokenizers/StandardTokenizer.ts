@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../common'
+import { integer } from '@common/common'
 import { TokenizerBase } from './TokenizerBase'
 
 export class StandardTokenizer extends TokenizerBase {

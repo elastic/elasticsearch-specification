@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Transform } from '../../__common/watcher/transform/Transform'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { Transform } from '@common/watcher/transform/Transform'
 
 export class GetTransformResponse extends ResponseBase {
   count: long

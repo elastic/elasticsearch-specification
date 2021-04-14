@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PagerDutyEvent } from '../../actions/pager_duty/PagerDutyEvent'
+import { PagerDutyEvent } from '@common/watcher/actions/pager_duty/PagerDutyEvent'
 import { HttpInputRequestResult } from '../HttpInputRequestResult'
 import { HttpInputResponseResult } from '../HttpInputResponseResult'
 

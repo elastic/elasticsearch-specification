@@ -18,7 +18,7 @@
  */
 // TODO: move singular names to aliases
 
-import { Field, Fields } from '../../../__common/common'
+import { Field, Fields } from '@common/common'
 
 export class SourceFilter {
   excludes?: Fields

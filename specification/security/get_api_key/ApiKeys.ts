@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, long, Name } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Id, long, Name } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class ApiKeys {
   creation: long

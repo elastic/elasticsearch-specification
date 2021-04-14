@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, VersionString } from '../../common'
+import { DateString, VersionString } from '@common/common'
 
 export class ElasticsearchVersionInfo {
   build_date: DateString

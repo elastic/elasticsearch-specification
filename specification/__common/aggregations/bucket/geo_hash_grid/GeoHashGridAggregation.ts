@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field, GeoHashPrecision, integer } from '../../../common'
-import { BoundingBox } from '../../../query_dsl/geo/bounding_box/BoundingBox'
+import { Field, GeoHashPrecision, integer } from '@common/common'
+import { BoundingBox } from '@common/query_dsl/geo/bounding_box/BoundingBox'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class GeoHashGridAggregation extends BucketAggregationBase {

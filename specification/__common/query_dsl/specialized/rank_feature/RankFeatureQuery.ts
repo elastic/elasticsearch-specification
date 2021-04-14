@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryBase } from '../../abstractions/query/Query'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { RankFeatureFunction } from './RankFeatureFunction'
 
 export class RankFeatureQuery extends QueryBase {

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer, long } from '../../__common/common'
-import { ErrorResponse } from '../../__common/common_abstractions/response/ErrorResponseBase'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { SearchResponse } from '../search/SearchResponse'
+import { integer, long } from '@common/common'
+import { ErrorResponse } from '@common/common_abstractions/response/ErrorResponseBase'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { SearchResponse } from '@global/search/SearchResponse'
 
 export class MultiSearchResponse<TDocument> extends ResponseBase {
   took: long

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
-import { integer, PropertyName } from '../../common'
+import { integer, PropertyName } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { DynamicMapping } from '../DynamicMapping'
 import { FlattenedProperty } from './complex/flattened/FlattenedProperty'
 import { JoinProperty } from './core/join/JoinProperty'

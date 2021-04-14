@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../../common'
-import { Script } from '../../common_options/scripting/Script'
+import { Field } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
 import { Missing } from '../AggregationContainer'
 
 export class MetricAggregationBase {

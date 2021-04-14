@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { InnerHits } from '../../../../__global/search/inner_hits/InnerHits'
-import { Field } from '../../../common'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Field } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { InnerHits } from '@global/search/inner_hits/InnerHits'
 import { NestedScoreMode } from './NestedScoreMode'
 
 export class NestedQuery extends QueryBase {

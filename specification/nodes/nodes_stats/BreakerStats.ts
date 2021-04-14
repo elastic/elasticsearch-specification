@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, long } from '../../__common/common'
+import { float, long } from '@common/common'
 
 export class BreakerStats {
   estimated_size: string

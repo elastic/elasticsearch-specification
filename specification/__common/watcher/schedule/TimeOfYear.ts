@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../common'
+import { integer } from '@common/common'
 import { Month } from './Month'
 
 export class TimeOfYear {

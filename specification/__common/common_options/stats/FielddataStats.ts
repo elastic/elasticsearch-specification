@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, long } from '../../common'
+import { ByteSize, long } from '@common/common'
 
 export class FielddataStats {
   evictions?: long

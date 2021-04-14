@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize } from '../../__common/common'
+import { ByteSize } from '@common/common'
 
 export class Limits {
   max_model_memory_limit?: ByteSize

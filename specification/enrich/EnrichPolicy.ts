@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, Fields, Indices } from '../__common/common'
+import { Field, Fields, Indices } from '@common/common'
 
 export class EnrichPolicy {
   enrich_fields: Fields

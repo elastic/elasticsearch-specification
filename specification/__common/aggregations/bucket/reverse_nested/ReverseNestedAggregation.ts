@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field } from '../../../common'
+import { Field } from '@common/common'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class ReverseNestedAggregation extends BucketAggregationBase {

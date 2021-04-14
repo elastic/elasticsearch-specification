@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '../../../../__spec_utils/behaviors'
-import { float } from '../../../common'
+import { float } from '@common/common'
+import { AdditionalProperties } from '__spec_utils/behaviors'
 
 export class QueryBase {
   boost?: float

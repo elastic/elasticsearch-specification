@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '../../common'
+import { long } from '@common/common'
 
 export class RecoveryStats {
   current_as_source: long

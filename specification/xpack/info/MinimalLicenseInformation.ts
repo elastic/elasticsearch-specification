@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { LicenseStatus } from '../../license/get_license/LicenseStatus'
-import { LicenseType } from '../../license/get_license/LicenseType'
-import { EpochMillis } from '../../__common/common'
+import { EpochMillis } from '@common/common'
+import { LicenseStatus } from '@license/get_license/LicenseStatus'
+import { LicenseType } from '@license/get_license/LicenseType'
 
 export class MinimalLicenseInformation {
   expiry_date_in_millis: EpochMillis

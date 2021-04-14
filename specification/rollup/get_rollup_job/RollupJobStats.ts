@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
+import { long } from '@common/common'
 
 export class RollupJobStats {
   documents_processed: long

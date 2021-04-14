@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { float, long } from '../../__common/common'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { float, long } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 import { TaskRetries } from './TaskRetries'
 
 export class TaskStatus {

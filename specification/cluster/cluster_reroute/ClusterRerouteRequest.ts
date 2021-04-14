@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Metrics } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { Metrics } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
 import { ClusterRerouteCommand } from './ClusterRerouteCommand'
 
 /**

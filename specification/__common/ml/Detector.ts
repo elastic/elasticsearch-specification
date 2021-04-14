@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ExcludeFrequent } from '../../ml/put_job/ExcludeFrequent'
-import { Field, integer } from '../common'
+import { Field, integer } from '@common/common'
+import { ExcludeFrequent } from '@ml/put_job/ExcludeFrequent'
 import { DetectionRule } from './DetectionRule'
 
 /**

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices } from '../../__common/common'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { FieldSecurity } from '../../__common/security/FieldSecurity'
+import { Indices } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { FieldSecurity } from '@common/security/FieldSecurity'
 
 export class IndicesPrivileges {
   field_security?: FieldSecurity

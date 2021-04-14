@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { StringFielddata } from '../../../../../indices/StringFielddata'
-import { double, integer } from '../../../../common'
-import { TermVectorOption } from '../../../TermVectorOption'
+import { double, integer } from '@common/common'
+import { TermVectorOption } from '@common/mapping/TermVectorOption'
+import { StringFielddata } from '@indices/StringFielddata'
 import { IndexOptions } from '../../core/text/IndexOptions'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 

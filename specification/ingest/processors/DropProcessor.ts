@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ProcessorBase } from '../ProcessorBase'
+import { ProcessorBase } from '@ingest/ProcessorBase'
 
 export class DropProcessor extends ProcessorBase {}

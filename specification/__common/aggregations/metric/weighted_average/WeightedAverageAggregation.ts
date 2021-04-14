@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Aggregation } from '../../Aggregation'
+import { Aggregation } from '@common/aggregations/Aggregation'
 import { ValueType } from './ValueType'
 import { WeightedAverageValue } from './WeightedAverageValue'
 

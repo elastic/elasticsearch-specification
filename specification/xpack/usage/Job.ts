@@ -24,13 +24,13 @@ import {
   integer,
   long,
   VersionString
-} from '../../__common/common'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
-import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'
-import { DataDescription } from '../../__common/ml/DataDescription'
-import { ModelPlotConfig } from '../../__common/ml/ModelPlotConfig'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+} from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+import { AnalysisConfig } from '@common/ml/AnalysisConfig'
+import { AnalysisLimits } from '@common/ml/AnalysisLimits'
+import { DataDescription } from '@common/ml/DataDescription'
+import { ModelPlotConfig } from '@common/ml/ModelPlotConfig'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { JobStatistics } from './JobStatistics'
 
 export class Job {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field } from '../../__common/common'
+import { Field } from '@common/common'
 import { RollupMetric } from './RollupMetric'
 
 export class RollupFieldMetric {

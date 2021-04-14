@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryContainer } from '../__common/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 
 export class AliasDefinition {
   filter?: QueryContainer

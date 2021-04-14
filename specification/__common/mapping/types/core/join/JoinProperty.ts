@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../../../__spec_utils/Dictionary'
-import { RelationName } from '../../../../common'
+import { RelationName } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { PropertyBase } from '../../Property'
 
 export class JoinProperty extends PropertyBase {

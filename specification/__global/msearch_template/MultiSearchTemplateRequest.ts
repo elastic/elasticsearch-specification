@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices, long, Types } from '../../__common/common'
-import { SearchType } from '../../__common/common/SearchType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { SearchTemplateRequest } from '../search_template/SearchTemplateRequest'
+import { Indices, long, Types } from '@common/common'
+import { SearchType } from '@common/common/SearchType'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 /**
  * @rest_spec_name msearch_template

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { ExpandWildcardOptions } from '../../__common/common/ExpandWildcards'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { IndexName } from '@common/common'
+import { ExpandWildcardOptions } from '@common/common/ExpandWildcards'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.data_streams_stats

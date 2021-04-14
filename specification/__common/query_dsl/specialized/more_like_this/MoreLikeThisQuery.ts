@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
-import { StopWords } from '../../../analysis/StopWords'
+import { StopWords } from '@common/analysis/StopWords'
 import {
   double,
   Field,
@@ -26,10 +25,11 @@ import {
   integer,
   Routing,
   VersionNumber
-} from '../../../common'
-import { VersionType } from '../../../common/VersionType'
-import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
-import { QueryBase } from '../../abstractions/query/Query'
+} from '@common/common'
+import { VersionType } from '@common/common/VersionType'
+import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { Like } from './like/Like'
 
 export class MoreLikeThisQuery extends QueryBase {

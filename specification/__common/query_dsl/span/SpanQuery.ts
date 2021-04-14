@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../common'
+import { integer } from '@common/common'
 import { NamedQuery, QueryBase } from '../abstractions/query/Query'
 import { SpanContainingQuery } from './containing/SpanContainingQuery'
 import { SpanFieldMaskingQuery } from './field_masking/SpanFieldMaskingQuery'

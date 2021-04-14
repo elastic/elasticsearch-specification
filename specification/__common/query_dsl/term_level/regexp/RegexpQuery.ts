@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../../common'
-import { QueryBase } from '../../abstractions/query/Query'
+import { integer } from '@common/common'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class RegexpQuery extends QueryBase {
   flags?: string

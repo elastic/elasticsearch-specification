@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Uuid } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Uuid } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { IndexStats } from './IndexStats'
 import { ShardStats } from './ShardStats'
 

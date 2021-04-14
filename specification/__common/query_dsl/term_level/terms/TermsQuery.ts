@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, IndexName, Routing } from '../../../common'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Id, IndexName, Routing } from '@common/common'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class TermsQuery extends QueryBase {
   terms?: string[]

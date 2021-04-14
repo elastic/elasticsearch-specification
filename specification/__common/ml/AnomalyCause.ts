@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, Field, Name } from '../common'
+import { double, Field, Name } from '@common/common'
 import { Influence } from './Influence'
 
 export class AnomalyCause {

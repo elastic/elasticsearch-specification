@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
-import { float, integer } from '../../../common'
+import { float, integer } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { CompositeAggregationSource } from './CompositeAggregationSource'
 

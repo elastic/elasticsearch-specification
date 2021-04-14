@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DataStreamName } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { DataStreamName } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.create_data_stream

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { integer } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class ClusterNetworkTypes {
   http_types: Dictionary<string, integer>

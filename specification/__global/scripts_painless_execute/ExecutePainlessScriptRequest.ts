@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { InlineScript } from '../../__common/common_options/scripting/Script'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { InlineScript } from '@common/common_options/scripting/Script'
 import { PainlessContextSetup } from './PainlessContextSetup'
 
 /**

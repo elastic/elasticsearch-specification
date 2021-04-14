@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { long } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { ShardFileSizeInfo } from './ShardFileSizeInfo'
 
 export class ShardSegments {

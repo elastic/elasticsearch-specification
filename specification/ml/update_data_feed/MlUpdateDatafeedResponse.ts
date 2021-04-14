@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
-import { Id, Indices, integer } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { ChunkingConfig } from '../../__common/ml/ChunkingConfig'
-import { DelayedDataCheckConfig } from '../../__common/ml/Datafeed'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { AggregationContainer } from '@common/aggregations/AggregationContainer'
+import { Id, Indices, integer } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ScriptField } from '@common/common_options/scripting/ScriptField'
+import { Time } from '@common/common_options/time_unit/Time'
+import { ChunkingConfig } from '@common/ml/ChunkingConfig'
+import { DelayedDataCheckConfig } from '@common/ml/Datafeed'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
 export class MlUpdateDatafeedResponse extends ResponseBase {

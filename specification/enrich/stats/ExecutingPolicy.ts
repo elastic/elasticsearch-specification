@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TaskInfo } from '../../task/get_task/TaskInfo'
+import { TaskInfo } from '@task/get_task/TaskInfo'
 
 export class ExecutingPolicy {
   name: string

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '../../common'
+import { long } from '@common/common'
 import { IntervalUnit } from './IntervalUnit'
 import { ScheduleBase } from './ScheduleBase'
 

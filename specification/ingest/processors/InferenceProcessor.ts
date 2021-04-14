@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field, Id } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { ProcessorBase } from '../ProcessorBase'
+import { Field, Id } from '@common/common'
+import { ProcessorBase } from '@ingest/ProcessorBase'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class InferenceProcessor extends ProcessorBase {
   model_id: Id

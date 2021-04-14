@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Job } from '../../xpack/usage/Job'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { Job } from '@xpack/usage/Job'
 
 export class MlGetJobsResponse extends ResponseBase {
   count: long

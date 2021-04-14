@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
+import { integer } from '@common/common'
 import { IlmPolicyStatistics } from './IlmPolicyStatistics'
 
 export class IlmUsage {

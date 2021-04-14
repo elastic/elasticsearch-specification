@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TaskId } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TaskId } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { TaskState } from './TaskState'
 
 export class TaskExecutingNode {

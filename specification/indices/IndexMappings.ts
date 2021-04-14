@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TypeMapping } from '../__common/mapping/TypeMapping'
+import { TypeMapping } from '@common/mapping/TypeMapping'
 
 export class IndexMappings {
   item: TypeMapping

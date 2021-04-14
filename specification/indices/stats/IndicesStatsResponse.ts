@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { IndicesStats } from './IndicesStats'
 
 export class IndicesStatsResponse extends ResponseBase {

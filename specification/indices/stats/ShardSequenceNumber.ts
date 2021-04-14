@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long, SequenceNumber } from '../../__common/common'
+import { long, SequenceNumber } from '@common/common'
 
 export class ShardSequenceNumber {
   global_checkpoint: long

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName, Name, Type, VersionString } from '../../__common/common'
+import { Id, IndexName, Name, Type, VersionString } from '@common/common'
 
 export class CatDataFrameAnalyticsRecord {
   /**

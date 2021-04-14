@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { DateString, Id, long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
-import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'
-import { DataDescription } from '../../__common/ml/DataDescription'
-import { ModelPlotConfig } from '../../__common/ml/ModelPlotConfig'
+import { DateString, Id, long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { Time } from '@common/common_options/time_unit/Time'
+import { AnalysisConfig } from '@common/ml/AnalysisConfig'
+import { AnalysisLimits } from '@common/ml/AnalysisLimits'
+import { DataDescription } from '@common/ml/DataDescription'
+import { ModelPlotConfig } from '@common/ml/ModelPlotConfig'
 
 export class MlPutJobResponse extends ResponseBase {
   allow_lazy_open: boolean

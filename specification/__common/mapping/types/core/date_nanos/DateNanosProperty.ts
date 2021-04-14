@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, double, integer } from '../../../../common'
+import { DateString, double, integer } from '@common/common'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class DateNanosProperty extends DocValuesPropertyBase {

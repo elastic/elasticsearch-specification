@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { long } from '../../common'
+import { long } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class IndexingStats {
   index_current: long

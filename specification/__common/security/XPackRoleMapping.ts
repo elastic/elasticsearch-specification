@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RoleMappingRuleBase } from '../../security/put_role_mapping/SecurityPutRoleMappingRequest'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { RoleMappingRuleBase } from '@security/put_role_mapping/SecurityPutRoleMappingRequest'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class XPackRoleMapping {
   enabled: boolean

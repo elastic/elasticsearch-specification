@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
-import { DateString, Field, integer, long } from '../../../common'
-import { DateMath } from '../../../common_options/date_math/DateMath'
-import { Script } from '../../../common_options/scripting/Script'
-import { Time } from '../../../common_options/time_unit/Time'
+import { DateString, Field, integer, long } from '@common/common'
+import { DateMath } from '@common/common_options/date_math/DateMath'
+import { Script } from '@common/common_options/scripting/Script'
+import { Time } from '@common/common_options/time_unit/Time'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { ExtendedBounds } from '../histogram/ExtendedBounds'
 import { HistogramOrder } from '../histogram/HistogramOrder'

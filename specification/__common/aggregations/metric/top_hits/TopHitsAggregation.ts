@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Highlight } from '../../../../__global/search/highlighting/Highlight'
-import { Sort } from '../../../../__global/search/sort/Sort'
-import { SourceFilter } from '../../../../__global/search/source_filtering/SourceFilter'
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
-import { Fields, integer } from '../../../common'
-import { ScriptField } from '../../../common_options/scripting/ScriptField'
+import { Fields, integer } from '@common/common'
+import { ScriptField } from '@common/common_options/scripting/ScriptField'
+import { Highlight } from '@global/search/highlighting/Highlight'
+import { Sort } from '@global/search/sort/Sort'
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class TopHitsAggregation extends MetricAggregationBase {

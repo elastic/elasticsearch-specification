@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { IndexName } from '../__common/common'
-import { Action } from '../__common/watcher/actions/Action'
-import { ConditionContainer } from '../__common/watcher/conditions/ConditionContainer'
-import { InputContainer } from '../__common/watcher/input/InputContainer'
-import { TransformContainer } from '../__common/watcher/transform/TransformContainer'
-import { TriggerContainer } from '../__common/watcher/trigger/TriggerContainer'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { IndexName } from '@common/common'
+import { Action } from '@common/watcher/actions/Action'
+import { ConditionContainer } from '@common/watcher/conditions/ConditionContainer'
+import { InputContainer } from '@common/watcher/input/InputContainer'
+import { TransformContainer } from '@common/watcher/transform/TransformContainer'
+import { TriggerContainer } from '@common/watcher/trigger/TriggerContainer'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { WatchStatus } from './ack_watch/WatchStatus'
 
 export class Watch {

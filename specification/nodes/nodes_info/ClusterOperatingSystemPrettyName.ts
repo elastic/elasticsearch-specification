@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
+import { integer } from '@common/common'
 
 export class ClusterOperatingSystemPrettyName {
   count: integer

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../../common'
+import { integer } from '@common/common'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class SamplerAggregation extends BucketAggregationBase {

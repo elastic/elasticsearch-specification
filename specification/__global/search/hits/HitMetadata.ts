@@ -24,7 +24,7 @@ import {
   SequenceNumber,
   Type,
   VersionNumber
-} from '../../../__common/common'
+} from '@common/common'
 
 export class HitMetadata<TDocument> {
   _id: Id

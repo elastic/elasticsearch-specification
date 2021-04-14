@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../../../common'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Field } from '@common/common'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { SpanQuery } from '../SpanQuery'
 
 export class SpanFieldMaskingQuery extends QueryBase {

@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Aggregate } from '../__common/aggregations/Aggregate'
-import { double, Id, long, SuggestionName } from '../__common/common'
-import { ClusterStatistics } from '../__common/common_options/hit/ClusterStatistics'
-import { ShardStatistics } from '../__common/common_options/hit/ShardStatistics'
-import { HitsMetadata } from '../__global/search/hits/HitsMetadata'
-import { Profile } from '../__global/search/profile/Profile'
-import { Suggest } from '../__global/search/suggesters/Suggest'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { Aggregate } from '@common/aggregations/Aggregate'
+import { double, Id, long, SuggestionName } from '@common/common'
+import { ClusterStatistics } from '@common/common_options/hit/ClusterStatistics'
+import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { HitsMetadata } from '@global/search/hits/HitsMetadata'
+import { Profile } from '@global/search/profile/Profile'
+import { Suggest } from '@global/search/suggesters/Suggest'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class AsyncSearch<TDocument> {
   aggregations?: Dictionary<string, Aggregate>

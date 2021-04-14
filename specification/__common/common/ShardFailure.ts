@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ErrorCause, integer } from '../common'
+import { ErrorCause, integer } from '@common/common'
 
 export class ShardFailure {
   index: string

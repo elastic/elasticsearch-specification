@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { XPackUser } from '../../__common/security/XPackUser'
+import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
+import { XPackUser } from '@common/security/XPackUser'
 
 export class SecurityGetUserResponse extends DictionaryResponseBase<
   string,

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ShardStatistics } from '../../common_options/hit/ShardStatistics'
+import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
 import { AcknowledgedResponseBase } from './AcknowledgedResponseBase'
 
 export class IndicesResponseBase extends AcknowledgedResponseBase {

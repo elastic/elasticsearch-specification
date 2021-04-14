@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { EpochMillis, Id, integer } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { EpochMillis, Id, integer } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 export class EqlGetStatusResponse extends ResponseBase {
   id: Id

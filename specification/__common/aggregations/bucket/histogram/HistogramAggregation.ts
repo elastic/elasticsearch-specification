@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, Field, integer } from '../../../common'
-import { Script } from '../../../common_options/scripting/Script'
+import { double, Field, integer } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { ExtendedBounds } from './ExtendedBounds'
 import { HistogramOrder } from './HistogramOrder'

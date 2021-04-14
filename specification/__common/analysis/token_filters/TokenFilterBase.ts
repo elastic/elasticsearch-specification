@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { VersionString } from '../../common'
+import { VersionString } from '@common/common'
 import { AsciiFoldingTokenFilter } from './AsciiFoldingTokenFilter'
 import { CommonGramsTokenFilter } from './CommonGramsTokenFilter'
 import { HyphenationDecompounderTokenFilter } from './compound_word/HyphenationDecompounderTokenFilter'

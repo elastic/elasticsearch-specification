@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
-import { DateString, Field, integer } from '../../../common'
-import { Script } from '../../../common_options/scripting/Script'
+import { DateString, Field, integer } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { MinimumInterval } from './MinimumInterval'
 

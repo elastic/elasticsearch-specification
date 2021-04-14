@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, integer, Name } from '../../../common'
+import { Field, integer, Name } from '@common/common'
 import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class InferenceAggregation extends PipelineAggregationBase {

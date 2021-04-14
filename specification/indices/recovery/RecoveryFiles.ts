@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long, Percentage } from '../../__common/common'
+import { long, Percentage } from '@common/common'
 import { RecoveryFileDetails } from './RecoveryFileDetails'
 
 export class RecoveryFiles {

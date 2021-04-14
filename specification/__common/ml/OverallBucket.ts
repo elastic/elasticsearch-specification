@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, double, long } from '../common'
+import { DateString, double, long } from '@common/common'
 import { OverallBucketJobInfo } from './OverallBucketJobInfo'
 
 export class OverallBucket {

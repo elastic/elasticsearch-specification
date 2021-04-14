@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ShardRoutingState } from '../indices/stats/ShardRoutingState'
-import { IndexName, integer, NodeName } from '../__common/common'
-import { Dictionary } from '../__spec_utils/Dictionary'
+import { IndexName, integer, NodeName } from '@common/common'
+import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { UnassignedInformation } from './cluster_allocation_explain/UnassignedInformation'
 
 export class ClusterStateRoutingNodes {

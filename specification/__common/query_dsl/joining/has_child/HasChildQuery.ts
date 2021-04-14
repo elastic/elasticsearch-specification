@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { InnerHits } from '../../../../__global/search/inner_hits/InnerHits'
-import { integer, RelationName } from '../../../common'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { integer, RelationName } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { InnerHits } from '@global/search/inner_hits/InnerHits'
 import { ChildScoreMode } from './ChildScoreMode'
 
 export class HasChildQuery extends QueryBase {

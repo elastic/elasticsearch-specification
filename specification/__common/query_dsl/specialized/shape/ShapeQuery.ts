@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ShapeRelation } from '../../../common_options/shape/ShapeRelation'
-import { FieldLookup } from '../../abstractions/field_lookup/FieldLookup'
-import { QueryBase } from '../../abstractions/query/Query'
-import { GeoShape } from '../../geo/shape/GeoShape'
+import { ShapeRelation } from '@common/common_options/shape/ShapeRelation'
+import { FieldLookup } from '@common/query_dsl/abstractions/field_lookup/FieldLookup'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { GeoShape } from '@common/query_dsl/geo/shape/GeoShape'
 
 export class ShapeQuery extends QueryBase {
   ignore_unmapped?: boolean

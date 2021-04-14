@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, long } from '../../common'
+import { integer, long } from '@common/common'
 
 export class TranslogStats {
   earliest_last_modified_age: long

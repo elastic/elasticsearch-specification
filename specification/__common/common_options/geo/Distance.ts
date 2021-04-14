@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '../../common'
+import { double } from '@common/common'
 import { DistanceUnit } from './DistanceUnit'
 
 /*

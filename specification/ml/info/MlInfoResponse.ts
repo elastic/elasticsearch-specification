@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Defaults } from './Defaults'
 import { Limits } from './Limits'
 import { NativeCode } from './NativeCode'

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../../../common'
-import { Missing } from '../../AggregationContainer'
+import { Missing } from '@common/aggregations/AggregationContainer'
+import { Field } from '@common/common'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class MissingAggregation extends BucketAggregationBase {

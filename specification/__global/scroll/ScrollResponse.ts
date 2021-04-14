@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
-import { SearchResponse } from '../search/SearchResponse'
+import { integer } from '@common/common'
+import { SearchResponse } from '@global/search/SearchResponse'
 
 export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {
   failed_shards?: Array<ScrollResponseFailedShard>

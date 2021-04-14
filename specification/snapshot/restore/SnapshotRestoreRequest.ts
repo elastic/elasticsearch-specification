@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndicesPutSettingsRequest } from '../../indices/put_settings/IndicesPutSettingsRequest'
-import { Indices, Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { Indices, Name } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
+import { IndicesPutSettingsRequest } from '@indices/put_settings/IndicesPutSettingsRequest'
 
 /**
  * @rest_spec_name snapshot.restore

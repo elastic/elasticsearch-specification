@@ -23,10 +23,10 @@ import {
   Routing,
   Type,
   WaitForActiveShards
-} from '../../__common/common'
-import { Refresh } from '../../__common/common/Refresh'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+} from '@common/common'
+import { Refresh } from '@common/common/Refresh'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
 import { BulkOperationContainer } from './BulkOperation'
 
 /**

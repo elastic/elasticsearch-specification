@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class ScriptBase {
   lang?: string

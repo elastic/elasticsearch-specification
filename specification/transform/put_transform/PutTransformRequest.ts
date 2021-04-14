@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { TransformPivot } from '../pivot/TransformPivot'
-import { TransformDestination } from '../TransformDestination'
-import { TransformSource } from '../TransformSource'
-import { TransformSyncContainer } from '../TransformSyncContainer'
+import { Name } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
+import { TransformPivot } from '@transform/pivot/TransformPivot'
+import { TransformDestination } from '@transform/TransformDestination'
+import { TransformSource } from '@transform/TransformSource'
+import { TransformSyncContainer } from '@transform/TransformSyncContainer'
 
 /**
  * @rest_spec_name transform.put_transform

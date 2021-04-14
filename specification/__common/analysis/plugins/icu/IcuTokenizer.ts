@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TokenizerBase } from '../../tokenizers/TokenizerBase'
+import { TokenizerBase } from '@common/analysis/tokenizers/TokenizerBase'
 
 export class IcuTokenizer extends TokenizerBase {
   rule_files: string

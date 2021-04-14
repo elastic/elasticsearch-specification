@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
-import { CatRequestBase } from '../CatBase'
+import { CatRequestBase } from '@cat/CatBase'
+import { Id } from '@common/common'
 
 /**
  * @rest_spec_name cat.ml_datafeeds

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { ApplicationResourcePrivileges } from './ApplicationResourcePrivileges'
 import { GlobalPrivileges } from './GlobalPrivileges'
 import { UserIndicesPrivileges } from './UserIndicesPrivileges'

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../../common'
-import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
+import { TokenFilterBase } from '@common/analysis/token_filters/TokenFilterBase'
+import { integer } from '@common/common'
 
 export class KuromojiStemmerTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */

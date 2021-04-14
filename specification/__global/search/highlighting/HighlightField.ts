@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field, Fields, integer } from '../../../__common/common'
-import { QueryContainer } from '../../../__common/query_dsl/abstractions/container/QueryContainer'
+import { Field, Fields, integer } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { BoundaryScanner } from './BoundaryScanner'
 import { HighlighterFragmenter } from './HighlighterFragmenter'
 import { HighlighterOrder } from './HighlighterOrder'

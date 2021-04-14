@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices } from '../__common/common'
+import { Indices } from '@common/common'
 
 export class SnapshotLifecycleConfig {
   ignore_unavailable?: boolean

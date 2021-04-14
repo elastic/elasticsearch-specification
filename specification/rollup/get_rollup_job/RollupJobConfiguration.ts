@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from '../../__common/common'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { RollupFieldMetric } from '../rollup_configuration/RollupFieldMetric'
-import { RollupGroupings } from '../rollup_configuration/RollupGroupings'
+import { Id, IndexName, long } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+import { RollupFieldMetric } from '@rollup/rollup_configuration/RollupFieldMetric'
+import { RollupGroupings } from '@rollup/rollup_configuration/RollupGroupings'
 
 export class RollupJobConfiguration {
   cron: string

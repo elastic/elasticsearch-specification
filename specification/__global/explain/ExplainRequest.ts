@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Fields, Id, IndexName, Routing, Type } from '../../__common/common'
-import { DefaultOperator } from '../../__common/common/DefaultOperator'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { SourceFilter } from '../search/source_filtering/SourceFilter'
+import { Fields, Id, IndexName, Routing, Type } from '@common/common'
+import { DefaultOperator } from '@common/common/DefaultOperator'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name explain

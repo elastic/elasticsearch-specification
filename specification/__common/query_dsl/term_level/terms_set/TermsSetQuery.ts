@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '../../../common'
-import { Script } from '../../../common_options/scripting/Script'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Field } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class TermsSetQuery extends QueryBase {
   minimum_should_match_field?: Field

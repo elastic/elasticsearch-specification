@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
+import { integer } from '@common/common'
 import { XPackUsage } from './XPackUsage'
 
 export class VectorUsage extends XPackUsage {

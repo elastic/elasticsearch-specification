@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { NodesResponseBase } from '../NodesResponseBase'
-import { NodeStats } from '../nodes_stats/NodeStats'
+import { Name } from '@common/common'
+import { NodesResponseBase } from '@nodes/NodesResponseBase'
+import { NodeStats } from '@nodes/nodes_stats/NodeStats'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { NodeReloadException } from './NodeReloadException'
 
 export class ReloadSecureSettingsResponse extends NodesResponseBase {

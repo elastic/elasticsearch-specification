@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { RealmInfo } from '../../__common/security/RealmInfo'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Name } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { RealmInfo } from '@common/security/RealmInfo'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class SecurityAuthenticateResponse extends ResponseBase {
   authentication_realm: RealmInfo

@@ -25,10 +25,10 @@ import {
   SequenceNumber,
   Type,
   VersionNumber
-} from '../../../__common/common'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
-import { Explanation } from '../../explain/Explanation'
+} from '@common/common'
+import { Explanation } from '@global/explain/Explanation'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { SortResults } from '../sort/Sort'
 import { InnerHitsResult } from './InnerHitsResult'
 import { NestedIdentity } from './NestedIdentity'

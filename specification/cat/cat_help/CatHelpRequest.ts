@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '../CatBase'
+import { CatRequestBase } from '@cat/CatBase'
 
 /**
  * @rest_spec_name cat.help

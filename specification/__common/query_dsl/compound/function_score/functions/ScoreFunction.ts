@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '../../../../../__spec_utils/behaviors'
-import { double, Field, long } from '../../../../common'
-import { DateMath } from '../../../../common_options/date_math/DateMath'
-import { Distance } from '../../../../common_options/geo/Distance'
-import { Script } from '../../../../common_options/scripting/Script'
-import { Time } from '../../../../common_options/time_unit/Time'
-import { QueryContainer } from '../../../abstractions/container/QueryContainer'
-import { GeoLocation } from '../../../geo/GeoLocation'
+import { double, Field, long } from '@common/common'
+import { DateMath } from '@common/common_options/date_math/DateMath'
+import { Distance } from '@common/common_options/geo/Distance'
+import { Script } from '@common/common_options/scripting/Script'
+import { Time } from '@common/common_options/time_unit/Time'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
+import { AdditionalProperties } from '__spec_utils/behaviors'
 import { MultiValueMode } from './decay/MultiValueMode'
 import { FieldValueFactorModifier } from './field_value/FieldValueFactorModifier'
 

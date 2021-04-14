@@ -24,9 +24,9 @@ import {
   Routing,
   Type,
   VersionNumber
-} from '../../__common/common'
-import { VersionType } from '../../__common/common/VersionType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+} from '@common/common'
+import { VersionType } from '@common/common/VersionType'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name get

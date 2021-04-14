@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { double, Field, Fields } from '../../common'
+import { double, Field, Fields } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { Aggregation } from '../Aggregation'
 
 export class MatrixAggregation extends Aggregation {

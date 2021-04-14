@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { DatafeedStats } from '../../__common/ml/DatafeedStats'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { DatafeedStats } from '@common/ml/DatafeedStats'
 
 export class MlGetDatafeedStatsResponse extends ResponseBase {
   count: long

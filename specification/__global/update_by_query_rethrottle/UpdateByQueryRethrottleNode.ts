@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { TaskInfo } from '../../task/get_task/TaskInfo'
-import { Name, TaskId } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Name, TaskId } from '@common/common'
+import { TaskInfo } from '@task/get_task/TaskInfo'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class UpdateByQueryRethrottleNode {
   attributes: Dictionary<string, string>

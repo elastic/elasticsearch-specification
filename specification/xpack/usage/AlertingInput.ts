@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { UsageCount } from './UsageCount'
 
 export class AlertingInput {

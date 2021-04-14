@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndexName } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { LifecycleExplain } from './LifecycleExplain'
 
 export class ExplainLifecycleResponse extends ResponseBase {

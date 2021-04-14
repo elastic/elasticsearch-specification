@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Timestamp } from '../../__common/common'
+import { Timestamp } from '@common/common'
 
 export class ActivationState {
   active: boolean

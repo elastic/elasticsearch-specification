@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '../common'
+import { double, long } from '@common/common'
 
 export class DatafeedTimingStats {
   bucket_count: long

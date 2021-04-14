@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { SearchResponse } from '../search/SearchResponse'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { SearchResponse } from '@global/search/SearchResponse'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class MultiSearchTemplateResponse extends ResponseBase {
   responses: SearchResponse<UserDefinedValue>[]

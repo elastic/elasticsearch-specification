@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Fields } from '../../common'
+import { Fields } from '@common/common'
 import { NestedProperty } from './complex/nested/NestedProperty'
 import { ObjectProperty } from './complex/object/ObjectProperty'
 import { SearchAsYouTypeProperty } from './core/search_as_you_type/SearchAsYouTypeProperty'

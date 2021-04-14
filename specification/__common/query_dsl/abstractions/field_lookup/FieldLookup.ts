@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, Id, IndexName, Routing } from '../../../common'
+import { Field, Id, IndexName, Routing } from '@common/common'
 
 export class FieldLookup {
   id?: Id

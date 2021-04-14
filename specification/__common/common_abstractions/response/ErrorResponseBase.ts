@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, MainError } from '../../common'
+import { integer, MainError } from '@common/common'
 
 export class ErrorResponse {
   error: MainError

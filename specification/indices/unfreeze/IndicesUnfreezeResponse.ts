@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
 
 export class IndicesUnfreezeResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean

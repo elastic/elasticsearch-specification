@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '../../../common'
+import { double } from '@common/common'
 import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class ExtendedStatsBucketAggregation extends PipelineAggregationBase {

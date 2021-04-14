@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { NodesResponseBase } from '../NodesResponseBase'
+import { NodesResponseBase } from '@nodes/NodesResponseBase'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { NodeStats } from './NodeStats'
 
 export class NodesStatsResponse extends NodesResponseBase {

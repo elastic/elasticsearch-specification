@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
-import { Indices, integer, long, Types } from '../../__common/common'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { SearchType } from '../../__common/common/SearchType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { PointInTimeReference } from '../search/point_in_time/PointInTimeReference'
-import { SuggestContainer } from '../search/suggesters/SuggestContainer'
+import { AggregationContainer } from '@common/aggregations/AggregationContainer'
+import { Indices, integer, long, Types } from '@common/common'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { SearchType } from '@common/common/SearchType'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
+import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 /**
  * @rest_spec_name msearch

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
-import { Indices, integer, Type } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { AggregationContainer } from '@common/aggregations/AggregationContainer'
+import { Indices, integer, Type } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 /**
  * @rest_spec_name rollup.rollup_search

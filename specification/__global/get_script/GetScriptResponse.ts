@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { StoredScript } from '../../__common/scripting/StoredScript'
+import { Id } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { StoredScript } from '@common/scripting/StoredScript'
 
 export class GetScriptResponse extends ResponseBase {
   _id: Id

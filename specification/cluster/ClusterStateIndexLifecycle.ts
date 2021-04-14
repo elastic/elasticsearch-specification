@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { LifecycleOperationMode } from '../ilm/get_status/LifecycleOperationMode'
-import { Phases } from '../ilm/Phases'
-import { DateString, IndexName, long, VersionNumber } from '../__common/common'
-import { Dictionary } from '../__spec_utils/Dictionary'
+import { DateString, IndexName, long, VersionNumber } from '@common/common'
+import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
+import { Phases } from '@ilm/Phases'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class ClusterStateIndexLifecycle {
   policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString } from '../common'
+import { DateString } from '@common/common'
 import { DataCounts } from './DataCounts'
 import { DiscoveryNode } from './DiscoveryNode'
 import { JobForecastStatistics } from './JobForecastStatistics'

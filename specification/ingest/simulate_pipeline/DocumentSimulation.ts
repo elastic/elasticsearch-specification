@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, IndexName, Type } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Id, IndexName, Type } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { Ingest } from './Ingest'
 
 export class DocumentSimulation {

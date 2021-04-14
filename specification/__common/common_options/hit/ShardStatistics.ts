@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { uint } from '../../common'
-import { ShardFailure } from '../../common/ShardFailure'
+import { uint } from '@common/common'
+import { ShardFailure } from '@common/common/ShardFailure'
 
 export class ShardStatistics {
   failed: uint

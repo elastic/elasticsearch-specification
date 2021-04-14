@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Script } from '../../../common_options/scripting/Script'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Script } from '@common/common_options/scripting/Script'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class ScriptScoreQuery extends QueryBase {
   query?: QueryContainer

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Sort } from '../../../../__global/search/sort/Sort'
-import { integer } from '../../../common'
+import { integer } from '@common/common'
+import { Sort } from '@global/search/sort/Sort'
 import { MetricAggregationBase } from '../MetricAggregation'
 import { TopMetricsValue } from './TopMetricsValue'
 

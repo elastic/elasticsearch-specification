@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '../../../__common/common'
+import { double, long } from '@common/common'
 import { Hit } from './Hit'
 import { TotalHits } from './TotalHits'
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
+import { AggregationContainer } from '@common/aggregations/AggregationContainer'
 import {
   DateField,
   double,
@@ -29,18 +29,18 @@ import {
   long,
   Routing,
   Types
-} from '../../__common/common'
-import { DefaultOperator } from '../../__common/common/DefaultOperator'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { SearchType } from '../../__common/common/SearchType'
-import { SuggestMode } from '../../__common/common/SuggestMode'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { RuntimeFields } from '../../__common/mapping/runtime_fields/RuntimeFields'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { SlicedScroll } from '../scroll/SlicedScroll'
+} from '@common/common'
+import { DefaultOperator } from '@common/common/DefaultOperator'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { SearchType } from '@common/common/SearchType'
+import { SuggestMode } from '@common/common/SuggestMode'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { ScriptField } from '@common/common_options/scripting/ScriptField'
+import { Time } from '@common/common_options/time_unit/Time'
+import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { SlicedScroll } from '@global/scroll/SlicedScroll'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { FieldCollapse } from './collapsing/FieldCollapse'
 import { Highlight } from './highlighting/Highlight'
 import { PointInTimeReference } from './point_in_time/PointInTimeReference'

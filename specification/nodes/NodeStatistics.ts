@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ErrorCause, integer } from '../__common/common'
+import { ErrorCause, integer } from '@common/common'
 
 export class NodeStatistics {
   failed: integer

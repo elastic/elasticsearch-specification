@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { VersionString } from '../../common'
+import { VersionString } from '@common/common'
 
 export class PluginStats {
   classname: string

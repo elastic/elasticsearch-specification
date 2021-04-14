@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ErrorCause, long } from '../../__common/common'
+import { ErrorCause, long } from '@common/common'
 import { AutoFollowedCluster } from './AutoFollowedCluster'
 
 export class CcrAutoFollowStats {

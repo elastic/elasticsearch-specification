@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexPattern, IndexPatterns, integer } from '../../__common/common'
+import { IndexPattern, IndexPatterns, integer } from '@common/common'
 
 export class AutoFollowPattern {
   active: boolean

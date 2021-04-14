@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '../common'
+import { Id } from '@common/common'
 import { RuleFilterType } from './RuleFilterType'
 
 export class FilterRef {

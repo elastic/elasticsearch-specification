@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer, PipelineName } from '../common'
-import { Time } from '../common_options/time_unit/Time'
+import { integer, PipelineName } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings

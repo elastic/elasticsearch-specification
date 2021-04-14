@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { float } from '../../../common'
-import { QueryBase } from '../../abstractions/query/Query'
+import { float } from '@common/common'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class TermQuery extends QueryBase {
   /** @prop_serializer SourceWriteFormatter`1 */

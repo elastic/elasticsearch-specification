@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
+import { AggregationContainer } from '@common/aggregations/AggregationContainer'
 import {
   DateField,
   double,
@@ -28,24 +28,24 @@ import {
   integer,
   long,
   Routing
-} from '../../__common/common'
-import { DefaultOperator } from '../../__common/common/DefaultOperator'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { SearchType } from '../../__common/common/SearchType'
-import { SuggestMode } from '../../__common/common/SuggestMode'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { FieldCollapse } from '../../__global/search/collapsing/FieldCollapse'
-import { Highlight } from '../../__global/search/highlighting/Highlight'
-import { PointInTimeReference } from '../../__global/search/point_in_time/PointInTimeReference'
-import { Rescore } from '../../__global/search/rescoring/Rescore'
-import { Sort } from '../../__global/search/sort/Sort'
-import { SourceFilter } from '../../__global/search/source_filtering/SourceFilter'
-import { SuggestContainer } from '../../__global/search/suggesters/SuggestContainer'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+} from '@common/common'
+import { DefaultOperator } from '@common/common/DefaultOperator'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { SearchType } from '@common/common/SearchType'
+import { SuggestMode } from '@common/common/SuggestMode'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { ScriptField } from '@common/common_options/scripting/ScriptField'
+import { Time } from '@common/common_options/time_unit/Time'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { FieldCollapse } from '@global/search/collapsing/FieldCollapse'
+import { Highlight } from '@global/search/highlighting/Highlight'
+import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
+import { Rescore } from '@global/search/rescoring/Rescore'
+import { Sort } from '@global/search/sort/Sort'
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name async_search.submit

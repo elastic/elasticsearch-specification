@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '../../../../__common/common'
+import { Id } from '@common/common'
 
 export class PhraseSuggestCollateQuery {
   id?: Id

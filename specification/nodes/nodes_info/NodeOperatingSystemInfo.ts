@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, Name, VersionString } from '../../__common/common'
+import { integer, Name, VersionString } from '@common/common'
 import { NodeInfoMemory } from './NodeInfoMemory'
 import { NodeInfoOSCPU } from './NodeInfoOSCPU'
 

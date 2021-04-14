@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, integer } from '../__common/common'
-import { ResponseBase } from '../__common/common_abstractions/response/ResponseBase'
+import { Id, integer } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { EqlHits } from './EqlHits'
 
 export class EqlSearchResponseBase<TEvent> extends ResponseBase {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, Name, VersionNumber } from '../../__common/common'
+import { DateString, Name, VersionNumber } from '@common/common'
 
 export class AutoFollowedCluster {
   cluster_name: Name

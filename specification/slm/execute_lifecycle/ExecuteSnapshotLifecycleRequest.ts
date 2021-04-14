@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Name } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name slm.execute_lifecycle

@@ -24,7 +24,7 @@ import {
   Percentage,
   Type,
   VersionString
-} from '../../__common/common'
+} from '@common/common'
 
 export class CatNodesRecord {
   /**

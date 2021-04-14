@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../../common'
-import { TokenizerBase } from '../../tokenizers/TokenizerBase'
+import { TokenizerBase } from '@common/analysis/tokenizers/TokenizerBase'
+import { integer } from '@common/common'
 import { KuromojiTokenizationMode } from './KuromojiTokenizationMode'
 
 export class KuromojiTokenizer extends TokenizerBase {

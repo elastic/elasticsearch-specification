@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field } from '../../../../common'
+import { Field } from '@common/common'
 import { PropertyBase } from '../../Property'
 
 export class FieldAliasProperty extends PropertyBase {

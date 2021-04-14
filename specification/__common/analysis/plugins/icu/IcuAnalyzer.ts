@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AnalyzerBase } from '../../analyzers/AnalyzerBase'
+import { AnalyzerBase } from '@common/analysis/analyzers/AnalyzerBase'
 import { IcuNormalizationMode } from './normalization/IcuNormalizationMode'
 import { IcuNormalizationType } from './normalization/IcuNormalizationType'
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Script } from '../../../common_options/scripting/Script'
+import { Script } from '@common/common_options/scripting/Script'
 import { IntervalsContainer } from './IntervalsContainer'
 
 export class IntervalsFilter {

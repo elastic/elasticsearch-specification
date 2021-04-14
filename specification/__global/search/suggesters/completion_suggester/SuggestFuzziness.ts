@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Fuzziness, integer } from '../../../../__common/common'
+import { Fuzziness, integer } from '@common/common'
 
 export class SuggestFuzziness {
   fuzziness: Fuzziness

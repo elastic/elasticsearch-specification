@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { NodeStatistics } from '../../nodes/NodeStatistics'
-import { Name } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { SecurityNode } from '../../__common/security/SecurityNode'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Name } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { SecurityNode } from '@common/security/SecurityNode'
+import { NodeStatistics } from '@nodes/NodeStatistics'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class SecurityClearCachedRealmsResponse extends ResponseBase {
   cluster_name: Name

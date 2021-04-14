@@ -24,9 +24,9 @@ import {
   Id,
   integer,
   Timestamp
-} from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Page } from '../../__common/ml/Page'
+} from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Page } from '@common/ml/Page'
 
 /**
  * @rest_spec_name ml.get_buckets

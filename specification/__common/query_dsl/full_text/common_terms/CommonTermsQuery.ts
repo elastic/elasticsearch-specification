@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { double } from '../../../common'
-import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
-import { QueryBase } from '../../abstractions/query/Query'
-import { Operator } from '../../Operator'
+import { double } from '@common/common'
+import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { Operator } from '@common/query_dsl/Operator'
 
 export class CommonTermsQuery extends QueryBase {
   analyzer?: string

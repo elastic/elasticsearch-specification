@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Uri } from '../../__common/common'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { Uri } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 
 export class RemoteSource {
   connect_timeout: Time

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, Id } from '../../../common'
-import { EmailBody } from '../../actions/email/EmailBody'
-import { EmailPriority } from '../../actions/email/EmailPriority'
+import { DateString, Id } from '@common/common'
+import { EmailBody } from '@common/watcher/actions/email/EmailBody'
+import { EmailPriority } from '@common/watcher/actions/email/EmailPriority'
 
 export class EmailResult {
   bcc?: string[]

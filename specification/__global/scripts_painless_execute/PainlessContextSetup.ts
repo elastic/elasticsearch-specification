@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { IndexName } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class PainlessContextSetup {
   document: UserDefinedValue

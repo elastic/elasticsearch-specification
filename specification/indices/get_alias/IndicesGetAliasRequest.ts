@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices, Names } from '../../__common/common'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Indices, Names } from '@common/common'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.get_alias

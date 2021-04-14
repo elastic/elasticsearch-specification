@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { double, float } from '../../../common'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { double, float } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class DisMaxQuery extends QueryBase {
   queries?: QueryContainer[]

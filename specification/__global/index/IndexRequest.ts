@@ -26,12 +26,12 @@ import {
   Type,
   VersionNumber,
   WaitForActiveShards
-} from '../../__common/common'
-import { OpType } from '../../__common/common/OpType'
-import { Refresh } from '../../__common/common/Refresh'
-import { VersionType } from '../../__common/common/VersionType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+} from '@common/common'
+import { OpType } from '@common/common/OpType'
+import { Refresh } from '@common/common/Refresh'
+import { VersionType } from '@common/common/VersionType'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name index

@@ -25,7 +25,7 @@ import {
   long,
   SequenceNumber,
   VersionNumber
-} from '../../__common/common'
+} from '@common/common'
 import { FollowIndexReadException } from './FollowIndexReadException'
 
 export class FollowIndexShardStats {

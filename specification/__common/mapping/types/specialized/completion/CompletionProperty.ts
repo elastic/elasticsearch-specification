@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../../../common'
+import { integer } from '@common/common'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 import { SuggestContext } from './SuggestContext'
 

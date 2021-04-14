@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, long } from '../common'
+import { Id, long } from '@common/common'
 
 export class CategoryDefinition {
   category_id: long

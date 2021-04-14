@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name, TaskId } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Name, TaskId } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { ReindexTask } from './ReindexTask'
 
 export class ReindexNode {

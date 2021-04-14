@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodeId } from '../../__common/common'
+import { NodeId } from '@common/common'
 
 export class CatThreadPoolRecord {
   /**

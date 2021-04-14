@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { integer, long, Name, VersionString } from '../../__common/common'
-import { CompletionStats } from '../../__common/common_options/stats/CompletionStats'
-import { DocStats } from '../../__common/common_options/stats/DocStats'
-import { FielddataStats } from '../../__common/common_options/stats/FielddataStats'
-import { QueryCacheStats } from '../../__common/common_options/stats/QueryCacheStats'
-import { SegmentsStats } from '../../__common/common_options/stats/SegmentsStats'
-import { StoreStats } from '../../__common/common_options/stats/StoreStats'
+import { integer, long, Name, VersionString } from '@common/common'
+import { CompletionStats } from '@common/common_options/stats/CompletionStats'
+import { DocStats } from '@common/common_options/stats/DocStats'
+import { FielddataStats } from '@common/common_options/stats/FielddataStats'
+import { QueryCacheStats } from '@common/common_options/stats/QueryCacheStats'
+import { SegmentsStats } from '@common/common_options/stats/SegmentsStats'
+import { StoreStats } from '@common/common_options/stats/StoreStats'
 import { ClusterIndicesShardsStats } from './ClusterIndicesShardsStats'
 
 export class ClusterIndicesStats {

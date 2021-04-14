@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, GeoTilePrecision, integer } from '../../../common'
+import { Field, GeoTilePrecision, integer } from '@common/common'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class GeoTileGridAggregation extends BucketAggregationBase {

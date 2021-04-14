@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '../ingest/ProcessorContainer'
-import { Id, VersionNumber } from '../__common/common'
+import { Id, VersionNumber } from '@common/common'
+import { ProcessorContainer } from '@ingest/ProcessorContainer'
 
 export class ClusterStateIngest {
   pipeline: ClusterStateIngestPipeline[]

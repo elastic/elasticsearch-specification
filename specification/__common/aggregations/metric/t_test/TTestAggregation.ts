@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from '../../../common'
-import { Script } from '../../../common_options/scripting/Script'
-import { QueryContainer } from '../../../query_dsl/abstractions/container/QueryContainer'
-import { Aggregation } from '../../Aggregation'
+import { Aggregation } from '@common/aggregations/Aggregation'
+import { Field } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 
 export class TTestAggregation extends Aggregation {
   a?: TestPopulation

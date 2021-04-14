@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long, Name } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { long, Name } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { UsageCount } from './UsageCount'
 import { XPackUsage } from './XPackUsage'
 

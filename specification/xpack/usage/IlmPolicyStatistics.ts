@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Phases } from '../../ilm/Phases'
-import { integer } from '../../__common/common'
+import { integer } from '@common/common'
+import { Phases } from '@ilm/Phases'
 
 export class IlmPolicyStatistics {
   indices_managed: integer

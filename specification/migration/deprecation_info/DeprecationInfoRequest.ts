@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { IndexName } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name migration.deprecations

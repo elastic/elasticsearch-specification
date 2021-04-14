@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { SnapshotLifecycleStats } from '../xpack/usage/SnapshotLifecycleStats'
 import {
   DateString,
   EpochMillis,
   Id,
   long,
   VersionNumber
-} from '../__common/common'
+} from '@common/common'
+import { SnapshotLifecycleStats } from '@xpack/usage/SnapshotLifecycleStats'
 import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
 import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'
 import { SnapshotLifecyclePolicy } from './SnapshotLifecyclePolicy'

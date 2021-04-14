@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SlackMessage } from '../../actions/slack/SlackMessage'
+import { SlackMessage } from '@common/watcher/actions/slack/SlackMessage'
 import { HttpInputRequestResult } from '../HttpInputRequestResult'
 import { HttpInputResponseResult } from '../HttpInputResponseResult'
 

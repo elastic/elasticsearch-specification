@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AnalyzerBase } from '../../analyzers/AnalyzerBase'
+import { AnalyzerBase } from '@common/analysis/analyzers/AnalyzerBase'
 import { KuromojiTokenizationMode } from './KuromojiTokenizationMode'
 
 export class KuromojiAnalyzer extends AnalyzerBase {

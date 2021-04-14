@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { VersionString } from '../../common'
+import { VersionString } from '@common/common'
 import { PatternReplaceTokenFilter } from '../token_filters/PatternReplaceTokenFilter'
 import { HtmlStripCharFilter } from './HtmlStripCharFilter'
 import { MappingCharFilter } from './MappingCharFilter'

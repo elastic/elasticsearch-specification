@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long, VersionNumber } from '../../__common/common'
+import { long, VersionNumber } from '@common/common'
 import { ShardLease } from './ShardLease'
 
 export class ShardRetentionLeases {

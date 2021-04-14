@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString } from '../../common'
+import { DateString } from '@common/common'
 
 export class ScheduleTriggerEvent {
   scheduled_time: DateString | string

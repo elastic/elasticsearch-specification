@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '../../../common'
-import { GeoLocation } from '../../../query_dsl/geo/GeoLocation'
+import { long } from '@common/common'
+import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class GeoCentroidAggregation extends MetricAggregationBase {

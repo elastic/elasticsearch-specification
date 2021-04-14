@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, integer, long, VersionString } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { double, integer, long, VersionString } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class Segment {
   attributes: Dictionary<string, string>

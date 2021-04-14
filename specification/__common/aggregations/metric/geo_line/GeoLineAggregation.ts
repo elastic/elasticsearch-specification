@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SortOrder } from '../../../../__global/search/sort/SortOrder'
-import { Field, integer } from '../../../common'
+import { Field, integer } from '@common/common'
+import { SortOrder } from '@global/search/sort/SortOrder'
 
 export class GeoLineAggregation {
   point: GeoLinePoint

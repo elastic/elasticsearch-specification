@@ -24,11 +24,11 @@ import {
   long,
   SequenceNumber,
   VersionNumber
-} from '../../__common/common'
-import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { InlineGet } from '../explain/InlineGet'
+} from '@common/common'
+import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { InlineGet } from '@global/explain/InlineGet'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class BulkResponseItemBase {
   _id?: string | null

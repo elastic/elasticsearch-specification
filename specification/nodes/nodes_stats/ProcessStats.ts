@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, long } from '../../__common/common'
+import { integer, long } from '@common/common'
 import { CPUStats } from './CPUStats'
 import { MemoryStats } from './MemoryStats'
 

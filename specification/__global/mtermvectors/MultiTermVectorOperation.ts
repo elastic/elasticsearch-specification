@@ -17,15 +17,9 @@
  * under the License.
  */
 
-import {
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  VersionNumber
-} from '../../__common/common'
-import { VersionType } from '../../__common/common/VersionType'
-import { TermVectorFilter } from '../termvectors/TermVectorFilter'
+import { Fields, Id, IndexName, Routing, VersionNumber } from '@common/common'
+import { VersionType } from '@common/common/VersionType'
+import { TermVectorFilter } from '@global/termvectors/TermVectorFilter'
 
 export class MultiTermVectorOperation {
   doc: any

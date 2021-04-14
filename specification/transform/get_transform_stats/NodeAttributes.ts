@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NodeRoles } from '../../nodes/nodes_info/NodeRole'
-import { Id, Name } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Id, Name } from '@common/common'
+import { NodeRoles } from '@nodes/nodes_info/NodeRole'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class NodeAttributes {
   attributes: Dictionary<string, string>

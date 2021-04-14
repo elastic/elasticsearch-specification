@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { JobStatistics } from '../../xpack/usage/JobStatistics'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { integer, long } from '../common'
+import { integer, long } from '@common/common'
+import { JobStatistics } from '@xpack/usage/JobStatistics'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class JobForecastStatistics {
   memory_bytes?: JobStatistics

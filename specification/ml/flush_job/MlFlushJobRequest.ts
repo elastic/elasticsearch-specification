@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DateString, Id } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { DateString, Id } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.flush_job

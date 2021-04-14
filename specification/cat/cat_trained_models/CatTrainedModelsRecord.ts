@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, DateString, Id, VersionString } from '../../__common/common'
+import { ByteSize, DateString, Id, VersionString } from '@common/common'
 
 export class CatTrainedModelsRecord {
   /**

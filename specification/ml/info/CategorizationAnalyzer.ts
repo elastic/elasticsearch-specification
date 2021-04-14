@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CharFilter } from '../../__common/analysis/char_filters/CharFilterBase'
-import { Tokenizer } from '../../__common/analysis/tokenizers/TokenizerBase'
-import { TokenFilter } from '../../__common/analysis/token_filters/TokenFilterBase'
+import { CharFilter } from '@common/analysis/char_filters/CharFilterBase'
+import { Tokenizer } from '@common/analysis/tokenizers/TokenizerBase'
+import { TokenFilter } from '@common/analysis/token_filters/TokenFilterBase'
 
 export class CategorizationAnalyzer {
   filter?: Array<string | TokenFilter>

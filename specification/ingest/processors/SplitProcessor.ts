@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../../__common/common'
-import { ProcessorBase } from '../ProcessorBase'
+import { Field } from '@common/common'
+import { ProcessorBase } from '@ingest/ProcessorBase'
 
 export class SplitProcessor extends ProcessorBase {
   field: Field

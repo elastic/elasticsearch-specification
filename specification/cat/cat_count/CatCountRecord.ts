@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '../../__common/common'
+import { DateString, EpochMillis } from '@common/common'
 
 export class CatCountRecord {
   /**

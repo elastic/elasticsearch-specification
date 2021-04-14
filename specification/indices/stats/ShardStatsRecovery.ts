@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
+import { long } from '@common/common'
 
 export class ShardStatsRecovery {
   current_as_source: long

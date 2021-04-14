@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, long, uint } from '../../__common/common'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { TypeMapping } from '../../__common/mapping/TypeMapping'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Field, long, uint } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name text_structure.find_structure

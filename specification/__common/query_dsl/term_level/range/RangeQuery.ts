@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { double } from '../../../common'
-import { DateMath } from '../../../common_options/date_math/DateMath'
-import { QueryBase } from '../../abstractions/query/Query'
+import { double } from '@common/common'
+import { DateMath } from '@common/common_options/date_math/DateMath'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { RangeRelation } from './RangeRelation'
 
 export class RangeQuery extends QueryBase {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RelationName } from '../../../common'
+import { RelationName } from '@common/common'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class ParentAggregation extends BucketAggregationBase {

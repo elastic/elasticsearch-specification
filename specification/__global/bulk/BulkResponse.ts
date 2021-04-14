@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { BulkResponseItemContainer } from './BulkResponseItemBase'
 
 export class BulkResponse extends ResponseBase {

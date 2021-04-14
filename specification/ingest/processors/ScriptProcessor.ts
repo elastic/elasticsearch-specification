@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { ProcessorBase } from '../ProcessorBase'
+import { Id } from '@common/common'
+import { ProcessorBase } from '@ingest/ProcessorBase'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class ScriptProcessor extends ProcessorBase {
   id?: Id

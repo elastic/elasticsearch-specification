@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
+import { TokenFilterBase } from '@common/analysis/token_filters/TokenFilterBase'
 import { IcuNormalizationType } from './normalization/IcuNormalizationType'
 
 export class IcuNormalizationTokenFilter extends TokenFilterBase {

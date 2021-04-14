@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Fields } from '../common'
+import { Fields } from '@common/common'
 
 export class FieldSecurity {
   except?: Fields

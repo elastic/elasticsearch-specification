@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { float } from '../../../common'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { float } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class ConstantScoreQuery extends QueryBase {
   filter?: QueryContainer

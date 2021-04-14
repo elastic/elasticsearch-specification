@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../__common/common'
-import { Time } from '../__common/common_options/time_unit/Time'
+import { Field } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 
 export class TransformTimeSync {
   delay: Time

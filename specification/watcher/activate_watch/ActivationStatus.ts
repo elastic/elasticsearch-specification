@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName, VersionNumber } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { ActionStatus } from '../ack_watch/ActionStatus'
-import { ActivationState } from '../ack_watch/ActivationState'
+import { IndexName, VersionNumber } from '@common/common'
+import { ActionStatus } from '@watcher/ack_watch/ActionStatus'
+import { ActivationState } from '@watcher/ack_watch/ActivationState'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class ActivationStatus {
   actions: Dictionary<IndexName, ActionStatus>

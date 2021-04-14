@@ -25,10 +25,10 @@ import {
   Routing,
   Type,
   VersionNumber
-} from '../../__common/common'
-import { VersionType } from '../../__common/common/VersionType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+} from '@common/common'
+import { VersionType } from '@common/common/VersionType'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { TermVectorFilter } from './TermVectorFilter'
 
 /**

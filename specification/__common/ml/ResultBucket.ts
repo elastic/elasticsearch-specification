@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, Id, long } from '../common'
-import { Time } from '../common_options/time_unit/Time'
+import { double, Id, long } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 import { BucketInfluencer } from './BucketInfluencer'
 import { PartitionScore } from './PartitionScore'
 

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, IndexName, Type, VersionNumber } from '../../../common'
-import { Result } from '../../../Result'
+import { Id, IndexName, Type, VersionNumber } from '@common/common'
+import { Result } from '@common/Result'
 
 export class IndexActionResultIndexResponse {
   created: boolean

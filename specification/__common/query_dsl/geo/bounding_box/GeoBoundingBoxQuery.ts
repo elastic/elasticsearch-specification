@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryBase } from '../../abstractions/query/Query'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { GeoValidationMethod } from '../GeoValidationMethod'
 import { BoundingBox } from './BoundingBox'
 import { GeoExecution } from './GeoExecution'

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Time } from '../__common/common_options/time_unit/Time'
+import { Time } from '@common/common_options/time_unit/Time'
 
 export class FielddataSettings {
   cache_expire: Time

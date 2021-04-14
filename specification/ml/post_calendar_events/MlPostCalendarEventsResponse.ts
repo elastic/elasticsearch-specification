@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { ScheduledEvent } from './ScheduledEvent'
 
 export class MlPostCalendarEventsResponse extends ResponseBase {

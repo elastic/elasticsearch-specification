@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, Name } from '../common'
+import { double, Name } from '@common/common'
 
 export class PartitionScore {
   initial_record_score: double

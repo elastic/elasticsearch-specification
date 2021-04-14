@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { Refresh } from '../../__common/common/Refresh'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { TransientMetadata } from '../../__common/security/XPackRole'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Name } from '@common/common'
+import { Refresh } from '@common/common/Refresh'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { TransientMetadata } from '@common/security/XPackRole'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { ApplicationPrivileges } from './ApplicationPrivileges'
 import { IndicesPrivileges } from './IndicesPrivileges'
 

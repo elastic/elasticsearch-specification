@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { CatRequestBase } from '../CatBase'
+import { CatRequestBase } from '@cat/CatBase'
+import { Name } from '@common/common'
 
 /**
  * @rest_spec_name cat.templates

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Refresh } from '../../__common/common/Refresh'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Refresh } from '@common/common/Refresh'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { PrivilegesActions } from './PrivilegesActions'
 
 /**

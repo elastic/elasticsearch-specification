@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { StopWords } from '../../StopWords'
+import { StopWords } from '@common/analysis/StopWords'
 import { TokenFilterBase } from '../TokenFilterBase'
 
 export class StopTokenFilter extends TokenFilterBase {

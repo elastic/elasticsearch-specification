@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '../../../common'
-import { AggregationRange } from '../../../common_options/range/AggregationRange'
-import { Script } from '../../../common_options/scripting/Script'
+import { Field } from '@common/common'
+import { AggregationRange } from '@common/common_options/range/AggregationRange'
+import { Script } from '@common/common_options/scripting/Script'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class RangeAggregation extends BucketAggregationBase {

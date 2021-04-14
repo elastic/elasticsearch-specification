@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, Field } from '../../../common'
-import { Script } from '../../../common_options/scripting/Script'
+import { double, Field } from '@common/common'
+import { Script } from '@common/common_options/scripting/Script'
 
 export class WeightedAverageValue {
   field?: Field

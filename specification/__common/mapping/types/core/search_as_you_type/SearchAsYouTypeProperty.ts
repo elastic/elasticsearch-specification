@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../../../common'
-import { TermVectorOption } from '../../../TermVectorOption'
+import { integer } from '@common/common'
+import { TermVectorOption } from '@common/mapping/TermVectorOption'
 import { CorePropertyBase } from '../../CoreProperty'
 import { IndexOptions } from '../text/IndexOptions'
 

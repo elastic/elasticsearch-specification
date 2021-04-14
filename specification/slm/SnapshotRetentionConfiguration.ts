@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../__common/common'
-import { Time } from '../__common/common_options/time_unit/Time'
+import { integer } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 
 export class SnapshotRetentionConfiguration {
   expire_after: Time

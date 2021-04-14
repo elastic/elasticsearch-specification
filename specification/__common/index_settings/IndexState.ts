@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Alias } from '../../indices/Alias'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { IndexName } from '../common'
-import { TypeMapping } from '../mapping/TypeMapping'
+import { IndexName } from '@common/common'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { Alias } from '@indices/Alias'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { IndexSettings } from './IndexSettings'
 
 export class IndexState {

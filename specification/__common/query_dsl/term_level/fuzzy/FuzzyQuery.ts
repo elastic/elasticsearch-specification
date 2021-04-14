@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
-import { Fuzziness, integer, MultiTermQueryRewrite } from '../../../common'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Fuzziness, integer, MultiTermQueryRewrite } from '@common/common'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class FuzzyQuery extends QueryBase {
   max_expansions?: integer

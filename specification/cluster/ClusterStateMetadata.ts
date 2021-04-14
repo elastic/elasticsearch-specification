@@ -25,9 +25,9 @@ import {
   long,
   Name,
   Uuid
-} from '../__common/common'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+} from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { ClusterStateBlockIndex } from './ClusterStateBlocks'
 import { ClusterStateIndexLifecycle } from './ClusterStateIndexLifecycle'
 import { ClusterStateIngest } from './ClusterStateIngest'

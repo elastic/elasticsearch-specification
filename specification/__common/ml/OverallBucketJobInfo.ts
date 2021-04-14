@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, Id } from '../common'
+import { double, Id } from '@common/common'
 
 export class OverallBucketJobInfo {
   job_id: Id

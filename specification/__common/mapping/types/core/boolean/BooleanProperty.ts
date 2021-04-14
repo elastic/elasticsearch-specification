@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NumericFielddata } from '../../../../../indices/NumericFielddata'
-import { double } from '../../../../common'
+import { double } from '@common/common'
+import { NumericFielddata } from '@indices/NumericFielddata'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class BooleanProperty extends DocValuesPropertyBase {

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { integer } from '../../common'
+import { integer } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class HttpInputResponseResult {
   body: string

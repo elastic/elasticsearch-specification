@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class BoolQuery extends QueryBase {
   filter?: QueryContainer | QueryContainer[]

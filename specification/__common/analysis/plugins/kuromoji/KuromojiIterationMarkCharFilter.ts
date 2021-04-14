@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CharFilterBase } from '../../char_filters/CharFilterBase'
+import { CharFilterBase } from '@common/analysis/char_filters/CharFilterBase'
 
 export class KuromojiIterationMarkCharFilter extends CharFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { IndexMetaData, PropertyName } from '../common'
+import { IndexMetaData, PropertyName } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { DynamicMapping } from './DynamicMapping'
 import { DynamicTemplate } from './dynamic_template/DynamicTemplate'
 import { AllField } from './meta_fields/all/AllField'

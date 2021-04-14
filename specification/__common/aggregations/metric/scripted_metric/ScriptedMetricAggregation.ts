@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
-import { Script } from '../../../common_options/scripting/Script'
+import { Script } from '@common/common_options/scripting/Script'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class ScriptedMetricAggregation extends MetricAggregationBase {

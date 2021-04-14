@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { float, long } from '../../__common/common'
-import { Retries } from '../../__common/Retries'
+import { float, long } from '@common/common'
+import { Retries } from '@common/Retries'
 
 export class ReindexStatus {
   batches: long

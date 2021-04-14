@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { IndicesRolloverConditions } from '../indices/rollover/IndicesRolloverConditions'
 import {
   DateString,
   IndexAlias,
@@ -28,11 +27,12 @@ import {
   Uuid,
   VersionNumber,
   VersionString
-} from '../__common/common'
-import { Time } from '../__common/common_options/time_unit/Time'
-import { Property } from '../__common/mapping/types/Property'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+} from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+import { Property } from '@common/mapping/types/Property'
+import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 export class ClusterStateBlocks {
   indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>

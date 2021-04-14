@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { PainlessExecutionPosition } from '../__global/scripts_painless_execute/ExecutePainlessScriptResponse'
-import { Dictionary } from '../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { PainlessExecutionPosition } from '@global/scripts_painless_execute/ExecutePainlessScriptResponse'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { ShardFailure } from './common/ShardFailure'
 import { WaitForActiveShardOptions } from './common/WaitForActiveShardOptions'
 

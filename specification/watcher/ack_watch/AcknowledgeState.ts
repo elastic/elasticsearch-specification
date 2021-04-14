@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString } from '../../__common/common'
+import { DateString } from '@common/common'
 import { AcknowledgementState } from './AcknowledgementState'
 
 export class AcknowledgeState {

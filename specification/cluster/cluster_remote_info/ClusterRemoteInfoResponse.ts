@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer, long } from '../../__common/common'
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { integer, long } from '@common/common'
+import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
+import { Time } from '@common/common_options/time_unit/Time'
 
 export class ClusterRemoteInfoResponse extends DictionaryResponseBase<
   string,

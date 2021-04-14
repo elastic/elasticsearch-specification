@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Id, long } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { AnalysisMemoryLimit } from '../../__common/ml/AnalysisMemoryLimit'
-import { ModelPlotConfigEnabled } from '../../__common/ml/ModelPlotConfigEnabled'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Id, long } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
+import { AnalysisMemoryLimit } from '@common/ml/AnalysisMemoryLimit'
+import { ModelPlotConfigEnabled } from '@common/ml/ModelPlotConfigEnabled'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name ml.update_job

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Routing } from '../__common/common'
-import { QueryContainer } from '../__common/query_dsl/abstractions/container/QueryContainer'
+import { Routing } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 
 export class Alias {
   filter?: QueryContainer

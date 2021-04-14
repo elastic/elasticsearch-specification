@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { GeoLocation } from '../../../../__common/query_dsl/geo/GeoLocation'
-import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { SuggestContextQuery } from '../context_suggester/SuggestContextQuery'
 import { SuggesterBase } from '../Suggester'
 import { SuggestFuzziness } from './SuggestFuzziness'

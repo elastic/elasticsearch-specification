@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
-import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'
-import { DataDescription } from '../../__common/ml/DataDescription'
-import { ModelPlotConfig } from '../../__common/ml/ModelPlotConfig'
+import { Id, IndexName, long } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { AnalysisConfig } from '@common/ml/AnalysisConfig'
+import { AnalysisLimits } from '@common/ml/AnalysisLimits'
+import { DataDescription } from '@common/ml/DataDescription'
+import { ModelPlotConfig } from '@common/ml/ModelPlotConfig'
 
 /**
  * @rest_spec_name ml.validate

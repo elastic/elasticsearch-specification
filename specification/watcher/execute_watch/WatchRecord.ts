@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
-import { ConditionContainer } from '../../__common/watcher/conditions/ConditionContainer'
-import { InputContainer } from '../../__common/watcher/input/InputContainer'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Id } from '@common/common'
+import { ConditionContainer } from '@common/watcher/conditions/ConditionContainer'
+import { InputContainer } from '@common/watcher/input/InputContainer'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { ActionExecutionState } from './ActionExecutionState'
 import { ExecutionResult } from './ExecutionResult'
 import { TriggerEventResult } from './TriggerEventResult'

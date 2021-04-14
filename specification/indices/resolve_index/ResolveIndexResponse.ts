@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DataStreamName, Field, Indices, Name } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { DataStreamName, Field, Indices, Name } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 export class ResolveIndexResponse extends ResponseBase {
   indices: ResolveIndexItem[]

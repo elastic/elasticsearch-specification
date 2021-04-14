@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, double, Id, long } from '../common'
+import { DateString, double, Id, long } from '@common/common'
 
 export class BucketInfluencer {
   bucket_span: long

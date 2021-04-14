@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '../../__common/common'
+import { double } from '@common/common'
 import { ClusterIndicesShardsIndexStats } from './ClusterIndicesShardsIndexStats'
 
 export class ClusterIndicesShardsStats {

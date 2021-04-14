@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Time } from '../__common/common_options/time_unit/Time'
-import { Dictionary } from '../__spec_utils/Dictionary'
+import { Time } from '@common/common_options/time_unit/Time'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { LifecycleAction } from './LifecycleAction'
 
 export class Phase {

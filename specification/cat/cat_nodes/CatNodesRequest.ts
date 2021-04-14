@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Bytes } from '../../__common/common/Bytes'
-import { CatRequestBase } from '../CatBase'
+import { CatRequestBase } from '@cat/CatBase'
+import { Bytes } from '@common/common/Bytes'
 
 /**
  * @rest_spec_name cat.nodes

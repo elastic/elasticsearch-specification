@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '../../../__common/common'
-import { ProcessorBase } from '../../ProcessorBase'
+import { Field } from '@common/common'
+import { ProcessorBase } from '@ingest/ProcessorBase'
 import { UserAgentProperty } from './user_agent/UserAgentProperty'
 
 export class UserAgentProcessor extends ProcessorBase {

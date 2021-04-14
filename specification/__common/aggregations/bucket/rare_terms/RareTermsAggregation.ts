@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, Field, long } from '../../../common'
-import { Missing } from '../../AggregationContainer'
+import { Missing } from '@common/aggregations/AggregationContainer'
+import { double, Field, long } from '@common/common'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { TermsInclude } from '../terms/TermsInclude'
 

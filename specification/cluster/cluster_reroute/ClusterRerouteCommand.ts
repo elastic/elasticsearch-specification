@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, integer } from '../../__common/common'
+import { IndexName, integer } from '@common/common'
 
 export class ClusterRerouteCommand {
   cancel: ClusterRerouteCommandAction

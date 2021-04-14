@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Missing } from '../../../__common/aggregations/AggregationContainer'
-import { double, Field, long } from '../../../__common/common'
-import { DistanceUnit } from '../../../__common/common_options/geo/DistanceUnit'
-import { GeoDistanceType } from '../../../__common/common_options/geo/GeoDistanceType'
-import { Script } from '../../../__common/common_options/scripting/Script'
-import { FieldType } from '../../../__common/mapping/types/FieldType'
-import { GeoLocation } from '../../../__common/query_dsl/geo/GeoLocation'
-import { AdditionalProperties } from '../../../__spec_utils/behaviors'
+import { Missing } from '@common/aggregations/AggregationContainer'
+import { double, Field, long } from '@common/common'
+import { DistanceUnit } from '@common/common_options/geo/DistanceUnit'
+import { GeoDistanceType } from '@common/common_options/geo/GeoDistanceType'
+import { Script } from '@common/common_options/scripting/Script'
+import { FieldType } from '@common/mapping/types/FieldType'
+import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
+import { AdditionalProperties } from '__spec_utils/behaviors'
 import { NestedSortValue } from './NestedSort'
 import { SortMode } from './SortMode'
 import { SortOrder } from './SortOrder'

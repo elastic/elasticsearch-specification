@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
+import { long } from '@common/common'
 import { XPackUsage } from './XPackUsage'
 
 export class RealmUsage extends XPackUsage {

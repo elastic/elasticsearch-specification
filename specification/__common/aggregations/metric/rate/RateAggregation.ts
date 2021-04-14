@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateInterval } from '../../bucket/date_histogram/DateInterval'
+import { DateInterval } from '@common/aggregations/bucket/date_histogram/DateInterval'
 import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class RateAggregation extends FormatMetricAggregationBase {

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { integer } from '../../common'
-import { Time } from '../../common_options/time_unit/Time'
+import { integer } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { ConnectionScheme } from './ConnectionScheme'
 import { HttpInputAuthentication } from './HttpInputAuthentication'
 import { HttpInputMethod } from './HttpInputMethod'

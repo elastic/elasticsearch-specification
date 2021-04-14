@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '../../__common/common'
+import { double, long } from '@common/common'
 
 export class GraphVertex {
   depth: long

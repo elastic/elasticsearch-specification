@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Fields, Indices } from '../../__common/common'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Fields, Indices } from '@common/common'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.clear_cache

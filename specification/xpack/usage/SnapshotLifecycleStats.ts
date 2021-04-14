@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, Id, long } from '../../__common/common'
+import { DateString, EpochMillis, Id, long } from '@common/common'
 
 export class SnapshotLifecycleStats {
   retention_deletion_time?: DateString

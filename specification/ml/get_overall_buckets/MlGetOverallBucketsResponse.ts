@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { OverallBucket } from '../../__common/ml/OverallBucket'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { OverallBucket } from '@common/ml/OverallBucket'
 
 export class MlGetOverallBucketsResponse extends ResponseBase {
   count: long

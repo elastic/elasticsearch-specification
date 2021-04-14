@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { JobStats } from '../../__common/ml/JobStats'
+import { long } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { JobStats } from '@common/ml/JobStats'
 
 export class MlGetJobStatsResponse extends ResponseBase {
   count: long

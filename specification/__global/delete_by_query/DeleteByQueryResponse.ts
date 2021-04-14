@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { BulkIndexByScrollFailure } from '../../__common/BulkIndexByScrollFailure'
-import { float, integer, long, TaskId } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Retries } from '../../__common/Retries'
+import { BulkIndexByScrollFailure } from '@common/BulkIndexByScrollFailure'
+import { float, integer, long, TaskId } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { Retries } from '@common/Retries'
 
 export class DeleteByQueryResponse extends ResponseBase {
   batches?: long

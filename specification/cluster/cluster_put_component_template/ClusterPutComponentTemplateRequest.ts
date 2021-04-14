@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { AliasDefinition } from '../../indices/AliasDefinition'
-import { IndexMetaData, Name, VersionNumber } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { IndexSettings } from '../../__common/index_settings/IndexSettings'
-import { TypeMapping } from '../../__common/mapping/TypeMapping'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndexMetaData, Name, VersionNumber } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
+import { IndexSettings } from '@common/index_settings/IndexSettings'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { AliasDefinition } from '@indices/AliasDefinition'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 /**
  * @rest_spec_name cluster.put_component_template

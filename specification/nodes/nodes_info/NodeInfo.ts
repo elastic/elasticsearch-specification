@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long, VersionString } from '../../__common/common'
-import { PluginStats } from '../../__common/common_options/stats/PluginStats'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { long, VersionString } from '@common/common'
+import { PluginStats } from '@common/common_options/stats/PluginStats'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { NodeInfoHttp } from './NodeInfoHttp'
 import { NodeInfoNetwork } from './NodeInfoNetwork'
 import { NodeInfoTransport } from './NodeInfoTransport'

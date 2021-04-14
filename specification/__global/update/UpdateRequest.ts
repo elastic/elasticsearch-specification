@@ -26,12 +26,12 @@ import {
   SequenceNumber,
   Type,
   WaitForActiveShards
-} from '../../__common/common'
-import { Refresh } from '../../__common/common/Refresh'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Script } from '../../__common/common_options/scripting/Script'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { SourceFilter } from '../search/source_filtering/SourceFilter'
+} from '@common/common'
+import { Refresh } from '@common/common/Refresh'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Script } from '@common/common_options/scripting/Script'
+import { Time } from '@common/common_options/time_unit/Time'
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name update

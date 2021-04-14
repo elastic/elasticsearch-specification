@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, long } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { TaskStatus } from '../list_tasks/TaskStatus'
+import { Id, long } from '@common/common'
+import { TaskStatus } from '@task/list_tasks/TaskStatus'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class TaskInfo {
   action: string

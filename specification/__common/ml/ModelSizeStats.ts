@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, integer, long } from '../common'
-import { Time } from '../common_options/time_unit/Time'
+import { Id, integer, long } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 import { MemoryStatus } from './MemoryStatus'
 
 export class ModelSizeStats {

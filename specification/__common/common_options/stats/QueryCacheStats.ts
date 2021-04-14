@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, integer } from '../../common'
+import { ByteSize, integer } from '@common/common'
 
 export class QueryCacheStats {
   cache_count: integer

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '../../../../__common/common'
+import { double, integer } from '@common/common'
 import { SuggesterBase } from '../Suggester'
 import { DirectGenerator } from './DirectGenerator'
 import { PhraseSuggestCollate } from './PhraseSuggestCollate'

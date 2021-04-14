@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field, integer } from '../../../common'
-import { QueryBase } from '../../abstractions/query/Query'
+import { Field, integer } from '@common/common'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class SpanGapQuery extends QueryBase {
   field?: Field

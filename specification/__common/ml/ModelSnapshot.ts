@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, long, VersionString } from '../common'
-import { Time } from '../common_options/time_unit/Time'
+import { Id, long, VersionString } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
 import { ModelSizeStats } from './ModelSizeStats'
 
 export class ModelSnapshot {

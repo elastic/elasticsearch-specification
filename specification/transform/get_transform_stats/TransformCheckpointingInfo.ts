@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, long } from '../../__common/common'
+import { DateString, long } from '@common/common'
 import { TransformCheckpointStats } from './TransformCheckpointStats'
 
 export class TransformCheckpointingInfo {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { uint } from '../../__common/common'
+import { uint } from '@common/common'
 
 export class EqlFeaturesUsage {
   join: uint

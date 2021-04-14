@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Time } from '../common_options/time_unit/Time'
+import { Time } from '@common/common_options/time_unit/Time'
 import { ChunkingMode } from './ChunkingMode'
 
 export class ChunkingConfig {

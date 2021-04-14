@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ShardFileSizeInfo } from '../../../indices/stats/ShardFileSizeInfo'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { ByteSize, integer } from '../../common'
+import { ByteSize, integer } from '@common/common'
+import { ShardFileSizeInfo } from '@indices/stats/ShardFileSizeInfo'
+import { Dictionary } from '__spec_utils/Dictionary'
 
 export class SegmentsStats {
   count: integer

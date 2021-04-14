@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Aggregate } from '../../__common/aggregations/Aggregate'
+import { Aggregate } from '@common/aggregations/Aggregate'
 import {
   AggregateName,
   double,
@@ -25,12 +25,12 @@ import {
   long,
   ScrollId,
   SuggestionName
-} from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ClusterStatistics } from '../../__common/common_options/hit/ClusterStatistics'
-import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+} from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ClusterStatistics } from '@common/common_options/hit/ClusterStatistics'
+import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { HitsMetadata } from './hits/HitsMetadata'
 import { Profile } from './profile/Profile'
 import { Suggest } from './suggesters/Suggest'

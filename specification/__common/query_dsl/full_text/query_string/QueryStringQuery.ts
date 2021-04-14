@@ -24,10 +24,10 @@ import {
   Fuzziness,
   integer,
   MultiTermQueryRewrite
-} from '../../../common'
-import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
-import { QueryBase } from '../../abstractions/query/Query'
-import { Operator } from '../../Operator'
+} from '@common/common'
+import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { Operator } from '@common/query_dsl/Operator'
 import { TextQueryType } from '../multi_match/TextQueryType'
 
 export class QueryStringQuery extends QueryBase {

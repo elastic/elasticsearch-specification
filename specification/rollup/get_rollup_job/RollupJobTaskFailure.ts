@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, TaskId } from '../../__common/common'
+import { Id, TaskId } from '@common/common'
 
 export class RollupJobTaskFailure {
   task_id: TaskId

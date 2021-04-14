@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
+import { IndexName } from '@common/common'
 import { FollowIndexShardStats } from './FollowIndexShardStats'
 
 export class FollowIndexStats {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from '../__common/common'
+import { IndexName } from '@common/common'
 
 export class TransformDestination {
   index: IndexName

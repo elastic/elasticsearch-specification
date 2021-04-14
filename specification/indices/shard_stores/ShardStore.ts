@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, Name, VersionNumber } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Id, Name, VersionNumber } from '@common/common'
+import { Dictionary } from '__spec_utils/Dictionary'
+import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 import { ShardStoreAllocation } from './ShardStoreAllocation'
 import { ShardStoreException } from './ShardStoreException'
 

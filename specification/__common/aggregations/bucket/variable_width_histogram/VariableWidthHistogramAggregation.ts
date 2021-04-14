@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, integer } from '../../../common'
+import { Field, integer } from '@common/common'
 
 export class VariableWidthHistogramAggregation {
   field?: Field

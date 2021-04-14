@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Fields, integer, Name } from '../../../__common/common'
-import { ScriptField } from '../../../__common/common_options/scripting/ScriptField'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { Fields, integer, Name } from '@common/common'
+import { ScriptField } from '@common/common_options/scripting/ScriptField'
+import { Dictionary } from '__spec_utils/Dictionary'
 import { FieldCollapse } from '../collapsing/FieldCollapse'
 import { Highlight } from '../highlighting/Highlight'
 import { Sort } from '../sort/Sort'

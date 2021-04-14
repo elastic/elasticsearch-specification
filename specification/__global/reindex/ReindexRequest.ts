@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long, WaitForActiveShards } from '../../__common/common'
-import { Conflicts } from '../../__common/common/Conflicts'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Script } from '../../__common/common_options/scripting/Script'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { long, WaitForActiveShards } from '@common/common'
+import { Conflicts } from '@common/common/Conflicts'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Script } from '@common/common_options/scripting/Script'
+import { Time } from '@common/common_options/time_unit/Time'
 import { ReindexDestination } from './ReindexDestination'
 import { ReindexSource } from './ReindexSource'
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, integer } from '../../../common'
+import { Field, integer } from '@common/common'
 import { IntervalsFilter } from './IntervalsFilter'
 
 export class IntervalsMatch {
