@@ -31,10 +31,6 @@ VersionNumbers,lib/specs/common.ts
 VersionStrings,lib/specs/common.ts
 JvmPool,nodes/nodes_stats/JvmPool.ts
 LoadAverageStats,nodes/nodes_stats/LoadAverageStats.ts
-Condition,watcher/condition/Condition.ts
-Input,watcher/input/Input.ts
-Schedule,watcher/schedule/Schedule.ts
-TriggerEvent,watcher/trigger/TriggerEvent.ts
 AlertingUsage,xpack/x_pack_usage/AlertingUsage.ts
 ForecastStatistics,xpack/x_pack_usage/ForecastStatistics.ts
 AggregationVisitorScope,__common/aggregations/visitor/AggregationVisitorScope.ts
@@ -51,6 +47,7 @@ StopAnalyzer,__common/analysis/analyzers/StopAnalyzer.ts
 WhitespaceAnalyzer,__common/analysis/analyzers/WhitespaceAnalyzer.ts
 PatternReplaceCharFilter,__common/analysis/char_filters/PatternReplaceCharFilter.ts
 PatternTokenizer,__common/analysis/tokenizers/PatternTokenizer.ts
+SnapshotStatus,__common/common/snapshot/SnapshotStatus.ts
 DynamicResponseBase,__common/common_abstractions/response/DynamicResponseBase.ts
 DateMathExpression,__common/common_options/date_math/DateMathExpression.ts
 DateMathOperation,__common/common_options/date_math/DateMathOperation.ts
@@ -73,6 +70,10 @@ DFRAfterEffect,__common/similarity/d_f_r/DFRAfterEffect.ts
 DFRBasicModel,__common/similarity/d_f_r/DFRBasicModel.ts
 IBDistribution,__common/similarity/i_b/IBDistribution.ts
 IBLambda,__common/similarity/i_b/IBLambda.ts
+Condition,__common/watcher/conditions/Condition.ts
+Input,__common/watcher/input/Input.ts
+Schedule,__common/watcher/schedule/Schedule.ts
+TriggerEvent,__common/watcher/trigger/TriggerEvent.ts
 HitMetadata,__global/search/hits/HitMetadata.ts
 NumericType,__global/search/sort/NumericType.ts
 SortSpecialField,__global/search/sort/SortSpecialField.ts
@@ -100,8 +101,6 @@ NonZeroCountFunction,ml/job/detectors/NonZeroCountFunction.ts
 RareFunction,ml/job/detectors/RareFunction.ts
 SumFunction,ml/job/detectors/SumFunction.ts
 TimeFunction,ml/job/detectors/TimeFunction.ts
-DataAttachmentFormat,watcher/action/email/DataAttachmentFormat.ts
-SlackActionMessageResult,watcher/execution/slack/SlackActionMessageResult.ts
 IcuAnalyzer,__common/analysis/plugins/icu/IcuAnalyzer.ts
 IcuCollationTokenFilter,__common/analysis/plugins/icu/IcuCollationTokenFilter.ts
 IcuFoldingTokenFilter,__common/analysis/plugins/icu/IcuFoldingTokenFilter.ts
@@ -122,6 +121,8 @@ Intervals,__common/query_dsl/full_text/intervals/Intervals.ts
 GeoFormat,__common/query_dsl/geo/shape/GeoFormat.ts
 CharacterType,__common/query_dsl/geo/w_k_t/CharacterType.ts
 TokenType,__common/query_dsl/geo/w_k_t/TokenType.ts
+DataAttachmentFormat,__common/watcher/actions/email/DataAttachmentFormat.ts
+SlackActionMessageResult,__common/watcher/execution/slack/SlackActionMessageResult.ts
 AggregationVisitorScope,lib/specs/aggregations/visitor/AggregationVisitorScope.ts
 CustomAnalyzer,lib/specs/analysis/analyzers/CustomAnalyzer.ts
 FingerprintAnalyzer,lib/specs/analysis/analyzers/FingerprintAnalyzer.ts

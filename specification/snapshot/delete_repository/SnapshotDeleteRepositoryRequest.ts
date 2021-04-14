@@ -17,8 +17,21 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+/**
+ * @rest_spec_name snapshot.delete_repository
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface SnapshotDeleteRepositoryRequest extends RequestBase {
+  path_parts?: {
+    repository: Names
+  }
+  query_parameters?: {
+    master_timeout?: Time
+    timeout?: Time
+  }
 }

@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { SnapshotRepository } from '../SnapshotRepository'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
-}
+export class SnapshotGetRepositoryResponse extends DictionaryResponseBase<
+  string,
+  SnapshotRepository
+> {}

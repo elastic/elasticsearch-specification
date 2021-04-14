@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
-
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class SnapshotShardFailure {
+  index: IndexName
+  node_id: Id
+  reason: string
+  shard_id: Id
+  status: string
 }

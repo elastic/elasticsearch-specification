@@ -17,8 +17,18 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
-
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-status-api.html
+ */
+export enum SnapshotShardsStatsStage {
+  /** Number of shards in the snapshot that were successfully stored in the repository. */
+  DONE = 0,
+  /** Number of shards in the snapshot that were not successfully stored in the repository. */
+  FAILURE = 1,
+  /** Number of shards in the snapshot that are in the finalizing stage of being stored in the repository. */
+  FINALIZE = 2,
+  /** Number of shards in the snapshot that are in the initializing stage of being stored in the repository. */
+  INIT = 3,
+  /** Number of shards in the snapshot that are in the started stage of being stored in the repository. */
+  STARTED = 4
 }

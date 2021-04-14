@@ -17,8 +17,19 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Uuid } from '../../common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { SnapshotIndexStats } from './SnapshotIndexStats'
+import { SnapshotShardsStats } from './SnapshotShardsStats'
+import { SnapshotStats } from './SnapshotStats'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class SnapshotStatus {
+  include_global_state: boolean
+  indices: Dictionary<string, SnapshotIndexStats>
+  repository: string
+  shards_stats: SnapshotShardsStats
+  snapshot: string
+  state: string
+  stats: SnapshotStats
+  uuid: Uuid
 }

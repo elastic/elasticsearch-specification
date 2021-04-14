@@ -17,8 +17,15 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Name } from '../../__common/common'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class SnapshotVerifyRepositoryResponse extends ResponseBase {
+  nodes: Dictionary<string, CompactNodeInfo>
 }
+
+export class CompactNodeInfo {
+  name: Name
+}
+

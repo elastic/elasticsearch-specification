@@ -17,8 +17,14 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { long } from '../../__common/common'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class CleanupRepositoryResponse extends ResponseBase {
+  results: CleanupRepositoryResults
+}
+
+export class CleanupRepositoryResults {
+  deleted_blobs: long
+  deleted_bytes: long
 }

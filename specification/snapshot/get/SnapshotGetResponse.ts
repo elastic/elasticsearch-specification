@@ -17,8 +17,17 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { ErrorCause, Name } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { SnapshotInfo } from '../../__common/common/snapshot/SnapshotInfo'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class SnapshotGetResponse extends ResponseBase {
+  responses?: SnapshotResponseItem[]
+  snapshots?: SnapshotInfo[]
+}
+
+export class SnapshotResponseItem {
+  repository: Name
+  snapshots?: SnapshotInfo[]
+  error?: ErrorCause
 }

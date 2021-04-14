@@ -17,8 +17,21 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Uuid, integer } from '../__common/common'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class SnapshotRepository {
+  type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
+}
+
+export class SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
+  /**
+   * @aliases readonly
+   */
+  read_only?: string | boolean
 }

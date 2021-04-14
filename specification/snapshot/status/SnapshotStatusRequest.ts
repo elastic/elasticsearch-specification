@@ -17,8 +17,23 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Name, Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+/**
+ * @rest_spec_name snapshot.status
+ * @since 7.8.0
+ * @stability TODO
+ */
+export interface SnapshotStatusRequest extends RequestBase {
+  path_parts?: {
+    repository?: Name
+    snapshot?: Names
+  }
+  query_parameters?: {
+    ignore_unavailable?: boolean // default: false
+    master_timeout?: Time
+  }
+  body?: {}
 }

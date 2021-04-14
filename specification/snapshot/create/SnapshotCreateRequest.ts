@@ -17,27 +17,32 @@
  * under the License.
  */
 
-import { Indices, WaitForActiveShards } from '../../__common/common'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { Indices, Name } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
- * @rest_spec_name indices.open
+ * @rest_spec_name snapshot.create
  * @since 0.0.0
  * @stability TODO
  */
-export interface IndicesOpenRequest extends RequestBase {
+export interface SnapshotCreateRequest extends RequestBase {
   path_parts?: {
-    index: Indices
+    repository: Name
+    snapshot: Name
   }
   query_parameters?: {
-    allow_no_indices?: boolean
-    expand_wildcards?: ExpandWildcards
-    ignore_unavailable?: boolean
     master_timeout?: Time
-    timeout?: Time
-    wait_for_active_shards?: WaitForActiveShards
+    wait_for_completion?: boolean
   }
-  body?: {}
+  body?: {
+    ignore_unavailable?: boolean
+    include_global_state?: boolean
+    /** @prop_serializer IndicesMultiSyntaxFormatter */
+    indices?: Indices
+    metadata?: Dictionary<string, UserDefinedValue>
+    partial?: boolean
+  }
 }

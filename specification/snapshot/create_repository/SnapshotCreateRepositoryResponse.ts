@@ -19,6 +19,4 @@
 
 import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
-}
+export class SnapshotCreateRepositoryResponse extends AcknowledgedResponseBase {}

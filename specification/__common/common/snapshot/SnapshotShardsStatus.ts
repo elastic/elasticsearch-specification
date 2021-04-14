@@ -17,8 +17,22 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { long } from '../../common'
+import { SnapshotShardsStatsStage } from './SnapshotShardsStatsStage'
 
-export class IndicesOpenResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
+export class SnapshotShardsStatus {
+  stage: SnapshotShardsStatsStage
+  stats: SnapshotShardsStatsSummary
+}
+
+export class SnapshotShardsStatsSummary {
+  incremental: SnapshotShardsStatsSummaryItem
+  total: SnapshotShardsStatsSummaryItem
+  start_time_in_millis: long
+  time_in_millis: long
+}
+
+export class SnapshotShardsStatsSummaryItem {
+  file_count: long
+  size_in_bytes: long
 }
