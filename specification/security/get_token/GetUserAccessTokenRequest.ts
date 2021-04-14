@@ -16,10 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// TODO: once the compiler can handle it, the body should use the commented classes in this file
 
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { AccessTokenGrantType } from '@common/security/AccessTokenGrantType'
+
+// TODO: once the compiler can handle it, the body should use the commented classes in this file
 
 /**
  * @rest_spec_name security.get_token

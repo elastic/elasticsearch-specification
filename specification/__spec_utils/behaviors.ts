@@ -16,15 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+import { Names } from '@common/common'
+import { Time } from '@common/common_options/time_unit/Time'
+
 /*
  * This file hosts `behaviors`. We use this interfaces that are marked with a `@behavior` JS Doc annotation
  * to signal complicated mappings to the compiler -> canonical json -> client generators.
  *
  * These are problem sets that need a custom client solution.
  */
-
-import { Names } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties

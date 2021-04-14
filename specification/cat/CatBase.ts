@@ -16,11 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// Cat APIs are sharing many query parameters, those are defined
-// in the CommonCatQueryParameters behavior, which every Cat*Request
-// API will inherit because extends CatRequestBase.
-// Cat*Request APIs will inherit the CommonQueryParameters behavior
-// as well, as CatRequestBase extends RequestBase.
 
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
@@ -28,6 +23,12 @@ import {
   ArrayResponseBase,
   CommonCatQueryParameters
 } from '__spec_utils/behaviors'
+
+// Cat APIs are sharing many query parameters, those are defined
+// in the CommonCatQueryParameters behavior, which every Cat*Request
+// API will inherit because extends CatRequestBase.
+// Cat*Request APIs will inherit the CommonQueryParameters behavior
+// as well, as CatRequestBase extends RequestBase.
 
 export class CatRequestBase
   extends RequestBase
