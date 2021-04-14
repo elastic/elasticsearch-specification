@@ -22,8 +22,8 @@ validation-api-response:  ## Validate response of Endpoint with param: api=<api-
 
 generate-spec:	  ## Generate the output spec
 	@echo ">> generating the spec .."
-	@npm run compile:canonical-json
-	@npm run compile:ts-validation
+	@npm run generate-schema --prefix specification
+	@npm run start --prefix typescript-generator
 
 check-license:	## Add the license headers to the files
 	@echo ">> checking license headers .."
@@ -35,13 +35,13 @@ add-license:	## Add the license headers to the files
 
 contrib-install:	## make sure NPM install runs so that the contrib targets tooling is available
 	@npm install
-	@npm install --prefix specification
+	@npm install --prefix compiler
 
 spec-format-check:	## Check specification formatting rules
-	@npm run format:check --prefix specification
+	@npm run format:check --prefix compiler
 
 spec-format-fix:	## Format/fix the specification according to the formatting rules
-	@npm run format:fix --prefix specification
+	@npm run format:fix --prefix compiler
 
 contrib: | contrib-install generate-spec add-license spec-format-fix 	## Pre contribution target
 
