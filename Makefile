@@ -22,7 +22,7 @@ validation-api-response:  ## Validate response of Endpoint with param: api=<api-
 
 generate-spec:	  ## Generate the output spec
 	@echo ">> generating the spec .."
-	@npm run generate-schema --prefix specification
+	@npm run generate-schema --prefix compiler
 	@npm run start --prefix typescript-generator
 
 check-license:	## Add the license headers to the files

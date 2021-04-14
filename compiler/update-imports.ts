@@ -1,9 +1,25 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 import { join } from 'path'
-import ora from 'ora'
 import minimist from 'minimist'
-import {
-  Project
-} from 'ts-morph'
+import { Project } from 'ts-morph'
 
 const options = minimist(process.argv.slice(2), {
   string: ['file'],
@@ -30,7 +46,6 @@ Example: npm run imports:fix -- --help
   process.exit(0)
 }
 
-const log = ora('Updating spec').start()
 const specsFolder = join(__dirname, '..', 'specification')
 const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 
@@ -39,7 +54,7 @@ async function removeImports (): Promise<void> {
   const project = new Project({ tsConfigFilePath })
   for (const sourceFile of project.getSourceFiles()) {
     if (typeof options.file === 'string' && !sourceFile.getFilePath().includes(options.file)) continue
-    log.text = `Removing imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`
+    console.log(`Removing imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`)
     for (const declaration of sourceFile.getImportDeclarations()) {
       declaration.remove()
     }
@@ -51,7 +66,7 @@ async function fixImports (): Promise<void> {
   const project = new Project({ tsConfigFilePath })
   for (const sourceFile of project.getSourceFiles()) {
     if (typeof options.file === 'string' && !sourceFile.getFilePath().includes(options.file)) continue
-    log.text = `Updating imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`
+    console.log(`Updating imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`)
     sourceFile.fixMissingImports({}, { quotePreference: 'single' })
     sourceFile.organizeImports({}, { quotePreference: 'single' })
   }
@@ -61,10 +76,9 @@ async function fixImports (): Promise<void> {
 removeImports()
   .then(fixImports)
   .then(() => {
-    log.succeed('Done!')
+    console.log('Done!')
   })
   .catch(err => {
-    log.fail(err)
     console.log(err)
     process.exit(1)
   })
