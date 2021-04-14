@@ -28,4 +28,3 @@ export class SnapshotVerifyRepositoryResponse extends ResponseBase {
 export class CompactNodeInfo {
   name: Name
 }
-

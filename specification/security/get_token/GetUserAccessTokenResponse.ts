@@ -17,32 +17,33 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import {
-  SnapshotRepository,
-  SnapshotRepositorySettings
-} from '../SnapshotRepository'
+import { long, Name } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { XPackUser } from '../../__common/security/XPackUser'
 
-/**
- * @rest_spec_name snapshot.create_repository
- * @since 0.0.0
- *
- * @stability TODO
- */
-export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  path_parts?: {
-    repository: Name
-  }
-  query_parameters?: {
-    master_timeout?: Time
-    timeout?: Time
-    verify?: boolean
-  }
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+export class SecurityGetTokenResponse extends ResponseBase {
+  access_token: string
+  expires_in: long
+  scope?: string
+  type: string
+  refresh_token: string
+  kerberos_authentication_response_token?: string
+  authentication: AuthenticatedUser
+}
+
+export class UserRealm {
+  name: Name
+  type: string
+}
+
+export class AuthenticationProvider {
+  type: string
+  name: Name
+}
+
+export class AuthenticatedUser extends XPackUser {
+  authentication_realm: UserRealm
+  lookup_realm: UserRealm
+  authentication_provider?: AuthenticationProvider
+  authentication_type: string
 }

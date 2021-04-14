@@ -17,36 +17,20 @@
  * under the License.
  */
 
-import { IndexName, integer, Name, VersionNumber } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { TypeMapping } from '../../__common/mapping/TypeMapping'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { Alias } from '../Alias'
+import { RealmInfo } from '../../__common/security/RealmInfo'
+import { Name } from '../../__common/common'
 
-/**
- * @rest_spec_name indices.put_template
- * @since 0.0.0
- * @stability TODO
- */
-export interface IndicesPutTemplateRequest extends RequestBase {
-  path_parts?: {
-    name: Name
-  }
-  query_parameters?: {
-    create?: boolean
-    flat_settings?: boolean
-    include_type_name?: boolean
-    master_timeout?: Time
-    timeout?: Time
-  }
-  body?: {
-    aliases?: Dictionary<IndexName, Alias>
-    index_patterns?: string | string[]
-    mappings?: TypeMapping
-    order?: integer
-    settings?: Dictionary<string, UserDefinedValue>
-    version?: VersionNumber
-  }
+export class SecurityAuthenticateResponse extends ResponseBase {
+  authentication_realm: RealmInfo
+  email?: string
+  full_name?: Name
+  lookup_realm: RealmInfo
+  metadata: Dictionary<string, UserDefinedValue>
+  roles: string[]
+  username: Name
+  enabled: boolean
+  authentication_type: string
 }

@@ -17,32 +17,19 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import {
-  SnapshotRepository,
-  SnapshotRepositorySettings
-} from '../SnapshotRepository'
+import { Uuid } from '../common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { SnapshotIndexStats } from './SnapshotIndexStats'
+import { SnapshotShardsStats } from './SnapshotShardsStats'
+import { SnapshotStats } from './SnapshotStats'
 
-/**
- * @rest_spec_name snapshot.create_repository
- * @since 0.0.0
- *
- * @stability TODO
- */
-export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  path_parts?: {
-    repository: Name
-  }
-  query_parameters?: {
-    master_timeout?: Time
-    timeout?: Time
-    verify?: boolean
-  }
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+export class SnapshotStatus {
+  include_global_state: boolean
+  indices: Dictionary<string, SnapshotIndexStats>
+  repository: string
+  shards_stats: SnapshotShardsStats
+  snapshot: string
+  state: string
+  stats: SnapshotStats
+  uuid: Uuid
 }

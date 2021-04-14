@@ -18,7 +18,7 @@
  */
 
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { SnapshotInfo } from '../../__common/common/snapshot/SnapshotInfo'
+import { SnapshotInfo } from '../../__common/snapshot/SnapshotInfo'
 
 export class SnapshotCreateResponse extends ResponseBase {
   accepted?: boolean

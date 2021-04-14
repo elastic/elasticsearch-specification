@@ -17,32 +17,14 @@
  * under the License.
  */
 
+import { NodeStatistics } from '../../nodes/NodeStatistics'
 import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import {
-  SnapshotRepository,
-  SnapshotRepositorySettings
-} from '../SnapshotRepository'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { SecurityNode } from '../SecurityNode'
 
-/**
- * @rest_spec_name snapshot.create_repository
- * @since 0.0.0
- *
- * @stability TODO
- */
-export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  path_parts?: {
-    repository: Name
-  }
-  query_parameters?: {
-    master_timeout?: Time
-    timeout?: Time
-    verify?: boolean
-  }
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+export class SecurityClearCachedRealmsResponse extends ResponseBase {
+  cluster_name: Name
+  nodes: Dictionary<string, SecurityNode>
+  _nodes: NodeStatistics
 }

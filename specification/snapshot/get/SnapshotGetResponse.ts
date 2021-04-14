@@ -19,7 +19,7 @@
 
 import { ErrorCause, Name } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { SnapshotInfo } from '../../__common/common/snapshot/SnapshotInfo'
+import { SnapshotInfo } from '../../__common/snapshot/SnapshotInfo'
 
 export class SnapshotGetResponse extends ResponseBase {
   responses?: SnapshotResponseItem[]

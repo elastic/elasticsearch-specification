@@ -17,36 +17,37 @@
  * under the License.
  */
 
-import { IndexName, integer, Name, VersionNumber } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { TypeMapping } from '../../__common/mapping/TypeMapping'
+import {
+  DateString,
+  EpochMillis,
+  IndexName,
+  Uuid,
+  VersionNumber,
+  VersionString
+} from '../common'
+import { ShardStatistics } from '../common_options/hit/ShardStatistics'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { Alias } from '../Alias'
+import { SnapshotInfoFeatureState } from './SnapshotInfoFeatureState'
+import { SnapshotShardFailure } from './SnapshotShardFailure'
 
-/**
- * @rest_spec_name indices.put_template
- * @since 0.0.0
- * @stability TODO
- */
-export interface IndicesPutTemplateRequest extends RequestBase {
-  path_parts?: {
-    name: Name
-  }
-  query_parameters?: {
-    create?: boolean
-    flat_settings?: boolean
-    include_type_name?: boolean
-    master_timeout?: Time
-    timeout?: Time
-  }
-  body?: {
-    aliases?: Dictionary<IndexName, Alias>
-    index_patterns?: string | string[]
-    mappings?: TypeMapping
-    order?: integer
-    settings?: Dictionary<string, UserDefinedValue>
-    version?: VersionNumber
-  }
+export class SnapshotInfo {
+  data_streams: Array<string>
+  duration_in_millis?: EpochMillis
+  end_time?: DateString
+  end_time_in_millis?: EpochMillis
+  failures?: SnapshotShardFailure[]
+  include_global_state?: boolean
+  indices: IndexName[]
+  metadata?: Dictionary<string, UserDefinedValue>
+  reason?: string
+  snapshot: string
+  shards?: ShardStatistics
+  start_time?: DateString
+  start_time_in_millis?: EpochMillis
+  state?: string
+  uuid: Uuid
+  version?: VersionString
+  version_id?: VersionNumber
+  feature_states?: SnapshotInfoFeatureState[]
 }

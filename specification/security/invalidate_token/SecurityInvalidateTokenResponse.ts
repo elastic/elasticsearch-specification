@@ -17,32 +17,12 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import {
-  SnapshotRepository,
-  SnapshotRepositorySettings
-} from '../SnapshotRepository'
+import { ErrorCause, long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
-/**
- * @rest_spec_name snapshot.create_repository
- * @since 0.0.0
- *
- * @stability TODO
- */
-export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  path_parts?: {
-    repository: Name
-  }
-  query_parameters?: {
-    master_timeout?: Time
-    timeout?: Time
-    verify?: boolean
-  }
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+export class SecurityInvalidateTokenResponse extends ResponseBase {
+  error_count: long
+  error_details?: ErrorCause[]
+  invalidated_tokens: long
+  previously_invalidated_tokens: long
 }

@@ -17,32 +17,12 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import {
-  SnapshotRepository,
-  SnapshotRepositorySettings
-} from '../SnapshotRepository'
+import { long } from '../common'
+import { FileCountSnapshotStats } from './FileCountSnapshotStats'
 
-/**
- * @rest_spec_name snapshot.create_repository
- * @since 0.0.0
- *
- * @stability TODO
- */
-export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  path_parts?: {
-    repository: Name
-  }
-  query_parameters?: {
-    master_timeout?: Time
-    timeout?: Time
-    verify?: boolean
-  }
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+export class SnapshotStats {
+  incremental: FileCountSnapshotStats
+  start_time_in_millis: long
+  time_in_millis: long
+  total: FileCountSnapshotStats
 }
