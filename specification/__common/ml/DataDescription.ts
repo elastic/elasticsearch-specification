@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { double, long } from '../../__common/common'
+import { Field } from '../common'
 
-export class DatafeedTimingStats {
-  bucket_count: long
-  exponential_average_search_time_per_hour_ms: double
-  job_id: string
-  search_count: long
-  total_search_time_ms: double
+export class DataDescription {
+  format?: string
+  time_field: Field
+  time_format?: string
+  field_delimiter?: string
 }

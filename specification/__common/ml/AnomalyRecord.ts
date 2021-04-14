@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, EpochMillis, integer } from '../../../__common/common'
-import { Time } from '../../../__common/common_options/time_unit/Time'
+import { double, EpochMillis, integer } from '../common'
+import { Time } from '../common_options/time_unit/Time'
 import { AnomalyCause } from './AnomalyCause'
 import { Influence } from './Influence'
 

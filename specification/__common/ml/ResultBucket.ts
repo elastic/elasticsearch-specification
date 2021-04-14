@@ -17,14 +17,21 @@
  * under the License.
  */
 
-import { Field } from '../../../__common/common'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { FilterRef } from './FilterRef'
-import { RuleAction } from './RuleAction'
-import { RuleCondition } from './RuleCondition'
+import { double, Id, long } from '../common'
+import { Time } from '../common_options/time_unit/Time'
+import { BucketInfluencer } from './BucketInfluencer'
+import { PartitionScore } from './PartitionScore'
 
-export class DetectionRule {
-  actions: RuleAction[]
-  conditions: RuleCondition[]
-  scope?: Dictionary<Field, FilterRef>
+export class ResultBucket {
+  anomaly_score: double
+  bucket_influencers: BucketInfluencer[]
+  bucket_span: Time
+  event_count: long
+  initial_anomaly_score: double
+  is_interim: boolean
+  job_id: Id
+  partition_scores?: PartitionScore[]
+  processing_time_ms: double
+  result_type: string
+  timestamp: Time
 }

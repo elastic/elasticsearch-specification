@@ -18,7 +18,7 @@
  */
 
 import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
-import { ModelSnapshot } from '../job/process/ModelSnapshot'
+import { ModelSnapshot } from '../../__common/ml/ModelSnapshot'
 
 export class UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
   model: ModelSnapshot

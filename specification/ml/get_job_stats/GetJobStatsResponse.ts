@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { JobStats } from '../job/config/JobStats'
+import { JobStats } from '../../__common/ml/JobStats'
 
 export class GetJobStatsResponse extends ResponseBase {
   count: long

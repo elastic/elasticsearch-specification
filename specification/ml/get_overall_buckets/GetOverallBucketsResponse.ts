@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { OverallBucket } from '../job/results/OverallBucket'
+import { OverallBucket } from '../../__common/ml/OverallBucket'
 
 export class GetOverallBucketsResponse extends ResponseBase {
   count: long

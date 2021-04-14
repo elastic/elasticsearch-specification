@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { BucketInfluencer } from '../job/results/BucketInfluencer'
+import { BucketInfluencer } from '../../__common/ml/BucketInfluencer'
 
 export class GetInfluencersResponse extends ResponseBase {
   count: long

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
+import { Id } from '../common'
 import { DatafeedState } from './DatafeedState'
 import { DatafeedTimingStats } from './DatafeedTimingStats'
 import { DiscoveryNode } from './DiscoveryNode'

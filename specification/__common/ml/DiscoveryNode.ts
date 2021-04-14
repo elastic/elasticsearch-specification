@@ -17,19 +17,13 @@
  * under the License.
  */
 
-import { Id, long, VersionString } from '../../../__common/common'
-import { Time } from '../../../__common/common_options/time_unit/Time'
-import { ModelSizeStats } from './ModelSizeStats'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Id, Name } from '../common'
 
-export class ModelSnapshot {
-  description: string
-  job_id: Id
-  latest_record_time_stamp: Time
-  latest_result_time_stamp: Time
-  model_size_stats: ModelSizeStats
-  retain: boolean
-  snapshot_doc_count: long
-  snapshot_id: Id
-  timestamp: Time
-  min_version: VersionString
+export class DiscoveryNode {
+  attributes: Dictionary<string, string>
+  ephemeral_id: Id
+  id: Id
+  name: Name
+  transport_address: string
 }

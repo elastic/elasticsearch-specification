@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { AnomalyRecord } from '../job/results/AnomalyRecord'
+import { AnomalyRecord } from '../../__common/ml/AnomalyRecord'
 
 export class GetAnomalyRecordsResponse extends ResponseBase {
   count: long

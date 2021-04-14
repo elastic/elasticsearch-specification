@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
+import { Id } from '../common'
+import { RuleFilterType } from './RuleFilterType'
 
-export class Page {
-  from: integer
-  size: integer
+export class FilterRef {
+  filter_id: Id
+  filter_type: RuleFilterType
 }

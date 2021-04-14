@@ -17,15 +17,14 @@
  * under the License.
  */
 
-import { DateString, double, long } from '../../../__common/common'
-import { OverallBucketJobInfo } from './OverallBucketJobInfo'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Field } from '../common'
+import { FilterRef } from './FilterRef'
+import { RuleAction } from './RuleAction'
+import { RuleCondition } from './RuleCondition'
 
-export class OverallBucket {
-  bucket_span: long
-  is_interim: boolean
-  jobs: OverallBucketJobInfo[]
-  overall_score: double
-  result_type: string
-  /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: DateString
+export class DetectionRule {
+  actions: RuleAction[]
+  conditions: RuleCondition[]
+  scope?: Dictionary<Field, FilterRef>
 }

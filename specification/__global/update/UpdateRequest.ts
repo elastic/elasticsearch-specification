@@ -17,16 +17,7 @@
  * under the License.
  */
 
-import {
-  Fields,
-  Id,
-  IndexName,
-  long,
-  Routing,
-  SequenceNumber,
-  Type,
-  WaitForActiveShards
-} from '../../__common/common'
+import { Fields, Id, IndexName, long, Routing, SequenceNumber, Type, WaitForActiveShards } from '../../__common/common'
 import { Refresh } from '../../__common/common/Refresh'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Script } from '../../__common/common_options/scripting/Script'

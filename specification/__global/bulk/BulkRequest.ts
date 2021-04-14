@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  Fields,
-  IndexName,
-  Routing,
-  Type,
-  WaitForActiveShards
-} from '../../__common/common'
+import { Fields, IndexName, Routing, Type, WaitForActiveShards } from '../../__common/common'
 import { Refresh } from '../../__common/common/Refresh'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Time } from '../../__common/common_options/time_unit/Time'

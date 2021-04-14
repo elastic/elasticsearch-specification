@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
-import { Id, Indices, integer, Timestamp } from '../../__common/common'
-import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { RuntimeFields } from '../../__common/mapping/runtime_fields/RuntimeFields'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { DatafeedIndicesOptions } from '../../ml/update_data_feed/DatafeedIndicesOptions'
 import { Dictionary } from '../../__spec_utils/Dictionary'
-import { DatafeedIndicesOptions } from '../update_data_feed/DatafeedIndicesOptions'
+import { AggregationContainer } from '../aggregations/AggregationContainer'
+import { Id, Indices, integer, Timestamp } from '../common'
+import { ScriptField } from '../common_options/scripting/ScriptField'
+import { Time } from '../common_options/time_unit/Time'
+import { RuntimeFields } from '../mapping/runtime_fields/RuntimeFields'
+import { QueryContainer } from '../query_dsl/abstractions/container/QueryContainer'
 import { ChunkingConfig } from './ChunkingConfig'
 
 export class Datafeed {

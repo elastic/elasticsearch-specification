@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  double,
-  float,
-  Fuzziness,
-  integer,
-  MultiTermQueryRewrite
-} from '../../../common'
+import { double, float, Fuzziness, integer, MultiTermQueryRewrite } from '../../../common'
 import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
 import { QueryBase } from '../../abstractions/query/Query'
 import { Operator } from '../../Operator'

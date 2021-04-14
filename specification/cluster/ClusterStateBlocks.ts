@@ -18,17 +18,7 @@
  */
 
 import { IndicesRolloverConditions } from '../indices/rollover/IndicesRolloverConditions'
-import {
-  DateString,
-  IndexAlias,
-  IndexName,
-  integer,
-  Name,
-  PropertyName,
-  Uuid,
-  VersionNumber,
-  VersionString
-} from '../__common/common'
+import { DateString, IndexAlias, IndexName, integer, Name, PropertyName, Uuid, VersionNumber, VersionString } from '../__common/common'
 import { Time } from '../__common/common_options/time_unit/Time'
 import { Property } from '../__common/mapping/types/Property'
 import { Dictionary } from '../__spec_utils/Dictionary'

@@ -19,7 +19,7 @@
 
 import { CategoryId, Id } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Page } from '../job/Page'
+import { Page } from '../../__common/ml/Page'
 
 /**
  * @rest_spec_name ml.get_categories

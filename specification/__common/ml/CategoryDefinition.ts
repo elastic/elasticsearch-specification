@@ -17,15 +17,13 @@
  * under the License.
  */
 
-import { JobStatistics } from '../../../xpack/usage/JobStatistics'
-import { integer, long } from '../../../__common/common'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { Id, long } from '../common'
 
-export class JobForecastStatistics {
-  memory_bytes?: JobStatistics
-  processing_time_ms?: JobStatistics
-  records?: JobStatistics
-  status?: Dictionary<string, long>
-  total: long
-  forecasted_jobs: integer
+export class CategoryDefinition {
+  category_id: long
+  examples: string[]
+  job_id: Id
+  max_matching_length: long
+  regex: string
+  terms: string
 }

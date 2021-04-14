@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ResultBucket } from '../job/results/ResultBucket'
+import { ResultBucket } from '../../__common/ml/ResultBucket'
 
 export class GetBucketsResponse extends ResponseBase {
   buckets: ResultBucket[]

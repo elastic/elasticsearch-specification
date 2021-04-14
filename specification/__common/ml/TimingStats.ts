@@ -17,30 +17,15 @@
  * under the License.
  */
 
-import { Id, integer, long } from '../../../__common/common'
-import { Time } from '../../../__common/common_options/time_unit/Time'
-import { MemoryStatus } from '../config/MemoryStatus'
+import { double, Id, long } from '../common'
 
-export class ModelSizeStats {
-  bucket_allocation_failures_count: long
+export class TimingStats {
+  average_bucket_processing_time_ms?: double
+  bucket_count: long
+  exponential_average_bucket_processing_time_ms?: double
+  exponential_average_bucket_processing_time_per_hour_ms: double
   job_id: Id
-  log_time: Time
-  memory_status: MemoryStatus
-  model_bytes: long
-  model_bytes_exceeded?: long
-  model_bytes_memory_limit?: long
-  peak_model_bytes?: long
-  assignment_memory_basis?: string
-  result_type: string
-  total_by_field_count: long
-  total_over_field_count: long
-  total_partition_field_count: long
-  categorization_status: string
-  categorized_doc_count: integer
-  dead_category_count: integer
-  failed_category_count: integer
-  frequent_category_count: integer
-  rare_category_count: integer
-  total_category_count: integer
-  timestamp?: long
+  total_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
 }

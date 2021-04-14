@@ -17,13 +17,25 @@
  * under the License.
  */
 
-import { Id, Name } from '../../__common/common'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { CategorizationAnalyzer } from '../../ml/machine_learning_info/CategorizationAnalyzer'
+import { Field, TimeSpan } from '../common'
+import { Time } from '../common_options/time_unit/Time'
+import { Detector } from './Detector'
 
-export class DiscoveryNode {
-  attributes: Dictionary<string, string>
-  ephemeral_id: Id
-  id: Id
-  name: Name
-  transport_address: string
+export class AnalysisConfig {
+  bucket_span: TimeSpan
+  categorization_field_name?: Field
+  categorization_filters?: string[]
+  detectors: Detector[]
+  influencers?: Field[]
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: PerPartitionCategorization
+  summary_count_field_name?: Field
+  categorization_analyzer?: CategorizationAnalyzer | string
+}
+
+export class PerPartitionCategorization {
+  enabled?: boolean
+  stop_on_warn?: boolean
 }

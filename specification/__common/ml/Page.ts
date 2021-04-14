@@ -17,23 +17,9 @@
  * under the License.
  */
 
-import { DateString } from '../../../__common/common'
-import { DiscoveryNode } from '../../datafeed/DiscoveryNode'
-import { DataCounts } from '../process/DataCounts'
-import { ModelSizeStats } from '../process/ModelSizeStats'
-import { JobForecastStatistics } from './JobForecastStatistics'
-import { JobState } from './JobState'
-import { TimingStats } from './TimingStats'
+import { integer } from '../common'
 
-export class JobStats {
-  assignment_explanation?: string
-  data_counts: DataCounts
-  forecasts_stats: JobForecastStatistics
-  job_id: string
-  model_size_stats: ModelSizeStats
-  node?: DiscoveryNode
-  open_time?: DateString
-  state: JobState
-  timing_stats: TimingStats
-  deleting?: boolean
+export class Page {
+  from: integer
+  size: integer
 }

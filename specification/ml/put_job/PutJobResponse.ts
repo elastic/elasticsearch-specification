@@ -20,10 +20,10 @@
 import { DateString, long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { Time } from '../../__common/common_options/time_unit/Time'
-import { AnalysisConfig } from '../job/config/AnalysisConfig'
-import { AnalysisLimits } from '../job/config/AnalysisLimits'
-import { DataDescription } from '../job/config/DataDescription'
-import { ModelPlotConfig } from '../job/config/ModelPlotConfig'
+import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
+import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'
+import { DataDescription } from '../../__common/ml/DataDescription'
+import { ModelPlotConfig } from '../../__common/ml/ModelPlotConfig'
 
 export class PutJobResponse extends ResponseBase {
   allow_lazy_open: boolean

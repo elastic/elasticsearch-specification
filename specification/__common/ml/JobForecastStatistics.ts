@@ -17,10 +17,15 @@
  * under the License.
  */
 
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { ChunkingMode } from './ChunkingMode'
+import { JobStatistics } from '../../xpack/usage/JobStatistics'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { integer, long } from '../common'
 
-export class ChunkingConfig {
-  mode: ChunkingMode
-  time_span?: Time // default: 3h
+export class JobForecastStatistics {
+  memory_bytes?: JobStatistics
+  processing_time_ms?: JobStatistics
+  records?: JobStatistics
+  status?: Dictionary<string, long>
+  total: long
+  forecasted_jobs: integer
 }

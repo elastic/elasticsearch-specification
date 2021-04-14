@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { JobState } from '../../ml/job/config/JobState'
 import { ByteSize, Id, NodeId } from '../../__common/common'
+import { JobState } from '../../__common/ml/JobState'
 import { ModelCategorizationStatus } from './ModelCategorizationStatus'
 import { ModelMemoryStatus } from './ModelMemoryStatus'
 

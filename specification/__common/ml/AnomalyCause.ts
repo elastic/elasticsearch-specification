@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { Field, integer } from '../../../__common/common'
-import { ExcludeFrequent } from '../../put_job/ExcludeFrequent'
-import { DetectionRule } from './DetectionRule'
+import { double, Field, Name } from '../common'
+import { Influence } from './Influence'
 
-/**
- *
- */
-export class Detector {
-  by_field_name?: Field
-  custom_rules?: DetectionRule[]
-  detector_description?: string
-  detector_index?: integer
-  exclude_frequent?: ExcludeFrequent
-  field_name?: Field
+export class AnomalyCause {
+  actual: double[]
+  by_field_name: Name
+  by_field_value: string
+  correlated_by_field_value: string
+  field_name: Field
   function: string
-  use_null?: boolean
-  over_field_name?: Field
-  partition_field_name?: Field
+  function_description: string
+  influencers: Influence[]
+  over_field_name: Name
+  over_field_value: string
+  partition_field_name: string
+  partition_field_value: string
+  probability: double
+  typical: double[]
 }

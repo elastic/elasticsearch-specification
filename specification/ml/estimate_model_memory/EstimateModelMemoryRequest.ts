@@ -19,8 +19,8 @@
 
 import { Field, long } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
 import { Dictionary } from '../../__spec_utils/Dictionary'
-import { AnalysisConfig } from '../job/config/AnalysisConfig'
 
 /**
  * @rest_spec_name ml.estimate_model_memory

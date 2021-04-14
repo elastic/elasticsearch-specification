@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { long } from '../../../__common/common'
+import { double, Name } from '../common'
 
-export class CategoryDefinition {
-  category_id: long
-  examples: string[]
-  job_id: string
-  max_matching_length: long
-  regex: string
-  terms: string
+export class PartitionScore {
+  initial_record_score: double
+  partition_field_name: Name
+  partition_field_value: string
+  probability: double
+  record_score: double
 }

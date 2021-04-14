@@ -18,18 +18,7 @@
  */
 
 import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
-import {
-  DateField,
-  double,
-  Field,
-  Fields,
-  IndexName,
-  Indices,
-  integer,
-  long,
-  Routing,
-  Types
-} from '../../__common/common'
+import { DateField, double, Field, Fields, IndexName, Indices, integer, long, Routing, Types } from '../../__common/common'
 import { DefaultOperator } from '../../__common/common/DefaultOperator'
 import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
 import { SearchType } from '../../__common/common/SearchType'

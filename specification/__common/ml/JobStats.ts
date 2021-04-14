@@ -17,9 +17,23 @@
  * under the License.
  */
 
-import { double } from '../../../__common/common'
+import { DateString } from '../common'
+import { DataCounts } from './DataCounts'
+import { DiscoveryNode } from './DiscoveryNode'
+import { JobForecastStatistics } from './JobForecastStatistics'
+import { JobState } from './JobState'
+import { ModelSizeStats } from './ModelSizeStats'
+import { TimingStats } from './TimingStats'
 
-export class OverallBucketJobInfo {
+export class JobStats {
+  assignment_explanation?: string
+  data_counts: DataCounts
+  forecasts_stats: JobForecastStatistics
   job_id: string
-  max_anomaly_score: double
+  model_size_stats: ModelSizeStats
+  node?: DiscoveryNode
+  open_time?: DateString
+  state: JobState
+  timing_stats: TimingStats
+  deleting?: boolean
 }

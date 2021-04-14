@@ -23,10 +23,10 @@ import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
 import { Time } from '../../__common/common_options/time_unit/Time'
+import { ChunkingConfig } from '../../__common/ml/ChunkingConfig'
+import { DelayedDataCheckConfig } from '../../__common/ml/Datafeed'
 import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 import { Dictionary } from '../../__spec_utils/Dictionary'
-import { ChunkingConfig } from '../datafeed/ChunkingConfig'
-import { DelayedDataCheckConfig } from '../datafeed/Datafeed'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
 /**

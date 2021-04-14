@@ -17,12 +17,25 @@
  * under the License.
  */
 
-import { double } from '../../../__common/common'
+import { Id, long } from '../common'
 
-export class PartitionScore {
-  initial_record_score: double
-  partition_field_name: string
-  partition_field_value: string
-  probability: double
-  record_score: double
+export class DataCounts {
+  bucket_count: long
+  earliest_record_timestamp?: long
+  empty_bucket_count: long
+  input_bytes: long
+  input_field_count: long
+  input_record_count: long
+  invalid_date_count: long
+  job_id: Id
+  last_data_time?: long
+  latest_empty_bucket_timestamp?: long
+  latest_record_timestamp?: long
+  latest_sparse_bucket_timestamp?: long
+  latest_bucket_timestamp?: long
+  missing_field_count: long
+  out_of_order_timestamp_count: long
+  processed_field_count: long
+  processed_record_count: long
+  sparse_bucket_count: long
 }

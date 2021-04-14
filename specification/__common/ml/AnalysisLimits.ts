@@ -17,25 +17,9 @@
  * under the License.
  */
 
-import { Field, TimeSpan } from '../../../__common/common'
-import { Time } from '../../../__common/common_options/time_unit/Time'
-import { CategorizationAnalyzer } from '../../machine_learning_info/CategorizationAnalyzer'
-import { Detector } from '../detectors/Detector'
+import { long } from '../common'
 
-export class AnalysisConfig {
-  bucket_span: TimeSpan
-  categorization_field_name?: Field
-  categorization_filters?: string[]
-  detectors: Detector[]
-  influencers?: Field[]
-  latency?: Time
-  multivariate_by_fields?: boolean
-  per_partition_categorization?: PerPartitionCategorization
-  summary_count_field_name?: Field
-  categorization_analyzer?: CategorizationAnalyzer | string
-}
-
-export class PerPartitionCategorization {
-  enabled?: boolean
-  stop_on_warn?: boolean
+export class AnalysisLimits {
+  categorization_examples_limit?: long
+  model_memory_limit: string
 }

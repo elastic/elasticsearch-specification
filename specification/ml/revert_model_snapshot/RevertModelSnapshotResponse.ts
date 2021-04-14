@@ -18,7 +18,7 @@
  */
 
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ModelSnapshot } from '../job/process/ModelSnapshot'
+import { ModelSnapshot } from '../../__common/ml/ModelSnapshot'
 
 export class RevertModelSnapshotResponse extends ResponseBase {
   model: ModelSnapshot

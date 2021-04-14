@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { Field } from '../../../__common/common'
+import { double } from '../common'
+import { AppliesTo } from './AppliesTo'
+import { ConditionOperator } from './ConditionOperator'
 
-export class DataDescription {
-  format?: string
-  time_field: Field
-  time_format?: string
-  field_delimiter?: string
+export class RuleCondition {
+  applies_to: AppliesTo
+  operator: ConditionOperator
+  value: double
 }

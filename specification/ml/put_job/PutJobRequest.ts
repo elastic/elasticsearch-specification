@@ -19,10 +19,10 @@
 
 import { Id, IndexName, long } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { AnalysisConfig } from '../job/config/AnalysisConfig'
-import { AnalysisLimits } from '../job/config/AnalysisLimits'
-import { DataDescription } from '../job/config/DataDescription'
-import { ModelPlotConfig } from '../job/config/ModelPlotConfig'
+import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
+import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'
+import { DataDescription } from '../../__common/ml/DataDescription'
+import { ModelPlotConfig } from '../../__common/ml/ModelPlotConfig'
 
 /**
  * @rest_spec_name ml.put_job

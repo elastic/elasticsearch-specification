@@ -17,15 +17,7 @@
  * under the License.
  */
 
-import {
-  Field,
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber
-} from '../../__common/common'
+import { Field, Fields, Id, IndexName, Routing, Type, VersionNumber } from '../../__common/common'
 import { VersionType } from '../../__common/common/VersionType'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Dictionary } from '../../__spec_utils/Dictionary'

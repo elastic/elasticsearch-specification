@@ -22,9 +22,9 @@ import { Indices, integer } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
 import { Time } from '../../__common/common_options/time_unit/Time'
+import { ChunkingConfig } from '../../__common/ml/ChunkingConfig'
 import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 import { Dictionary } from '../../__spec_utils/Dictionary'
-import { ChunkingConfig } from '../datafeed/ChunkingConfig'
 
 export class PutDatafeedResponse extends ResponseBase {
   aggregations: Dictionary<string, AggregationContainer>

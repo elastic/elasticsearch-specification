@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ModelSnapshot } from '../job/process/ModelSnapshot'
+import { ModelSnapshot } from '../../__common/ml/ModelSnapshot'
 
 export class GetModelSnapshotsResponse extends ResponseBase {
   count: long

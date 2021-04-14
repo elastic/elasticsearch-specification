@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  Field,
-  Id,
-  IndexName,
-  long,
-  VersionNumber
-} from '../../__common/common'
+import { Field, Id, IndexName, long, VersionNumber } from '../../__common/common'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { TermVector } from './TermVector'
 

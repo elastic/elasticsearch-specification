@@ -17,14 +17,7 @@
  * under the License.
  */
 
-import {
-  Fields,
-  Indices,
-  long,
-  Routing,
-  Types,
-  WaitForActiveShards
-} from '../../__common/common'
+import { Fields, Indices, long, Routing, Types, WaitForActiveShards } from '../../__common/common'
 import { Conflicts } from '../../__common/common/Conflicts'
 import { DefaultOperator } from '../../__common/common/DefaultOperator'
 import { ExpandWildcards } from '../../__common/common/ExpandWildcards'

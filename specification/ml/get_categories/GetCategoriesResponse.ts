@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { CategoryDefinition } from '../job/results/CategoryDefinition'
+import { CategoryDefinition } from '../../__common/ml/CategoryDefinition'
 
 export class GetCategoriesResponse extends ResponseBase {
   categories: CategoryDefinition[]

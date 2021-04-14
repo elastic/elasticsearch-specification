@@ -19,7 +19,7 @@
 
 import { long } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Datafeed } from '../datafeed/Datafeed'
+import { Datafeed } from '../../__common/ml/Datafeed'
 
 export class GetDatafeedsResponse extends ResponseBase {
   count: long

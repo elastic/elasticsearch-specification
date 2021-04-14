@@ -17,17 +17,22 @@
  * under the License.
  */
 
-import { DateString, double, Id, long } from '../../../__common/common'
+import { ExcludeFrequent } from '../../ml/put_job/ExcludeFrequent'
+import { Field, integer } from '../common'
+import { DetectionRule } from './DetectionRule'
 
-export class BucketInfluencer {
-  bucket_span: long
-  influencer_field_name: string
-  influencer_field_value: string
-  influencer_score: double
-  initial_influencer_score: double
-  is_interim: boolean
-  job_id: Id
-  probability: double
-  result_type: string
-  timestamp: DateString
+/**
+ *
+ */
+export class Detector {
+  by_field_name?: Field
+  custom_rules?: DetectionRule[]
+  detector_description?: string
+  detector_index?: integer
+  exclude_frequent?: ExcludeFrequent
+  field_name?: Field
+  function: string
+  use_null?: boolean
+  over_field_name?: Field
+  partition_field_name?: Field
 }

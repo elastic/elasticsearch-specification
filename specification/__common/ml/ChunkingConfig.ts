@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { double } from '../../../__common/common'
-import { AppliesTo } from './AppliesTo'
-import { ConditionOperator } from './ConditionOperator'
+import { Time } from '../common_options/time_unit/Time'
+import { ChunkingMode } from './ChunkingMode'
 
-export class RuleCondition {
-  applies_to: AppliesTo
-  operator: ConditionOperator
-  value: double
+export class ChunkingConfig {
+  mode: ChunkingMode
+  /** @server_default 3h */
+  time_span?: Time
 }

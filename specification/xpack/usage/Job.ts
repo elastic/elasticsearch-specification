@@ -17,19 +17,12 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '../../ml/job/config/AnalysisConfig'
-import { AnalysisLimits } from '../../ml/job/config/AnalysisLimits'
-import { DataDescription } from '../../ml/job/config/DataDescription'
-import { ModelPlotConfig } from '../../ml/job/config/ModelPlotConfig'
-import {
-  EmptyObject,
-  Id,
-  IndexName,
-  integer,
-  long,
-  VersionString
-} from '../../__common/common'
+import { EmptyObject, Id, IndexName, integer, long, VersionString } from '../../__common/common'
 import { Time } from '../../__common/common_options/time_unit/Time'
+import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
+import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'
+import { DataDescription } from '../../__common/ml/DataDescription'
+import { ModelPlotConfig } from '../../__common/ml/ModelPlotConfig'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { JobStatistics } from './JobStatistics'
 

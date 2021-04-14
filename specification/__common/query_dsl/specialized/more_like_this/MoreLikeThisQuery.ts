@@ -19,14 +19,7 @@
 
 import { Dictionary } from '../../../../__spec_utils/Dictionary'
 import { StopWords } from '../../../analysis/StopWords'
-import {
-  double,
-  Field,
-  Fields,
-  integer,
-  Routing,
-  VersionNumber
-} from '../../../common'
+import { double, Field, Fields, integer, Routing, VersionNumber } from '../../../common'
 import { VersionType } from '../../../common/VersionType'
 import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
 import { QueryBase } from '../../abstractions/query/Query'
